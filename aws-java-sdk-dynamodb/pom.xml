@@ -13,6 +13,13 @@
   <description>The AWS Java SDK for Amazon DynamoDB module holds the client classes that are used for communicating with Amazon DynamoDB Service</description>
   <url>https://aws.amazon.com/sdkforjava</url>
 
+  <distributionManagement>
+    <repository>
+        <id>nexus</id>
+        <url>http://nexus.aquiris.com.br:8081/repository/maven-releases/</url>
+    </repository>
+  </distributionManagement>
+
   <!-- The dependencies section in pom.xml is auto generated. No manual changes are allowed -->
   <dependencies>
     <dependency>
