@@ -14,6 +14,7 @@
  */
 package com.amazonaws.services.dynamodbv2.datamodeling;
 
+import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.convertToNullStringValues;
 import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.convertToNullValues;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.HASH;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.RANGE;
@@ -518,48 +519,49 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
     /**
      * The one true implementation of marshallIntoObject.
      */
+    @SuppressWarnings("unchecked")
     private <T> T privateMarshallIntoObject(
             AttributeTransformer.Parameters<T> parameters) {
 
         Class<T> clazz = parameters.getModelClass();
         Map<String, AttributeValue> values = untransformAttributes(parameters);
 
+        boolean hasNoTypeName = true;
+        AttributeValue typeName = values.get("typeName");
+        if (typeNameEntityMap != null && typeName != null
+            && typeName.getS() != null && !typeName.getS().isEmpty()) {
+            Class entityClass = typeNameEntityMap.get(typeName.getS());
+            if (entityClass != null) {
+                clazz = (Class<T>) entityClass;
+                hasNoTypeName = false;
+            }
+        }
+
         final DynamoDBMapperTableModel<T> model = getTableModel(clazz, parameters.getMapperConfig());
-        return model.unconvert(values);
+        T entity = model.unconvert(values);
+
+        convertToNullValues(entity);
+        if (hasNoTypeName) {
+            try {
+                Method method = entity.getClass().getMethod("setPartialModel", Boolean.class);
+                method.invoke(entity, Boolean.TRUE);
+            } catch (NoSuchMethodException ex) {
+                throw new AmazonClientException("Entity does not have a 'setPartialModel' method.", ex);
+            } catch (IllegalAccessException ex) {
+                throw new AmazonClientException("Could not access 'setPartialModel' method.", ex);
+            } catch (InvocationTargetException ex) {
+                throw new AmazonClientException("Could not invoke 'setPartialModel' method.", ex);
+            }
+        }
+
+        return entity;
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public <T> List<T> marshallIntoObjects(Class<T> clazz, List<Map<String, AttributeValue>> itemAttributes) {
         List<T> result = new ArrayList<T>(itemAttributes.size());
         for (Map<String, AttributeValue> item : itemAttributes) {
-            if (typeNameEntityMap == null) {
-              result.add(marshallIntoObject(clazz, item));
-            } else {
-                T entity;
-                Class<T> entityClass;
-                AttributeValue typeName = item.get("typeName");
-                if (typeName == null) {
-                    entityClass = clazz;
-                } else {
-                    entityClass = (Class<T>) typeNameEntityMap.get(typeName.getS());
-                }
-                entity = marshallIntoObject(entityClass, item);
-                convertToNullValues(entity);
-                if (typeName == null) {
-                    try {
-                        Method method = entity.getClass().getMethod("setPartialModel", Boolean.class);
-                        method.invoke(entity, Boolean.TRUE);
-                    } catch (NoSuchMethodException ex) {
-                        ex.printStackTrace();
-                    } catch (IllegalAccessException ex) {
-                        ex.printStackTrace();
-                    } catch (InvocationTargetException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-                result.add(entity);
-            }
+            result.add(marshallIntoObject(clazz, item));
         }
         return result;
     }
@@ -603,6 +605,8 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
     public <T extends Object> void save(T object,
                                         DynamoDBSaveExpression saveExpression,
                                         final DynamoDBMapperConfig config) {
+        convertToNullStringValues(object);
+
         final DynamoDBMapperConfig finalConfig = mergeConfig(config);
 
         @SuppressWarnings("unchecked")
@@ -733,6 +737,8 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         }
 
         saveObjectHandler.execute();
+
+        convertToNullValues(object);
     }
 
     /**
