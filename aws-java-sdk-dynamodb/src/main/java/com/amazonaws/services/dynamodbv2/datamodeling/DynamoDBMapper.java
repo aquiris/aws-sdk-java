@@ -14,9 +14,11 @@
  */
 package com.amazonaws.services.dynamodbv2.datamodeling;
 
+import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.convertToNullValues;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.HASH;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.RANGE;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -225,6 +227,8 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
     private static final Log log = LogFactory.getLog(DynamoDBMapper.class);
 
+    private Map<String, Class> typeNameEntityMap;
+
     /**
      * Fail fast when trying to create a subclass of the DynamoDBMapper that
      * attempts to override one of the old {@code transformAttributes} methods.
@@ -288,6 +292,15 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
             final DynamoDBMapperConfig config) {
 
         this(dynamoDB, config, null, null);
+    }
+
+    public DynamoDBMapper(
+            final AmazonDynamoDB dynamoDB,
+            final DynamoDBMapperConfig config,
+            final Map<String, Class> typeNameEntityMap) {
+
+        this(dynamoDB, config, null, null);
+        this.typeNameEntityMap = typeNameEntityMap;
     }
 
     /**
@@ -516,10 +529,37 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> List<T> marshallIntoObjects(Class<T> clazz, List<Map<String, AttributeValue>> itemAttributes) {
         List<T> result = new ArrayList<T>(itemAttributes.size());
         for (Map<String, AttributeValue> item : itemAttributes) {
-            result.add(marshallIntoObject(clazz, item));
+            if (typeNameEntityMap == null) {
+              result.add(marshallIntoObject(clazz, item));
+            } else {
+                T entity;
+                Class<T> entityClass;
+                AttributeValue typeName = item.get("typeName");
+                if (typeName == null) {
+                    entityClass = clazz;
+                } else {
+                    entityClass = (Class<T>) typeNameEntityMap.get(typeName.getS());
+                }
+                entity = marshallIntoObject(entityClass, item);
+                convertToNullValues(entity);
+                if (typeName == null) {
+                    try {
+                        Method method = entity.getClass().getMethod("setPartialModel", Boolean.class);
+                        method.invoke(entity, Boolean.TRUE);
+                    } catch (NoSuchMethodException ex) {
+                        ex.printStackTrace();
+                    } catch (IllegalAccessException ex) {
+                        ex.printStackTrace();
+                    } catch (InvocationTargetException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                result.add(entity);
+            }
         }
         return result;
     }
@@ -1490,7 +1530,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         if(noOfItemsInOriginalRequest == batchGetItemResult.getUnprocessedKeys().size()) {
             throw new AmazonClientException("Batch Get Item request to server hasn't received any data. Please try again later");
         }
-        
+
     }
 
     /**
