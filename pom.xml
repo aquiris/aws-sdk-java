@@ -140,6 +140,16 @@
       <cucumber.info.cukes.version>1.2.4</cucumber.info.cukes.version>
       <cucumber.guice.version>4.0</cucumber.guice.version>
   </properties>
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <url>http://nexus.aquiris.com.br:8081/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://nexus.aquiris.com.br:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
   <dependencyManagement>
     <dependencies>
       <dependency>
