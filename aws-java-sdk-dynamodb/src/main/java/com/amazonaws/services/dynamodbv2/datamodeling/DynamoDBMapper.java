@@ -228,8 +228,6 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
     private static final Log log = LogFactory.getLog(DynamoDBMapper.class);
 
-    private Map<String, Class> typeNameEntityMap;
-
     /**
      * Fail fast when trying to create a subclass of the DynamoDBMapper that
      * attempts to override one of the old {@code transformAttributes} methods.
@@ -293,15 +291,6 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
             final DynamoDBMapperConfig config) {
 
         this(dynamoDB, config, null, null);
-    }
-
-    public DynamoDBMapper(
-            final AmazonDynamoDB dynamoDB,
-            final DynamoDBMapperConfig config,
-            final Map<String, Class> typeNameEntityMap) {
-
-        this(dynamoDB, config, null, null);
-        this.typeNameEntityMap = typeNameEntityMap;
     }
 
     /**
@@ -528,9 +517,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         boolean hasNoTypeName = true;
         AttributeValue typeName = values.get("typeName");
-        if (typeNameEntityMap != null && typeName != null
+        if (config.getTypeNameEntityMap() != null && typeName != null
             && typeName.getS() != null && !typeName.getS().isEmpty()) {
-            Class entityClass = typeNameEntityMap.get(typeName.getS());
+            Class entityClass = config.getTypeNameEntityMap().get(typeName.getS());
             if (entityClass != null) {
                 clazz = (Class<T>) entityClass;
                 hasNoTypeName = false;

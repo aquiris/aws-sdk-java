@@ -58,6 +58,7 @@ public class DynamoDBMapperConfig {
         private ConversionSchema conversionSchema;
         private BatchWriteRetryStrategy batchWriteRetryStrategy;
         private BatchLoadRetryStrategy batchLoadRetryStrategy;
+        private Map<String, Class> typeNameEntityMap;
 
         /**
          * Creates a new builder initialized with the {@link #DEFAULT} values.
@@ -73,6 +74,7 @@ public class DynamoDBMapperConfig {
             conversionSchema = DEFAULT.getConversionSchema();
             batchWriteRetryStrategy = DEFAULT.getBatchWriteRetryStrategy();
             batchLoadRetryStrategy = DEFAULT.getBatchLoadRetryStrategy();
+            typeNameEntityMap = DEFAULT.getTypeNameEntityMap();
         }
 
         /**
@@ -321,6 +323,29 @@ public class DynamoDBMapperConfig {
         }
 
         /**
+         * @return the current type name entity map
+         */
+        public Map<String, Class> getTypeNameEntityMap() {
+            return typeNameEntityMap;
+        }
+
+        /**
+         * @param typeNameEntityMap the new type name entity map
+         */
+        public void setTypeNameEntityMap(Map<String, Class> typeNameEntityMap) {
+            this.typeNameEntityMap = typeNameEntityMap;
+        }
+
+        /**
+         * @param typeNameEntityMap the new type name entity map
+         * @return this builder
+         */
+        public Builder withTypeNameEntityMap(Map<String, Class> typeNameEntityMap) {
+            setTypeNameEntityMap(typeNameEntityMap);
+            return this;
+        }
+
+        /**
          * Builds a new {@code DynamoDBMapperConfig} object.
          *
          * @return the new, immutable config object
@@ -336,7 +361,8 @@ public class DynamoDBMapperConfig {
                     requestMetricCollector,
                     conversionSchema,
                     batchWriteRetryStrategy,
-                    batchLoadRetryStrategy);
+                    batchLoadRetryStrategy,
+                    typeNameEntityMap);
         }
     }
 
@@ -763,6 +789,7 @@ public class DynamoDBMapperConfig {
     private final ConversionSchema conversionSchema;
     private final BatchWriteRetryStrategy batchWriteRetryStrategy;
     private final BatchLoadRetryStrategy batchLoadRetryStrategy;
+    private final Map<String, Class> typeNameEntityMap;
 
     /**
      * Legacy constructor, using default PaginationLoadingStrategy
@@ -834,7 +861,8 @@ public class DynamoDBMapperConfig {
                 requestMetricCollector,
                 ConversionSchemas.DEFAULT,
                 new DefaultBatchWriteRetryStrategy(),
-                new DefaultBatchLoadRetryStrategy());
+                new DefaultBatchLoadRetryStrategy(),
+                null);
     }
 
     private DynamoDBMapperConfig(
@@ -847,7 +875,8 @@ public class DynamoDBMapperConfig {
             RequestMetricCollector requestMetricCollector,
             ConversionSchema conversionSchema,
             BatchWriteRetryStrategy batchWriteRetryStrategy,
-            BatchLoadRetryStrategy batchLoadRetryStrategy) {
+            BatchLoadRetryStrategy batchLoadRetryStrategy,
+            Map<String, Class> typeNameEntityMap) {
 
         this.saveBehavior = saveBehavior;
         this.consistentReads = consistentReads;
@@ -859,6 +888,7 @@ public class DynamoDBMapperConfig {
         this.conversionSchema = conversionSchema;
         this.batchWriteRetryStrategy = batchWriteRetryStrategy;
         this.batchLoadRetryStrategy = batchLoadRetryStrategy;
+        this.typeNameEntityMap = typeNameEntityMap;
     }
 
     /**
@@ -866,7 +896,7 @@ public class DynamoDBMapperConfig {
      */
     public DynamoDBMapperConfig(SaveBehavior saveBehavior) {
         this(saveBehavior, null, null, null, null, null, null,
-                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
@@ -875,7 +905,7 @@ public class DynamoDBMapperConfig {
      */
     public DynamoDBMapperConfig(ConsistentReads consistentReads) {
         this(null, consistentReads, null, null, null, null, null,
-                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
@@ -883,7 +913,7 @@ public class DynamoDBMapperConfig {
      */
     public DynamoDBMapperConfig(TableNameOverride tableNameOverride) {
         this(null, null, tableNameOverride, null, null, null, null,
-                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
@@ -891,7 +921,7 @@ public class DynamoDBMapperConfig {
      */
     public DynamoDBMapperConfig(TableNameResolver tableNameResolver) {
         this(null, null, null, tableNameResolver, null, null, null,
-                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
@@ -899,7 +929,7 @@ public class DynamoDBMapperConfig {
      */
     public DynamoDBMapperConfig(ObjectTableNameResolver objectTableNameResolver) {
         this(null, null, null, null, objectTableNameResolver, null, null,
-                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
@@ -907,7 +937,7 @@ public class DynamoDBMapperConfig {
      */
     public DynamoDBMapperConfig(TableNameResolver tableNameResolver, ObjectTableNameResolver objectTableNameResolver) {
         this(null, null, null, tableNameResolver, objectTableNameResolver, null, null,
-                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
@@ -918,14 +948,14 @@ public class DynamoDBMapperConfig {
             PaginationLoadingStrategy paginationLoadingStrategy) {
 
         this(null, null, null, null, null, paginationLoadingStrategy, null,
-                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+                ConversionSchemas.DEFAULT, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
      * Constructs a new configuration object with the conversion schema given.
      */
     public DynamoDBMapperConfig(ConversionSchema conversionSchema) {
-        this(null, null, null, null, null, null, null, conversionSchema, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy());
+        this(null, null, null, null, null, null, null, conversionSchema, new DefaultBatchWriteRetryStrategy(), new DefaultBatchLoadRetryStrategy(), null);
     }
 
     /**
@@ -959,6 +989,7 @@ public class DynamoDBMapperConfig {
             this.conversionSchema = defaults.getConversionSchema();
             this.batchWriteRetryStrategy = defaults.getBatchWriteRetryStrategy();
             this.batchLoadRetryStrategy = defaults.getBatchLoadRetryStrategy();
+            this.typeNameEntityMap = defaults.getTypeNameEntityMap();
 
         } else {
 
@@ -1004,6 +1035,9 @@ public class DynamoDBMapperConfig {
                             ? defaults.getBatchLoadRetryStrategy()
                             : overrides.getBatchLoadRetryStrategy();
 
+            this.typeNameEntityMap = (overrides.getTypeNameEntityMap() == null)
+                    ? defaults.getTypeNameEntityMap()
+                    : overrides.getTypeNameEntityMap();
         }
     }
 
@@ -1103,6 +1137,13 @@ public class DynamoDBMapperConfig {
     }
 
     /**
+     * @return the type name entity map for this config object
+     */
+    public Map<String, Class> getTypeNameEntityMap() {
+        return typeNameEntityMap;
+    }
+
+    /**
      * Default configuration uses UPDATE behavior for saves and eventually
      * consistent reads, with no table name override and lazy-loading strategy.
      */
@@ -1116,5 +1157,6 @@ public class DynamoDBMapperConfig {
             null,  // RequestMetricCollector
             ConversionSchemas.DEFAULT,
             new DefaultBatchWriteRetryStrategy(),
-            new DefaultBatchLoadRetryStrategy());
+            new DefaultBatchLoadRetryStrategy(),
+            null);
 }
