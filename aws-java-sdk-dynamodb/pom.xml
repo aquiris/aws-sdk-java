@@ -9,7 +9,6 @@
   </parent>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-dynamodb</artifactId>
-  <version>1.11.31-SNAPSHOT</version>
   <name>AWS Java SDK for Amazon DynamoDB</name>
   <description>The AWS Java SDK for Amazon DynamoDB module holds the client classes that are used for communicating with Amazon DynamoDB Service</description>
   <url>https://aws.amazon.com/sdkforjava</url>
