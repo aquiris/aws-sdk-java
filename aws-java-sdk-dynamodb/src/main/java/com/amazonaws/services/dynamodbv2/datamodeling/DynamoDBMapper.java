@@ -14,8 +14,8 @@
  */
 package com.amazonaws.services.dynamodbv2.datamodeling;
 
-import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.convertToNullStringValues;
-import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.convertToNullValues;
+import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.inboundStringValuesConverter;
+import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.outboundStringValuesConverter;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.HASH;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.RANGE;
 
@@ -55,7 +55,6 @@ import com.amazonaws.services.dynamodbv2.model.BatchGetItemRequest;
 import com.amazonaws.services.dynamodbv2.model.BatchGetItemResult;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemRequest;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemResult;
-import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.dynamodbv2.model.ConditionalOperator;
@@ -66,10 +65,8 @@ import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
 import com.amazonaws.services.dynamodbv2.model.GetItemResult;
-import com.amazonaws.services.dynamodbv2.model.GlobalSecondaryIndex;
 import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
 import com.amazonaws.services.dynamodbv2.model.KeysAndAttributes;
-import com.amazonaws.services.dynamodbv2.model.LocalSecondaryIndex;
 import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
 import com.amazonaws.services.dynamodbv2.model.PutItemResult;
 import com.amazonaws.services.dynamodbv2.model.PutRequest;
@@ -529,7 +526,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         final DynamoDBMapperTableModel<T> model = getTableModel(clazz, parameters.getMapperConfig());
         T entity = model.unconvert(values);
 
-        convertToNullValues(entity);
+        outboundStringValuesConverter(entity);
         if (hasNoTypeName) {
             try {
                 Method method = entity.getClass().getMethod("setPartialModel", Boolean.class);
@@ -594,7 +591,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
     public <T extends Object> void save(T object,
                                         DynamoDBSaveExpression saveExpression,
                                         final DynamoDBMapperConfig config) {
-        convertToNullStringValues(object);
+        inboundStringValuesConverter(object);
 
         final DynamoDBMapperConfig finalConfig = mergeConfig(config);
 
@@ -727,7 +724,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         saveObjectHandler.execute();
 
-        convertToNullValues(object);
+        outboundStringValuesConverter(object);
     }
 
     /**
