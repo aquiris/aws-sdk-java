@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.RestoreAddressToClassicRequestMarshaller;
@@ -24,8 +24,8 @@ import com.amazonaws.services.ec2.model.transform.RestoreAddressToClassicRequest
  * Contains the parameters for RestoreAddressToClassic.
  * </p>
  */
-public class RestoreAddressToClassicRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable,
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RestoreAddressToClassicRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<RestoreAddressToClassicRequest> {
 
     /**
@@ -67,8 +67,7 @@ public class RestoreAddressToClassicRequest extends AmazonWebServiceRequest
      * 
      * @param publicIp
      *        The Elastic IP address.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RestoreAddressToClassicRequest withPublicIp(String publicIp) {
@@ -77,21 +76,18 @@ public class RestoreAddressToClassicRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * This method is intended for internal use only. Returns the marshaled
-     * request configured with additional parameters to enable operation
-     * dry-run.
+     * This method is intended for internal use only. Returns the marshaled request configured with additional
+     * parameters to enable operation dry-run.
      */
     @Override
     public Request<RestoreAddressToClassicRequest> getDryRunRequest() {
-        Request<RestoreAddressToClassicRequest> request = new RestoreAddressToClassicRequestMarshaller()
-                .marshall(this);
+        Request<RestoreAddressToClassicRequest> request = new RestoreAddressToClassicRequestMarshaller().marshall(this);
         request.addParameter("DryRun", Boolean.toString(true));
         return request;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -102,7 +98,7 @@ public class RestoreAddressToClassicRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPublicIp() != null)
-            sb.append("PublicIp: " + getPublicIp());
+            sb.append("PublicIp: ").append(getPublicIp());
         sb.append("}");
         return sb.toString();
     }
@@ -119,8 +115,7 @@ public class RestoreAddressToClassicRequest extends AmazonWebServiceRequest
         RestoreAddressToClassicRequest other = (RestoreAddressToClassicRequest) obj;
         if (other.getPublicIp() == null ^ this.getPublicIp() == null)
             return false;
-        if (other.getPublicIp() != null
-                && other.getPublicIp().equals(this.getPublicIp()) == false)
+        if (other.getPublicIp() != null && other.getPublicIp().equals(this.getPublicIp()) == false)
             return false;
         return true;
     }
@@ -130,8 +125,7 @@ public class RestoreAddressToClassicRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode());
+        hashCode = prime * hashCode + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode());
         return hashCode;
     }
 

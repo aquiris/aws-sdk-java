@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudhsm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Contains the inputs for the <a>CreateLunaClient</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/CreateLunaClient" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateLunaClientRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,8 +36,7 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
     private String label;
     /**
      * <p>
-     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on
-     * the HSMs used by this client.
+     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
      * </p>
      */
     private String certificate;
@@ -71,8 +73,7 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
      * 
      * @param label
      *        The label for the client.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateLunaClientRequest withLabel(String label) {
@@ -82,13 +83,11 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on
-     * the HSMs used by this client.
+     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
      * </p>
      * 
      * @param certificate
-     *        The contents of a Base64-Encoded X.509 v3 certificate to be
-     *        installed on the HSMs used by this client.
+     *        The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
      */
 
     public void setCertificate(String certificate) {
@@ -97,12 +96,10 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on
-     * the HSMs used by this client.
+     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
      * </p>
      * 
-     * @return The contents of a Base64-Encoded X.509 v3 certificate to be
-     *         installed on the HSMs used by this client.
+     * @return The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
      */
 
     public String getCertificate() {
@@ -111,15 +108,12 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on
-     * the HSMs used by this client.
+     * The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
      * </p>
      * 
      * @param certificate
-     *        The contents of a Base64-Encoded X.509 v3 certificate to be
-     *        installed on the HSMs used by this client.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateLunaClientRequest withCertificate(String certificate) {
@@ -128,8 +122,7 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -140,9 +133,9 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLabel() != null)
-            sb.append("Label: " + getLabel() + ",");
+            sb.append("Label: ").append(getLabel()).append(",");
         if (getCertificate() != null)
-            sb.append("Certificate: " + getCertificate());
+            sb.append("Certificate: ").append(getCertificate());
         sb.append("}");
         return sb.toString();
     }
@@ -159,13 +152,11 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
         CreateLunaClientRequest other = (CreateLunaClientRequest) obj;
         if (other.getLabel() == null ^ this.getLabel() == null)
             return false;
-        if (other.getLabel() != null
-                && other.getLabel().equals(this.getLabel()) == false)
+        if (other.getLabel() != null && other.getLabel().equals(this.getLabel()) == false)
             return false;
         if (other.getCertificate() == null ^ this.getCertificate() == null)
             return false;
-        if (other.getCertificate() != null
-                && other.getCertificate().equals(this.getCertificate()) == false)
+        if (other.getCertificate() != null && other.getCertificate().equals(this.getCertificate()) == false)
             return false;
         return true;
     }
@@ -175,11 +166,8 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getLabel() == null) ? 0 : getLabel().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCertificate() == null) ? 0 : getCertificate().hashCode());
+        hashCode = prime * hashCode + ((getLabel() == null) ? 0 : getLabel().hashCode());
+        hashCode = prime * hashCode + ((getCertificate() == null) ? 0 : getCertificate().hashCode());
         return hashCode;
     }
 
@@ -187,4 +175,5 @@ public class CreateLunaClientRequest extends AmazonWebServiceRequest implements
     public CreateLunaClientRequest clone() {
         return (CreateLunaClientRequest) super.clone();
     }
+
 }

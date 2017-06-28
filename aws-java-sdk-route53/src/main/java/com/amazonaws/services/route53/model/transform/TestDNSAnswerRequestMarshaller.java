@@ -1,57 +1,42 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model.transform;
 
-import static com.amazonaws.util.StringUtils.UTF8;
+import javax.annotation.Generated;
 
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
 import com.amazonaws.DefaultRequest;
 import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.route53.model.*;
 import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringInputStream;
+
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.XMLWriter;
-import com.amazonaws.util.SdkHttpUtils;
 
 /**
  * TestDNSAnswerRequest Marshaller
  */
 
-public class TestDNSAnswerRequestMarshaller implements
-        Marshaller<Request<TestDNSAnswerRequest>, TestDNSAnswerRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TestDNSAnswerRequestMarshaller implements Marshaller<Request<TestDNSAnswerRequest>, TestDNSAnswerRequest> {
 
-    public Request<TestDNSAnswerRequest> marshall(
-            TestDNSAnswerRequest testDNSAnswerRequest) {
+    public Request<TestDNSAnswerRequest> marshall(TestDNSAnswerRequest testDNSAnswerRequest) {
 
         if (testDNSAnswerRequest == null) {
-            throw new AmazonClientException(
-                    "Invalid argument passed to marshall(...)");
+            throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<TestDNSAnswerRequest> request = new DefaultRequest<TestDNSAnswerRequest>(
-                testDNSAnswerRequest, "AmazonRoute53");
+        Request<TestDNSAnswerRequest> request = new DefaultRequest<TestDNSAnswerRequest>(testDNSAnswerRequest, "AmazonRoute53");
 
         request.setHttpMethod(HttpMethodName.GET);
 
@@ -60,34 +45,27 @@ public class TestDNSAnswerRequestMarshaller implements
         request.setResourcePath(uriResourcePath);
 
         if (testDNSAnswerRequest.getHostedZoneId() != null) {
-            request.addParameter("hostedzoneid", StringUtils
-                    .fromString(testDNSAnswerRequest.getHostedZoneId()));
+            request.addParameter("hostedzoneid", StringUtils.fromString(testDNSAnswerRequest.getHostedZoneId()));
         }
 
         if (testDNSAnswerRequest.getRecordName() != null) {
-            request.addParameter("recordname", StringUtils
-                    .fromString(testDNSAnswerRequest.getRecordName()));
+            request.addParameter("recordname", StringUtils.fromString(testDNSAnswerRequest.getRecordName()));
         }
 
         if (testDNSAnswerRequest.getRecordType() != null) {
-            request.addParameter("recordtype", StringUtils
-                    .fromString(testDNSAnswerRequest.getRecordType()));
+            request.addParameter("recordtype", StringUtils.fromString(testDNSAnswerRequest.getRecordType()));
         }
 
         if (testDNSAnswerRequest.getResolverIP() != null) {
-            request.addParameter("resolverip", StringUtils
-                    .fromString(testDNSAnswerRequest.getResolverIP()));
+            request.addParameter("resolverip", StringUtils.fromString(testDNSAnswerRequest.getResolverIP()));
         }
 
         if (testDNSAnswerRequest.getEDNS0ClientSubnetIP() != null) {
-            request.addParameter("edns0clientsubnetip", StringUtils
-                    .fromString(testDNSAnswerRequest.getEDNS0ClientSubnetIP()));
+            request.addParameter("edns0clientsubnetip", StringUtils.fromString(testDNSAnswerRequest.getEDNS0ClientSubnetIP()));
         }
 
         if (testDNSAnswerRequest.getEDNS0ClientSubnetMask() != null) {
-            request.addParameter("edns0clientsubnetmask",
-                    StringUtils.fromString(testDNSAnswerRequest
-                            .getEDNS0ClientSubnetMask()));
+            request.addParameter("edns0clientsubnetmask", StringUtils.fromString(testDNSAnswerRequest.getEDNS0ClientSubnetMask()));
         }
 
         return request;

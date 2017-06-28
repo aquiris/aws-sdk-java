@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,11 +38,11 @@ public class EC2ContainerCredentialsProviderWrapper implements AWSCredentialsPro
     private AWSCredentialsProvider initializeProvider() {
         try {
             return System.getenv(ContainerCredentialsProvider.ECS_CONTAINER_CREDENTIALS_PATH) != null
-                    ? new ContainerCredentialsProvider() : new InstanceProfileCredentialsProvider();
+                    ? new ContainerCredentialsProvider() : InstanceProfileCredentialsProvider.getInstance();
         } catch (SecurityException securityException) {
             LOG.debug("Security manager did not allow access to the ECS credentials environment variable " + ContainerCredentialsProvider.ECS_CONTAINER_CREDENTIALS_PATH
                         + ". Please provide access to this environment variable if you want to load credentials from ECS Container.");
-            return new InstanceProfileCredentialsProvider();
+            return InstanceProfileCredentialsProvider.getInstance();
         }
     }
 

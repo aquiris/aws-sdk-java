@@ -15,14 +15,18 @@
 
 package com.amazonaws.codegen.model.config.customization;
 
+import com.amazonaws.codegen.internal.Constants;
 import com.amazonaws.codegen.model.config.ConstructorFormsWrapper;
 import com.amazonaws.codegen.model.config.templates.CodeGenTemplatesConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class CustomizationConfig {
+
+    public static final CustomizationConfig DEFAULT = new CustomizationConfig();
 
     /**
      * The fully-qualified class name of the custom metric types to be collected by the client.
@@ -200,6 +204,25 @@ public class CustomizationConfig {
      * Skips generating smoketests if set to true.
      */
     private boolean skipSmokeTests;
+
+    /**
+     * Fully qualified class name of presigner extension class if it exists.
+     */
+    private String presignersFqcn;
+
+    /**
+     * A set of deprecated code that generation can be suppressed for
+     */
+    private Set<DeprecatedSuppression> deprecatedSuppressions;
+
+    /**
+     * Relative path to customize transform directory. Will be generated relative
+     * to the models directory. Default is {@value Constants#PACKAGE_NAME_TRANSFORM_SUFFIX}.
+     */
+    private String transformDirectory = Constants.PACKAGE_NAME_TRANSFORM_SUFFIX;
+
+    private CustomizationConfig(){
+    }
 
     public String getRequestMetrics() {
         return requestMetrics;
@@ -384,13 +407,12 @@ public class CustomizationConfig {
                 .add(stringOverloadForByteBufferMember.getConvenienceTypeOverload());
     }
 
-    /**
-     * Only meant to be used by templates/macros. When customizing a service use one of the
-     * pre-canned options like {@link #setStringOverloadForInputStreamMember(StringOverloadForInputStreamMember)}
-     * or {@link #setStringOverloadForByteBufferMember(StringOverloadForByteBufferMember)}
-     */
     public List<ConvenienceTypeOverload> getConvenienceTypeOverloads() {
         return this.convenienceTypeOverloads;
+    }
+
+    public void setConvenienceTypeOverloads(List<ConvenienceTypeOverload> convenienceTypeOverloads) {
+        this.convenienceTypeOverloads.addAll(convenienceTypeOverloads);
     }
 
     public MetadataConfig getCustomServiceMetadata() {
@@ -464,5 +486,42 @@ public class CustomizationConfig {
 
     public void setSendExplicitlyEmptyListsForQuery(boolean sendExplicitlyEmptyListsForQuery) {
         this.sendExplicitlyEmptyListsForQuery = sendExplicitlyEmptyListsForQuery;
+    }
+
+    public String getPresignersFqcn() {
+        return presignersFqcn;
+    }
+
+    public void setPresignersFqcn(String presignersFqcn) {
+        this.presignersFqcn = presignersFqcn;
+    }
+
+    public String getTransformDirectory() {
+        return transformDirectory;
+    }
+
+    public CustomizationConfig setTransformDirectory(String transformDirectory) {
+        this.transformDirectory = transformDirectory;
+        return this;
+    }
+
+    public Set<DeprecatedSuppression> getDeprecatedSuppressions() {
+        return deprecatedSuppressions;
+    }
+
+    public void setDeprecatedSuppressions(Set<DeprecatedSuppression> deprecatedSuppressions) {
+        this.deprecatedSuppressions = deprecatedSuppressions;
+    }
+
+    public boolean emitClientMutationMethods() {
+        return !shouldSuppress(DeprecatedSuppression.ClientMutationMethods);
+    }
+
+    public boolean emitClientConstructors() {
+        return !shouldSuppress(DeprecatedSuppression.ClientConstructors);
+    }
+
+    private boolean shouldSuppress(DeprecatedSuppression suppression) {
+        return deprecatedSuppressions != null && deprecatedSuppressions.contains(suppression);
     }
 }

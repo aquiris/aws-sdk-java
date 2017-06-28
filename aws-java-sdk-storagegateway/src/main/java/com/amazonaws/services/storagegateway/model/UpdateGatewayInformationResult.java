@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A JSON object containing the ARN of the gateway that was updated.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewayInformation"
+ *      target="_top">AWS API Documentation</a>
  */
-public class UpdateGatewayInformationResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateGatewayInformationResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     private String gatewayARN;
 
@@ -45,8 +48,7 @@ public class UpdateGatewayInformationResult implements Serializable, Cloneable {
 
     /**
      * @param gatewayARN
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateGatewayInformationResult withGatewayARN(String gatewayARN) {
@@ -72,8 +74,7 @@ public class UpdateGatewayInformationResult implements Serializable, Cloneable {
 
     /**
      * @param gatewayName
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateGatewayInformationResult withGatewayName(String gatewayName) {
@@ -82,8 +83,7 @@ public class UpdateGatewayInformationResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -94,9 +94,9 @@ public class UpdateGatewayInformationResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN() + ",");
+            sb.append("GatewayARN: ").append(getGatewayARN()).append(",");
         if (getGatewayName() != null)
-            sb.append("GatewayName: " + getGatewayName());
+            sb.append("GatewayName: ").append(getGatewayName());
         sb.append("}");
         return sb.toString();
     }
@@ -113,13 +113,11 @@ public class UpdateGatewayInformationResult implements Serializable, Cloneable {
         UpdateGatewayInformationResult other = (UpdateGatewayInformationResult) obj;
         if (other.getGatewayARN() == null ^ this.getGatewayARN() == null)
             return false;
-        if (other.getGatewayARN() != null
-                && other.getGatewayARN().equals(this.getGatewayARN()) == false)
+        if (other.getGatewayARN() != null && other.getGatewayARN().equals(this.getGatewayARN()) == false)
             return false;
         if (other.getGatewayName() == null ^ this.getGatewayName() == null)
             return false;
-        if (other.getGatewayName() != null
-                && other.getGatewayName().equals(this.getGatewayName()) == false)
+        if (other.getGatewayName() != null && other.getGatewayName().equals(this.getGatewayName()) == false)
             return false;
         return true;
     }
@@ -129,11 +127,8 @@ public class UpdateGatewayInformationResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getGatewayARN() == null) ? 0 : getGatewayARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getGatewayName() == null) ? 0 : getGatewayName().hashCode());
+        hashCode = prime * hashCode + ((getGatewayARN() == null) ? 0 : getGatewayARN().hashCode());
+        hashCode = prime * hashCode + ((getGatewayName() == null) ? 0 : getGatewayName().hashCode());
         return hashCode;
     }
 
@@ -142,9 +137,8 @@ public class UpdateGatewayInformationResult implements Serializable, Cloneable {
         try {
             return (UpdateGatewayInformationResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

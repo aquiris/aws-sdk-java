@@ -1,44 +1,41 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
-public class ListTagsForVaultResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListTagsForVaultResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tags attached to the vault. Each tag is composed of a key and a
-     * value.
+     * The tags attached to the vault. Each tag is composed of a key and a value.
      * </p>
      */
     private java.util.Map<String, String> tags;
 
     /**
      * <p>
-     * The tags attached to the vault. Each tag is composed of a key and a
-     * value.
+     * The tags attached to the vault. Each tag is composed of a key and a value.
      * </p>
      * 
-     * @return The tags attached to the vault. Each tag is composed of a key and
-     *         a value.
+     * @return The tags attached to the vault. Each tag is composed of a key and a value.
      */
 
     public java.util.Map<String, String> getTags() {
@@ -47,13 +44,11 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tags attached to the vault. Each tag is composed of a key and a
-     * value.
+     * The tags attached to the vault. Each tag is composed of a key and a value.
      * </p>
      * 
      * @param tags
-     *        The tags attached to the vault. Each tag is composed of a key and
-     *        a value.
+     *        The tags attached to the vault. Each tag is composed of a key and a value.
      */
 
     public void setTags(java.util.Map<String, String> tags) {
@@ -62,15 +57,12 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tags attached to the vault. Each tag is composed of a key and a
-     * value.
+     * The tags attached to the vault. Each tag is composed of a key and a value.
      * </p>
      * 
      * @param tags
-     *        The tags attached to the vault. Each tag is composed of a key and
-     *        a value.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The tags attached to the vault. Each tag is composed of a key and a value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListTagsForVaultResult withTags(java.util.Map<String, String> tags) {
@@ -83,15 +75,15 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
             this.tags = new java.util.HashMap<String, String>();
         }
         if (this.tags.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.tags.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into Tags. &lt;p> Returns a reference to
-     * this object so that method calls can be chained together.
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListTagsForVaultResult clearTagsEntries() {
@@ -100,8 +92,7 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -112,7 +103,7 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -129,8 +120,7 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
         ListTagsForVaultResult other = (ListTagsForVaultResult) obj;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -140,8 +130,7 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
@@ -150,9 +139,8 @@ public class ListTagsForVaultResult implements Serializable, Cloneable {
         try {
             return (ListTagsForVaultResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

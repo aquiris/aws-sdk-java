@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,12 @@ import com.amazonaws.ClientConfiguration;
 import com.amazonaws.annotation.SdkProtectedApi;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.handlers.RequestHandler2;
+import com.amazonaws.internal.auth.SignerProvider;
 import com.amazonaws.metrics.RequestMetricCollector;
+import com.amazonaws.retry.RetryPolicyAdapter;
+import com.amazonaws.retry.v2.RetryPolicy;
 
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -36,4 +40,21 @@ public abstract class AwsSyncClientParams {
     public abstract RequestMetricCollector getRequestMetricCollector();
 
     public abstract List<RequestHandler2> getRequestHandlers();
+
+    public SignerProvider getSignerProvider() {
+        // Not currently used by AWS clients. The builder uses setRegion to configure endpoint
+        // and signer and does not support custom endpoints or signers.
+        return null;
+    }
+
+    public URI getEndpoint() {
+        // Not currently used by AWS clients. The builder uses setRegion to configure endpoint
+        // and signer and does not support custom endpoints or signers.
+        return null;
+    }
+
+    public RetryPolicy getRetryPolicy() {
+        final ClientConfiguration config = getClientConfiguration();
+        return new RetryPolicyAdapter(config.getRetryPolicy(), config);
+    }
 }

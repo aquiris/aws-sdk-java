@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTask" target="_top">AWS API
+ *      Documentation</a>
  */
-public class StartReplicationTaskRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StartReplicationTaskRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -48,8 +51,7 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param replicationTaskArn
-     *        The Amazon Resource Number (ARN) of the replication task to be
-     *        started.
+     *        The Amazon Resource Number (ARN) of the replication task to be started.
      */
 
     public void setReplicationTaskArn(String replicationTaskArn) {
@@ -61,8 +63,7 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
      * The Amazon Resource Number (ARN) of the replication task to be started.
      * </p>
      * 
-     * @return The Amazon Resource Number (ARN) of the replication task to be
-     *         started.
+     * @return The Amazon Resource Number (ARN) of the replication task to be started.
      */
 
     public String getReplicationTaskArn() {
@@ -75,14 +76,11 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param replicationTaskArn
-     *        The Amazon Resource Number (ARN) of the replication task to be
-     *        started.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resource Number (ARN) of the replication task to be started.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public StartReplicationTaskRequest withReplicationTaskArn(
-            String replicationTaskArn) {
+    public StartReplicationTaskRequest withReplicationTaskArn(String replicationTaskArn) {
         setReplicationTaskArn(replicationTaskArn);
         return this;
     }
@@ -121,13 +119,11 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
      * 
      * @param startReplicationTaskType
      *        The type of replication task.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see StartReplicationTaskTypeValue
      */
 
-    public StartReplicationTaskRequest withStartReplicationTaskType(
-            String startReplicationTaskType) {
+    public StartReplicationTaskRequest withStartReplicationTaskType(String startReplicationTaskType) {
         setStartReplicationTaskType(startReplicationTaskType);
         return this;
     }
@@ -142,8 +138,7 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
      * @see StartReplicationTaskTypeValue
      */
 
-    public void setStartReplicationTaskType(
-            StartReplicationTaskTypeValue startReplicationTaskType) {
+    public void setStartReplicationTaskType(StartReplicationTaskTypeValue startReplicationTaskType) {
         this.startReplicationTaskType = startReplicationTaskType.toString();
     }
 
@@ -154,13 +149,11 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
      * 
      * @param startReplicationTaskType
      *        The type of replication task.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see StartReplicationTaskTypeValue
      */
 
-    public StartReplicationTaskRequest withStartReplicationTaskType(
-            StartReplicationTaskTypeValue startReplicationTaskType) {
+    public StartReplicationTaskRequest withStartReplicationTaskType(StartReplicationTaskTypeValue startReplicationTaskType) {
         setStartReplicationTaskType(startReplicationTaskType);
         return this;
     }
@@ -197,19 +190,16 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
      * 
      * @param cdcStartTime
      *        The start time for the Change Data Capture (CDC) operation.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public StartReplicationTaskRequest withCdcStartTime(
-            java.util.Date cdcStartTime) {
+    public StartReplicationTaskRequest withCdcStartTime(java.util.Date cdcStartTime) {
         setCdcStartTime(cdcStartTime);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -220,12 +210,11 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReplicationTaskArn() != null)
-            sb.append("ReplicationTaskArn: " + getReplicationTaskArn() + ",");
+            sb.append("ReplicationTaskArn: ").append(getReplicationTaskArn()).append(",");
         if (getStartReplicationTaskType() != null)
-            sb.append("StartReplicationTaskType: "
-                    + getStartReplicationTaskType() + ",");
+            sb.append("StartReplicationTaskType: ").append(getStartReplicationTaskType()).append(",");
         if (getCdcStartTime() != null)
-            sb.append("CdcStartTime: " + getCdcStartTime());
+            sb.append("CdcStartTime: ").append(getCdcStartTime());
         sb.append("}");
         return sb.toString();
     }
@@ -240,24 +229,17 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
         if (obj instanceof StartReplicationTaskRequest == false)
             return false;
         StartReplicationTaskRequest other = (StartReplicationTaskRequest) obj;
-        if (other.getReplicationTaskArn() == null
-                ^ this.getReplicationTaskArn() == null)
+        if (other.getReplicationTaskArn() == null ^ this.getReplicationTaskArn() == null)
             return false;
-        if (other.getReplicationTaskArn() != null
-                && other.getReplicationTaskArn().equals(
-                        this.getReplicationTaskArn()) == false)
+        if (other.getReplicationTaskArn() != null && other.getReplicationTaskArn().equals(this.getReplicationTaskArn()) == false)
             return false;
-        if (other.getStartReplicationTaskType() == null
-                ^ this.getStartReplicationTaskType() == null)
+        if (other.getStartReplicationTaskType() == null ^ this.getStartReplicationTaskType() == null)
             return false;
-        if (other.getStartReplicationTaskType() != null
-                && other.getStartReplicationTaskType().equals(
-                        this.getStartReplicationTaskType()) == false)
+        if (other.getStartReplicationTaskType() != null && other.getStartReplicationTaskType().equals(this.getStartReplicationTaskType()) == false)
             return false;
         if (other.getCdcStartTime() == null ^ this.getCdcStartTime() == null)
             return false;
-        if (other.getCdcStartTime() != null
-                && other.getCdcStartTime().equals(this.getCdcStartTime()) == false)
+        if (other.getCdcStartTime() != null && other.getCdcStartTime().equals(this.getCdcStartTime()) == false)
             return false;
         return true;
     }
@@ -267,18 +249,9 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getReplicationTaskArn() == null) ? 0
-                        : getReplicationTaskArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStartReplicationTaskType() == null) ? 0
-                        : getStartReplicationTaskType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCdcStartTime() == null) ? 0 : getCdcStartTime()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getReplicationTaskArn() == null) ? 0 : getReplicationTaskArn().hashCode());
+        hashCode = prime * hashCode + ((getStartReplicationTaskType() == null) ? 0 : getStartReplicationTaskType().hashCode());
+        hashCode = prime * hashCode + ((getCdcStartTime() == null) ? 0 : getCdcStartTime().hashCode());
         return hashCode;
     }
 
@@ -286,4 +259,5 @@ public class StartReplicationTaskRequest extends AmazonWebServiceRequest
     public StartReplicationTaskRequest clone() {
         return (StartReplicationTaskRequest) super.clone();
     }
+
 }

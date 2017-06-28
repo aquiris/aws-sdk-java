@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2016-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@ package com.amazonaws.services.dynamodbv2.datamodeling;
 
 import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverterFactory.OverrideFactory.Key;
 import com.amazonaws.util.DateUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,8 +34,12 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.regex.Pattern;
+
+import org.joda.time.DateTime;
 
 /**
  * Type conversions.
@@ -43,14 +47,7 @@ import java.util.TimeZone;
  * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter
  */
 @SdkInternalApi
-final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
-
-    /**
-     * Gets the standard type-converter matching the conversion types.
-     */
-    static <S,T> DynamoDBTypeConverter<S,T> of(final Class<S> sourceType, final Class<T> targetType) {
-        return factory().getConverter(sourceType, targetType);
-    }
+final class StandardTypeConverters extends DynamoDBTypeConverterFactory {
 
     /**
      * Standard scalar type-converter factory.
@@ -64,8 +61,20 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
      * {@inheritDoc}
      */
     @Override
-    public <S,T> DynamoDBTypeConverter<S,T> getConverter(final Class<S> sourceType, final Class<T> targetType) {
-        return Scalar.join(sourceType, targetType);
+    public <S,T> DynamoDBTypeConverter<S,T> getConverter(Class<S> sourceType, Class<T> targetType) {
+        final Scalar source = Scalar.of(sourceType), target = Scalar.of(targetType);
+        final Converter<S,T> toSource = source.getConverter(sourceType, target.<T>type());
+        final Converter<T,S> toTarget = target.getConverter(targetType, source.<S>type());
+        return new DynamoDBTypeConverter<S,T>() {
+            @Override
+            public final S convert(final T o) {
+                return toSource.convert(o);
+            }
+            @Override
+            public final T unconvert(final S o) {
+                return toTarget.convert(o);
+            }
+        };
     }
 
     /**
@@ -75,168 +84,207 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
         /**
          * {@link BigDecimal}
          */
-        BIG_DECIMAL(ScalarAttributeType.N, new ConverterMap<BigDecimal>(BigDecimal.class)
-            .withStandardTarget(String.class)
+        BIG_DECIMAL(ScalarAttributeType.N, new ConverterMap(BigDecimal.class, null)
+            .with(Number.class, ToBigDecimal.FromString.join(ToString.FromNumber))
+            .with(String.class, ToBigDecimal.FromString)
         ),
 
         /**
          * {@link BigInteger}
          */
-        BIG_INTEGER(ScalarAttributeType.N, new ConverterMap<BigInteger>(BigInteger.class)
-            .withStandardTarget(String.class)
+        BIG_INTEGER(ScalarAttributeType.N, new ConverterMap(BigInteger.class, null)
+            .with(Number.class, ToBigInteger.FromString.join(ToString.FromNumber))
+            .with(String.class, ToBigInteger.FromString)
         ),
 
         /**
          * {@link Boolean}
          */
-        BOOLEAN(ScalarAttributeType.N, new ConverterMap<Boolean>(Boolean.class, Boolean.TYPE)
-            .withStandardTarget(String.class)
+        BOOLEAN(ScalarAttributeType.N, new ConverterMap(Boolean.class, Boolean.TYPE)
+            .with(Number.class, ToBoolean.FromString.join(ToString.FromNumber))
+            .with(String.class, ToBoolean.FromString)
         ),
 
         /**
          * {@link Byte}
          */
-        BYTE(ScalarAttributeType.N, new ConverterMap<Byte>(Byte.class, Byte.TYPE)
-            .withStandardTarget(Number.class)
-            .withStandardTarget(String.class)
+        BYTE(ScalarAttributeType.N, new ConverterMap(Byte.class, Byte.TYPE)
+            .with(Number.class, ToByte.FromNumber)
+            .with(String.class, ToByte.FromString)
         ),
 
         /**
          * {@link Byte} array
          */
-        BYTE_ARRAY(ScalarAttributeType.B, new ConverterMap<byte[]>(byte[].class)
-            .withStandardTarget(ByteBuffer.class)
-            .withStandardTarget(String.class)
+        BYTE_ARRAY(ScalarAttributeType.B, new ConverterMap(byte[].class, null)
+            .with(ByteBuffer.class, ToByteArray.FromByteBuffer)
+            .with(String.class, ToByteArray.FromString)
         ),
 
         /**
          * {@link ByteBuffer}
          */
-        BYTE_BUFFER(ScalarAttributeType.B, new ConverterMap<ByteBuffer>(ByteBuffer.class)
-            .withStandardTarget(byte[].class)
-            .withStandardTarget(String.class, byte[].class)
-            .withStandardTarget(java.util.UUID.class)
+        BYTE_BUFFER(ScalarAttributeType.B, new ConverterMap(ByteBuffer.class, null)
+            .with(byte[].class, ToByteBuffer.FromByteArray)
+            .with(String.class, ToByteBuffer.FromByteArray.join(ToByteArray.FromString))
+            .with(java.util.UUID.class, ToByteBuffer.FromUuid)
         ),
 
         /**
          * {@link Calendar}
          */
-        CALENDAR(ScalarAttributeType.S, new ConverterMap<Calendar>(Calendar.class)
-            .withStandardTarget(Date.class)
-            .withStandardTarget(String.class, Date.class)
+        CALENDAR(ScalarAttributeType.S, new ConverterMap(Calendar.class, null)
+            .with(Date.class, ToCalendar.FromDate)
+            .with(DateTime.class, ToCalendar.FromDate.join(ToDate.FromDateTime))
+            .with(Long.class, ToCalendar.FromDate.join(ToDate.FromLong))
+            .with(String.class, ToCalendar.FromDate.join(ToDate.FromString))
         ),
 
         /**
          * {@link Character}
          */
-        CHARACTER(ScalarAttributeType.S, new ConverterMap<Character>(Character.class, Character.TYPE)
-            .withStandardTarget(String.class)
+        CHARACTER(ScalarAttributeType.S, new ConverterMap(Character.class, Character.TYPE)
+            .with(String.class, ToCharacter.FromString)
         ),
 
         /**
          * {@link Currency}
          */
-        CURRENCY(ScalarAttributeType.S, new ConverterMap<Currency>(Currency.class)
-            .withStandardTarget(String.class)
+        CURRENCY(ScalarAttributeType.S, new ConverterMap(Currency.class, null)
+            .with(String.class, ToCurrency.FromString)
         ),
 
         /**
          * {@link Date}
          */
-        DATE(ScalarAttributeType.S, new ConverterMap<Date>(Date.class)
-            .withStandardTarget(Calendar.class)
-            .withStandardTarget(Long.class)
-            .withStandardTarget(String.class)
+        DATE(ScalarAttributeType.S, new ConverterMap(Date.class, null)
+            .with(Calendar.class, ToDate.FromCalendar)
+            .with(DateTime.class, ToDate.FromDateTime)
+            .with(Long.class, ToDate.FromLong)
+            .with(String.class, ToDate.FromString)
+        ),
+
+        /**
+         * {@link DateTime}
+         */
+        DATE_TIME(/*ScalarAttributeType.S*/null, new ConverterMap(DateTime.class, null)
+            .with(Calendar.class, ToDateTime.FromDate.join(ToDate.FromCalendar))
+            .with(Date.class, ToDateTime.FromDate)
+            .with(Long.class, ToDateTime.FromDate.join(ToDate.FromLong))
+            .with(String.class, ToDateTime.FromDate.join(ToDate.FromString))
         ),
 
         /**
          * {@link Double}
          */
-        DOUBLE(ScalarAttributeType.N, new ConverterMap<Double>(Double.class, Double.TYPE)
-            .withStandardTarget(Number.class)
-            .withStandardTarget(String.class)
+        DOUBLE(ScalarAttributeType.N, new ConverterMap(Double.class, Double.TYPE)
+            .with(Number.class, ToDouble.FromNumber)
+            .with(String.class, ToDouble.FromString)
         ),
 
         /**
          * {@link Float}
          */
-        FLOAT(ScalarAttributeType.N, new ConverterMap<Float>(Float.class, Float.TYPE)
-            .withStandardTarget(Number.class)
-            .withStandardTarget(String.class)
+        FLOAT(ScalarAttributeType.N, new ConverterMap(Float.class, Float.TYPE)
+            .with(Number.class, ToFloat.FromNumber)
+            .with(String.class, ToFloat.FromString)
         ),
 
         /**
          * {@link Integer}
          */
-        INTEGER(ScalarAttributeType.N, new ConverterMap<Integer>(Integer.class, Integer.TYPE)
-            .withStandardTarget(Number.class)
-            .withStandardTarget(String.class)
+        INTEGER(ScalarAttributeType.N, new ConverterMap(Integer.class, Integer.TYPE)
+            .with(Number.class, ToInteger.FromNumber)
+            .with(String.class, ToInteger.FromString)
         ),
 
         /**
          * {@link Locale}
          */
-        LOCALE(ScalarAttributeType.S, new ConverterMap<Locale>(Locale.class)
-            .withStandardTarget(String.class)
+        LOCALE(ScalarAttributeType.S, new ConverterMap(Locale.class, null)
+            .with(String.class, ToLocale.FromString)
         ),
 
         /**
          * {@link Long}
          */
-        LONG(ScalarAttributeType.N, new ConverterMap<Long>(Long.class, Long.TYPE)
-            .withStandardTarget(Date.class)
-            .withStandardTarget(Number.class)
-            .withStandardTarget(String.class)
+        LONG(ScalarAttributeType.N, new ConverterMap(Long.class, Long.TYPE)
+            .with(Date.class, ToLong.FromDate)
+            .with(DateTime.class, ToLong.FromDate.join(ToDate.FromDateTime))
+            .with(Calendar.class, ToLong.FromDate.join(ToDate.FromCalendar))
+            .with(Number.class, ToLong.FromNumber)
+            .with(String.class, ToLong.FromString)
         ),
 
         /**
          * {@link S3Link}
          */
-        S3_LINK(ScalarAttributeType.S, new ConverterMap<S3Link>(S3Link.class)
-        ),
+        S3_LINK(ScalarAttributeType.S, new ConverterMap(S3Link.class, null)),
 
         /**
          * {@link Short}
          */
-        SHORT(ScalarAttributeType.N, new ConverterMap<Short>(Short.class, Short.TYPE)
-            .withStandardTarget(Number.class)
-            .withStandardTarget(String.class)
+        SHORT(ScalarAttributeType.N, new ConverterMap(Short.class, Short.TYPE)
+            .with(Number.class, ToShort.FromNumber)
+            .with(String.class, ToShort.FromString)
         ),
 
         /**
          * {@link String}
          */
-        STRING(ScalarAttributeType.S, new ConverterMap<String>(String.class)
-            .withStandardTarget(Boolean.class)
-            .withStandardTarget(byte[].class)
-            .withStandardTarget(ByteBuffer.class, byte[].class)
-            .withStandardTarget(Calendar.class, Date.class)
-            .withStandardTarget(Date.class)
-            .withStandardTarget(Enum.class)
-            .withStandardTarget(Locale.class)
-            .withStandardTarget(TimeZone.class)
-            .withStandardTarget(Object.class)
+        STRING(ScalarAttributeType.S, new ConverterMap(String.class, null)
+            .with(Boolean.class, ToString.FromBoolean)
+            .with(byte[].class, ToString.FromByteArray)
+            .with(ByteBuffer.class, ToString.FromByteArray.join(ToByteArray.FromByteBuffer))
+            .with(Calendar.class, ToString.FromDate.join(ToDate.FromCalendar))
+            .with(Date.class, ToString.FromDate)
+            .with(Enum.class, ToString.FromEnum)
+            .with(Locale.class, ToString.FromLocale)
+            .with(TimeZone.class, ToString.FromTimeZone)
+            .with(Object.class, ToString.FromObject)
         ),
 
         /**
          * {@link TimeZone}
          */
-        TIME_ZONE(ScalarAttributeType.S, new ConverterMap<TimeZone>(TimeZone.class)
-            .withStandardTarget(String.class)
+        TIME_ZONE(ScalarAttributeType.S, new ConverterMap(TimeZone.class, null)
+            .with(String.class, ToTimeZone.FromString)
+        ),
+
+        /**
+         * {@link java.net.URL}
+         */
+        URL(ScalarAttributeType.S, new ConverterMap(java.net.URL.class, null)
+            .with(String.class, ToUrl.FromString)
+        ),
+
+        /**
+         * {@link java.net.URI}
+         */
+        URI(ScalarAttributeType.S, new ConverterMap(java.net.URI.class, null)
+            .with(String.class, ToUri.FromString)
         ),
 
         /**
          * {@link java.util.UUID}
          */
-        UUID(ScalarAttributeType.S, new ConverterMap<java.util.UUID>(java.util.UUID.class)
-            .withStandardTarget(ByteBuffer.class)
-            .withStandardTarget(String.class)
+        UUID(ScalarAttributeType.S, new ConverterMap(java.util.UUID.class, null)
+            .with(ByteBuffer.class, ToUuid.FromByteBuffer)
+            .with(String.class, ToUuid.FromString)
         ),
 
         /**
          * {@link Object}; default must be last
          */
-        DEFAULT(null, new ConverterMap(Object.class));
+        DEFAULT(null, new ConverterMap(Object.class, null)) {
+            @Override
+            <S,T> Converter<S,T> getConverter(Class<S> sourceType, Class<T> targetType) {
+                if (sourceType.isEnum() && STRING.map.isAssignableFrom(targetType)) {
+                    return (Converter<S,T>)new ToEnum.FromString(sourceType);
+                }
+                return super.<S,T>getConverter(sourceType, targetType);
+            }
+        };
 
         /**
          * The scalar attribute type.
@@ -246,12 +294,12 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
         /**
          * The mapping of conversion functions for this scalar.
          */
-        private final ConverterMap<?> map;
+        private final ConverterMap map;
 
         /**
          * Constructs a new scalar with the specified conversion mappings.
          */
-        private Scalar(final ScalarAttributeType scalarAttributeType, final ConverterMap<?> map) {
+        private Scalar(ScalarAttributeType scalarAttributeType, ConverterMap map) {
             this.scalarAttributeType = scalarAttributeType;
             this.map = map;
         }
@@ -260,30 +308,16 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
          * Returns the function to convert from the specified target class to
          * this scalar type.
          */
-        final <S,T> Converter<S,T> getConverter(final Class<S> sourceType, final Class<T> targetType) {
-            if (this == DEFAULT && sourceType.isEnum() && STRING.is(targetType)) {
-                return (Converter<S,T>)new Converter<Enum,String>() {
-                    public final Enum convert(final String o) {
-                        return Enum.valueOf((Class<Enum>)sourceType, o);
-                    }
-                };
-            }
-            return ((ConverterMap<S>)this.map).getConverter(sourceType, targetType);
+        <S,T> Converter<S,T> getConverter(Class<S> sourceType, Class<T> targetType) {
+            return map.<S,T>getConverter(targetType);
         }
 
         /**
          * Converts the target instance using the standard type-conversions.
          */
-        final <S,T> S convert(final T o) {
-            return getConverter(this.<S>type(), (Class<T>)o.getClass()).convert(o);
-        }
-
-        /**
-         * Returns the standard type-converter for the given source to target
-         * conversion types.
-         */
-        final <S,T> DynamoDBTypeConverter<S,T> join(final Class<T> targetType) {
-            return Scalar.join(this.<S>type(), targetType);
+        @SuppressWarnings("unchecked")
+        final <S> S convert(Object o) {
+            return getConverter(this.<S>type(), (Class<Object>)o.getClass()).convert(o);
         }
 
         /**
@@ -297,42 +331,25 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
          * Determines if the class represented by this scalar is either the
          * same as or a supertype of the specified target type.
          */
-        final boolean is(final Class<?> sourceType) {
-            return this.map.isAssignableFrom(sourceType);
+        final boolean is(final Class<?> type) {
+            return this.map.isAssignableFrom(type);
         }
 
         /**
-         * Returns the primary conversion type.
+         * Returns the primary reference type.
          */
+        @SuppressWarnings("unchecked")
         final <S> Class<S> type() {
-            return (Class<S>)this.map.types[0];
-        }
-
-        /**
-         * Returns the standard type-converter for the given source to target
-         * conversion types.
-         */
-        static <S,T> DynamoDBTypeConverter<S,T> join(final Class<S> sourceType, final Class<T> targetType) {
-            final Scalar source = Scalar.of(sourceType), target = Scalar.of(targetType);
-            final Converter<S,T> sourceFromTarget = source.getConverter(sourceType, target.<T>type());
-            final Converter<T,S> targetFromSource = target.getConverter(targetType, source.<S>type());
-            return new DynamoDBTypeConverter<S,T>() {
-                public final S convert(final T o) {
-                    return sourceFromTarget.convert(o);
-                }
-                public final T unconvert(final S o) {
-                    return targetFromSource.convert(o);
-                }
-            };
+            return (Class<S>)this.map.referenceType;
         }
 
         /**
          * Returns the first matching scalar, which may be the same as or a
          * supertype of the specified target class.
          */
-        static Scalar of(final Class<?> sourceType) {
+        static Scalar of(Class<?> type) {
             for (final Scalar scalar : Scalar.values()) {
-                if (scalar.is(sourceType)) {
+                if (scalar.is(type)) {
                     return scalar;
                 }
             }
@@ -343,23 +360,26 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
     /**
      * Standard vector types.
      */
-    static final class Vector {
+    static abstract class Vector {
         /**
          * {@link List}
          */
-        static final class LIST {
-            static <S,T> DynamoDBTypeConverter<List<S>,Collection<T>> join(final DynamoDBTypeConverter<S,T> scalar) {
-                return new DynamoDBTypeConverter<List<S>,Collection<T>>() {
-                    public final List<S> convert(final Collection<T> o) {
+        static final ToList LIST = new ToList();
+        static final class ToList extends Vector {
+            <S,T> DynamoDBTypeConverter<List<S>,List<T>> join(final DynamoDBTypeConverter<S,T> scalar) {
+                return new DynamoDBTypeConverter<List<S>,List<T>>() {
+                    @Override
+                    public final List<S> convert(final List<T> o) {
                         return LIST.<S,T>convert(o, scalar);
                     }
-                    public final Collection<T> unconvert(final List<S> o) {
+                    @Override
+                    public final List<T> unconvert(final List<S> o) {
                         return LIST.<S,T>unconvert(o, scalar);
                     }
                 };
             }
 
-            static <S,T> List<S> convert(final Collection<T> o, final DynamoDBTypeConverter<S,T> scalar) {
+            <S,T> List<S> convert(Collection<T> o, DynamoDBTypeConverter<S,T> scalar) {
                 final List<S> vector = new ArrayList<S>(o.size());
                 for (final T t : o) {
                     vector.add(scalar.convert(t));
@@ -367,7 +387,7 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
                 return vector;
             }
 
-            static <S,T> List<T> unconvert(final Collection<S> o, final DynamoDBTypeConverter<S,T> scalar) {
+            <S,T> List<T> unconvert(Collection<S> o, DynamoDBTypeConverter<S,T> scalar) {
                 final List<T> vector = new ArrayList<T>(o.size());
                 for (final S s : o) {
                     vector.add(scalar.unconvert(s));
@@ -375,27 +395,31 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
                 return vector;
             }
 
-            static boolean is(final Class<?> sourceType) {
-                return List.class.isAssignableFrom(sourceType);
+            @Override
+            boolean is(final Class<?> type) {
+                return List.class.isAssignableFrom(type);
             }
         }
 
         /**
          * {@link Map}
          */
-        static final class MAP {
-            static <K,S,T> DynamoDBTypeConverter<Map<K,S>,Map<K,T>> join(final DynamoDBTypeConverter<S,T> scalar) {
+        static final ToMap MAP = new ToMap();
+        static final class ToMap extends Vector {
+            <K,S,T> DynamoDBTypeConverter<Map<K,S>,Map<K,T>> join(final DynamoDBTypeConverter<S,T> scalar) {
                 return new DynamoDBTypeConverter<Map<K,S>,Map<K,T>>() {
+                    @Override
                     public final Map<K,S> convert(final Map<K,T> o) {
                         return MAP.<K,S,T>convert(o, scalar);
                     }
+                    @Override
                     public final Map<K,T> unconvert(final Map<K,S> o) {
                         return MAP.<K,S,T>unconvert(o, scalar);
                     }
                 };
             }
 
-            static <K,S,T> Map<K,S> convert(final Map<K,T> o, final DynamoDBTypeConverter<S,T> scalar) {
+            <K,S,T> Map<K,S> convert(Map<K,T> o, DynamoDBTypeConverter<S,T> scalar) {
                 final Map<K,S> vector = new LinkedHashMap<K,S>();
                 for (final Map.Entry<K,T> t : o.entrySet()) {
                     vector.put(t.getKey(), scalar.convert(t.getValue()));
@@ -403,7 +427,7 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
                 return vector;
             }
 
-            static <K,S,T> Map<K,T> unconvert(final Map<K,S> o, final DynamoDBTypeConverter<S,T> scalar) {
+            <K,S,T> Map<K,T> unconvert(Map<K,S> o, DynamoDBTypeConverter<S,T> scalar) {
                 final Map<K,T> vector = new LinkedHashMap<K,T>();
                 for (final Map.Entry<K,S> s : o.entrySet()) {
                     vector.put(s.getKey(), scalar.unconvert(s.getValue()));
@@ -411,28 +435,31 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
                 return vector;
             }
 
-            static boolean is(final Class<?> sourceType) {
-                return Map.class.isAssignableFrom(sourceType);
+            boolean is(final Class<?> type) {
+                return Map.class.isAssignableFrom(type);
             }
         }
 
         /**
          * {@link Set}
          */
-        static final class SET {
-            static <S,T> DynamoDBTypeConverter<List<S>,Collection<T>> join(final DynamoDBTypeConverter<S,T> target) {
+        static final ToSet SET = new ToSet();
+        static final class ToSet extends Vector {
+            <S,T> DynamoDBTypeConverter<List<S>,Collection<T>> join(final DynamoDBTypeConverter<S,T> target) {
                 return new DynamoDBTypeConverter<List<S>,Collection<T>>() {
+                    @Override
                     public List<S> convert(final Collection<T> o) {
                         return LIST.<S,T>convert(o, target);
                     }
+                    @Override
                     public Collection<T> unconvert(final List<S> o) {
                         return SET.<S,T>unconvert(o, target);
                     }
                 };
             }
 
-            static <S,T> Set<T> unconvert(final Collection<S> o, final DynamoDBTypeConverter<S,T> scalar) {
-                final Set<T> vector = new LinkedHashSet();
+            <S,T> Set<T> unconvert(Collection<S> o, DynamoDBTypeConverter<S,T> scalar) {
+                final Set<T> vector = new LinkedHashSet<T>();
                 for (final S s : o) {
                     if (vector.add(scalar.unconvert(s)) == false) {
                         throw new DynamoDBMappingException("duplicate value (" + s + ")");
@@ -441,134 +468,118 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
                 return vector;
             }
 
-            static boolean is(final Class<?> sourceType) {
-                return Set.class.isAssignableFrom(sourceType);
-           }
+            boolean is(final Class<?> type) {
+                return Set.class.isAssignableFrom(type);
+            }
         }
+
+        /**
+         * Determines if the class represented by this vector is either the
+         * same as or a supertype of the specified target type.
+         */
+        abstract boolean is(Class<?> type);
     }
 
     /**
-     * One-way type-converter.
+     * Converter map.
      */
-    static abstract class Converter<S,T> {
-        private static final Converter<Object,Object> ANY = new Converter<Object,Object>() {
-            public final Object convert(final Object o) {
-                return o;
-            }
-        };
+    private static class ConverterMap extends LinkedHashMap<Class<?>,Converter<?,?>> {
+        private static final long serialVersionUID = -1L;
+        private final Class<?> referenceType, primitiveType;
 
-        final <U> Converter<S,U> join(final Converter<T,U> target) {
-            final Converter<S,T> source = this;
-            return new Converter<S,U>() {
-                public S convert(final U o) {
-                    return source.convert(target.convert(o));
-                }
-            };
+        private ConverterMap(Class<?> referenceType, Class<?> primitiveType) {
+            this.referenceType = referenceType;
+            this.primitiveType = primitiveType;
         }
 
-        public abstract S convert(T o);
-    }
-
-    /**
-     * Maps classes to converters.
-     */
-    private static final class ConverterMap<S> extends LinkedHashMap<Class<?>,Converter<S,?>> {
-        private final Class<S>[] types;
-
-        private ConverterMap(final Class<S> ... sourceTypes) {
-            this.types = sourceTypes;
-        }
-
-        final <T> ConverterMap<S> withStandardTarget(final Class<T> targetType, final Class<?> ... joins) {
-            Converter<T,T> converter = null;
-            for (int j = 0; j <= joins.length; j++) {
-                final Class<?> keySourceType = (j == 0 ? this.types[0] : joins[j-1]);
-                final Class<?> keyTargetType = (j == joins.length ? targetType : joins[j]);
-                final Converter<T,T> target = (Converter<T,T>)ALL.get(new Key(keySourceType, keyTargetType));
-                converter = converter == null ? target : converter.join(target);
-            }
-            this.put(targetType, (Converter<S,T>)converter);
+        private <S,T> ConverterMap with(Class<T> targetType, Converter<S,T> converter) {
+            put(targetType, converter);
             return this;
         }
 
-        final boolean isAssignableFrom(final Class<?> sourceType) {
-            for (final Class<?> type : this.types) {
-                if (type.isAssignableFrom(sourceType)) {
-                    return true;
-                }
-            }
-            return false;
+        private boolean isAssignableFrom(Class<?> type) {
+            return type.isPrimitive() ? primitiveType == type : referenceType.isAssignableFrom(type);
         }
 
-        final <T> Converter<S,T> getConverter(final Class<S> sourceType, final Class<T> targetType) {
-            for (final Map.Entry<Class<?>,Converter<S,?>> entry : this.entrySet()) {
+        @SuppressWarnings("unchecked")
+        private <S,T> Converter<S,T> getConverter(Class<T> targetType) {
+            for (final Map.Entry<Class<?>,Converter<?,?>> entry : entrySet()) {
                 if (entry.getKey().isAssignableFrom(targetType)) {
                     return (Converter<S,T>)entry.getValue();
                 }
             }
-            if (this.isAssignableFrom(targetType)) {
-                return (Converter<S,T>)Converter.ANY;
+            if (isAssignableFrom(targetType)) {
+                return (Converter<S,T>)ToObject.FromObject;
             }
-            throw new DynamoDBMappingException("type [" + targetType + "] is not supported; no conversion from " + sourceType);
+            throw new DynamoDBMappingException(
+                "type [" + targetType + "] is not supported; no conversion from " + referenceType
+            );
         }
     }
 
     /**
-     * All standard conversion functions.
+     * {@link BigDecimal} conversion functions.
      */
-    private static final LinkedHashMap<Key<?,?>,Converter<?,?>> ALL;
-    static {
-        ALL = new LinkedHashMap<Key<?,?>,Converter<?,?>>();
-
-        /**
-         * {@link BigDecimal} from {@link String}
-         */
-        ALL.put(new Key(BigDecimal.class, String.class), new Converter<BigDecimal,String>() {
+    private static abstract class ToBigDecimal<T> extends Converter<BigDecimal,T> {
+        private static final ToBigDecimal<String> FromString = new ToBigDecimal<String>() {
+            @Override
             public final BigDecimal convert(final String o) {
                 return new BigDecimal(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link BigInteger} from {@link String}
-         */
-        ALL.put(new Key(BigInteger.class, String.class), new Converter<BigInteger,String>() {
+    /**
+     * {@link BigInteger} conversion functions.
+     */
+    private static abstract class ToBigInteger<T> extends Converter<BigInteger,T> {
+        private static final ToBigInteger<String> FromString = new ToBigInteger<String>() {
+            @Override
             public final BigInteger convert(final String o) {
                 return new BigInteger(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Boolean} from {@link String}
-         */
-        ALL.put(new Key(Boolean.class, String.class), new Converter<Boolean,String>() {
+    /**
+     * {@link Boolean} conversion functions.
+     */
+    private static abstract class ToBoolean<T> extends Converter<Boolean,T> {
+        private static final ToBoolean<String> FromString = new ToBoolean<String>() {
+            private final Pattern N0 = Pattern.compile("(?i)[N0]");
+            private final Pattern Y1 = Pattern.compile("(?i)[Y1]");
+            @Override
             public final Boolean convert(final String o) {
-                return "0".equals(o) ? Boolean.FALSE : "1".equals(o) ? Boolean.TRUE : Boolean.valueOf(o);
+                return N0.matcher(o).matches() ? Boolean.FALSE : Y1.matcher(o).matches() ? Boolean.TRUE : Boolean.valueOf(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Byte} from {@link Number}
-         */
-        ALL.put(new Key(Byte.class, Number.class), new Converter<Byte,Number>() {
+    /**
+     * {@link Byte} conversion functions.
+     */
+    private static abstract class ToByte<T> extends Converter<Byte,T> {
+        private static final ToByte<Number> FromNumber = new ToByte<Number>() {
+            @Override
             public final Byte convert(final Number o) {
                 return o.byteValue();
             }
-        });
+        };
 
-        /**
-         * {@link Byte} from {@link String}
-         */
-        ALL.put(new Key(Byte.class, String.class), new Converter<Byte,String>() {
+        private static final ToByte<String> FromString = new ToByte<String>() {
+            @Override
             public final Byte convert(final String o) {
                 return Byte.valueOf(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link byte} arry from {@link ByteBuffer}
-         */
-        ALL.put(new Key(byte[].class, ByteBuffer.class), new Converter<byte[],ByteBuffer>() {
+    /**
+     * {@link byte} array conversion functions.
+     */
+    private static abstract class ToByteArray<T> extends Converter<byte[],T> {
+        private static final ToByteArray<ByteBuffer> FromByteBuffer = new ToByteArray<ByteBuffer>() {
+            @Override
             public final byte[] convert(final ByteBuffer o) {
                 if (o.hasArray()) {
                     return o.array();
@@ -577,252 +588,288 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
                 o.get(value);
                 return value;
             }
-        });
+        };
 
-        /**
-         * {@link byte} array from {@link String}
-         */
-        ALL.put(new Key(byte[].class, String.class), new Converter<byte[],String>() {
+        private static final ToByteArray<String> FromString = new ToByteArray<String>() {
+            @Override
             public final byte[] convert(final String o) {
                 return o.getBytes(Charset.forName("UTF-8"));
             }
-        });
+        };
+    }
 
-        /**
-         * {@link ByteBuffer} from {@link byte} array
-         */
-        ALL.put(new Key(ByteBuffer.class, byte[].class), new Converter<ByteBuffer,byte[]>() {
+    /**
+     * {@link ByteBuffer} conversion functions.
+     */
+    private static abstract class ToByteBuffer<T> extends Converter<ByteBuffer,T> {
+        private static final ToByteBuffer<byte[]> FromByteArray = new ToByteBuffer<byte[]>() {
+            @Override
             public final ByteBuffer convert(final byte[] o) {
                 return ByteBuffer.wrap(o);
             }
-        });
+        };
 
-        /**
-         * {@link ByteBuffer} from {@link java.util.UUID}
-         */
-        ALL.put(new Key(ByteBuffer.class, java.util.UUID.class), new Converter<ByteBuffer,java.util.UUID>() {
+        private static final ToByteBuffer<java.util.UUID> FromUuid = new ToByteBuffer<java.util.UUID>() {
+            @Override
             public final ByteBuffer convert(final java.util.UUID o) {
                 final ByteBuffer value = ByteBuffer.allocate(16);
                 value.putLong(o.getMostSignificantBits()).putLong(o.getLeastSignificantBits());
                 value.position(0);
                 return value;
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Calendar} from {@link Date}
-         */
-        ALL.put(new Key(Calendar.class, Date.class), new Converter<Calendar,Date>() {
+    /**
+     * {@link Calendar} conversion functions.
+     */
+    private static abstract class ToCalendar<T> extends Converter<Calendar,T> {
+        private static final ToCalendar<Date> FromDate = new ToCalendar<Date>() {
+            @Override
             public final Calendar convert(final Date o) {
                 final Calendar value = Calendar.getInstance();
                 value.setTime(o);
                 return value;
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Character} from {@link String}
-         */
-        ALL.put(new Key(Character.class, String.class), new Converter<Character,String>() {
+    /**
+     * {@link Character} conversion functions.
+     */
+    private static abstract class ToCharacter<T> extends Converter<Character,T> {
+        private static final ToCharacter<String> FromString = new ToCharacter<String>() {
+            @Override
             public final Character convert(final String o) {
                 return Character.valueOf(o.charAt(0));
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Currency} from {@link String}
-         */
-        ALL.put(new Key(Currency.class, String.class), new Converter<Currency,String>() {
+    /**
+     * {@link Currency} conversion functions.
+     */
+    private static abstract class ToCurrency<T> extends Converter<Currency,T> {
+        private static final ToCurrency<String> FromString = new ToCurrency<String>() {
+            @Override
             public final Currency convert(final String o) {
                 return Currency.getInstance(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Date} from {@link Calendar}
-         */
-        ALL.put(new Key(Date.class, Calendar.class), new Converter<Date,Calendar>() {
+    /**
+     * {@link Date} conversion functions.
+     */
+    private static abstract class ToDate<T> extends Converter<Date,T> {
+        private static final ToDate<Calendar> FromCalendar = new ToDate<Calendar>() {
+            @Override
             public final Date convert(final Calendar o) {
                 return o.getTime();
             }
-        });
+        };
 
-        /**
-         * {@link Date} from {@link Long}
-         */
-        ALL.put(new Key(Date.class, Long.class), new Converter<Date,Long>() {
+        private static final ToDate<DateTime> FromDateTime = new ToDate<DateTime>() {
+            @Override
+            public final Date convert(final DateTime o) {
+                return o.toDate();
+            }
+        };
+
+        private static final ToDate<Long> FromLong = new ToDate<Long>() {
+            @Override
             public final Date convert(final Long o) {
                 return new Date(o);
             }
-        });
+        };
 
-        /**
-         * {@link Date} from {@link String}
-         */
-        ALL.put(new Key(Date.class, String.class), new Converter<Date,String>() {
+        private static final ToDate<String> FromString = new ToDate<String>() {
+            @Override
             public final Date convert(final String o) {
                 return DateUtils.parseISO8601Date(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Double} from {@link Number}
-         */
-        ALL.put(new Key(Double.class, Number.class), new Converter<Double,Number>() {
+    /**
+     * {@link DateTime} conversion functions.
+     */
+    private static abstract class ToDateTime<T> extends Converter<DateTime,T> {
+        private static final ToDateTime<Date> FromDate = new ToDateTime<Date>() {
+            public final DateTime convert(final Date o) {
+                return new DateTime(o);
+            }
+        };
+    }
+
+    /**
+     * {@link Double} conversion functions.
+     */
+    private static abstract class ToDouble<T> extends Converter<Double,T> {
+        private static final ToDouble<Number> FromNumber = new ToDouble<Number>() {
+            @Override
             public final Double convert(final Number o) {
                 return o.doubleValue();
             }
-        });
+        };
 
-        /**
-         * {@link Double} from {@link String}
-         */
-        ALL.put(new Key(Double.class, String.class), new Converter<Double,String>() {
+        private static final ToDouble<String> FromString = new ToDouble<String>() {
+            @Override
             public final Double convert(final String o) {
                 return Double.valueOf(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Float} from {@link Number}
-         */
-        ALL.put(new Key(Float.class, Number.class), new Converter<Float,Number>() {
+    /**
+     * {@link Enum} from {@link String}
+     */
+    private static abstract class ToEnum<S extends Enum<S>,T> extends Converter<S,T> {
+        private static final class FromString<S extends Enum<S>> extends ToEnum<S,String> {
+            private final Class<S> sourceType;
+            private FromString(final Class<S> sourceType) {
+                this.sourceType = sourceType;
+            }
+            @Override
+            public final S convert(final String o) {
+                return Enum.valueOf(sourceType, o);
+            }
+        }
+    }
+
+    /**
+     * {@link Float} conversion functions.
+     */
+    private static abstract class ToFloat<T> extends Converter<Float,T> {
+        private static final ToFloat<Number> FromNumber = new ToFloat<Number>() {
+            @Override
             public final Float convert(final Number o) {
                 return o.floatValue();
             }
-        });
+        };
 
-        /**
-         * {@link Float} from {@link String}
-         */
-        ALL.put(new Key(Float.class, String.class), new Converter<Float,String>() {
+        private static final ToFloat<String> FromString = new ToFloat<String>() {
+            @Override
             public final Float convert(final String o) {
                 return Float.valueOf(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Integer} from {@link Number}
-         */
-        ALL.put(new Key(Integer.class, Number.class), new Converter<Integer,Number>() {
+    /**
+     * {@link Integer} conversion functions.
+     */
+    private static abstract class ToInteger<T> extends Converter<Integer,T> {
+        private static final ToInteger<Number> FromNumber = new ToInteger<Number>() {
+            @Override
             public final Integer convert(final Number o) {
                 return o.intValue();
             }
-        });
+        };
 
-        /**
-         * {@link Integer} from {@link String}
-         */
-        ALL.put(new Key(Integer.class, String.class), new Converter<Integer,String>() {
+        private static final ToInteger<String> FromString = new ToInteger<String>() {
+            @Override
             public final Integer convert(final String o) {
                 return Integer.valueOf(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Locale} from {@link String}
-         */
-        ALL.put(new Key(Locale.class, String.class), new Converter<Locale,String>() {
+    /**
+     * {@link Locale} conversion functions.
+     */
+    private static abstract class ToLocale<T> extends Converter<Locale,T> {
+        private static final ToLocale<String> FromString = new ToLocale<String>() {
+            @Override
             public final Locale convert(final String o) {
-                //JDK7+: Locale.forLanguageTag(o);
                 final String[] value = o.split("-", 3);
-                if (value.length == 3) {
-                    return new Locale(value[0], value[1], value[2]);
-                } else if (value.length == 2) {
-                    return new Locale(value[0], value[1]);
-                } else {
-                    return new Locale(value[0]);
-                }
+                if (value.length == 3) return new Locale(value[0], value[1], value[2]);
+                if (value.length == 2) return new Locale(value[0], value[1]);
+                return new Locale(value[0]); //JDK7+: return Locale.forLanguageTag(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Long} from {@link Date}
-         */
-        ALL.put(new Key(Long.class, Date.class), new Converter<Long,Date>() {
+    /**
+     * {@link Long} conversion functions.
+     */
+    private static abstract class ToLong<T> extends Converter<Long,T> {
+        private static final ToLong<Date> FromDate = new ToLong<Date>() {
+            @Override
             public final Long convert(final Date o) {
                 return o.getTime();
             }
-        });
+        };
 
-        /**
-         * {@link Long} from {@link Number}
-         */
-        ALL.put(new Key(Long.class, Number.class), new Converter<Long,Number>() {
+        private static final ToLong<Number> FromNumber = new ToLong<Number>() {
+            @Override
             public final Long convert(final Number o) {
                 return o.longValue();
             }
-        });
+        };
 
-        /**
-         * {@link Long} from {@link String}
-         */
-        ALL.put(new Key(Long.class, String.class), new Converter<Long,String>() {
+        private static final ToLong<String> FromString = new ToLong<String>() {
+            @Override
             public final Long convert(final String o) {
                 return Long.valueOf(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link Short} from {@link Number}
-         */
-        ALL.put(new Key(Short.class, Number.class), new Converter<Short,Number>() {
+    /**
+     * {@link Short} conversion functions.
+     */
+    private static abstract class ToShort<T> extends Converter<Short,T> {
+        private static final ToShort<Number> FromNumber = new ToShort<Number>() {
+            @Override
             public final Short convert(final Number o) {
                 return o.shortValue();
             }
-        });
+        };
 
-        /**
-         * {@link Short} from {@link String}
-         */
-        ALL.put(new Key(Short.class, String.class), new Converter<Short,String>() {
+        private static final ToShort<String> FromString = new ToShort<String>() {
+            @Override
             public final Short convert(final String o) {
                 return Short.valueOf(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link String} from {@link Boolean}
-         */
-        ALL.put(new Key(String.class, Boolean.class), new Converter<String,Boolean>() {
+    /**
+     * {@link String} conversion functions.
+     */
+    private static abstract class ToString<T> extends Converter<String,T> {
+        private static final ToString<Boolean> FromBoolean = new ToString<Boolean>() {
+            @Override
             public final String convert(final Boolean o) {
                 return Boolean.TRUE.equals(o) ? "1" : "0";
             }
-        });
+        };
 
-        /**
-         * {@link String} from {@link byte} array
-         */
-        ALL.put(new Key(String.class, byte[].class), new Converter<String,byte[]>() {
+        private static final ToString<byte[]> FromByteArray = new ToString<byte[]>() {
+            @Override
             public final String convert(final byte[] o) {
                 return new String(o, Charset.forName("UTF-8"));
             }
-        });
+        };
 
-        /**
-         * {@link String} from {@link Date}
-         */
-        ALL.put(new Key(String.class, Date.class), new Converter<String,Date>() {
+        private static final ToString<Date> FromDate = new ToString<Date>() {
+            @Override
             public final String convert(final Date o) {
                 return DateUtils.formatISO8601Date(o);
             }
-        });
+        };
 
-        /**
-         * {@link String} from {@link Enum}
-         */
-        ALL.put(new Key(String.class, Enum.class), new Converter<String,Enum>() {
+        private static final ToString<Enum> FromEnum = new ToString<Enum>() {
+            @Override
             public final String convert(final Enum o) {
                 return o.name();
             }
-        });
+        };
 
-        /**
-         * {@link String} from {@link Locale}
-         */
-        ALL.put(new Key(String.class, Locale.class), new Converter<String,Locale>() {
+        private static final ToString<Locale> FromLocale = new ToString<Locale>() {
+            @Override
             public final String convert(final Locale o) {
-                //JDK7+: return o.toLanguageTag();
                 final StringBuilder value = new StringBuilder(o.getLanguage());
                 if (!o.getCountry().isEmpty() || !o.getVariant().isEmpty()) {
                     value.append("-").append(o.getCountry());
@@ -830,54 +877,121 @@ final class StandardTypeConverters implements DynamoDBTypeConverterFactory {
                 if (!o.getVariant().isEmpty()) {
                     value.append("-").append(o.getVariant());
                 }
-                return value.toString();
+                return value.toString(); //JDK7+: return o.toLanguageTag();
             }
-        });
+        };
 
-        /**
-         * {@link String} from {@link TimeZone}
-         */
-        ALL.put(new Key(String.class, TimeZone.class), new Converter<String,TimeZone>() {
+        private static final ToString<Number> FromNumber = new ToString<Number>() {
+            @Override
+            public final String convert(final Number o) {
+                return o.toString();
+            }
+        };
+
+        private static final ToString<TimeZone> FromTimeZone = new ToString<TimeZone>() {
+            @Override
             public final String convert(final TimeZone o) {
                 return o.getID();
             }
-        });
+        };
 
-        /**
-         * {@link String} from {@link Object}
-         */
-        ALL.put(new Key(String.class, Object.class), new Converter<String,Object>() {
+        private static final ToString<Object> FromObject = new ToString<Object>() {
+            @Override
             public final String convert(final Object o) {
                 return o.toString();
             }
-        });
+        };
+    }
 
-        /**
-         * {@link TimeZone} from {@link String}
-         */
-        ALL.put(new Key(TimeZone.class, String.class), new Converter<TimeZone,String>() {
+    /**
+     * {@link TimeZone} conversion functions.
+     */
+    private static abstract class ToTimeZone<T> extends Converter<TimeZone,T> {
+        private static final ToTimeZone<String> FromString = new ToTimeZone<String>() {
+            @Override
             public final TimeZone convert(final String o) {
                 return TimeZone.getTimeZone(o);
             }
-        });
+        };
+    }
 
-        /**
-         * {@link java.util.UUID} from {@link ByteBuffer}
-         */
-        ALL.put(new Key(java.util.UUID.class, ByteBuffer.class), new Converter<java.util.UUID,ByteBuffer>() {
+    /**
+     * {@link java.net.URL} conversion functions.
+     */
+    private static abstract class ToUrl<T> extends Converter<java.net.URL,String> {
+        private static final ToUrl<String> FromString = new ToUrl<String>() {
+            @Override
+            public final java.net.URL convert(final String o) {
+                try {
+                   return new java.net.URL(o);
+                } catch (final java.net.MalformedURLException e) {
+                    throw new IllegalArgumentException("malformed URL", e);
+                }
+            }
+        };
+    }
+
+    /**
+     * {@link java.net.URI} conversion functions.
+     */
+    private static abstract class ToUri<T> extends Converter<java.net.URI,T> {
+        private static final ToUri<String> FromString = new ToUri<String>() {
+            @Override
+            public final java.net.URI convert(final String o) {
+                try {
+                    return new java.net.URI(o);
+                } catch (final java.net.URISyntaxException e) {
+                    throw new IllegalArgumentException("malformed URI", e);
+                }
+            }
+        };
+    }
+
+    /**
+     * {@link java.util.UUID} conversion functions.
+     */
+    private static abstract class ToUuid<T> extends Converter<java.util.UUID,T> {
+        private static final ToUuid<ByteBuffer> FromByteBuffer = new ToUuid<ByteBuffer>() {
+            @Override
             public final java.util.UUID convert(final ByteBuffer o) {
                 return new java.util.UUID(o.getLong(), o.getLong());
             }
-        });
+        };
 
-        /**
-         * {@link java.util.UUID} from {@link String}
-         */
-        ALL.put(new Key(java.util.UUID.class, String.class), new Converter<java.util.UUID,String>() {
+        private static final ToUuid<String> FromString = new ToUuid<String>() {
+            @Override
             public final java.util.UUID convert(final String o) {
                 return java.util.UUID.fromString(o);
             }
-        });
+        };
+    }
+
+    /**
+     * {@link Object} conversion functions.
+     */
+    private static abstract class ToObject<T> extends Converter<Object,T> {
+        private static final ToObject<Object> FromObject = new ToObject<Object>() {
+            @Override
+            public final Object convert(final Object o) {
+                return o;
+            }
+        };
+    }
+
+    /**
+     * One-way type-converter.
+     */
+    static abstract class Converter<S,T> {
+        final <U> Converter<S,U> join(final Converter<T,U> target) {
+            final Converter<S,T> source = this;
+            return new Converter<S,U>() {
+                @Override
+                public S convert(final U o) {
+                    return source.convert(target.convert(o));
+                }
+            };
+        }
+        public abstract S convert(T o);
     }
 
 }

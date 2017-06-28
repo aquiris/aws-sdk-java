@@ -1,23 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.cognitoidp.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -29,11 +26,10 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * AuthenticationResultType JSON Unmarshaller
  */
-public class AuthenticationResultTypeJsonUnmarshaller implements
-        Unmarshaller<AuthenticationResultType, JsonUnmarshallerContext> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AuthenticationResultTypeJsonUnmarshaller implements Unmarshaller<AuthenticationResultType, JsonUnmarshallerContext> {
 
-    public AuthenticationResultType unmarshall(JsonUnmarshallerContext context)
-            throws Exception {
+    public AuthenticationResultType unmarshall(JsonUnmarshallerContext context) throws Exception {
         AuthenticationResultType authenticationResultType = new AuthenticationResultType();
 
         int originalDepth = context.getCurrentDepth();
@@ -43,8 +39,9 @@ public class AuthenticationResultTypeJsonUnmarshaller implements
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -53,41 +50,30 @@ public class AuthenticationResultTypeJsonUnmarshaller implements
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("AccessToken", targetDepth)) {
                     context.nextToken();
-                    authenticationResultType.setAccessToken(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    authenticationResultType.setAccessToken(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("ExpiresIn", targetDepth)) {
                     context.nextToken();
-                    authenticationResultType
-                            .setExpiresIn(context
-                                    .getUnmarshaller(Integer.class).unmarshall(
-                                            context));
+                    authenticationResultType.setExpiresIn(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("TokenType", targetDepth)) {
                     context.nextToken();
-                    authenticationResultType.setTokenType(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    authenticationResultType.setTokenType(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("RefreshToken", targetDepth)) {
                     context.nextToken();
-                    authenticationResultType.setRefreshToken(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    authenticationResultType.setRefreshToken(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("IdToken", targetDepth)) {
                     context.nextToken();
-                    authenticationResultType.setIdToken(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    authenticationResultType.setIdToken(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("NewDeviceMetadata", targetDepth)) {
                     context.nextToken();
-                    authenticationResultType
-                            .setNewDeviceMetadata(NewDeviceMetadataTypeJsonUnmarshaller
-                                    .getInstance().unmarshall(context));
+                    authenticationResultType.setNewDeviceMetadata(NewDeviceMetadataTypeJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
-                if (context.getLastParsedParentElement() == null
-                        || context.getLastParsedParentElement().equals(
-                                currentParentElement)) {
+                if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)
                         break;
                 }

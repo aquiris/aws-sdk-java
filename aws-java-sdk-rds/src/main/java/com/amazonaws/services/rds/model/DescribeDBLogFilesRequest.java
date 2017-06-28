@@ -1,32 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBLogFiles" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeDBLogFilesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The customer-assigned name of the DB instance that contains the log files
-     * you want to list.
+     * The customer-assigned name of the DB instance that contains the log files you want to list.
      * </p>
      * <p>
      * Constraints:
@@ -52,15 +54,14 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
     private String dBInstanceIdentifier;
     /**
      * <p>
-     * Filters the available log files for log file names that contain the
-     * specified string.
+     * Filters the available log files for log file names that contain the specified string.
      * </p>
      */
     private String filenameContains;
     /**
      * <p>
-     * Filters the available log files for files written since the specified
-     * date, in POSIX timestamp format with milliseconds.
+     * Filters the available log files for files written since the specified date, in POSIX timestamp format with
+     * milliseconds.
      * </p>
      */
     private Long fileLastWritten;
@@ -78,26 +79,23 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
-     * The maximum number of records to include in the response. If more records
-     * exist than the specified MaxRecords value, a pagination token called a
-     * marker is included in the response so that the remaining results can be
+     * The maximum number of records to include in the response. If more records exist than the specified MaxRecords
+     * value, a pagination token called a marker is included in the response so that the remaining results can be
      * retrieved.
      * </p>
      */
     private Integer maxRecords;
     /**
      * <p>
-     * The pagination token provided in the previous request. If this parameter
-     * is specified the response includes only records beyond the marker, up to
-     * MaxRecords.
+     * The pagination token provided in the previous request. If this parameter is specified the response includes only
+     * records beyond the marker, up to MaxRecords.
      * </p>
      */
     private String marker;
 
     /**
      * <p>
-     * The customer-assigned name of the DB instance that contains the log files
-     * you want to list.
+     * The customer-assigned name of the DB instance that contains the log files you want to list.
      * </p>
      * <p>
      * Constraints:
@@ -121,8 +119,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * </ul>
      * 
      * @param dBInstanceIdentifier
-     *        The customer-assigned name of the DB instance that contains the
-     *        log files you want to list.</p>
+     *        The customer-assigned name of the DB instance that contains the log files you want to list.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -150,8 +147,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The customer-assigned name of the DB instance that contains the log files
-     * you want to list.
+     * The customer-assigned name of the DB instance that contains the log files you want to list.
      * </p>
      * <p>
      * Constraints:
@@ -174,8 +170,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * </li>
      * </ul>
      * 
-     * @return The customer-assigned name of the DB instance that contains the
-     *         log files you want to list.</p>
+     * @return The customer-assigned name of the DB instance that contains the log files you want to list.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -203,8 +198,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The customer-assigned name of the DB instance that contains the log files
-     * you want to list.
+     * The customer-assigned name of the DB instance that contains the log files you want to list.
      * </p>
      * <p>
      * Constraints:
@@ -228,8 +222,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * </ul>
      * 
      * @param dBInstanceIdentifier
-     *        The customer-assigned name of the DB instance that contains the
-     *        log files you want to list.</p>
+     *        The customer-assigned name of the DB instance that contains the log files you want to list.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -249,25 +242,21 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      *        Cannot end with a hyphen or contain two consecutive hyphens
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeDBLogFilesRequest withDBInstanceIdentifier(
-            String dBInstanceIdentifier) {
+    public DescribeDBLogFilesRequest withDBInstanceIdentifier(String dBInstanceIdentifier) {
         setDBInstanceIdentifier(dBInstanceIdentifier);
         return this;
     }
 
     /**
      * <p>
-     * Filters the available log files for log file names that contain the
-     * specified string.
+     * Filters the available log files for log file names that contain the specified string.
      * </p>
      * 
      * @param filenameContains
-     *        Filters the available log files for log file names that contain
-     *        the specified string.
+     *        Filters the available log files for log file names that contain the specified string.
      */
 
     public void setFilenameContains(String filenameContains) {
@@ -276,12 +265,10 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Filters the available log files for log file names that contain the
-     * specified string.
+     * Filters the available log files for log file names that contain the specified string.
      * </p>
      * 
-     * @return Filters the available log files for log file names that contain
-     *         the specified string.
+     * @return Filters the available log files for log file names that contain the specified string.
      */
 
     public String getFilenameContains() {
@@ -290,32 +277,28 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Filters the available log files for log file names that contain the
-     * specified string.
+     * Filters the available log files for log file names that contain the specified string.
      * </p>
      * 
      * @param filenameContains
-     *        Filters the available log files for log file names that contain
-     *        the specified string.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Filters the available log files for log file names that contain the specified string.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeDBLogFilesRequest withFilenameContains(
-            String filenameContains) {
+    public DescribeDBLogFilesRequest withFilenameContains(String filenameContains) {
         setFilenameContains(filenameContains);
         return this;
     }
 
     /**
      * <p>
-     * Filters the available log files for files written since the specified
-     * date, in POSIX timestamp format with milliseconds.
+     * Filters the available log files for files written since the specified date, in POSIX timestamp format with
+     * milliseconds.
      * </p>
      * 
      * @param fileLastWritten
-     *        Filters the available log files for files written since the
-     *        specified date, in POSIX timestamp format with milliseconds.
+     *        Filters the available log files for files written since the specified date, in POSIX timestamp format with
+     *        milliseconds.
      */
 
     public void setFileLastWritten(Long fileLastWritten) {
@@ -324,12 +307,12 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Filters the available log files for files written since the specified
-     * date, in POSIX timestamp format with milliseconds.
+     * Filters the available log files for files written since the specified date, in POSIX timestamp format with
+     * milliseconds.
      * </p>
      * 
-     * @return Filters the available log files for files written since the
-     *         specified date, in POSIX timestamp format with milliseconds.
+     * @return Filters the available log files for files written since the specified date, in POSIX timestamp format
+     *         with milliseconds.
      */
 
     public Long getFileLastWritten() {
@@ -338,15 +321,14 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Filters the available log files for files written since the specified
-     * date, in POSIX timestamp format with milliseconds.
+     * Filters the available log files for files written since the specified date, in POSIX timestamp format with
+     * milliseconds.
      * </p>
      * 
      * @param fileLastWritten
-     *        Filters the available log files for files written since the
-     *        specified date, in POSIX timestamp format with milliseconds.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Filters the available log files for files written since the specified date, in POSIX timestamp format with
+     *        milliseconds.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBLogFilesRequest withFileLastWritten(Long fileLastWritten) {
@@ -360,8 +342,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param fileSize
-     *        Filters the available log files for files larger than the
-     *        specified size.
+     *        Filters the available log files for files larger than the specified size.
      */
 
     public void setFileSize(Long fileSize) {
@@ -373,8 +354,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * Filters the available log files for files larger than the specified size.
      * </p>
      * 
-     * @return Filters the available log files for files larger than the
-     *         specified size.
+     * @return Filters the available log files for files larger than the specified size.
      */
 
     public Long getFileSize() {
@@ -387,10 +367,8 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param fileSize
-     *        Filters the available log files for files larger than the
-     *        specified size.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Filters the available log files for files larger than the specified size.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBLogFilesRequest withFileSize(Long fileSize) {
@@ -428,8 +406,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
             return;
         }
 
-        this.filters = new com.amazonaws.internal.SdkInternalList<Filter>(
-                filters);
+        this.filters = new com.amazonaws.internal.SdkInternalList<Filter>(filters);
     }
 
     /**
@@ -437,22 +414,19 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * This parameter is not currently supported.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setFilters(java.util.Collection)} or
-     * {@link #withFilters(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setFilters(java.util.Collection)} or {@link #withFilters(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param filters
      *        This parameter is not currently supported.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBLogFilesRequest withFilters(Filter... filters) {
         if (this.filters == null) {
-            setFilters(new com.amazonaws.internal.SdkInternalList<Filter>(
-                    filters.length));
+            setFilters(new com.amazonaws.internal.SdkInternalList<Filter>(filters.length));
         }
         for (Filter ele : filters) {
             this.filters.add(ele);
@@ -467,29 +441,25 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
      * 
      * @param filters
      *        This parameter is not currently supported.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeDBLogFilesRequest withFilters(
-            java.util.Collection<Filter> filters) {
+    public DescribeDBLogFilesRequest withFilters(java.util.Collection<Filter> filters) {
         setFilters(filters);
         return this;
     }
 
     /**
      * <p>
-     * The maximum number of records to include in the response. If more records
-     * exist than the specified MaxRecords value, a pagination token called a
-     * marker is included in the response so that the remaining results can be
+     * The maximum number of records to include in the response. If more records exist than the specified MaxRecords
+     * value, a pagination token called a marker is included in the response so that the remaining results can be
      * retrieved.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of records to include in the response. If more
-     *        records exist than the specified MaxRecords value, a pagination
-     *        token called a marker is included in the response so that the
-     *        remaining results can be retrieved.
+     *        The maximum number of records to include in the response. If more records exist than the specified
+     *        MaxRecords value, a pagination token called a marker is included in the response so that the remaining
+     *        results can be retrieved.
      */
 
     public void setMaxRecords(Integer maxRecords) {
@@ -498,16 +468,14 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of records to include in the response. If more records
-     * exist than the specified MaxRecords value, a pagination token called a
-     * marker is included in the response so that the remaining results can be
+     * The maximum number of records to include in the response. If more records exist than the specified MaxRecords
+     * value, a pagination token called a marker is included in the response so that the remaining results can be
      * retrieved.
      * </p>
      * 
-     * @return The maximum number of records to include in the response. If more
-     *         records exist than the specified MaxRecords value, a pagination
-     *         token called a marker is included in the response so that the
-     *         remaining results can be retrieved.
+     * @return The maximum number of records to include in the response. If more records exist than the specified
+     *         MaxRecords value, a pagination token called a marker is included in the response so that the remaining
+     *         results can be retrieved.
      */
 
     public Integer getMaxRecords() {
@@ -516,19 +484,16 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of records to include in the response. If more records
-     * exist than the specified MaxRecords value, a pagination token called a
-     * marker is included in the response so that the remaining results can be
+     * The maximum number of records to include in the response. If more records exist than the specified MaxRecords
+     * value, a pagination token called a marker is included in the response so that the remaining results can be
      * retrieved.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of records to include in the response. If more
-     *        records exist than the specified MaxRecords value, a pagination
-     *        token called a marker is included in the response so that the
-     *        remaining results can be retrieved.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of records to include in the response. If more records exist than the specified
+     *        MaxRecords value, a pagination token called a marker is included in the response so that the remaining
+     *        results can be retrieved.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBLogFilesRequest withMaxRecords(Integer maxRecords) {
@@ -538,15 +503,13 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The pagination token provided in the previous request. If this parameter
-     * is specified the response includes only records beyond the marker, up to
-     * MaxRecords.
+     * The pagination token provided in the previous request. If this parameter is specified the response includes only
+     * records beyond the marker, up to MaxRecords.
      * </p>
      * 
      * @param marker
-     *        The pagination token provided in the previous request. If this
-     *        parameter is specified the response includes only records beyond
-     *        the marker, up to MaxRecords.
+     *        The pagination token provided in the previous request. If this parameter is specified the response
+     *        includes only records beyond the marker, up to MaxRecords.
      */
 
     public void setMarker(String marker) {
@@ -555,14 +518,12 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The pagination token provided in the previous request. If this parameter
-     * is specified the response includes only records beyond the marker, up to
-     * MaxRecords.
+     * The pagination token provided in the previous request. If this parameter is specified the response includes only
+     * records beyond the marker, up to MaxRecords.
      * </p>
      * 
-     * @return The pagination token provided in the previous request. If this
-     *         parameter is specified the response includes only records beyond
-     *         the marker, up to MaxRecords.
+     * @return The pagination token provided in the previous request. If this parameter is specified the response
+     *         includes only records beyond the marker, up to MaxRecords.
      */
 
     public String getMarker() {
@@ -571,17 +532,14 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The pagination token provided in the previous request. If this parameter
-     * is specified the response includes only records beyond the marker, up to
-     * MaxRecords.
+     * The pagination token provided in the previous request. If this parameter is specified the response includes only
+     * records beyond the marker, up to MaxRecords.
      * </p>
      * 
      * @param marker
-     *        The pagination token provided in the previous request. If this
-     *        parameter is specified the response includes only records beyond
-     *        the marker, up to MaxRecords.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The pagination token provided in the previous request. If this parameter is specified the response
+     *        includes only records beyond the marker, up to MaxRecords.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBLogFilesRequest withMarker(String marker) {
@@ -590,8 +548,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -602,20 +559,19 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBInstanceIdentifier() != null)
-            sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier()
-                    + ",");
+            sb.append("DBInstanceIdentifier: ").append(getDBInstanceIdentifier()).append(",");
         if (getFilenameContains() != null)
-            sb.append("FilenameContains: " + getFilenameContains() + ",");
+            sb.append("FilenameContains: ").append(getFilenameContains()).append(",");
         if (getFileLastWritten() != null)
-            sb.append("FileLastWritten: " + getFileLastWritten() + ",");
+            sb.append("FileLastWritten: ").append(getFileLastWritten()).append(",");
         if (getFileSize() != null)
-            sb.append("FileSize: " + getFileSize() + ",");
+            sb.append("FileSize: ").append(getFileSize()).append(",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters() + ",");
+            sb.append("Filters: ").append(getFilters()).append(",");
         if (getMaxRecords() != null)
-            sb.append("MaxRecords: " + getMaxRecords() + ",");
+            sb.append("MaxRecords: ").append(getMaxRecords()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -630,45 +586,33 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeDBLogFilesRequest == false)
             return false;
         DescribeDBLogFilesRequest other = (DescribeDBLogFilesRequest) obj;
-        if (other.getDBInstanceIdentifier() == null
-                ^ this.getDBInstanceIdentifier() == null)
+        if (other.getDBInstanceIdentifier() == null ^ this.getDBInstanceIdentifier() == null)
             return false;
-        if (other.getDBInstanceIdentifier() != null
-                && other.getDBInstanceIdentifier().equals(
-                        this.getDBInstanceIdentifier()) == false)
+        if (other.getDBInstanceIdentifier() != null && other.getDBInstanceIdentifier().equals(this.getDBInstanceIdentifier()) == false)
             return false;
-        if (other.getFilenameContains() == null
-                ^ this.getFilenameContains() == null)
+        if (other.getFilenameContains() == null ^ this.getFilenameContains() == null)
             return false;
-        if (other.getFilenameContains() != null
-                && other.getFilenameContains().equals(
-                        this.getFilenameContains()) == false)
+        if (other.getFilenameContains() != null && other.getFilenameContains().equals(this.getFilenameContains()) == false)
             return false;
-        if (other.getFileLastWritten() == null
-                ^ this.getFileLastWritten() == null)
+        if (other.getFileLastWritten() == null ^ this.getFileLastWritten() == null)
             return false;
-        if (other.getFileLastWritten() != null
-                && other.getFileLastWritten().equals(this.getFileLastWritten()) == false)
+        if (other.getFileLastWritten() != null && other.getFileLastWritten().equals(this.getFileLastWritten()) == false)
             return false;
         if (other.getFileSize() == null ^ this.getFileSize() == null)
             return false;
-        if (other.getFileSize() != null
-                && other.getFileSize().equals(this.getFileSize()) == false)
+        if (other.getFileSize() != null && other.getFileSize().equals(this.getFileSize()) == false)
             return false;
         if (other.getFilters() == null ^ this.getFilters() == null)
             return false;
-        if (other.getFilters() != null
-                && other.getFilters().equals(this.getFilters()) == false)
+        if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false)
             return false;
         if (other.getMaxRecords() == null ^ this.getMaxRecords() == null)
             return false;
-        if (other.getMaxRecords() != null
-                && other.getMaxRecords().equals(this.getMaxRecords()) == false)
+        if (other.getMaxRecords() != null && other.getMaxRecords().equals(this.getMaxRecords()) == false)
             return false;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         return true;
     }
@@ -678,26 +622,13 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDBInstanceIdentifier() == null) ? 0
-                        : getDBInstanceIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getFilenameContains() == null) ? 0 : getFilenameContains()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getFileLastWritten() == null) ? 0 : getFileLastWritten()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getFileSize() == null) ? 0 : getFileSize().hashCode());
-        hashCode = prime * hashCode
-                + ((getFilters() == null) ? 0 : getFilters().hashCode());
-        hashCode = prime * hashCode
-                + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getDBInstanceIdentifier() == null) ? 0 : getDBInstanceIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getFilenameContains() == null) ? 0 : getFilenameContains().hashCode());
+        hashCode = prime * hashCode + ((getFileLastWritten() == null) ? 0 : getFileLastWritten().hashCode());
+        hashCode = prime * hashCode + ((getFileSize() == null) ? 0 : getFileSize().hashCode());
+        hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());
+        hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
         return hashCode;
     }
 
@@ -705,4 +636,5 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest
     public DescribeDBLogFilesRequest clone() {
         return (DescribeDBLogFilesRequest) super.clone();
     }
+
 }

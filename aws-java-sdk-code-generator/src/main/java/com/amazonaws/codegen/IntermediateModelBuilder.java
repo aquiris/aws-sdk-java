@@ -15,13 +15,22 @@
 
 package com.amazonaws.codegen;
 
+import com.amazonaws.auth.SignerFactory;
 import com.amazonaws.codegen.customization.CodegenCustomizationProcessor;
 import com.amazonaws.codegen.customization.processors.DefaultCustomizationProcessor;
 import com.amazonaws.codegen.internal.TypeUtils;
 import com.amazonaws.codegen.internal.Utils;
 import com.amazonaws.codegen.model.config.BasicCodeGenConfig;
 import com.amazonaws.codegen.model.config.customization.CustomizationConfig;
-import com.amazonaws.codegen.model.intermediate.*;
+import com.amazonaws.codegen.model.intermediate.AuthorizerModel;
+import com.amazonaws.codegen.model.intermediate.IntermediateModel;
+import com.amazonaws.codegen.model.intermediate.MemberModel;
+import com.amazonaws.codegen.model.intermediate.OperationModel;
+import com.amazonaws.codegen.model.intermediate.Protocol;
+import com.amazonaws.codegen.model.intermediate.ServiceExamples;
+import com.amazonaws.codegen.model.intermediate.ShapeModel;
+import com.amazonaws.codegen.model.intermediate.WaiterDefinitionModel;
+import com.amazonaws.codegen.model.service.AuthType;
 import com.amazonaws.codegen.model.service.Operation;
 import com.amazonaws.codegen.model.service.ServiceModel;
 import com.amazonaws.codegen.model.service.Waiters;
@@ -54,19 +63,22 @@ public class IntermediateModelBuilder {
     private final TypeUtils typeUtils;
     private final List<IntermediateModelShapeProcessor> shapeProcessors;
     private final Waiters waiters;
+    private final String codeGenBinDirectory;
 
-    public IntermediateModelBuilder(CustomizationConfig customConfig,
-                                    BasicCodeGenConfig codeGenConfig, ServiceModel service,
-                                    ServiceExamples examples, Waiters waiters) {
-        this.customConfig = customConfig;
-        this.codeGenConfig = codeGenConfig;
-        this.service = service;
-        this.examples = examples;
+    public IntermediateModelBuilder(C2jModels models,
+                                    String codeGenBinDirectory) {
+        this.customConfig = models.customizationConfig();
+        this.codeGenConfig = models.codeGenConfig();
+        this.service = models.serviceModel();
+        this.examples = models.examplesModel();
         this.namingStrategy = new DefaultNamingStrategy(service, codeGenConfig, customConfig);
         this.typeUtils = new TypeUtils(namingStrategy);
         this.shapeProcessors = createShapeProcessors();
-        this.waiters = waiters;
+        this.waiters = models.waitersModel();
+        this.codeGenBinDirectory = codeGenBinDirectory;
     }
+
+
 
     /**
      * Create default shape processors.
@@ -83,6 +95,12 @@ public class IntermediateModelBuilder {
     }
 
     public IntermediateModel build() throws IOException{
+        // Note: This needs to come before any pre/post processing of the
+        // models, as the transformer must have access to the original shapes,
+        // before any customizations have been applied (which modifies them).
+        System.out.println("Applying customizations to examples...");
+        new ExamplesCustomizer(service, customConfig).applyCustomizationsToExamples(examples);
+        System.out.println("Examples customized.");
 
         CodegenCustomizationProcessor customization = DefaultCustomizationProcessor
                 .getProcessorFor(customConfig);
@@ -92,9 +110,11 @@ public class IntermediateModelBuilder {
         final Map<String, OperationModel> operations = new TreeMap<>();
         final Map<String, ShapeModel> shapes = new HashMap<>();
         final Map<String, WaiterDefinitionModel> waiters = new HashMap<>();
+        final Map<String, AuthorizerModel> authorizers = new HashMap<>();
 
         operations.putAll(new AddOperations(this).constructOperations());
-        waiters.putAll(new AddWaiters(this.waiters, operations).constructWaiters());
+        waiters.putAll(new AddWaiters(this.waiters, operations, codeGenBinDirectory).constructWaiters());
+        authorizers.putAll(new AddCustomAuthorizers(this.service, getNamingStrategy()).constructAuthorizers());
 
         for (IntermediateModelShapeProcessor processor : shapeProcessors) {
             shapes.putAll(processor.process(Collections.unmodifiableMap(operations),
@@ -105,7 +125,7 @@ public class IntermediateModelBuilder {
 
         IntermediateModel fullModel = new IntermediateModel(
                 constructMetadata(service, codeGenConfig, customConfig), operations, shapes,
-                customConfig, examples, waiters);
+                customConfig, examples, waiters, authorizers);
 
         customization.postprocess(fullModel);
 
@@ -114,17 +134,19 @@ public class IntermediateModelBuilder {
 
         Map<String, ShapeModel> trimmedShapes = removeUnusedShapes(fullModel);
 
-        System.out.println(shapes.size() + " shapes remained after removing unused shapes.");
+        System.out.println(trimmedShapes.size() + " shapes remained after removing unused shapes.");
 
         IntermediateModel trimmedModel = new IntermediateModel(fullModel.getMetadata(),
                                                                fullModel.getOperations(),
                                                                trimmedShapes,
                                                                fullModel.getCustomizationConfig(),
                                                                fullModel.getExamples(),
-                                                               fullModel.getWaiters());
+                                                               fullModel.getWaiters(),
+                                                               fullModel.getCustomAuthorizers());
 
         linkMembersToShapes(trimmedModel);
         linkOperationsToInputOutputShapes(trimmedModel);
+        linkCustomAuthorizationToRequestShapes(trimmedModel);
 
         return trimmedModel;
     }
@@ -148,9 +170,8 @@ public class IntermediateModelBuilder {
     private void linkOperationsToInputOutputShapes(IntermediateModel model) {
         for (Map.Entry<String, OperationModel> entry : model.getOperations().entrySet()) {
             Operation operation = service.getOperations().get(entry.getKey());
-            if (operation.getInput() != null) {
-                String inputShapeName = operation.getInput().getShape();
-                entry.getValue().setInputShape(model.getShapeByC2jName(inputShapeName));
+            if (entry.getValue().getInput() != null) {
+                entry.getValue().setInputShape(model.getShapes().get(entry.getValue().getInput().getSimpleType()));
             }
             if (operation.getOutput() != null) {
                 String outputShapeName = operation.getOutput().getShape();
@@ -167,6 +188,56 @@ public class IntermediateModelBuilder {
 
         }
     }
+
+    private void linkCustomAuthorizationToRequestShapes(final IntermediateModel model) {
+        model.getOperations().values().stream()
+                .filter(OperationModel::isAuthenticated)
+                .forEach(operation -> {
+                    Operation c2jOperation = service.getOperation(operation.getOperationName());
+
+                    ShapeModel inputShape = operation.getInputShape();
+                    if (inputShape == null) {
+                        throw new IllegalStateException(String.format("Operation %s has unknown input shape", operation.getOperationName()));
+                    }
+
+                    if (model.getMetadata().getProtocol() == Protocol.API_GATEWAY) {
+                        linkCustomAuthorizationToRequestShapeForApiGatewayProtocol(model, c2jOperation, inputShape);
+                    } else {
+                        linkCustomAuthorizationToRequestShapeForAwsProtocol(c2jOperation.getAuthType(), inputShape);
+                    }
+                });
+    }
+
+    private void linkCustomAuthorizationToRequestShapeForApiGatewayProtocol(IntermediateModel model, Operation c2jOperation, ShapeModel inputShape) {
+        if(AuthType.CUSTOM.equals(c2jOperation.getAuthType())) {
+            AuthorizerModel auth = model.getCustomAuthorizers().get(c2jOperation.getAuthorizer());
+            if (auth == null) {
+                throw new IllegalStateException(String.format("Required custom auth not defined: %s", c2jOperation.getAuthorizer()));
+            }
+            inputShape.setRequestSignerClassFqcn(model.getMetadata().getPackageName() + ".auth." + auth.getInterfaceName());
+        } else if (AuthType.IAM.equals(c2jOperation.getAuthType())) {
+            model.getMetadata().setRequiresIamSigners(true);
+            inputShape.setRequestSignerClassFqcn("com.amazonaws.opensdk.protect.auth.IamRequestSigner");
+        }
+    }
+
+    private void linkCustomAuthorizationToRequestShapeForAwsProtocol(AuthType authType, ShapeModel inputShape) {
+        switch (authType) {
+            case V4:
+                inputShape.setSignerType(SignerFactory.VERSION_FOUR_SIGNER);
+                break;
+            case V4_UNSIGNED_BODY:
+                inputShape.setSignerType(SignerFactory.VERSION_FOUR_UNSIGNED_PAYLOAD_SIGNER);
+                break;
+            case NONE:
+            case IAM:
+                // just ignore this, this is the default value but only applicable to APIG generated clients
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported authtype for AWS Request: " + authType);
+        }
+    }
+
 
     public CustomizationConfig getCustomConfig() {
         return customConfig;

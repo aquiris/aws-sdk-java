@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisfirehose.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about a delivery stream.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/DeliveryStreamDescription" target="_top">AWS
+ *      API Documentation</a>
  */
-public class DeliveryStreamDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeliveryStreamDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -43,11 +48,9 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
     private String deliveryStreamStatus;
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the
-     * destination is updated for the delivery stream, the VersionId is changed,
-     * and the current VersionId is required when updating the destination. This
-     * is so that the service knows it is applying the changes to the correct
-     * version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      */
     private String versionId;
@@ -108,12 +111,10 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param deliveryStreamName
      *        The name of the delivery stream.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeliveryStreamDescription withDeliveryStreamName(
-            String deliveryStreamName) {
+    public DeliveryStreamDescription withDeliveryStreamName(String deliveryStreamName) {
         setDeliveryStreamName(deliveryStreamName);
         return this;
     }
@@ -150,12 +151,10 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param deliveryStreamARN
      *        The Amazon Resource Name (ARN) of the delivery stream.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeliveryStreamDescription withDeliveryStreamARN(
-            String deliveryStreamARN) {
+    public DeliveryStreamDescription withDeliveryStreamARN(String deliveryStreamARN) {
         setDeliveryStreamARN(deliveryStreamARN);
         return this;
     }
@@ -194,13 +193,11 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param deliveryStreamStatus
      *        The status of the delivery stream.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeliveryStreamStatus
      */
 
-    public DeliveryStreamDescription withDeliveryStreamStatus(
-            String deliveryStreamStatus) {
+    public DeliveryStreamDescription withDeliveryStreamStatus(String deliveryStreamStatus) {
         setDeliveryStreamStatus(deliveryStreamStatus);
         return this;
     }
@@ -215,8 +212,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * @see DeliveryStreamStatus
      */
 
-    public void setDeliveryStreamStatus(
-            DeliveryStreamStatus deliveryStreamStatus) {
+    public void setDeliveryStreamStatus(DeliveryStreamStatus deliveryStreamStatus) {
         this.deliveryStreamStatus = deliveryStreamStatus.toString();
     }
 
@@ -227,33 +223,26 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param deliveryStreamStatus
      *        The status of the delivery stream.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeliveryStreamStatus
      */
 
-    public DeliveryStreamDescription withDeliveryStreamStatus(
-            DeliveryStreamStatus deliveryStreamStatus) {
+    public DeliveryStreamDescription withDeliveryStreamStatus(DeliveryStreamStatus deliveryStreamStatus) {
         setDeliveryStreamStatus(deliveryStreamStatus);
         return this;
     }
 
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the
-     * destination is updated for the delivery stream, the VersionId is changed,
-     * and the current VersionId is required when updating the destination. This
-     * is so that the service knows it is applying the changes to the correct
-     * version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      * 
      * @param versionId
-     *        Used when calling the <a>UpdateDestination</a> operation. Each
-     *        time the destination is updated for the delivery stream, the
-     *        VersionId is changed, and the current VersionId is required when
-     *        updating the destination. This is so that the service knows it is
-     *        applying the changes to the correct version of the delivery
-     *        stream.
+     *        Each time the destination is updated for a delivery stream, the version ID is changed, and the current
+     *        version ID is required when updating the destination. This is so that the service knows it is applying the
+     *        changes to the correct version of the delivery stream.
      */
 
     public void setVersionId(String versionId) {
@@ -262,19 +251,14 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the
-     * destination is updated for the delivery stream, the VersionId is changed,
-     * and the current VersionId is required when updating the destination. This
-     * is so that the service knows it is applying the changes to the correct
-     * version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      * 
-     * @return Used when calling the <a>UpdateDestination</a> operation. Each
-     *         time the destination is updated for the delivery stream, the
-     *         VersionId is changed, and the current VersionId is required when
-     *         updating the destination. This is so that the service knows it is
-     *         applying the changes to the correct version of the delivery
-     *         stream.
+     * @return Each time the destination is updated for a delivery stream, the version ID is changed, and the current
+     *         version ID is required when updating the destination. This is so that the service knows it is applying
+     *         the changes to the correct version of the delivery stream.
      */
 
     public String getVersionId() {
@@ -283,22 +267,16 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Used when calling the <a>UpdateDestination</a> operation. Each time the
-     * destination is updated for the delivery stream, the VersionId is changed,
-     * and the current VersionId is required when updating the destination. This
-     * is so that the service knows it is applying the changes to the correct
-     * version of the delivery stream.
+     * Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID
+     * is required when updating the destination. This is so that the service knows it is applying the changes to the
+     * correct version of the delivery stream.
      * </p>
      * 
      * @param versionId
-     *        Used when calling the <a>UpdateDestination</a> operation. Each
-     *        time the destination is updated for the delivery stream, the
-     *        VersionId is changed, and the current VersionId is required when
-     *        updating the destination. This is so that the service knows it is
-     *        applying the changes to the correct version of the delivery
-     *        stream.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Each time the destination is updated for a delivery stream, the version ID is changed, and the current
+     *        version ID is required when updating the destination. This is so that the service knows it is applying the
+     *        changes to the correct version of the delivery stream.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeliveryStreamDescription withVersionId(String versionId) {
@@ -338,12 +316,10 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param createTimestamp
      *        The date and time that the delivery stream was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeliveryStreamDescription withCreateTimestamp(
-            java.util.Date createTimestamp) {
+    public DeliveryStreamDescription withCreateTimestamp(java.util.Date createTimestamp) {
         setCreateTimestamp(createTimestamp);
         return this;
     }
@@ -380,12 +356,10 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param lastUpdateTimestamp
      *        The date and time that the delivery stream was last updated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeliveryStreamDescription withLastUpdateTimestamp(
-            java.util.Date lastUpdateTimestamp) {
+    public DeliveryStreamDescription withLastUpdateTimestamp(java.util.Date lastUpdateTimestamp) {
         setLastUpdateTimestamp(lastUpdateTimestamp);
         return this;
     }
@@ -411,15 +385,13 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      *        The destinations.
      */
 
-    public void setDestinations(
-            java.util.Collection<DestinationDescription> destinations) {
+    public void setDestinations(java.util.Collection<DestinationDescription> destinations) {
         if (destinations == null) {
             this.destinations = null;
             return;
         }
 
-        this.destinations = new java.util.ArrayList<DestinationDescription>(
-                destinations);
+        this.destinations = new java.util.ArrayList<DestinationDescription>(destinations);
     }
 
     /**
@@ -427,23 +399,19 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * The destinations.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDestinations(java.util.Collection)} or
-     * {@link #withDestinations(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDestinations(java.util.Collection)} or {@link #withDestinations(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param destinations
      *        The destinations.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeliveryStreamDescription withDestinations(
-            DestinationDescription... destinations) {
+    public DeliveryStreamDescription withDestinations(DestinationDescription... destinations) {
         if (this.destinations == null) {
-            setDestinations(new java.util.ArrayList<DestinationDescription>(
-                    destinations.length));
+            setDestinations(new java.util.ArrayList<DestinationDescription>(destinations.length));
         }
         for (DestinationDescription ele : destinations) {
             this.destinations.add(ele);
@@ -458,12 +426,10 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param destinations
      *        The destinations.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeliveryStreamDescription withDestinations(
-            java.util.Collection<DestinationDescription> destinations) {
+    public DeliveryStreamDescription withDestinations(java.util.Collection<DestinationDescription> destinations) {
         setDestinations(destinations);
         return this;
     }
@@ -500,12 +466,10 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
      * 
      * @param hasMoreDestinations
      *        Indicates whether there are more destinations available to list.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeliveryStreamDescription withHasMoreDestinations(
-            Boolean hasMoreDestinations) {
+    public DeliveryStreamDescription withHasMoreDestinations(Boolean hasMoreDestinations) {
         setHasMoreDestinations(hasMoreDestinations);
         return this;
     }
@@ -523,8 +487,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -535,22 +498,21 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeliveryStreamName() != null)
-            sb.append("DeliveryStreamName: " + getDeliveryStreamName() + ",");
+            sb.append("DeliveryStreamName: ").append(getDeliveryStreamName()).append(",");
         if (getDeliveryStreamARN() != null)
-            sb.append("DeliveryStreamARN: " + getDeliveryStreamARN() + ",");
+            sb.append("DeliveryStreamARN: ").append(getDeliveryStreamARN()).append(",");
         if (getDeliveryStreamStatus() != null)
-            sb.append("DeliveryStreamStatus: " + getDeliveryStreamStatus()
-                    + ",");
+            sb.append("DeliveryStreamStatus: ").append(getDeliveryStreamStatus()).append(",");
         if (getVersionId() != null)
-            sb.append("VersionId: " + getVersionId() + ",");
+            sb.append("VersionId: ").append(getVersionId()).append(",");
         if (getCreateTimestamp() != null)
-            sb.append("CreateTimestamp: " + getCreateTimestamp() + ",");
+            sb.append("CreateTimestamp: ").append(getCreateTimestamp()).append(",");
         if (getLastUpdateTimestamp() != null)
-            sb.append("LastUpdateTimestamp: " + getLastUpdateTimestamp() + ",");
+            sb.append("LastUpdateTimestamp: ").append(getLastUpdateTimestamp()).append(",");
         if (getDestinations() != null)
-            sb.append("Destinations: " + getDestinations() + ",");
+            sb.append("Destinations: ").append(getDestinations()).append(",");
         if (getHasMoreDestinations() != null)
-            sb.append("HasMoreDestinations: " + getHasMoreDestinations());
+            sb.append("HasMoreDestinations: ").append(getHasMoreDestinations());
         sb.append("}");
         return sb.toString();
     }
@@ -565,56 +527,37 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
         if (obj instanceof DeliveryStreamDescription == false)
             return false;
         DeliveryStreamDescription other = (DeliveryStreamDescription) obj;
-        if (other.getDeliveryStreamName() == null
-                ^ this.getDeliveryStreamName() == null)
+        if (other.getDeliveryStreamName() == null ^ this.getDeliveryStreamName() == null)
             return false;
-        if (other.getDeliveryStreamName() != null
-                && other.getDeliveryStreamName().equals(
-                        this.getDeliveryStreamName()) == false)
+        if (other.getDeliveryStreamName() != null && other.getDeliveryStreamName().equals(this.getDeliveryStreamName()) == false)
             return false;
-        if (other.getDeliveryStreamARN() == null
-                ^ this.getDeliveryStreamARN() == null)
+        if (other.getDeliveryStreamARN() == null ^ this.getDeliveryStreamARN() == null)
             return false;
-        if (other.getDeliveryStreamARN() != null
-                && other.getDeliveryStreamARN().equals(
-                        this.getDeliveryStreamARN()) == false)
+        if (other.getDeliveryStreamARN() != null && other.getDeliveryStreamARN().equals(this.getDeliveryStreamARN()) == false)
             return false;
-        if (other.getDeliveryStreamStatus() == null
-                ^ this.getDeliveryStreamStatus() == null)
+        if (other.getDeliveryStreamStatus() == null ^ this.getDeliveryStreamStatus() == null)
             return false;
-        if (other.getDeliveryStreamStatus() != null
-                && other.getDeliveryStreamStatus().equals(
-                        this.getDeliveryStreamStatus()) == false)
+        if (other.getDeliveryStreamStatus() != null && other.getDeliveryStreamStatus().equals(this.getDeliveryStreamStatus()) == false)
             return false;
         if (other.getVersionId() == null ^ this.getVersionId() == null)
             return false;
-        if (other.getVersionId() != null
-                && other.getVersionId().equals(this.getVersionId()) == false)
+        if (other.getVersionId() != null && other.getVersionId().equals(this.getVersionId()) == false)
             return false;
-        if (other.getCreateTimestamp() == null
-                ^ this.getCreateTimestamp() == null)
+        if (other.getCreateTimestamp() == null ^ this.getCreateTimestamp() == null)
             return false;
-        if (other.getCreateTimestamp() != null
-                && other.getCreateTimestamp().equals(this.getCreateTimestamp()) == false)
+        if (other.getCreateTimestamp() != null && other.getCreateTimestamp().equals(this.getCreateTimestamp()) == false)
             return false;
-        if (other.getLastUpdateTimestamp() == null
-                ^ this.getLastUpdateTimestamp() == null)
+        if (other.getLastUpdateTimestamp() == null ^ this.getLastUpdateTimestamp() == null)
             return false;
-        if (other.getLastUpdateTimestamp() != null
-                && other.getLastUpdateTimestamp().equals(
-                        this.getLastUpdateTimestamp()) == false)
+        if (other.getLastUpdateTimestamp() != null && other.getLastUpdateTimestamp().equals(this.getLastUpdateTimestamp()) == false)
             return false;
         if (other.getDestinations() == null ^ this.getDestinations() == null)
             return false;
-        if (other.getDestinations() != null
-                && other.getDestinations().equals(this.getDestinations()) == false)
+        if (other.getDestinations() != null && other.getDestinations().equals(this.getDestinations()) == false)
             return false;
-        if (other.getHasMoreDestinations() == null
-                ^ this.getHasMoreDestinations() == null)
+        if (other.getHasMoreDestinations() == null ^ this.getHasMoreDestinations() == null)
             return false;
-        if (other.getHasMoreDestinations() != null
-                && other.getHasMoreDestinations().equals(
-                        this.getHasMoreDestinations()) == false)
+        if (other.getHasMoreDestinations() != null && other.getHasMoreDestinations().equals(this.getHasMoreDestinations()) == false)
             return false;
         return true;
     }
@@ -624,36 +567,14 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDeliveryStreamName() == null) ? 0
-                        : getDeliveryStreamName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDeliveryStreamARN() == null) ? 0
-                        : getDeliveryStreamARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDeliveryStreamStatus() == null) ? 0
-                        : getDeliveryStreamStatus().hashCode());
-        hashCode = prime * hashCode
-                + ((getVersionId() == null) ? 0 : getVersionId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreateTimestamp() == null) ? 0 : getCreateTimestamp()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getLastUpdateTimestamp() == null) ? 0
-                        : getLastUpdateTimestamp().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDestinations() == null) ? 0 : getDestinations()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getHasMoreDestinations() == null) ? 0
-                        : getHasMoreDestinations().hashCode());
+        hashCode = prime * hashCode + ((getDeliveryStreamName() == null) ? 0 : getDeliveryStreamName().hashCode());
+        hashCode = prime * hashCode + ((getDeliveryStreamARN() == null) ? 0 : getDeliveryStreamARN().hashCode());
+        hashCode = prime * hashCode + ((getDeliveryStreamStatus() == null) ? 0 : getDeliveryStreamStatus().hashCode());
+        hashCode = prime * hashCode + ((getVersionId() == null) ? 0 : getVersionId().hashCode());
+        hashCode = prime * hashCode + ((getCreateTimestamp() == null) ? 0 : getCreateTimestamp().hashCode());
+        hashCode = prime * hashCode + ((getLastUpdateTimestamp() == null) ? 0 : getLastUpdateTimestamp().hashCode());
+        hashCode = prime * hashCode + ((getDestinations() == null) ? 0 : getDestinations().hashCode());
+        hashCode = prime * hashCode + ((getHasMoreDestinations() == null) ? 0 : getHasMoreDestinations().hashCode());
         return hashCode;
     }
 
@@ -662,9 +583,13 @@ public class DeliveryStreamDescription implements Serializable, Cloneable {
         try {
             return (DeliveryStreamDescription) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisfirehose.model.transform.DeliveryStreamDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

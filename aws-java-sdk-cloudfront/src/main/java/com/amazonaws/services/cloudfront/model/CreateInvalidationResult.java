@@ -1,41 +1,54 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
+ * <p>
  * The returned result of the corresponding request.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateInvalidation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateInvalidationResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateInvalidationResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
-     * The fully qualified URI of the distribution and invalidation batch
-     * request, including the Invalidation ID.
+     * <p>
+     * The fully qualified URI of the distribution and invalidation batch request, including the
+     * <code>Invalidation ID</code>.
+     * </p>
      */
     private String location;
-    /** The invalidation's information. */
+    /**
+     * <p>
+     * The invalidation's information.
+     * </p>
+     */
     private Invalidation invalidation;
 
     /**
-     * The fully qualified URI of the distribution and invalidation batch
-     * request, including the Invalidation ID.
+     * <p>
+     * The fully qualified URI of the distribution and invalidation batch request, including the
+     * <code>Invalidation ID</code>.
+     * </p>
      * 
      * @param location
-     *        The fully qualified URI of the distribution and invalidation batch
-     *        request, including the Invalidation ID.
+     *        The fully qualified URI of the distribution and invalidation batch request, including the
+     *        <code>Invalidation ID</code>.
      */
 
     public void setLocation(String location) {
@@ -43,11 +56,13 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
     }
 
     /**
-     * The fully qualified URI of the distribution and invalidation batch
-     * request, including the Invalidation ID.
+     * <p>
+     * The fully qualified URI of the distribution and invalidation batch request, including the
+     * <code>Invalidation ID</code>.
+     * </p>
      * 
-     * @return The fully qualified URI of the distribution and invalidation
-     *         batch request, including the Invalidation ID.
+     * @return The fully qualified URI of the distribution and invalidation batch request, including the
+     *         <code>Invalidation ID</code>.
      */
 
     public String getLocation() {
@@ -55,14 +70,15 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
     }
 
     /**
-     * The fully qualified URI of the distribution and invalidation batch
-     * request, including the Invalidation ID.
+     * <p>
+     * The fully qualified URI of the distribution and invalidation batch request, including the
+     * <code>Invalidation ID</code>.
+     * </p>
      * 
      * @param location
-     *        The fully qualified URI of the distribution and invalidation batch
-     *        request, including the Invalidation ID.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The fully qualified URI of the distribution and invalidation batch request, including the
+     *        <code>Invalidation ID</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateInvalidationResult withLocation(String location) {
@@ -71,7 +87,9 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * The invalidation's information.
+     * </p>
      * 
      * @param invalidation
      *        The invalidation's information.
@@ -82,7 +100,9 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * The invalidation's information.
+     * </p>
      * 
      * @return The invalidation's information.
      */
@@ -92,12 +112,13 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
      * The invalidation's information.
+     * </p>
      * 
      * @param invalidation
      *        The invalidation's information.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateInvalidationResult withInvalidation(Invalidation invalidation) {
@@ -106,8 +127,7 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -118,9 +138,9 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLocation() != null)
-            sb.append("Location: " + getLocation() + ",");
+            sb.append("Location: ").append(getLocation()).append(",");
         if (getInvalidation() != null)
-            sb.append("Invalidation: " + getInvalidation());
+            sb.append("Invalidation: ").append(getInvalidation());
         sb.append("}");
         return sb.toString();
     }
@@ -137,13 +157,11 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
         CreateInvalidationResult other = (CreateInvalidationResult) obj;
         if (other.getLocation() == null ^ this.getLocation() == null)
             return false;
-        if (other.getLocation() != null
-                && other.getLocation().equals(this.getLocation()) == false)
+        if (other.getLocation() != null && other.getLocation().equals(this.getLocation()) == false)
             return false;
         if (other.getInvalidation() == null ^ this.getInvalidation() == null)
             return false;
-        if (other.getInvalidation() != null
-                && other.getInvalidation().equals(this.getInvalidation()) == false)
+        if (other.getInvalidation() != null && other.getInvalidation().equals(this.getInvalidation()) == false)
             return false;
         return true;
     }
@@ -153,12 +171,8 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getLocation() == null) ? 0 : getLocation().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getInvalidation() == null) ? 0 : getInvalidation()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode());
+        hashCode = prime * hashCode + ((getInvalidation() == null) ? 0 : getInvalidation().hashCode());
         return hashCode;
     }
 
@@ -167,9 +181,8 @@ public class CreateInvalidationResult implements Serializable, Cloneable {
         try {
             return (CreateInvalidationResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

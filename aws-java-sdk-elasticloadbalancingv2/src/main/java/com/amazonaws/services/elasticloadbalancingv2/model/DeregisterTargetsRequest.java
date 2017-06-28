@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for DeregisterTargets.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeregisterTargets"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeregisterTargetsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,7 +33,8 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
     private String targetGroupArn;
     /**
      * <p>
-     * The targets.
+     * The targets. If you specified a port override when you registered a target, you must specify both the target ID
+     * and the port when you deregister it.
      * </p>
      */
     private java.util.List<TargetDescription> targets;
@@ -70,8 +71,7 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
      * 
      * @param targetGroupArn
      *        The Amazon Resource Name (ARN) of the target group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeregisterTargetsRequest withTargetGroupArn(String targetGroupArn) {
@@ -81,10 +81,12 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The targets.
+     * The targets. If you specified a port override when you registered a target, you must specify both the target ID
+     * and the port when you deregister it.
      * </p>
      * 
-     * @return The targets.
+     * @return The targets. If you specified a port override when you registered a target, you must specify both the
+     *         target ID and the port when you deregister it.
      */
 
     public java.util.List<TargetDescription> getTargets() {
@@ -93,11 +95,13 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The targets.
+     * The targets. If you specified a port override when you registered a target, you must specify both the target ID
+     * and the port when you deregister it.
      * </p>
      * 
      * @param targets
-     *        The targets.
+     *        The targets. If you specified a port override when you registered a target, you must specify both the
+     *        target ID and the port when you deregister it.
      */
 
     public void setTargets(java.util.Collection<TargetDescription> targets) {
@@ -111,25 +115,24 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The targets.
+     * The targets. If you specified a port override when you registered a target, you must specify both the target ID
+     * and the port when you deregister it.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTargets(java.util.Collection)} or
-     * {@link #withTargets(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTargets(java.util.Collection)} or {@link #withTargets(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param targets
-     *        The targets.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The targets. If you specified a port override when you registered a target, you must specify both the
+     *        target ID and the port when you deregister it.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeregisterTargetsRequest withTargets(TargetDescription... targets) {
         if (this.targets == null) {
-            setTargets(new java.util.ArrayList<TargetDescription>(
-                    targets.length));
+            setTargets(new java.util.ArrayList<TargetDescription>(targets.length));
         }
         for (TargetDescription ele : targets) {
             this.targets.add(ele);
@@ -139,24 +142,23 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The targets.
+     * The targets. If you specified a port override when you registered a target, you must specify both the target ID
+     * and the port when you deregister it.
      * </p>
      * 
      * @param targets
-     *        The targets.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The targets. If you specified a port override when you registered a target, you must specify both the
+     *        target ID and the port when you deregister it.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeregisterTargetsRequest withTargets(
-            java.util.Collection<TargetDescription> targets) {
+    public DeregisterTargetsRequest withTargets(java.util.Collection<TargetDescription> targets) {
         setTargets(targets);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -167,9 +169,9 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetGroupArn() != null)
-            sb.append("TargetGroupArn: " + getTargetGroupArn() + ",");
+            sb.append("TargetGroupArn: ").append(getTargetGroupArn()).append(",");
         if (getTargets() != null)
-            sb.append("Targets: " + getTargets());
+            sb.append("Targets: ").append(getTargets());
         sb.append("}");
         return sb.toString();
     }
@@ -184,16 +186,13 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
         if (obj instanceof DeregisterTargetsRequest == false)
             return false;
         DeregisterTargetsRequest other = (DeregisterTargetsRequest) obj;
-        if (other.getTargetGroupArn() == null
-                ^ this.getTargetGroupArn() == null)
+        if (other.getTargetGroupArn() == null ^ this.getTargetGroupArn() == null)
             return false;
-        if (other.getTargetGroupArn() != null
-                && other.getTargetGroupArn().equals(this.getTargetGroupArn()) == false)
+        if (other.getTargetGroupArn() != null && other.getTargetGroupArn().equals(this.getTargetGroupArn()) == false)
             return false;
         if (other.getTargets() == null ^ this.getTargets() == null)
             return false;
-        if (other.getTargets() != null
-                && other.getTargets().equals(this.getTargets()) == false)
+        if (other.getTargets() != null && other.getTargets().equals(this.getTargets()) == false)
             return false;
         return true;
     }
@@ -203,12 +202,8 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getTargetGroupArn() == null) ? 0 : getTargetGroupArn()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getTargets() == null) ? 0 : getTargets().hashCode());
+        hashCode = prime * hashCode + ((getTargetGroupArn() == null) ? 0 : getTargetGroupArn().hashCode());
+        hashCode = prime * hashCode + ((getTargets() == null) ? 0 : getTargets().hashCode());
         return hashCode;
     }
 
@@ -216,4 +211,5 @@ public class DeregisterTargetsRequest extends AmazonWebServiceRequest implements
     public DeregisterTargetsRequest clone() {
         return (DeregisterTargetsRequest) super.clone();
     }
+
 }

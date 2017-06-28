@@ -1,30 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * A request to get information about a collection of <a>BasePathMapping</a>
- * resources.
+ * A request to get information about a collection of <a>BasePathMapping</a> resources.
  * </p>
  */
-public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetBasePathMappingsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -34,16 +33,13 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
     private String domainName;
     /**
      * <p>
-     * The position of the current <a>BasePathMapping</a> resource in the
-     * collection to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      */
     private String position;
     /**
      * <p>
-     * The maximum number of <a>BasePathMapping</a> resources in the collection
-     * to get information about. The default limit is 25. It should be an
-     * integer between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      */
     private Integer limit;
@@ -80,8 +76,7 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
      * 
      * @param domainName
      *        The domain name of a <a>BasePathMapping</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetBasePathMappingsRequest withDomainName(String domainName) {
@@ -91,13 +86,11 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The position of the current <a>BasePathMapping</a> resource in the
-     * collection to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        The position of the current <a>BasePathMapping</a> resource in the
-     *        collection to get information about.
+     *        The current pagination position in the paged result set.
      */
 
     public void setPosition(String position) {
@@ -106,12 +99,10 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The position of the current <a>BasePathMapping</a> resource in the
-     * collection to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      * 
-     * @return The position of the current <a>BasePathMapping</a> resource in
-     *         the collection to get information about.
+     * @return The current pagination position in the paged result set.
      */
 
     public String getPosition() {
@@ -120,15 +111,12 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The position of the current <a>BasePathMapping</a> resource in the
-     * collection to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        The position of the current <a>BasePathMapping</a> resource in the
-     *        collection to get information about.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The current pagination position in the paged result set.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetBasePathMappingsRequest withPosition(String position) {
@@ -138,15 +126,11 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of <a>BasePathMapping</a> resources in the collection
-     * to get information about. The default limit is 25. It should be an
-     * integer between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of <a>BasePathMapping</a> resources in the
-     *        collection to get information about. The default limit is 25. It
-     *        should be an integer between 1 - 500.
+     *        The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      */
 
     public void setLimit(Integer limit) {
@@ -155,14 +139,10 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of <a>BasePathMapping</a> resources in the collection
-     * to get information about. The default limit is 25. It should be an
-     * integer between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      * 
-     * @return The maximum number of <a>BasePathMapping</a> resources in the
-     *         collection to get information about. The default limit is 25. It
-     *         should be an integer between 1 - 500.
+     * @return The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      */
 
     public Integer getLimit() {
@@ -171,17 +151,12 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of <a>BasePathMapping</a> resources in the collection
-     * to get information about. The default limit is 25. It should be an
-     * integer between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of <a>BasePathMapping</a> resources in the
-     *        collection to get information about. The default limit is 25. It
-     *        should be an integer between 1 - 500.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetBasePathMappingsRequest withLimit(Integer limit) {
@@ -190,8 +165,7 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -202,11 +176,11 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getPosition() != null)
-            sb.append("Position: " + getPosition() + ",");
+            sb.append("Position: ").append(getPosition()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -223,18 +197,15 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
         GetBasePathMappingsRequest other = (GetBasePathMappingsRequest) obj;
         if (other.getDomainName() == null ^ this.getDomainName() == null)
             return false;
-        if (other.getDomainName() != null
-                && other.getDomainName().equals(this.getDomainName()) == false)
+        if (other.getDomainName() != null && other.getDomainName().equals(this.getDomainName()) == false)
             return false;
         if (other.getPosition() == null ^ this.getPosition() == null)
             return false;
-        if (other.getPosition() != null
-                && other.getPosition().equals(this.getPosition()) == false)
+        if (other.getPosition() != null && other.getPosition().equals(this.getPosition()) == false)
             return false;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
-        if (other.getLimit() != null
-                && other.getLimit().equals(this.getLimit()) == false)
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
             return false;
         return true;
     }
@@ -244,12 +215,9 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
-        hashCode = prime * hashCode
-                + ((getPosition() == null) ? 0 : getPosition().hashCode());
-        hashCode = prime * hashCode
-                + ((getLimit() == null) ? 0 : getLimit().hashCode());
+        hashCode = prime * hashCode + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
+        hashCode = prime * hashCode + ((getPosition() == null) ? 0 : getPosition().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;
     }
 
@@ -257,4 +225,5 @@ public class GetBasePathMappingsRequest extends AmazonWebServiceRequest
     public GetBasePathMappingsRequest clone() {
         return (GetBasePathMappingsRequest) super.clone();
     }
+
 }

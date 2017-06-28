@@ -1,26 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
+import com.amazonaws.AmazonWebServiceResult;
 
 /**
- * A simple result wrapper around the ImageAttribute object that was sent over
- * the wire.
+ * A simple result wrapper around the ImageAttribute object that was sent over the wire.
  */
-public class DescribeImageAttributeResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeImageAttributeResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -61,19 +62,16 @@ public class DescribeImageAttributeResult implements Serializable, Cloneable {
      * 
      * @param imageAttribute
      *        Describes an image attribute.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeImageAttributeResult withImageAttribute(
-            ImageAttribute imageAttribute) {
+    public DescribeImageAttributeResult withImageAttribute(ImageAttribute imageAttribute) {
         setImageAttribute(imageAttribute);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -84,7 +82,7 @@ public class DescribeImageAttributeResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getImageAttribute() != null)
-            sb.append("ImageAttribute: " + getImageAttribute());
+            sb.append("ImageAttribute: ").append(getImageAttribute());
         sb.append("}");
         return sb.toString();
     }
@@ -99,11 +97,9 @@ public class DescribeImageAttributeResult implements Serializable, Cloneable {
         if (obj instanceof DescribeImageAttributeResult == false)
             return false;
         DescribeImageAttributeResult other = (DescribeImageAttributeResult) obj;
-        if (other.getImageAttribute() == null
-                ^ this.getImageAttribute() == null)
+        if (other.getImageAttribute() == null ^ this.getImageAttribute() == null)
             return false;
-        if (other.getImageAttribute() != null
-                && other.getImageAttribute().equals(this.getImageAttribute()) == false)
+        if (other.getImageAttribute() != null && other.getImageAttribute().equals(this.getImageAttribute()) == false)
             return false;
         return true;
     }
@@ -113,10 +109,7 @@ public class DescribeImageAttributeResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getImageAttribute() == null) ? 0 : getImageAttribute()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getImageAttribute() == null) ? 0 : getImageAttribute().hashCode());
         return hashCode;
     }
 
@@ -125,9 +118,7 @@ public class DescribeImageAttributeResult implements Serializable, Cloneable {
         try {
             return (DescribeImageAttributeResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

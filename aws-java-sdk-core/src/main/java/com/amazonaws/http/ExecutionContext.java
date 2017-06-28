@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 package com.amazonaws.http;
 
 import com.amazonaws.AmazonWebServiceClient;
+import com.amazonaws.annotation.NotThreadSafe;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.Signer;
@@ -26,7 +27,6 @@ import com.amazonaws.internal.auth.SignerProvider;
 import com.amazonaws.retry.internal.AuthErrorRetryStrategy;
 import com.amazonaws.util.AWSRequestMetrics;
 import com.amazonaws.util.AWSRequestMetricsFullSupport;
-import org.apache.http.annotation.NotThreadSafe;
 
 import java.net.URI;
 import java.util.List;
@@ -202,7 +202,7 @@ public class ExecutionContext {
         private boolean useRequestMetrics;
         private List<RequestHandler2> requestHandler2s;
         private AmazonWebServiceClient awsClient;
-        private SignerProvider signerProvider;
+        private SignerProvider signerProvider = new NoOpSignerProvider();
 
         private Builder() {}
 

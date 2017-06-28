@@ -1,32 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResource" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to
-     * be removed from.
+     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
      * </p>
      */
     private String resourceArn;
@@ -39,13 +41,11 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to
-     * be removed from.
+     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
      * </p>
      * 
      * @param resourceArn
-     *        &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag
-     *        is to be removed from.
+     *        &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
      */
 
     public void setResourceArn(String resourceArn) {
@@ -54,12 +54,10 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to
-     * be removed from.
+     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
      * </p>
      * 
-     * @return &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the
-     *         tag is to be removed from.
+     * @return &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
      */
 
     public String getResourceArn() {
@@ -68,15 +66,12 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to
-     * be removed from.
+     * &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
      * </p>
      * 
      * @param resourceArn
-     *        &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag
-     *        is to be removed from.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        &gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RemoveTagsFromResourceRequest withResourceArn(String resourceArn) {
@@ -119,16 +114,14 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
      * The tag key (name) of the tag to be removed.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTagKeys(java.util.Collection)} or
-     * {@link #withTagKeys(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagKeys(java.util.Collection)} or {@link #withTagKeys(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param tagKeys
      *        The tag key (name) of the tag to be removed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RemoveTagsFromResourceRequest withTagKeys(String... tagKeys) {
@@ -148,19 +141,16 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
      * 
      * @param tagKeys
      *        The tag key (name) of the tag to be removed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RemoveTagsFromResourceRequest withTagKeys(
-            java.util.Collection<String> tagKeys) {
+    public RemoveTagsFromResourceRequest withTagKeys(java.util.Collection<String> tagKeys) {
         setTagKeys(tagKeys);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -171,9 +161,9 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceArn() != null)
-            sb.append("ResourceArn: " + getResourceArn() + ",");
+            sb.append("ResourceArn: ").append(getResourceArn()).append(",");
         if (getTagKeys() != null)
-            sb.append("TagKeys: " + getTagKeys());
+            sb.append("TagKeys: ").append(getTagKeys());
         sb.append("}");
         return sb.toString();
     }
@@ -190,13 +180,11 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
         RemoveTagsFromResourceRequest other = (RemoveTagsFromResourceRequest) obj;
         if (other.getResourceArn() == null ^ this.getResourceArn() == null)
             return false;
-        if (other.getResourceArn() != null
-                && other.getResourceArn().equals(this.getResourceArn()) == false)
+        if (other.getResourceArn() != null && other.getResourceArn().equals(this.getResourceArn()) == false)
             return false;
         if (other.getTagKeys() == null ^ this.getTagKeys() == null)
             return false;
-        if (other.getTagKeys() != null
-                && other.getTagKeys().equals(this.getTagKeys()) == false)
+        if (other.getTagKeys() != null && other.getTagKeys().equals(this.getTagKeys()) == false)
             return false;
         return true;
     }
@@ -206,11 +194,8 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getResourceArn() == null) ? 0 : getResourceArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getTagKeys() == null) ? 0 : getTagKeys().hashCode());
+        hashCode = prime * hashCode + ((getResourceArn() == null) ? 0 : getResourceArn().hashCode());
+        hashCode = prime * hashCode + ((getTagKeys() == null) ? 0 : getTagKeys().hashCode());
         return hashCode;
     }
 
@@ -218,4 +203,5 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest
     public RemoveTagsFromResourceRequest clone() {
         return (RemoveTagsFromResourceRequest) super.clone();
     }
+
 }

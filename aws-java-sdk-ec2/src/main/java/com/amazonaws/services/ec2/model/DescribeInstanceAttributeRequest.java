@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeInstanceAttributeRequestMarshaller;
@@ -24,47 +24,43 @@ import com.amazonaws.services.ec2.model.transform.DescribeInstanceAttributeReque
  * Contains the parameters for DescribeInstanceAttribute.
  * </p>
  */
-public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable,
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<DescribeInstanceAttributeRequest> {
 
+    /**
+     * <p>
+     * The instance attribute.
+     * </p>
+     * <p>
+     * Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * </p>
+     */
+    private String attribute;
     /**
      * <p>
      * The ID of the instance.
      * </p>
      */
     private String instanceId;
-    /**
-     * <p>
-     * The instance attribute.
-     * </p>
-     * <p>
-     * Note: The <code>enaSupport</code> attribute is not supported at this
-     * time.
-     * </p>
-     */
-    private String attribute;
 
     /**
-     * Default constructor for DescribeInstanceAttributeRequest object. Callers
-     * should use the setter or fluent setter (with...) methods to initialize
-     * the object after creating it.
+     * Default constructor for DescribeInstanceAttributeRequest object. Callers should use the setter or fluent setter
+     * (with...) methods to initialize the object after creating it.
      */
     public DescribeInstanceAttributeRequest() {
     }
 
     /**
-     * Constructs a new DescribeInstanceAttributeRequest object. Callers should
-     * use the setter or fluent setter (with...) methods to initialize any
-     * additional object members.
+     * Constructs a new DescribeInstanceAttributeRequest object. Callers should use the setter or fluent setter
+     * (with...) methods to initialize any additional object members.
      * 
      * @param instanceId
      *        The ID of the instance.
      * @param attribute
      *        The instance attribute.</p>
      *        <p>
-     *        Note: The <code>enaSupport</code> attribute is not supported at
-     *        this time.
+     *        Note: The <code>enaSupport</code> attribute is not supported at this time.
      */
     public DescribeInstanceAttributeRequest(String instanceId, String attribute) {
         setInstanceId(instanceId);
@@ -72,22 +68,117 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Constructs a new DescribeInstanceAttributeRequest object. Callers should
-     * use the setter or fluent setter (with...) methods to initialize any
-     * additional object members.
+     * Constructs a new DescribeInstanceAttributeRequest object. Callers should use the setter or fluent setter
+     * (with...) methods to initialize any additional object members.
      * 
      * @param instanceId
      *        The ID of the instance.
      * @param attribute
      *        The instance attribute.</p>
      *        <p>
-     *        Note: The <code>enaSupport</code> attribute is not supported at
-     *        this time.
+     *        Note: The <code>enaSupport</code> attribute is not supported at this time.
      */
-    public DescribeInstanceAttributeRequest(String instanceId,
-            InstanceAttributeName attribute) {
+    public DescribeInstanceAttributeRequest(String instanceId, InstanceAttributeName attribute) {
         setInstanceId(instanceId);
         setAttribute(attribute.toString());
+    }
+
+    /**
+     * <p>
+     * The instance attribute.
+     * </p>
+     * <p>
+     * Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * </p>
+     * 
+     * @param attribute
+     *        The instance attribute.</p>
+     *        <p>
+     *        Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * @see InstanceAttributeName
+     */
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
+    }
+
+    /**
+     * <p>
+     * The instance attribute.
+     * </p>
+     * <p>
+     * Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * </p>
+     * 
+     * @return The instance attribute.</p>
+     *         <p>
+     *         Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * @see InstanceAttributeName
+     */
+
+    public String getAttribute() {
+        return this.attribute;
+    }
+
+    /**
+     * <p>
+     * The instance attribute.
+     * </p>
+     * <p>
+     * Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * </p>
+     * 
+     * @param attribute
+     *        The instance attribute.</p>
+     *        <p>
+     *        Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceAttributeName
+     */
+
+    public DescribeInstanceAttributeRequest withAttribute(String attribute) {
+        setAttribute(attribute);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The instance attribute.
+     * </p>
+     * <p>
+     * Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * </p>
+     * 
+     * @param attribute
+     *        The instance attribute.</p>
+     *        <p>
+     *        Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * @see InstanceAttributeName
+     */
+
+    public void setAttribute(InstanceAttributeName attribute) {
+        this.attribute = attribute.toString();
+    }
+
+    /**
+     * <p>
+     * The instance attribute.
+     * </p>
+     * <p>
+     * Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * </p>
+     * 
+     * @param attribute
+     *        The instance attribute.</p>
+     *        <p>
+     *        Note: The <code>enaSupport</code> attribute is not supported at this time.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceAttributeName
+     */
+
+    public DescribeInstanceAttributeRequest withAttribute(InstanceAttributeName attribute) {
+        setAttribute(attribute);
+        return this;
     }
 
     /**
@@ -122,8 +213,7 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest
      * 
      * @param instanceId
      *        The ID of the instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeInstanceAttributeRequest withInstanceId(String instanceId) {
@@ -132,132 +222,18 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * <p>
-     * The instance attribute.
-     * </p>
-     * <p>
-     * Note: The <code>enaSupport</code> attribute is not supported at this
-     * time.
-     * </p>
-     * 
-     * @param attribute
-     *        The instance attribute.</p>
-     *        <p>
-     *        Note: The <code>enaSupport</code> attribute is not supported at
-     *        this time.
-     * @see InstanceAttributeName
-     */
-
-    public void setAttribute(String attribute) {
-        this.attribute = attribute;
-    }
-
-    /**
-     * <p>
-     * The instance attribute.
-     * </p>
-     * <p>
-     * Note: The <code>enaSupport</code> attribute is not supported at this
-     * time.
-     * </p>
-     * 
-     * @return The instance attribute.</p>
-     *         <p>
-     *         Note: The <code>enaSupport</code> attribute is not supported at
-     *         this time.
-     * @see InstanceAttributeName
-     */
-
-    public String getAttribute() {
-        return this.attribute;
-    }
-
-    /**
-     * <p>
-     * The instance attribute.
-     * </p>
-     * <p>
-     * Note: The <code>enaSupport</code> attribute is not supported at this
-     * time.
-     * </p>
-     * 
-     * @param attribute
-     *        The instance attribute.</p>
-     *        <p>
-     *        Note: The <code>enaSupport</code> attribute is not supported at
-     *        this time.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     * @see InstanceAttributeName
-     */
-
-    public DescribeInstanceAttributeRequest withAttribute(String attribute) {
-        setAttribute(attribute);
-        return this;
-    }
-
-    /**
-     * <p>
-     * The instance attribute.
-     * </p>
-     * <p>
-     * Note: The <code>enaSupport</code> attribute is not supported at this
-     * time.
-     * </p>
-     * 
-     * @param attribute
-     *        The instance attribute.</p>
-     *        <p>
-     *        Note: The <code>enaSupport</code> attribute is not supported at
-     *        this time.
-     * @see InstanceAttributeName
-     */
-
-    public void setAttribute(InstanceAttributeName attribute) {
-        this.attribute = attribute.toString();
-    }
-
-    /**
-     * <p>
-     * The instance attribute.
-     * </p>
-     * <p>
-     * Note: The <code>enaSupport</code> attribute is not supported at this
-     * time.
-     * </p>
-     * 
-     * @param attribute
-     *        The instance attribute.</p>
-     *        <p>
-     *        Note: The <code>enaSupport</code> attribute is not supported at
-     *        this time.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     * @see InstanceAttributeName
-     */
-
-    public DescribeInstanceAttributeRequest withAttribute(
-            InstanceAttributeName attribute) {
-        setAttribute(attribute);
-        return this;
-    }
-
-    /**
-     * This method is intended for internal use only. Returns the marshaled
-     * request configured with additional parameters to enable operation
-     * dry-run.
+     * This method is intended for internal use only. Returns the marshaled request configured with additional
+     * parameters to enable operation dry-run.
      */
     @Override
     public Request<DescribeInstanceAttributeRequest> getDryRunRequest() {
-        Request<DescribeInstanceAttributeRequest> request = new DescribeInstanceAttributeRequestMarshaller()
-                .marshall(this);
+        Request<DescribeInstanceAttributeRequest> request = new DescribeInstanceAttributeRequestMarshaller().marshall(this);
         request.addParameter("DryRun", Boolean.toString(true));
         return request;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -267,10 +243,10 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
         if (getAttribute() != null)
-            sb.append("Attribute: " + getAttribute());
+            sb.append("Attribute: ").append(getAttribute()).append(",");
+        if (getInstanceId() != null)
+            sb.append("InstanceId: ").append(getInstanceId());
         sb.append("}");
         return sb.toString();
     }
@@ -285,15 +261,13 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeInstanceAttributeRequest == false)
             return false;
         DescribeInstanceAttributeRequest other = (DescribeInstanceAttributeRequest) obj;
-        if (other.getInstanceId() == null ^ this.getInstanceId() == null)
-            return false;
-        if (other.getInstanceId() != null
-                && other.getInstanceId().equals(this.getInstanceId()) == false)
-            return false;
         if (other.getAttribute() == null ^ this.getAttribute() == null)
             return false;
-        if (other.getAttribute() != null
-                && other.getAttribute().equals(this.getAttribute()) == false)
+        if (other.getAttribute() != null && other.getAttribute().equals(this.getAttribute()) == false)
+            return false;
+        if (other.getInstanceId() == null ^ this.getInstanceId() == null)
+            return false;
+        if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
             return false;
         return true;
     }
@@ -303,10 +277,8 @@ public class DescribeInstanceAttributeRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
-        hashCode = prime * hashCode
-                + ((getAttribute() == null) ? 0 : getAttribute().hashCode());
+        hashCode = prime * hashCode + ((getAttribute() == null) ? 0 : getAttribute().hashCode());
+        hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
         return hashCode;
     }
 

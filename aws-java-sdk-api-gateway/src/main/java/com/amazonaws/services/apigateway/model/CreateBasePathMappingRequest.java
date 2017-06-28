@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Requests Amazon API Gateway to create a new <a>BasePathMapping</a> resource.
  * </p>
  */
-public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateBasePathMappingRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,10 +33,9 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
     private String domainName;
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name. This value must be unique for all of the
-     * mappings across a single API. Leave this blank if you do not want callers
-     * to specify a base path name after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name. This value must
+     * be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a
+     * base path name after the domain name.
      * </p>
      */
     private String basePath;
@@ -48,9 +47,8 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
     private String restApiId;
     /**
      * <p>
-     * The name of the API's stage that you want to use for this mapping. Leave
-     * this blank if you do not want callers to explicitly specify the stage
-     * name after any base path name.
+     * The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to
+     * explicitly specify the stage name after any base path name.
      * </p>
      */
     private String stage;
@@ -87,8 +85,7 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
      * 
      * @param domainName
      *        The domain name of the <a>BasePathMapping</a> resource to create.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateBasePathMappingRequest withDomainName(String domainName) {
@@ -98,18 +95,15 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name. This value must be unique for all of the
-     * mappings across a single API. Leave this blank if you do not want callers
-     * to specify a base path name after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name. This value must
+     * be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a
+     * base path name after the domain name.
      * </p>
      * 
      * @param basePath
-     *        The base path name that callers of the API must provide as part of
-     *        the URL after the domain name. This value must be unique for all
-     *        of the mappings across a single API. Leave this blank if you do
-     *        not want callers to specify a base path name after the domain
-     *        name.
+     *        The base path name that callers of the API must provide as part of the URL after the domain name. This
+     *        value must be unique for all of the mappings across a single API. Leave this blank if you do not want
+     *        callers to specify a base path name after the domain name.
      */
 
     public void setBasePath(String basePath) {
@@ -118,17 +112,14 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name. This value must be unique for all of the
-     * mappings across a single API. Leave this blank if you do not want callers
-     * to specify a base path name after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name. This value must
+     * be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a
+     * base path name after the domain name.
      * </p>
      * 
-     * @return The base path name that callers of the API must provide as part
-     *         of the URL after the domain name. This value must be unique for
-     *         all of the mappings across a single API. Leave this blank if you
-     *         do not want callers to specify a base path name after the domain
-     *         name.
+     * @return The base path name that callers of the API must provide as part of the URL after the domain name. This
+     *         value must be unique for all of the mappings across a single API. Leave this blank if you do not want
+     *         callers to specify a base path name after the domain name.
      */
 
     public String getBasePath() {
@@ -137,20 +128,16 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name. This value must be unique for all of the
-     * mappings across a single API. Leave this blank if you do not want callers
-     * to specify a base path name after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name. This value must
+     * be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a
+     * base path name after the domain name.
      * </p>
      * 
      * @param basePath
-     *        The base path name that callers of the API must provide as part of
-     *        the URL after the domain name. This value must be unique for all
-     *        of the mappings across a single API. Leave this blank if you do
-     *        not want callers to specify a base path name after the domain
-     *        name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The base path name that callers of the API must provide as part of the URL after the domain name. This
+     *        value must be unique for all of the mappings across a single API. Leave this blank if you do not want
+     *        callers to specify a base path name after the domain name.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateBasePathMappingRequest withBasePath(String basePath) {
@@ -190,8 +177,7 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
      * 
      * @param restApiId
      *        The name of the API that you want to apply this mapping to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateBasePathMappingRequest withRestApiId(String restApiId) {
@@ -201,15 +187,13 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the API's stage that you want to use for this mapping. Leave
-     * this blank if you do not want callers to explicitly specify the stage
-     * name after any base path name.
+     * The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to
+     * explicitly specify the stage name after any base path name.
      * </p>
      * 
      * @param stage
-     *        The name of the API's stage that you want to use for this mapping.
-     *        Leave this blank if you do not want callers to explicitly specify
-     *        the stage name after any base path name.
+     *        The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want
+     *        callers to explicitly specify the stage name after any base path name.
      */
 
     public void setStage(String stage) {
@@ -218,14 +202,12 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the API's stage that you want to use for this mapping. Leave
-     * this blank if you do not want callers to explicitly specify the stage
-     * name after any base path name.
+     * The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to
+     * explicitly specify the stage name after any base path name.
      * </p>
      * 
-     * @return The name of the API's stage that you want to use for this
-     *         mapping. Leave this blank if you do not want callers to
-     *         explicitly specify the stage name after any base path name.
+     * @return The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want
+     *         callers to explicitly specify the stage name after any base path name.
      */
 
     public String getStage() {
@@ -234,17 +216,14 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the API's stage that you want to use for this mapping. Leave
-     * this blank if you do not want callers to explicitly specify the stage
-     * name after any base path name.
+     * The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to
+     * explicitly specify the stage name after any base path name.
      * </p>
      * 
      * @param stage
-     *        The name of the API's stage that you want to use for this mapping.
-     *        Leave this blank if you do not want callers to explicitly specify
-     *        the stage name after any base path name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want
+     *        callers to explicitly specify the stage name after any base path name.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateBasePathMappingRequest withStage(String stage) {
@@ -253,8 +232,7 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -265,13 +243,13 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getBasePath() != null)
-            sb.append("BasePath: " + getBasePath() + ",");
+            sb.append("BasePath: ").append(getBasePath()).append(",");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getStage() != null)
-            sb.append("Stage: " + getStage());
+            sb.append("Stage: ").append(getStage());
         sb.append("}");
         return sb.toString();
     }
@@ -288,23 +266,19 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
         CreateBasePathMappingRequest other = (CreateBasePathMappingRequest) obj;
         if (other.getDomainName() == null ^ this.getDomainName() == null)
             return false;
-        if (other.getDomainName() != null
-                && other.getDomainName().equals(this.getDomainName()) == false)
+        if (other.getDomainName() != null && other.getDomainName().equals(this.getDomainName()) == false)
             return false;
         if (other.getBasePath() == null ^ this.getBasePath() == null)
             return false;
-        if (other.getBasePath() != null
-                && other.getBasePath().equals(this.getBasePath()) == false)
+        if (other.getBasePath() != null && other.getBasePath().equals(this.getBasePath()) == false)
             return false;
         if (other.getRestApiId() == null ^ this.getRestApiId() == null)
             return false;
-        if (other.getRestApiId() != null
-                && other.getRestApiId().equals(this.getRestApiId()) == false)
+        if (other.getRestApiId() != null && other.getRestApiId().equals(this.getRestApiId()) == false)
             return false;
         if (other.getStage() == null ^ this.getStage() == null)
             return false;
-        if (other.getStage() != null
-                && other.getStage().equals(this.getStage()) == false)
+        if (other.getStage() != null && other.getStage().equals(this.getStage()) == false)
             return false;
         return true;
     }
@@ -314,14 +288,10 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
-        hashCode = prime * hashCode
-                + ((getBasePath() == null) ? 0 : getBasePath().hashCode());
-        hashCode = prime * hashCode
-                + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getStage() == null) ? 0 : getStage().hashCode());
+        hashCode = prime * hashCode + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
+        hashCode = prime * hashCode + ((getBasePath() == null) ? 0 : getBasePath().hashCode());
+        hashCode = prime * hashCode + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
+        hashCode = prime * hashCode + ((getStage() == null) ? 0 : getStage().hashCode());
         return hashCode;
     }
 
@@ -329,4 +299,5 @@ public class CreateBasePathMappingRequest extends AmazonWebServiceRequest
     public CreateBasePathMappingRequest clone() {
         return (CreateBasePathMappingRequest) super.clone();
     }
+
 }

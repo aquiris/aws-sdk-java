@@ -1,34 +1,36 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents a request to the update device pool operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/UpdateDevicePool" target="_top">AWS API
+ *      Documentation</a>
  */
-public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateDevicePoolRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to
-     * update.
+     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
      * </p>
      */
     private String arn;
@@ -46,22 +48,19 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
     private String description;
     /**
      * <p>
-     * Represents the rules you wish to modify for the device pool. Updating
-     * rules is optional; however, if you choose to update rules for your
-     * request, the update will replace the existing rules.
+     * Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose
+     * to update rules for your request, the update will replace the existing rules.
      * </p>
      */
     private java.util.List<Rule> rules;
 
     /**
      * <p>
-     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to
-     * update.
+     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
      * </p>
      * 
      * @param arn
-     *        The Amazon Resourc Name (ARN) of the Device Farm device pool you
-     *        wish to update.
+     *        The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
      */
 
     public void setArn(String arn) {
@@ -70,12 +69,10 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to
-     * update.
+     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
      * </p>
      * 
-     * @return The Amazon Resourc Name (ARN) of the Device Farm device pool you
-     *         wish to update.
+     * @return The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
      */
 
     public String getArn() {
@@ -84,15 +81,12 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to
-     * update.
+     * The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
      * </p>
      * 
      * @param arn
-     *        The Amazon Resourc Name (ARN) of the Device Farm device pool you
-     *        wish to update.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to update.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateDevicePoolRequest withArn(String arn) {
@@ -106,8 +100,7 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param name
-     *        A string representing the name of the device pool you wish to
-     *        update.
+     *        A string representing the name of the device pool you wish to update.
      */
 
     public void setName(String name) {
@@ -119,8 +112,7 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
      * A string representing the name of the device pool you wish to update.
      * </p>
      * 
-     * @return A string representing the name of the device pool you wish to
-     *         update.
+     * @return A string representing the name of the device pool you wish to update.
      */
 
     public String getName() {
@@ -133,10 +125,8 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param name
-     *        A string representing the name of the device pool you wish to
-     *        update.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A string representing the name of the device pool you wish to update.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateDevicePoolRequest withName(String name) {
@@ -176,8 +166,7 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
      * 
      * @param description
      *        A description of the device pool you wish to update.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateDevicePoolRequest withDescription(String description) {
@@ -187,15 +176,12 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Represents the rules you wish to modify for the device pool. Updating
-     * rules is optional; however, if you choose to update rules for your
-     * request, the update will replace the existing rules.
+     * Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose
+     * to update rules for your request, the update will replace the existing rules.
      * </p>
      * 
-     * @return Represents the rules you wish to modify for the device pool.
-     *         Updating rules is optional; however, if you choose to update
-     *         rules for your request, the update will replace the existing
-     *         rules.
+     * @return Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you
+     *         choose to update rules for your request, the update will replace the existing rules.
      */
 
     public java.util.List<Rule> getRules() {
@@ -204,15 +190,13 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Represents the rules you wish to modify for the device pool. Updating
-     * rules is optional; however, if you choose to update rules for your
-     * request, the update will replace the existing rules.
+     * Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose
+     * to update rules for your request, the update will replace the existing rules.
      * </p>
      * 
      * @param rules
-     *        Represents the rules you wish to modify for the device pool.
-     *        Updating rules is optional; however, if you choose to update rules
-     *        for your request, the update will replace the existing rules.
+     *        Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you
+     *        choose to update rules for your request, the update will replace the existing rules.
      */
 
     public void setRules(java.util.Collection<Rule> rules) {
@@ -226,23 +210,19 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Represents the rules you wish to modify for the device pool. Updating
-     * rules is optional; however, if you choose to update rules for your
-     * request, the update will replace the existing rules.
+     * Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose
+     * to update rules for your request, the update will replace the existing rules.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setRules(java.util.Collection)} or
-     * {@link #withRules(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setRules(java.util.Collection)} or {@link #withRules(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param rules
-     *        Represents the rules you wish to modify for the device pool.
-     *        Updating rules is optional; however, if you choose to update rules
-     *        for your request, the update will replace the existing rules.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you
+     *        choose to update rules for your request, the update will replace the existing rules.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateDevicePoolRequest withRules(Rule... rules) {
@@ -257,17 +237,14 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Represents the rules you wish to modify for the device pool. Updating
-     * rules is optional; however, if you choose to update rules for your
-     * request, the update will replace the existing rules.
+     * Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose
+     * to update rules for your request, the update will replace the existing rules.
      * </p>
      * 
      * @param rules
-     *        Represents the rules you wish to modify for the device pool.
-     *        Updating rules is optional; however, if you choose to update rules
-     *        for your request, the update will replace the existing rules.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you
+     *        choose to update rules for your request, the update will replace the existing rules.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateDevicePoolRequest withRules(java.util.Collection<Rule> rules) {
@@ -276,8 +253,7 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -288,13 +264,13 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getRules() != null)
-            sb.append("Rules: " + getRules());
+            sb.append("Rules: ").append(getRules());
         sb.append("}");
         return sb.toString();
     }
@@ -311,23 +287,19 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
         UpdateDevicePoolRequest other = (UpdateDevicePoolRequest) obj;
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
-        if (other.getArn() != null
-                && other.getArn().equals(this.getArn()) == false)
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getRules() == null ^ this.getRules() == null)
             return false;
-        if (other.getRules() != null
-                && other.getRules().equals(this.getRules()) == false)
+        if (other.getRules() != null && other.getRules().equals(this.getRules()) == false)
             return false;
         return true;
     }
@@ -337,15 +309,10 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getArn() == null) ? 0 : getArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getRules() == null) ? 0 : getRules().hashCode());
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getRules() == null) ? 0 : getRules().hashCode());
         return hashCode;
     }
 
@@ -353,4 +320,5 @@ public class UpdateDevicePoolRequest extends AmazonWebServiceRequest implements
     public UpdateDevicePoolRequest clone() {
         return (UpdateDevicePoolRequest) super.clone();
     }
+
 }

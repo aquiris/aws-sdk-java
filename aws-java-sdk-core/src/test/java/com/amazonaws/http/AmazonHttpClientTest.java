@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.handlers.HandlerContextKey;
 import com.amazonaws.http.apache.client.impl.ConnectionManagerAwareHttpClient;
 import com.amazonaws.http.apache.request.impl.ApacheHttpRequestFactory;
 import com.amazonaws.http.request.HttpRequestFactory;
@@ -46,6 +49,8 @@ import com.amazonaws.AmazonWebServiceResponse;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.DefaultRequest;
 import com.amazonaws.Request;
+
+import static org.junit.Assert.assertEquals;
 
 public class AmazonHttpClientTest {
 
@@ -93,7 +98,7 @@ public class AmazonHttpClientTest {
 
         try {
 
-            client.execute(request, null, null, context);
+            client.requestExecutionBuilder().request(request).executionContext(context).execute();
             Assert.fail("No exception when request repeatedly fails!");
 
         } catch (AmazonClientException e) {
@@ -149,7 +154,7 @@ public class AmazonHttpClientTest {
 
         try {
 
-            client.execute(request, handler, null, context);
+            client.requestExecutionBuilder().request(request).executionContext(context).execute(handler);
             Assert.fail("No exception when request repeatedly fails!");
 
         } catch (AmazonClientException e) {
@@ -231,11 +236,43 @@ public class AmazonHttpClientTest {
 
         AmazonHttpClient client = new AmazonHttpClient(config, httpClient, null);
 
-        client.execute(request, handler, null, new ExecutionContext());
+        client.requestExecutionBuilder().request(request).execute(handler);
 
         String userAgent = capturedRequest.getValue().getFirstHeader("User-Agent").getValue();
         Assert.assertTrue(userAgent.startsWith(prefix));
         Assert.assertTrue(userAgent.endsWith(suffix));
+    }
+
+    @Test
+    public void testCredentialsSetInRequestContext() throws Exception {
+        EasyMock.reset(httpClient);
+        EasyMock
+                .expect(httpClient.execute(EasyMock.<HttpRequestBase>anyObject(), EasyMock.<HttpContext>anyObject()))
+                .andReturn(createBasicHttpResponse())
+                .once();
+        EasyMock.replay(httpClient);
+
+        AmazonHttpClient client = new AmazonHttpClient(new ClientConfiguration(), httpClient, null);
+
+        final BasicAWSCredentials credentials = new BasicAWSCredentials("foo", "bar");
+
+        AWSCredentialsProvider credentialsProvider = EasyMock.createMock(AWSCredentialsProvider.class);
+        EasyMock.expect(credentialsProvider.getCredentials())
+                .andReturn(credentials)
+                .anyTimes();
+        EasyMock.replay(credentialsProvider);
+
+        ExecutionContext executionContext = new ExecutionContext();
+        executionContext.setCredentialsProvider(credentialsProvider);
+
+        Request<?> request = mockRequest(SERVER_NAME, HttpMethodName.PUT, URI_NAME, true);
+
+        HttpResponseHandler<AmazonWebServiceResponse<Object>> handler = createStubResponseHandler();
+        EasyMock.replay(handler);
+
+        client.execute(request, handler, null, executionContext);
+
+        assertEquals(credentials, request.getHandlerContext(HandlerContextKey.AWS_CREDENTIALS));
     }
 
     private BasicHttpResponse createBasicHttpResponse() {
@@ -274,7 +311,7 @@ public class AmazonHttpClientTest {
         mockFailure(contentLength);
 
         try {
-            client.execute(request, null, null, context);
+            client.requestExecutionBuilder().request(request).executionContext(context).execute();
             Assert.fail("Expected AmazonClientException");
         } catch (AmazonClientException e) {
         }
@@ -314,7 +351,7 @@ public class AmazonHttpClientTest {
                             len += b;
                         }
 
-                        Assert.assertEquals(contentLength, len);
+                        assertEquals(contentLength, len);
 
                         throw new IOException("BOOM");
                     }

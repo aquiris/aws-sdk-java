@@ -1,28 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudtrail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an
- * error.
+ * Returns the objects or data listed below if successful. Otherwise, returns an error.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/UpdateTrail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class UpdateTrailResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateTrailResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -32,18 +34,16 @@ public class UpdateTrailResult implements Serializable, Cloneable {
     private String name;
     /**
      * <p>
-     * Specifies the name of the Amazon S3 bucket designated for publishing log
-     * files.
+     * Specifies the name of the Amazon S3 bucket designated for publishing log files.
      * </p>
      */
     private String s3BucketName;
     /**
      * <p>
-     * Specifies the Amazon S3 key prefix that comes after the name of the
-     * bucket you have designated for log file delivery. For more information,
-     * see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html"
-     * >Finding Your CloudTrail Log Files</a>.
+     * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
+     * delivery. For more information, see <a
+     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * CloudTrail Log Files</a>.
      * </p>
      */
     private String s3KeyPrefix;
@@ -56,8 +56,8 @@ public class UpdateTrailResult implements Serializable, Cloneable {
     private String snsTopicName;
     /**
      * <p>
-     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send
-     * notifications when log files are delivered. The format of a topic ARN is:
+     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are
+     * delivered. The format of a topic ARN is:
      * </p>
      * <p>
      * <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code>
@@ -66,8 +66,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
     private String snsTopicARN;
     /**
      * <p>
-     * Specifies whether the trail is publishing events from global services
-     * such as IAM to the log files.
+     * Specifies whether the trail is publishing events from global services such as IAM to the log files.
      * </p>
      */
     private Boolean includeGlobalServiceEvents;
@@ -79,8 +78,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
     private Boolean isMultiRegionTrail;
     /**
      * <p>
-     * Specifies the ARN of the trail that was updated. The format of a trail
-     * ARN is:
+     * Specifies the ARN of the trail that was updated. The format of a trail ARN is:
      * </p>
      * <p>
      * <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code>
@@ -95,22 +93,20 @@ public class UpdateTrailResult implements Serializable, Cloneable {
     private Boolean logFileValidationEnabled;
     /**
      * <p>
-     * Specifies the Amazon Resource Name (ARN) of the log group to which
-     * CloudTrail logs will be delivered.
+     * Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
      * </p>
      */
     private String cloudWatchLogsLogGroupArn;
     /**
      * <p>
-     * Specifies the role for the CloudWatch Logs endpoint to assume to write to
-     * a user's log group.
+     * Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
      * </p>
      */
     private String cloudWatchLogsRoleArn;
     /**
      * <p>
-     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail.
-     * The value is a fully specified ARN to a KMS key in the format:
+     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a
+     * KMS key in the format:
      * </p>
      * <p>
      * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
@@ -150,8 +146,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
      * 
      * @param name
      *        Specifies the name of the trail.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateTrailResult withName(String name) {
@@ -161,13 +156,11 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the name of the Amazon S3 bucket designated for publishing log
-     * files.
+     * Specifies the name of the Amazon S3 bucket designated for publishing log files.
      * </p>
      * 
      * @param s3BucketName
-     *        Specifies the name of the Amazon S3 bucket designated for
-     *        publishing log files.
+     *        Specifies the name of the Amazon S3 bucket designated for publishing log files.
      */
 
     public void setS3BucketName(String s3BucketName) {
@@ -176,12 +169,10 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the name of the Amazon S3 bucket designated for publishing log
-     * files.
+     * Specifies the name of the Amazon S3 bucket designated for publishing log files.
      * </p>
      * 
-     * @return Specifies the name of the Amazon S3 bucket designated for
-     *         publishing log files.
+     * @return Specifies the name of the Amazon S3 bucket designated for publishing log files.
      */
 
     public String getS3BucketName() {
@@ -190,15 +181,12 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the name of the Amazon S3 bucket designated for publishing log
-     * files.
+     * Specifies the name of the Amazon S3 bucket designated for publishing log files.
      * </p>
      * 
      * @param s3BucketName
-     *        Specifies the name of the Amazon S3 bucket designated for
-     *        publishing log files.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the name of the Amazon S3 bucket designated for publishing log files.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateTrailResult withS3BucketName(String s3BucketName) {
@@ -208,19 +196,17 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the Amazon S3 key prefix that comes after the name of the
-     * bucket you have designated for log file delivery. For more information,
-     * see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html"
-     * >Finding Your CloudTrail Log Files</a>.
+     * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
+     * delivery. For more information, see <a
+     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * CloudTrail Log Files</a>.
      * </p>
      * 
      * @param s3KeyPrefix
-     *        Specifies the Amazon S3 key prefix that comes after the name of
-     *        the bucket you have designated for log file delivery. For more
-     *        information, see <a href=
-     *        "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html"
-     *        >Finding Your CloudTrail Log Files</a>.
+     *        Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log
+     *        file delivery. For more information, see <a
+     *        href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
+     *        Your CloudTrail Log Files</a>.
      */
 
     public void setS3KeyPrefix(String s3KeyPrefix) {
@@ -229,18 +215,16 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the Amazon S3 key prefix that comes after the name of the
-     * bucket you have designated for log file delivery. For more information,
-     * see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html"
-     * >Finding Your CloudTrail Log Files</a>.
+     * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
+     * delivery. For more information, see <a
+     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * CloudTrail Log Files</a>.
      * </p>
      * 
-     * @return Specifies the Amazon S3 key prefix that comes after the name of
-     *         the bucket you have designated for log file delivery. For more
-     *         information, see <a href=
-     *         "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html"
-     *         >Finding Your CloudTrail Log Files</a>.
+     * @return Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log
+     *         file delivery. For more information, see <a
+     *         href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
+     *         Your CloudTrail Log Files</a>.
      */
 
     public String getS3KeyPrefix() {
@@ -249,21 +233,18 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the Amazon S3 key prefix that comes after the name of the
-     * bucket you have designated for log file delivery. For more information,
-     * see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html"
-     * >Finding Your CloudTrail Log Files</a>.
+     * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
+     * delivery. For more information, see <a
+     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * CloudTrail Log Files</a>.
      * </p>
      * 
      * @param s3KeyPrefix
-     *        Specifies the Amazon S3 key prefix that comes after the name of
-     *        the bucket you have designated for log file delivery. For more
-     *        information, see <a href=
-     *        "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html"
-     *        >Finding Your CloudTrail Log Files</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log
+     *        file delivery. For more information, see <a
+     *        href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
+     *        Your CloudTrail Log Files</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateTrailResult withS3KeyPrefix(String s3KeyPrefix) {
@@ -303,8 +284,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
      * 
      * @param snsTopicName
      *        This field is deprecated. Use SnsTopicARN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
     @Deprecated
     public UpdateTrailResult withSnsTopicName(String snsTopicName) {
@@ -314,17 +294,16 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send
-     * notifications when log files are delivered. The format of a topic ARN is:
+     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are
+     * delivered. The format of a topic ARN is:
      * </p>
      * <p>
      * <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code>
      * </p>
      * 
      * @param snsTopicARN
-     *        Specifies the ARN of the Amazon SNS topic that CloudTrail uses to
-     *        send notifications when log files are delivered. The format of a
-     *        topic ARN is:</p>
+     *        Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are
+     *        delivered. The format of a topic ARN is:</p>
      *        <p>
      *        <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code>
      */
@@ -335,16 +314,15 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send
-     * notifications when log files are delivered. The format of a topic ARN is:
+     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are
+     * delivered. The format of a topic ARN is:
      * </p>
      * <p>
      * <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code>
      * </p>
      * 
-     * @return Specifies the ARN of the Amazon SNS topic that CloudTrail uses to
-     *         send notifications when log files are delivered. The format of a
-     *         topic ARN is:</p>
+     * @return Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are
+     *         delivered. The format of a topic ARN is:</p>
      *         <p>
      *         <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code>
      */
@@ -355,21 +333,19 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send
-     * notifications when log files are delivered. The format of a topic ARN is:
+     * Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are
+     * delivered. The format of a topic ARN is:
      * </p>
      * <p>
      * <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code>
      * </p>
      * 
      * @param snsTopicARN
-     *        Specifies the ARN of the Amazon SNS topic that CloudTrail uses to
-     *        send notifications when log files are delivered. The format of a
-     *        topic ARN is:</p>
+     *        Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are
+     *        delivered. The format of a topic ARN is:</p>
      *        <p>
      *        <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateTrailResult withSnsTopicARN(String snsTopicARN) {
@@ -379,13 +355,11 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether the trail is publishing events from global services
-     * such as IAM to the log files.
+     * Specifies whether the trail is publishing events from global services such as IAM to the log files.
      * </p>
      * 
      * @param includeGlobalServiceEvents
-     *        Specifies whether the trail is publishing events from global
-     *        services such as IAM to the log files.
+     *        Specifies whether the trail is publishing events from global services such as IAM to the log files.
      */
 
     public void setIncludeGlobalServiceEvents(Boolean includeGlobalServiceEvents) {
@@ -394,12 +368,10 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether the trail is publishing events from global services
-     * such as IAM to the log files.
+     * Specifies whether the trail is publishing events from global services such as IAM to the log files.
      * </p>
      * 
-     * @return Specifies whether the trail is publishing events from global
-     *         services such as IAM to the log files.
+     * @return Specifies whether the trail is publishing events from global services such as IAM to the log files.
      */
 
     public Boolean getIncludeGlobalServiceEvents() {
@@ -408,31 +380,25 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether the trail is publishing events from global services
-     * such as IAM to the log files.
+     * Specifies whether the trail is publishing events from global services such as IAM to the log files.
      * </p>
      * 
      * @param includeGlobalServiceEvents
-     *        Specifies whether the trail is publishing events from global
-     *        services such as IAM to the log files.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies whether the trail is publishing events from global services such as IAM to the log files.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateTrailResult withIncludeGlobalServiceEvents(
-            Boolean includeGlobalServiceEvents) {
+    public UpdateTrailResult withIncludeGlobalServiceEvents(Boolean includeGlobalServiceEvents) {
         setIncludeGlobalServiceEvents(includeGlobalServiceEvents);
         return this;
     }
 
     /**
      * <p>
-     * Specifies whether the trail is publishing events from global services
-     * such as IAM to the log files.
+     * Specifies whether the trail is publishing events from global services such as IAM to the log files.
      * </p>
      * 
-     * @return Specifies whether the trail is publishing events from global
-     *         services such as IAM to the log files.
+     * @return Specifies whether the trail is publishing events from global services such as IAM to the log files.
      */
 
     public Boolean isIncludeGlobalServiceEvents() {
@@ -445,8 +411,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param isMultiRegionTrail
-     *        Specifies whether the trail exists in one region or in all
-     *        regions.
+     *        Specifies whether the trail exists in one region or in all regions.
      */
 
     public void setIsMultiRegionTrail(Boolean isMultiRegionTrail) {
@@ -458,8 +423,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
      * Specifies whether the trail exists in one region or in all regions.
      * </p>
      * 
-     * @return Specifies whether the trail exists in one region or in all
-     *         regions.
+     * @return Specifies whether the trail exists in one region or in all regions.
      */
 
     public Boolean getIsMultiRegionTrail() {
@@ -472,10 +436,8 @@ public class UpdateTrailResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param isMultiRegionTrail
-     *        Specifies whether the trail exists in one region or in all
-     *        regions.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies whether the trail exists in one region or in all regions.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateTrailResult withIsMultiRegionTrail(Boolean isMultiRegionTrail) {
@@ -488,8 +450,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
      * Specifies whether the trail exists in one region or in all regions.
      * </p>
      * 
-     * @return Specifies whether the trail exists in one region or in all
-     *         regions.
+     * @return Specifies whether the trail exists in one region or in all regions.
      */
 
     public Boolean isMultiRegionTrail() {
@@ -498,16 +459,14 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the ARN of the trail that was updated. The format of a trail
-     * ARN is:
+     * Specifies the ARN of the trail that was updated. The format of a trail ARN is:
      * </p>
      * <p>
      * <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code>
      * </p>
      * 
      * @param trailARN
-     *        Specifies the ARN of the trail that was updated. The format of a
-     *        trail ARN is:</p>
+     *        Specifies the ARN of the trail that was updated. The format of a trail ARN is:</p>
      *        <p>
      *        <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code>
      */
@@ -518,15 +477,13 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the ARN of the trail that was updated. The format of a trail
-     * ARN is:
+     * Specifies the ARN of the trail that was updated. The format of a trail ARN is:
      * </p>
      * <p>
      * <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code>
      * </p>
      * 
-     * @return Specifies the ARN of the trail that was updated. The format of a
-     *         trail ARN is:</p>
+     * @return Specifies the ARN of the trail that was updated. The format of a trail ARN is:</p>
      *         <p>
      *         <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code>
      */
@@ -537,20 +494,17 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the ARN of the trail that was updated. The format of a trail
-     * ARN is:
+     * Specifies the ARN of the trail that was updated. The format of a trail ARN is:
      * </p>
      * <p>
      * <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code>
      * </p>
      * 
      * @param trailARN
-     *        Specifies the ARN of the trail that was updated. The format of a
-     *        trail ARN is:</p>
+     *        Specifies the ARN of the trail that was updated. The format of a trail ARN is:</p>
      *        <p>
      *        <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateTrailResult withTrailARN(String trailARN) {
@@ -590,12 +544,10 @@ public class UpdateTrailResult implements Serializable, Cloneable {
      * 
      * @param logFileValidationEnabled
      *        Specifies whether log file integrity validation is enabled.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateTrailResult withLogFileValidationEnabled(
-            Boolean logFileValidationEnabled) {
+    public UpdateTrailResult withLogFileValidationEnabled(Boolean logFileValidationEnabled) {
         setLogFileValidationEnabled(logFileValidationEnabled);
         return this;
     }
@@ -614,13 +566,11 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the Amazon Resource Name (ARN) of the log group to which
-     * CloudTrail logs will be delivered.
+     * Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
      * </p>
      * 
      * @param cloudWatchLogsLogGroupArn
-     *        Specifies the Amazon Resource Name (ARN) of the log group to which
-     *        CloudTrail logs will be delivered.
+     *        Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
      */
 
     public void setCloudWatchLogsLogGroupArn(String cloudWatchLogsLogGroupArn) {
@@ -629,12 +579,10 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the Amazon Resource Name (ARN) of the log group to which
-     * CloudTrail logs will be delivered.
+     * Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
      * </p>
      * 
-     * @return Specifies the Amazon Resource Name (ARN) of the log group to
-     *         which CloudTrail logs will be delivered.
+     * @return Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
      */
 
     public String getCloudWatchLogsLogGroupArn() {
@@ -643,32 +591,26 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the Amazon Resource Name (ARN) of the log group to which
-     * CloudTrail logs will be delivered.
+     * Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
      * </p>
      * 
      * @param cloudWatchLogsLogGroupArn
-     *        Specifies the Amazon Resource Name (ARN) of the log group to which
-     *        CloudTrail logs will be delivered.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateTrailResult withCloudWatchLogsLogGroupArn(
-            String cloudWatchLogsLogGroupArn) {
+    public UpdateTrailResult withCloudWatchLogsLogGroupArn(String cloudWatchLogsLogGroupArn) {
         setCloudWatchLogsLogGroupArn(cloudWatchLogsLogGroupArn);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the role for the CloudWatch Logs endpoint to assume to write to
-     * a user's log group.
+     * Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
      * </p>
      * 
      * @param cloudWatchLogsRoleArn
-     *        Specifies the role for the CloudWatch Logs endpoint to assume to
-     *        write to a user's log group.
+     *        Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
      */
 
     public void setCloudWatchLogsRoleArn(String cloudWatchLogsRoleArn) {
@@ -677,12 +619,10 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the role for the CloudWatch Logs endpoint to assume to write to
-     * a user's log group.
+     * Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
      * </p>
      * 
-     * @return Specifies the role for the CloudWatch Logs endpoint to assume to
-     *         write to a user's log group.
+     * @return Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
      */
 
     public String getCloudWatchLogsRoleArn() {
@@ -691,36 +631,31 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the role for the CloudWatch Logs endpoint to assume to write to
-     * a user's log group.
+     * Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
      * </p>
      * 
      * @param cloudWatchLogsRoleArn
-     *        Specifies the role for the CloudWatch Logs endpoint to assume to
-     *        write to a user's log group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateTrailResult withCloudWatchLogsRoleArn(
-            String cloudWatchLogsRoleArn) {
+    public UpdateTrailResult withCloudWatchLogsRoleArn(String cloudWatchLogsRoleArn) {
         setCloudWatchLogsRoleArn(cloudWatchLogsRoleArn);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail.
-     * The value is a fully specified ARN to a KMS key in the format:
+     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a
+     * KMS key in the format:
      * </p>
      * <p>
      * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
      * </p>
      * 
      * @param kmsKeyId
-     *        Specifies the KMS key ID that encrypts the logs delivered by
-     *        CloudTrail. The value is a fully specified ARN to a KMS key in the
-     *        format:</p>
+     *        Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified
+     *        ARN to a KMS key in the format:</p>
      *        <p>
      *        <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
      */
@@ -731,16 +666,15 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail.
-     * The value is a fully specified ARN to a KMS key in the format:
+     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a
+     * KMS key in the format:
      * </p>
      * <p>
      * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
      * </p>
      * 
-     * @return Specifies the KMS key ID that encrypts the logs delivered by
-     *         CloudTrail. The value is a fully specified ARN to a KMS key in
-     *         the format:</p>
+     * @return Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified
+     *         ARN to a KMS key in the format:</p>
      *         <p>
      *         <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
      */
@@ -751,21 +685,19 @@ public class UpdateTrailResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail.
-     * The value is a fully specified ARN to a KMS key in the format:
+     * Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a
+     * KMS key in the format:
      * </p>
      * <p>
      * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
      * </p>
      * 
      * @param kmsKeyId
-     *        Specifies the KMS key ID that encrypts the logs delivered by
-     *        CloudTrail. The value is a fully specified ARN to a KMS key in the
-     *        format:</p>
+     *        Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified
+     *        ARN to a KMS key in the format:</p>
      *        <p>
      *        <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateTrailResult withKmsKeyId(String kmsKeyId) {
@@ -774,8 +706,7 @@ public class UpdateTrailResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -786,33 +717,29 @@ public class UpdateTrailResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getS3BucketName() != null)
-            sb.append("S3BucketName: " + getS3BucketName() + ",");
+            sb.append("S3BucketName: ").append(getS3BucketName()).append(",");
         if (getS3KeyPrefix() != null)
-            sb.append("S3KeyPrefix: " + getS3KeyPrefix() + ",");
+            sb.append("S3KeyPrefix: ").append(getS3KeyPrefix()).append(",");
         if (getSnsTopicName() != null)
-            sb.append("SnsTopicName: " + getSnsTopicName() + ",");
+            sb.append("SnsTopicName: ").append(getSnsTopicName()).append(",");
         if (getSnsTopicARN() != null)
-            sb.append("SnsTopicARN: " + getSnsTopicARN() + ",");
+            sb.append("SnsTopicARN: ").append(getSnsTopicARN()).append(",");
         if (getIncludeGlobalServiceEvents() != null)
-            sb.append("IncludeGlobalServiceEvents: "
-                    + getIncludeGlobalServiceEvents() + ",");
+            sb.append("IncludeGlobalServiceEvents: ").append(getIncludeGlobalServiceEvents()).append(",");
         if (getIsMultiRegionTrail() != null)
-            sb.append("IsMultiRegionTrail: " + getIsMultiRegionTrail() + ",");
+            sb.append("IsMultiRegionTrail: ").append(getIsMultiRegionTrail()).append(",");
         if (getTrailARN() != null)
-            sb.append("TrailARN: " + getTrailARN() + ",");
+            sb.append("TrailARN: ").append(getTrailARN()).append(",");
         if (getLogFileValidationEnabled() != null)
-            sb.append("LogFileValidationEnabled: "
-                    + getLogFileValidationEnabled() + ",");
+            sb.append("LogFileValidationEnabled: ").append(getLogFileValidationEnabled()).append(",");
         if (getCloudWatchLogsLogGroupArn() != null)
-            sb.append("CloudWatchLogsLogGroupArn: "
-                    + getCloudWatchLogsLogGroupArn() + ",");
+            sb.append("CloudWatchLogsLogGroupArn: ").append(getCloudWatchLogsLogGroupArn()).append(",");
         if (getCloudWatchLogsRoleArn() != null)
-            sb.append("CloudWatchLogsRoleArn: " + getCloudWatchLogsRoleArn()
-                    + ",");
+            sb.append("CloudWatchLogsRoleArn: ").append(getCloudWatchLogsRoleArn()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId());
+            sb.append("KmsKeyId: ").append(getKmsKeyId());
         sb.append("}");
         return sb.toString();
     }
@@ -829,73 +756,51 @@ public class UpdateTrailResult implements Serializable, Cloneable {
         UpdateTrailResult other = (UpdateTrailResult) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getS3BucketName() == null ^ this.getS3BucketName() == null)
             return false;
-        if (other.getS3BucketName() != null
-                && other.getS3BucketName().equals(this.getS3BucketName()) == false)
+        if (other.getS3BucketName() != null && other.getS3BucketName().equals(this.getS3BucketName()) == false)
             return false;
         if (other.getS3KeyPrefix() == null ^ this.getS3KeyPrefix() == null)
             return false;
-        if (other.getS3KeyPrefix() != null
-                && other.getS3KeyPrefix().equals(this.getS3KeyPrefix()) == false)
+        if (other.getS3KeyPrefix() != null && other.getS3KeyPrefix().equals(this.getS3KeyPrefix()) == false)
             return false;
         if (other.getSnsTopicName() == null ^ this.getSnsTopicName() == null)
             return false;
-        if (other.getSnsTopicName() != null
-                && other.getSnsTopicName().equals(this.getSnsTopicName()) == false)
+        if (other.getSnsTopicName() != null && other.getSnsTopicName().equals(this.getSnsTopicName()) == false)
             return false;
         if (other.getSnsTopicARN() == null ^ this.getSnsTopicARN() == null)
             return false;
-        if (other.getSnsTopicARN() != null
-                && other.getSnsTopicARN().equals(this.getSnsTopicARN()) == false)
+        if (other.getSnsTopicARN() != null && other.getSnsTopicARN().equals(this.getSnsTopicARN()) == false)
             return false;
-        if (other.getIncludeGlobalServiceEvents() == null
-                ^ this.getIncludeGlobalServiceEvents() == null)
+        if (other.getIncludeGlobalServiceEvents() == null ^ this.getIncludeGlobalServiceEvents() == null)
             return false;
-        if (other.getIncludeGlobalServiceEvents() != null
-                && other.getIncludeGlobalServiceEvents().equals(
-                        this.getIncludeGlobalServiceEvents()) == false)
+        if (other.getIncludeGlobalServiceEvents() != null && other.getIncludeGlobalServiceEvents().equals(this.getIncludeGlobalServiceEvents()) == false)
             return false;
-        if (other.getIsMultiRegionTrail() == null
-                ^ this.getIsMultiRegionTrail() == null)
+        if (other.getIsMultiRegionTrail() == null ^ this.getIsMultiRegionTrail() == null)
             return false;
-        if (other.getIsMultiRegionTrail() != null
-                && other.getIsMultiRegionTrail().equals(
-                        this.getIsMultiRegionTrail()) == false)
+        if (other.getIsMultiRegionTrail() != null && other.getIsMultiRegionTrail().equals(this.getIsMultiRegionTrail()) == false)
             return false;
         if (other.getTrailARN() == null ^ this.getTrailARN() == null)
             return false;
-        if (other.getTrailARN() != null
-                && other.getTrailARN().equals(this.getTrailARN()) == false)
+        if (other.getTrailARN() != null && other.getTrailARN().equals(this.getTrailARN()) == false)
             return false;
-        if (other.getLogFileValidationEnabled() == null
-                ^ this.getLogFileValidationEnabled() == null)
+        if (other.getLogFileValidationEnabled() == null ^ this.getLogFileValidationEnabled() == null)
             return false;
-        if (other.getLogFileValidationEnabled() != null
-                && other.getLogFileValidationEnabled().equals(
-                        this.getLogFileValidationEnabled()) == false)
+        if (other.getLogFileValidationEnabled() != null && other.getLogFileValidationEnabled().equals(this.getLogFileValidationEnabled()) == false)
             return false;
-        if (other.getCloudWatchLogsLogGroupArn() == null
-                ^ this.getCloudWatchLogsLogGroupArn() == null)
+        if (other.getCloudWatchLogsLogGroupArn() == null ^ this.getCloudWatchLogsLogGroupArn() == null)
             return false;
-        if (other.getCloudWatchLogsLogGroupArn() != null
-                && other.getCloudWatchLogsLogGroupArn().equals(
-                        this.getCloudWatchLogsLogGroupArn()) == false)
+        if (other.getCloudWatchLogsLogGroupArn() != null && other.getCloudWatchLogsLogGroupArn().equals(this.getCloudWatchLogsLogGroupArn()) == false)
             return false;
-        if (other.getCloudWatchLogsRoleArn() == null
-                ^ this.getCloudWatchLogsRoleArn() == null)
+        if (other.getCloudWatchLogsRoleArn() == null ^ this.getCloudWatchLogsRoleArn() == null)
             return false;
-        if (other.getCloudWatchLogsRoleArn() != null
-                && other.getCloudWatchLogsRoleArn().equals(
-                        this.getCloudWatchLogsRoleArn()) == false)
+        if (other.getCloudWatchLogsRoleArn() != null && other.getCloudWatchLogsRoleArn().equals(this.getCloudWatchLogsRoleArn()) == false)
             return false;
         if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
             return false;
-        if (other.getKmsKeyId() != null
-                && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
         return true;
     }
@@ -905,46 +810,18 @@ public class UpdateTrailResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getS3BucketName() == null) ? 0 : getS3BucketName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getS3KeyPrefix() == null) ? 0 : getS3KeyPrefix().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnsTopicName() == null) ? 0 : getSnsTopicName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnsTopicARN() == null) ? 0 : getSnsTopicARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getIncludeGlobalServiceEvents() == null) ? 0
-                        : getIncludeGlobalServiceEvents().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getIsMultiRegionTrail() == null) ? 0
-                        : getIsMultiRegionTrail().hashCode());
-        hashCode = prime * hashCode
-                + ((getTrailARN() == null) ? 0 : getTrailARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getLogFileValidationEnabled() == null) ? 0
-                        : getLogFileValidationEnabled().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCloudWatchLogsLogGroupArn() == null) ? 0
-                        : getCloudWatchLogsLogGroupArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCloudWatchLogsRoleArn() == null) ? 0
-                        : getCloudWatchLogsRoleArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getS3BucketName() == null) ? 0 : getS3BucketName().hashCode());
+        hashCode = prime * hashCode + ((getS3KeyPrefix() == null) ? 0 : getS3KeyPrefix().hashCode());
+        hashCode = prime * hashCode + ((getSnsTopicName() == null) ? 0 : getSnsTopicName().hashCode());
+        hashCode = prime * hashCode + ((getSnsTopicARN() == null) ? 0 : getSnsTopicARN().hashCode());
+        hashCode = prime * hashCode + ((getIncludeGlobalServiceEvents() == null) ? 0 : getIncludeGlobalServiceEvents().hashCode());
+        hashCode = prime * hashCode + ((getIsMultiRegionTrail() == null) ? 0 : getIsMultiRegionTrail().hashCode());
+        hashCode = prime * hashCode + ((getTrailARN() == null) ? 0 : getTrailARN().hashCode());
+        hashCode = prime * hashCode + ((getLogFileValidationEnabled() == null) ? 0 : getLogFileValidationEnabled().hashCode());
+        hashCode = prime * hashCode + ((getCloudWatchLogsLogGroupArn() == null) ? 0 : getCloudWatchLogsLogGroupArn().hashCode());
+        hashCode = prime * hashCode + ((getCloudWatchLogsRoleArn() == null) ? 0 : getCloudWatchLogsRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
         return hashCode;
     }
 
@@ -953,9 +830,8 @@ public class UpdateTrailResult implements Serializable, Cloneable {
         try {
             return (UpdateTrailResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,37 +1,38 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents a request to return a list of all identities (email addresses and
- * domains) that you have attempted to verify under your AWS account, regardless
- * of verification status.
+ * Represents a request to return a list of all identities (email addresses and domains) that you have attempted to
+ * verify under your AWS account, regardless of verification status.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentities" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListIdentitiesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of the identities to list. Possible values are "EmailAddress"
-     * and "Domain". If this parameter is omitted, then all identities will be
-     * listed.
+     * The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     * omitted, then all identities will be listed.
      * </p>
      */
     private String identityType;
@@ -43,23 +44,20 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
     private String nextToken;
     /**
      * <p>
-     * The maximum number of identities per page. Possible values are 1-1000
-     * inclusive.
+     * The maximum number of identities per page. Possible values are 1-1000 inclusive.
      * </p>
      */
     private Integer maxItems;
 
     /**
      * <p>
-     * The type of the identities to list. Possible values are "EmailAddress"
-     * and "Domain". If this parameter is omitted, then all identities will be
-     * listed.
+     * The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     * omitted, then all identities will be listed.
      * </p>
      * 
      * @param identityType
-     *        The type of the identities to list. Possible values are
-     *        "EmailAddress" and "Domain". If this parameter is omitted, then
-     *        all identities will be listed.
+     *        The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     *        omitted, then all identities will be listed.
      * @see IdentityType
      */
 
@@ -69,14 +67,12 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The type of the identities to list. Possible values are "EmailAddress"
-     * and "Domain". If this parameter is omitted, then all identities will be
-     * listed.
+     * The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     * omitted, then all identities will be listed.
      * </p>
      * 
-     * @return The type of the identities to list. Possible values are
-     *         "EmailAddress" and "Domain". If this parameter is omitted, then
-     *         all identities will be listed.
+     * @return The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     *         omitted, then all identities will be listed.
      * @see IdentityType
      */
 
@@ -86,17 +82,14 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The type of the identities to list. Possible values are "EmailAddress"
-     * and "Domain". If this parameter is omitted, then all identities will be
-     * listed.
+     * The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     * omitted, then all identities will be listed.
      * </p>
      * 
      * @param identityType
-     *        The type of the identities to list. Possible values are
-     *        "EmailAddress" and "Domain". If this parameter is omitted, then
-     *        all identities will be listed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     *        omitted, then all identities will be listed.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see IdentityType
      */
 
@@ -107,15 +100,13 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The type of the identities to list. Possible values are "EmailAddress"
-     * and "Domain". If this parameter is omitted, then all identities will be
-     * listed.
+     * The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     * omitted, then all identities will be listed.
      * </p>
      * 
      * @param identityType
-     *        The type of the identities to list. Possible values are
-     *        "EmailAddress" and "Domain". If this parameter is omitted, then
-     *        all identities will be listed.
+     *        The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     *        omitted, then all identities will be listed.
      * @see IdentityType
      */
 
@@ -125,17 +116,14 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The type of the identities to list. Possible values are "EmailAddress"
-     * and "Domain". If this parameter is omitted, then all identities will be
-     * listed.
+     * The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     * omitted, then all identities will be listed.
      * </p>
      * 
      * @param identityType
-     *        The type of the identities to list. Possible values are
-     *        "EmailAddress" and "Domain". If this parameter is omitted, then
-     *        all identities will be listed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is
+     *        omitted, then all identities will be listed.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see IdentityType
      */
 
@@ -176,8 +164,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
      * 
      * @param nextToken
      *        The token to use for pagination.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListIdentitiesRequest withNextToken(String nextToken) {
@@ -187,13 +174,11 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of identities per page. Possible values are 1-1000
-     * inclusive.
+     * The maximum number of identities per page. Possible values are 1-1000 inclusive.
      * </p>
      * 
      * @param maxItems
-     *        The maximum number of identities per page. Possible values are
-     *        1-1000 inclusive.
+     *        The maximum number of identities per page. Possible values are 1-1000 inclusive.
      */
 
     public void setMaxItems(Integer maxItems) {
@@ -202,12 +187,10 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of identities per page. Possible values are 1-1000
-     * inclusive.
+     * The maximum number of identities per page. Possible values are 1-1000 inclusive.
      * </p>
      * 
-     * @return The maximum number of identities per page. Possible values are
-     *         1-1000 inclusive.
+     * @return The maximum number of identities per page. Possible values are 1-1000 inclusive.
      */
 
     public Integer getMaxItems() {
@@ -216,15 +199,12 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of identities per page. Possible values are 1-1000
-     * inclusive.
+     * The maximum number of identities per page. Possible values are 1-1000 inclusive.
      * </p>
      * 
      * @param maxItems
-     *        The maximum number of identities per page. Possible values are
-     *        1-1000 inclusive.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of identities per page. Possible values are 1-1000 inclusive.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListIdentitiesRequest withMaxItems(Integer maxItems) {
@@ -233,8 +213,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -245,11 +224,11 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityType() != null)
-            sb.append("IdentityType: " + getIdentityType() + ",");
+            sb.append("IdentityType: ").append(getIdentityType()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxItems() != null)
-            sb.append("MaxItems: " + getMaxItems());
+            sb.append("MaxItems: ").append(getMaxItems());
         sb.append("}");
         return sb.toString();
     }
@@ -266,18 +245,15 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
         ListIdentitiesRequest other = (ListIdentitiesRequest) obj;
         if (other.getIdentityType() == null ^ this.getIdentityType() == null)
             return false;
-        if (other.getIdentityType() != null
-                && other.getIdentityType().equals(this.getIdentityType()) == false)
+        if (other.getIdentityType() != null && other.getIdentityType().equals(this.getIdentityType()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         if (other.getMaxItems() == null ^ this.getMaxItems() == null)
             return false;
-        if (other.getMaxItems() != null
-                && other.getMaxItems().equals(this.getMaxItems()) == false)
+        if (other.getMaxItems() != null && other.getMaxItems().equals(this.getMaxItems()) == false)
             return false;
         return true;
     }
@@ -287,14 +263,9 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getIdentityType() == null) ? 0 : getIdentityType()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getMaxItems() == null) ? 0 : getMaxItems().hashCode());
+        hashCode = prime * hashCode + ((getIdentityType() == null) ? 0 : getIdentityType().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getMaxItems() == null) ? 0 : getMaxItems().hashCode());
         return hashCode;
     }
 
@@ -302,4 +273,5 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest implements
     public ListIdentitiesRequest clone() {
         return (ListIdentitiesRequest) super.clone();
     }
+
 }

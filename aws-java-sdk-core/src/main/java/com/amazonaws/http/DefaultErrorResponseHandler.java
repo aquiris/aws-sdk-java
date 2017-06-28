@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.http;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.annotation.SdkProtectedApi;
 import com.amazonaws.transform.Unmarshaller;
@@ -33,6 +33,8 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
+
+import static com.amazonaws.http.AmazonHttpClient.HEADER_SDK_TRANSACTION_ID;
 
 /**
  * Implementation of HttpResponseHandler that handles only error responses from Amazon Web Services.
@@ -68,7 +70,7 @@ public class DefaultErrorResponseHandler implements HttpResponseHandler<AmazonSe
     public AmazonServiceException handle(HttpResponse errorResponse) throws Exception {
         AmazonServiceException ase = createAse(errorResponse);
         if (ase == null) {
-            throw new AmazonClientException("Unable to unmarshall error response from service");
+            throw new SdkClientException("Unable to unmarshall error response from service");
         }
         ase.setHttpHeaders(errorResponse.getHeaders());
         if (StringUtils.isNullOrEmpty(ase.getErrorCode())) {
@@ -79,7 +81,7 @@ public class DefaultErrorResponseHandler implements HttpResponseHandler<AmazonSe
 
     private AmazonServiceException createAse(HttpResponse errorResponse) throws Exception {
         // Try to parse the error response as XML
-        final Document document = parseContentAsXml(errorResponse.getContent());
+        final Document document = documentFromContent(errorResponse.getContent(), idString(errorResponse));
 
         /*
          * We need to select which exception unmarshaller is the correct one to
@@ -98,16 +100,48 @@ public class DefaultErrorResponseHandler implements HttpResponseHandler<AmazonSe
         return null;
     }
 
-    private Document parseContentAsXml(InputStream content) throws ParserConfigurationException,
-                                                                   SAXException, IOException {
+    private Document documentFromContent(InputStream content, String idString) throws ParserConfigurationException, SAXException, IOException {
         try {
-            return XpathUtils.documentFrom(IOUtils.toString(content));
+            return parseXml(contentToString(content, idString), idString);
         } catch (Exception e) {
-            log.info("Unable to parse HTTP response content.", e);
             // Generate an empty document to make the unmarshallers happy. Ultimately the default
             // unmarshaller will be called to unmarshall into the service base exception.
             return XpathUtils.documentFrom("<empty/>");
         }
+    }
+
+    private String contentToString(InputStream content, String idString) throws Exception {
+        try {
+            return IOUtils.toString(content);
+        } catch (Exception e) {
+            log.info(String.format("Unable to read input stream to string (%s)", idString), e);
+            throw e;
+        }
+    }
+
+    private Document parseXml(String xml, String idString) throws Exception {
+        try {
+            return XpathUtils.documentFrom(xml);
+        } catch (Exception e) {
+            log.info(String.format("Unable to parse HTTP response (%s) content to XML document '%s' ", idString, xml), e);
+            throw e;
+        }
+    }
+
+    private String idString(HttpResponse errorResponse) {
+        StringBuilder idString = new StringBuilder();
+        try {
+            if (errorResponse.getRequest().getHeaders().containsKey(HEADER_SDK_TRANSACTION_ID)) {
+                idString.append("Invocation Id:").append(errorResponse.getRequest().getHeaders().get(HEADER_SDK_TRANSACTION_ID));
+            }
+            if (errorResponse.getHeaders().containsKey(X_AMZN_REQUEST_ID_HEADER)) {
+                if (idString.length() > 0) { idString.append(", "); }
+                idString.append("Request Id:").append(errorResponse.getHeaders().get(X_AMZN_REQUEST_ID_HEADER));
+            }
+        } catch (NullPointerException npe){
+            log.info("Error getting Request or Invocation ID from response", npe);
+        }
+        return idString.length() > 0 ? idString.toString() : "Unknown";
     }
 
     /**

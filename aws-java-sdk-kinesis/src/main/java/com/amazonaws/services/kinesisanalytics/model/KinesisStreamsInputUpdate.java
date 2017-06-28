@@ -1,28 +1,33 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * When updating application input configuration, provides information about an
- * Amazon Kinesis stream as the streaming source.
+ * When updating application input configuration, provides information about an Amazon Kinesis stream as the streaming
+ * source.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/KinesisStreamsInputUpdate"
+ *      target="_top">AWS API Documentation</a>
  */
-public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class KinesisStreamsInputUpdate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -32,9 +37,8 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
     private String resourceARNUpdate;
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf. You need to grant the necessary permissions to
-     * this role.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to
+     * grant the necessary permissions to this role.
      * </p>
      */
     private String roleARNUpdate;
@@ -45,8 +49,7 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
      * </p>
      * 
      * @param resourceARNUpdate
-     *        Amazon Resource Name (ARN) of the input Amazon Kinesis stream to
-     *        read.
+     *        Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.
      */
 
     public void setResourceARNUpdate(String resourceARNUpdate) {
@@ -58,8 +61,7 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
      * Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.
      * </p>
      * 
-     * @return Amazon Resource Name (ARN) of the input Amazon Kinesis stream to
-     *         read.
+     * @return Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.
      */
 
     public String getResourceARNUpdate() {
@@ -72,29 +74,24 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
      * </p>
      * 
      * @param resourceARNUpdate
-     *        Amazon Resource Name (ARN) of the input Amazon Kinesis stream to
-     *        read.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public KinesisStreamsInputUpdate withResourceARNUpdate(
-            String resourceARNUpdate) {
+    public KinesisStreamsInputUpdate withResourceARNUpdate(String resourceARNUpdate) {
         setResourceARNUpdate(resourceARNUpdate);
         return this;
     }
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf. You need to grant the necessary permissions to
-     * this role.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to
+     * grant the necessary permissions to this role.
      * </p>
      * 
      * @param roleARNUpdate
-     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *        access the stream on your behalf. You need to grant the necessary
-     *        permissions to this role.
+     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need
+     *        to grant the necessary permissions to this role.
      */
 
     public void setRoleARNUpdate(String roleARNUpdate) {
@@ -103,14 +100,12 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf. You need to grant the necessary permissions to
-     * this role.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to
+     * grant the necessary permissions to this role.
      * </p>
      * 
-     * @return ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *         access the stream on your behalf. You need to grant the necessary
-     *         permissions to this role.
+     * @return ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You
+     *         need to grant the necessary permissions to this role.
      */
 
     public String getRoleARNUpdate() {
@@ -119,17 +114,14 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf. You need to grant the necessary permissions to
-     * this role.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to
+     * grant the necessary permissions to this role.
      * </p>
      * 
      * @param roleARNUpdate
-     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *        access the stream on your behalf. You need to grant the necessary
-     *        permissions to this role.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need
+     *        to grant the necessary permissions to this role.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public KinesisStreamsInputUpdate withRoleARNUpdate(String roleARNUpdate) {
@@ -138,8 +130,7 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -150,9 +141,9 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceARNUpdate() != null)
-            sb.append("ResourceARNUpdate: " + getResourceARNUpdate() + ",");
+            sb.append("ResourceARNUpdate: ").append(getResourceARNUpdate()).append(",");
         if (getRoleARNUpdate() != null)
-            sb.append("RoleARNUpdate: " + getRoleARNUpdate());
+            sb.append("RoleARNUpdate: ").append(getRoleARNUpdate());
         sb.append("}");
         return sb.toString();
     }
@@ -167,17 +158,13 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
         if (obj instanceof KinesisStreamsInputUpdate == false)
             return false;
         KinesisStreamsInputUpdate other = (KinesisStreamsInputUpdate) obj;
-        if (other.getResourceARNUpdate() == null
-                ^ this.getResourceARNUpdate() == null)
+        if (other.getResourceARNUpdate() == null ^ this.getResourceARNUpdate() == null)
             return false;
-        if (other.getResourceARNUpdate() != null
-                && other.getResourceARNUpdate().equals(
-                        this.getResourceARNUpdate()) == false)
+        if (other.getResourceARNUpdate() != null && other.getResourceARNUpdate().equals(this.getResourceARNUpdate()) == false)
             return false;
         if (other.getRoleARNUpdate() == null ^ this.getRoleARNUpdate() == null)
             return false;
-        if (other.getRoleARNUpdate() != null
-                && other.getRoleARNUpdate().equals(this.getRoleARNUpdate()) == false)
+        if (other.getRoleARNUpdate() != null && other.getRoleARNUpdate().equals(this.getRoleARNUpdate()) == false)
             return false;
         return true;
     }
@@ -187,14 +174,8 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getResourceARNUpdate() == null) ? 0
-                        : getResourceARNUpdate().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRoleARNUpdate() == null) ? 0 : getRoleARNUpdate()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getResourceARNUpdate() == null) ? 0 : getResourceARNUpdate().hashCode());
+        hashCode = prime * hashCode + ((getRoleARNUpdate() == null) ? 0 : getRoleARNUpdate().hashCode());
         return hashCode;
     }
 
@@ -203,9 +184,13 @@ public class KinesisStreamsInputUpdate implements Serializable, Cloneable {
         try {
             return (KinesisStreamsInputUpdate) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.KinesisStreamsInputUpdateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

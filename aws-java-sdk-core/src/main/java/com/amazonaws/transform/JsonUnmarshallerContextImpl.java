@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,17 +20,16 @@ import static com.fasterxml.jackson.core.JsonToken.FIELD_NAME;
 import static com.fasterxml.jackson.core.JsonToken.START_ARRAY;
 import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 
+import com.amazonaws.http.HttpResponse;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import com.amazonaws.http.HttpResponse;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-
 public class JsonUnmarshallerContextImpl extends JsonUnmarshallerContext {
-
     /** The current JsonToken that the private JsonParser is currently pointing to. **/
     private JsonToken currentToken;
 
@@ -87,9 +86,24 @@ public class JsonUnmarshallerContextImpl extends JsonUnmarshallerContext {
 
     private final Map<Class<?>, Unmarshaller<?, JsonUnmarshallerContext>> unmarshallerMap;
 
-    public JsonUnmarshallerContextImpl(JsonParser jsonParser, Map<Class<?>, Unmarshaller<?, JsonUnmarshallerContext>> mapper, HttpResponse httpResponse) {
+    private final Map<UnmarshallerType, Unmarshaller<?, JsonUnmarshallerContext>> customUnmarshallerMap;
+
+    public JsonUnmarshallerContextImpl(JsonParser jsonParser,
+                                       Map<Class<?>, Unmarshaller<?, JsonUnmarshallerContext>> mapper,
+                                       HttpResponse httpResponse) {
+        this(jsonParser,
+             mapper,
+             Collections.<UnmarshallerType, Unmarshaller<?, JsonUnmarshallerContext>>emptyMap(),
+             httpResponse);
+    }
+
+    public JsonUnmarshallerContextImpl(JsonParser jsonParser,
+                                       Map<Class<?>, Unmarshaller<?, JsonUnmarshallerContext>> mapper,
+                                       Map<UnmarshallerType, Unmarshaller<?, JsonUnmarshallerContext>> customUnmarshallerMap,
+                                       HttpResponse httpResponse) {
         this.jsonParser = jsonParser;
         this.unmarshallerMap = mapper;
+        this.customUnmarshallerMap = customUnmarshallerMap;
         this.httpResponse = httpResponse;
     }
 
@@ -225,10 +239,13 @@ public class JsonUnmarshallerContextImpl extends JsonUnmarshallerContext {
     }
 
     @Override
-    public <T> Unmarshaller<T, JsonUnmarshallerContext> getUnmarshaller
-            (Class<T> type) {
-        return (Unmarshaller<T, JsonUnmarshallerContext>) unmarshallerMap.get
-                (type);
+    public <T> Unmarshaller<T, JsonUnmarshallerContext> getUnmarshaller(Class<T> type) {
+        return (Unmarshaller<T, JsonUnmarshallerContext>) unmarshallerMap.get(type);
+    }
+
+    @Override
+    public <T> Unmarshaller<T, JsonUnmarshallerContext> getUnmarshaller(Class<T> type, UnmarshallerType unmarshallerType) {
+        return (Unmarshaller<T, JsonUnmarshallerContext>) customUnmarshallerMap.get(unmarshallerType);
     }
 
     @Override

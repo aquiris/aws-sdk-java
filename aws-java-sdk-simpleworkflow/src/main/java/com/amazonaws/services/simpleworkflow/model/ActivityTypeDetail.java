@@ -1,43 +1,42 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Detailed information about an activity type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ActivityTypeDetail" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ActivityTypeDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ActivityTypeDetail extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
      * General information about the activity type.
      * </p>
      * <p>
-     * The status of activity type (returned in the ActivityTypeInfo structure)
-     * can be one of the following.
+     * The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.
      * </p>
      * <ul>
-     * <li><b>REGISTERED</b>: The type is registered and available. Workers
-     * supporting this type should be running.</li>
-     * <li><b>DEPRECATED</b>: The type was deprecated using
-     * <a>DeprecateActivityType</a>, but is still in use. You should keep
-     * workers supporting this type running. You cannot create new tasks of this
-     * type.</li>
+     * <li><b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running.</li>
+     * <li><b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use. You
+     * should keep workers supporting this type running. You cannot create new tasks of this type.</li>
      * </ul>
      */
     private ActivityTypeInfo typeInfo;
@@ -53,31 +52,24 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
      * General information about the activity type.
      * </p>
      * <p>
-     * The status of activity type (returned in the ActivityTypeInfo structure)
-     * can be one of the following.
+     * The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.
      * </p>
      * <ul>
-     * <li><b>REGISTERED</b>: The type is registered and available. Workers
-     * supporting this type should be running.</li>
-     * <li><b>DEPRECATED</b>: The type was deprecated using
-     * <a>DeprecateActivityType</a>, but is still in use. You should keep
-     * workers supporting this type running. You cannot create new tasks of this
-     * type.</li>
+     * <li><b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running.</li>
+     * <li><b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use. You
+     * should keep workers supporting this type running. You cannot create new tasks of this type.</li>
      * </ul>
      * 
      * @param typeInfo
      *        General information about the activity type.</p>
      *        <p>
-     *        The status of activity type (returned in the ActivityTypeInfo
-     *        structure) can be one of the following.
+     *        The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.
      *        </p>
      *        <ul>
-     *        <li><b>REGISTERED</b>: The type is registered and available.
-     *        Workers supporting this type should be running.</li>
-     *        <li><b>DEPRECATED</b>: The type was deprecated using
-     *        <a>DeprecateActivityType</a>, but is still in use. You should keep
-     *        workers supporting this type running. You cannot create new tasks
-     *        of this type.</li>
+     *        <li><b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be
+     *        running.</li>
+     *        <li><b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use.
+     *        You should keep workers supporting this type running. You cannot create new tasks of this type.</li>
      */
 
     public void setTypeInfo(ActivityTypeInfo typeInfo) {
@@ -89,30 +81,23 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
      * General information about the activity type.
      * </p>
      * <p>
-     * The status of activity type (returned in the ActivityTypeInfo structure)
-     * can be one of the following.
+     * The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.
      * </p>
      * <ul>
-     * <li><b>REGISTERED</b>: The type is registered and available. Workers
-     * supporting this type should be running.</li>
-     * <li><b>DEPRECATED</b>: The type was deprecated using
-     * <a>DeprecateActivityType</a>, but is still in use. You should keep
-     * workers supporting this type running. You cannot create new tasks of this
-     * type.</li>
+     * <li><b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running.</li>
+     * <li><b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use. You
+     * should keep workers supporting this type running. You cannot create new tasks of this type.</li>
      * </ul>
      * 
      * @return General information about the activity type.</p>
      *         <p>
-     *         The status of activity type (returned in the ActivityTypeInfo
-     *         structure) can be one of the following.
+     *         The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.
      *         </p>
      *         <ul>
-     *         <li><b>REGISTERED</b>: The type is registered and available.
-     *         Workers supporting this type should be running.</li>
-     *         <li><b>DEPRECATED</b>: The type was deprecated using
-     *         <a>DeprecateActivityType</a>, but is still in use. You should
-     *         keep workers supporting this type running. You cannot create new
-     *         tasks of this type.</li>
+     *         <li><b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be
+     *         running.</li>
+     *         <li><b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use.
+     *         You should keep workers supporting this type running. You cannot create new tasks of this type.</li>
      */
 
     public ActivityTypeInfo getTypeInfo() {
@@ -124,33 +109,25 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
      * General information about the activity type.
      * </p>
      * <p>
-     * The status of activity type (returned in the ActivityTypeInfo structure)
-     * can be one of the following.
+     * The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.
      * </p>
      * <ul>
-     * <li><b>REGISTERED</b>: The type is registered and available. Workers
-     * supporting this type should be running.</li>
-     * <li><b>DEPRECATED</b>: The type was deprecated using
-     * <a>DeprecateActivityType</a>, but is still in use. You should keep
-     * workers supporting this type running. You cannot create new tasks of this
-     * type.</li>
+     * <li><b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running.</li>
+     * <li><b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use. You
+     * should keep workers supporting this type running. You cannot create new tasks of this type.</li>
      * </ul>
      * 
      * @param typeInfo
      *        General information about the activity type.</p>
      *        <p>
-     *        The status of activity type (returned in the ActivityTypeInfo
-     *        structure) can be one of the following.
+     *        The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.
      *        </p>
      *        <ul>
-     *        <li><b>REGISTERED</b>: The type is registered and available.
-     *        Workers supporting this type should be running.</li>
-     *        <li><b>DEPRECATED</b>: The type was deprecated using
-     *        <a>DeprecateActivityType</a>, but is still in use. You should keep
-     *        workers supporting this type running. You cannot create new tasks
-     *        of this type.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li><b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be
+     *        running.</li>
+     *        <li><b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use.
+     *        You should keep workers supporting this type running. You cannot create new tasks of this type.</li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ActivityTypeDetail withTypeInfo(ActivityTypeInfo typeInfo) {
@@ -190,19 +167,16 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
      * 
      * @param configuration
      *        The configuration settings registered with the activity type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ActivityTypeDetail withConfiguration(
-            ActivityTypeConfiguration configuration) {
+    public ActivityTypeDetail withConfiguration(ActivityTypeConfiguration configuration) {
         setConfiguration(configuration);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -213,9 +187,9 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTypeInfo() != null)
-            sb.append("TypeInfo: " + getTypeInfo() + ",");
+            sb.append("TypeInfo: ").append(getTypeInfo()).append(",");
         if (getConfiguration() != null)
-            sb.append("Configuration: " + getConfiguration());
+            sb.append("Configuration: ").append(getConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -232,13 +206,11 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
         ActivityTypeDetail other = (ActivityTypeDetail) obj;
         if (other.getTypeInfo() == null ^ this.getTypeInfo() == null)
             return false;
-        if (other.getTypeInfo() != null
-                && other.getTypeInfo().equals(this.getTypeInfo()) == false)
+        if (other.getTypeInfo() != null && other.getTypeInfo().equals(this.getTypeInfo()) == false)
             return false;
         if (other.getConfiguration() == null ^ this.getConfiguration() == null)
             return false;
-        if (other.getConfiguration() != null
-                && other.getConfiguration().equals(this.getConfiguration()) == false)
+        if (other.getConfiguration() != null && other.getConfiguration().equals(this.getConfiguration()) == false)
             return false;
         return true;
     }
@@ -248,12 +220,8 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getTypeInfo() == null) ? 0 : getTypeInfo().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getConfiguration() == null) ? 0 : getConfiguration()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getTypeInfo() == null) ? 0 : getTypeInfo().hashCode());
+        hashCode = prime * hashCode + ((getConfiguration() == null) ? 0 : getConfiguration().hashCode());
         return hashCode;
     }
 
@@ -262,9 +230,8 @@ public class ActivityTypeDetail implements Serializable, Cloneable {
         try {
             return (ActivityTypeDetail) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

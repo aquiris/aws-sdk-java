@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,9 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.s3.model;
-import java.io.Serializable;
 
 import com.amazonaws.AmazonWebServiceRequest;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -66,6 +67,8 @@ public class RestoreObjectRequest extends AmazonWebServiceRequest implements Ser
      * Requester Pays Buckets.
      */
     private boolean isRequesterPays;
+
+    private GlacierJobParameters glacierJobParameters;
 
     /**
      * <p>
@@ -291,4 +294,29 @@ public class RestoreObjectRequest extends AmazonWebServiceRequest implements Ser
         return this;
     }
 
+    /**
+     * @return Glacier related prameters pertaining to this job.
+     */
+    public GlacierJobParameters getGlacierJobParameters() {
+        return glacierJobParameters;
+    }
+
+    /**
+     * Sets Glacier related prameters pertaining to this job.
+     * @param glacierJobParameters New value for Glacier job parameters.
+     */
+    public void setGlacierJobParameters(GlacierJobParameters glacierJobParameters) {
+        this.glacierJobParameters = glacierJobParameters;
+    }
+
+    /**
+     * Sets Glacier related prameters pertaining to this job.
+     *
+     * @param glacierJobParameters New value for Glacier job parameters.
+     * @return This object for method chaining.
+     */
+    public RestoreObjectRequest withGlacierJobParameters(GlacierJobParameters glacierJobParameters) {
+        setGlacierJobParameters(glacierJobParameters);
+        return this;
+    }
 }

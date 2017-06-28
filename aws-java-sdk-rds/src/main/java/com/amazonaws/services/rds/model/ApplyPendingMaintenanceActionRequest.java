@@ -1,35 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ApplyPendingMaintenanceAction" target="_top">AWS
+ *      API Documentation</a>
  */
-public class ApplyPendingMaintenanceActionRequest extends
-        AmazonWebServiceRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ApplyPendingMaintenanceActionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The RDS Amazon Resource Name (ARN) of the resource that the pending
-     * maintenance action applies to. For information about creating an ARN, see
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
+     * information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      */
     private String resourceIdentifier;
@@ -44,9 +46,8 @@ public class ApplyPendingMaintenanceActionRequest extends
     private String applyAction;
     /**
      * <p>
-     * A value that specifies the type of opt-in request, or undoes an opt-in
-     * request. An opt-in request of type <code>immediate</code> cannot be
-     * undone.
+     * A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type
+     * <code>immediate</code> cannot be undone.
      * </p>
      * <p>
      * Valid values:
@@ -59,14 +60,12 @@ public class ApplyPendingMaintenanceActionRequest extends
      * </li>
      * <li>
      * <p>
-     * <code>next-maintenance</code> - Apply the maintenance action during the
-     * next maintenance window for the resource.
+     * <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the resource.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>undo-opt-in</code> - Cancel any existing
-     * <code>next-maintenance</code> opt-in requests.
+     * <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.
      * </p>
      * </li>
      * </ul>
@@ -75,17 +74,15 @@ public class ApplyPendingMaintenanceActionRequest extends
 
     /**
      * <p>
-     * The RDS Amazon Resource Name (ARN) of the resource that the pending
-     * maintenance action applies to. For information about creating an ARN, see
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
+     * information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
      * @param resourceIdentifier
-     *        The RDS Amazon Resource Name (ARN) of the resource that the
-     *        pending maintenance action applies to. For information about
-     *        creating an ARN, see <a href=
+     *        The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
+     *        information about creating an ARN, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>.
      */
@@ -96,16 +93,14 @@ public class ApplyPendingMaintenanceActionRequest extends
 
     /**
      * <p>
-     * The RDS Amazon Resource Name (ARN) of the resource that the pending
-     * maintenance action applies to. For information about creating an ARN, see
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
+     * information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
-     * @return The RDS Amazon Resource Name (ARN) of the resource that the
-     *         pending maintenance action applies to. For information about
-     *         creating an ARN, see <a href=
+     * @return The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
+     *         information about creating an ARN, see <a href=
      *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *         > Constructing an RDS Amazon Resource Name (ARN)</a>.
      */
@@ -116,25 +111,21 @@ public class ApplyPendingMaintenanceActionRequest extends
 
     /**
      * <p>
-     * The RDS Amazon Resource Name (ARN) of the resource that the pending
-     * maintenance action applies to. For information about creating an ARN, see
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
+     * information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
      * @param resourceIdentifier
-     *        The RDS Amazon Resource Name (ARN) of the resource that the
-     *        pending maintenance action applies to. For information about
-     *        creating an ARN, see <a href=
+     *        The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For
+     *        information about creating an ARN, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ApplyPendingMaintenanceActionRequest withResourceIdentifier(
-            String resourceIdentifier) {
+    public ApplyPendingMaintenanceActionRequest withResourceIdentifier(String resourceIdentifier) {
         setResourceIdentifier(resourceIdentifier);
         return this;
     }
@@ -186,21 +177,18 @@ public class ApplyPendingMaintenanceActionRequest extends
      *        The pending maintenance action to apply to this resource.</p>
      *        <p>
      *        Valid values: <code>system-update</code>, <code>db-upgrade</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ApplyPendingMaintenanceActionRequest withApplyAction(
-            String applyAction) {
+    public ApplyPendingMaintenanceActionRequest withApplyAction(String applyAction) {
         setApplyAction(applyAction);
         return this;
     }
 
     /**
      * <p>
-     * A value that specifies the type of opt-in request, or undoes an opt-in
-     * request. An opt-in request of type <code>immediate</code> cannot be
-     * undone.
+     * A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type
+     * <code>immediate</code> cannot be undone.
      * </p>
      * <p>
      * Valid values:
@@ -213,22 +201,19 @@ public class ApplyPendingMaintenanceActionRequest extends
      * </li>
      * <li>
      * <p>
-     * <code>next-maintenance</code> - Apply the maintenance action during the
-     * next maintenance window for the resource.
+     * <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the resource.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>undo-opt-in</code> - Cancel any existing
-     * <code>next-maintenance</code> opt-in requests.
+     * <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.
      * </p>
      * </li>
      * </ul>
      * 
      * @param optInType
-     *        A value that specifies the type of opt-in request, or undoes an
-     *        opt-in request. An opt-in request of type <code>immediate</code>
-     *        cannot be undone.</p>
+     *        A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type
+     *        <code>immediate</code> cannot be undone.</p>
      *        <p>
      *        Valid values:
      *        </p>
@@ -240,14 +225,13 @@ public class ApplyPendingMaintenanceActionRequest extends
      *        </li>
      *        <li>
      *        <p>
-     *        <code>next-maintenance</code> - Apply the maintenance action
-     *        during the next maintenance window for the resource.
+     *        <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the
+     *        resource.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>undo-opt-in</code> - Cancel any existing
-     *        <code>next-maintenance</code> opt-in requests.
+     *        <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.
      *        </p>
      *        </li>
      */
@@ -258,9 +242,8 @@ public class ApplyPendingMaintenanceActionRequest extends
 
     /**
      * <p>
-     * A value that specifies the type of opt-in request, or undoes an opt-in
-     * request. An opt-in request of type <code>immediate</code> cannot be
-     * undone.
+     * A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type
+     * <code>immediate</code> cannot be undone.
      * </p>
      * <p>
      * Valid values:
@@ -273,41 +256,36 @@ public class ApplyPendingMaintenanceActionRequest extends
      * </li>
      * <li>
      * <p>
-     * <code>next-maintenance</code> - Apply the maintenance action during the
-     * next maintenance window for the resource.
+     * <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the resource.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>undo-opt-in</code> - Cancel any existing
-     * <code>next-maintenance</code> opt-in requests.
+     * <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return A value that specifies the type of opt-in request, or undoes an
-     *         opt-in request. An opt-in request of type <code>immediate</code>
-     *         cannot be undone.</p>
+     * @return A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type
+     *         <code>immediate</code> cannot be undone.</p>
      *         <p>
      *         Valid values:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>immediate</code> - Apply the maintenance action
-     *         immediately.
+     *         <code>immediate</code> - Apply the maintenance action immediately.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>next-maintenance</code> - Apply the maintenance action
-     *         during the next maintenance window for the resource.
+     *         <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the
+     *         resource.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>undo-opt-in</code> - Cancel any existing
-     *         <code>next-maintenance</code> opt-in requests.
+     *         <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.
      *         </p>
      *         </li>
      */
@@ -318,9 +296,8 @@ public class ApplyPendingMaintenanceActionRequest extends
 
     /**
      * <p>
-     * A value that specifies the type of opt-in request, or undoes an opt-in
-     * request. An opt-in request of type <code>immediate</code> cannot be
-     * undone.
+     * A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type
+     * <code>immediate</code> cannot be undone.
      * </p>
      * <p>
      * Valid values:
@@ -333,22 +310,19 @@ public class ApplyPendingMaintenanceActionRequest extends
      * </li>
      * <li>
      * <p>
-     * <code>next-maintenance</code> - Apply the maintenance action during the
-     * next maintenance window for the resource.
+     * <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the resource.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>undo-opt-in</code> - Cancel any existing
-     * <code>next-maintenance</code> opt-in requests.
+     * <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.
      * </p>
      * </li>
      * </ul>
      * 
      * @param optInType
-     *        A value that specifies the type of opt-in request, or undoes an
-     *        opt-in request. An opt-in request of type <code>immediate</code>
-     *        cannot be undone.</p>
+     *        A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type
+     *        <code>immediate</code> cannot be undone.</p>
      *        <p>
      *        Valid values:
      *        </p>
@@ -360,18 +334,16 @@ public class ApplyPendingMaintenanceActionRequest extends
      *        </li>
      *        <li>
      *        <p>
-     *        <code>next-maintenance</code> - Apply the maintenance action
-     *        during the next maintenance window for the resource.
+     *        <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the
+     *        resource.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>undo-opt-in</code> - Cancel any existing
-     *        <code>next-maintenance</code> opt-in requests.
+     *        <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ApplyPendingMaintenanceActionRequest withOptInType(String optInType) {
@@ -380,8 +352,7 @@ public class ApplyPendingMaintenanceActionRequest extends
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -392,11 +363,11 @@ public class ApplyPendingMaintenanceActionRequest extends
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceIdentifier() != null)
-            sb.append("ResourceIdentifier: " + getResourceIdentifier() + ",");
+            sb.append("ResourceIdentifier: ").append(getResourceIdentifier()).append(",");
         if (getApplyAction() != null)
-            sb.append("ApplyAction: " + getApplyAction() + ",");
+            sb.append("ApplyAction: ").append(getApplyAction()).append(",");
         if (getOptInType() != null)
-            sb.append("OptInType: " + getOptInType());
+            sb.append("OptInType: ").append(getOptInType());
         sb.append("}");
         return sb.toString();
     }
@@ -411,22 +382,17 @@ public class ApplyPendingMaintenanceActionRequest extends
         if (obj instanceof ApplyPendingMaintenanceActionRequest == false)
             return false;
         ApplyPendingMaintenanceActionRequest other = (ApplyPendingMaintenanceActionRequest) obj;
-        if (other.getResourceIdentifier() == null
-                ^ this.getResourceIdentifier() == null)
+        if (other.getResourceIdentifier() == null ^ this.getResourceIdentifier() == null)
             return false;
-        if (other.getResourceIdentifier() != null
-                && other.getResourceIdentifier().equals(
-                        this.getResourceIdentifier()) == false)
+        if (other.getResourceIdentifier() != null && other.getResourceIdentifier().equals(this.getResourceIdentifier()) == false)
             return false;
         if (other.getApplyAction() == null ^ this.getApplyAction() == null)
             return false;
-        if (other.getApplyAction() != null
-                && other.getApplyAction().equals(this.getApplyAction()) == false)
+        if (other.getApplyAction() != null && other.getApplyAction().equals(this.getApplyAction()) == false)
             return false;
         if (other.getOptInType() == null ^ this.getOptInType() == null)
             return false;
-        if (other.getOptInType() != null
-                && other.getOptInType().equals(this.getOptInType()) == false)
+        if (other.getOptInType() != null && other.getOptInType().equals(this.getOptInType()) == false)
             return false;
         return true;
     }
@@ -436,15 +402,9 @@ public class ApplyPendingMaintenanceActionRequest extends
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getResourceIdentifier() == null) ? 0
-                        : getResourceIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getApplyAction() == null) ? 0 : getApplyAction().hashCode());
-        hashCode = prime * hashCode
-                + ((getOptInType() == null) ? 0 : getOptInType().hashCode());
+        hashCode = prime * hashCode + ((getResourceIdentifier() == null) ? 0 : getResourceIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getApplyAction() == null) ? 0 : getApplyAction().hashCode());
+        hashCode = prime * hashCode + ((getOptInType() == null) ? 0 : getOptInType().hashCode());
         return hashCode;
     }
 
@@ -452,4 +412,5 @@ public class ApplyPendingMaintenanceActionRequest extends
     public ApplyPendingMaintenanceActionRequest clone() {
         return (ApplyPendingMaintenanceActionRequest) super.clone();
     }
+
 }

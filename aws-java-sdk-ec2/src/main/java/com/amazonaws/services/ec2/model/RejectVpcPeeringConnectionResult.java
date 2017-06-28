@@ -1,46 +1,44 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
+import com.amazonaws.AmazonWebServiceResult;
 
 /**
  * <p>
  * Contains the output of RejectVpcPeeringConnection.
  * </p>
  */
-public class RejectVpcPeeringConnectionResult implements Serializable,
-        Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RejectVpcPeeringConnectionResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Returns <code>true</code> if the request succeeds; otherwise, it returns
-     * an error.
+     * Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      * </p>
      */
     private Boolean returnValue;
 
     /**
      * <p>
-     * Returns <code>true</code> if the request succeeds; otherwise, it returns
-     * an error.
+     * Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      * </p>
      * 
      * @param returnValue
-     *        Returns <code>true</code> if the request succeeds; otherwise, it
-     *        returns an error.
+     *        Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      */
 
     public void setReturn(Boolean returnValue) {
@@ -49,12 +47,10 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
 
     /**
      * <p>
-     * Returns <code>true</code> if the request succeeds; otherwise, it returns
-     * an error.
+     * Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      * </p>
      * 
-     * @return Returns <code>true</code> if the request succeeds; otherwise, it
-     *         returns an error.
+     * @return Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      */
 
     public Boolean getReturn() {
@@ -63,15 +59,12 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
 
     /**
      * <p>
-     * Returns <code>true</code> if the request succeeds; otherwise, it returns
-     * an error.
+     * Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      * </p>
      * 
      * @param returnValue
-     *        Returns <code>true</code> if the request succeeds; otherwise, it
-     *        returns an error.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RejectVpcPeeringConnectionResult withReturn(Boolean returnValue) {
@@ -81,12 +74,10 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
 
     /**
      * <p>
-     * Returns <code>true</code> if the request succeeds; otherwise, it returns
-     * an error.
+     * Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      * </p>
      * 
-     * @return Returns <code>true</code> if the request succeeds; otherwise, it
-     *         returns an error.
+     * @return Returns <code>true</code> if the request succeeds; otherwise, it returns an error.
      */
 
     public Boolean isReturn() {
@@ -94,8 +85,7 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -106,7 +96,7 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReturn() != null)
-            sb.append("Return: " + getReturn());
+            sb.append("Return: ").append(getReturn());
         sb.append("}");
         return sb.toString();
     }
@@ -123,8 +113,7 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
         RejectVpcPeeringConnectionResult other = (RejectVpcPeeringConnectionResult) obj;
         if (other.getReturn() == null ^ this.getReturn() == null)
             return false;
-        if (other.getReturn() != null
-                && other.getReturn().equals(this.getReturn()) == false)
+        if (other.getReturn() != null && other.getReturn().equals(this.getReturn()) == false)
             return false;
         return true;
     }
@@ -134,8 +123,7 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getReturn() == null) ? 0 : getReturn().hashCode());
+        hashCode = prime * hashCode + ((getReturn() == null) ? 0 : getReturn().hashCode());
         return hashCode;
     }
 
@@ -144,9 +132,7 @@ public class RejectVpcPeeringConnectionResult implements Serializable,
         try {
             return (RejectVpcPeeringConnectionResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudhsm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/AddTagsToResource" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AddTagsToResourceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -42,8 +44,7 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param resourceArn
-     *        The Amazon Resource Name (ARN) of the AWS CloudHSM resource to
-     *        tag.
+     *        The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
      */
 
     public void setResourceArn(String resourceArn) {
@@ -55,8 +56,7 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
      * The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the AWS CloudHSM resource to
-     *         tag.
+     * @return The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
      */
 
     public String getResourceArn() {
@@ -69,10 +69,8 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param resourceArn
-     *        The Amazon Resource Name (ARN) of the AWS CloudHSM resource to
-     *        tag.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AddTagsToResourceRequest withResourceArn(String resourceArn) {
@@ -118,22 +116,19 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
      * One or more tags.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTagList(java.util.Collection)} or
-     * {@link #withTagList(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagList(java.util.Collection)} or {@link #withTagList(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param tagList
      *        One or more tags.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AddTagsToResourceRequest withTagList(Tag... tagList) {
         if (this.tagList == null) {
-            setTagList(new com.amazonaws.internal.SdkInternalList<Tag>(
-                    tagList.length));
+            setTagList(new com.amazonaws.internal.SdkInternalList<Tag>(tagList.length));
         }
         for (Tag ele : tagList) {
             this.tagList.add(ele);
@@ -148,19 +143,16 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
      * 
      * @param tagList
      *        One or more tags.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AddTagsToResourceRequest withTagList(
-            java.util.Collection<Tag> tagList) {
+    public AddTagsToResourceRequest withTagList(java.util.Collection<Tag> tagList) {
         setTagList(tagList);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -171,9 +163,9 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceArn() != null)
-            sb.append("ResourceArn: " + getResourceArn() + ",");
+            sb.append("ResourceArn: ").append(getResourceArn()).append(",");
         if (getTagList() != null)
-            sb.append("TagList: " + getTagList());
+            sb.append("TagList: ").append(getTagList());
         sb.append("}");
         return sb.toString();
     }
@@ -190,13 +182,11 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
         AddTagsToResourceRequest other = (AddTagsToResourceRequest) obj;
         if (other.getResourceArn() == null ^ this.getResourceArn() == null)
             return false;
-        if (other.getResourceArn() != null
-                && other.getResourceArn().equals(this.getResourceArn()) == false)
+        if (other.getResourceArn() != null && other.getResourceArn().equals(this.getResourceArn()) == false)
             return false;
         if (other.getTagList() == null ^ this.getTagList() == null)
             return false;
-        if (other.getTagList() != null
-                && other.getTagList().equals(this.getTagList()) == false)
+        if (other.getTagList() != null && other.getTagList().equals(this.getTagList()) == false)
             return false;
         return true;
     }
@@ -206,11 +196,8 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getResourceArn() == null) ? 0 : getResourceArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getTagList() == null) ? 0 : getTagList().hashCode());
+        hashCode = prime * hashCode + ((getResourceArn() == null) ? 0 : getResourceArn().hashCode());
+        hashCode = prime * hashCode + ((getTagList() == null) ? 0 : getTagList().hashCode());
         return hashCode;
     }
 
@@ -218,4 +205,5 @@ public class AddTagsToResourceRequest extends AmazonWebServiceRequest implements
     public AddTagsToResourceRequest clone() {
         return (AddTagsToResourceRequest) super.clone();
     }
+
 }

@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of a batch get deployments operation.
+ * Represents the output of a BatchGetDeployments operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetDeployments" target="_top">AWS API
+ *      Documentation</a>
  */
-public class BatchGetDeploymentsResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class BatchGetDeploymentsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -54,15 +57,13 @@ public class BatchGetDeploymentsResult implements Serializable, Cloneable {
      *        Information about the deployments.
      */
 
-    public void setDeploymentsInfo(
-            java.util.Collection<DeploymentInfo> deploymentsInfo) {
+    public void setDeploymentsInfo(java.util.Collection<DeploymentInfo> deploymentsInfo) {
         if (deploymentsInfo == null) {
             this.deploymentsInfo = null;
             return;
         }
 
-        this.deploymentsInfo = new com.amazonaws.internal.SdkInternalList<DeploymentInfo>(
-                deploymentsInfo);
+        this.deploymentsInfo = new com.amazonaws.internal.SdkInternalList<DeploymentInfo>(deploymentsInfo);
     }
 
     /**
@@ -70,23 +71,19 @@ public class BatchGetDeploymentsResult implements Serializable, Cloneable {
      * Information about the deployments.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDeploymentsInfo(java.util.Collection)} or
-     * {@link #withDeploymentsInfo(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDeploymentsInfo(java.util.Collection)} or {@link #withDeploymentsInfo(java.util.Collection)} if you
+     * want to override the existing values.
      * </p>
      * 
      * @param deploymentsInfo
      *        Information about the deployments.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public BatchGetDeploymentsResult withDeploymentsInfo(
-            DeploymentInfo... deploymentsInfo) {
+    public BatchGetDeploymentsResult withDeploymentsInfo(DeploymentInfo... deploymentsInfo) {
         if (this.deploymentsInfo == null) {
-            setDeploymentsInfo(new com.amazonaws.internal.SdkInternalList<DeploymentInfo>(
-                    deploymentsInfo.length));
+            setDeploymentsInfo(new com.amazonaws.internal.SdkInternalList<DeploymentInfo>(deploymentsInfo.length));
         }
         for (DeploymentInfo ele : deploymentsInfo) {
             this.deploymentsInfo.add(ele);
@@ -101,19 +98,16 @@ public class BatchGetDeploymentsResult implements Serializable, Cloneable {
      * 
      * @param deploymentsInfo
      *        Information about the deployments.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public BatchGetDeploymentsResult withDeploymentsInfo(
-            java.util.Collection<DeploymentInfo> deploymentsInfo) {
+    public BatchGetDeploymentsResult withDeploymentsInfo(java.util.Collection<DeploymentInfo> deploymentsInfo) {
         setDeploymentsInfo(deploymentsInfo);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -124,7 +118,7 @@ public class BatchGetDeploymentsResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeploymentsInfo() != null)
-            sb.append("DeploymentsInfo: " + getDeploymentsInfo());
+            sb.append("DeploymentsInfo: ").append(getDeploymentsInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -139,11 +133,9 @@ public class BatchGetDeploymentsResult implements Serializable, Cloneable {
         if (obj instanceof BatchGetDeploymentsResult == false)
             return false;
         BatchGetDeploymentsResult other = (BatchGetDeploymentsResult) obj;
-        if (other.getDeploymentsInfo() == null
-                ^ this.getDeploymentsInfo() == null)
+        if (other.getDeploymentsInfo() == null ^ this.getDeploymentsInfo() == null)
             return false;
-        if (other.getDeploymentsInfo() != null
-                && other.getDeploymentsInfo().equals(this.getDeploymentsInfo()) == false)
+        if (other.getDeploymentsInfo() != null && other.getDeploymentsInfo().equals(this.getDeploymentsInfo()) == false)
             return false;
         return true;
     }
@@ -153,10 +145,7 @@ public class BatchGetDeploymentsResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDeploymentsInfo() == null) ? 0 : getDeploymentsInfo()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getDeploymentsInfo() == null) ? 0 : getDeploymentsInfo().hashCode());
         return hashCode;
     }
 
@@ -165,9 +154,8 @@ public class BatchGetDeploymentsResult implements Serializable, Cloneable {
         try {
             return (BatchGetDeploymentsResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

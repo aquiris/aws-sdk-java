@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The <code>UpdatePipelineStatusRequest</code> structure.
  * </p>
  */
-public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdatePipelineStatusRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -36,8 +36,16 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      */
     private String status;
@@ -74,8 +82,7 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
      * 
      * @param id
      *        The identifier of the pipeline to update.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdatePipelineStatusRequest withId(String id) {
@@ -88,16 +95,31 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param status
      *        The desired status of the pipeline:</p>
      *        <ul>
-     *        <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     *        <li> <code>Paused</code>: The pipeline is not currently processing
-     *        jobs.</li>
+     *        <li>
+     *        <p>
+     *        <code>Active</code>: The pipeline is processing jobs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Paused</code>: The pipeline is not currently processing jobs.
+     *        </p>
+     *        </li>
      */
 
     public void setStatus(String status) {
@@ -109,15 +131,30 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The desired status of the pipeline:</p>
      *         <ul>
-     *         <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     *         <li> <code>Paused</code>: The pipeline is not currently processing
-     *         jobs.</li>
+     *         <li>
+     *         <p>
+     *         <code>Active</code>: The pipeline is processing jobs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Paused</code>: The pipeline is not currently processing jobs.
+     *         </p>
+     *         </li>
      */
 
     public String getStatus() {
@@ -129,18 +166,32 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
      * The desired status of the pipeline:
      * </p>
      * <ul>
-     * <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     * <li> <code>Paused</code>: The pipeline is not currently processing jobs.</li>
+     * <li>
+     * <p>
+     * <code>Active</code>: The pipeline is processing jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Paused</code>: The pipeline is not currently processing jobs.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param status
      *        The desired status of the pipeline:</p>
      *        <ul>
-     *        <li> <code>Active</code>: The pipeline is processing jobs.</li>
-     *        <li> <code>Paused</code>: The pipeline is not currently processing
-     *        jobs.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <code>Active</code>: The pipeline is processing jobs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Paused</code>: The pipeline is not currently processing jobs.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdatePipelineStatusRequest withStatus(String status) {
@@ -149,8 +200,7 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -161,9 +211,9 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus());
+            sb.append("Status: ").append(getStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -180,13 +230,11 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
         UpdatePipelineStatusRequest other = (UpdatePipelineStatusRequest) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         return true;
     }
@@ -196,10 +244,8 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         return hashCode;
     }
 
@@ -207,4 +253,5 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest
     public UpdatePipelineStatusRequest clone() {
         return (UpdatePipelineStatusRequest) super.clone();
     }
+
 }

@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The input for the DetachThingPrincipal operation.
  * </p>
  */
-public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DetachThingPrincipalRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,9 +33,8 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
     private String thingName;
     /**
      * <p>
-     * If the principal is a certificate, this value must be ARN of the
-     * certificate. If the principal is an Amazon Cognito identity, this value
-     * must be the ID of the Amazon Cognito identity.
+     * If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon
+     * Cognito identity, this value must be the ID of the Amazon Cognito identity.
      * </p>
      */
     private String principal;
@@ -72,8 +71,7 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
      * 
      * @param thingName
      *        The name of the thing.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DetachThingPrincipalRequest withThingName(String thingName) {
@@ -83,15 +81,13 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * If the principal is a certificate, this value must be ARN of the
-     * certificate. If the principal is an Amazon Cognito identity, this value
-     * must be the ID of the Amazon Cognito identity.
+     * If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon
+     * Cognito identity, this value must be the ID of the Amazon Cognito identity.
      * </p>
      * 
      * @param principal
-     *        If the principal is a certificate, this value must be ARN of the
-     *        certificate. If the principal is an Amazon Cognito identity, this
-     *        value must be the ID of the Amazon Cognito identity.
+     *        If the principal is a certificate, this value must be ARN of the certificate. If the principal is an
+     *        Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.
      */
 
     public void setPrincipal(String principal) {
@@ -100,14 +96,12 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * If the principal is a certificate, this value must be ARN of the
-     * certificate. If the principal is an Amazon Cognito identity, this value
-     * must be the ID of the Amazon Cognito identity.
+     * If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon
+     * Cognito identity, this value must be the ID of the Amazon Cognito identity.
      * </p>
      * 
-     * @return If the principal is a certificate, this value must be ARN of the
-     *         certificate. If the principal is an Amazon Cognito identity, this
-     *         value must be the ID of the Amazon Cognito identity.
+     * @return If the principal is a certificate, this value must be ARN of the certificate. If the principal is an
+     *         Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.
      */
 
     public String getPrincipal() {
@@ -116,17 +110,14 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * If the principal is a certificate, this value must be ARN of the
-     * certificate. If the principal is an Amazon Cognito identity, this value
-     * must be the ID of the Amazon Cognito identity.
+     * If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon
+     * Cognito identity, this value must be the ID of the Amazon Cognito identity.
      * </p>
      * 
      * @param principal
-     *        If the principal is a certificate, this value must be ARN of the
-     *        certificate. If the principal is an Amazon Cognito identity, this
-     *        value must be the ID of the Amazon Cognito identity.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If the principal is a certificate, this value must be ARN of the certificate. If the principal is an
+     *        Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DetachThingPrincipalRequest withPrincipal(String principal) {
@@ -135,8 +126,7 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -147,9 +137,9 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getThingName() != null)
-            sb.append("ThingName: " + getThingName() + ",");
+            sb.append("ThingName: ").append(getThingName()).append(",");
         if (getPrincipal() != null)
-            sb.append("Principal: " + getPrincipal());
+            sb.append("Principal: ").append(getPrincipal());
         sb.append("}");
         return sb.toString();
     }
@@ -166,13 +156,11 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
         DetachThingPrincipalRequest other = (DetachThingPrincipalRequest) obj;
         if (other.getThingName() == null ^ this.getThingName() == null)
             return false;
-        if (other.getThingName() != null
-                && other.getThingName().equals(this.getThingName()) == false)
+        if (other.getThingName() != null && other.getThingName().equals(this.getThingName()) == false)
             return false;
         if (other.getPrincipal() == null ^ this.getPrincipal() == null)
             return false;
-        if (other.getPrincipal() != null
-                && other.getPrincipal().equals(this.getPrincipal()) == false)
+        if (other.getPrincipal() != null && other.getPrincipal().equals(this.getPrincipal()) == false)
             return false;
         return true;
     }
@@ -182,10 +170,8 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getThingName() == null) ? 0 : getThingName().hashCode());
-        hashCode = prime * hashCode
-                + ((getPrincipal() == null) ? 0 : getPrincipal().hashCode());
+        hashCode = prime * hashCode + ((getThingName() == null) ? 0 : getThingName().hashCode());
+        hashCode = prime * hashCode + ((getPrincipal() == null) ? 0 : getPrincipal().hashCode());
         return hashCode;
     }
 
@@ -193,4 +179,5 @@ public class DetachThingPrincipalRequest extends AmazonWebServiceRequest
     public DetachThingPrincipalRequest clone() {
         return (DetachThingPrincipalRequest) super.clone();
     }
+
 }

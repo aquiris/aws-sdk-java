@@ -1,28 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * For an application output, describes the Amazon Kinesis stream configured as
- * its destination.
+ * For an application output, describes the Amazon Kinesis stream configured as its destination.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/KinesisStreamsOutputDescription"
+ *      target="_top">AWS API Documentation</a>
  */
-public class KinesisStreamsOutputDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class KinesisStreamsOutputDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -32,8 +36,7 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
     private String resourceARN;
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.
      * </p>
      */
     private String roleARN;
@@ -70,8 +73,7 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
      * 
      * @param resourceARN
      *        Amazon Resource Name (ARN) of the Amazon Kinesis stream.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public KinesisStreamsOutputDescription withResourceARN(String resourceARN) {
@@ -81,13 +83,11 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.
      * </p>
      * 
      * @param roleARN
-     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *        access the stream.
+     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.
      */
 
     public void setRoleARN(String roleARN) {
@@ -96,12 +96,10 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.
      * </p>
      * 
-     * @return ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *         access the stream.
+     * @return ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.
      */
 
     public String getRoleARN() {
@@ -110,15 +108,12 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.
      * </p>
      * 
      * @param roleARN
-     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *        access the stream.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public KinesisStreamsOutputDescription withRoleARN(String roleARN) {
@@ -127,8 +122,7 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -139,9 +133,9 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceARN() != null)
-            sb.append("ResourceARN: " + getResourceARN() + ",");
+            sb.append("ResourceARN: ").append(getResourceARN()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN());
+            sb.append("RoleARN: ").append(getRoleARN());
         sb.append("}");
         return sb.toString();
     }
@@ -158,13 +152,11 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
         KinesisStreamsOutputDescription other = (KinesisStreamsOutputDescription) obj;
         if (other.getResourceARN() == null ^ this.getResourceARN() == null)
             return false;
-        if (other.getResourceARN() != null
-                && other.getResourceARN().equals(this.getResourceARN()) == false)
+        if (other.getResourceARN() != null && other.getResourceARN().equals(this.getResourceARN()) == false)
             return false;
         if (other.getRoleARN() == null ^ this.getRoleARN() == null)
             return false;
-        if (other.getRoleARN() != null
-                && other.getRoleARN().equals(this.getRoleARN()) == false)
+        if (other.getRoleARN() != null && other.getRoleARN().equals(this.getRoleARN()) == false)
             return false;
         return true;
     }
@@ -174,11 +166,8 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getResourceARN() == null) ? 0 : getResourceARN().hashCode());
-        hashCode = prime * hashCode
-                + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
+        hashCode = prime * hashCode + ((getResourceARN() == null) ? 0 : getResourceARN().hashCode());
+        hashCode = prime * hashCode + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
         return hashCode;
     }
 
@@ -187,9 +176,13 @@ public class KinesisStreamsOutputDescription implements Serializable, Cloneable 
         try {
             return (KinesisStreamsOutputDescription) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.KinesisStreamsOutputDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input of a put approval result action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutApprovalResult" target="_top">AWS API
+ *      Documentation</a>
  */
-public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PutApprovalResultRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -51,10 +54,9 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
     private ApprovalResult result;
     /**
      * <p>
-     * The system-generated token used to identify a unique approval request.
-     * The token for each open approval request can be obtained using the
-     * <a>GetPipelineState</a> action and is used to validate that the approval
-     * request corresponding to this token is still valid.
+     * The system-generated token used to identify a unique approval request. The token for each open approval request
+     * can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval request
+     * corresponding to this token is still valid.
      * </p>
      */
     private String token;
@@ -91,8 +93,7 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
      * 
      * @param pipelineName
      *        The name of the pipeline that contains the action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutApprovalResultRequest withPipelineName(String pipelineName) {
@@ -132,8 +133,7 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
      * 
      * @param stageName
      *        The name of the stage that contains the action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutApprovalResultRequest withStageName(String stageName) {
@@ -173,8 +173,7 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
      * 
      * @param actionName
      *        The name of the action for which approval is requested.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutApprovalResultRequest withActionName(String actionName) {
@@ -214,8 +213,7 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
      * 
      * @param result
      *        Represents information about the result of the approval request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutApprovalResultRequest withResult(ApprovalResult result) {
@@ -225,18 +223,15 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The system-generated token used to identify a unique approval request.
-     * The token for each open approval request can be obtained using the
-     * <a>GetPipelineState</a> action and is used to validate that the approval
-     * request corresponding to this token is still valid.
+     * The system-generated token used to identify a unique approval request. The token for each open approval request
+     * can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval request
+     * corresponding to this token is still valid.
      * </p>
      * 
      * @param token
-     *        The system-generated token used to identify a unique approval
-     *        request. The token for each open approval request can be obtained
-     *        using the <a>GetPipelineState</a> action and is used to validate
-     *        that the approval request corresponding to this token is still
-     *        valid.
+     *        The system-generated token used to identify a unique approval request. The token for each open approval
+     *        request can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval
+     *        request corresponding to this token is still valid.
      */
 
     public void setToken(String token) {
@@ -245,17 +240,14 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The system-generated token used to identify a unique approval request.
-     * The token for each open approval request can be obtained using the
-     * <a>GetPipelineState</a> action and is used to validate that the approval
-     * request corresponding to this token is still valid.
+     * The system-generated token used to identify a unique approval request. The token for each open approval request
+     * can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval request
+     * corresponding to this token is still valid.
      * </p>
      * 
-     * @return The system-generated token used to identify a unique approval
-     *         request. The token for each open approval request can be obtained
-     *         using the <a>GetPipelineState</a> action and is used to validate
-     *         that the approval request corresponding to this token is still
-     *         valid.
+     * @return The system-generated token used to identify a unique approval request. The token for each open approval
+     *         request can be obtained using the <a>GetPipelineState</a> action and is used to validate that the
+     *         approval request corresponding to this token is still valid.
      */
 
     public String getToken() {
@@ -264,20 +256,16 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The system-generated token used to identify a unique approval request.
-     * The token for each open approval request can be obtained using the
-     * <a>GetPipelineState</a> action and is used to validate that the approval
-     * request corresponding to this token is still valid.
+     * The system-generated token used to identify a unique approval request. The token for each open approval request
+     * can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval request
+     * corresponding to this token is still valid.
      * </p>
      * 
      * @param token
-     *        The system-generated token used to identify a unique approval
-     *        request. The token for each open approval request can be obtained
-     *        using the <a>GetPipelineState</a> action and is used to validate
-     *        that the approval request corresponding to this token is still
-     *        valid.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The system-generated token used to identify a unique approval request. The token for each open approval
+     *        request can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval
+     *        request corresponding to this token is still valid.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutApprovalResultRequest withToken(String token) {
@@ -286,8 +274,7 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -298,15 +285,15 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPipelineName() != null)
-            sb.append("PipelineName: " + getPipelineName() + ",");
+            sb.append("PipelineName: ").append(getPipelineName()).append(",");
         if (getStageName() != null)
-            sb.append("StageName: " + getStageName() + ",");
+            sb.append("StageName: ").append(getStageName()).append(",");
         if (getActionName() != null)
-            sb.append("ActionName: " + getActionName() + ",");
+            sb.append("ActionName: ").append(getActionName()).append(",");
         if (getResult() != null)
-            sb.append("Result: " + getResult() + ",");
+            sb.append("Result: ").append(getResult()).append(",");
         if (getToken() != null)
-            sb.append("Token: " + getToken());
+            sb.append("Token: ").append(getToken());
         sb.append("}");
         return sb.toString();
     }
@@ -323,28 +310,23 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
         PutApprovalResultRequest other = (PutApprovalResultRequest) obj;
         if (other.getPipelineName() == null ^ this.getPipelineName() == null)
             return false;
-        if (other.getPipelineName() != null
-                && other.getPipelineName().equals(this.getPipelineName()) == false)
+        if (other.getPipelineName() != null && other.getPipelineName().equals(this.getPipelineName()) == false)
             return false;
         if (other.getStageName() == null ^ this.getStageName() == null)
             return false;
-        if (other.getStageName() != null
-                && other.getStageName().equals(this.getStageName()) == false)
+        if (other.getStageName() != null && other.getStageName().equals(this.getStageName()) == false)
             return false;
         if (other.getActionName() == null ^ this.getActionName() == null)
             return false;
-        if (other.getActionName() != null
-                && other.getActionName().equals(this.getActionName()) == false)
+        if (other.getActionName() != null && other.getActionName().equals(this.getActionName()) == false)
             return false;
         if (other.getResult() == null ^ this.getResult() == null)
             return false;
-        if (other.getResult() != null
-                && other.getResult().equals(this.getResult()) == false)
+        if (other.getResult() != null && other.getResult().equals(this.getResult()) == false)
             return false;
         if (other.getToken() == null ^ this.getToken() == null)
             return false;
-        if (other.getToken() != null
-                && other.getToken().equals(this.getToken()) == false)
+        if (other.getToken() != null && other.getToken().equals(this.getToken()) == false)
             return false;
         return true;
     }
@@ -354,18 +336,11 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getPipelineName() == null) ? 0 : getPipelineName()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getStageName() == null) ? 0 : getStageName().hashCode());
-        hashCode = prime * hashCode
-                + ((getActionName() == null) ? 0 : getActionName().hashCode());
-        hashCode = prime * hashCode
-                + ((getResult() == null) ? 0 : getResult().hashCode());
-        hashCode = prime * hashCode
-                + ((getToken() == null) ? 0 : getToken().hashCode());
+        hashCode = prime * hashCode + ((getPipelineName() == null) ? 0 : getPipelineName().hashCode());
+        hashCode = prime * hashCode + ((getStageName() == null) ? 0 : getStageName().hashCode());
+        hashCode = prime * hashCode + ((getActionName() == null) ? 0 : getActionName().hashCode());
+        hashCode = prime * hashCode + ((getResult() == null) ? 0 : getResult().hashCode());
+        hashCode = prime * hashCode + ((getToken() == null) ? 0 : getToken().hashCode());
         return hashCode;
     }
 
@@ -373,4 +348,5 @@ public class PutApprovalResultRequest extends AmazonWebServiceRequest implements
     public PutApprovalResultRequest clone() {
         return (PutApprovalResultRequest) super.clone();
     }
+
 }

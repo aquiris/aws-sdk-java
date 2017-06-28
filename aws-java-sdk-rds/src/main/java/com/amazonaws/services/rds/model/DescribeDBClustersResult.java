@@ -1,33 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the
- * <a>DescribeDBClusters</a> action.
+ * Contains the result of a successful invocation of the <a>DescribeDBClusters</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusters" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeDBClustersResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeDBClustersResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBClusters
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBClusters request.
      * </p>
      */
     private String marker;
@@ -40,13 +41,11 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBClusters
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBClusters request.
      * </p>
      * 
      * @param marker
-     *        A pagination token that can be used in a subsequent
-     *        DescribeDBClusters request.
+     *        A pagination token that can be used in a subsequent DescribeDBClusters request.
      */
 
     public void setMarker(String marker) {
@@ -55,12 +54,10 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBClusters
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBClusters request.
      * </p>
      * 
-     * @return A pagination token that can be used in a subsequent
-     *         DescribeDBClusters request.
+     * @return A pagination token that can be used in a subsequent DescribeDBClusters request.
      */
 
     public String getMarker() {
@@ -69,15 +66,12 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBClusters
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBClusters request.
      * </p>
      * 
      * @param marker
-     *        A pagination token that can be used in a subsequent
-     *        DescribeDBClusters request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A pagination token that can be used in a subsequent DescribeDBClusters request.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBClustersResult withMarker(String marker) {
@@ -115,8 +109,7 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
             return;
         }
 
-        this.dBClusters = new com.amazonaws.internal.SdkInternalList<DBCluster>(
-                dBClusters);
+        this.dBClusters = new com.amazonaws.internal.SdkInternalList<DBCluster>(dBClusters);
     }
 
     /**
@@ -124,22 +117,19 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
      * Contains a list of DB clusters for the user.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDBClusters(java.util.Collection)} or
-     * {@link #withDBClusters(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDBClusters(java.util.Collection)} or {@link #withDBClusters(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param dBClusters
      *        Contains a list of DB clusters for the user.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBClustersResult withDBClusters(DBCluster... dBClusters) {
         if (this.dBClusters == null) {
-            setDBClusters(new com.amazonaws.internal.SdkInternalList<DBCluster>(
-                    dBClusters.length));
+            setDBClusters(new com.amazonaws.internal.SdkInternalList<DBCluster>(dBClusters.length));
         }
         for (DBCluster ele : dBClusters) {
             this.dBClusters.add(ele);
@@ -154,19 +144,16 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
      * 
      * @param dBClusters
      *        Contains a list of DB clusters for the user.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeDBClustersResult withDBClusters(
-            java.util.Collection<DBCluster> dBClusters) {
+    public DescribeDBClustersResult withDBClusters(java.util.Collection<DBCluster> dBClusters) {
         setDBClusters(dBClusters);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -177,9 +164,9 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getDBClusters() != null)
-            sb.append("DBClusters: " + getDBClusters());
+            sb.append("DBClusters: ").append(getDBClusters());
         sb.append("}");
         return sb.toString();
     }
@@ -196,13 +183,11 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
         DescribeDBClustersResult other = (DescribeDBClustersResult) obj;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         if (other.getDBClusters() == null ^ this.getDBClusters() == null)
             return false;
-        if (other.getDBClusters() != null
-                && other.getDBClusters().equals(this.getDBClusters()) == false)
+        if (other.getDBClusters() != null && other.getDBClusters().equals(this.getDBClusters()) == false)
             return false;
         return true;
     }
@@ -212,10 +197,8 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
-        hashCode = prime * hashCode
-                + ((getDBClusters() == null) ? 0 : getDBClusters().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getDBClusters() == null) ? 0 : getDBClusters().hashCode());
         return hashCode;
     }
 
@@ -224,9 +207,8 @@ public class DescribeDBClustersResult implements Serializable, Cloneable {
         try {
             return (DescribeDBClustersResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

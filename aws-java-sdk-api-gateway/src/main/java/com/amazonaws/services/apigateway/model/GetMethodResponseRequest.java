@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Request to describe a <a>MethodResponse</a> resource.
  * </p>
  */
-public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetMethodResponseRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -56,8 +56,7 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param restApiId
-     *        The <a>RestApi</a> identifier for the <a>MethodResponse</a>
-     *        resource.
+     *        The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.
      */
 
     public void setRestApiId(String restApiId) {
@@ -69,8 +68,7 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.
      * </p>
      * 
-     * @return The <a>RestApi</a> identifier for the <a>MethodResponse</a>
-     *         resource.
+     * @return The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.
      */
 
     public String getRestApiId() {
@@ -83,10 +81,8 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param restApiId
-     *        The <a>RestApi</a> identifier for the <a>MethodResponse</a>
-     *        resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMethodResponseRequest withRestApiId(String restApiId) {
@@ -100,8 +96,7 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param resourceId
-     *        The <a>Resource</a> identifier for the <a>MethodResponse</a>
-     *        resource.
+     *        The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.
      */
 
     public void setResourceId(String resourceId) {
@@ -113,8 +108,7 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.
      * </p>
      * 
-     * @return The <a>Resource</a> identifier for the <a>MethodResponse</a>
-     *         resource.
+     * @return The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.
      */
 
     public String getResourceId() {
@@ -127,10 +121,8 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param resourceId
-     *        The <a>Resource</a> identifier for the <a>MethodResponse</a>
-     *        resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMethodResponseRequest withResourceId(String resourceId) {
@@ -170,8 +162,7 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * 
      * @param httpMethod
      *        The HTTP verb of the <a>Method</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMethodResponseRequest withHttpMethod(String httpMethod) {
@@ -211,8 +202,7 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
      * 
      * @param statusCode
      *        The status code for the <a>MethodResponse</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMethodResponseRequest withStatusCode(String statusCode) {
@@ -221,8 +211,7 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -233,13 +222,13 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getHttpMethod() != null)
-            sb.append("HttpMethod: " + getHttpMethod() + ",");
+            sb.append("HttpMethod: ").append(getHttpMethod()).append(",");
         if (getStatusCode() != null)
-            sb.append("StatusCode: " + getStatusCode());
+            sb.append("StatusCode: ").append(getStatusCode());
         sb.append("}");
         return sb.toString();
     }
@@ -256,23 +245,19 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
         GetMethodResponseRequest other = (GetMethodResponseRequest) obj;
         if (other.getRestApiId() == null ^ this.getRestApiId() == null)
             return false;
-        if (other.getRestApiId() != null
-                && other.getRestApiId().equals(this.getRestApiId()) == false)
+        if (other.getRestApiId() != null && other.getRestApiId().equals(this.getRestApiId()) == false)
             return false;
         if (other.getResourceId() == null ^ this.getResourceId() == null)
             return false;
-        if (other.getResourceId() != null
-                && other.getResourceId().equals(this.getResourceId()) == false)
+        if (other.getResourceId() != null && other.getResourceId().equals(this.getResourceId()) == false)
             return false;
         if (other.getHttpMethod() == null ^ this.getHttpMethod() == null)
             return false;
-        if (other.getHttpMethod() != null
-                && other.getHttpMethod().equals(this.getHttpMethod()) == false)
+        if (other.getHttpMethod() != null && other.getHttpMethod().equals(this.getHttpMethod()) == false)
             return false;
         if (other.getStatusCode() == null ^ this.getStatusCode() == null)
             return false;
-        if (other.getStatusCode() != null
-                && other.getStatusCode().equals(this.getStatusCode()) == false)
+        if (other.getStatusCode() != null && other.getStatusCode().equals(this.getStatusCode()) == false)
             return false;
         return true;
     }
@@ -282,14 +267,10 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
-        hashCode = prime * hashCode
-                + ((getHttpMethod() == null) ? 0 : getHttpMethod().hashCode());
-        hashCode = prime * hashCode
-                + ((getStatusCode() == null) ? 0 : getStatusCode().hashCode());
+        hashCode = prime * hashCode + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
+        hashCode = prime * hashCode + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
+        hashCode = prime * hashCode + ((getHttpMethod() == null) ? 0 : getHttpMethod().hashCode());
+        hashCode = prime * hashCode + ((getStatusCode() == null) ? 0 : getStatusCode().hashCode());
         return hashCode;
     }
 
@@ -297,4 +278,5 @@ public class GetMethodResponseRequest extends AmazonWebServiceRequest implements
     public GetMethodResponseRequest clone() {
         return (GetMethodResponseRequest) super.clone();
     }
+
 }

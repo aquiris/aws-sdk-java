@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53domains.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The CheckDomainAvailability response includes the following elements.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainAvailability"
+ *      target="_top">AWS API Documentation</a>
  */
-public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CheckDomainAvailabilityResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,27 +36,67 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Type: String
-     * </p>
-     * <p>
      * Valid values:
      * </p>
-     * <ul>
-     * <li><code>AVAILABLE</code> – The domain name is available.</li>
-     * <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved under
-     * specific conditions.</li>
-     * <li><code>AVAILABLE_PREORDER</code> – The domain name is available and
-     * can be preordered.</li>
-     * <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is forbidden.</li>
-     * <li><code>RESERVED</code> – The domain name has been reserved for another
-     * person or organization.</li>
-     * <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     * definitive answer about whether the domain name is available. Amazon
-     * Route 53 can return this response for a variety of reasons, for example,
-     * the registry is performing maintenance. Try again later.</li>
-     * </ul>
+     * <dl>
+     * <dt>AVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is available.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name is reserved under specific conditions.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_PREORDER</dt>
+     * <dd>
+     * <p>
+     * The domain name is available and can be preordered.
+     * </p>
+     * </dd>
+     * <dt>DONT_KNOW</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route
+     * 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try
+     * again later.
+     * </p>
+     * </dd>
+     * <dt>PENDING</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     * usually takes just a few extra seconds. You can resubmit the request immediately.
+     * </p>
+     * </dd>
+     * <dt>RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name has been reserved for another person or organization.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_PREMIUM</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_RESTRICTED</dt>
+     * <dd>
+     * <p>
+     * The domain name is forbidden.
+     * </p>
+     * </dd>
+     * </dl>
      */
     private String availability;
 
@@ -67,59 +110,135 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Type: String
-     * </p>
-     * <p>
      * Valid values:
      * </p>
-     * <ul>
-     * <li><code>AVAILABLE</code> – The domain name is available.</li>
-     * <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved under
-     * specific conditions.</li>
-     * <li><code>AVAILABLE_PREORDER</code> – The domain name is available and
-     * can be preordered.</li>
-     * <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is forbidden.</li>
-     * <li><code>RESERVED</code> – The domain name has been reserved for another
-     * person or organization.</li>
-     * <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     * definitive answer about whether the domain name is available. Amazon
-     * Route 53 can return this response for a variety of reasons, for example,
-     * the registry is performing maintenance. Try again later.</li>
-     * </ul>
+     * <dl>
+     * <dt>AVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is available.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name is reserved under specific conditions.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_PREORDER</dt>
+     * <dd>
+     * <p>
+     * The domain name is available and can be preordered.
+     * </p>
+     * </dd>
+     * <dt>DONT_KNOW</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route
+     * 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try
+     * again later.
+     * </p>
+     * </dd>
+     * <dt>PENDING</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     * usually takes just a few extra seconds. You can resubmit the request immediately.
+     * </p>
+     * </dd>
+     * <dt>RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name has been reserved for another person or organization.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_PREMIUM</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_RESTRICTED</dt>
+     * <dd>
+     * <p>
+     * The domain name is forbidden.
+     * </p>
+     * </dd>
+     * </dl>
      * 
      * @param availability
      *        Whether the domain name is available for registering.</p> <note>
      *        <p>
-     *        You can only register domains designated as <code>AVAILABLE</code>
-     *        .
+     *        You can only register domains designated as <code>AVAILABLE</code>.
      *        </p>
      *        </note>
      *        <p>
-     *        Type: String
-     *        </p>
-     *        <p>
      *        Valid values:
      *        </p>
-     *        <ul>
-     *        <li><code>AVAILABLE</code> – The domain name is available.</li>
-     *        <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved
-     *        under specific conditions.</li>
-     *        <li><code>AVAILABLE_PREORDER</code> – The domain name is available
-     *        and can be preordered.</li>
-     *        <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     *        <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not
-     *        available.</li>
-     *        <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is
-     *        forbidden.</li>
-     *        <li><code>RESERVED</code> – The domain name has been reserved for
-     *        another person or organization.</li>
-     *        <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     *        definitive answer about whether the domain name is available.
-     *        Amazon Route 53 can return this response for a variety of reasons,
-     *        for example, the registry is performing maintenance. Try again
-     *        later.</li>
+     *        <dl>
+     *        <dt>AVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is reserved under specific conditions.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_PREORDER</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available and can be preordered.
+     *        </p>
+     *        </dd>
+     *        <dt>DONT_KNOW</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon
+     *        Route 53 can return this response for a variety of reasons, for example, the registry is performing
+     *        maintenance. Try again later.
+     *        </p>
+     *        </dd>
+     *        <dt>PENDING</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     *        usually takes just a few extra seconds. You can resubmit the request immediately.
+     *        </p>
+     *        </dd>
+     *        <dt>RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name has been reserved for another person or organization.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_PREMIUM</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_RESTRICTED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is forbidden.
+     *        </p>
+     *        </dd>
      * @see DomainAvailability
      */
 
@@ -137,58 +256,134 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Type: String
-     * </p>
-     * <p>
      * Valid values:
      * </p>
-     * <ul>
-     * <li><code>AVAILABLE</code> – The domain name is available.</li>
-     * <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved under
-     * specific conditions.</li>
-     * <li><code>AVAILABLE_PREORDER</code> – The domain name is available and
-     * can be preordered.</li>
-     * <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is forbidden.</li>
-     * <li><code>RESERVED</code> – The domain name has been reserved for another
-     * person or organization.</li>
-     * <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     * definitive answer about whether the domain name is available. Amazon
-     * Route 53 can return this response for a variety of reasons, for example,
-     * the registry is performing maintenance. Try again later.</li>
-     * </ul>
+     * <dl>
+     * <dt>AVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is available.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name is reserved under specific conditions.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_PREORDER</dt>
+     * <dd>
+     * <p>
+     * The domain name is available and can be preordered.
+     * </p>
+     * </dd>
+     * <dt>DONT_KNOW</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route
+     * 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try
+     * again later.
+     * </p>
+     * </dd>
+     * <dt>PENDING</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     * usually takes just a few extra seconds. You can resubmit the request immediately.
+     * </p>
+     * </dd>
+     * <dt>RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name has been reserved for another person or organization.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_PREMIUM</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_RESTRICTED</dt>
+     * <dd>
+     * <p>
+     * The domain name is forbidden.
+     * </p>
+     * </dd>
+     * </dl>
      * 
      * @return Whether the domain name is available for registering.</p> <note>
      *         <p>
-     *         You can only register domains designated as
-     *         <code>AVAILABLE</code>.
+     *         You can only register domains designated as <code>AVAILABLE</code>.
      *         </p>
      *         </note>
      *         <p>
-     *         Type: String
-     *         </p>
-     *         <p>
      *         Valid values:
      *         </p>
-     *         <ul>
-     *         <li><code>AVAILABLE</code> – The domain name is available.</li>
-     *         <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved
-     *         under specific conditions.</li>
-     *         <li><code>AVAILABLE_PREORDER</code> – The domain name is
-     *         available and can be preordered.</li>
-     *         <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     *         <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not
-     *         available.</li>
-     *         <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is
-     *         forbidden.</li>
-     *         <li><code>RESERVED</code> – The domain name has been reserved for
-     *         another person or organization.</li>
-     *         <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     *         definitive answer about whether the domain name is available.
-     *         Amazon Route 53 can return this response for a variety of
-     *         reasons, for example, the registry is performing maintenance. Try
-     *         again later.</li>
+     *         <dl>
+     *         <dt>AVAILABLE</dt>
+     *         <dd>
+     *         <p>
+     *         The domain name is available.
+     *         </p>
+     *         </dd>
+     *         <dt>AVAILABLE_RESERVED</dt>
+     *         <dd>
+     *         <p>
+     *         The domain name is reserved under specific conditions.
+     *         </p>
+     *         </dd>
+     *         <dt>AVAILABLE_PREORDER</dt>
+     *         <dd>
+     *         <p>
+     *         The domain name is available and can be preordered.
+     *         </p>
+     *         </dd>
+     *         <dt>DONT_KNOW</dt>
+     *         <dd>
+     *         <p>
+     *         The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon
+     *         Route 53 can return this response for a variety of reasons, for example, the registry is performing
+     *         maintenance. Try again later.
+     *         </p>
+     *         </dd>
+     *         <dt>PENDING</dt>
+     *         <dd>
+     *         <p>
+     *         The TLD registry didn't return a response in the expected amount of time. When the response is delayed,
+     *         it usually takes just a few extra seconds. You can resubmit the request immediately.
+     *         </p>
+     *         </dd>
+     *         <dt>RESERVED</dt>
+     *         <dd>
+     *         <p>
+     *         The domain name has been reserved for another person or organization.
+     *         </p>
+     *         </dd>
+     *         <dt>UNAVAILABLE</dt>
+     *         <dd>
+     *         <p>
+     *         The domain name is not available.
+     *         </p>
+     *         </dd>
+     *         <dt>UNAVAILABLE_PREMIUM</dt>
+     *         <dd>
+     *         <p>
+     *         The domain name is not available.
+     *         </p>
+     *         </dd>
+     *         <dt>UNAVAILABLE_RESTRICTED</dt>
+     *         <dd>
+     *         <p>
+     *         The domain name is forbidden.
+     *         </p>
+     *         </dd>
      * @see DomainAvailability
      */
 
@@ -206,61 +401,136 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Type: String
-     * </p>
-     * <p>
      * Valid values:
      * </p>
-     * <ul>
-     * <li><code>AVAILABLE</code> – The domain name is available.</li>
-     * <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved under
-     * specific conditions.</li>
-     * <li><code>AVAILABLE_PREORDER</code> – The domain name is available and
-     * can be preordered.</li>
-     * <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is forbidden.</li>
-     * <li><code>RESERVED</code> – The domain name has been reserved for another
-     * person or organization.</li>
-     * <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     * definitive answer about whether the domain name is available. Amazon
-     * Route 53 can return this response for a variety of reasons, for example,
-     * the registry is performing maintenance. Try again later.</li>
-     * </ul>
+     * <dl>
+     * <dt>AVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is available.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name is reserved under specific conditions.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_PREORDER</dt>
+     * <dd>
+     * <p>
+     * The domain name is available and can be preordered.
+     * </p>
+     * </dd>
+     * <dt>DONT_KNOW</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route
+     * 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try
+     * again later.
+     * </p>
+     * </dd>
+     * <dt>PENDING</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     * usually takes just a few extra seconds. You can resubmit the request immediately.
+     * </p>
+     * </dd>
+     * <dt>RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name has been reserved for another person or organization.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_PREMIUM</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_RESTRICTED</dt>
+     * <dd>
+     * <p>
+     * The domain name is forbidden.
+     * </p>
+     * </dd>
+     * </dl>
      * 
      * @param availability
      *        Whether the domain name is available for registering.</p> <note>
      *        <p>
-     *        You can only register domains designated as <code>AVAILABLE</code>
-     *        .
+     *        You can only register domains designated as <code>AVAILABLE</code>.
      *        </p>
      *        </note>
      *        <p>
-     *        Type: String
-     *        </p>
-     *        <p>
      *        Valid values:
      *        </p>
-     *        <ul>
-     *        <li><code>AVAILABLE</code> – The domain name is available.</li>
-     *        <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved
-     *        under specific conditions.</li>
-     *        <li><code>AVAILABLE_PREORDER</code> – The domain name is available
-     *        and can be preordered.</li>
-     *        <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     *        <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not
-     *        available.</li>
-     *        <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is
-     *        forbidden.</li>
-     *        <li><code>RESERVED</code> – The domain name has been reserved for
-     *        another person or organization.</li>
-     *        <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     *        definitive answer about whether the domain name is available.
-     *        Amazon Route 53 can return this response for a variety of reasons,
-     *        for example, the registry is performing maintenance. Try again
-     *        later.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <dl>
+     *        <dt>AVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is reserved under specific conditions.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_PREORDER</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available and can be preordered.
+     *        </p>
+     *        </dd>
+     *        <dt>DONT_KNOW</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon
+     *        Route 53 can return this response for a variety of reasons, for example, the registry is performing
+     *        maintenance. Try again later.
+     *        </p>
+     *        </dd>
+     *        <dt>PENDING</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     *        usually takes just a few extra seconds. You can resubmit the request immediately.
+     *        </p>
+     *        </dd>
+     *        <dt>RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name has been reserved for another person or organization.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_PREMIUM</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_RESTRICTED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is forbidden.
+     *        </p>
+     *        </dd>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DomainAvailability
      */
 
@@ -279,59 +549,135 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Type: String
-     * </p>
-     * <p>
      * Valid values:
      * </p>
-     * <ul>
-     * <li><code>AVAILABLE</code> – The domain name is available.</li>
-     * <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved under
-     * specific conditions.</li>
-     * <li><code>AVAILABLE_PREORDER</code> – The domain name is available and
-     * can be preordered.</li>
-     * <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is forbidden.</li>
-     * <li><code>RESERVED</code> – The domain name has been reserved for another
-     * person or organization.</li>
-     * <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     * definitive answer about whether the domain name is available. Amazon
-     * Route 53 can return this response for a variety of reasons, for example,
-     * the registry is performing maintenance. Try again later.</li>
-     * </ul>
+     * <dl>
+     * <dt>AVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is available.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name is reserved under specific conditions.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_PREORDER</dt>
+     * <dd>
+     * <p>
+     * The domain name is available and can be preordered.
+     * </p>
+     * </dd>
+     * <dt>DONT_KNOW</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route
+     * 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try
+     * again later.
+     * </p>
+     * </dd>
+     * <dt>PENDING</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     * usually takes just a few extra seconds. You can resubmit the request immediately.
+     * </p>
+     * </dd>
+     * <dt>RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name has been reserved for another person or organization.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_PREMIUM</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_RESTRICTED</dt>
+     * <dd>
+     * <p>
+     * The domain name is forbidden.
+     * </p>
+     * </dd>
+     * </dl>
      * 
      * @param availability
      *        Whether the domain name is available for registering.</p> <note>
      *        <p>
-     *        You can only register domains designated as <code>AVAILABLE</code>
-     *        .
+     *        You can only register domains designated as <code>AVAILABLE</code>.
      *        </p>
      *        </note>
      *        <p>
-     *        Type: String
-     *        </p>
-     *        <p>
      *        Valid values:
      *        </p>
-     *        <ul>
-     *        <li><code>AVAILABLE</code> – The domain name is available.</li>
-     *        <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved
-     *        under specific conditions.</li>
-     *        <li><code>AVAILABLE_PREORDER</code> – The domain name is available
-     *        and can be preordered.</li>
-     *        <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     *        <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not
-     *        available.</li>
-     *        <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is
-     *        forbidden.</li>
-     *        <li><code>RESERVED</code> – The domain name has been reserved for
-     *        another person or organization.</li>
-     *        <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     *        definitive answer about whether the domain name is available.
-     *        Amazon Route 53 can return this response for a variety of reasons,
-     *        for example, the registry is performing maintenance. Try again
-     *        later.</li>
+     *        <dl>
+     *        <dt>AVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is reserved under specific conditions.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_PREORDER</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available and can be preordered.
+     *        </p>
+     *        </dd>
+     *        <dt>DONT_KNOW</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon
+     *        Route 53 can return this response for a variety of reasons, for example, the registry is performing
+     *        maintenance. Try again later.
+     *        </p>
+     *        </dd>
+     *        <dt>PENDING</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     *        usually takes just a few extra seconds. You can resubmit the request immediately.
+     *        </p>
+     *        </dd>
+     *        <dt>RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name has been reserved for another person or organization.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_PREMIUM</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_RESTRICTED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is forbidden.
+     *        </p>
+     *        </dd>
      * @see DomainAvailability
      */
 
@@ -349,73 +695,146 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
      * </p>
      * </note>
      * <p>
-     * Type: String
-     * </p>
-     * <p>
      * Valid values:
      * </p>
-     * <ul>
-     * <li><code>AVAILABLE</code> – The domain name is available.</li>
-     * <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved under
-     * specific conditions.</li>
-     * <li><code>AVAILABLE_PREORDER</code> – The domain name is available and
-     * can be preordered.</li>
-     * <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not available.</li>
-     * <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is forbidden.</li>
-     * <li><code>RESERVED</code> – The domain name has been reserved for another
-     * person or organization.</li>
-     * <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     * definitive answer about whether the domain name is available. Amazon
-     * Route 53 can return this response for a variety of reasons, for example,
-     * the registry is performing maintenance. Try again later.</li>
-     * </ul>
+     * <dl>
+     * <dt>AVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is available.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name is reserved under specific conditions.
+     * </p>
+     * </dd>
+     * <dt>AVAILABLE_PREORDER</dt>
+     * <dd>
+     * <p>
+     * The domain name is available and can be preordered.
+     * </p>
+     * </dd>
+     * <dt>DONT_KNOW</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route
+     * 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try
+     * again later.
+     * </p>
+     * </dd>
+     * <dt>PENDING</dt>
+     * <dd>
+     * <p>
+     * The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     * usually takes just a few extra seconds. You can resubmit the request immediately.
+     * </p>
+     * </dd>
+     * <dt>RESERVED</dt>
+     * <dd>
+     * <p>
+     * The domain name has been reserved for another person or organization.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_PREMIUM</dt>
+     * <dd>
+     * <p>
+     * The domain name is not available.
+     * </p>
+     * </dd>
+     * <dt>UNAVAILABLE_RESTRICTED</dt>
+     * <dd>
+     * <p>
+     * The domain name is forbidden.
+     * </p>
+     * </dd>
+     * </dl>
      * 
      * @param availability
      *        Whether the domain name is available for registering.</p> <note>
      *        <p>
-     *        You can only register domains designated as <code>AVAILABLE</code>
-     *        .
+     *        You can only register domains designated as <code>AVAILABLE</code>.
      *        </p>
      *        </note>
      *        <p>
-     *        Type: String
-     *        </p>
-     *        <p>
      *        Valid values:
      *        </p>
-     *        <ul>
-     *        <li><code>AVAILABLE</code> – The domain name is available.</li>
-     *        <li><code>AVAILABLE_RESERVED</code> – The domain name is reserved
-     *        under specific conditions.</li>
-     *        <li><code>AVAILABLE_PREORDER</code> – The domain name is available
-     *        and can be preordered.</li>
-     *        <li><code>UNAVAILABLE</code> – The domain name is not available.</li>
-     *        <li><code>UNAVAILABLE_PREMIUM</code> – The domain name is not
-     *        available.</li>
-     *        <li><code>UNAVAILABLE_RESTRICTED</code> – The domain name is
-     *        forbidden.</li>
-     *        <li><code>RESERVED</code> – The domain name has been reserved for
-     *        another person or organization.</li>
-     *        <li><code>DONT_KNOW</code> – The TLD registry didn't reply with a
-     *        definitive answer about whether the domain name is available.
-     *        Amazon Route 53 can return this response for a variety of reasons,
-     *        for example, the registry is performing maintenance. Try again
-     *        later.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <dl>
+     *        <dt>AVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is reserved under specific conditions.
+     *        </p>
+     *        </dd>
+     *        <dt>AVAILABLE_PREORDER</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is available and can be preordered.
+     *        </p>
+     *        </dd>
+     *        <dt>DONT_KNOW</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon
+     *        Route 53 can return this response for a variety of reasons, for example, the registry is performing
+     *        maintenance. Try again later.
+     *        </p>
+     *        </dd>
+     *        <dt>PENDING</dt>
+     *        <dd>
+     *        <p>
+     *        The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it
+     *        usually takes just a few extra seconds. You can resubmit the request immediately.
+     *        </p>
+     *        </dd>
+     *        <dt>RESERVED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name has been reserved for another person or organization.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_PREMIUM</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is not available.
+     *        </p>
+     *        </dd>
+     *        <dt>UNAVAILABLE_RESTRICTED</dt>
+     *        <dd>
+     *        <p>
+     *        The domain name is forbidden.
+     *        </p>
+     *        </dd>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DomainAvailability
      */
 
-    public CheckDomainAvailabilityResult withAvailability(
-            DomainAvailability availability) {
+    public CheckDomainAvailabilityResult withAvailability(DomainAvailability availability) {
         setAvailability(availability);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -426,7 +845,7 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAvailability() != null)
-            sb.append("Availability: " + getAvailability());
+            sb.append("Availability: ").append(getAvailability());
         sb.append("}");
         return sb.toString();
     }
@@ -443,8 +862,7 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
         CheckDomainAvailabilityResult other = (CheckDomainAvailabilityResult) obj;
         if (other.getAvailability() == null ^ this.getAvailability() == null)
             return false;
-        if (other.getAvailability() != null
-                && other.getAvailability().equals(this.getAvailability()) == false)
+        if (other.getAvailability() != null && other.getAvailability().equals(this.getAvailability()) == false)
             return false;
         return true;
     }
@@ -454,10 +872,7 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAvailability() == null) ? 0 : getAvailability()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getAvailability() == null) ? 0 : getAvailability().hashCode());
         return hashCode;
     }
 
@@ -466,9 +881,8 @@ public class CheckDomainAvailabilityResult implements Serializable, Cloneable {
         try {
             return (CheckDomainAvailabilityResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

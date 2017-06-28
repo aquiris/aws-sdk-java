@@ -1,59 +1,58 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListIpRoutes" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListIpRoutesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.
+     * Identifier (ID) of the directory for which you want to retrieve the IP addresses.
      * </p>
      */
     private String directoryId;
     /**
      * <p>
-     * The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.
+     * The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is the
+     * first call.
      * </p>
      */
     private String nextToken;
     /**
      * <p>
-     * Maximum number of items to return. If this value is zero, the maximum
-     * number of items is specified by the limitations of the operation.
+     * Maximum number of items to return. If this value is zero, the maximum number of items is specified by the
+     * limitations of the operation.
      * </p>
      */
     private Integer limit;
 
     /**
      * <p>
-     * Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.
+     * Identifier (ID) of the directory for which you want to retrieve the IP addresses.
      * </p>
      * 
      * @param directoryId
-     *        Identifier (ID) of the directory for which you want to retrieve
-     *        the IP addresses.
+     *        Identifier (ID) of the directory for which you want to retrieve the IP addresses.
      */
 
     public void setDirectoryId(String directoryId) {
@@ -62,12 +61,10 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.
+     * Identifier (ID) of the directory for which you want to retrieve the IP addresses.
      * </p>
      * 
-     * @return Identifier (ID) of the directory for which you want to retrieve
-     *         the IP addresses.
+     * @return Identifier (ID) of the directory for which you want to retrieve the IP addresses.
      */
 
     public String getDirectoryId() {
@@ -76,15 +73,12 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.
+     * Identifier (ID) of the directory for which you want to retrieve the IP addresses.
      * </p>
      * 
      * @param directoryId
-     *        Identifier (ID) of the directory for which you want to retrieve
-     *        the IP addresses.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Identifier (ID) of the directory for which you want to retrieve the IP addresses.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListIpRoutesRequest withDirectoryId(String directoryId) {
@@ -94,13 +88,13 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.
+     * The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is the
+     * first call.
      * </p>
      * 
      * @param nextToken
-     *        The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     *        <a>ListIpRoutes</a>. Pass null if this is the first call.
+     *        The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is
+     *        the first call.
      */
 
     public void setNextToken(String nextToken) {
@@ -109,12 +103,12 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.
+     * The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is the
+     * first call.
      * </p>
      * 
-     * @return The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     *         <a>ListIpRoutes</a>. Pass null if this is the first call.
+     * @return The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is
+     *         the first call.
      */
 
     public String getNextToken() {
@@ -123,15 +117,14 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.
+     * The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is the
+     * first call.
      * </p>
      * 
      * @param nextToken
-     *        The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     *        <a>ListIpRoutes</a>. Pass null if this is the first call.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is
+     *        the first call.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListIpRoutesRequest withNextToken(String nextToken) {
@@ -141,14 +134,13 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Maximum number of items to return. If this value is zero, the maximum
-     * number of items is specified by the limitations of the operation.
+     * Maximum number of items to return. If this value is zero, the maximum number of items is specified by the
+     * limitations of the operation.
      * </p>
      * 
      * @param limit
-     *        Maximum number of items to return. If this value is zero, the
-     *        maximum number of items is specified by the limitations of the
-     *        operation.
+     *        Maximum number of items to return. If this value is zero, the maximum number of items is specified by the
+     *        limitations of the operation.
      */
 
     public void setLimit(Integer limit) {
@@ -157,13 +149,12 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Maximum number of items to return. If this value is zero, the maximum
-     * number of items is specified by the limitations of the operation.
+     * Maximum number of items to return. If this value is zero, the maximum number of items is specified by the
+     * limitations of the operation.
      * </p>
      * 
-     * @return Maximum number of items to return. If this value is zero, the
-     *         maximum number of items is specified by the limitations of the
-     *         operation.
+     * @return Maximum number of items to return. If this value is zero, the maximum number of items is specified by the
+     *         limitations of the operation.
      */
 
     public Integer getLimit() {
@@ -172,16 +163,14 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Maximum number of items to return. If this value is zero, the maximum
-     * number of items is specified by the limitations of the operation.
+     * Maximum number of items to return. If this value is zero, the maximum number of items is specified by the
+     * limitations of the operation.
      * </p>
      * 
      * @param limit
-     *        Maximum number of items to return. If this value is zero, the
-     *        maximum number of items is specified by the limitations of the
-     *        operation.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Maximum number of items to return. If this value is zero, the maximum number of items is specified by the
+     *        limitations of the operation.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListIpRoutesRequest withLimit(Integer limit) {
@@ -190,8 +179,7 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -202,11 +190,11 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDirectoryId() != null)
-            sb.append("DirectoryId: " + getDirectoryId() + ",");
+            sb.append("DirectoryId: ").append(getDirectoryId()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -223,18 +211,15 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
         ListIpRoutesRequest other = (ListIpRoutesRequest) obj;
         if (other.getDirectoryId() == null ^ this.getDirectoryId() == null)
             return false;
-        if (other.getDirectoryId() != null
-                && other.getDirectoryId().equals(this.getDirectoryId()) == false)
+        if (other.getDirectoryId() != null && other.getDirectoryId().equals(this.getDirectoryId()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
-        if (other.getLimit() != null
-                && other.getLimit().equals(this.getLimit()) == false)
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
             return false;
         return true;
     }
@@ -244,13 +229,9 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDirectoryId() == null) ? 0 : getDirectoryId().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getLimit() == null) ? 0 : getLimit().hashCode());
+        hashCode = prime * hashCode + ((getDirectoryId() == null) ? 0 : getDirectoryId().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;
     }
 
@@ -258,4 +239,5 @@ public class ListIpRoutesRequest extends AmazonWebServiceRequest implements
     public ListIpRoutesRequest clone() {
         return (ListIpRoutesRequest) super.clone();
     }
+
 }

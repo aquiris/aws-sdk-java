@@ -1,20 +1,21 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
@@ -24,46 +25,40 @@ import java.io.Serializable;
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this decision's access to Amazon SWF
- * resources as follows:
+ * You can use IAM policies to control this decision's access to Amazon SWF resources as follows:
  * </p>
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the
- * action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call
- * this action.</li>
- * <li>Constrain the following parameters by using a <code>Condition</code>
- * element with the appropriate keys.
+ * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
+ * <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys.
  * <ul>
- * <li><code>activityType.name</code>: String constraint. The key is
- * <code>swf:activityType.name</code>.</li>
- * <li><code>activityType.version</code>: String constraint. The key is
- * <code>swf:activityType.version</code>.</li>
- * <li><code>taskList</code>: String constraint. The key is
- * <code>swf:taskList.name</code>.</li>
+ * <li><code>activityType.name</code>: String constraint. The key is <code>swf:activityType.name</code>.</li>
+ * <li><code>activityType.version</code>: String constraint. The key is <code>swf:activityType.version</code>.</li>
+ * <li><code>taskList</code>: String constraint. The key is <code>swf:taskList.name</code>.</li>
  * </ul>
  * </li>
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or
- * the parameter values fall outside the specified constraints, the action
- * fails. The associated event attribute's <b>cause</b> parameter will be set to
- * OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href=
- * "http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"
- * >Using IAM to Manage Access to Amazon SWF Workflows</a>.
+ * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the
+ * specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to
+ * OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a
+ * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
+ * Amazon SWF Workflows</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ScheduleLambdaFunctionDecisionAttributes"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
-        Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ScheduleLambdaFunctionDecisionAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
      * <b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      */
@@ -92,18 +87,16 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * <b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      * 
      * @param id
      *        Required.</b> The SWF <code>id</code> of the AWS Lambda task.</p>
      *        <p>
-     *        The specified string must not start or end with whitespace. It
-     *        must not contain a <code>:</code> (colon), <code>/</code> (slash),
-     *        <code>|
+     *        The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     *        <code>/</code> (slash), <code>|
      */
 
     public void setId(String id) {
@@ -115,17 +108,15 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * <b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      * 
      * @return Required.</b> The SWF <code>id</code> of the AWS Lambda task.</p>
      *         <p>
-     *         The specified string must not start or end with whitespace. It
-     *         must not contain a <code>:</code> (colon), <code>/</code>
-     *         (slash), <code>|
+     *         The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     *         <code>/</code> (slash), <code>|
      */
 
     public String getId() {
@@ -137,20 +128,17 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * <b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      * 
      * @param id
      *        Required.</b> The SWF <code>id</code> of the AWS Lambda task.</p>
      *        <p>
-     *        The specified string must not start or end with whitespace. It
-     *        must not contain a <code>:</code> (colon), <code>/</code> (slash),
-     *        <code>|
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     *        <code>/</code> (slash), <code>|
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScheduleLambdaFunctionDecisionAttributes withId(String id) {
@@ -190,8 +178,7 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * 
      * @param name
      *        Required.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScheduleLambdaFunctionDecisionAttributes withName(String name) {
@@ -231,8 +218,7 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * 
      * @param input
      *        The input provided to the AWS Lambda function.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScheduleLambdaFunctionDecisionAttributes withInput(String input) {
@@ -246,8 +232,7 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * </p>
      * 
      * @param startToCloseTimeout
-     *        If set, specifies the maximum duration the function may take to
-     *        execute.
+     *        If set, specifies the maximum duration the function may take to execute.
      */
 
     public void setStartToCloseTimeout(String startToCloseTimeout) {
@@ -259,8 +244,7 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * If set, specifies the maximum duration the function may take to execute.
      * </p>
      * 
-     * @return If set, specifies the maximum duration the function may take to
-     *         execute.
+     * @return If set, specifies the maximum duration the function may take to execute.
      */
 
     public String getStartToCloseTimeout() {
@@ -273,21 +257,17 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
      * </p>
      * 
      * @param startToCloseTimeout
-     *        If set, specifies the maximum duration the function may take to
-     *        execute.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If set, specifies the maximum duration the function may take to execute.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ScheduleLambdaFunctionDecisionAttributes withStartToCloseTimeout(
-            String startToCloseTimeout) {
+    public ScheduleLambdaFunctionDecisionAttributes withStartToCloseTimeout(String startToCloseTimeout) {
         setStartToCloseTimeout(startToCloseTimeout);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -298,13 +278,13 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getInput() != null)
-            sb.append("Input: " + getInput() + ",");
+            sb.append("Input: ").append(getInput()).append(",");
         if (getStartToCloseTimeout() != null)
-            sb.append("StartToCloseTimeout: " + getStartToCloseTimeout());
+            sb.append("StartToCloseTimeout: ").append(getStartToCloseTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -321,25 +301,19 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
         ScheduleLambdaFunctionDecisionAttributes other = (ScheduleLambdaFunctionDecisionAttributes) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getInput() == null ^ this.getInput() == null)
             return false;
-        if (other.getInput() != null
-                && other.getInput().equals(this.getInput()) == false)
+        if (other.getInput() != null && other.getInput().equals(this.getInput()) == false)
             return false;
-        if (other.getStartToCloseTimeout() == null
-                ^ this.getStartToCloseTimeout() == null)
+        if (other.getStartToCloseTimeout() == null ^ this.getStartToCloseTimeout() == null)
             return false;
-        if (other.getStartToCloseTimeout() != null
-                && other.getStartToCloseTimeout().equals(
-                        this.getStartToCloseTimeout()) == false)
+        if (other.getStartToCloseTimeout() != null && other.getStartToCloseTimeout().equals(this.getStartToCloseTimeout()) == false)
             return false;
         return true;
     }
@@ -349,16 +323,10 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getInput() == null) ? 0 : getInput().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStartToCloseTimeout() == null) ? 0
-                        : getStartToCloseTimeout().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getInput() == null) ? 0 : getInput().hashCode());
+        hashCode = prime * hashCode + ((getStartToCloseTimeout() == null) ? 0 : getStartToCloseTimeout().hashCode());
         return hashCode;
     }
 
@@ -367,9 +335,14 @@ public class ScheduleLambdaFunctionDecisionAttributes implements Serializable,
         try {
             return (ScheduleLambdaFunctionDecisionAttributes) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.ScheduleLambdaFunctionDecisionAttributesMarshaller.getInstance().marshall(this,
+                protocolMarshaller);
     }
 }

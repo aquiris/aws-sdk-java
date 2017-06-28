@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 Amazon Technologies, Inc.
+ * Copyright 2015-2017 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,20 +87,17 @@ final class DynamoDBMappingsRegistry {
         private Mapping(final Bean<Object,Object> bean) {
             this.bean = bean;
         }
-        final Bean<Object,Object> bean() {
-            return this.bean;
-        }
         final Method getter() {
-            return bean.getter();
+            return bean.type().getter();
         }
         final boolean isPrimaryKey() {
-            return bean.keyType() != null;
+            return bean.properties().keyType() != null;
         }
         final boolean isVersion() {
-            return bean.versioned();
+            return bean.properties().versioned();
         }
         final String getAttributeName() {
-            return bean.attributeName();
+            return bean.properties().attributeName();
         }
     }
 

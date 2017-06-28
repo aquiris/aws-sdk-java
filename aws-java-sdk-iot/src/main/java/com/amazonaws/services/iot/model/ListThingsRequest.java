@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,13 +22,12 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The input for the ListThings operation.
  * </p>
  */
-public class ListThingsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListThingsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The token for the next set of results, or <b>null</b> if there are no
-     * additional results.
+     * The token for the next set of results, or <b>null</b> if there are no additional results.
      * </p>
      */
     private String nextToken;
@@ -59,13 +58,11 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of results, or <b>null</b> if there are no
-     * additional results.
+     * The token for the next set of results, or <b>null</b> if there are no additional results.
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of results, or <b>null</b> if there are
-     *        no additional results.
+     *        The token for the next set of results, or <b>null</b> if there are no additional results.
      */
 
     public void setNextToken(String nextToken) {
@@ -74,12 +71,10 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of results, or <b>null</b> if there are no
-     * additional results.
+     * The token for the next set of results, or <b>null</b> if there are no additional results.
      * </p>
      * 
-     * @return The token for the next set of results, or <b>null</b> if there
-     *         are no additional results.
+     * @return The token for the next set of results, or <b>null</b> if there are no additional results.
      */
 
     public String getNextToken() {
@@ -88,15 +83,12 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of results, or <b>null</b> if there are no
-     * additional results.
+     * The token for the next set of results, or <b>null</b> if there are no additional results.
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of results, or <b>null</b> if there are
-     *        no additional results.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The token for the next set of results, or <b>null</b> if there are no additional results.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListThingsRequest withNextToken(String nextToken) {
@@ -136,8 +128,7 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
      * 
      * @param maxResults
      *        The maximum number of results to return in this operation.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListThingsRequest withMaxResults(Integer maxResults) {
@@ -177,8 +168,7 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
      * 
      * @param attributeName
      *        The attribute name used to search for things.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListThingsRequest withAttributeName(String attributeName) {
@@ -218,8 +208,7 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
      * 
      * @param attributeValue
      *        The attribute value used to search for things.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListThingsRequest withAttributeValue(String attributeValue) {
@@ -259,8 +248,7 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
      * 
      * @param thingTypeName
      *        The name of the thing type used to search for things.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListThingsRequest withThingTypeName(String thingTypeName) {
@@ -269,8 +257,7 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -281,15 +268,15 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getAttributeName() != null)
-            sb.append("AttributeName: " + getAttributeName() + ",");
+            sb.append("AttributeName: ").append(getAttributeName()).append(",");
         if (getAttributeValue() != null)
-            sb.append("AttributeValue: " + getAttributeValue() + ",");
+            sb.append("AttributeValue: ").append(getAttributeValue()).append(",");
         if (getThingTypeName() != null)
-            sb.append("ThingTypeName: " + getThingTypeName());
+            sb.append("ThingTypeName: ").append(getThingTypeName());
         sb.append("}");
         return sb.toString();
     }
@@ -306,29 +293,23 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
         ListThingsRequest other = (ListThingsRequest) obj;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         if (other.getMaxResults() == null ^ this.getMaxResults() == null)
             return false;
-        if (other.getMaxResults() != null
-                && other.getMaxResults().equals(this.getMaxResults()) == false)
+        if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false)
             return false;
         if (other.getAttributeName() == null ^ this.getAttributeName() == null)
             return false;
-        if (other.getAttributeName() != null
-                && other.getAttributeName().equals(this.getAttributeName()) == false)
+        if (other.getAttributeName() != null && other.getAttributeName().equals(this.getAttributeName()) == false)
             return false;
-        if (other.getAttributeValue() == null
-                ^ this.getAttributeValue() == null)
+        if (other.getAttributeValue() == null ^ this.getAttributeValue() == null)
             return false;
-        if (other.getAttributeValue() != null
-                && other.getAttributeValue().equals(this.getAttributeValue()) == false)
+        if (other.getAttributeValue() != null && other.getAttributeValue().equals(this.getAttributeValue()) == false)
             return false;
         if (other.getThingTypeName() == null ^ this.getThingTypeName() == null)
             return false;
-        if (other.getThingTypeName() != null
-                && other.getThingTypeName().equals(this.getThingTypeName()) == false)
+        if (other.getThingTypeName() != null && other.getThingTypeName().equals(this.getThingTypeName()) == false)
             return false;
         return true;
     }
@@ -338,22 +319,11 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAttributeName() == null) ? 0 : getAttributeName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAttributeValue() == null) ? 0 : getAttributeValue()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getThingTypeName() == null) ? 0 : getThingTypeName()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
+        hashCode = prime * hashCode + ((getAttributeName() == null) ? 0 : getAttributeName().hashCode());
+        hashCode = prime * hashCode + ((getAttributeValue() == null) ? 0 : getAttributeValue().hashCode());
+        hashCode = prime * hashCode + ((getThingTypeName() == null) ? 0 : getThingTypeName().hashCode());
         return hashCode;
     }
 
@@ -361,4 +331,5 @@ public class ListThingsRequest extends AmazonWebServiceRequest implements
     public ListThingsRequest clone() {
         return (ListThingsRequest) super.clone();
     }
+
 }

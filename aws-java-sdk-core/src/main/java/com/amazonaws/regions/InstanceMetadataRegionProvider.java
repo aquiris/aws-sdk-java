@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 package com.amazonaws.regions;
 
 import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.util.EC2MetadataUtils;
 
 import org.apache.commons.logging.LogFactory;
@@ -31,7 +32,7 @@ public class InstanceMetadataRegionProvider extends AwsRegionProvider {
     private volatile String region;
 
     @Override
-    public String getRegion() throws AmazonClientException {
+    public String getRegion() throws SdkClientException {
         if (region == null) {
             synchronized (this) {
                 if (region == null) {
@@ -45,9 +46,9 @@ public class InstanceMetadataRegionProvider extends AwsRegionProvider {
     private String tryDetectRegion() {
         try {
             return EC2MetadataUtils.getEC2InstanceRegion();
-        } catch (AmazonClientException ace) {
+        } catch (AmazonClientException sce) {
             LogFactory.getLog(InstanceMetadataRegionProvider.class)
-                    .debug("Ignoring failure to retrieve the region: " + ace.getMessage());
+                    .debug("Ignoring failure to retrieve the region: " + sce.getMessage());
             return null;
         }
     }

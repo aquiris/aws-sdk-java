@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the response to a successful <a>ListPolicies</a> request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListPolicies" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListPoliciesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListPoliciesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,21 +34,18 @@ public class ListPoliciesResult implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<Policy> policies;
     /**
      * <p>
-     * A flag that indicates whether there are more items to return. If your
-     * results were truncated, you can make a subsequent pagination request
-     * using the <code>Marker</code> request parameter to retrieve more items.
-     * Note that IAM might return fewer than the <code>MaxItems</code> number of
-     * results even when there are more results available. We recommend that you
-     * check <code>IsTruncated</code> after every call to ensure that you
-     * receive all of your results.
+     * A flag that indicates whether there are more items to return. If your results were truncated, you can make a
+     * subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that
+     * IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results
+     * available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all
+     * of your results.
      * </p>
      */
     private Boolean isTruncated;
     /**
      * <p>
-     * When <code>IsTruncated</code> is <code>true</code>, this element is
-     * present and contains the value to use for the <code>Marker</code>
-     * parameter in a subsequent pagination request.
+     * When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent pagination request.
      * </p>
      */
     private String marker;
@@ -80,8 +80,7 @@ public class ListPoliciesResult implements Serializable, Cloneable {
             return;
         }
 
-        this.policies = new com.amazonaws.internal.SdkInternalList<Policy>(
-                policies);
+        this.policies = new com.amazonaws.internal.SdkInternalList<Policy>(policies);
     }
 
     /**
@@ -89,22 +88,19 @@ public class ListPoliciesResult implements Serializable, Cloneable {
      * A list of policies.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setPolicies(java.util.Collection)} or
-     * {@link #withPolicies(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPolicies(java.util.Collection)} or {@link #withPolicies(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param policies
      *        A list of policies.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListPoliciesResult withPolicies(Policy... policies) {
         if (this.policies == null) {
-            setPolicies(new com.amazonaws.internal.SdkInternalList<Policy>(
-                    policies.length));
+            setPolicies(new com.amazonaws.internal.SdkInternalList<Policy>(policies.length));
         }
         for (Policy ele : policies) {
             this.policies.add(ele);
@@ -119,8 +115,7 @@ public class ListPoliciesResult implements Serializable, Cloneable {
      * 
      * @param policies
      *        A list of policies.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListPoliciesResult withPolicies(java.util.Collection<Policy> policies) {
@@ -130,24 +125,19 @@ public class ListPoliciesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A flag that indicates whether there are more items to return. If your
-     * results were truncated, you can make a subsequent pagination request
-     * using the <code>Marker</code> request parameter to retrieve more items.
-     * Note that IAM might return fewer than the <code>MaxItems</code> number of
-     * results even when there are more results available. We recommend that you
-     * check <code>IsTruncated</code> after every call to ensure that you
-     * receive all of your results.
+     * A flag that indicates whether there are more items to return. If your results were truncated, you can make a
+     * subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that
+     * IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results
+     * available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all
+     * of your results.
      * </p>
      * 
      * @param isTruncated
-     *        A flag that indicates whether there are more items to return. If
-     *        your results were truncated, you can make a subsequent pagination
-     *        request using the <code>Marker</code> request parameter to
-     *        retrieve more items. Note that IAM might return fewer than the
-     *        <code>MaxItems</code> number of results even when there are more
-     *        results available. We recommend that you check
-     *        <code>IsTruncated</code> after every call to ensure that you
-     *        receive all of your results.
+     *        A flag that indicates whether there are more items to return. If your results were truncated, you can make
+     *        a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items.
+     *        Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more
+     *        results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that
+     *        you receive all of your results.
      */
 
     public void setIsTruncated(Boolean isTruncated) {
@@ -156,23 +146,18 @@ public class ListPoliciesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A flag that indicates whether there are more items to return. If your
-     * results were truncated, you can make a subsequent pagination request
-     * using the <code>Marker</code> request parameter to retrieve more items.
-     * Note that IAM might return fewer than the <code>MaxItems</code> number of
-     * results even when there are more results available. We recommend that you
-     * check <code>IsTruncated</code> after every call to ensure that you
-     * receive all of your results.
+     * A flag that indicates whether there are more items to return. If your results were truncated, you can make a
+     * subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that
+     * IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results
+     * available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all
+     * of your results.
      * </p>
      * 
-     * @return A flag that indicates whether there are more items to return. If
-     *         your results were truncated, you can make a subsequent pagination
-     *         request using the <code>Marker</code> request parameter to
-     *         retrieve more items. Note that IAM might return fewer than the
-     *         <code>MaxItems</code> number of results even when there are more
-     *         results available. We recommend that you check
-     *         <code>IsTruncated</code> after every call to ensure that you
-     *         receive all of your results.
+     * @return A flag that indicates whether there are more items to return. If your results were truncated, you can
+     *         make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more
+     *         items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there
+     *         are more results available. We recommend that you check <code>IsTruncated</code> after every call to
+     *         ensure that you receive all of your results.
      */
 
     public Boolean getIsTruncated() {
@@ -181,26 +166,20 @@ public class ListPoliciesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A flag that indicates whether there are more items to return. If your
-     * results were truncated, you can make a subsequent pagination request
-     * using the <code>Marker</code> request parameter to retrieve more items.
-     * Note that IAM might return fewer than the <code>MaxItems</code> number of
-     * results even when there are more results available. We recommend that you
-     * check <code>IsTruncated</code> after every call to ensure that you
-     * receive all of your results.
+     * A flag that indicates whether there are more items to return. If your results were truncated, you can make a
+     * subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that
+     * IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results
+     * available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all
+     * of your results.
      * </p>
      * 
      * @param isTruncated
-     *        A flag that indicates whether there are more items to return. If
-     *        your results were truncated, you can make a subsequent pagination
-     *        request using the <code>Marker</code> request parameter to
-     *        retrieve more items. Note that IAM might return fewer than the
-     *        <code>MaxItems</code> number of results even when there are more
-     *        results available. We recommend that you check
-     *        <code>IsTruncated</code> after every call to ensure that you
-     *        receive all of your results.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A flag that indicates whether there are more items to return. If your results were truncated, you can make
+     *        a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items.
+     *        Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more
+     *        results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that
+     *        you receive all of your results.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListPoliciesResult withIsTruncated(Boolean isTruncated) {
@@ -210,23 +189,18 @@ public class ListPoliciesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A flag that indicates whether there are more items to return. If your
-     * results were truncated, you can make a subsequent pagination request
-     * using the <code>Marker</code> request parameter to retrieve more items.
-     * Note that IAM might return fewer than the <code>MaxItems</code> number of
-     * results even when there are more results available. We recommend that you
-     * check <code>IsTruncated</code> after every call to ensure that you
-     * receive all of your results.
+     * A flag that indicates whether there are more items to return. If your results were truncated, you can make a
+     * subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that
+     * IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results
+     * available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all
+     * of your results.
      * </p>
      * 
-     * @return A flag that indicates whether there are more items to return. If
-     *         your results were truncated, you can make a subsequent pagination
-     *         request using the <code>Marker</code> request parameter to
-     *         retrieve more items. Note that IAM might return fewer than the
-     *         <code>MaxItems</code> number of results even when there are more
-     *         results available. We recommend that you check
-     *         <code>IsTruncated</code> after every call to ensure that you
-     *         receive all of your results.
+     * @return A flag that indicates whether there are more items to return. If your results were truncated, you can
+     *         make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more
+     *         items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there
+     *         are more results available. We recommend that you check <code>IsTruncated</code> after every call to
+     *         ensure that you receive all of your results.
      */
 
     public Boolean isTruncated() {
@@ -235,15 +209,13 @@ public class ListPoliciesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When <code>IsTruncated</code> is <code>true</code>, this element is
-     * present and contains the value to use for the <code>Marker</code>
-     * parameter in a subsequent pagination request.
+     * When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent pagination request.
      * </p>
      * 
      * @param marker
-     *        When <code>IsTruncated</code> is <code>true</code>, this element
-     *        is present and contains the value to use for the
-     *        <code>Marker</code> parameter in a subsequent pagination request.
+     *        When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use
+     *        for the <code>Marker</code> parameter in a subsequent pagination request.
      */
 
     public void setMarker(String marker) {
@@ -252,14 +224,12 @@ public class ListPoliciesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When <code>IsTruncated</code> is <code>true</code>, this element is
-     * present and contains the value to use for the <code>Marker</code>
-     * parameter in a subsequent pagination request.
+     * When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent pagination request.
      * </p>
      * 
-     * @return When <code>IsTruncated</code> is <code>true</code>, this element
-     *         is present and contains the value to use for the
-     *         <code>Marker</code> parameter in a subsequent pagination request.
+     * @return When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use
+     *         for the <code>Marker</code> parameter in a subsequent pagination request.
      */
 
     public String getMarker() {
@@ -268,17 +238,14 @@ public class ListPoliciesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When <code>IsTruncated</code> is <code>true</code>, this element is
-     * present and contains the value to use for the <code>Marker</code>
-     * parameter in a subsequent pagination request.
+     * When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the
+     * <code>Marker</code> parameter in a subsequent pagination request.
      * </p>
      * 
      * @param marker
-     *        When <code>IsTruncated</code> is <code>true</code>, this element
-     *        is present and contains the value to use for the
-     *        <code>Marker</code> parameter in a subsequent pagination request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use
+     *        for the <code>Marker</code> parameter in a subsequent pagination request.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListPoliciesResult withMarker(String marker) {
@@ -287,8 +254,7 @@ public class ListPoliciesResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -299,11 +265,11 @@ public class ListPoliciesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPolicies() != null)
-            sb.append("Policies: " + getPolicies() + ",");
+            sb.append("Policies: ").append(getPolicies()).append(",");
         if (getIsTruncated() != null)
-            sb.append("IsTruncated: " + getIsTruncated() + ",");
+            sb.append("IsTruncated: ").append(getIsTruncated()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -320,18 +286,15 @@ public class ListPoliciesResult implements Serializable, Cloneable {
         ListPoliciesResult other = (ListPoliciesResult) obj;
         if (other.getPolicies() == null ^ this.getPolicies() == null)
             return false;
-        if (other.getPolicies() != null
-                && other.getPolicies().equals(this.getPolicies()) == false)
+        if (other.getPolicies() != null && other.getPolicies().equals(this.getPolicies()) == false)
             return false;
         if (other.getIsTruncated() == null ^ this.getIsTruncated() == null)
             return false;
-        if (other.getIsTruncated() != null
-                && other.getIsTruncated().equals(this.getIsTruncated()) == false)
+        if (other.getIsTruncated() != null && other.getIsTruncated().equals(this.getIsTruncated()) == false)
             return false;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         return true;
     }
@@ -341,13 +304,9 @@ public class ListPoliciesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getPolicies() == null) ? 0 : getPolicies().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getIsTruncated() == null) ? 0 : getIsTruncated().hashCode());
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getPolicies() == null) ? 0 : getPolicies().hashCode());
+        hashCode = prime * hashCode + ((getIsTruncated() == null) ? 0 : getIsTruncated().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
         return hashCode;
     }
 
@@ -356,9 +315,8 @@ public class ListPoliciesResult implements Serializable, Cloneable {
         try {
             return (ListPoliciesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

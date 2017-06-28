@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The <code>ChangeSetSummary</code> structure describes a change set, its
- * status, and the stack with which it's associated.
+ * The <code>ChangeSetSummary</code> structure describes a change set, its status, and the stack with which it's
+ * associated.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ChangeSetSummary" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
@@ -50,27 +53,24 @@ public class ChangeSetSummary implements Serializable, Cloneable {
     private String changeSetName;
     /**
      * <p>
-     * If the change set execution status is <code>AVAILABLE</code>, you can
-     * execute the change set. If you can’t execute the change set, the status
-     * indicates why. For example, a change set might be in an
-     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     * creating it or in an <code>OBSOLETE</code> state because the stack was
-     * already updated.
+     * If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     * execute the change set, the status indicates why. For example, a change set might be in an
+     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code>
+     * state because the stack was already updated.
      * </p>
      */
     private String executionStatus;
     /**
      * <p>
-     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
-     * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.
+     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     * <code>FAILED</code>.
      * </p>
      */
     private String status;
     /**
      * <p>
-     * A description of the change set's status. For example, if your change set
-     * is in the <code>FAILED</code> state, AWS CloudFormation shows the error
-     * message.
+     * A description of the change set's status. For example, if your change set is in the <code>FAILED</code> state,
+     * AWS CloudFormation shows the error message.
      * </p>
      */
     private String statusReason;
@@ -119,8 +119,7 @@ public class ChangeSetSummary implements Serializable, Cloneable {
      * 
      * @param stackId
      *        The ID of the stack with which the change set is associated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ChangeSetSummary withStackId(String stackId) {
@@ -160,8 +159,7 @@ public class ChangeSetSummary implements Serializable, Cloneable {
      * 
      * @param stackName
      *        The name of the stack with which the change set is associated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ChangeSetSummary withStackName(String stackName) {
@@ -201,8 +199,7 @@ public class ChangeSetSummary implements Serializable, Cloneable {
      * 
      * @param changeSetId
      *        The ID of the change set.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ChangeSetSummary withChangeSetId(String changeSetId) {
@@ -242,8 +239,7 @@ public class ChangeSetSummary implements Serializable, Cloneable {
      * 
      * @param changeSetName
      *        The name of the change set.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ChangeSetSummary withChangeSetName(String changeSetName) {
@@ -253,21 +249,17 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the change set execution status is <code>AVAILABLE</code>, you can
-     * execute the change set. If you can’t execute the change set, the status
-     * indicates why. For example, a change set might be in an
-     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     * creating it or in an <code>OBSOLETE</code> state because the stack was
-     * already updated.
+     * If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     * execute the change set, the status indicates why. For example, a change set might be in an
+     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code>
+     * state because the stack was already updated.
      * </p>
      * 
      * @param executionStatus
-     *        If the change set execution status is <code>AVAILABLE</code>, you
-     *        can execute the change set. If you can’t execute the change set,
-     *        the status indicates why. For example, a change set might be in an
-     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     *        creating it or in an <code>OBSOLETE</code> state because the stack
-     *        was already updated.
+     *        If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     *        execute the change set, the status indicates why. For example, a change set might be in an
+     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an
+     *        <code>OBSOLETE</code> state because the stack was already updated.
      * @see ExecutionStatus
      */
 
@@ -277,20 +269,16 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the change set execution status is <code>AVAILABLE</code>, you can
-     * execute the change set. If you can’t execute the change set, the status
-     * indicates why. For example, a change set might be in an
-     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     * creating it or in an <code>OBSOLETE</code> state because the stack was
-     * already updated.
+     * If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     * execute the change set, the status indicates why. For example, a change set might be in an
+     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code>
+     * state because the stack was already updated.
      * </p>
      * 
-     * @return If the change set execution status is <code>AVAILABLE</code>, you
-     *         can execute the change set. If you can’t execute the change set,
-     *         the status indicates why. For example, a change set might be in
-     *         an <code>UNAVAILABLE</code> state because AWS CloudFormation is
-     *         still creating it or in an <code>OBSOLETE</code> state because
-     *         the stack was already updated.
+     * @return If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you
+     *         can’t execute the change set, the status indicates why. For example, a change set might be in an
+     *         <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an
+     *         <code>OBSOLETE</code> state because the stack was already updated.
      * @see ExecutionStatus
      */
 
@@ -300,23 +288,18 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the change set execution status is <code>AVAILABLE</code>, you can
-     * execute the change set. If you can’t execute the change set, the status
-     * indicates why. For example, a change set might be in an
-     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     * creating it or in an <code>OBSOLETE</code> state because the stack was
-     * already updated.
+     * If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     * execute the change set, the status indicates why. For example, a change set might be in an
+     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code>
+     * state because the stack was already updated.
      * </p>
      * 
      * @param executionStatus
-     *        If the change set execution status is <code>AVAILABLE</code>, you
-     *        can execute the change set. If you can’t execute the change set,
-     *        the status indicates why. For example, a change set might be in an
-     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     *        creating it or in an <code>OBSOLETE</code> state because the stack
-     *        was already updated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     *        execute the change set, the status indicates why. For example, a change set might be in an
+     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an
+     *        <code>OBSOLETE</code> state because the stack was already updated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ExecutionStatus
      */
 
@@ -327,21 +310,17 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the change set execution status is <code>AVAILABLE</code>, you can
-     * execute the change set. If you can’t execute the change set, the status
-     * indicates why. For example, a change set might be in an
-     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     * creating it or in an <code>OBSOLETE</code> state because the stack was
-     * already updated.
+     * If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     * execute the change set, the status indicates why. For example, a change set might be in an
+     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code>
+     * state because the stack was already updated.
      * </p>
      * 
      * @param executionStatus
-     *        If the change set execution status is <code>AVAILABLE</code>, you
-     *        can execute the change set. If you can’t execute the change set,
-     *        the status indicates why. For example, a change set might be in an
-     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     *        creating it or in an <code>OBSOLETE</code> state because the stack
-     *        was already updated.
+     *        If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     *        execute the change set, the status indicates why. For example, a change set might be in an
+     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an
+     *        <code>OBSOLETE</code> state because the stack was already updated.
      * @see ExecutionStatus
      */
 
@@ -351,23 +330,18 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the change set execution status is <code>AVAILABLE</code>, you can
-     * execute the change set. If you can’t execute the change set, the status
-     * indicates why. For example, a change set might be in an
-     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     * creating it or in an <code>OBSOLETE</code> state because the stack was
-     * already updated.
+     * If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     * execute the change set, the status indicates why. For example, a change set might be in an
+     * <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code>
+     * state because the stack was already updated.
      * </p>
      * 
      * @param executionStatus
-     *        If the change set execution status is <code>AVAILABLE</code>, you
-     *        can execute the change set. If you can’t execute the change set,
-     *        the status indicates why. For example, a change set might be in an
-     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still
-     *        creating it or in an <code>OBSOLETE</code> state because the stack
-     *        was already updated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t
+     *        execute the change set, the status indicates why. For example, a change set might be in an
+     *        <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an
+     *        <code>OBSOLETE</code> state because the stack was already updated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ExecutionStatus
      */
 
@@ -378,13 +352,12 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
-     * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.
+     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     * <code>FAILED</code>.
      * </p>
      * 
      * @param status
-     *        The state of the change set, such as
-     *        <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     *        The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
      *        <code>FAILED</code>.
      * @see ChangeSetStatus
      */
@@ -395,12 +368,11 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
-     * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.
+     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     * <code>FAILED</code>.
      * </p>
      * 
-     * @return The state of the change set, such as
-     *         <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     * @return The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
      *         <code>FAILED</code>.
      * @see ChangeSetStatus
      */
@@ -411,16 +383,14 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
-     * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.
+     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     * <code>FAILED</code>.
      * </p>
      * 
      * @param status
-     *        The state of the change set, such as
-     *        <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     *        The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
      *        <code>FAILED</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChangeSetStatus
      */
 
@@ -431,13 +401,12 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
-     * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.
+     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     * <code>FAILED</code>.
      * </p>
      * 
      * @param status
-     *        The state of the change set, such as
-     *        <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     *        The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
      *        <code>FAILED</code>.
      * @see ChangeSetStatus
      */
@@ -448,16 +417,14 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
-     * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.
+     * The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     * <code>FAILED</code>.
      * </p>
      * 
      * @param status
-     *        The state of the change set, such as
-     *        <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
+     *        The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or
      *        <code>FAILED</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChangeSetStatus
      */
 
@@ -468,15 +435,13 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A description of the change set's status. For example, if your change set
-     * is in the <code>FAILED</code> state, AWS CloudFormation shows the error
-     * message.
+     * A description of the change set's status. For example, if your change set is in the <code>FAILED</code> state,
+     * AWS CloudFormation shows the error message.
      * </p>
      * 
      * @param statusReason
-     *        A description of the change set's status. For example, if your
-     *        change set is in the <code>FAILED</code> state, AWS CloudFormation
-     *        shows the error message.
+     *        A description of the change set's status. For example, if your change set is in the <code>FAILED</code>
+     *        state, AWS CloudFormation shows the error message.
      */
 
     public void setStatusReason(String statusReason) {
@@ -485,14 +450,12 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A description of the change set's status. For example, if your change set
-     * is in the <code>FAILED</code> state, AWS CloudFormation shows the error
-     * message.
+     * A description of the change set's status. For example, if your change set is in the <code>FAILED</code> state,
+     * AWS CloudFormation shows the error message.
      * </p>
      * 
-     * @return A description of the change set's status. For example, if your
-     *         change set is in the <code>FAILED</code> state, AWS
-     *         CloudFormation shows the error message.
+     * @return A description of the change set's status. For example, if your change set is in the <code>FAILED</code>
+     *         state, AWS CloudFormation shows the error message.
      */
 
     public String getStatusReason() {
@@ -501,17 +464,14 @@ public class ChangeSetSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A description of the change set's status. For example, if your change set
-     * is in the <code>FAILED</code> state, AWS CloudFormation shows the error
-     * message.
+     * A description of the change set's status. For example, if your change set is in the <code>FAILED</code> state,
+     * AWS CloudFormation shows the error message.
      * </p>
      * 
      * @param statusReason
-     *        A description of the change set's status. For example, if your
-     *        change set is in the <code>FAILED</code> state, AWS CloudFormation
-     *        shows the error message.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A description of the change set's status. For example, if your change set is in the <code>FAILED</code>
+     *        state, AWS CloudFormation shows the error message.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ChangeSetSummary withStatusReason(String statusReason) {
@@ -551,8 +511,7 @@ public class ChangeSetSummary implements Serializable, Cloneable {
      * 
      * @param creationTime
      *        The start time when the change set was created, in UTC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ChangeSetSummary withCreationTime(java.util.Date creationTime) {
@@ -592,8 +551,7 @@ public class ChangeSetSummary implements Serializable, Cloneable {
      * 
      * @param description
      *        Descriptive information about the change set.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ChangeSetSummary withDescription(String description) {
@@ -602,8 +560,7 @@ public class ChangeSetSummary implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -614,23 +571,23 @@ public class ChangeSetSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getStackName() != null)
-            sb.append("StackName: " + getStackName() + ",");
+            sb.append("StackName: ").append(getStackName()).append(",");
         if (getChangeSetId() != null)
-            sb.append("ChangeSetId: " + getChangeSetId() + ",");
+            sb.append("ChangeSetId: ").append(getChangeSetId()).append(",");
         if (getChangeSetName() != null)
-            sb.append("ChangeSetName: " + getChangeSetName() + ",");
+            sb.append("ChangeSetName: ").append(getChangeSetName()).append(",");
         if (getExecutionStatus() != null)
-            sb.append("ExecutionStatus: " + getExecutionStatus() + ",");
+            sb.append("ExecutionStatus: ").append(getExecutionStatus()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getStatusReason() != null)
-            sb.append("StatusReason: " + getStatusReason() + ",");
+            sb.append("StatusReason: ").append(getStatusReason()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime() + ",");
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription());
+            sb.append("Description: ").append(getDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -647,49 +604,39 @@ public class ChangeSetSummary implements Serializable, Cloneable {
         ChangeSetSummary other = (ChangeSetSummary) obj;
         if (other.getStackId() == null ^ this.getStackId() == null)
             return false;
-        if (other.getStackId() != null
-                && other.getStackId().equals(this.getStackId()) == false)
+        if (other.getStackId() != null && other.getStackId().equals(this.getStackId()) == false)
             return false;
         if (other.getStackName() == null ^ this.getStackName() == null)
             return false;
-        if (other.getStackName() != null
-                && other.getStackName().equals(this.getStackName()) == false)
+        if (other.getStackName() != null && other.getStackName().equals(this.getStackName()) == false)
             return false;
         if (other.getChangeSetId() == null ^ this.getChangeSetId() == null)
             return false;
-        if (other.getChangeSetId() != null
-                && other.getChangeSetId().equals(this.getChangeSetId()) == false)
+        if (other.getChangeSetId() != null && other.getChangeSetId().equals(this.getChangeSetId()) == false)
             return false;
         if (other.getChangeSetName() == null ^ this.getChangeSetName() == null)
             return false;
-        if (other.getChangeSetName() != null
-                && other.getChangeSetName().equals(this.getChangeSetName()) == false)
+        if (other.getChangeSetName() != null && other.getChangeSetName().equals(this.getChangeSetName()) == false)
             return false;
-        if (other.getExecutionStatus() == null
-                ^ this.getExecutionStatus() == null)
+        if (other.getExecutionStatus() == null ^ this.getExecutionStatus() == null)
             return false;
-        if (other.getExecutionStatus() != null
-                && other.getExecutionStatus().equals(this.getExecutionStatus()) == false)
+        if (other.getExecutionStatus() != null && other.getExecutionStatus().equals(this.getExecutionStatus()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         if (other.getStatusReason() == null ^ this.getStatusReason() == null)
             return false;
-        if (other.getStatusReason() != null
-                && other.getStatusReason().equals(this.getStatusReason()) == false)
+        if (other.getStatusReason() != null && other.getStatusReason().equals(this.getStatusReason()) == false)
             return false;
         if (other.getCreationTime() == null ^ this.getCreationTime() == null)
             return false;
-        if (other.getCreationTime() != null
-                && other.getCreationTime().equals(this.getCreationTime()) == false)
+        if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         return true;
     }
@@ -699,34 +646,15 @@ public class ChangeSetSummary implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getStackId() == null) ? 0 : getStackId().hashCode());
-        hashCode = prime * hashCode
-                + ((getStackName() == null) ? 0 : getStackName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChangeSetId() == null) ? 0 : getChangeSetId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChangeSetName() == null) ? 0 : getChangeSetName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getExecutionStatus() == null) ? 0 : getExecutionStatus()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStatusReason() == null) ? 0 : getStatusReason()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreationTime() == null) ? 0 : getCreationTime()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getStackId() == null) ? 0 : getStackId().hashCode());
+        hashCode = prime * hashCode + ((getStackName() == null) ? 0 : getStackName().hashCode());
+        hashCode = prime * hashCode + ((getChangeSetId() == null) ? 0 : getChangeSetId().hashCode());
+        hashCode = prime * hashCode + ((getChangeSetName() == null) ? 0 : getChangeSetName().hashCode());
+        hashCode = prime * hashCode + ((getExecutionStatus() == null) ? 0 : getExecutionStatus().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getStatusReason() == null) ? 0 : getStatusReason().hashCode());
+        hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         return hashCode;
     }
 
@@ -735,9 +663,8 @@ public class ChangeSetSummary implements Serializable, Cloneable {
         try {
             return (ChangeSetSummary) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

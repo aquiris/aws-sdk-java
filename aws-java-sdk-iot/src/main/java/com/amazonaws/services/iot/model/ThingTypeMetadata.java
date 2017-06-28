@@ -1,34 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The ThingTypeMetadata contains additional information about the thing type
- * including: creation date and time, a value indicating whether the thing type
- * is deprecated, and a date and time when time was deprecated.
+ * The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value
+ * indicating whether the thing type is deprecated, and a date and time when time was deprecated.
  * </p>
  */
-public class ThingTypeMetadata implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ThingTypeMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether the thing type is deprecated. If <b>true</b>, no new things could
-     * be associated with this type.
+     * Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      * </p>
      */
     private Boolean deprecated;
@@ -47,13 +47,11 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the thing type is deprecated. If <b>true</b>, no new things could
-     * be associated with this type.
+     * Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      * </p>
      * 
      * @param deprecated
-     *        Whether the thing type is deprecated. If <b>true</b>, no new
-     *        things could be associated with this type.
+     *        Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      */
 
     public void setDeprecated(Boolean deprecated) {
@@ -62,12 +60,10 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the thing type is deprecated. If <b>true</b>, no new things could
-     * be associated with this type.
+     * Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      * </p>
      * 
-     * @return Whether the thing type is deprecated. If <b>true</b>, no new
-     *         things could be associated with this type.
+     * @return Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      */
 
     public Boolean getDeprecated() {
@@ -76,15 +72,12 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the thing type is deprecated. If <b>true</b>, no new things could
-     * be associated with this type.
+     * Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      * </p>
      * 
      * @param deprecated
-     *        Whether the thing type is deprecated. If <b>true</b>, no new
-     *        things could be associated with this type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ThingTypeMetadata withDeprecated(Boolean deprecated) {
@@ -94,12 +87,10 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the thing type is deprecated. If <b>true</b>, no new things could
-     * be associated with this type.
+     * Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      * </p>
      * 
-     * @return Whether the thing type is deprecated. If <b>true</b>, no new
-     *         things could be associated with this type.
+     * @return Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.
      */
 
     public Boolean isDeprecated() {
@@ -138,8 +129,7 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
      * 
      * @param deprecationDate
      *        The date and time when the thing type was deprecated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ThingTypeMetadata withDeprecationDate(java.util.Date deprecationDate) {
@@ -179,8 +169,7 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
      * 
      * @param creationDate
      *        The date and time when the thing type was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ThingTypeMetadata withCreationDate(java.util.Date creationDate) {
@@ -189,8 +178,7 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -201,11 +189,11 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeprecated() != null)
-            sb.append("Deprecated: " + getDeprecated() + ",");
+            sb.append("Deprecated: ").append(getDeprecated()).append(",");
         if (getDeprecationDate() != null)
-            sb.append("DeprecationDate: " + getDeprecationDate() + ",");
+            sb.append("DeprecationDate: ").append(getDeprecationDate()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate());
+            sb.append("CreationDate: ").append(getCreationDate());
         sb.append("}");
         return sb.toString();
     }
@@ -222,19 +210,15 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
         ThingTypeMetadata other = (ThingTypeMetadata) obj;
         if (other.getDeprecated() == null ^ this.getDeprecated() == null)
             return false;
-        if (other.getDeprecated() != null
-                && other.getDeprecated().equals(this.getDeprecated()) == false)
+        if (other.getDeprecated() != null && other.getDeprecated().equals(this.getDeprecated()) == false)
             return false;
-        if (other.getDeprecationDate() == null
-                ^ this.getDeprecationDate() == null)
+        if (other.getDeprecationDate() == null ^ this.getDeprecationDate() == null)
             return false;
-        if (other.getDeprecationDate() != null
-                && other.getDeprecationDate().equals(this.getDeprecationDate()) == false)
+        if (other.getDeprecationDate() != null && other.getDeprecationDate().equals(this.getDeprecationDate()) == false)
             return false;
         if (other.getCreationDate() == null ^ this.getCreationDate() == null)
             return false;
-        if (other.getCreationDate() != null
-                && other.getCreationDate().equals(this.getCreationDate()) == false)
+        if (other.getCreationDate() != null && other.getCreationDate().equals(this.getCreationDate()) == false)
             return false;
         return true;
     }
@@ -244,16 +228,9 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDeprecated() == null) ? 0 : getDeprecated().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDeprecationDate() == null) ? 0 : getDeprecationDate()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreationDate() == null) ? 0 : getCreationDate()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getDeprecated() == null) ? 0 : getDeprecated().hashCode());
+        hashCode = prime * hashCode + ((getDeprecationDate() == null) ? 0 : getDeprecationDate().hashCode());
+        hashCode = prime * hashCode + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
         return hashCode;
     }
 
@@ -262,9 +239,13 @@ public class ThingTypeMetadata implements Serializable, Cloneable {
         try {
             return (ThingTypeMetadata) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.iot.model.transform.ThingTypeMetadataMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

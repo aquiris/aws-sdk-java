@@ -1,112 +1,135 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * A complex type that specifies how CloudFront handles query strings, cookies
- * and headers.
+ * <p>
+ * A complex type that specifies how CloudFront handles query strings and cookies.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ForwardedValues" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether you want CloudFront to forward query strings to the
-     * origin that is associated with this cache behavior and cache based on the
-     * query string parameters. CloudFront behavior depends on the value of
-     * QueryString and on the values that you specify for QueryStringCacheKeys,
-     * if any:
+     * Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache
+     * behavior and cache based on the query string parameters. CloudFront behavior depends on the value of
+     * <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if any:
      * </p>
-     * <ul>
-     * <li>If you specify true for QueryString and you don't specify any values
-     * for QueryStringCacheKeys, CloudFront forwards all query string parameters
-     * to the origin and caches based on all query string parameters. Depending
-     * on how many query string parameters and values you have, this can
-     * adversely affect performance because CloudFront must forward more
-     * requests to the origin.</li>
-     * <li>If you specify true for QueryString and you specify one or more
-     * values for QueryStringCacheKeys, CloudFront forwards all query string
-     * parameters to the origin, but it only caches based on the query string
-     * parameters that you specify.</li>
-     * <li>If you specify false for QueryString, CloudFront doesn't forward any
-     * query string parameters to the origin, and doesn't cache based on query
-     * string parameters.</li>
-     * </ul>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you don't specify any values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and caches based
+     * on all query string parameters. Depending on how many query string parameters and values you have, this can
+     * adversely affect performance because CloudFront must forward more requests to the origin.
+     * </p>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you specify one or more values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it only
+     * caches based on the query string parameters that you specify.
+     * </p>
+     * <p>
+     * If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters to the
+     * origin, and doesn't cache based on query string parameters.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">Configuring
+     * CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      */
     private Boolean queryString;
-    /** A complex type that specifies how CloudFront handles cookies. */
+    /**
+     * <p>
+     * A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which
+     * ones. For more information about forwarding cookies to the origin, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront Forwards,
+     * Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
+     */
     private CookiePreference cookies;
     /**
-     * A complex type that specifies the Headers, if any, that you want
-     * CloudFront to vary upon for this cache behavior.
+     * <p>
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
+     * cache behavior.
+     * </p>
      */
     private Headers headers;
     /**
      * <p>
-     * A complex type that contains information about the query string
-     * parameters that you want CloudFront to use for caching for this cache
-     * behavior.
+     * A complex type that contains information about the query string parameters that you want CloudFront to use for
+     * caching for this cache behavior.
      * </p>
      */
     private QueryStringCacheKeys queryStringCacheKeys;
 
     /**
      * <p>
-     * Indicates whether you want CloudFront to forward query strings to the
-     * origin that is associated with this cache behavior and cache based on the
-     * query string parameters. CloudFront behavior depends on the value of
-     * QueryString and on the values that you specify for QueryStringCacheKeys,
-     * if any:
+     * Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache
+     * behavior and cache based on the query string parameters. CloudFront behavior depends on the value of
+     * <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if any:
      * </p>
-     * <ul>
-     * <li>If you specify true for QueryString and you don't specify any values
-     * for QueryStringCacheKeys, CloudFront forwards all query string parameters
-     * to the origin and caches based on all query string parameters. Depending
-     * on how many query string parameters and values you have, this can
-     * adversely affect performance because CloudFront must forward more
-     * requests to the origin.</li>
-     * <li>If you specify true for QueryString and you specify one or more
-     * values for QueryStringCacheKeys, CloudFront forwards all query string
-     * parameters to the origin, but it only caches based on the query string
-     * parameters that you specify.</li>
-     * <li>If you specify false for QueryString, CloudFront doesn't forward any
-     * query string parameters to the origin, and doesn't cache based on query
-     * string parameters.</li>
-     * </ul>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you don't specify any values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and caches based
+     * on all query string parameters. Depending on how many query string parameters and values you have, this can
+     * adversely affect performance because CloudFront must forward more requests to the origin.
+     * </p>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you specify one or more values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it only
+     * caches based on the query string parameters that you specify.
+     * </p>
+     * <p>
+     * If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters to the
+     * origin, and doesn't cache based on query string parameters.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">Configuring
+     * CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      * 
      * @param queryString
-     *        Indicates whether you want CloudFront to forward query strings to
-     *        the origin that is associated with this cache behavior and cache
-     *        based on the query string parameters. CloudFront behavior depends
-     *        on the value of QueryString and on the values that you specify for
-     *        QueryStringCacheKeys, if any:</p>
-     *        <ul>
-     *        <li>If you specify true for QueryString and you don't specify any
-     *        values for QueryStringCacheKeys, CloudFront forwards all query
-     *        string parameters to the origin and caches based on all query
-     *        string parameters. Depending on how many query string parameters
-     *        and values you have, this can adversely affect performance because
-     *        CloudFront must forward more requests to the origin.</li>
-     *        <li>If you specify true for QueryString and you specify one or
-     *        more values for QueryStringCacheKeys, CloudFront forwards all
-     *        query string parameters to the origin, but it only caches based on
-     *        the query string parameters that you specify.</li>
-     *        <li>If you specify false for QueryString, CloudFront doesn't
-     *        forward any query string parameters to the origin, and doesn't
-     *        cache based on query string parameters.</li>
+     *        Indicates whether you want CloudFront to forward query strings to the origin that is associated with this
+     *        cache behavior and cache based on the query string parameters. CloudFront behavior depends on the value of
+     *        <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if
+     *        any:</p>
+     *        <p>
+     *        If you specify true for <code>QueryString</code> and you don't specify any values for
+     *        <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and
+     *        caches based on all query string parameters. Depending on how many query string parameters and values you
+     *        have, this can adversely affect performance because CloudFront must forward more requests to the origin.
+     *        </p>
+     *        <p>
+     *        If you specify true for <code>QueryString</code> and you specify one or more values for
+     *        <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it
+     *        only caches based on the query string parameters that you specify.
+     *        </p>
+     *        <p>
+     *        If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters
+     *        to the origin, and doesn't cache based on query string parameters.
+     *        </p>
+     *        <p>
+     *        For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html"
+     *        >Configuring CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront
+     *        Developer Guide</i>.
      */
 
     public void setQueryString(Boolean queryString) {
@@ -115,47 +138,55 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether you want CloudFront to forward query strings to the
-     * origin that is associated with this cache behavior and cache based on the
-     * query string parameters. CloudFront behavior depends on the value of
-     * QueryString and on the values that you specify for QueryStringCacheKeys,
-     * if any:
+     * Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache
+     * behavior and cache based on the query string parameters. CloudFront behavior depends on the value of
+     * <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if any:
      * </p>
-     * <ul>
-     * <li>If you specify true for QueryString and you don't specify any values
-     * for QueryStringCacheKeys, CloudFront forwards all query string parameters
-     * to the origin and caches based on all query string parameters. Depending
-     * on how many query string parameters and values you have, this can
-     * adversely affect performance because CloudFront must forward more
-     * requests to the origin.</li>
-     * <li>If you specify true for QueryString and you specify one or more
-     * values for QueryStringCacheKeys, CloudFront forwards all query string
-     * parameters to the origin, but it only caches based on the query string
-     * parameters that you specify.</li>
-     * <li>If you specify false for QueryString, CloudFront doesn't forward any
-     * query string parameters to the origin, and doesn't cache based on query
-     * string parameters.</li>
-     * </ul>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you don't specify any values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and caches based
+     * on all query string parameters. Depending on how many query string parameters and values you have, this can
+     * adversely affect performance because CloudFront must forward more requests to the origin.
+     * </p>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you specify one or more values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it only
+     * caches based on the query string parameters that you specify.
+     * </p>
+     * <p>
+     * If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters to the
+     * origin, and doesn't cache based on query string parameters.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">Configuring
+     * CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      * 
-     * @return Indicates whether you want CloudFront to forward query strings to
-     *         the origin that is associated with this cache behavior and cache
-     *         based on the query string parameters. CloudFront behavior depends
-     *         on the value of QueryString and on the values that you specify
-     *         for QueryStringCacheKeys, if any:</p>
-     *         <ul>
-     *         <li>If you specify true for QueryString and you don't specify any
-     *         values for QueryStringCacheKeys, CloudFront forwards all query
-     *         string parameters to the origin and caches based on all query
-     *         string parameters. Depending on how many query string parameters
-     *         and values you have, this can adversely affect performance
-     *         because CloudFront must forward more requests to the origin.</li>
-     *         <li>If you specify true for QueryString and you specify one or
-     *         more values for QueryStringCacheKeys, CloudFront forwards all
-     *         query string parameters to the origin, but it only caches based
-     *         on the query string parameters that you specify.</li>
-     *         <li>If you specify false for QueryString, CloudFront doesn't
-     *         forward any query string parameters to the origin, and doesn't
-     *         cache based on query string parameters.</li>
+     * @return Indicates whether you want CloudFront to forward query strings to the origin that is associated with this
+     *         cache behavior and cache based on the query string parameters. CloudFront behavior depends on the value
+     *         of <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if
+     *         any:</p>
+     *         <p>
+     *         If you specify true for <code>QueryString</code> and you don't specify any values for
+     *         <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and
+     *         caches based on all query string parameters. Depending on how many query string parameters and values you
+     *         have, this can adversely affect performance because CloudFront must forward more requests to the origin.
+     *         </p>
+     *         <p>
+     *         If you specify true for <code>QueryString</code> and you specify one or more values for
+     *         <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it
+     *         only caches based on the query string parameters that you specify.
+     *         </p>
+     *         <p>
+     *         If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters
+     *         to the origin, and doesn't cache based on query string parameters.
+     *         </p>
+     *         <p>
+     *         For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html"
+     *         >Configuring CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront
+     *         Developer Guide</i>.
      */
 
     public Boolean getQueryString() {
@@ -164,50 +195,57 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether you want CloudFront to forward query strings to the
-     * origin that is associated with this cache behavior and cache based on the
-     * query string parameters. CloudFront behavior depends on the value of
-     * QueryString and on the values that you specify for QueryStringCacheKeys,
-     * if any:
+     * Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache
+     * behavior and cache based on the query string parameters. CloudFront behavior depends on the value of
+     * <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if any:
      * </p>
-     * <ul>
-     * <li>If you specify true for QueryString and you don't specify any values
-     * for QueryStringCacheKeys, CloudFront forwards all query string parameters
-     * to the origin and caches based on all query string parameters. Depending
-     * on how many query string parameters and values you have, this can
-     * adversely affect performance because CloudFront must forward more
-     * requests to the origin.</li>
-     * <li>If you specify true for QueryString and you specify one or more
-     * values for QueryStringCacheKeys, CloudFront forwards all query string
-     * parameters to the origin, but it only caches based on the query string
-     * parameters that you specify.</li>
-     * <li>If you specify false for QueryString, CloudFront doesn't forward any
-     * query string parameters to the origin, and doesn't cache based on query
-     * string parameters.</li>
-     * </ul>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you don't specify any values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and caches based
+     * on all query string parameters. Depending on how many query string parameters and values you have, this can
+     * adversely affect performance because CloudFront must forward more requests to the origin.
+     * </p>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you specify one or more values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it only
+     * caches based on the query string parameters that you specify.
+     * </p>
+     * <p>
+     * If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters to the
+     * origin, and doesn't cache based on query string parameters.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">Configuring
+     * CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      * 
      * @param queryString
-     *        Indicates whether you want CloudFront to forward query strings to
-     *        the origin that is associated with this cache behavior and cache
-     *        based on the query string parameters. CloudFront behavior depends
-     *        on the value of QueryString and on the values that you specify for
-     *        QueryStringCacheKeys, if any:</p>
-     *        <ul>
-     *        <li>If you specify true for QueryString and you don't specify any
-     *        values for QueryStringCacheKeys, CloudFront forwards all query
-     *        string parameters to the origin and caches based on all query
-     *        string parameters. Depending on how many query string parameters
-     *        and values you have, this can adversely affect performance because
-     *        CloudFront must forward more requests to the origin.</li>
-     *        <li>If you specify true for QueryString and you specify one or
-     *        more values for QueryStringCacheKeys, CloudFront forwards all
-     *        query string parameters to the origin, but it only caches based on
-     *        the query string parameters that you specify.</li>
-     *        <li>If you specify false for QueryString, CloudFront doesn't
-     *        forward any query string parameters to the origin, and doesn't
-     *        cache based on query string parameters.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether you want CloudFront to forward query strings to the origin that is associated with this
+     *        cache behavior and cache based on the query string parameters. CloudFront behavior depends on the value of
+     *        <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if
+     *        any:</p>
+     *        <p>
+     *        If you specify true for <code>QueryString</code> and you don't specify any values for
+     *        <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and
+     *        caches based on all query string parameters. Depending on how many query string parameters and values you
+     *        have, this can adversely affect performance because CloudFront must forward more requests to the origin.
+     *        </p>
+     *        <p>
+     *        If you specify true for <code>QueryString</code> and you specify one or more values for
+     *        <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it
+     *        only caches based on the query string parameters that you specify.
+     *        </p>
+     *        <p>
+     *        If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters
+     *        to the origin, and doesn't cache based on query string parameters.
+     *        </p>
+     *        <p>
+     *        For more information, see <a
+     *        href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html"
+     *        >Configuring CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront
+     *        Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ForwardedValues withQueryString(Boolean queryString) {
@@ -217,47 +255,55 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether you want CloudFront to forward query strings to the
-     * origin that is associated with this cache behavior and cache based on the
-     * query string parameters. CloudFront behavior depends on the value of
-     * QueryString and on the values that you specify for QueryStringCacheKeys,
-     * if any:
+     * Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache
+     * behavior and cache based on the query string parameters. CloudFront behavior depends on the value of
+     * <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if any:
      * </p>
-     * <ul>
-     * <li>If you specify true for QueryString and you don't specify any values
-     * for QueryStringCacheKeys, CloudFront forwards all query string parameters
-     * to the origin and caches based on all query string parameters. Depending
-     * on how many query string parameters and values you have, this can
-     * adversely affect performance because CloudFront must forward more
-     * requests to the origin.</li>
-     * <li>If you specify true for QueryString and you specify one or more
-     * values for QueryStringCacheKeys, CloudFront forwards all query string
-     * parameters to the origin, but it only caches based on the query string
-     * parameters that you specify.</li>
-     * <li>If you specify false for QueryString, CloudFront doesn't forward any
-     * query string parameters to the origin, and doesn't cache based on query
-     * string parameters.</li>
-     * </ul>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you don't specify any values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and caches based
+     * on all query string parameters. Depending on how many query string parameters and values you have, this can
+     * adversely affect performance because CloudFront must forward more requests to the origin.
+     * </p>
+     * <p>
+     * If you specify true for <code>QueryString</code> and you specify one or more values for
+     * <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it only
+     * caches based on the query string parameters that you specify.
+     * </p>
+     * <p>
+     * If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters to the
+     * origin, and doesn't cache based on query string parameters.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">Configuring
+     * CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      * 
-     * @return Indicates whether you want CloudFront to forward query strings to
-     *         the origin that is associated with this cache behavior and cache
-     *         based on the query string parameters. CloudFront behavior depends
-     *         on the value of QueryString and on the values that you specify
-     *         for QueryStringCacheKeys, if any:</p>
-     *         <ul>
-     *         <li>If you specify true for QueryString and you don't specify any
-     *         values for QueryStringCacheKeys, CloudFront forwards all query
-     *         string parameters to the origin and caches based on all query
-     *         string parameters. Depending on how many query string parameters
-     *         and values you have, this can adversely affect performance
-     *         because CloudFront must forward more requests to the origin.</li>
-     *         <li>If you specify true for QueryString and you specify one or
-     *         more values for QueryStringCacheKeys, CloudFront forwards all
-     *         query string parameters to the origin, but it only caches based
-     *         on the query string parameters that you specify.</li>
-     *         <li>If you specify false for QueryString, CloudFront doesn't
-     *         forward any query string parameters to the origin, and doesn't
-     *         cache based on query string parameters.</li>
+     * @return Indicates whether you want CloudFront to forward query strings to the origin that is associated with this
+     *         cache behavior and cache based on the query string parameters. CloudFront behavior depends on the value
+     *         of <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if
+     *         any:</p>
+     *         <p>
+     *         If you specify true for <code>QueryString</code> and you don't specify any values for
+     *         <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and
+     *         caches based on all query string parameters. Depending on how many query string parameters and values you
+     *         have, this can adversely affect performance because CloudFront must forward more requests to the origin.
+     *         </p>
+     *         <p>
+     *         If you specify true for <code>QueryString</code> and you specify one or more values for
+     *         <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it
+     *         only caches based on the query string parameters that you specify.
+     *         </p>
+     *         <p>
+     *         If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters
+     *         to the origin, and doesn't cache based on query string parameters.
+     *         </p>
+     *         <p>
+     *         For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html"
+     *         >Configuring CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront
+     *         Developer Guide</i>.
      */
 
     public Boolean isQueryString() {
@@ -265,10 +311,18 @@ public class ForwardedValues implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that specifies how CloudFront handles cookies.
+     * <p>
+     * A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which
+     * ones. For more information about forwarding cookies to the origin, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront Forwards,
+     * Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      * 
      * @param cookies
-     *        A complex type that specifies how CloudFront handles cookies.
+     *        A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so,
+     *        which ones. For more information about forwarding cookies to the origin, see <a
+     *        href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront
+     *        Forwards, Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.
      */
 
     public void setCookies(CookiePreference cookies) {
@@ -276,9 +330,17 @@ public class ForwardedValues implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that specifies how CloudFront handles cookies.
+     * <p>
+     * A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which
+     * ones. For more information about forwarding cookies to the origin, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront Forwards,
+     * Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      * 
-     * @return A complex type that specifies how CloudFront handles cookies.
+     * @return A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so,
+     *         which ones. For more information about forwarding cookies to the origin, see <a
+     *         href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront
+     *         Forwards, Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.
      */
 
     public CookiePreference getCookies() {
@@ -286,12 +348,19 @@ public class ForwardedValues implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that specifies how CloudFront handles cookies.
+     * <p>
+     * A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which
+     * ones. For more information about forwarding cookies to the origin, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront Forwards,
+     * Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * </p>
      * 
      * @param cookies
-     *        A complex type that specifies how CloudFront handles cookies.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so,
+     *        which ones. For more information about forwarding cookies to the origin, see <a
+     *        href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront
+     *        Forwards, Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ForwardedValues withCookies(CookiePreference cookies) {
@@ -300,12 +369,14 @@ public class ForwardedValues implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that specifies the Headers, if any, that you want
-     * CloudFront to vary upon for this cache behavior.
+     * <p>
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
+     * cache behavior.
+     * </p>
      * 
      * @param headers
-     *        A complex type that specifies the Headers, if any, that you want
-     *        CloudFront to vary upon for this cache behavior.
+     *        A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for
+     *        this cache behavior.
      */
 
     public void setHeaders(Headers headers) {
@@ -313,11 +384,13 @@ public class ForwardedValues implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that specifies the Headers, if any, that you want
-     * CloudFront to vary upon for this cache behavior.
+     * <p>
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
+     * cache behavior.
+     * </p>
      * 
-     * @return A complex type that specifies the Headers, if any, that you want
-     *         CloudFront to vary upon for this cache behavior.
+     * @return A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for
+     *         this cache behavior.
      */
 
     public Headers getHeaders() {
@@ -325,14 +398,15 @@ public class ForwardedValues implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that specifies the Headers, if any, that you want
-     * CloudFront to vary upon for this cache behavior.
+     * <p>
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
+     * cache behavior.
+     * </p>
      * 
      * @param headers
-     *        A complex type that specifies the Headers, if any, that you want
-     *        CloudFront to vary upon for this cache behavior.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for
+     *        this cache behavior.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ForwardedValues withHeaders(Headers headers) {
@@ -342,32 +416,27 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that contains information about the query string
-     * parameters that you want CloudFront to use for caching for this cache
-     * behavior.
+     * A complex type that contains information about the query string parameters that you want CloudFront to use for
+     * caching for this cache behavior.
      * </p>
      * 
      * @param queryStringCacheKeys
-     *        A complex type that contains information about the query string
-     *        parameters that you want CloudFront to use for caching for this
-     *        cache behavior.
+     *        A complex type that contains information about the query string parameters that you want CloudFront to use
+     *        for caching for this cache behavior.
      */
 
-    public void setQueryStringCacheKeys(
-            QueryStringCacheKeys queryStringCacheKeys) {
+    public void setQueryStringCacheKeys(QueryStringCacheKeys queryStringCacheKeys) {
         this.queryStringCacheKeys = queryStringCacheKeys;
     }
 
     /**
      * <p>
-     * A complex type that contains information about the query string
-     * parameters that you want CloudFront to use for caching for this cache
-     * behavior.
+     * A complex type that contains information about the query string parameters that you want CloudFront to use for
+     * caching for this cache behavior.
      * </p>
      * 
-     * @return A complex type that contains information about the query string
-     *         parameters that you want CloudFront to use for caching for this
-     *         cache behavior.
+     * @return A complex type that contains information about the query string parameters that you want CloudFront to
+     *         use for caching for this cache behavior.
      */
 
     public QueryStringCacheKeys getQueryStringCacheKeys() {
@@ -376,28 +445,23 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that contains information about the query string
-     * parameters that you want CloudFront to use for caching for this cache
-     * behavior.
+     * A complex type that contains information about the query string parameters that you want CloudFront to use for
+     * caching for this cache behavior.
      * </p>
      * 
      * @param queryStringCacheKeys
-     *        A complex type that contains information about the query string
-     *        parameters that you want CloudFront to use for caching for this
-     *        cache behavior.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains information about the query string parameters that you want CloudFront to use
+     *        for caching for this cache behavior.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ForwardedValues withQueryStringCacheKeys(
-            QueryStringCacheKeys queryStringCacheKeys) {
+    public ForwardedValues withQueryStringCacheKeys(QueryStringCacheKeys queryStringCacheKeys) {
         setQueryStringCacheKeys(queryStringCacheKeys);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -408,13 +472,13 @@ public class ForwardedValues implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getQueryString() != null)
-            sb.append("QueryString: " + getQueryString() + ",");
+            sb.append("QueryString: ").append(getQueryString()).append(",");
         if (getCookies() != null)
-            sb.append("Cookies: " + getCookies() + ",");
+            sb.append("Cookies: ").append(getCookies()).append(",");
         if (getHeaders() != null)
-            sb.append("Headers: " + getHeaders() + ",");
+            sb.append("Headers: ").append(getHeaders()).append(",");
         if (getQueryStringCacheKeys() != null)
-            sb.append("QueryStringCacheKeys: " + getQueryStringCacheKeys());
+            sb.append("QueryStringCacheKeys: ").append(getQueryStringCacheKeys());
         sb.append("}");
         return sb.toString();
     }
@@ -431,25 +495,19 @@ public class ForwardedValues implements Serializable, Cloneable {
         ForwardedValues other = (ForwardedValues) obj;
         if (other.getQueryString() == null ^ this.getQueryString() == null)
             return false;
-        if (other.getQueryString() != null
-                && other.getQueryString().equals(this.getQueryString()) == false)
+        if (other.getQueryString() != null && other.getQueryString().equals(this.getQueryString()) == false)
             return false;
         if (other.getCookies() == null ^ this.getCookies() == null)
             return false;
-        if (other.getCookies() != null
-                && other.getCookies().equals(this.getCookies()) == false)
+        if (other.getCookies() != null && other.getCookies().equals(this.getCookies()) == false)
             return false;
         if (other.getHeaders() == null ^ this.getHeaders() == null)
             return false;
-        if (other.getHeaders() != null
-                && other.getHeaders().equals(this.getHeaders()) == false)
+        if (other.getHeaders() != null && other.getHeaders().equals(this.getHeaders()) == false)
             return false;
-        if (other.getQueryStringCacheKeys() == null
-                ^ this.getQueryStringCacheKeys() == null)
+        if (other.getQueryStringCacheKeys() == null ^ this.getQueryStringCacheKeys() == null)
             return false;
-        if (other.getQueryStringCacheKeys() != null
-                && other.getQueryStringCacheKeys().equals(
-                        this.getQueryStringCacheKeys()) == false)
+        if (other.getQueryStringCacheKeys() != null && other.getQueryStringCacheKeys().equals(this.getQueryStringCacheKeys()) == false)
             return false;
         return true;
     }
@@ -459,17 +517,10 @@ public class ForwardedValues implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getQueryString() == null) ? 0 : getQueryString().hashCode());
-        hashCode = prime * hashCode
-                + ((getCookies() == null) ? 0 : getCookies().hashCode());
-        hashCode = prime * hashCode
-                + ((getHeaders() == null) ? 0 : getHeaders().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getQueryStringCacheKeys() == null) ? 0
-                        : getQueryStringCacheKeys().hashCode());
+        hashCode = prime * hashCode + ((getQueryString() == null) ? 0 : getQueryString().hashCode());
+        hashCode = prime * hashCode + ((getCookies() == null) ? 0 : getCookies().hashCode());
+        hashCode = prime * hashCode + ((getHeaders() == null) ? 0 : getHeaders().hashCode());
+        hashCode = prime * hashCode + ((getQueryStringCacheKeys() == null) ? 0 : getQueryStringCacheKeys().hashCode());
         return hashCode;
     }
 
@@ -478,9 +529,8 @@ public class ForwardedValues implements Serializable, Cloneable {
         try {
             return (ForwardedValues) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

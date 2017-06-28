@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.TreeMap;
 import java.util.Map;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.Headers;
 import com.amazonaws.services.s3.internal.Constants;
 import com.amazonaws.services.s3.internal.ObjectExpirationResult;
@@ -225,18 +225,18 @@ public class ObjectMetadata implements ServerSideEncryptionResult, S3RequesterCh
     }
 
     /**
-     * For internal use only. Gets a map of the raw metadata/headers
-     * for the associated object.
+     * Gets a map of the raw metadata/headers for the associated object.
      *
      * @return A map of the raw metadata/headers for the associated object.
      */
     public Map<String, Object> getRawMetadata() {
-        return Collections.unmodifiableMap(new TreeMap<String,Object>(metadata));
+        Map<String,Object> copy = new TreeMap<String,Object>(String.CASE_INSENSITIVE_ORDER);
+        copy.putAll(metadata);
+        return Collections.unmodifiableMap(copy);
     }
 
     /**
-     * For internal use only. Returns the raw value of the metadata/headers
-     * for the specified key.
+     * Returns the raw value of the metadata/headers for the specified key.
      */
     public Object getRawMetadataValue(String key) {
         return metadata.get(key);
@@ -464,7 +464,7 @@ public class ObjectMetadata implements ServerSideEncryptionResult, S3RequesterCh
      * @return The HTTP Content-Encoding header.
      * Returns <code>null</code> if it hasn't been set.
      *
-     * @see ObjectMetadata#setContentType(String)
+     * @see ObjectMetadata#setContentEncoding(String)
      */
     public String getContentEncoding() {
         return (String)metadata.get(Headers.CONTENT_ENCODING);
@@ -491,7 +491,7 @@ public class ObjectMetadata implements ServerSideEncryptionResult, S3RequesterCh
      *      href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11"
      *      >http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11</a>
      *
-     * @see ObjectMetadata#getContentType()
+     * @see ObjectMetadata#getContentEncoding()
      */
     public void setContentEncoding(String encoding) {
         metadata.put(Headers.CONTENT_ENCODING, encoding);
@@ -936,11 +936,19 @@ public class ObjectMetadata implements ServerSideEncryptionResult, S3RequesterCh
             try {
                 range = new Long[] { Long.parseLong(tokens[1]), Long.parseLong(tokens[2]) };
             } catch (NumberFormatException nfe) {
-                throw new AmazonClientException(
+                throw new SdkClientException(
                         "Unable to parse content range. Header 'Content-Range' has corrupted data" + nfe.getMessage(),
                         nfe);
             }
         }
         return range;
+    }
+
+    /**
+     * @return The replication status of the object if it is from a bucket that
+     * is the source or destination in a cross-region replication.
+     */
+    public String getReplicationStatus() {
+        return (String) metadata.get(Headers.OBJECT_REPLICATION_STATUS);
     }
 }

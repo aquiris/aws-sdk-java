@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -117,6 +117,10 @@ public class S3ErrorResponseHandler implements
             exceptionBuilder.setErrorResponseXml(content);
             exceptionBuilder.setStatusCode(httpResponse.getStatusCode());
             exceptionBuilder.setCloudFrontId(httpResponse.getHeaders().get(Headers.CLOUD_FRONT_ID));
+            String bucketRegion = httpResponse.getHeader(Headers.S3_BUCKET_REGION);
+            if (bucketRegion != null) {
+                exceptionBuilder.addAdditionalDetail(Headers.S3_BUCKET_REGION, bucketRegion);
+            }
 
             boolean hasErrorTagVisited = false;
             while (reader.hasNext()) {

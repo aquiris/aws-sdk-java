@@ -1,37 +1,38 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroupPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetGroupPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * The name of the group the policy is associated with.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      */
     private String groupName;
@@ -40,42 +41,37 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
      * The name of the policy document to get.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      */
     private String policyName;
 
     /**
-     * Default constructor for GetGroupPolicyRequest object. Callers should use
-     * the setter or fluent setter (with...) methods to initialize the object
-     * after creating it.
+     * Default constructor for GetGroupPolicyRequest object. Callers should use the setter or fluent setter (with...)
+     * methods to initialize the object after creating it.
      */
     public GetGroupPolicyRequest() {
     }
 
     /**
-     * Constructs a new GetGroupPolicyRequest object. Callers should use the
-     * setter or fluent setter (with...) methods to initialize any additional
-     * object members.
+     * Constructs a new GetGroupPolicyRequest object. Callers should use the setter or fluent setter (with...) methods
+     * to initialize any additional object members.
      * 
      * @param groupName
      *        The name of the group the policy is associated with.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of upper
-     *        and lowercase alphanumeric characters with no spaces. You can also
-     *        include any of the following characters: =,.@-
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *        any of the following characters: =,.@-
      * @param policyName
      *        The name of the policy document to get.
      *        </p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of upper
-     *        and lowercase alphanumeric characters with no spaces. You can also
-     *        include any of the following characters: =,.@-
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *        any of the following characters: =,.@-
      */
     public GetGroupPolicyRequest(String groupName, String policyName) {
         setGroupName(groupName);
@@ -87,19 +83,17 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
      * The name of the group the policy is associated with.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @param groupName
      *        The name of the group the policy is associated with.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of upper
-     *        and lowercase alphanumeric characters with no spaces. You can also
-     *        include any of the following characters: =,.@-
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *        any of the following characters: =,.@-
      */
 
     public void setGroupName(String groupName) {
@@ -111,18 +105,16 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
      * The name of the group the policy is associated with.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @return The name of the group the policy is associated with.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *         for this parameter is a string of characters consisting of upper
-     *         and lowercase alphanumeric characters with no spaces. You can
-     *         also include any of the following characters: =,.@-
+     *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *         characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *         any of the following characters: =,.@-
      */
 
     public String getGroupName() {
@@ -134,21 +126,18 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
      * The name of the group the policy is associated with.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @param groupName
      *        The name of the group the policy is associated with.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of upper
-     *        and lowercase alphanumeric characters with no spaces. You can also
-     *        include any of the following characters: =,.@-
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *        any of the following characters: =,.@-
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetGroupPolicyRequest withGroupName(String groupName) {
@@ -161,19 +150,17 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
      * The name of the policy document to get.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @param policyName
      *        The name of the policy document to get.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of upper
-     *        and lowercase alphanumeric characters with no spaces. You can also
-     *        include any of the following characters: =,.@-
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *        any of the following characters: =,.@-
      */
 
     public void setPolicyName(String policyName) {
@@ -185,18 +172,16 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
      * The name of the policy document to get.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @return The name of the policy document to get.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *         for this parameter is a string of characters consisting of upper
-     *         and lowercase alphanumeric characters with no spaces. You can
-     *         also include any of the following characters: =,.@-
+     *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *         characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *         any of the following characters: =,.@-
      */
 
     public String getPolicyName() {
@@ -208,21 +193,18 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
      * The name of the policy document to get.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
+     * the following characters: =,.@-
      * </p>
      * 
      * @param policyName
      *        The name of the policy document to get.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of upper
-     *        and lowercase alphanumeric characters with no spaces. You can also
-     *        include any of the following characters: =,.@-
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
+     *        any of the following characters: =,.@-
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetGroupPolicyRequest withPolicyName(String policyName) {
@@ -231,8 +213,7 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -243,9 +224,9 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGroupName() != null)
-            sb.append("GroupName: " + getGroupName() + ",");
+            sb.append("GroupName: ").append(getGroupName()).append(",");
         if (getPolicyName() != null)
-            sb.append("PolicyName: " + getPolicyName());
+            sb.append("PolicyName: ").append(getPolicyName());
         sb.append("}");
         return sb.toString();
     }
@@ -262,13 +243,11 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
         GetGroupPolicyRequest other = (GetGroupPolicyRequest) obj;
         if (other.getGroupName() == null ^ this.getGroupName() == null)
             return false;
-        if (other.getGroupName() != null
-                && other.getGroupName().equals(this.getGroupName()) == false)
+        if (other.getGroupName() != null && other.getGroupName().equals(this.getGroupName()) == false)
             return false;
         if (other.getPolicyName() == null ^ this.getPolicyName() == null)
             return false;
-        if (other.getPolicyName() != null
-                && other.getPolicyName().equals(this.getPolicyName()) == false)
+        if (other.getPolicyName() != null && other.getPolicyName().equals(this.getPolicyName()) == false)
             return false;
         return true;
     }
@@ -278,10 +257,8 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getGroupName() == null) ? 0 : getGroupName().hashCode());
-        hashCode = prime * hashCode
-                + ((getPolicyName() == null) ? 0 : getPolicyName().hashCode());
+        hashCode = prime * hashCode + ((getGroupName() == null) ? 0 : getGroupName().hashCode());
+        hashCode = prime * hashCode + ((getPolicyName() == null) ? 0 : getPolicyName().hashCode());
         return hashCode;
     }
 
@@ -289,4 +266,5 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements
     public GetGroupPolicyRequest clone() {
         return (GetGroupPolicyRequest) super.clone();
     }
+
 }

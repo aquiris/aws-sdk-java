@@ -1,25 +1,28 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RefreshSchemas" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RefreshSchemasResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RefreshSchemasResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -37,8 +40,7 @@ public class RefreshSchemasResult implements Serializable, Cloneable {
      *        The status of the refreshed schema.
      */
 
-    public void setRefreshSchemasStatus(
-            RefreshSchemasStatus refreshSchemasStatus) {
+    public void setRefreshSchemasStatus(RefreshSchemasStatus refreshSchemasStatus) {
         this.refreshSchemasStatus = refreshSchemasStatus;
     }
 
@@ -61,19 +63,16 @@ public class RefreshSchemasResult implements Serializable, Cloneable {
      * 
      * @param refreshSchemasStatus
      *        The status of the refreshed schema.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RefreshSchemasResult withRefreshSchemasStatus(
-            RefreshSchemasStatus refreshSchemasStatus) {
+    public RefreshSchemasResult withRefreshSchemasStatus(RefreshSchemasStatus refreshSchemasStatus) {
         setRefreshSchemasStatus(refreshSchemasStatus);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -84,7 +83,7 @@ public class RefreshSchemasResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRefreshSchemasStatus() != null)
-            sb.append("RefreshSchemasStatus: " + getRefreshSchemasStatus());
+            sb.append("RefreshSchemasStatus: ").append(getRefreshSchemasStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -99,12 +98,9 @@ public class RefreshSchemasResult implements Serializable, Cloneable {
         if (obj instanceof RefreshSchemasResult == false)
             return false;
         RefreshSchemasResult other = (RefreshSchemasResult) obj;
-        if (other.getRefreshSchemasStatus() == null
-                ^ this.getRefreshSchemasStatus() == null)
+        if (other.getRefreshSchemasStatus() == null ^ this.getRefreshSchemasStatus() == null)
             return false;
-        if (other.getRefreshSchemasStatus() != null
-                && other.getRefreshSchemasStatus().equals(
-                        this.getRefreshSchemasStatus()) == false)
+        if (other.getRefreshSchemasStatus() != null && other.getRefreshSchemasStatus().equals(this.getRefreshSchemasStatus()) == false)
             return false;
         return true;
     }
@@ -114,10 +110,7 @@ public class RefreshSchemasResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getRefreshSchemasStatus() == null) ? 0
-                        : getRefreshSchemasStatus().hashCode());
+        hashCode = prime * hashCode + ((getRefreshSchemasStatus() == null) ? 0 : getRefreshSchemasStatus().hashCode());
         return hashCode;
     }
 
@@ -126,9 +119,8 @@ public class RefreshSchemasResult implements Serializable, Cloneable {
         try {
             return (RefreshSchemasResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

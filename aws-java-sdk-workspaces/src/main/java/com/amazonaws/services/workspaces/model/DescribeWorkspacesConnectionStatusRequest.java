@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.workspaces.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeWorkspacesConnectionStatusRequest extends
-        AmazonWebServiceRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeWorkspacesConnectionStatusRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -41,8 +43,7 @@ public class DescribeWorkspacesConnectionStatusRequest extends
      * An array of strings that contain the identifiers of the WorkSpaces.
      * </p>
      * 
-     * @return An array of strings that contain the identifiers of the
-     *         WorkSpaces.
+     * @return An array of strings that contain the identifiers of the WorkSpaces.
      */
 
     public java.util.List<String> getWorkspaceIds() {
@@ -58,8 +59,7 @@ public class DescribeWorkspacesConnectionStatusRequest extends
      * </p>
      * 
      * @param workspaceIds
-     *        An array of strings that contain the identifiers of the
-     *        WorkSpaces.
+     *        An array of strings that contain the identifiers of the WorkSpaces.
      */
 
     public void setWorkspaceIds(java.util.Collection<String> workspaceIds) {
@@ -68,8 +68,7 @@ public class DescribeWorkspacesConnectionStatusRequest extends
             return;
         }
 
-        this.workspaceIds = new com.amazonaws.internal.SdkInternalList<String>(
-                workspaceIds);
+        this.workspaceIds = new com.amazonaws.internal.SdkInternalList<String>(workspaceIds);
     }
 
     /**
@@ -77,24 +76,19 @@ public class DescribeWorkspacesConnectionStatusRequest extends
      * An array of strings that contain the identifiers of the WorkSpaces.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setWorkspaceIds(java.util.Collection)} or
-     * {@link #withWorkspaceIds(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setWorkspaceIds(java.util.Collection)} or {@link #withWorkspaceIds(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param workspaceIds
-     *        An array of strings that contain the identifiers of the
-     *        WorkSpaces.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An array of strings that contain the identifiers of the WorkSpaces.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeWorkspacesConnectionStatusRequest withWorkspaceIds(
-            String... workspaceIds) {
+    public DescribeWorkspacesConnectionStatusRequest withWorkspaceIds(String... workspaceIds) {
         if (this.workspaceIds == null) {
-            setWorkspaceIds(new com.amazonaws.internal.SdkInternalList<String>(
-                    workspaceIds.length));
+            setWorkspaceIds(new com.amazonaws.internal.SdkInternalList<String>(workspaceIds.length));
         }
         for (String ele : workspaceIds) {
             this.workspaceIds.add(ele);
@@ -108,14 +102,11 @@ public class DescribeWorkspacesConnectionStatusRequest extends
      * </p>
      * 
      * @param workspaceIds
-     *        An array of strings that contain the identifiers of the
-     *        WorkSpaces.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An array of strings that contain the identifiers of the WorkSpaces.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeWorkspacesConnectionStatusRequest withWorkspaceIds(
-            java.util.Collection<String> workspaceIds) {
+    public DescribeWorkspacesConnectionStatusRequest withWorkspaceIds(java.util.Collection<String> workspaceIds) {
         setWorkspaceIds(workspaceIds);
         return this;
     }
@@ -152,19 +143,16 @@ public class DescribeWorkspacesConnectionStatusRequest extends
      * 
      * @param nextToken
      *        The next token of the request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeWorkspacesConnectionStatusRequest withNextToken(
-            String nextToken) {
+    public DescribeWorkspacesConnectionStatusRequest withNextToken(String nextToken) {
         setNextToken(nextToken);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -175,9 +163,9 @@ public class DescribeWorkspacesConnectionStatusRequest extends
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getWorkspaceIds() != null)
-            sb.append("WorkspaceIds: " + getWorkspaceIds() + ",");
+            sb.append("WorkspaceIds: ").append(getWorkspaceIds()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -194,13 +182,11 @@ public class DescribeWorkspacesConnectionStatusRequest extends
         DescribeWorkspacesConnectionStatusRequest other = (DescribeWorkspacesConnectionStatusRequest) obj;
         if (other.getWorkspaceIds() == null ^ this.getWorkspaceIds() == null)
             return false;
-        if (other.getWorkspaceIds() != null
-                && other.getWorkspaceIds().equals(this.getWorkspaceIds()) == false)
+        if (other.getWorkspaceIds() != null && other.getWorkspaceIds().equals(this.getWorkspaceIds()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -210,12 +196,8 @@ public class DescribeWorkspacesConnectionStatusRequest extends
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getWorkspaceIds() == null) ? 0 : getWorkspaceIds()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getWorkspaceIds() == null) ? 0 : getWorkspaceIds().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -223,4 +205,5 @@ public class DescribeWorkspacesConnectionStatusRequest extends
     public DescribeWorkspacesConnectionStatusRequest clone() {
         return (DescribeWorkspacesConnectionStatusRequest) super.clone();
     }
+
 }

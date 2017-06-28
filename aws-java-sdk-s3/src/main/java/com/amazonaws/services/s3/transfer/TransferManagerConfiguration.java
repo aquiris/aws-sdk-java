@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -82,6 +82,24 @@ public class TransferManagerConfiguration {
      * number of copy part requests being initiated.
      */
     private long multipartCopyPartSize = DEFAULT_MINIMUM_COPY_PART_SIZE;
+
+    /**
+     * Option to disable parallel downloads. By default, the value is set to false.
+     *
+     * <p>
+     * TransferManager automatically detects and downloads a multipart object
+     * in parallel. Setting this option to true will disable parallel downloads.
+     * </p>
+     * <p>
+     * During parallel downloads, each part is downloaded to a temporary file, gets merged
+     * into the final destination file and will be deleted. These temporary files uses disk space temporarily.
+     * Disable parallel downloads if your system do not have enough space to store these files during download.
+     * </p>
+     * <p>
+     * Disabling parallel downloads might reduce performance for large files.
+     * </p>
+     */
+    private boolean disableParallelDownloads = false;
 
     /**
      * Returns the minimum part size for upload parts.
@@ -229,5 +247,49 @@ public class TransferManagerConfiguration {
     @Deprecated
     public void setMultipartUploadThreshold(int multipartUploadThreshold) {
         setMultipartUploadThreshold((long) multipartUploadThreshold);
+    }
+
+    /**
+     * Returns if the parallel downloads are disabled or not. By default, the value is set to false.
+     *
+     * <p>
+     * TransferManager automatically detects and downloads a multipart object
+     * in parallel. Setting this option to true will disable parallel downloads.
+     * </p>
+     * <p>
+     * During parallel downloads, each part is downloaded to a temporary file, gets merged
+     * into the final destination file and will be deleted. These temporary files uses disk space temporarily.
+     * Disable parallel downloads if your system do not have enough space to store these files during download.
+     * </p>
+     * <p>
+     * Disabling parallel downloads might reduce performance for large files.
+     * </p>
+     *
+     * @return true if parallel downloads are disabled, otherwise false.
+     */
+    public boolean isDisableParallelDownloads() {
+        return disableParallelDownloads;
+    }
+
+    /**
+     * Sets the option to disable parallel downloads. By default, the value is set to false.
+     *
+     * <p>
+     * TransferManager automatically detects and downloads a multipart object
+     * in parallel. Setting this option to true will disable parallel downloads.
+     * </p>
+     * <p>
+     * During parallel downloads, each part is downloaded to a temporary file, gets merged
+     * into the final destination file and will be deleted. These temporary files uses disk space temporarily.
+     * Disable parallel downloads if your system do not have enough space to store these files during download.
+     * </p>
+     * <p>
+     * Disabling parallel downloads might reduce performance for large files.
+     * </p>
+     *
+     * @param disableParallelDownloads boolean value to disable parallel downloads.
+     */
+    public void setDisableParallelDownloads(boolean disableParallelDownloads) {
+        this.disableParallelDownloads = disableParallelDownloads;
     }
 }

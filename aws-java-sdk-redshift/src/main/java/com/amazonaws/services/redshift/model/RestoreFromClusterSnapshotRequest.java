@@ -1,51 +1,70 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RestoreFromClusterSnapshot"
+ *      target="_top">AWS API Documentation</a>
  */
-public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier of the cluster that will be created from restoring the
-     * snapshot.
+     * The identifier of the cluster that will be created from restoring the snapshot.
      * </p>
-     * <p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
-     * <li>Alphabetic characters must be lowercase.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     * <li>Must be unique for all clusters within an AWS account.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * Must contain from 1 to 63 alphanumeric characters or hyphens.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alphabetic characters must be lowercase.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Must be unique for all clusters within an AWS account.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String clusterIdentifier;
     /**
      * <p>
-     * The name of the snapshot from which to create the new cluster. This
-     * parameter isn't case sensitive.
+     * The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.
      * </p>
      * <p>
      * Example: <code>my-snapshot-id</code>
@@ -54,10 +73,8 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private String snapshotIdentifier;
     /**
      * <p>
-     * The name of the cluster the source snapshot was created from. This
-     * parameter is required if your IAM user has a policy containing a snapshot
-     * resource element that specifies anything other than * for the cluster
-     * name.
+     * The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a
+     * policy containing a snapshot resource element that specifies anything other than * for the cluster name.
      * </p>
      */
     private String snapshotClusterIdentifier;
@@ -87,9 +104,8 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private String availabilityZone;
     /**
      * <p>
-     * If <code>true</code>, major version upgrades can be applied during the
-     * maintenance window to the Amazon Redshift engine that is running on the
-     * cluster.
+     * If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift
+     * engine that is running on the cluster.
      * </p>
      * <p>
      * Default: <code>true</code>
@@ -101,8 +117,8 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the subnet group where you want to cluster restored.
      * </p>
      * <p>
-     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you
-     * must provide subnet group name where you want the cluster restored.
+     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name where you
+     * want the cluster restored.
      * </p>
      */
     private String clusterSubnetGroupName;
@@ -114,23 +130,22 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private Boolean publiclyAccessible;
     /**
      * <p>
-     * The AWS customer account used to create or copy the snapshot. Required if
-     * you are restoring a snapshot you do not own, optional if you own the
-     * snapshot.
+     * The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not
+     * own, optional if you own the snapshot.
      * </p>
      */
     private String ownerAccount;
     /**
      * <p>
-     * Specifies the name of the HSM client certificate the Amazon Redshift
-     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     * Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption
+     * keys stored in an HSM.
      * </p>
      */
     private String hsmClientCertificateIdentifier;
     /**
      * <p>
-     * Specifies the name of the HSM configuration that contains the information
-     * the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
+     * Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to
+     * retrieve and store keys in an HSM.
      * </p>
      */
     private String hsmConfigurationIdentifier;
@@ -145,18 +160,29 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the parameter group to be associated with this cluster.
      * </p>
      * <p>
-     * Default: The default Amazon Redshift cluster parameter group. For
-     * information about the default parameter group, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"
-     * >Working with Amazon Redshift Parameter Groups</a>.
+     * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
+     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must be 1 to 255 alphanumeric characters or hyphens.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+     * <li>
+     * <p>
+     * Must be 1 to 255 alphanumeric characters or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
      * </ul>
      */
     private String clusterParameterGroupName;
@@ -174,8 +200,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private com.amazonaws.internal.SdkInternalList<String> clusterSecurityGroups;
     /**
      * <p>
-     * A list of Virtual Private Cloud (VPC) security groups to be associated
-     * with the cluster.
+     * A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
      * </p>
      * <p>
      * Default: The default VPC security group is associated with the cluster.
@@ -187,17 +212,15 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private com.amazonaws.internal.SdkInternalList<String> vpcSecurityGroupIds;
     /**
      * <p>
-     * The weekly time range (in UTC) during which automated cluster maintenance
-     * can occur.
+     * The weekly time range (in UTC) during which automated cluster maintenance can occur.
      * </p>
      * <p>
      * Format: <code>ddd:hh24:mi-ddd:hh24:mi</code>
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken. For more information about the time blocks for each region, see <a
-     * href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
+     * time blocks for each region, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -210,14 +233,12 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private String preferredMaintenanceWindow;
     /**
      * <p>
-     * The number of days that automated snapshots are retained. If the value is
-     * 0, automated snapshots are disabled. Even if automated snapshots are
-     * disabled, you can still create manual snapshots when you want with
+     * The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled.
+     * Even if automated snapshots are disabled, you can still create manual snapshots when you want with
      * <a>CreateClusterSnapshot</a>.
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken.
+     * Default: The value selected for the cluster from which the snapshot was taken.
      * </p>
      * <p>
      * Constraints: Must be a value from 0 to 35.
@@ -226,9 +247,8 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private Integer automatedSnapshotRetentionPeriod;
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * you want to use to encrypt data in the cluster that you restore from a
-     * shared snapshot.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the
+     * cluster that you restore from a shared snapshot.
      * </p>
      */
     private String kmsKeyId;
@@ -237,20 +257,31 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The node type that the restored cluster will be provisioned with.
      * </p>
      * <p>
-     * Default: The node type of the cluster from which the snapshot was taken.
-     * You can modify this if you are using any DS node type. In that case, you
-     * can choose to restore into another DS node type of the same size. For
-     * example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into
-     * ds1.xlarge. If you have a DC instance type, you must restore into that
-     * same instance type and size. In other words, you can only restore a
-     * dc1.large instance type into another dc1.large instance type. For more
-     * information about node types, see <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
-     * > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster
-     * Management Guide</i>
+     * Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any
+     * DS node type. In that case, you can choose to restore into another DS node type of the same size. For example,
+     * you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you
+     * must restore into that same instance type and size. In other words, you can only restore a dc1.large instance
+     * type into another dc1.large instance type. For more information about node types, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>
      * </p>
      */
     private String nodeType;
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     */
+    private Boolean enhancedVpcRouting;
     /**
      * <p>
      * Reserved.
@@ -259,10 +290,9 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     private String additionalInfo;
     /**
      * <p>
-     * A list of AWS Identity and Access Management (IAM) roles that can be used
-     * by the cluster to access other AWS services. You must supply the IAM
-     * roles in their Amazon Resource Name (ARN) format. You can supply up to 10
-     * IAM roles in a single request.
+     * A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS
+     * services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM
+     * roles in a single request.
      * </p>
      * <p>
      * A cluster can have up to 10 IAM roles associated at any time.
@@ -272,36 +302,70 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the cluster that will be created from restoring the
-     * snapshot.
+     * The identifier of the cluster that will be created from restoring the snapshot.
      * </p>
-     * <p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
-     * <li>Alphabetic characters must be lowercase.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     * <li>Must be unique for all clusters within an AWS account.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * Must contain from 1 to 63 alphanumeric characters or hyphens.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alphabetic characters must be lowercase.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Must be unique for all clusters within an AWS account.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param clusterIdentifier
-     *        The identifier of the cluster that will be created from restoring
-     *        the snapshot. </p>
-     *        <p>
+     *        The identifier of the cluster that will be created from restoring the snapshot.</p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
-     *        <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
-     *        <li>Alphabetic characters must be lowercase.</li>
-     *        <li>First character must be a letter.</li>
-     *        <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     *        <li>Must be unique for all clusters within an AWS account.</li>
-     *        </ul>
+     *        <li>
+     *        <p>
+     *        Must contain from 1 to 63 alphanumeric characters or hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Alphabetic characters must be lowercase.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        First character must be a letter.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Cannot end with a hyphen or contain two consecutive hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Must be unique for all clusters within an AWS account.
+     *        </p>
+     *        </li>
      */
 
     public void setClusterIdentifier(String clusterIdentifier) {
@@ -310,36 +374,69 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the cluster that will be created from restoring the
-     * snapshot.
+     * The identifier of the cluster that will be created from restoring the snapshot.
      * </p>
-     * <p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
-     * <li>Alphabetic characters must be lowercase.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     * <li>Must be unique for all clusters within an AWS account.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * Must contain from 1 to 63 alphanumeric characters or hyphens.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alphabetic characters must be lowercase.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Must be unique for all clusters within an AWS account.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The identifier of the cluster that will be created from restoring
-     *         the snapshot. </p>
-     *         <p>
+     * @return The identifier of the cluster that will be created from restoring the snapshot.</p>
      *         <p>
      *         Constraints:
      *         </p>
      *         <ul>
-     *         <li>Must contain from 1 to 63 alphanumeric characters or hyphens.
+     *         <li>
+     *         <p>
+     *         Must contain from 1 to 63 alphanumeric characters or hyphens.
+     *         </p>
      *         </li>
-     *         <li>Alphabetic characters must be lowercase.</li>
-     *         <li>First character must be a letter.</li>
-     *         <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     *         <li>Must be unique for all clusters within an AWS account.</li>
-     *         </ul>
+     *         <li>
+     *         <p>
+     *         Alphabetic characters must be lowercase.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         First character must be a letter.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Cannot end with a hyphen or contain two consecutive hyphens.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Must be unique for all clusters within an AWS account.
+     *         </p>
+     *         </li>
      */
 
     public String getClusterIdentifier() {
@@ -348,58 +445,88 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the cluster that will be created from restoring the
-     * snapshot.
+     * The identifier of the cluster that will be created from restoring the snapshot.
      * </p>
-     * <p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
-     * <li>Alphabetic characters must be lowercase.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     * <li>Must be unique for all clusters within an AWS account.</li>
-     * </ul>
+     * <li>
+     * <p>
+     * Must contain from 1 to 63 alphanumeric characters or hyphens.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alphabetic characters must be lowercase.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Must be unique for all clusters within an AWS account.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param clusterIdentifier
-     *        The identifier of the cluster that will be created from restoring
-     *        the snapshot. </p>
-     *        <p>
+     *        The identifier of the cluster that will be created from restoring the snapshot.</p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
-     *        <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
-     *        <li>Alphabetic characters must be lowercase.</li>
-     *        <li>First character must be a letter.</li>
-     *        <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     *        <li>Must be unique for all clusters within an AWS account.</li>
-     *        </ul>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        Must contain from 1 to 63 alphanumeric characters or hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Alphabetic characters must be lowercase.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        First character must be a letter.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Cannot end with a hyphen or contain two consecutive hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Must be unique for all clusters within an AWS account.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withClusterIdentifier(
-            String clusterIdentifier) {
+    public RestoreFromClusterSnapshotRequest withClusterIdentifier(String clusterIdentifier) {
         setClusterIdentifier(clusterIdentifier);
         return this;
     }
 
     /**
      * <p>
-     * The name of the snapshot from which to create the new cluster. This
-     * parameter isn't case sensitive.
+     * The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.
      * </p>
      * <p>
      * Example: <code>my-snapshot-id</code>
      * </p>
      * 
      * @param snapshotIdentifier
-     *        The name of the snapshot from which to create the new cluster.
-     *        This parameter isn't case sensitive. </p>
+     *        The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.</p>
      *        <p>
      *        Example: <code>my-snapshot-id</code>
      */
@@ -410,15 +537,13 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the snapshot from which to create the new cluster. This
-     * parameter isn't case sensitive.
+     * The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.
      * </p>
      * <p>
      * Example: <code>my-snapshot-id</code>
      * </p>
      * 
-     * @return The name of the snapshot from which to create the new cluster.
-     *         This parameter isn't case sensitive. </p>
+     * @return The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.</p>
      *         <p>
      *         Example: <code>my-snapshot-id</code>
      */
@@ -429,41 +554,34 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the snapshot from which to create the new cluster. This
-     * parameter isn't case sensitive.
+     * The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.
      * </p>
      * <p>
      * Example: <code>my-snapshot-id</code>
      * </p>
      * 
      * @param snapshotIdentifier
-     *        The name of the snapshot from which to create the new cluster.
-     *        This parameter isn't case sensitive. </p>
+     *        The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.</p>
      *        <p>
      *        Example: <code>my-snapshot-id</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withSnapshotIdentifier(
-            String snapshotIdentifier) {
+    public RestoreFromClusterSnapshotRequest withSnapshotIdentifier(String snapshotIdentifier) {
         setSnapshotIdentifier(snapshotIdentifier);
         return this;
     }
 
     /**
      * <p>
-     * The name of the cluster the source snapshot was created from. This
-     * parameter is required if your IAM user has a policy containing a snapshot
-     * resource element that specifies anything other than * for the cluster
-     * name.
+     * The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a
+     * policy containing a snapshot resource element that specifies anything other than * for the cluster name.
      * </p>
      * 
      * @param snapshotClusterIdentifier
-     *        The name of the cluster the source snapshot was created from. This
-     *        parameter is required if your IAM user has a policy containing a
-     *        snapshot resource element that specifies anything other than * for
-     *        the cluster name.
+     *        The name of the cluster the source snapshot was created from. This parameter is required if your IAM user
+     *        has a policy containing a snapshot resource element that specifies anything other than * for the cluster
+     *        name.
      */
 
     public void setSnapshotClusterIdentifier(String snapshotClusterIdentifier) {
@@ -472,16 +590,13 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the cluster the source snapshot was created from. This
-     * parameter is required if your IAM user has a policy containing a snapshot
-     * resource element that specifies anything other than * for the cluster
-     * name.
+     * The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a
+     * policy containing a snapshot resource element that specifies anything other than * for the cluster name.
      * </p>
      * 
-     * @return The name of the cluster the source snapshot was created from.
-     *         This parameter is required if your IAM user has a policy
-     *         containing a snapshot resource element that specifies anything
-     *         other than * for the cluster name.
+     * @return The name of the cluster the source snapshot was created from. This parameter is required if your IAM user
+     *         has a policy containing a snapshot resource element that specifies anything other than * for the cluster
+     *         name.
      */
 
     public String getSnapshotClusterIdentifier() {
@@ -490,23 +605,18 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the cluster the source snapshot was created from. This
-     * parameter is required if your IAM user has a policy containing a snapshot
-     * resource element that specifies anything other than * for the cluster
-     * name.
+     * The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a
+     * policy containing a snapshot resource element that specifies anything other than * for the cluster name.
      * </p>
      * 
      * @param snapshotClusterIdentifier
-     *        The name of the cluster the source snapshot was created from. This
-     *        parameter is required if your IAM user has a policy containing a
-     *        snapshot resource element that specifies anything other than * for
-     *        the cluster name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the cluster the source snapshot was created from. This parameter is required if your IAM user
+     *        has a policy containing a snapshot resource element that specifies anything other than * for the cluster
+     *        name.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withSnapshotClusterIdentifier(
-            String snapshotClusterIdentifier) {
+    public RestoreFromClusterSnapshotRequest withSnapshotClusterIdentifier(String snapshotClusterIdentifier) {
         setSnapshotClusterIdentifier(snapshotClusterIdentifier);
         return this;
     }
@@ -523,13 +633,12 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param port
-     *        The port number on which the cluster accepts connections. </p>
+     *        The port number on which the cluster accepts connections.</p>
      *        <p>
      *        Default: The same port as the original cluster.
      *        </p>
      *        <p>
-     *        Constraints: Must be between <code>1115</code> and
-     *        <code>65535</code>.
+     *        Constraints: Must be between <code>1115</code> and <code>65535</code>.
      */
 
     public void setPort(Integer port) {
@@ -547,13 +656,12 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * Constraints: Must be between <code>1115</code> and <code>65535</code>.
      * </p>
      * 
-     * @return The port number on which the cluster accepts connections. </p>
+     * @return The port number on which the cluster accepts connections.</p>
      *         <p>
      *         Default: The same port as the original cluster.
      *         </p>
      *         <p>
-     *         Constraints: Must be between <code>1115</code> and
-     *         <code>65535</code>.
+     *         Constraints: Must be between <code>1115</code> and <code>65535</code>.
      */
 
     public Integer getPort() {
@@ -572,15 +680,13 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param port
-     *        The port number on which the cluster accepts connections. </p>
+     *        The port number on which the cluster accepts connections.</p>
      *        <p>
      *        Default: The same port as the original cluster.
      *        </p>
      *        <p>
-     *        Constraints: Must be between <code>1115</code> and
-     *        <code>65535</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Constraints: Must be between <code>1115</code> and <code>65535</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RestoreFromClusterSnapshotRequest withPort(Integer port) {
@@ -600,8 +706,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param availabilityZone
-     *        The Amazon EC2 Availability Zone in which to restore the cluster.
-     *        </p>
+     *        The Amazon EC2 Availability Zone in which to restore the cluster.</p>
      *        <p>
      *        Default: A random, system-chosen Availability Zone.
      *        </p>
@@ -624,8 +729,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * Example: <code>us-east-1a</code>
      * </p>
      * 
-     * @return The Amazon EC2 Availability Zone in which to restore the cluster.
-     *         </p>
+     * @return The Amazon EC2 Availability Zone in which to restore the cluster.</p>
      *         <p>
      *         Default: A random, system-chosen Availability Zone.
      *         </p>
@@ -649,37 +753,32 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param availabilityZone
-     *        The Amazon EC2 Availability Zone in which to restore the cluster.
-     *        </p>
+     *        The Amazon EC2 Availability Zone in which to restore the cluster.</p>
      *        <p>
      *        Default: A random, system-chosen Availability Zone.
      *        </p>
      *        <p>
      *        Example: <code>us-east-1a</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withAvailabilityZone(
-            String availabilityZone) {
+    public RestoreFromClusterSnapshotRequest withAvailabilityZone(String availabilityZone) {
         setAvailabilityZone(availabilityZone);
         return this;
     }
 
     /**
      * <p>
-     * If <code>true</code>, major version upgrades can be applied during the
-     * maintenance window to the Amazon Redshift engine that is running on the
-     * cluster.
+     * If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift
+     * engine that is running on the cluster.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
      * @param allowVersionUpgrade
-     *        If <code>true</code>, major version upgrades can be applied during
-     *        the maintenance window to the Amazon Redshift engine that is
-     *        running on the cluster. </p>
+     *        If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon
+     *        Redshift engine that is running on the cluster. </p>
      *        <p>
      *        Default: <code>true</code>
      */
@@ -690,17 +789,15 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * If <code>true</code>, major version upgrades can be applied during the
-     * maintenance window to the Amazon Redshift engine that is running on the
-     * cluster.
+     * If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift
+     * engine that is running on the cluster.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
-     * @return If <code>true</code>, major version upgrades can be applied
-     *         during the maintenance window to the Amazon Redshift engine that
-     *         is running on the cluster. </p>
+     * @return If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon
+     *         Redshift engine that is running on the cluster. </p>
      *         <p>
      *         Default: <code>true</code>
      */
@@ -711,43 +808,37 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * If <code>true</code>, major version upgrades can be applied during the
-     * maintenance window to the Amazon Redshift engine that is running on the
-     * cluster.
+     * If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift
+     * engine that is running on the cluster.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
      * @param allowVersionUpgrade
-     *        If <code>true</code>, major version upgrades can be applied during
-     *        the maintenance window to the Amazon Redshift engine that is
-     *        running on the cluster. </p>
+     *        If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon
+     *        Redshift engine that is running on the cluster. </p>
      *        <p>
      *        Default: <code>true</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withAllowVersionUpgrade(
-            Boolean allowVersionUpgrade) {
+    public RestoreFromClusterSnapshotRequest withAllowVersionUpgrade(Boolean allowVersionUpgrade) {
         setAllowVersionUpgrade(allowVersionUpgrade);
         return this;
     }
 
     /**
      * <p>
-     * If <code>true</code>, major version upgrades can be applied during the
-     * maintenance window to the Amazon Redshift engine that is running on the
-     * cluster.
+     * If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift
+     * engine that is running on the cluster.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
-     * @return If <code>true</code>, major version upgrades can be applied
-     *         during the maintenance window to the Amazon Redshift engine that
-     *         is running on the cluster. </p>
+     * @return If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon
+     *         Redshift engine that is running on the cluster. </p>
      *         <p>
      *         Default: <code>true</code>
      */
@@ -761,17 +852,15 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the subnet group where you want to cluster restored.
      * </p>
      * <p>
-     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you
-     * must provide subnet group name where you want the cluster restored.
+     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name where you
+     * want the cluster restored.
      * </p>
      * 
      * @param clusterSubnetGroupName
-     *        The name of the subnet group where you want to cluster restored.
-     *        </p>
+     *        The name of the subnet group where you want to cluster restored.</p>
      *        <p>
-     *        A snapshot of cluster in VPC can be restored only in VPC.
-     *        Therefore, you must provide subnet group name where you want the
-     *        cluster restored.
+     *        A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name
+     *        where you want the cluster restored.
      */
 
     public void setClusterSubnetGroupName(String clusterSubnetGroupName) {
@@ -783,16 +872,14 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the subnet group where you want to cluster restored.
      * </p>
      * <p>
-     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you
-     * must provide subnet group name where you want the cluster restored.
+     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name where you
+     * want the cluster restored.
      * </p>
      * 
-     * @return The name of the subnet group where you want to cluster restored.
-     *         </p>
+     * @return The name of the subnet group where you want to cluster restored.</p>
      *         <p>
-     *         A snapshot of cluster in VPC can be restored only in VPC.
-     *         Therefore, you must provide subnet group name where you want the
-     *         cluster restored.
+     *         A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name
+     *         where you want the cluster restored.
      */
 
     public String getClusterSubnetGroupName() {
@@ -804,23 +891,19 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the subnet group where you want to cluster restored.
      * </p>
      * <p>
-     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you
-     * must provide subnet group name where you want the cluster restored.
+     * A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name where you
+     * want the cluster restored.
      * </p>
      * 
      * @param clusterSubnetGroupName
-     *        The name of the subnet group where you want to cluster restored.
-     *        </p>
+     *        The name of the subnet group where you want to cluster restored.</p>
      *        <p>
-     *        A snapshot of cluster in VPC can be restored only in VPC.
-     *        Therefore, you must provide subnet group name where you want the
-     *        cluster restored.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name
+     *        where you want the cluster restored.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withClusterSubnetGroupName(
-            String clusterSubnetGroupName) {
+    public RestoreFromClusterSnapshotRequest withClusterSubnetGroupName(String clusterSubnetGroupName) {
         setClusterSubnetGroupName(clusterSubnetGroupName);
         return this;
     }
@@ -831,8 +914,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param publiclyAccessible
-     *        If <code>true</code>, the cluster can be accessed from a public
-     *        network.
+     *        If <code>true</code>, the cluster can be accessed from a public network.
      */
 
     public void setPubliclyAccessible(Boolean publiclyAccessible) {
@@ -844,8 +926,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * If <code>true</code>, the cluster can be accessed from a public network.
      * </p>
      * 
-     * @return If <code>true</code>, the cluster can be accessed from a public
-     *         network.
+     * @return If <code>true</code>, the cluster can be accessed from a public network.
      */
 
     public Boolean getPubliclyAccessible() {
@@ -858,14 +939,11 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param publiclyAccessible
-     *        If <code>true</code>, the cluster can be accessed from a public
-     *        network.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If <code>true</code>, the cluster can be accessed from a public network.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withPubliclyAccessible(
-            Boolean publiclyAccessible) {
+    public RestoreFromClusterSnapshotRequest withPubliclyAccessible(Boolean publiclyAccessible) {
         setPubliclyAccessible(publiclyAccessible);
         return this;
     }
@@ -875,8 +953,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * If <code>true</code>, the cluster can be accessed from a public network.
      * </p>
      * 
-     * @return If <code>true</code>, the cluster can be accessed from a public
-     *         network.
+     * @return If <code>true</code>, the cluster can be accessed from a public network.
      */
 
     public Boolean isPubliclyAccessible() {
@@ -885,15 +962,13 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The AWS customer account used to create or copy the snapshot. Required if
-     * you are restoring a snapshot you do not own, optional if you own the
-     * snapshot.
+     * The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not
+     * own, optional if you own the snapshot.
      * </p>
      * 
      * @param ownerAccount
-     *        The AWS customer account used to create or copy the snapshot.
-     *        Required if you are restoring a snapshot you do not own, optional
-     *        if you own the snapshot.
+     *        The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you
+     *        do not own, optional if you own the snapshot.
      */
 
     public void setOwnerAccount(String ownerAccount) {
@@ -902,14 +977,12 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The AWS customer account used to create or copy the snapshot. Required if
-     * you are restoring a snapshot you do not own, optional if you own the
-     * snapshot.
+     * The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not
+     * own, optional if you own the snapshot.
      * </p>
      * 
-     * @return The AWS customer account used to create or copy the snapshot.
-     *         Required if you are restoring a snapshot you do not own, optional
-     *         if you own the snapshot.
+     * @return The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot
+     *         you do not own, optional if you own the snapshot.
      */
 
     public String getOwnerAccount() {
@@ -918,51 +991,44 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The AWS customer account used to create or copy the snapshot. Required if
-     * you are restoring a snapshot you do not own, optional if you own the
-     * snapshot.
+     * The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not
+     * own, optional if you own the snapshot.
      * </p>
      * 
      * @param ownerAccount
-     *        The AWS customer account used to create or copy the snapshot.
-     *        Required if you are restoring a snapshot you do not own, optional
-     *        if you own the snapshot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you
+     *        do not own, optional if you own the snapshot.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withOwnerAccount(
-            String ownerAccount) {
+    public RestoreFromClusterSnapshotRequest withOwnerAccount(String ownerAccount) {
         setOwnerAccount(ownerAccount);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the name of the HSM client certificate the Amazon Redshift
-     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     * Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption
+     * keys stored in an HSM.
      * </p>
      * 
      * @param hsmClientCertificateIdentifier
-     *        Specifies the name of the HSM client certificate the Amazon
-     *        Redshift cluster uses to retrieve the data encryption keys stored
-     *        in an HSM.
+     *        Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data
+     *        encryption keys stored in an HSM.
      */
 
-    public void setHsmClientCertificateIdentifier(
-            String hsmClientCertificateIdentifier) {
+    public void setHsmClientCertificateIdentifier(String hsmClientCertificateIdentifier) {
         this.hsmClientCertificateIdentifier = hsmClientCertificateIdentifier;
     }
 
     /**
      * <p>
-     * Specifies the name of the HSM client certificate the Amazon Redshift
-     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     * Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption
+     * keys stored in an HSM.
      * </p>
      * 
-     * @return Specifies the name of the HSM client certificate the Amazon
-     *         Redshift cluster uses to retrieve the data encryption keys stored
-     *         in an HSM.
+     * @return Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data
+     *         encryption keys stored in an HSM.
      */
 
     public String getHsmClientCertificateIdentifier() {
@@ -971,34 +1037,30 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifies the name of the HSM client certificate the Amazon Redshift
-     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     * Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption
+     * keys stored in an HSM.
      * </p>
      * 
      * @param hsmClientCertificateIdentifier
-     *        Specifies the name of the HSM client certificate the Amazon
-     *        Redshift cluster uses to retrieve the data encryption keys stored
-     *        in an HSM.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data
+     *        encryption keys stored in an HSM.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withHsmClientCertificateIdentifier(
-            String hsmClientCertificateIdentifier) {
+    public RestoreFromClusterSnapshotRequest withHsmClientCertificateIdentifier(String hsmClientCertificateIdentifier) {
         setHsmClientCertificateIdentifier(hsmClientCertificateIdentifier);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the name of the HSM configuration that contains the information
-     * the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
+     * Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to
+     * retrieve and store keys in an HSM.
      * </p>
      * 
      * @param hsmConfigurationIdentifier
-     *        Specifies the name of the HSM configuration that contains the
-     *        information the Amazon Redshift cluster can use to retrieve and
-     *        store keys in an HSM.
+     *        Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can
+     *        use to retrieve and store keys in an HSM.
      */
 
     public void setHsmConfigurationIdentifier(String hsmConfigurationIdentifier) {
@@ -1007,13 +1069,12 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifies the name of the HSM configuration that contains the information
-     * the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
+     * Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to
+     * retrieve and store keys in an HSM.
      * </p>
      * 
-     * @return Specifies the name of the HSM configuration that contains the
-     *         information the Amazon Redshift cluster can use to retrieve and
-     *         store keys in an HSM.
+     * @return Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can
+     *         use to retrieve and store keys in an HSM.
      */
 
     public String getHsmConfigurationIdentifier() {
@@ -1022,20 +1083,17 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifies the name of the HSM configuration that contains the information
-     * the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
+     * Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to
+     * retrieve and store keys in an HSM.
      * </p>
      * 
      * @param hsmConfigurationIdentifier
-     *        Specifies the name of the HSM configuration that contains the
-     *        information the Amazon Redshift cluster can use to retrieve and
-     *        store keys in an HSM.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can
+     *        use to retrieve and store keys in an HSM.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withHsmConfigurationIdentifier(
-            String hsmConfigurationIdentifier) {
+    public RestoreFromClusterSnapshotRequest withHsmConfigurationIdentifier(String hsmConfigurationIdentifier) {
         setHsmConfigurationIdentifier(hsmConfigurationIdentifier);
         return this;
     }
@@ -1072,8 +1130,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * 
      * @param elasticIp
      *        The elastic IP (EIP) address for the cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RestoreFromClusterSnapshotRequest withElasticIp(String elasticIp) {
@@ -1086,36 +1143,58 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the parameter group to be associated with this cluster.
      * </p>
      * <p>
-     * Default: The default Amazon Redshift cluster parameter group. For
-     * information about the default parameter group, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"
-     * >Working with Amazon Redshift Parameter Groups</a>.
+     * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
+     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must be 1 to 255 alphanumeric characters or hyphens.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+     * <li>
+     * <p>
+     * Must be 1 to 255 alphanumeric characters or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param clusterParameterGroupName
-     *        The name of the parameter group to be associated with this
-     *        cluster. </p>
+     *        The name of the parameter group to be associated with this cluster.</p>
      *        <p>
-     *        Default: The default Amazon Redshift cluster parameter group. For
-     *        information about the default parameter group, go to <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"
-     *        >Working with Amazon Redshift Parameter Groups</a>.
+     *        Default: The default Amazon Redshift cluster parameter group. For information about the default parameter
+     *        group, go to <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     *        Amazon Redshift Parameter Groups</a>.
      *        </p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
-     *        <li>Must be 1 to 255 alphanumeric characters or hyphens.</li>
-     *        <li>First character must be a letter.</li>
-     *        <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+     *        <li>
+     *        <p>
+     *        Must be 1 to 255 alphanumeric characters or hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        First character must be a letter.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Cannot end with a hyphen or contain two consecutive hyphens.
+     *        </p>
+     *        </li>
      */
 
     public void setClusterParameterGroupName(String clusterParameterGroupName) {
@@ -1127,35 +1206,57 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the parameter group to be associated with this cluster.
      * </p>
      * <p>
-     * Default: The default Amazon Redshift cluster parameter group. For
-     * information about the default parameter group, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"
-     * >Working with Amazon Redshift Parameter Groups</a>.
+     * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
+     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must be 1 to 255 alphanumeric characters or hyphens.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+     * <li>
+     * <p>
+     * Must be 1 to 255 alphanumeric characters or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
      * </ul>
      * 
-     * @return The name of the parameter group to be associated with this
-     *         cluster. </p>
+     * @return The name of the parameter group to be associated with this cluster.</p>
      *         <p>
-     *         Default: The default Amazon Redshift cluster parameter group. For
-     *         information about the default parameter group, go to <a href=
-     *         "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"
-     *         >Working with Amazon Redshift Parameter Groups</a>.
+     *         Default: The default Amazon Redshift cluster parameter group. For information about the default parameter
+     *         group, go to <a
+     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     *         Amazon Redshift Parameter Groups</a>.
      *         </p>
      *         <p>
      *         Constraints:
      *         </p>
      *         <ul>
-     *         <li>Must be 1 to 255 alphanumeric characters or hyphens.</li>
-     *         <li>First character must be a letter.</li>
-     *         <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+     *         <li>
+     *         <p>
+     *         Must be 1 to 255 alphanumeric characters or hyphens.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         First character must be a letter.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Cannot end with a hyphen or contain two consecutive hyphens.
+     *         </p>
+     *         </li>
      */
 
     public String getClusterParameterGroupName() {
@@ -1167,42 +1268,62 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The name of the parameter group to be associated with this cluster.
      * </p>
      * <p>
-     * Default: The default Amazon Redshift cluster parameter group. For
-     * information about the default parameter group, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"
-     * >Working with Amazon Redshift Parameter Groups</a>.
+     * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
+     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
      * Constraints:
      * </p>
      * <ul>
-     * <li>Must be 1 to 255 alphanumeric characters or hyphens.</li>
-     * <li>First character must be a letter.</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+     * <li>
+     * <p>
+     * Must be 1 to 255 alphanumeric characters or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cannot end with a hyphen or contain two consecutive hyphens.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param clusterParameterGroupName
-     *        The name of the parameter group to be associated with this
-     *        cluster. </p>
+     *        The name of the parameter group to be associated with this cluster.</p>
      *        <p>
-     *        Default: The default Amazon Redshift cluster parameter group. For
-     *        information about the default parameter group, go to <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"
-     *        >Working with Amazon Redshift Parameter Groups</a>.
+     *        Default: The default Amazon Redshift cluster parameter group. For information about the default parameter
+     *        group, go to <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     *        Amazon Redshift Parameter Groups</a>.
      *        </p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
-     *        <li>Must be 1 to 255 alphanumeric characters or hyphens.</li>
-     *        <li>First character must be a letter.</li>
-     *        <li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        Must be 1 to 255 alphanumeric characters or hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        First character must be a letter.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Cannot end with a hyphen or contain two consecutive hyphens.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withClusterParameterGroupName(
-            String clusterParameterGroupName) {
+    public RestoreFromClusterSnapshotRequest withClusterParameterGroupName(String clusterParameterGroupName) {
         setClusterParameterGroupName(clusterParameterGroupName);
         return this;
     }
@@ -1218,8 +1339,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * Cluster security groups only apply to clusters outside of VPCs.
      * </p>
      * 
-     * @return A list of security groups to be associated with this cluster.
-     *         </p>
+     * @return A list of security groups to be associated with this cluster.</p>
      *         <p>
      *         Default: The default cluster security group for Amazon Redshift.
      *         </p>
@@ -1246,7 +1366,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param clusterSecurityGroups
-     *        A list of security groups to be associated with this cluster. </p>
+     *        A list of security groups to be associated with this cluster.</p>
      *        <p>
      *        Default: The default cluster security group for Amazon Redshift.
      *        </p>
@@ -1254,15 +1374,13 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      *        Cluster security groups only apply to clusters outside of VPCs.
      */
 
-    public void setClusterSecurityGroups(
-            java.util.Collection<String> clusterSecurityGroups) {
+    public void setClusterSecurityGroups(java.util.Collection<String> clusterSecurityGroups) {
         if (clusterSecurityGroups == null) {
             this.clusterSecurityGroups = null;
             return;
         }
 
-        this.clusterSecurityGroups = new com.amazonaws.internal.SdkInternalList<String>(
-                clusterSecurityGroups);
+        this.clusterSecurityGroups = new com.amazonaws.internal.SdkInternalList<String>(clusterSecurityGroups);
     }
 
     /**
@@ -1276,28 +1394,24 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * Cluster security groups only apply to clusters outside of VPCs.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setClusterSecurityGroups(java.util.Collection)} or
-     * {@link #withClusterSecurityGroups(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setClusterSecurityGroups(java.util.Collection)} or
+     * {@link #withClusterSecurityGroups(java.util.Collection)} if you want to override the existing values.
      * </p>
      * 
      * @param clusterSecurityGroups
-     *        A list of security groups to be associated with this cluster. </p>
+     *        A list of security groups to be associated with this cluster.</p>
      *        <p>
      *        Default: The default cluster security group for Amazon Redshift.
      *        </p>
      *        <p>
      *        Cluster security groups only apply to clusters outside of VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withClusterSecurityGroups(
-            String... clusterSecurityGroups) {
+    public RestoreFromClusterSnapshotRequest withClusterSecurityGroups(String... clusterSecurityGroups) {
         if (this.clusterSecurityGroups == null) {
-            setClusterSecurityGroups(new com.amazonaws.internal.SdkInternalList<String>(
-                    clusterSecurityGroups.length));
+            setClusterSecurityGroups(new com.amazonaws.internal.SdkInternalList<String>(clusterSecurityGroups.length));
         }
         for (String ele : clusterSecurityGroups) {
             this.clusterSecurityGroups.add(ele);
@@ -1317,26 +1431,23 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param clusterSecurityGroups
-     *        A list of security groups to be associated with this cluster. </p>
+     *        A list of security groups to be associated with this cluster.</p>
      *        <p>
      *        Default: The default cluster security group for Amazon Redshift.
      *        </p>
      *        <p>
      *        Cluster security groups only apply to clusters outside of VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withClusterSecurityGroups(
-            java.util.Collection<String> clusterSecurityGroups) {
+    public RestoreFromClusterSnapshotRequest withClusterSecurityGroups(java.util.Collection<String> clusterSecurityGroups) {
         setClusterSecurityGroups(clusterSecurityGroups);
         return this;
     }
 
     /**
      * <p>
-     * A list of Virtual Private Cloud (VPC) security groups to be associated
-     * with the cluster.
+     * A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
      * </p>
      * <p>
      * Default: The default VPC security group is associated with the cluster.
@@ -1345,11 +1456,9 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * VPC security groups only apply to clusters in VPCs.
      * </p>
      * 
-     * @return A list of Virtual Private Cloud (VPC) security groups to be
-     *         associated with the cluster. </p>
+     * @return A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.</p>
      *         <p>
-     *         Default: The default VPC security group is associated with the
-     *         cluster.
+     *         Default: The default VPC security group is associated with the cluster.
      *         </p>
      *         <p>
      *         VPC security groups only apply to clusters in VPCs.
@@ -1364,8 +1473,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of Virtual Private Cloud (VPC) security groups to be associated
-     * with the cluster.
+     * A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
      * </p>
      * <p>
      * Default: The default VPC security group is associated with the cluster.
@@ -1375,31 +1483,26 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param vpcSecurityGroupIds
-     *        A list of Virtual Private Cloud (VPC) security groups to be
-     *        associated with the cluster. </p>
+     *        A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.</p>
      *        <p>
-     *        Default: The default VPC security group is associated with the
-     *        cluster.
+     *        Default: The default VPC security group is associated with the cluster.
      *        </p>
      *        <p>
      *        VPC security groups only apply to clusters in VPCs.
      */
 
-    public void setVpcSecurityGroupIds(
-            java.util.Collection<String> vpcSecurityGroupIds) {
+    public void setVpcSecurityGroupIds(java.util.Collection<String> vpcSecurityGroupIds) {
         if (vpcSecurityGroupIds == null) {
             this.vpcSecurityGroupIds = null;
             return;
         }
 
-        this.vpcSecurityGroupIds = new com.amazonaws.internal.SdkInternalList<String>(
-                vpcSecurityGroupIds);
+        this.vpcSecurityGroupIds = new com.amazonaws.internal.SdkInternalList<String>(vpcSecurityGroupIds);
     }
 
     /**
      * <p>
-     * A list of Virtual Private Cloud (VPC) security groups to be associated
-     * with the cluster.
+     * A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
      * </p>
      * <p>
      * Default: The default VPC security group is associated with the cluster.
@@ -1408,30 +1511,24 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * VPC security groups only apply to clusters in VPCs.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVpcSecurityGroupIds(java.util.Collection)} or
-     * {@link #withVpcSecurityGroupIds(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setVpcSecurityGroupIds(java.util.Collection)} or {@link #withVpcSecurityGroupIds(java.util.Collection)}
+     * if you want to override the existing values.
      * </p>
      * 
      * @param vpcSecurityGroupIds
-     *        A list of Virtual Private Cloud (VPC) security groups to be
-     *        associated with the cluster. </p>
+     *        A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.</p>
      *        <p>
-     *        Default: The default VPC security group is associated with the
-     *        cluster.
+     *        Default: The default VPC security group is associated with the cluster.
      *        </p>
      *        <p>
      *        VPC security groups only apply to clusters in VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withVpcSecurityGroupIds(
-            String... vpcSecurityGroupIds) {
+    public RestoreFromClusterSnapshotRequest withVpcSecurityGroupIds(String... vpcSecurityGroupIds) {
         if (this.vpcSecurityGroupIds == null) {
-            setVpcSecurityGroupIds(new com.amazonaws.internal.SdkInternalList<String>(
-                    vpcSecurityGroupIds.length));
+            setVpcSecurityGroupIds(new com.amazonaws.internal.SdkInternalList<String>(vpcSecurityGroupIds.length));
         }
         for (String ele : vpcSecurityGroupIds) {
             this.vpcSecurityGroupIds.add(ele);
@@ -1441,8 +1538,7 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of Virtual Private Cloud (VPC) security groups to be associated
-     * with the cluster.
+     * A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
      * </p>
      * <p>
      * Default: The default VPC security group is associated with the cluster.
@@ -1452,37 +1548,31 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param vpcSecurityGroupIds
-     *        A list of Virtual Private Cloud (VPC) security groups to be
-     *        associated with the cluster. </p>
+     *        A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.</p>
      *        <p>
-     *        Default: The default VPC security group is associated with the
-     *        cluster.
+     *        Default: The default VPC security group is associated with the cluster.
      *        </p>
      *        <p>
      *        VPC security groups only apply to clusters in VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withVpcSecurityGroupIds(
-            java.util.Collection<String> vpcSecurityGroupIds) {
+    public RestoreFromClusterSnapshotRequest withVpcSecurityGroupIds(java.util.Collection<String> vpcSecurityGroupIds) {
         setVpcSecurityGroupIds(vpcSecurityGroupIds);
         return this;
     }
 
     /**
      * <p>
-     * The weekly time range (in UTC) during which automated cluster maintenance
-     * can occur.
+     * The weekly time range (in UTC) during which automated cluster maintenance can occur.
      * </p>
      * <p>
      * Format: <code>ddd:hh24:mi-ddd:hh24:mi</code>
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken. For more information about the time blocks for each region, see <a
-     * href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
+     * time blocks for each region, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -1493,18 +1583,15 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        The weekly time range (in UTC) during which automated cluster
-     *        maintenance can occur. </p>
+     *        The weekly time range (in UTC) during which automated cluster maintenance can occur.</p>
      *        <p>
      *        Format: <code>ddd:hh24:mi-ddd:hh24:mi</code>
      *        </p>
      *        <p>
-     *        Default: The value selected for the cluster from which the
-     *        snapshot was taken. For more information about the time blocks for
-     *        each region, see <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
-     *        >Maintenance Windows</a> in Amazon Redshift Cluster Management
-     *        Guide.
+     *        Default: The value selected for the cluster from which the snapshot was taken. For more information about
+     *        the time blocks for each region, see <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     *        >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      *        </p>
      *        <p>
      *        Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
@@ -1519,17 +1606,15 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The weekly time range (in UTC) during which automated cluster maintenance
-     * can occur.
+     * The weekly time range (in UTC) during which automated cluster maintenance can occur.
      * </p>
      * <p>
      * Format: <code>ddd:hh24:mi-ddd:hh24:mi</code>
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken. For more information about the time blocks for each region, see <a
-     * href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
+     * time blocks for each region, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -1539,18 +1624,15 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * Constraints: Minimum 30-minute window.
      * </p>
      * 
-     * @return The weekly time range (in UTC) during which automated cluster
-     *         maintenance can occur. </p>
+     * @return The weekly time range (in UTC) during which automated cluster maintenance can occur.</p>
      *         <p>
      *         Format: <code>ddd:hh24:mi-ddd:hh24:mi</code>
      *         </p>
      *         <p>
-     *         Default: The value selected for the cluster from which the
-     *         snapshot was taken. For more information about the time blocks
-     *         for each region, see <a href=
+     *         Default: The value selected for the cluster from which the snapshot was taken. For more information about
+     *         the time blocks for each region, see <a href=
      *         "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
-     *         >Maintenance Windows</a> in Amazon Redshift Cluster Management
-     *         Guide.
+     *         >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      *         </p>
      *         <p>
      *         Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
@@ -1565,17 +1647,15 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The weekly time range (in UTC) during which automated cluster maintenance
-     * can occur.
+     * The weekly time range (in UTC) during which automated cluster maintenance can occur.
      * </p>
      * <p>
      * Format: <code>ddd:hh24:mi-ddd:hh24:mi</code>
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken. For more information about the time blocks for each region, see <a
-     * href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
+     * time blocks for each region, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -1586,89 +1666,75 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        The weekly time range (in UTC) during which automated cluster
-     *        maintenance can occur. </p>
+     *        The weekly time range (in UTC) during which automated cluster maintenance can occur.</p>
      *        <p>
      *        Format: <code>ddd:hh24:mi-ddd:hh24:mi</code>
      *        </p>
      *        <p>
-     *        Default: The value selected for the cluster from which the
-     *        snapshot was taken. For more information about the time blocks for
-     *        each region, see <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
-     *        >Maintenance Windows</a> in Amazon Redshift Cluster Management
-     *        Guide.
+     *        Default: The value selected for the cluster from which the snapshot was taken. For more information about
+     *        the time blocks for each region, see <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     *        >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      *        </p>
      *        <p>
      *        Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
      *        </p>
      *        <p>
      *        Constraints: Minimum 30-minute window.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withPreferredMaintenanceWindow(
-            String preferredMaintenanceWindow) {
+    public RestoreFromClusterSnapshotRequest withPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
         setPreferredMaintenanceWindow(preferredMaintenanceWindow);
         return this;
     }
 
     /**
      * <p>
-     * The number of days that automated snapshots are retained. If the value is
-     * 0, automated snapshots are disabled. Even if automated snapshots are
-     * disabled, you can still create manual snapshots when you want with
+     * The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled.
+     * Even if automated snapshots are disabled, you can still create manual snapshots when you want with
      * <a>CreateClusterSnapshot</a>.
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken.
+     * Default: The value selected for the cluster from which the snapshot was taken.
      * </p>
      * <p>
      * Constraints: Must be a value from 0 to 35.
      * </p>
      * 
      * @param automatedSnapshotRetentionPeriod
-     *        The number of days that automated snapshots are retained. If the
-     *        value is 0, automated snapshots are disabled. Even if automated
-     *        snapshots are disabled, you can still create manual snapshots when
-     *        you want with <a>CreateClusterSnapshot</a>. </p>
+     *        The number of days that automated snapshots are retained. If the value is 0, automated snapshots are
+     *        disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want
+     *        with <a>CreateClusterSnapshot</a>. </p>
      *        <p>
-     *        Default: The value selected for the cluster from which the
-     *        snapshot was taken.
+     *        Default: The value selected for the cluster from which the snapshot was taken.
      *        </p>
      *        <p>
      *        Constraints: Must be a value from 0 to 35.
      */
 
-    public void setAutomatedSnapshotRetentionPeriod(
-            Integer automatedSnapshotRetentionPeriod) {
+    public void setAutomatedSnapshotRetentionPeriod(Integer automatedSnapshotRetentionPeriod) {
         this.automatedSnapshotRetentionPeriod = automatedSnapshotRetentionPeriod;
     }
 
     /**
      * <p>
-     * The number of days that automated snapshots are retained. If the value is
-     * 0, automated snapshots are disabled. Even if automated snapshots are
-     * disabled, you can still create manual snapshots when you want with
+     * The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled.
+     * Even if automated snapshots are disabled, you can still create manual snapshots when you want with
      * <a>CreateClusterSnapshot</a>.
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken.
+     * Default: The value selected for the cluster from which the snapshot was taken.
      * </p>
      * <p>
      * Constraints: Must be a value from 0 to 35.
      * </p>
      * 
-     * @return The number of days that automated snapshots are retained. If the
-     *         value is 0, automated snapshots are disabled. Even if automated
-     *         snapshots are disabled, you can still create manual snapshots
-     *         when you want with <a>CreateClusterSnapshot</a>. </p>
+     * @return The number of days that automated snapshots are retained. If the value is 0, automated snapshots are
+     *         disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want
+     *         with <a>CreateClusterSnapshot</a>. </p>
      *         <p>
-     *         Default: The value selected for the cluster from which the
-     *         snapshot was taken.
+     *         Default: The value selected for the cluster from which the snapshot was taken.
      *         </p>
      *         <p>
      *         Constraints: Must be a value from 0 to 35.
@@ -1680,51 +1746,43 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The number of days that automated snapshots are retained. If the value is
-     * 0, automated snapshots are disabled. Even if automated snapshots are
-     * disabled, you can still create manual snapshots when you want with
+     * The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled.
+     * Even if automated snapshots are disabled, you can still create manual snapshots when you want with
      * <a>CreateClusterSnapshot</a>.
      * </p>
      * <p>
-     * Default: The value selected for the cluster from which the snapshot was
-     * taken.
+     * Default: The value selected for the cluster from which the snapshot was taken.
      * </p>
      * <p>
      * Constraints: Must be a value from 0 to 35.
      * </p>
      * 
      * @param automatedSnapshotRetentionPeriod
-     *        The number of days that automated snapshots are retained. If the
-     *        value is 0, automated snapshots are disabled. Even if automated
-     *        snapshots are disabled, you can still create manual snapshots when
-     *        you want with <a>CreateClusterSnapshot</a>. </p>
+     *        The number of days that automated snapshots are retained. If the value is 0, automated snapshots are
+     *        disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want
+     *        with <a>CreateClusterSnapshot</a>. </p>
      *        <p>
-     *        Default: The value selected for the cluster from which the
-     *        snapshot was taken.
+     *        Default: The value selected for the cluster from which the snapshot was taken.
      *        </p>
      *        <p>
      *        Constraints: Must be a value from 0 to 35.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withAutomatedSnapshotRetentionPeriod(
-            Integer automatedSnapshotRetentionPeriod) {
+    public RestoreFromClusterSnapshotRequest withAutomatedSnapshotRetentionPeriod(Integer automatedSnapshotRetentionPeriod) {
         setAutomatedSnapshotRetentionPeriod(automatedSnapshotRetentionPeriod);
         return this;
     }
 
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * you want to use to encrypt data in the cluster that you restore from a
-     * shared snapshot.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the
+     * cluster that you restore from a shared snapshot.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS Key Management Service (KMS) key ID of the encryption key
-     *        that you want to use to encrypt data in the cluster that you
-     *        restore from a shared snapshot.
+     *        The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in
+     *        the cluster that you restore from a shared snapshot.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -1733,14 +1791,12 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * you want to use to encrypt data in the cluster that you restore from a
-     * shared snapshot.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the
+     * cluster that you restore from a shared snapshot.
      * </p>
      * 
-     * @return The AWS Key Management Service (KMS) key ID of the encryption key
-     *         that you want to use to encrypt data in the cluster that you
-     *         restore from a shared snapshot.
+     * @return The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in
+     *         the cluster that you restore from a shared snapshot.
      */
 
     public String getKmsKeyId() {
@@ -1749,17 +1805,14 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * you want to use to encrypt data in the cluster that you restore from a
-     * shared snapshot.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the
+     * cluster that you restore from a shared snapshot.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS Key Management Service (KMS) key ID of the encryption key
-     *        that you want to use to encrypt data in the cluster that you
-     *        restore from a shared snapshot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in
+     *        the cluster that you restore from a shared snapshot.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RestoreFromClusterSnapshotRequest withKmsKeyId(String kmsKeyId) {
@@ -1772,35 +1825,26 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The node type that the restored cluster will be provisioned with.
      * </p>
      * <p>
-     * Default: The node type of the cluster from which the snapshot was taken.
-     * You can modify this if you are using any DS node type. In that case, you
-     * can choose to restore into another DS node type of the same size. For
-     * example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into
-     * ds1.xlarge. If you have a DC instance type, you must restore into that
-     * same instance type and size. In other words, you can only restore a
-     * dc1.large instance type into another dc1.large instance type. For more
-     * information about node types, see <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
-     * > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster
-     * Management Guide</i>
+     * Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any
+     * DS node type. In that case, you can choose to restore into another DS node type of the same size. For example,
+     * you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you
+     * must restore into that same instance type and size. In other words, you can only restore a dc1.large instance
+     * type into another dc1.large instance type. For more information about node types, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>
      * </p>
      * 
      * @param nodeType
-     *        The node type that the restored cluster will be provisioned
-     *        with.</p>
+     *        The node type that the restored cluster will be provisioned with.</p>
      *        <p>
-     *        Default: The node type of the cluster from which the snapshot was
-     *        taken. You can modify this if you are using any DS node type. In
-     *        that case, you can choose to restore into another DS node type of
-     *        the same size. For example, you can restore ds1.8xlarge into
-     *        ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC
-     *        instance type, you must restore into that same instance type and
-     *        size. In other words, you can only restore a dc1.large instance
-     *        type into another dc1.large instance type. For more information
-     *        about node types, see <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
-     *        > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster
-     *        Management Guide</i>
+     *        Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are
+     *        using any DS node type. In that case, you can choose to restore into another DS node type of the same
+     *        size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you
+     *        have a DC instance type, you must restore into that same instance type and size. In other words, you can
+     *        only restore a dc1.large instance type into another dc1.large instance type. For more information about
+     *        node types, see <a href=
+     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     *        About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>
      */
 
     public void setNodeType(String nodeType) {
@@ -1812,34 +1856,25 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The node type that the restored cluster will be provisioned with.
      * </p>
      * <p>
-     * Default: The node type of the cluster from which the snapshot was taken.
-     * You can modify this if you are using any DS node type. In that case, you
-     * can choose to restore into another DS node type of the same size. For
-     * example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into
-     * ds1.xlarge. If you have a DC instance type, you must restore into that
-     * same instance type and size. In other words, you can only restore a
-     * dc1.large instance type into another dc1.large instance type. For more
-     * information about node types, see <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
-     * > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster
-     * Management Guide</i>
+     * Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any
+     * DS node type. In that case, you can choose to restore into another DS node type of the same size. For example,
+     * you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you
+     * must restore into that same instance type and size. In other words, you can only restore a dc1.large instance
+     * type into another dc1.large instance type. For more information about node types, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>
      * </p>
      * 
-     * @return The node type that the restored cluster will be provisioned
-     *         with.</p>
+     * @return The node type that the restored cluster will be provisioned with.</p>
      *         <p>
-     *         Default: The node type of the cluster from which the snapshot was
-     *         taken. You can modify this if you are using any DS node type. In
-     *         that case, you can choose to restore into another DS node type of
-     *         the same size. For example, you can restore ds1.8xlarge into
-     *         ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC
-     *         instance type, you must restore into that same instance type and
-     *         size. In other words, you can only restore a dc1.large instance
-     *         type into another dc1.large instance type. For more information
-     *         about node types, see <a href=
-     *         "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
-     *         > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster
-     *         Management Guide</i>
+     *         Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are
+     *         using any DS node type. In that case, you can choose to restore into another DS node type of the same
+     *         size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you
+     *         have a DC instance type, you must restore into that same instance type and size. In other words, you can
+     *         only restore a dc1.large instance type into another dc1.large instance type. For more information about
+     *         node types, see <a href=
+     *         "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     *         About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>
      */
 
     public String getNodeType() {
@@ -1851,42 +1886,152 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * The node type that the restored cluster will be provisioned with.
      * </p>
      * <p>
-     * Default: The node type of the cluster from which the snapshot was taken.
-     * You can modify this if you are using any DS node type. In that case, you
-     * can choose to restore into another DS node type of the same size. For
-     * example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into
-     * ds1.xlarge. If you have a DC instance type, you must restore into that
-     * same instance type and size. In other words, you can only restore a
-     * dc1.large instance type into another dc1.large instance type. For more
-     * information about node types, see <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
-     * > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster
-     * Management Guide</i>
+     * Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any
+     * DS node type. In that case, you can choose to restore into another DS node type of the same size. For example,
+     * you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you
+     * must restore into that same instance type and size. In other words, you can only restore a dc1.large instance
+     * type into another dc1.large instance type. For more information about node types, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>
      * </p>
      * 
      * @param nodeType
-     *        The node type that the restored cluster will be provisioned
-     *        with.</p>
+     *        The node type that the restored cluster will be provisioned with.</p>
      *        <p>
-     *        Default: The node type of the cluster from which the snapshot was
-     *        taken. You can modify this if you are using any DS node type. In
-     *        that case, you can choose to restore into another DS node type of
-     *        the same size. For example, you can restore ds1.8xlarge into
-     *        ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC
-     *        instance type, you must restore into that same instance type and
-     *        size. In other words, you can only restore a dc1.large instance
-     *        type into another dc1.large instance type. For more information
-     *        about node types, see <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
-     *        > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster
-     *        Management Guide</i>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are
+     *        using any DS node type. In that case, you can choose to restore into another DS node type of the same
+     *        size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you
+     *        have a DC instance type, you must restore into that same instance type and size. In other words, you can
+     *        only restore a dc1.large instance type into another dc1.large instance type. For more information about
+     *        node types, see <a href=
+     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     *        About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RestoreFromClusterSnapshotRequest withNodeType(String nodeType) {
         setNodeType(nodeType);
         return this;
+    }
+
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @param enhancedVpcRouting
+     *        An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *        cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *        in the Amazon Redshift Cluster Management Guide.</p>
+     *        <p>
+     *        If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *        </p>
+     *        <p>
+     *        Default: false
+     */
+
+    public void setEnhancedVpcRouting(Boolean enhancedVpcRouting) {
+        this.enhancedVpcRouting = enhancedVpcRouting;
+    }
+
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @return An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *         cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *         in the Amazon Redshift Cluster Management Guide.</p>
+     *         <p>
+     *         If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *         </p>
+     *         <p>
+     *         Default: false
+     */
+
+    public Boolean getEnhancedVpcRouting() {
+        return this.enhancedVpcRouting;
+    }
+
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @param enhancedVpcRouting
+     *        An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *        cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *        in the Amazon Redshift Cluster Management Guide.</p>
+     *        <p>
+     *        If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *        </p>
+     *        <p>
+     *        Default: false
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreFromClusterSnapshotRequest withEnhancedVpcRouting(Boolean enhancedVpcRouting) {
+        setEnhancedVpcRouting(enhancedVpcRouting);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @return An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *         cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *         in the Amazon Redshift Cluster Management Guide.</p>
+     *         <p>
+     *         If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *         </p>
+     *         <p>
+     *         Default: false
+     */
+
+    public Boolean isEnhancedVpcRouting() {
+        return this.enhancedVpcRouting;
     }
 
     /**
@@ -1921,31 +2066,27 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
      * 
      * @param additionalInfo
      *        Reserved.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withAdditionalInfo(
-            String additionalInfo) {
+    public RestoreFromClusterSnapshotRequest withAdditionalInfo(String additionalInfo) {
         setAdditionalInfo(additionalInfo);
         return this;
     }
 
     /**
      * <p>
-     * A list of AWS Identity and Access Management (IAM) roles that can be used
-     * by the cluster to access other AWS services. You must supply the IAM
-     * roles in their Amazon Resource Name (ARN) format. You can supply up to 10
-     * IAM roles in a single request.
+     * A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS
+     * services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM
+     * roles in a single request.
      * </p>
      * <p>
      * A cluster can have up to 10 IAM roles associated at any time.
      * </p>
      * 
-     * @return A list of AWS Identity and Access Management (IAM) roles that can
-     *         be used by the cluster to access other AWS services. You must
-     *         supply the IAM roles in their Amazon Resource Name (ARN) format.
-     *         You can supply up to 10 IAM roles in a single request.</p>
+     * @return A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other
+     *         AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up
+     *         to 10 IAM roles in a single request.</p>
      *         <p>
      *         A cluster can have up to 10 IAM roles associated at any time.
      */
@@ -1959,20 +2100,18 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of AWS Identity and Access Management (IAM) roles that can be used
-     * by the cluster to access other AWS services. You must supply the IAM
-     * roles in their Amazon Resource Name (ARN) format. You can supply up to 10
-     * IAM roles in a single request.
+     * A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS
+     * services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM
+     * roles in a single request.
      * </p>
      * <p>
      * A cluster can have up to 10 IAM roles associated at any time.
      * </p>
      * 
      * @param iamRoles
-     *        A list of AWS Identity and Access Management (IAM) roles that can
-     *        be used by the cluster to access other AWS services. You must
-     *        supply the IAM roles in their Amazon Resource Name (ARN) format.
-     *        You can supply up to 10 IAM roles in a single request.</p>
+     *        A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other
+     *        AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up
+     *        to 10 IAM roles in a single request.</p>
      *        <p>
      *        A cluster can have up to 10 IAM roles associated at any time.
      */
@@ -1983,42 +2122,36 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
             return;
         }
 
-        this.iamRoles = new com.amazonaws.internal.SdkInternalList<String>(
-                iamRoles);
+        this.iamRoles = new com.amazonaws.internal.SdkInternalList<String>(iamRoles);
     }
 
     /**
      * <p>
-     * A list of AWS Identity and Access Management (IAM) roles that can be used
-     * by the cluster to access other AWS services. You must supply the IAM
-     * roles in their Amazon Resource Name (ARN) format. You can supply up to 10
-     * IAM roles in a single request.
+     * A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS
+     * services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM
+     * roles in a single request.
      * </p>
      * <p>
      * A cluster can have up to 10 IAM roles associated at any time.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setIamRoles(java.util.Collection)} or
-     * {@link #withIamRoles(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIamRoles(java.util.Collection)} or {@link #withIamRoles(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param iamRoles
-     *        A list of AWS Identity and Access Management (IAM) roles that can
-     *        be used by the cluster to access other AWS services. You must
-     *        supply the IAM roles in their Amazon Resource Name (ARN) format.
-     *        You can supply up to 10 IAM roles in a single request.</p>
+     *        A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other
+     *        AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up
+     *        to 10 IAM roles in a single request.</p>
      *        <p>
      *        A cluster can have up to 10 IAM roles associated at any time.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RestoreFromClusterSnapshotRequest withIamRoles(String... iamRoles) {
         if (this.iamRoles == null) {
-            setIamRoles(new com.amazonaws.internal.SdkInternalList<String>(
-                    iamRoles.length));
+            setIamRoles(new com.amazonaws.internal.SdkInternalList<String>(iamRoles.length));
         }
         for (String ele : iamRoles) {
             this.iamRoles.add(ele);
@@ -2028,35 +2161,30 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of AWS Identity and Access Management (IAM) roles that can be used
-     * by the cluster to access other AWS services. You must supply the IAM
-     * roles in their Amazon Resource Name (ARN) format. You can supply up to 10
-     * IAM roles in a single request.
+     * A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS
+     * services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM
+     * roles in a single request.
      * </p>
      * <p>
      * A cluster can have up to 10 IAM roles associated at any time.
      * </p>
      * 
      * @param iamRoles
-     *        A list of AWS Identity and Access Management (IAM) roles that can
-     *        be used by the cluster to access other AWS services. You must
-     *        supply the IAM roles in their Amazon Resource Name (ARN) format.
-     *        You can supply up to 10 IAM roles in a single request.</p>
+     *        A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other
+     *        AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up
+     *        to 10 IAM roles in a single request.</p>
      *        <p>
      *        A cluster can have up to 10 IAM roles associated at any time.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RestoreFromClusterSnapshotRequest withIamRoles(
-            java.util.Collection<String> iamRoles) {
+    public RestoreFromClusterSnapshotRequest withIamRoles(java.util.Collection<String> iamRoles) {
         setIamRoles(iamRoles);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -2067,55 +2195,49 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClusterIdentifier() != null)
-            sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+            sb.append("ClusterIdentifier: ").append(getClusterIdentifier()).append(",");
         if (getSnapshotIdentifier() != null)
-            sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");
+            sb.append("SnapshotIdentifier: ").append(getSnapshotIdentifier()).append(",");
         if (getSnapshotClusterIdentifier() != null)
-            sb.append("SnapshotClusterIdentifier: "
-                    + getSnapshotClusterIdentifier() + ",");
+            sb.append("SnapshotClusterIdentifier: ").append(getSnapshotClusterIdentifier()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getAllowVersionUpgrade() != null)
-            sb.append("AllowVersionUpgrade: " + getAllowVersionUpgrade() + ",");
+            sb.append("AllowVersionUpgrade: ").append(getAllowVersionUpgrade()).append(",");
         if (getClusterSubnetGroupName() != null)
-            sb.append("ClusterSubnetGroupName: " + getClusterSubnetGroupName()
-                    + ",");
+            sb.append("ClusterSubnetGroupName: ").append(getClusterSubnetGroupName()).append(",");
         if (getPubliclyAccessible() != null)
-            sb.append("PubliclyAccessible: " + getPubliclyAccessible() + ",");
+            sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getHsmClientCertificateIdentifier() != null)
-            sb.append("HsmClientCertificateIdentifier: "
-                    + getHsmClientCertificateIdentifier() + ",");
+            sb.append("HsmClientCertificateIdentifier: ").append(getHsmClientCertificateIdentifier()).append(",");
         if (getHsmConfigurationIdentifier() != null)
-            sb.append("HsmConfigurationIdentifier: "
-                    + getHsmConfigurationIdentifier() + ",");
+            sb.append("HsmConfigurationIdentifier: ").append(getHsmConfigurationIdentifier()).append(",");
         if (getElasticIp() != null)
-            sb.append("ElasticIp: " + getElasticIp() + ",");
+            sb.append("ElasticIp: ").append(getElasticIp()).append(",");
         if (getClusterParameterGroupName() != null)
-            sb.append("ClusterParameterGroupName: "
-                    + getClusterParameterGroupName() + ",");
+            sb.append("ClusterParameterGroupName: ").append(getClusterParameterGroupName()).append(",");
         if (getClusterSecurityGroups() != null)
-            sb.append("ClusterSecurityGroups: " + getClusterSecurityGroups()
-                    + ",");
+            sb.append("ClusterSecurityGroups: ").append(getClusterSecurityGroups()).append(",");
         if (getVpcSecurityGroupIds() != null)
-            sb.append("VpcSecurityGroupIds: " + getVpcSecurityGroupIds() + ",");
+            sb.append("VpcSecurityGroupIds: ").append(getVpcSecurityGroupIds()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: "
-                    + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getAutomatedSnapshotRetentionPeriod() != null)
-            sb.append("AutomatedSnapshotRetentionPeriod: "
-                    + getAutomatedSnapshotRetentionPeriod() + ",");
+            sb.append("AutomatedSnapshotRetentionPeriod: ").append(getAutomatedSnapshotRetentionPeriod()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getNodeType() != null)
-            sb.append("NodeType: " + getNodeType() + ",");
+            sb.append("NodeType: ").append(getNodeType()).append(",");
+        if (getEnhancedVpcRouting() != null)
+            sb.append("EnhancedVpcRouting: ").append(getEnhancedVpcRouting()).append(",");
         if (getAdditionalInfo() != null)
-            sb.append("AdditionalInfo: " + getAdditionalInfo() + ",");
+            sb.append("AdditionalInfo: ").append(getAdditionalInfo()).append(",");
         if (getIamRoles() != null)
-            sb.append("IamRoles: " + getIamRoles());
+            sb.append("IamRoles: ").append(getIamRoles());
         sb.append("}");
         return sb.toString();
     }
@@ -2130,139 +2252,95 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
         if (obj instanceof RestoreFromClusterSnapshotRequest == false)
             return false;
         RestoreFromClusterSnapshotRequest other = (RestoreFromClusterSnapshotRequest) obj;
-        if (other.getClusterIdentifier() == null
-                ^ this.getClusterIdentifier() == null)
+        if (other.getClusterIdentifier() == null ^ this.getClusterIdentifier() == null)
             return false;
-        if (other.getClusterIdentifier() != null
-                && other.getClusterIdentifier().equals(
-                        this.getClusterIdentifier()) == false)
+        if (other.getClusterIdentifier() != null && other.getClusterIdentifier().equals(this.getClusterIdentifier()) == false)
             return false;
-        if (other.getSnapshotIdentifier() == null
-                ^ this.getSnapshotIdentifier() == null)
+        if (other.getSnapshotIdentifier() == null ^ this.getSnapshotIdentifier() == null)
             return false;
-        if (other.getSnapshotIdentifier() != null
-                && other.getSnapshotIdentifier().equals(
-                        this.getSnapshotIdentifier()) == false)
+        if (other.getSnapshotIdentifier() != null && other.getSnapshotIdentifier().equals(this.getSnapshotIdentifier()) == false)
             return false;
-        if (other.getSnapshotClusterIdentifier() == null
-                ^ this.getSnapshotClusterIdentifier() == null)
+        if (other.getSnapshotClusterIdentifier() == null ^ this.getSnapshotClusterIdentifier() == null)
             return false;
-        if (other.getSnapshotClusterIdentifier() != null
-                && other.getSnapshotClusterIdentifier().equals(
-                        this.getSnapshotClusterIdentifier()) == false)
+        if (other.getSnapshotClusterIdentifier() != null && other.getSnapshotClusterIdentifier().equals(this.getSnapshotClusterIdentifier()) == false)
             return false;
         if (other.getPort() == null ^ this.getPort() == null)
             return false;
-        if (other.getPort() != null
-                && other.getPort().equals(this.getPort()) == false)
+        if (other.getPort() != null && other.getPort().equals(this.getPort()) == false)
             return false;
-        if (other.getAvailabilityZone() == null
-                ^ this.getAvailabilityZone() == null)
+        if (other.getAvailabilityZone() == null ^ this.getAvailabilityZone() == null)
             return false;
-        if (other.getAvailabilityZone() != null
-                && other.getAvailabilityZone().equals(
-                        this.getAvailabilityZone()) == false)
+        if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false)
             return false;
-        if (other.getAllowVersionUpgrade() == null
-                ^ this.getAllowVersionUpgrade() == null)
+        if (other.getAllowVersionUpgrade() == null ^ this.getAllowVersionUpgrade() == null)
             return false;
-        if (other.getAllowVersionUpgrade() != null
-                && other.getAllowVersionUpgrade().equals(
-                        this.getAllowVersionUpgrade()) == false)
+        if (other.getAllowVersionUpgrade() != null && other.getAllowVersionUpgrade().equals(this.getAllowVersionUpgrade()) == false)
             return false;
-        if (other.getClusterSubnetGroupName() == null
-                ^ this.getClusterSubnetGroupName() == null)
+        if (other.getClusterSubnetGroupName() == null ^ this.getClusterSubnetGroupName() == null)
             return false;
-        if (other.getClusterSubnetGroupName() != null
-                && other.getClusterSubnetGroupName().equals(
-                        this.getClusterSubnetGroupName()) == false)
+        if (other.getClusterSubnetGroupName() != null && other.getClusterSubnetGroupName().equals(this.getClusterSubnetGroupName()) == false)
             return false;
-        if (other.getPubliclyAccessible() == null
-                ^ this.getPubliclyAccessible() == null)
+        if (other.getPubliclyAccessible() == null ^ this.getPubliclyAccessible() == null)
             return false;
-        if (other.getPubliclyAccessible() != null
-                && other.getPubliclyAccessible().equals(
-                        this.getPubliclyAccessible()) == false)
+        if (other.getPubliclyAccessible() != null && other.getPubliclyAccessible().equals(this.getPubliclyAccessible()) == false)
             return false;
         if (other.getOwnerAccount() == null ^ this.getOwnerAccount() == null)
             return false;
-        if (other.getOwnerAccount() != null
-                && other.getOwnerAccount().equals(this.getOwnerAccount()) == false)
+        if (other.getOwnerAccount() != null && other.getOwnerAccount().equals(this.getOwnerAccount()) == false)
             return false;
-        if (other.getHsmClientCertificateIdentifier() == null
-                ^ this.getHsmClientCertificateIdentifier() == null)
+        if (other.getHsmClientCertificateIdentifier() == null ^ this.getHsmClientCertificateIdentifier() == null)
             return false;
         if (other.getHsmClientCertificateIdentifier() != null
-                && other.getHsmClientCertificateIdentifier().equals(
-                        this.getHsmClientCertificateIdentifier()) == false)
+                && other.getHsmClientCertificateIdentifier().equals(this.getHsmClientCertificateIdentifier()) == false)
             return false;
-        if (other.getHsmConfigurationIdentifier() == null
-                ^ this.getHsmConfigurationIdentifier() == null)
+        if (other.getHsmConfigurationIdentifier() == null ^ this.getHsmConfigurationIdentifier() == null)
             return false;
-        if (other.getHsmConfigurationIdentifier() != null
-                && other.getHsmConfigurationIdentifier().equals(
-                        this.getHsmConfigurationIdentifier()) == false)
+        if (other.getHsmConfigurationIdentifier() != null && other.getHsmConfigurationIdentifier().equals(this.getHsmConfigurationIdentifier()) == false)
             return false;
         if (other.getElasticIp() == null ^ this.getElasticIp() == null)
             return false;
-        if (other.getElasticIp() != null
-                && other.getElasticIp().equals(this.getElasticIp()) == false)
+        if (other.getElasticIp() != null && other.getElasticIp().equals(this.getElasticIp()) == false)
             return false;
-        if (other.getClusterParameterGroupName() == null
-                ^ this.getClusterParameterGroupName() == null)
+        if (other.getClusterParameterGroupName() == null ^ this.getClusterParameterGroupName() == null)
             return false;
-        if (other.getClusterParameterGroupName() != null
-                && other.getClusterParameterGroupName().equals(
-                        this.getClusterParameterGroupName()) == false)
+        if (other.getClusterParameterGroupName() != null && other.getClusterParameterGroupName().equals(this.getClusterParameterGroupName()) == false)
             return false;
-        if (other.getClusterSecurityGroups() == null
-                ^ this.getClusterSecurityGroups() == null)
+        if (other.getClusterSecurityGroups() == null ^ this.getClusterSecurityGroups() == null)
             return false;
-        if (other.getClusterSecurityGroups() != null
-                && other.getClusterSecurityGroups().equals(
-                        this.getClusterSecurityGroups()) == false)
+        if (other.getClusterSecurityGroups() != null && other.getClusterSecurityGroups().equals(this.getClusterSecurityGroups()) == false)
             return false;
-        if (other.getVpcSecurityGroupIds() == null
-                ^ this.getVpcSecurityGroupIds() == null)
+        if (other.getVpcSecurityGroupIds() == null ^ this.getVpcSecurityGroupIds() == null)
             return false;
-        if (other.getVpcSecurityGroupIds() != null
-                && other.getVpcSecurityGroupIds().equals(
-                        this.getVpcSecurityGroupIds()) == false)
+        if (other.getVpcSecurityGroupIds() != null && other.getVpcSecurityGroupIds().equals(this.getVpcSecurityGroupIds()) == false)
             return false;
-        if (other.getPreferredMaintenanceWindow() == null
-                ^ this.getPreferredMaintenanceWindow() == null)
+        if (other.getPreferredMaintenanceWindow() == null ^ this.getPreferredMaintenanceWindow() == null)
             return false;
-        if (other.getPreferredMaintenanceWindow() != null
-                && other.getPreferredMaintenanceWindow().equals(
-                        this.getPreferredMaintenanceWindow()) == false)
+        if (other.getPreferredMaintenanceWindow() != null && other.getPreferredMaintenanceWindow().equals(this.getPreferredMaintenanceWindow()) == false)
             return false;
-        if (other.getAutomatedSnapshotRetentionPeriod() == null
-                ^ this.getAutomatedSnapshotRetentionPeriod() == null)
+        if (other.getAutomatedSnapshotRetentionPeriod() == null ^ this.getAutomatedSnapshotRetentionPeriod() == null)
             return false;
         if (other.getAutomatedSnapshotRetentionPeriod() != null
-                && other.getAutomatedSnapshotRetentionPeriod().equals(
-                        this.getAutomatedSnapshotRetentionPeriod()) == false)
+                && other.getAutomatedSnapshotRetentionPeriod().equals(this.getAutomatedSnapshotRetentionPeriod()) == false)
             return false;
         if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
             return false;
-        if (other.getKmsKeyId() != null
-                && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
         if (other.getNodeType() == null ^ this.getNodeType() == null)
             return false;
-        if (other.getNodeType() != null
-                && other.getNodeType().equals(this.getNodeType()) == false)
+        if (other.getNodeType() != null && other.getNodeType().equals(this.getNodeType()) == false)
             return false;
-        if (other.getAdditionalInfo() == null
-                ^ this.getAdditionalInfo() == null)
+        if (other.getEnhancedVpcRouting() == null ^ this.getEnhancedVpcRouting() == null)
             return false;
-        if (other.getAdditionalInfo() != null
-                && other.getAdditionalInfo().equals(this.getAdditionalInfo()) == false)
+        if (other.getEnhancedVpcRouting() != null && other.getEnhancedVpcRouting().equals(this.getEnhancedVpcRouting()) == false)
+            return false;
+        if (other.getAdditionalInfo() == null ^ this.getAdditionalInfo() == null)
+            return false;
+        if (other.getAdditionalInfo() != null && other.getAdditionalInfo().equals(this.getAdditionalInfo()) == false)
             return false;
         if (other.getIamRoles() == null ^ this.getIamRoles() == null)
             return false;
-        if (other.getIamRoles() != null
-                && other.getIamRoles().equals(this.getIamRoles()) == false)
+        if (other.getIamRoles() != null && other.getIamRoles().equals(this.getIamRoles()) == false)
             return false;
         return true;
     }
@@ -2272,80 +2350,28 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getClusterIdentifier() == null) ? 0
-                        : getClusterIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotIdentifier() == null) ? 0
-                        : getSnapshotIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotClusterIdentifier() == null) ? 0
-                        : getSnapshotClusterIdentifier().hashCode());
-        hashCode = prime * hashCode
-                + ((getPort() == null) ? 0 : getPort().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAllowVersionUpgrade() == null) ? 0
-                        : getAllowVersionUpgrade().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClusterSubnetGroupName() == null) ? 0
-                        : getClusterSubnetGroupName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPubliclyAccessible() == null) ? 0
-                        : getPubliclyAccessible().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOwnerAccount() == null) ? 0 : getOwnerAccount()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getHsmClientCertificateIdentifier() == null) ? 0
-                        : getHsmClientCertificateIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getHsmConfigurationIdentifier() == null) ? 0
-                        : getHsmConfigurationIdentifier().hashCode());
-        hashCode = prime * hashCode
-                + ((getElasticIp() == null) ? 0 : getElasticIp().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClusterParameterGroupName() == null) ? 0
-                        : getClusterParameterGroupName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClusterSecurityGroups() == null) ? 0
-                        : getClusterSecurityGroups().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getVpcSecurityGroupIds() == null) ? 0
-                        : getVpcSecurityGroupIds().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPreferredMaintenanceWindow() == null) ? 0
-                        : getPreferredMaintenanceWindow().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAutomatedSnapshotRetentionPeriod() == null) ? 0
-                        : getAutomatedSnapshotRetentionPeriod().hashCode());
-        hashCode = prime * hashCode
-                + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
-        hashCode = prime * hashCode
-                + ((getNodeType() == null) ? 0 : getNodeType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAdditionalInfo() == null) ? 0 : getAdditionalInfo()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getIamRoles() == null) ? 0 : getIamRoles().hashCode());
+        hashCode = prime * hashCode + ((getClusterIdentifier() == null) ? 0 : getClusterIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotIdentifier() == null) ? 0 : getSnapshotIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotClusterIdentifier() == null) ? 0 : getSnapshotClusterIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getPort() == null) ? 0 : getPort().hashCode());
+        hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getAllowVersionUpgrade() == null) ? 0 : getAllowVersionUpgrade().hashCode());
+        hashCode = prime * hashCode + ((getClusterSubnetGroupName() == null) ? 0 : getClusterSubnetGroupName().hashCode());
+        hashCode = prime * hashCode + ((getPubliclyAccessible() == null) ? 0 : getPubliclyAccessible().hashCode());
+        hashCode = prime * hashCode + ((getOwnerAccount() == null) ? 0 : getOwnerAccount().hashCode());
+        hashCode = prime * hashCode + ((getHsmClientCertificateIdentifier() == null) ? 0 : getHsmClientCertificateIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getHsmConfigurationIdentifier() == null) ? 0 : getHsmConfigurationIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getElasticIp() == null) ? 0 : getElasticIp().hashCode());
+        hashCode = prime * hashCode + ((getClusterParameterGroupName() == null) ? 0 : getClusterParameterGroupName().hashCode());
+        hashCode = prime * hashCode + ((getClusterSecurityGroups() == null) ? 0 : getClusterSecurityGroups().hashCode());
+        hashCode = prime * hashCode + ((getVpcSecurityGroupIds() == null) ? 0 : getVpcSecurityGroupIds().hashCode());
+        hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode());
+        hashCode = prime * hashCode + ((getAutomatedSnapshotRetentionPeriod() == null) ? 0 : getAutomatedSnapshotRetentionPeriod().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getNodeType() == null) ? 0 : getNodeType().hashCode());
+        hashCode = prime * hashCode + ((getEnhancedVpcRouting() == null) ? 0 : getEnhancedVpcRouting().hashCode());
+        hashCode = prime * hashCode + ((getAdditionalInfo() == null) ? 0 : getAdditionalInfo().hashCode());
+        hashCode = prime * hashCode + ((getIamRoles() == null) ? 0 : getIamRoles().hashCode());
         return hashCode;
     }
 
@@ -2353,4 +2379,5 @@ public class RestoreFromClusterSnapshotRequest extends AmazonWebServiceRequest
     public RestoreFromClusterSnapshotRequest clone() {
         return (RestoreFromClusterSnapshotRequest) super.clone();
     }
+
 }

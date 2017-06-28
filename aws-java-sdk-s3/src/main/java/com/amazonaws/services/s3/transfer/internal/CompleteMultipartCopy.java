@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.event.ProgressEventType;
 import com.amazonaws.event.ProgressListenerChain;
 import com.amazonaws.services.s3.AmazonS3;
@@ -77,6 +77,7 @@ public class CompleteMultipartCopy implements Callable<CopyResult> {
             CompleteMultipartUploadRequest req = new CompleteMultipartUploadRequest(
                     origReq.getDestinationBucketName(), origReq.getDestinationKey(), uploadId,
                     collectPartETags())
+                    .withRequesterPays(origReq.isRequesterPays())
                     .withGeneralProgressListener(origReq.getGeneralProgressListener())
                     .withRequestMetricCollector(origReq.getRequestMetricCollector())
                     ;
@@ -112,7 +113,7 @@ public class CompleteMultipartCopy implements Callable<CopyResult> {
             try {
                 partETags.add(future.get());
             } catch (Exception e) {
-                throw new AmazonClientException("Unable to copy part: "
+                throw new SdkClientException("Unable to copy part: "
                         + e.getCause().getMessage(), e.getCause());
             }
         }

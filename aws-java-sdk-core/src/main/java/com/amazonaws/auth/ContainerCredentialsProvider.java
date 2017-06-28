@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Date;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.internal.CredentialsEndpointProvider;
 import com.amazonaws.retry.internal.CredentialsEndpointRetryPolicy;
@@ -72,7 +72,7 @@ public class ContainerCredentialsProvider implements AWSCredentialsProvider {
         public URI getCredentialsEndpoint() throws URISyntaxException {
             String path = System.getenv(ECS_CONTAINER_CREDENTIALS_PATH);
             if (path == null) {
-                throw new AmazonClientException(
+                throw new SdkClientException(
                         "The environment variable " + ECS_CONTAINER_CREDENTIALS_PATH + " is empty");
             }
 

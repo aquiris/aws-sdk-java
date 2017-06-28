@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.s3.internal;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.ReadLimitInfo;
 import com.amazonaws.Request;
 import com.amazonaws.ResetException;
@@ -102,7 +102,7 @@ public class AWSS3V4Signer extends AWS4Signer {
                     try {
                         originalContentLength = getContentLength(request);
                     } catch (IOException e) {
-                        throw new AmazonClientException(
+                        throw new SdkClientException(
                                 "Cannot get the content-length of the request content.", e);
                     }
                 }

@@ -1,25 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.marketplacemetering.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/meteringmarketplace-2016-01-14/MeterUsage" target="_top">AWS API
+ *      Documentation</a>
  */
-public class MeterUsageResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class MeterUsageResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     private String meteringRecordId;
 
@@ -41,8 +43,7 @@ public class MeterUsageResult implements Serializable, Cloneable {
 
     /**
      * @param meteringRecordId
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public MeterUsageResult withMeteringRecordId(String meteringRecordId) {
@@ -51,8 +52,7 @@ public class MeterUsageResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -63,7 +63,7 @@ public class MeterUsageResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMeteringRecordId() != null)
-            sb.append("MeteringRecordId: " + getMeteringRecordId());
+            sb.append("MeteringRecordId: ").append(getMeteringRecordId());
         sb.append("}");
         return sb.toString();
     }
@@ -78,12 +78,9 @@ public class MeterUsageResult implements Serializable, Cloneable {
         if (obj instanceof MeterUsageResult == false)
             return false;
         MeterUsageResult other = (MeterUsageResult) obj;
-        if (other.getMeteringRecordId() == null
-                ^ this.getMeteringRecordId() == null)
+        if (other.getMeteringRecordId() == null ^ this.getMeteringRecordId() == null)
             return false;
-        if (other.getMeteringRecordId() != null
-                && other.getMeteringRecordId().equals(
-                        this.getMeteringRecordId()) == false)
+        if (other.getMeteringRecordId() != null && other.getMeteringRecordId().equals(this.getMeteringRecordId()) == false)
             return false;
         return true;
     }
@@ -93,10 +90,7 @@ public class MeterUsageResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getMeteringRecordId() == null) ? 0 : getMeteringRecordId()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getMeteringRecordId() == null) ? 0 : getMeteringRecordId().hashCode());
         return hashCode;
     }
 
@@ -105,9 +99,8 @@ public class MeterUsageResult implements Serializable, Cloneable {
         try {
             return (MeterUsageResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * A request to get information about the current <a>ApiKey</a> resource.
  * </p>
  */
-public class GetApiKeyRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetApiKeyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,8 +33,8 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
     private String apiKey;
     /**
      * <p>
-     * A boolean flag to specify whether (<code>true</code>) or not (
-     * <code>false</code>) the result contains the key value.
+     * A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key
+     * value.
      * </p>
      */
     private Boolean includeValue;
@@ -71,8 +71,7 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
      * 
      * @param apiKey
      *        The identifier of the <a>ApiKey</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetApiKeyRequest withApiKey(String apiKey) {
@@ -82,13 +81,13 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A boolean flag to specify whether (<code>true</code>) or not (
-     * <code>false</code>) the result contains the key value.
+     * A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key
+     * value.
      * </p>
      * 
      * @param includeValue
-     *        A boolean flag to specify whether (<code>true</code>) or not (
-     *        <code>false</code>) the result contains the key value.
+     *        A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the
+     *        key value.
      */
 
     public void setIncludeValue(Boolean includeValue) {
@@ -97,12 +96,12 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A boolean flag to specify whether (<code>true</code>) or not (
-     * <code>false</code>) the result contains the key value.
+     * A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key
+     * value.
      * </p>
      * 
-     * @return A boolean flag to specify whether (<code>true</code>) or not (
-     *         <code>false</code>) the result contains the key value.
+     * @return A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the
+     *         key value.
      */
 
     public Boolean getIncludeValue() {
@@ -111,15 +110,14 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A boolean flag to specify whether (<code>true</code>) or not (
-     * <code>false</code>) the result contains the key value.
+     * A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key
+     * value.
      * </p>
      * 
      * @param includeValue
-     *        A boolean flag to specify whether (<code>true</code>) or not (
-     *        <code>false</code>) the result contains the key value.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the
+     *        key value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetApiKeyRequest withIncludeValue(Boolean includeValue) {
@@ -129,12 +127,12 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A boolean flag to specify whether (<code>true</code>) or not (
-     * <code>false</code>) the result contains the key value.
+     * A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key
+     * value.
      * </p>
      * 
-     * @return A boolean flag to specify whether (<code>true</code>) or not (
-     *         <code>false</code>) the result contains the key value.
+     * @return A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the
+     *         key value.
      */
 
     public Boolean isIncludeValue() {
@@ -142,8 +140,7 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -154,9 +151,9 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApiKey() != null)
-            sb.append("ApiKey: " + getApiKey() + ",");
+            sb.append("ApiKey: ").append(getApiKey()).append(",");
         if (getIncludeValue() != null)
-            sb.append("IncludeValue: " + getIncludeValue());
+            sb.append("IncludeValue: ").append(getIncludeValue());
         sb.append("}");
         return sb.toString();
     }
@@ -173,13 +170,11 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
         GetApiKeyRequest other = (GetApiKeyRequest) obj;
         if (other.getApiKey() == null ^ this.getApiKey() == null)
             return false;
-        if (other.getApiKey() != null
-                && other.getApiKey().equals(this.getApiKey()) == false)
+        if (other.getApiKey() != null && other.getApiKey().equals(this.getApiKey()) == false)
             return false;
         if (other.getIncludeValue() == null ^ this.getIncludeValue() == null)
             return false;
-        if (other.getIncludeValue() != null
-                && other.getIncludeValue().equals(this.getIncludeValue()) == false)
+        if (other.getIncludeValue() != null && other.getIncludeValue().equals(this.getIncludeValue()) == false)
             return false;
         return true;
     }
@@ -189,12 +184,8 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getApiKey() == null) ? 0 : getApiKey().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getIncludeValue() == null) ? 0 : getIncludeValue()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getApiKey() == null) ? 0 : getApiKey().hashCode());
+        hashCode = prime * hashCode + ((getIncludeValue() == null) ? 0 : getIncludeValue().hashCode());
         return hashCode;
     }
 
@@ -202,4 +193,5 @@ public class GetApiKeyRequest extends AmazonWebServiceRequest implements
     public GetApiKeyRequest clone() {
         return (GetApiKeyRequest) super.clone();
     }
+
 }

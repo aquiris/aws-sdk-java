@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
+import com.amazonaws.AmazonWebServiceResult;
 
 /**
  * <p>
  * Contains the output of AllocateAddress.
  * </p>
  */
-public class AllocateAddressResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AllocateAddressResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,19 +33,18 @@ public class AllocateAddressResult implements Serializable, Cloneable {
     private String publicIp;
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
-     * </p>
-     */
-    private String domain;
-    /**
-     * <p>
-     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the
-     * Elastic IP address for use with instances in a VPC.
+     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in
+     * a VPC.
      * </p>
      */
     private String allocationId;
+    /**
+     * <p>
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
+     * </p>
+     */
+    private String domain;
 
     /**
      * <p>
@@ -77,8 +78,7 @@ public class AllocateAddressResult implements Serializable, Cloneable {
      * 
      * @param publicIp
      *        The Elastic IP address.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AllocateAddressResult withPublicIp(String publicIp) {
@@ -88,15 +88,59 @@ public class AllocateAddressResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in
+     * a VPC.
+     * </p>
+     * 
+     * @param allocationId
+     *        [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with
+     *        instances in a VPC.
+     */
+
+    public void setAllocationId(String allocationId) {
+        this.allocationId = allocationId;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in
+     * a VPC.
+     * </p>
+     * 
+     * @return [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with
+     *         instances in a VPC.
+     */
+
+    public String getAllocationId() {
+        return this.allocationId;
+    }
+
+    /**
+     * <p>
+     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in
+     * a VPC.
+     * </p>
+     * 
+     * @param allocationId
+     *        [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with
+     *        instances in a VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AllocateAddressResult withAllocationId(String allocationId) {
+        setAllocationId(allocationId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
      * @see DomainType
      */
 
@@ -106,14 +150,12 @@ public class AllocateAddressResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
-     * @return Indicates whether this Elastic IP address is for use with
-     *         instances in EC2-Classic (<code>standard</code>) or instances in
-     *         a VPC (<code>vpc</code>).
+     * @return Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>
+     *         ) or instances in a VPC (<code>vpc</code>).
      * @see DomainType
      */
 
@@ -123,17 +165,14 @@ public class AllocateAddressResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DomainType
      */
 
@@ -144,15 +183,13 @@ public class AllocateAddressResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
      * @see DomainType
      */
 
@@ -162,17 +199,14 @@ public class AllocateAddressResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DomainType
      */
 
@@ -182,55 +216,7 @@ public class AllocateAddressResult implements Serializable, Cloneable {
     }
 
     /**
-     * <p>
-     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the
-     * Elastic IP address for use with instances in a VPC.
-     * </p>
-     * 
-     * @param allocationId
-     *        [EC2-VPC] The ID that AWS assigns to represent the allocation of
-     *        the Elastic IP address for use with instances in a VPC.
-     */
-
-    public void setAllocationId(String allocationId) {
-        this.allocationId = allocationId;
-    }
-
-    /**
-     * <p>
-     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the
-     * Elastic IP address for use with instances in a VPC.
-     * </p>
-     * 
-     * @return [EC2-VPC] The ID that AWS assigns to represent the allocation of
-     *         the Elastic IP address for use with instances in a VPC.
-     */
-
-    public String getAllocationId() {
-        return this.allocationId;
-    }
-
-    /**
-     * <p>
-     * [EC2-VPC] The ID that AWS assigns to represent the allocation of the
-     * Elastic IP address for use with instances in a VPC.
-     * </p>
-     * 
-     * @param allocationId
-     *        [EC2-VPC] The ID that AWS assigns to represent the allocation of
-     *        the Elastic IP address for use with instances in a VPC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
-
-    public AllocateAddressResult withAllocationId(String allocationId) {
-        setAllocationId(allocationId);
-        return this;
-    }
-
-    /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -241,11 +227,11 @@ public class AllocateAddressResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPublicIp() != null)
-            sb.append("PublicIp: " + getPublicIp() + ",");
-        if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("PublicIp: ").append(getPublicIp()).append(",");
         if (getAllocationId() != null)
-            sb.append("AllocationId: " + getAllocationId());
+            sb.append("AllocationId: ").append(getAllocationId()).append(",");
+        if (getDomain() != null)
+            sb.append("Domain: ").append(getDomain());
         sb.append("}");
         return sb.toString();
     }
@@ -262,18 +248,15 @@ public class AllocateAddressResult implements Serializable, Cloneable {
         AllocateAddressResult other = (AllocateAddressResult) obj;
         if (other.getPublicIp() == null ^ this.getPublicIp() == null)
             return false;
-        if (other.getPublicIp() != null
-                && other.getPublicIp().equals(this.getPublicIp()) == false)
-            return false;
-        if (other.getDomain() == null ^ this.getDomain() == null)
-            return false;
-        if (other.getDomain() != null
-                && other.getDomain().equals(this.getDomain()) == false)
+        if (other.getPublicIp() != null && other.getPublicIp().equals(this.getPublicIp()) == false)
             return false;
         if (other.getAllocationId() == null ^ this.getAllocationId() == null)
             return false;
-        if (other.getAllocationId() != null
-                && other.getAllocationId().equals(this.getAllocationId()) == false)
+        if (other.getAllocationId() != null && other.getAllocationId().equals(this.getAllocationId()) == false)
+            return false;
+        if (other.getDomain() == null ^ this.getDomain() == null)
+            return false;
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
             return false;
         return true;
     }
@@ -283,14 +266,9 @@ public class AllocateAddressResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode());
-        hashCode = prime * hashCode
-                + ((getDomain() == null) ? 0 : getDomain().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAllocationId() == null) ? 0 : getAllocationId()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode());
+        hashCode = prime * hashCode + ((getAllocationId() == null) ? 0 : getAllocationId().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
         return hashCode;
     }
 
@@ -299,9 +277,7 @@ public class AllocateAddressResult implements Serializable, Cloneable {
         try {
             return (AllocateAddressResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

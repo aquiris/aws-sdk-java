@@ -1,31 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.lambda.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateAlias" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateAliasRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateAliasRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Name of the Lambda function for which you want to create an alias.
+     * Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only
+     * to the ARN. If you specify only the function name, it is limited to 64 characters in length.
      * </p>
      */
     private String functionName;
@@ -50,11 +53,13 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Name of the Lambda function for which you want to create an alias.
+     * Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only
+     * to the ARN. If you specify only the function name, it is limited to 64 characters in length.
      * </p>
      * 
      * @param functionName
-     *        Name of the Lambda function for which you want to create an alias.
+     *        Name of the Lambda function for which you want to create an alias. Note that the length constraint applies
+     *        only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
      */
 
     public void setFunctionName(String functionName) {
@@ -63,11 +68,12 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Name of the Lambda function for which you want to create an alias.
+     * Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only
+     * to the ARN. If you specify only the function name, it is limited to 64 characters in length.
      * </p>
      * 
-     * @return Name of the Lambda function for which you want to create an
-     *         alias.
+     * @return Name of the Lambda function for which you want to create an alias. Note that the length constraint
+     *         applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
      */
 
     public String getFunctionName() {
@@ -76,13 +82,14 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Name of the Lambda function for which you want to create an alias.
+     * Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only
+     * to the ARN. If you specify only the function name, it is limited to 64 characters in length.
      * </p>
      * 
      * @param functionName
-     *        Name of the Lambda function for which you want to create an alias.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Name of the Lambda function for which you want to create an alias. Note that the length constraint applies
+     *        only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateAliasRequest withFunctionName(String functionName) {
@@ -122,8 +129,7 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
      * 
      * @param name
      *        Name for the alias you are creating.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateAliasRequest withName(String name) {
@@ -163,8 +169,7 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
      * 
      * @param functionVersion
      *        Lambda function version for which you are creating the alias.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateAliasRequest withFunctionVersion(String functionVersion) {
@@ -204,8 +209,7 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
      * 
      * @param description
      *        Description of the alias.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateAliasRequest withDescription(String description) {
@@ -214,8 +218,7 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -226,13 +229,13 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFunctionName() != null)
-            sb.append("FunctionName: " + getFunctionName() + ",");
+            sb.append("FunctionName: ").append(getFunctionName()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getFunctionVersion() != null)
-            sb.append("FunctionVersion: " + getFunctionVersion() + ",");
+            sb.append("FunctionVersion: ").append(getFunctionVersion()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription());
+            sb.append("Description: ").append(getDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -249,24 +252,19 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
         CreateAliasRequest other = (CreateAliasRequest) obj;
         if (other.getFunctionName() == null ^ this.getFunctionName() == null)
             return false;
-        if (other.getFunctionName() != null
-                && other.getFunctionName().equals(this.getFunctionName()) == false)
+        if (other.getFunctionName() != null && other.getFunctionName().equals(this.getFunctionName()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
-        if (other.getFunctionVersion() == null
-                ^ this.getFunctionVersion() == null)
+        if (other.getFunctionVersion() == null ^ this.getFunctionVersion() == null)
             return false;
-        if (other.getFunctionVersion() != null
-                && other.getFunctionVersion().equals(this.getFunctionVersion()) == false)
+        if (other.getFunctionVersion() != null && other.getFunctionVersion().equals(this.getFunctionVersion()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         return true;
     }
@@ -276,19 +274,10 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getFunctionName() == null) ? 0 : getFunctionName()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getFunctionVersion() == null) ? 0 : getFunctionVersion()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getFunctionName() == null) ? 0 : getFunctionName().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getFunctionVersion() == null) ? 0 : getFunctionVersion().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         return hashCode;
     }
 
@@ -296,4 +285,5 @@ public class CreateAliasRequest extends AmazonWebServiceRequest implements
     public CreateAliasRequest clone() {
         return (CreateAliasRequest) super.clone();
     }
+
 }

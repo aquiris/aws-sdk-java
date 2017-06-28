@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The definition of the thing type, including thing type name and description.
  * </p>
  */
-public class ThingTypeDefinition implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ThingTypeDefinition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -35,7 +37,12 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
      * </p>
      */
     private ThingTypeProperties thingTypeProperties;
-
+    /**
+     * <p>
+     * The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a
+     * value indicating whether the thing type is deprecated, and a date and time when it was deprecated.
+     * </p>
+     */
     private ThingTypeMetadata thingTypeMetadata;
 
     /**
@@ -70,8 +77,7 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
      * 
      * @param thingTypeName
      *        The name of the thing type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ThingTypeDefinition withThingTypeName(String thingTypeName) {
@@ -111,18 +117,23 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
      * 
      * @param thingTypeProperties
      *        The ThingTypeProperties for the thing type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ThingTypeDefinition withThingTypeProperties(
-            ThingTypeProperties thingTypeProperties) {
+    public ThingTypeDefinition withThingTypeProperties(ThingTypeProperties thingTypeProperties) {
         setThingTypeProperties(thingTypeProperties);
         return this;
     }
 
     /**
+     * <p>
+     * The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a
+     * value indicating whether the thing type is deprecated, and a date and time when it was deprecated.
+     * </p>
+     * 
      * @param thingTypeMetadata
+     *        The ThingTypeMetadata contains additional information about the thing type including: creation date and
+     *        time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.
      */
 
     public void setThingTypeMetadata(ThingTypeMetadata thingTypeMetadata) {
@@ -130,7 +141,14 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a
+     * value indicating whether the thing type is deprecated, and a date and time when it was deprecated.
+     * </p>
+     * 
+     * @return The ThingTypeMetadata contains additional information about the thing type including: creation date and
+     *         time, a value indicating whether the thing type is deprecated, and a date and time when it was
+     *         deprecated.
      */
 
     public ThingTypeMetadata getThingTypeMetadata() {
@@ -138,20 +156,24 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a
+     * value indicating whether the thing type is deprecated, and a date and time when it was deprecated.
+     * </p>
+     * 
      * @param thingTypeMetadata
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ThingTypeMetadata contains additional information about the thing type including: creation date and
+     *        time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ThingTypeDefinition withThingTypeMetadata(
-            ThingTypeMetadata thingTypeMetadata) {
+    public ThingTypeDefinition withThingTypeMetadata(ThingTypeMetadata thingTypeMetadata) {
         setThingTypeMetadata(thingTypeMetadata);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -162,11 +184,11 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getThingTypeName() != null)
-            sb.append("ThingTypeName: " + getThingTypeName() + ",");
+            sb.append("ThingTypeName: ").append(getThingTypeName()).append(",");
         if (getThingTypeProperties() != null)
-            sb.append("ThingTypeProperties: " + getThingTypeProperties() + ",");
+            sb.append("ThingTypeProperties: ").append(getThingTypeProperties()).append(",");
         if (getThingTypeMetadata() != null)
-            sb.append("ThingTypeMetadata: " + getThingTypeMetadata());
+            sb.append("ThingTypeMetadata: ").append(getThingTypeMetadata());
         sb.append("}");
         return sb.toString();
     }
@@ -183,22 +205,15 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
         ThingTypeDefinition other = (ThingTypeDefinition) obj;
         if (other.getThingTypeName() == null ^ this.getThingTypeName() == null)
             return false;
-        if (other.getThingTypeName() != null
-                && other.getThingTypeName().equals(this.getThingTypeName()) == false)
+        if (other.getThingTypeName() != null && other.getThingTypeName().equals(this.getThingTypeName()) == false)
             return false;
-        if (other.getThingTypeProperties() == null
-                ^ this.getThingTypeProperties() == null)
+        if (other.getThingTypeProperties() == null ^ this.getThingTypeProperties() == null)
             return false;
-        if (other.getThingTypeProperties() != null
-                && other.getThingTypeProperties().equals(
-                        this.getThingTypeProperties()) == false)
+        if (other.getThingTypeProperties() != null && other.getThingTypeProperties().equals(this.getThingTypeProperties()) == false)
             return false;
-        if (other.getThingTypeMetadata() == null
-                ^ this.getThingTypeMetadata() == null)
+        if (other.getThingTypeMetadata() == null ^ this.getThingTypeMetadata() == null)
             return false;
-        if (other.getThingTypeMetadata() != null
-                && other.getThingTypeMetadata().equals(
-                        this.getThingTypeMetadata()) == false)
+        if (other.getThingTypeMetadata() != null && other.getThingTypeMetadata().equals(this.getThingTypeMetadata()) == false)
             return false;
         return true;
     }
@@ -208,18 +223,9 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getThingTypeName() == null) ? 0 : getThingTypeName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getThingTypeProperties() == null) ? 0
-                        : getThingTypeProperties().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getThingTypeMetadata() == null) ? 0
-                        : getThingTypeMetadata().hashCode());
+        hashCode = prime * hashCode + ((getThingTypeName() == null) ? 0 : getThingTypeName().hashCode());
+        hashCode = prime * hashCode + ((getThingTypeProperties() == null) ? 0 : getThingTypeProperties().hashCode());
+        hashCode = prime * hashCode + ((getThingTypeMetadata() == null) ? 0 : getThingTypeMetadata().hashCode());
         return hashCode;
     }
 
@@ -228,9 +234,13 @@ public class ThingTypeDefinition implements Serializable, Cloneable {
         try {
             return (ThingTypeDefinition) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.iot.model.transform.ThingTypeDefinitionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

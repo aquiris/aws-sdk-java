@@ -1,34 +1,36 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * This input identifies a cluster and a list of tags to remove.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveTags" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RemoveTagsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RemoveTagsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon EMR resource identifier from which tags will be removed. This
-     * value must be a cluster identifier.
+     * The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.
      * </p>
      */
     private String resourceId;
@@ -40,34 +42,31 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
     private com.amazonaws.internal.SdkInternalList<String> tagKeys;
 
     /**
-     * Default constructor for RemoveTagsRequest object. Callers should use the
-     * setter or fluent setter (with...) methods to initialize the object after
-     * creating it.
+     * Default constructor for RemoveTagsRequest object. Callers should use the setter or fluent setter (with...)
+     * methods to initialize the object after creating it.
      */
     public RemoveTagsRequest() {
     }
 
     /**
-     * Constructs a new RemoveTagsRequest object. Callers should use the setter
-     * or fluent setter (with...) methods to initialize any additional object
-     * members.
+     * Constructs a new RemoveTagsRequest object. Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
      * 
      * @param resourceId
-     *        The Amazon EMR resource identifier from which tags will be
-     *        removed. This value must be a cluster identifier.
+     *        The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster
+     *        identifier.
      */
     public RemoveTagsRequest(String resourceId) {
         setResourceId(resourceId);
     }
 
     /**
-     * Constructs a new RemoveTagsRequest object. Callers should use the setter
-     * or fluent setter (with...) methods to initialize any additional object
-     * members.
+     * Constructs a new RemoveTagsRequest object. Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
      * 
      * @param resourceId
-     *        The Amazon EMR resource identifier from which tags will be
-     *        removed. This value must be a cluster identifier.
+     *        The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster
+     *        identifier.
      * @param tagKeys
      *        A list of tag keys to remove from a resource.
      */
@@ -78,13 +77,12 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon EMR resource identifier from which tags will be removed. This
-     * value must be a cluster identifier.
+     * The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.
      * </p>
      * 
      * @param resourceId
-     *        The Amazon EMR resource identifier from which tags will be
-     *        removed. This value must be a cluster identifier.
+     *        The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster
+     *        identifier.
      */
 
     public void setResourceId(String resourceId) {
@@ -93,12 +91,11 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon EMR resource identifier from which tags will be removed. This
-     * value must be a cluster identifier.
+     * The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.
      * </p>
      * 
-     * @return The Amazon EMR resource identifier from which tags will be
-     *         removed. This value must be a cluster identifier.
+     * @return The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster
+     *         identifier.
      */
 
     public String getResourceId() {
@@ -107,15 +104,13 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon EMR resource identifier from which tags will be removed. This
-     * value must be a cluster identifier.
+     * The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.
      * </p>
      * 
      * @param resourceId
-     *        The Amazon EMR resource identifier from which tags will be
-     *        removed. This value must be a cluster identifier.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster
+     *        identifier.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RemoveTagsRequest withResourceId(String resourceId) {
@@ -153,8 +148,7 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
             return;
         }
 
-        this.tagKeys = new com.amazonaws.internal.SdkInternalList<String>(
-                tagKeys);
+        this.tagKeys = new com.amazonaws.internal.SdkInternalList<String>(tagKeys);
     }
 
     /**
@@ -162,22 +156,19 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
      * A list of tag keys to remove from a resource.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTagKeys(java.util.Collection)} or
-     * {@link #withTagKeys(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagKeys(java.util.Collection)} or {@link #withTagKeys(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param tagKeys
      *        A list of tag keys to remove from a resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RemoveTagsRequest withTagKeys(String... tagKeys) {
         if (this.tagKeys == null) {
-            setTagKeys(new com.amazonaws.internal.SdkInternalList<String>(
-                    tagKeys.length));
+            setTagKeys(new com.amazonaws.internal.SdkInternalList<String>(tagKeys.length));
         }
         for (String ele : tagKeys) {
             this.tagKeys.add(ele);
@@ -192,8 +183,7 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
      * 
      * @param tagKeys
      *        A list of tag keys to remove from a resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RemoveTagsRequest withTagKeys(java.util.Collection<String> tagKeys) {
@@ -202,8 +192,7 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -214,9 +203,9 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getTagKeys() != null)
-            sb.append("TagKeys: " + getTagKeys());
+            sb.append("TagKeys: ").append(getTagKeys());
         sb.append("}");
         return sb.toString();
     }
@@ -233,13 +222,11 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
         RemoveTagsRequest other = (RemoveTagsRequest) obj;
         if (other.getResourceId() == null ^ this.getResourceId() == null)
             return false;
-        if (other.getResourceId() != null
-                && other.getResourceId().equals(this.getResourceId()) == false)
+        if (other.getResourceId() != null && other.getResourceId().equals(this.getResourceId()) == false)
             return false;
         if (other.getTagKeys() == null ^ this.getTagKeys() == null)
             return false;
-        if (other.getTagKeys() != null
-                && other.getTagKeys().equals(this.getTagKeys()) == false)
+        if (other.getTagKeys() != null && other.getTagKeys().equals(this.getTagKeys()) == false)
             return false;
         return true;
     }
@@ -249,10 +236,8 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
-        hashCode = prime * hashCode
-                + ((getTagKeys() == null) ? 0 : getTagKeys().hashCode());
+        hashCode = prime * hashCode + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
+        hashCode = prime * hashCode + ((getTagKeys() == null) ? 0 : getTagKeys().hashCode());
         return hashCode;
     }
 
@@ -260,4 +245,5 @@ public class RemoveTagsRequest extends AmazonWebServiceRequest implements
     public RemoveTagsRequest clone() {
         return (RemoveTagsRequest) super.clone();
     }
+
 }

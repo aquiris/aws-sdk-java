@@ -1,26 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a snapshot.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/Snapshot" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Snapshot implements Serializable, Cloneable {
 
     /**
@@ -37,23 +40,32 @@ public class Snapshot implements Serializable, Cloneable {
     private String clusterIdentifier;
     /**
      * <p>
-     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot
-     * contains a copy of the cluster data as of this exact time.
+     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this
+     * exact time.
      * </p>
      */
     private java.util.Date snapshotCreateTime;
     /**
      * <p>
-     * The snapshot status. The value of the status depends on the API operation
-     * used.
-     * <ul>
-     * <li><a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns
-     * status as "creating".</li>
-     * <li><a>DescribeClusterSnapshots</a> returns status as "creating",
-     * "available", "final snapshot", or "failed".</li>
-     * <li><a>DeleteClusterSnapshot</a> returns status as "deleted".</li>
-     * </ul>
+     * The snapshot status. The value of the status depends on the API operation used.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteClusterSnapshot</a> returns status as "deleted".
+     * </p>
+     * </li>
+     * </ul>
      */
     private String status;
     /**
@@ -82,15 +94,14 @@ public class Snapshot implements Serializable, Cloneable {
     private String masterUsername;
     /**
      * <p>
-     * The version ID of the Amazon Redshift engine that is running on the
-     * cluster.
+     * The version ID of the Amazon Redshift engine that is running on the cluster.
      * </p>
      */
     private String clusterVersion;
     /**
      * <p>
-     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a>
-     * and <a>CopyClusterSnapshot</a> will be of type "manual".
+     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will be of
+     * type "manual".
      * </p>
      */
     private String snapshotType;
@@ -114,8 +125,8 @@ public class Snapshot implements Serializable, Cloneable {
     private String dBName;
     /**
      * <p>
-     * The VPC identifier of the cluster if the snapshot is from a cluster in a
-     * VPC. Otherwise, this field is not in the output.
+     * The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the
+     * output.
      * </p>
      */
     private String vpcId;
@@ -127,40 +138,35 @@ public class Snapshot implements Serializable, Cloneable {
     private Boolean encrypted;
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * was used to encrypt data in the cluster from which the snapshot was
-     * taken.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster
+     * from which the snapshot was taken.
      * </p>
      */
     private String kmsKeyId;
     /**
      * <p>
-     * A boolean that indicates whether the snapshot data is encrypted using the
-     * HSM keys of the source cluster. <code>true</code> indicates that the data
-     * is encrypted using HSM keys.
+     * A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     * <code>true</code> indicates that the data is encrypted using HSM keys.
      * </p>
      */
     private Boolean encryptedWithHSM;
     /**
      * <p>
-     * A list of the AWS customer accounts authorized to restore the snapshot.
-     * Returns <code>null</code> if no accounts are authorized. Visible only to
-     * the snapshot owner.
+     * A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no accounts
+     * are authorized. Visible only to the snapshot owner.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<AccountWithRestoreAccess> accountsWithRestoreAccess;
     /**
      * <p>
-     * For manual snapshots, the AWS customer account used to create or copy the
-     * snapshot. For automatic snapshots, the owner of the cluster. The owner
-     * can perform all snapshot actions, such as sharing a manual snapshot.
+     * For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic snapshots, the
+     * owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.
      * </p>
      */
     private String ownerAccount;
     /**
      * <p>
-     * The size of the complete set of backup data that would be used to restore
-     * the cluster.
+     * The size of the complete set of backup data that would be used to restore the cluster.
      * </p>
      */
     private Double totalBackupSizeInMegaBytes;
@@ -172,29 +178,28 @@ public class Snapshot implements Serializable, Cloneable {
     private Double actualIncrementalBackupSizeInMegaBytes;
     /**
      * <p>
-     * The number of megabytes that have been transferred to the snapshot
-     * backup.
+     * The number of megabytes that have been transferred to the snapshot backup.
      * </p>
      */
     private Double backupProgressInMegaBytes;
     /**
      * <p>
-     * The number of megabytes per second being transferred to the snapshot
-     * backup. Returns <code>0</code> for a completed backup.
+     * The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      */
     private Double currentBackupRateInMegaBytesPerSecond;
     /**
      * <p>
-     * The estimate of the time remaining before the snapshot backup will
-     * complete. Returns <code>0</code> for a completed backup.
+     * The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      */
     private Long estimatedSecondsToCompletion;
     /**
      * <p>
-     * The amount of time an in-progress snapshot backup has been running, or
-     * the amount of time it took a completed backup to finish.
+     * The amount of time an in-progress snapshot backup has been running, or the amount of time it took a completed
+     * backup to finish.
      * </p>
      */
     private Long elapsedTimeInSeconds;
@@ -212,11 +217,25 @@ public class Snapshot implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
     /**
      * <p>
-     * The list of node types that this cluster snapshot is able to restore
-     * into.
+     * The list of node types that this cluster snapshot is able to restore into.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> restorableNodeTypes;
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     */
+    private Boolean enhancedVpcRouting;
 
     /**
      * <p>
@@ -250,8 +269,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param snapshotIdentifier
      *        The snapshot identifier that is provided in the request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withSnapshotIdentifier(String snapshotIdentifier) {
@@ -291,8 +309,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param clusterIdentifier
      *        The identifier of the cluster for which the snapshot was taken.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withClusterIdentifier(String clusterIdentifier) {
@@ -302,13 +319,13 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot
-     * contains a copy of the cluster data as of this exact time.
+     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this
+     * exact time.
      * </p>
      * 
      * @param snapshotCreateTime
-     *        The time (UTC) when Amazon Redshift began the snapshot. A snapshot
-     *        contains a copy of the cluster data as of this exact time.
+     *        The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as
+     *        of this exact time.
      */
 
     public void setSnapshotCreateTime(java.util.Date snapshotCreateTime) {
@@ -317,13 +334,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot
-     * contains a copy of the cluster data as of this exact time.
+     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this
+     * exact time.
      * </p>
      * 
-     * @return The time (UTC) when Amazon Redshift began the snapshot. A
-     *         snapshot contains a copy of the cluster data as of this exact
-     *         time.
+     * @return The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as
+     *         of this exact time.
      */
 
     public java.util.Date getSnapshotCreateTime() {
@@ -332,15 +348,14 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot
-     * contains a copy of the cluster data as of this exact time.
+     * The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this
+     * exact time.
      * </p>
      * 
      * @param snapshotCreateTime
-     *        The time (UTC) when Amazon Redshift began the snapshot. A snapshot
-     *        contains a copy of the cluster data as of this exact time.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as
+     *        of this exact time.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withSnapshotCreateTime(java.util.Date snapshotCreateTime) {
@@ -350,27 +365,44 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The snapshot status. The value of the status depends on the API operation
-     * used.
-     * <ul>
-     * <li><a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns
-     * status as "creating".</li>
-     * <li><a>DescribeClusterSnapshots</a> returns status as "creating",
-     * "available", "final snapshot", or "failed".</li>
-     * <li><a>DeleteClusterSnapshot</a> returns status as "deleted".</li>
-     * </ul>
+     * The snapshot status. The value of the status depends on the API operation used.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteClusterSnapshot</a> returns status as "deleted".
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param status
-     *        The snapshot status. The value of the status depends on the API
-     *        operation used.
+     *        The snapshot status. The value of the status depends on the API operation used. </p>
      *        <ul>
-     *        <li><a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a>
-     *        returns status as "creating".</li>
-     *        <li><a>DescribeClusterSnapshots</a> returns status as "creating",
-     *        "available", "final snapshot", or "failed".</li>
-     *        <li><a>DeleteClusterSnapshot</a> returns status as "deleted".</li>
-     *        </ul>
+     *        <li>
+     *        <p>
+     *        <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating".
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a>DeleteClusterSnapshot</a> returns status as "deleted".
+     *        </p>
+     *        </li>
      */
 
     public void setStatus(String status) {
@@ -379,26 +411,43 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The snapshot status. The value of the status depends on the API operation
-     * used.
-     * <ul>
-     * <li><a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns
-     * status as "creating".</li>
-     * <li><a>DescribeClusterSnapshots</a> returns status as "creating",
-     * "available", "final snapshot", or "failed".</li>
-     * <li><a>DeleteClusterSnapshot</a> returns status as "deleted".</li>
-     * </ul>
+     * The snapshot status. The value of the status depends on the API operation used.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteClusterSnapshot</a> returns status as "deleted".
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The snapshot status. The value of the status depends on the API
-     *         operation used.
+     * @return The snapshot status. The value of the status depends on the API operation used. </p>
      *         <ul>
-     *         <li><a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a>
-     *         returns status as "creating".</li>
-     *         <li><a>DescribeClusterSnapshots</a> returns status as "creating",
-     *         "available", "final snapshot", or "failed".</li>
-     *         <li><a>DeleteClusterSnapshot</a> returns status as "deleted".</li>
-     *         </ul>
+     *         <li>
+     *         <p>
+     *         <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating".
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <a>DeleteClusterSnapshot</a> returns status as "deleted".
+     *         </p>
+     *         </li>
      */
 
     public String getStatus() {
@@ -407,29 +456,45 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The snapshot status. The value of the status depends on the API operation
-     * used.
-     * <ul>
-     * <li><a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns
-     * status as "creating".</li>
-     * <li><a>DescribeClusterSnapshots</a> returns status as "creating",
-     * "available", "final snapshot", or "failed".</li>
-     * <li><a>DeleteClusterSnapshot</a> returns status as "deleted".</li>
-     * </ul>
+     * The snapshot status. The value of the status depends on the API operation used.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteClusterSnapshot</a> returns status as "deleted".
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param status
-     *        The snapshot status. The value of the status depends on the API
-     *        operation used.
+     *        The snapshot status. The value of the status depends on the API operation used. </p>
      *        <ul>
-     *        <li><a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a>
-     *        returns status as "creating".</li>
-     *        <li><a>DescribeClusterSnapshots</a> returns status as "creating",
-     *        "available", "final snapshot", or "failed".</li>
-     *        <li><a>DeleteClusterSnapshot</a> returns status as "deleted".</li>
-     *        </ul>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating".
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a>DeleteClusterSnapshot</a> returns status as "deleted".
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withStatus(String status) {
@@ -469,8 +534,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param port
      *        The port that the cluster is listening on.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withPort(Integer port) {
@@ -510,8 +574,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param availabilityZone
      *        The Availability Zone in which the cluster was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withAvailabilityZone(String availabilityZone) {
@@ -551,8 +614,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param clusterCreateTime
      *        The time (UTC) when the cluster was originally created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withClusterCreateTime(java.util.Date clusterCreateTime) {
@@ -592,8 +654,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param masterUsername
      *        The master user name for the cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withMasterUsername(String masterUsername) {
@@ -603,13 +664,11 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version ID of the Amazon Redshift engine that is running on the
-     * cluster.
+     * The version ID of the Amazon Redshift engine that is running on the cluster.
      * </p>
      * 
      * @param clusterVersion
-     *        The version ID of the Amazon Redshift engine that is running on
-     *        the cluster.
+     *        The version ID of the Amazon Redshift engine that is running on the cluster.
      */
 
     public void setClusterVersion(String clusterVersion) {
@@ -618,12 +677,10 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version ID of the Amazon Redshift engine that is running on the
-     * cluster.
+     * The version ID of the Amazon Redshift engine that is running on the cluster.
      * </p>
      * 
-     * @return The version ID of the Amazon Redshift engine that is running on
-     *         the cluster.
+     * @return The version ID of the Amazon Redshift engine that is running on the cluster.
      */
 
     public String getClusterVersion() {
@@ -632,15 +689,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version ID of the Amazon Redshift engine that is running on the
-     * cluster.
+     * The version ID of the Amazon Redshift engine that is running on the cluster.
      * </p>
      * 
      * @param clusterVersion
-     *        The version ID of the Amazon Redshift engine that is running on
-     *        the cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The version ID of the Amazon Redshift engine that is running on the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withClusterVersion(String clusterVersion) {
@@ -650,14 +704,13 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a>
-     * and <a>CopyClusterSnapshot</a> will be of type "manual".
+     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will be of
+     * type "manual".
      * </p>
      * 
      * @param snapshotType
-     *        The snapshot type. Snapshots created using
-     *        <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will
-     *        be of type "manual".
+     *        The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a>
+     *        will be of type "manual".
      */
 
     public void setSnapshotType(String snapshotType) {
@@ -666,13 +719,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a>
-     * and <a>CopyClusterSnapshot</a> will be of type "manual".
+     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will be of
+     * type "manual".
      * </p>
      * 
-     * @return The snapshot type. Snapshots created using
-     *         <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will
-     *         be of type "manual".
+     * @return The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a>
+     *         will be of type "manual".
      */
 
     public String getSnapshotType() {
@@ -681,16 +733,14 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a>
-     * and <a>CopyClusterSnapshot</a> will be of type "manual".
+     * The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will be of
+     * type "manual".
      * </p>
      * 
      * @param snapshotType
-     *        The snapshot type. Snapshots created using
-     *        <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will
-     *        be of type "manual".
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a>
+     *        will be of type "manual".
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withSnapshotType(String snapshotType) {
@@ -730,8 +780,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param nodeType
      *        The node type of the nodes in the cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withNodeType(String nodeType) {
@@ -771,8 +820,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param numberOfNodes
      *        The number of nodes in the cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withNumberOfNodes(Integer numberOfNodes) {
@@ -786,8 +834,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBName
-     *        The name of the database that was created when the cluster was
-     *        created.
+     *        The name of the database that was created when the cluster was created.
      */
 
     public void setDBName(String dBName) {
@@ -799,8 +846,7 @@ public class Snapshot implements Serializable, Cloneable {
      * The name of the database that was created when the cluster was created.
      * </p>
      * 
-     * @return The name of the database that was created when the cluster was
-     *         created.
+     * @return The name of the database that was created when the cluster was created.
      */
 
     public String getDBName() {
@@ -813,10 +859,8 @@ public class Snapshot implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBName
-     *        The name of the database that was created when the cluster was
-     *        created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the database that was created when the cluster was created.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withDBName(String dBName) {
@@ -826,13 +870,13 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The VPC identifier of the cluster if the snapshot is from a cluster in a
-     * VPC. Otherwise, this field is not in the output.
+     * The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the
+     * output.
      * </p>
      * 
      * @param vpcId
-     *        The VPC identifier of the cluster if the snapshot is from a
-     *        cluster in a VPC. Otherwise, this field is not in the output.
+     *        The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not
+     *        in the output.
      */
 
     public void setVpcId(String vpcId) {
@@ -841,12 +885,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The VPC identifier of the cluster if the snapshot is from a cluster in a
-     * VPC. Otherwise, this field is not in the output.
+     * The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the
+     * output.
      * </p>
      * 
-     * @return The VPC identifier of the cluster if the snapshot is from a
-     *         cluster in a VPC. Otherwise, this field is not in the output.
+     * @return The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is
+     *         not in the output.
      */
 
     public String getVpcId() {
@@ -855,15 +899,14 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The VPC identifier of the cluster if the snapshot is from a cluster in a
-     * VPC. Otherwise, this field is not in the output.
+     * The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the
+     * output.
      * </p>
      * 
      * @param vpcId
-     *        The VPC identifier of the cluster if the snapshot is from a
-     *        cluster in a VPC. Otherwise, this field is not in the output.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not
+     *        in the output.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withVpcId(String vpcId) {
@@ -877,8 +920,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </p>
      * 
      * @param encrypted
-     *        If <code>true</code>, the data in the snapshot is encrypted at
-     *        rest.
+     *        If <code>true</code>, the data in the snapshot is encrypted at rest.
      */
 
     public void setEncrypted(Boolean encrypted) {
@@ -890,8 +932,7 @@ public class Snapshot implements Serializable, Cloneable {
      * If <code>true</code>, the data in the snapshot is encrypted at rest.
      * </p>
      * 
-     * @return If <code>true</code>, the data in the snapshot is encrypted at
-     *         rest.
+     * @return If <code>true</code>, the data in the snapshot is encrypted at rest.
      */
 
     public Boolean getEncrypted() {
@@ -904,10 +945,8 @@ public class Snapshot implements Serializable, Cloneable {
      * </p>
      * 
      * @param encrypted
-     *        If <code>true</code>, the data in the snapshot is encrypted at
-     *        rest.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If <code>true</code>, the data in the snapshot is encrypted at rest.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withEncrypted(Boolean encrypted) {
@@ -920,8 +959,7 @@ public class Snapshot implements Serializable, Cloneable {
      * If <code>true</code>, the data in the snapshot is encrypted at rest.
      * </p>
      * 
-     * @return If <code>true</code>, the data in the snapshot is encrypted at
-     *         rest.
+     * @return If <code>true</code>, the data in the snapshot is encrypted at rest.
      */
 
     public Boolean isEncrypted() {
@@ -930,15 +968,13 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * was used to encrypt data in the cluster from which the snapshot was
-     * taken.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster
+     * from which the snapshot was taken.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS Key Management Service (KMS) key ID of the encryption key
-     *        that was used to encrypt data in the cluster from which the
-     *        snapshot was taken.
+     *        The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the
+     *        cluster from which the snapshot was taken.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -947,14 +983,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * was used to encrypt data in the cluster from which the snapshot was
-     * taken.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster
+     * from which the snapshot was taken.
      * </p>
      * 
-     * @return The AWS Key Management Service (KMS) key ID of the encryption key
-     *         that was used to encrypt data in the cluster from which the
-     *         snapshot was taken.
+     * @return The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the
+     *         cluster from which the snapshot was taken.
      */
 
     public String getKmsKeyId() {
@@ -963,17 +997,14 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The AWS Key Management Service (KMS) key ID of the encryption key that
-     * was used to encrypt data in the cluster from which the snapshot was
-     * taken.
+     * The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster
+     * from which the snapshot was taken.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS Key Management Service (KMS) key ID of the encryption key
-     *        that was used to encrypt data in the cluster from which the
-     *        snapshot was taken.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the
+     *        cluster from which the snapshot was taken.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withKmsKeyId(String kmsKeyId) {
@@ -983,15 +1014,13 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A boolean that indicates whether the snapshot data is encrypted using the
-     * HSM keys of the source cluster. <code>true</code> indicates that the data
-     * is encrypted using HSM keys.
+     * A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     * <code>true</code> indicates that the data is encrypted using HSM keys.
      * </p>
      * 
      * @param encryptedWithHSM
-     *        A boolean that indicates whether the snapshot data is encrypted
-     *        using the HSM keys of the source cluster. <code>true</code>
-     *        indicates that the data is encrypted using HSM keys.
+     *        A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     *        <code>true</code> indicates that the data is encrypted using HSM keys.
      */
 
     public void setEncryptedWithHSM(Boolean encryptedWithHSM) {
@@ -1000,14 +1029,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A boolean that indicates whether the snapshot data is encrypted using the
-     * HSM keys of the source cluster. <code>true</code> indicates that the data
-     * is encrypted using HSM keys.
+     * A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     * <code>true</code> indicates that the data is encrypted using HSM keys.
      * </p>
      * 
-     * @return A boolean that indicates whether the snapshot data is encrypted
-     *         using the HSM keys of the source cluster. <code>true</code>
-     *         indicates that the data is encrypted using HSM keys.
+     * @return A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     *         <code>true</code> indicates that the data is encrypted using HSM keys.
      */
 
     public Boolean getEncryptedWithHSM() {
@@ -1016,17 +1043,14 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A boolean that indicates whether the snapshot data is encrypted using the
-     * HSM keys of the source cluster. <code>true</code> indicates that the data
-     * is encrypted using HSM keys.
+     * A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     * <code>true</code> indicates that the data is encrypted using HSM keys.
      * </p>
      * 
      * @param encryptedWithHSM
-     *        A boolean that indicates whether the snapshot data is encrypted
-     *        using the HSM keys of the source cluster. <code>true</code>
-     *        indicates that the data is encrypted using HSM keys.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     *        <code>true</code> indicates that the data is encrypted using HSM keys.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withEncryptedWithHSM(Boolean encryptedWithHSM) {
@@ -1036,14 +1060,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A boolean that indicates whether the snapshot data is encrypted using the
-     * HSM keys of the source cluster. <code>true</code> indicates that the data
-     * is encrypted using HSM keys.
+     * A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     * <code>true</code> indicates that the data is encrypted using HSM keys.
      * </p>
      * 
-     * @return A boolean that indicates whether the snapshot data is encrypted
-     *         using the HSM keys of the source cluster. <code>true</code>
-     *         indicates that the data is encrypted using HSM keys.
+     * @return A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster.
+     *         <code>true</code> indicates that the data is encrypted using HSM keys.
      */
 
     public Boolean isEncryptedWithHSM() {
@@ -1052,14 +1074,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of the AWS customer accounts authorized to restore the snapshot.
-     * Returns <code>null</code> if no accounts are authorized. Visible only to
-     * the snapshot owner.
+     * A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no accounts
+     * are authorized. Visible only to the snapshot owner.
      * </p>
      * 
-     * @return A list of the AWS customer accounts authorized to restore the
-     *         snapshot. Returns <code>null</code> if no accounts are
-     *         authorized. Visible only to the snapshot owner.
+     * @return A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no
+     *         accounts are authorized. Visible only to the snapshot owner.
      */
 
     public java.util.List<AccountWithRestoreAccess> getAccountsWithRestoreAccess() {
@@ -1071,54 +1091,44 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of the AWS customer accounts authorized to restore the snapshot.
-     * Returns <code>null</code> if no accounts are authorized. Visible only to
-     * the snapshot owner.
+     * A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no accounts
+     * are authorized. Visible only to the snapshot owner.
      * </p>
      * 
      * @param accountsWithRestoreAccess
-     *        A list of the AWS customer accounts authorized to restore the
-     *        snapshot. Returns <code>null</code> if no accounts are authorized.
-     *        Visible only to the snapshot owner.
+     *        A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no
+     *        accounts are authorized. Visible only to the snapshot owner.
      */
 
-    public void setAccountsWithRestoreAccess(
-            java.util.Collection<AccountWithRestoreAccess> accountsWithRestoreAccess) {
+    public void setAccountsWithRestoreAccess(java.util.Collection<AccountWithRestoreAccess> accountsWithRestoreAccess) {
         if (accountsWithRestoreAccess == null) {
             this.accountsWithRestoreAccess = null;
             return;
         }
 
-        this.accountsWithRestoreAccess = new com.amazonaws.internal.SdkInternalList<AccountWithRestoreAccess>(
-                accountsWithRestoreAccess);
+        this.accountsWithRestoreAccess = new com.amazonaws.internal.SdkInternalList<AccountWithRestoreAccess>(accountsWithRestoreAccess);
     }
 
     /**
      * <p>
-     * A list of the AWS customer accounts authorized to restore the snapshot.
-     * Returns <code>null</code> if no accounts are authorized. Visible only to
-     * the snapshot owner.
+     * A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no accounts
+     * are authorized. Visible only to the snapshot owner.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setAccountsWithRestoreAccess(java.util.Collection)} or
-     * {@link #withAccountsWithRestoreAccess(java.util.Collection)} if you want
-     * to override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAccountsWithRestoreAccess(java.util.Collection)} or
+     * {@link #withAccountsWithRestoreAccess(java.util.Collection)} if you want to override the existing values.
      * </p>
      * 
      * @param accountsWithRestoreAccess
-     *        A list of the AWS customer accounts authorized to restore the
-     *        snapshot. Returns <code>null</code> if no accounts are authorized.
-     *        Visible only to the snapshot owner.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no
+     *        accounts are authorized. Visible only to the snapshot owner.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withAccountsWithRestoreAccess(
-            AccountWithRestoreAccess... accountsWithRestoreAccess) {
+    public Snapshot withAccountsWithRestoreAccess(AccountWithRestoreAccess... accountsWithRestoreAccess) {
         if (this.accountsWithRestoreAccess == null) {
-            setAccountsWithRestoreAccess(new com.amazonaws.internal.SdkInternalList<AccountWithRestoreAccess>(
-                    accountsWithRestoreAccess.length));
+            setAccountsWithRestoreAccess(new com.amazonaws.internal.SdkInternalList<AccountWithRestoreAccess>(accountsWithRestoreAccess.length));
         }
         for (AccountWithRestoreAccess ele : accountsWithRestoreAccess) {
             this.accountsWithRestoreAccess.add(ele);
@@ -1128,37 +1138,31 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of the AWS customer accounts authorized to restore the snapshot.
-     * Returns <code>null</code> if no accounts are authorized. Visible only to
-     * the snapshot owner.
+     * A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no accounts
+     * are authorized. Visible only to the snapshot owner.
      * </p>
      * 
      * @param accountsWithRestoreAccess
-     *        A list of the AWS customer accounts authorized to restore the
-     *        snapshot. Returns <code>null</code> if no accounts are authorized.
-     *        Visible only to the snapshot owner.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no
+     *        accounts are authorized. Visible only to the snapshot owner.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withAccountsWithRestoreAccess(
-            java.util.Collection<AccountWithRestoreAccess> accountsWithRestoreAccess) {
+    public Snapshot withAccountsWithRestoreAccess(java.util.Collection<AccountWithRestoreAccess> accountsWithRestoreAccess) {
         setAccountsWithRestoreAccess(accountsWithRestoreAccess);
         return this;
     }
 
     /**
      * <p>
-     * For manual snapshots, the AWS customer account used to create or copy the
-     * snapshot. For automatic snapshots, the owner of the cluster. The owner
-     * can perform all snapshot actions, such as sharing a manual snapshot.
+     * For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic snapshots, the
+     * owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.
      * </p>
      * 
      * @param ownerAccount
-     *        For manual snapshots, the AWS customer account used to create or
-     *        copy the snapshot. For automatic snapshots, the owner of the
-     *        cluster. The owner can perform all snapshot actions, such as
-     *        sharing a manual snapshot.
+     *        For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic
+     *        snapshots, the owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual
+     *        snapshot.
      */
 
     public void setOwnerAccount(String ownerAccount) {
@@ -1167,15 +1171,13 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * For manual snapshots, the AWS customer account used to create or copy the
-     * snapshot. For automatic snapshots, the owner of the cluster. The owner
-     * can perform all snapshot actions, such as sharing a manual snapshot.
+     * For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic snapshots, the
+     * owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.
      * </p>
      * 
-     * @return For manual snapshots, the AWS customer account used to create or
-     *         copy the snapshot. For automatic snapshots, the owner of the
-     *         cluster. The owner can perform all snapshot actions, such as
-     *         sharing a manual snapshot.
+     * @return For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic
+     *         snapshots, the owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual
+     *         snapshot.
      */
 
     public String getOwnerAccount() {
@@ -1184,18 +1186,15 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * For manual snapshots, the AWS customer account used to create or copy the
-     * snapshot. For automatic snapshots, the owner of the cluster. The owner
-     * can perform all snapshot actions, such as sharing a manual snapshot.
+     * For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic snapshots, the
+     * owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.
      * </p>
      * 
      * @param ownerAccount
-     *        For manual snapshots, the AWS customer account used to create or
-     *        copy the snapshot. For automatic snapshots, the owner of the
-     *        cluster. The owner can perform all snapshot actions, such as
-     *        sharing a manual snapshot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic
+     *        snapshots, the owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual
+     *        snapshot.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withOwnerAccount(String ownerAccount) {
@@ -1205,13 +1204,11 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The size of the complete set of backup data that would be used to restore
-     * the cluster.
+     * The size of the complete set of backup data that would be used to restore the cluster.
      * </p>
      * 
      * @param totalBackupSizeInMegaBytes
-     *        The size of the complete set of backup data that would be used to
-     *        restore the cluster.
+     *        The size of the complete set of backup data that would be used to restore the cluster.
      */
 
     public void setTotalBackupSizeInMegaBytes(Double totalBackupSizeInMegaBytes) {
@@ -1220,12 +1217,10 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The size of the complete set of backup data that would be used to restore
-     * the cluster.
+     * The size of the complete set of backup data that would be used to restore the cluster.
      * </p>
      * 
-     * @return The size of the complete set of backup data that would be used to
-     *         restore the cluster.
+     * @return The size of the complete set of backup data that would be used to restore the cluster.
      */
 
     public Double getTotalBackupSizeInMegaBytes() {
@@ -1234,19 +1229,15 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The size of the complete set of backup data that would be used to restore
-     * the cluster.
+     * The size of the complete set of backup data that would be used to restore the cluster.
      * </p>
      * 
      * @param totalBackupSizeInMegaBytes
-     *        The size of the complete set of backup data that would be used to
-     *        restore the cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The size of the complete set of backup data that would be used to restore the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withTotalBackupSizeInMegaBytes(
-            Double totalBackupSizeInMegaBytes) {
+    public Snapshot withTotalBackupSizeInMegaBytes(Double totalBackupSizeInMegaBytes) {
         setTotalBackupSizeInMegaBytes(totalBackupSizeInMegaBytes);
         return this;
     }
@@ -1260,8 +1251,7 @@ public class Snapshot implements Serializable, Cloneable {
      *        The size of the incremental backup.
      */
 
-    public void setActualIncrementalBackupSizeInMegaBytes(
-            Double actualIncrementalBackupSizeInMegaBytes) {
+    public void setActualIncrementalBackupSizeInMegaBytes(Double actualIncrementalBackupSizeInMegaBytes) {
         this.actualIncrementalBackupSizeInMegaBytes = actualIncrementalBackupSizeInMegaBytes;
     }
 
@@ -1284,25 +1274,21 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param actualIncrementalBackupSizeInMegaBytes
      *        The size of the incremental backup.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withActualIncrementalBackupSizeInMegaBytes(
-            Double actualIncrementalBackupSizeInMegaBytes) {
+    public Snapshot withActualIncrementalBackupSizeInMegaBytes(Double actualIncrementalBackupSizeInMegaBytes) {
         setActualIncrementalBackupSizeInMegaBytes(actualIncrementalBackupSizeInMegaBytes);
         return this;
     }
 
     /**
      * <p>
-     * The number of megabytes that have been transferred to the snapshot
-     * backup.
+     * The number of megabytes that have been transferred to the snapshot backup.
      * </p>
      * 
      * @param backupProgressInMegaBytes
-     *        The number of megabytes that have been transferred to the snapshot
-     *        backup.
+     *        The number of megabytes that have been transferred to the snapshot backup.
      */
 
     public void setBackupProgressInMegaBytes(Double backupProgressInMegaBytes) {
@@ -1311,12 +1297,10 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of megabytes that have been transferred to the snapshot
-     * backup.
+     * The number of megabytes that have been transferred to the snapshot backup.
      * </p>
      * 
-     * @return The number of megabytes that have been transferred to the
-     *         snapshot backup.
+     * @return The number of megabytes that have been transferred to the snapshot backup.
      */
 
     public Double getBackupProgressInMegaBytes() {
@@ -1325,47 +1309,42 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of megabytes that have been transferred to the snapshot
-     * backup.
+     * The number of megabytes that have been transferred to the snapshot backup.
      * </p>
      * 
      * @param backupProgressInMegaBytes
-     *        The number of megabytes that have been transferred to the snapshot
-     *        backup.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The number of megabytes that have been transferred to the snapshot backup.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withBackupProgressInMegaBytes(
-            Double backupProgressInMegaBytes) {
+    public Snapshot withBackupProgressInMegaBytes(Double backupProgressInMegaBytes) {
         setBackupProgressInMegaBytes(backupProgressInMegaBytes);
         return this;
     }
 
     /**
      * <p>
-     * The number of megabytes per second being transferred to the snapshot
-     * backup. Returns <code>0</code> for a completed backup.
+     * The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      * 
      * @param currentBackupRateInMegaBytesPerSecond
-     *        The number of megabytes per second being transferred to the
-     *        snapshot backup. Returns <code>0</code> for a completed backup.
+     *        The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a
+     *        completed backup.
      */
 
-    public void setCurrentBackupRateInMegaBytesPerSecond(
-            Double currentBackupRateInMegaBytesPerSecond) {
+    public void setCurrentBackupRateInMegaBytesPerSecond(Double currentBackupRateInMegaBytesPerSecond) {
         this.currentBackupRateInMegaBytesPerSecond = currentBackupRateInMegaBytesPerSecond;
     }
 
     /**
      * <p>
-     * The number of megabytes per second being transferred to the snapshot
-     * backup. Returns <code>0</code> for a completed backup.
+     * The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      * 
-     * @return The number of megabytes per second being transferred to the
-     *         snapshot backup. Returns <code>0</code> for a completed backup.
+     * @return The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a
+     *         completed backup.
      */
 
     public Double getCurrentBackupRateInMegaBytesPerSecond() {
@@ -1374,47 +1353,44 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of megabytes per second being transferred to the snapshot
-     * backup. Returns <code>0</code> for a completed backup.
+     * The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      * 
      * @param currentBackupRateInMegaBytesPerSecond
-     *        The number of megabytes per second being transferred to the
-     *        snapshot backup. Returns <code>0</code> for a completed backup.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a
+     *        completed backup.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withCurrentBackupRateInMegaBytesPerSecond(
-            Double currentBackupRateInMegaBytesPerSecond) {
+    public Snapshot withCurrentBackupRateInMegaBytesPerSecond(Double currentBackupRateInMegaBytesPerSecond) {
         setCurrentBackupRateInMegaBytesPerSecond(currentBackupRateInMegaBytesPerSecond);
         return this;
     }
 
     /**
      * <p>
-     * The estimate of the time remaining before the snapshot backup will
-     * complete. Returns <code>0</code> for a completed backup.
+     * The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      * 
      * @param estimatedSecondsToCompletion
-     *        The estimate of the time remaining before the snapshot backup will
-     *        complete. Returns <code>0</code> for a completed backup.
+     *        The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a
+     *        completed backup.
      */
 
-    public void setEstimatedSecondsToCompletion(
-            Long estimatedSecondsToCompletion) {
+    public void setEstimatedSecondsToCompletion(Long estimatedSecondsToCompletion) {
         this.estimatedSecondsToCompletion = estimatedSecondsToCompletion;
     }
 
     /**
      * <p>
-     * The estimate of the time remaining before the snapshot backup will
-     * complete. Returns <code>0</code> for a completed backup.
+     * The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      * 
-     * @return The estimate of the time remaining before the snapshot backup
-     *         will complete. Returns <code>0</code> for a completed backup.
+     * @return The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a
+     *         completed backup.
      */
 
     public Long getEstimatedSecondsToCompletion() {
@@ -1423,33 +1399,30 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The estimate of the time remaining before the snapshot backup will
-     * complete. Returns <code>0</code> for a completed backup.
+     * The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a
+     * completed backup.
      * </p>
      * 
      * @param estimatedSecondsToCompletion
-     *        The estimate of the time remaining before the snapshot backup will
-     *        complete. Returns <code>0</code> for a completed backup.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a
+     *        completed backup.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withEstimatedSecondsToCompletion(
-            Long estimatedSecondsToCompletion) {
+    public Snapshot withEstimatedSecondsToCompletion(Long estimatedSecondsToCompletion) {
         setEstimatedSecondsToCompletion(estimatedSecondsToCompletion);
         return this;
     }
 
     /**
      * <p>
-     * The amount of time an in-progress snapshot backup has been running, or
-     * the amount of time it took a completed backup to finish.
+     * The amount of time an in-progress snapshot backup has been running, or the amount of time it took a completed
+     * backup to finish.
      * </p>
      * 
      * @param elapsedTimeInSeconds
-     *        The amount of time an in-progress snapshot backup has been
-     *        running, or the amount of time it took a completed backup to
-     *        finish.
+     *        The amount of time an in-progress snapshot backup has been running, or the amount of time it took a
+     *        completed backup to finish.
      */
 
     public void setElapsedTimeInSeconds(Long elapsedTimeInSeconds) {
@@ -1458,13 +1431,12 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The amount of time an in-progress snapshot backup has been running, or
-     * the amount of time it took a completed backup to finish.
+     * The amount of time an in-progress snapshot backup has been running, or the amount of time it took a completed
+     * backup to finish.
      * </p>
      * 
-     * @return The amount of time an in-progress snapshot backup has been
-     *         running, or the amount of time it took a completed backup to
-     *         finish.
+     * @return The amount of time an in-progress snapshot backup has been running, or the amount of time it took a
+     *         completed backup to finish.
      */
 
     public Long getElapsedTimeInSeconds() {
@@ -1473,16 +1445,14 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The amount of time an in-progress snapshot backup has been running, or
-     * the amount of time it took a completed backup to finish.
+     * The amount of time an in-progress snapshot backup has been running, or the amount of time it took a completed
+     * backup to finish.
      * </p>
      * 
      * @param elapsedTimeInSeconds
-     *        The amount of time an in-progress snapshot backup has been
-     *        running, or the amount of time it took a completed backup to
-     *        finish.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The amount of time an in-progress snapshot backup has been running, or the amount of time it took a
+     *        completed backup to finish.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withElapsedTimeInSeconds(Long elapsedTimeInSeconds) {
@@ -1522,8 +1492,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param sourceRegion
      *        The source region from which the snapshot was copied.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withSourceRegion(String sourceRegion) {
@@ -1569,16 +1538,14 @@ public class Snapshot implements Serializable, Cloneable {
      * The list of tags for the cluster snapshot.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTags(java.util.Collection)} or
-     * {@link #withTags(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param tags
      *        The list of tags for the cluster snapshot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withTags(Tag... tags) {
@@ -1598,8 +1565,7 @@ public class Snapshot implements Serializable, Cloneable {
      * 
      * @param tags
      *        The list of tags for the cluster snapshot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withTags(java.util.Collection<Tag> tags) {
@@ -1609,12 +1575,10 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of node types that this cluster snapshot is able to restore
-     * into.
+     * The list of node types that this cluster snapshot is able to restore into.
      * </p>
      * 
-     * @return The list of node types that this cluster snapshot is able to
-     *         restore into.
+     * @return The list of node types that this cluster snapshot is able to restore into.
      */
 
     public java.util.List<String> getRestorableNodeTypes() {
@@ -1626,49 +1590,40 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of node types that this cluster snapshot is able to restore
-     * into.
+     * The list of node types that this cluster snapshot is able to restore into.
      * </p>
      * 
      * @param restorableNodeTypes
-     *        The list of node types that this cluster snapshot is able to
-     *        restore into.
+     *        The list of node types that this cluster snapshot is able to restore into.
      */
 
-    public void setRestorableNodeTypes(
-            java.util.Collection<String> restorableNodeTypes) {
+    public void setRestorableNodeTypes(java.util.Collection<String> restorableNodeTypes) {
         if (restorableNodeTypes == null) {
             this.restorableNodeTypes = null;
             return;
         }
 
-        this.restorableNodeTypes = new com.amazonaws.internal.SdkInternalList<String>(
-                restorableNodeTypes);
+        this.restorableNodeTypes = new com.amazonaws.internal.SdkInternalList<String>(restorableNodeTypes);
     }
 
     /**
      * <p>
-     * The list of node types that this cluster snapshot is able to restore
-     * into.
+     * The list of node types that this cluster snapshot is able to restore into.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setRestorableNodeTypes(java.util.Collection)} or
-     * {@link #withRestorableNodeTypes(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setRestorableNodeTypes(java.util.Collection)} or {@link #withRestorableNodeTypes(java.util.Collection)}
+     * if you want to override the existing values.
      * </p>
      * 
      * @param restorableNodeTypes
-     *        The list of node types that this cluster snapshot is able to
-     *        restore into.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The list of node types that this cluster snapshot is able to restore into.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Snapshot withRestorableNodeTypes(String... restorableNodeTypes) {
         if (this.restorableNodeTypes == null) {
-            setRestorableNodeTypes(new com.amazonaws.internal.SdkInternalList<String>(
-                    restorableNodeTypes.length));
+            setRestorableNodeTypes(new com.amazonaws.internal.SdkInternalList<String>(restorableNodeTypes.length));
         }
         for (String ele : restorableNodeTypes) {
             this.restorableNodeTypes.add(ele);
@@ -1678,26 +1633,141 @@ public class Snapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of node types that this cluster snapshot is able to restore
-     * into.
+     * The list of node types that this cluster snapshot is able to restore into.
      * </p>
      * 
      * @param restorableNodeTypes
-     *        The list of node types that this cluster snapshot is able to
-     *        restore into.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The list of node types that this cluster snapshot is able to restore into.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Snapshot withRestorableNodeTypes(
-            java.util.Collection<String> restorableNodeTypes) {
+    public Snapshot withRestorableNodeTypes(java.util.Collection<String> restorableNodeTypes) {
         setRestorableNodeTypes(restorableNodeTypes);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @param enhancedVpcRouting
+     *        An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *        cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *        in the Amazon Redshift Cluster Management Guide.</p>
+     *        <p>
+     *        If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *        </p>
+     *        <p>
+     *        Default: false
+     */
+
+    public void setEnhancedVpcRouting(Boolean enhancedVpcRouting) {
+        this.enhancedVpcRouting = enhancedVpcRouting;
+    }
+
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @return An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *         cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *         in the Amazon Redshift Cluster Management Guide.</p>
+     *         <p>
+     *         If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *         </p>
+     *         <p>
+     *         Default: false
+     */
+
+    public Boolean getEnhancedVpcRouting() {
+        return this.enhancedVpcRouting;
+    }
+
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @param enhancedVpcRouting
+     *        An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *        cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *        in the Amazon Redshift Cluster Management Guide.</p>
+     *        <p>
+     *        If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *        </p>
+     *        <p>
+     *        Default: false
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Snapshot withEnhancedVpcRouting(Boolean enhancedVpcRouting) {
+        setEnhancedVpcRouting(enhancedVpcRouting);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
+     * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * Amazon Redshift Cluster Management Guide.
+     * </p>
+     * <p>
+     * If this option is <code>true</code>, enhanced VPC routing is enabled.
+     * </p>
+     * <p>
+     * Default: false
+     * </p>
+     * 
+     * @return An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
+     *         cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
+     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *         in the Amazon Redshift Cluster Management Guide.</p>
+     *         <p>
+     *         If this option is <code>true</code>, enhanced VPC routing is enabled.
+     *         </p>
+     *         <p>
+     *         Default: false
+     */
+
+    public Boolean isEnhancedVpcRouting() {
+        return this.enhancedVpcRouting;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -1708,68 +1778,63 @@ public class Snapshot implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSnapshotIdentifier() != null)
-            sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");
+            sb.append("SnapshotIdentifier: ").append(getSnapshotIdentifier()).append(",");
         if (getClusterIdentifier() != null)
-            sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+            sb.append("ClusterIdentifier: ").append(getClusterIdentifier()).append(",");
         if (getSnapshotCreateTime() != null)
-            sb.append("SnapshotCreateTime: " + getSnapshotCreateTime() + ",");
+            sb.append("SnapshotCreateTime: ").append(getSnapshotCreateTime()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getClusterCreateTime() != null)
-            sb.append("ClusterCreateTime: " + getClusterCreateTime() + ",");
+            sb.append("ClusterCreateTime: ").append(getClusterCreateTime()).append(",");
         if (getMasterUsername() != null)
-            sb.append("MasterUsername: " + getMasterUsername() + ",");
+            sb.append("MasterUsername: ").append(getMasterUsername()).append(",");
         if (getClusterVersion() != null)
-            sb.append("ClusterVersion: " + getClusterVersion() + ",");
+            sb.append("ClusterVersion: ").append(getClusterVersion()).append(",");
         if (getSnapshotType() != null)
-            sb.append("SnapshotType: " + getSnapshotType() + ",");
+            sb.append("SnapshotType: ").append(getSnapshotType()).append(",");
         if (getNodeType() != null)
-            sb.append("NodeType: " + getNodeType() + ",");
+            sb.append("NodeType: ").append(getNodeType()).append(",");
         if (getNumberOfNodes() != null)
-            sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");
+            sb.append("NumberOfNodes: ").append(getNumberOfNodes()).append(",");
         if (getDBName() != null)
-            sb.append("DBName: " + getDBName() + ",");
+            sb.append("DBName: ").append(getDBName()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getEncrypted() != null)
-            sb.append("Encrypted: " + getEncrypted() + ",");
+            sb.append("Encrypted: ").append(getEncrypted()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getEncryptedWithHSM() != null)
-            sb.append("EncryptedWithHSM: " + getEncryptedWithHSM() + ",");
+            sb.append("EncryptedWithHSM: ").append(getEncryptedWithHSM()).append(",");
         if (getAccountsWithRestoreAccess() != null)
-            sb.append("AccountsWithRestoreAccess: "
-                    + getAccountsWithRestoreAccess() + ",");
+            sb.append("AccountsWithRestoreAccess: ").append(getAccountsWithRestoreAccess()).append(",");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getTotalBackupSizeInMegaBytes() != null)
-            sb.append("TotalBackupSizeInMegaBytes: "
-                    + getTotalBackupSizeInMegaBytes() + ",");
+            sb.append("TotalBackupSizeInMegaBytes: ").append(getTotalBackupSizeInMegaBytes()).append(",");
         if (getActualIncrementalBackupSizeInMegaBytes() != null)
-            sb.append("ActualIncrementalBackupSizeInMegaBytes: "
-                    + getActualIncrementalBackupSizeInMegaBytes() + ",");
+            sb.append("ActualIncrementalBackupSizeInMegaBytes: ").append(getActualIncrementalBackupSizeInMegaBytes()).append(",");
         if (getBackupProgressInMegaBytes() != null)
-            sb.append("BackupProgressInMegaBytes: "
-                    + getBackupProgressInMegaBytes() + ",");
+            sb.append("BackupProgressInMegaBytes: ").append(getBackupProgressInMegaBytes()).append(",");
         if (getCurrentBackupRateInMegaBytesPerSecond() != null)
-            sb.append("CurrentBackupRateInMegaBytesPerSecond: "
-                    + getCurrentBackupRateInMegaBytesPerSecond() + ",");
+            sb.append("CurrentBackupRateInMegaBytesPerSecond: ").append(getCurrentBackupRateInMegaBytesPerSecond()).append(",");
         if (getEstimatedSecondsToCompletion() != null)
-            sb.append("EstimatedSecondsToCompletion: "
-                    + getEstimatedSecondsToCompletion() + ",");
+            sb.append("EstimatedSecondsToCompletion: ").append(getEstimatedSecondsToCompletion()).append(",");
         if (getElapsedTimeInSeconds() != null)
-            sb.append("ElapsedTimeInSeconds: " + getElapsedTimeInSeconds()
-                    + ",");
+            sb.append("ElapsedTimeInSeconds: ").append(getElapsedTimeInSeconds()).append(",");
         if (getSourceRegion() != null)
-            sb.append("SourceRegion: " + getSourceRegion() + ",");
+            sb.append("SourceRegion: ").append(getSourceRegion()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getRestorableNodeTypes() != null)
-            sb.append("RestorableNodeTypes: " + getRestorableNodeTypes());
+            sb.append("RestorableNodeTypes: ").append(getRestorableNodeTypes()).append(",");
+        if (getEnhancedVpcRouting() != null)
+            sb.append("EnhancedVpcRouting: ").append(getEnhancedVpcRouting());
         sb.append("}");
         return sb.toString();
     }
@@ -1784,175 +1849,123 @@ public class Snapshot implements Serializable, Cloneable {
         if (obj instanceof Snapshot == false)
             return false;
         Snapshot other = (Snapshot) obj;
-        if (other.getSnapshotIdentifier() == null
-                ^ this.getSnapshotIdentifier() == null)
+        if (other.getSnapshotIdentifier() == null ^ this.getSnapshotIdentifier() == null)
             return false;
-        if (other.getSnapshotIdentifier() != null
-                && other.getSnapshotIdentifier().equals(
-                        this.getSnapshotIdentifier()) == false)
+        if (other.getSnapshotIdentifier() != null && other.getSnapshotIdentifier().equals(this.getSnapshotIdentifier()) == false)
             return false;
-        if (other.getClusterIdentifier() == null
-                ^ this.getClusterIdentifier() == null)
+        if (other.getClusterIdentifier() == null ^ this.getClusterIdentifier() == null)
             return false;
-        if (other.getClusterIdentifier() != null
-                && other.getClusterIdentifier().equals(
-                        this.getClusterIdentifier()) == false)
+        if (other.getClusterIdentifier() != null && other.getClusterIdentifier().equals(this.getClusterIdentifier()) == false)
             return false;
-        if (other.getSnapshotCreateTime() == null
-                ^ this.getSnapshotCreateTime() == null)
+        if (other.getSnapshotCreateTime() == null ^ this.getSnapshotCreateTime() == null)
             return false;
-        if (other.getSnapshotCreateTime() != null
-                && other.getSnapshotCreateTime().equals(
-                        this.getSnapshotCreateTime()) == false)
+        if (other.getSnapshotCreateTime() != null && other.getSnapshotCreateTime().equals(this.getSnapshotCreateTime()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         if (other.getPort() == null ^ this.getPort() == null)
             return false;
-        if (other.getPort() != null
-                && other.getPort().equals(this.getPort()) == false)
+        if (other.getPort() != null && other.getPort().equals(this.getPort()) == false)
             return false;
-        if (other.getAvailabilityZone() == null
-                ^ this.getAvailabilityZone() == null)
+        if (other.getAvailabilityZone() == null ^ this.getAvailabilityZone() == null)
             return false;
-        if (other.getAvailabilityZone() != null
-                && other.getAvailabilityZone().equals(
-                        this.getAvailabilityZone()) == false)
+        if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false)
             return false;
-        if (other.getClusterCreateTime() == null
-                ^ this.getClusterCreateTime() == null)
+        if (other.getClusterCreateTime() == null ^ this.getClusterCreateTime() == null)
             return false;
-        if (other.getClusterCreateTime() != null
-                && other.getClusterCreateTime().equals(
-                        this.getClusterCreateTime()) == false)
+        if (other.getClusterCreateTime() != null && other.getClusterCreateTime().equals(this.getClusterCreateTime()) == false)
             return false;
-        if (other.getMasterUsername() == null
-                ^ this.getMasterUsername() == null)
+        if (other.getMasterUsername() == null ^ this.getMasterUsername() == null)
             return false;
-        if (other.getMasterUsername() != null
-                && other.getMasterUsername().equals(this.getMasterUsername()) == false)
+        if (other.getMasterUsername() != null && other.getMasterUsername().equals(this.getMasterUsername()) == false)
             return false;
-        if (other.getClusterVersion() == null
-                ^ this.getClusterVersion() == null)
+        if (other.getClusterVersion() == null ^ this.getClusterVersion() == null)
             return false;
-        if (other.getClusterVersion() != null
-                && other.getClusterVersion().equals(this.getClusterVersion()) == false)
+        if (other.getClusterVersion() != null && other.getClusterVersion().equals(this.getClusterVersion()) == false)
             return false;
         if (other.getSnapshotType() == null ^ this.getSnapshotType() == null)
             return false;
-        if (other.getSnapshotType() != null
-                && other.getSnapshotType().equals(this.getSnapshotType()) == false)
+        if (other.getSnapshotType() != null && other.getSnapshotType().equals(this.getSnapshotType()) == false)
             return false;
         if (other.getNodeType() == null ^ this.getNodeType() == null)
             return false;
-        if (other.getNodeType() != null
-                && other.getNodeType().equals(this.getNodeType()) == false)
+        if (other.getNodeType() != null && other.getNodeType().equals(this.getNodeType()) == false)
             return false;
         if (other.getNumberOfNodes() == null ^ this.getNumberOfNodes() == null)
             return false;
-        if (other.getNumberOfNodes() != null
-                && other.getNumberOfNodes().equals(this.getNumberOfNodes()) == false)
+        if (other.getNumberOfNodes() != null && other.getNumberOfNodes().equals(this.getNumberOfNodes()) == false)
             return false;
         if (other.getDBName() == null ^ this.getDBName() == null)
             return false;
-        if (other.getDBName() != null
-                && other.getDBName().equals(this.getDBName()) == false)
+        if (other.getDBName() != null && other.getDBName().equals(this.getDBName()) == false)
             return false;
         if (other.getVpcId() == null ^ this.getVpcId() == null)
             return false;
-        if (other.getVpcId() != null
-                && other.getVpcId().equals(this.getVpcId()) == false)
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false)
             return false;
         if (other.getEncrypted() == null ^ this.getEncrypted() == null)
             return false;
-        if (other.getEncrypted() != null
-                && other.getEncrypted().equals(this.getEncrypted()) == false)
+        if (other.getEncrypted() != null && other.getEncrypted().equals(this.getEncrypted()) == false)
             return false;
         if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
             return false;
-        if (other.getKmsKeyId() != null
-                && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
-        if (other.getEncryptedWithHSM() == null
-                ^ this.getEncryptedWithHSM() == null)
+        if (other.getEncryptedWithHSM() == null ^ this.getEncryptedWithHSM() == null)
             return false;
-        if (other.getEncryptedWithHSM() != null
-                && other.getEncryptedWithHSM().equals(
-                        this.getEncryptedWithHSM()) == false)
+        if (other.getEncryptedWithHSM() != null && other.getEncryptedWithHSM().equals(this.getEncryptedWithHSM()) == false)
             return false;
-        if (other.getAccountsWithRestoreAccess() == null
-                ^ this.getAccountsWithRestoreAccess() == null)
+        if (other.getAccountsWithRestoreAccess() == null ^ this.getAccountsWithRestoreAccess() == null)
             return false;
-        if (other.getAccountsWithRestoreAccess() != null
-                && other.getAccountsWithRestoreAccess().equals(
-                        this.getAccountsWithRestoreAccess()) == false)
+        if (other.getAccountsWithRestoreAccess() != null && other.getAccountsWithRestoreAccess().equals(this.getAccountsWithRestoreAccess()) == false)
             return false;
         if (other.getOwnerAccount() == null ^ this.getOwnerAccount() == null)
             return false;
-        if (other.getOwnerAccount() != null
-                && other.getOwnerAccount().equals(this.getOwnerAccount()) == false)
+        if (other.getOwnerAccount() != null && other.getOwnerAccount().equals(this.getOwnerAccount()) == false)
             return false;
-        if (other.getTotalBackupSizeInMegaBytes() == null
-                ^ this.getTotalBackupSizeInMegaBytes() == null)
+        if (other.getTotalBackupSizeInMegaBytes() == null ^ this.getTotalBackupSizeInMegaBytes() == null)
             return false;
-        if (other.getTotalBackupSizeInMegaBytes() != null
-                && other.getTotalBackupSizeInMegaBytes().equals(
-                        this.getTotalBackupSizeInMegaBytes()) == false)
+        if (other.getTotalBackupSizeInMegaBytes() != null && other.getTotalBackupSizeInMegaBytes().equals(this.getTotalBackupSizeInMegaBytes()) == false)
             return false;
-        if (other.getActualIncrementalBackupSizeInMegaBytes() == null
-                ^ this.getActualIncrementalBackupSizeInMegaBytes() == null)
+        if (other.getActualIncrementalBackupSizeInMegaBytes() == null ^ this.getActualIncrementalBackupSizeInMegaBytes() == null)
             return false;
         if (other.getActualIncrementalBackupSizeInMegaBytes() != null
-                && other.getActualIncrementalBackupSizeInMegaBytes().equals(
-                        this.getActualIncrementalBackupSizeInMegaBytes()) == false)
+                && other.getActualIncrementalBackupSizeInMegaBytes().equals(this.getActualIncrementalBackupSizeInMegaBytes()) == false)
             return false;
-        if (other.getBackupProgressInMegaBytes() == null
-                ^ this.getBackupProgressInMegaBytes() == null)
+        if (other.getBackupProgressInMegaBytes() == null ^ this.getBackupProgressInMegaBytes() == null)
             return false;
-        if (other.getBackupProgressInMegaBytes() != null
-                && other.getBackupProgressInMegaBytes().equals(
-                        this.getBackupProgressInMegaBytes()) == false)
+        if (other.getBackupProgressInMegaBytes() != null && other.getBackupProgressInMegaBytes().equals(this.getBackupProgressInMegaBytes()) == false)
             return false;
-        if (other.getCurrentBackupRateInMegaBytesPerSecond() == null
-                ^ this.getCurrentBackupRateInMegaBytesPerSecond() == null)
+        if (other.getCurrentBackupRateInMegaBytesPerSecond() == null ^ this.getCurrentBackupRateInMegaBytesPerSecond() == null)
             return false;
         if (other.getCurrentBackupRateInMegaBytesPerSecond() != null
-                && other.getCurrentBackupRateInMegaBytesPerSecond().equals(
-                        this.getCurrentBackupRateInMegaBytesPerSecond()) == false)
+                && other.getCurrentBackupRateInMegaBytesPerSecond().equals(this.getCurrentBackupRateInMegaBytesPerSecond()) == false)
             return false;
-        if (other.getEstimatedSecondsToCompletion() == null
-                ^ this.getEstimatedSecondsToCompletion() == null)
+        if (other.getEstimatedSecondsToCompletion() == null ^ this.getEstimatedSecondsToCompletion() == null)
             return false;
-        if (other.getEstimatedSecondsToCompletion() != null
-                && other.getEstimatedSecondsToCompletion().equals(
-                        this.getEstimatedSecondsToCompletion()) == false)
+        if (other.getEstimatedSecondsToCompletion() != null && other.getEstimatedSecondsToCompletion().equals(this.getEstimatedSecondsToCompletion()) == false)
             return false;
-        if (other.getElapsedTimeInSeconds() == null
-                ^ this.getElapsedTimeInSeconds() == null)
+        if (other.getElapsedTimeInSeconds() == null ^ this.getElapsedTimeInSeconds() == null)
             return false;
-        if (other.getElapsedTimeInSeconds() != null
-                && other.getElapsedTimeInSeconds().equals(
-                        this.getElapsedTimeInSeconds()) == false)
+        if (other.getElapsedTimeInSeconds() != null && other.getElapsedTimeInSeconds().equals(this.getElapsedTimeInSeconds()) == false)
             return false;
         if (other.getSourceRegion() == null ^ this.getSourceRegion() == null)
             return false;
-        if (other.getSourceRegion() != null
-                && other.getSourceRegion().equals(this.getSourceRegion()) == false)
+        if (other.getSourceRegion() != null && other.getSourceRegion().equals(this.getSourceRegion()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
-        if (other.getRestorableNodeTypes() == null
-                ^ this.getRestorableNodeTypes() == null)
+        if (other.getRestorableNodeTypes() == null ^ this.getRestorableNodeTypes() == null)
             return false;
-        if (other.getRestorableNodeTypes() != null
-                && other.getRestorableNodeTypes().equals(
-                        this.getRestorableNodeTypes()) == false)
+        if (other.getRestorableNodeTypes() != null && other.getRestorableNodeTypes().equals(this.getRestorableNodeTypes()) == false)
+            return false;
+        if (other.getEnhancedVpcRouting() == null ^ this.getEnhancedVpcRouting() == null)
+            return false;
+        if (other.getEnhancedVpcRouting() != null && other.getEnhancedVpcRouting().equals(this.getEnhancedVpcRouting()) == false)
             return false;
         return true;
     }
@@ -1962,103 +1975,35 @@ public class Snapshot implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotIdentifier() == null) ? 0
-                        : getSnapshotIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClusterIdentifier() == null) ? 0
-                        : getClusterIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotCreateTime() == null) ? 0
-                        : getSnapshotCreateTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime * hashCode
-                + ((getPort() == null) ? 0 : getPort().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClusterCreateTime() == null) ? 0
-                        : getClusterCreateTime().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMasterUsername() == null) ? 0 : getMasterUsername()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClusterVersion() == null) ? 0 : getClusterVersion()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotType() == null) ? 0 : getSnapshotType()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getNodeType() == null) ? 0 : getNodeType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNumberOfNodes() == null) ? 0 : getNumberOfNodes()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getDBName() == null) ? 0 : getDBName().hashCode());
-        hashCode = prime * hashCode
-                + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
-        hashCode = prime * hashCode
-                + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
-        hashCode = prime * hashCode
-                + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEncryptedWithHSM() == null) ? 0 : getEncryptedWithHSM()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAccountsWithRestoreAccess() == null) ? 0
-                        : getAccountsWithRestoreAccess().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOwnerAccount() == null) ? 0 : getOwnerAccount()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTotalBackupSizeInMegaBytes() == null) ? 0
-                        : getTotalBackupSizeInMegaBytes().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getActualIncrementalBackupSizeInMegaBytes() == null) ? 0
-                        : getActualIncrementalBackupSizeInMegaBytes()
-                                .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getBackupProgressInMegaBytes() == null) ? 0
-                        : getBackupProgressInMegaBytes().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCurrentBackupRateInMegaBytesPerSecond() == null) ? 0
-                        : getCurrentBackupRateInMegaBytesPerSecond().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEstimatedSecondsToCompletion() == null) ? 0
-                        : getEstimatedSecondsToCompletion().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getElapsedTimeInSeconds() == null) ? 0
-                        : getElapsedTimeInSeconds().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSourceRegion() == null) ? 0 : getSourceRegion()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRestorableNodeTypes() == null) ? 0
-                        : getRestorableNodeTypes().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotIdentifier() == null) ? 0 : getSnapshotIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getClusterIdentifier() == null) ? 0 : getClusterIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotCreateTime() == null) ? 0 : getSnapshotCreateTime().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getPort() == null) ? 0 : getPort().hashCode());
+        hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getClusterCreateTime() == null) ? 0 : getClusterCreateTime().hashCode());
+        hashCode = prime * hashCode + ((getMasterUsername() == null) ? 0 : getMasterUsername().hashCode());
+        hashCode = prime * hashCode + ((getClusterVersion() == null) ? 0 : getClusterVersion().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotType() == null) ? 0 : getSnapshotType().hashCode());
+        hashCode = prime * hashCode + ((getNodeType() == null) ? 0 : getNodeType().hashCode());
+        hashCode = prime * hashCode + ((getNumberOfNodes() == null) ? 0 : getNumberOfNodes().hashCode());
+        hashCode = prime * hashCode + ((getDBName() == null) ? 0 : getDBName().hashCode());
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
+        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getEncryptedWithHSM() == null) ? 0 : getEncryptedWithHSM().hashCode());
+        hashCode = prime * hashCode + ((getAccountsWithRestoreAccess() == null) ? 0 : getAccountsWithRestoreAccess().hashCode());
+        hashCode = prime * hashCode + ((getOwnerAccount() == null) ? 0 : getOwnerAccount().hashCode());
+        hashCode = prime * hashCode + ((getTotalBackupSizeInMegaBytes() == null) ? 0 : getTotalBackupSizeInMegaBytes().hashCode());
+        hashCode = prime * hashCode + ((getActualIncrementalBackupSizeInMegaBytes() == null) ? 0 : getActualIncrementalBackupSizeInMegaBytes().hashCode());
+        hashCode = prime * hashCode + ((getBackupProgressInMegaBytes() == null) ? 0 : getBackupProgressInMegaBytes().hashCode());
+        hashCode = prime * hashCode + ((getCurrentBackupRateInMegaBytesPerSecond() == null) ? 0 : getCurrentBackupRateInMegaBytesPerSecond().hashCode());
+        hashCode = prime * hashCode + ((getEstimatedSecondsToCompletion() == null) ? 0 : getEstimatedSecondsToCompletion().hashCode());
+        hashCode = prime * hashCode + ((getElapsedTimeInSeconds() == null) ? 0 : getElapsedTimeInSeconds().hashCode());
+        hashCode = prime * hashCode + ((getSourceRegion() == null) ? 0 : getSourceRegion().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getRestorableNodeTypes() == null) ? 0 : getRestorableNodeTypes().hashCode());
+        hashCode = prime * hashCode + ((getEnhancedVpcRouting() == null) ? 0 : getEnhancedVpcRouting().hashCode());
         return hashCode;
     }
 
@@ -2067,9 +2012,8 @@ public class Snapshot implements Serializable, Cloneable {
         try {
             return (Snapshot) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

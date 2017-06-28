@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.Date;
 
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
@@ -33,7 +34,9 @@ import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 /**
  * Utility methods for extracting data from XML documents using Xpath
@@ -57,6 +60,28 @@ public class XpathUtils {
     private static final String DTM_MANAGER_IMPL_CLASS_NAME = "com.sun.org.apache.xml.internal.dtm.ref.DTMManagerDefault";
 
     private static final Log log = LogFactory.getLog(XpathUtils.class);
+
+    private static final ErrorHandler ERROR_HANDLER = new ErrorHandler() {
+
+        @Override
+        public void warning(SAXParseException e) throws SAXException {
+            if (log.isDebugEnabled()) {
+                log.debug("xml parse warning: " + e.getMessage(), e);
+            }
+        }
+
+        @Override
+        public void fatalError(SAXParseException e) throws SAXException {
+            throw e;
+        }
+
+        @Override
+        public void error(SAXParseException e) throws SAXException {
+            if (log.isDebugEnabled()) {
+                log.debug("xml parse error: " + e.getMessage(), e);
+            }
+        }
+    };
 
     /**
      * Used to optimize performance by avoiding expensive file access every time
@@ -111,8 +136,8 @@ public class XpathUtils {
         } catch(Throwable t) {
             log.debug("Ingore failure in speeding up DTMManager", t);
         }
-    }    
-    
+    }
+
     // XPath is not thread safe and not reentrant.
     /**
      * Returns a new instance of XPath, which is not thread safe and not
@@ -130,7 +155,11 @@ public class XpathUtils {
         is = new NamespaceRemovingInputStream(is);
         // DocumentBuilderFactory is not thread safe
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        Document doc = factory.newDocumentBuilder().parse(is);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // ensure that parser writes error/warning messages to the logger
+        // rather than stderr
+        builder.setErrorHandler(ERROR_HANDLER);
+        Document doc = builder.parse(is);
         is.close();
         return doc;
     }
@@ -153,14 +182,14 @@ public class XpathUtils {
      * invocation. Consider passing in the xpath explicitly via {
      * {@link #asDouble(String, Node, XPath)} instead.  Note {@link XPath} is
      * not thread-safe and not reentrant.
-     * 
+     *
      * @param expression
      *            The XPath expression to evaluate.
      * @param node
      *            The node to run the expression on.
-     * 
+     *
      * @return The Double result.
-     * 
+     *
      * @throws XPathExpressionException
      *             If there was a problem processing the specified XPath
      *             expression.

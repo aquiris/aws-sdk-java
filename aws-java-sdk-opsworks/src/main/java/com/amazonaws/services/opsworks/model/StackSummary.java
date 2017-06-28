@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Summarizes the number of layers, instances, and apps in a stack.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StackSummary" target="_top">AWS API
+ *      Documentation</a>
  */
-public class StackSummary implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StackSummary implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -55,8 +60,7 @@ public class StackSummary implements Serializable, Cloneable {
     private Integer appsCount;
     /**
      * <p>
-     * An <code>InstancesCount</code> object with the number of instances in
-     * each status.
+     * An <code>InstancesCount</code> object with the number of instances in each status.
      * </p>
      */
     private InstancesCount instancesCount;
@@ -93,8 +97,7 @@ public class StackSummary implements Serializable, Cloneable {
      * 
      * @param stackId
      *        The stack ID.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public StackSummary withStackId(String stackId) {
@@ -134,8 +137,7 @@ public class StackSummary implements Serializable, Cloneable {
      * 
      * @param name
      *        The stack name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public StackSummary withName(String name) {
@@ -175,8 +177,7 @@ public class StackSummary implements Serializable, Cloneable {
      * 
      * @param arn
      *        The stack's ARN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public StackSummary withArn(String arn) {
@@ -216,8 +217,7 @@ public class StackSummary implements Serializable, Cloneable {
      * 
      * @param layersCount
      *        The number of layers.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public StackSummary withLayersCount(Integer layersCount) {
@@ -257,8 +257,7 @@ public class StackSummary implements Serializable, Cloneable {
      * 
      * @param appsCount
      *        The number of apps.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public StackSummary withAppsCount(Integer appsCount) {
@@ -268,13 +267,11 @@ public class StackSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An <code>InstancesCount</code> object with the number of instances in
-     * each status.
+     * An <code>InstancesCount</code> object with the number of instances in each status.
      * </p>
      * 
      * @param instancesCount
-     *        An <code>InstancesCount</code> object with the number of instances
-     *        in each status.
+     *        An <code>InstancesCount</code> object with the number of instances in each status.
      */
 
     public void setInstancesCount(InstancesCount instancesCount) {
@@ -283,12 +280,10 @@ public class StackSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An <code>InstancesCount</code> object with the number of instances in
-     * each status.
+     * An <code>InstancesCount</code> object with the number of instances in each status.
      * </p>
      * 
-     * @return An <code>InstancesCount</code> object with the number of
-     *         instances in each status.
+     * @return An <code>InstancesCount</code> object with the number of instances in each status.
      */
 
     public InstancesCount getInstancesCount() {
@@ -297,15 +292,12 @@ public class StackSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An <code>InstancesCount</code> object with the number of instances in
-     * each status.
+     * An <code>InstancesCount</code> object with the number of instances in each status.
      * </p>
      * 
      * @param instancesCount
-     *        An <code>InstancesCount</code> object with the number of instances
-     *        in each status.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An <code>InstancesCount</code> object with the number of instances in each status.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public StackSummary withInstancesCount(InstancesCount instancesCount) {
@@ -314,8 +306,7 @@ public class StackSummary implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -326,17 +317,17 @@ public class StackSummary implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackId() != null)
-            sb.append("StackId: " + getStackId() + ",");
+            sb.append("StackId: ").append(getStackId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getLayersCount() != null)
-            sb.append("LayersCount: " + getLayersCount() + ",");
+            sb.append("LayersCount: ").append(getLayersCount()).append(",");
         if (getAppsCount() != null)
-            sb.append("AppsCount: " + getAppsCount() + ",");
+            sb.append("AppsCount: ").append(getAppsCount()).append(",");
         if (getInstancesCount() != null)
-            sb.append("InstancesCount: " + getInstancesCount());
+            sb.append("InstancesCount: ").append(getInstancesCount());
         sb.append("}");
         return sb.toString();
     }
@@ -353,34 +344,27 @@ public class StackSummary implements Serializable, Cloneable {
         StackSummary other = (StackSummary) obj;
         if (other.getStackId() == null ^ this.getStackId() == null)
             return false;
-        if (other.getStackId() != null
-                && other.getStackId().equals(this.getStackId()) == false)
+        if (other.getStackId() != null && other.getStackId().equals(this.getStackId()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
-        if (other.getArn() != null
-                && other.getArn().equals(this.getArn()) == false)
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
             return false;
         if (other.getLayersCount() == null ^ this.getLayersCount() == null)
             return false;
-        if (other.getLayersCount() != null
-                && other.getLayersCount().equals(this.getLayersCount()) == false)
+        if (other.getLayersCount() != null && other.getLayersCount().equals(this.getLayersCount()) == false)
             return false;
         if (other.getAppsCount() == null ^ this.getAppsCount() == null)
             return false;
-        if (other.getAppsCount() != null
-                && other.getAppsCount().equals(this.getAppsCount()) == false)
+        if (other.getAppsCount() != null && other.getAppsCount().equals(this.getAppsCount()) == false)
             return false;
-        if (other.getInstancesCount() == null
-                ^ this.getInstancesCount() == null)
+        if (other.getInstancesCount() == null ^ this.getInstancesCount() == null)
             return false;
-        if (other.getInstancesCount() != null
-                && other.getInstancesCount().equals(this.getInstancesCount()) == false)
+        if (other.getInstancesCount() != null && other.getInstancesCount().equals(this.getInstancesCount()) == false)
             return false;
         return true;
     }
@@ -390,21 +374,12 @@ public class StackSummary implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getStackId() == null) ? 0 : getStackId().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getArn() == null) ? 0 : getArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getLayersCount() == null) ? 0 : getLayersCount().hashCode());
-        hashCode = prime * hashCode
-                + ((getAppsCount() == null) ? 0 : getAppsCount().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getInstancesCount() == null) ? 0 : getInstancesCount()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getStackId() == null) ? 0 : getStackId().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getLayersCount() == null) ? 0 : getLayersCount().hashCode());
+        hashCode = prime * hashCode + ((getAppsCount() == null) ? 0 : getAppsCount().hashCode());
+        hashCode = prime * hashCode + ((getInstancesCount() == null) ? 0 : getInstancesCount().hashCode());
         return hashCode;
     }
 
@@ -413,9 +388,13 @@ public class StackSummary implements Serializable, Cloneable {
         try {
             return (StackSummary) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.StackSummaryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

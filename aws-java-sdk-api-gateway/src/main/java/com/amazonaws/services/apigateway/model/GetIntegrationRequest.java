@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Represents a get integration request.
  * </p>
  */
-public class GetIntegrationRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetIntegrationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -76,8 +76,7 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
      * 
      * @param restApiId
      *        Specifies a get integration request's API identifier.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetIntegrationRequest withRestApiId(String restApiId) {
@@ -117,8 +116,7 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
      * 
      * @param resourceId
      *        Specifies a get integration request's resource identifier
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetIntegrationRequest withResourceId(String resourceId) {
@@ -158,8 +156,7 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
      * 
      * @param httpMethod
      *        Specifies a get integration request's HTTP method.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetIntegrationRequest withHttpMethod(String httpMethod) {
@@ -168,8 +165,7 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -180,11 +176,11 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getHttpMethod() != null)
-            sb.append("HttpMethod: " + getHttpMethod());
+            sb.append("HttpMethod: ").append(getHttpMethod());
         sb.append("}");
         return sb.toString();
     }
@@ -201,18 +197,15 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
         GetIntegrationRequest other = (GetIntegrationRequest) obj;
         if (other.getRestApiId() == null ^ this.getRestApiId() == null)
             return false;
-        if (other.getRestApiId() != null
-                && other.getRestApiId().equals(this.getRestApiId()) == false)
+        if (other.getRestApiId() != null && other.getRestApiId().equals(this.getRestApiId()) == false)
             return false;
         if (other.getResourceId() == null ^ this.getResourceId() == null)
             return false;
-        if (other.getResourceId() != null
-                && other.getResourceId().equals(this.getResourceId()) == false)
+        if (other.getResourceId() != null && other.getResourceId().equals(this.getResourceId()) == false)
             return false;
         if (other.getHttpMethod() == null ^ this.getHttpMethod() == null)
             return false;
-        if (other.getHttpMethod() != null
-                && other.getHttpMethod().equals(this.getHttpMethod()) == false)
+        if (other.getHttpMethod() != null && other.getHttpMethod().equals(this.getHttpMethod()) == false)
             return false;
         return true;
     }
@@ -222,12 +215,9 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
-        hashCode = prime * hashCode
-                + ((getHttpMethod() == null) ? 0 : getHttpMethod().hashCode());
+        hashCode = prime * hashCode + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
+        hashCode = prime * hashCode + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
+        hashCode = prime * hashCode + ((getHttpMethod() == null) ? 0 : getHttpMethod().hashCode());
         return hashCode;
     }
 
@@ -235,4 +225,5 @@ public class GetIntegrationRequest extends AmazonWebServiceRequest implements
     public GetIntegrationRequest clone() {
         return (GetIntegrationRequest) super.clone();
     }
+
 }

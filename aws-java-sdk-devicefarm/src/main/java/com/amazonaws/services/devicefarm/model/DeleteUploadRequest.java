@@ -1,47 +1,47 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents a request to the delete upload operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteUpload" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeleteUploadRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeleteUploadRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you
-     * wish to delete.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
      * </p>
      */
     private String arn;
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you
-     * wish to delete.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
      * </p>
      * 
      * @param arn
-     *        Represents the Amazon Resource Name (ARN) of the Device Farm
-     *        upload you wish to delete.
+     *        Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
      */
 
     public void setArn(String arn) {
@@ -50,12 +50,10 @@ public class DeleteUploadRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you
-     * wish to delete.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
      * </p>
      * 
-     * @return Represents the Amazon Resource Name (ARN) of the Device Farm
-     *         upload you wish to delete.
+     * @return Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
      */
 
     public String getArn() {
@@ -64,15 +62,12 @@ public class DeleteUploadRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you
-     * wish to delete.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
      * </p>
      * 
      * @param arn
-     *        Represents the Amazon Resource Name (ARN) of the Device Farm
-     *        upload you wish to delete.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Represents the Amazon Resource Name (ARN) of the Device Farm upload you wish to delete.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteUploadRequest withArn(String arn) {
@@ -81,8 +76,7 @@ public class DeleteUploadRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -93,7 +87,7 @@ public class DeleteUploadRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn());
+            sb.append("Arn: ").append(getArn());
         sb.append("}");
         return sb.toString();
     }
@@ -110,8 +104,7 @@ public class DeleteUploadRequest extends AmazonWebServiceRequest implements
         DeleteUploadRequest other = (DeleteUploadRequest) obj;
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
-        if (other.getArn() != null
-                && other.getArn().equals(this.getArn()) == false)
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
             return false;
         return true;
     }
@@ -121,8 +114,7 @@ public class DeleteUploadRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
         return hashCode;
     }
 
@@ -130,4 +122,5 @@ public class DeleteUploadRequest extends AmazonWebServiceRequest implements
     public DeleteUploadRequest clone() {
         return (DeleteUploadRequest) super.clone();
     }
+
 }

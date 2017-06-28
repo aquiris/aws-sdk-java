@@ -1,28 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents the amount of provisioned throughput capacity consumed on a table
- * or an index.
+ * Represents the amount of provisioned throughput capacity consumed on a table or an index.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/Capacity" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Capacity implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Capacity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -37,8 +41,7 @@ public class Capacity implements Serializable, Cloneable {
      * </p>
      * 
      * @param capacityUnits
-     *        The total number of capacity units consumed on a table or an
-     *        index.
+     *        The total number of capacity units consumed on a table or an index.
      */
 
     public void setCapacityUnits(Double capacityUnits) {
@@ -50,8 +53,7 @@ public class Capacity implements Serializable, Cloneable {
      * The total number of capacity units consumed on a table or an index.
      * </p>
      * 
-     * @return The total number of capacity units consumed on a table or an
-     *         index.
+     * @return The total number of capacity units consumed on a table or an index.
      */
 
     public Double getCapacityUnits() {
@@ -64,10 +66,8 @@ public class Capacity implements Serializable, Cloneable {
      * </p>
      * 
      * @param capacityUnits
-     *        The total number of capacity units consumed on a table or an
-     *        index.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The total number of capacity units consumed on a table or an index.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Capacity withCapacityUnits(Double capacityUnits) {
@@ -76,8 +76,7 @@ public class Capacity implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -88,7 +87,7 @@ public class Capacity implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCapacityUnits() != null)
-            sb.append("CapacityUnits: " + getCapacityUnits());
+            sb.append("CapacityUnits: ").append(getCapacityUnits());
         sb.append("}");
         return sb.toString();
     }
@@ -105,8 +104,7 @@ public class Capacity implements Serializable, Cloneable {
         Capacity other = (Capacity) obj;
         if (other.getCapacityUnits() == null ^ this.getCapacityUnits() == null)
             return false;
-        if (other.getCapacityUnits() != null
-                && other.getCapacityUnits().equals(this.getCapacityUnits()) == false)
+        if (other.getCapacityUnits() != null && other.getCapacityUnits().equals(this.getCapacityUnits()) == false)
             return false;
         return true;
     }
@@ -116,10 +114,7 @@ public class Capacity implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCapacityUnits() == null) ? 0 : getCapacityUnits()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getCapacityUnits() == null) ? 0 : getCapacityUnits().hashCode());
         return hashCode;
     }
 
@@ -128,9 +123,13 @@ public class Capacity implements Serializable, Cloneable {
         try {
             return (Capacity) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.dynamodbv2.model.transform.CapacityMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

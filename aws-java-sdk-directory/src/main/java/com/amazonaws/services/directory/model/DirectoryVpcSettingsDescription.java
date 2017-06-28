@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about the directory.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DirectoryVpcSettingsDescription" target="_top">AWS
+ *      API Documentation</a>
  */
-public class DirectoryVpcSettingsDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DirectoryVpcSettingsDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -37,9 +42,8 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
     private com.amazonaws.internal.SdkInternalList<String> subnetIds;
     /**
      * <p>
-     * The security group identifier for the directory. If the directory was
-     * created before 8/1/2014, this is the identifier of the directory members
-     * security group that was created when the directory was created. If the
+     * The security group identifier for the directory. If the directory was created before 8/1/2014, this is the
+     * identifier of the directory members security group that was created when the directory was created. If the
      * directory was created after this date, this value is null.
      * </p>
      */
@@ -83,8 +87,7 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
      * 
      * @param vpcId
      *        The identifier of the VPC that the directory is in.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryVpcSettingsDescription withVpcId(String vpcId) {
@@ -122,8 +125,7 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
             return;
         }
 
-        this.subnetIds = new com.amazonaws.internal.SdkInternalList<String>(
-                subnetIds);
+        this.subnetIds = new com.amazonaws.internal.SdkInternalList<String>(subnetIds);
     }
 
     /**
@@ -131,22 +133,19 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
      * The identifiers of the subnets for the directory servers.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setSubnetIds(java.util.Collection)} or
-     * {@link #withSubnetIds(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSubnetIds(java.util.Collection)} or {@link #withSubnetIds(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param subnetIds
      *        The identifiers of the subnets for the directory servers.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryVpcSettingsDescription withSubnetIds(String... subnetIds) {
         if (this.subnetIds == null) {
-            setSubnetIds(new com.amazonaws.internal.SdkInternalList<String>(
-                    subnetIds.length));
+            setSubnetIds(new com.amazonaws.internal.SdkInternalList<String>(subnetIds.length));
         }
         for (String ele : subnetIds) {
             this.subnetIds.add(ele);
@@ -161,30 +160,25 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
      * 
      * @param subnetIds
      *        The identifiers of the subnets for the directory servers.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryVpcSettingsDescription withSubnetIds(
-            java.util.Collection<String> subnetIds) {
+    public DirectoryVpcSettingsDescription withSubnetIds(java.util.Collection<String> subnetIds) {
         setSubnetIds(subnetIds);
         return this;
     }
 
     /**
      * <p>
-     * The security group identifier for the directory. If the directory was
-     * created before 8/1/2014, this is the identifier of the directory members
-     * security group that was created when the directory was created. If the
+     * The security group identifier for the directory. If the directory was created before 8/1/2014, this is the
+     * identifier of the directory members security group that was created when the directory was created. If the
      * directory was created after this date, this value is null.
      * </p>
      * 
      * @param securityGroupId
-     *        The security group identifier for the directory. If the directory
-     *        was created before 8/1/2014, this is the identifier of the
-     *        directory members security group that was created when the
-     *        directory was created. If the directory was created after this
-     *        date, this value is null.
+     *        The security group identifier for the directory. If the directory was created before 8/1/2014, this is the
+     *        identifier of the directory members security group that was created when the directory was created. If the
+     *        directory was created after this date, this value is null.
      */
 
     public void setSecurityGroupId(String securityGroupId) {
@@ -193,17 +187,14 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
 
     /**
      * <p>
-     * The security group identifier for the directory. If the directory was
-     * created before 8/1/2014, this is the identifier of the directory members
-     * security group that was created when the directory was created. If the
+     * The security group identifier for the directory. If the directory was created before 8/1/2014, this is the
+     * identifier of the directory members security group that was created when the directory was created. If the
      * directory was created after this date, this value is null.
      * </p>
      * 
-     * @return The security group identifier for the directory. If the directory
-     *         was created before 8/1/2014, this is the identifier of the
-     *         directory members security group that was created when the
-     *         directory was created. If the directory was created after this
-     *         date, this value is null.
+     * @return The security group identifier for the directory. If the directory was created before 8/1/2014, this is
+     *         the identifier of the directory members security group that was created when the directory was created.
+     *         If the directory was created after this date, this value is null.
      */
 
     public String getSecurityGroupId() {
@@ -212,24 +203,19 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
 
     /**
      * <p>
-     * The security group identifier for the directory. If the directory was
-     * created before 8/1/2014, this is the identifier of the directory members
-     * security group that was created when the directory was created. If the
+     * The security group identifier for the directory. If the directory was created before 8/1/2014, this is the
+     * identifier of the directory members security group that was created when the directory was created. If the
      * directory was created after this date, this value is null.
      * </p>
      * 
      * @param securityGroupId
-     *        The security group identifier for the directory. If the directory
-     *        was created before 8/1/2014, this is the identifier of the
-     *        directory members security group that was created when the
-     *        directory was created. If the directory was created after this
-     *        date, this value is null.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The security group identifier for the directory. If the directory was created before 8/1/2014, this is the
+     *        identifier of the directory members security group that was created when the directory was created. If the
+     *        directory was created after this date, this value is null.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryVpcSettingsDescription withSecurityGroupId(
-            String securityGroupId) {
+    public DirectoryVpcSettingsDescription withSecurityGroupId(String securityGroupId) {
         setSecurityGroupId(securityGroupId);
         return this;
     }
@@ -258,15 +244,13 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
      *        The list of Availability Zones that the directory is in.
      */
 
-    public void setAvailabilityZones(
-            java.util.Collection<String> availabilityZones) {
+    public void setAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
             return;
         }
 
-        this.availabilityZones = new com.amazonaws.internal.SdkInternalList<String>(
-                availabilityZones);
+        this.availabilityZones = new com.amazonaws.internal.SdkInternalList<String>(availabilityZones);
     }
 
     /**
@@ -274,23 +258,19 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
      * The list of Availability Zones that the directory is in.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setAvailabilityZones(java.util.Collection)} or
-     * {@link #withAvailabilityZones(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAvailabilityZones(java.util.Collection)} or {@link #withAvailabilityZones(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param availabilityZones
      *        The list of Availability Zones that the directory is in.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryVpcSettingsDescription withAvailabilityZones(
-            String... availabilityZones) {
+    public DirectoryVpcSettingsDescription withAvailabilityZones(String... availabilityZones) {
         if (this.availabilityZones == null) {
-            setAvailabilityZones(new com.amazonaws.internal.SdkInternalList<String>(
-                    availabilityZones.length));
+            setAvailabilityZones(new com.amazonaws.internal.SdkInternalList<String>(availabilityZones.length));
         }
         for (String ele : availabilityZones) {
             this.availabilityZones.add(ele);
@@ -305,19 +285,16 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
      * 
      * @param availabilityZones
      *        The list of Availability Zones that the directory is in.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryVpcSettingsDescription withAvailabilityZones(
-            java.util.Collection<String> availabilityZones) {
+    public DirectoryVpcSettingsDescription withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         setAvailabilityZones(availabilityZones);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -328,13 +305,13 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getSubnetIds() != null)
-            sb.append("SubnetIds: " + getSubnetIds() + ",");
+            sb.append("SubnetIds: ").append(getSubnetIds()).append(",");
         if (getSecurityGroupId() != null)
-            sb.append("SecurityGroupId: " + getSecurityGroupId() + ",");
+            sb.append("SecurityGroupId: ").append(getSecurityGroupId()).append(",");
         if (getAvailabilityZones() != null)
-            sb.append("AvailabilityZones: " + getAvailabilityZones());
+            sb.append("AvailabilityZones: ").append(getAvailabilityZones());
         sb.append("}");
         return sb.toString();
     }
@@ -351,26 +328,19 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
         DirectoryVpcSettingsDescription other = (DirectoryVpcSettingsDescription) obj;
         if (other.getVpcId() == null ^ this.getVpcId() == null)
             return false;
-        if (other.getVpcId() != null
-                && other.getVpcId().equals(this.getVpcId()) == false)
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false)
             return false;
         if (other.getSubnetIds() == null ^ this.getSubnetIds() == null)
             return false;
-        if (other.getSubnetIds() != null
-                && other.getSubnetIds().equals(this.getSubnetIds()) == false)
+        if (other.getSubnetIds() != null && other.getSubnetIds().equals(this.getSubnetIds()) == false)
             return false;
-        if (other.getSecurityGroupId() == null
-                ^ this.getSecurityGroupId() == null)
+        if (other.getSecurityGroupId() == null ^ this.getSecurityGroupId() == null)
             return false;
-        if (other.getSecurityGroupId() != null
-                && other.getSecurityGroupId().equals(this.getSecurityGroupId()) == false)
+        if (other.getSecurityGroupId() != null && other.getSecurityGroupId().equals(this.getSecurityGroupId()) == false)
             return false;
-        if (other.getAvailabilityZones() == null
-                ^ this.getAvailabilityZones() == null)
+        if (other.getAvailabilityZones() == null ^ this.getAvailabilityZones() == null)
             return false;
-        if (other.getAvailabilityZones() != null
-                && other.getAvailabilityZones().equals(
-                        this.getAvailabilityZones()) == false)
+        if (other.getAvailabilityZones() != null && other.getAvailabilityZones().equals(this.getAvailabilityZones()) == false)
             return false;
         return true;
     }
@@ -380,18 +350,10 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
-        hashCode = prime * hashCode
-                + ((getSubnetIds() == null) ? 0 : getSubnetIds().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSecurityGroupId() == null) ? 0 : getSecurityGroupId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAvailabilityZones() == null) ? 0
-                        : getAvailabilityZones().hashCode());
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
+        hashCode = prime * hashCode + ((getSubnetIds() == null) ? 0 : getSubnetIds().hashCode());
+        hashCode = prime * hashCode + ((getSecurityGroupId() == null) ? 0 : getSecurityGroupId().hashCode());
+        hashCode = prime * hashCode + ((getAvailabilityZones() == null) ? 0 : getAvailabilityZones().hashCode());
         return hashCode;
     }
 
@@ -400,9 +362,13 @@ public class DirectoryVpcSettingsDescription implements Serializable, Cloneable 
         try {
             return (DirectoryVpcSettingsDescription) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directory.model.transform.DirectoryVpcSettingsDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

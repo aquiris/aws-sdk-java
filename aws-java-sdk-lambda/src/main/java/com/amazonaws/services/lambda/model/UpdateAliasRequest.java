@@ -1,31 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.lambda.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateAlias" target="_top">AWS API
+ *      Documentation</a>
  */
-public class UpdateAliasRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateAliasRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The function name for which the alias is created.
+     * The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you
+     * specify only the function name, it is limited to 64 characters in length.
      * </p>
      */
     private String functionName;
@@ -37,8 +40,7 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
     private String name;
     /**
      * <p>
-     * Using this parameter you can change the Lambda function version to which
-     * the alias points.
+     * Using this parameter you can change the Lambda function version to which the alias points.
      * </p>
      */
     private String functionVersion;
@@ -51,11 +53,13 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The function name for which the alias is created.
+     * The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you
+     * specify only the function name, it is limited to 64 characters in length.
      * </p>
      * 
      * @param functionName
-     *        The function name for which the alias is created.
+     *        The function name for which the alias is created. Note that the length constraint applies only to the ARN.
+     *        If you specify only the function name, it is limited to 64 characters in length.
      */
 
     public void setFunctionName(String functionName) {
@@ -64,10 +68,12 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The function name for which the alias is created.
+     * The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you
+     * specify only the function name, it is limited to 64 characters in length.
      * </p>
      * 
-     * @return The function name for which the alias is created.
+     * @return The function name for which the alias is created. Note that the length constraint applies only to the
+     *         ARN. If you specify only the function name, it is limited to 64 characters in length.
      */
 
     public String getFunctionName() {
@@ -76,13 +82,14 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The function name for which the alias is created.
+     * The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you
+     * specify only the function name, it is limited to 64 characters in length.
      * </p>
      * 
      * @param functionName
-     *        The function name for which the alias is created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The function name for which the alias is created. Note that the length constraint applies only to the ARN.
+     *        If you specify only the function name, it is limited to 64 characters in length.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateAliasRequest withFunctionName(String functionName) {
@@ -122,8 +129,7 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
      * 
      * @param name
      *        The alias name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateAliasRequest withName(String name) {
@@ -133,13 +139,11 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Using this parameter you can change the Lambda function version to which
-     * the alias points.
+     * Using this parameter you can change the Lambda function version to which the alias points.
      * </p>
      * 
      * @param functionVersion
-     *        Using this parameter you can change the Lambda function version to
-     *        which the alias points.
+     *        Using this parameter you can change the Lambda function version to which the alias points.
      */
 
     public void setFunctionVersion(String functionVersion) {
@@ -148,12 +152,10 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Using this parameter you can change the Lambda function version to which
-     * the alias points.
+     * Using this parameter you can change the Lambda function version to which the alias points.
      * </p>
      * 
-     * @return Using this parameter you can change the Lambda function version
-     *         to which the alias points.
+     * @return Using this parameter you can change the Lambda function version to which the alias points.
      */
 
     public String getFunctionVersion() {
@@ -162,15 +164,12 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Using this parameter you can change the Lambda function version to which
-     * the alias points.
+     * Using this parameter you can change the Lambda function version to which the alias points.
      * </p>
      * 
      * @param functionVersion
-     *        Using this parameter you can change the Lambda function version to
-     *        which the alias points.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Using this parameter you can change the Lambda function version to which the alias points.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateAliasRequest withFunctionVersion(String functionVersion) {
@@ -210,8 +209,7 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
      * 
      * @param description
      *        You can change the description of the alias using this parameter.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateAliasRequest withDescription(String description) {
@@ -220,8 +218,7 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -232,13 +229,13 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFunctionName() != null)
-            sb.append("FunctionName: " + getFunctionName() + ",");
+            sb.append("FunctionName: ").append(getFunctionName()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getFunctionVersion() != null)
-            sb.append("FunctionVersion: " + getFunctionVersion() + ",");
+            sb.append("FunctionVersion: ").append(getFunctionVersion()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription());
+            sb.append("Description: ").append(getDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -255,24 +252,19 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
         UpdateAliasRequest other = (UpdateAliasRequest) obj;
         if (other.getFunctionName() == null ^ this.getFunctionName() == null)
             return false;
-        if (other.getFunctionName() != null
-                && other.getFunctionName().equals(this.getFunctionName()) == false)
+        if (other.getFunctionName() != null && other.getFunctionName().equals(this.getFunctionName()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
-        if (other.getFunctionVersion() == null
-                ^ this.getFunctionVersion() == null)
+        if (other.getFunctionVersion() == null ^ this.getFunctionVersion() == null)
             return false;
-        if (other.getFunctionVersion() != null
-                && other.getFunctionVersion().equals(this.getFunctionVersion()) == false)
+        if (other.getFunctionVersion() != null && other.getFunctionVersion().equals(this.getFunctionVersion()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         return true;
     }
@@ -282,19 +274,10 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getFunctionName() == null) ? 0 : getFunctionName()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getFunctionVersion() == null) ? 0 : getFunctionVersion()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getFunctionName() == null) ? 0 : getFunctionName().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getFunctionVersion() == null) ? 0 : getFunctionVersion().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         return hashCode;
     }
 
@@ -302,4 +285,5 @@ public class UpdateAliasRequest extends AmazonWebServiceRequest implements
     public UpdateAliasRequest clone() {
         return (UpdateAliasRequest) super.clone();
     }
+
 }

@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The status of the offering.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/OfferingStatus" target="_top">AWS API
+ *      Documentation</a>
  */
-public class OfferingStatus implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class OfferingStatus implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -82,8 +87,7 @@ public class OfferingStatus implements Serializable, Cloneable {
      * 
      * @param type
      *        The type specified for the offering status.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see OfferingTransactionType
      */
 
@@ -113,8 +117,7 @@ public class OfferingStatus implements Serializable, Cloneable {
      * 
      * @param type
      *        The type specified for the offering status.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see OfferingTransactionType
      */
 
@@ -155,8 +158,7 @@ public class OfferingStatus implements Serializable, Cloneable {
      * 
      * @param offering
      *        Represents the metadata of an offering status.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OfferingStatus withOffering(Offering offering) {
@@ -196,8 +198,7 @@ public class OfferingStatus implements Serializable, Cloneable {
      * 
      * @param quantity
      *        The number of available devices in the offering.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OfferingStatus withQuantity(Integer quantity) {
@@ -237,8 +238,7 @@ public class OfferingStatus implements Serializable, Cloneable {
      * 
      * @param effectiveOn
      *        The date on which the offering is effective.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OfferingStatus withEffectiveOn(java.util.Date effectiveOn) {
@@ -247,8 +247,7 @@ public class OfferingStatus implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -259,13 +258,13 @@ public class OfferingStatus implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getOffering() != null)
-            sb.append("Offering: " + getOffering() + ",");
+            sb.append("Offering: ").append(getOffering()).append(",");
         if (getQuantity() != null)
-            sb.append("Quantity: " + getQuantity() + ",");
+            sb.append("Quantity: ").append(getQuantity()).append(",");
         if (getEffectiveOn() != null)
-            sb.append("EffectiveOn: " + getEffectiveOn());
+            sb.append("EffectiveOn: ").append(getEffectiveOn());
         sb.append("}");
         return sb.toString();
     }
@@ -282,23 +281,19 @@ public class OfferingStatus implements Serializable, Cloneable {
         OfferingStatus other = (OfferingStatus) obj;
         if (other.getType() == null ^ this.getType() == null)
             return false;
-        if (other.getType() != null
-                && other.getType().equals(this.getType()) == false)
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
         if (other.getOffering() == null ^ this.getOffering() == null)
             return false;
-        if (other.getOffering() != null
-                && other.getOffering().equals(this.getOffering()) == false)
+        if (other.getOffering() != null && other.getOffering().equals(this.getOffering()) == false)
             return false;
         if (other.getQuantity() == null ^ this.getQuantity() == null)
             return false;
-        if (other.getQuantity() != null
-                && other.getQuantity().equals(this.getQuantity()) == false)
+        if (other.getQuantity() != null && other.getQuantity().equals(this.getQuantity()) == false)
             return false;
         if (other.getEffectiveOn() == null ^ this.getEffectiveOn() == null)
             return false;
-        if (other.getEffectiveOn() != null
-                && other.getEffectiveOn().equals(this.getEffectiveOn()) == false)
+        if (other.getEffectiveOn() != null && other.getEffectiveOn().equals(this.getEffectiveOn()) == false)
             return false;
         return true;
     }
@@ -308,15 +303,10 @@ public class OfferingStatus implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getType() == null) ? 0 : getType().hashCode());
-        hashCode = prime * hashCode
-                + ((getOffering() == null) ? 0 : getOffering().hashCode());
-        hashCode = prime * hashCode
-                + ((getQuantity() == null) ? 0 : getQuantity().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEffectiveOn() == null) ? 0 : getEffectiveOn().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getOffering() == null) ? 0 : getOffering().hashCode());
+        hashCode = prime * hashCode + ((getQuantity() == null) ? 0 : getQuantity().hashCode());
+        hashCode = prime * hashCode + ((getEffectiveOn() == null) ? 0 : getEffectiveOn().hashCode());
         return hashCode;
     }
 
@@ -325,9 +315,13 @@ public class OfferingStatus implements Serializable, Cloneable {
         try {
             return (OfferingStatus) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.devicefarm.model.transform.OfferingStatusMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

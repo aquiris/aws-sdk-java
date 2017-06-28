@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudhsm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Contains the inputs for the <a>CreateHsm</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/CreateHsm" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateHsmRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateHsmRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -42,15 +45,13 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * The IP address to assign to the HSM's ENI.
      * </p>
      * <p>
-     * If an IP address is not specified, an IP address will be randomly chosen
-     * from the CIDR range of the subnet.
+     * If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.
      * </p>
      */
     private String eniIp;
     /**
      * <p>
-     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an
-     * ENI on your behalf.
+     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
      * </p>
      */
     private String iamRoleArn;
@@ -64,15 +65,15 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
     private String subscriptionType;
     /**
      * <p>
-     * A user-defined token to ensure idempotence. Subsequent calls to this
-     * operation with the same token will be ignored.
+     * A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be
+     * ignored.
      * </p>
      */
     private String clientToken;
     /**
      * <p>
-     * The IP address for the syslog monitoring server. The AWS CloudHSM service
-     * only supports one syslog monitoring server.
+     * The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring
+     * server.
      * </p>
      */
     private String syslogIp;
@@ -83,8 +84,7 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param subnetId
-     *        The identifier of the subnet in your VPC in which to place the
-     *        HSM.
+     *        The identifier of the subnet in your VPC in which to place the HSM.
      */
 
     public void setSubnetId(String subnetId) {
@@ -96,8 +96,7 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * The identifier of the subnet in your VPC in which to place the HSM.
      * </p>
      * 
-     * @return The identifier of the subnet in your VPC in which to place the
-     *         HSM.
+     * @return The identifier of the subnet in your VPC in which to place the HSM.
      */
 
     public String getSubnetId() {
@@ -110,10 +109,8 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param subnetId
-     *        The identifier of the subnet in your VPC in which to place the
-     *        HSM.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The identifier of the subnet in your VPC in which to place the HSM.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHsmRequest withSubnetId(String subnetId) {
@@ -153,8 +150,7 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * 
      * @param sshKey
      *        The SSH public key to install on the HSM.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHsmRequest withSshKey(String sshKey) {
@@ -167,15 +163,14 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * The IP address to assign to the HSM's ENI.
      * </p>
      * <p>
-     * If an IP address is not specified, an IP address will be randomly chosen
-     * from the CIDR range of the subnet.
+     * If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.
      * </p>
      * 
      * @param eniIp
      *        The IP address to assign to the HSM's ENI.</p>
      *        <p>
-     *        If an IP address is not specified, an IP address will be randomly
-     *        chosen from the CIDR range of the subnet.
+     *        If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the
+     *        subnet.
      */
 
     public void setEniIp(String eniIp) {
@@ -187,14 +182,13 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * The IP address to assign to the HSM's ENI.
      * </p>
      * <p>
-     * If an IP address is not specified, an IP address will be randomly chosen
-     * from the CIDR range of the subnet.
+     * If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.
      * </p>
      * 
      * @return The IP address to assign to the HSM's ENI.</p>
      *         <p>
-     *         If an IP address is not specified, an IP address will be randomly
-     *         chosen from the CIDR range of the subnet.
+     *         If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the
+     *         subnet.
      */
 
     public String getEniIp() {
@@ -206,17 +200,15 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * The IP address to assign to the HSM's ENI.
      * </p>
      * <p>
-     * If an IP address is not specified, an IP address will be randomly chosen
-     * from the CIDR range of the subnet.
+     * If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.
      * </p>
      * 
      * @param eniIp
      *        The IP address to assign to the HSM's ENI.</p>
      *        <p>
-     *        If an IP address is not specified, an IP address will be randomly
-     *        chosen from the CIDR range of the subnet.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the
+     *        subnet.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHsmRequest withEniIp(String eniIp) {
@@ -226,13 +218,11 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an
-     * ENI on your behalf.
+     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
      * </p>
      * 
      * @param iamRoleArn
-     *        The ARN of an IAM role to enable the AWS CloudHSM service to
-     *        allocate an ENI on your behalf.
+     *        The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
      */
 
     public void setIamRoleArn(String iamRoleArn) {
@@ -241,12 +231,10 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an
-     * ENI on your behalf.
+     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
      * </p>
      * 
-     * @return The ARN of an IAM role to enable the AWS CloudHSM service to
-     *         allocate an ENI on your behalf.
+     * @return The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
      */
 
     public String getIamRoleArn() {
@@ -255,15 +243,12 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an
-     * ENI on your behalf.
+     * The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
      * </p>
      * 
      * @param iamRoleArn
-     *        The ARN of an IAM role to enable the AWS CloudHSM service to
-     *        allocate an ENI on your behalf.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHsmRequest withIamRoleArn(String iamRoleArn) {
@@ -303,8 +288,7 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
      * 
      * @param externalId
      *        The external ID from <b>IamRoleArn</b>, if present.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHsmRequest withExternalId(String externalId) {
@@ -332,8 +316,7 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * @param subscriptionType
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see SubscriptionType
      */
 
@@ -353,26 +336,24 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * @param subscriptionType
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see SubscriptionType
      */
 
-    public CreateHsmRequest withSubscriptionType(
-            SubscriptionType subscriptionType) {
+    public CreateHsmRequest withSubscriptionType(SubscriptionType subscriptionType) {
         setSubscriptionType(subscriptionType);
         return this;
     }
 
     /**
      * <p>
-     * A user-defined token to ensure idempotence. Subsequent calls to this
-     * operation with the same token will be ignored.
+     * A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be
+     * ignored.
      * </p>
      * 
      * @param clientToken
-     *        A user-defined token to ensure idempotence. Subsequent calls to
-     *        this operation with the same token will be ignored.
+     *        A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be
+     *        ignored.
      */
 
     public void setClientToken(String clientToken) {
@@ -381,12 +362,12 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A user-defined token to ensure idempotence. Subsequent calls to this
-     * operation with the same token will be ignored.
+     * A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be
+     * ignored.
      * </p>
      * 
-     * @return A user-defined token to ensure idempotence. Subsequent calls to
-     *         this operation with the same token will be ignored.
+     * @return A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will
+     *         be ignored.
      */
 
     public String getClientToken() {
@@ -395,15 +376,14 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A user-defined token to ensure idempotence. Subsequent calls to this
-     * operation with the same token will be ignored.
+     * A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be
+     * ignored.
      * </p>
      * 
      * @param clientToken
-     *        A user-defined token to ensure idempotence. Subsequent calls to
-     *        this operation with the same token will be ignored.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be
+     *        ignored.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHsmRequest withClientToken(String clientToken) {
@@ -413,13 +393,13 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The IP address for the syslog monitoring server. The AWS CloudHSM service
-     * only supports one syslog monitoring server.
+     * The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring
+     * server.
      * </p>
      * 
      * @param syslogIp
-     *        The IP address for the syslog monitoring server. The AWS CloudHSM
-     *        service only supports one syslog monitoring server.
+     *        The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog
+     *        monitoring server.
      */
 
     public void setSyslogIp(String syslogIp) {
@@ -428,12 +408,12 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The IP address for the syslog monitoring server. The AWS CloudHSM service
-     * only supports one syslog monitoring server.
+     * The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring
+     * server.
      * </p>
      * 
-     * @return The IP address for the syslog monitoring server. The AWS CloudHSM
-     *         service only supports one syslog monitoring server.
+     * @return The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog
+     *         monitoring server.
      */
 
     public String getSyslogIp() {
@@ -442,15 +422,14 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The IP address for the syslog monitoring server. The AWS CloudHSM service
-     * only supports one syslog monitoring server.
+     * The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring
+     * server.
      * </p>
      * 
      * @param syslogIp
-     *        The IP address for the syslog monitoring server. The AWS CloudHSM
-     *        service only supports one syslog monitoring server.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog
+     *        monitoring server.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHsmRequest withSyslogIp(String syslogIp) {
@@ -459,8 +438,7 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -471,21 +449,21 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId() + ",");
+            sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getSshKey() != null)
-            sb.append("SshKey: " + getSshKey() + ",");
+            sb.append("SshKey: ").append(getSshKey()).append(",");
         if (getEniIp() != null)
-            sb.append("EniIp: " + getEniIp() + ",");
+            sb.append("EniIp: ").append(getEniIp()).append(",");
         if (getIamRoleArn() != null)
-            sb.append("IamRoleArn: " + getIamRoleArn() + ",");
+            sb.append("IamRoleArn: ").append(getIamRoleArn()).append(",");
         if (getExternalId() != null)
-            sb.append("ExternalId: " + getExternalId() + ",");
+            sb.append("ExternalId: ").append(getExternalId()).append(",");
         if (getSubscriptionType() != null)
-            sb.append("SubscriptionType: " + getSubscriptionType() + ",");
+            sb.append("SubscriptionType: ").append(getSubscriptionType()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken() + ",");
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
         if (getSyslogIp() != null)
-            sb.append("SyslogIp: " + getSyslogIp());
+            sb.append("SyslogIp: ").append(getSyslogIp());
         sb.append("}");
         return sb.toString();
     }
@@ -502,45 +480,35 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
         CreateHsmRequest other = (CreateHsmRequest) obj;
         if (other.getSubnetId() == null ^ this.getSubnetId() == null)
             return false;
-        if (other.getSubnetId() != null
-                && other.getSubnetId().equals(this.getSubnetId()) == false)
+        if (other.getSubnetId() != null && other.getSubnetId().equals(this.getSubnetId()) == false)
             return false;
         if (other.getSshKey() == null ^ this.getSshKey() == null)
             return false;
-        if (other.getSshKey() != null
-                && other.getSshKey().equals(this.getSshKey()) == false)
+        if (other.getSshKey() != null && other.getSshKey().equals(this.getSshKey()) == false)
             return false;
         if (other.getEniIp() == null ^ this.getEniIp() == null)
             return false;
-        if (other.getEniIp() != null
-                && other.getEniIp().equals(this.getEniIp()) == false)
+        if (other.getEniIp() != null && other.getEniIp().equals(this.getEniIp()) == false)
             return false;
         if (other.getIamRoleArn() == null ^ this.getIamRoleArn() == null)
             return false;
-        if (other.getIamRoleArn() != null
-                && other.getIamRoleArn().equals(this.getIamRoleArn()) == false)
+        if (other.getIamRoleArn() != null && other.getIamRoleArn().equals(this.getIamRoleArn()) == false)
             return false;
         if (other.getExternalId() == null ^ this.getExternalId() == null)
             return false;
-        if (other.getExternalId() != null
-                && other.getExternalId().equals(this.getExternalId()) == false)
+        if (other.getExternalId() != null && other.getExternalId().equals(this.getExternalId()) == false)
             return false;
-        if (other.getSubscriptionType() == null
-                ^ this.getSubscriptionType() == null)
+        if (other.getSubscriptionType() == null ^ this.getSubscriptionType() == null)
             return false;
-        if (other.getSubscriptionType() != null
-                && other.getSubscriptionType().equals(
-                        this.getSubscriptionType()) == false)
+        if (other.getSubscriptionType() != null && other.getSubscriptionType().equals(this.getSubscriptionType()) == false)
             return false;
         if (other.getClientToken() == null ^ this.getClientToken() == null)
             return false;
-        if (other.getClientToken() != null
-                && other.getClientToken().equals(this.getClientToken()) == false)
+        if (other.getClientToken() != null && other.getClientToken().equals(this.getClientToken()) == false)
             return false;
         if (other.getSyslogIp() == null ^ this.getSyslogIp() == null)
             return false;
-        if (other.getSyslogIp() != null
-                && other.getSyslogIp().equals(this.getSyslogIp()) == false)
+        if (other.getSyslogIp() != null && other.getSyslogIp().equals(this.getSyslogIp()) == false)
             return false;
         return true;
     }
@@ -550,25 +518,14 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode());
-        hashCode = prime * hashCode
-                + ((getSshKey() == null) ? 0 : getSshKey().hashCode());
-        hashCode = prime * hashCode
-                + ((getEniIp() == null) ? 0 : getEniIp().hashCode());
-        hashCode = prime * hashCode
-                + ((getIamRoleArn() == null) ? 0 : getIamRoleArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getExternalId() == null) ? 0 : getExternalId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSubscriptionType() == null) ? 0 : getSubscriptionType()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getSyslogIp() == null) ? 0 : getSyslogIp().hashCode());
+        hashCode = prime * hashCode + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode());
+        hashCode = prime * hashCode + ((getSshKey() == null) ? 0 : getSshKey().hashCode());
+        hashCode = prime * hashCode + ((getEniIp() == null) ? 0 : getEniIp().hashCode());
+        hashCode = prime * hashCode + ((getIamRoleArn() == null) ? 0 : getIamRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getExternalId() == null) ? 0 : getExternalId().hashCode());
+        hashCode = prime * hashCode + ((getSubscriptionType() == null) ? 0 : getSubscriptionType().hashCode());
+        hashCode = prime * hashCode + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
+        hashCode = prime * hashCode + ((getSyslogIp() == null) ? 0 : getSyslogIp().hashCode());
         return hashCode;
     }
 
@@ -576,4 +533,5 @@ public class CreateHsmRequest extends AmazonWebServiceRequest implements
     public CreateHsmRequest clone() {
         return (CreateHsmRequest) super.clone();
     }
+
 }

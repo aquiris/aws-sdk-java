@@ -1,23 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.apigateway.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -29,11 +26,10 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * UpdateDomainNameResult JSON Unmarshaller
  */
-public class UpdateDomainNameResultJsonUnmarshaller implements
-        Unmarshaller<UpdateDomainNameResult, JsonUnmarshallerContext> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateDomainNameResultJsonUnmarshaller implements Unmarshaller<UpdateDomainNameResult, JsonUnmarshallerContext> {
 
-    public UpdateDomainNameResult unmarshall(JsonUnmarshallerContext context)
-            throws Exception {
+    public UpdateDomainNameResult unmarshall(JsonUnmarshallerContext context) throws Exception {
         UpdateDomainNameResult updateDomainNameResult = new UpdateDomainNameResult();
 
         int originalDepth = context.getCurrentDepth();
@@ -43,8 +39,9 @@ public class UpdateDomainNameResultJsonUnmarshaller implements
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
-            return null;
+        if (token == VALUE_NULL) {
+            return updateDomainNameResult;
+        }
 
         while (true) {
             if (token == null)
@@ -53,31 +50,26 @@ public class UpdateDomainNameResultJsonUnmarshaller implements
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("domainName", targetDepth)) {
                     context.nextToken();
-                    updateDomainNameResult.setDomainName(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    updateDomainNameResult.setDomainName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("certificateName", targetDepth)) {
                     context.nextToken();
-                    updateDomainNameResult.setCertificateName(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    updateDomainNameResult.setCertificateName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
-                if (context
-                        .testExpression("certificateUploadDate", targetDepth)) {
+                if (context.testExpression("certificateArn", targetDepth)) {
                     context.nextToken();
-                    updateDomainNameResult.setCertificateUploadDate(context
-                            .getUnmarshaller(java.util.Date.class).unmarshall(
-                                    context));
+                    updateDomainNameResult.setCertificateArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
-                if (context.testExpression("distributionDomainName",
-                        targetDepth)) {
+                if (context.testExpression("certificateUploadDate", targetDepth)) {
                     context.nextToken();
-                    updateDomainNameResult.setDistributionDomainName(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    updateDomainNameResult.setCertificateUploadDate(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
+                }
+                if (context.testExpression("distributionDomainName", targetDepth)) {
+                    context.nextToken();
+                    updateDomainNameResult.setDistributionDomainName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
-                if (context.getLastParsedParentElement() == null
-                        || context.getLastParsedParentElement().equals(
-                                currentParentElement)) {
+                if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)
                         break;
                 }

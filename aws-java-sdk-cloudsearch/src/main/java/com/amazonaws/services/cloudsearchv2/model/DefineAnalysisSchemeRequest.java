@@ -1,31 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudsearchv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Container for the parameters to the <code><a>DefineAnalysisScheme</a></code>
- * operation. Specifies the name of the domain you want to update and the
- * analysis scheme configuration.
+ * Container for the parameters to the <code><a>DefineAnalysisScheme</a></code> operation. Specifies the name of the
+ * domain you want to update and the analysis scheme configuration.
  * </p>
  */
-public class DefineAnalysisSchemeRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DefineAnalysisSchemeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String domainName;
 
@@ -49,8 +48,7 @@ public class DefineAnalysisSchemeRequest extends AmazonWebServiceRequest
 
     /**
      * @param domainName
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DefineAnalysisSchemeRequest withDomainName(String domainName) {
@@ -76,19 +74,16 @@ public class DefineAnalysisSchemeRequest extends AmazonWebServiceRequest
 
     /**
      * @param analysisScheme
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DefineAnalysisSchemeRequest withAnalysisScheme(
-            AnalysisScheme analysisScheme) {
+    public DefineAnalysisSchemeRequest withAnalysisScheme(AnalysisScheme analysisScheme) {
         setAnalysisScheme(analysisScheme);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -99,9 +94,9 @@ public class DefineAnalysisSchemeRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getAnalysisScheme() != null)
-            sb.append("AnalysisScheme: " + getAnalysisScheme());
+            sb.append("AnalysisScheme: ").append(getAnalysisScheme());
         sb.append("}");
         return sb.toString();
     }
@@ -118,14 +113,11 @@ public class DefineAnalysisSchemeRequest extends AmazonWebServiceRequest
         DefineAnalysisSchemeRequest other = (DefineAnalysisSchemeRequest) obj;
         if (other.getDomainName() == null ^ this.getDomainName() == null)
             return false;
-        if (other.getDomainName() != null
-                && other.getDomainName().equals(this.getDomainName()) == false)
+        if (other.getDomainName() != null && other.getDomainName().equals(this.getDomainName()) == false)
             return false;
-        if (other.getAnalysisScheme() == null
-                ^ this.getAnalysisScheme() == null)
+        if (other.getAnalysisScheme() == null ^ this.getAnalysisScheme() == null)
             return false;
-        if (other.getAnalysisScheme() != null
-                && other.getAnalysisScheme().equals(this.getAnalysisScheme()) == false)
+        if (other.getAnalysisScheme() != null && other.getAnalysisScheme().equals(this.getAnalysisScheme()) == false)
             return false;
         return true;
     }
@@ -135,12 +127,8 @@ public class DefineAnalysisSchemeRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAnalysisScheme() == null) ? 0 : getAnalysisScheme()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
+        hashCode = prime * hashCode + ((getAnalysisScheme() == null) ? 0 : getAnalysisScheme().hashCode());
         return hashCode;
     }
 
@@ -148,4 +136,5 @@ public class DefineAnalysisSchemeRequest extends AmazonWebServiceRequest
     public DefineAnalysisSchemeRequest clone() {
         return (DefineAnalysisSchemeRequest) super.clone();
     }
+
 }

@@ -1,63 +1,59 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Requests Amazon API Gateway to get information about a <a>Deployments</a>
- * collection.
+ * Requests Amazon API Gateway to get information about a <a>Deployments</a> collection.
  * </p>
  */
-public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetDeploymentsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the collection of
-     * <a>Deployment</a> resources to get information about.
+     * The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get
+     * information about.
      * </p>
      */
     private String restApiId;
     /**
      * <p>
-     * The position of the current <a>Deployment</a> resource in the collection
-     * to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      */
     private String position;
     /**
      * <p>
-     * The maximum number of <a>Deployment</a> resources in the collection to
-     * get information about. The default limit is 25. It should be an integer
-     * between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      */
     private Integer limit;
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the collection of
-     * <a>Deployment</a> resources to get information about.
+     * The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get
+     * information about.
      * </p>
      * 
      * @param restApiId
-     *        The identifier of the <a>RestApi</a> resource for the collection
-     *        of <a>Deployment</a> resources to get information about.
+     *        The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get
+     *        information about.
      */
 
     public void setRestApiId(String restApiId) {
@@ -66,12 +62,12 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the collection of
-     * <a>Deployment</a> resources to get information about.
+     * The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get
+     * information about.
      * </p>
      * 
-     * @return The identifier of the <a>RestApi</a> resource for the collection
-     *         of <a>Deployment</a> resources to get information about.
+     * @return The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get
+     *         information about.
      */
 
     public String getRestApiId() {
@@ -80,15 +76,14 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the collection of
-     * <a>Deployment</a> resources to get information about.
+     * The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get
+     * information about.
      * </p>
      * 
      * @param restApiId
-     *        The identifier of the <a>RestApi</a> resource for the collection
-     *        of <a>Deployment</a> resources to get information about.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get
+     *        information about.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetDeploymentsRequest withRestApiId(String restApiId) {
@@ -98,13 +93,11 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The position of the current <a>Deployment</a> resource in the collection
-     * to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        The position of the current <a>Deployment</a> resource in the
-     *        collection to get information about.
+     *        The current pagination position in the paged result set.
      */
 
     public void setPosition(String position) {
@@ -113,12 +106,10 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The position of the current <a>Deployment</a> resource in the collection
-     * to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      * 
-     * @return The position of the current <a>Deployment</a> resource in the
-     *         collection to get information about.
+     * @return The current pagination position in the paged result set.
      */
 
     public String getPosition() {
@@ -127,15 +118,12 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The position of the current <a>Deployment</a> resource in the collection
-     * to get information about.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        The position of the current <a>Deployment</a> resource in the
-     *        collection to get information about.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The current pagination position in the paged result set.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetDeploymentsRequest withPosition(String position) {
@@ -145,15 +133,11 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of <a>Deployment</a> resources in the collection to
-     * get information about. The default limit is 25. It should be an integer
-     * between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of <a>Deployment</a> resources in the
-     *        collection to get information about. The default limit is 25. It
-     *        should be an integer between 1 - 500.
+     *        The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      */
 
     public void setLimit(Integer limit) {
@@ -162,14 +146,10 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of <a>Deployment</a> resources in the collection to
-     * get information about. The default limit is 25. It should be an integer
-     * between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      * 
-     * @return The maximum number of <a>Deployment</a> resources in the
-     *         collection to get information about. The default limit is 25. It
-     *         should be an integer between 1 - 500.
+     * @return The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      */
 
     public Integer getLimit() {
@@ -178,17 +158,12 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of <a>Deployment</a> resources in the collection to
-     * get information about. The default limit is 25. It should be an integer
-     * between 1 - 500.
+     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of <a>Deployment</a> resources in the
-     *        collection to get information about. The default limit is 25. It
-     *        should be an integer between 1 - 500.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetDeploymentsRequest withLimit(Integer limit) {
@@ -197,8 +172,7 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -209,11 +183,11 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getPosition() != null)
-            sb.append("Position: " + getPosition() + ",");
+            sb.append("Position: ").append(getPosition()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -230,18 +204,15 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
         GetDeploymentsRequest other = (GetDeploymentsRequest) obj;
         if (other.getRestApiId() == null ^ this.getRestApiId() == null)
             return false;
-        if (other.getRestApiId() != null
-                && other.getRestApiId().equals(this.getRestApiId()) == false)
+        if (other.getRestApiId() != null && other.getRestApiId().equals(this.getRestApiId()) == false)
             return false;
         if (other.getPosition() == null ^ this.getPosition() == null)
             return false;
-        if (other.getPosition() != null
-                && other.getPosition().equals(this.getPosition()) == false)
+        if (other.getPosition() != null && other.getPosition().equals(this.getPosition()) == false)
             return false;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
-        if (other.getLimit() != null
-                && other.getLimit().equals(this.getLimit()) == false)
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
             return false;
         return true;
     }
@@ -251,12 +222,9 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getPosition() == null) ? 0 : getPosition().hashCode());
-        hashCode = prime * hashCode
-                + ((getLimit() == null) ? 0 : getLimit().hashCode());
+        hashCode = prime * hashCode + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
+        hashCode = prime * hashCode + ((getPosition() == null) ? 0 : getPosition().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;
     }
 
@@ -264,4 +232,5 @@ public class GetDeploymentsRequest extends AmazonWebServiceRequest implements
     public GetDeploymentsRequest clone() {
         return (GetDeploymentsRequest) super.clone();
     }
+
 }

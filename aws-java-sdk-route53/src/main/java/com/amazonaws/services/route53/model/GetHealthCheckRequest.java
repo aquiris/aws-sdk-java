@@ -1,47 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * This action gets information about a specified health check.
+ * A request to get information about a specified health check.
  * </p>
- * <p>
- * Send a <code>GET</code> request to the
- * <code>/<i>Amazon Route 53 API version</i>/gethealthcheckrequest</code>
- * resource.
- * </p>
- * <p>
- * For information about getting information about a health check using the
- * Amazon Route 53 console, see <a href=
- * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html"
- * >Amazon Route 53 Health Checks and DNS Failover</a> in the <i>Amazon Route 53
- * Developer Guide</i>.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheck" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier that Amazon Route 53 assigned to the health check when you
-     * created it. When you add or update a resource record set, you use this
-     * value to specify which health check to use. The value can be up to 64
+     * The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a
+     * resource record set, you use this value to specify which health check to use. The value can be up to 64
      * characters long.
      * </p>
      */
@@ -49,17 +39,15 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier that Amazon Route 53 assigned to the health check when you
-     * created it. When you add or update a resource record set, you use this
-     * value to specify which health check to use. The value can be up to 64
+     * The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a
+     * resource record set, you use this value to specify which health check to use. The value can be up to 64
      * characters long.
      * </p>
      * 
      * @param healthCheckId
-     *        The identifier that Amazon Route 53 assigned to the health check
-     *        when you created it. When you add or update a resource record set,
-     *        you use this value to specify which health check to use. The value
-     *        can be up to 64 characters long.
+     *        The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or
+     *        update a resource record set, you use this value to specify which health check to use. The value can be up
+     *        to 64 characters long.
      */
 
     public void setHealthCheckId(String healthCheckId) {
@@ -68,16 +56,14 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier that Amazon Route 53 assigned to the health check when you
-     * created it. When you add or update a resource record set, you use this
-     * value to specify which health check to use. The value can be up to 64
+     * The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a
+     * resource record set, you use this value to specify which health check to use. The value can be up to 64
      * characters long.
      * </p>
      * 
-     * @return The identifier that Amazon Route 53 assigned to the health check
-     *         when you created it. When you add or update a resource record
-     *         set, you use this value to specify which health check to use. The
-     *         value can be up to 64 characters long.
+     * @return The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or
+     *         update a resource record set, you use this value to specify which health check to use. The value can be
+     *         up to 64 characters long.
      */
 
     public String getHealthCheckId() {
@@ -86,19 +72,16 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier that Amazon Route 53 assigned to the health check when you
-     * created it. When you add or update a resource record set, you use this
-     * value to specify which health check to use. The value can be up to 64
+     * The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a
+     * resource record set, you use this value to specify which health check to use. The value can be up to 64
      * characters long.
      * </p>
      * 
      * @param healthCheckId
-     *        The identifier that Amazon Route 53 assigned to the health check
-     *        when you created it. When you add or update a resource record set,
-     *        you use this value to specify which health check to use. The value
-     *        can be up to 64 characters long.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or
+     *        update a resource record set, you use this value to specify which health check to use. The value can be up
+     *        to 64 characters long.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetHealthCheckRequest withHealthCheckId(String healthCheckId) {
@@ -107,8 +90,7 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -119,7 +101,7 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHealthCheckId() != null)
-            sb.append("HealthCheckId: " + getHealthCheckId());
+            sb.append("HealthCheckId: ").append(getHealthCheckId());
         sb.append("}");
         return sb.toString();
     }
@@ -136,8 +118,7 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
         GetHealthCheckRequest other = (GetHealthCheckRequest) obj;
         if (other.getHealthCheckId() == null ^ this.getHealthCheckId() == null)
             return false;
-        if (other.getHealthCheckId() != null
-                && other.getHealthCheckId().equals(this.getHealthCheckId()) == false)
+        if (other.getHealthCheckId() != null && other.getHealthCheckId().equals(this.getHealthCheckId()) == false)
             return false;
         return true;
     }
@@ -147,10 +128,7 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getHealthCheckId() == null) ? 0 : getHealthCheckId()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getHealthCheckId() == null) ? 0 : getHealthCheckId().hashCode());
         return hashCode;
     }
 
@@ -158,4 +136,5 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest implements
     public GetHealthCheckRequest clone() {
         return (GetHealthCheckRequest) super.clone();
     }
+
 }

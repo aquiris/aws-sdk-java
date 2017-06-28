@@ -1,31 +1,33 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListLaunchPaths" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListLaunchPathsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -43,30 +45,28 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
     private String acceptLanguage;
     /**
      * <p>
-     * Identifies the product for which to retrieve
-     * <code>LaunchPathSummaries</code> information.
+     * The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code>
+     * information.
      * </p>
      */
     private String productId;
     /**
      * <p>
-     * The maximum number of items to return in the results. If more results
-     * exist than fit in the specified <code>PageSize</code>, the value of
-     * <code>NextPageToken</code> in the response is non-null.
+     * The maximum number of items to return in the results. If more results exist than fit in the specified
+     * <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.
      * </p>
      */
     private Integer pageSize;
     /**
      * <p>
-     * The page token of the first page retrieve. If null, this retrieves the
-     * first page of size <code>PageSize</code>.
+     * The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.
      * </p>
      */
     private String pageToken;
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -82,8 +82,7 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param acceptLanguage
-     *        Optional language code. Supported language codes are as
-     *        follows:</p>
+     *        The language code to use for this operation. Supported language codes are as follows:</p>
      *        <p>
      *        "en" (English)
      *        </p>
@@ -103,7 +102,7 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -118,8 +117,7 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
      * If no code is specified, "en" is used as the default.
      * </p>
      * 
-     * @return Optional language code. Supported language codes are as
-     *         follows:</p>
+     * @return The language code to use for this operation. Supported language codes are as follows:</p>
      *         <p>
      *         "en" (English)
      *         </p>
@@ -139,7 +137,7 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -155,8 +153,7 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param acceptLanguage
-     *        Optional language code. Supported language codes are as
-     *        follows:</p>
+     *        The language code to use for this operation. Supported language codes are as follows:</p>
      *        <p>
      *        "en" (English)
      *        </p>
@@ -168,8 +165,7 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
      *        </p>
      *        <p>
      *        If no code is specified, "en" is used as the default.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListLaunchPathsRequest withAcceptLanguage(String acceptLanguage) {
@@ -179,13 +175,13 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Identifies the product for which to retrieve
-     * <code>LaunchPathSummaries</code> information.
+     * The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code>
+     * information.
      * </p>
      * 
      * @param productId
-     *        Identifies the product for which to retrieve
-     *        <code>LaunchPathSummaries</code> information.
+     *        The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code>
+     *        information.
      */
 
     public void setProductId(String productId) {
@@ -194,12 +190,12 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Identifies the product for which to retrieve
-     * <code>LaunchPathSummaries</code> information.
+     * The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code>
+     * information.
      * </p>
      * 
-     * @return Identifies the product for which to retrieve
-     *         <code>LaunchPathSummaries</code> information.
+     * @return The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code>
+     *         information.
      */
 
     public String getProductId() {
@@ -208,15 +204,14 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Identifies the product for which to retrieve
-     * <code>LaunchPathSummaries</code> information.
+     * The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code>
+     * information.
      * </p>
      * 
      * @param productId
-     *        Identifies the product for which to retrieve
-     *        <code>LaunchPathSummaries</code> information.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code>
+     *        information.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListLaunchPathsRequest withProductId(String productId) {
@@ -226,15 +221,13 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return in the results. If more results
-     * exist than fit in the specified <code>PageSize</code>, the value of
-     * <code>NextPageToken</code> in the response is non-null.
+     * The maximum number of items to return in the results. If more results exist than fit in the specified
+     * <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.
      * </p>
      * 
      * @param pageSize
-     *        The maximum number of items to return in the results. If more
-     *        results exist than fit in the specified <code>PageSize</code>, the
-     *        value of <code>NextPageToken</code> in the response is non-null.
+     *        The maximum number of items to return in the results. If more results exist than fit in the specified
+     *        <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.
      */
 
     public void setPageSize(Integer pageSize) {
@@ -243,15 +236,12 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return in the results. If more results
-     * exist than fit in the specified <code>PageSize</code>, the value of
-     * <code>NextPageToken</code> in the response is non-null.
+     * The maximum number of items to return in the results. If more results exist than fit in the specified
+     * <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.
      * </p>
      * 
-     * @return The maximum number of items to return in the results. If more
-     *         results exist than fit in the specified <code>PageSize</code>,
-     *         the value of <code>NextPageToken</code> in the response is
-     *         non-null.
+     * @return The maximum number of items to return in the results. If more results exist than fit in the specified
+     *         <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.
      */
 
     public Integer getPageSize() {
@@ -260,17 +250,14 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return in the results. If more results
-     * exist than fit in the specified <code>PageSize</code>, the value of
-     * <code>NextPageToken</code> in the response is non-null.
+     * The maximum number of items to return in the results. If more results exist than fit in the specified
+     * <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.
      * </p>
      * 
      * @param pageSize
-     *        The maximum number of items to return in the results. If more
-     *        results exist than fit in the specified <code>PageSize</code>, the
-     *        value of <code>NextPageToken</code> in the response is non-null.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of items to return in the results. If more results exist than fit in the specified
+     *        <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListLaunchPathsRequest withPageSize(Integer pageSize) {
@@ -280,13 +267,12 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The page token of the first page retrieve. If null, this retrieves the
-     * first page of size <code>PageSize</code>.
+     * The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.
      * </p>
      * 
      * @param pageToken
-     *        The page token of the first page retrieve. If null, this retrieves
-     *        the first page of size <code>PageSize</code>.
+     *        The page token of the first page retrieved. If null, this retrieves the first page of size
+     *        <code>PageSize</code>.
      */
 
     public void setPageToken(String pageToken) {
@@ -295,12 +281,11 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The page token of the first page retrieve. If null, this retrieves the
-     * first page of size <code>PageSize</code>.
+     * The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.
      * </p>
      * 
-     * @return The page token of the first page retrieve. If null, this
-     *         retrieves the first page of size <code>PageSize</code>.
+     * @return The page token of the first page retrieved. If null, this retrieves the first page of size
+     *         <code>PageSize</code>.
      */
 
     public String getPageToken() {
@@ -309,15 +294,13 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The page token of the first page retrieve. If null, this retrieves the
-     * first page of size <code>PageSize</code>.
+     * The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.
      * </p>
      * 
      * @param pageToken
-     *        The page token of the first page retrieve. If null, this retrieves
-     *        the first page of size <code>PageSize</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The page token of the first page retrieved. If null, this retrieves the first page of size
+     *        <code>PageSize</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListLaunchPathsRequest withPageToken(String pageToken) {
@@ -326,8 +309,7 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -338,13 +320,13 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAcceptLanguage() != null)
-            sb.append("AcceptLanguage: " + getAcceptLanguage() + ",");
+            sb.append("AcceptLanguage: ").append(getAcceptLanguage()).append(",");
         if (getProductId() != null)
-            sb.append("ProductId: " + getProductId() + ",");
+            sb.append("ProductId: ").append(getProductId()).append(",");
         if (getPageSize() != null)
-            sb.append("PageSize: " + getPageSize() + ",");
+            sb.append("PageSize: ").append(getPageSize()).append(",");
         if (getPageToken() != null)
-            sb.append("PageToken: " + getPageToken());
+            sb.append("PageToken: ").append(getPageToken());
         sb.append("}");
         return sb.toString();
     }
@@ -359,26 +341,21 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
         if (obj instanceof ListLaunchPathsRequest == false)
             return false;
         ListLaunchPathsRequest other = (ListLaunchPathsRequest) obj;
-        if (other.getAcceptLanguage() == null
-                ^ this.getAcceptLanguage() == null)
+        if (other.getAcceptLanguage() == null ^ this.getAcceptLanguage() == null)
             return false;
-        if (other.getAcceptLanguage() != null
-                && other.getAcceptLanguage().equals(this.getAcceptLanguage()) == false)
+        if (other.getAcceptLanguage() != null && other.getAcceptLanguage().equals(this.getAcceptLanguage()) == false)
             return false;
         if (other.getProductId() == null ^ this.getProductId() == null)
             return false;
-        if (other.getProductId() != null
-                && other.getProductId().equals(this.getProductId()) == false)
+        if (other.getProductId() != null && other.getProductId().equals(this.getProductId()) == false)
             return false;
         if (other.getPageSize() == null ^ this.getPageSize() == null)
             return false;
-        if (other.getPageSize() != null
-                && other.getPageSize().equals(this.getPageSize()) == false)
+        if (other.getPageSize() != null && other.getPageSize().equals(this.getPageSize()) == false)
             return false;
         if (other.getPageToken() == null ^ this.getPageToken() == null)
             return false;
-        if (other.getPageToken() != null
-                && other.getPageToken().equals(this.getPageToken()) == false)
+        if (other.getPageToken() != null && other.getPageToken().equals(this.getPageToken()) == false)
             return false;
         return true;
     }
@@ -388,16 +365,10 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAcceptLanguage() == null) ? 0 : getAcceptLanguage()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getProductId() == null) ? 0 : getProductId().hashCode());
-        hashCode = prime * hashCode
-                + ((getPageSize() == null) ? 0 : getPageSize().hashCode());
-        hashCode = prime * hashCode
-                + ((getPageToken() == null) ? 0 : getPageToken().hashCode());
+        hashCode = prime * hashCode + ((getAcceptLanguage() == null) ? 0 : getAcceptLanguage().hashCode());
+        hashCode = prime * hashCode + ((getProductId() == null) ? 0 : getProductId().hashCode());
+        hashCode = prime * hashCode + ((getPageSize() == null) ? 0 : getPageSize().hashCode());
+        hashCode = prime * hashCode + ((getPageToken() == null) ? 0 : getPageToken().hashCode());
         return hashCode;
     }
 
@@ -405,4 +376,5 @@ public class ListLaunchPathsRequest extends AmazonWebServiceRequest implements
     public ListLaunchPathsRequest clone() {
         return (ListLaunchPathsRequest) super.clone();
     }
+
 }

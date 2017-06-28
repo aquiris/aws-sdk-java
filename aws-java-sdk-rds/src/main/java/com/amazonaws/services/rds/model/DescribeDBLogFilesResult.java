@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The response from a call to <a>DescribeDBLogFiles</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBLogFiles" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeDBLogFilesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeDBLogFilesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,8 +34,7 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<DescribeDBLogFilesDetails> describeDBLogFiles;
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBLogFiles
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBLogFiles request.
      * </p>
      */
     private String marker;
@@ -61,15 +63,13 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
      *        The DB log files returned.
      */
 
-    public void setDescribeDBLogFiles(
-            java.util.Collection<DescribeDBLogFilesDetails> describeDBLogFiles) {
+    public void setDescribeDBLogFiles(java.util.Collection<DescribeDBLogFilesDetails> describeDBLogFiles) {
         if (describeDBLogFiles == null) {
             this.describeDBLogFiles = null;
             return;
         }
 
-        this.describeDBLogFiles = new com.amazonaws.internal.SdkInternalList<DescribeDBLogFilesDetails>(
-                describeDBLogFiles);
+        this.describeDBLogFiles = new com.amazonaws.internal.SdkInternalList<DescribeDBLogFilesDetails>(describeDBLogFiles);
     }
 
     /**
@@ -77,23 +77,19 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
      * The DB log files returned.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDescribeDBLogFiles(java.util.Collection)} or
-     * {@link #withDescribeDBLogFiles(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDescribeDBLogFiles(java.util.Collection)} or {@link #withDescribeDBLogFiles(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param describeDBLogFiles
      *        The DB log files returned.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeDBLogFilesResult withDescribeDBLogFiles(
-            DescribeDBLogFilesDetails... describeDBLogFiles) {
+    public DescribeDBLogFilesResult withDescribeDBLogFiles(DescribeDBLogFilesDetails... describeDBLogFiles) {
         if (this.describeDBLogFiles == null) {
-            setDescribeDBLogFiles(new com.amazonaws.internal.SdkInternalList<DescribeDBLogFilesDetails>(
-                    describeDBLogFiles.length));
+            setDescribeDBLogFiles(new com.amazonaws.internal.SdkInternalList<DescribeDBLogFilesDetails>(describeDBLogFiles.length));
         }
         for (DescribeDBLogFilesDetails ele : describeDBLogFiles) {
             this.describeDBLogFiles.add(ele);
@@ -108,25 +104,21 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
      * 
      * @param describeDBLogFiles
      *        The DB log files returned.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeDBLogFilesResult withDescribeDBLogFiles(
-            java.util.Collection<DescribeDBLogFilesDetails> describeDBLogFiles) {
+    public DescribeDBLogFilesResult withDescribeDBLogFiles(java.util.Collection<DescribeDBLogFilesDetails> describeDBLogFiles) {
         setDescribeDBLogFiles(describeDBLogFiles);
         return this;
     }
 
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBLogFiles
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBLogFiles request.
      * </p>
      * 
      * @param marker
-     *        A pagination token that can be used in a subsequent
-     *        DescribeDBLogFiles request.
+     *        A pagination token that can be used in a subsequent DescribeDBLogFiles request.
      */
 
     public void setMarker(String marker) {
@@ -135,12 +127,10 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBLogFiles
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBLogFiles request.
      * </p>
      * 
-     * @return A pagination token that can be used in a subsequent
-     *         DescribeDBLogFiles request.
+     * @return A pagination token that can be used in a subsequent DescribeDBLogFiles request.
      */
 
     public String getMarker() {
@@ -149,15 +139,12 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A pagination token that can be used in a subsequent DescribeDBLogFiles
-     * request.
+     * A pagination token that can be used in a subsequent DescribeDBLogFiles request.
      * </p>
      * 
      * @param marker
-     *        A pagination token that can be used in a subsequent
-     *        DescribeDBLogFiles request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A pagination token that can be used in a subsequent DescribeDBLogFiles request.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeDBLogFilesResult withMarker(String marker) {
@@ -166,8 +153,7 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -178,9 +164,9 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDescribeDBLogFiles() != null)
-            sb.append("DescribeDBLogFiles: " + getDescribeDBLogFiles() + ",");
+            sb.append("DescribeDBLogFiles: ").append(getDescribeDBLogFiles()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -195,17 +181,13 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
         if (obj instanceof DescribeDBLogFilesResult == false)
             return false;
         DescribeDBLogFilesResult other = (DescribeDBLogFilesResult) obj;
-        if (other.getDescribeDBLogFiles() == null
-                ^ this.getDescribeDBLogFiles() == null)
+        if (other.getDescribeDBLogFiles() == null ^ this.getDescribeDBLogFiles() == null)
             return false;
-        if (other.getDescribeDBLogFiles() != null
-                && other.getDescribeDBLogFiles().equals(
-                        this.getDescribeDBLogFiles()) == false)
+        if (other.getDescribeDBLogFiles() != null && other.getDescribeDBLogFiles().equals(this.getDescribeDBLogFiles()) == false)
             return false;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         return true;
     }
@@ -215,12 +197,8 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDescribeDBLogFiles() == null) ? 0
-                        : getDescribeDBLogFiles().hashCode());
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getDescribeDBLogFiles() == null) ? 0 : getDescribeDBLogFiles().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
         return hashCode;
     }
 
@@ -229,9 +207,8 @@ public class DescribeDBLogFilesResult implements Serializable, Cloneable {
         try {
             return (DescribeDBLogFilesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

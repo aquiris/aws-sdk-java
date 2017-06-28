@@ -22,7 +22,6 @@ import org.junit.Test;
 import utils.http.WireMockTestBase;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static utils.http.HttpResponseHandlers.stringResponseHandler;
 
 public class AmazonHttpClientIntegrationTest extends WireMockTestBase {
     private static final String OPERATION = "/some-operation";
@@ -40,7 +39,7 @@ public class AmazonHttpClientIntegrationTest extends WireMockTestBase {
         Request<?> request = newGetRequest(OPERATION);
 
         AmazonHttpClient sut = createClient(HEADER, CONFIG_HEADER_VALUE);
-        sut.execute(request, stringResponseHandler(), stubErrorHandler(), new ExecutionContext());
+        sut.requestExecutionBuilder().request(request).execute();
 
         verify(getRequestedFor(urlPathEqualTo(OPERATION)).withHeader(HEADER, matching(CONFIG_HEADER_VALUE)));
     }
@@ -51,9 +50,21 @@ public class AmazonHttpClientIntegrationTest extends WireMockTestBase {
         request.getOriginalRequest().putCustomRequestHeader(HEADER, REQUEST_HEADER_VALUE);
 
         AmazonHttpClient sut = createClient(HEADER, CONFIG_HEADER_VALUE);
-        sut.execute(request, stringResponseHandler(), stubErrorHandler(), new ExecutionContext());
+
+        sut.requestExecutionBuilder().request(request).execute();
 
         verify(getRequestedFor(urlPathEqualTo(OPERATION)).withHeader(HEADER, matching(REQUEST_HEADER_VALUE)));
+    }
+
+    @Test
+    public void canHandleOptionsRequest() throws Exception {
+        Request<?> request = newRequest(OPERATION);
+        request.setHttpMethod(HttpMethodName.OPTIONS);
+
+        AmazonHttpClient sut = new AmazonHttpClient(new ClientConfiguration());
+        sut.requestExecutionBuilder().request(request).execute();
+
+        verify(optionsRequestedFor(urlPathEqualTo(OPERATION)));
     }
 
     private AmazonHttpClient createClient(String headerName, String headerValue) {

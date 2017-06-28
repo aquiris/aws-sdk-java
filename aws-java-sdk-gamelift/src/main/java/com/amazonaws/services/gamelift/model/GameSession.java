@@ -1,58 +1,64 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Properties describing a game session.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/GameSession" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GameSession implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GameSession implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Unique identifier for a game session.
+     * Unique identifier for the game session. A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .
      * </p>
      */
     private String gameSessionId;
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not
-     * need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet the game session is running on.
      * </p>
      */
     private String fleetId;
     /**
      * <p>
-     * Time stamp indicating when this data object was created. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      */
     private java.util.Date creationTime;
     /**
      * <p>
-     * Time stamp indicating when this data object was terminated. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      */
     private java.util.Date terminationTime;
@@ -64,34 +70,35 @@ public class GameSession implements Serializable, Cloneable {
     private Integer currentPlayerSessionCount;
     /**
      * <p>
-     * Maximum number of players allowed in the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      */
     private Integer maximumPlayerSessionCount;
     /**
      * <p>
-     * Current status of the game session. A game session must be in an
-     * <code>ACTIVE</code> status to have player sessions.
+     * Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     * sessions.
      * </p>
      */
     private String status;
     /**
      * <p>
-     * Set of custom properties for the game session.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      */
     private java.util.List<GameProperty> gameProperties;
     /**
      * <p>
-     * IP address of the game session. To connect to a GameLift server process,
-     * an app needs both the IP address and port number.
+     * IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and
+     * port number.
      * </p>
      */
     private String ipAddress;
     /**
      * <p>
-     * Port number for the game session. To connect to a GameLift server
-     * process, an app needs both the IP address and port number.
+     * Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address
+     * and port number.
      * </p>
      */
     private Integer port;
@@ -101,14 +108,25 @@ public class GameSession implements Serializable, Cloneable {
      * </p>
      */
     private String playerSessionCreationPolicy;
+    /**
+     * <p>
+     * Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that
+     * limits the number of game sessions a player can create.
+     * </p>
+     */
+    private String creatorId;
 
     /**
      * <p>
-     * Unique identifier for a game session.
+     * Unique identifier for the game session. A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for a game session.
+     *        Unique identifier for the game session. A game session ID has the following format:
+     *        <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *        .
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -117,10 +135,14 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a game session.
+     * Unique identifier for the game session. A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .
      * </p>
      * 
-     * @return Unique identifier for a game session.
+     * @return Unique identifier for the game session. A game session ID has the following format:
+     *         <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *         .
      */
 
     public String getGameSessionId() {
@@ -129,13 +151,16 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a game session.
+     * Unique identifier for the game session. A game session ID has the following format:
+     * <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     * .
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for a game session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Unique identifier for the game session. A game session ID has the following format:
+     *        <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>
+     *        .
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withGameSessionId(String gameSessionId) {
@@ -145,13 +170,11 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not
-     * need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a game session. Session names do
-     *        not need to be unique.
+     *        Descriptive label that is associated with a game session. Session names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -160,12 +183,10 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not
-     * need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label associated with a game session. Session names
-     *         do not need to be unique.
+     * @return Descriptive label that is associated with a game session. Session names do not need to be unique.
      */
 
     public String getName() {
@@ -174,15 +195,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a game session. Session names do not
-     * need to be unique.
+     * Descriptive label that is associated with a game session. Session names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a game session. Session names do
-     *        not need to be unique.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Descriptive label that is associated with a game session. Session names do not need to be unique.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withName(String name) {
@@ -192,11 +210,11 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet the game session is running on.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet.
+     *        Unique identifier for a fleet the game session is running on.
      */
 
     public void setFleetId(String fleetId) {
@@ -205,10 +223,10 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet the game session is running on.
      * </p>
      * 
-     * @return Unique identifier for a fleet.
+     * @return Unique identifier for a fleet the game session is running on.
      */
 
     public String getFleetId() {
@@ -217,13 +235,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Unique identifier for a fleet.
+     * Unique identifier for a fleet the game session is running on.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Unique identifier for a fleet the game session is running on.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withFleetId(String fleetId) {
@@ -233,14 +250,13 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time stamp indicating when this data object was created. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
      * @param creationTime
-     *        Time stamp indicating when this data object was created. Format is
-     *        a number expressed in Unix time as milliseconds (ex:
-     *        "1469498468.057".
+     *        Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
+     *        milliseconds (for example "1469498468.057").
      */
 
     public void setCreationTime(java.util.Date creationTime) {
@@ -249,13 +265,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time stamp indicating when this data object was created. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
-     * @return Time stamp indicating when this data object was created. Format
-     *         is a number expressed in Unix time as milliseconds (ex:
-     *         "1469498468.057".
+     * @return Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
+     *         milliseconds (for example "1469498468.057").
      */
 
     public java.util.Date getCreationTime() {
@@ -264,16 +279,14 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time stamp indicating when this data object was created. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
      * @param creationTime
-     *        Time stamp indicating when this data object was created. Format is
-     *        a number expressed in Unix time as milliseconds (ex:
-     *        "1469498468.057".
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Time stamp indicating when this data object was created. Format is a number expressed in Unix time as
+     *        milliseconds (for example "1469498468.057").
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withCreationTime(java.util.Date creationTime) {
@@ -283,14 +296,13 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time stamp indicating when this data object was terminated. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
      * @param terminationTime
-     *        Time stamp indicating when this data object was terminated. Format
-     *        is a number expressed in Unix time as milliseconds (ex:
-     *        "1469498468.057".
+     *        Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as
+     *        milliseconds (for example "1469498468.057").
      */
 
     public void setTerminationTime(java.util.Date terminationTime) {
@@ -299,13 +311,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time stamp indicating when this data object was terminated. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
-     * @return Time stamp indicating when this data object was terminated.
-     *         Format is a number expressed in Unix time as milliseconds (ex:
-     *         "1469498468.057".
+     * @return Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as
+     *         milliseconds (for example "1469498468.057").
      */
 
     public java.util.Date getTerminationTime() {
@@ -314,16 +325,14 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Time stamp indicating when this data object was terminated. Format is a
-     * number expressed in Unix time as milliseconds (ex: "1469498468.057".
+     * Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as
+     * milliseconds (for example "1469498468.057").
      * </p>
      * 
      * @param terminationTime
-     *        Time stamp indicating when this data object was terminated. Format
-     *        is a number expressed in Unix time as milliseconds (ex:
-     *        "1469498468.057".
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as
+     *        milliseconds (for example "1469498468.057").
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withTerminationTime(java.util.Date terminationTime) {
@@ -363,23 +372,21 @@ public class GameSession implements Serializable, Cloneable {
      * 
      * @param currentPlayerSessionCount
      *        Number of players currently in the game session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GameSession withCurrentPlayerSessionCount(
-            Integer currentPlayerSessionCount) {
+    public GameSession withCurrentPlayerSessionCount(Integer currentPlayerSessionCount) {
         setCurrentPlayerSessionCount(currentPlayerSessionCount);
         return this;
     }
 
     /**
      * <p>
-     * Maximum number of players allowed in the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      * 
      * @param maximumPlayerSessionCount
-     *        Maximum number of players allowed in the game session.
+     *        Maximum number of players that can be connected simultaneously to the game session.
      */
 
     public void setMaximumPlayerSessionCount(Integer maximumPlayerSessionCount) {
@@ -388,10 +395,10 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Maximum number of players allowed in the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      * 
-     * @return Maximum number of players allowed in the game session.
+     * @return Maximum number of players that can be connected simultaneously to the game session.
      */
 
     public Integer getMaximumPlayerSessionCount() {
@@ -400,30 +407,28 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Maximum number of players allowed in the game session.
+     * Maximum number of players that can be connected simultaneously to the game session.
      * </p>
      * 
      * @param maximumPlayerSessionCount
-     *        Maximum number of players allowed in the game session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Maximum number of players that can be connected simultaneously to the game session.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GameSession withMaximumPlayerSessionCount(
-            Integer maximumPlayerSessionCount) {
+    public GameSession withMaximumPlayerSessionCount(Integer maximumPlayerSessionCount) {
         setMaximumPlayerSessionCount(maximumPlayerSessionCount);
         return this;
     }
 
     /**
      * <p>
-     * Current status of the game session. A game session must be in an
-     * <code>ACTIVE</code> status to have player sessions.
+     * Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     * sessions.
      * </p>
      * 
      * @param status
-     *        Current status of the game session. A game session must be in an
-     *        <code>ACTIVE</code> status to have player sessions.
+     *        Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     *        sessions.
      * @see GameSessionStatus
      */
 
@@ -433,12 +438,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Current status of the game session. A game session must be in an
-     * <code>ACTIVE</code> status to have player sessions.
+     * Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     * sessions.
      * </p>
      * 
-     * @return Current status of the game session. A game session must be in an
-     *         <code>ACTIVE</code> status to have player sessions.
+     * @return Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     *         sessions.
      * @see GameSessionStatus
      */
 
@@ -448,15 +453,14 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Current status of the game session. A game session must be in an
-     * <code>ACTIVE</code> status to have player sessions.
+     * Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     * sessions.
      * </p>
      * 
      * @param status
-     *        Current status of the game session. A game session must be in an
-     *        <code>ACTIVE</code> status to have player sessions.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     *        sessions.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see GameSessionStatus
      */
 
@@ -467,13 +471,13 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Current status of the game session. A game session must be in an
-     * <code>ACTIVE</code> status to have player sessions.
+     * Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     * sessions.
      * </p>
      * 
      * @param status
-     *        Current status of the game session. A game session must be in an
-     *        <code>ACTIVE</code> status to have player sessions.
+     *        Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     *        sessions.
      * @see GameSessionStatus
      */
 
@@ -483,15 +487,14 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Current status of the game session. A game session must be in an
-     * <code>ACTIVE</code> status to have player sessions.
+     * Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     * sessions.
      * </p>
      * 
      * @param status
-     *        Current status of the game session. A game session must be in an
-     *        <code>ACTIVE</code> status to have player sessions.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player
+     *        sessions.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see GameSessionStatus
      */
 
@@ -502,10 +505,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set of custom properties for the game session.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * 
-     * @return Set of custom properties for the game session.
+     * @return Set of developer-defined properties for a game session. These properties are passed to the server process
+     *         hosting the game session.
      */
 
     public java.util.List<GameProperty> getGameProperties() {
@@ -514,45 +519,44 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set of custom properties for the game session.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * 
      * @param gameProperties
-     *        Set of custom properties for the game session.
+     *        Set of developer-defined properties for a game session. These properties are passed to the server process
+     *        hosting the game session.
      */
 
-    public void setGameProperties(
-            java.util.Collection<GameProperty> gameProperties) {
+    public void setGameProperties(java.util.Collection<GameProperty> gameProperties) {
         if (gameProperties == null) {
             this.gameProperties = null;
             return;
         }
 
-        this.gameProperties = new java.util.ArrayList<GameProperty>(
-                gameProperties);
+        this.gameProperties = new java.util.ArrayList<GameProperty>(gameProperties);
     }
 
     /**
      * <p>
-     * Set of custom properties for the game session.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setGameProperties(java.util.Collection)} or
-     * {@link #withGameProperties(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setGameProperties(java.util.Collection)} or {@link #withGameProperties(java.util.Collection)} if you want
+     * to override the existing values.
      * </p>
      * 
      * @param gameProperties
-     *        Set of custom properties for the game session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Set of developer-defined properties for a game session. These properties are passed to the server process
+     *        hosting the game session.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withGameProperties(GameProperty... gameProperties) {
         if (this.gameProperties == null) {
-            setGameProperties(new java.util.ArrayList<GameProperty>(
-                    gameProperties.length));
+            setGameProperties(new java.util.ArrayList<GameProperty>(gameProperties.length));
         }
         for (GameProperty ele : gameProperties) {
             this.gameProperties.add(ele);
@@ -562,30 +566,30 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Set of custom properties for the game session.
+     * Set of developer-defined properties for a game session. These properties are passed to the server process hosting
+     * the game session.
      * </p>
      * 
      * @param gameProperties
-     *        Set of custom properties for the game session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Set of developer-defined properties for a game session. These properties are passed to the server process
+     *        hosting the game session.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GameSession withGameProperties(
-            java.util.Collection<GameProperty> gameProperties) {
+    public GameSession withGameProperties(java.util.Collection<GameProperty> gameProperties) {
         setGameProperties(gameProperties);
         return this;
     }
 
     /**
      * <p>
-     * IP address of the game session. To connect to a GameLift server process,
-     * an app needs both the IP address and port number.
+     * IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and
+     * port number.
      * </p>
      * 
      * @param ipAddress
-     *        IP address of the game session. To connect to a GameLift server
-     *        process, an app needs both the IP address and port number.
+     *        IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP
+     *        address and port number.
      */
 
     public void setIpAddress(String ipAddress) {
@@ -594,12 +598,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * IP address of the game session. To connect to a GameLift server process,
-     * an app needs both the IP address and port number.
+     * IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and
+     * port number.
      * </p>
      * 
-     * @return IP address of the game session. To connect to a GameLift server
-     *         process, an app needs both the IP address and port number.
+     * @return IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP
+     *         address and port number.
      */
 
     public String getIpAddress() {
@@ -608,15 +612,14 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * IP address of the game session. To connect to a GameLift server process,
-     * an app needs both the IP address and port number.
+     * IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and
+     * port number.
      * </p>
      * 
      * @param ipAddress
-     *        IP address of the game session. To connect to a GameLift server
-     *        process, an app needs both the IP address and port number.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP
+     *        address and port number.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withIpAddress(String ipAddress) {
@@ -626,13 +629,13 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Port number for the game session. To connect to a GameLift server
-     * process, an app needs both the IP address and port number.
+     * Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address
+     * and port number.
      * </p>
      * 
      * @param port
-     *        Port number for the game session. To connect to a GameLift server
-     *        process, an app needs both the IP address and port number.
+     *        Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP
+     *        address and port number.
      */
 
     public void setPort(Integer port) {
@@ -641,12 +644,12 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Port number for the game session. To connect to a GameLift server
-     * process, an app needs both the IP address and port number.
+     * Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address
+     * and port number.
      * </p>
      * 
-     * @return Port number for the game session. To connect to a GameLift server
-     *         process, an app needs both the IP address and port number.
+     * @return Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP
+     *         address and port number.
      */
 
     public Integer getPort() {
@@ -655,15 +658,14 @@ public class GameSession implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Port number for the game session. To connect to a GameLift server
-     * process, an app needs both the IP address and port number.
+     * Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address
+     * and port number.
      * </p>
      * 
      * @param port
-     *        Port number for the game session. To connect to a GameLift server
-     *        process, an app needs both the IP address and port number.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP
+     *        address and port number.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GameSession withPort(Integer port) {
@@ -677,13 +679,11 @@ public class GameSession implements Serializable, Cloneable {
      * </p>
      * 
      * @param playerSessionCreationPolicy
-     *        Indicates whether or not the game session is accepting new
-     *        players.
+     *        Indicates whether or not the game session is accepting new players.
      * @see PlayerSessionCreationPolicy
      */
 
-    public void setPlayerSessionCreationPolicy(
-            String playerSessionCreationPolicy) {
+    public void setPlayerSessionCreationPolicy(String playerSessionCreationPolicy) {
         this.playerSessionCreationPolicy = playerSessionCreationPolicy;
     }
 
@@ -692,8 +692,7 @@ public class GameSession implements Serializable, Cloneable {
      * Indicates whether or not the game session is accepting new players.
      * </p>
      * 
-     * @return Indicates whether or not the game session is accepting new
-     *         players.
+     * @return Indicates whether or not the game session is accepting new players.
      * @see PlayerSessionCreationPolicy
      */
 
@@ -707,15 +706,12 @@ public class GameSession implements Serializable, Cloneable {
      * </p>
      * 
      * @param playerSessionCreationPolicy
-     *        Indicates whether or not the game session is accepting new
-     *        players.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether or not the game session is accepting new players.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see PlayerSessionCreationPolicy
      */
 
-    public GameSession withPlayerSessionCreationPolicy(
-            String playerSessionCreationPolicy) {
+    public GameSession withPlayerSessionCreationPolicy(String playerSessionCreationPolicy) {
         setPlayerSessionCreationPolicy(playerSessionCreationPolicy);
         return this;
     }
@@ -726,15 +722,12 @@ public class GameSession implements Serializable, Cloneable {
      * </p>
      * 
      * @param playerSessionCreationPolicy
-     *        Indicates whether or not the game session is accepting new
-     *        players.
+     *        Indicates whether or not the game session is accepting new players.
      * @see PlayerSessionCreationPolicy
      */
 
-    public void setPlayerSessionCreationPolicy(
-            PlayerSessionCreationPolicy playerSessionCreationPolicy) {
-        this.playerSessionCreationPolicy = playerSessionCreationPolicy
-                .toString();
+    public void setPlayerSessionCreationPolicy(PlayerSessionCreationPolicy playerSessionCreationPolicy) {
+        this.playerSessionCreationPolicy = playerSessionCreationPolicy.toString();
     }
 
     /**
@@ -743,22 +736,64 @@ public class GameSession implements Serializable, Cloneable {
      * </p>
      * 
      * @param playerSessionCreationPolicy
-     *        Indicates whether or not the game session is accepting new
-     *        players.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether or not the game session is accepting new players.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see PlayerSessionCreationPolicy
      */
 
-    public GameSession withPlayerSessionCreationPolicy(
-            PlayerSessionCreationPolicy playerSessionCreationPolicy) {
+    public GameSession withPlayerSessionCreationPolicy(PlayerSessionCreationPolicy playerSessionCreationPolicy) {
         setPlayerSessionCreationPolicy(playerSessionCreationPolicy);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that
+     * limits the number of game sessions a player can create.
+     * </p>
+     * 
+     * @param creatorId
+     *        Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists),
+     *        that limits the number of game sessions a player can create.
+     */
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that
+     * limits the number of game sessions a player can create.
+     * </p>
+     * 
+     * @return Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists),
+     *         that limits the number of game sessions a player can create.
+     */
+
+    public String getCreatorId() {
+        return this.creatorId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that
+     * limits the number of game sessions a player can create.
+     * </p>
+     * 
+     * @param creatorId
+     *        Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists),
+     *        that limits the number of game sessions a player can create.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GameSession withCreatorId(String creatorId) {
+        setCreatorId(creatorId);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -769,32 +804,31 @@ public class GameSession implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGameSessionId() != null)
-            sb.append("GameSessionId: " + getGameSessionId() + ",");
+            sb.append("GameSessionId: ").append(getGameSessionId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime() + ",");
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
         if (getTerminationTime() != null)
-            sb.append("TerminationTime: " + getTerminationTime() + ",");
+            sb.append("TerminationTime: ").append(getTerminationTime()).append(",");
         if (getCurrentPlayerSessionCount() != null)
-            sb.append("CurrentPlayerSessionCount: "
-                    + getCurrentPlayerSessionCount() + ",");
+            sb.append("CurrentPlayerSessionCount: ").append(getCurrentPlayerSessionCount()).append(",");
         if (getMaximumPlayerSessionCount() != null)
-            sb.append("MaximumPlayerSessionCount: "
-                    + getMaximumPlayerSessionCount() + ",");
+            sb.append("MaximumPlayerSessionCount: ").append(getMaximumPlayerSessionCount()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getGameProperties() != null)
-            sb.append("GameProperties: " + getGameProperties() + ",");
+            sb.append("GameProperties: ").append(getGameProperties()).append(",");
         if (getIpAddress() != null)
-            sb.append("IpAddress: " + getIpAddress() + ",");
+            sb.append("IpAddress: ").append(getIpAddress()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getPlayerSessionCreationPolicy() != null)
-            sb.append("PlayerSessionCreationPolicy: "
-                    + getPlayerSessionCreationPolicy());
+            sb.append("PlayerSessionCreationPolicy: ").append(getPlayerSessionCreationPolicy()).append(",");
+        if (getCreatorId() != null)
+            sb.append("CreatorId: ").append(getCreatorId());
         sb.append("}");
         return sb.toString();
     }
@@ -811,71 +845,55 @@ public class GameSession implements Serializable, Cloneable {
         GameSession other = (GameSession) obj;
         if (other.getGameSessionId() == null ^ this.getGameSessionId() == null)
             return false;
-        if (other.getGameSessionId() != null
-                && other.getGameSessionId().equals(this.getGameSessionId()) == false)
+        if (other.getGameSessionId() != null && other.getGameSessionId().equals(this.getGameSessionId()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getFleetId() == null ^ this.getFleetId() == null)
             return false;
-        if (other.getFleetId() != null
-                && other.getFleetId().equals(this.getFleetId()) == false)
+        if (other.getFleetId() != null && other.getFleetId().equals(this.getFleetId()) == false)
             return false;
         if (other.getCreationTime() == null ^ this.getCreationTime() == null)
             return false;
-        if (other.getCreationTime() != null
-                && other.getCreationTime().equals(this.getCreationTime()) == false)
+        if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
             return false;
-        if (other.getTerminationTime() == null
-                ^ this.getTerminationTime() == null)
+        if (other.getTerminationTime() == null ^ this.getTerminationTime() == null)
             return false;
-        if (other.getTerminationTime() != null
-                && other.getTerminationTime().equals(this.getTerminationTime()) == false)
+        if (other.getTerminationTime() != null && other.getTerminationTime().equals(this.getTerminationTime()) == false)
             return false;
-        if (other.getCurrentPlayerSessionCount() == null
-                ^ this.getCurrentPlayerSessionCount() == null)
+        if (other.getCurrentPlayerSessionCount() == null ^ this.getCurrentPlayerSessionCount() == null)
             return false;
-        if (other.getCurrentPlayerSessionCount() != null
-                && other.getCurrentPlayerSessionCount().equals(
-                        this.getCurrentPlayerSessionCount()) == false)
+        if (other.getCurrentPlayerSessionCount() != null && other.getCurrentPlayerSessionCount().equals(this.getCurrentPlayerSessionCount()) == false)
             return false;
-        if (other.getMaximumPlayerSessionCount() == null
-                ^ this.getMaximumPlayerSessionCount() == null)
+        if (other.getMaximumPlayerSessionCount() == null ^ this.getMaximumPlayerSessionCount() == null)
             return false;
-        if (other.getMaximumPlayerSessionCount() != null
-                && other.getMaximumPlayerSessionCount().equals(
-                        this.getMaximumPlayerSessionCount()) == false)
+        if (other.getMaximumPlayerSessionCount() != null && other.getMaximumPlayerSessionCount().equals(this.getMaximumPlayerSessionCount()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
-        if (other.getGameProperties() == null
-                ^ this.getGameProperties() == null)
+        if (other.getGameProperties() == null ^ this.getGameProperties() == null)
             return false;
-        if (other.getGameProperties() != null
-                && other.getGameProperties().equals(this.getGameProperties()) == false)
+        if (other.getGameProperties() != null && other.getGameProperties().equals(this.getGameProperties()) == false)
             return false;
         if (other.getIpAddress() == null ^ this.getIpAddress() == null)
             return false;
-        if (other.getIpAddress() != null
-                && other.getIpAddress().equals(this.getIpAddress()) == false)
+        if (other.getIpAddress() != null && other.getIpAddress().equals(this.getIpAddress()) == false)
             return false;
         if (other.getPort() == null ^ this.getPort() == null)
             return false;
-        if (other.getPort() != null
-                && other.getPort().equals(this.getPort()) == false)
+        if (other.getPort() != null && other.getPort().equals(this.getPort()) == false)
             return false;
-        if (other.getPlayerSessionCreationPolicy() == null
-                ^ this.getPlayerSessionCreationPolicy() == null)
+        if (other.getPlayerSessionCreationPolicy() == null ^ this.getPlayerSessionCreationPolicy() == null)
             return false;
-        if (other.getPlayerSessionCreationPolicy() != null
-                && other.getPlayerSessionCreationPolicy().equals(
-                        this.getPlayerSessionCreationPolicy()) == false)
+        if (other.getPlayerSessionCreationPolicy() != null && other.getPlayerSessionCreationPolicy().equals(this.getPlayerSessionCreationPolicy()) == false)
+            return false;
+        if (other.getCreatorId() == null ^ this.getCreatorId() == null)
+            return false;
+        if (other.getCreatorId() != null && other.getCreatorId().equals(this.getCreatorId()) == false)
             return false;
         return true;
     }
@@ -885,44 +903,19 @@ public class GameSession implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getGameSessionId() == null) ? 0 : getGameSessionId()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getFleetId() == null) ? 0 : getFleetId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreationTime() == null) ? 0 : getCreationTime()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTerminationTime() == null) ? 0 : getTerminationTime()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCurrentPlayerSessionCount() == null) ? 0
-                        : getCurrentPlayerSessionCount().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMaximumPlayerSessionCount() == null) ? 0
-                        : getMaximumPlayerSessionCount().hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getGameProperties() == null) ? 0 : getGameProperties()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getIpAddress() == null) ? 0 : getIpAddress().hashCode());
-        hashCode = prime * hashCode
-                + ((getPort() == null) ? 0 : getPort().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPlayerSessionCreationPolicy() == null) ? 0
-                        : getPlayerSessionCreationPolicy().hashCode());
+        hashCode = prime * hashCode + ((getGameSessionId() == null) ? 0 : getGameSessionId().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getFleetId() == null) ? 0 : getFleetId().hashCode());
+        hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
+        hashCode = prime * hashCode + ((getTerminationTime() == null) ? 0 : getTerminationTime().hashCode());
+        hashCode = prime * hashCode + ((getCurrentPlayerSessionCount() == null) ? 0 : getCurrentPlayerSessionCount().hashCode());
+        hashCode = prime * hashCode + ((getMaximumPlayerSessionCount() == null) ? 0 : getMaximumPlayerSessionCount().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getGameProperties() == null) ? 0 : getGameProperties().hashCode());
+        hashCode = prime * hashCode + ((getIpAddress() == null) ? 0 : getIpAddress().hashCode());
+        hashCode = prime * hashCode + ((getPort() == null) ? 0 : getPort().hashCode());
+        hashCode = prime * hashCode + ((getPlayerSessionCreationPolicy() == null) ? 0 : getPlayerSessionCreationPolicy().hashCode());
+        hashCode = prime * hashCode + ((getCreatorId() == null) ? 0 : getCreatorId().hashCode());
         return hashCode;
     }
 
@@ -931,9 +924,13 @@ public class GameSession implements Serializable, Cloneable {
         try {
             return (GameSession) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.GameSessionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

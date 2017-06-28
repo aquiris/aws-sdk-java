@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A collection of attributes of the host from which the finding is generated.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/AssetAttributes" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AssetAttributes implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AssetAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -31,22 +36,19 @@ public class AssetAttributes implements Serializable, Cloneable {
     private Integer schemaVersion;
     /**
      * <p>
-     * The ID of the agent that is installed on the EC2 instance where the
-     * finding is generated.
+     * The ID of the agent that is installed on the EC2 instance where the finding is generated.
      * </p>
      */
     private String agentId;
     /**
      * <p>
-     * The Auto Scaling group of the EC2 instance where the finding is
-     * generated.
+     * The Auto Scaling group of the EC2 instance where the finding is generated.
      * </p>
      */
     private String autoScalingGroup;
     /**
      * <p>
-     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2
-     * instance where the finding is generated.
+     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.
      * </p>
      */
     private String amiId;
@@ -58,8 +60,7 @@ public class AssetAttributes implements Serializable, Cloneable {
     private String hostname;
     /**
      * <p>
-     * The list of IP v4 addresses of the EC2 instance where the finding is
-     * generated.
+     * The list of IP v4 addresses of the EC2 instance where the finding is generated.
      * </p>
      */
     private java.util.List<String> ipv4Addresses;
@@ -96,8 +97,7 @@ public class AssetAttributes implements Serializable, Cloneable {
      * 
      * @param schemaVersion
      *        The schema version of this data type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssetAttributes withSchemaVersion(Integer schemaVersion) {
@@ -107,13 +107,11 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the agent that is installed on the EC2 instance where the
-     * finding is generated.
+     * The ID of the agent that is installed on the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param agentId
-     *        The ID of the agent that is installed on the EC2 instance where
-     *        the finding is generated.
+     *        The ID of the agent that is installed on the EC2 instance where the finding is generated.
      */
 
     public void setAgentId(String agentId) {
@@ -122,12 +120,10 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the agent that is installed on the EC2 instance where the
-     * finding is generated.
+     * The ID of the agent that is installed on the EC2 instance where the finding is generated.
      * </p>
      * 
-     * @return The ID of the agent that is installed on the EC2 instance where
-     *         the finding is generated.
+     * @return The ID of the agent that is installed on the EC2 instance where the finding is generated.
      */
 
     public String getAgentId() {
@@ -136,15 +132,12 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the agent that is installed on the EC2 instance where the
-     * finding is generated.
+     * The ID of the agent that is installed on the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param agentId
-     *        The ID of the agent that is installed on the EC2 instance where
-     *        the finding is generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID of the agent that is installed on the EC2 instance where the finding is generated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssetAttributes withAgentId(String agentId) {
@@ -154,13 +147,11 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Auto Scaling group of the EC2 instance where the finding is
-     * generated.
+     * The Auto Scaling group of the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param autoScalingGroup
-     *        The Auto Scaling group of the EC2 instance where the finding is
-     *        generated.
+     *        The Auto Scaling group of the EC2 instance where the finding is generated.
      */
 
     public void setAutoScalingGroup(String autoScalingGroup) {
@@ -169,12 +160,10 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Auto Scaling group of the EC2 instance where the finding is
-     * generated.
+     * The Auto Scaling group of the EC2 instance where the finding is generated.
      * </p>
      * 
-     * @return The Auto Scaling group of the EC2 instance where the finding is
-     *         generated.
+     * @return The Auto Scaling group of the EC2 instance where the finding is generated.
      */
 
     public String getAutoScalingGroup() {
@@ -183,15 +172,12 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Auto Scaling group of the EC2 instance where the finding is
-     * generated.
+     * The Auto Scaling group of the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param autoScalingGroup
-     *        The Auto Scaling group of the EC2 instance where the finding is
-     *        generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Auto Scaling group of the EC2 instance where the finding is generated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssetAttributes withAutoScalingGroup(String autoScalingGroup) {
@@ -201,13 +187,12 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2
-     * instance where the finding is generated.
+     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param amiId
-     *        The ID of the Amazon Machine Image (AMI) that is installed on the
-     *        EC2 instance where the finding is generated.
+     *        The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is
+     *        generated.
      */
 
     public void setAmiId(String amiId) {
@@ -216,12 +201,11 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2
-     * instance where the finding is generated.
+     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.
      * </p>
      * 
-     * @return The ID of the Amazon Machine Image (AMI) that is installed on the
-     *         EC2 instance where the finding is generated.
+     * @return The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is
+     *         generated.
      */
 
     public String getAmiId() {
@@ -230,15 +214,13 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2
-     * instance where the finding is generated.
+     * The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param amiId
-     *        The ID of the Amazon Machine Image (AMI) that is installed on the
-     *        EC2 instance where the finding is generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is
+     *        generated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssetAttributes withAmiId(String amiId) {
@@ -278,8 +260,7 @@ public class AssetAttributes implements Serializable, Cloneable {
      * 
      * @param hostname
      *        The hostname of the EC2 instance where the finding is generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssetAttributes withHostname(String hostname) {
@@ -289,12 +270,10 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of IP v4 addresses of the EC2 instance where the finding is
-     * generated.
+     * The list of IP v4 addresses of the EC2 instance where the finding is generated.
      * </p>
      * 
-     * @return The list of IP v4 addresses of the EC2 instance where the finding
-     *         is generated.
+     * @return The list of IP v4 addresses of the EC2 instance where the finding is generated.
      */
 
     public java.util.List<String> getIpv4Addresses() {
@@ -303,13 +282,11 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of IP v4 addresses of the EC2 instance where the finding is
-     * generated.
+     * The list of IP v4 addresses of the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param ipv4Addresses
-     *        The list of IP v4 addresses of the EC2 instance where the finding
-     *        is generated.
+     *        The list of IP v4 addresses of the EC2 instance where the finding is generated.
      */
 
     public void setIpv4Addresses(java.util.Collection<String> ipv4Addresses) {
@@ -323,27 +300,22 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of IP v4 addresses of the EC2 instance where the finding is
-     * generated.
+     * The list of IP v4 addresses of the EC2 instance where the finding is generated.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setIpv4Addresses(java.util.Collection)} or
-     * {@link #withIpv4Addresses(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIpv4Addresses(java.util.Collection)} or {@link #withIpv4Addresses(java.util.Collection)} if you want
+     * to override the existing values.
      * </p>
      * 
      * @param ipv4Addresses
-     *        The list of IP v4 addresses of the EC2 instance where the finding
-     *        is generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The list of IP v4 addresses of the EC2 instance where the finding is generated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssetAttributes withIpv4Addresses(String... ipv4Addresses) {
         if (this.ipv4Addresses == null) {
-            setIpv4Addresses(new java.util.ArrayList<String>(
-                    ipv4Addresses.length));
+            setIpv4Addresses(new java.util.ArrayList<String>(ipv4Addresses.length));
         }
         for (String ele : ipv4Addresses) {
             this.ipv4Addresses.add(ele);
@@ -353,26 +325,21 @@ public class AssetAttributes implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The list of IP v4 addresses of the EC2 instance where the finding is
-     * generated.
+     * The list of IP v4 addresses of the EC2 instance where the finding is generated.
      * </p>
      * 
      * @param ipv4Addresses
-     *        The list of IP v4 addresses of the EC2 instance where the finding
-     *        is generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The list of IP v4 addresses of the EC2 instance where the finding is generated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AssetAttributes withIpv4Addresses(
-            java.util.Collection<String> ipv4Addresses) {
+    public AssetAttributes withIpv4Addresses(java.util.Collection<String> ipv4Addresses) {
         setIpv4Addresses(ipv4Addresses);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -383,17 +350,17 @@ public class AssetAttributes implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSchemaVersion() != null)
-            sb.append("SchemaVersion: " + getSchemaVersion() + ",");
+            sb.append("SchemaVersion: ").append(getSchemaVersion()).append(",");
         if (getAgentId() != null)
-            sb.append("AgentId: " + getAgentId() + ",");
+            sb.append("AgentId: ").append(getAgentId()).append(",");
         if (getAutoScalingGroup() != null)
-            sb.append("AutoScalingGroup: " + getAutoScalingGroup() + ",");
+            sb.append("AutoScalingGroup: ").append(getAutoScalingGroup()).append(",");
         if (getAmiId() != null)
-            sb.append("AmiId: " + getAmiId() + ",");
+            sb.append("AmiId: ").append(getAmiId()).append(",");
         if (getHostname() != null)
-            sb.append("Hostname: " + getHostname() + ",");
+            sb.append("Hostname: ").append(getHostname()).append(",");
         if (getIpv4Addresses() != null)
-            sb.append("Ipv4Addresses: " + getIpv4Addresses());
+            sb.append("Ipv4Addresses: ").append(getIpv4Addresses());
         sb.append("}");
         return sb.toString();
     }
@@ -410,35 +377,27 @@ public class AssetAttributes implements Serializable, Cloneable {
         AssetAttributes other = (AssetAttributes) obj;
         if (other.getSchemaVersion() == null ^ this.getSchemaVersion() == null)
             return false;
-        if (other.getSchemaVersion() != null
-                && other.getSchemaVersion().equals(this.getSchemaVersion()) == false)
+        if (other.getSchemaVersion() != null && other.getSchemaVersion().equals(this.getSchemaVersion()) == false)
             return false;
         if (other.getAgentId() == null ^ this.getAgentId() == null)
             return false;
-        if (other.getAgentId() != null
-                && other.getAgentId().equals(this.getAgentId()) == false)
+        if (other.getAgentId() != null && other.getAgentId().equals(this.getAgentId()) == false)
             return false;
-        if (other.getAutoScalingGroup() == null
-                ^ this.getAutoScalingGroup() == null)
+        if (other.getAutoScalingGroup() == null ^ this.getAutoScalingGroup() == null)
             return false;
-        if (other.getAutoScalingGroup() != null
-                && other.getAutoScalingGroup().equals(
-                        this.getAutoScalingGroup()) == false)
+        if (other.getAutoScalingGroup() != null && other.getAutoScalingGroup().equals(this.getAutoScalingGroup()) == false)
             return false;
         if (other.getAmiId() == null ^ this.getAmiId() == null)
             return false;
-        if (other.getAmiId() != null
-                && other.getAmiId().equals(this.getAmiId()) == false)
+        if (other.getAmiId() != null && other.getAmiId().equals(this.getAmiId()) == false)
             return false;
         if (other.getHostname() == null ^ this.getHostname() == null)
             return false;
-        if (other.getHostname() != null
-                && other.getHostname().equals(this.getHostname()) == false)
+        if (other.getHostname() != null && other.getHostname().equals(this.getHostname()) == false)
             return false;
         if (other.getIpv4Addresses() == null ^ this.getIpv4Addresses() == null)
             return false;
-        if (other.getIpv4Addresses() != null
-                && other.getIpv4Addresses().equals(this.getIpv4Addresses()) == false)
+        if (other.getIpv4Addresses() != null && other.getIpv4Addresses().equals(this.getIpv4Addresses()) == false)
             return false;
         return true;
     }
@@ -448,24 +407,12 @@ public class AssetAttributes implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getSchemaVersion() == null) ? 0 : getSchemaVersion()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getAgentId() == null) ? 0 : getAgentId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAutoScalingGroup() == null) ? 0 : getAutoScalingGroup()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getAmiId() == null) ? 0 : getAmiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getHostname() == null) ? 0 : getHostname().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getIpv4Addresses() == null) ? 0 : getIpv4Addresses()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getSchemaVersion() == null) ? 0 : getSchemaVersion().hashCode());
+        hashCode = prime * hashCode + ((getAgentId() == null) ? 0 : getAgentId().hashCode());
+        hashCode = prime * hashCode + ((getAutoScalingGroup() == null) ? 0 : getAutoScalingGroup().hashCode());
+        hashCode = prime * hashCode + ((getAmiId() == null) ? 0 : getAmiId().hashCode());
+        hashCode = prime * hashCode + ((getHostname() == null) ? 0 : getHostname().hashCode());
+        hashCode = prime * hashCode + ((getIpv4Addresses() == null) ? 0 : getIpv4Addresses().hashCode());
         return hashCode;
     }
 
@@ -474,9 +421,13 @@ public class AssetAttributes implements Serializable, Cloneable {
         try {
             return (AssetAttributes) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.inspector.model.transform.AssetAttributesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

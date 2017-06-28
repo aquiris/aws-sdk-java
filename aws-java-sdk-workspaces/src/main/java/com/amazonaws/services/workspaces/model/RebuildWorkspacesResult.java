@@ -1,44 +1,44 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.workspaces.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the results of the <a>RebuildWorkspaces</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RebuildWorkspacesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RebuildWorkspacesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An array of structures representing any WorkSpaces that could not be
-     * rebuilt.
+     * An array of structures representing any WorkSpaces that could not be rebuilt.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<FailedWorkspaceChangeRequest> failedRequests;
 
     /**
      * <p>
-     * An array of structures representing any WorkSpaces that could not be
-     * rebuilt.
+     * An array of structures representing any WorkSpaces that could not be rebuilt.
      * </p>
      * 
-     * @return An array of structures representing any WorkSpaces that could not
-     *         be rebuilt.
+     * @return An array of structures representing any WorkSpaces that could not be rebuilt.
      */
 
     public java.util.List<FailedWorkspaceChangeRequest> getFailedRequests() {
@@ -50,50 +50,40 @@ public class RebuildWorkspacesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An array of structures representing any WorkSpaces that could not be
-     * rebuilt.
+     * An array of structures representing any WorkSpaces that could not be rebuilt.
      * </p>
      * 
      * @param failedRequests
-     *        An array of structures representing any WorkSpaces that could not
-     *        be rebuilt.
+     *        An array of structures representing any WorkSpaces that could not be rebuilt.
      */
 
-    public void setFailedRequests(
-            java.util.Collection<FailedWorkspaceChangeRequest> failedRequests) {
+    public void setFailedRequests(java.util.Collection<FailedWorkspaceChangeRequest> failedRequests) {
         if (failedRequests == null) {
             this.failedRequests = null;
             return;
         }
 
-        this.failedRequests = new com.amazonaws.internal.SdkInternalList<FailedWorkspaceChangeRequest>(
-                failedRequests);
+        this.failedRequests = new com.amazonaws.internal.SdkInternalList<FailedWorkspaceChangeRequest>(failedRequests);
     }
 
     /**
      * <p>
-     * An array of structures representing any WorkSpaces that could not be
-     * rebuilt.
+     * An array of structures representing any WorkSpaces that could not be rebuilt.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setFailedRequests(java.util.Collection)} or
-     * {@link #withFailedRequests(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setFailedRequests(java.util.Collection)} or {@link #withFailedRequests(java.util.Collection)} if you want
+     * to override the existing values.
      * </p>
      * 
      * @param failedRequests
-     *        An array of structures representing any WorkSpaces that could not
-     *        be rebuilt.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An array of structures representing any WorkSpaces that could not be rebuilt.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RebuildWorkspacesResult withFailedRequests(
-            FailedWorkspaceChangeRequest... failedRequests) {
+    public RebuildWorkspacesResult withFailedRequests(FailedWorkspaceChangeRequest... failedRequests) {
         if (this.failedRequests == null) {
-            setFailedRequests(new com.amazonaws.internal.SdkInternalList<FailedWorkspaceChangeRequest>(
-                    failedRequests.length));
+            setFailedRequests(new com.amazonaws.internal.SdkInternalList<FailedWorkspaceChangeRequest>(failedRequests.length));
         }
         for (FailedWorkspaceChangeRequest ele : failedRequests) {
             this.failedRequests.add(ele);
@@ -103,26 +93,21 @@ public class RebuildWorkspacesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An array of structures representing any WorkSpaces that could not be
-     * rebuilt.
+     * An array of structures representing any WorkSpaces that could not be rebuilt.
      * </p>
      * 
      * @param failedRequests
-     *        An array of structures representing any WorkSpaces that could not
-     *        be rebuilt.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An array of structures representing any WorkSpaces that could not be rebuilt.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RebuildWorkspacesResult withFailedRequests(
-            java.util.Collection<FailedWorkspaceChangeRequest> failedRequests) {
+    public RebuildWorkspacesResult withFailedRequests(java.util.Collection<FailedWorkspaceChangeRequest> failedRequests) {
         setFailedRequests(failedRequests);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -133,7 +118,7 @@ public class RebuildWorkspacesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFailedRequests() != null)
-            sb.append("FailedRequests: " + getFailedRequests());
+            sb.append("FailedRequests: ").append(getFailedRequests());
         sb.append("}");
         return sb.toString();
     }
@@ -148,11 +133,9 @@ public class RebuildWorkspacesResult implements Serializable, Cloneable {
         if (obj instanceof RebuildWorkspacesResult == false)
             return false;
         RebuildWorkspacesResult other = (RebuildWorkspacesResult) obj;
-        if (other.getFailedRequests() == null
-                ^ this.getFailedRequests() == null)
+        if (other.getFailedRequests() == null ^ this.getFailedRequests() == null)
             return false;
-        if (other.getFailedRequests() != null
-                && other.getFailedRequests().equals(this.getFailedRequests()) == false)
+        if (other.getFailedRequests() != null && other.getFailedRequests().equals(this.getFailedRequests()) == false)
             return false;
         return true;
     }
@@ -162,10 +145,7 @@ public class RebuildWorkspacesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getFailedRequests() == null) ? 0 : getFailedRequests()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getFailedRequests() == null) ? 0 : getFailedRequests().hashCode());
         return hashCode;
     }
 
@@ -174,9 +154,8 @@ public class RebuildWorkspacesResult implements Serializable, Cloneable {
         try {
             return (RebuildWorkspacesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

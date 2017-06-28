@@ -1,34 +1,43 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a VPC in a VPC peering connection.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/VpcPeeringConnectionVpcInfo" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The CIDR block for the VPC.
+     * The IPv4 CIDR block for the VPC.
      * </p>
      */
     private String cidrBlock;
+    /**
+     * <p>
+     * The IPv6 CIDR block for the VPC.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Ipv6CidrBlock> ipv6CidrBlockSet;
     /**
      * <p>
      * The AWS account ID of the VPC owner.
@@ -37,25 +46,24 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
     private String ownerId;
     /**
      * <p>
+     * Information about the VPC peering connection options for the accepter or requester VPC.
+     * </p>
+     */
+    private VpcPeeringConnectionOptionsDescription peeringOptions;
+    /**
+     * <p>
      * The ID of the VPC.
      * </p>
      */
     private String vpcId;
-    /**
-     * <p>
-     * Information about the VPC peering connection options for the accepter or
-     * requester VPC.
-     * </p>
-     */
-    private VpcPeeringConnectionOptionsDescription peeringOptions;
 
     /**
      * <p>
-     * The CIDR block for the VPC.
+     * The IPv4 CIDR block for the VPC.
      * </p>
      * 
      * @param cidrBlock
-     *        The CIDR block for the VPC.
+     *        The IPv4 CIDR block for the VPC.
      */
 
     public void setCidrBlock(String cidrBlock) {
@@ -64,10 +72,10 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The CIDR block for the VPC.
+     * The IPv4 CIDR block for the VPC.
      * </p>
      * 
-     * @return The CIDR block for the VPC.
+     * @return The IPv4 CIDR block for the VPC.
      */
 
     public String getCidrBlock() {
@@ -76,17 +84,89 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The CIDR block for the VPC.
+     * The IPv4 CIDR block for the VPC.
      * </p>
      * 
      * @param cidrBlock
-     *        The CIDR block for the VPC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The IPv4 CIDR block for the VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public VpcPeeringConnectionVpcInfo withCidrBlock(String cidrBlock) {
         setCidrBlock(cidrBlock);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IPv6 CIDR block for the VPC.
+     * </p>
+     * 
+     * @return The IPv6 CIDR block for the VPC.
+     */
+
+    public java.util.List<Ipv6CidrBlock> getIpv6CidrBlockSet() {
+        if (ipv6CidrBlockSet == null) {
+            ipv6CidrBlockSet = new com.amazonaws.internal.SdkInternalList<Ipv6CidrBlock>();
+        }
+        return ipv6CidrBlockSet;
+    }
+
+    /**
+     * <p>
+     * The IPv6 CIDR block for the VPC.
+     * </p>
+     * 
+     * @param ipv6CidrBlockSet
+     *        The IPv6 CIDR block for the VPC.
+     */
+
+    public void setIpv6CidrBlockSet(java.util.Collection<Ipv6CidrBlock> ipv6CidrBlockSet) {
+        if (ipv6CidrBlockSet == null) {
+            this.ipv6CidrBlockSet = null;
+            return;
+        }
+
+        this.ipv6CidrBlockSet = new com.amazonaws.internal.SdkInternalList<Ipv6CidrBlock>(ipv6CidrBlockSet);
+    }
+
+    /**
+     * <p>
+     * The IPv6 CIDR block for the VPC.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIpv6CidrBlockSet(java.util.Collection)} or {@link #withIpv6CidrBlockSet(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param ipv6CidrBlockSet
+     *        The IPv6 CIDR block for the VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VpcPeeringConnectionVpcInfo withIpv6CidrBlockSet(Ipv6CidrBlock... ipv6CidrBlockSet) {
+        if (this.ipv6CidrBlockSet == null) {
+            setIpv6CidrBlockSet(new com.amazonaws.internal.SdkInternalList<Ipv6CidrBlock>(ipv6CidrBlockSet.length));
+        }
+        for (Ipv6CidrBlock ele : ipv6CidrBlockSet) {
+            this.ipv6CidrBlockSet.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IPv6 CIDR block for the VPC.
+     * </p>
+     * 
+     * @param ipv6CidrBlockSet
+     *        The IPv6 CIDR block for the VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VpcPeeringConnectionVpcInfo withIpv6CidrBlockSet(java.util.Collection<Ipv6CidrBlock> ipv6CidrBlockSet) {
+        setIpv6CidrBlockSet(ipv6CidrBlockSet);
         return this;
     }
 
@@ -122,12 +202,51 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
      * 
      * @param ownerId
      *        The AWS account ID of the VPC owner.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public VpcPeeringConnectionVpcInfo withOwnerId(String ownerId) {
         setOwnerId(ownerId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the VPC peering connection options for the accepter or requester VPC.
+     * </p>
+     * 
+     * @param peeringOptions
+     *        Information about the VPC peering connection options for the accepter or requester VPC.
+     */
+
+    public void setPeeringOptions(VpcPeeringConnectionOptionsDescription peeringOptions) {
+        this.peeringOptions = peeringOptions;
+    }
+
+    /**
+     * <p>
+     * Information about the VPC peering connection options for the accepter or requester VPC.
+     * </p>
+     * 
+     * @return Information about the VPC peering connection options for the accepter or requester VPC.
+     */
+
+    public VpcPeeringConnectionOptionsDescription getPeeringOptions() {
+        return this.peeringOptions;
+    }
+
+    /**
+     * <p>
+     * Information about the VPC peering connection options for the accepter or requester VPC.
+     * </p>
+     * 
+     * @param peeringOptions
+     *        Information about the VPC peering connection options for the accepter or requester VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VpcPeeringConnectionVpcInfo withPeeringOptions(VpcPeeringConnectionOptionsDescription peeringOptions) {
+        setPeeringOptions(peeringOptions);
         return this;
     }
 
@@ -163,8 +282,7 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
      * 
      * @param vpcId
      *        The ID of the VPC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public VpcPeeringConnectionVpcInfo withVpcId(String vpcId) {
@@ -173,57 +291,7 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
     }
 
     /**
-     * <p>
-     * Information about the VPC peering connection options for the accepter or
-     * requester VPC.
-     * </p>
-     * 
-     * @param peeringOptions
-     *        Information about the VPC peering connection options for the
-     *        accepter or requester VPC.
-     */
-
-    public void setPeeringOptions(
-            VpcPeeringConnectionOptionsDescription peeringOptions) {
-        this.peeringOptions = peeringOptions;
-    }
-
-    /**
-     * <p>
-     * Information about the VPC peering connection options for the accepter or
-     * requester VPC.
-     * </p>
-     * 
-     * @return Information about the VPC peering connection options for the
-     *         accepter or requester VPC.
-     */
-
-    public VpcPeeringConnectionOptionsDescription getPeeringOptions() {
-        return this.peeringOptions;
-    }
-
-    /**
-     * <p>
-     * Information about the VPC peering connection options for the accepter or
-     * requester VPC.
-     * </p>
-     * 
-     * @param peeringOptions
-     *        Information about the VPC peering connection options for the
-     *        accepter or requester VPC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
-
-    public VpcPeeringConnectionVpcInfo withPeeringOptions(
-            VpcPeeringConnectionOptionsDescription peeringOptions) {
-        setPeeringOptions(peeringOptions);
-        return this;
-    }
-
-    /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -234,13 +302,15 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCidrBlock() != null)
-            sb.append("CidrBlock: " + getCidrBlock() + ",");
+            sb.append("CidrBlock: ").append(getCidrBlock()).append(",");
+        if (getIpv6CidrBlockSet() != null)
+            sb.append("Ipv6CidrBlockSet: ").append(getIpv6CidrBlockSet()).append(",");
         if (getOwnerId() != null)
-            sb.append("OwnerId: " + getOwnerId() + ",");
-        if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("OwnerId: ").append(getOwnerId()).append(",");
         if (getPeeringOptions() != null)
-            sb.append("PeeringOptions: " + getPeeringOptions());
+            sb.append("PeeringOptions: ").append(getPeeringOptions()).append(",");
+        if (getVpcId() != null)
+            sb.append("VpcId: ").append(getVpcId());
         sb.append("}");
         return sb.toString();
     }
@@ -257,24 +327,23 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
         VpcPeeringConnectionVpcInfo other = (VpcPeeringConnectionVpcInfo) obj;
         if (other.getCidrBlock() == null ^ this.getCidrBlock() == null)
             return false;
-        if (other.getCidrBlock() != null
-                && other.getCidrBlock().equals(this.getCidrBlock()) == false)
+        if (other.getCidrBlock() != null && other.getCidrBlock().equals(this.getCidrBlock()) == false)
+            return false;
+        if (other.getIpv6CidrBlockSet() == null ^ this.getIpv6CidrBlockSet() == null)
+            return false;
+        if (other.getIpv6CidrBlockSet() != null && other.getIpv6CidrBlockSet().equals(this.getIpv6CidrBlockSet()) == false)
             return false;
         if (other.getOwnerId() == null ^ this.getOwnerId() == null)
             return false;
-        if (other.getOwnerId() != null
-                && other.getOwnerId().equals(this.getOwnerId()) == false)
+        if (other.getOwnerId() != null && other.getOwnerId().equals(this.getOwnerId()) == false)
+            return false;
+        if (other.getPeeringOptions() == null ^ this.getPeeringOptions() == null)
+            return false;
+        if (other.getPeeringOptions() != null && other.getPeeringOptions().equals(this.getPeeringOptions()) == false)
             return false;
         if (other.getVpcId() == null ^ this.getVpcId() == null)
             return false;
-        if (other.getVpcId() != null
-                && other.getVpcId().equals(this.getVpcId()) == false)
-            return false;
-        if (other.getPeeringOptions() == null
-                ^ this.getPeeringOptions() == null)
-            return false;
-        if (other.getPeeringOptions() != null
-                && other.getPeeringOptions().equals(this.getPeeringOptions()) == false)
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false)
             return false;
         return true;
     }
@@ -284,16 +353,11 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getCidrBlock() == null) ? 0 : getCidrBlock().hashCode());
-        hashCode = prime * hashCode
-                + ((getOwnerId() == null) ? 0 : getOwnerId().hashCode());
-        hashCode = prime * hashCode
-                + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPeeringOptions() == null) ? 0 : getPeeringOptions()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getCidrBlock() == null) ? 0 : getCidrBlock().hashCode());
+        hashCode = prime * hashCode + ((getIpv6CidrBlockSet() == null) ? 0 : getIpv6CidrBlockSet().hashCode());
+        hashCode = prime * hashCode + ((getOwnerId() == null) ? 0 : getOwnerId().hashCode());
+        hashCode = prime * hashCode + ((getPeeringOptions() == null) ? 0 : getPeeringOptions().hashCode());
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
         return hashCode;
     }
 
@@ -302,9 +366,8 @@ public class VpcPeeringConnectionVpcInfo implements Serializable, Cloneable {
         try {
             return (VpcPeeringConnectionVpcInfo) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

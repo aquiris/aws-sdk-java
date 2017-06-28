@@ -1,109 +1,70 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model.transform;
 
-import static com.amazonaws.util.StringUtils.UTF8;
-import static com.amazonaws.util.StringUtils.COMMA_SEPARATOR;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.services.apigateway.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.util.SdkHttpUtils;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * GetUsageRequest Marshaller
+ * GetUsageRequestMarshaller
  */
-public class GetUsageRequestMarshaller implements
-        Marshaller<Request<GetUsageRequest>, GetUsageRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class GetUsageRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> USAGEPLANID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
+            .marshallLocationName("usageplanId").build();
+    private static final MarshallingInfo<String> KEYID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.QUERY_PARAM)
+            .marshallLocationName("keyId").build();
+    private static final MarshallingInfo<String> STARTDATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("startDate").build();
+    private static final MarshallingInfo<String> ENDDATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("endDate").build();
+    private static final MarshallingInfo<String> POSITION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("position").build();
+    private static final MarshallingInfo<Integer> LIMIT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("limit").build();
 
-    public GetUsageRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final GetUsageRequestMarshaller instance = new GetUsageRequestMarshaller();
+
+    public static GetUsageRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<GetUsageRequest> marshall(GetUsageRequest getUsageRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(GetUsageRequest getUsageRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (getUsageRequest == null) {
-            throw new AmazonClientException(
-                    "Invalid argument passed to marshall(...)");
+            throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<GetUsageRequest> request = new DefaultRequest<GetUsageRequest>(
-                getUsageRequest, "AmazonApiGateway");
-
-        request.setHttpMethod(HttpMethodName.GET);
-
-        String uriResourcePath = "/usageplans/{usageplanId}/usage";
-
-        uriResourcePath = uriResourcePath.replace(
-                "{usageplanId}",
-                (getUsageRequest.getUsagePlanId() != null) ? SdkHttpUtils
-                        .urlEncode(StringUtils.fromString(getUsageRequest
-                                .getUsagePlanId()), false) : "");
-        request.setResourcePath(uriResourcePath);
-
-        if (getUsageRequest.getKeyId() != null) {
-            request.addParameter("keyId",
-                    StringUtils.fromString(getUsageRequest.getKeyId()));
+        try {
+            protocolMarshaller.marshall(getUsageRequest.getUsagePlanId(), USAGEPLANID_BINDING);
+            protocolMarshaller.marshall(getUsageRequest.getKeyId(), KEYID_BINDING);
+            protocolMarshaller.marshall(getUsageRequest.getStartDate(), STARTDATE_BINDING);
+            protocolMarshaller.marshall(getUsageRequest.getEndDate(), ENDDATE_BINDING);
+            protocolMarshaller.marshall(getUsageRequest.getPosition(), POSITION_BINDING);
+            protocolMarshaller.marshall(getUsageRequest.getLimit(), LIMIT_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        if (getUsageRequest.getStartDate() != null) {
-            request.addParameter("startDate",
-                    StringUtils.fromString(getUsageRequest.getStartDate()));
-        }
-
-        if (getUsageRequest.getEndDate() != null) {
-            request.addParameter("endDate",
-                    StringUtils.fromString(getUsageRequest.getEndDate()));
-        }
-
-        if (getUsageRequest.getPosition() != null) {
-            request.addParameter("position",
-                    StringUtils.fromString(getUsageRequest.getPosition()));
-        }
-
-        if (getUsageRequest.getLimit() != null) {
-            request.addParameter("limit",
-                    StringUtils.fromInteger(getUsageRequest.getLimit()));
-        }
-
-        request.setContent(new ByteArrayInputStream(new byte[0]));
-        if (!request.getHeaders().containsKey("Content-Type")) {
-            request.addHeader("Content-Type", protocolFactory.getContentType());
-        }
-
-        return request;
     }
 
 }

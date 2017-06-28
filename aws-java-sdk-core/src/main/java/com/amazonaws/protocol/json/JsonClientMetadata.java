@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -38,10 +38,12 @@ public class JsonClientMetadata {
 
     private boolean supportsCbor;
 
+    private boolean supportsIon;
+
     /**
      * Base class is initialized to {@link AmazonServiceException} for backwards compatibility.
      */
-    private Class<? extends AmazonServiceException> baseServiceExceptionClass = AmazonServiceException.class;
+    private Class<? extends RuntimeException> baseServiceExceptionClass = AmazonServiceException.class;
 
     public JsonClientMetadata addErrorMetadata(JsonErrorShapeMetadata errorShapeMetadata) {
         this.errorsMetadata.add(errorShapeMetadata);
@@ -84,12 +86,21 @@ public class JsonClientMetadata {
         return this;
     }
 
-    public Class<? extends AmazonServiceException> getBaseServiceExceptionClass() {
+    public Class<? extends RuntimeException> getBaseServiceExceptionClass() {
         return baseServiceExceptionClass;
     }
 
+    public boolean isSupportsIon() {
+        return supportsIon;
+    }
+
+    public JsonClientMetadata withSupportsIon(boolean supportsIon) {
+        this.supportsIon = supportsIon;
+        return this;
+    }
+
     public JsonClientMetadata withBaseServiceExceptionClass(
-            Class<? extends AmazonServiceException> baseServiceExceptionClass) {
+            Class<? extends RuntimeException> baseServiceExceptionClass) {
         this.baseServiceExceptionClass = baseServiceExceptionClass;
         return this;
     }

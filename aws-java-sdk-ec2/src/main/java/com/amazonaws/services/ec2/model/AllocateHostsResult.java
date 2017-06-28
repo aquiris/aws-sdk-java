@@ -1,44 +1,44 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
+import com.amazonaws.AmazonWebServiceResult;
 
 /**
  * <p>
  * Contains the output of AllocateHosts.
  * </p>
  */
-public class AllocateHostsResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AllocateHostsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the allocated Dedicated Host. This is used when you want to
-     * launch an instance onto a specific host.
+     * The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific host.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> hostIds;
 
     /**
      * <p>
-     * The ID of the allocated Dedicated Host. This is used when you want to
-     * launch an instance onto a specific host.
+     * The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific host.
      * </p>
      * 
-     * @return The ID of the allocated Dedicated Host. This is used when you
-     *         want to launch an instance onto a specific host.
+     * @return The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific
+     *         host.
      */
 
     public java.util.List<String> getHostIds() {
@@ -50,13 +50,12 @@ public class AllocateHostsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the allocated Dedicated Host. This is used when you want to
-     * launch an instance onto a specific host.
+     * The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific host.
      * </p>
      * 
      * @param hostIds
-     *        The ID of the allocated Dedicated Host. This is used when you want
-     *        to launch an instance onto a specific host.
+     *        The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific
+     *        host.
      */
 
     public void setHostIds(java.util.Collection<String> hostIds) {
@@ -65,33 +64,28 @@ public class AllocateHostsResult implements Serializable, Cloneable {
             return;
         }
 
-        this.hostIds = new com.amazonaws.internal.SdkInternalList<String>(
-                hostIds);
+        this.hostIds = new com.amazonaws.internal.SdkInternalList<String>(hostIds);
     }
 
     /**
      * <p>
-     * The ID of the allocated Dedicated Host. This is used when you want to
-     * launch an instance onto a specific host.
+     * The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific host.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setHostIds(java.util.Collection)} or
-     * {@link #withHostIds(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setHostIds(java.util.Collection)} or {@link #withHostIds(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param hostIds
-     *        The ID of the allocated Dedicated Host. This is used when you want
-     *        to launch an instance onto a specific host.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific
+     *        host.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AllocateHostsResult withHostIds(String... hostIds) {
         if (this.hostIds == null) {
-            setHostIds(new com.amazonaws.internal.SdkInternalList<String>(
-                    hostIds.length));
+            setHostIds(new com.amazonaws.internal.SdkInternalList<String>(hostIds.length));
         }
         for (String ele : hostIds) {
             this.hostIds.add(ele);
@@ -101,15 +95,13 @@ public class AllocateHostsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the allocated Dedicated Host. This is used when you want to
-     * launch an instance onto a specific host.
+     * The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific host.
      * </p>
      * 
      * @param hostIds
-     *        The ID of the allocated Dedicated Host. This is used when you want
-     *        to launch an instance onto a specific host.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific
+     *        host.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AllocateHostsResult withHostIds(java.util.Collection<String> hostIds) {
@@ -118,8 +110,7 @@ public class AllocateHostsResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -130,7 +121,7 @@ public class AllocateHostsResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHostIds() != null)
-            sb.append("HostIds: " + getHostIds());
+            sb.append("HostIds: ").append(getHostIds());
         sb.append("}");
         return sb.toString();
     }
@@ -147,8 +138,7 @@ public class AllocateHostsResult implements Serializable, Cloneable {
         AllocateHostsResult other = (AllocateHostsResult) obj;
         if (other.getHostIds() == null ^ this.getHostIds() == null)
             return false;
-        if (other.getHostIds() != null
-                && other.getHostIds().equals(this.getHostIds()) == false)
+        if (other.getHostIds() != null && other.getHostIds().equals(this.getHostIds()) == false)
             return false;
         return true;
     }
@@ -158,8 +148,7 @@ public class AllocateHostsResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getHostIds() == null) ? 0 : getHostIds().hashCode());
+        hashCode = prime * hashCode + ((getHostIds() == null) ? 0 : getHostIds().hashCode());
         return hashCode;
     }
 
@@ -168,9 +157,7 @@ public class AllocateHostsResult implements Serializable, Cloneable {
         try {
             return (AllocateHostsResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

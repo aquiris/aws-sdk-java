@@ -1,39 +1,40 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Receipt rules enable you to specify which actions Amazon SES should take when
- * it receives mail on behalf of one or more email addresses or domains that you
- * own.
+ * Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or
+ * more email addresses or domains that you own.
  * </p>
  * <p>
- * Each receipt rule defines a set of email addresses or domains to which it
- * applies. If the email addresses or domains match at least one recipient
- * address of the message, Amazon SES executes all of the receipt rule's actions
- * on the message.
+ * Each receipt rule defines a set of email addresses or domains to which it applies. If the email addresses or domains
+ * match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the
+ * message.
  * </p>
  * <p>
- * For information about setting up receipt rules, see the <a href=
- * "http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html"
- * >Amazon SES Developer Guide</a>.
+ * For information about setting up receipt rules, see the <a
+ * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer
+ * Guide</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ReceiptRule" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ReceiptRule implements Serializable, Cloneable {
 
     /**
@@ -43,8 +44,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-     * underscores (_), or dashes (-).
+     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
      * </p>
      * </li>
      * <li>
@@ -62,42 +62,36 @@ public class ReceiptRule implements Serializable, Cloneable {
     private String name;
     /**
      * <p>
-     * If <code>true</code>, the receipt rule is active. The default value is
-     * <code>false</code>.
+     * If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      * </p>
      */
     private Boolean enabled;
     /**
      * <p>
-     * Specifies whether Amazon SES should require that incoming email is
-     * delivered over a connection encrypted with Transport Layer Security
-     * (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
-     * bounce emails that are not received over TLS. The default is
-     * <code>Optional</code>.
+     * Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with
+     * Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails
+     * that are not received over TLS. The default is <code>Optional</code>.
      * </p>
      */
     private String tlsPolicy;
     /**
      * <p>
-     * The recipient domains and email addresses to which the receipt rule
-     * applies. If this field is not specified, this rule will match all
-     * recipients under all verified domains.
+     * The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this
+     * rule will match all recipients under all verified domains.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> recipients;
     /**
      * <p>
-     * An ordered list of actions to perform on messages that match at least one
-     * of the recipient email addresses or domains specified in the receipt
-     * rule.
+     * An ordered list of actions to perform on messages that match at least one of the recipient email addresses or
+     * domains specified in the receipt rule.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<ReceiptAction> actions;
     /**
      * <p>
-     * If <code>true</code>, then messages to which this receipt rule applies
-     * are scanned for spam and viruses. The default value is <code>false</code>
-     * .
+     * If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The
+     * default value is <code>false</code>.
      * </p>
      */
     private Boolean scanEnabled;
@@ -109,8 +103,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-     * underscores (_), or dashes (-).
+     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
      * </p>
      * </li>
      * <li>
@@ -130,8 +123,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-     *        underscores (_), or dashes (-).
+     *        Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
      *        </p>
      *        </li>
      *        <li>
@@ -157,8 +149,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-     * underscores (_), or dashes (-).
+     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
      * </p>
      * </li>
      * <li>
@@ -177,8 +168,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods
-     *         (.), underscores (_), or dashes (-).
+     *         Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
      *         </p>
      *         </li>
      *         <li>
@@ -204,8 +194,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-     * underscores (_), or dashes (-).
+     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
      * </p>
      * </li>
      * <li>
@@ -225,8 +214,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-     *        underscores (_), or dashes (-).
+     *        Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
      *        </p>
      *        </li>
      *        <li>
@@ -239,8 +227,7 @@ public class ReceiptRule implements Serializable, Cloneable {
      *        Contain less than 64 characters.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReceiptRule withName(String name) {
@@ -250,13 +237,11 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, the receipt rule is active. The default value is
-     * <code>false</code>.
+     * If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      * </p>
      * 
      * @param enabled
-     *        If <code>true</code>, the receipt rule is active. The default
-     *        value is <code>false</code>.
+     *        If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -265,12 +250,10 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, the receipt rule is active. The default value is
-     * <code>false</code>.
+     * If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      * </p>
      * 
-     * @return If <code>true</code>, the receipt rule is active. The default
-     *         value is <code>false</code>.
+     * @return If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      */
 
     public Boolean getEnabled() {
@@ -279,15 +262,12 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, the receipt rule is active. The default value is
-     * <code>false</code>.
+     * If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      * </p>
      * 
      * @param enabled
-     *        If <code>true</code>, the receipt rule is active. The default
-     *        value is <code>false</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReceiptRule withEnabled(Boolean enabled) {
@@ -297,12 +277,10 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, the receipt rule is active. The default value is
-     * <code>false</code>.
+     * If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      * </p>
      * 
-     * @return If <code>true</code>, the receipt rule is active. The default
-     *         value is <code>false</code>.
+     * @return If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.
      */
 
     public Boolean isEnabled() {
@@ -311,19 +289,15 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether Amazon SES should require that incoming email is
-     * delivered over a connection encrypted with Transport Layer Security
-     * (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
-     * bounce emails that are not received over TLS. The default is
-     * <code>Optional</code>.
+     * Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with
+     * Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails
+     * that are not received over TLS. The default is <code>Optional</code>.
      * </p>
      * 
      * @param tlsPolicy
-     *        Specifies whether Amazon SES should require that incoming email is
-     *        delivered over a connection encrypted with Transport Layer
-     *        Security (TLS). If this parameter is set to <code>Require</code>,
-     *        Amazon SES will bounce emails that are not received over TLS. The
-     *        default is <code>Optional</code>.
+     *        Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted
+     *        with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
+     *        bounce emails that are not received over TLS. The default is <code>Optional</code>.
      * @see TlsPolicy
      */
 
@@ -333,18 +307,14 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether Amazon SES should require that incoming email is
-     * delivered over a connection encrypted with Transport Layer Security
-     * (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
-     * bounce emails that are not received over TLS. The default is
-     * <code>Optional</code>.
+     * Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with
+     * Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails
+     * that are not received over TLS. The default is <code>Optional</code>.
      * </p>
      * 
-     * @return Specifies whether Amazon SES should require that incoming email
-     *         is delivered over a connection encrypted with Transport Layer
-     *         Security (TLS). If this parameter is set to <code>Require</code>,
-     *         Amazon SES will bounce emails that are not received over TLS. The
-     *         default is <code>Optional</code>.
+     * @return Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted
+     *         with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
+     *         bounce emails that are not received over TLS. The default is <code>Optional</code>.
      * @see TlsPolicy
      */
 
@@ -354,21 +324,16 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether Amazon SES should require that incoming email is
-     * delivered over a connection encrypted with Transport Layer Security
-     * (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
-     * bounce emails that are not received over TLS. The default is
-     * <code>Optional</code>.
+     * Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with
+     * Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails
+     * that are not received over TLS. The default is <code>Optional</code>.
      * </p>
      * 
      * @param tlsPolicy
-     *        Specifies whether Amazon SES should require that incoming email is
-     *        delivered over a connection encrypted with Transport Layer
-     *        Security (TLS). If this parameter is set to <code>Require</code>,
-     *        Amazon SES will bounce emails that are not received over TLS. The
-     *        default is <code>Optional</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted
+     *        with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
+     *        bounce emails that are not received over TLS. The default is <code>Optional</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see TlsPolicy
      */
 
@@ -379,19 +344,15 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether Amazon SES should require that incoming email is
-     * delivered over a connection encrypted with Transport Layer Security
-     * (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
-     * bounce emails that are not received over TLS. The default is
-     * <code>Optional</code>.
+     * Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with
+     * Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails
+     * that are not received over TLS. The default is <code>Optional</code>.
      * </p>
      * 
      * @param tlsPolicy
-     *        Specifies whether Amazon SES should require that incoming email is
-     *        delivered over a connection encrypted with Transport Layer
-     *        Security (TLS). If this parameter is set to <code>Require</code>,
-     *        Amazon SES will bounce emails that are not received over TLS. The
-     *        default is <code>Optional</code>.
+     *        Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted
+     *        with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
+     *        bounce emails that are not received over TLS. The default is <code>Optional</code>.
      * @see TlsPolicy
      */
 
@@ -401,21 +362,16 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether Amazon SES should require that incoming email is
-     * delivered over a connection encrypted with Transport Layer Security
-     * (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
-     * bounce emails that are not received over TLS. The default is
-     * <code>Optional</code>.
+     * Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with
+     * Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails
+     * that are not received over TLS. The default is <code>Optional</code>.
      * </p>
      * 
      * @param tlsPolicy
-     *        Specifies whether Amazon SES should require that incoming email is
-     *        delivered over a connection encrypted with Transport Layer
-     *        Security (TLS). If this parameter is set to <code>Require</code>,
-     *        Amazon SES will bounce emails that are not received over TLS. The
-     *        default is <code>Optional</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted
+     *        with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will
+     *        bounce emails that are not received over TLS. The default is <code>Optional</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see TlsPolicy
      */
 
@@ -426,14 +382,12 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The recipient domains and email addresses to which the receipt rule
-     * applies. If this field is not specified, this rule will match all
-     * recipients under all verified domains.
+     * The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this
+     * rule will match all recipients under all verified domains.
      * </p>
      * 
-     * @return The recipient domains and email addresses to which the receipt
-     *         rule applies. If this field is not specified, this rule will
-     *         match all recipients under all verified domains.
+     * @return The recipient domains and email addresses to which the receipt rule applies. If this field is not
+     *         specified, this rule will match all recipients under all verified domains.
      */
 
     public java.util.List<String> getRecipients() {
@@ -445,15 +399,13 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The recipient domains and email addresses to which the receipt rule
-     * applies. If this field is not specified, this rule will match all
-     * recipients under all verified domains.
+     * The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this
+     * rule will match all recipients under all verified domains.
      * </p>
      * 
      * @param recipients
-     *        The recipient domains and email addresses to which the receipt
-     *        rule applies. If this field is not specified, this rule will match
-     *        all recipients under all verified domains.
+     *        The recipient domains and email addresses to which the receipt rule applies. If this field is not
+     *        specified, this rule will match all recipients under all verified domains.
      */
 
     public void setRecipients(java.util.Collection<String> recipients) {
@@ -462,35 +414,29 @@ public class ReceiptRule implements Serializable, Cloneable {
             return;
         }
 
-        this.recipients = new com.amazonaws.internal.SdkInternalList<String>(
-                recipients);
+        this.recipients = new com.amazonaws.internal.SdkInternalList<String>(recipients);
     }
 
     /**
      * <p>
-     * The recipient domains and email addresses to which the receipt rule
-     * applies. If this field is not specified, this rule will match all
-     * recipients under all verified domains.
+     * The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this
+     * rule will match all recipients under all verified domains.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setRecipients(java.util.Collection)} or
-     * {@link #withRecipients(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setRecipients(java.util.Collection)} or {@link #withRecipients(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param recipients
-     *        The recipient domains and email addresses to which the receipt
-     *        rule applies. If this field is not specified, this rule will match
-     *        all recipients under all verified domains.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The recipient domains and email addresses to which the receipt rule applies. If this field is not
+     *        specified, this rule will match all recipients under all verified domains.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReceiptRule withRecipients(String... recipients) {
         if (this.recipients == null) {
-            setRecipients(new com.amazonaws.internal.SdkInternalList<String>(
-                    recipients.length));
+            setRecipients(new com.amazonaws.internal.SdkInternalList<String>(recipients.length));
         }
         for (String ele : recipients) {
             this.recipients.add(ele);
@@ -500,17 +446,14 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The recipient domains and email addresses to which the receipt rule
-     * applies. If this field is not specified, this rule will match all
-     * recipients under all verified domains.
+     * The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this
+     * rule will match all recipients under all verified domains.
      * </p>
      * 
      * @param recipients
-     *        The recipient domains and email addresses to which the receipt
-     *        rule applies. If this field is not specified, this rule will match
-     *        all recipients under all verified domains.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The recipient domains and email addresses to which the receipt rule applies. If this field is not
+     *        specified, this rule will match all recipients under all verified domains.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReceiptRule withRecipients(java.util.Collection<String> recipients) {
@@ -520,14 +463,12 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An ordered list of actions to perform on messages that match at least one
-     * of the recipient email addresses or domains specified in the receipt
-     * rule.
+     * An ordered list of actions to perform on messages that match at least one of the recipient email addresses or
+     * domains specified in the receipt rule.
      * </p>
      * 
-     * @return An ordered list of actions to perform on messages that match at
-     *         least one of the recipient email addresses or domains specified
-     *         in the receipt rule.
+     * @return An ordered list of actions to perform on messages that match at least one of the recipient email
+     *         addresses or domains specified in the receipt rule.
      */
 
     public java.util.List<ReceiptAction> getActions() {
@@ -539,15 +480,13 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An ordered list of actions to perform on messages that match at least one
-     * of the recipient email addresses or domains specified in the receipt
-     * rule.
+     * An ordered list of actions to perform on messages that match at least one of the recipient email addresses or
+     * domains specified in the receipt rule.
      * </p>
      * 
      * @param actions
-     *        An ordered list of actions to perform on messages that match at
-     *        least one of the recipient email addresses or domains specified in
-     *        the receipt rule.
+     *        An ordered list of actions to perform on messages that match at least one of the recipient email addresses
+     *        or domains specified in the receipt rule.
      */
 
     public void setActions(java.util.Collection<ReceiptAction> actions) {
@@ -556,35 +495,29 @@ public class ReceiptRule implements Serializable, Cloneable {
             return;
         }
 
-        this.actions = new com.amazonaws.internal.SdkInternalList<ReceiptAction>(
-                actions);
+        this.actions = new com.amazonaws.internal.SdkInternalList<ReceiptAction>(actions);
     }
 
     /**
      * <p>
-     * An ordered list of actions to perform on messages that match at least one
-     * of the recipient email addresses or domains specified in the receipt
-     * rule.
+     * An ordered list of actions to perform on messages that match at least one of the recipient email addresses or
+     * domains specified in the receipt rule.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setActions(java.util.Collection)} or
-     * {@link #withActions(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setActions(java.util.Collection)} or {@link #withActions(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param actions
-     *        An ordered list of actions to perform on messages that match at
-     *        least one of the recipient email addresses or domains specified in
-     *        the receipt rule.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An ordered list of actions to perform on messages that match at least one of the recipient email addresses
+     *        or domains specified in the receipt rule.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReceiptRule withActions(ReceiptAction... actions) {
         if (this.actions == null) {
-            setActions(new com.amazonaws.internal.SdkInternalList<ReceiptAction>(
-                    actions.length));
+            setActions(new com.amazonaws.internal.SdkInternalList<ReceiptAction>(actions.length));
         }
         for (ReceiptAction ele : actions) {
             this.actions.add(ele);
@@ -594,17 +527,14 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An ordered list of actions to perform on messages that match at least one
-     * of the recipient email addresses or domains specified in the receipt
-     * rule.
+     * An ordered list of actions to perform on messages that match at least one of the recipient email addresses or
+     * domains specified in the receipt rule.
      * </p>
      * 
      * @param actions
-     *        An ordered list of actions to perform on messages that match at
-     *        least one of the recipient email addresses or domains specified in
-     *        the receipt rule.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An ordered list of actions to perform on messages that match at least one of the recipient email addresses
+     *        or domains specified in the receipt rule.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReceiptRule withActions(java.util.Collection<ReceiptAction> actions) {
@@ -614,15 +544,13 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, then messages to which this receipt rule applies
-     * are scanned for spam and viruses. The default value is <code>false</code>
-     * .
+     * If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The
+     * default value is <code>false</code>.
      * </p>
      * 
      * @param scanEnabled
-     *        If <code>true</code>, then messages to which this receipt rule
-     *        applies are scanned for spam and viruses. The default value is
-     *        <code>false</code>.
+     *        If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses.
+     *        The default value is <code>false</code>.
      */
 
     public void setScanEnabled(Boolean scanEnabled) {
@@ -631,14 +559,12 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, then messages to which this receipt rule applies
-     * are scanned for spam and viruses. The default value is <code>false</code>
-     * .
+     * If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The
+     * default value is <code>false</code>.
      * </p>
      * 
-     * @return If <code>true</code>, then messages to which this receipt rule
-     *         applies are scanned for spam and viruses. The default value is
-     *         <code>false</code>.
+     * @return If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses.
+     *         The default value is <code>false</code>.
      */
 
     public Boolean getScanEnabled() {
@@ -647,17 +573,14 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, then messages to which this receipt rule applies
-     * are scanned for spam and viruses. The default value is <code>false</code>
-     * .
+     * If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The
+     * default value is <code>false</code>.
      * </p>
      * 
      * @param scanEnabled
-     *        If <code>true</code>, then messages to which this receipt rule
-     *        applies are scanned for spam and viruses. The default value is
-     *        <code>false</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses.
+     *        The default value is <code>false</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReceiptRule withScanEnabled(Boolean scanEnabled) {
@@ -667,14 +590,12 @@ public class ReceiptRule implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>true</code>, then messages to which this receipt rule applies
-     * are scanned for spam and viruses. The default value is <code>false</code>
-     * .
+     * If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The
+     * default value is <code>false</code>.
      * </p>
      * 
-     * @return If <code>true</code>, then messages to which this receipt rule
-     *         applies are scanned for spam and viruses. The default value is
-     *         <code>false</code>.
+     * @return If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses.
+     *         The default value is <code>false</code>.
      */
 
     public Boolean isScanEnabled() {
@@ -682,8 +603,7 @@ public class ReceiptRule implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -694,17 +614,17 @@ public class ReceiptRule implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getEnabled() != null)
-            sb.append("Enabled: " + getEnabled() + ",");
+            sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getTlsPolicy() != null)
-            sb.append("TlsPolicy: " + getTlsPolicy() + ",");
+            sb.append("TlsPolicy: ").append(getTlsPolicy()).append(",");
         if (getRecipients() != null)
-            sb.append("Recipients: " + getRecipients() + ",");
+            sb.append("Recipients: ").append(getRecipients()).append(",");
         if (getActions() != null)
-            sb.append("Actions: " + getActions() + ",");
+            sb.append("Actions: ").append(getActions()).append(",");
         if (getScanEnabled() != null)
-            sb.append("ScanEnabled: " + getScanEnabled());
+            sb.append("ScanEnabled: ").append(getScanEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -721,33 +641,27 @@ public class ReceiptRule implements Serializable, Cloneable {
         ReceiptRule other = (ReceiptRule) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getEnabled() == null ^ this.getEnabled() == null)
             return false;
-        if (other.getEnabled() != null
-                && other.getEnabled().equals(this.getEnabled()) == false)
+        if (other.getEnabled() != null && other.getEnabled().equals(this.getEnabled()) == false)
             return false;
         if (other.getTlsPolicy() == null ^ this.getTlsPolicy() == null)
             return false;
-        if (other.getTlsPolicy() != null
-                && other.getTlsPolicy().equals(this.getTlsPolicy()) == false)
+        if (other.getTlsPolicy() != null && other.getTlsPolicy().equals(this.getTlsPolicy()) == false)
             return false;
         if (other.getRecipients() == null ^ this.getRecipients() == null)
             return false;
-        if (other.getRecipients() != null
-                && other.getRecipients().equals(this.getRecipients()) == false)
+        if (other.getRecipients() != null && other.getRecipients().equals(this.getRecipients()) == false)
             return false;
         if (other.getActions() == null ^ this.getActions() == null)
             return false;
-        if (other.getActions() != null
-                && other.getActions().equals(this.getActions()) == false)
+        if (other.getActions() != null && other.getActions().equals(this.getActions()) == false)
             return false;
         if (other.getScanEnabled() == null ^ this.getScanEnabled() == null)
             return false;
-        if (other.getScanEnabled() != null
-                && other.getScanEnabled().equals(this.getScanEnabled()) == false)
+        if (other.getScanEnabled() != null && other.getScanEnabled().equals(this.getScanEnabled()) == false)
             return false;
         return true;
     }
@@ -757,19 +671,12 @@ public class ReceiptRule implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
-        hashCode = prime * hashCode
-                + ((getTlsPolicy() == null) ? 0 : getTlsPolicy().hashCode());
-        hashCode = prime * hashCode
-                + ((getRecipients() == null) ? 0 : getRecipients().hashCode());
-        hashCode = prime * hashCode
-                + ((getActions() == null) ? 0 : getActions().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getScanEnabled() == null) ? 0 : getScanEnabled().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
+        hashCode = prime * hashCode + ((getTlsPolicy() == null) ? 0 : getTlsPolicy().hashCode());
+        hashCode = prime * hashCode + ((getRecipients() == null) ? 0 : getRecipients().hashCode());
+        hashCode = prime * hashCode + ((getActions() == null) ? 0 : getActions().hashCode());
+        hashCode = prime * hashCode + ((getScanEnabled() == null) ? 0 : getScanEnabled().hashCode());
         return hashCode;
     }
 
@@ -778,9 +685,8 @@ public class ReceiptRule implements Serializable, Cloneable {
         try {
             return (ReceiptRule) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

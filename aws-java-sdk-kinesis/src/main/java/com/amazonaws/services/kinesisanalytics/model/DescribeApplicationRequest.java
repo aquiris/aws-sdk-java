@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DescribeApplication"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeApplicationRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeApplicationRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -62,8 +65,7 @@ public class DescribeApplicationRequest extends AmazonWebServiceRequest
      * 
      * @param applicationName
      *        Name of the application.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeApplicationRequest withApplicationName(String applicationName) {
@@ -72,8 +74,7 @@ public class DescribeApplicationRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -84,7 +85,7 @@ public class DescribeApplicationRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName());
+            sb.append("ApplicationName: ").append(getApplicationName());
         sb.append("}");
         return sb.toString();
     }
@@ -99,11 +100,9 @@ public class DescribeApplicationRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeApplicationRequest == false)
             return false;
         DescribeApplicationRequest other = (DescribeApplicationRequest) obj;
-        if (other.getApplicationName() == null
-                ^ this.getApplicationName() == null)
+        if (other.getApplicationName() == null ^ this.getApplicationName() == null)
             return false;
-        if (other.getApplicationName() != null
-                && other.getApplicationName().equals(this.getApplicationName()) == false)
+        if (other.getApplicationName() != null && other.getApplicationName().equals(this.getApplicationName()) == false)
             return false;
         return true;
     }
@@ -113,10 +112,7 @@ public class DescribeApplicationRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getApplicationName() == null) ? 0 : getApplicationName()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getApplicationName() == null) ? 0 : getApplicationName().hashCode());
         return hashCode;
     }
 
@@ -124,4 +120,5 @@ public class DescribeApplicationRequest extends AmazonWebServiceRequest
     public DescribeApplicationRequest clone() {
         return (DescribeApplicationRequest) super.clone();
     }
+
 }

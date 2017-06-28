@@ -1,20 +1,19 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -36,25 +35,36 @@ import java.io.Serializable;
  * <a>ModifyDBInstance</a>
  * </p>
  * </li>
+ * <li>
+ * <p>
+ * <a>StopDBInstance</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StartDBInstance</a>
+ * </p>
+ * </li>
  * </ul>
  * <p>
- * This data type is used as a response element in the
- * <a>DescribeDBInstances</a> action.
+ * This data type is used as a response element in the <a>DescribeDBInstances</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBInstance" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains a user-supplied database identifier. This identifier is the
-     * unique key that identifies a DB instance.
+     * Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.
      * </p>
      */
     private String dBInstanceIdentifier;
     /**
      * <p>
-     * Contains the name of the compute and memory capacity class of the DB
-     * instance.
+     * Contains the name of the compute and memory capacity class of the DB instance.
      * </p>
      */
     private String dBInstanceClass;
@@ -78,18 +88,16 @@ public class DBInstance implements Serializable, Cloneable {
     private String masterUsername;
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine
-     * you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
-     * information when returning values from CreateDBInstanceReadReplica since
-     * Read Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
+     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
+     * Replicas are only supported for these engines.
      * </p>
      * <p>
-     * <b>MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora</b>
+     * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      * </p>
      * <p>
-     * Contains the name of the initial database of this instance that was
-     * provided at create time, if one was specified when the DB instance was
-     * created. This same name is returned for the life of the DB instance.
+     * Contains the name of the initial database of this instance that was provided at create time, if one was specified
+     * when the DB instance was created. This same name is returned for the life of the DB instance.
      * </p>
      * <p>
      * Type: String
@@ -98,8 +106,8 @@ public class DBInstance implements Serializable, Cloneable {
      * <b>Oracle</b>
      * </p>
      * <p>
-     * Contains the Oracle System ID (SID) of the created DB instance. Not shown
-     * when the returned parameters do not apply to an Oracle DB instance.
+     * Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not
+     * apply to an Oracle DB instance.
      * </p>
      */
     private String dBName;
@@ -123,31 +131,27 @@ public class DBInstance implements Serializable, Cloneable {
     private java.util.Date instanceCreateTime;
     /**
      * <p>
-     * Specifies the daily time range during which automated backups are created
-     * if automated backups are enabled, as determined by the
-     * <code>BackupRetentionPeriod</code>.
+     * Specifies the daily time range during which automated backups are created if automated backups are enabled, as
+     * determined by the <code>BackupRetentionPeriod</code>.
      * </p>
      */
     private String preferredBackupWindow;
     /**
      * <p>
-     * Specifies the number of days for which automatic DB snapshots are
-     * retained.
+     * Specifies the number of days for which automatic DB snapshots are retained.
      * </p>
      */
     private Integer backupRetentionPeriod;
     /**
      * <p>
-     * Provides List of DB security group elements containing only
-     * <code>DBSecurityGroup.Name</code> and <code>DBSecurityGroup.Status</code>
-     * subelements.
+     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DBSecurityGroupMembership> dBSecurityGroups;
     /**
      * <p>
-     * Provides List of VPC security group elements that the DB instance belongs
-     * to.
+     * Provides a list of VPC security group elements that the DB instance belongs to.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<VpcSecurityGroupMembership> vpcSecurityGroups;
@@ -159,38 +163,33 @@ public class DBInstance implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<DBParameterGroupStatus> dBParameterGroups;
     /**
      * <p>
-     * Specifies the name of the Availability Zone the DB instance is located
-     * in.
+     * Specifies the name of the Availability Zone the DB instance is located in.
      * </p>
      */
     private String availabilityZone;
     /**
      * <p>
-     * Specifies information on the subnet group associated with the DB
-     * instance, including the name, description, and subnets in the subnet
-     * group.
+     * Specifies information on the subnet group associated with the DB instance, including the name, description, and
+     * subnets in the subnet group.
      * </p>
      */
     private DBSubnetGroup dBSubnetGroup;
     /**
      * <p>
-     * Specifies the weekly time range during which system maintenance can
-     * occur, in Universal Coordinated Time (UTC).
+     * Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
      * </p>
      */
     private String preferredMaintenanceWindow;
     /**
      * <p>
-     * Specifies that changes to the DB instance are pending. This element is
-     * only included when changes are pending. Specific changes are identified
-     * by subelements.
+     * Specifies that changes to the DB instance are pending. This element is only included when changes are pending.
+     * Specific changes are identified by subelements.
      * </p>
      */
     private PendingModifiedValues pendingModifiedValues;
     /**
      * <p>
-     * Specifies the latest time to which a database can be restored with
-     * point-in-time restore.
+     * Specifies the latest time to which a database can be restored with point-in-time restore.
      * </p>
      */
     private java.util.Date latestRestorableTime;
@@ -214,18 +213,22 @@ public class DBInstance implements Serializable, Cloneable {
     private Boolean autoMinorVersionUpgrade;
     /**
      * <p>
-     * Contains the identifier of the source DB instance if this DB instance is
-     * a Read Replica.
+     * Contains the identifier of the source DB instance if this DB instance is a Read Replica.
      * </p>
      */
     private String readReplicaSourceDBInstanceIdentifier;
     /**
      * <p>
-     * Contains one or more identifiers of the Read Replicas associated with
-     * this DB instance.
+     * Contains one or more identifiers of the Read Replicas associated with this DB instance.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> readReplicaDBInstanceIdentifiers;
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> readReplicaDBClusterIdentifiers;
     /**
      * <p>
      * License model information for this DB instance.
@@ -246,30 +249,25 @@ public class DBInstance implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<OptionGroupMembership> optionGroupMemberships;
     /**
      * <p>
-     * If present, specifies the name of the character set that this instance is
-     * associated with.
+     * If present, specifies the name of the character set that this instance is associated with.
      * </p>
      */
     private String characterSetName;
     /**
      * <p>
-     * If present, specifies the name of the secondary Availability Zone for a
-     * DB instance with multi-AZ support.
+     * If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.
      * </p>
      */
     private String secondaryAvailabilityZone;
     /**
      * <p>
-     * Specifies the accessibility options for the DB instance. A value of true
-     * specifies an Internet-facing instance with a publicly resolvable DNS
-     * name, which resolves to a public IP address. A value of false specifies
-     * an internal instance with a DNS name that resolves to a private IP
-     * address.
+     * Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance
+     * with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an
+     * internal instance with a DNS name that resolves to a private IP address.
      * </p>
      * <p>
-     * Default: The default behavior varies depending on whether a VPC has been
-     * requested or not. The following list shows the default behavior in each
-     * case.
+     * Default: The default behavior varies depending on whether a VPC has been requested or not. The following list
+     * shows the default behavior in each case.
      * </p>
      * <ul>
      * <li>
@@ -284,18 +282,15 @@ public class DBInstance implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * If no DB subnet group has been specified as part of the request and the
-     * PubliclyAccessible value has not been set, the DB instance will be
-     * publicly accessible. If a specific DB subnet group has been specified as
-     * part of the request and the PubliclyAccessible value has not been set,
-     * the DB instance will be private.
+     * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
+     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
      * </p>
      */
     private Boolean publiclyAccessible;
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this
-     * will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DBInstanceStatusInfo> statusInfos;
@@ -307,23 +302,21 @@ public class DBInstance implements Serializable, Cloneable {
     private String storageType;
     /**
      * <p>
-     * The ARN from the Key Store with which the instance is associated for TDE
-     * encryption.
+     * The ARN from the key store with which the instance is associated for TDE encryption.
      * </p>
      */
     private String tdeCredentialArn;
     /**
      * <p>
-     * Specifies the port that the DB instance listens on. If the DB instance is
-     * part of a DB cluster, this can be a different port than the DB cluster
-     * port.
+     * Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a
+     * different port than the DB cluster port.
      * </p>
      */
     private Integer dbInstancePort;
     /**
      * <p>
-     * If the DB instance is a member of a DB cluster, contains the name of the
-     * DB cluster that the DB instance is a member of.
+     * If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a
+     * member of.
      * </p>
      */
     private String dBClusterIdentifier;
@@ -335,16 +328,14 @@ public class DBInstance implements Serializable, Cloneable {
     private Boolean storageEncrypted;
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the
-     * encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
      * </p>
      */
     private String kmsKeyId;
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This
-     * identifier is found in AWS CloudTrail log entries whenever the KMS key
-     * for the DB instance is accessed.
+     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the KMS key for the DB instance is accessed.
      * </p>
      */
     private String dbiResourceId;
@@ -356,46 +347,41 @@ public class DBInstance implements Serializable, Cloneable {
     private String cACertificateIdentifier;
     /**
      * <p>
-     * The Active Directory Domain membership records associated with the DB
-     * instance.
+     * The Active Directory Domain membership records associated with the DB instance.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DomainMembership> domainMemberships;
     /**
      * <p>
-     * Specifies whether tags are copied from the DB instance to snapshots of
-     * the DB instance.
+     * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
      */
     private Boolean copyTagsToSnapshot;
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics
-     * are collected for the DB instance.
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.
      * </p>
      */
     private Integer monitoringInterval;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream
-     * that receives the Enhanced Monitoring metrics data for the DB instance.
+     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring
+     * metrics data for the DB instance.
      * </p>
      */
     private String enhancedMonitoringResourceArn;
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring
-     * metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
      * </p>
      */
     private String monitoringRoleArn;
     /**
      * <p>
-     * A value that specifies the order in which an Aurora Replica is promoted
-     * to the primary instance after a failure of the existing primary instance.
-     * For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"
-     * > Fault Tolerance for an Aurora DB Cluster</a>.
+     * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
+     * of the existing primary instance. For more information, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance">
+     * Fault Tolerance for an Aurora DB Cluster</a>.
      * </p>
      */
     private Integer promotionTier;
@@ -405,16 +391,50 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      */
     private String dBInstanceArn;
+    /**
+     * <p>
+     * The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty.
+     * <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a time
+     * zone specified.
+     * </p>
+     */
+    private String timezone;
+    /**
+     * <p>
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
+     * false.
+     * </p>
+     * <p>
+     * IAM database authentication can be enabled for the following database engines
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For MySQL 5.6, minor version 5.6.34 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For MySQL 5.7, minor version 5.7.16 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private Boolean iAMDatabaseAuthenticationEnabled;
 
     /**
      * <p>
-     * Contains a user-supplied database identifier. This identifier is the
-     * unique key that identifies a DB instance.
+     * Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.
      * </p>
      * 
      * @param dBInstanceIdentifier
-     *        Contains a user-supplied database identifier. This identifier is
-     *        the unique key that identifies a DB instance.
+     *        Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB
+     *        instance.
      */
 
     public void setDBInstanceIdentifier(String dBInstanceIdentifier) {
@@ -423,12 +443,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains a user-supplied database identifier. This identifier is the
-     * unique key that identifies a DB instance.
+     * Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.
      * </p>
      * 
-     * @return Contains a user-supplied database identifier. This identifier is
-     *         the unique key that identifies a DB instance.
+     * @return Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB
+     *         instance.
      */
 
     public String getDBInstanceIdentifier() {
@@ -437,15 +456,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains a user-supplied database identifier. This identifier is the
-     * unique key that identifies a DB instance.
+     * Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.
      * </p>
      * 
      * @param dBInstanceIdentifier
-     *        Contains a user-supplied database identifier. This identifier is
-     *        the unique key that identifies a DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB
+     *        instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDBInstanceIdentifier(String dBInstanceIdentifier) {
@@ -455,13 +472,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains the name of the compute and memory capacity class of the DB
-     * instance.
+     * Contains the name of the compute and memory capacity class of the DB instance.
      * </p>
      * 
      * @param dBInstanceClass
-     *        Contains the name of the compute and memory capacity class of the
-     *        DB instance.
+     *        Contains the name of the compute and memory capacity class of the DB instance.
      */
 
     public void setDBInstanceClass(String dBInstanceClass) {
@@ -470,12 +485,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains the name of the compute and memory capacity class of the DB
-     * instance.
+     * Contains the name of the compute and memory capacity class of the DB instance.
      * </p>
      * 
-     * @return Contains the name of the compute and memory capacity class of the
-     *         DB instance.
+     * @return Contains the name of the compute and memory capacity class of the DB instance.
      */
 
     public String getDBInstanceClass() {
@@ -484,15 +497,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains the name of the compute and memory capacity class of the DB
-     * instance.
+     * Contains the name of the compute and memory capacity class of the DB instance.
      * </p>
      * 
      * @param dBInstanceClass
-     *        Contains the name of the compute and memory capacity class of the
-     *        DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Contains the name of the compute and memory capacity class of the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDBInstanceClass(String dBInstanceClass) {
@@ -506,8 +516,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param engine
-     *        Provides the name of the database engine to be used for this DB
-     *        instance.
+     *        Provides the name of the database engine to be used for this DB instance.
      */
 
     public void setEngine(String engine) {
@@ -519,8 +528,7 @@ public class DBInstance implements Serializable, Cloneable {
      * Provides the name of the database engine to be used for this DB instance.
      * </p>
      * 
-     * @return Provides the name of the database engine to be used for this DB
-     *         instance.
+     * @return Provides the name of the database engine to be used for this DB instance.
      */
 
     public String getEngine() {
@@ -533,10 +541,8 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param engine
-     *        Provides the name of the database engine to be used for this DB
-     *        instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Provides the name of the database engine to be used for this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withEngine(String engine) {
@@ -576,8 +582,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param dBInstanceStatus
      *        Specifies the current state of this database.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDBInstanceStatus(String dBInstanceStatus) {
@@ -617,8 +622,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param masterUsername
      *        Contains the master username for the DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withMasterUsername(String masterUsername) {
@@ -628,18 +632,16 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine
-     * you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
-     * information when returning values from CreateDBInstanceReadReplica since
-     * Read Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
+     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
+     * Replicas are only supported for these engines.
      * </p>
      * <p>
-     * <b>MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora</b>
+     * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      * </p>
      * <p>
-     * Contains the name of the initial database of this instance that was
-     * provided at create time, if one was specified when the DB instance was
-     * created. This same name is returned for the life of the DB instance.
+     * Contains the name of the initial database of this instance that was provided at create time, if one was specified
+     * when the DB instance was created. This same name is returned for the life of the DB instance.
      * </p>
      * <p>
      * Type: String
@@ -648,24 +650,20 @@ public class DBInstance implements Serializable, Cloneable {
      * <b>Oracle</b>
      * </p>
      * <p>
-     * Contains the Oracle System ID (SID) of the created DB instance. Not shown
-     * when the returned parameters do not apply to an Oracle DB instance.
+     * Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not
+     * apply to an Oracle DB instance.
      * </p>
      * 
      * @param dBName
-     *        The meaning of this parameter differs according to the database
-     *        engine you use. For example, this value returns MySQL, MariaDB, or
-     *        PostgreSQL information when returning values from
-     *        CreateDBInstanceReadReplica since Read Replicas are only supported
-     *        for these engines.</p>
+     *        The meaning of this parameter differs according to the database engine you use. For example, this value
+     *        returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
+     *        since Read Replicas are only supported for these engines.</p>
      *        <p>
-     *        <b>MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora</b>
+     *        <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *        </p>
      *        <p>
-     *        Contains the name of the initial database of this instance that
-     *        was provided at create time, if one was specified when the DB
-     *        instance was created. This same name is returned for the life of
-     *        the DB instance.
+     *        Contains the name of the initial database of this instance that was provided at create time, if one was
+     *        specified when the DB instance was created. This same name is returned for the life of the DB instance.
      *        </p>
      *        <p>
      *        Type: String
@@ -674,9 +672,8 @@ public class DBInstance implements Serializable, Cloneable {
      *        <b>Oracle</b>
      *        </p>
      *        <p>
-     *        Contains the Oracle System ID (SID) of the created DB instance.
-     *        Not shown when the returned parameters do not apply to an Oracle
-     *        DB instance.
+     *        Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do
+     *        not apply to an Oracle DB instance.
      */
 
     public void setDBName(String dBName) {
@@ -685,18 +682,16 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine
-     * you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
-     * information when returning values from CreateDBInstanceReadReplica since
-     * Read Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
+     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
+     * Replicas are only supported for these engines.
      * </p>
      * <p>
-     * <b>MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora</b>
+     * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      * </p>
      * <p>
-     * Contains the name of the initial database of this instance that was
-     * provided at create time, if one was specified when the DB instance was
-     * created. This same name is returned for the life of the DB instance.
+     * Contains the name of the initial database of this instance that was provided at create time, if one was specified
+     * when the DB instance was created. This same name is returned for the life of the DB instance.
      * </p>
      * <p>
      * Type: String
@@ -705,23 +700,19 @@ public class DBInstance implements Serializable, Cloneable {
      * <b>Oracle</b>
      * </p>
      * <p>
-     * Contains the Oracle System ID (SID) of the created DB instance. Not shown
-     * when the returned parameters do not apply to an Oracle DB instance.
+     * Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not
+     * apply to an Oracle DB instance.
      * </p>
      * 
-     * @return The meaning of this parameter differs according to the database
-     *         engine you use. For example, this value returns MySQL, MariaDB,
-     *         or PostgreSQL information when returning values from
-     *         CreateDBInstanceReadReplica since Read Replicas are only
-     *         supported for these engines.</p>
+     * @return The meaning of this parameter differs according to the database engine you use. For example, this value
+     *         returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
+     *         since Read Replicas are only supported for these engines.</p>
      *         <p>
-     *         <b>MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora</b>
+     *         <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *         </p>
      *         <p>
-     *         Contains the name of the initial database of this instance that
-     *         was provided at create time, if one was specified when the DB
-     *         instance was created. This same name is returned for the life of
-     *         the DB instance.
+     *         Contains the name of the initial database of this instance that was provided at create time, if one was
+     *         specified when the DB instance was created. This same name is returned for the life of the DB instance.
      *         </p>
      *         <p>
      *         Type: String
@@ -730,9 +721,8 @@ public class DBInstance implements Serializable, Cloneable {
      *         <b>Oracle</b>
      *         </p>
      *         <p>
-     *         Contains the Oracle System ID (SID) of the created DB instance.
-     *         Not shown when the returned parameters do not apply to an Oracle
-     *         DB instance.
+     *         Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do
+     *         not apply to an Oracle DB instance.
      */
 
     public String getDBName() {
@@ -741,18 +731,16 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine
-     * you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
-     * information when returning values from CreateDBInstanceReadReplica since
-     * Read Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
+     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
+     * Replicas are only supported for these engines.
      * </p>
      * <p>
-     * <b>MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora</b>
+     * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      * </p>
      * <p>
-     * Contains the name of the initial database of this instance that was
-     * provided at create time, if one was specified when the DB instance was
-     * created. This same name is returned for the life of the DB instance.
+     * Contains the name of the initial database of this instance that was provided at create time, if one was specified
+     * when the DB instance was created. This same name is returned for the life of the DB instance.
      * </p>
      * <p>
      * Type: String
@@ -761,24 +749,20 @@ public class DBInstance implements Serializable, Cloneable {
      * <b>Oracle</b>
      * </p>
      * <p>
-     * Contains the Oracle System ID (SID) of the created DB instance. Not shown
-     * when the returned parameters do not apply to an Oracle DB instance.
+     * Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not
+     * apply to an Oracle DB instance.
      * </p>
      * 
      * @param dBName
-     *        The meaning of this parameter differs according to the database
-     *        engine you use. For example, this value returns MySQL, MariaDB, or
-     *        PostgreSQL information when returning values from
-     *        CreateDBInstanceReadReplica since Read Replicas are only supported
-     *        for these engines.</p>
+     *        The meaning of this parameter differs according to the database engine you use. For example, this value
+     *        returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
+     *        since Read Replicas are only supported for these engines.</p>
      *        <p>
-     *        <b>MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora</b>
+     *        <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *        </p>
      *        <p>
-     *        Contains the name of the initial database of this instance that
-     *        was provided at create time, if one was specified when the DB
-     *        instance was created. This same name is returned for the life of
-     *        the DB instance.
+     *        Contains the name of the initial database of this instance that was provided at create time, if one was
+     *        specified when the DB instance was created. This same name is returned for the life of the DB instance.
      *        </p>
      *        <p>
      *        Type: String
@@ -787,11 +771,9 @@ public class DBInstance implements Serializable, Cloneable {
      *        <b>Oracle</b>
      *        </p>
      *        <p>
-     *        Contains the Oracle System ID (SID) of the created DB instance.
-     *        Not shown when the returned parameters do not apply to an Oracle
-     *        DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do
+     *        not apply to an Oracle DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDBName(String dBName) {
@@ -831,8 +813,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param endpoint
      *        Specifies the connection endpoint.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withEndpoint(Endpoint endpoint) {
@@ -872,8 +853,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param allocatedStorage
      *        Specifies the allocated storage size specified in gigabytes.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withAllocatedStorage(Integer allocatedStorage) {
@@ -913,8 +893,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param instanceCreateTime
      *        Provides the date and time the DB instance was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withInstanceCreateTime(java.util.Date instanceCreateTime) {
@@ -924,15 +903,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the daily time range during which automated backups are created
-     * if automated backups are enabled, as determined by the
-     * <code>BackupRetentionPeriod</code>.
+     * Specifies the daily time range during which automated backups are created if automated backups are enabled, as
+     * determined by the <code>BackupRetentionPeriod</code>.
      * </p>
      * 
      * @param preferredBackupWindow
-     *        Specifies the daily time range during which automated backups are
-     *        created if automated backups are enabled, as determined by the
-     *        <code>BackupRetentionPeriod</code>.
+     *        Specifies the daily time range during which automated backups are created if automated backups are
+     *        enabled, as determined by the <code>BackupRetentionPeriod</code>.
      */
 
     public void setPreferredBackupWindow(String preferredBackupWindow) {
@@ -941,14 +918,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the daily time range during which automated backups are created
-     * if automated backups are enabled, as determined by the
-     * <code>BackupRetentionPeriod</code>.
+     * Specifies the daily time range during which automated backups are created if automated backups are enabled, as
+     * determined by the <code>BackupRetentionPeriod</code>.
      * </p>
      * 
-     * @return Specifies the daily time range during which automated backups are
-     *         created if automated backups are enabled, as determined by the
-     *         <code>BackupRetentionPeriod</code>.
+     * @return Specifies the daily time range during which automated backups are created if automated backups are
+     *         enabled, as determined by the <code>BackupRetentionPeriod</code>.
      */
 
     public String getPreferredBackupWindow() {
@@ -957,17 +932,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the daily time range during which automated backups are created
-     * if automated backups are enabled, as determined by the
-     * <code>BackupRetentionPeriod</code>.
+     * Specifies the daily time range during which automated backups are created if automated backups are enabled, as
+     * determined by the <code>BackupRetentionPeriod</code>.
      * </p>
      * 
      * @param preferredBackupWindow
-     *        Specifies the daily time range during which automated backups are
-     *        created if automated backups are enabled, as determined by the
-     *        <code>BackupRetentionPeriod</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the daily time range during which automated backups are created if automated backups are
+     *        enabled, as determined by the <code>BackupRetentionPeriod</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withPreferredBackupWindow(String preferredBackupWindow) {
@@ -977,13 +949,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the number of days for which automatic DB snapshots are
-     * retained.
+     * Specifies the number of days for which automatic DB snapshots are retained.
      * </p>
      * 
      * @param backupRetentionPeriod
-     *        Specifies the number of days for which automatic DB snapshots are
-     *        retained.
+     *        Specifies the number of days for which automatic DB snapshots are retained.
      */
 
     public void setBackupRetentionPeriod(Integer backupRetentionPeriod) {
@@ -992,12 +962,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the number of days for which automatic DB snapshots are
-     * retained.
+     * Specifies the number of days for which automatic DB snapshots are retained.
      * </p>
      * 
-     * @return Specifies the number of days for which automatic DB snapshots are
-     *         retained.
+     * @return Specifies the number of days for which automatic DB snapshots are retained.
      */
 
     public Integer getBackupRetentionPeriod() {
@@ -1006,15 +974,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the number of days for which automatic DB snapshots are
-     * retained.
+     * Specifies the number of days for which automatic DB snapshots are retained.
      * </p>
      * 
      * @param backupRetentionPeriod
-     *        Specifies the number of days for which automatic DB snapshots are
-     *        retained.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the number of days for which automatic DB snapshots are retained.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withBackupRetentionPeriod(Integer backupRetentionPeriod) {
@@ -1024,13 +989,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only
-     * <code>DBSecurityGroup.Name</code> and <code>DBSecurityGroup.Status</code>
-     * subelements.
+     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
-     * @return Provides List of DB security group elements containing only
-     *         <code>DBSecurityGroup.Name</code> and
+     * @return Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
      *         <code>DBSecurityGroup.Status</code> subelements.
      */
 
@@ -1043,54 +1006,44 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only
-     * <code>DBSecurityGroup.Name</code> and <code>DBSecurityGroup.Status</code>
-     * subelements.
+     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only
-     *        <code>DBSecurityGroup.Name</code> and
+     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
      */
 
-    public void setDBSecurityGroups(
-            java.util.Collection<DBSecurityGroupMembership> dBSecurityGroups) {
+    public void setDBSecurityGroups(java.util.Collection<DBSecurityGroupMembership> dBSecurityGroups) {
         if (dBSecurityGroups == null) {
             this.dBSecurityGroups = null;
             return;
         }
 
-        this.dBSecurityGroups = new com.amazonaws.internal.SdkInternalList<DBSecurityGroupMembership>(
-                dBSecurityGroups);
+        this.dBSecurityGroups = new com.amazonaws.internal.SdkInternalList<DBSecurityGroupMembership>(dBSecurityGroups);
     }
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only
-     * <code>DBSecurityGroup.Name</code> and <code>DBSecurityGroup.Status</code>
-     * subelements.
+     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDBSecurityGroups(java.util.Collection)} or
-     * {@link #withDBSecurityGroups(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDBSecurityGroups(java.util.Collection)} or {@link #withDBSecurityGroups(java.util.Collection)} if you
+     * want to override the existing values.
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only
-     *        <code>DBSecurityGroup.Name</code> and
+     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withDBSecurityGroups(
-            DBSecurityGroupMembership... dBSecurityGroups) {
+    public DBInstance withDBSecurityGroups(DBSecurityGroupMembership... dBSecurityGroups) {
         if (this.dBSecurityGroups == null) {
-            setDBSecurityGroups(new com.amazonaws.internal.SdkInternalList<DBSecurityGroupMembership>(
-                    dBSecurityGroups.length));
+            setDBSecurityGroups(new com.amazonaws.internal.SdkInternalList<DBSecurityGroupMembership>(dBSecurityGroups.length));
         }
         for (DBSecurityGroupMembership ele : dBSecurityGroups) {
             this.dBSecurityGroups.add(ele);
@@ -1100,33 +1053,27 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only
-     * <code>DBSecurityGroup.Name</code> and <code>DBSecurityGroup.Status</code>
-     * subelements.
+     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only
-     *        <code>DBSecurityGroup.Name</code> and
+     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withDBSecurityGroups(
-            java.util.Collection<DBSecurityGroupMembership> dBSecurityGroups) {
+    public DBInstance withDBSecurityGroups(java.util.Collection<DBSecurityGroupMembership> dBSecurityGroups) {
         setDBSecurityGroups(dBSecurityGroups);
         return this;
     }
 
     /**
      * <p>
-     * Provides List of VPC security group elements that the DB instance belongs
-     * to.
+     * Provides a list of VPC security group elements that the DB instance belongs to.
      * </p>
      * 
-     * @return Provides List of VPC security group elements that the DB instance
-     *         belongs to.
+     * @return Provides a list of VPC security group elements that the DB instance belongs to.
      */
 
     public java.util.List<VpcSecurityGroupMembership> getVpcSecurityGroups() {
@@ -1138,50 +1085,40 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of VPC security group elements that the DB instance belongs
-     * to.
+     * Provides a list of VPC security group elements that the DB instance belongs to.
      * </p>
      * 
      * @param vpcSecurityGroups
-     *        Provides List of VPC security group elements that the DB instance
-     *        belongs to.
+     *        Provides a list of VPC security group elements that the DB instance belongs to.
      */
 
-    public void setVpcSecurityGroups(
-            java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
+    public void setVpcSecurityGroups(java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
         if (vpcSecurityGroups == null) {
             this.vpcSecurityGroups = null;
             return;
         }
 
-        this.vpcSecurityGroups = new com.amazonaws.internal.SdkInternalList<VpcSecurityGroupMembership>(
-                vpcSecurityGroups);
+        this.vpcSecurityGroups = new com.amazonaws.internal.SdkInternalList<VpcSecurityGroupMembership>(vpcSecurityGroups);
     }
 
     /**
      * <p>
-     * Provides List of VPC security group elements that the DB instance belongs
-     * to.
+     * Provides a list of VPC security group elements that the DB instance belongs to.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVpcSecurityGroups(java.util.Collection)} or
-     * {@link #withVpcSecurityGroups(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setVpcSecurityGroups(java.util.Collection)} or {@link #withVpcSecurityGroups(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param vpcSecurityGroups
-     *        Provides List of VPC security group elements that the DB instance
-     *        belongs to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Provides a list of VPC security group elements that the DB instance belongs to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withVpcSecurityGroups(
-            VpcSecurityGroupMembership... vpcSecurityGroups) {
+    public DBInstance withVpcSecurityGroups(VpcSecurityGroupMembership... vpcSecurityGroups) {
         if (this.vpcSecurityGroups == null) {
-            setVpcSecurityGroups(new com.amazonaws.internal.SdkInternalList<VpcSecurityGroupMembership>(
-                    vpcSecurityGroups.length));
+            setVpcSecurityGroups(new com.amazonaws.internal.SdkInternalList<VpcSecurityGroupMembership>(vpcSecurityGroups.length));
         }
         for (VpcSecurityGroupMembership ele : vpcSecurityGroups) {
             this.vpcSecurityGroups.add(ele);
@@ -1191,19 +1128,15 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of VPC security group elements that the DB instance belongs
-     * to.
+     * Provides a list of VPC security group elements that the DB instance belongs to.
      * </p>
      * 
      * @param vpcSecurityGroups
-     *        Provides List of VPC security group elements that the DB instance
-     *        belongs to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Provides a list of VPC security group elements that the DB instance belongs to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withVpcSecurityGroups(
-            java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
+    public DBInstance withVpcSecurityGroups(java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
         setVpcSecurityGroups(vpcSecurityGroups);
         return this;
     }
@@ -1213,8 +1146,7 @@ public class DBInstance implements Serializable, Cloneable {
      * Provides the list of DB parameter groups applied to this DB instance.
      * </p>
      * 
-     * @return Provides the list of DB parameter groups applied to this DB
-     *         instance.
+     * @return Provides the list of DB parameter groups applied to this DB instance.
      */
 
     public java.util.List<DBParameterGroupStatus> getDBParameterGroups() {
@@ -1230,19 +1162,16 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBParameterGroups
-     *        Provides the list of DB parameter groups applied to this DB
-     *        instance.
+     *        Provides the list of DB parameter groups applied to this DB instance.
      */
 
-    public void setDBParameterGroups(
-            java.util.Collection<DBParameterGroupStatus> dBParameterGroups) {
+    public void setDBParameterGroups(java.util.Collection<DBParameterGroupStatus> dBParameterGroups) {
         if (dBParameterGroups == null) {
             this.dBParameterGroups = null;
             return;
         }
 
-        this.dBParameterGroups = new com.amazonaws.internal.SdkInternalList<DBParameterGroupStatus>(
-                dBParameterGroups);
+        this.dBParameterGroups = new com.amazonaws.internal.SdkInternalList<DBParameterGroupStatus>(dBParameterGroups);
     }
 
     /**
@@ -1250,24 +1179,19 @@ public class DBInstance implements Serializable, Cloneable {
      * Provides the list of DB parameter groups applied to this DB instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDBParameterGroups(java.util.Collection)} or
-     * {@link #withDBParameterGroups(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDBParameterGroups(java.util.Collection)} or {@link #withDBParameterGroups(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param dBParameterGroups
-     *        Provides the list of DB parameter groups applied to this DB
-     *        instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Provides the list of DB parameter groups applied to this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withDBParameterGroups(
-            DBParameterGroupStatus... dBParameterGroups) {
+    public DBInstance withDBParameterGroups(DBParameterGroupStatus... dBParameterGroups) {
         if (this.dBParameterGroups == null) {
-            setDBParameterGroups(new com.amazonaws.internal.SdkInternalList<DBParameterGroupStatus>(
-                    dBParameterGroups.length));
+            setDBParameterGroups(new com.amazonaws.internal.SdkInternalList<DBParameterGroupStatus>(dBParameterGroups.length));
         }
         for (DBParameterGroupStatus ele : dBParameterGroups) {
             this.dBParameterGroups.add(ele);
@@ -1281,27 +1205,22 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBParameterGroups
-     *        Provides the list of DB parameter groups applied to this DB
-     *        instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Provides the list of DB parameter groups applied to this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withDBParameterGroups(
-            java.util.Collection<DBParameterGroupStatus> dBParameterGroups) {
+    public DBInstance withDBParameterGroups(java.util.Collection<DBParameterGroupStatus> dBParameterGroups) {
         setDBParameterGroups(dBParameterGroups);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the name of the Availability Zone the DB instance is located
-     * in.
+     * Specifies the name of the Availability Zone the DB instance is located in.
      * </p>
      * 
      * @param availabilityZone
-     *        Specifies the name of the Availability Zone the DB instance is
-     *        located in.
+     *        Specifies the name of the Availability Zone the DB instance is located in.
      */
 
     public void setAvailabilityZone(String availabilityZone) {
@@ -1310,12 +1229,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the name of the Availability Zone the DB instance is located
-     * in.
+     * Specifies the name of the Availability Zone the DB instance is located in.
      * </p>
      * 
-     * @return Specifies the name of the Availability Zone the DB instance is
-     *         located in.
+     * @return Specifies the name of the Availability Zone the DB instance is located in.
      */
 
     public String getAvailabilityZone() {
@@ -1324,15 +1241,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the name of the Availability Zone the DB instance is located
-     * in.
+     * Specifies the name of the Availability Zone the DB instance is located in.
      * </p>
      * 
      * @param availabilityZone
-     *        Specifies the name of the Availability Zone the DB instance is
-     *        located in.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the name of the Availability Zone the DB instance is located in.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withAvailabilityZone(String availabilityZone) {
@@ -1342,15 +1256,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies information on the subnet group associated with the DB
-     * instance, including the name, description, and subnets in the subnet
-     * group.
+     * Specifies information on the subnet group associated with the DB instance, including the name, description, and
+     * subnets in the subnet group.
      * </p>
      * 
      * @param dBSubnetGroup
-     *        Specifies information on the subnet group associated with the DB
-     *        instance, including the name, description, and subnets in the
-     *        subnet group.
+     *        Specifies information on the subnet group associated with the DB instance, including the name,
+     *        description, and subnets in the subnet group.
      */
 
     public void setDBSubnetGroup(DBSubnetGroup dBSubnetGroup) {
@@ -1359,14 +1271,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies information on the subnet group associated with the DB
-     * instance, including the name, description, and subnets in the subnet
-     * group.
+     * Specifies information on the subnet group associated with the DB instance, including the name, description, and
+     * subnets in the subnet group.
      * </p>
      * 
-     * @return Specifies information on the subnet group associated with the DB
-     *         instance, including the name, description, and subnets in the
-     *         subnet group.
+     * @return Specifies information on the subnet group associated with the DB instance, including the name,
+     *         description, and subnets in the subnet group.
      */
 
     public DBSubnetGroup getDBSubnetGroup() {
@@ -1375,17 +1285,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies information on the subnet group associated with the DB
-     * instance, including the name, description, and subnets in the subnet
-     * group.
+     * Specifies information on the subnet group associated with the DB instance, including the name, description, and
+     * subnets in the subnet group.
      * </p>
      * 
      * @param dBSubnetGroup
-     *        Specifies information on the subnet group associated with the DB
-     *        instance, including the name, description, and subnets in the
-     *        subnet group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies information on the subnet group associated with the DB instance, including the name,
+     *        description, and subnets in the subnet group.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDBSubnetGroup(DBSubnetGroup dBSubnetGroup) {
@@ -1395,13 +1302,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the weekly time range during which system maintenance can
-     * occur, in Universal Coordinated Time (UTC).
+     * Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        Specifies the weekly time range during which system maintenance
-     *        can occur, in Universal Coordinated Time (UTC).
+     *        Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time
+     *        (UTC).
      */
 
     public void setPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
@@ -1410,12 +1316,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the weekly time range during which system maintenance can
-     * occur, in Universal Coordinated Time (UTC).
+     * Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
      * </p>
      * 
-     * @return Specifies the weekly time range during which system maintenance
-     *         can occur, in Universal Coordinated Time (UTC).
+     * @return Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time
+     *         (UTC).
      */
 
     public String getPreferredMaintenanceWindow() {
@@ -1424,51 +1329,43 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the weekly time range during which system maintenance can
-     * occur, in Universal Coordinated Time (UTC).
+     * Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        Specifies the weekly time range during which system maintenance
-     *        can occur, in Universal Coordinated Time (UTC).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time
+     *        (UTC).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withPreferredMaintenanceWindow(
-            String preferredMaintenanceWindow) {
+    public DBInstance withPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
         setPreferredMaintenanceWindow(preferredMaintenanceWindow);
         return this;
     }
 
     /**
      * <p>
-     * Specifies that changes to the DB instance are pending. This element is
-     * only included when changes are pending. Specific changes are identified
-     * by subelements.
+     * Specifies that changes to the DB instance are pending. This element is only included when changes are pending.
+     * Specific changes are identified by subelements.
      * </p>
      * 
      * @param pendingModifiedValues
-     *        Specifies that changes to the DB instance are pending. This
-     *        element is only included when changes are pending. Specific
-     *        changes are identified by subelements.
+     *        Specifies that changes to the DB instance are pending. This element is only included when changes are
+     *        pending. Specific changes are identified by subelements.
      */
 
-    public void setPendingModifiedValues(
-            PendingModifiedValues pendingModifiedValues) {
+    public void setPendingModifiedValues(PendingModifiedValues pendingModifiedValues) {
         this.pendingModifiedValues = pendingModifiedValues;
     }
 
     /**
      * <p>
-     * Specifies that changes to the DB instance are pending. This element is
-     * only included when changes are pending. Specific changes are identified
-     * by subelements.
+     * Specifies that changes to the DB instance are pending. This element is only included when changes are pending.
+     * Specific changes are identified by subelements.
      * </p>
      * 
-     * @return Specifies that changes to the DB instance are pending. This
-     *         element is only included when changes are pending. Specific
-     *         changes are identified by subelements.
+     * @return Specifies that changes to the DB instance are pending. This element is only included when changes are
+     *         pending. Specific changes are identified by subelements.
      */
 
     public PendingModifiedValues getPendingModifiedValues() {
@@ -1477,34 +1374,28 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies that changes to the DB instance are pending. This element is
-     * only included when changes are pending. Specific changes are identified
-     * by subelements.
+     * Specifies that changes to the DB instance are pending. This element is only included when changes are pending.
+     * Specific changes are identified by subelements.
      * </p>
      * 
      * @param pendingModifiedValues
-     *        Specifies that changes to the DB instance are pending. This
-     *        element is only included when changes are pending. Specific
-     *        changes are identified by subelements.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies that changes to the DB instance are pending. This element is only included when changes are
+     *        pending. Specific changes are identified by subelements.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withPendingModifiedValues(
-            PendingModifiedValues pendingModifiedValues) {
+    public DBInstance withPendingModifiedValues(PendingModifiedValues pendingModifiedValues) {
         setPendingModifiedValues(pendingModifiedValues);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the latest time to which a database can be restored with
-     * point-in-time restore.
+     * Specifies the latest time to which a database can be restored with point-in-time restore.
      * </p>
      * 
      * @param latestRestorableTime
-     *        Specifies the latest time to which a database can be restored with
-     *        point-in-time restore.
+     *        Specifies the latest time to which a database can be restored with point-in-time restore.
      */
 
     public void setLatestRestorableTime(java.util.Date latestRestorableTime) {
@@ -1513,12 +1404,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the latest time to which a database can be restored with
-     * point-in-time restore.
+     * Specifies the latest time to which a database can be restored with point-in-time restore.
      * </p>
      * 
-     * @return Specifies the latest time to which a database can be restored
-     *         with point-in-time restore.
+     * @return Specifies the latest time to which a database can be restored with point-in-time restore.
      */
 
     public java.util.Date getLatestRestorableTime() {
@@ -1527,19 +1416,15 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the latest time to which a database can be restored with
-     * point-in-time restore.
+     * Specifies the latest time to which a database can be restored with point-in-time restore.
      * </p>
      * 
      * @param latestRestorableTime
-     *        Specifies the latest time to which a database can be restored with
-     *        point-in-time restore.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the latest time to which a database can be restored with point-in-time restore.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withLatestRestorableTime(
-            java.util.Date latestRestorableTime) {
+    public DBInstance withLatestRestorableTime(java.util.Date latestRestorableTime) {
         setLatestRestorableTime(latestRestorableTime);
         return this;
     }
@@ -1576,8 +1461,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param multiAZ
      *        Specifies if the DB instance is a Multi-AZ deployment.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withMultiAZ(Boolean multiAZ) {
@@ -1629,8 +1513,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param engineVersion
      *        Indicates the database engine version.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withEngineVersion(String engineVersion) {
@@ -1670,12 +1553,10 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param autoMinorVersionUpgrade
      *        Indicates that minor version patches are applied automatically.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withAutoMinorVersionUpgrade(
-            Boolean autoMinorVersionUpgrade) {
+    public DBInstance withAutoMinorVersionUpgrade(Boolean autoMinorVersionUpgrade) {
         setAutoMinorVersionUpgrade(autoMinorVersionUpgrade);
         return this;
     }
@@ -1694,28 +1575,23 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains the identifier of the source DB instance if this DB instance is
-     * a Read Replica.
+     * Contains the identifier of the source DB instance if this DB instance is a Read Replica.
      * </p>
      * 
      * @param readReplicaSourceDBInstanceIdentifier
-     *        Contains the identifier of the source DB instance if this DB
-     *        instance is a Read Replica.
+     *        Contains the identifier of the source DB instance if this DB instance is a Read Replica.
      */
 
-    public void setReadReplicaSourceDBInstanceIdentifier(
-            String readReplicaSourceDBInstanceIdentifier) {
+    public void setReadReplicaSourceDBInstanceIdentifier(String readReplicaSourceDBInstanceIdentifier) {
         this.readReplicaSourceDBInstanceIdentifier = readReplicaSourceDBInstanceIdentifier;
     }
 
     /**
      * <p>
-     * Contains the identifier of the source DB instance if this DB instance is
-     * a Read Replica.
+     * Contains the identifier of the source DB instance if this DB instance is a Read Replica.
      * </p>
      * 
-     * @return Contains the identifier of the source DB instance if this DB
-     *         instance is a Read Replica.
+     * @return Contains the identifier of the source DB instance if this DB instance is a Read Replica.
      */
 
     public String getReadReplicaSourceDBInstanceIdentifier() {
@@ -1724,31 +1600,25 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains the identifier of the source DB instance if this DB instance is
-     * a Read Replica.
+     * Contains the identifier of the source DB instance if this DB instance is a Read Replica.
      * </p>
      * 
      * @param readReplicaSourceDBInstanceIdentifier
-     *        Contains the identifier of the source DB instance if this DB
-     *        instance is a Read Replica.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Contains the identifier of the source DB instance if this DB instance is a Read Replica.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withReadReplicaSourceDBInstanceIdentifier(
-            String readReplicaSourceDBInstanceIdentifier) {
+    public DBInstance withReadReplicaSourceDBInstanceIdentifier(String readReplicaSourceDBInstanceIdentifier) {
         setReadReplicaSourceDBInstanceIdentifier(readReplicaSourceDBInstanceIdentifier);
         return this;
     }
 
     /**
      * <p>
-     * Contains one or more identifiers of the Read Replicas associated with
-     * this DB instance.
+     * Contains one or more identifiers of the Read Replicas associated with this DB instance.
      * </p>
      * 
-     * @return Contains one or more identifiers of the Read Replicas associated
-     *         with this DB instance.
+     * @return Contains one or more identifiers of the Read Replicas associated with this DB instance.
      */
 
     public java.util.List<String> getReadReplicaDBInstanceIdentifiers() {
@@ -1760,51 +1630,40 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains one or more identifiers of the Read Replicas associated with
-     * this DB instance.
+     * Contains one or more identifiers of the Read Replicas associated with this DB instance.
      * </p>
      * 
      * @param readReplicaDBInstanceIdentifiers
-     *        Contains one or more identifiers of the Read Replicas associated
-     *        with this DB instance.
+     *        Contains one or more identifiers of the Read Replicas associated with this DB instance.
      */
 
-    public void setReadReplicaDBInstanceIdentifiers(
-            java.util.Collection<String> readReplicaDBInstanceIdentifiers) {
+    public void setReadReplicaDBInstanceIdentifiers(java.util.Collection<String> readReplicaDBInstanceIdentifiers) {
         if (readReplicaDBInstanceIdentifiers == null) {
             this.readReplicaDBInstanceIdentifiers = null;
             return;
         }
 
-        this.readReplicaDBInstanceIdentifiers = new com.amazonaws.internal.SdkInternalList<String>(
-                readReplicaDBInstanceIdentifiers);
+        this.readReplicaDBInstanceIdentifiers = new com.amazonaws.internal.SdkInternalList<String>(readReplicaDBInstanceIdentifiers);
     }
 
     /**
      * <p>
-     * Contains one or more identifiers of the Read Replicas associated with
-     * this DB instance.
+     * Contains one or more identifiers of the Read Replicas associated with this DB instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setReadReplicaDBInstanceIdentifiers(java.util.Collection)} or
-     * {@link #withReadReplicaDBInstanceIdentifiers(java.util.Collection)} if
-     * you want to override the existing values.
+     * {@link #withReadReplicaDBInstanceIdentifiers(java.util.Collection)} if you want to override the existing values.
      * </p>
      * 
      * @param readReplicaDBInstanceIdentifiers
-     *        Contains one or more identifiers of the Read Replicas associated
-     *        with this DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Contains one or more identifiers of the Read Replicas associated with this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withReadReplicaDBInstanceIdentifiers(
-            String... readReplicaDBInstanceIdentifiers) {
+    public DBInstance withReadReplicaDBInstanceIdentifiers(String... readReplicaDBInstanceIdentifiers) {
         if (this.readReplicaDBInstanceIdentifiers == null) {
-            setReadReplicaDBInstanceIdentifiers(new com.amazonaws.internal.SdkInternalList<String>(
-                    readReplicaDBInstanceIdentifiers.length));
+            setReadReplicaDBInstanceIdentifiers(new com.amazonaws.internal.SdkInternalList<String>(readReplicaDBInstanceIdentifiers.length));
         }
         for (String ele : readReplicaDBInstanceIdentifiers) {
             this.readReplicaDBInstanceIdentifiers.add(ele);
@@ -1814,20 +1673,89 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Contains one or more identifiers of the Read Replicas associated with
-     * this DB instance.
+     * Contains one or more identifiers of the Read Replicas associated with this DB instance.
      * </p>
      * 
      * @param readReplicaDBInstanceIdentifiers
-     *        Contains one or more identifiers of the Read Replicas associated
-     *        with this DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Contains one or more identifiers of the Read Replicas associated with this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withReadReplicaDBInstanceIdentifiers(
-            java.util.Collection<String> readReplicaDBInstanceIdentifiers) {
+    public DBInstance withReadReplicaDBInstanceIdentifiers(java.util.Collection<String> readReplicaDBInstanceIdentifiers) {
         setReadReplicaDBInstanceIdentifiers(readReplicaDBInstanceIdentifiers);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * 
+     * @return Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     */
+
+    public java.util.List<String> getReadReplicaDBClusterIdentifiers() {
+        if (readReplicaDBClusterIdentifiers == null) {
+            readReplicaDBClusterIdentifiers = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return readReplicaDBClusterIdentifiers;
+    }
+
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * 
+     * @param readReplicaDBClusterIdentifiers
+     *        Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     */
+
+    public void setReadReplicaDBClusterIdentifiers(java.util.Collection<String> readReplicaDBClusterIdentifiers) {
+        if (readReplicaDBClusterIdentifiers == null) {
+            this.readReplicaDBClusterIdentifiers = null;
+            return;
+        }
+
+        this.readReplicaDBClusterIdentifiers = new com.amazonaws.internal.SdkInternalList<String>(readReplicaDBClusterIdentifiers);
+    }
+
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setReadReplicaDBClusterIdentifiers(java.util.Collection)} or
+     * {@link #withReadReplicaDBClusterIdentifiers(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param readReplicaDBClusterIdentifiers
+     *        Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withReadReplicaDBClusterIdentifiers(String... readReplicaDBClusterIdentifiers) {
+        if (this.readReplicaDBClusterIdentifiers == null) {
+            setReadReplicaDBClusterIdentifiers(new com.amazonaws.internal.SdkInternalList<String>(readReplicaDBClusterIdentifiers.length));
+        }
+        for (String ele : readReplicaDBClusterIdentifiers) {
+            this.readReplicaDBClusterIdentifiers.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * </p>
+     * 
+     * @param readReplicaDBClusterIdentifiers
+     *        Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withReadReplicaDBClusterIdentifiers(java.util.Collection<String> readReplicaDBClusterIdentifiers) {
+        setReadReplicaDBClusterIdentifiers(readReplicaDBClusterIdentifiers);
         return this;
     }
 
@@ -1863,8 +1791,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param licenseModel
      *        License model information for this DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withLicenseModel(String licenseModel) {
@@ -1904,8 +1831,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param iops
      *        Specifies the Provisioned IOPS (I/O operations per second) value.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withIops(Integer iops) {
@@ -1918,8 +1844,7 @@ public class DBInstance implements Serializable, Cloneable {
      * Provides the list of option group memberships for this DB instance.
      * </p>
      * 
-     * @return Provides the list of option group memberships for this DB
-     *         instance.
+     * @return Provides the list of option group memberships for this DB instance.
      */
 
     public java.util.List<OptionGroupMembership> getOptionGroupMemberships() {
@@ -1935,19 +1860,16 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param optionGroupMemberships
-     *        Provides the list of option group memberships for this DB
-     *        instance.
+     *        Provides the list of option group memberships for this DB instance.
      */
 
-    public void setOptionGroupMemberships(
-            java.util.Collection<OptionGroupMembership> optionGroupMemberships) {
+    public void setOptionGroupMemberships(java.util.Collection<OptionGroupMembership> optionGroupMemberships) {
         if (optionGroupMemberships == null) {
             this.optionGroupMemberships = null;
             return;
         }
 
-        this.optionGroupMemberships = new com.amazonaws.internal.SdkInternalList<OptionGroupMembership>(
-                optionGroupMemberships);
+        this.optionGroupMemberships = new com.amazonaws.internal.SdkInternalList<OptionGroupMembership>(optionGroupMemberships);
     }
 
     /**
@@ -1955,24 +1877,19 @@ public class DBInstance implements Serializable, Cloneable {
      * Provides the list of option group memberships for this DB instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setOptionGroupMemberships(java.util.Collection)} or
-     * {@link #withOptionGroupMemberships(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setOptionGroupMemberships(java.util.Collection)} or
+     * {@link #withOptionGroupMemberships(java.util.Collection)} if you want to override the existing values.
      * </p>
      * 
      * @param optionGroupMemberships
-     *        Provides the list of option group memberships for this DB
-     *        instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Provides the list of option group memberships for this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withOptionGroupMemberships(
-            OptionGroupMembership... optionGroupMemberships) {
+    public DBInstance withOptionGroupMemberships(OptionGroupMembership... optionGroupMemberships) {
         if (this.optionGroupMemberships == null) {
-            setOptionGroupMemberships(new com.amazonaws.internal.SdkInternalList<OptionGroupMembership>(
-                    optionGroupMemberships.length));
+            setOptionGroupMemberships(new com.amazonaws.internal.SdkInternalList<OptionGroupMembership>(optionGroupMemberships.length));
         }
         for (OptionGroupMembership ele : optionGroupMemberships) {
             this.optionGroupMemberships.add(ele);
@@ -1986,27 +1903,22 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param optionGroupMemberships
-     *        Provides the list of option group memberships for this DB
-     *        instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Provides the list of option group memberships for this DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withOptionGroupMemberships(
-            java.util.Collection<OptionGroupMembership> optionGroupMemberships) {
+    public DBInstance withOptionGroupMemberships(java.util.Collection<OptionGroupMembership> optionGroupMemberships) {
         setOptionGroupMemberships(optionGroupMemberships);
         return this;
     }
 
     /**
      * <p>
-     * If present, specifies the name of the character set that this instance is
-     * associated with.
+     * If present, specifies the name of the character set that this instance is associated with.
      * </p>
      * 
      * @param characterSetName
-     *        If present, specifies the name of the character set that this
-     *        instance is associated with.
+     *        If present, specifies the name of the character set that this instance is associated with.
      */
 
     public void setCharacterSetName(String characterSetName) {
@@ -2015,12 +1927,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If present, specifies the name of the character set that this instance is
-     * associated with.
+     * If present, specifies the name of the character set that this instance is associated with.
      * </p>
      * 
-     * @return If present, specifies the name of the character set that this
-     *         instance is associated with.
+     * @return If present, specifies the name of the character set that this instance is associated with.
      */
 
     public String getCharacterSetName() {
@@ -2029,15 +1939,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If present, specifies the name of the character set that this instance is
-     * associated with.
+     * If present, specifies the name of the character set that this instance is associated with.
      * </p>
      * 
      * @param characterSetName
-     *        If present, specifies the name of the character set that this
-     *        instance is associated with.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If present, specifies the name of the character set that this instance is associated with.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withCharacterSetName(String characterSetName) {
@@ -2047,13 +1954,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If present, specifies the name of the secondary Availability Zone for a
-     * DB instance with multi-AZ support.
+     * If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.
      * </p>
      * 
      * @param secondaryAvailabilityZone
-     *        If present, specifies the name of the secondary Availability Zone
-     *        for a DB instance with multi-AZ support.
+     *        If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.
      */
 
     public void setSecondaryAvailabilityZone(String secondaryAvailabilityZone) {
@@ -2062,12 +1967,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If present, specifies the name of the secondary Availability Zone for a
-     * DB instance with multi-AZ support.
+     * If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.
      * </p>
      * 
-     * @return If present, specifies the name of the secondary Availability Zone
-     *         for a DB instance with multi-AZ support.
+     * @return If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ
+     *         support.
      */
 
     public String getSecondaryAvailabilityZone() {
@@ -2076,35 +1980,28 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If present, specifies the name of the secondary Availability Zone for a
-     * DB instance with multi-AZ support.
+     * If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.
      * </p>
      * 
      * @param secondaryAvailabilityZone
-     *        If present, specifies the name of the secondary Availability Zone
-     *        for a DB instance with multi-AZ support.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withSecondaryAvailabilityZone(
-            String secondaryAvailabilityZone) {
+    public DBInstance withSecondaryAvailabilityZone(String secondaryAvailabilityZone) {
         setSecondaryAvailabilityZone(secondaryAvailabilityZone);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the accessibility options for the DB instance. A value of true
-     * specifies an Internet-facing instance with a publicly resolvable DNS
-     * name, which resolves to a public IP address. A value of false specifies
-     * an internal instance with a DNS name that resolves to a private IP
-     * address.
+     * Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance
+     * with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an
+     * internal instance with a DNS name that resolves to a private IP address.
      * </p>
      * <p>
-     * Default: The default behavior varies depending on whether a VPC has been
-     * requested or not. The following list shows the default behavior in each
-     * case.
+     * Default: The default behavior varies depending on whether a VPC has been requested or not. The following list
+     * shows the default behavior in each case.
      * </p>
      * <ul>
      * <li>
@@ -2119,23 +2016,18 @@ public class DBInstance implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * If no DB subnet group has been specified as part of the request and the
-     * PubliclyAccessible value has not been set, the DB instance will be
-     * publicly accessible. If a specific DB subnet group has been specified as
-     * part of the request and the PubliclyAccessible value has not been set,
-     * the DB instance will be private.
+     * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
+     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
      * </p>
      * 
      * @param publiclyAccessible
-     *        Specifies the accessibility options for the DB instance. A value
-     *        of true specifies an Internet-facing instance with a publicly
-     *        resolvable DNS name, which resolves to a public IP address. A
-     *        value of false specifies an internal instance with a DNS name that
-     *        resolves to a private IP address.</p>
+     *        Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing
+     *        instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false
+     *        specifies an internal instance with a DNS name that resolves to a private IP address.</p>
      *        <p>
-     *        Default: The default behavior varies depending on whether a VPC
-     *        has been requested or not. The following list shows the default
-     *        behavior in each case.
+     *        Default: The default behavior varies depending on whether a VPC has been requested or not. The following
+     *        list shows the default behavior in each case.
      *        </p>
      *        <ul>
      *        <li>
@@ -2150,11 +2042,9 @@ public class DBInstance implements Serializable, Cloneable {
      *        </li>
      *        </ul>
      *        <p>
-     *        If no DB subnet group has been specified as part of the request
-     *        and the PubliclyAccessible value has not been set, the DB instance
-     *        will be publicly accessible. If a specific DB subnet group has
-     *        been specified as part of the request and the PubliclyAccessible
-     *        value has not been set, the DB instance will be private.
+     *        If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
+     *        been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as
+     *        part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
      */
 
     public void setPubliclyAccessible(Boolean publiclyAccessible) {
@@ -2163,16 +2053,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the accessibility options for the DB instance. A value of true
-     * specifies an Internet-facing instance with a publicly resolvable DNS
-     * name, which resolves to a public IP address. A value of false specifies
-     * an internal instance with a DNS name that resolves to a private IP
-     * address.
+     * Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance
+     * with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an
+     * internal instance with a DNS name that resolves to a private IP address.
      * </p>
      * <p>
-     * Default: The default behavior varies depending on whether a VPC has been
-     * requested or not. The following list shows the default behavior in each
-     * case.
+     * Default: The default behavior varies depending on whether a VPC has been requested or not. The following list
+     * shows the default behavior in each case.
      * </p>
      * <ul>
      * <li>
@@ -2187,22 +2074,17 @@ public class DBInstance implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * If no DB subnet group has been specified as part of the request and the
-     * PubliclyAccessible value has not been set, the DB instance will be
-     * publicly accessible. If a specific DB subnet group has been specified as
-     * part of the request and the PubliclyAccessible value has not been set,
-     * the DB instance will be private.
+     * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
+     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
      * </p>
      * 
-     * @return Specifies the accessibility options for the DB instance. A value
-     *         of true specifies an Internet-facing instance with a publicly
-     *         resolvable DNS name, which resolves to a public IP address. A
-     *         value of false specifies an internal instance with a DNS name
-     *         that resolves to a private IP address.</p>
+     * @return Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing
+     *         instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false
+     *         specifies an internal instance with a DNS name that resolves to a private IP address.</p>
      *         <p>
-     *         Default: The default behavior varies depending on whether a VPC
-     *         has been requested or not. The following list shows the default
-     *         behavior in each case.
+     *         Default: The default behavior varies depending on whether a VPC has been requested or not. The following
+     *         list shows the default behavior in each case.
      *         </p>
      *         <ul>
      *         <li>
@@ -2217,12 +2099,10 @@ public class DBInstance implements Serializable, Cloneable {
      *         </li>
      *         </ul>
      *         <p>
-     *         If no DB subnet group has been specified as part of the request
-     *         and the PubliclyAccessible value has not been set, the DB
-     *         instance will be publicly accessible. If a specific DB subnet
-     *         group has been specified as part of the request and the
-     *         PubliclyAccessible value has not been set, the DB instance will
-     *         be private.
+     *         If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
+     *         been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified
+     *         as part of the request and the PubliclyAccessible value has not been set, the DB instance will be
+     *         private.
      */
 
     public Boolean getPubliclyAccessible() {
@@ -2231,16 +2111,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the accessibility options for the DB instance. A value of true
-     * specifies an Internet-facing instance with a publicly resolvable DNS
-     * name, which resolves to a public IP address. A value of false specifies
-     * an internal instance with a DNS name that resolves to a private IP
-     * address.
+     * Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance
+     * with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an
+     * internal instance with a DNS name that resolves to a private IP address.
      * </p>
      * <p>
-     * Default: The default behavior varies depending on whether a VPC has been
-     * requested or not. The following list shows the default behavior in each
-     * case.
+     * Default: The default behavior varies depending on whether a VPC has been requested or not. The following list
+     * shows the default behavior in each case.
      * </p>
      * <ul>
      * <li>
@@ -2255,23 +2132,18 @@ public class DBInstance implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * If no DB subnet group has been specified as part of the request and the
-     * PubliclyAccessible value has not been set, the DB instance will be
-     * publicly accessible. If a specific DB subnet group has been specified as
-     * part of the request and the PubliclyAccessible value has not been set,
-     * the DB instance will be private.
+     * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
+     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
      * </p>
      * 
      * @param publiclyAccessible
-     *        Specifies the accessibility options for the DB instance. A value
-     *        of true specifies an Internet-facing instance with a publicly
-     *        resolvable DNS name, which resolves to a public IP address. A
-     *        value of false specifies an internal instance with a DNS name that
-     *        resolves to a private IP address.</p>
+     *        Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing
+     *        instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false
+     *        specifies an internal instance with a DNS name that resolves to a private IP address.</p>
      *        <p>
-     *        Default: The default behavior varies depending on whether a VPC
-     *        has been requested or not. The following list shows the default
-     *        behavior in each case.
+     *        Default: The default behavior varies depending on whether a VPC has been requested or not. The following
+     *        list shows the default behavior in each case.
      *        </p>
      *        <ul>
      *        <li>
@@ -2286,13 +2158,10 @@ public class DBInstance implements Serializable, Cloneable {
      *        </li>
      *        </ul>
      *        <p>
-     *        If no DB subnet group has been specified as part of the request
-     *        and the PubliclyAccessible value has not been set, the DB instance
-     *        will be publicly accessible. If a specific DB subnet group has
-     *        been specified as part of the request and the PubliclyAccessible
-     *        value has not been set, the DB instance will be private.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
+     *        been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as
+     *        part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withPubliclyAccessible(Boolean publiclyAccessible) {
@@ -2302,16 +2171,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the accessibility options for the DB instance. A value of true
-     * specifies an Internet-facing instance with a publicly resolvable DNS
-     * name, which resolves to a public IP address. A value of false specifies
-     * an internal instance with a DNS name that resolves to a private IP
-     * address.
+     * Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance
+     * with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an
+     * internal instance with a DNS name that resolves to a private IP address.
      * </p>
      * <p>
-     * Default: The default behavior varies depending on whether a VPC has been
-     * requested or not. The following list shows the default behavior in each
-     * case.
+     * Default: The default behavior varies depending on whether a VPC has been requested or not. The following list
+     * shows the default behavior in each case.
      * </p>
      * <ul>
      * <li>
@@ -2326,22 +2192,17 @@ public class DBInstance implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * If no DB subnet group has been specified as part of the request and the
-     * PubliclyAccessible value has not been set, the DB instance will be
-     * publicly accessible. If a specific DB subnet group has been specified as
-     * part of the request and the PubliclyAccessible value has not been set,
-     * the DB instance will be private.
+     * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
+     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
      * </p>
      * 
-     * @return Specifies the accessibility options for the DB instance. A value
-     *         of true specifies an Internet-facing instance with a publicly
-     *         resolvable DNS name, which resolves to a public IP address. A
-     *         value of false specifies an internal instance with a DNS name
-     *         that resolves to a private IP address.</p>
+     * @return Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing
+     *         instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false
+     *         specifies an internal instance with a DNS name that resolves to a private IP address.</p>
      *         <p>
-     *         Default: The default behavior varies depending on whether a VPC
-     *         has been requested or not. The following list shows the default
-     *         behavior in each case.
+     *         Default: The default behavior varies depending on whether a VPC has been requested or not. The following
+     *         list shows the default behavior in each case.
      *         </p>
      *         <ul>
      *         <li>
@@ -2356,12 +2217,10 @@ public class DBInstance implements Serializable, Cloneable {
      *         </li>
      *         </ul>
      *         <p>
-     *         If no DB subnet group has been specified as part of the request
-     *         and the PubliclyAccessible value has not been set, the DB
-     *         instance will be publicly accessible. If a specific DB subnet
-     *         group has been specified as part of the request and the
-     *         PubliclyAccessible value has not been set, the DB instance will
-     *         be private.
+     *         If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
+     *         been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified
+     *         as part of the request and the PubliclyAccessible value has not been set, the DB instance will be
+     *         private.
      */
 
     public Boolean isPubliclyAccessible() {
@@ -2370,12 +2229,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this
-     * will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
      * </p>
      * 
-     * @return The status of a Read Replica. If the instance is not a Read
-     *         Replica, this will be blank.
+     * @return The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
      */
 
     public java.util.List<DBInstanceStatusInfo> getStatusInfos() {
@@ -2387,49 +2244,40 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this
-     * will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
      * </p>
      * 
      * @param statusInfos
-     *        The status of a Read Replica. If the instance is not a Read
-     *        Replica, this will be blank.
+     *        The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
      */
 
-    public void setStatusInfos(
-            java.util.Collection<DBInstanceStatusInfo> statusInfos) {
+    public void setStatusInfos(java.util.Collection<DBInstanceStatusInfo> statusInfos) {
         if (statusInfos == null) {
             this.statusInfos = null;
             return;
         }
 
-        this.statusInfos = new com.amazonaws.internal.SdkInternalList<DBInstanceStatusInfo>(
-                statusInfos);
+        this.statusInfos = new com.amazonaws.internal.SdkInternalList<DBInstanceStatusInfo>(statusInfos);
     }
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this
-     * will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setStatusInfos(java.util.Collection)} or
-     * {@link #withStatusInfos(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setStatusInfos(java.util.Collection)} or {@link #withStatusInfos(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param statusInfos
-     *        The status of a Read Replica. If the instance is not a Read
-     *        Replica, this will be blank.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withStatusInfos(DBInstanceStatusInfo... statusInfos) {
         if (this.statusInfos == null) {
-            setStatusInfos(new com.amazonaws.internal.SdkInternalList<DBInstanceStatusInfo>(
-                    statusInfos.length));
+            setStatusInfos(new com.amazonaws.internal.SdkInternalList<DBInstanceStatusInfo>(statusInfos.length));
         }
         for (DBInstanceStatusInfo ele : statusInfos) {
             this.statusInfos.add(ele);
@@ -2439,19 +2287,15 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this
-     * will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
      * </p>
      * 
      * @param statusInfos
-     *        The status of a Read Replica. If the instance is not a Read
-     *        Replica, this will be blank.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withStatusInfos(
-            java.util.Collection<DBInstanceStatusInfo> statusInfos) {
+    public DBInstance withStatusInfos(java.util.Collection<DBInstanceStatusInfo> statusInfos) {
         setStatusInfos(statusInfos);
         return this;
     }
@@ -2488,8 +2332,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param storageType
      *        Specifies the storage type associated with DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withStorageType(String storageType) {
@@ -2499,13 +2342,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN from the Key Store with which the instance is associated for TDE
-     * encryption.
+     * The ARN from the key store with which the instance is associated for TDE encryption.
      * </p>
      * 
      * @param tdeCredentialArn
-     *        The ARN from the Key Store with which the instance is associated
-     *        for TDE encryption.
+     *        The ARN from the key store with which the instance is associated for TDE encryption.
      */
 
     public void setTdeCredentialArn(String tdeCredentialArn) {
@@ -2514,12 +2355,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN from the Key Store with which the instance is associated for TDE
-     * encryption.
+     * The ARN from the key store with which the instance is associated for TDE encryption.
      * </p>
      * 
-     * @return The ARN from the Key Store with which the instance is associated
-     *         for TDE encryption.
+     * @return The ARN from the key store with which the instance is associated for TDE encryption.
      */
 
     public String getTdeCredentialArn() {
@@ -2528,15 +2367,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN from the Key Store with which the instance is associated for TDE
-     * encryption.
+     * The ARN from the key store with which the instance is associated for TDE encryption.
      * </p>
      * 
      * @param tdeCredentialArn
-     *        The ARN from the Key Store with which the instance is associated
-     *        for TDE encryption.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN from the key store with which the instance is associated for TDE encryption.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withTdeCredentialArn(String tdeCredentialArn) {
@@ -2546,15 +2382,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the port that the DB instance listens on. If the DB instance is
-     * part of a DB cluster, this can be a different port than the DB cluster
-     * port.
+     * Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a
+     * different port than the DB cluster port.
      * </p>
      * 
      * @param dbInstancePort
-     *        Specifies the port that the DB instance listens on. If the DB
-     *        instance is part of a DB cluster, this can be a different port
-     *        than the DB cluster port.
+     *        Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can
+     *        be a different port than the DB cluster port.
      */
 
     public void setDbInstancePort(Integer dbInstancePort) {
@@ -2563,14 +2397,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the port that the DB instance listens on. If the DB instance is
-     * part of a DB cluster, this can be a different port than the DB cluster
-     * port.
+     * Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a
+     * different port than the DB cluster port.
      * </p>
      * 
-     * @return Specifies the port that the DB instance listens on. If the DB
-     *         instance is part of a DB cluster, this can be a different port
-     *         than the DB cluster port.
+     * @return Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can
+     *         be a different port than the DB cluster port.
      */
 
     public Integer getDbInstancePort() {
@@ -2579,17 +2411,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the port that the DB instance listens on. If the DB instance is
-     * part of a DB cluster, this can be a different port than the DB cluster
-     * port.
+     * Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a
+     * different port than the DB cluster port.
      * </p>
      * 
      * @param dbInstancePort
-     *        Specifies the port that the DB instance listens on. If the DB
-     *        instance is part of a DB cluster, this can be a different port
-     *        than the DB cluster port.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can
+     *        be a different port than the DB cluster port.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDbInstancePort(Integer dbInstancePort) {
@@ -2599,13 +2428,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the DB instance is a member of a DB cluster, contains the name of the
-     * DB cluster that the DB instance is a member of.
+     * If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a
+     * member of.
      * </p>
      * 
      * @param dBClusterIdentifier
-     *        If the DB instance is a member of a DB cluster, contains the name
-     *        of the DB cluster that the DB instance is a member of.
+     *        If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance
+     *        is a member of.
      */
 
     public void setDBClusterIdentifier(String dBClusterIdentifier) {
@@ -2614,12 +2443,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the DB instance is a member of a DB cluster, contains the name of the
-     * DB cluster that the DB instance is a member of.
+     * If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a
+     * member of.
      * </p>
      * 
-     * @return If the DB instance is a member of a DB cluster, contains the name
-     *         of the DB cluster that the DB instance is a member of.
+     * @return If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance
+     *         is a member of.
      */
 
     public String getDBClusterIdentifier() {
@@ -2628,15 +2457,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the DB instance is a member of a DB cluster, contains the name of the
-     * DB cluster that the DB instance is a member of.
+     * If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a
+     * member of.
      * </p>
      * 
      * @param dBClusterIdentifier
-     *        If the DB instance is a member of a DB cluster, contains the name
-     *        of the DB cluster that the DB instance is a member of.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance
+     *        is a member of.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDBClusterIdentifier(String dBClusterIdentifier) {
@@ -2676,8 +2504,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param storageEncrypted
      *        Specifies whether the DB instance is encrypted.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withStorageEncrypted(Boolean storageEncrypted) {
@@ -2699,13 +2526,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the
-     * encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
      * </p>
      * 
      * @param kmsKeyId
-     *        If <code>StorageEncrypted</code> is true, the KMS key identifier
-     *        for the encrypted DB instance.
+     *        If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -2714,12 +2539,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the
-     * encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
      * </p>
      * 
-     * @return If <code>StorageEncrypted</code> is true, the KMS key identifier
-     *         for the encrypted DB instance.
+     * @return If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
      */
 
     public String getKmsKeyId() {
@@ -2728,15 +2551,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the
-     * encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
      * </p>
      * 
      * @param kmsKeyId
-     *        If <code>StorageEncrypted</code> is true, the KMS key identifier
-     *        for the encrypted DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withKmsKeyId(String kmsKeyId) {
@@ -2746,15 +2566,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This
-     * identifier is found in AWS CloudTrail log entries whenever the KMS key
-     * for the DB instance is accessed.
+     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the KMS key for the DB instance is accessed.
      * </p>
      * 
      * @param dbiResourceId
-     *        The region-unique, immutable identifier for the DB instance. This
-     *        identifier is found in AWS CloudTrail log entries whenever the KMS
-     *        key for the DB instance is accessed.
+     *        The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail
+     *        log entries whenever the KMS key for the DB instance is accessed.
      */
 
     public void setDbiResourceId(String dbiResourceId) {
@@ -2763,14 +2581,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This
-     * identifier is found in AWS CloudTrail log entries whenever the KMS key
-     * for the DB instance is accessed.
+     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the KMS key for the DB instance is accessed.
      * </p>
      * 
-     * @return The region-unique, immutable identifier for the DB instance. This
-     *         identifier is found in AWS CloudTrail log entries whenever the
-     *         KMS key for the DB instance is accessed.
+     * @return The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail
+     *         log entries whenever the KMS key for the DB instance is accessed.
      */
 
     public String getDbiResourceId() {
@@ -2779,17 +2595,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This
-     * identifier is found in AWS CloudTrail log entries whenever the KMS key
-     * for the DB instance is accessed.
+     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the KMS key for the DB instance is accessed.
      * </p>
      * 
      * @param dbiResourceId
-     *        The region-unique, immutable identifier for the DB instance. This
-     *        identifier is found in AWS CloudTrail log entries whenever the KMS
-     *        key for the DB instance is accessed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail
+     *        log entries whenever the KMS key for the DB instance is accessed.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDbiResourceId(String dbiResourceId) {
@@ -2829,8 +2642,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param cACertificateIdentifier
      *        The identifier of the CA certificate for this DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withCACertificateIdentifier(String cACertificateIdentifier) {
@@ -2840,12 +2652,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Active Directory Domain membership records associated with the DB
-     * instance.
+     * The Active Directory Domain membership records associated with the DB instance.
      * </p>
      * 
-     * @return The Active Directory Domain membership records associated with
-     *         the DB instance.
+     * @return The Active Directory Domain membership records associated with the DB instance.
      */
 
     public java.util.List<DomainMembership> getDomainMemberships() {
@@ -2857,50 +2667,40 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Active Directory Domain membership records associated with the DB
-     * instance.
+     * The Active Directory Domain membership records associated with the DB instance.
      * </p>
      * 
      * @param domainMemberships
-     *        The Active Directory Domain membership records associated with the
-     *        DB instance.
+     *        The Active Directory Domain membership records associated with the DB instance.
      */
 
-    public void setDomainMemberships(
-            java.util.Collection<DomainMembership> domainMemberships) {
+    public void setDomainMemberships(java.util.Collection<DomainMembership> domainMemberships) {
         if (domainMemberships == null) {
             this.domainMemberships = null;
             return;
         }
 
-        this.domainMemberships = new com.amazonaws.internal.SdkInternalList<DomainMembership>(
-                domainMemberships);
+        this.domainMemberships = new com.amazonaws.internal.SdkInternalList<DomainMembership>(domainMemberships);
     }
 
     /**
      * <p>
-     * The Active Directory Domain membership records associated with the DB
-     * instance.
+     * The Active Directory Domain membership records associated with the DB instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDomainMemberships(java.util.Collection)} or
-     * {@link #withDomainMemberships(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDomainMemberships(java.util.Collection)} or {@link #withDomainMemberships(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param domainMemberships
-     *        The Active Directory Domain membership records associated with the
-     *        DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Active Directory Domain membership records associated with the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withDomainMemberships(
-            DomainMembership... domainMemberships) {
+    public DBInstance withDomainMemberships(DomainMembership... domainMemberships) {
         if (this.domainMemberships == null) {
-            setDomainMemberships(new com.amazonaws.internal.SdkInternalList<DomainMembership>(
-                    domainMemberships.length));
+            setDomainMemberships(new com.amazonaws.internal.SdkInternalList<DomainMembership>(domainMemberships.length));
         }
         for (DomainMembership ele : domainMemberships) {
             this.domainMemberships.add(ele);
@@ -2910,32 +2710,26 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Active Directory Domain membership records associated with the DB
-     * instance.
+     * The Active Directory Domain membership records associated with the DB instance.
      * </p>
      * 
      * @param domainMemberships
-     *        The Active Directory Domain membership records associated with the
-     *        DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Active Directory Domain membership records associated with the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withDomainMemberships(
-            java.util.Collection<DomainMembership> domainMemberships) {
+    public DBInstance withDomainMemberships(java.util.Collection<DomainMembership> domainMemberships) {
         setDomainMemberships(domainMemberships);
         return this;
     }
 
     /**
      * <p>
-     * Specifies whether tags are copied from the DB instance to snapshots of
-     * the DB instance.
+     * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        Specifies whether tags are copied from the DB instance to
-     *        snapshots of the DB instance.
+     *        Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      */
 
     public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
@@ -2944,12 +2738,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether tags are copied from the DB instance to snapshots of
-     * the DB instance.
+     * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
      * 
-     * @return Specifies whether tags are copied from the DB instance to
-     *         snapshots of the DB instance.
+     * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      */
 
     public Boolean getCopyTagsToSnapshot() {
@@ -2958,15 +2750,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether tags are copied from the DB instance to snapshots of
-     * the DB instance.
+     * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        Specifies whether tags are copied from the DB instance to
-     *        snapshots of the DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
@@ -2976,12 +2765,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether tags are copied from the DB instance to snapshots of
-     * the DB instance.
+     * Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      * </p>
      * 
-     * @return Specifies whether tags are copied from the DB instance to
-     *         snapshots of the DB instance.
+     * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
      */
 
     public Boolean isCopyTagsToSnapshot() {
@@ -2990,13 +2777,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics
-     * are collected for the DB instance.
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.
      * </p>
      * 
      * @param monitoringInterval
-     *        The interval, in seconds, between points when Enhanced Monitoring
-     *        metrics are collected for the DB instance.
+     *        The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB
+     *        instance.
      */
 
     public void setMonitoringInterval(Integer monitoringInterval) {
@@ -3005,12 +2791,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics
-     * are collected for the DB instance.
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.
      * </p>
      * 
-     * @return The interval, in seconds, between points when Enhanced Monitoring
-     *         metrics are collected for the DB instance.
+     * @return The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB
+     *         instance.
      */
 
     public Integer getMonitoringInterval() {
@@ -3019,15 +2804,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics
-     * are collected for the DB instance.
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.
      * </p>
      * 
      * @param monitoringInterval
-     *        The interval, in seconds, between points when Enhanced Monitoring
-     *        metrics are collected for the DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB
+     *        instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withMonitoringInterval(Integer monitoringInterval) {
@@ -3037,30 +2820,27 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream
-     * that receives the Enhanced Monitoring metrics data for the DB instance.
+     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring
+     * metrics data for the DB instance.
      * </p>
      * 
      * @param enhancedMonitoringResourceArn
-     *        The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log
-     *        stream that receives the Enhanced Monitoring metrics data for the
-     *        DB instance.
+     *        The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced
+     *        Monitoring metrics data for the DB instance.
      */
 
-    public void setEnhancedMonitoringResourceArn(
-            String enhancedMonitoringResourceArn) {
+    public void setEnhancedMonitoringResourceArn(String enhancedMonitoringResourceArn) {
         this.enhancedMonitoringResourceArn = enhancedMonitoringResourceArn;
     }
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream
-     * that receives the Enhanced Monitoring metrics data for the DB instance.
+     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring
+     * metrics data for the DB instance.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log
-     *         stream that receives the Enhanced Monitoring metrics data for the
-     *         DB instance.
+     * @return The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced
+     *         Monitoring metrics data for the DB instance.
      */
 
     public String getEnhancedMonitoringResourceArn() {
@@ -3069,33 +2849,28 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream
-     * that receives the Enhanced Monitoring metrics data for the DB instance.
+     * The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring
+     * metrics data for the DB instance.
      * </p>
      * 
      * @param enhancedMonitoringResourceArn
-     *        The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log
-     *        stream that receives the Enhanced Monitoring metrics data for the
-     *        DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced
+     *        Monitoring metrics data for the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DBInstance withEnhancedMonitoringResourceArn(
-            String enhancedMonitoringResourceArn) {
+    public DBInstance withEnhancedMonitoringResourceArn(String enhancedMonitoringResourceArn) {
         setEnhancedMonitoringResourceArn(enhancedMonitoringResourceArn);
         return this;
     }
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring
-     * metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
      * </p>
      * 
      * @param monitoringRoleArn
-     *        The ARN for the IAM role that permits RDS to send Enhanced
-     *        Monitoring metrics to CloudWatch Logs.
+     *        The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
      */
 
     public void setMonitoringRoleArn(String monitoringRoleArn) {
@@ -3104,12 +2879,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring
-     * metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
      * </p>
      * 
-     * @return The ARN for the IAM role that permits RDS to send Enhanced
-     *         Monitoring metrics to CloudWatch Logs.
+     * @return The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
      */
 
     public String getMonitoringRoleArn() {
@@ -3118,15 +2891,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring
-     * metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
      * </p>
      * 
      * @param monitoringRoleArn
-     *        The ARN for the IAM role that permits RDS to send Enhanced
-     *        Monitoring metrics to CloudWatch Logs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withMonitoringRoleArn(String monitoringRoleArn) {
@@ -3136,17 +2906,15 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value that specifies the order in which an Aurora Replica is promoted
-     * to the primary instance after a failure of the existing primary instance.
-     * For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"
-     * > Fault Tolerance for an Aurora DB Cluster</a>.
+     * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
+     * of the existing primary instance. For more information, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance">
+     * Fault Tolerance for an Aurora DB Cluster</a>.
      * </p>
      * 
      * @param promotionTier
-     *        A value that specifies the order in which an Aurora Replica is
-     *        promoted to the primary instance after a failure of the existing
-     *        primary instance. For more information, see <a href=
+     *        A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
+     *        failure of the existing primary instance. For more information, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"
      *        > Fault Tolerance for an Aurora DB Cluster</a>.
      */
@@ -3157,16 +2925,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value that specifies the order in which an Aurora Replica is promoted
-     * to the primary instance after a failure of the existing primary instance.
-     * For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"
-     * > Fault Tolerance for an Aurora DB Cluster</a>.
+     * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
+     * of the existing primary instance. For more information, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance">
+     * Fault Tolerance for an Aurora DB Cluster</a>.
      * </p>
      * 
-     * @return A value that specifies the order in which an Aurora Replica is
-     *         promoted to the primary instance after a failure of the existing
-     *         primary instance. For more information, see <a href=
+     * @return A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
+     *         failure of the existing primary instance. For more information, see <a href=
      *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"
      *         > Fault Tolerance for an Aurora DB Cluster</a>.
      */
@@ -3177,21 +2943,18 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A value that specifies the order in which an Aurora Replica is promoted
-     * to the primary instance after a failure of the existing primary instance.
-     * For more information, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"
-     * > Fault Tolerance for an Aurora DB Cluster</a>.
+     * A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure
+     * of the existing primary instance. For more information, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance">
+     * Fault Tolerance for an Aurora DB Cluster</a>.
      * </p>
      * 
      * @param promotionTier
-     *        A value that specifies the order in which an Aurora Replica is
-     *        promoted to the primary instance after a failure of the existing
-     *        primary instance. For more information, see <a href=
+     *        A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a
+     *        failure of the existing primary instance. For more information, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"
      *        > Fault Tolerance for an Aurora DB Cluster</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withPromotionTier(Integer promotionTier) {
@@ -3231,8 +2994,7 @@ public class DBInstance implements Serializable, Cloneable {
      * 
      * @param dBInstanceArn
      *        The Amazon Resource Name (ARN) for the DB instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DBInstance withDBInstanceArn(String dBInstanceArn) {
@@ -3241,8 +3003,275 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty.
+     * <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a time
+     * zone specified.
+     * </p>
+     * 
+     * @param timezone
+     *        The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty.
+     *        <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a
+     *        time zone specified.
+     */
+
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
+
+    /**
+     * <p>
+     * The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty.
+     * <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a time
+     * zone specified.
+     * </p>
+     * 
+     * @return The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty.
+     *         <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a
+     *         time zone specified.
+     */
+
+    public String getTimezone() {
+        return this.timezone;
+    }
+
+    /**
+     * <p>
+     * The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty.
+     * <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a time
+     * zone specified.
+     * </p>
+     * 
+     * @param timezone
+     *        The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty.
+     *        <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a
+     *        time zone specified.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withTimezone(String timezone) {
+        setTimezone(timezone);
+        return this;
+    }
+
+    /**
+     * <p>
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
+     * false.
+     * </p>
+     * <p>
+     * IAM database authentication can be enabled for the following database engines
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For MySQL 5.6, minor version 5.6.34 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For MySQL 5.7, minor version 5.7.16 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param iAMDatabaseAuthenticationEnabled
+     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     *        otherwise false.</p>
+     *        <p>
+     *        IAM database authentication can be enabled for the following database engines
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For MySQL 5.6, minor version 5.6.34 or higher
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For MySQL 5.7, minor version 5.7.16 or higher
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     *        </p>
+     *        </li>
+     */
+
+    public void setIAMDatabaseAuthenticationEnabled(Boolean iAMDatabaseAuthenticationEnabled) {
+        this.iAMDatabaseAuthenticationEnabled = iAMDatabaseAuthenticationEnabled;
+    }
+
+    /**
+     * <p>
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
+     * false.
+     * </p>
+     * <p>
+     * IAM database authentication can be enabled for the following database engines
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For MySQL 5.6, minor version 5.6.34 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For MySQL 5.7, minor version 5.7.16 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     *         otherwise false.</p>
+     *         <p>
+     *         IAM database authentication can be enabled for the following database engines
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For MySQL 5.6, minor version 5.6.34 or higher
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For MySQL 5.7, minor version 5.7.16 or higher
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean getIAMDatabaseAuthenticationEnabled() {
+        return this.iAMDatabaseAuthenticationEnabled;
+    }
+
+    /**
+     * <p>
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
+     * false.
+     * </p>
+     * <p>
+     * IAM database authentication can be enabled for the following database engines
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For MySQL 5.6, minor version 5.6.34 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For MySQL 5.7, minor version 5.7.16 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param iAMDatabaseAuthenticationEnabled
+     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     *        otherwise false.</p>
+     *        <p>
+     *        IAM database authentication can be enabled for the following database engines
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For MySQL 5.6, minor version 5.6.34 or higher
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For MySQL 5.7, minor version 5.7.16 or higher
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withIAMDatabaseAuthenticationEnabled(Boolean iAMDatabaseAuthenticationEnabled) {
+        setIAMDatabaseAuthenticationEnabled(iAMDatabaseAuthenticationEnabled);
+        return this;
+    }
+
+    /**
+     * <p>
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
+     * false.
+     * </p>
+     * <p>
+     * IAM database authentication can be enabled for the following database engines
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For MySQL 5.6, minor version 5.6.34 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For MySQL 5.7, minor version 5.7.16 or higher
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     *         otherwise false.</p>
+     *         <p>
+     *         IAM database authentication can be enabled for the following database engines
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For MySQL 5.6, minor version 5.6.34 or higher
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For MySQL 5.7, minor version 5.7.16 or higher
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean isIAMDatabaseAuthenticationEnabled() {
+        return this.iAMDatabaseAuthenticationEnabled;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -3253,110 +3282,103 @@ public class DBInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBInstanceIdentifier() != null)
-            sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier()
-                    + ",");
+            sb.append("DBInstanceIdentifier: ").append(getDBInstanceIdentifier()).append(",");
         if (getDBInstanceClass() != null)
-            sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+            sb.append("DBInstanceClass: ").append(getDBInstanceClass()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getDBInstanceStatus() != null)
-            sb.append("DBInstanceStatus: " + getDBInstanceStatus() + ",");
+            sb.append("DBInstanceStatus: ").append(getDBInstanceStatus()).append(",");
         if (getMasterUsername() != null)
-            sb.append("MasterUsername: " + getMasterUsername() + ",");
+            sb.append("MasterUsername: ").append(getMasterUsername()).append(",");
         if (getDBName() != null)
-            sb.append("DBName: " + getDBName() + ",");
+            sb.append("DBName: ").append(getDBName()).append(",");
         if (getEndpoint() != null)
-            sb.append("Endpoint: " + getEndpoint() + ",");
+            sb.append("Endpoint: ").append(getEndpoint()).append(",");
         if (getAllocatedStorage() != null)
-            sb.append("AllocatedStorage: " + getAllocatedStorage() + ",");
+            sb.append("AllocatedStorage: ").append(getAllocatedStorage()).append(",");
         if (getInstanceCreateTime() != null)
-            sb.append("InstanceCreateTime: " + getInstanceCreateTime() + ",");
+            sb.append("InstanceCreateTime: ").append(getInstanceCreateTime()).append(",");
         if (getPreferredBackupWindow() != null)
-            sb.append("PreferredBackupWindow: " + getPreferredBackupWindow()
-                    + ",");
+            sb.append("PreferredBackupWindow: ").append(getPreferredBackupWindow()).append(",");
         if (getBackupRetentionPeriod() != null)
-            sb.append("BackupRetentionPeriod: " + getBackupRetentionPeriod()
-                    + ",");
+            sb.append("BackupRetentionPeriod: ").append(getBackupRetentionPeriod()).append(",");
         if (getDBSecurityGroups() != null)
-            sb.append("DBSecurityGroups: " + getDBSecurityGroups() + ",");
+            sb.append("DBSecurityGroups: ").append(getDBSecurityGroups()).append(",");
         if (getVpcSecurityGroups() != null)
-            sb.append("VpcSecurityGroups: " + getVpcSecurityGroups() + ",");
+            sb.append("VpcSecurityGroups: ").append(getVpcSecurityGroups()).append(",");
         if (getDBParameterGroups() != null)
-            sb.append("DBParameterGroups: " + getDBParameterGroups() + ",");
+            sb.append("DBParameterGroups: ").append(getDBParameterGroups()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getDBSubnetGroup() != null)
-            sb.append("DBSubnetGroup: " + getDBSubnetGroup() + ",");
+            sb.append("DBSubnetGroup: ").append(getDBSubnetGroup()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: "
-                    + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getPendingModifiedValues() != null)
-            sb.append("PendingModifiedValues: " + getPendingModifiedValues()
-                    + ",");
+            sb.append("PendingModifiedValues: ").append(getPendingModifiedValues()).append(",");
         if (getLatestRestorableTime() != null)
-            sb.append("LatestRestorableTime: " + getLatestRestorableTime()
-                    + ",");
+            sb.append("LatestRestorableTime: ").append(getLatestRestorableTime()).append(",");
         if (getMultiAZ() != null)
-            sb.append("MultiAZ: " + getMultiAZ() + ",");
+            sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: "
-                    + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getReadReplicaSourceDBInstanceIdentifier() != null)
-            sb.append("ReadReplicaSourceDBInstanceIdentifier: "
-                    + getReadReplicaSourceDBInstanceIdentifier() + ",");
+            sb.append("ReadReplicaSourceDBInstanceIdentifier: ").append(getReadReplicaSourceDBInstanceIdentifier()).append(",");
         if (getReadReplicaDBInstanceIdentifiers() != null)
-            sb.append("ReadReplicaDBInstanceIdentifiers: "
-                    + getReadReplicaDBInstanceIdentifiers() + ",");
+            sb.append("ReadReplicaDBInstanceIdentifiers: ").append(getReadReplicaDBInstanceIdentifiers()).append(",");
+        if (getReadReplicaDBClusterIdentifiers() != null)
+            sb.append("ReadReplicaDBClusterIdentifiers: ").append(getReadReplicaDBClusterIdentifiers()).append(",");
         if (getLicenseModel() != null)
-            sb.append("LicenseModel: " + getLicenseModel() + ",");
+            sb.append("LicenseModel: ").append(getLicenseModel()).append(",");
         if (getIops() != null)
-            sb.append("Iops: " + getIops() + ",");
+            sb.append("Iops: ").append(getIops()).append(",");
         if (getOptionGroupMemberships() != null)
-            sb.append("OptionGroupMemberships: " + getOptionGroupMemberships()
-                    + ",");
+            sb.append("OptionGroupMemberships: ").append(getOptionGroupMemberships()).append(",");
         if (getCharacterSetName() != null)
-            sb.append("CharacterSetName: " + getCharacterSetName() + ",");
+            sb.append("CharacterSetName: ").append(getCharacterSetName()).append(",");
         if (getSecondaryAvailabilityZone() != null)
-            sb.append("SecondaryAvailabilityZone: "
-                    + getSecondaryAvailabilityZone() + ",");
+            sb.append("SecondaryAvailabilityZone: ").append(getSecondaryAvailabilityZone()).append(",");
         if (getPubliclyAccessible() != null)
-            sb.append("PubliclyAccessible: " + getPubliclyAccessible() + ",");
+            sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
         if (getStatusInfos() != null)
-            sb.append("StatusInfos: " + getStatusInfos() + ",");
+            sb.append("StatusInfos: ").append(getStatusInfos()).append(",");
         if (getStorageType() != null)
-            sb.append("StorageType: " + getStorageType() + ",");
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getTdeCredentialArn() != null)
-            sb.append("TdeCredentialArn: " + getTdeCredentialArn() + ",");
+            sb.append("TdeCredentialArn: ").append(getTdeCredentialArn()).append(",");
         if (getDbInstancePort() != null)
-            sb.append("DbInstancePort: " + getDbInstancePort() + ",");
+            sb.append("DbInstancePort: ").append(getDbInstancePort()).append(",");
         if (getDBClusterIdentifier() != null)
-            sb.append("DBClusterIdentifier: " + getDBClusterIdentifier() + ",");
+            sb.append("DBClusterIdentifier: ").append(getDBClusterIdentifier()).append(",");
         if (getStorageEncrypted() != null)
-            sb.append("StorageEncrypted: " + getStorageEncrypted() + ",");
+            sb.append("StorageEncrypted: ").append(getStorageEncrypted()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getDbiResourceId() != null)
-            sb.append("DbiResourceId: " + getDbiResourceId() + ",");
+            sb.append("DbiResourceId: ").append(getDbiResourceId()).append(",");
         if (getCACertificateIdentifier() != null)
-            sb.append("CACertificateIdentifier: "
-                    + getCACertificateIdentifier() + ",");
+            sb.append("CACertificateIdentifier: ").append(getCACertificateIdentifier()).append(",");
         if (getDomainMemberships() != null)
-            sb.append("DomainMemberships: " + getDomainMemberships() + ",");
+            sb.append("DomainMemberships: ").append(getDomainMemberships()).append(",");
         if (getCopyTagsToSnapshot() != null)
-            sb.append("CopyTagsToSnapshot: " + getCopyTagsToSnapshot() + ",");
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot()).append(",");
         if (getMonitoringInterval() != null)
-            sb.append("MonitoringInterval: " + getMonitoringInterval() + ",");
+            sb.append("MonitoringInterval: ").append(getMonitoringInterval()).append(",");
         if (getEnhancedMonitoringResourceArn() != null)
-            sb.append("EnhancedMonitoringResourceArn: "
-                    + getEnhancedMonitoringResourceArn() + ",");
+            sb.append("EnhancedMonitoringResourceArn: ").append(getEnhancedMonitoringResourceArn()).append(",");
         if (getMonitoringRoleArn() != null)
-            sb.append("MonitoringRoleArn: " + getMonitoringRoleArn() + ",");
+            sb.append("MonitoringRoleArn: ").append(getMonitoringRoleArn()).append(",");
         if (getPromotionTier() != null)
-            sb.append("PromotionTier: " + getPromotionTier() + ",");
+            sb.append("PromotionTier: ").append(getPromotionTier()).append(",");
         if (getDBInstanceArn() != null)
-            sb.append("DBInstanceArn: " + getDBInstanceArn());
+            sb.append("DBInstanceArn: ").append(getDBInstanceArn()).append(",");
+        if (getTimezone() != null)
+            sb.append("Timezone: ").append(getTimezone()).append(",");
+        if (getIAMDatabaseAuthenticationEnabled() != null)
+            sb.append("IAMDatabaseAuthenticationEnabled: ").append(getIAMDatabaseAuthenticationEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -3371,296 +3393,206 @@ public class DBInstance implements Serializable, Cloneable {
         if (obj instanceof DBInstance == false)
             return false;
         DBInstance other = (DBInstance) obj;
-        if (other.getDBInstanceIdentifier() == null
-                ^ this.getDBInstanceIdentifier() == null)
+        if (other.getDBInstanceIdentifier() == null ^ this.getDBInstanceIdentifier() == null)
             return false;
-        if (other.getDBInstanceIdentifier() != null
-                && other.getDBInstanceIdentifier().equals(
-                        this.getDBInstanceIdentifier()) == false)
+        if (other.getDBInstanceIdentifier() != null && other.getDBInstanceIdentifier().equals(this.getDBInstanceIdentifier()) == false)
             return false;
-        if (other.getDBInstanceClass() == null
-                ^ this.getDBInstanceClass() == null)
+        if (other.getDBInstanceClass() == null ^ this.getDBInstanceClass() == null)
             return false;
-        if (other.getDBInstanceClass() != null
-                && other.getDBInstanceClass().equals(this.getDBInstanceClass()) == false)
+        if (other.getDBInstanceClass() != null && other.getDBInstanceClass().equals(this.getDBInstanceClass()) == false)
             return false;
         if (other.getEngine() == null ^ this.getEngine() == null)
             return false;
-        if (other.getEngine() != null
-                && other.getEngine().equals(this.getEngine()) == false)
+        if (other.getEngine() != null && other.getEngine().equals(this.getEngine()) == false)
             return false;
-        if (other.getDBInstanceStatus() == null
-                ^ this.getDBInstanceStatus() == null)
+        if (other.getDBInstanceStatus() == null ^ this.getDBInstanceStatus() == null)
             return false;
-        if (other.getDBInstanceStatus() != null
-                && other.getDBInstanceStatus().equals(
-                        this.getDBInstanceStatus()) == false)
+        if (other.getDBInstanceStatus() != null && other.getDBInstanceStatus().equals(this.getDBInstanceStatus()) == false)
             return false;
-        if (other.getMasterUsername() == null
-                ^ this.getMasterUsername() == null)
+        if (other.getMasterUsername() == null ^ this.getMasterUsername() == null)
             return false;
-        if (other.getMasterUsername() != null
-                && other.getMasterUsername().equals(this.getMasterUsername()) == false)
+        if (other.getMasterUsername() != null && other.getMasterUsername().equals(this.getMasterUsername()) == false)
             return false;
         if (other.getDBName() == null ^ this.getDBName() == null)
             return false;
-        if (other.getDBName() != null
-                && other.getDBName().equals(this.getDBName()) == false)
+        if (other.getDBName() != null && other.getDBName().equals(this.getDBName()) == false)
             return false;
         if (other.getEndpoint() == null ^ this.getEndpoint() == null)
             return false;
-        if (other.getEndpoint() != null
-                && other.getEndpoint().equals(this.getEndpoint()) == false)
+        if (other.getEndpoint() != null && other.getEndpoint().equals(this.getEndpoint()) == false)
             return false;
-        if (other.getAllocatedStorage() == null
-                ^ this.getAllocatedStorage() == null)
+        if (other.getAllocatedStorage() == null ^ this.getAllocatedStorage() == null)
             return false;
-        if (other.getAllocatedStorage() != null
-                && other.getAllocatedStorage().equals(
-                        this.getAllocatedStorage()) == false)
+        if (other.getAllocatedStorage() != null && other.getAllocatedStorage().equals(this.getAllocatedStorage()) == false)
             return false;
-        if (other.getInstanceCreateTime() == null
-                ^ this.getInstanceCreateTime() == null)
+        if (other.getInstanceCreateTime() == null ^ this.getInstanceCreateTime() == null)
             return false;
-        if (other.getInstanceCreateTime() != null
-                && other.getInstanceCreateTime().equals(
-                        this.getInstanceCreateTime()) == false)
+        if (other.getInstanceCreateTime() != null && other.getInstanceCreateTime().equals(this.getInstanceCreateTime()) == false)
             return false;
-        if (other.getPreferredBackupWindow() == null
-                ^ this.getPreferredBackupWindow() == null)
+        if (other.getPreferredBackupWindow() == null ^ this.getPreferredBackupWindow() == null)
             return false;
-        if (other.getPreferredBackupWindow() != null
-                && other.getPreferredBackupWindow().equals(
-                        this.getPreferredBackupWindow()) == false)
+        if (other.getPreferredBackupWindow() != null && other.getPreferredBackupWindow().equals(this.getPreferredBackupWindow()) == false)
             return false;
-        if (other.getBackupRetentionPeriod() == null
-                ^ this.getBackupRetentionPeriod() == null)
+        if (other.getBackupRetentionPeriod() == null ^ this.getBackupRetentionPeriod() == null)
             return false;
-        if (other.getBackupRetentionPeriod() != null
-                && other.getBackupRetentionPeriod().equals(
-                        this.getBackupRetentionPeriod()) == false)
+        if (other.getBackupRetentionPeriod() != null && other.getBackupRetentionPeriod().equals(this.getBackupRetentionPeriod()) == false)
             return false;
-        if (other.getDBSecurityGroups() == null
-                ^ this.getDBSecurityGroups() == null)
+        if (other.getDBSecurityGroups() == null ^ this.getDBSecurityGroups() == null)
             return false;
-        if (other.getDBSecurityGroups() != null
-                && other.getDBSecurityGroups().equals(
-                        this.getDBSecurityGroups()) == false)
+        if (other.getDBSecurityGroups() != null && other.getDBSecurityGroups().equals(this.getDBSecurityGroups()) == false)
             return false;
-        if (other.getVpcSecurityGroups() == null
-                ^ this.getVpcSecurityGroups() == null)
+        if (other.getVpcSecurityGroups() == null ^ this.getVpcSecurityGroups() == null)
             return false;
-        if (other.getVpcSecurityGroups() != null
-                && other.getVpcSecurityGroups().equals(
-                        this.getVpcSecurityGroups()) == false)
+        if (other.getVpcSecurityGroups() != null && other.getVpcSecurityGroups().equals(this.getVpcSecurityGroups()) == false)
             return false;
-        if (other.getDBParameterGroups() == null
-                ^ this.getDBParameterGroups() == null)
+        if (other.getDBParameterGroups() == null ^ this.getDBParameterGroups() == null)
             return false;
-        if (other.getDBParameterGroups() != null
-                && other.getDBParameterGroups().equals(
-                        this.getDBParameterGroups()) == false)
+        if (other.getDBParameterGroups() != null && other.getDBParameterGroups().equals(this.getDBParameterGroups()) == false)
             return false;
-        if (other.getAvailabilityZone() == null
-                ^ this.getAvailabilityZone() == null)
+        if (other.getAvailabilityZone() == null ^ this.getAvailabilityZone() == null)
             return false;
-        if (other.getAvailabilityZone() != null
-                && other.getAvailabilityZone().equals(
-                        this.getAvailabilityZone()) == false)
+        if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false)
             return false;
         if (other.getDBSubnetGroup() == null ^ this.getDBSubnetGroup() == null)
             return false;
-        if (other.getDBSubnetGroup() != null
-                && other.getDBSubnetGroup().equals(this.getDBSubnetGroup()) == false)
+        if (other.getDBSubnetGroup() != null && other.getDBSubnetGroup().equals(this.getDBSubnetGroup()) == false)
             return false;
-        if (other.getPreferredMaintenanceWindow() == null
-                ^ this.getPreferredMaintenanceWindow() == null)
+        if (other.getPreferredMaintenanceWindow() == null ^ this.getPreferredMaintenanceWindow() == null)
             return false;
-        if (other.getPreferredMaintenanceWindow() != null
-                && other.getPreferredMaintenanceWindow().equals(
-                        this.getPreferredMaintenanceWindow()) == false)
+        if (other.getPreferredMaintenanceWindow() != null && other.getPreferredMaintenanceWindow().equals(this.getPreferredMaintenanceWindow()) == false)
             return false;
-        if (other.getPendingModifiedValues() == null
-                ^ this.getPendingModifiedValues() == null)
+        if (other.getPendingModifiedValues() == null ^ this.getPendingModifiedValues() == null)
             return false;
-        if (other.getPendingModifiedValues() != null
-                && other.getPendingModifiedValues().equals(
-                        this.getPendingModifiedValues()) == false)
+        if (other.getPendingModifiedValues() != null && other.getPendingModifiedValues().equals(this.getPendingModifiedValues()) == false)
             return false;
-        if (other.getLatestRestorableTime() == null
-                ^ this.getLatestRestorableTime() == null)
+        if (other.getLatestRestorableTime() == null ^ this.getLatestRestorableTime() == null)
             return false;
-        if (other.getLatestRestorableTime() != null
-                && other.getLatestRestorableTime().equals(
-                        this.getLatestRestorableTime()) == false)
+        if (other.getLatestRestorableTime() != null && other.getLatestRestorableTime().equals(this.getLatestRestorableTime()) == false)
             return false;
         if (other.getMultiAZ() == null ^ this.getMultiAZ() == null)
             return false;
-        if (other.getMultiAZ() != null
-                && other.getMultiAZ().equals(this.getMultiAZ()) == false)
+        if (other.getMultiAZ() != null && other.getMultiAZ().equals(this.getMultiAZ()) == false)
             return false;
         if (other.getEngineVersion() == null ^ this.getEngineVersion() == null)
             return false;
-        if (other.getEngineVersion() != null
-                && other.getEngineVersion().equals(this.getEngineVersion()) == false)
+        if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
             return false;
-        if (other.getAutoMinorVersionUpgrade() == null
-                ^ this.getAutoMinorVersionUpgrade() == null)
+        if (other.getAutoMinorVersionUpgrade() == null ^ this.getAutoMinorVersionUpgrade() == null)
             return false;
-        if (other.getAutoMinorVersionUpgrade() != null
-                && other.getAutoMinorVersionUpgrade().equals(
-                        this.getAutoMinorVersionUpgrade()) == false)
+        if (other.getAutoMinorVersionUpgrade() != null && other.getAutoMinorVersionUpgrade().equals(this.getAutoMinorVersionUpgrade()) == false)
             return false;
-        if (other.getReadReplicaSourceDBInstanceIdentifier() == null
-                ^ this.getReadReplicaSourceDBInstanceIdentifier() == null)
+        if (other.getReadReplicaSourceDBInstanceIdentifier() == null ^ this.getReadReplicaSourceDBInstanceIdentifier() == null)
             return false;
         if (other.getReadReplicaSourceDBInstanceIdentifier() != null
-                && other.getReadReplicaSourceDBInstanceIdentifier().equals(
-                        this.getReadReplicaSourceDBInstanceIdentifier()) == false)
+                && other.getReadReplicaSourceDBInstanceIdentifier().equals(this.getReadReplicaSourceDBInstanceIdentifier()) == false)
             return false;
-        if (other.getReadReplicaDBInstanceIdentifiers() == null
-                ^ this.getReadReplicaDBInstanceIdentifiers() == null)
+        if (other.getReadReplicaDBInstanceIdentifiers() == null ^ this.getReadReplicaDBInstanceIdentifiers() == null)
             return false;
         if (other.getReadReplicaDBInstanceIdentifiers() != null
-                && other.getReadReplicaDBInstanceIdentifiers().equals(
-                        this.getReadReplicaDBInstanceIdentifiers()) == false)
+                && other.getReadReplicaDBInstanceIdentifiers().equals(this.getReadReplicaDBInstanceIdentifiers()) == false)
+            return false;
+        if (other.getReadReplicaDBClusterIdentifiers() == null ^ this.getReadReplicaDBClusterIdentifiers() == null)
+            return false;
+        if (other.getReadReplicaDBClusterIdentifiers() != null
+                && other.getReadReplicaDBClusterIdentifiers().equals(this.getReadReplicaDBClusterIdentifiers()) == false)
             return false;
         if (other.getLicenseModel() == null ^ this.getLicenseModel() == null)
             return false;
-        if (other.getLicenseModel() != null
-                && other.getLicenseModel().equals(this.getLicenseModel()) == false)
+        if (other.getLicenseModel() != null && other.getLicenseModel().equals(this.getLicenseModel()) == false)
             return false;
         if (other.getIops() == null ^ this.getIops() == null)
             return false;
-        if (other.getIops() != null
-                && other.getIops().equals(this.getIops()) == false)
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false)
             return false;
-        if (other.getOptionGroupMemberships() == null
-                ^ this.getOptionGroupMemberships() == null)
+        if (other.getOptionGroupMemberships() == null ^ this.getOptionGroupMemberships() == null)
             return false;
-        if (other.getOptionGroupMemberships() != null
-                && other.getOptionGroupMemberships().equals(
-                        this.getOptionGroupMemberships()) == false)
+        if (other.getOptionGroupMemberships() != null && other.getOptionGroupMemberships().equals(this.getOptionGroupMemberships()) == false)
             return false;
-        if (other.getCharacterSetName() == null
-                ^ this.getCharacterSetName() == null)
+        if (other.getCharacterSetName() == null ^ this.getCharacterSetName() == null)
             return false;
-        if (other.getCharacterSetName() != null
-                && other.getCharacterSetName().equals(
-                        this.getCharacterSetName()) == false)
+        if (other.getCharacterSetName() != null && other.getCharacterSetName().equals(this.getCharacterSetName()) == false)
             return false;
-        if (other.getSecondaryAvailabilityZone() == null
-                ^ this.getSecondaryAvailabilityZone() == null)
+        if (other.getSecondaryAvailabilityZone() == null ^ this.getSecondaryAvailabilityZone() == null)
             return false;
-        if (other.getSecondaryAvailabilityZone() != null
-                && other.getSecondaryAvailabilityZone().equals(
-                        this.getSecondaryAvailabilityZone()) == false)
+        if (other.getSecondaryAvailabilityZone() != null && other.getSecondaryAvailabilityZone().equals(this.getSecondaryAvailabilityZone()) == false)
             return false;
-        if (other.getPubliclyAccessible() == null
-                ^ this.getPubliclyAccessible() == null)
+        if (other.getPubliclyAccessible() == null ^ this.getPubliclyAccessible() == null)
             return false;
-        if (other.getPubliclyAccessible() != null
-                && other.getPubliclyAccessible().equals(
-                        this.getPubliclyAccessible()) == false)
+        if (other.getPubliclyAccessible() != null && other.getPubliclyAccessible().equals(this.getPubliclyAccessible()) == false)
             return false;
         if (other.getStatusInfos() == null ^ this.getStatusInfos() == null)
             return false;
-        if (other.getStatusInfos() != null
-                && other.getStatusInfos().equals(this.getStatusInfos()) == false)
+        if (other.getStatusInfos() != null && other.getStatusInfos().equals(this.getStatusInfos()) == false)
             return false;
         if (other.getStorageType() == null ^ this.getStorageType() == null)
             return false;
-        if (other.getStorageType() != null
-                && other.getStorageType().equals(this.getStorageType()) == false)
+        if (other.getStorageType() != null && other.getStorageType().equals(this.getStorageType()) == false)
             return false;
-        if (other.getTdeCredentialArn() == null
-                ^ this.getTdeCredentialArn() == null)
+        if (other.getTdeCredentialArn() == null ^ this.getTdeCredentialArn() == null)
             return false;
-        if (other.getTdeCredentialArn() != null
-                && other.getTdeCredentialArn().equals(
-                        this.getTdeCredentialArn()) == false)
+        if (other.getTdeCredentialArn() != null && other.getTdeCredentialArn().equals(this.getTdeCredentialArn()) == false)
             return false;
-        if (other.getDbInstancePort() == null
-                ^ this.getDbInstancePort() == null)
+        if (other.getDbInstancePort() == null ^ this.getDbInstancePort() == null)
             return false;
-        if (other.getDbInstancePort() != null
-                && other.getDbInstancePort().equals(this.getDbInstancePort()) == false)
+        if (other.getDbInstancePort() != null && other.getDbInstancePort().equals(this.getDbInstancePort()) == false)
             return false;
-        if (other.getDBClusterIdentifier() == null
-                ^ this.getDBClusterIdentifier() == null)
+        if (other.getDBClusterIdentifier() == null ^ this.getDBClusterIdentifier() == null)
             return false;
-        if (other.getDBClusterIdentifier() != null
-                && other.getDBClusterIdentifier().equals(
-                        this.getDBClusterIdentifier()) == false)
+        if (other.getDBClusterIdentifier() != null && other.getDBClusterIdentifier().equals(this.getDBClusterIdentifier()) == false)
             return false;
-        if (other.getStorageEncrypted() == null
-                ^ this.getStorageEncrypted() == null)
+        if (other.getStorageEncrypted() == null ^ this.getStorageEncrypted() == null)
             return false;
-        if (other.getStorageEncrypted() != null
-                && other.getStorageEncrypted().equals(
-                        this.getStorageEncrypted()) == false)
+        if (other.getStorageEncrypted() != null && other.getStorageEncrypted().equals(this.getStorageEncrypted()) == false)
             return false;
         if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
             return false;
-        if (other.getKmsKeyId() != null
-                && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
         if (other.getDbiResourceId() == null ^ this.getDbiResourceId() == null)
             return false;
-        if (other.getDbiResourceId() != null
-                && other.getDbiResourceId().equals(this.getDbiResourceId()) == false)
+        if (other.getDbiResourceId() != null && other.getDbiResourceId().equals(this.getDbiResourceId()) == false)
             return false;
-        if (other.getCACertificateIdentifier() == null
-                ^ this.getCACertificateIdentifier() == null)
+        if (other.getCACertificateIdentifier() == null ^ this.getCACertificateIdentifier() == null)
             return false;
-        if (other.getCACertificateIdentifier() != null
-                && other.getCACertificateIdentifier().equals(
-                        this.getCACertificateIdentifier()) == false)
+        if (other.getCACertificateIdentifier() != null && other.getCACertificateIdentifier().equals(this.getCACertificateIdentifier()) == false)
             return false;
-        if (other.getDomainMemberships() == null
-                ^ this.getDomainMemberships() == null)
+        if (other.getDomainMemberships() == null ^ this.getDomainMemberships() == null)
             return false;
-        if (other.getDomainMemberships() != null
-                && other.getDomainMemberships().equals(
-                        this.getDomainMemberships()) == false)
+        if (other.getDomainMemberships() != null && other.getDomainMemberships().equals(this.getDomainMemberships()) == false)
             return false;
-        if (other.getCopyTagsToSnapshot() == null
-                ^ this.getCopyTagsToSnapshot() == null)
+        if (other.getCopyTagsToSnapshot() == null ^ this.getCopyTagsToSnapshot() == null)
             return false;
-        if (other.getCopyTagsToSnapshot() != null
-                && other.getCopyTagsToSnapshot().equals(
-                        this.getCopyTagsToSnapshot()) == false)
+        if (other.getCopyTagsToSnapshot() != null && other.getCopyTagsToSnapshot().equals(this.getCopyTagsToSnapshot()) == false)
             return false;
-        if (other.getMonitoringInterval() == null
-                ^ this.getMonitoringInterval() == null)
+        if (other.getMonitoringInterval() == null ^ this.getMonitoringInterval() == null)
             return false;
-        if (other.getMonitoringInterval() != null
-                && other.getMonitoringInterval().equals(
-                        this.getMonitoringInterval()) == false)
+        if (other.getMonitoringInterval() != null && other.getMonitoringInterval().equals(this.getMonitoringInterval()) == false)
             return false;
-        if (other.getEnhancedMonitoringResourceArn() == null
-                ^ this.getEnhancedMonitoringResourceArn() == null)
+        if (other.getEnhancedMonitoringResourceArn() == null ^ this.getEnhancedMonitoringResourceArn() == null)
             return false;
         if (other.getEnhancedMonitoringResourceArn() != null
-                && other.getEnhancedMonitoringResourceArn().equals(
-                        this.getEnhancedMonitoringResourceArn()) == false)
+                && other.getEnhancedMonitoringResourceArn().equals(this.getEnhancedMonitoringResourceArn()) == false)
             return false;
-        if (other.getMonitoringRoleArn() == null
-                ^ this.getMonitoringRoleArn() == null)
+        if (other.getMonitoringRoleArn() == null ^ this.getMonitoringRoleArn() == null)
             return false;
-        if (other.getMonitoringRoleArn() != null
-                && other.getMonitoringRoleArn().equals(
-                        this.getMonitoringRoleArn()) == false)
+        if (other.getMonitoringRoleArn() != null && other.getMonitoringRoleArn().equals(this.getMonitoringRoleArn()) == false)
             return false;
         if (other.getPromotionTier() == null ^ this.getPromotionTier() == null)
             return false;
-        if (other.getPromotionTier() != null
-                && other.getPromotionTier().equals(this.getPromotionTier()) == false)
+        if (other.getPromotionTier() != null && other.getPromotionTier().equals(this.getPromotionTier()) == false)
             return false;
         if (other.getDBInstanceArn() == null ^ this.getDBInstanceArn() == null)
             return false;
-        if (other.getDBInstanceArn() != null
-                && other.getDBInstanceArn().equals(this.getDBInstanceArn()) == false)
+        if (other.getDBInstanceArn() != null && other.getDBInstanceArn().equals(this.getDBInstanceArn()) == false)
+            return false;
+        if (other.getTimezone() == null ^ this.getTimezone() == null)
+            return false;
+        if (other.getTimezone() != null && other.getTimezone().equals(this.getTimezone()) == false)
+            return false;
+        if (other.getIAMDatabaseAuthenticationEnabled() == null ^ this.getIAMDatabaseAuthenticationEnabled() == null)
+            return false;
+        if (other.getIAMDatabaseAuthenticationEnabled() != null
+                && other.getIAMDatabaseAuthenticationEnabled().equals(this.getIAMDatabaseAuthenticationEnabled()) == false)
             return false;
         return true;
     }
@@ -3670,176 +3602,55 @@ public class DBInstance implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDBInstanceIdentifier() == null) ? 0
-                        : getDBInstanceIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBInstanceClass() == null) ? 0 : getDBInstanceClass()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getEngine() == null) ? 0 : getEngine().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBInstanceStatus() == null) ? 0 : getDBInstanceStatus()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMasterUsername() == null) ? 0 : getMasterUsername()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getDBName() == null) ? 0 : getDBName().hashCode());
-        hashCode = prime * hashCode
-                + ((getEndpoint() == null) ? 0 : getEndpoint().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAllocatedStorage() == null) ? 0 : getAllocatedStorage()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getInstanceCreateTime() == null) ? 0
-                        : getInstanceCreateTime().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPreferredBackupWindow() == null) ? 0
-                        : getPreferredBackupWindow().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getBackupRetentionPeriod() == null) ? 0
-                        : getBackupRetentionPeriod().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBSecurityGroups() == null) ? 0 : getDBSecurityGroups()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getVpcSecurityGroups() == null) ? 0
-                        : getVpcSecurityGroups().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBParameterGroups() == null) ? 0
-                        : getDBParameterGroups().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBSubnetGroup() == null) ? 0 : getDBSubnetGroup()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPreferredMaintenanceWindow() == null) ? 0
-                        : getPreferredMaintenanceWindow().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPendingModifiedValues() == null) ? 0
-                        : getPendingModifiedValues().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getLatestRestorableTime() == null) ? 0
-                        : getLatestRestorableTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getMultiAZ() == null) ? 0 : getMultiAZ().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEngineVersion() == null) ? 0 : getEngineVersion()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAutoMinorVersionUpgrade() == null) ? 0
-                        : getAutoMinorVersionUpgrade().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReadReplicaSourceDBInstanceIdentifier() == null) ? 0
-                        : getReadReplicaSourceDBInstanceIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReadReplicaDBInstanceIdentifiers() == null) ? 0
-                        : getReadReplicaDBInstanceIdentifiers().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getLicenseModel() == null) ? 0 : getLicenseModel()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getIops() == null) ? 0 : getIops().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOptionGroupMemberships() == null) ? 0
-                        : getOptionGroupMemberships().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCharacterSetName() == null) ? 0 : getCharacterSetName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSecondaryAvailabilityZone() == null) ? 0
-                        : getSecondaryAvailabilityZone().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPubliclyAccessible() == null) ? 0
-                        : getPubliclyAccessible().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStatusInfos() == null) ? 0 : getStatusInfos().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStorageType() == null) ? 0 : getStorageType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTdeCredentialArn() == null) ? 0 : getTdeCredentialArn()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDbInstancePort() == null) ? 0 : getDbInstancePort()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBClusterIdentifier() == null) ? 0
-                        : getDBClusterIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStorageEncrypted() == null) ? 0 : getStorageEncrypted()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDbiResourceId() == null) ? 0 : getDbiResourceId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCACertificateIdentifier() == null) ? 0
-                        : getCACertificateIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDomainMemberships() == null) ? 0
-                        : getDomainMemberships().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCopyTagsToSnapshot() == null) ? 0
-                        : getCopyTagsToSnapshot().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMonitoringInterval() == null) ? 0
-                        : getMonitoringInterval().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEnhancedMonitoringResourceArn() == null) ? 0
-                        : getEnhancedMonitoringResourceArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMonitoringRoleArn() == null) ? 0
-                        : getMonitoringRoleArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPromotionTier() == null) ? 0 : getPromotionTier()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBInstanceArn() == null) ? 0 : getDBInstanceArn()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getDBInstanceIdentifier() == null) ? 0 : getDBInstanceIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getDBInstanceClass() == null) ? 0 : getDBInstanceClass().hashCode());
+        hashCode = prime * hashCode + ((getEngine() == null) ? 0 : getEngine().hashCode());
+        hashCode = prime * hashCode + ((getDBInstanceStatus() == null) ? 0 : getDBInstanceStatus().hashCode());
+        hashCode = prime * hashCode + ((getMasterUsername() == null) ? 0 : getMasterUsername().hashCode());
+        hashCode = prime * hashCode + ((getDBName() == null) ? 0 : getDBName().hashCode());
+        hashCode = prime * hashCode + ((getEndpoint() == null) ? 0 : getEndpoint().hashCode());
+        hashCode = prime * hashCode + ((getAllocatedStorage() == null) ? 0 : getAllocatedStorage().hashCode());
+        hashCode = prime * hashCode + ((getInstanceCreateTime() == null) ? 0 : getInstanceCreateTime().hashCode());
+        hashCode = prime * hashCode + ((getPreferredBackupWindow() == null) ? 0 : getPreferredBackupWindow().hashCode());
+        hashCode = prime * hashCode + ((getBackupRetentionPeriod() == null) ? 0 : getBackupRetentionPeriod().hashCode());
+        hashCode = prime * hashCode + ((getDBSecurityGroups() == null) ? 0 : getDBSecurityGroups().hashCode());
+        hashCode = prime * hashCode + ((getVpcSecurityGroups() == null) ? 0 : getVpcSecurityGroups().hashCode());
+        hashCode = prime * hashCode + ((getDBParameterGroups() == null) ? 0 : getDBParameterGroups().hashCode());
+        hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getDBSubnetGroup() == null) ? 0 : getDBSubnetGroup().hashCode());
+        hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode());
+        hashCode = prime * hashCode + ((getPendingModifiedValues() == null) ? 0 : getPendingModifiedValues().hashCode());
+        hashCode = prime * hashCode + ((getLatestRestorableTime() == null) ? 0 : getLatestRestorableTime().hashCode());
+        hashCode = prime * hashCode + ((getMultiAZ() == null) ? 0 : getMultiAZ().hashCode());
+        hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getAutoMinorVersionUpgrade() == null) ? 0 : getAutoMinorVersionUpgrade().hashCode());
+        hashCode = prime * hashCode + ((getReadReplicaSourceDBInstanceIdentifier() == null) ? 0 : getReadReplicaSourceDBInstanceIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getReadReplicaDBInstanceIdentifiers() == null) ? 0 : getReadReplicaDBInstanceIdentifiers().hashCode());
+        hashCode = prime * hashCode + ((getReadReplicaDBClusterIdentifiers() == null) ? 0 : getReadReplicaDBClusterIdentifiers().hashCode());
+        hashCode = prime * hashCode + ((getLicenseModel() == null) ? 0 : getLicenseModel().hashCode());
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode());
+        hashCode = prime * hashCode + ((getOptionGroupMemberships() == null) ? 0 : getOptionGroupMemberships().hashCode());
+        hashCode = prime * hashCode + ((getCharacterSetName() == null) ? 0 : getCharacterSetName().hashCode());
+        hashCode = prime * hashCode + ((getSecondaryAvailabilityZone() == null) ? 0 : getSecondaryAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getPubliclyAccessible() == null) ? 0 : getPubliclyAccessible().hashCode());
+        hashCode = prime * hashCode + ((getStatusInfos() == null) ? 0 : getStatusInfos().hashCode());
+        hashCode = prime * hashCode + ((getStorageType() == null) ? 0 : getStorageType().hashCode());
+        hashCode = prime * hashCode + ((getTdeCredentialArn() == null) ? 0 : getTdeCredentialArn().hashCode());
+        hashCode = prime * hashCode + ((getDbInstancePort() == null) ? 0 : getDbInstancePort().hashCode());
+        hashCode = prime * hashCode + ((getDBClusterIdentifier() == null) ? 0 : getDBClusterIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getStorageEncrypted() == null) ? 0 : getStorageEncrypted().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getDbiResourceId() == null) ? 0 : getDbiResourceId().hashCode());
+        hashCode = prime * hashCode + ((getCACertificateIdentifier() == null) ? 0 : getCACertificateIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getDomainMemberships() == null) ? 0 : getDomainMemberships().hashCode());
+        hashCode = prime * hashCode + ((getCopyTagsToSnapshot() == null) ? 0 : getCopyTagsToSnapshot().hashCode());
+        hashCode = prime * hashCode + ((getMonitoringInterval() == null) ? 0 : getMonitoringInterval().hashCode());
+        hashCode = prime * hashCode + ((getEnhancedMonitoringResourceArn() == null) ? 0 : getEnhancedMonitoringResourceArn().hashCode());
+        hashCode = prime * hashCode + ((getMonitoringRoleArn() == null) ? 0 : getMonitoringRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getPromotionTier() == null) ? 0 : getPromotionTier().hashCode());
+        hashCode = prime * hashCode + ((getDBInstanceArn() == null) ? 0 : getDBInstanceArn().hashCode());
+        hashCode = prime * hashCode + ((getTimezone() == null) ? 0 : getTimezone().hashCode());
+        hashCode = prime * hashCode + ((getIAMDatabaseAuthenticationEnabled() == null) ? 0 : getIAMDatabaseAuthenticationEnabled().hashCode());
         return hashCode;
     }
 
@@ -3848,9 +3659,8 @@ public class DBInstance implements Serializable, Cloneable {
         try {
             return (DBInstance) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

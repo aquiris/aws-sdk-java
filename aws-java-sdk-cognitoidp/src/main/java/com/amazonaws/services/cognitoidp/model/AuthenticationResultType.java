@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The result type of the authentication result.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AuthenticationResultType"
+ *      target="_top">AWS API Documentation</a>
  */
-public class AuthenticationResultType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AuthenticationResultType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -92,8 +97,7 @@ public class AuthenticationResultType implements Serializable, Cloneable {
      * 
      * @param accessToken
      *        The access token of the authentication result.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AuthenticationResultType withAccessToken(String accessToken) {
@@ -133,8 +137,7 @@ public class AuthenticationResultType implements Serializable, Cloneable {
      * 
      * @param expiresIn
      *        The expiration period of the authentication result.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AuthenticationResultType withExpiresIn(Integer expiresIn) {
@@ -174,8 +177,7 @@ public class AuthenticationResultType implements Serializable, Cloneable {
      * 
      * @param tokenType
      *        The token type of the authentication result.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AuthenticationResultType withTokenType(String tokenType) {
@@ -215,8 +217,7 @@ public class AuthenticationResultType implements Serializable, Cloneable {
      * 
      * @param refreshToken
      *        The refresh token of the authentication result.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AuthenticationResultType withRefreshToken(String refreshToken) {
@@ -256,8 +257,7 @@ public class AuthenticationResultType implements Serializable, Cloneable {
      * 
      * @param idToken
      *        The ID token of the authentication result.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AuthenticationResultType withIdToken(String idToken) {
@@ -297,19 +297,16 @@ public class AuthenticationResultType implements Serializable, Cloneable {
      * 
      * @param newDeviceMetadata
      *        The new device metadata from an authentication result.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AuthenticationResultType withNewDeviceMetadata(
-            NewDeviceMetadataType newDeviceMetadata) {
+    public AuthenticationResultType withNewDeviceMetadata(NewDeviceMetadataType newDeviceMetadata) {
         setNewDeviceMetadata(newDeviceMetadata);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -320,17 +317,17 @@ public class AuthenticationResultType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccessToken() != null)
-            sb.append("AccessToken: " + getAccessToken() + ",");
+            sb.append("AccessToken: ").append(getAccessToken()).append(",");
         if (getExpiresIn() != null)
-            sb.append("ExpiresIn: " + getExpiresIn() + ",");
+            sb.append("ExpiresIn: ").append(getExpiresIn()).append(",");
         if (getTokenType() != null)
-            sb.append("TokenType: " + getTokenType() + ",");
+            sb.append("TokenType: ").append(getTokenType()).append(",");
         if (getRefreshToken() != null)
-            sb.append("RefreshToken: " + getRefreshToken() + ",");
+            sb.append("RefreshToken: ").append(getRefreshToken()).append(",");
         if (getIdToken() != null)
-            sb.append("IdToken: " + getIdToken() + ",");
+            sb.append("IdToken: ").append(getIdToken()).append(",");
         if (getNewDeviceMetadata() != null)
-            sb.append("NewDeviceMetadata: " + getNewDeviceMetadata());
+            sb.append("NewDeviceMetadata: ").append(getNewDeviceMetadata());
         sb.append("}");
         return sb.toString();
     }
@@ -347,35 +344,27 @@ public class AuthenticationResultType implements Serializable, Cloneable {
         AuthenticationResultType other = (AuthenticationResultType) obj;
         if (other.getAccessToken() == null ^ this.getAccessToken() == null)
             return false;
-        if (other.getAccessToken() != null
-                && other.getAccessToken().equals(this.getAccessToken()) == false)
+        if (other.getAccessToken() != null && other.getAccessToken().equals(this.getAccessToken()) == false)
             return false;
         if (other.getExpiresIn() == null ^ this.getExpiresIn() == null)
             return false;
-        if (other.getExpiresIn() != null
-                && other.getExpiresIn().equals(this.getExpiresIn()) == false)
+        if (other.getExpiresIn() != null && other.getExpiresIn().equals(this.getExpiresIn()) == false)
             return false;
         if (other.getTokenType() == null ^ this.getTokenType() == null)
             return false;
-        if (other.getTokenType() != null
-                && other.getTokenType().equals(this.getTokenType()) == false)
+        if (other.getTokenType() != null && other.getTokenType().equals(this.getTokenType()) == false)
             return false;
         if (other.getRefreshToken() == null ^ this.getRefreshToken() == null)
             return false;
-        if (other.getRefreshToken() != null
-                && other.getRefreshToken().equals(this.getRefreshToken()) == false)
+        if (other.getRefreshToken() != null && other.getRefreshToken().equals(this.getRefreshToken()) == false)
             return false;
         if (other.getIdToken() == null ^ this.getIdToken() == null)
             return false;
-        if (other.getIdToken() != null
-                && other.getIdToken().equals(this.getIdToken()) == false)
+        if (other.getIdToken() != null && other.getIdToken().equals(this.getIdToken()) == false)
             return false;
-        if (other.getNewDeviceMetadata() == null
-                ^ this.getNewDeviceMetadata() == null)
+        if (other.getNewDeviceMetadata() == null ^ this.getNewDeviceMetadata() == null)
             return false;
-        if (other.getNewDeviceMetadata() != null
-                && other.getNewDeviceMetadata().equals(
-                        this.getNewDeviceMetadata()) == false)
+        if (other.getNewDeviceMetadata() != null && other.getNewDeviceMetadata().equals(this.getNewDeviceMetadata()) == false)
             return false;
         return true;
     }
@@ -385,23 +374,12 @@ public class AuthenticationResultType implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAccessToken() == null) ? 0 : getAccessToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getExpiresIn() == null) ? 0 : getExpiresIn().hashCode());
-        hashCode = prime * hashCode
-                + ((getTokenType() == null) ? 0 : getTokenType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRefreshToken() == null) ? 0 : getRefreshToken()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getIdToken() == null) ? 0 : getIdToken().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNewDeviceMetadata() == null) ? 0
-                        : getNewDeviceMetadata().hashCode());
+        hashCode = prime * hashCode + ((getAccessToken() == null) ? 0 : getAccessToken().hashCode());
+        hashCode = prime * hashCode + ((getExpiresIn() == null) ? 0 : getExpiresIn().hashCode());
+        hashCode = prime * hashCode + ((getTokenType() == null) ? 0 : getTokenType().hashCode());
+        hashCode = prime * hashCode + ((getRefreshToken() == null) ? 0 : getRefreshToken().hashCode());
+        hashCode = prime * hashCode + ((getIdToken() == null) ? 0 : getIdToken().hashCode());
+        hashCode = prime * hashCode + ((getNewDeviceMetadata() == null) ? 0 : getNewDeviceMetadata().hashCode());
         return hashCode;
     }
 
@@ -410,9 +388,13 @@ public class AuthenticationResultType implements Serializable, Cloneable {
         try {
             return (AuthenticationResultType) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.AuthenticationResultTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

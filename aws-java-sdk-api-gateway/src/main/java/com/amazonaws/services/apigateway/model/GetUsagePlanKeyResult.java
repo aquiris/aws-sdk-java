@@ -1,20 +1,19 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
@@ -22,14 +21,14 @@ import java.io.Serializable;
  * </p>
  * <div class="remarks">
  * <p>
- * To associate an API stage with a selected API key in a usage plan, you must
- * create a UsagePlanKey resource to represent the selected <a>ApiKey</a>.
+ * To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to
+ * represent the selected <a>ApiKey</a>.
  * </p>
- * </div>" <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/
- * latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage
- * Plans</a> </div>
+ * </div>" <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-
+ * usage-plans.html">Create and Use Usage Plans</a> </div>
  */
-public class GetUsagePlanKeyResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetUsagePlanKeyResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -39,8 +38,7 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
     private String id;
     /**
      * <p>
-     * The type of a usage plan key. Currently, the valid key type is
-     * <code>API_KEY</code>.
+     * The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.
      * </p>
      */
     private String type;
@@ -89,8 +87,7 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
      * 
      * @param id
      *        The Id of a usage plan key.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsagePlanKeyResult withId(String id) {
@@ -100,13 +97,11 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of a usage plan key. Currently, the valid key type is
-     * <code>API_KEY</code>.
+     * The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.
      * </p>
      * 
      * @param type
-     *        The type of a usage plan key. Currently, the valid key type is
-     *        <code>API_KEY</code>.
+     *        The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.
      */
 
     public void setType(String type) {
@@ -115,12 +110,10 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of a usage plan key. Currently, the valid key type is
-     * <code>API_KEY</code>.
+     * The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.
      * </p>
      * 
-     * @return The type of a usage plan key. Currently, the valid key type is
-     *         <code>API_KEY</code>.
+     * @return The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.
      */
 
     public String getType() {
@@ -129,15 +122,12 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of a usage plan key. Currently, the valid key type is
-     * <code>API_KEY</code>.
+     * The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.
      * </p>
      * 
      * @param type
-     *        The type of a usage plan key. Currently, the valid key type is
-     *        <code>API_KEY</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsagePlanKeyResult withType(String type) {
@@ -177,8 +167,7 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
      * 
      * @param value
      *        The value of a usage plan key.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsagePlanKeyResult withValue(String value) {
@@ -218,8 +207,7 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
      * 
      * @param name
      *        The name of a usage plan key.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsagePlanKeyResult withName(String name) {
@@ -228,8 +216,7 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -240,13 +227,13 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue() + ",");
+            sb.append("Value: ").append(getValue()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName());
+            sb.append("Name: ").append(getName());
         sb.append("}");
         return sb.toString();
     }
@@ -263,23 +250,19 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
         GetUsagePlanKeyResult other = (GetUsagePlanKeyResult) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getType() == null ^ this.getType() == null)
             return false;
-        if (other.getType() != null
-                && other.getType().equals(this.getType()) == false)
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
         if (other.getValue() == null ^ this.getValue() == null)
             return false;
-        if (other.getValue() != null
-                && other.getValue().equals(this.getValue()) == false)
+        if (other.getValue() != null && other.getValue().equals(this.getValue()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         return true;
     }
@@ -289,14 +272,10 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getType() == null) ? 0 : getType().hashCode());
-        hashCode = prime * hashCode
-                + ((getValue() == null) ? 0 : getValue().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getValue() == null) ? 0 : getValue().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         return hashCode;
     }
 
@@ -305,9 +284,8 @@ public class GetUsagePlanKeyResult implements Serializable, Cloneable {
         try {
             return (GetUsagePlanKeyResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,36 +1,39 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * When you update a reference data source configuration for an application,
- * this object provides all the updated values (such as the source bucket name
- * and object key name), the in-application table name that is created, and
- * updated mapping information that maps the data in the Amazon S3 object to the
- * in-application reference table that is created.
+ * When you update a reference data source configuration for an application, this object provides all the updated values
+ * (such as the source bucket name and object key name), the in-application table name that is created, and updated
+ * mapping information that maps the data in the Amazon S3 object to the in-application reference table that is created.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ReferenceDataSourceUpdate"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReferenceDataSourceUpdate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * ID of the reference data source being updated. You can use the
-     * <a>DescribeApplication</a> operation to get this value.
+     * ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get this
+     * value.
      * </p>
      */
     private String referenceId;
@@ -42,9 +45,8 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
     private String tableNameUpdate;
     /**
      * <p>
-     * Describes the S3 bucket name, object key name, and IAM role that Amazon
-     * Kinesis Analytics can assume to read the Amazon S3 object on your behalf
-     * and populate the in-application reference table.
+     * Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the
+     * Amazon S3 object on your behalf and populate the in-application reference table.
      * </p>
      */
     private S3ReferenceDataSourceUpdate s3ReferenceDataSourceUpdate;
@@ -53,13 +55,13 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * ID of the reference data source being updated. You can use the
-     * <a>DescribeApplication</a> operation to get this value.
+     * ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get this
+     * value.
      * </p>
      * 
      * @param referenceId
-     *        ID of the reference data source being updated. You can use the
-     *        <a>DescribeApplication</a> operation to get this value.
+     *        ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get
+     *        this value.
      */
 
     public void setReferenceId(String referenceId) {
@@ -68,12 +70,12 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * ID of the reference data source being updated. You can use the
-     * <a>DescribeApplication</a> operation to get this value.
+     * ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get this
+     * value.
      * </p>
      * 
-     * @return ID of the reference data source being updated. You can use the
-     *         <a>DescribeApplication</a> operation to get this value.
+     * @return ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to
+     *         get this value.
      */
 
     public String getReferenceId() {
@@ -82,15 +84,14 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * ID of the reference data source being updated. You can use the
-     * <a>DescribeApplication</a> operation to get this value.
+     * ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get this
+     * value.
      * </p>
      * 
      * @param referenceId
-     *        ID of the reference data source being updated. You can use the
-     *        <a>DescribeApplication</a> operation to get this value.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get
+     *        this value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReferenceDataSourceUpdate withReferenceId(String referenceId) {
@@ -130,8 +131,7 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
      * 
      * @param tableNameUpdate
      *        In-application table name that is created by this update.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReferenceDataSourceUpdate withTableNameUpdate(String tableNameUpdate) {
@@ -141,32 +141,27 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Describes the S3 bucket name, object key name, and IAM role that Amazon
-     * Kinesis Analytics can assume to read the Amazon S3 object on your behalf
-     * and populate the in-application reference table.
+     * Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the
+     * Amazon S3 object on your behalf and populate the in-application reference table.
      * </p>
      * 
      * @param s3ReferenceDataSourceUpdate
-     *        Describes the S3 bucket name, object key name, and IAM role that
-     *        Amazon Kinesis Analytics can assume to read the Amazon S3 object
-     *        on your behalf and populate the in-application reference table.
+     *        Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to
+     *        read the Amazon S3 object on your behalf and populate the in-application reference table.
      */
 
-    public void setS3ReferenceDataSourceUpdate(
-            S3ReferenceDataSourceUpdate s3ReferenceDataSourceUpdate) {
+    public void setS3ReferenceDataSourceUpdate(S3ReferenceDataSourceUpdate s3ReferenceDataSourceUpdate) {
         this.s3ReferenceDataSourceUpdate = s3ReferenceDataSourceUpdate;
     }
 
     /**
      * <p>
-     * Describes the S3 bucket name, object key name, and IAM role that Amazon
-     * Kinesis Analytics can assume to read the Amazon S3 object on your behalf
-     * and populate the in-application reference table.
+     * Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the
+     * Amazon S3 object on your behalf and populate the in-application reference table.
      * </p>
      * 
-     * @return Describes the S3 bucket name, object key name, and IAM role that
-     *         Amazon Kinesis Analytics can assume to read the Amazon S3 object
-     *         on your behalf and populate the in-application reference table.
+     * @return Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to
+     *         read the Amazon S3 object on your behalf and populate the in-application reference table.
      */
 
     public S3ReferenceDataSourceUpdate getS3ReferenceDataSourceUpdate() {
@@ -175,21 +170,17 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Describes the S3 bucket name, object key name, and IAM role that Amazon
-     * Kinesis Analytics can assume to read the Amazon S3 object on your behalf
-     * and populate the in-application reference table.
+     * Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the
+     * Amazon S3 object on your behalf and populate the in-application reference table.
      * </p>
      * 
      * @param s3ReferenceDataSourceUpdate
-     *        Describes the S3 bucket name, object key name, and IAM role that
-     *        Amazon Kinesis Analytics can assume to read the Amazon S3 object
-     *        on your behalf and populate the in-application reference table.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to
+     *        read the Amazon S3 object on your behalf and populate the in-application reference table.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReferenceDataSourceUpdate withS3ReferenceDataSourceUpdate(
-            S3ReferenceDataSourceUpdate s3ReferenceDataSourceUpdate) {
+    public ReferenceDataSourceUpdate withS3ReferenceDataSourceUpdate(S3ReferenceDataSourceUpdate s3ReferenceDataSourceUpdate) {
         setS3ReferenceDataSourceUpdate(s3ReferenceDataSourceUpdate);
         return this;
     }
@@ -212,19 +203,16 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
 
     /**
      * @param referenceSchemaUpdate
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReferenceDataSourceUpdate withReferenceSchemaUpdate(
-            SourceSchema referenceSchemaUpdate) {
+    public ReferenceDataSourceUpdate withReferenceSchemaUpdate(SourceSchema referenceSchemaUpdate) {
         setReferenceSchemaUpdate(referenceSchemaUpdate);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -235,14 +223,13 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReferenceId() != null)
-            sb.append("ReferenceId: " + getReferenceId() + ",");
+            sb.append("ReferenceId: ").append(getReferenceId()).append(",");
         if (getTableNameUpdate() != null)
-            sb.append("TableNameUpdate: " + getTableNameUpdate() + ",");
+            sb.append("TableNameUpdate: ").append(getTableNameUpdate()).append(",");
         if (getS3ReferenceDataSourceUpdate() != null)
-            sb.append("S3ReferenceDataSourceUpdate: "
-                    + getS3ReferenceDataSourceUpdate() + ",");
+            sb.append("S3ReferenceDataSourceUpdate: ").append(getS3ReferenceDataSourceUpdate()).append(",");
         if (getReferenceSchemaUpdate() != null)
-            sb.append("ReferenceSchemaUpdate: " + getReferenceSchemaUpdate());
+            sb.append("ReferenceSchemaUpdate: ").append(getReferenceSchemaUpdate());
         sb.append("}");
         return sb.toString();
     }
@@ -259,28 +246,19 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
         ReferenceDataSourceUpdate other = (ReferenceDataSourceUpdate) obj;
         if (other.getReferenceId() == null ^ this.getReferenceId() == null)
             return false;
-        if (other.getReferenceId() != null
-                && other.getReferenceId().equals(this.getReferenceId()) == false)
+        if (other.getReferenceId() != null && other.getReferenceId().equals(this.getReferenceId()) == false)
             return false;
-        if (other.getTableNameUpdate() == null
-                ^ this.getTableNameUpdate() == null)
+        if (other.getTableNameUpdate() == null ^ this.getTableNameUpdate() == null)
             return false;
-        if (other.getTableNameUpdate() != null
-                && other.getTableNameUpdate().equals(this.getTableNameUpdate()) == false)
+        if (other.getTableNameUpdate() != null && other.getTableNameUpdate().equals(this.getTableNameUpdate()) == false)
             return false;
-        if (other.getS3ReferenceDataSourceUpdate() == null
-                ^ this.getS3ReferenceDataSourceUpdate() == null)
+        if (other.getS3ReferenceDataSourceUpdate() == null ^ this.getS3ReferenceDataSourceUpdate() == null)
             return false;
-        if (other.getS3ReferenceDataSourceUpdate() != null
-                && other.getS3ReferenceDataSourceUpdate().equals(
-                        this.getS3ReferenceDataSourceUpdate()) == false)
+        if (other.getS3ReferenceDataSourceUpdate() != null && other.getS3ReferenceDataSourceUpdate().equals(this.getS3ReferenceDataSourceUpdate()) == false)
             return false;
-        if (other.getReferenceSchemaUpdate() == null
-                ^ this.getReferenceSchemaUpdate() == null)
+        if (other.getReferenceSchemaUpdate() == null ^ this.getReferenceSchemaUpdate() == null)
             return false;
-        if (other.getReferenceSchemaUpdate() != null
-                && other.getReferenceSchemaUpdate().equals(
-                        this.getReferenceSchemaUpdate()) == false)
+        if (other.getReferenceSchemaUpdate() != null && other.getReferenceSchemaUpdate().equals(this.getReferenceSchemaUpdate()) == false)
             return false;
         return true;
     }
@@ -290,21 +268,10 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getReferenceId() == null) ? 0 : getReferenceId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTableNameUpdate() == null) ? 0 : getTableNameUpdate()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getS3ReferenceDataSourceUpdate() == null) ? 0
-                        : getS3ReferenceDataSourceUpdate().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReferenceSchemaUpdate() == null) ? 0
-                        : getReferenceSchemaUpdate().hashCode());
+        hashCode = prime * hashCode + ((getReferenceId() == null) ? 0 : getReferenceId().hashCode());
+        hashCode = prime * hashCode + ((getTableNameUpdate() == null) ? 0 : getTableNameUpdate().hashCode());
+        hashCode = prime * hashCode + ((getS3ReferenceDataSourceUpdate() == null) ? 0 : getS3ReferenceDataSourceUpdate().hashCode());
+        hashCode = prime * hashCode + ((getReferenceSchemaUpdate() == null) ? 0 : getReferenceSchemaUpdate().hashCode());
         return hashCode;
     }
 
@@ -313,9 +280,13 @@ public class ReferenceDataSourceUpdate implements Serializable, Cloneable {
         try {
             return (ReferenceDataSourceUpdate) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.ReferenceDataSourceUpdateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

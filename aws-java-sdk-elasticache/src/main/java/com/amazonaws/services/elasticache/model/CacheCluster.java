@@ -1,48 +1,58 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains all of the attributes of a specific cache cluster.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheCluster" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The user-supplied identifier of the cache cluster. This identifier is a
-     * unique key that identifies a cache cluster.
+     * The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a cache
+     * cluster.
      * </p>
      */
     private String cacheClusterId;
-
+    /**
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     */
     private Endpoint configurationEndpoint;
     /**
      * <p>
-     * The URL of the web page where you can download the latest ElastiCache
-     * client library.
+     * The URL of the web page where you can download the latest ElastiCache client library.
      * </p>
      */
     private String clientDownloadLandingPage;
     /**
      * <p>
-     * The name of the compute and memory capacity node type for the cache
-     * cluster.
+     * The name of the compute and memory capacity node type for the cache cluster.
      * </p>
      * <p>
      * Valid node types are as follows:
@@ -55,16 +65,15 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>,
-     * <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     * <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
+     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>,
-     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      * </p>
      * </li>
@@ -82,15 +91,13 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -102,36 +109,35 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for t2 instances.
+     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
+     * supported on Redis (cluster mode enabled) T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for t1 or t2
-     * instances.
+     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For a complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache
-     * Product Features and Details</a> and <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific"
+     * For a complete listing of node types and specifications, see <a
+     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
+     * <a href=
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific"
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Redis</a>.
      * </p>
      */
     private String cacheNodeType;
     /**
      * <p>
-     * The name of the cache engine (<i>memcached</i> or <i>redis</i>) to be
-     * used for this cache cluster.
+     * The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache cluster.
      * </p>
      */
     private String engine;
@@ -143,10 +149,10 @@ public class CacheCluster implements Serializable, Cloneable {
     private String engineVersion;
     /**
      * <p>
-     * The current state of this cache cluster, one of the following values:
-     * <i>available</i>, <i>creating</i>, <i>deleted</i>, <i>deleting</i>,
-     * <i>incompatible-network</i>, <i>modifying</i>, <i>rebooting cache cluster
-     * nodes</i>, <i>restore-failed</i>, or <i>snapshotting</i>.
+     * The current state of this cache cluster, one of the following values: <code>available</code>,
+     * <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>,
+     * <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or
+     * <code>snapshotting</code>.
      * </p>
      */
     private String cacheClusterStatus;
@@ -155,16 +161,15 @@ public class CacheCluster implements Serializable, Cloneable {
      * The number of cache nodes in the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      */
     private Integer numCacheNodes;
     /**
      * <p>
-     * The name of the Availability Zone in which the cache cluster is located
-     * or "Multiple" if the cache nodes are located in different Availability
-     * Zones.
+     * The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes are
+     * located in different Availability Zones.
      * </p>
      */
     private String preferredAvailabilityZone;
@@ -176,10 +181,11 @@ public class CacheCluster implements Serializable, Cloneable {
     private java.util.Date cacheClusterCreateTime;
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache
-     * cluster is performed. It is specified as a range in the format
-     * ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-     * is a 60 minute period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * </p>
+     * <p>
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <ul>
      * <li>
@@ -219,7 +225,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * Example: <code>sun:05:00-sun:09:00</code>
+     * Example: <code>sun:23:00-mon:01:30</code>
      * </p>
      */
     private String preferredMaintenanceWindow;
@@ -229,8 +235,7 @@ public class CacheCluster implements Serializable, Cloneable {
     private NotificationConfiguration notificationConfiguration;
     /**
      * <p>
-     * A list of cache security group elements, composed of name and status
-     * sub-elements.
+     * A list of cache security group elements, composed of name and status sub-elements.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<CacheSecurityGroupMembership> cacheSecurityGroups;
@@ -262,30 +267,27 @@ public class CacheCluster implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<SecurityGroupMembership> securityGroups;
     /**
      * <p>
-     * The replication group to which this cache cluster belongs. If this field
-     * is empty, the cache cluster is not associated with any replication group.
+     * The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is not
+     * associated with any replication group.
      * </p>
      */
     private String replicationGroupId;
     /**
      * <p>
-     * The number of days for which ElastiCache will retain automatic cache
-     * cluster snapshots before deleting them. For example, if you set
-     * <i>SnapshotRetentionLimit</i> to 5, then a snapshot that was taken today
-     * will be retained for 5 days before being deleted.
+     * The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them. For
+     * example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5
+     * days before being deleted.
      * </p>
      * <important>
      * <p>
-     * If the value of SnapshotRetentionLimit is set to zero (0), backups are
-     * turned off.
+     * If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
      * </p>
      * </important>
      */
     private Integer snapshotRetentionLimit;
     /**
      * <p>
-     * The daily time range (in UTC) during which ElastiCache will begin taking
-     * a daily snapshot of your cache cluster.
+     * The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache cluster.
      * </p>
      * <p>
      * Example: <code>05:00-09:00</code>
@@ -295,13 +297,13 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The user-supplied identifier of the cache cluster. This identifier is a
-     * unique key that identifies a cache cluster.
+     * The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a cache
+     * cluster.
      * </p>
      * 
      * @param cacheClusterId
-     *        The user-supplied identifier of the cache cluster. This identifier
-     *        is a unique key that identifies a cache cluster.
+     *        The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a cache
+     *        cluster.
      */
 
     public void setCacheClusterId(String cacheClusterId) {
@@ -310,12 +312,12 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The user-supplied identifier of the cache cluster. This identifier is a
-     * unique key that identifies a cache cluster.
+     * The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a cache
+     * cluster.
      * </p>
      * 
-     * @return The user-supplied identifier of the cache cluster. This
-     *         identifier is a unique key that identifies a cache cluster.
+     * @return The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a
+     *         cache cluster.
      */
 
     public String getCacheClusterId() {
@@ -324,15 +326,14 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The user-supplied identifier of the cache cluster. This identifier is a
-     * unique key that identifies a cache cluster.
+     * The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a cache
+     * cluster.
      * </p>
      * 
      * @param cacheClusterId
-     *        The user-supplied identifier of the cache cluster. This identifier
-     *        is a unique key that identifies a cache cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The user-supplied identifier of the cache cluster. This identifier is a unique key that identifies a cache
+     *        cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withCacheClusterId(String cacheClusterId) {
@@ -341,7 +342,21 @@ public class CacheCluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     * 
      * @param configurationEndpoint
+     *        Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be
+     *        used by an application to connect to any node in the cluster. The configuration endpoint will always have
+     *        <code>.cfg</code> in it.</p>
+     *        <p>
+     *        Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
      */
 
     public void setConfigurationEndpoint(Endpoint configurationEndpoint) {
@@ -349,7 +364,20 @@ public class CacheCluster implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     * 
+     * @return Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be
+     *         used by an application to connect to any node in the cluster. The configuration endpoint will always have
+     *         <code>.cfg</code> in it.</p>
+     *         <p>
+     *         Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
      */
 
     public Endpoint getConfigurationEndpoint() {
@@ -357,9 +385,22 @@ public class CacheCluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be used by
+     * an application to connect to any node in the cluster. The configuration endpoint will always have
+     * <code>.cfg</code> in it.
+     * </p>
+     * <p>
+     * Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * </p>
+     * 
      * @param configurationEndpoint
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on the cluster, can be
+     *        used by an application to connect to any node in the cluster. The configuration endpoint will always have
+     *        <code>.cfg</code> in it.</p>
+     *        <p>
+     *        Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withConfigurationEndpoint(Endpoint configurationEndpoint) {
@@ -369,13 +410,11 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The URL of the web page where you can download the latest ElastiCache
-     * client library.
+     * The URL of the web page where you can download the latest ElastiCache client library.
      * </p>
      * 
      * @param clientDownloadLandingPage
-     *        The URL of the web page where you can download the latest
-     *        ElastiCache client library.
+     *        The URL of the web page where you can download the latest ElastiCache client library.
      */
 
     public void setClientDownloadLandingPage(String clientDownloadLandingPage) {
@@ -384,12 +423,10 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The URL of the web page where you can download the latest ElastiCache
-     * client library.
+     * The URL of the web page where you can download the latest ElastiCache client library.
      * </p>
      * 
-     * @return The URL of the web page where you can download the latest
-     *         ElastiCache client library.
+     * @return The URL of the web page where you can download the latest ElastiCache client library.
      */
 
     public String getClientDownloadLandingPage() {
@@ -398,27 +435,22 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The URL of the web page where you can download the latest ElastiCache
-     * client library.
+     * The URL of the web page where you can download the latest ElastiCache client library.
      * </p>
      * 
      * @param clientDownloadLandingPage
-     *        The URL of the web page where you can download the latest
-     *        ElastiCache client library.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The URL of the web page where you can download the latest ElastiCache client library.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withClientDownloadLandingPage(
-            String clientDownloadLandingPage) {
+    public CacheCluster withClientDownloadLandingPage(String clientDownloadLandingPage) {
         setClientDownloadLandingPage(clientDownloadLandingPage);
         return this;
     }
 
     /**
      * <p>
-     * The name of the compute and memory capacity node type for the cache
-     * cluster.
+     * The name of the compute and memory capacity node type for the cache cluster.
      * </p>
      * <p>
      * Valid node types are as follows:
@@ -431,16 +463,15 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>,
-     * <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     * <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
+     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>,
-     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      * </p>
      * </li>
@@ -458,15 +489,13 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -478,34 +507,33 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for t2 instances.
+     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
+     * supported on Redis (cluster mode enabled) T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for t1 or t2
-     * instances.
+     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For a complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache
-     * Product Features and Details</a> and <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific"
+     * For a complete listing of node types and specifications, see <a
+     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
+     * <a href=
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific"
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Redis</a>.
      * </p>
      * 
      * @param cacheNodeType
-     *        The name of the compute and memory capacity node type for the
-     *        cache cluster.</p>
+     *        The name of the compute and memory capacity node type for the cache cluster.</p>
      *        <p>
      *        Valid node types are as follows:
      *        </p>
@@ -517,17 +545,15 @@ public class CacheCluster implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.t2.micro</code>,
-     *        <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     *        <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     *        <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.t1.micro</code>,
-     *        <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
-     *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
+     *        <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -544,15 +570,14 @@ public class CacheCluster implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.r3.large</code>,
-     *        <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     *        <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.m2.xlarge</code>,
-     *        <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     *        Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     *        <code>cache.m2.4xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -564,29 +589,28 @@ public class CacheCluster implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        All t2 instances are created in an Amazon Virtual Private Cloud
-     *        (VPC).
+     *        All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis backup/restore is not supported for t2 instances.
+     *        Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances.
+     *        Backup/restore is supported on Redis (cluster mode enabled) T2 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis Append-only files (AOF) functionality is not supported for
-     *        t1 or t2 instances.
+     *        Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        For a complete listing of cache node types and specifications, see
-     *        <a href="http://aws.amazon.com/elasticache/details">Amazon
-     *        ElastiCache Product Features and Details</a> and <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific"
+     *        For a complete listing of node types and specifications, see <a
+     *        href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
+     *        either <a href=
+     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
      *        >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific"
+     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      *        >Cache Node Type-Specific Parameters for Redis</a>.
      */
 
@@ -596,8 +620,7 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the compute and memory capacity node type for the cache
-     * cluster.
+     * The name of the compute and memory capacity node type for the cache cluster.
      * </p>
      * <p>
      * Valid node types are as follows:
@@ -610,16 +633,15 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>,
-     * <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     * <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
+     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>,
-     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      * </p>
      * </li>
@@ -637,15 +659,13 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -657,33 +677,32 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for t2 instances.
+     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
+     * supported on Redis (cluster mode enabled) T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for t1 or t2
-     * instances.
+     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For a complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache
-     * Product Features and Details</a> and <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific"
+     * For a complete listing of node types and specifications, see <a
+     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
+     * <a href=
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific"
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Redis</a>.
      * </p>
      * 
-     * @return The name of the compute and memory capacity node type for the
-     *         cache cluster.</p>
+     * @return The name of the compute and memory capacity node type for the cache cluster.</p>
      *         <p>
      *         Valid node types are as follows:
      *         </p>
@@ -695,17 +714,17 @@ public class CacheCluster implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         Current generation: <code>cache.t2.micro</code>,
-     *         <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     *         <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *         Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *         <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     *         <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>,
+     *         <code>cache.m4.10xlarge</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Previous generation: <code>cache.t1.micro</code>,
-     *         <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
-     *         <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *         Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
+     *         <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      *         </p>
      *         </li>
      *         </ul>
@@ -722,15 +741,14 @@ public class CacheCluster implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         Current generation: <code>cache.r3.large</code>,
-     *         <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     *         <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *         Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *         <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Previous generation: <code>cache.m2.xlarge</code>,
-     *         <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     *         Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     *         <code>cache.m2.4xlarge</code>
      *         </p>
      *         </li>
      *         </ul>
@@ -742,30 +760,28 @@ public class CacheCluster implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         All t2 instances are created in an Amazon Virtual Private Cloud
-     *         (VPC).
+     *         All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis backup/restore is not supported for t2 instances.
+     *         Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances.
+     *         Backup/restore is supported on Redis (cluster mode enabled) T2 instances.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis Append-only files (AOF) functionality is not supported for
-     *         t1 or t2 instances.
+     *         Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         For a complete listing of cache node types and specifications,
-     *         see <a href="http://aws.amazon.com/elasticache/details">Amazon
-     *         ElastiCache Product Features and Details</a> and <a href=
-     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific"
-     *         >Cache Node Type-Specific Parameters for Memcached</a> or <a
-     *         href=
-     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific"
+     *         For a complete listing of node types and specifications, see <a
+     *         href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
+     *         either <a href=
+     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
+     *         >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
+     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      *         >Cache Node Type-Specific Parameters for Redis</a>.
      */
 
@@ -775,8 +791,7 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the compute and memory capacity node type for the cache
-     * cluster.
+     * The name of the compute and memory capacity node type for the cache cluster.
      * </p>
      * <p>
      * Valid node types are as follows:
@@ -789,16 +804,15 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>,
-     * <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     * <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
+     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>,
-     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      * </p>
      * </li>
@@ -816,15 +830,13 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -836,34 +848,33 @@ public class CacheCluster implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for t2 instances.
+     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
+     * supported on Redis (cluster mode enabled) T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for t1 or t2
-     * instances.
+     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For a complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache
-     * Product Features and Details</a> and <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific"
+     * For a complete listing of node types and specifications, see <a
+     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
+     * <a href=
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific"
+     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      * >Cache Node Type-Specific Parameters for Redis</a>.
      * </p>
      * 
      * @param cacheNodeType
-     *        The name of the compute and memory capacity node type for the
-     *        cache cluster.</p>
+     *        The name of the compute and memory capacity node type for the cache cluster.</p>
      *        <p>
      *        Valid node types are as follows:
      *        </p>
@@ -875,17 +886,15 @@ public class CacheCluster implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.t2.micro</code>,
-     *        <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     *        <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     *        <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.t1.micro</code>,
-     *        <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
-     *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
+     *        <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -902,15 +911,14 @@ public class CacheCluster implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.r3.large</code>,
-     *        <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     *        <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.m2.xlarge</code>,
-     *        <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     *        Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     *        <code>cache.m2.4xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -922,32 +930,30 @@ public class CacheCluster implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        All t2 instances are created in an Amazon Virtual Private Cloud
-     *        (VPC).
+     *        All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis backup/restore is not supported for t2 instances.
+     *        Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances.
+     *        Backup/restore is supported on Redis (cluster mode enabled) T2 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis Append-only files (AOF) functionality is not supported for
-     *        t1 or t2 instances.
+     *        Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        For a complete listing of cache node types and specifications, see
-     *        <a href="http://aws.amazon.com/elasticache/details">Amazon
-     *        ElastiCache Product Features and Details</a> and <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific"
+     *        For a complete listing of node types and specifications, see <a
+     *        href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
+     *        either <a href=
+     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
      *        >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific"
+     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      *        >Cache Node Type-Specific Parameters for Redis</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withCacheNodeType(String cacheNodeType) {
@@ -957,13 +963,12 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the cache engine (<i>memcached</i> or <i>redis</i>) to be
-     * used for this cache cluster.
+     * The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache cluster.
      * </p>
      * 
      * @param engine
-     *        The name of the cache engine (<i>memcached</i> or <i>redis</i>) to
-     *        be used for this cache cluster.
+     *        The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache
+     *        cluster.
      */
 
     public void setEngine(String engine) {
@@ -972,12 +977,11 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the cache engine (<i>memcached</i> or <i>redis</i>) to be
-     * used for this cache cluster.
+     * The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache cluster.
      * </p>
      * 
-     * @return The name of the cache engine (<i>memcached</i> or <i>redis</i>)
-     *         to be used for this cache cluster.
+     * @return The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache
+     *         cluster.
      */
 
     public String getEngine() {
@@ -986,15 +990,13 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the cache engine (<i>memcached</i> or <i>redis</i>) to be
-     * used for this cache cluster.
+     * The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache cluster.
      * </p>
      * 
      * @param engine
-     *        The name of the cache engine (<i>memcached</i> or <i>redis</i>) to
-     *        be used for this cache cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the cache engine (<code>memcached</code> or <code>redis</code>) to be used for this cache
+     *        cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withEngine(String engine) {
@@ -1008,8 +1010,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * </p>
      * 
      * @param engineVersion
-     *        The version of the cache engine that is used in this cache
-     *        cluster.
+     *        The version of the cache engine that is used in this cache cluster.
      */
 
     public void setEngineVersion(String engineVersion) {
@@ -1021,8 +1022,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * The version of the cache engine that is used in this cache cluster.
      * </p>
      * 
-     * @return The version of the cache engine that is used in this cache
-     *         cluster.
+     * @return The version of the cache engine that is used in this cache cluster.
      */
 
     public String getEngineVersion() {
@@ -1035,10 +1035,8 @@ public class CacheCluster implements Serializable, Cloneable {
      * </p>
      * 
      * @param engineVersion
-     *        The version of the cache engine that is used in this cache
-     *        cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The version of the cache engine that is used in this cache cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withEngineVersion(String engineVersion) {
@@ -1048,18 +1046,17 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of this cache cluster, one of the following values:
-     * <i>available</i>, <i>creating</i>, <i>deleted</i>, <i>deleting</i>,
-     * <i>incompatible-network</i>, <i>modifying</i>, <i>rebooting cache cluster
-     * nodes</i>, <i>restore-failed</i>, or <i>snapshotting</i>.
+     * The current state of this cache cluster, one of the following values: <code>available</code>,
+     * <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>,
+     * <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or
+     * <code>snapshotting</code>.
      * </p>
      * 
      * @param cacheClusterStatus
-     *        The current state of this cache cluster, one of the following
-     *        values: <i>available</i>, <i>creating</i>, <i>deleted</i>,
-     *        <i>deleting</i>, <i>incompatible-network</i>, <i>modifying</i>,
-     *        <i>rebooting cache cluster nodes</i>, <i>restore-failed</i>, or
-     *        <i>snapshotting</i>.
+     *        The current state of this cache cluster, one of the following values: <code>available</code>,
+     *        <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>,
+     *        <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or
+     *        <code>snapshotting</code>.
      */
 
     public void setCacheClusterStatus(String cacheClusterStatus) {
@@ -1068,17 +1065,16 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of this cache cluster, one of the following values:
-     * <i>available</i>, <i>creating</i>, <i>deleted</i>, <i>deleting</i>,
-     * <i>incompatible-network</i>, <i>modifying</i>, <i>rebooting cache cluster
-     * nodes</i>, <i>restore-failed</i>, or <i>snapshotting</i>.
+     * The current state of this cache cluster, one of the following values: <code>available</code>,
+     * <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>,
+     * <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or
+     * <code>snapshotting</code>.
      * </p>
      * 
-     * @return The current state of this cache cluster, one of the following
-     *         values: <i>available</i>, <i>creating</i>, <i>deleted</i>,
-     *         <i>deleting</i>, <i>incompatible-network</i>, <i>modifying</i>,
-     *         <i>rebooting cache cluster nodes</i>, <i>restore-failed</i>, or
-     *         <i>snapshotting</i>.
+     * @return The current state of this cache cluster, one of the following values: <code>available</code>,
+     *         <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>,
+     *         <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or
+     *         <code>snapshotting</code>.
      */
 
     public String getCacheClusterStatus() {
@@ -1087,20 +1083,18 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The current state of this cache cluster, one of the following values:
-     * <i>available</i>, <i>creating</i>, <i>deleted</i>, <i>deleting</i>,
-     * <i>incompatible-network</i>, <i>modifying</i>, <i>rebooting cache cluster
-     * nodes</i>, <i>restore-failed</i>, or <i>snapshotting</i>.
+     * The current state of this cache cluster, one of the following values: <code>available</code>,
+     * <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>,
+     * <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or
+     * <code>snapshotting</code>.
      * </p>
      * 
      * @param cacheClusterStatus
-     *        The current state of this cache cluster, one of the following
-     *        values: <i>available</i>, <i>creating</i>, <i>deleted</i>,
-     *        <i>deleting</i>, <i>incompatible-network</i>, <i>modifying</i>,
-     *        <i>rebooting cache cluster nodes</i>, <i>restore-failed</i>, or
-     *        <i>snapshotting</i>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The current state of this cache cluster, one of the following values: <code>available</code>,
+     *        <code>creating</code>, <code>deleted</code>, <code>deleting</code>, <code>incompatible-network</code>,
+     *        <code>modifying</code>, <code>rebooting cache cluster nodes</code>, <code>restore-failed</code>, or
+     *        <code>snapshotting</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withCacheClusterStatus(String cacheClusterStatus) {
@@ -1113,15 +1107,15 @@ public class CacheCluster implements Serializable, Cloneable {
      * The number of cache nodes in the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      * 
      * @param numCacheNodes
      *        The number of cache nodes in the cache cluster.</p>
      *        <p>
-     *        For clusters running Redis, this value must be 1. For clusters
-     *        running Memcached, this value must be between 1 and 20.
+     *        For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
+     *        between 1 and 20.
      */
 
     public void setNumCacheNodes(Integer numCacheNodes) {
@@ -1133,14 +1127,14 @@ public class CacheCluster implements Serializable, Cloneable {
      * The number of cache nodes in the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      * 
      * @return The number of cache nodes in the cache cluster.</p>
      *         <p>
-     *         For clusters running Redis, this value must be 1. For clusters
-     *         running Memcached, this value must be between 1 and 20.
+     *         For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
+     *         between 1 and 20.
      */
 
     public Integer getNumCacheNodes() {
@@ -1152,17 +1146,16 @@ public class CacheCluster implements Serializable, Cloneable {
      * The number of cache nodes in the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      * 
      * @param numCacheNodes
      *        The number of cache nodes in the cache cluster.</p>
      *        <p>
-     *        For clusters running Redis, this value must be 1. For clusters
-     *        running Memcached, this value must be between 1 and 20.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
+     *        between 1 and 20.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withNumCacheNodes(Integer numCacheNodes) {
@@ -1172,15 +1165,13 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the Availability Zone in which the cache cluster is located
-     * or "Multiple" if the cache nodes are located in different Availability
-     * Zones.
+     * The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes are
+     * located in different Availability Zones.
      * </p>
      * 
      * @param preferredAvailabilityZone
-     *        The name of the Availability Zone in which the cache cluster is
-     *        located or "Multiple" if the cache nodes are located in different
-     *        Availability Zones.
+     *        The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes
+     *        are located in different Availability Zones.
      */
 
     public void setPreferredAvailabilityZone(String preferredAvailabilityZone) {
@@ -1189,14 +1180,12 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the Availability Zone in which the cache cluster is located
-     * or "Multiple" if the cache nodes are located in different Availability
-     * Zones.
+     * The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes are
+     * located in different Availability Zones.
      * </p>
      * 
-     * @return The name of the Availability Zone in which the cache cluster is
-     *         located or "Multiple" if the cache nodes are located in different
-     *         Availability Zones.
+     * @return The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes
+     *         are located in different Availability Zones.
      */
 
     public String getPreferredAvailabilityZone() {
@@ -1205,21 +1194,17 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the Availability Zone in which the cache cluster is located
-     * or "Multiple" if the cache nodes are located in different Availability
-     * Zones.
+     * The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes are
+     * located in different Availability Zones.
      * </p>
      * 
      * @param preferredAvailabilityZone
-     *        The name of the Availability Zone in which the cache cluster is
-     *        located or "Multiple" if the cache nodes are located in different
-     *        Availability Zones.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the Availability Zone in which the cache cluster is located or "Multiple" if the cache nodes
+     *        are located in different Availability Zones.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withPreferredAvailabilityZone(
-            String preferredAvailabilityZone) {
+    public CacheCluster withPreferredAvailabilityZone(String preferredAvailabilityZone) {
         setPreferredAvailabilityZone(preferredAvailabilityZone);
         return this;
     }
@@ -1256,22 +1241,21 @@ public class CacheCluster implements Serializable, Cloneable {
      * 
      * @param cacheClusterCreateTime
      *        The date and time when the cache cluster was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withCacheClusterCreateTime(
-            java.util.Date cacheClusterCreateTime) {
+    public CacheCluster withCacheClusterCreateTime(java.util.Date cacheClusterCreateTime) {
         setCacheClusterCreateTime(cacheClusterCreateTime);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache
-     * cluster is performed. It is specified as a range in the format
-     * ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-     * is a 60 minute period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * </p>
+     * <p>
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <ul>
      * <li>
@@ -1311,15 +1295,16 @@ public class CacheCluster implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * Example: <code>sun:05:00-sun:09:00</code>
+     * Example: <code>sun:23:00-mon:01:30</code>
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        Specifies the weekly time range during which maintenance on the
-     *        cache cluster is performed. It is specified as a range in the
-     *        format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum
-     *        maintenance window is a 60 minute period. Valid values for
-     *        <code>ddd</code> are:</p>
+     *        Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a
+     *        range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
+     *        period.</p>
+     *        <p>
+     *        Valid values for <code>ddd</code> are:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1358,7 +1343,7 @@ public class CacheCluster implements Serializable, Cloneable {
      *        </li>
      *        </ul>
      *        <p>
-     *        Example: <code>sun:05:00-sun:09:00</code>
+     *        Example: <code>sun:23:00-mon:01:30</code>
      */
 
     public void setPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
@@ -1367,10 +1352,11 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache
-     * cluster is performed. It is specified as a range in the format
-     * ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-     * is a 60 minute period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * </p>
+     * <p>
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <ul>
      * <li>
@@ -1410,14 +1396,15 @@ public class CacheCluster implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * Example: <code>sun:05:00-sun:09:00</code>
+     * Example: <code>sun:23:00-mon:01:30</code>
      * </p>
      * 
-     * @return Specifies the weekly time range during which maintenance on the
-     *         cache cluster is performed. It is specified as a range in the
-     *         format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum
-     *         maintenance window is a 60 minute period. Valid values for
-     *         <code>ddd</code> are:</p>
+     * @return Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as
+     *         a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60
+     *         minute period.</p>
+     *         <p>
+     *         Valid values for <code>ddd</code> are:
+     *         </p>
      *         <ul>
      *         <li>
      *         <p>
@@ -1456,7 +1443,7 @@ public class CacheCluster implements Serializable, Cloneable {
      *         </li>
      *         </ul>
      *         <p>
-     *         Example: <code>sun:05:00-sun:09:00</code>
+     *         Example: <code>sun:23:00-mon:01:30</code>
      */
 
     public String getPreferredMaintenanceWindow() {
@@ -1465,10 +1452,11 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache
-     * cluster is performed. It is specified as a range in the format
-     * ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-     * is a 60 minute period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * </p>
+     * <p>
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <ul>
      * <li>
@@ -1508,15 +1496,16 @@ public class CacheCluster implements Serializable, Cloneable {
      * </li>
      * </ul>
      * <p>
-     * Example: <code>sun:05:00-sun:09:00</code>
+     * Example: <code>sun:23:00-mon:01:30</code>
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        Specifies the weekly time range during which maintenance on the
-     *        cache cluster is performed. It is specified as a range in the
-     *        format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum
-     *        maintenance window is a 60 minute period. Valid values for
-     *        <code>ddd</code> are:</p>
+     *        Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a
+     *        range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
+     *        period.</p>
+     *        <p>
+     *        Valid values for <code>ddd</code> are:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
@@ -1555,13 +1544,11 @@ public class CacheCluster implements Serializable, Cloneable {
      *        </li>
      *        </ul>
      *        <p>
-     *        Example: <code>sun:05:00-sun:09:00</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Example: <code>sun:23:00-mon:01:30</code>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withPreferredMaintenanceWindow(
-            String preferredMaintenanceWindow) {
+    public CacheCluster withPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
         setPreferredMaintenanceWindow(preferredMaintenanceWindow);
         return this;
     }
@@ -1570,8 +1557,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * @param pendingModifiedValues
      */
 
-    public void setPendingModifiedValues(
-            PendingModifiedValues pendingModifiedValues) {
+    public void setPendingModifiedValues(PendingModifiedValues pendingModifiedValues) {
         this.pendingModifiedValues = pendingModifiedValues;
     }
 
@@ -1585,12 +1571,10 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * @param pendingModifiedValues
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withPendingModifiedValues(
-            PendingModifiedValues pendingModifiedValues) {
+    public CacheCluster withPendingModifiedValues(PendingModifiedValues pendingModifiedValues) {
         setPendingModifiedValues(pendingModifiedValues);
         return this;
     }
@@ -1599,8 +1583,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * @param notificationConfiguration
      */
 
-    public void setNotificationConfiguration(
-            NotificationConfiguration notificationConfiguration) {
+    public void setNotificationConfiguration(NotificationConfiguration notificationConfiguration) {
         this.notificationConfiguration = notificationConfiguration;
     }
 
@@ -1614,24 +1597,20 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * @param notificationConfiguration
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withNotificationConfiguration(
-            NotificationConfiguration notificationConfiguration) {
+    public CacheCluster withNotificationConfiguration(NotificationConfiguration notificationConfiguration) {
         setNotificationConfiguration(notificationConfiguration);
         return this;
     }
 
     /**
      * <p>
-     * A list of cache security group elements, composed of name and status
-     * sub-elements.
+     * A list of cache security group elements, composed of name and status sub-elements.
      * </p>
      * 
-     * @return A list of cache security group elements, composed of name and
-     *         status sub-elements.
+     * @return A list of cache security group elements, composed of name and status sub-elements.
      */
 
     public java.util.List<CacheSecurityGroupMembership> getCacheSecurityGroups() {
@@ -1643,50 +1622,40 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of cache security group elements, composed of name and status
-     * sub-elements.
+     * A list of cache security group elements, composed of name and status sub-elements.
      * </p>
      * 
      * @param cacheSecurityGroups
-     *        A list of cache security group elements, composed of name and
-     *        status sub-elements.
+     *        A list of cache security group elements, composed of name and status sub-elements.
      */
 
-    public void setCacheSecurityGroups(
-            java.util.Collection<CacheSecurityGroupMembership> cacheSecurityGroups) {
+    public void setCacheSecurityGroups(java.util.Collection<CacheSecurityGroupMembership> cacheSecurityGroups) {
         if (cacheSecurityGroups == null) {
             this.cacheSecurityGroups = null;
             return;
         }
 
-        this.cacheSecurityGroups = new com.amazonaws.internal.SdkInternalList<CacheSecurityGroupMembership>(
-                cacheSecurityGroups);
+        this.cacheSecurityGroups = new com.amazonaws.internal.SdkInternalList<CacheSecurityGroupMembership>(cacheSecurityGroups);
     }
 
     /**
      * <p>
-     * A list of cache security group elements, composed of name and status
-     * sub-elements.
+     * A list of cache security group elements, composed of name and status sub-elements.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setCacheSecurityGroups(java.util.Collection)} or
-     * {@link #withCacheSecurityGroups(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCacheSecurityGroups(java.util.Collection)} or {@link #withCacheSecurityGroups(java.util.Collection)}
+     * if you want to override the existing values.
      * </p>
      * 
      * @param cacheSecurityGroups
-     *        A list of cache security group elements, composed of name and
-     *        status sub-elements.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of cache security group elements, composed of name and status sub-elements.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withCacheSecurityGroups(
-            CacheSecurityGroupMembership... cacheSecurityGroups) {
+    public CacheCluster withCacheSecurityGroups(CacheSecurityGroupMembership... cacheSecurityGroups) {
         if (this.cacheSecurityGroups == null) {
-            setCacheSecurityGroups(new com.amazonaws.internal.SdkInternalList<CacheSecurityGroupMembership>(
-                    cacheSecurityGroups.length));
+            setCacheSecurityGroups(new com.amazonaws.internal.SdkInternalList<CacheSecurityGroupMembership>(cacheSecurityGroups.length));
         }
         for (CacheSecurityGroupMembership ele : cacheSecurityGroups) {
             this.cacheSecurityGroups.add(ele);
@@ -1696,19 +1665,15 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of cache security group elements, composed of name and status
-     * sub-elements.
+     * A list of cache security group elements, composed of name and status sub-elements.
      * </p>
      * 
      * @param cacheSecurityGroups
-     *        A list of cache security group elements, composed of name and
-     *        status sub-elements.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of cache security group elements, composed of name and status sub-elements.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withCacheSecurityGroups(
-            java.util.Collection<CacheSecurityGroupMembership> cacheSecurityGroups) {
+    public CacheCluster withCacheSecurityGroups(java.util.Collection<CacheSecurityGroupMembership> cacheSecurityGroups) {
         setCacheSecurityGroups(cacheSecurityGroups);
         return this;
     }
@@ -1717,8 +1682,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * @param cacheParameterGroup
      */
 
-    public void setCacheParameterGroup(
-            CacheParameterGroupStatus cacheParameterGroup) {
+    public void setCacheParameterGroup(CacheParameterGroupStatus cacheParameterGroup) {
         this.cacheParameterGroup = cacheParameterGroup;
     }
 
@@ -1732,12 +1696,10 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * @param cacheParameterGroup
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withCacheParameterGroup(
-            CacheParameterGroupStatus cacheParameterGroup) {
+    public CacheCluster withCacheParameterGroup(CacheParameterGroupStatus cacheParameterGroup) {
         setCacheParameterGroup(cacheParameterGroup);
         return this;
     }
@@ -1748,8 +1710,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * </p>
      * 
      * @param cacheSubnetGroupName
-     *        The name of the cache subnet group associated with the cache
-     *        cluster.
+     *        The name of the cache subnet group associated with the cache cluster.
      */
 
     public void setCacheSubnetGroupName(String cacheSubnetGroupName) {
@@ -1761,8 +1722,7 @@ public class CacheCluster implements Serializable, Cloneable {
      * The name of the cache subnet group associated with the cache cluster.
      * </p>
      * 
-     * @return The name of the cache subnet group associated with the cache
-     *         cluster.
+     * @return The name of the cache subnet group associated with the cache cluster.
      */
 
     public String getCacheSubnetGroupName() {
@@ -1775,10 +1735,8 @@ public class CacheCluster implements Serializable, Cloneable {
      * </p>
      * 
      * @param cacheSubnetGroupName
-     *        The name of the cache subnet group associated with the cache
-     *        cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the cache subnet group associated with the cache cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withCacheSubnetGroupName(String cacheSubnetGroupName) {
@@ -1816,8 +1774,7 @@ public class CacheCluster implements Serializable, Cloneable {
             return;
         }
 
-        this.cacheNodes = new com.amazonaws.internal.SdkInternalList<CacheNode>(
-                cacheNodes);
+        this.cacheNodes = new com.amazonaws.internal.SdkInternalList<CacheNode>(cacheNodes);
     }
 
     /**
@@ -1825,22 +1782,19 @@ public class CacheCluster implements Serializable, Cloneable {
      * A list of cache nodes that are members of the cache cluster.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setCacheNodes(java.util.Collection)} or
-     * {@link #withCacheNodes(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCacheNodes(java.util.Collection)} or {@link #withCacheNodes(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param cacheNodes
      *        A list of cache nodes that are members of the cache cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withCacheNodes(CacheNode... cacheNodes) {
         if (this.cacheNodes == null) {
-            setCacheNodes(new com.amazonaws.internal.SdkInternalList<CacheNode>(
-                    cacheNodes.length));
+            setCacheNodes(new com.amazonaws.internal.SdkInternalList<CacheNode>(cacheNodes.length));
         }
         for (CacheNode ele : cacheNodes) {
             this.cacheNodes.add(ele);
@@ -1855,12 +1809,10 @@ public class CacheCluster implements Serializable, Cloneable {
      * 
      * @param cacheNodes
      *        A list of cache nodes that are members of the cache cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withCacheNodes(
-            java.util.Collection<CacheNode> cacheNodes) {
+    public CacheCluster withCacheNodes(java.util.Collection<CacheNode> cacheNodes) {
         setCacheNodes(cacheNodes);
         return this;
     }
@@ -1897,12 +1849,10 @@ public class CacheCluster implements Serializable, Cloneable {
      * 
      * @param autoMinorVersionUpgrade
      *        This parameter is currently disabled.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withAutoMinorVersionUpgrade(
-            Boolean autoMinorVersionUpgrade) {
+    public CacheCluster withAutoMinorVersionUpgrade(Boolean autoMinorVersionUpgrade) {
         setAutoMinorVersionUpgrade(autoMinorVersionUpgrade);
         return this;
     }
@@ -1943,15 +1893,13 @@ public class CacheCluster implements Serializable, Cloneable {
      *        A list of VPC Security Groups associated with the cache cluster.
      */
 
-    public void setSecurityGroups(
-            java.util.Collection<SecurityGroupMembership> securityGroups) {
+    public void setSecurityGroups(java.util.Collection<SecurityGroupMembership> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
             return;
         }
 
-        this.securityGroups = new com.amazonaws.internal.SdkInternalList<SecurityGroupMembership>(
-                securityGroups);
+        this.securityGroups = new com.amazonaws.internal.SdkInternalList<SecurityGroupMembership>(securityGroups);
     }
 
     /**
@@ -1959,23 +1907,19 @@ public class CacheCluster implements Serializable, Cloneable {
      * A list of VPC Security Groups associated with the cache cluster.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setSecurityGroups(java.util.Collection)} or
-     * {@link #withSecurityGroups(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSecurityGroups(java.util.Collection)} or {@link #withSecurityGroups(java.util.Collection)} if you want
+     * to override the existing values.
      * </p>
      * 
      * @param securityGroups
      *        A list of VPC Security Groups associated with the cache cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withSecurityGroups(
-            SecurityGroupMembership... securityGroups) {
+    public CacheCluster withSecurityGroups(SecurityGroupMembership... securityGroups) {
         if (this.securityGroups == null) {
-            setSecurityGroups(new com.amazonaws.internal.SdkInternalList<SecurityGroupMembership>(
-                    securityGroups.length));
+            setSecurityGroups(new com.amazonaws.internal.SdkInternalList<SecurityGroupMembership>(securityGroups.length));
         }
         for (SecurityGroupMembership ele : securityGroups) {
             this.securityGroups.add(ele);
@@ -1990,26 +1934,23 @@ public class CacheCluster implements Serializable, Cloneable {
      * 
      * @param securityGroups
      *        A list of VPC Security Groups associated with the cache cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withSecurityGroups(
-            java.util.Collection<SecurityGroupMembership> securityGroups) {
+    public CacheCluster withSecurityGroups(java.util.Collection<SecurityGroupMembership> securityGroups) {
         setSecurityGroups(securityGroups);
         return this;
     }
 
     /**
      * <p>
-     * The replication group to which this cache cluster belongs. If this field
-     * is empty, the cache cluster is not associated with any replication group.
+     * The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is not
+     * associated with any replication group.
      * </p>
      * 
      * @param replicationGroupId
-     *        The replication group to which this cache cluster belongs. If this
-     *        field is empty, the cache cluster is not associated with any
-     *        replication group.
+     *        The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is
+     *        not associated with any replication group.
      */
 
     public void setReplicationGroupId(String replicationGroupId) {
@@ -2018,13 +1959,12 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The replication group to which this cache cluster belongs. If this field
-     * is empty, the cache cluster is not associated with any replication group.
+     * The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is not
+     * associated with any replication group.
      * </p>
      * 
-     * @return The replication group to which this cache cluster belongs. If
-     *         this field is empty, the cache cluster is not associated with any
-     *         replication group.
+     * @return The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is
+     *         not associated with any replication group.
      */
 
     public String getReplicationGroupId() {
@@ -2033,16 +1973,14 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The replication group to which this cache cluster belongs. If this field
-     * is empty, the cache cluster is not associated with any replication group.
+     * The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is not
+     * associated with any replication group.
      * </p>
      * 
      * @param replicationGroupId
-     *        The replication group to which this cache cluster belongs. If this
-     *        field is empty, the cache cluster is not associated with any
-     *        replication group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The replication group to which this cache cluster belongs. If this field is empty, the cache cluster is
+     *        not associated with any replication group.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withReplicationGroupId(String replicationGroupId) {
@@ -2052,27 +1990,22 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of days for which ElastiCache will retain automatic cache
-     * cluster snapshots before deleting them. For example, if you set
-     * <i>SnapshotRetentionLimit</i> to 5, then a snapshot that was taken today
-     * will be retained for 5 days before being deleted.
+     * The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them. For
+     * example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5
+     * days before being deleted.
      * </p>
      * <important>
      * <p>
-     * If the value of SnapshotRetentionLimit is set to zero (0), backups are
-     * turned off.
+     * If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
      * </p>
      * </important>
      * 
      * @param snapshotRetentionLimit
-     *        The number of days for which ElastiCache will retain automatic
-     *        cache cluster snapshots before deleting them. For example, if you
-     *        set <i>SnapshotRetentionLimit</i> to 5, then a snapshot that was
-     *        taken today will be retained for 5 days before being deleted.</p>
-     *        <important>
+     *        The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them.
+     *        For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is
+     *        retained for 5 days before being deleted.</p> <important>
      *        <p>
-     *        If the value of SnapshotRetentionLimit is set to zero (0), backups
-     *        are turned off.
+     *        If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
      *        </p>
      */
 
@@ -2082,26 +2015,21 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of days for which ElastiCache will retain automatic cache
-     * cluster snapshots before deleting them. For example, if you set
-     * <i>SnapshotRetentionLimit</i> to 5, then a snapshot that was taken today
-     * will be retained for 5 days before being deleted.
+     * The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them. For
+     * example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5
+     * days before being deleted.
      * </p>
      * <important>
      * <p>
-     * If the value of SnapshotRetentionLimit is set to zero (0), backups are
-     * turned off.
+     * If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
      * </p>
      * </important>
      * 
-     * @return The number of days for which ElastiCache will retain automatic
-     *         cache cluster snapshots before deleting them. For example, if you
-     *         set <i>SnapshotRetentionLimit</i> to 5, then a snapshot that was
-     *         taken today will be retained for 5 days before being deleted.</p>
-     *         <important>
+     * @return The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them.
+     *         For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is
+     *         retained for 5 days before being deleted.</p> <important>
      *         <p>
-     *         If the value of SnapshotRetentionLimit is set to zero (0),
-     *         backups are turned off.
+     *         If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
      *         </p>
      */
 
@@ -2111,50 +2039,42 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of days for which ElastiCache will retain automatic cache
-     * cluster snapshots before deleting them. For example, if you set
-     * <i>SnapshotRetentionLimit</i> to 5, then a snapshot that was taken today
-     * will be retained for 5 days before being deleted.
+     * The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them. For
+     * example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is retained for 5
+     * days before being deleted.
      * </p>
      * <important>
      * <p>
-     * If the value of SnapshotRetentionLimit is set to zero (0), backups are
-     * turned off.
+     * If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
      * </p>
      * </important>
      * 
      * @param snapshotRetentionLimit
-     *        The number of days for which ElastiCache will retain automatic
-     *        cache cluster snapshots before deleting them. For example, if you
-     *        set <i>SnapshotRetentionLimit</i> to 5, then a snapshot that was
-     *        taken today will be retained for 5 days before being deleted.</p>
-     *        <important>
+     *        The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them.
+     *        For example, if you set <code>SnapshotRetentionLimit</code> to 5, a snapshot that was taken today is
+     *        retained for 5 days before being deleted.</p> <important>
      *        <p>
-     *        If the value of SnapshotRetentionLimit is set to zero (0), backups
-     *        are turned off.
+     *        If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
      *        </p>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CacheCluster withSnapshotRetentionLimit(
-            Integer snapshotRetentionLimit) {
+    public CacheCluster withSnapshotRetentionLimit(Integer snapshotRetentionLimit) {
         setSnapshotRetentionLimit(snapshotRetentionLimit);
         return this;
     }
 
     /**
      * <p>
-     * The daily time range (in UTC) during which ElastiCache will begin taking
-     * a daily snapshot of your cache cluster.
+     * The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache cluster.
      * </p>
      * <p>
      * Example: <code>05:00-09:00</code>
      * </p>
      * 
      * @param snapshotWindow
-     *        The daily time range (in UTC) during which ElastiCache will begin
-     *        taking a daily snapshot of your cache cluster.</p>
+     *        The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache
+     *        cluster.</p>
      *        <p>
      *        Example: <code>05:00-09:00</code>
      */
@@ -2165,15 +2085,14 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The daily time range (in UTC) during which ElastiCache will begin taking
-     * a daily snapshot of your cache cluster.
+     * The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache cluster.
      * </p>
      * <p>
      * Example: <code>05:00-09:00</code>
      * </p>
      * 
-     * @return The daily time range (in UTC) during which ElastiCache will begin
-     *         taking a daily snapshot of your cache cluster.</p>
+     * @return The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache
+     *         cluster.</p>
      *         <p>
      *         Example: <code>05:00-09:00</code>
      */
@@ -2184,20 +2103,18 @@ public class CacheCluster implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The daily time range (in UTC) during which ElastiCache will begin taking
-     * a daily snapshot of your cache cluster.
+     * The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache cluster.
      * </p>
      * <p>
      * Example: <code>05:00-09:00</code>
      * </p>
      * 
      * @param snapshotWindow
-     *        The daily time range (in UTC) during which ElastiCache will begin
-     *        taking a daily snapshot of your cache cluster.</p>
+     *        The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your cache
+     *        cluster.</p>
      *        <p>
      *        Example: <code>05:00-09:00</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CacheCluster withSnapshotWindow(String snapshotWindow) {
@@ -2206,8 +2123,7 @@ public class CacheCluster implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -2218,59 +2134,49 @@ public class CacheCluster implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCacheClusterId() != null)
-            sb.append("CacheClusterId: " + getCacheClusterId() + ",");
+            sb.append("CacheClusterId: ").append(getCacheClusterId()).append(",");
         if (getConfigurationEndpoint() != null)
-            sb.append("ConfigurationEndpoint: " + getConfigurationEndpoint()
-                    + ",");
+            sb.append("ConfigurationEndpoint: ").append(getConfigurationEndpoint()).append(",");
         if (getClientDownloadLandingPage() != null)
-            sb.append("ClientDownloadLandingPage: "
-                    + getClientDownloadLandingPage() + ",");
+            sb.append("ClientDownloadLandingPage: ").append(getClientDownloadLandingPage()).append(",");
         if (getCacheNodeType() != null)
-            sb.append("CacheNodeType: " + getCacheNodeType() + ",");
+            sb.append("CacheNodeType: ").append(getCacheNodeType()).append(",");
         if (getEngine() != null)
-            sb.append("Engine: " + getEngine() + ",");
+            sb.append("Engine: ").append(getEngine()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getCacheClusterStatus() != null)
-            sb.append("CacheClusterStatus: " + getCacheClusterStatus() + ",");
+            sb.append("CacheClusterStatus: ").append(getCacheClusterStatus()).append(",");
         if (getNumCacheNodes() != null)
-            sb.append("NumCacheNodes: " + getNumCacheNodes() + ",");
+            sb.append("NumCacheNodes: ").append(getNumCacheNodes()).append(",");
         if (getPreferredAvailabilityZone() != null)
-            sb.append("PreferredAvailabilityZone: "
-                    + getPreferredAvailabilityZone() + ",");
+            sb.append("PreferredAvailabilityZone: ").append(getPreferredAvailabilityZone()).append(",");
         if (getCacheClusterCreateTime() != null)
-            sb.append("CacheClusterCreateTime: " + getCacheClusterCreateTime()
-                    + ",");
+            sb.append("CacheClusterCreateTime: ").append(getCacheClusterCreateTime()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: "
-                    + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getPendingModifiedValues() != null)
-            sb.append("PendingModifiedValues: " + getPendingModifiedValues()
-                    + ",");
+            sb.append("PendingModifiedValues: ").append(getPendingModifiedValues()).append(",");
         if (getNotificationConfiguration() != null)
-            sb.append("NotificationConfiguration: "
-                    + getNotificationConfiguration() + ",");
+            sb.append("NotificationConfiguration: ").append(getNotificationConfiguration()).append(",");
         if (getCacheSecurityGroups() != null)
-            sb.append("CacheSecurityGroups: " + getCacheSecurityGroups() + ",");
+            sb.append("CacheSecurityGroups: ").append(getCacheSecurityGroups()).append(",");
         if (getCacheParameterGroup() != null)
-            sb.append("CacheParameterGroup: " + getCacheParameterGroup() + ",");
+            sb.append("CacheParameterGroup: ").append(getCacheParameterGroup()).append(",");
         if (getCacheSubnetGroupName() != null)
-            sb.append("CacheSubnetGroupName: " + getCacheSubnetGroupName()
-                    + ",");
+            sb.append("CacheSubnetGroupName: ").append(getCacheSubnetGroupName()).append(",");
         if (getCacheNodes() != null)
-            sb.append("CacheNodes: " + getCacheNodes() + ",");
+            sb.append("CacheNodes: ").append(getCacheNodes()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: "
-                    + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getSecurityGroups() != null)
-            sb.append("SecurityGroups: " + getSecurityGroups() + ",");
+            sb.append("SecurityGroups: ").append(getSecurityGroups()).append(",");
         if (getReplicationGroupId() != null)
-            sb.append("ReplicationGroupId: " + getReplicationGroupId() + ",");
+            sb.append("ReplicationGroupId: ").append(getReplicationGroupId()).append(",");
         if (getSnapshotRetentionLimit() != null)
-            sb.append("SnapshotRetentionLimit: " + getSnapshotRetentionLimit()
-                    + ",");
+            sb.append("SnapshotRetentionLimit: ").append(getSnapshotRetentionLimit()).append(",");
         if (getSnapshotWindow() != null)
-            sb.append("SnapshotWindow: " + getSnapshotWindow());
+            sb.append("SnapshotWindow: ").append(getSnapshotWindow());
         sb.append("}");
         return sb.toString();
     }
@@ -2285,146 +2191,93 @@ public class CacheCluster implements Serializable, Cloneable {
         if (obj instanceof CacheCluster == false)
             return false;
         CacheCluster other = (CacheCluster) obj;
-        if (other.getCacheClusterId() == null
-                ^ this.getCacheClusterId() == null)
+        if (other.getCacheClusterId() == null ^ this.getCacheClusterId() == null)
             return false;
-        if (other.getCacheClusterId() != null
-                && other.getCacheClusterId().equals(this.getCacheClusterId()) == false)
+        if (other.getCacheClusterId() != null && other.getCacheClusterId().equals(this.getCacheClusterId()) == false)
             return false;
-        if (other.getConfigurationEndpoint() == null
-                ^ this.getConfigurationEndpoint() == null)
+        if (other.getConfigurationEndpoint() == null ^ this.getConfigurationEndpoint() == null)
             return false;
-        if (other.getConfigurationEndpoint() != null
-                && other.getConfigurationEndpoint().equals(
-                        this.getConfigurationEndpoint()) == false)
+        if (other.getConfigurationEndpoint() != null && other.getConfigurationEndpoint().equals(this.getConfigurationEndpoint()) == false)
             return false;
-        if (other.getClientDownloadLandingPage() == null
-                ^ this.getClientDownloadLandingPage() == null)
+        if (other.getClientDownloadLandingPage() == null ^ this.getClientDownloadLandingPage() == null)
             return false;
-        if (other.getClientDownloadLandingPage() != null
-                && other.getClientDownloadLandingPage().equals(
-                        this.getClientDownloadLandingPage()) == false)
+        if (other.getClientDownloadLandingPage() != null && other.getClientDownloadLandingPage().equals(this.getClientDownloadLandingPage()) == false)
             return false;
         if (other.getCacheNodeType() == null ^ this.getCacheNodeType() == null)
             return false;
-        if (other.getCacheNodeType() != null
-                && other.getCacheNodeType().equals(this.getCacheNodeType()) == false)
+        if (other.getCacheNodeType() != null && other.getCacheNodeType().equals(this.getCacheNodeType()) == false)
             return false;
         if (other.getEngine() == null ^ this.getEngine() == null)
             return false;
-        if (other.getEngine() != null
-                && other.getEngine().equals(this.getEngine()) == false)
+        if (other.getEngine() != null && other.getEngine().equals(this.getEngine()) == false)
             return false;
         if (other.getEngineVersion() == null ^ this.getEngineVersion() == null)
             return false;
-        if (other.getEngineVersion() != null
-                && other.getEngineVersion().equals(this.getEngineVersion()) == false)
+        if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
             return false;
-        if (other.getCacheClusterStatus() == null
-                ^ this.getCacheClusterStatus() == null)
+        if (other.getCacheClusterStatus() == null ^ this.getCacheClusterStatus() == null)
             return false;
-        if (other.getCacheClusterStatus() != null
-                && other.getCacheClusterStatus().equals(
-                        this.getCacheClusterStatus()) == false)
+        if (other.getCacheClusterStatus() != null && other.getCacheClusterStatus().equals(this.getCacheClusterStatus()) == false)
             return false;
         if (other.getNumCacheNodes() == null ^ this.getNumCacheNodes() == null)
             return false;
-        if (other.getNumCacheNodes() != null
-                && other.getNumCacheNodes().equals(this.getNumCacheNodes()) == false)
+        if (other.getNumCacheNodes() != null && other.getNumCacheNodes().equals(this.getNumCacheNodes()) == false)
             return false;
-        if (other.getPreferredAvailabilityZone() == null
-                ^ this.getPreferredAvailabilityZone() == null)
+        if (other.getPreferredAvailabilityZone() == null ^ this.getPreferredAvailabilityZone() == null)
             return false;
-        if (other.getPreferredAvailabilityZone() != null
-                && other.getPreferredAvailabilityZone().equals(
-                        this.getPreferredAvailabilityZone()) == false)
+        if (other.getPreferredAvailabilityZone() != null && other.getPreferredAvailabilityZone().equals(this.getPreferredAvailabilityZone()) == false)
             return false;
-        if (other.getCacheClusterCreateTime() == null
-                ^ this.getCacheClusterCreateTime() == null)
+        if (other.getCacheClusterCreateTime() == null ^ this.getCacheClusterCreateTime() == null)
             return false;
-        if (other.getCacheClusterCreateTime() != null
-                && other.getCacheClusterCreateTime().equals(
-                        this.getCacheClusterCreateTime()) == false)
+        if (other.getCacheClusterCreateTime() != null && other.getCacheClusterCreateTime().equals(this.getCacheClusterCreateTime()) == false)
             return false;
-        if (other.getPreferredMaintenanceWindow() == null
-                ^ this.getPreferredMaintenanceWindow() == null)
+        if (other.getPreferredMaintenanceWindow() == null ^ this.getPreferredMaintenanceWindow() == null)
             return false;
-        if (other.getPreferredMaintenanceWindow() != null
-                && other.getPreferredMaintenanceWindow().equals(
-                        this.getPreferredMaintenanceWindow()) == false)
+        if (other.getPreferredMaintenanceWindow() != null && other.getPreferredMaintenanceWindow().equals(this.getPreferredMaintenanceWindow()) == false)
             return false;
-        if (other.getPendingModifiedValues() == null
-                ^ this.getPendingModifiedValues() == null)
+        if (other.getPendingModifiedValues() == null ^ this.getPendingModifiedValues() == null)
             return false;
-        if (other.getPendingModifiedValues() != null
-                && other.getPendingModifiedValues().equals(
-                        this.getPendingModifiedValues()) == false)
+        if (other.getPendingModifiedValues() != null && other.getPendingModifiedValues().equals(this.getPendingModifiedValues()) == false)
             return false;
-        if (other.getNotificationConfiguration() == null
-                ^ this.getNotificationConfiguration() == null)
+        if (other.getNotificationConfiguration() == null ^ this.getNotificationConfiguration() == null)
             return false;
-        if (other.getNotificationConfiguration() != null
-                && other.getNotificationConfiguration().equals(
-                        this.getNotificationConfiguration()) == false)
+        if (other.getNotificationConfiguration() != null && other.getNotificationConfiguration().equals(this.getNotificationConfiguration()) == false)
             return false;
-        if (other.getCacheSecurityGroups() == null
-                ^ this.getCacheSecurityGroups() == null)
+        if (other.getCacheSecurityGroups() == null ^ this.getCacheSecurityGroups() == null)
             return false;
-        if (other.getCacheSecurityGroups() != null
-                && other.getCacheSecurityGroups().equals(
-                        this.getCacheSecurityGroups()) == false)
+        if (other.getCacheSecurityGroups() != null && other.getCacheSecurityGroups().equals(this.getCacheSecurityGroups()) == false)
             return false;
-        if (other.getCacheParameterGroup() == null
-                ^ this.getCacheParameterGroup() == null)
+        if (other.getCacheParameterGroup() == null ^ this.getCacheParameterGroup() == null)
             return false;
-        if (other.getCacheParameterGroup() != null
-                && other.getCacheParameterGroup().equals(
-                        this.getCacheParameterGroup()) == false)
+        if (other.getCacheParameterGroup() != null && other.getCacheParameterGroup().equals(this.getCacheParameterGroup()) == false)
             return false;
-        if (other.getCacheSubnetGroupName() == null
-                ^ this.getCacheSubnetGroupName() == null)
+        if (other.getCacheSubnetGroupName() == null ^ this.getCacheSubnetGroupName() == null)
             return false;
-        if (other.getCacheSubnetGroupName() != null
-                && other.getCacheSubnetGroupName().equals(
-                        this.getCacheSubnetGroupName()) == false)
+        if (other.getCacheSubnetGroupName() != null && other.getCacheSubnetGroupName().equals(this.getCacheSubnetGroupName()) == false)
             return false;
         if (other.getCacheNodes() == null ^ this.getCacheNodes() == null)
             return false;
-        if (other.getCacheNodes() != null
-                && other.getCacheNodes().equals(this.getCacheNodes()) == false)
+        if (other.getCacheNodes() != null && other.getCacheNodes().equals(this.getCacheNodes()) == false)
             return false;
-        if (other.getAutoMinorVersionUpgrade() == null
-                ^ this.getAutoMinorVersionUpgrade() == null)
+        if (other.getAutoMinorVersionUpgrade() == null ^ this.getAutoMinorVersionUpgrade() == null)
             return false;
-        if (other.getAutoMinorVersionUpgrade() != null
-                && other.getAutoMinorVersionUpgrade().equals(
-                        this.getAutoMinorVersionUpgrade()) == false)
+        if (other.getAutoMinorVersionUpgrade() != null && other.getAutoMinorVersionUpgrade().equals(this.getAutoMinorVersionUpgrade()) == false)
             return false;
-        if (other.getSecurityGroups() == null
-                ^ this.getSecurityGroups() == null)
+        if (other.getSecurityGroups() == null ^ this.getSecurityGroups() == null)
             return false;
-        if (other.getSecurityGroups() != null
-                && other.getSecurityGroups().equals(this.getSecurityGroups()) == false)
+        if (other.getSecurityGroups() != null && other.getSecurityGroups().equals(this.getSecurityGroups()) == false)
             return false;
-        if (other.getReplicationGroupId() == null
-                ^ this.getReplicationGroupId() == null)
+        if (other.getReplicationGroupId() == null ^ this.getReplicationGroupId() == null)
             return false;
-        if (other.getReplicationGroupId() != null
-                && other.getReplicationGroupId().equals(
-                        this.getReplicationGroupId()) == false)
+        if (other.getReplicationGroupId() != null && other.getReplicationGroupId().equals(this.getReplicationGroupId()) == false)
             return false;
-        if (other.getSnapshotRetentionLimit() == null
-                ^ this.getSnapshotRetentionLimit() == null)
+        if (other.getSnapshotRetentionLimit() == null ^ this.getSnapshotRetentionLimit() == null)
             return false;
-        if (other.getSnapshotRetentionLimit() != null
-                && other.getSnapshotRetentionLimit().equals(
-                        this.getSnapshotRetentionLimit()) == false)
+        if (other.getSnapshotRetentionLimit() != null && other.getSnapshotRetentionLimit().equals(this.getSnapshotRetentionLimit()) == false)
             return false;
-        if (other.getSnapshotWindow() == null
-                ^ this.getSnapshotWindow() == null)
+        if (other.getSnapshotWindow() == null ^ this.getSnapshotWindow() == null)
             return false;
-        if (other.getSnapshotWindow() != null
-                && other.getSnapshotWindow().equals(this.getSnapshotWindow()) == false)
+        if (other.getSnapshotWindow() != null && other.getSnapshotWindow().equals(this.getSnapshotWindow()) == false)
             return false;
         return true;
     }
@@ -2434,90 +2287,28 @@ public class CacheCluster implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCacheClusterId() == null) ? 0 : getCacheClusterId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getConfigurationEndpoint() == null) ? 0
-                        : getConfigurationEndpoint().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClientDownloadLandingPage() == null) ? 0
-                        : getClientDownloadLandingPage().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheNodeType() == null) ? 0 : getCacheNodeType()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getEngine() == null) ? 0 : getEngine().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEngineVersion() == null) ? 0 : getEngineVersion()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheClusterStatus() == null) ? 0
-                        : getCacheClusterStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNumCacheNodes() == null) ? 0 : getNumCacheNodes()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPreferredAvailabilityZone() == null) ? 0
-                        : getPreferredAvailabilityZone().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheClusterCreateTime() == null) ? 0
-                        : getCacheClusterCreateTime().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPreferredMaintenanceWindow() == null) ? 0
-                        : getPreferredMaintenanceWindow().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPendingModifiedValues() == null) ? 0
-                        : getPendingModifiedValues().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNotificationConfiguration() == null) ? 0
-                        : getNotificationConfiguration().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheSecurityGroups() == null) ? 0
-                        : getCacheSecurityGroups().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheParameterGroup() == null) ? 0
-                        : getCacheParameterGroup().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheSubnetGroupName() == null) ? 0
-                        : getCacheSubnetGroupName().hashCode());
-        hashCode = prime * hashCode
-                + ((getCacheNodes() == null) ? 0 : getCacheNodes().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAutoMinorVersionUpgrade() == null) ? 0
-                        : getAutoMinorVersionUpgrade().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSecurityGroups() == null) ? 0 : getSecurityGroups()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationGroupId() == null) ? 0
-                        : getReplicationGroupId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotRetentionLimit() == null) ? 0
-                        : getSnapshotRetentionLimit().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotWindow() == null) ? 0 : getSnapshotWindow()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getCacheClusterId() == null) ? 0 : getCacheClusterId().hashCode());
+        hashCode = prime * hashCode + ((getConfigurationEndpoint() == null) ? 0 : getConfigurationEndpoint().hashCode());
+        hashCode = prime * hashCode + ((getClientDownloadLandingPage() == null) ? 0 : getClientDownloadLandingPage().hashCode());
+        hashCode = prime * hashCode + ((getCacheNodeType() == null) ? 0 : getCacheNodeType().hashCode());
+        hashCode = prime * hashCode + ((getEngine() == null) ? 0 : getEngine().hashCode());
+        hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getCacheClusterStatus() == null) ? 0 : getCacheClusterStatus().hashCode());
+        hashCode = prime * hashCode + ((getNumCacheNodes() == null) ? 0 : getNumCacheNodes().hashCode());
+        hashCode = prime * hashCode + ((getPreferredAvailabilityZone() == null) ? 0 : getPreferredAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getCacheClusterCreateTime() == null) ? 0 : getCacheClusterCreateTime().hashCode());
+        hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode());
+        hashCode = prime * hashCode + ((getPendingModifiedValues() == null) ? 0 : getPendingModifiedValues().hashCode());
+        hashCode = prime * hashCode + ((getNotificationConfiguration() == null) ? 0 : getNotificationConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getCacheSecurityGroups() == null) ? 0 : getCacheSecurityGroups().hashCode());
+        hashCode = prime * hashCode + ((getCacheParameterGroup() == null) ? 0 : getCacheParameterGroup().hashCode());
+        hashCode = prime * hashCode + ((getCacheSubnetGroupName() == null) ? 0 : getCacheSubnetGroupName().hashCode());
+        hashCode = prime * hashCode + ((getCacheNodes() == null) ? 0 : getCacheNodes().hashCode());
+        hashCode = prime * hashCode + ((getAutoMinorVersionUpgrade() == null) ? 0 : getAutoMinorVersionUpgrade().hashCode());
+        hashCode = prime * hashCode + ((getSecurityGroups() == null) ? 0 : getSecurityGroups().hashCode());
+        hashCode = prime * hashCode + ((getReplicationGroupId() == null) ? 0 : getReplicationGroupId().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotRetentionLimit() == null) ? 0 : getSnapshotRetentionLimit().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotWindow() == null) ? 0 : getSnapshotWindow().hashCode());
         return hashCode;
     }
 
@@ -2526,9 +2317,8 @@ public class CacheCluster implements Serializable, Cloneable {
         try {
             return (CacheCluster) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

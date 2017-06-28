@@ -1,7 +1,8 @@
 ${fileHeader}
-package ${metadata.packageName}.model.transform;
+package ${transformPackage};
 
 import org.w3c.dom.Node;
+import javax.annotation.Generated;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.util.XpathUtils;
@@ -9,6 +10,7 @@ import com.amazonaws.transform.${exceptionUnmarshallerImpl};
 
 import ${metadata.packageName}.model.${shape.shapeName};
 
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ${shape.shapeName}Unmarshaller extends ${exceptionUnmarshallerImpl} {
 
     public ${shape.shapeName}Unmarshaller() {
@@ -29,7 +31,7 @@ public class ${shape.shapeName}Unmarshaller extends ${exceptionUnmarshallerImpl}
               <#assign variableName = "${memberModel.variable.variableName}"?cap_first/>
               <#if !memberModel.isList() && !memberModel.isMap() >
                 <#-- List and Map are yet to be supported -->
-                e.set${variableName}(XpathUtils.as${memberModel.variable.simpleType}(getErrorPropertyPath("${memberModel.c2jName}"), node));
+                e.${memberModel.setterMethodName}(XpathUtils.as${memberModel.variable.simpleType}(getErrorPropertyPath("${memberModel.c2jName}"), node));
               </#if >
             </#list>
         </#if>

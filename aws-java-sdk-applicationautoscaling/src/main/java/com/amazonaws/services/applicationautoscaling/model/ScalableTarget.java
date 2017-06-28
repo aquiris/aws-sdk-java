@@ -1,79 +1,152 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.applicationautoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a scalable target.
+ * Represents a scalable target.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/ScalableTarget"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ScalableTarget implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ScalableTarget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scalable target is associated
-     * with. For more information, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     * >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      */
     private String serviceNamespace;
     /**
      * <p>
-     * The resource type and unique identifier string for the resource
-     * associated with the scalable target. For Amazon ECS services, the
-     * resource type is <code>services</code>, and the identifier is the cluster
-     * name and service name; for example,
-     * <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet
-     * requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
+     * unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB table - The resource type is <code>table</code> and the unique identifier is the resource ID. Example:
+     * <code>table/my-table</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB global secondary index - The resource type is <code>index</code> and the unique identifier is the
+     * resource ID. Example: <code>table/my-table/index/my-table-index</code>.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String resourceId;
     /**
      * <p>
-     * The scalable dimension associated with the scalable target. The scalable
-     * dimension contains the service namespace, resource type, and scaling
-     * property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     * resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String scalableDimension;
     /**
      * <p>
-     * The minimum value for this scalable target to scale in to in response to
-     * scaling activities.
+     * The minimum value to scale to in response to a scale in event.
      * </p>
      */
     private Integer minCapacity;
     /**
      * <p>
-     * The maximum value for this scalable target to scale out to in response to
-     * scaling activities.
+     * The maximum value to scale to in response to a scale out event.
      * </p>
      */
     private Integer maxCapacity;
     /**
      * <p>
-     * The ARN of the IAM role that allows Application Auto Scaling to modify
-     * your scalable target on your behalf.
+     * The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      */
     private String roleARN;
@@ -86,18 +159,15 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scalable target is associated
-     * with. For more information, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     * >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scalable target is
-     *        associated with. For more information, see <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General
-     *        Reference.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
 
@@ -107,17 +177,14 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scalable target is associated
-     * with. For more information, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     * >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
-     * @return The namespace for the AWS service that the scalable target is
-     *         associated with. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *         >AWS Service Namespaces</a> in the Amazon Web Services General
-     *         Reference.
+     * @return The namespace of the AWS service. For more information, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *         >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
 
@@ -127,20 +194,16 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scalable target is associated
-     * with. For more information, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     * >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scalable target is
-     *        associated with. For more information, see <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General
-     *        Reference.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ServiceNamespace
      */
 
@@ -151,18 +214,15 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scalable target is associated
-     * with. For more information, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     * >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scalable target is
-     *        associated with. For more information, see <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General
-     *        Reference.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
 
@@ -172,20 +232,16 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The namespace for the AWS service that the scalable target is associated
-     * with. For more information, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     * >AWS Service Namespaces</a> in the Amazon Web Services General Reference.
+     * The namespace of the AWS service. For more information, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
-     *        The namespace for the AWS service that the scalable target is
-     *        associated with. For more information, see <a href=
+     *        The namespace of the AWS service. For more information, see <a href=
      *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
-     *        >AWS Service Namespaces</a> in the Amazon Web Services General
-     *        Reference.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ServiceNamespace
      */
 
@@ -196,27 +252,88 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The resource type and unique identifier string for the resource
-     * associated with the scalable target. For Amazon ECS services, the
-     * resource type is <code>services</code>, and the identifier is the cluster
-     * name and service name; for example,
-     * <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet
-     * requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
+     * unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB table - The resource type is <code>table</code> and the unique identifier is the resource ID. Example:
+     * <code>table/my-table</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB global secondary index - The resource type is <code>index</code> and the unique identifier is the
+     * resource ID. Example: <code>table/my-table/index/my-table-index</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param resourceId
-     *        The resource type and unique identifier string for the resource
-     *        associated with the scalable target. For Amazon ECS services, the
-     *        resource type is <code>services</code>, and the identifier is the
-     *        cluster name and service name; for example,
-     *        <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     *        fleet requests, the resource type is
-     *        <code>spot-fleet-request</code>, and the identifier is the Spot
-     *        fleet request ID; for example,
-     *        <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>
-     *        .
+     *        The identifier of the resource associated with the scalable target. This string consists of the resource
+     *        type and unique identifier.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and
+     *        service name. Example: <code>service/default/sample-webapp</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
+     *        Spot fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID
+     *        and instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     *        Example: <code>fleet/sample-fleet</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        DynamoDB table - The resource type is <code>table</code> and the unique identifier is the resource ID.
+     *        Example: <code>table/my-table</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        DynamoDB global secondary index - The resource type is <code>index</code> and the unique identifier is the
+     *        resource ID. Example: <code>table/my-table/index/my-table-index</code>.
+     *        </p>
+     *        </li>
      */
 
     public void setResourceId(String resourceId) {
@@ -225,26 +342,88 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The resource type and unique identifier string for the resource
-     * associated with the scalable target. For Amazon ECS services, the
-     * resource type is <code>services</code>, and the identifier is the cluster
-     * name and service name; for example,
-     * <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet
-     * requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
+     * unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB table - The resource type is <code>table</code> and the unique identifier is the resource ID. Example:
+     * <code>table/my-table</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB global secondary index - The resource type is <code>index</code> and the unique identifier is the
+     * resource ID. Example: <code>table/my-table/index/my-table-index</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The resource type and unique identifier string for the resource
-     *         associated with the scalable target. For Amazon ECS services, the
-     *         resource type is <code>services</code>, and the identifier is the
-     *         cluster name and service name; for example,
-     *         <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     *         fleet requests, the resource type is
-     *         <code>spot-fleet-request</code>, and the identifier is the Spot
-     *         fleet request ID; for example,
-     *         <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>
-     *         .
+     * @return The identifier of the resource associated with the scalable target. This string consists of the resource
+     *         type and unique identifier.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and
+     *         service name. Example: <code>service/default/sample-webapp</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is
+     *         the Spot fleet request ID. Example:
+     *         <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID
+     *         and instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet
+     *         name. Example: <code>fleet/sample-fleet</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DynamoDB table - The resource type is <code>table</code> and the unique identifier is the resource ID.
+     *         Example: <code>table/my-table</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DynamoDB global secondary index - The resource type is <code>index</code> and the unique identifier is
+     *         the resource ID. Example: <code>table/my-table/index/my-table-index</code>.
+     *         </p>
+     *         </li>
      */
 
     public String getResourceId() {
@@ -253,29 +432,89 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The resource type and unique identifier string for the resource
-     * associated with the scalable target. For Amazon ECS services, the
-     * resource type is <code>services</code>, and the identifier is the cluster
-     * name and service name; for example,
-     * <code>service/default/sample-webapp</code>. For Amazon EC2 Spot fleet
-     * requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
-     * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
+     * unique identifier.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and service
+     * name. Example: <code>service/default/sample-webapp</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID and
+     * instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     * Example: <code>fleet/sample-fleet</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB table - The resource type is <code>table</code> and the unique identifier is the resource ID. Example:
+     * <code>table/my-table</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DynamoDB global secondary index - The resource type is <code>index</code> and the unique identifier is the
+     * resource ID. Example: <code>table/my-table/index/my-table-index</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param resourceId
-     *        The resource type and unique identifier string for the resource
-     *        associated with the scalable target. For Amazon ECS services, the
-     *        resource type is <code>services</code>, and the identifier is the
-     *        cluster name and service name; for example,
-     *        <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     *        fleet requests, the resource type is
-     *        <code>spot-fleet-request</code>, and the identifier is the Spot
-     *        fleet request ID; for example,
-     *        <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>
-     *        .
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The identifier of the resource associated with the scalable target. This string consists of the resource
+     *        type and unique identifier.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name and
+     *        service name. Example: <code>service/default/sample-webapp</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
+     *        Spot fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        EMR cluster - The resource type is <code>instancegroup</code> and the unique identifier is the cluster ID
+     *        and instance group ID. Example: <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique identifier is the fleet name.
+     *        Example: <code>fleet/sample-fleet</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        DynamoDB table - The resource type is <code>table</code> and the unique identifier is the resource ID.
+     *        Example: <code>table/my-table</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        DynamoDB global secondary index - The resource type is <code>index</code> and the unique identifier is the
+     *        resource ID. Example: <code>table/my-table/index/my-table-index</code>.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScalableTarget withResourceId(String resourceId) {
@@ -285,22 +524,100 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scalable target. The scalable
-     * dimension contains the service namespace, resource type, and scaling
-     * property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     * resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scalable target. The
-     *        scalable dimension contains the service namespace, resource type,
-     *        and scaling property, such as
-     *        <code>ecs:service:DesiredCount</code> for the desired task count
-     *        of an Amazon ECS service, or
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     *        capacity of an Amazon EC2 Spot fleet request.
+     *        The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     *        resource type, and scaling property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
      * @see ScalableDimension
      */
 
@@ -310,21 +627,99 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scalable target. The scalable
-     * dimension contains the service namespace, resource type, and scaling
-     * property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     * resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The scalable dimension associated with the scalable target. The
-     *         scalable dimension contains the service namespace, resource type,
-     *         and scaling property, such as
-     *         <code>ecs:service:DesiredCount</code> for the desired task count
-     *         of an Amazon ECS service, or
-     *         <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     *         capacity of an Amazon EC2 Spot fleet request.
+     * @return The scalable dimension associated with the scalable target. This string consists of the service
+     *         namespace, resource type, and scaling property.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global
+     *         secondary index.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global
+     *         secondary index.
+     *         </p>
+     *         </li>
      * @see ScalableDimension
      */
 
@@ -334,24 +729,101 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scalable target. The scalable
-     * dimension contains the service namespace, resource type, and scaling
-     * property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     * resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scalable target. The
-     *        scalable dimension contains the service namespace, resource type,
-     *        and scaling property, such as
-     *        <code>ecs:service:DesiredCount</code> for the desired task count
-     *        of an Amazon ECS service, or
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     *        capacity of an Amazon EC2 Spot fleet request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     *        resource type, and scaling property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalableDimension
      */
 
@@ -362,22 +834,100 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scalable target. The scalable
-     * dimension contains the service namespace, resource type, and scaling
-     * property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     * resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scalable target. The
-     *        scalable dimension contains the service namespace, resource type,
-     *        and scaling property, such as
-     *        <code>ecs:service:DesiredCount</code> for the desired task count
-     *        of an Amazon ECS service, or
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     *        capacity of an Amazon EC2 Spot fleet request.
+     *        The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     *        resource type, and scaling property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
      * @see ScalableDimension
      */
 
@@ -387,42 +937,116 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scalable dimension associated with the scalable target. The scalable
-     * dimension contains the service namespace, resource type, and scaling
-     * property, such as <code>ecs:service:DesiredCount</code> for the desired
-     * task count of an Amazon ECS service, or
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     * capacity of an Amazon EC2 Spot fleet request.
+     * The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     * resource type, and scaling property.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global secondary
+     * index.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param scalableDimension
-     *        The scalable dimension associated with the scalable target. The
-     *        scalable dimension contains the service namespace, resource type,
-     *        and scaling property, such as
-     *        <code>ecs:service:DesiredCount</code> for the desired task count
-     *        of an Amazon ECS service, or
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> for the target
-     *        capacity of an Amazon EC2 Spot fleet request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The scalable dimension associated with the scalable target. This string consists of the service namespace,
+     *        resource type, and scaling property.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ecs:service:DesiredCount</code> - The desired task count of an ECS service.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count of an EMR Instance Group.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an AppStream 2.0 fleet.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:table:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:ReadCapacityUnits</code> - The provisioned read capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dynamodb:index:WriteCapacityUnits</code> - The provisioned write capacity for a DynamoDB global
+     *        secondary index.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalableDimension
      */
 
-    public ScalableTarget withScalableDimension(
-            ScalableDimension scalableDimension) {
+    public ScalableTarget withScalableDimension(ScalableDimension scalableDimension) {
         setScalableDimension(scalableDimension);
         return this;
     }
 
     /**
      * <p>
-     * The minimum value for this scalable target to scale in to in response to
-     * scaling activities.
+     * The minimum value to scale to in response to a scale in event.
      * </p>
      * 
      * @param minCapacity
-     *        The minimum value for this scalable target to scale in to in
-     *        response to scaling activities.
+     *        The minimum value to scale to in response to a scale in event.
      */
 
     public void setMinCapacity(Integer minCapacity) {
@@ -431,12 +1055,10 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The minimum value for this scalable target to scale in to in response to
-     * scaling activities.
+     * The minimum value to scale to in response to a scale in event.
      * </p>
      * 
-     * @return The minimum value for this scalable target to scale in to in
-     *         response to scaling activities.
+     * @return The minimum value to scale to in response to a scale in event.
      */
 
     public Integer getMinCapacity() {
@@ -445,15 +1067,12 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The minimum value for this scalable target to scale in to in response to
-     * scaling activities.
+     * The minimum value to scale to in response to a scale in event.
      * </p>
      * 
      * @param minCapacity
-     *        The minimum value for this scalable target to scale in to in
-     *        response to scaling activities.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The minimum value to scale to in response to a scale in event.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScalableTarget withMinCapacity(Integer minCapacity) {
@@ -463,13 +1082,11 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The maximum value for this scalable target to scale out to in response to
-     * scaling activities.
+     * The maximum value to scale to in response to a scale out event.
      * </p>
      * 
      * @param maxCapacity
-     *        The maximum value for this scalable target to scale out to in
-     *        response to scaling activities.
+     *        The maximum value to scale to in response to a scale out event.
      */
 
     public void setMaxCapacity(Integer maxCapacity) {
@@ -478,12 +1095,10 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The maximum value for this scalable target to scale out to in response to
-     * scaling activities.
+     * The maximum value to scale to in response to a scale out event.
      * </p>
      * 
-     * @return The maximum value for this scalable target to scale out to in
-     *         response to scaling activities.
+     * @return The maximum value to scale to in response to a scale out event.
      */
 
     public Integer getMaxCapacity() {
@@ -492,15 +1107,12 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The maximum value for this scalable target to scale out to in response to
-     * scaling activities.
+     * The maximum value to scale to in response to a scale out event.
      * </p>
      * 
      * @param maxCapacity
-     *        The maximum value for this scalable target to scale out to in
-     *        response to scaling activities.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum value to scale to in response to a scale out event.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScalableTarget withMaxCapacity(Integer maxCapacity) {
@@ -510,13 +1122,11 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the IAM role that allows Application Auto Scaling to modify
-     * your scalable target on your behalf.
+     * The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      * 
      * @param roleARN
-     *        The ARN of the IAM role that allows Application Auto Scaling to
-     *        modify your scalable target on your behalf.
+     *        The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      */
 
     public void setRoleARN(String roleARN) {
@@ -525,12 +1135,10 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the IAM role that allows Application Auto Scaling to modify
-     * your scalable target on your behalf.
+     * The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      * 
-     * @return The ARN of the IAM role that allows Application Auto Scaling to
-     *         modify your scalable target on your behalf.
+     * @return The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      */
 
     public String getRoleARN() {
@@ -539,15 +1147,12 @@ public class ScalableTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the IAM role that allows Application Auto Scaling to modify
-     * your scalable target on your behalf.
+     * The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      * 
      * @param roleARN
-     *        The ARN of the IAM role that allows Application Auto Scaling to
-     *        modify your scalable target on your behalf.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScalableTarget withRoleARN(String roleARN) {
@@ -587,8 +1192,7 @@ public class ScalableTarget implements Serializable, Cloneable {
      * 
      * @param creationTime
      *        The Unix timestamp for when the scalable target was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScalableTarget withCreationTime(java.util.Date creationTime) {
@@ -597,8 +1201,7 @@ public class ScalableTarget implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -609,19 +1212,19 @@ public class ScalableTarget implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getServiceNamespace() != null)
-            sb.append("ServiceNamespace: " + getServiceNamespace() + ",");
+            sb.append("ServiceNamespace: ").append(getServiceNamespace()).append(",");
         if (getResourceId() != null)
-            sb.append("ResourceId: " + getResourceId() + ",");
+            sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getScalableDimension() != null)
-            sb.append("ScalableDimension: " + getScalableDimension() + ",");
+            sb.append("ScalableDimension: ").append(getScalableDimension()).append(",");
         if (getMinCapacity() != null)
-            sb.append("MinCapacity: " + getMinCapacity() + ",");
+            sb.append("MinCapacity: ").append(getMinCapacity()).append(",");
         if (getMaxCapacity() != null)
-            sb.append("MaxCapacity: " + getMaxCapacity() + ",");
+            sb.append("MaxCapacity: ").append(getMaxCapacity()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: " + getCreationTime());
+            sb.append("CreationTime: ").append(getCreationTime());
         sb.append("}");
         return sb.toString();
     }
@@ -636,44 +1239,33 @@ public class ScalableTarget implements Serializable, Cloneable {
         if (obj instanceof ScalableTarget == false)
             return false;
         ScalableTarget other = (ScalableTarget) obj;
-        if (other.getServiceNamespace() == null
-                ^ this.getServiceNamespace() == null)
+        if (other.getServiceNamespace() == null ^ this.getServiceNamespace() == null)
             return false;
-        if (other.getServiceNamespace() != null
-                && other.getServiceNamespace().equals(
-                        this.getServiceNamespace()) == false)
+        if (other.getServiceNamespace() != null && other.getServiceNamespace().equals(this.getServiceNamespace()) == false)
             return false;
         if (other.getResourceId() == null ^ this.getResourceId() == null)
             return false;
-        if (other.getResourceId() != null
-                && other.getResourceId().equals(this.getResourceId()) == false)
+        if (other.getResourceId() != null && other.getResourceId().equals(this.getResourceId()) == false)
             return false;
-        if (other.getScalableDimension() == null
-                ^ this.getScalableDimension() == null)
+        if (other.getScalableDimension() == null ^ this.getScalableDimension() == null)
             return false;
-        if (other.getScalableDimension() != null
-                && other.getScalableDimension().equals(
-                        this.getScalableDimension()) == false)
+        if (other.getScalableDimension() != null && other.getScalableDimension().equals(this.getScalableDimension()) == false)
             return false;
         if (other.getMinCapacity() == null ^ this.getMinCapacity() == null)
             return false;
-        if (other.getMinCapacity() != null
-                && other.getMinCapacity().equals(this.getMinCapacity()) == false)
+        if (other.getMinCapacity() != null && other.getMinCapacity().equals(this.getMinCapacity()) == false)
             return false;
         if (other.getMaxCapacity() == null ^ this.getMaxCapacity() == null)
             return false;
-        if (other.getMaxCapacity() != null
-                && other.getMaxCapacity().equals(this.getMaxCapacity()) == false)
+        if (other.getMaxCapacity() != null && other.getMaxCapacity().equals(this.getMaxCapacity()) == false)
             return false;
         if (other.getRoleARN() == null ^ this.getRoleARN() == null)
             return false;
-        if (other.getRoleARN() != null
-                && other.getRoleARN().equals(this.getRoleARN()) == false)
+        if (other.getRoleARN() != null && other.getRoleARN().equals(this.getRoleARN()) == false)
             return false;
         if (other.getCreationTime() == null ^ this.getCreationTime() == null)
             return false;
-        if (other.getCreationTime() != null
-                && other.getCreationTime().equals(this.getCreationTime()) == false)
+        if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
             return false;
         return true;
     }
@@ -683,28 +1275,13 @@ public class ScalableTarget implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getServiceNamespace() == null) ? 0 : getServiceNamespace()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getScalableDimension() == null) ? 0
-                        : getScalableDimension().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMinCapacity() == null) ? 0 : getMinCapacity().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMaxCapacity() == null) ? 0 : getMaxCapacity().hashCode());
-        hashCode = prime * hashCode
-                + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreationTime() == null) ? 0 : getCreationTime()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getServiceNamespace() == null) ? 0 : getServiceNamespace().hashCode());
+        hashCode = prime * hashCode + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
+        hashCode = prime * hashCode + ((getScalableDimension() == null) ? 0 : getScalableDimension().hashCode());
+        hashCode = prime * hashCode + ((getMinCapacity() == null) ? 0 : getMinCapacity().hashCode());
+        hashCode = prime * hashCode + ((getMaxCapacity() == null) ? 0 : getMaxCapacity().hashCode());
+        hashCode = prime * hashCode + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
+        hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
         return hashCode;
     }
 
@@ -713,9 +1290,13 @@ public class ScalableTarget implements Serializable, Cloneable {
         try {
             return (ScalableTarget) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.applicationautoscaling.model.transform.ScalableTargetMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

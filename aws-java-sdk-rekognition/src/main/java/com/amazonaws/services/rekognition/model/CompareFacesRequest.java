@@ -1,0 +1,231 @@
+/*
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
+ * 
+ * http://aws.amazon.com/apache2.0
+ * 
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
+ */
+package com.amazonaws.services.rekognition.model;
+
+import java.io.Serializable;
+import javax.annotation.Generated;
+
+import com.amazonaws.AmazonWebServiceRequest;
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CompareFacesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
+
+    /**
+     * <p>
+     * The source image, either as bytes or as an S3 object.
+     * </p>
+     */
+    private Image sourceImage;
+    /**
+     * <p>
+     * The target image, either as bytes or as an S3 object.
+     * </p>
+     */
+    private Image targetImage;
+    /**
+     * <p>
+     * The minimum level of confidence in the face matches that a match must meet to be included in the
+     * <code>FaceMatches</code> array.
+     * </p>
+     */
+    private Float similarityThreshold;
+
+    /**
+     * <p>
+     * The source image, either as bytes or as an S3 object.
+     * </p>
+     * 
+     * @param sourceImage
+     *        The source image, either as bytes or as an S3 object.
+     */
+
+    public void setSourceImage(Image sourceImage) {
+        this.sourceImage = sourceImage;
+    }
+
+    /**
+     * <p>
+     * The source image, either as bytes or as an S3 object.
+     * </p>
+     * 
+     * @return The source image, either as bytes or as an S3 object.
+     */
+
+    public Image getSourceImage() {
+        return this.sourceImage;
+    }
+
+    /**
+     * <p>
+     * The source image, either as bytes or as an S3 object.
+     * </p>
+     * 
+     * @param sourceImage
+     *        The source image, either as bytes or as an S3 object.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CompareFacesRequest withSourceImage(Image sourceImage) {
+        setSourceImage(sourceImage);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The target image, either as bytes or as an S3 object.
+     * </p>
+     * 
+     * @param targetImage
+     *        The target image, either as bytes or as an S3 object.
+     */
+
+    public void setTargetImage(Image targetImage) {
+        this.targetImage = targetImage;
+    }
+
+    /**
+     * <p>
+     * The target image, either as bytes or as an S3 object.
+     * </p>
+     * 
+     * @return The target image, either as bytes or as an S3 object.
+     */
+
+    public Image getTargetImage() {
+        return this.targetImage;
+    }
+
+    /**
+     * <p>
+     * The target image, either as bytes or as an S3 object.
+     * </p>
+     * 
+     * @param targetImage
+     *        The target image, either as bytes or as an S3 object.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CompareFacesRequest withTargetImage(Image targetImage) {
+        setTargetImage(targetImage);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The minimum level of confidence in the face matches that a match must meet to be included in the
+     * <code>FaceMatches</code> array.
+     * </p>
+     * 
+     * @param similarityThreshold
+     *        The minimum level of confidence in the face matches that a match must meet to be included in the
+     *        <code>FaceMatches</code> array.
+     */
+
+    public void setSimilarityThreshold(Float similarityThreshold) {
+        this.similarityThreshold = similarityThreshold;
+    }
+
+    /**
+     * <p>
+     * The minimum level of confidence in the face matches that a match must meet to be included in the
+     * <code>FaceMatches</code> array.
+     * </p>
+     * 
+     * @return The minimum level of confidence in the face matches that a match must meet to be included in the
+     *         <code>FaceMatches</code> array.
+     */
+
+    public Float getSimilarityThreshold() {
+        return this.similarityThreshold;
+    }
+
+    /**
+     * <p>
+     * The minimum level of confidence in the face matches that a match must meet to be included in the
+     * <code>FaceMatches</code> array.
+     * </p>
+     * 
+     * @param similarityThreshold
+     *        The minimum level of confidence in the face matches that a match must meet to be included in the
+     *        <code>FaceMatches</code> array.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CompareFacesRequest withSimilarityThreshold(Float similarityThreshold) {
+        setSimilarityThreshold(similarityThreshold);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
+     *
+     * @return A string representation of this object.
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        if (getSourceImage() != null)
+            sb.append("SourceImage: ").append(getSourceImage()).append(",");
+        if (getTargetImage() != null)
+            sb.append("TargetImage: ").append(getTargetImage()).append(",");
+        if (getSimilarityThreshold() != null)
+            sb.append("SimilarityThreshold: ").append(getSimilarityThreshold());
+        sb.append("}");
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+
+        if (obj instanceof CompareFacesRequest == false)
+            return false;
+        CompareFacesRequest other = (CompareFacesRequest) obj;
+        if (other.getSourceImage() == null ^ this.getSourceImage() == null)
+            return false;
+        if (other.getSourceImage() != null && other.getSourceImage().equals(this.getSourceImage()) == false)
+            return false;
+        if (other.getTargetImage() == null ^ this.getTargetImage() == null)
+            return false;
+        if (other.getTargetImage() != null && other.getTargetImage().equals(this.getTargetImage()) == false)
+            return false;
+        if (other.getSimilarityThreshold() == null ^ this.getSimilarityThreshold() == null)
+            return false;
+        if (other.getSimilarityThreshold() != null && other.getSimilarityThreshold().equals(this.getSimilarityThreshold()) == false)
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int hashCode = 1;
+
+        hashCode = prime * hashCode + ((getSourceImage() == null) ? 0 : getSourceImage().hashCode());
+        hashCode = prime * hashCode + ((getTargetImage() == null) ? 0 : getTargetImage().hashCode());
+        hashCode = prime * hashCode + ((getSimilarityThreshold() == null) ? 0 : getSimilarityThreshold().hashCode());
+        return hashCode;
+    }
+
+    @Override
+    public CompareFacesRequest clone() {
+        return (CompareFacesRequest) super.clone();
+    }
+
+}

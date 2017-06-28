@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * The input for the <a>CancelUpdateStack</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CancelUpdateStack" target="_top">AWS
+ *      API Documentation</a>
  */
-public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CancelUpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,6 +34,15 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
      * </p>
      */
     private String stackName;
+    /**
+     * <p>
+     * A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to retry
+     * requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack with the same
+     * name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.
+     * </p>
+     */
+    private String clientRequestToken;
 
     /**
      * <p>
@@ -50,8 +62,7 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
      * The name or the unique stack ID that is associated with the stack.
      * </p>
      * 
-     * @return The name or the unique stack ID that is associated with the
-     *         stack.
+     * @return The name or the unique stack ID that is associated with the stack.
      */
 
     public String getStackName() {
@@ -65,8 +76,7 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
      * 
      * @param stackName
      *        The name or the unique stack ID that is associated with the stack.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CancelUpdateStackRequest withStackName(String stackName) {
@@ -75,8 +85,65 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to retry
+     * requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack with the same
+     * name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.
+     * </p>
+     * 
+     * @param clientRequestToken
+     *        A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to
+     *        retry requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack
+     *        with the same name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS
+     *        CloudFormation successfully received them.
+     */
+
+    public void setClientRequestToken(String clientRequestToken) {
+        this.clientRequestToken = clientRequestToken;
+    }
+
+    /**
+     * <p>
+     * A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to retry
+     * requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack with the same
+     * name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.
+     * </p>
+     * 
+     * @return A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to
+     *         retry requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack
+     *         with the same name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS
+     *         CloudFormation successfully received them.
+     */
+
+    public String getClientRequestToken() {
+        return this.clientRequestToken;
+    }
+
+    /**
+     * <p>
+     * A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to retry
+     * requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack with the same
+     * name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.
+     * </p>
+     * 
+     * @param clientRequestToken
+     *        A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to
+     *        retry requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack
+     *        with the same name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS
+     *        CloudFormation successfully received them.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CancelUpdateStackRequest withClientRequestToken(String clientRequestToken) {
+        setClientRequestToken(clientRequestToken);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -87,7 +154,9 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackName() != null)
-            sb.append("StackName: " + getStackName());
+            sb.append("StackName: ").append(getStackName()).append(",");
+        if (getClientRequestToken() != null)
+            sb.append("ClientRequestToken: ").append(getClientRequestToken());
         sb.append("}");
         return sb.toString();
     }
@@ -104,8 +173,11 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
         CancelUpdateStackRequest other = (CancelUpdateStackRequest) obj;
         if (other.getStackName() == null ^ this.getStackName() == null)
             return false;
-        if (other.getStackName() != null
-                && other.getStackName().equals(this.getStackName()) == false)
+        if (other.getStackName() != null && other.getStackName().equals(this.getStackName()) == false)
+            return false;
+        if (other.getClientRequestToken() == null ^ this.getClientRequestToken() == null)
+            return false;
+        if (other.getClientRequestToken() != null && other.getClientRequestToken().equals(this.getClientRequestToken()) == false)
             return false;
         return true;
     }
@@ -115,8 +187,8 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getStackName() == null) ? 0 : getStackName().hashCode());
+        hashCode = prime * hashCode + ((getStackName() == null) ? 0 : getStackName().hashCode());
+        hashCode = prime * hashCode + ((getClientRequestToken() == null) ? 0 : getClientRequestToken().hashCode());
         return hashCode;
     }
 
@@ -124,4 +196,5 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements
     public CancelUpdateStackRequest clone() {
         return (CancelUpdateStackRequest) super.clone();
     }
+
 }

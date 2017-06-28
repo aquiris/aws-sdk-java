@@ -1,52 +1,50 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTaskDefinition" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeTaskDefinitionRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeTaskDefinitionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The <code>family</code> for the latest <code>ACTIVE</code> revision,
-     * <code>family</code> and <code>revision</code> (
-     * <code>family:revision</code>) for a specific revision in the family, or
-     * full Amazon Resource Name (ARN) of the task definition to describe.
+     * The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and
+     * <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon
+     * Resource Name (ARN) of the task definition to describe.
      * </p>
      */
     private String taskDefinition;
 
     /**
      * <p>
-     * The <code>family</code> for the latest <code>ACTIVE</code> revision,
-     * <code>family</code> and <code>revision</code> (
-     * <code>family:revision</code>) for a specific revision in the family, or
-     * full Amazon Resource Name (ARN) of the task definition to describe.
+     * The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and
+     * <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon
+     * Resource Name (ARN) of the task definition to describe.
      * </p>
      * 
      * @param taskDefinition
-     *        The <code>family</code> for the latest <code>ACTIVE</code>
-     *        revision, <code>family</code> and <code>revision</code> (
-     *        <code>family:revision</code>) for a specific revision in the
-     *        family, or full Amazon Resource Name (ARN) of the task definition
-     *        to describe.
+     *        The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and
+     *        <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon
+     *        Resource Name (ARN) of the task definition to describe.
      */
 
     public void setTaskDefinition(String taskDefinition) {
@@ -55,17 +53,14 @@ public class DescribeTaskDefinitionRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>family</code> for the latest <code>ACTIVE</code> revision,
-     * <code>family</code> and <code>revision</code> (
-     * <code>family:revision</code>) for a specific revision in the family, or
-     * full Amazon Resource Name (ARN) of the task definition to describe.
+     * The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and
+     * <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon
+     * Resource Name (ARN) of the task definition to describe.
      * </p>
      * 
-     * @return The <code>family</code> for the latest <code>ACTIVE</code>
-     *         revision, <code>family</code> and <code>revision</code> (
-     *         <code>family:revision</code>) for a specific revision in the
-     *         family, or full Amazon Resource Name (ARN) of the task definition
-     *         to describe.
+     * @return The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and
+     *         <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full
+     *         Amazon Resource Name (ARN) of the task definition to describe.
      */
 
     public String getTaskDefinition() {
@@ -74,31 +69,25 @@ public class DescribeTaskDefinitionRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>family</code> for the latest <code>ACTIVE</code> revision,
-     * <code>family</code> and <code>revision</code> (
-     * <code>family:revision</code>) for a specific revision in the family, or
-     * full Amazon Resource Name (ARN) of the task definition to describe.
+     * The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and
+     * <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon
+     * Resource Name (ARN) of the task definition to describe.
      * </p>
      * 
      * @param taskDefinition
-     *        The <code>family</code> for the latest <code>ACTIVE</code>
-     *        revision, <code>family</code> and <code>revision</code> (
-     *        <code>family:revision</code>) for a specific revision in the
-     *        family, or full Amazon Resource Name (ARN) of the task definition
-     *        to describe.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and
+     *        <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon
+     *        Resource Name (ARN) of the task definition to describe.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeTaskDefinitionRequest withTaskDefinition(
-            String taskDefinition) {
+    public DescribeTaskDefinitionRequest withTaskDefinition(String taskDefinition) {
         setTaskDefinition(taskDefinition);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -109,7 +98,7 @@ public class DescribeTaskDefinitionRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTaskDefinition() != null)
-            sb.append("TaskDefinition: " + getTaskDefinition());
+            sb.append("TaskDefinition: ").append(getTaskDefinition());
         sb.append("}");
         return sb.toString();
     }
@@ -124,11 +113,9 @@ public class DescribeTaskDefinitionRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeTaskDefinitionRequest == false)
             return false;
         DescribeTaskDefinitionRequest other = (DescribeTaskDefinitionRequest) obj;
-        if (other.getTaskDefinition() == null
-                ^ this.getTaskDefinition() == null)
+        if (other.getTaskDefinition() == null ^ this.getTaskDefinition() == null)
             return false;
-        if (other.getTaskDefinition() != null
-                && other.getTaskDefinition().equals(this.getTaskDefinition()) == false)
+        if (other.getTaskDefinition() != null && other.getTaskDefinition().equals(this.getTaskDefinition()) == false)
             return false;
         return true;
     }
@@ -138,10 +125,7 @@ public class DescribeTaskDefinitionRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getTaskDefinition() == null) ? 0 : getTaskDefinition()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getTaskDefinition() == null) ? 0 : getTaskDefinition().hashCode());
         return hashCode;
     }
 
@@ -149,4 +133,5 @@ public class DescribeTaskDefinitionRequest extends AmazonWebServiceRequest
     public DescribeTaskDefinitionRequest clone() {
         return (DescribeTaskDefinitionRequest) super.clone();
     }
+
 }

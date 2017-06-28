@@ -1,65 +1,82 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Specifies where in a web request to look for <code>TargetString</code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/FieldToMatch" target="_top">AWS API
+ *      Documentation</a>
  */
-public class FieldToMatch implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class FieldToMatch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The part of the web request that you want AWS WAF to search for a
-     * specified string. Parts of a request that you can search include the
-     * following:
+     * The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you
+     * can search include the following:
      * </p>
      * <ul>
-     * <li><code>HEADER</code>: A specified request header, for example, the
-     * value of the <code>User-Agent</code> or <code>Referer</code> header. If
-     * you choose <code>HEADER</code> for the type, specify the name of the
-     * header in <code>Data</code>.</li>
-     * <li><code>METHOD</code>: The HTTP method, which indicated the type of
-     * operation that the request is asking the origin to perform. Amazon
-     * CloudFront supports the following methods: <code>DELETE</code>,
-     * <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>,
-     * <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</li>
-     * <li><code>QUERY_STRING</code>: A query string, which is the part of a URL
-     * that appears after a <code>?</code> character, if any.</li>
-     * <li><code>URI</code>: The part of a web request that identifies a
-     * resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     * <li><code>BODY</code>: The part of a request that contains any additional
-     * data that you want to send to your web server as the HTTP request body,
-     * such as data from a form. The request body immediately follows the
-     * request headers. Note that only the first <code>8192</code> bytes of the
-     * request body are forwarded to AWS WAF for inspection. To allow or block
-     * requests based on the length of the body, you can create a size
-     * constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     * <li>
+     * <p>
+     * <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     * <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in
+     * <code>Data</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin
+     * to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>,
+     * <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     * character, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>URI</code>: The part of a web request that identifies a resource, for example,
+     * <code>/images/daily-ad.jpg</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web
+     * server as the HTTP request body, such as data from a form. The request body immediately follows the request
+     * headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for
+     * inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For
+     * more information, see <a>CreateSizeConstraintSet</a>.
+     * </p>
      * </li>
      * </ul>
      */
     private String type;
     /**
      * <p>
-     * When the value of <code>Type</code> is <code>HEADER</code>, enter the
-     * name of the header that you want AWS WAF to search, for example,
-     * <code>User-Agent</code> or <code>Referer</code>. If the value of
-     * <code>Type</code> is any other value, omit <code>Data</code>.
+     * When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to
+     * search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any
+     * other value, omit <code>Data</code>.
      * </p>
      * <p>
      * The name of the header is not case sensitive.
@@ -69,61 +86,85 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The part of the web request that you want AWS WAF to search for a
-     * specified string. Parts of a request that you can search include the
-     * following:
+     * The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you
+     * can search include the following:
      * </p>
      * <ul>
-     * <li><code>HEADER</code>: A specified request header, for example, the
-     * value of the <code>User-Agent</code> or <code>Referer</code> header. If
-     * you choose <code>HEADER</code> for the type, specify the name of the
-     * header in <code>Data</code>.</li>
-     * <li><code>METHOD</code>: The HTTP method, which indicated the type of
-     * operation that the request is asking the origin to perform. Amazon
-     * CloudFront supports the following methods: <code>DELETE</code>,
-     * <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>,
-     * <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</li>
-     * <li><code>QUERY_STRING</code>: A query string, which is the part of a URL
-     * that appears after a <code>?</code> character, if any.</li>
-     * <li><code>URI</code>: The part of a web request that identifies a
-     * resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     * <li><code>BODY</code>: The part of a request that contains any additional
-     * data that you want to send to your web server as the HTTP request body,
-     * such as data from a form. The request body immediately follows the
-     * request headers. Note that only the first <code>8192</code> bytes of the
-     * request body are forwarded to AWS WAF for inspection. To allow or block
-     * requests based on the length of the body, you can create a size
-     * constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     * <li>
+     * <p>
+     * <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     * <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in
+     * <code>Data</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin
+     * to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>,
+     * <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     * character, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>URI</code>: The part of a web request that identifies a resource, for example,
+     * <code>/images/daily-ad.jpg</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web
+     * server as the HTTP request body, such as data from a form. The request body immediately follows the request
+     * headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for
+     * inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For
+     * more information, see <a>CreateSizeConstraintSet</a>.
+     * </p>
      * </li>
      * </ul>
      * 
      * @param type
-     *        The part of the web request that you want AWS WAF to search for a
-     *        specified string. Parts of a request that you can search include
-     *        the following:</p>
+     *        The part of the web request that you want AWS WAF to search for a specified string. Parts of a request
+     *        that you can search include the following:</p>
      *        <ul>
-     *        <li><code>HEADER</code>: A specified request header, for example,
-     *        the value of the <code>User-Agent</code> or <code>Referer</code>
-     *        header. If you choose <code>HEADER</code> for the type, specify
-     *        the name of the header in <code>Data</code>.</li>
-     *        <li><code>METHOD</code>: The HTTP method, which indicated the type
-     *        of operation that the request is asking the origin to perform.
-     *        Amazon CloudFront supports the following methods:
-     *        <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>,
-     *        <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and
-     *        <code>PUT</code>.</li>
-     *        <li><code>QUERY_STRING</code>: A query string, which is the part
-     *        of a URL that appears after a <code>?</code> character, if any.</li>
-     *        <li><code>URI</code>: The part of a web request that identifies a
-     *        resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     *        <li><code>BODY</code>: The part of a request that contains any
-     *        additional data that you want to send to your web server as the
-     *        HTTP request body, such as data from a form. The request body
-     *        immediately follows the request headers. Note that only the first
-     *        <code>8192</code> bytes of the request body are forwarded to AWS
-     *        WAF for inspection. To allow or block requests based on the length
-     *        of the body, you can create a size constraint set. For more
-     *        information, see <a>CreateSizeConstraintSet</a>.</li>
+     *        <li>
+     *        <p>
+     *        <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     *        <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the
+     *        header in <code>Data</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the
+     *        origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     *        character, if any.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>URI</code>: The part of a web request that identifies a resource, for example,
+     *        <code>/images/daily-ad.jpg</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>BODY</code>: The part of a request that contains any additional data that you want to send to your
+     *        web server as the HTTP request body, such as data from a form. The request body immediately follows the
+     *        request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS
+     *        WAF for inspection. To allow or block requests based on the length of the body, you can create a size
+     *        constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     *        </p>
+     *        </li>
      * @see MatchFieldType
      */
 
@@ -133,60 +174,86 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The part of the web request that you want AWS WAF to search for a
-     * specified string. Parts of a request that you can search include the
-     * following:
+     * The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you
+     * can search include the following:
      * </p>
      * <ul>
-     * <li><code>HEADER</code>: A specified request header, for example, the
-     * value of the <code>User-Agent</code> or <code>Referer</code> header. If
-     * you choose <code>HEADER</code> for the type, specify the name of the
-     * header in <code>Data</code>.</li>
-     * <li><code>METHOD</code>: The HTTP method, which indicated the type of
-     * operation that the request is asking the origin to perform. Amazon
-     * CloudFront supports the following methods: <code>DELETE</code>,
-     * <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>,
-     * <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</li>
-     * <li><code>QUERY_STRING</code>: A query string, which is the part of a URL
-     * that appears after a <code>?</code> character, if any.</li>
-     * <li><code>URI</code>: The part of a web request that identifies a
-     * resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     * <li><code>BODY</code>: The part of a request that contains any additional
-     * data that you want to send to your web server as the HTTP request body,
-     * such as data from a form. The request body immediately follows the
-     * request headers. Note that only the first <code>8192</code> bytes of the
-     * request body are forwarded to AWS WAF for inspection. To allow or block
-     * requests based on the length of the body, you can create a size
-     * constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     * <li>
+     * <p>
+     * <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     * <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in
+     * <code>Data</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin
+     * to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>,
+     * <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     * character, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>URI</code>: The part of a web request that identifies a resource, for example,
+     * <code>/images/daily-ad.jpg</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web
+     * server as the HTTP request body, such as data from a form. The request body immediately follows the request
+     * headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for
+     * inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For
+     * more information, see <a>CreateSizeConstraintSet</a>.
+     * </p>
      * </li>
      * </ul>
      * 
-     * @return The part of the web request that you want AWS WAF to search for a
-     *         specified string. Parts of a request that you can search include
-     *         the following:</p>
+     * @return The part of the web request that you want AWS WAF to search for a specified string. Parts of a request
+     *         that you can search include the following:</p>
      *         <ul>
-     *         <li><code>HEADER</code>: A specified request header, for example,
-     *         the value of the <code>User-Agent</code> or <code>Referer</code>
-     *         header. If you choose <code>HEADER</code> for the type, specify
-     *         the name of the header in <code>Data</code>.</li>
-     *         <li><code>METHOD</code>: The HTTP method, which indicated the
-     *         type of operation that the request is asking the origin to
-     *         perform. Amazon CloudFront supports the following methods:
-     *         <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>,
-     *         <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and
-     *         <code>PUT</code>.</li>
-     *         <li><code>QUERY_STRING</code>: A query string, which is the part
-     *         of a URL that appears after a <code>?</code> character, if any.</li>
-     *         <li><code>URI</code>: The part of a web request that identifies a
-     *         resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     *         <li><code>BODY</code>: The part of a request that contains any
-     *         additional data that you want to send to your web server as the
-     *         HTTP request body, such as data from a form. The request body
-     *         immediately follows the request headers. Note that only the first
-     *         <code>8192</code> bytes of the request body are forwarded to AWS
-     *         WAF for inspection. To allow or block requests based on the
-     *         length of the body, you can create a size constraint set. For
-     *         more information, see <a>CreateSizeConstraintSet</a>.</li>
+     *         <li>
+     *         <p>
+     *         <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     *         <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the
+     *         header in <code>Data</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking
+     *         the origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>,
+     *         <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and
+     *         <code>PUT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     *         character, if any.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>URI</code>: The part of a web request that identifies a resource, for example,
+     *         <code>/images/daily-ad.jpg</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>BODY</code>: The part of a request that contains any additional data that you want to send to your
+     *         web server as the HTTP request body, such as data from a form. The request body immediately follows the
+     *         request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to
+     *         AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size
+     *         constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     *         </p>
+     *         </li>
      * @see MatchFieldType
      */
 
@@ -196,63 +263,86 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The part of the web request that you want AWS WAF to search for a
-     * specified string. Parts of a request that you can search include the
-     * following:
+     * The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you
+     * can search include the following:
      * </p>
      * <ul>
-     * <li><code>HEADER</code>: A specified request header, for example, the
-     * value of the <code>User-Agent</code> or <code>Referer</code> header. If
-     * you choose <code>HEADER</code> for the type, specify the name of the
-     * header in <code>Data</code>.</li>
-     * <li><code>METHOD</code>: The HTTP method, which indicated the type of
-     * operation that the request is asking the origin to perform. Amazon
-     * CloudFront supports the following methods: <code>DELETE</code>,
-     * <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>,
-     * <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</li>
-     * <li><code>QUERY_STRING</code>: A query string, which is the part of a URL
-     * that appears after a <code>?</code> character, if any.</li>
-     * <li><code>URI</code>: The part of a web request that identifies a
-     * resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     * <li><code>BODY</code>: The part of a request that contains any additional
-     * data that you want to send to your web server as the HTTP request body,
-     * such as data from a form. The request body immediately follows the
-     * request headers. Note that only the first <code>8192</code> bytes of the
-     * request body are forwarded to AWS WAF for inspection. To allow or block
-     * requests based on the length of the body, you can create a size
-     * constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     * <li>
+     * <p>
+     * <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     * <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in
+     * <code>Data</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin
+     * to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>,
+     * <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     * character, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>URI</code>: The part of a web request that identifies a resource, for example,
+     * <code>/images/daily-ad.jpg</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web
+     * server as the HTTP request body, such as data from a form. The request body immediately follows the request
+     * headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for
+     * inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For
+     * more information, see <a>CreateSizeConstraintSet</a>.
+     * </p>
      * </li>
      * </ul>
      * 
      * @param type
-     *        The part of the web request that you want AWS WAF to search for a
-     *        specified string. Parts of a request that you can search include
-     *        the following:</p>
+     *        The part of the web request that you want AWS WAF to search for a specified string. Parts of a request
+     *        that you can search include the following:</p>
      *        <ul>
-     *        <li><code>HEADER</code>: A specified request header, for example,
-     *        the value of the <code>User-Agent</code> or <code>Referer</code>
-     *        header. If you choose <code>HEADER</code> for the type, specify
-     *        the name of the header in <code>Data</code>.</li>
-     *        <li><code>METHOD</code>: The HTTP method, which indicated the type
-     *        of operation that the request is asking the origin to perform.
-     *        Amazon CloudFront supports the following methods:
-     *        <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>,
-     *        <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and
-     *        <code>PUT</code>.</li>
-     *        <li><code>QUERY_STRING</code>: A query string, which is the part
-     *        of a URL that appears after a <code>?</code> character, if any.</li>
-     *        <li><code>URI</code>: The part of a web request that identifies a
-     *        resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     *        <li><code>BODY</code>: The part of a request that contains any
-     *        additional data that you want to send to your web server as the
-     *        HTTP request body, such as data from a form. The request body
-     *        immediately follows the request headers. Note that only the first
-     *        <code>8192</code> bytes of the request body are forwarded to AWS
-     *        WAF for inspection. To allow or block requests based on the length
-     *        of the body, you can create a size constraint set. For more
-     *        information, see <a>CreateSizeConstraintSet</a>.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     *        <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the
+     *        header in <code>Data</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the
+     *        origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     *        character, if any.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>URI</code>: The part of a web request that identifies a resource, for example,
+     *        <code>/images/daily-ad.jpg</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>BODY</code>: The part of a request that contains any additional data that you want to send to your
+     *        web server as the HTTP request body, such as data from a form. The request body immediately follows the
+     *        request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS
+     *        WAF for inspection. To allow or block requests based on the length of the body, you can create a size
+     *        constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see MatchFieldType
      */
 
@@ -263,61 +353,85 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The part of the web request that you want AWS WAF to search for a
-     * specified string. Parts of a request that you can search include the
-     * following:
+     * The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you
+     * can search include the following:
      * </p>
      * <ul>
-     * <li><code>HEADER</code>: A specified request header, for example, the
-     * value of the <code>User-Agent</code> or <code>Referer</code> header. If
-     * you choose <code>HEADER</code> for the type, specify the name of the
-     * header in <code>Data</code>.</li>
-     * <li><code>METHOD</code>: The HTTP method, which indicated the type of
-     * operation that the request is asking the origin to perform. Amazon
-     * CloudFront supports the following methods: <code>DELETE</code>,
-     * <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>,
-     * <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</li>
-     * <li><code>QUERY_STRING</code>: A query string, which is the part of a URL
-     * that appears after a <code>?</code> character, if any.</li>
-     * <li><code>URI</code>: The part of a web request that identifies a
-     * resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     * <li><code>BODY</code>: The part of a request that contains any additional
-     * data that you want to send to your web server as the HTTP request body,
-     * such as data from a form. The request body immediately follows the
-     * request headers. Note that only the first <code>8192</code> bytes of the
-     * request body are forwarded to AWS WAF for inspection. To allow or block
-     * requests based on the length of the body, you can create a size
-     * constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     * <li>
+     * <p>
+     * <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     * <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in
+     * <code>Data</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin
+     * to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>,
+     * <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     * character, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>URI</code>: The part of a web request that identifies a resource, for example,
+     * <code>/images/daily-ad.jpg</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web
+     * server as the HTTP request body, such as data from a form. The request body immediately follows the request
+     * headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for
+     * inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For
+     * more information, see <a>CreateSizeConstraintSet</a>.
+     * </p>
      * </li>
      * </ul>
      * 
      * @param type
-     *        The part of the web request that you want AWS WAF to search for a
-     *        specified string. Parts of a request that you can search include
-     *        the following:</p>
+     *        The part of the web request that you want AWS WAF to search for a specified string. Parts of a request
+     *        that you can search include the following:</p>
      *        <ul>
-     *        <li><code>HEADER</code>: A specified request header, for example,
-     *        the value of the <code>User-Agent</code> or <code>Referer</code>
-     *        header. If you choose <code>HEADER</code> for the type, specify
-     *        the name of the header in <code>Data</code>.</li>
-     *        <li><code>METHOD</code>: The HTTP method, which indicated the type
-     *        of operation that the request is asking the origin to perform.
-     *        Amazon CloudFront supports the following methods:
-     *        <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>,
-     *        <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and
-     *        <code>PUT</code>.</li>
-     *        <li><code>QUERY_STRING</code>: A query string, which is the part
-     *        of a URL that appears after a <code>?</code> character, if any.</li>
-     *        <li><code>URI</code>: The part of a web request that identifies a
-     *        resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     *        <li><code>BODY</code>: The part of a request that contains any
-     *        additional data that you want to send to your web server as the
-     *        HTTP request body, such as data from a form. The request body
-     *        immediately follows the request headers. Note that only the first
-     *        <code>8192</code> bytes of the request body are forwarded to AWS
-     *        WAF for inspection. To allow or block requests based on the length
-     *        of the body, you can create a size constraint set. For more
-     *        information, see <a>CreateSizeConstraintSet</a>.</li>
+     *        <li>
+     *        <p>
+     *        <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     *        <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the
+     *        header in <code>Data</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the
+     *        origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     *        character, if any.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>URI</code>: The part of a web request that identifies a resource, for example,
+     *        <code>/images/daily-ad.jpg</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>BODY</code>: The part of a request that contains any additional data that you want to send to your
+     *        web server as the HTTP request body, such as data from a form. The request body immediately follows the
+     *        request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS
+     *        WAF for inspection. To allow or block requests based on the length of the body, you can create a size
+     *        constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     *        </p>
+     *        </li>
      * @see MatchFieldType
      */
 
@@ -327,63 +441,86 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The part of the web request that you want AWS WAF to search for a
-     * specified string. Parts of a request that you can search include the
-     * following:
+     * The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you
+     * can search include the following:
      * </p>
      * <ul>
-     * <li><code>HEADER</code>: A specified request header, for example, the
-     * value of the <code>User-Agent</code> or <code>Referer</code> header. If
-     * you choose <code>HEADER</code> for the type, specify the name of the
-     * header in <code>Data</code>.</li>
-     * <li><code>METHOD</code>: The HTTP method, which indicated the type of
-     * operation that the request is asking the origin to perform. Amazon
-     * CloudFront supports the following methods: <code>DELETE</code>,
-     * <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>,
-     * <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</li>
-     * <li><code>QUERY_STRING</code>: A query string, which is the part of a URL
-     * that appears after a <code>?</code> character, if any.</li>
-     * <li><code>URI</code>: The part of a web request that identifies a
-     * resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     * <li><code>BODY</code>: The part of a request that contains any additional
-     * data that you want to send to your web server as the HTTP request body,
-     * such as data from a form. The request body immediately follows the
-     * request headers. Note that only the first <code>8192</code> bytes of the
-     * request body are forwarded to AWS WAF for inspection. To allow or block
-     * requests based on the length of the body, you can create a size
-     * constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     * <li>
+     * <p>
+     * <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     * <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in
+     * <code>Data</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin
+     * to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>,
+     * <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     * character, if any.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>URI</code>: The part of a web request that identifies a resource, for example,
+     * <code>/images/daily-ad.jpg</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web
+     * server as the HTTP request body, such as data from a form. The request body immediately follows the request
+     * headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for
+     * inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For
+     * more information, see <a>CreateSizeConstraintSet</a>.
+     * </p>
      * </li>
      * </ul>
      * 
      * @param type
-     *        The part of the web request that you want AWS WAF to search for a
-     *        specified string. Parts of a request that you can search include
-     *        the following:</p>
+     *        The part of the web request that you want AWS WAF to search for a specified string. Parts of a request
+     *        that you can search include the following:</p>
      *        <ul>
-     *        <li><code>HEADER</code>: A specified request header, for example,
-     *        the value of the <code>User-Agent</code> or <code>Referer</code>
-     *        header. If you choose <code>HEADER</code> for the type, specify
-     *        the name of the header in <code>Data</code>.</li>
-     *        <li><code>METHOD</code>: The HTTP method, which indicated the type
-     *        of operation that the request is asking the origin to perform.
-     *        Amazon CloudFront supports the following methods:
-     *        <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>,
-     *        <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and
-     *        <code>PUT</code>.</li>
-     *        <li><code>QUERY_STRING</code>: A query string, which is the part
-     *        of a URL that appears after a <code>?</code> character, if any.</li>
-     *        <li><code>URI</code>: The part of a web request that identifies a
-     *        resource, for example, <code>/images/daily-ad.jpg</code>.</li>
-     *        <li><code>BODY</code>: The part of a request that contains any
-     *        additional data that you want to send to your web server as the
-     *        HTTP request body, such as data from a form. The request body
-     *        immediately follows the request headers. Note that only the first
-     *        <code>8192</code> bytes of the request body are forwarded to AWS
-     *        WAF for inspection. To allow or block requests based on the length
-     *        of the body, you can create a size constraint set. For more
-     *        information, see <a>CreateSizeConstraintSet</a>.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or
+     *        <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the
+     *        header in <code>Data</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the
+     *        origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code>
+     *        character, if any.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>URI</code>: The part of a web request that identifies a resource, for example,
+     *        <code>/images/daily-ad.jpg</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>BODY</code>: The part of a request that contains any additional data that you want to send to your
+     *        web server as the HTTP request body, such as data from a form. The request body immediately follows the
+     *        request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS
+     *        WAF for inspection. To allow or block requests based on the length of the body, you can create a size
+     *        constraint set. For more information, see <a>CreateSizeConstraintSet</a>.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see MatchFieldType
      */
 
@@ -394,21 +531,18 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When the value of <code>Type</code> is <code>HEADER</code>, enter the
-     * name of the header that you want AWS WAF to search, for example,
-     * <code>User-Agent</code> or <code>Referer</code>. If the value of
-     * <code>Type</code> is any other value, omit <code>Data</code>.
+     * When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to
+     * search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any
+     * other value, omit <code>Data</code>.
      * </p>
      * <p>
      * The name of the header is not case sensitive.
      * </p>
      * 
      * @param data
-     *        When the value of <code>Type</code> is <code>HEADER</code>, enter
-     *        the name of the header that you want AWS WAF to search, for
-     *        example, <code>User-Agent</code> or <code>Referer</code>. If the
-     *        value of <code>Type</code> is any other value, omit
-     *        <code>Data</code>.</p>
+     *        When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS
+     *        WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of
+     *        <code>Type</code> is any other value, omit <code>Data</code>.</p>
      *        <p>
      *        The name of the header is not case sensitive.
      */
@@ -419,20 +553,17 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When the value of <code>Type</code> is <code>HEADER</code>, enter the
-     * name of the header that you want AWS WAF to search, for example,
-     * <code>User-Agent</code> or <code>Referer</code>. If the value of
-     * <code>Type</code> is any other value, omit <code>Data</code>.
+     * When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to
+     * search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any
+     * other value, omit <code>Data</code>.
      * </p>
      * <p>
      * The name of the header is not case sensitive.
      * </p>
      * 
-     * @return When the value of <code>Type</code> is <code>HEADER</code>, enter
-     *         the name of the header that you want AWS WAF to search, for
-     *         example, <code>User-Agent</code> or <code>Referer</code>. If the
-     *         value of <code>Type</code> is any other value, omit
-     *         <code>Data</code>.</p>
+     * @return When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want
+     *         AWS WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of
+     *         <code>Type</code> is any other value, omit <code>Data</code>.</p>
      *         <p>
      *         The name of the header is not case sensitive.
      */
@@ -443,25 +574,21 @@ public class FieldToMatch implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When the value of <code>Type</code> is <code>HEADER</code>, enter the
-     * name of the header that you want AWS WAF to search, for example,
-     * <code>User-Agent</code> or <code>Referer</code>. If the value of
-     * <code>Type</code> is any other value, omit <code>Data</code>.
+     * When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to
+     * search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any
+     * other value, omit <code>Data</code>.
      * </p>
      * <p>
      * The name of the header is not case sensitive.
      * </p>
      * 
      * @param data
-     *        When the value of <code>Type</code> is <code>HEADER</code>, enter
-     *        the name of the header that you want AWS WAF to search, for
-     *        example, <code>User-Agent</code> or <code>Referer</code>. If the
-     *        value of <code>Type</code> is any other value, omit
-     *        <code>Data</code>.</p>
+     *        When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS
+     *        WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of
+     *        <code>Type</code> is any other value, omit <code>Data</code>.</p>
      *        <p>
      *        The name of the header is not case sensitive.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public FieldToMatch withData(String data) {
@@ -470,8 +597,7 @@ public class FieldToMatch implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -482,9 +608,9 @@ public class FieldToMatch implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getData() != null)
-            sb.append("Data: " + getData());
+            sb.append("Data: ").append(getData());
         sb.append("}");
         return sb.toString();
     }
@@ -501,13 +627,11 @@ public class FieldToMatch implements Serializable, Cloneable {
         FieldToMatch other = (FieldToMatch) obj;
         if (other.getType() == null ^ this.getType() == null)
             return false;
-        if (other.getType() != null
-                && other.getType().equals(this.getType()) == false)
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
         if (other.getData() == null ^ this.getData() == null)
             return false;
-        if (other.getData() != null
-                && other.getData().equals(this.getData()) == false)
+        if (other.getData() != null && other.getData().equals(this.getData()) == false)
             return false;
         return true;
     }
@@ -517,10 +641,8 @@ public class FieldToMatch implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getType() == null) ? 0 : getType().hashCode());
-        hashCode = prime * hashCode
-                + ((getData() == null) ? 0 : getData().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getData() == null) ? 0 : getData().hashCode());
         return hashCode;
     }
 
@@ -529,9 +651,13 @@ public class FieldToMatch implements Serializable, Cloneable {
         try {
             return (FieldToMatch) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.waf.model.waf_regional.transform.FieldToMatchMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

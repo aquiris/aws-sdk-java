@@ -1,61 +1,60 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * A data volume used in a task definition.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Volume" target="_top">AWS API Documentation</a>
  */
-public class Volume implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Volume implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the volume. Up to 255 letters (uppercase and lowercase),
-     * numbers, hyphens, and underscores are allowed. This name is referenced in
-     * the <code>sourceVolume</code> parameter of container definition
+     * The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
+     * allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition
      * <code>mountPoints</code>.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The contents of the <code>host</code> parameter determine whether your
-     * data volume persists on the host container instance and where it is
-     * stored. If the host parameter is empty, then the Docker daemon assigns a
-     * host path for your data volume, but the data is not guaranteed to persist
-     * after the containers associated with it stop running.
+     * The contents of the <code>host</code> parameter determine whether your data volume persists on the host container
+     * instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for
+     * your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.
      * </p>
      */
     private HostVolumeProperties host;
 
     /**
      * <p>
-     * The name of the volume. Up to 255 letters (uppercase and lowercase),
-     * numbers, hyphens, and underscores are allowed. This name is referenced in
-     * the <code>sourceVolume</code> parameter of container definition
+     * The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
+     * allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition
      * <code>mountPoints</code>.
      * </p>
      * 
      * @param name
-     *        The name of the volume. Up to 255 letters (uppercase and
-     *        lowercase), numbers, hyphens, and underscores are allowed. This
-     *        name is referenced in the <code>sourceVolume</code> parameter of
-     *        container definition <code>mountPoints</code>.
+     *        The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
+     *        allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition
+     *        <code>mountPoints</code>.
      */
 
     public void setName(String name) {
@@ -64,16 +63,14 @@ public class Volume implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the volume. Up to 255 letters (uppercase and lowercase),
-     * numbers, hyphens, and underscores are allowed. This name is referenced in
-     * the <code>sourceVolume</code> parameter of container definition
+     * The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
+     * allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition
      * <code>mountPoints</code>.
      * </p>
      * 
-     * @return The name of the volume. Up to 255 letters (uppercase and
-     *         lowercase), numbers, hyphens, and underscores are allowed. This
-     *         name is referenced in the <code>sourceVolume</code> parameter of
-     *         container definition <code>mountPoints</code>.
+     * @return The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores
+     *         are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition
+     *         <code>mountPoints</code>.
      */
 
     public String getName() {
@@ -82,19 +79,16 @@ public class Volume implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the volume. Up to 255 letters (uppercase and lowercase),
-     * numbers, hyphens, and underscores are allowed. This name is referenced in
-     * the <code>sourceVolume</code> parameter of container definition
+     * The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
+     * allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition
      * <code>mountPoints</code>.
      * </p>
      * 
      * @param name
-     *        The name of the volume. Up to 255 letters (uppercase and
-     *        lowercase), numbers, hyphens, and underscores are allowed. This
-     *        name is referenced in the <code>sourceVolume</code> parameter of
-     *        container definition <code>mountPoints</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
+     *        allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition
+     *        <code>mountPoints</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Volume withName(String name) {
@@ -104,20 +98,16 @@ public class Volume implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The contents of the <code>host</code> parameter determine whether your
-     * data volume persists on the host container instance and where it is
-     * stored. If the host parameter is empty, then the Docker daemon assigns a
-     * host path for your data volume, but the data is not guaranteed to persist
-     * after the containers associated with it stop running.
+     * The contents of the <code>host</code> parameter determine whether your data volume persists on the host container
+     * instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for
+     * your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.
      * </p>
      * 
      * @param host
-     *        The contents of the <code>host</code> parameter determine whether
-     *        your data volume persists on the host container instance and where
-     *        it is stored. If the host parameter is empty, then the Docker
-     *        daemon assigns a host path for your data volume, but the data is
-     *        not guaranteed to persist after the containers associated with it
-     *        stop running.
+     *        The contents of the <code>host</code> parameter determine whether your data volume persists on the host
+     *        container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns
+     *        a host path for your data volume, but the data is not guaranteed to persist after the containers
+     *        associated with it stop running.
      */
 
     public void setHost(HostVolumeProperties host) {
@@ -126,19 +116,15 @@ public class Volume implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The contents of the <code>host</code> parameter determine whether your
-     * data volume persists on the host container instance and where it is
-     * stored. If the host parameter is empty, then the Docker daemon assigns a
-     * host path for your data volume, but the data is not guaranteed to persist
-     * after the containers associated with it stop running.
+     * The contents of the <code>host</code> parameter determine whether your data volume persists on the host container
+     * instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for
+     * your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.
      * </p>
      * 
-     * @return The contents of the <code>host</code> parameter determine whether
-     *         your data volume persists on the host container instance and
-     *         where it is stored. If the host parameter is empty, then the
-     *         Docker daemon assigns a host path for your data volume, but the
-     *         data is not guaranteed to persist after the containers associated
-     *         with it stop running.
+     * @return The contents of the <code>host</code> parameter determine whether your data volume persists on the host
+     *         container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns
+     *         a host path for your data volume, but the data is not guaranteed to persist after the containers
+     *         associated with it stop running.
      */
 
     public HostVolumeProperties getHost() {
@@ -147,22 +133,17 @@ public class Volume implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The contents of the <code>host</code> parameter determine whether your
-     * data volume persists on the host container instance and where it is
-     * stored. If the host parameter is empty, then the Docker daemon assigns a
-     * host path for your data volume, but the data is not guaranteed to persist
-     * after the containers associated with it stop running.
+     * The contents of the <code>host</code> parameter determine whether your data volume persists on the host container
+     * instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for
+     * your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.
      * </p>
      * 
      * @param host
-     *        The contents of the <code>host</code> parameter determine whether
-     *        your data volume persists on the host container instance and where
-     *        it is stored. If the host parameter is empty, then the Docker
-     *        daemon assigns a host path for your data volume, but the data is
-     *        not guaranteed to persist after the containers associated with it
-     *        stop running.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The contents of the <code>host</code> parameter determine whether your data volume persists on the host
+     *        container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns
+     *        a host path for your data volume, but the data is not guaranteed to persist after the containers
+     *        associated with it stop running.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Volume withHost(HostVolumeProperties host) {
@@ -171,8 +152,7 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -183,9 +163,9 @@ public class Volume implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getHost() != null)
-            sb.append("Host: " + getHost());
+            sb.append("Host: ").append(getHost());
         sb.append("}");
         return sb.toString();
     }
@@ -202,13 +182,11 @@ public class Volume implements Serializable, Cloneable {
         Volume other = (Volume) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getHost() == null ^ this.getHost() == null)
             return false;
-        if (other.getHost() != null
-                && other.getHost().equals(this.getHost()) == false)
+        if (other.getHost() != null && other.getHost().equals(this.getHost()) == false)
             return false;
         return true;
     }
@@ -218,10 +196,8 @@ public class Volume implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getHost() == null) ? 0 : getHost().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getHost() == null) ? 0 : getHost().hashCode());
         return hashCode;
     }
 
@@ -230,9 +206,13 @@ public class Volume implements Serializable, Cloneable {
         try {
             return (Volume) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.ecs.model.transform.VolumeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

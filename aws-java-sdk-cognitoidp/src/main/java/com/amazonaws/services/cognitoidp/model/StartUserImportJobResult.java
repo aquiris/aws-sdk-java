@@ -1,28 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the response from the server to the request to start the user
- * import job.
+ * Represents the response from the server to the request to start the user import job.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StartUserImportJob" target="_top">AWS API
+ *      Documentation</a>
  */
-public class StartUserImportJobResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class StartUserImportJobResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -63,19 +65,16 @@ public class StartUserImportJobResult implements Serializable, Cloneable {
      * 
      * @param userImportJob
      *        The job object that represents the user import job.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public StartUserImportJobResult withUserImportJob(
-            UserImportJobType userImportJob) {
+    public StartUserImportJobResult withUserImportJob(UserImportJobType userImportJob) {
         setUserImportJob(userImportJob);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -86,7 +85,7 @@ public class StartUserImportJobResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserImportJob() != null)
-            sb.append("UserImportJob: " + getUserImportJob());
+            sb.append("UserImportJob: ").append(getUserImportJob());
         sb.append("}");
         return sb.toString();
     }
@@ -103,8 +102,7 @@ public class StartUserImportJobResult implements Serializable, Cloneable {
         StartUserImportJobResult other = (StartUserImportJobResult) obj;
         if (other.getUserImportJob() == null ^ this.getUserImportJob() == null)
             return false;
-        if (other.getUserImportJob() != null
-                && other.getUserImportJob().equals(this.getUserImportJob()) == false)
+        if (other.getUserImportJob() != null && other.getUserImportJob().equals(this.getUserImportJob()) == false)
             return false;
         return true;
     }
@@ -114,10 +112,7 @@ public class StartUserImportJobResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getUserImportJob() == null) ? 0 : getUserImportJob()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getUserImportJob() == null) ? 0 : getUserImportJob().hashCode());
         return hashCode;
     }
 
@@ -126,9 +121,8 @@ public class StartUserImportJobResult implements Serializable, Cloneable {
         try {
             return (StartUserImportJobResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

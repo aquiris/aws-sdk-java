@@ -14,15 +14,20 @@
  */
 package com.amazonaws.codegen.naming;
 
+import com.amazonaws.codegen.internal.Utils;
 import com.amazonaws.codegen.model.config.BasicCodeGenConfig;
 import com.amazonaws.codegen.model.config.customization.CustomizationConfig;
+import com.amazonaws.codegen.model.intermediate.Protocol;
 import com.amazonaws.codegen.model.service.Output;
 import com.amazonaws.codegen.model.service.ServiceModel;
 import com.amazonaws.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import static com.amazonaws.codegen.internal.Constants.AUTHORIZER_NAME_PREFIX;
 import static com.amazonaws.codegen.internal.Constants.EXCEPTION_CLASS_SUFFIX;
 import static com.amazonaws.codegen.internal.Constants.FAULT_CLASS_SUFFIX;
 import static com.amazonaws.codegen.internal.Constants.REQUEST_CLASS_SUFFIX;
@@ -37,14 +42,13 @@ import static com.amazonaws.codegen.internal.Utils.unCapitialize;
  */
 public class DefaultNamingStrategy implements NamingStrategy {
 
-    private final static List<String> reservedKeywords = new ArrayList<String>() {{
+    private final static Set<String> reservedKeywords = new HashSet<String>() {{
         add("return");
         add("public");
         add("private");
         add("class");
         add("static");
         add("protected");
-        add("return");
         add("string");
         add("boolean");
         add("integer");
@@ -137,7 +141,35 @@ public class DefaultNamingStrategy implements NamingStrategy {
 
     @Override
     public String getJavaClassName(String shapeName) {
-        return capitialize(shapeName);
+        return Arrays.stream(shapeName.split("[._-]|\\W")).map(Utils::capitialize).collect(Collectors.joining());
+    }
+
+    @Override
+    public String getAuthorizerClassName(String shapeName) {
+        String converted = getJavaClassName(shapeName);
+        if (converted.length() > 0 && !Character.isLetter(converted.charAt(0))) {
+            return AUTHORIZER_NAME_PREFIX + converted;
+        }
+        return converted;
+    }
+
+    @Override
+    public String getGetterMethodName(String memberName) {
+        return String.format("get%s", Utils.capitialize(memberName));
+    }
+
+    @Override
+    public String getSetterMethodName(String memberName) {
+        return String.format("set%s", Utils.capitialize(memberName));
+    }
+
+    @Override
+    public String getFluentSetterMethodName(String memberName) {
+        if (Protocol.fromValue(serviceModel.getMetadata().getProtocol()) == Protocol.API_GATEWAY) {
+            return Utils.unCapitialize(memberName);
+        } else {
+            return String.format("with%s", Utils.capitialize(memberName));
+        }
     }
 
     private static boolean isJavaKeyword(String word) {

@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,47 +22,43 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The <code>TestRoleRequest</code> structure.
  * </p>
  */
-public class TestRoleRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TestRoleRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic
-     * Transcoder to test.
+     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.
      * </p>
      */
     private String role;
     /**
      * <p>
-     * The Amazon S3 bucket that contains media files to be transcoded. The
-     * action attempts to read from this bucket.
+     * The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this bucket.
      * </p>
      */
     private String inputBucket;
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media
-     * files to. The action attempts to read from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      */
     private String outputBucket;
     /**
      * <p>
-     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
-     * topics that you want the action to send a test notification to.
+     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to send a
+     * test notification to.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> topics;
 
     /**
      * <p>
-     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic
-     * Transcoder to test.
+     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.
      * </p>
      * 
      * @param role
-     *        The IAM Amazon Resource Name (ARN) for the role that you want
-     *        Elastic Transcoder to test.
+     *        The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.
      */
 
     public void setRole(String role) {
@@ -71,12 +67,10 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic
-     * Transcoder to test.
+     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.
      * </p>
      * 
-     * @return The IAM Amazon Resource Name (ARN) for the role that you want
-     *         Elastic Transcoder to test.
+     * @return The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.
      */
 
     public String getRole() {
@@ -85,15 +79,12 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic
-     * Transcoder to test.
+     * The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.
      * </p>
      * 
      * @param role
-     *        The IAM Amazon Resource Name (ARN) for the role that you want
-     *        Elastic Transcoder to test.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to test.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestRoleRequest withRole(String role) {
@@ -103,13 +94,12 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon S3 bucket that contains media files to be transcoded. The
-     * action attempts to read from this bucket.
+     * The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this bucket.
      * </p>
      * 
      * @param inputBucket
-     *        The Amazon S3 bucket that contains media files to be transcoded.
-     *        The action attempts to read from this bucket.
+     *        The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this
+     *        bucket.
      */
 
     public void setInputBucket(String inputBucket) {
@@ -118,12 +108,11 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon S3 bucket that contains media files to be transcoded. The
-     * action attempts to read from this bucket.
+     * The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this bucket.
      * </p>
      * 
-     * @return The Amazon S3 bucket that contains media files to be transcoded.
-     *         The action attempts to read from this bucket.
+     * @return The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this
+     *         bucket.
      */
 
     public String getInputBucket() {
@@ -132,15 +121,13 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon S3 bucket that contains media files to be transcoded. The
-     * action attempts to read from this bucket.
+     * The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this bucket.
      * </p>
      * 
      * @param inputBucket
-     *        The Amazon S3 bucket that contains media files to be transcoded.
-     *        The action attempts to read from this bucket.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon S3 bucket that contains media files to be transcoded. The action attempts to read from this
+     *        bucket.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestRoleRequest withInputBucket(String inputBucket) {
@@ -150,13 +137,13 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media
-     * files to. The action attempts to read from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      * 
      * @param outputBucket
-     *        The Amazon S3 bucket that Elastic Transcoder will write transcoded
-     *        media files to. The action attempts to read from this bucket.
+     *        The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read
+     *        from this bucket.
      */
 
     public void setOutputBucket(String outputBucket) {
@@ -165,13 +152,12 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media
-     * files to. The action attempts to read from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      * 
-     * @return The Amazon S3 bucket that Elastic Transcoder will write
-     *         transcoded media files to. The action attempts to read from this
-     *         bucket.
+     * @return The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to
+     *         read from this bucket.
      */
 
     public String getOutputBucket() {
@@ -180,15 +166,14 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The Amazon S3 bucket that Elastic Transcoder will write transcoded media
-     * files to. The action attempts to read from this bucket.
+     * The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read from
+     * this bucket.
      * </p>
      * 
      * @param outputBucket
-     *        The Amazon S3 bucket that Elastic Transcoder will write transcoded
-     *        media files to. The action attempts to read from this bucket.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon S3 bucket that Elastic Transcoder writes transcoded media files to. The action attempts to read
+     *        from this bucket.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestRoleRequest withOutputBucket(String outputBucket) {
@@ -198,13 +183,12 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
-     * topics that you want the action to send a test notification to.
+     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to send a
+     * test notification to.
      * </p>
      * 
-     * @return The ARNs of one or more Amazon Simple Notification Service
-     *         (Amazon SNS) topics that you want the action to send a test
-     *         notification to.
+     * @return The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action
+     *         to send a test notification to.
      */
 
     public java.util.List<String> getTopics() {
@@ -216,14 +200,13 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
-     * topics that you want the action to send a test notification to.
+     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to send a
+     * test notification to.
      * </p>
      * 
      * @param topics
-     *        The ARNs of one or more Amazon Simple Notification Service (Amazon
-     *        SNS) topics that you want the action to send a test notification
-     *        to.
+     *        The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to
+     *        send a test notification to.
      */
 
     public void setTopics(java.util.Collection<String> topics) {
@@ -237,28 +220,24 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
-     * topics that you want the action to send a test notification to.
+     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to send a
+     * test notification to.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTopics(java.util.Collection)} or
-     * {@link #withTopics(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTopics(java.util.Collection)} or {@link #withTopics(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param topics
-     *        The ARNs of one or more Amazon Simple Notification Service (Amazon
-     *        SNS) topics that you want the action to send a test notification
-     *        to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to
+     *        send a test notification to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestRoleRequest withTopics(String... topics) {
         if (this.topics == null) {
-            setTopics(new com.amazonaws.internal.SdkInternalList<String>(
-                    topics.length));
+            setTopics(new com.amazonaws.internal.SdkInternalList<String>(topics.length));
         }
         for (String ele : topics) {
             this.topics.add(ele);
@@ -268,16 +247,14 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
-     * topics that you want the action to send a test notification to.
+     * The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to send a
+     * test notification to.
      * </p>
      * 
      * @param topics
-     *        The ARNs of one or more Amazon Simple Notification Service (Amazon
-     *        SNS) topics that you want the action to send a test notification
-     *        to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics that you want the action to
+     *        send a test notification to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestRoleRequest withTopics(java.util.Collection<String> topics) {
@@ -286,8 +263,7 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -298,13 +274,13 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRole() != null)
-            sb.append("Role: " + getRole() + ",");
+            sb.append("Role: ").append(getRole()).append(",");
         if (getInputBucket() != null)
-            sb.append("InputBucket: " + getInputBucket() + ",");
+            sb.append("InputBucket: ").append(getInputBucket()).append(",");
         if (getOutputBucket() != null)
-            sb.append("OutputBucket: " + getOutputBucket() + ",");
+            sb.append("OutputBucket: ").append(getOutputBucket()).append(",");
         if (getTopics() != null)
-            sb.append("Topics: " + getTopics());
+            sb.append("Topics: ").append(getTopics());
         sb.append("}");
         return sb.toString();
     }
@@ -321,23 +297,19 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
         TestRoleRequest other = (TestRoleRequest) obj;
         if (other.getRole() == null ^ this.getRole() == null)
             return false;
-        if (other.getRole() != null
-                && other.getRole().equals(this.getRole()) == false)
+        if (other.getRole() != null && other.getRole().equals(this.getRole()) == false)
             return false;
         if (other.getInputBucket() == null ^ this.getInputBucket() == null)
             return false;
-        if (other.getInputBucket() != null
-                && other.getInputBucket().equals(this.getInputBucket()) == false)
+        if (other.getInputBucket() != null && other.getInputBucket().equals(this.getInputBucket()) == false)
             return false;
         if (other.getOutputBucket() == null ^ this.getOutputBucket() == null)
             return false;
-        if (other.getOutputBucket() != null
-                && other.getOutputBucket().equals(this.getOutputBucket()) == false)
+        if (other.getOutputBucket() != null && other.getOutputBucket().equals(this.getOutputBucket()) == false)
             return false;
         if (other.getTopics() == null ^ this.getTopics() == null)
             return false;
-        if (other.getTopics() != null
-                && other.getTopics().equals(this.getTopics()) == false)
+        if (other.getTopics() != null && other.getTopics().equals(this.getTopics()) == false)
             return false;
         return true;
     }
@@ -347,17 +319,10 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRole() == null) ? 0 : getRole().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getInputBucket() == null) ? 0 : getInputBucket().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOutputBucket() == null) ? 0 : getOutputBucket()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getTopics() == null) ? 0 : getTopics().hashCode());
+        hashCode = prime * hashCode + ((getRole() == null) ? 0 : getRole().hashCode());
+        hashCode = prime * hashCode + ((getInputBucket() == null) ? 0 : getInputBucket().hashCode());
+        hashCode = prime * hashCode + ((getOutputBucket() == null) ? 0 : getOutputBucket().hashCode());
+        hashCode = prime * hashCode + ((getTopics() == null) ? 0 : getTopics().hashCode());
         return hashCode;
     }
 
@@ -365,4 +330,5 @@ public class TestRoleRequest extends AmazonWebServiceRequest implements
     public TestRoleRequest clone() {
         return (TestRoleRequest) super.clone();
     }
+
 }

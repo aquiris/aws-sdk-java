@@ -1,47 +1,26 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 
 /**
  * <p>
- * Application Auto Scaling is a general purpose Auto Scaling service for
- * supported elastic AWS resources. With Application Auto Scaling, you can
- * automatically scale your AWS resources, with an experience similar to that of
- * Auto Scaling.
- * </p>
- * <p>
- * Application Auto Scaling supports scaling the following AWS resources:
+ * With Application Auto Scaling, you can automatically scale your AWS resources. The experience similar to that of <a
+ * href="https://aws.amazon.com/autoscaling/">Auto Scaling</a>. You can use Application Auto Scaling to accomplish the
+ * following tasks:
  * </p>
  * <ul>
  * <li>
  * <p>
- * Amazon ECS services
- * </p>
- * </li>
- * <li>
- * <p>
- * Amazon EC2 Spot fleet instances
- * </p>
- * </li>
- * </ul>
- * <p>
- * You can use Application Auto Scaling to accomplish the following tasks:
- * </p>
- * <ul>
- * <li>
- * <p>
- * Define scaling policies for automatically adjusting your AWS resources
+ * Define scaling policies to automatically scale your AWS resources
  * </p>
  * </li>
  * <li>
@@ -51,55 +30,55 @@
  * </li>
  * <li>
  * <p>
- * View history of your scaling events
+ * View the history of your scaling events
  * </p>
  * </li>
  * </ul>
  * <p>
- * Application Auto Scaling is available in the following regions:
+ * Application Auto Scaling can scale the following AWS resources:
  * </p>
  * <ul>
  * <li>
  * <p>
- * <code>us-east-1</code>
+ * Amazon ECS services. For more information, see <a
+ * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html">Service Auto Scaling</a>
+ * in the <i>Amazon EC2 Container Service Developer Guide</i>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>us-west-1</code>
+ * Amazon EC2 Spot fleets. For more information, see <a
+ * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html">Automatic Scaling for Spot
+ * Fleet</a> in the <i>Amazon EC2 User Guide</i>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>us-west-2</code>
+ * Amazon EMR clusters. For more information, see <a
+ * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html">Using Automatic
+ * Scaling in Amazon EMR</a> in the <i>Amazon EMR Management Guide</i>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>ap-southeast-1</code>
+ * AppStream 2.0 fleets. For more information, see <a
+ * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html">Fleet Auto Scaling for Amazon
+ * AppStream 2.0</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>ap-southeast-2</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>ap-northeast-1</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>eu-central-1</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>eu-west-1</code>
+ * Provisioned read and write capacity for Amazon DynamoDB tables and global secondary indexes. For more information,
+ * see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TargetTracking.html">Auto Scaling for
+ * DynamoDB</a> in the <i>Amazon DynamoDB Developer Guide</i>.
  * </p>
  * </li>
  * </ul>
+ * <p>
+ * For a list of supported regions, see <a
+ * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region">AWS Regions and Endpoints: Application
+ * Auto Scaling</a> in the <i>AWS General Reference</i>.
+ * </p>
  */
 package com.amazonaws.services.applicationautoscaling;
 

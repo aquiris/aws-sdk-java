@@ -1,38 +1,44 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A set of instructions for launching server processes on each instance in a
- * fleet. Each instruction set identifies the location of the server executable,
- * optional launch parameters, and the number of server processes with this
- * configuration to maintain concurrently on the instance. Server process
- * configurations make up a fleet's <code><a>RuntimeConfiguration</a></code>.
+ * A set of instructions for launching server processes on each instance in a fleet. Each instruction set identifies the
+ * location of the server executable, optional launch parameters, and the number of server processes with this
+ * configuration to maintain concurrently on the instance. Server process configurations make up a fleet's
+ * <code> <a>RuntimeConfiguration</a> </code>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ServerProcess" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ServerProcess implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ServerProcess implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Location in the game build of the server executable. All game builds are
-     * installed on instances at the root <code>C:\game\...</code>, so an
-     * executable file located at <code>MyGame\latest\server.exe</code> has a
-     * launch path of "<code>C:\game\MyGame\latest\server.exe</code>".
+     * Location of the server executable in a game build. All game builds are installed on instances at the root : for
+     * Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build
+     * with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "
+     * <code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at
+     * <code>MyGame/latest/server.exe</code> must have a launch path of "
+     * <code>/local/game/MyGame/latest/server.exe</code>".
      * </p>
      */
     private String launchPath;
@@ -44,26 +50,28 @@ public class ServerProcess implements Serializable, Cloneable {
     private String parameters;
     /**
      * <p>
-     * Number of server processes using this configuration to run concurrently
-     * on an instance.
+     * Number of server processes using this configuration to run concurrently on an instance.
      * </p>
      */
     private Integer concurrentExecutions;
 
     /**
      * <p>
-     * Location in the game build of the server executable. All game builds are
-     * installed on instances at the root <code>C:\game\...</code>, so an
-     * executable file located at <code>MyGame\latest\server.exe</code> has a
-     * launch path of "<code>C:\game\MyGame\latest\server.exe</code>".
+     * Location of the server executable in a game build. All game builds are installed on instances at the root : for
+     * Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build
+     * with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "
+     * <code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at
+     * <code>MyGame/latest/server.exe</code> must have a launch path of "
+     * <code>/local/game/MyGame/latest/server.exe</code>".
      * </p>
      * 
      * @param launchPath
-     *        Location in the game build of the server executable. All game
-     *        builds are installed on instances at the root
-     *        <code>C:\game\...</code>, so an executable file located at
-     *        <code>MyGame\latest\server.exe</code> has a launch path of "
-     *        <code>C:\game\MyGame\latest\server.exe</code>".
+     *        Location of the server executable in a game build. All game builds are installed on instances at the root
+     *        : for Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows
+     *        game build with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch
+     *        path of "<code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file
+     *        located at <code>MyGame/latest/server.exe</code> must have a launch path of "
+     *        <code>/local/game/MyGame/latest/server.exe</code>".
      */
 
     public void setLaunchPath(String launchPath) {
@@ -72,17 +80,20 @@ public class ServerProcess implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Location in the game build of the server executable. All game builds are
-     * installed on instances at the root <code>C:\game\...</code>, so an
-     * executable file located at <code>MyGame\latest\server.exe</code> has a
-     * launch path of "<code>C:\game\MyGame\latest\server.exe</code>".
+     * Location of the server executable in a game build. All game builds are installed on instances at the root : for
+     * Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build
+     * with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "
+     * <code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at
+     * <code>MyGame/latest/server.exe</code> must have a launch path of "
+     * <code>/local/game/MyGame/latest/server.exe</code>".
      * </p>
      * 
-     * @return Location in the game build of the server executable. All game
-     *         builds are installed on instances at the root
-     *         <code>C:\game\...</code>, so an executable file located at
-     *         <code>MyGame\latest\server.exe</code> has a launch path of "
-     *         <code>C:\game\MyGame\latest\server.exe</code>".
+     * @return Location of the server executable in a game build. All game builds are installed on instances at the root
+     *         : for Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows
+     *         game build with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch
+     *         path of "<code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file
+     *         located at <code>MyGame/latest/server.exe</code> must have a launch path of "
+     *         <code>/local/game/MyGame/latest/server.exe</code>".
      */
 
     public String getLaunchPath() {
@@ -91,20 +102,22 @@ public class ServerProcess implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Location in the game build of the server executable. All game builds are
-     * installed on instances at the root <code>C:\game\...</code>, so an
-     * executable file located at <code>MyGame\latest\server.exe</code> has a
-     * launch path of "<code>C:\game\MyGame\latest\server.exe</code>".
+     * Location of the server executable in a game build. All game builds are installed on instances at the root : for
+     * Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build
+     * with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "
+     * <code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at
+     * <code>MyGame/latest/server.exe</code> must have a launch path of "
+     * <code>/local/game/MyGame/latest/server.exe</code>".
      * </p>
      * 
      * @param launchPath
-     *        Location in the game build of the server executable. All game
-     *        builds are installed on instances at the root
-     *        <code>C:\game\...</code>, so an executable file located at
-     *        <code>MyGame\latest\server.exe</code> has a launch path of "
-     *        <code>C:\game\MyGame\latest\server.exe</code>".
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Location of the server executable in a game build. All game builds are installed on instances at the root
+     *        : for Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows
+     *        game build with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch
+     *        path of "<code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file
+     *        located at <code>MyGame/latest/server.exe</code> must have a launch path of "
+     *        <code>/local/game/MyGame/latest/server.exe</code>".
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ServerProcess withLaunchPath(String launchPath) {
@@ -118,8 +131,7 @@ public class ServerProcess implements Serializable, Cloneable {
      * </p>
      * 
      * @param parameters
-     *        Optional list of parameters to pass to the server executable on
-     *        launch.
+     *        Optional list of parameters to pass to the server executable on launch.
      */
 
     public void setParameters(String parameters) {
@@ -131,8 +143,7 @@ public class ServerProcess implements Serializable, Cloneable {
      * Optional list of parameters to pass to the server executable on launch.
      * </p>
      * 
-     * @return Optional list of parameters to pass to the server executable on
-     *         launch.
+     * @return Optional list of parameters to pass to the server executable on launch.
      */
 
     public String getParameters() {
@@ -145,10 +156,8 @@ public class ServerProcess implements Serializable, Cloneable {
      * </p>
      * 
      * @param parameters
-     *        Optional list of parameters to pass to the server executable on
-     *        launch.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Optional list of parameters to pass to the server executable on launch.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ServerProcess withParameters(String parameters) {
@@ -158,13 +167,11 @@ public class ServerProcess implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Number of server processes using this configuration to run concurrently
-     * on an instance.
+     * Number of server processes using this configuration to run concurrently on an instance.
      * </p>
      * 
      * @param concurrentExecutions
-     *        Number of server processes using this configuration to run
-     *        concurrently on an instance.
+     *        Number of server processes using this configuration to run concurrently on an instance.
      */
 
     public void setConcurrentExecutions(Integer concurrentExecutions) {
@@ -173,12 +180,10 @@ public class ServerProcess implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Number of server processes using this configuration to run concurrently
-     * on an instance.
+     * Number of server processes using this configuration to run concurrently on an instance.
      * </p>
      * 
-     * @return Number of server processes using this configuration to run
-     *         concurrently on an instance.
+     * @return Number of server processes using this configuration to run concurrently on an instance.
      */
 
     public Integer getConcurrentExecutions() {
@@ -187,15 +192,12 @@ public class ServerProcess implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Number of server processes using this configuration to run concurrently
-     * on an instance.
+     * Number of server processes using this configuration to run concurrently on an instance.
      * </p>
      * 
      * @param concurrentExecutions
-     *        Number of server processes using this configuration to run
-     *        concurrently on an instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Number of server processes using this configuration to run concurrently on an instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ServerProcess withConcurrentExecutions(Integer concurrentExecutions) {
@@ -204,8 +206,7 @@ public class ServerProcess implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -216,11 +217,11 @@ public class ServerProcess implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLaunchPath() != null)
-            sb.append("LaunchPath: " + getLaunchPath() + ",");
+            sb.append("LaunchPath: ").append(getLaunchPath()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters() + ",");
+            sb.append("Parameters: ").append(getParameters()).append(",");
         if (getConcurrentExecutions() != null)
-            sb.append("ConcurrentExecutions: " + getConcurrentExecutions());
+            sb.append("ConcurrentExecutions: ").append(getConcurrentExecutions());
         sb.append("}");
         return sb.toString();
     }
@@ -237,20 +238,15 @@ public class ServerProcess implements Serializable, Cloneable {
         ServerProcess other = (ServerProcess) obj;
         if (other.getLaunchPath() == null ^ this.getLaunchPath() == null)
             return false;
-        if (other.getLaunchPath() != null
-                && other.getLaunchPath().equals(this.getLaunchPath()) == false)
+        if (other.getLaunchPath() != null && other.getLaunchPath().equals(this.getLaunchPath()) == false)
             return false;
         if (other.getParameters() == null ^ this.getParameters() == null)
             return false;
-        if (other.getParameters() != null
-                && other.getParameters().equals(this.getParameters()) == false)
+        if (other.getParameters() != null && other.getParameters().equals(this.getParameters()) == false)
             return false;
-        if (other.getConcurrentExecutions() == null
-                ^ this.getConcurrentExecutions() == null)
+        if (other.getConcurrentExecutions() == null ^ this.getConcurrentExecutions() == null)
             return false;
-        if (other.getConcurrentExecutions() != null
-                && other.getConcurrentExecutions().equals(
-                        this.getConcurrentExecutions()) == false)
+        if (other.getConcurrentExecutions() != null && other.getConcurrentExecutions().equals(this.getConcurrentExecutions()) == false)
             return false;
         return true;
     }
@@ -260,14 +256,9 @@ public class ServerProcess implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getLaunchPath() == null) ? 0 : getLaunchPath().hashCode());
-        hashCode = prime * hashCode
-                + ((getParameters() == null) ? 0 : getParameters().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getConcurrentExecutions() == null) ? 0
-                        : getConcurrentExecutions().hashCode());
+        hashCode = prime * hashCode + ((getLaunchPath() == null) ? 0 : getLaunchPath().hashCode());
+        hashCode = prime * hashCode + ((getParameters() == null) ? 0 : getParameters().hashCode());
+        hashCode = prime * hashCode + ((getConcurrentExecutions() == null) ? 0 : getConcurrentExecutions().hashCode());
         return hashCode;
     }
 
@@ -276,9 +267,13 @@ public class ServerProcess implements Serializable, Cloneable {
         try {
             return (ServerProcess) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.gamelift.model.transform.ServerProcessMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

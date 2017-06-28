@@ -1,68 +1,70 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.certificatemanager.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08/ListTagsForCertificate" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListTagsForCertificateRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListTagsForCertificateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate for which you want to
-     * list the tags. This must be of the form:
+     * String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following
+     * form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
      * </p>
      * <p>
-     * For more information about ARNs, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-     * >Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.
+     * For more information about ARNs, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and
+     * AWS Service Namespaces</a>.
      * </p>
      */
     private String certificateArn;
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate for which you want to
-     * list the tags. This must be of the form:
+     * String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following
+     * form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
      * </p>
      * <p>
-     * For more information about ARNs, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-     * >Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.
+     * For more information about ARNs, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and
+     * AWS Service Namespaces</a>.
      * </p>
      * 
      * @param certificateArn
-     *        String that contains the ARN of the ACM Certificate for which you
-     *        want to list the tags. This must be of the form:</p>
+     *        String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the
+     *        following form:</p>
      *        <p>
      *        <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
      *        </p>
      *        <p>
-     *        For more information about ARNs, see <a href=
-     *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-     *        >Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.
+     *        For more information about ARNs, see <a
+     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *        (ARNs) and AWS Service Namespaces</a>.
      */
 
     public void setCertificateArn(String certificateArn) {
@@ -71,27 +73,27 @@ public class ListTagsForCertificateRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate for which you want to
-     * list the tags. This must be of the form:
+     * String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following
+     * form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
      * </p>
      * <p>
-     * For more information about ARNs, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-     * >Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.
+     * For more information about ARNs, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and
+     * AWS Service Namespaces</a>.
      * </p>
      * 
-     * @return String that contains the ARN of the ACM Certificate for which you
-     *         want to list the tags. This must be of the form:</p>
+     * @return String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the
+     *         following form:</p>
      *         <p>
      *         <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
      *         </p>
      *         <p>
-     *         For more information about ARNs, see <a href=
-     *         "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-     *         >Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.
+     *         For more information about ARNs, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *         (ARNs) and AWS Service Namespaces</a>.
      */
 
     public String getCertificateArn() {
@@ -100,41 +102,38 @@ public class ListTagsForCertificateRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate for which you want to
-     * list the tags. This must be of the form:
+     * String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following
+     * form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
      * </p>
      * <p>
-     * For more information about ARNs, see <a href=
-     * "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-     * >Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.
+     * For more information about ARNs, see <a
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and
+     * AWS Service Namespaces</a>.
      * </p>
      * 
      * @param certificateArn
-     *        String that contains the ARN of the ACM Certificate for which you
-     *        want to list the tags. This must be of the form:</p>
+     *        String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the
+     *        following form:</p>
      *        <p>
      *        <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
      *        </p>
      *        <p>
-     *        For more information about ARNs, see <a href=
-     *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-     *        >Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        For more information about ARNs, see <a
+     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *        (ARNs) and AWS Service Namespaces</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListTagsForCertificateRequest withCertificateArn(
-            String certificateArn) {
+    public ListTagsForCertificateRequest withCertificateArn(String certificateArn) {
         setCertificateArn(certificateArn);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -145,7 +144,7 @@ public class ListTagsForCertificateRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn());
+            sb.append("CertificateArn: ").append(getCertificateArn());
         sb.append("}");
         return sb.toString();
     }
@@ -160,11 +159,9 @@ public class ListTagsForCertificateRequest extends AmazonWebServiceRequest
         if (obj instanceof ListTagsForCertificateRequest == false)
             return false;
         ListTagsForCertificateRequest other = (ListTagsForCertificateRequest) obj;
-        if (other.getCertificateArn() == null
-                ^ this.getCertificateArn() == null)
+        if (other.getCertificateArn() == null ^ this.getCertificateArn() == null)
             return false;
-        if (other.getCertificateArn() != null
-                && other.getCertificateArn().equals(this.getCertificateArn()) == false)
+        if (other.getCertificateArn() != null && other.getCertificateArn().equals(this.getCertificateArn()) == false)
             return false;
         return true;
     }
@@ -174,10 +171,7 @@ public class ListTagsForCertificateRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCertificateArn() == null) ? 0 : getCertificateArn()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getCertificateArn() == null) ? 0 : getCertificateArn().hashCode());
         return hashCode;
     }
 
@@ -185,4 +179,5 @@ public class ListTagsForCertificateRequest extends AmazonWebServiceRequest
     public ListTagsForCertificateRequest clone() {
         return (ListTagsForCertificateRequest) super.clone();
     }
+
 }

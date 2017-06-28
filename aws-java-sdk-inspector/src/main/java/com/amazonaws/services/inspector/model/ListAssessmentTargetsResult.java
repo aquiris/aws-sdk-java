@@ -1,51 +1,49 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/ListAssessmentTargets" target="_top">AWS
+ *      API Documentation</a>
  */
-public class ListAssessmentTargetsResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListAssessmentTargetsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of ARNs that specifies the assessment targets that are returned by
-     * the action.
+     * A list of ARNs that specifies the assessment targets that are returned by the action.
      * </p>
      */
     private java.util.List<String> assessmentTargetArns;
     /**
      * <p>
-     * When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for
-     * the <b>nextToken</b> parameter in a subsequent pagination request. If
-     * there is no more data to be listed, this parameter is set to null.
+     * When a response is generated, if there is more data to be listed, this parameter is present in the response and
+     * contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no
+     * more data to be listed, this parameter is set to null.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * A list of ARNs that specifies the assessment targets that are returned by
-     * the action.
+     * A list of ARNs that specifies the assessment targets that are returned by the action.
      * </p>
      * 
-     * @return A list of ARNs that specifies the assessment targets that are
-     *         returned by the action.
+     * @return A list of ARNs that specifies the assessment targets that are returned by the action.
      */
 
     public java.util.List<String> getAssessmentTargetArns() {
@@ -54,50 +52,40 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of ARNs that specifies the assessment targets that are returned by
-     * the action.
+     * A list of ARNs that specifies the assessment targets that are returned by the action.
      * </p>
      * 
      * @param assessmentTargetArns
-     *        A list of ARNs that specifies the assessment targets that are
-     *        returned by the action.
+     *        A list of ARNs that specifies the assessment targets that are returned by the action.
      */
 
-    public void setAssessmentTargetArns(
-            java.util.Collection<String> assessmentTargetArns) {
+    public void setAssessmentTargetArns(java.util.Collection<String> assessmentTargetArns) {
         if (assessmentTargetArns == null) {
             this.assessmentTargetArns = null;
             return;
         }
 
-        this.assessmentTargetArns = new java.util.ArrayList<String>(
-                assessmentTargetArns);
+        this.assessmentTargetArns = new java.util.ArrayList<String>(assessmentTargetArns);
     }
 
     /**
      * <p>
-     * A list of ARNs that specifies the assessment targets that are returned by
-     * the action.
+     * A list of ARNs that specifies the assessment targets that are returned by the action.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setAssessmentTargetArns(java.util.Collection)} or
-     * {@link #withAssessmentTargetArns(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAssessmentTargetArns(java.util.Collection)} or {@link #withAssessmentTargetArns(java.util.Collection)}
+     * if you want to override the existing values.
      * </p>
      * 
      * @param assessmentTargetArns
-     *        A list of ARNs that specifies the assessment targets that are
-     *        returned by the action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of ARNs that specifies the assessment targets that are returned by the action.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListAssessmentTargetsResult withAssessmentTargetArns(
-            String... assessmentTargetArns) {
+    public ListAssessmentTargetsResult withAssessmentTargetArns(String... assessmentTargetArns) {
         if (this.assessmentTargetArns == null) {
-            setAssessmentTargetArns(new java.util.ArrayList<String>(
-                    assessmentTargetArns.length));
+            setAssessmentTargetArns(new java.util.ArrayList<String>(assessmentTargetArns.length));
         }
         for (String ele : assessmentTargetArns) {
             this.assessmentTargetArns.add(ele);
@@ -107,37 +95,30 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of ARNs that specifies the assessment targets that are returned by
-     * the action.
+     * A list of ARNs that specifies the assessment targets that are returned by the action.
      * </p>
      * 
      * @param assessmentTargetArns
-     *        A list of ARNs that specifies the assessment targets that are
-     *        returned by the action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of ARNs that specifies the assessment targets that are returned by the action.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListAssessmentTargetsResult withAssessmentTargetArns(
-            java.util.Collection<String> assessmentTargetArns) {
+    public ListAssessmentTargetsResult withAssessmentTargetArns(java.util.Collection<String> assessmentTargetArns) {
         setAssessmentTargetArns(assessmentTargetArns);
         return this;
     }
 
     /**
      * <p>
-     * When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for
-     * the <b>nextToken</b> parameter in a subsequent pagination request. If
-     * there is no more data to be listed, this parameter is set to null.
+     * When a response is generated, if there is more data to be listed, this parameter is present in the response and
+     * contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no
+     * more data to be listed, this parameter is set to null.
      * </p>
      * 
      * @param nextToken
-     *        When a response is generated, if there is more data to be listed,
-     *        this parameter is present in the response and contains the value
-     *        to use for the <b>nextToken</b> parameter in a subsequent
-     *        pagination request. If there is no more data to be listed, this
-     *        parameter is set to null.
+     *        When a response is generated, if there is more data to be listed, this parameter is present in the
+     *        response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination
+     *        request. If there is no more data to be listed, this parameter is set to null.
      */
 
     public void setNextToken(String nextToken) {
@@ -146,17 +127,14 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for
-     * the <b>nextToken</b> parameter in a subsequent pagination request. If
-     * there is no more data to be listed, this parameter is set to null.
+     * When a response is generated, if there is more data to be listed, this parameter is present in the response and
+     * contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no
+     * more data to be listed, this parameter is set to null.
      * </p>
      * 
-     * @return When a response is generated, if there is more data to be listed,
-     *         this parameter is present in the response and contains the value
-     *         to use for the <b>nextToken</b> parameter in a subsequent
-     *         pagination request. If there is no more data to be listed, this
-     *         parameter is set to null.
+     * @return When a response is generated, if there is more data to be listed, this parameter is present in the
+     *         response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination
+     *         request. If there is no more data to be listed, this parameter is set to null.
      */
 
     public String getNextToken() {
@@ -165,20 +143,16 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for
-     * the <b>nextToken</b> parameter in a subsequent pagination request. If
-     * there is no more data to be listed, this parameter is set to null.
+     * When a response is generated, if there is more data to be listed, this parameter is present in the response and
+     * contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no
+     * more data to be listed, this parameter is set to null.
      * </p>
      * 
      * @param nextToken
-     *        When a response is generated, if there is more data to be listed,
-     *        this parameter is present in the response and contains the value
-     *        to use for the <b>nextToken</b> parameter in a subsequent
-     *        pagination request. If there is no more data to be listed, this
-     *        parameter is set to null.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        When a response is generated, if there is more data to be listed, this parameter is present in the
+     *        response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination
+     *        request. If there is no more data to be listed, this parameter is set to null.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListAssessmentTargetsResult withNextToken(String nextToken) {
@@ -187,8 +161,7 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -199,10 +172,9 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAssessmentTargetArns() != null)
-            sb.append("AssessmentTargetArns: " + getAssessmentTargetArns()
-                    + ",");
+            sb.append("AssessmentTargetArns: ").append(getAssessmentTargetArns()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -217,17 +189,13 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
         if (obj instanceof ListAssessmentTargetsResult == false)
             return false;
         ListAssessmentTargetsResult other = (ListAssessmentTargetsResult) obj;
-        if (other.getAssessmentTargetArns() == null
-                ^ this.getAssessmentTargetArns() == null)
+        if (other.getAssessmentTargetArns() == null ^ this.getAssessmentTargetArns() == null)
             return false;
-        if (other.getAssessmentTargetArns() != null
-                && other.getAssessmentTargetArns().equals(
-                        this.getAssessmentTargetArns()) == false)
+        if (other.getAssessmentTargetArns() != null && other.getAssessmentTargetArns().equals(this.getAssessmentTargetArns()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -237,12 +205,8 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAssessmentTargetArns() == null) ? 0
-                        : getAssessmentTargetArns().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getAssessmentTargetArns() == null) ? 0 : getAssessmentTargetArns().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -251,9 +215,8 @@ public class ListAssessmentTargetsResult implements Serializable, Cloneable {
         try {
             return (ListAssessmentTargetsResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeInternetGatewaysRequestMarshaller;
@@ -24,19 +24,10 @@ import com.amazonaws.services.ec2.model.transform.DescribeInternetGatewaysReques
  * Contains the parameters for DescribeInternetGateways.
  * </p>
  */
-public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable,
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
         DryRunSupportedRequest<DescribeInternetGatewaysRequest> {
 
-    /**
-     * <p>
-     * One or more Internet gateway IDs.
-     * </p>
-     * <p>
-     * Default: Describes all your Internet gateways.
-     * </p>
-     */
-    private com.amazonaws.internal.SdkInternalList<String> internetGatewayIds;
     /**
      * <p>
      * One or more filters.
@@ -44,9 +35,8 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * <code>attachment.state</code> - The current state of the attachment
-     * between the gateway and the VPC (<code>available</code>). Present only if
-     * a VPC is attached.
+     * <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     * <code>available</code>). Present only if a VPC is attached.
      * </p>
      * </li>
      * <li>
@@ -61,30 +51,431 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a
-     * tag assigned to the resource.
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>tag-key</code> - The key of a tag assigned to the resource. This
-     * filter is independent of the <code>tag-value</code> filter. For example,
-     * if you use both the filter "tag-key=Purpose" and the filter
-     * "tag-value=X", you get any resources assigned both the tag key Purpose
-     * (regardless of what the tag's value is), and the tag value X (regardless
-     * of what the tag's key is). If you want to list only resources where
-     * Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     * <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is),
+     * and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X,
+     * see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>tag-value</code> - The value of a tag assigned to the resource.
-     * This filter is independent of the <code>tag-key</code> filter.
+     * <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-key</code> filter.
      * </p>
      * </li>
      * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
+    /**
+     * <p>
+     * One or more Internet gateway IDs.
+     * </p>
+     * <p>
+     * Default: Describes all your Internet gateways.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> internetGatewayIds;
+
+    /**
+     * <p>
+     * One or more filters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     * <code>available</code>). Present only if a VPC is attached.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is),
+     * and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X,
+     * see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-key</code> filter.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return One or more filters.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     *         <code>available</code>). Present only if a VPC is attached.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *         Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *         for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *         filter value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     *         <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's
+     *         value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources
+     *         where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     *         <code>tag-key</code> filter.
+     *         </p>
+     *         </li>
+     */
+
+    public java.util.List<Filter> getFilters() {
+        if (filters == null) {
+            filters = new com.amazonaws.internal.SdkInternalList<Filter>();
+        }
+        return filters;
+    }
+
+    /**
+     * <p>
+     * One or more filters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     * <code>available</code>). Present only if a VPC is attached.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is),
+     * and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X,
+     * see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-key</code> filter.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param filters
+     *        One or more filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     *        <code>available</code>). Present only if a VPC is attached.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     *        <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     *        "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value
+     *        is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where
+     *        Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     *        <code>tag-key</code> filter.
+     *        </p>
+     *        </li>
+     */
+
+    public void setFilters(java.util.Collection<Filter> filters) {
+        if (filters == null) {
+            this.filters = null;
+            return;
+        }
+
+        this.filters = new com.amazonaws.internal.SdkInternalList<Filter>(filters);
+    }
+
+    /**
+     * <p>
+     * One or more filters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     * <code>available</code>). Present only if a VPC is attached.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is),
+     * and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X,
+     * see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-key</code> filter.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setFilters(java.util.Collection)} or {@link #withFilters(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param filters
+     *        One or more filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     *        <code>available</code>). Present only if a VPC is attached.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     *        <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     *        "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value
+     *        is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where
+     *        Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     *        <code>tag-key</code> filter.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeInternetGatewaysRequest withFilters(Filter... filters) {
+        if (this.filters == null) {
+            setFilters(new com.amazonaws.internal.SdkInternalList<Filter>(filters.length));
+        }
+        for (Filter ele : filters) {
+            this.filters.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * One or more filters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     * <code>available</code>). Present only if a VPC is attached.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify
+     * the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag
+     * Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is),
+     * and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X,
+     * see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     * <code>tag-key</code> filter.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param filters
+     *        One or more filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (
+     *        <code>available</code>). Present only if a VPC is attached.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>attachment.vpc-id</code> - The ID of an attached VPC.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>internet-gateway-id</code> - The ID of the Internet gateway.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.
+     *        Specify the key of the tag in the filter name and the value of the tag in the filter value. For example,
+     *        for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     *        filter value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the
+     *        <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter
+     *        "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value
+     *        is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where
+     *        Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the
+     *        <code>tag-key</code> filter.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeInternetGatewaysRequest withFilters(java.util.Collection<Filter> filters) {
+        setFilters(filters);
+        return this;
+    }
 
     /**
      * <p>
@@ -120,15 +511,13 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
      *        Default: Describes all your Internet gateways.
      */
 
-    public void setInternetGatewayIds(
-            java.util.Collection<String> internetGatewayIds) {
+    public void setInternetGatewayIds(java.util.Collection<String> internetGatewayIds) {
         if (internetGatewayIds == null) {
             this.internetGatewayIds = null;
             return;
         }
 
-        this.internetGatewayIds = new com.amazonaws.internal.SdkInternalList<String>(
-                internetGatewayIds);
+        this.internetGatewayIds = new com.amazonaws.internal.SdkInternalList<String>(internetGatewayIds);
     }
 
     /**
@@ -139,25 +528,21 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
      * Default: Describes all your Internet gateways.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setInternetGatewayIds(java.util.Collection)} or
-     * {@link #withInternetGatewayIds(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setInternetGatewayIds(java.util.Collection)} or {@link #withInternetGatewayIds(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param internetGatewayIds
      *        One or more Internet gateway IDs.</p>
      *        <p>
      *        Default: Describes all your Internet gateways.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeInternetGatewaysRequest withInternetGatewayIds(
-            String... internetGatewayIds) {
+    public DescribeInternetGatewaysRequest withInternetGatewayIds(String... internetGatewayIds) {
         if (this.internetGatewayIds == null) {
-            setInternetGatewayIds(new com.amazonaws.internal.SdkInternalList<String>(
-                    internetGatewayIds.length));
+            setInternetGatewayIds(new com.amazonaws.internal.SdkInternalList<String>(internetGatewayIds.length));
         }
         for (String ele : internetGatewayIds) {
             this.internetGatewayIds.add(ele);
@@ -177,452 +562,27 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
      *        One or more Internet gateway IDs.</p>
      *        <p>
      *        Default: Describes all your Internet gateways.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeInternetGatewaysRequest withInternetGatewayIds(
-            java.util.Collection<String> internetGatewayIds) {
+    public DescribeInternetGatewaysRequest withInternetGatewayIds(java.util.Collection<String> internetGatewayIds) {
         setInternetGatewayIds(internetGatewayIds);
         return this;
     }
 
     /**
-     * <p>
-     * One or more filters.
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>attachment.state</code> - The current state of the attachment
-     * between the gateway and the VPC (<code>available</code>). Present only if
-     * a VPC is attached.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a
-     * tag assigned to the resource.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-key</code> - The key of a tag assigned to the resource. This
-     * filter is independent of the <code>tag-value</code> filter. For example,
-     * if you use both the filter "tag-key=Purpose" and the filter
-     * "tag-value=X", you get any resources assigned both the tag key Purpose
-     * (regardless of what the tag's value is), and the tag value X (regardless
-     * of what the tag's key is). If you want to list only resources where
-     * Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-value</code> - The value of a tag assigned to the resource.
-     * This filter is independent of the <code>tag-key</code> filter.
-     * </p>
-     * </li>
-     * </ul>
-     * 
-     * @return One or more filters.</p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>attachment.state</code> - The current state of the
-     *         attachment between the gateway and the VPC (
-     *         <code>available</code>). Present only if a VPC is attached.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>internet-gateway-id</code> - The ID of the Internet
-     *         gateway.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>tag</code>:<i>key</i>=<i>value</i> - The key/value
-     *         combination of a tag assigned to the resource.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>tag-key</code> - The key of a tag assigned to the resource.
-     *         This filter is independent of the <code>tag-value</code> filter.
-     *         For example, if you use both the filter "tag-key=Purpose" and the
-     *         filter "tag-value=X", you get any resources assigned both the tag
-     *         key Purpose (regardless of what the tag's value is), and the tag
-     *         value X (regardless of what the tag's key is). If you want to
-     *         list only resources where Purpose is X, see the <code>tag</code>
-     *         :<i>key</i>=<i>value</i> filter.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>tag-value</code> - The value of a tag assigned to the
-     *         resource. This filter is independent of the <code>tag-key</code>
-     *         filter.
-     *         </p>
-     *         </li>
-     */
-
-    public java.util.List<Filter> getFilters() {
-        if (filters == null) {
-            filters = new com.amazonaws.internal.SdkInternalList<Filter>();
-        }
-        return filters;
-    }
-
-    /**
-     * <p>
-     * One or more filters.
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>attachment.state</code> - The current state of the attachment
-     * between the gateway and the VPC (<code>available</code>). Present only if
-     * a VPC is attached.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a
-     * tag assigned to the resource.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-key</code> - The key of a tag assigned to the resource. This
-     * filter is independent of the <code>tag-value</code> filter. For example,
-     * if you use both the filter "tag-key=Purpose" and the filter
-     * "tag-value=X", you get any resources assigned both the tag key Purpose
-     * (regardless of what the tag's value is), and the tag value X (regardless
-     * of what the tag's key is). If you want to list only resources where
-     * Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-value</code> - The value of a tag assigned to the resource.
-     * This filter is independent of the <code>tag-key</code> filter.
-     * </p>
-     * </li>
-     * </ul>
-     * 
-     * @param filters
-     *        One or more filters.</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>attachment.state</code> - The current state of the
-     *        attachment between the gateway and the VPC (<code>available</code>
-     *        ). Present only if a VPC is attached.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>internet-gateway-id</code> - The ID of the Internet gateway.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value
-     *        combination of a tag assigned to the resource.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag-key</code> - The key of a tag assigned to the resource.
-     *        This filter is independent of the <code>tag-value</code> filter.
-     *        For example, if you use both the filter "tag-key=Purpose" and the
-     *        filter "tag-value=X", you get any resources assigned both the tag
-     *        key Purpose (regardless of what the tag's value is), and the tag
-     *        value X (regardless of what the tag's key is). If you want to list
-     *        only resources where Purpose is X, see the <code>tag</code>
-     *        :<i>key</i>=<i>value</i> filter.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag-value</code> - The value of a tag assigned to the
-     *        resource. This filter is independent of the <code>tag-key</code>
-     *        filter.
-     *        </p>
-     *        </li>
-     */
-
-    public void setFilters(java.util.Collection<Filter> filters) {
-        if (filters == null) {
-            this.filters = null;
-            return;
-        }
-
-        this.filters = new com.amazonaws.internal.SdkInternalList<Filter>(
-                filters);
-    }
-
-    /**
-     * <p>
-     * One or more filters.
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>attachment.state</code> - The current state of the attachment
-     * between the gateway and the VPC (<code>available</code>). Present only if
-     * a VPC is attached.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a
-     * tag assigned to the resource.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-key</code> - The key of a tag assigned to the resource. This
-     * filter is independent of the <code>tag-value</code> filter. For example,
-     * if you use both the filter "tag-key=Purpose" and the filter
-     * "tag-value=X", you get any resources assigned both the tag key Purpose
-     * (regardless of what the tag's value is), and the tag value X (regardless
-     * of what the tag's key is). If you want to list only resources where
-     * Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-value</code> - The value of a tag assigned to the resource.
-     * This filter is independent of the <code>tag-key</code> filter.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setFilters(java.util.Collection)} or
-     * {@link #withFilters(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param filters
-     *        One or more filters.</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>attachment.state</code> - The current state of the
-     *        attachment between the gateway and the VPC (<code>available</code>
-     *        ). Present only if a VPC is attached.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>internet-gateway-id</code> - The ID of the Internet gateway.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value
-     *        combination of a tag assigned to the resource.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag-key</code> - The key of a tag assigned to the resource.
-     *        This filter is independent of the <code>tag-value</code> filter.
-     *        For example, if you use both the filter "tag-key=Purpose" and the
-     *        filter "tag-value=X", you get any resources assigned both the tag
-     *        key Purpose (regardless of what the tag's value is), and the tag
-     *        value X (regardless of what the tag's key is). If you want to list
-     *        only resources where Purpose is X, see the <code>tag</code>
-     *        :<i>key</i>=<i>value</i> filter.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag-value</code> - The value of a tag assigned to the
-     *        resource. This filter is independent of the <code>tag-key</code>
-     *        filter.
-     *        </p>
-     *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
-
-    public DescribeInternetGatewaysRequest withFilters(Filter... filters) {
-        if (this.filters == null) {
-            setFilters(new com.amazonaws.internal.SdkInternalList<Filter>(
-                    filters.length));
-        }
-        for (Filter ele : filters) {
-            this.filters.add(ele);
-        }
-        return this;
-    }
-
-    /**
-     * <p>
-     * One or more filters.
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>attachment.state</code> - The current state of the attachment
-     * between the gateway and the VPC (<code>available</code>). Present only if
-     * a VPC is attached.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>internet-gateway-id</code> - The ID of the Internet gateway.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a
-     * tag assigned to the resource.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-key</code> - The key of a tag assigned to the resource. This
-     * filter is independent of the <code>tag-value</code> filter. For example,
-     * if you use both the filter "tag-key=Purpose" and the filter
-     * "tag-value=X", you get any resources assigned both the tag key Purpose
-     * (regardless of what the tag's value is), and the tag value X (regardless
-     * of what the tag's key is). If you want to list only resources where
-     * Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>tag-value</code> - The value of a tag assigned to the resource.
-     * This filter is independent of the <code>tag-key</code> filter.
-     * </p>
-     * </li>
-     * </ul>
-     * 
-     * @param filters
-     *        One or more filters.</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>attachment.state</code> - The current state of the
-     *        attachment between the gateway and the VPC (<code>available</code>
-     *        ). Present only if a VPC is attached.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>attachment.vpc-id</code> - The ID of an attached VPC.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>internet-gateway-id</code> - The ID of the Internet gateway.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag</code>:<i>key</i>=<i>value</i> - The key/value
-     *        combination of a tag assigned to the resource.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag-key</code> - The key of a tag assigned to the resource.
-     *        This filter is independent of the <code>tag-value</code> filter.
-     *        For example, if you use both the filter "tag-key=Purpose" and the
-     *        filter "tag-value=X", you get any resources assigned both the tag
-     *        key Purpose (regardless of what the tag's value is), and the tag
-     *        value X (regardless of what the tag's key is). If you want to list
-     *        only resources where Purpose is X, see the <code>tag</code>
-     *        :<i>key</i>=<i>value</i> filter.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>tag-value</code> - The value of a tag assigned to the
-     *        resource. This filter is independent of the <code>tag-key</code>
-     *        filter.
-     *        </p>
-     *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
-
-    public DescribeInternetGatewaysRequest withFilters(
-            java.util.Collection<Filter> filters) {
-        setFilters(filters);
-        return this;
-    }
-
-    /**
-     * This method is intended for internal use only. Returns the marshaled
-     * request configured with additional parameters to enable operation
-     * dry-run.
+     * This method is intended for internal use only. Returns the marshaled request configured with additional
+     * parameters to enable operation dry-run.
      */
     @Override
     public Request<DescribeInternetGatewaysRequest> getDryRunRequest() {
-        Request<DescribeInternetGatewaysRequest> request = new DescribeInternetGatewaysRequestMarshaller()
-                .marshall(this);
+        Request<DescribeInternetGatewaysRequest> request = new DescribeInternetGatewaysRequestMarshaller().marshall(this);
         request.addParameter("DryRun", Boolean.toString(true));
         return request;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -632,10 +592,10 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getInternetGatewayIds() != null)
-            sb.append("InternetGatewayIds: " + getInternetGatewayIds() + ",");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters());
+            sb.append("Filters: ").append(getFilters()).append(",");
+        if (getInternetGatewayIds() != null)
+            sb.append("InternetGatewayIds: ").append(getInternetGatewayIds());
         sb.append("}");
         return sb.toString();
     }
@@ -650,17 +610,13 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeInternetGatewaysRequest == false)
             return false;
         DescribeInternetGatewaysRequest other = (DescribeInternetGatewaysRequest) obj;
-        if (other.getInternetGatewayIds() == null
-                ^ this.getInternetGatewayIds() == null)
-            return false;
-        if (other.getInternetGatewayIds() != null
-                && other.getInternetGatewayIds().equals(
-                        this.getInternetGatewayIds()) == false)
-            return false;
         if (other.getFilters() == null ^ this.getFilters() == null)
             return false;
-        if (other.getFilters() != null
-                && other.getFilters().equals(this.getFilters()) == false)
+        if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false)
+            return false;
+        if (other.getInternetGatewayIds() == null ^ this.getInternetGatewayIds() == null)
+            return false;
+        if (other.getInternetGatewayIds() != null && other.getInternetGatewayIds().equals(this.getInternetGatewayIds()) == false)
             return false;
         return true;
     }
@@ -670,12 +626,8 @@ public class DescribeInternetGatewaysRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getInternetGatewayIds() == null) ? 0
-                        : getInternetGatewayIds().hashCode());
-        hashCode = prime * hashCode
-                + ((getFilters() == null) ? 0 : getFilters().hashCode());
+        hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());
+        hashCode = prime * hashCode + ((getInternetGatewayIds() == null) ? 0 : getInternetGatewayIds().hashCode());
         return hashCode;
     }
 

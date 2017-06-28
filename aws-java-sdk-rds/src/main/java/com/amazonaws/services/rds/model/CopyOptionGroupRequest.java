@@ -1,34 +1,36 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyOptionGroup" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CopyOptionGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier or ARN for the source option group. For information about
-     * creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source option group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -41,15 +43,13 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * If the source option group is in the same region as the copy, specify a
-     * valid option group identifier, for example <code>my-option-group</code>,
-     * or a valid ARN.
+     * If the source option group is in the same region as the copy, specify a valid option group identifier, for
+     * example <code>my-option-group</code>, or a valid ARN.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source option group is in a different region than the copy,
-     * specify a valid option group ARN, for example
+     * If the source option group is in a different region than the copy, specify a valid option group ARN, for example
      * <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.
      * </p>
      * </li>
@@ -101,10 +101,9 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier or ARN for the source option group. For information about
-     * creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source option group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -117,23 +116,20 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * If the source option group is in the same region as the copy, specify a
-     * valid option group identifier, for example <code>my-option-group</code>,
-     * or a valid ARN.
+     * If the source option group is in the same region as the copy, specify a valid option group identifier, for
+     * example <code>my-option-group</code>, or a valid ARN.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source option group is in a different region than the copy,
-     * specify a valid option group ARN, for example
+     * If the source option group is in a different region than the copy, specify a valid option group ARN, for example
      * <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.
      * </p>
      * </li>
      * </ul>
      * 
      * @param sourceOptionGroupIdentifier
-     *        The identifier or ARN for the source option group. For information
-     *        about creating an ARN, see <a href=
+     *        The identifier or ARN for the source option group. For information about creating an ARN, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>. </p>
      *        <p>
@@ -147,32 +143,27 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        If the source option group is in the same region as the copy,
-     *        specify a valid option group identifier, for example
-     *        <code>my-option-group</code>, or a valid ARN.
+     *        If the source option group is in the same region as the copy, specify a valid option group identifier, for
+     *        example <code>my-option-group</code>, or a valid ARN.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source option group is in a different region than the copy,
-     *        specify a valid option group ARN, for example
-     *        <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>
-     *        .
+     *        If the source option group is in a different region than the copy, specify a valid option group ARN, for
+     *        example <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.
      *        </p>
      *        </li>
      */
 
-    public void setSourceOptionGroupIdentifier(
-            String sourceOptionGroupIdentifier) {
+    public void setSourceOptionGroupIdentifier(String sourceOptionGroupIdentifier) {
         this.sourceOptionGroupIdentifier = sourceOptionGroupIdentifier;
     }
 
     /**
      * <p>
-     * The identifier or ARN for the source option group. For information about
-     * creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source option group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -185,22 +176,19 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * If the source option group is in the same region as the copy, specify a
-     * valid option group identifier, for example <code>my-option-group</code>,
-     * or a valid ARN.
+     * If the source option group is in the same region as the copy, specify a valid option group identifier, for
+     * example <code>my-option-group</code>, or a valid ARN.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source option group is in a different region than the copy,
-     * specify a valid option group ARN, for example
+     * If the source option group is in a different region than the copy, specify a valid option group ARN, for example
      * <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The identifier or ARN for the source option group. For
-     *         information about creating an ARN, see <a href=
+     * @return The identifier or ARN for the source option group. For information about creating an ARN, see <a href=
      *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *         > Constructing an RDS Amazon Resource Name (ARN)</a>. </p>
      *         <p>
@@ -214,17 +202,14 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      *         </li>
      *         <li>
      *         <p>
-     *         If the source option group is in the same region as the copy,
-     *         specify a valid option group identifier, for example
-     *         <code>my-option-group</code>, or a valid ARN.
+     *         If the source option group is in the same region as the copy, specify a valid option group identifier,
+     *         for example <code>my-option-group</code>, or a valid ARN.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         If the source option group is in a different region than the
-     *         copy, specify a valid option group ARN, for example
-     *         <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>
-     *         .
+     *         If the source option group is in a different region than the copy, specify a valid option group ARN, for
+     *         example <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.
      *         </p>
      *         </li>
      */
@@ -235,10 +220,9 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier or ARN for the source option group. For information about
-     * creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source option group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -251,23 +235,20 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * If the source option group is in the same region as the copy, specify a
-     * valid option group identifier, for example <code>my-option-group</code>,
-     * or a valid ARN.
+     * If the source option group is in the same region as the copy, specify a valid option group identifier, for
+     * example <code>my-option-group</code>, or a valid ARN.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source option group is in a different region than the copy,
-     * specify a valid option group ARN, for example
+     * If the source option group is in a different region than the copy, specify a valid option group ARN, for example
      * <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.
      * </p>
      * </li>
      * </ul>
      * 
      * @param sourceOptionGroupIdentifier
-     *        The identifier or ARN for the source option group. For information
-     *        about creating an ARN, see <a href=
+     *        The identifier or ARN for the source option group. For information about creating an ARN, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>. </p>
      *        <p>
@@ -281,25 +262,20 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        If the source option group is in the same region as the copy,
-     *        specify a valid option group identifier, for example
-     *        <code>my-option-group</code>, or a valid ARN.
+     *        If the source option group is in the same region as the copy, specify a valid option group identifier, for
+     *        example <code>my-option-group</code>, or a valid ARN.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source option group is in a different region than the copy,
-     *        specify a valid option group ARN, for example
-     *        <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>
-     *        .
+     *        If the source option group is in a different region than the copy, specify a valid option group ARN, for
+     *        example <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CopyOptionGroupRequest withSourceOptionGroupIdentifier(
-            String sourceOptionGroupIdentifier) {
+    public CopyOptionGroupRequest withSourceOptionGroupIdentifier(String sourceOptionGroupIdentifier) {
         setSourceOptionGroupIdentifier(sourceOptionGroupIdentifier);
         return this;
     }
@@ -368,8 +344,7 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      *        Example: <code>my-option-group</code>
      */
 
-    public void setTargetOptionGroupIdentifier(
-            String targetOptionGroupIdentifier) {
+    public void setTargetOptionGroupIdentifier(String targetOptionGroupIdentifier) {
         this.targetOptionGroupIdentifier = targetOptionGroupIdentifier;
     }
 
@@ -502,12 +477,10 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      *        </ul>
      *        <p>
      *        Example: <code>my-option-group</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CopyOptionGroupRequest withTargetOptionGroupIdentifier(
-            String targetOptionGroupIdentifier) {
+    public CopyOptionGroupRequest withTargetOptionGroupIdentifier(String targetOptionGroupIdentifier) {
         setTargetOptionGroupIdentifier(targetOptionGroupIdentifier);
         return this;
     }
@@ -521,8 +494,7 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      *        The description for the copied option group.
      */
 
-    public void setTargetOptionGroupDescription(
-            String targetOptionGroupDescription) {
+    public void setTargetOptionGroupDescription(String targetOptionGroupDescription) {
         this.targetOptionGroupDescription = targetOptionGroupDescription;
     }
 
@@ -545,12 +517,10 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
      * 
      * @param targetOptionGroupDescription
      *        The description for the copied option group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CopyOptionGroupRequest withTargetOptionGroupDescription(
-            String targetOptionGroupDescription) {
+    public CopyOptionGroupRequest withTargetOptionGroupDescription(String targetOptionGroupDescription) {
         setTargetOptionGroupDescription(targetOptionGroupDescription);
         return this;
     }
@@ -581,15 +551,13 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTags(java.util.Collection)} or
-     * {@link #withTags(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param tags
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CopyOptionGroupRequest withTags(Tag... tags) {
@@ -604,8 +572,7 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
 
     /**
      * @param tags
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CopyOptionGroupRequest withTags(java.util.Collection<Tag> tags) {
@@ -614,8 +581,7 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -626,16 +592,13 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSourceOptionGroupIdentifier() != null)
-            sb.append("SourceOptionGroupIdentifier: "
-                    + getSourceOptionGroupIdentifier() + ",");
+            sb.append("SourceOptionGroupIdentifier: ").append(getSourceOptionGroupIdentifier()).append(",");
         if (getTargetOptionGroupIdentifier() != null)
-            sb.append("TargetOptionGroupIdentifier: "
-                    + getTargetOptionGroupIdentifier() + ",");
+            sb.append("TargetOptionGroupIdentifier: ").append(getTargetOptionGroupIdentifier()).append(",");
         if (getTargetOptionGroupDescription() != null)
-            sb.append("TargetOptionGroupDescription: "
-                    + getTargetOptionGroupDescription() + ",");
+            sb.append("TargetOptionGroupDescription: ").append(getTargetOptionGroupDescription()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -650,31 +613,21 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
         if (obj instanceof CopyOptionGroupRequest == false)
             return false;
         CopyOptionGroupRequest other = (CopyOptionGroupRequest) obj;
-        if (other.getSourceOptionGroupIdentifier() == null
-                ^ this.getSourceOptionGroupIdentifier() == null)
+        if (other.getSourceOptionGroupIdentifier() == null ^ this.getSourceOptionGroupIdentifier() == null)
             return false;
-        if (other.getSourceOptionGroupIdentifier() != null
-                && other.getSourceOptionGroupIdentifier().equals(
-                        this.getSourceOptionGroupIdentifier()) == false)
+        if (other.getSourceOptionGroupIdentifier() != null && other.getSourceOptionGroupIdentifier().equals(this.getSourceOptionGroupIdentifier()) == false)
             return false;
-        if (other.getTargetOptionGroupIdentifier() == null
-                ^ this.getTargetOptionGroupIdentifier() == null)
+        if (other.getTargetOptionGroupIdentifier() == null ^ this.getTargetOptionGroupIdentifier() == null)
             return false;
-        if (other.getTargetOptionGroupIdentifier() != null
-                && other.getTargetOptionGroupIdentifier().equals(
-                        this.getTargetOptionGroupIdentifier()) == false)
+        if (other.getTargetOptionGroupIdentifier() != null && other.getTargetOptionGroupIdentifier().equals(this.getTargetOptionGroupIdentifier()) == false)
             return false;
-        if (other.getTargetOptionGroupDescription() == null
-                ^ this.getTargetOptionGroupDescription() == null)
+        if (other.getTargetOptionGroupDescription() == null ^ this.getTargetOptionGroupDescription() == null)
             return false;
-        if (other.getTargetOptionGroupDescription() != null
-                && other.getTargetOptionGroupDescription().equals(
-                        this.getTargetOptionGroupDescription()) == false)
+        if (other.getTargetOptionGroupDescription() != null && other.getTargetOptionGroupDescription().equals(this.getTargetOptionGroupDescription()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -684,20 +637,10 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getSourceOptionGroupIdentifier() == null) ? 0
-                        : getSourceOptionGroupIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTargetOptionGroupIdentifier() == null) ? 0
-                        : getTargetOptionGroupIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTargetOptionGroupDescription() == null) ? 0
-                        : getTargetOptionGroupDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getSourceOptionGroupIdentifier() == null) ? 0 : getSourceOptionGroupIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getTargetOptionGroupIdentifier() == null) ? 0 : getTargetOptionGroupIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getTargetOptionGroupDescription() == null) ? 0 : getTargetOptionGroupDescription().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
@@ -705,4 +648,5 @@ public class CopyOptionGroupRequest extends AmazonWebServiceRequest implements
     public CopyOptionGroupRequest clone() {
         return (CopyOptionGroupRequest) super.clone();
     }
+
 }

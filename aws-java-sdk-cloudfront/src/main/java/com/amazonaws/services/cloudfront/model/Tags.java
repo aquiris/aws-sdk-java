@@ -1,33 +1,44 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * A complex type that contains zero or more Tag elements.
+ * <p>
+ * A complex type that contains zero or more <code>Tag</code> elements.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/Tags" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Tags implements Serializable, Cloneable {
 
-    /** A complex type that contains Tag elements */
+    /**
+     * <p>
+     * A complex type that contains <code>Tag</code> elements.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<Tag> items;
 
     /**
-     * A complex type that contains Tag elements
+     * <p>
+     * A complex type that contains <code>Tag</code> elements.
+     * </p>
      * 
-     * @return A complex type that contains Tag elements
+     * @return A complex type that contains <code>Tag</code> elements.
      */
 
     public java.util.List<Tag> getItems() {
@@ -38,10 +49,12 @@ public class Tags implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that contains Tag elements
+     * <p>
+     * A complex type that contains <code>Tag</code> elements.
+     * </p>
      * 
      * @param items
-     *        A complex type that contains Tag elements
+     *        A complex type that contains <code>Tag</code> elements.
      */
 
     public void setItems(java.util.Collection<Tag> items) {
@@ -54,24 +67,23 @@ public class Tags implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that contains Tag elements
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setItems(java.util.Collection)} or
-     * {@link #withItems(java.util.Collection)} if you want to override the
+     * A complex type that contains <code>Tag</code> elements.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setItems(java.util.Collection)} or {@link #withItems(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param items
-     *        A complex type that contains Tag elements
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains <code>Tag</code> elements.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Tags withItems(Tag... items) {
         if (this.items == null) {
-            setItems(new com.amazonaws.internal.SdkInternalList<Tag>(
-                    items.length));
+            setItems(new com.amazonaws.internal.SdkInternalList<Tag>(items.length));
         }
         for (Tag ele : items) {
             this.items.add(ele);
@@ -80,12 +92,13 @@ public class Tags implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that contains Tag elements
+     * <p>
+     * A complex type that contains <code>Tag</code> elements.
+     * </p>
      * 
      * @param items
-     *        A complex type that contains Tag elements
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains <code>Tag</code> elements.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Tags withItems(java.util.Collection<Tag> items) {
@@ -94,8 +107,7 @@ public class Tags implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -106,7 +118,7 @@ public class Tags implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getItems() != null)
-            sb.append("Items: " + getItems());
+            sb.append("Items: ").append(getItems());
         sb.append("}");
         return sb.toString();
     }
@@ -123,8 +135,7 @@ public class Tags implements Serializable, Cloneable {
         Tags other = (Tags) obj;
         if (other.getItems() == null ^ this.getItems() == null)
             return false;
-        if (other.getItems() != null
-                && other.getItems().equals(this.getItems()) == false)
+        if (other.getItems() != null && other.getItems().equals(this.getItems()) == false)
             return false;
         return true;
     }
@@ -134,8 +145,7 @@ public class Tags implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getItems() == null) ? 0 : getItems().hashCode());
+        hashCode = prime * hashCode + ((getItems() == null) ? 0 : getItems().hashCode());
         return hashCode;
     }
 
@@ -144,9 +154,8 @@ public class Tags implements Serializable, Cloneable {
         try {
             return (Tags) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

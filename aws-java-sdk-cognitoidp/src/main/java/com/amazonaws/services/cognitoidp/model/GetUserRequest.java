@@ -1,47 +1,47 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the request to get information about the user.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUser" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GetUserRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetUserRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The access token returned by the server response to get information about
-     * the user.
+     * The access token returned by the server response to get information about the user.
      * </p>
      */
     private String accessToken;
 
     /**
      * <p>
-     * The access token returned by the server response to get information about
-     * the user.
+     * The access token returned by the server response to get information about the user.
      * </p>
      * 
      * @param accessToken
-     *        The access token returned by the server response to get
-     *        information about the user.
+     *        The access token returned by the server response to get information about the user.
      */
 
     public void setAccessToken(String accessToken) {
@@ -50,12 +50,10 @@ public class GetUserRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The access token returned by the server response to get information about
-     * the user.
+     * The access token returned by the server response to get information about the user.
      * </p>
      * 
-     * @return The access token returned by the server response to get
-     *         information about the user.
+     * @return The access token returned by the server response to get information about the user.
      */
 
     public String getAccessToken() {
@@ -64,15 +62,12 @@ public class GetUserRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The access token returned by the server response to get information about
-     * the user.
+     * The access token returned by the server response to get information about the user.
      * </p>
      * 
      * @param accessToken
-     *        The access token returned by the server response to get
-     *        information about the user.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The access token returned by the server response to get information about the user.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUserRequest withAccessToken(String accessToken) {
@@ -81,8 +76,7 @@ public class GetUserRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -93,7 +87,7 @@ public class GetUserRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccessToken() != null)
-            sb.append("AccessToken: " + getAccessToken());
+            sb.append("AccessToken: ").append(getAccessToken());
         sb.append("}");
         return sb.toString();
     }
@@ -110,8 +104,7 @@ public class GetUserRequest extends AmazonWebServiceRequest implements
         GetUserRequest other = (GetUserRequest) obj;
         if (other.getAccessToken() == null ^ this.getAccessToken() == null)
             return false;
-        if (other.getAccessToken() != null
-                && other.getAccessToken().equals(this.getAccessToken()) == false)
+        if (other.getAccessToken() != null && other.getAccessToken().equals(this.getAccessToken()) == false)
             return false;
         return true;
     }
@@ -121,9 +114,7 @@ public class GetUserRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAccessToken() == null) ? 0 : getAccessToken().hashCode());
+        hashCode = prime * hashCode + ((getAccessToken() == null) ? 0 : getAccessToken().hashCode());
         return hashCode;
     }
 
@@ -131,4 +122,5 @@ public class GetUserRequest extends AmazonWebServiceRequest implements
     public GetUserRequest clone() {
         return (GetUserRequest) super.clone();
     }
+
 }

@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * The type of code delivery details being returned from the server.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CodeDeliveryDetailsType"
+ *      target="_top">AWS API Documentation</a>
  */
-public class CodeDeliveryDetailsType implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CodeDeliveryDetailsType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -74,8 +79,7 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
      * 
      * @param destination
      *        The destination for the code delivery details.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CodeDeliveryDetailsType withDestination(String destination) {
@@ -117,8 +121,7 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
      * 
      * @param deliveryMedium
      *        The delivery medium (email message or phone number).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeliveryMediumType
      */
 
@@ -148,13 +151,11 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
      * 
      * @param deliveryMedium
      *        The delivery medium (email message or phone number).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeliveryMediumType
      */
 
-    public CodeDeliveryDetailsType withDeliveryMedium(
-            DeliveryMediumType deliveryMedium) {
+    public CodeDeliveryDetailsType withDeliveryMedium(DeliveryMediumType deliveryMedium) {
         setDeliveryMedium(deliveryMedium);
         return this;
     }
@@ -191,8 +192,7 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
      * 
      * @param attributeName
      *        The name of the attribute in the code delivery details type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CodeDeliveryDetailsType withAttributeName(String attributeName) {
@@ -201,8 +201,7 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -213,11 +212,11 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDestination() != null)
-            sb.append("Destination: " + getDestination() + ",");
+            sb.append("Destination: ").append(getDestination()).append(",");
         if (getDeliveryMedium() != null)
-            sb.append("DeliveryMedium: " + getDeliveryMedium() + ",");
+            sb.append("DeliveryMedium: ").append(getDeliveryMedium()).append(",");
         if (getAttributeName() != null)
-            sb.append("AttributeName: " + getAttributeName());
+            sb.append("AttributeName: ").append(getAttributeName());
         sb.append("}");
         return sb.toString();
     }
@@ -234,19 +233,15 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
         CodeDeliveryDetailsType other = (CodeDeliveryDetailsType) obj;
         if (other.getDestination() == null ^ this.getDestination() == null)
             return false;
-        if (other.getDestination() != null
-                && other.getDestination().equals(this.getDestination()) == false)
+        if (other.getDestination() != null && other.getDestination().equals(this.getDestination()) == false)
             return false;
-        if (other.getDeliveryMedium() == null
-                ^ this.getDeliveryMedium() == null)
+        if (other.getDeliveryMedium() == null ^ this.getDeliveryMedium() == null)
             return false;
-        if (other.getDeliveryMedium() != null
-                && other.getDeliveryMedium().equals(this.getDeliveryMedium()) == false)
+        if (other.getDeliveryMedium() != null && other.getDeliveryMedium().equals(this.getDeliveryMedium()) == false)
             return false;
         if (other.getAttributeName() == null ^ this.getAttributeName() == null)
             return false;
-        if (other.getAttributeName() != null
-                && other.getAttributeName().equals(this.getAttributeName()) == false)
+        if (other.getAttributeName() != null && other.getAttributeName().equals(this.getAttributeName()) == false)
             return false;
         return true;
     }
@@ -256,17 +251,9 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDestination() == null) ? 0 : getDestination().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDeliveryMedium() == null) ? 0 : getDeliveryMedium()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAttributeName() == null) ? 0 : getAttributeName()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getDestination() == null) ? 0 : getDestination().hashCode());
+        hashCode = prime * hashCode + ((getDeliveryMedium() == null) ? 0 : getDeliveryMedium().hashCode());
+        hashCode = prime * hashCode + ((getAttributeName() == null) ? 0 : getAttributeName().hashCode());
         return hashCode;
     }
 
@@ -275,9 +262,13 @@ public class CodeDeliveryDetailsType implements Serializable, Cloneable {
         try {
             return (CodeDeliveryDetailsType) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cognitoidp.model.transform.CodeDeliveryDetailsTypeMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

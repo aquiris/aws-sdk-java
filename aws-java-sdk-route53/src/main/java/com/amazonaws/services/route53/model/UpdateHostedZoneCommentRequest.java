@@ -1,53 +1,54 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * A complex type that contains the hosted zone request information.
+ * A request to update the comment for a hosted zone.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHostedZoneComment" target="_top">AWS
+ *      API Documentation</a>
  */
-public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateHostedZoneCommentRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID for the hosted zone for which you want to update the comment.
+     * The ID for the hosted zone that you want to update the comment for.
      * </p>
      */
     private String id;
     /**
      * <p>
-     * The new comment for the hosted zone. If you don't specify a value for
-     * <code>Comment</code>, Amazon Route 53 deletes the existing value of the
-     * <code>Comment</code> element, if any.
+     * The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route 53
+     * deletes the existing value of the <code>Comment</code> element, if any.
      * </p>
      */
     private String comment;
 
     /**
      * <p>
-     * The ID for the hosted zone for which you want to update the comment.
+     * The ID for the hosted zone that you want to update the comment for.
      * </p>
      * 
      * @param id
-     *        The ID for the hosted zone for which you want to update the
-     *        comment.
+     *        The ID for the hosted zone that you want to update the comment for.
      */
 
     public void setId(String id) {
@@ -56,11 +57,10 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The ID for the hosted zone for which you want to update the comment.
+     * The ID for the hosted zone that you want to update the comment for.
      * </p>
      * 
-     * @return The ID for the hosted zone for which you want to update the
-     *         comment.
+     * @return The ID for the hosted zone that you want to update the comment for.
      */
 
     public String getId() {
@@ -69,14 +69,12 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The ID for the hosted zone for which you want to update the comment.
+     * The ID for the hosted zone that you want to update the comment for.
      * </p>
      * 
      * @param id
-     *        The ID for the hosted zone for which you want to update the
-     *        comment.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID for the hosted zone that you want to update the comment for.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateHostedZoneCommentRequest withId(String id) {
@@ -86,15 +84,13 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The new comment for the hosted zone. If you don't specify a value for
-     * <code>Comment</code>, Amazon Route 53 deletes the existing value of the
-     * <code>Comment</code> element, if any.
+     * The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route 53
+     * deletes the existing value of the <code>Comment</code> element, if any.
      * </p>
      * 
      * @param comment
-     *        The new comment for the hosted zone. If you don't specify a value
-     *        for <code>Comment</code>, Amazon Route 53 deletes the existing
-     *        value of the <code>Comment</code> element, if any.
+     *        The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route
+     *        53 deletes the existing value of the <code>Comment</code> element, if any.
      */
 
     public void setComment(String comment) {
@@ -103,14 +99,12 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The new comment for the hosted zone. If you don't specify a value for
-     * <code>Comment</code>, Amazon Route 53 deletes the existing value of the
-     * <code>Comment</code> element, if any.
+     * The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route 53
+     * deletes the existing value of the <code>Comment</code> element, if any.
      * </p>
      * 
-     * @return The new comment for the hosted zone. If you don't specify a value
-     *         for <code>Comment</code>, Amazon Route 53 deletes the existing
-     *         value of the <code>Comment</code> element, if any.
+     * @return The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route
+     *         53 deletes the existing value of the <code>Comment</code> element, if any.
      */
 
     public String getComment() {
@@ -119,17 +113,14 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The new comment for the hosted zone. If you don't specify a value for
-     * <code>Comment</code>, Amazon Route 53 deletes the existing value of the
-     * <code>Comment</code> element, if any.
+     * The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route 53
+     * deletes the existing value of the <code>Comment</code> element, if any.
      * </p>
      * 
      * @param comment
-     *        The new comment for the hosted zone. If you don't specify a value
-     *        for <code>Comment</code>, Amazon Route 53 deletes the existing
-     *        value of the <code>Comment</code> element, if any.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route
+     *        53 deletes the existing value of the <code>Comment</code> element, if any.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateHostedZoneCommentRequest withComment(String comment) {
@@ -138,8 +129,7 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -150,9 +140,9 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getComment() != null)
-            sb.append("Comment: " + getComment());
+            sb.append("Comment: ").append(getComment());
         sb.append("}");
         return sb.toString();
     }
@@ -169,13 +159,11 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
         UpdateHostedZoneCommentRequest other = (UpdateHostedZoneCommentRequest) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getComment() == null ^ this.getComment() == null)
             return false;
-        if (other.getComment() != null
-                && other.getComment().equals(this.getComment()) == false)
+        if (other.getComment() != null && other.getComment().equals(this.getComment()) == false)
             return false;
         return true;
     }
@@ -185,10 +173,8 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getComment() == null) ? 0 : getComment().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getComment() == null) ? 0 : getComment().hashCode());
         return hashCode;
     }
 
@@ -196,4 +182,5 @@ public class UpdateHostedZoneCommentRequest extends AmazonWebServiceRequest
     public UpdateHostedZoneCommentRequest clone() {
         return (UpdateHostedZoneCommentRequest) super.clone();
     }
+
 }

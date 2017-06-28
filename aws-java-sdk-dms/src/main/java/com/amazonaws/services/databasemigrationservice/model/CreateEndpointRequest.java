@@ -1,33 +1,35 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEndpoint" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateEndpointRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The database endpoint identifier. Identifiers must begin with a letter;
-     * must contain only ASCII letters, digits, and hyphens; and must not end
-     * with a hyphen or contain two consecutive hyphens.
+     * The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits,
+     * and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
      * </p>
      */
     private String endpointIdentifier;
@@ -39,8 +41,8 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
     private String endpointType;
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
+     * The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE,
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
      * </p>
      */
     private String engineName;
@@ -82,11 +84,9 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
     private String extraConnectionAttributes;
     /**
      * <p>
-     * The KMS key identifier that will be used to encrypt the connection
-     * parameters. If you do not specify a value for the KmsKeyId parameter,
-     * then AWS DMS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a
-     * different default encryption key for each AWS region.
+     * The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for
+     * the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption
+     * key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      */
     private String kmsKeyId;
@@ -107,26 +107,50 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * The SSL mode to use for the SSL connection.
      * </p>
      * <p>
-     * SSL mode can be one of four values: none, require, verify-ca,
-     * verify-full.
+     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
      * </p>
      * <p>
      * The default value is none.
      * </p>
      */
     private String sslMode;
+    /**
+     * <p>
+     * Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available
+     * settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB
+     * Database as a Target for AWS Database Migration Service</a>.
+     * </p>
+     */
+    private DynamoDbSettings dynamoDbSettings;
+    /**
+     * <p>
+     * Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the
+     * <b>Extra Connection Attributes</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS
+     * Database Migration Service</a>.
+     * </p>
+     */
+    private S3Settings s3Settings;
+    /**
+     * <p>
+     * Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see
+     * the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at
+     * <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target
+     * for AWS Database Migration Service</a>.
+     * </p>
+     */
+    private MongoDbSettings mongoDbSettings;
 
     /**
      * <p>
-     * The database endpoint identifier. Identifiers must begin with a letter;
-     * must contain only ASCII letters, digits, and hyphens; and must not end
-     * with a hyphen or contain two consecutive hyphens.
+     * The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits,
+     * and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
      * </p>
      * 
      * @param endpointIdentifier
-     *        The database endpoint identifier. Identifiers must begin with a
-     *        letter; must contain only ASCII letters, digits, and hyphens; and
-     *        must not end with a hyphen or contain two consecutive hyphens.
+     *        The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters,
+     *        digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
      */
 
     public void setEndpointIdentifier(String endpointIdentifier) {
@@ -135,14 +159,12 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The database endpoint identifier. Identifiers must begin with a letter;
-     * must contain only ASCII letters, digits, and hyphens; and must not end
-     * with a hyphen or contain two consecutive hyphens.
+     * The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits,
+     * and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
      * </p>
      * 
-     * @return The database endpoint identifier. Identifiers must begin with a
-     *         letter; must contain only ASCII letters, digits, and hyphens; and
-     *         must not end with a hyphen or contain two consecutive hyphens.
+     * @return The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters,
+     *         digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
      */
 
     public String getEndpointIdentifier() {
@@ -151,21 +173,17 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The database endpoint identifier. Identifiers must begin with a letter;
-     * must contain only ASCII letters, digits, and hyphens; and must not end
-     * with a hyphen or contain two consecutive hyphens.
+     * The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits,
+     * and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
      * </p>
      * 
      * @param endpointIdentifier
-     *        The database endpoint identifier. Identifiers must begin with a
-     *        letter; must contain only ASCII letters, digits, and hyphens; and
-     *        must not end with a hyphen or contain two consecutive hyphens.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters,
+     *        digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateEndpointRequest withEndpointIdentifier(
-            String endpointIdentifier) {
+    public CreateEndpointRequest withEndpointIdentifier(String endpointIdentifier) {
         setEndpointIdentifier(endpointIdentifier);
         return this;
     }
@@ -204,8 +222,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param endpointType
      *        The type of endpoint.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ReplicationEndpointTypeValue
      */
 
@@ -235,26 +252,24 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param endpointType
      *        The type of endpoint.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ReplicationEndpointTypeValue
      */
 
-    public CreateEndpointRequest withEndpointType(
-            ReplicationEndpointTypeValue endpointType) {
+    public CreateEndpointRequest withEndpointType(ReplicationEndpointTypeValue endpointType) {
         setEndpointType(endpointType);
         return this;
     }
 
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
+     * The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE,
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
      * </p>
      * 
      * @param engineName
-     *        The type of engine for the endpoint. Valid values include MYSQL,
-     *        ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
+     *        The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE,
+     *        POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
      */
 
     public void setEngineName(String engineName) {
@@ -263,12 +278,12 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
+     * The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE,
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
      * </p>
      * 
-     * @return The type of engine for the endpoint. Valid values include MYSQL,
-     *         ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
+     * @return The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE,
+     *         POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
      */
 
     public String getEngineName() {
@@ -277,15 +292,14 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
+     * The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE,
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
      * </p>
      * 
      * @param engineName
-     *        The type of engine for the endpoint. Valid values include MYSQL,
-     *        ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE,
+     *        POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withEngineName(String engineName) {
@@ -325,8 +339,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param username
      *        The user name to be used to login to the endpoint database.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withUsername(String username) {
@@ -366,8 +379,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param password
      *        The password to be used to login to the endpoint database.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withPassword(String password) {
@@ -407,8 +419,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param serverName
      *        The name of the server where the endpoint database resides.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withServerName(String serverName) {
@@ -448,8 +459,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param port
      *        The port used by the endpoint database.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withPort(Integer port) {
@@ -489,8 +499,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param databaseName
      *        The name of the endpoint database.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withDatabaseName(String databaseName) {
@@ -530,32 +539,26 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param extraConnectionAttributes
      *        Additional attributes associated with the connection.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateEndpointRequest withExtraConnectionAttributes(
-            String extraConnectionAttributes) {
+    public CreateEndpointRequest withExtraConnectionAttributes(String extraConnectionAttributes) {
         setExtraConnectionAttributes(extraConnectionAttributes);
         return this;
     }
 
     /**
      * <p>
-     * The KMS key identifier that will be used to encrypt the connection
-     * parameters. If you do not specify a value for the KmsKeyId parameter,
-     * then AWS DMS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a
-     * different default encryption key for each AWS region.
+     * The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for
+     * the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption
+     * key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      * 
      * @param kmsKeyId
-     *        The KMS key identifier that will be used to encrypt the connection
-     *        parameters. If you do not specify a value for the KmsKeyId
-     *        parameter, then AWS DMS will use your default encryption key. AWS
-     *        KMS creates the default encryption key for your AWS account. Your
-     *        AWS account has a different default encryption key for each AWS
-     *        region.
+     *        The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a
+     *        value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the
+     *        default encryption key for your AWS account. Your AWS account has a different default encryption key for
+     *        each AWS region.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -564,19 +567,15 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The KMS key identifier that will be used to encrypt the connection
-     * parameters. If you do not specify a value for the KmsKeyId parameter,
-     * then AWS DMS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a
-     * different default encryption key for each AWS region.
+     * The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for
+     * the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption
+     * key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      * 
-     * @return The KMS key identifier that will be used to encrypt the
-     *         connection parameters. If you do not specify a value for the
-     *         KmsKeyId parameter, then AWS DMS will use your default encryption
-     *         key. AWS KMS creates the default encryption key for your AWS
-     *         account. Your AWS account has a different default encryption key
-     *         for each AWS region.
+     * @return The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a
+     *         value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the
+     *         default encryption key for your AWS account. Your AWS account has a different default encryption key for
+     *         each AWS region.
      */
 
     public String getKmsKeyId() {
@@ -585,22 +584,17 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The KMS key identifier that will be used to encrypt the connection
-     * parameters. If you do not specify a value for the KmsKeyId parameter,
-     * then AWS DMS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a
-     * different default encryption key for each AWS region.
+     * The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for
+     * the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption
+     * key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      * 
      * @param kmsKeyId
-     *        The KMS key identifier that will be used to encrypt the connection
-     *        parameters. If you do not specify a value for the KmsKeyId
-     *        parameter, then AWS DMS will use your default encryption key. AWS
-     *        KMS creates the default encryption key for your AWS account. Your
-     *        AWS account has a different default encryption key for each AWS
-     *        region.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a
+     *        value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the
+     *        default encryption key for your AWS account. Your AWS account has a different default encryption key for
+     *        each AWS region.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withKmsKeyId(String kmsKeyId) {
@@ -643,16 +637,14 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * Tags to be added to the endpoint.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTags(java.util.Collection)} or
-     * {@link #withTags(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param tags
      *        Tags to be added to the endpoint.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withTags(Tag... tags) {
@@ -672,8 +664,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param tags
      *        Tags to be added to the endpoint.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withTags(java.util.Collection<Tag> tags) {
@@ -713,8 +704,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @param certificateArn
      *        The Amazon Resource Number (ARN) for the certificate.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateEndpointRequest withCertificateArn(String certificateArn) {
@@ -727,8 +717,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * The SSL mode to use for the SSL connection.
      * </p>
      * <p>
-     * SSL mode can be one of four values: none, require, verify-ca,
-     * verify-full.
+     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
      * </p>
      * <p>
      * The default value is none.
@@ -737,8 +726,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * @param sslMode
      *        The SSL mode to use for the SSL connection.</p>
      *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca,
-     *        verify-full.
+     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
      *        </p>
      *        <p>
      *        The default value is none.
@@ -754,8 +742,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * The SSL mode to use for the SSL connection.
      * </p>
      * <p>
-     * SSL mode can be one of four values: none, require, verify-ca,
-     * verify-full.
+     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
      * </p>
      * <p>
      * The default value is none.
@@ -763,8 +750,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * 
      * @return The SSL mode to use for the SSL connection.</p>
      *         <p>
-     *         SSL mode can be one of four values: none, require, verify-ca,
-     *         verify-full.
+     *         SSL mode can be one of four values: none, require, verify-ca, verify-full.
      *         </p>
      *         <p>
      *         The default value is none.
@@ -780,8 +766,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * The SSL mode to use for the SSL connection.
      * </p>
      * <p>
-     * SSL mode can be one of four values: none, require, verify-ca,
-     * verify-full.
+     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
      * </p>
      * <p>
      * The default value is none.
@@ -790,13 +775,11 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * @param sslMode
      *        The SSL mode to use for the SSL connection.</p>
      *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca,
-     *        verify-full.
+     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
      *        </p>
      *        <p>
      *        The default value is none.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DmsSslModeValue
      */
 
@@ -810,8 +793,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * The SSL mode to use for the SSL connection.
      * </p>
      * <p>
-     * SSL mode can be one of four values: none, require, verify-ca,
-     * verify-full.
+     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
      * </p>
      * <p>
      * The default value is none.
@@ -820,8 +802,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * @param sslMode
      *        The SSL mode to use for the SSL connection.</p>
      *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca,
-     *        verify-full.
+     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
      *        </p>
      *        <p>
      *        The default value is none.
@@ -837,8 +818,7 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * The SSL mode to use for the SSL connection.
      * </p>
      * <p>
-     * SSL mode can be one of four values: none, require, verify-ca,
-     * verify-full.
+     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
      * </p>
      * <p>
      * The default value is none.
@@ -847,13 +827,11 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
      * @param sslMode
      *        The SSL mode to use for the SSL connection.</p>
      *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca,
-     *        verify-full.
+     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
      *        </p>
      *        <p>
      *        The default value is none.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DmsSslModeValue
      */
 
@@ -863,8 +841,182 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available
+     * settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB
+     * Database as a Target for AWS Database Migration Service</a>.
+     * </p>
+     * 
+     * @param dynamoDbSettings
+     *        Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available
+     *        settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a
+     *        href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB
+     *        Database as a Target for AWS Database Migration Service</a>.
+     */
+
+    public void setDynamoDbSettings(DynamoDbSettings dynamoDbSettings) {
+        this.dynamoDbSettings = dynamoDbSettings;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available
+     * settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB
+     * Database as a Target for AWS Database Migration Service</a>.
+     * </p>
+     * 
+     * @return Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available
+     *         settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a
+     *         href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon
+     *         DynamoDB Database as a Target for AWS Database Migration Service</a>.
+     */
+
+    public DynamoDbSettings getDynamoDbSettings() {
+        return this.dynamoDbSettings;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available
+     * settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB
+     * Database as a Target for AWS Database Migration Service</a>.
+     * </p>
+     * 
+     * @param dynamoDbSettings
+     *        Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available
+     *        settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a
+     *        href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB
+     *        Database as a Target for AWS Database Migration Service</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateEndpointRequest withDynamoDbSettings(DynamoDbSettings dynamoDbSettings) {
+        setDynamoDbSettings(dynamoDbSettings);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the
+     * <b>Extra Connection Attributes</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS
+     * Database Migration Service</a>.
+     * </p>
+     * 
+     * @param s3Settings
+     *        Settings in JSON format for the target S3 endpoint. For more information about the available settings, see
+     *        the <b>Extra Connection Attributes</b> section at <a
+     *        href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target
+     *        for AWS Database Migration Service</a>.
+     */
+
+    public void setS3Settings(S3Settings s3Settings) {
+        this.s3Settings = s3Settings;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the
+     * <b>Extra Connection Attributes</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS
+     * Database Migration Service</a>.
+     * </p>
+     * 
+     * @return Settings in JSON format for the target S3 endpoint. For more information about the available settings,
+     *         see the <b>Extra Connection Attributes</b> section at <a
+     *         href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target
+     *         for AWS Database Migration Service</a>.
+     */
+
+    public S3Settings getS3Settings() {
+        return this.s3Settings;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the
+     * <b>Extra Connection Attributes</b> section at <a
+     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS
+     * Database Migration Service</a>.
+     * </p>
+     * 
+     * @param s3Settings
+     *        Settings in JSON format for the target S3 endpoint. For more information about the available settings, see
+     *        the <b>Extra Connection Attributes</b> section at <a
+     *        href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target
+     *        for AWS Database Migration Service</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateEndpointRequest withS3Settings(S3Settings s3Settings) {
+        setS3Settings(s3Settings);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see
+     * the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at
+     * <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target
+     * for AWS Database Migration Service</a>.
+     * </p>
+     * 
+     * @param mongoDbSettings
+     *        Settings in JSON format for the source MongoDB endpoint. For more information about the available
+     *        settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration
+     *        Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html">
+     *        Using Amazon S3 as a Target for AWS Database Migration Service</a>.
+     */
+
+    public void setMongoDbSettings(MongoDbSettings mongoDbSettings) {
+        this.mongoDbSettings = mongoDbSettings;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see
+     * the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at
+     * <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target
+     * for AWS Database Migration Service</a>.
+     * </p>
+     * 
+     * @return Settings in JSON format for the source MongoDB endpoint. For more information about the available
+     *         settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration
+     *         Service</b> section at <a
+     *         href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a
+     *         Target for AWS Database Migration Service</a>.
+     */
+
+    public MongoDbSettings getMongoDbSettings() {
+        return this.mongoDbSettings;
+    }
+
+    /**
+     * <p>
+     * Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see
+     * the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at
+     * <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target
+     * for AWS Database Migration Service</a>.
+     * </p>
+     * 
+     * @param mongoDbSettings
+     *        Settings in JSON format for the source MongoDB endpoint. For more information about the available
+     *        settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration
+     *        Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html">
+     *        Using Amazon S3 as a Target for AWS Database Migration Service</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateEndpointRequest withMongoDbSettings(MongoDbSettings mongoDbSettings) {
+        setMongoDbSettings(mongoDbSettings);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -875,32 +1027,37 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEndpointIdentifier() != null)
-            sb.append("EndpointIdentifier: " + getEndpointIdentifier() + ",");
+            sb.append("EndpointIdentifier: ").append(getEndpointIdentifier()).append(",");
         if (getEndpointType() != null)
-            sb.append("EndpointType: " + getEndpointType() + ",");
+            sb.append("EndpointType: ").append(getEndpointType()).append(",");
         if (getEngineName() != null)
-            sb.append("EngineName: " + getEngineName() + ",");
+            sb.append("EngineName: ").append(getEngineName()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getPassword() != null)
-            sb.append("Password: " + getPassword() + ",");
+            sb.append("Password: ").append(getPassword()).append(",");
         if (getServerName() != null)
-            sb.append("ServerName: " + getServerName() + ",");
+            sb.append("ServerName: ").append(getServerName()).append(",");
         if (getPort() != null)
-            sb.append("Port: " + getPort() + ",");
+            sb.append("Port: ").append(getPort()).append(",");
         if (getDatabaseName() != null)
-            sb.append("DatabaseName: " + getDatabaseName() + ",");
+            sb.append("DatabaseName: ").append(getDatabaseName()).append(",");
         if (getExtraConnectionAttributes() != null)
-            sb.append("ExtraConnectionAttributes: "
-                    + getExtraConnectionAttributes() + ",");
+            sb.append("ExtraConnectionAttributes: ").append(getExtraConnectionAttributes()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags() + ",");
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn() + ",");
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getSslMode() != null)
-            sb.append("SslMode: " + getSslMode());
+            sb.append("SslMode: ").append(getSslMode()).append(",");
+        if (getDynamoDbSettings() != null)
+            sb.append("DynamoDbSettings: ").append(getDynamoDbSettings()).append(",");
+        if (getS3Settings() != null)
+            sb.append("S3Settings: ").append(getS3Settings()).append(",");
+        if (getMongoDbSettings() != null)
+            sb.append("MongoDbSettings: ").append(getMongoDbSettings());
         sb.append("}");
         return sb.toString();
     }
@@ -915,75 +1072,69 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
         if (obj instanceof CreateEndpointRequest == false)
             return false;
         CreateEndpointRequest other = (CreateEndpointRequest) obj;
-        if (other.getEndpointIdentifier() == null
-                ^ this.getEndpointIdentifier() == null)
+        if (other.getEndpointIdentifier() == null ^ this.getEndpointIdentifier() == null)
             return false;
-        if (other.getEndpointIdentifier() != null
-                && other.getEndpointIdentifier().equals(
-                        this.getEndpointIdentifier()) == false)
+        if (other.getEndpointIdentifier() != null && other.getEndpointIdentifier().equals(this.getEndpointIdentifier()) == false)
             return false;
         if (other.getEndpointType() == null ^ this.getEndpointType() == null)
             return false;
-        if (other.getEndpointType() != null
-                && other.getEndpointType().equals(this.getEndpointType()) == false)
+        if (other.getEndpointType() != null && other.getEndpointType().equals(this.getEndpointType()) == false)
             return false;
         if (other.getEngineName() == null ^ this.getEngineName() == null)
             return false;
-        if (other.getEngineName() != null
-                && other.getEngineName().equals(this.getEngineName()) == false)
+        if (other.getEngineName() != null && other.getEngineName().equals(this.getEngineName()) == false)
             return false;
         if (other.getUsername() == null ^ this.getUsername() == null)
             return false;
-        if (other.getUsername() != null
-                && other.getUsername().equals(this.getUsername()) == false)
+        if (other.getUsername() != null && other.getUsername().equals(this.getUsername()) == false)
             return false;
         if (other.getPassword() == null ^ this.getPassword() == null)
             return false;
-        if (other.getPassword() != null
-                && other.getPassword().equals(this.getPassword()) == false)
+        if (other.getPassword() != null && other.getPassword().equals(this.getPassword()) == false)
             return false;
         if (other.getServerName() == null ^ this.getServerName() == null)
             return false;
-        if (other.getServerName() != null
-                && other.getServerName().equals(this.getServerName()) == false)
+        if (other.getServerName() != null && other.getServerName().equals(this.getServerName()) == false)
             return false;
         if (other.getPort() == null ^ this.getPort() == null)
             return false;
-        if (other.getPort() != null
-                && other.getPort().equals(this.getPort()) == false)
+        if (other.getPort() != null && other.getPort().equals(this.getPort()) == false)
             return false;
         if (other.getDatabaseName() == null ^ this.getDatabaseName() == null)
             return false;
-        if (other.getDatabaseName() != null
-                && other.getDatabaseName().equals(this.getDatabaseName()) == false)
+        if (other.getDatabaseName() != null && other.getDatabaseName().equals(this.getDatabaseName()) == false)
             return false;
-        if (other.getExtraConnectionAttributes() == null
-                ^ this.getExtraConnectionAttributes() == null)
+        if (other.getExtraConnectionAttributes() == null ^ this.getExtraConnectionAttributes() == null)
             return false;
-        if (other.getExtraConnectionAttributes() != null
-                && other.getExtraConnectionAttributes().equals(
-                        this.getExtraConnectionAttributes()) == false)
+        if (other.getExtraConnectionAttributes() != null && other.getExtraConnectionAttributes().equals(this.getExtraConnectionAttributes()) == false)
             return false;
         if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
             return false;
-        if (other.getKmsKeyId() != null
-                && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
-        if (other.getCertificateArn() == null
-                ^ this.getCertificateArn() == null)
+        if (other.getCertificateArn() == null ^ this.getCertificateArn() == null)
             return false;
-        if (other.getCertificateArn() != null
-                && other.getCertificateArn().equals(this.getCertificateArn()) == false)
+        if (other.getCertificateArn() != null && other.getCertificateArn().equals(this.getCertificateArn()) == false)
             return false;
         if (other.getSslMode() == null ^ this.getSslMode() == null)
             return false;
-        if (other.getSslMode() != null
-                && other.getSslMode().equals(this.getSslMode()) == false)
+        if (other.getSslMode() != null && other.getSslMode().equals(this.getSslMode()) == false)
+            return false;
+        if (other.getDynamoDbSettings() == null ^ this.getDynamoDbSettings() == null)
+            return false;
+        if (other.getDynamoDbSettings() != null && other.getDynamoDbSettings().equals(this.getDynamoDbSettings()) == false)
+            return false;
+        if (other.getS3Settings() == null ^ this.getS3Settings() == null)
+            return false;
+        if (other.getS3Settings() != null && other.getS3Settings().equals(this.getS3Settings()) == false)
+            return false;
+        if (other.getMongoDbSettings() == null ^ this.getMongoDbSettings() == null)
+            return false;
+        if (other.getMongoDbSettings() != null && other.getMongoDbSettings().equals(this.getMongoDbSettings()) == false)
             return false;
         return true;
     }
@@ -993,42 +1144,22 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getEndpointIdentifier() == null) ? 0
-                        : getEndpointIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEndpointType() == null) ? 0 : getEndpointType()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getEngineName() == null) ? 0 : getEngineName().hashCode());
-        hashCode = prime * hashCode
-                + ((getUsername() == null) ? 0 : getUsername().hashCode());
-        hashCode = prime * hashCode
-                + ((getPassword() == null) ? 0 : getPassword().hashCode());
-        hashCode = prime * hashCode
-                + ((getServerName() == null) ? 0 : getServerName().hashCode());
-        hashCode = prime * hashCode
-                + ((getPort() == null) ? 0 : getPort().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDatabaseName() == null) ? 0 : getDatabaseName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getExtraConnectionAttributes() == null) ? 0
-                        : getExtraConnectionAttributes().hashCode());
-        hashCode = prime * hashCode
-                + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCertificateArn() == null) ? 0 : getCertificateArn()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getSslMode() == null) ? 0 : getSslMode().hashCode());
+        hashCode = prime * hashCode + ((getEndpointIdentifier() == null) ? 0 : getEndpointIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getEndpointType() == null) ? 0 : getEndpointType().hashCode());
+        hashCode = prime * hashCode + ((getEngineName() == null) ? 0 : getEngineName().hashCode());
+        hashCode = prime * hashCode + ((getUsername() == null) ? 0 : getUsername().hashCode());
+        hashCode = prime * hashCode + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        hashCode = prime * hashCode + ((getServerName() == null) ? 0 : getServerName().hashCode());
+        hashCode = prime * hashCode + ((getPort() == null) ? 0 : getPort().hashCode());
+        hashCode = prime * hashCode + ((getDatabaseName() == null) ? 0 : getDatabaseName().hashCode());
+        hashCode = prime * hashCode + ((getExtraConnectionAttributes() == null) ? 0 : getExtraConnectionAttributes().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getCertificateArn() == null) ? 0 : getCertificateArn().hashCode());
+        hashCode = prime * hashCode + ((getSslMode() == null) ? 0 : getSslMode().hashCode());
+        hashCode = prime * hashCode + ((getDynamoDbSettings() == null) ? 0 : getDynamoDbSettings().hashCode());
+        hashCode = prime * hashCode + ((getS3Settings() == null) ? 0 : getS3Settings().hashCode());
+        hashCode = prime * hashCode + ((getMongoDbSettings() == null) ? 0 : getMongoDbSettings().hashCode());
         return hashCode;
     }
 
@@ -1036,4 +1167,5 @@ public class CreateEndpointRequest extends AmazonWebServiceRequest implements
     public CreateEndpointRequest clone() {
         return (CreateEndpointRequest) super.clone();
     }
+
 }

@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/PollForActivityTask" target="_top">AWS API
+ *      Documentation</a>
  */
-public class PollForActivityTaskRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PollForActivityTaskRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -34,19 +36,16 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
      * Specifies the task list to poll for activity tasks.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      */
     private TaskList taskList;
     /**
      * <p>
-     * Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This
-     * enables diagnostic tracing when problems arise. The form of this identity
-     * is user defined.
+     * Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the workflow
+     * history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.
      * </p>
      */
     private String identity;
@@ -83,8 +82,7 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
      * 
      * @param domain
      *        The name of the domain that contains the task lists being polled.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PollForActivityTaskRequest withDomain(String domain) {
@@ -97,20 +95,17 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
      * Specifies the task list to poll for activity tasks.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      * 
      * @param taskList
      *        Specifies the task list to poll for activity tasks.</p>
      *        <p>
-     *        The specified string must not start or end with whitespace. It
-     *        must not contain a <code>:</code> (colon), <code>/</code> (slash),
-     *        <code>|</code> (vertical bar), or any control characters
-     *        (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the
-     *        literal string quotarnquot.
+     *        The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     *        <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     *        \u009f). Also, it must not contain the literal string quotarnquot.
      */
 
     public void setTaskList(TaskList taskList) {
@@ -122,19 +117,16 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
      * Specifies the task list to poll for activity tasks.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      * 
      * @return Specifies the task list to poll for activity tasks.</p>
      *         <p>
-     *         The specified string must not start or end with whitespace. It
-     *         must not contain a <code>:</code> (colon), <code>/</code>
-     *         (slash), <code>|</code> (vertical bar), or any control characters
-     *         (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the
-     *         literal string quotarnquot.
+     *         The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     *         <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f
+     *         - \u009f). Also, it must not contain the literal string quotarnquot.
      */
 
     public TaskList getTaskList() {
@@ -146,22 +138,18 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
      * Specifies the task list to poll for activity tasks.
      * </p>
      * <p>
-     * The specified string must not start or end with whitespace. It must not
-     * contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code>
-     * (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     * The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     * <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
      * \u009f). Also, it must not contain the literal string quotarnquot.
      * </p>
      * 
      * @param taskList
      *        Specifies the task list to poll for activity tasks.</p>
      *        <p>
-     *        The specified string must not start or end with whitespace. It
-     *        must not contain a <code>:</code> (colon), <code>/</code> (slash),
-     *        <code>|</code> (vertical bar), or any control characters
-     *        (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the
-     *        literal string quotarnquot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon),
+     *        <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f -
+     *        \u009f). Also, it must not contain the literal string quotarnquot.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PollForActivityTaskRequest withTaskList(TaskList taskList) {
@@ -171,17 +159,14 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This
-     * enables diagnostic tracing when problems arise. The form of this identity
-     * is user defined.
+     * Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the workflow
+     * history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.
      * </p>
      * 
      * @param identity
-     *        Identity of the worker making the request, recorded in the
-     *        <code>ActivityTaskStarted</code> event in the workflow history.
-     *        This enables diagnostic tracing when problems arise. The form of
-     *        this identity is user defined.
+     *        Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the
+     *        workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user
+     *        defined.
      */
 
     public void setIdentity(String identity) {
@@ -190,16 +175,13 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This
-     * enables diagnostic tracing when problems arise. The form of this identity
-     * is user defined.
+     * Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the workflow
+     * history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.
      * </p>
      * 
-     * @return Identity of the worker making the request, recorded in the
-     *         <code>ActivityTaskStarted</code> event in the workflow history.
-     *         This enables diagnostic tracing when problems arise. The form of
-     *         this identity is user defined.
+     * @return Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the
+     *         workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user
+     *         defined.
      */
 
     public String getIdentity() {
@@ -208,19 +190,15 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This
-     * enables diagnostic tracing when problems arise. The form of this identity
-     * is user defined.
+     * Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the workflow
+     * history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.
      * </p>
      * 
      * @param identity
-     *        Identity of the worker making the request, recorded in the
-     *        <code>ActivityTaskStarted</code> event in the workflow history.
-     *        This enables diagnostic tracing when problems arise. The form of
-     *        this identity is user defined.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the
+     *        workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user
+     *        defined.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PollForActivityTaskRequest withIdentity(String identity) {
@@ -229,8 +207,7 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -241,11 +218,11 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getTaskList() != null)
-            sb.append("TaskList: " + getTaskList() + ",");
+            sb.append("TaskList: ").append(getTaskList()).append(",");
         if (getIdentity() != null)
-            sb.append("Identity: " + getIdentity());
+            sb.append("Identity: ").append(getIdentity());
         sb.append("}");
         return sb.toString();
     }
@@ -262,18 +239,15 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
         PollForActivityTaskRequest other = (PollForActivityTaskRequest) obj;
         if (other.getDomain() == null ^ this.getDomain() == null)
             return false;
-        if (other.getDomain() != null
-                && other.getDomain().equals(this.getDomain()) == false)
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
             return false;
         if (other.getTaskList() == null ^ this.getTaskList() == null)
             return false;
-        if (other.getTaskList() != null
-                && other.getTaskList().equals(this.getTaskList()) == false)
+        if (other.getTaskList() != null && other.getTaskList().equals(this.getTaskList()) == false)
             return false;
         if (other.getIdentity() == null ^ this.getIdentity() == null)
             return false;
-        if (other.getIdentity() != null
-                && other.getIdentity().equals(this.getIdentity()) == false)
+        if (other.getIdentity() != null && other.getIdentity().equals(this.getIdentity()) == false)
             return false;
         return true;
     }
@@ -283,12 +257,9 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDomain() == null) ? 0 : getDomain().hashCode());
-        hashCode = prime * hashCode
-                + ((getTaskList() == null) ? 0 : getTaskList().hashCode());
-        hashCode = prime * hashCode
-                + ((getIdentity() == null) ? 0 : getIdentity().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
+        hashCode = prime * hashCode + ((getTaskList() == null) ? 0 : getTaskList().hashCode());
+        hashCode = prime * hashCode + ((getIdentity() == null) ? 0 : getIdentity().hashCode());
         return hashCode;
     }
 
@@ -296,4 +267,5 @@ public class PollForActivityTaskRequest extends AmazonWebServiceRequest
     public PollForActivityTaskRequest clone() {
         return (PollForActivityTaskRequest) super.clone();
     }
+
 }

@@ -1,42 +1,45 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the returned data in response to a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateAlias" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateAliasResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      */
     private Alias alias;
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      * 
      * @param alias
-     *        Object containing the newly created alias record.
+     *        Object that describes the newly created alias record.
      */
 
     public void setAlias(Alias alias) {
@@ -45,10 +48,10 @@ public class CreateAliasResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      * 
-     * @return Object containing the newly created alias record.
+     * @return Object that describes the newly created alias record.
      */
 
     public Alias getAlias() {
@@ -57,13 +60,12 @@ public class CreateAliasResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Object containing the newly created alias record.
+     * Object that describes the newly created alias record.
      * </p>
      * 
      * @param alias
-     *        Object containing the newly created alias record.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Object that describes the newly created alias record.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateAliasResult withAlias(Alias alias) {
@@ -72,8 +74,7 @@ public class CreateAliasResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -84,7 +85,7 @@ public class CreateAliasResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAlias() != null)
-            sb.append("Alias: " + getAlias());
+            sb.append("Alias: ").append(getAlias());
         sb.append("}");
         return sb.toString();
     }
@@ -101,8 +102,7 @@ public class CreateAliasResult implements Serializable, Cloneable {
         CreateAliasResult other = (CreateAliasResult) obj;
         if (other.getAlias() == null ^ this.getAlias() == null)
             return false;
-        if (other.getAlias() != null
-                && other.getAlias().equals(this.getAlias()) == false)
+        if (other.getAlias() != null && other.getAlias().equals(this.getAlias()) == false)
             return false;
         return true;
     }
@@ -112,8 +112,7 @@ public class CreateAliasResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getAlias() == null) ? 0 : getAlias().hashCode());
+        hashCode = prime * hashCode + ((getAlias() == null) ? 0 : getAlias().hashCode());
         return hashCode;
     }
 
@@ -122,9 +121,8 @@ public class CreateAliasResult implements Serializable, Cloneable {
         try {
             return (CreateAliasResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

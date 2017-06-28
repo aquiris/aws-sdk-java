@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A structure containing a list of virtual private gateways.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeVirtualGateways"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeVirtualGatewaysResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -54,15 +57,13 @@ public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
      *        A list of virtual private gateways.
      */
 
-    public void setVirtualGateways(
-            java.util.Collection<VirtualGateway> virtualGateways) {
+    public void setVirtualGateways(java.util.Collection<VirtualGateway> virtualGateways) {
         if (virtualGateways == null) {
             this.virtualGateways = null;
             return;
         }
 
-        this.virtualGateways = new com.amazonaws.internal.SdkInternalList<VirtualGateway>(
-                virtualGateways);
+        this.virtualGateways = new com.amazonaws.internal.SdkInternalList<VirtualGateway>(virtualGateways);
     }
 
     /**
@@ -70,23 +71,19 @@ public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
      * A list of virtual private gateways.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVirtualGateways(java.util.Collection)} or
-     * {@link #withVirtualGateways(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setVirtualGateways(java.util.Collection)} or {@link #withVirtualGateways(java.util.Collection)} if you
+     * want to override the existing values.
      * </p>
      * 
      * @param virtualGateways
      *        A list of virtual private gateways.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeVirtualGatewaysResult withVirtualGateways(
-            VirtualGateway... virtualGateways) {
+    public DescribeVirtualGatewaysResult withVirtualGateways(VirtualGateway... virtualGateways) {
         if (this.virtualGateways == null) {
-            setVirtualGateways(new com.amazonaws.internal.SdkInternalList<VirtualGateway>(
-                    virtualGateways.length));
+            setVirtualGateways(new com.amazonaws.internal.SdkInternalList<VirtualGateway>(virtualGateways.length));
         }
         for (VirtualGateway ele : virtualGateways) {
             this.virtualGateways.add(ele);
@@ -101,19 +98,16 @@ public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
      * 
      * @param virtualGateways
      *        A list of virtual private gateways.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeVirtualGatewaysResult withVirtualGateways(
-            java.util.Collection<VirtualGateway> virtualGateways) {
+    public DescribeVirtualGatewaysResult withVirtualGateways(java.util.Collection<VirtualGateway> virtualGateways) {
         setVirtualGateways(virtualGateways);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -124,7 +118,7 @@ public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVirtualGateways() != null)
-            sb.append("VirtualGateways: " + getVirtualGateways());
+            sb.append("VirtualGateways: ").append(getVirtualGateways());
         sb.append("}");
         return sb.toString();
     }
@@ -139,11 +133,9 @@ public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
         if (obj instanceof DescribeVirtualGatewaysResult == false)
             return false;
         DescribeVirtualGatewaysResult other = (DescribeVirtualGatewaysResult) obj;
-        if (other.getVirtualGateways() == null
-                ^ this.getVirtualGateways() == null)
+        if (other.getVirtualGateways() == null ^ this.getVirtualGateways() == null)
             return false;
-        if (other.getVirtualGateways() != null
-                && other.getVirtualGateways().equals(this.getVirtualGateways()) == false)
+        if (other.getVirtualGateways() != null && other.getVirtualGateways().equals(this.getVirtualGateways()) == false)
             return false;
         return true;
     }
@@ -153,10 +145,7 @@ public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getVirtualGateways() == null) ? 0 : getVirtualGateways()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getVirtualGateways() == null) ? 0 : getVirtualGateways().hashCode());
         return hashCode;
     }
 
@@ -165,9 +154,8 @@ public class DescribeVirtualGatewaysResult implements Serializable, Cloneable {
         try {
             return (DescribeVirtualGatewaysResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

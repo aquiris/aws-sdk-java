@@ -1,32 +1,36 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains information indicating the ways in which a product can be
- * provisioned.
+ * Contains information indicating the ways in which a product can be provisioned.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProvisioningArtifact"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ProvisioningArtifact implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ProvisioningArtifact implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The identifier for the artifact.
+     * The identifier for the artifact. This is sometimes referred to as the product version.
      * </p>
      */
     private String id;
@@ -44,18 +48,18 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
     private String description;
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      */
     private java.util.Date createdTime;
 
     /**
      * <p>
-     * The identifier for the artifact.
+     * The identifier for the artifact. This is sometimes referred to as the product version.
      * </p>
      * 
      * @param id
-     *        The identifier for the artifact.
+     *        The identifier for the artifact. This is sometimes referred to as the product version.
      */
 
     public void setId(String id) {
@@ -64,10 +68,10 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier for the artifact.
+     * The identifier for the artifact. This is sometimes referred to as the product version.
      * </p>
      * 
-     * @return The identifier for the artifact.
+     * @return The identifier for the artifact. This is sometimes referred to as the product version.
      */
 
     public String getId() {
@@ -76,13 +80,12 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier for the artifact.
+     * The identifier for the artifact. This is sometimes referred to as the product version.
      * </p>
      * 
      * @param id
-     *        The identifier for the artifact.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The identifier for the artifact. This is sometimes referred to as the product version.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisioningArtifact withId(String id) {
@@ -122,8 +125,7 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
      * 
      * @param name
      *        The name of the artifact.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisioningArtifact withName(String name) {
@@ -163,8 +165,7 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
      * 
      * @param description
      *        The text description of the artifact.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisioningArtifact withDescription(String description) {
@@ -174,11 +175,11 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time that the artifact was created by the Administrator.
+     *        The UTC timestamp of the creation time.
      */
 
     public void setCreatedTime(java.util.Date createdTime) {
@@ -187,10 +188,10 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
-     * @return The time that the artifact was created by the Administrator.
+     * @return The UTC timestamp of the creation time.
      */
 
     public java.util.Date getCreatedTime() {
@@ -199,13 +200,12 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time that the artifact was created by the Administrator.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time that the artifact was created by the Administrator.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The UTC timestamp of the creation time.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisioningArtifact withCreatedTime(java.util.Date createdTime) {
@@ -214,8 +214,7 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -226,13 +225,13 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCreatedTime() != null)
-            sb.append("CreatedTime: " + getCreatedTime());
+            sb.append("CreatedTime: ").append(getCreatedTime());
         sb.append("}");
         return sb.toString();
     }
@@ -249,23 +248,19 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
         ProvisioningArtifact other = (ProvisioningArtifact) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getCreatedTime() == null ^ this.getCreatedTime() == null)
             return false;
-        if (other.getCreatedTime() != null
-                && other.getCreatedTime().equals(this.getCreatedTime()) == false)
+        if (other.getCreatedTime() != null && other.getCreatedTime().equals(this.getCreatedTime()) == false)
             return false;
         return true;
     }
@@ -275,16 +270,10 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreatedTime() == null) ? 0 : getCreatedTime().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getCreatedTime() == null) ? 0 : getCreatedTime().hashCode());
         return hashCode;
     }
 
@@ -293,9 +282,13 @@ public class ProvisioningArtifact implements Serializable, Cloneable {
         try {
             return (ProvisioningArtifact) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servicecatalog.model.transform.ProvisioningArtifactMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

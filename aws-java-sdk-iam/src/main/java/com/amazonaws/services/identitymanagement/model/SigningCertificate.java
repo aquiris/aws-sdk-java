@@ -1,30 +1,33 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains information about an X.509 signing certificate.
  * </p>
  * <p>
- * This data type is used as a response element in the
- * <a>UploadSigningCertificate</a> and <a>ListSigningCertificates</a> actions.
+ * This data type is used as a response element in the <a>UploadSigningCertificate</a> and
+ * <a>ListSigningCertificates</a> actions.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SigningCertificate" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SigningCertificate implements Serializable, Cloneable {
 
     /**
@@ -47,8 +50,8 @@ public class SigningCertificate implements Serializable, Cloneable {
     private String certificateBody;
     /**
      * <p>
-     * The status of the signing certificate. <code>Active</code> means the key
-     * is valid for API calls, while <code>Inactive</code> means it is not.
+     * The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     * <code>Inactive</code> means it is not.
      * </p>
      */
     private String status;
@@ -60,17 +63,15 @@ public class SigningCertificate implements Serializable, Cloneable {
     private java.util.Date uploadDate;
 
     /**
-     * Default constructor for SigningCertificate object. Callers should use the
-     * setter or fluent setter (with...) methods to initialize the object after
-     * creating it.
+     * Default constructor for SigningCertificate object. Callers should use the setter or fluent setter (with...)
+     * methods to initialize the object after creating it.
      */
     public SigningCertificate() {
     }
 
     /**
-     * Constructs a new SigningCertificate object. Callers should use the setter
-     * or fluent setter (with...) methods to initialize any additional object
-     * members.
+     * Constructs a new SigningCertificate object. Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
      * 
      * @param userName
      *        The name of the user the signing certificate is associated with.
@@ -79,12 +80,10 @@ public class SigningCertificate implements Serializable, Cloneable {
      * @param certificateBody
      *        The contents of the signing certificate.
      * @param status
-     *        The status of the signing certificate. <code>Active</code> means
-     *        the key is valid for API calls, while <code>Inactive</code> means
-     *        it is not.
+     *        The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     *        <code>Inactive</code> means it is not.
      */
-    public SigningCertificate(String userName, String certificateId,
-            String certificateBody, String status) {
+    public SigningCertificate(String userName, String certificateId, String certificateBody, String status) {
         setUserName(userName);
         setCertificateId(certificateId);
         setCertificateBody(certificateBody);
@@ -92,9 +91,8 @@ public class SigningCertificate implements Serializable, Cloneable {
     }
 
     /**
-     * Constructs a new SigningCertificate object. Callers should use the setter
-     * or fluent setter (with...) methods to initialize any additional object
-     * members.
+     * Constructs a new SigningCertificate object. Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
      * 
      * @param userName
      *        The name of the user the signing certificate is associated with.
@@ -103,12 +101,10 @@ public class SigningCertificate implements Serializable, Cloneable {
      * @param certificateBody
      *        The contents of the signing certificate.
      * @param status
-     *        The status of the signing certificate. <code>Active</code> means
-     *        the key is valid for API calls, while <code>Inactive</code> means
-     *        it is not.
+     *        The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     *        <code>Inactive</code> means it is not.
      */
-    public SigningCertificate(String userName, String certificateId,
-            String certificateBody, StatusType status) {
+    public SigningCertificate(String userName, String certificateId, String certificateBody, StatusType status) {
         setUserName(userName);
         setCertificateId(certificateId);
         setCertificateBody(certificateBody);
@@ -147,8 +143,7 @@ public class SigningCertificate implements Serializable, Cloneable {
      * 
      * @param userName
      *        The name of the user the signing certificate is associated with.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SigningCertificate withUserName(String userName) {
@@ -188,8 +183,7 @@ public class SigningCertificate implements Serializable, Cloneable {
      * 
      * @param certificateId
      *        The ID for the signing certificate.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SigningCertificate withCertificateId(String certificateId) {
@@ -229,8 +223,7 @@ public class SigningCertificate implements Serializable, Cloneable {
      * 
      * @param certificateBody
      *        The contents of the signing certificate.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SigningCertificate withCertificateBody(String certificateBody) {
@@ -240,14 +233,13 @@ public class SigningCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of the signing certificate. <code>Active</code> means the key
-     * is valid for API calls, while <code>Inactive</code> means it is not.
+     * The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     * <code>Inactive</code> means it is not.
      * </p>
      * 
      * @param status
-     *        The status of the signing certificate. <code>Active</code> means
-     *        the key is valid for API calls, while <code>Inactive</code> means
-     *        it is not.
+     *        The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     *        <code>Inactive</code> means it is not.
      * @see StatusType
      */
 
@@ -257,13 +249,12 @@ public class SigningCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of the signing certificate. <code>Active</code> means the key
-     * is valid for API calls, while <code>Inactive</code> means it is not.
+     * The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     * <code>Inactive</code> means it is not.
      * </p>
      * 
-     * @return The status of the signing certificate. <code>Active</code> means
-     *         the key is valid for API calls, while <code>Inactive</code> means
-     *         it is not.
+     * @return The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     *         <code>Inactive</code> means it is not.
      * @see StatusType
      */
 
@@ -273,16 +264,14 @@ public class SigningCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of the signing certificate. <code>Active</code> means the key
-     * is valid for API calls, while <code>Inactive</code> means it is not.
+     * The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     * <code>Inactive</code> means it is not.
      * </p>
      * 
      * @param status
-     *        The status of the signing certificate. <code>Active</code> means
-     *        the key is valid for API calls, while <code>Inactive</code> means
-     *        it is not.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     *        <code>Inactive</code> means it is not.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see StatusType
      */
 
@@ -293,14 +282,13 @@ public class SigningCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of the signing certificate. <code>Active</code> means the key
-     * is valid for API calls, while <code>Inactive</code> means it is not.
+     * The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     * <code>Inactive</code> means it is not.
      * </p>
      * 
      * @param status
-     *        The status of the signing certificate. <code>Active</code> means
-     *        the key is valid for API calls, while <code>Inactive</code> means
-     *        it is not.
+     *        The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     *        <code>Inactive</code> means it is not.
      * @see StatusType
      */
 
@@ -310,16 +298,14 @@ public class SigningCertificate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of the signing certificate. <code>Active</code> means the key
-     * is valid for API calls, while <code>Inactive</code> means it is not.
+     * The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     * <code>Inactive</code> means it is not.
      * </p>
      * 
      * @param status
-     *        The status of the signing certificate. <code>Active</code> means
-     *        the key is valid for API calls, while <code>Inactive</code> means
-     *        it is not.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while
+     *        <code>Inactive</code> means it is not.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see StatusType
      */
 
@@ -360,8 +346,7 @@ public class SigningCertificate implements Serializable, Cloneable {
      * 
      * @param uploadDate
      *        The date when the signing certificate was uploaded.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SigningCertificate withUploadDate(java.util.Date uploadDate) {
@@ -370,8 +355,7 @@ public class SigningCertificate implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -382,15 +366,15 @@ public class SigningCertificate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserName() != null)
-            sb.append("UserName: " + getUserName() + ",");
+            sb.append("UserName: ").append(getUserName()).append(",");
         if (getCertificateId() != null)
-            sb.append("CertificateId: " + getCertificateId() + ",");
+            sb.append("CertificateId: ").append(getCertificateId()).append(",");
         if (getCertificateBody() != null)
-            sb.append("CertificateBody: " + getCertificateBody() + ",");
+            sb.append("CertificateBody: ").append(getCertificateBody()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getUploadDate() != null)
-            sb.append("UploadDate: " + getUploadDate());
+            sb.append("UploadDate: ").append(getUploadDate());
         sb.append("}");
         return sb.toString();
     }
@@ -407,29 +391,23 @@ public class SigningCertificate implements Serializable, Cloneable {
         SigningCertificate other = (SigningCertificate) obj;
         if (other.getUserName() == null ^ this.getUserName() == null)
             return false;
-        if (other.getUserName() != null
-                && other.getUserName().equals(this.getUserName()) == false)
+        if (other.getUserName() != null && other.getUserName().equals(this.getUserName()) == false)
             return false;
         if (other.getCertificateId() == null ^ this.getCertificateId() == null)
             return false;
-        if (other.getCertificateId() != null
-                && other.getCertificateId().equals(this.getCertificateId()) == false)
+        if (other.getCertificateId() != null && other.getCertificateId().equals(this.getCertificateId()) == false)
             return false;
-        if (other.getCertificateBody() == null
-                ^ this.getCertificateBody() == null)
+        if (other.getCertificateBody() == null ^ this.getCertificateBody() == null)
             return false;
-        if (other.getCertificateBody() != null
-                && other.getCertificateBody().equals(this.getCertificateBody()) == false)
+        if (other.getCertificateBody() != null && other.getCertificateBody().equals(this.getCertificateBody()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         if (other.getUploadDate() == null ^ this.getUploadDate() == null)
             return false;
-        if (other.getUploadDate() != null
-                && other.getUploadDate().equals(this.getUploadDate()) == false)
+        if (other.getUploadDate() != null && other.getUploadDate().equals(this.getUploadDate()) == false)
             return false;
         return true;
     }
@@ -439,20 +417,11 @@ public class SigningCertificate implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getUserName() == null) ? 0 : getUserName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCertificateId() == null) ? 0 : getCertificateId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCertificateBody() == null) ? 0 : getCertificateBody()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime * hashCode
-                + ((getUploadDate() == null) ? 0 : getUploadDate().hashCode());
+        hashCode = prime * hashCode + ((getUserName() == null) ? 0 : getUserName().hashCode());
+        hashCode = prime * hashCode + ((getCertificateId() == null) ? 0 : getCertificateId().hashCode());
+        hashCode = prime * hashCode + ((getCertificateBody() == null) ? 0 : getCertificateBody().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getUploadDate() == null) ? 0 : getUploadDate().hashCode());
         return hashCode;
     }
 
@@ -461,9 +430,8 @@ public class SigningCertificate implements Serializable, Cloneable {
         try {
             return (SigningCertificate) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

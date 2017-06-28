@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a <i>DeleteCacheParameterGroup</i> action.
+ * Represents the input of a <code>DeleteCacheParameterGroup</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheParameterGroup"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeleteCacheParameterGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,31 +34,27 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
      * </p>
      * <note>
      * <p>
-     * The specified cache security group must not be associated with any cache
-     * clusters.
+     * The specified cache security group must not be associated with any cache clusters.
      * </p>
      * </note>
      */
     private String cacheParameterGroupName;
 
     /**
-     * Default constructor for DeleteCacheParameterGroupRequest object. Callers
-     * should use the setter or fluent setter (with...) methods to initialize
-     * the object after creating it.
+     * Default constructor for DeleteCacheParameterGroupRequest object. Callers should use the setter or fluent setter
+     * (with...) methods to initialize the object after creating it.
      */
     public DeleteCacheParameterGroupRequest() {
     }
 
     /**
-     * Constructs a new DeleteCacheParameterGroupRequest object. Callers should
-     * use the setter or fluent setter (with...) methods to initialize any
-     * additional object members.
+     * Constructs a new DeleteCacheParameterGroupRequest object. Callers should use the setter or fluent setter
+     * (with...) methods to initialize any additional object members.
      * 
      * @param cacheParameterGroupName
      *        The name of the cache parameter group to delete.</p> <note>
      *        <p>
-     *        The specified cache security group must not be associated with any
-     *        cache clusters.
+     *        The specified cache security group must not be associated with any cache clusters.
      *        </p>
      */
     public DeleteCacheParameterGroupRequest(String cacheParameterGroupName) {
@@ -68,16 +67,14 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
      * </p>
      * <note>
      * <p>
-     * The specified cache security group must not be associated with any cache
-     * clusters.
+     * The specified cache security group must not be associated with any cache clusters.
      * </p>
      * </note>
      * 
      * @param cacheParameterGroupName
      *        The name of the cache parameter group to delete.</p> <note>
      *        <p>
-     *        The specified cache security group must not be associated with any
-     *        cache clusters.
+     *        The specified cache security group must not be associated with any cache clusters.
      *        </p>
      */
 
@@ -91,15 +88,13 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
      * </p>
      * <note>
      * <p>
-     * The specified cache security group must not be associated with any cache
-     * clusters.
+     * The specified cache security group must not be associated with any cache clusters.
      * </p>
      * </note>
      * 
      * @return The name of the cache parameter group to delete.</p> <note>
      *         <p>
-     *         The specified cache security group must not be associated with
-     *         any cache clusters.
+     *         The specified cache security group must not be associated with any cache clusters.
      *         </p>
      */
 
@@ -113,30 +108,25 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
      * </p>
      * <note>
      * <p>
-     * The specified cache security group must not be associated with any cache
-     * clusters.
+     * The specified cache security group must not be associated with any cache clusters.
      * </p>
      * </note>
      * 
      * @param cacheParameterGroupName
      *        The name of the cache parameter group to delete.</p> <note>
      *        <p>
-     *        The specified cache security group must not be associated with any
-     *        cache clusters.
+     *        The specified cache security group must not be associated with any cache clusters.
      *        </p>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeleteCacheParameterGroupRequest withCacheParameterGroupName(
-            String cacheParameterGroupName) {
+    public DeleteCacheParameterGroupRequest withCacheParameterGroupName(String cacheParameterGroupName) {
         setCacheParameterGroupName(cacheParameterGroupName);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -147,8 +137,7 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCacheParameterGroupName() != null)
-            sb.append("CacheParameterGroupName: "
-                    + getCacheParameterGroupName());
+            sb.append("CacheParameterGroupName: ").append(getCacheParameterGroupName());
         sb.append("}");
         return sb.toString();
     }
@@ -163,12 +152,9 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
         if (obj instanceof DeleteCacheParameterGroupRequest == false)
             return false;
         DeleteCacheParameterGroupRequest other = (DeleteCacheParameterGroupRequest) obj;
-        if (other.getCacheParameterGroupName() == null
-                ^ this.getCacheParameterGroupName() == null)
+        if (other.getCacheParameterGroupName() == null ^ this.getCacheParameterGroupName() == null)
             return false;
-        if (other.getCacheParameterGroupName() != null
-                && other.getCacheParameterGroupName().equals(
-                        this.getCacheParameterGroupName()) == false)
+        if (other.getCacheParameterGroupName() != null && other.getCacheParameterGroupName().equals(this.getCacheParameterGroupName()) == false)
             return false;
         return true;
     }
@@ -178,10 +164,7 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCacheParameterGroupName() == null) ? 0
-                        : getCacheParameterGroupName().hashCode());
+        hashCode = prime * hashCode + ((getCacheParameterGroupName() == null) ? 0 : getCacheParameterGroupName().hashCode());
         return hashCode;
     }
 
@@ -189,4 +172,5 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest
     public DeleteCacheParameterGroupRequest clone() {
         return (DeleteCacheParameterGroupRequest) super.clone();
     }
+
 }

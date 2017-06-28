@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 Amazon Technologies, Inc.
+ * Copyright 2014-2017 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@ package com.amazonaws.services.s3.event;
 
 import java.util.List;
 
+import com.amazonaws.util.SdkHttpUtils;
 import org.joda.time.DateTime;
 
 import com.amazonaws.internal.DateTimeJsonSerializer;
@@ -47,7 +48,7 @@ public class S3EventNotification {
      * <p>
      * The function will try its best to parse input JSON string as best as it can.
      * It will not fail even if the JSON string contains unknown properties.
-     * The function will throw AmazonClientException if the input JSON string is
+     * The function will throw SdkClientException if the input JSON string is
      * not valid JSON.
      * </p>
      * @param json
@@ -126,6 +127,7 @@ public class S3EventNotification {
         private final Long size;
         private final String eTag;
         private final String versionId;
+        private final String sequencer;
 
         @Deprecated
         public S3ObjectEntity(
@@ -138,6 +140,17 @@ public class S3EventNotification {
             this.size = size == null ? null : size.longValue();
             this.eTag = eTag;
             this.versionId = versionId;
+            this.sequencer = null;
+        }
+
+        @Deprecated
+        public S3ObjectEntity(
+                String key,
+                Long size,
+                String eTag,
+                String versionId)
+        {
+            this(key, size, eTag, versionId, null);
         }
 
         @JsonCreator
@@ -145,16 +158,27 @@ public class S3EventNotification {
                 @JsonProperty(value = "key") String key,
                 @JsonProperty(value = "size") Long size,
                 @JsonProperty(value = "eTag") String eTag,
-                @JsonProperty(value = "versionId") String versionId)
+                @JsonProperty(value = "versionId") String versionId,
+                @JsonProperty(value = "sequencer") String sequencer)
         {
             this.key = key;
             this.size = size;
             this.eTag = eTag;
             this.versionId = versionId;
+            this.sequencer = sequencer;
         }
 
         public String getKey() {
             return key;
+        }
+
+        /**
+         * S3 URL encodes the key of the object involved in the event. This is
+         * a convenience method to automatically URL decode the key.
+         * @return The URL decoded object key.
+         */
+        public String getUrlDecodedKey() {
+            return SdkHttpUtils.urlDecode(getKey());
         }
 
         /**
@@ -177,6 +201,10 @@ public class S3EventNotification {
 
         public String getVersionId() {
             return versionId;
+        }
+
+        public String getSequencer() {
+            return sequencer;
         }
     }
 

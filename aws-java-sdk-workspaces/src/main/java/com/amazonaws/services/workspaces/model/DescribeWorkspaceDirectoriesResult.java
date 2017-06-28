@@ -1,28 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.workspaces.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains the results of the <a>DescribeWorkspaceDirectories</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeWorkspaceDirectoriesResult implements Serializable,
-        Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeWorkspaceDirectoriesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -32,10 +34,9 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
     private com.amazonaws.internal.SdkInternalList<WorkspaceDirectory> directories;
     /**
      * <p>
-     * If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to this operation
-     * to retrieve the next set of items. This token is valid for one day and
-     * must be used within that time frame.
+     * If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent
+     * call to this operation to retrieve the next set of items. This token is valid for one day and must be used within
+     * that time frame.
      * </p>
      */
     private String nextToken;
@@ -45,8 +46,7 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
      * An array of structures that contain information about the directories.
      * </p>
      * 
-     * @return An array of structures that contain information about the
-     *         directories.
+     * @return An array of structures that contain information about the directories.
      */
 
     public java.util.List<WorkspaceDirectory> getDirectories() {
@@ -62,19 +62,16 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
      * </p>
      * 
      * @param directories
-     *        An array of structures that contain information about the
-     *        directories.
+     *        An array of structures that contain information about the directories.
      */
 
-    public void setDirectories(
-            java.util.Collection<WorkspaceDirectory> directories) {
+    public void setDirectories(java.util.Collection<WorkspaceDirectory> directories) {
         if (directories == null) {
             this.directories = null;
             return;
         }
 
-        this.directories = new com.amazonaws.internal.SdkInternalList<WorkspaceDirectory>(
-                directories);
+        this.directories = new com.amazonaws.internal.SdkInternalList<WorkspaceDirectory>(directories);
     }
 
     /**
@@ -82,24 +79,19 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
      * An array of structures that contain information about the directories.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDirectories(java.util.Collection)} or
-     * {@link #withDirectories(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDirectories(java.util.Collection)} or {@link #withDirectories(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param directories
-     *        An array of structures that contain information about the
-     *        directories.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An array of structures that contain information about the directories.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeWorkspaceDirectoriesResult withDirectories(
-            WorkspaceDirectory... directories) {
+    public DescribeWorkspaceDirectoriesResult withDirectories(WorkspaceDirectory... directories) {
         if (this.directories == null) {
-            setDirectories(new com.amazonaws.internal.SdkInternalList<WorkspaceDirectory>(
-                    directories.length));
+            setDirectories(new com.amazonaws.internal.SdkInternalList<WorkspaceDirectory>(directories.length));
         }
         for (WorkspaceDirectory ele : directories) {
             this.directories.add(ele);
@@ -113,31 +105,26 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
      * </p>
      * 
      * @param directories
-     *        An array of structures that contain information about the
-     *        directories.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An array of structures that contain information about the directories.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeWorkspaceDirectoriesResult withDirectories(
-            java.util.Collection<WorkspaceDirectory> directories) {
+    public DescribeWorkspaceDirectoriesResult withDirectories(java.util.Collection<WorkspaceDirectory> directories) {
         setDirectories(directories);
         return this;
     }
 
     /**
      * <p>
-     * If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to this operation
-     * to retrieve the next set of items. This token is valid for one day and
-     * must be used within that time frame.
+     * If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent
+     * call to this operation to retrieve the next set of items. This token is valid for one day and must be used within
+     * that time frame.
      * </p>
      * 
      * @param nextToken
-     *        If not null, more results are available. Pass this value for the
-     *        <code>NextToken</code> parameter in a subsequent call to this
-     *        operation to retrieve the next set of items. This token is valid
-     *        for one day and must be used within that time frame.
+     *        If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a
+     *        subsequent call to this operation to retrieve the next set of items. This token is valid for one day and
+     *        must be used within that time frame.
      */
 
     public void setNextToken(String nextToken) {
@@ -146,16 +133,14 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
 
     /**
      * <p>
-     * If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to this operation
-     * to retrieve the next set of items. This token is valid for one day and
-     * must be used within that time frame.
+     * If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent
+     * call to this operation to retrieve the next set of items. This token is valid for one day and must be used within
+     * that time frame.
      * </p>
      * 
-     * @return If not null, more results are available. Pass this value for the
-     *         <code>NextToken</code> parameter in a subsequent call to this
-     *         operation to retrieve the next set of items. This token is valid
-     *         for one day and must be used within that time frame.
+     * @return If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a
+     *         subsequent call to this operation to retrieve the next set of items. This token is valid for one day and
+     *         must be used within that time frame.
      */
 
     public String getNextToken() {
@@ -164,19 +149,16 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
 
     /**
      * <p>
-     * If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to this operation
-     * to retrieve the next set of items. This token is valid for one day and
-     * must be used within that time frame.
+     * If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent
+     * call to this operation to retrieve the next set of items. This token is valid for one day and must be used within
+     * that time frame.
      * </p>
      * 
      * @param nextToken
-     *        If not null, more results are available. Pass this value for the
-     *        <code>NextToken</code> parameter in a subsequent call to this
-     *        operation to retrieve the next set of items. This token is valid
-     *        for one day and must be used within that time frame.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a
+     *        subsequent call to this operation to retrieve the next set of items. This token is valid for one day and
+     *        must be used within that time frame.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeWorkspaceDirectoriesResult withNextToken(String nextToken) {
@@ -185,8 +167,7 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -197,9 +178,9 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDirectories() != null)
-            sb.append("Directories: " + getDirectories() + ",");
+            sb.append("Directories: ").append(getDirectories()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -216,13 +197,11 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
         DescribeWorkspaceDirectoriesResult other = (DescribeWorkspaceDirectoriesResult) obj;
         if (other.getDirectories() == null ^ this.getDirectories() == null)
             return false;
-        if (other.getDirectories() != null
-                && other.getDirectories().equals(this.getDirectories()) == false)
+        if (other.getDirectories() != null && other.getDirectories().equals(this.getDirectories()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -232,11 +211,8 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDirectories() == null) ? 0 : getDirectories().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getDirectories() == null) ? 0 : getDirectories().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -245,9 +221,8 @@ public class DescribeWorkspaceDirectoriesResult implements Serializable,
         try {
             return (DescribeWorkspaceDirectoriesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

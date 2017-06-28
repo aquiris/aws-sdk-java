@@ -1,22 +1,23 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
+import javax.annotation.Generated;
 
 /**
  * 
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum InstanceType {
 
     T1Micro("t1.micro"),
@@ -25,6 +26,8 @@ public enum InstanceType {
     T2Small("t2.small"),
     T2Medium("t2.medium"),
     T2Large("t2.large"),
+    T2Xlarge("t2.xlarge"),
+    T22xlarge("t2.2xlarge"),
     M1Small("m1.small"),
     M1Medium("m1.medium"),
     M1Large("m1.large"),
@@ -38,6 +41,7 @@ public enum InstanceType {
     M42xlarge("m4.2xlarge"),
     M44xlarge("m4.4xlarge"),
     M410xlarge("m4.10xlarge"),
+    M416xlarge("m4.16xlarge"),
     M2Xlarge("m2.xlarge"),
     M22xlarge("m2.2xlarge"),
     M24xlarge("m2.4xlarge"),
@@ -47,14 +51,24 @@ public enum InstanceType {
     R32xlarge("r3.2xlarge"),
     R34xlarge("r3.4xlarge"),
     R38xlarge("r3.8xlarge"),
-    X14xlarge("x1.4xlarge"),
-    X18xlarge("x1.8xlarge"),
+    R4Large("r4.large"),
+    R4Xlarge("r4.xlarge"),
+    R42xlarge("r4.2xlarge"),
+    R44xlarge("r4.4xlarge"),
+    R48xlarge("r4.8xlarge"),
+    R416xlarge("r4.16xlarge"),
     X116xlarge("x1.16xlarge"),
     X132xlarge("x1.32xlarge"),
     I2Xlarge("i2.xlarge"),
     I22xlarge("i2.2xlarge"),
     I24xlarge("i2.4xlarge"),
     I28xlarge("i2.8xlarge"),
+    I3Large("i3.large"),
+    I3Xlarge("i3.xlarge"),
+    I32xlarge("i3.2xlarge"),
+    I34xlarge("i3.4xlarge"),
+    I38xlarge("i3.8xlarge"),
+    I316xlarge("i3.16xlarge"),
     Hi14xlarge("hi1.4xlarge"),
     Hs18xlarge("hs1.8xlarge"),
     C1Medium("c1.medium"),
@@ -74,10 +88,15 @@ public enum InstanceType {
     G22xlarge("g2.2xlarge"),
     G28xlarge("g2.8xlarge"),
     Cg14xlarge("cg1.4xlarge"),
+    P2Xlarge("p2.xlarge"),
+    P28xlarge("p2.8xlarge"),
+    P216xlarge("p2.16xlarge"),
     D2Xlarge("d2.xlarge"),
     D22xlarge("d2.2xlarge"),
     D24xlarge("d2.4xlarge"),
-    D28xlarge("d2.8xlarge");
+    D28xlarge("d2.8xlarge"),
+    F12xlarge("f1.2xlarge"),
+    F116xlarge("f1.16xlarge");
 
     private String value;
 
@@ -108,7 +127,6 @@ public enum InstanceType {
             }
         }
 
-        throw new IllegalArgumentException("Cannot create enum from " + value
-                + " value!");
+        throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
     }
 }

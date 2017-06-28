@@ -1,46 +1,48 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Response for Subscribe action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Subscribe" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SubscribeResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SubscribeResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the subscription, if the service was able to create a
-     * subscription immediately (without requiring endpoint owner confirmation).
+     * The ARN of the subscription, if the service was able to create a subscription immediately (without requiring
+     * endpoint owner confirmation).
      * </p>
      */
     private String subscriptionArn;
 
     /**
      * <p>
-     * The ARN of the subscription, if the service was able to create a
-     * subscription immediately (without requiring endpoint owner confirmation).
+     * The ARN of the subscription, if the service was able to create a subscription immediately (without requiring
+     * endpoint owner confirmation).
      * </p>
      * 
      * @param subscriptionArn
-     *        The ARN of the subscription, if the service was able to create a
-     *        subscription immediately (without requiring endpoint owner
-     *        confirmation).
+     *        The ARN of the subscription, if the service was able to create a subscription immediately (without
+     *        requiring endpoint owner confirmation).
      */
 
     public void setSubscriptionArn(String subscriptionArn) {
@@ -49,13 +51,12 @@ public class SubscribeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the subscription, if the service was able to create a
-     * subscription immediately (without requiring endpoint owner confirmation).
+     * The ARN of the subscription, if the service was able to create a subscription immediately (without requiring
+     * endpoint owner confirmation).
      * </p>
      * 
-     * @return The ARN of the subscription, if the service was able to create a
-     *         subscription immediately (without requiring endpoint owner
-     *         confirmation).
+     * @return The ARN of the subscription, if the service was able to create a subscription immediately (without
+     *         requiring endpoint owner confirmation).
      */
 
     public String getSubscriptionArn() {
@@ -64,16 +65,14 @@ public class SubscribeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the subscription, if the service was able to create a
-     * subscription immediately (without requiring endpoint owner confirmation).
+     * The ARN of the subscription, if the service was able to create a subscription immediately (without requiring
+     * endpoint owner confirmation).
      * </p>
      * 
      * @param subscriptionArn
-     *        The ARN of the subscription, if the service was able to create a
-     *        subscription immediately (without requiring endpoint owner
-     *        confirmation).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN of the subscription, if the service was able to create a subscription immediately (without
+     *        requiring endpoint owner confirmation).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SubscribeResult withSubscriptionArn(String subscriptionArn) {
@@ -82,8 +81,7 @@ public class SubscribeResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -94,7 +92,7 @@ public class SubscribeResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSubscriptionArn() != null)
-            sb.append("SubscriptionArn: " + getSubscriptionArn());
+            sb.append("SubscriptionArn: ").append(getSubscriptionArn());
         sb.append("}");
         return sb.toString();
     }
@@ -109,11 +107,9 @@ public class SubscribeResult implements Serializable, Cloneable {
         if (obj instanceof SubscribeResult == false)
             return false;
         SubscribeResult other = (SubscribeResult) obj;
-        if (other.getSubscriptionArn() == null
-                ^ this.getSubscriptionArn() == null)
+        if (other.getSubscriptionArn() == null ^ this.getSubscriptionArn() == null)
             return false;
-        if (other.getSubscriptionArn() != null
-                && other.getSubscriptionArn().equals(this.getSubscriptionArn()) == false)
+        if (other.getSubscriptionArn() != null && other.getSubscriptionArn().equals(this.getSubscriptionArn()) == false)
             return false;
         return true;
     }
@@ -123,10 +119,7 @@ public class SubscribeResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getSubscriptionArn() == null) ? 0 : getSubscriptionArn()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getSubscriptionArn() == null) ? 0 : getSubscriptionArn().hashCode());
         return hashCode;
     }
 
@@ -135,9 +128,8 @@ public class SubscribeResult implements Serializable, Cloneable {
         try {
             return (SubscribeResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

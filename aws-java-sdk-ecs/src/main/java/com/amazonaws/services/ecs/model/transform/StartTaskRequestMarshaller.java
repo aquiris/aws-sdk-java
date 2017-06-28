@@ -1,116 +1,71 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ecs.model.transform;
 
-import java.io.ByteArrayInputStream;
-import java.util.Collections;
-import java.util.Map;
 import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.services.ecs.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * StartTaskRequest Marshaller
+ * StartTaskRequestMarshaller
  */
-public class StartTaskRequestMarshaller implements
-        Marshaller<Request<StartTaskRequest>, StartTaskRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class StartTaskRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> CLUSTER_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("cluster").build();
+    private static final MarshallingInfo<String> TASKDEFINITION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("taskDefinition").build();
+    private static final MarshallingInfo<StructuredPojo> OVERRIDES_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("overrides").build();
+    private static final MarshallingInfo<List> CONTAINERINSTANCES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("containerInstances").build();
+    private static final MarshallingInfo<String> STARTEDBY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("startedBy").build();
+    private static final MarshallingInfo<String> GROUP_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("group").build();
 
-    public StartTaskRequestMarshaller(SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final StartTaskRequestMarshaller instance = new StartTaskRequestMarshaller();
+
+    public static StartTaskRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<StartTaskRequest> marshall(StartTaskRequest startTaskRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(StartTaskRequest startTaskRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (startTaskRequest == null) {
-            throw new AmazonClientException(
-                    "Invalid argument passed to marshall(...)");
+            throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
-
-        Request<StartTaskRequest> request = new DefaultRequest<StartTaskRequest>(
-                startTaskRequest, "AmazonECS");
-        request.addHeader("X-Amz-Target",
-                "AmazonEC2ContainerServiceV20141113.StartTask");
-
-        request.setHttpMethod(HttpMethodName.POST);
-
-        request.setResourcePath("");
 
         try {
-            final StructuredJsonGenerator jsonGenerator = protocolFactory
-                    .createGenerator();
-
-            jsonGenerator.writeStartObject();
-
-            if (startTaskRequest.getCluster() != null) {
-                jsonGenerator.writeFieldName("cluster").writeValue(
-                        startTaskRequest.getCluster());
-            }
-            if (startTaskRequest.getTaskDefinition() != null) {
-                jsonGenerator.writeFieldName("taskDefinition").writeValue(
-                        startTaskRequest.getTaskDefinition());
-            }
-            if (startTaskRequest.getOverrides() != null) {
-                jsonGenerator.writeFieldName("overrides");
-                TaskOverrideJsonMarshaller.getInstance().marshall(
-                        startTaskRequest.getOverrides(), jsonGenerator);
-            }
-
-            com.amazonaws.internal.SdkInternalList<String> containerInstancesList = (com.amazonaws.internal.SdkInternalList<String>) startTaskRequest
-                    .getContainerInstances();
-            if (!containerInstancesList.isEmpty()
-                    || !containerInstancesList.isAutoConstruct()) {
-                jsonGenerator.writeFieldName("containerInstances");
-                jsonGenerator.writeStartArray();
-                for (String containerInstancesListValue : containerInstancesList) {
-                    if (containerInstancesListValue != null) {
-                        jsonGenerator.writeValue(containerInstancesListValue);
-                    }
-                }
-                jsonGenerator.writeEndArray();
-            }
-            if (startTaskRequest.getStartedBy() != null) {
-                jsonGenerator.writeFieldName("startedBy").writeValue(
-                        startTaskRequest.getStartedBy());
-            }
-
-            jsonGenerator.writeEndObject();
-
-            byte[] content = jsonGenerator.getBytes();
-            request.setContent(new ByteArrayInputStream(content));
-            request.addHeader("Content-Length",
-                    Integer.toString(content.length));
-            request.addHeader("Content-Type", protocolFactory.getContentType());
-        } catch (Throwable t) {
-            throw new AmazonClientException(
-                    "Unable to marshall request to JSON: " + t.getMessage(), t);
+            protocolMarshaller.marshall(startTaskRequest.getCluster(), CLUSTER_BINDING);
+            protocolMarshaller.marshall(startTaskRequest.getTaskDefinition(), TASKDEFINITION_BINDING);
+            protocolMarshaller.marshall(startTaskRequest.getOverrides(), OVERRIDES_BINDING);
+            protocolMarshaller.marshall(startTaskRequest.getContainerInstances(), CONTAINERINSTANCES_BINDING);
+            protocolMarshaller.marshall(startTaskRequest.getStartedBy(), STARTEDBY_BINDING);
+            protocolMarshaller.marshall(startTaskRequest.getGroup(), GROUP_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        return request;
     }
 
 }

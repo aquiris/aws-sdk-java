@@ -1,29 +1,33 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.inspector.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains information about an Amazon Inspector assessment template. This data
- * type is used as the response element in the
- * <a>DescribeAssessmentTemplates</a> action.
+ * Contains information about an Amazon Inspector assessment template. This data type is used as the response element in
+ * the <a>DescribeAssessmentTemplates</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16/AssessmentTemplate" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AssessmentTemplate implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AssessmentTemplate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -39,16 +43,14 @@ public class AssessmentTemplate implements Serializable, Cloneable {
     private String name;
     /**
      * <p>
-     * The ARN of the assessment target that corresponds to this assessment
-     * template.
+     * The ARN of the assessment target that corresponds to this assessment template.
      * </p>
      */
     private String assessmentTargetArn;
     /**
      * <p>
-     * The duration in seconds specified for this assessment tempate. The
-     * default value is 3600 seconds (one hour). The maximum value is 86400
-     * seconds (one day).
+     * The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The
+     * maximum value is 86400 seconds (one day).
      * </p>
      */
     private Integer durationInSeconds;
@@ -60,8 +62,8 @@ public class AssessmentTemplate implements Serializable, Cloneable {
     private java.util.List<String> rulesPackageArns;
     /**
      * <p>
-     * The user-defined attributes that are assigned to every generated finding
-     * from the assessment run that uses this assessment template.
+     * The user-defined attributes that are assigned to every generated finding from the assessment run that uses this
+     * assessment template.
      * </p>
      */
     private java.util.List<Attribute> userAttributesForFindings;
@@ -104,8 +106,7 @@ public class AssessmentTemplate implements Serializable, Cloneable {
      * 
      * @param arn
      *        The ARN of the assessment template.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssessmentTemplate withArn(String arn) {
@@ -145,8 +146,7 @@ public class AssessmentTemplate implements Serializable, Cloneable {
      * 
      * @param name
      *        The name of the assessment template.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssessmentTemplate withName(String name) {
@@ -156,13 +156,11 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the assessment target that corresponds to this assessment
-     * template.
+     * The ARN of the assessment target that corresponds to this assessment template.
      * </p>
      * 
      * @param assessmentTargetArn
-     *        The ARN of the assessment target that corresponds to this
-     *        assessment template.
+     *        The ARN of the assessment target that corresponds to this assessment template.
      */
 
     public void setAssessmentTargetArn(String assessmentTargetArn) {
@@ -171,12 +169,10 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the assessment target that corresponds to this assessment
-     * template.
+     * The ARN of the assessment target that corresponds to this assessment template.
      * </p>
      * 
-     * @return The ARN of the assessment target that corresponds to this
-     *         assessment template.
+     * @return The ARN of the assessment target that corresponds to this assessment template.
      */
 
     public String getAssessmentTargetArn() {
@@ -185,15 +181,12 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the assessment target that corresponds to this assessment
-     * template.
+     * The ARN of the assessment target that corresponds to this assessment template.
      * </p>
      * 
      * @param assessmentTargetArn
-     *        The ARN of the assessment target that corresponds to this
-     *        assessment template.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN of the assessment target that corresponds to this assessment template.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssessmentTemplate withAssessmentTargetArn(String assessmentTargetArn) {
@@ -203,15 +196,13 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The duration in seconds specified for this assessment tempate. The
-     * default value is 3600 seconds (one hour). The maximum value is 86400
-     * seconds (one day).
+     * The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The
+     * maximum value is 86400 seconds (one day).
      * </p>
      * 
      * @param durationInSeconds
-     *        The duration in seconds specified for this assessment tempate. The
-     *        default value is 3600 seconds (one hour). The maximum value is
-     *        86400 seconds (one day).
+     *        The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one
+     *        hour). The maximum value is 86400 seconds (one day).
      */
 
     public void setDurationInSeconds(Integer durationInSeconds) {
@@ -220,14 +211,12 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The duration in seconds specified for this assessment tempate. The
-     * default value is 3600 seconds (one hour). The maximum value is 86400
-     * seconds (one day).
+     * The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The
+     * maximum value is 86400 seconds (one day).
      * </p>
      * 
-     * @return The duration in seconds specified for this assessment tempate.
-     *         The default value is 3600 seconds (one hour). The maximum value
-     *         is 86400 seconds (one day).
+     * @return The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one
+     *         hour). The maximum value is 86400 seconds (one day).
      */
 
     public Integer getDurationInSeconds() {
@@ -236,17 +225,14 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The duration in seconds specified for this assessment tempate. The
-     * default value is 3600 seconds (one hour). The maximum value is 86400
-     * seconds (one day).
+     * The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The
+     * maximum value is 86400 seconds (one day).
      * </p>
      * 
      * @param durationInSeconds
-     *        The duration in seconds specified for this assessment tempate. The
-     *        default value is 3600 seconds (one hour). The maximum value is
-     *        86400 seconds (one day).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one
+     *        hour). The maximum value is 86400 seconds (one day).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssessmentTemplate withDurationInSeconds(Integer durationInSeconds) {
@@ -259,8 +245,7 @@ public class AssessmentTemplate implements Serializable, Cloneable {
      * The rules packages that are specified for this assessment template.
      * </p>
      * 
-     * @return The rules packages that are specified for this assessment
-     *         template.
+     * @return The rules packages that are specified for this assessment template.
      */
 
     public java.util.List<String> getRulesPackageArns() {
@@ -273,19 +258,16 @@ public class AssessmentTemplate implements Serializable, Cloneable {
      * </p>
      * 
      * @param rulesPackageArns
-     *        The rules packages that are specified for this assessment
-     *        template.
+     *        The rules packages that are specified for this assessment template.
      */
 
-    public void setRulesPackageArns(
-            java.util.Collection<String> rulesPackageArns) {
+    public void setRulesPackageArns(java.util.Collection<String> rulesPackageArns) {
         if (rulesPackageArns == null) {
             this.rulesPackageArns = null;
             return;
         }
 
-        this.rulesPackageArns = new java.util.ArrayList<String>(
-                rulesPackageArns);
+        this.rulesPackageArns = new java.util.ArrayList<String>(rulesPackageArns);
     }
 
     /**
@@ -293,23 +275,19 @@ public class AssessmentTemplate implements Serializable, Cloneable {
      * The rules packages that are specified for this assessment template.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setRulesPackageArns(java.util.Collection)} or
-     * {@link #withRulesPackageArns(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setRulesPackageArns(java.util.Collection)} or {@link #withRulesPackageArns(java.util.Collection)} if you
+     * want to override the existing values.
      * </p>
      * 
      * @param rulesPackageArns
-     *        The rules packages that are specified for this assessment
-     *        template.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The rules packages that are specified for this assessment template.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssessmentTemplate withRulesPackageArns(String... rulesPackageArns) {
         if (this.rulesPackageArns == null) {
-            setRulesPackageArns(new java.util.ArrayList<String>(
-                    rulesPackageArns.length));
+            setRulesPackageArns(new java.util.ArrayList<String>(rulesPackageArns.length));
         }
         for (String ele : rulesPackageArns) {
             this.rulesPackageArns.add(ele);
@@ -323,27 +301,23 @@ public class AssessmentTemplate implements Serializable, Cloneable {
      * </p>
      * 
      * @param rulesPackageArns
-     *        The rules packages that are specified for this assessment
-     *        template.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The rules packages that are specified for this assessment template.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AssessmentTemplate withRulesPackageArns(
-            java.util.Collection<String> rulesPackageArns) {
+    public AssessmentTemplate withRulesPackageArns(java.util.Collection<String> rulesPackageArns) {
         setRulesPackageArns(rulesPackageArns);
         return this;
     }
 
     /**
      * <p>
-     * The user-defined attributes that are assigned to every generated finding
-     * from the assessment run that uses this assessment template.
+     * The user-defined attributes that are assigned to every generated finding from the assessment run that uses this
+     * assessment template.
      * </p>
      * 
-     * @return The user-defined attributes that are assigned to every generated
-     *         finding from the assessment run that uses this assessment
-     *         template.
+     * @return The user-defined attributes that are assigned to every generated finding from the assessment run that
+     *         uses this assessment template.
      */
 
     public java.util.List<Attribute> getUserAttributesForFindings() {
@@ -352,52 +326,44 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The user-defined attributes that are assigned to every generated finding
-     * from the assessment run that uses this assessment template.
+     * The user-defined attributes that are assigned to every generated finding from the assessment run that uses this
+     * assessment template.
      * </p>
      * 
      * @param userAttributesForFindings
-     *        The user-defined attributes that are assigned to every generated
-     *        finding from the assessment run that uses this assessment
-     *        template.
+     *        The user-defined attributes that are assigned to every generated finding from the assessment run that uses
+     *        this assessment template.
      */
 
-    public void setUserAttributesForFindings(
-            java.util.Collection<Attribute> userAttributesForFindings) {
+    public void setUserAttributesForFindings(java.util.Collection<Attribute> userAttributesForFindings) {
         if (userAttributesForFindings == null) {
             this.userAttributesForFindings = null;
             return;
         }
 
-        this.userAttributesForFindings = new java.util.ArrayList<Attribute>(
-                userAttributesForFindings);
+        this.userAttributesForFindings = new java.util.ArrayList<Attribute>(userAttributesForFindings);
     }
 
     /**
      * <p>
-     * The user-defined attributes that are assigned to every generated finding
-     * from the assessment run that uses this assessment template.
+     * The user-defined attributes that are assigned to every generated finding from the assessment run that uses this
+     * assessment template.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setUserAttributesForFindings(java.util.Collection)} or
-     * {@link #withUserAttributesForFindings(java.util.Collection)} if you want
-     * to override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setUserAttributesForFindings(java.util.Collection)} or
+     * {@link #withUserAttributesForFindings(java.util.Collection)} if you want to override the existing values.
      * </p>
      * 
      * @param userAttributesForFindings
-     *        The user-defined attributes that are assigned to every generated
-     *        finding from the assessment run that uses this assessment
-     *        template.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The user-defined attributes that are assigned to every generated finding from the assessment run that uses
+     *        this assessment template.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AssessmentTemplate withUserAttributesForFindings(
-            Attribute... userAttributesForFindings) {
+    public AssessmentTemplate withUserAttributesForFindings(Attribute... userAttributesForFindings) {
         if (this.userAttributesForFindings == null) {
-            setUserAttributesForFindings(new java.util.ArrayList<Attribute>(
-                    userAttributesForFindings.length));
+            setUserAttributesForFindings(new java.util.ArrayList<Attribute>(userAttributesForFindings.length));
         }
         for (Attribute ele : userAttributesForFindings) {
             this.userAttributesForFindings.add(ele);
@@ -407,20 +373,17 @@ public class AssessmentTemplate implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The user-defined attributes that are assigned to every generated finding
-     * from the assessment run that uses this assessment template.
+     * The user-defined attributes that are assigned to every generated finding from the assessment run that uses this
+     * assessment template.
      * </p>
      * 
      * @param userAttributesForFindings
-     *        The user-defined attributes that are assigned to every generated
-     *        finding from the assessment run that uses this assessment
-     *        template.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The user-defined attributes that are assigned to every generated finding from the assessment run that uses
+     *        this assessment template.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AssessmentTemplate withUserAttributesForFindings(
-            java.util.Collection<Attribute> userAttributesForFindings) {
+    public AssessmentTemplate withUserAttributesForFindings(java.util.Collection<Attribute> userAttributesForFindings) {
         setUserAttributesForFindings(userAttributesForFindings);
         return this;
     }
@@ -457,8 +420,7 @@ public class AssessmentTemplate implements Serializable, Cloneable {
      * 
      * @param createdAt
      *        The time at which the assessment template is created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssessmentTemplate withCreatedAt(java.util.Date createdAt) {
@@ -467,8 +429,7 @@ public class AssessmentTemplate implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -479,20 +440,19 @@ public class AssessmentTemplate implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getAssessmentTargetArn() != null)
-            sb.append("AssessmentTargetArn: " + getAssessmentTargetArn() + ",");
+            sb.append("AssessmentTargetArn: ").append(getAssessmentTargetArn()).append(",");
         if (getDurationInSeconds() != null)
-            sb.append("DurationInSeconds: " + getDurationInSeconds() + ",");
+            sb.append("DurationInSeconds: ").append(getDurationInSeconds()).append(",");
         if (getRulesPackageArns() != null)
-            sb.append("RulesPackageArns: " + getRulesPackageArns() + ",");
+            sb.append("RulesPackageArns: ").append(getRulesPackageArns()).append(",");
         if (getUserAttributesForFindings() != null)
-            sb.append("UserAttributesForFindings: "
-                    + getUserAttributesForFindings() + ",");
+            sb.append("UserAttributesForFindings: ").append(getUserAttributesForFindings()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: " + getCreatedAt());
+            sb.append("CreatedAt: ").append(getCreatedAt());
         sb.append("}");
         return sb.toString();
     }
@@ -509,46 +469,31 @@ public class AssessmentTemplate implements Serializable, Cloneable {
         AssessmentTemplate other = (AssessmentTemplate) obj;
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
-        if (other.getArn() != null
-                && other.getArn().equals(this.getArn()) == false)
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
-        if (other.getAssessmentTargetArn() == null
-                ^ this.getAssessmentTargetArn() == null)
+        if (other.getAssessmentTargetArn() == null ^ this.getAssessmentTargetArn() == null)
             return false;
-        if (other.getAssessmentTargetArn() != null
-                && other.getAssessmentTargetArn().equals(
-                        this.getAssessmentTargetArn()) == false)
+        if (other.getAssessmentTargetArn() != null && other.getAssessmentTargetArn().equals(this.getAssessmentTargetArn()) == false)
             return false;
-        if (other.getDurationInSeconds() == null
-                ^ this.getDurationInSeconds() == null)
+        if (other.getDurationInSeconds() == null ^ this.getDurationInSeconds() == null)
             return false;
-        if (other.getDurationInSeconds() != null
-                && other.getDurationInSeconds().equals(
-                        this.getDurationInSeconds()) == false)
+        if (other.getDurationInSeconds() != null && other.getDurationInSeconds().equals(this.getDurationInSeconds()) == false)
             return false;
-        if (other.getRulesPackageArns() == null
-                ^ this.getRulesPackageArns() == null)
+        if (other.getRulesPackageArns() == null ^ this.getRulesPackageArns() == null)
             return false;
-        if (other.getRulesPackageArns() != null
-                && other.getRulesPackageArns().equals(
-                        this.getRulesPackageArns()) == false)
+        if (other.getRulesPackageArns() != null && other.getRulesPackageArns().equals(this.getRulesPackageArns()) == false)
             return false;
-        if (other.getUserAttributesForFindings() == null
-                ^ this.getUserAttributesForFindings() == null)
+        if (other.getUserAttributesForFindings() == null ^ this.getUserAttributesForFindings() == null)
             return false;
-        if (other.getUserAttributesForFindings() != null
-                && other.getUserAttributesForFindings().equals(
-                        this.getUserAttributesForFindings()) == false)
+        if (other.getUserAttributesForFindings() != null && other.getUserAttributesForFindings().equals(this.getUserAttributesForFindings()) == false)
             return false;
         if (other.getCreatedAt() == null ^ this.getCreatedAt() == null)
             return false;
-        if (other.getCreatedAt() != null
-                && other.getCreatedAt().equals(this.getCreatedAt()) == false)
+        if (other.getCreatedAt() != null && other.getCreatedAt().equals(this.getCreatedAt()) == false)
             return false;
         return true;
     }
@@ -558,28 +503,13 @@ public class AssessmentTemplate implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getArn() == null) ? 0 : getArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAssessmentTargetArn() == null) ? 0
-                        : getAssessmentTargetArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDurationInSeconds() == null) ? 0
-                        : getDurationInSeconds().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRulesPackageArns() == null) ? 0 : getRulesPackageArns()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getUserAttributesForFindings() == null) ? 0
-                        : getUserAttributesForFindings().hashCode());
-        hashCode = prime * hashCode
-                + ((getCreatedAt() == null) ? 0 : getCreatedAt().hashCode());
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getAssessmentTargetArn() == null) ? 0 : getAssessmentTargetArn().hashCode());
+        hashCode = prime * hashCode + ((getDurationInSeconds() == null) ? 0 : getDurationInSeconds().hashCode());
+        hashCode = prime * hashCode + ((getRulesPackageArns() == null) ? 0 : getRulesPackageArns().hashCode());
+        hashCode = prime * hashCode + ((getUserAttributesForFindings() == null) ? 0 : getUserAttributesForFindings().hashCode());
+        hashCode = prime * hashCode + ((getCreatedAt() == null) ? 0 : getCreatedAt().hashCode());
         return hashCode;
     }
 
@@ -588,9 +518,13 @@ public class AssessmentTemplate implements Serializable, Cloneable {
         try {
             return (AssessmentTemplate) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.inspector.model.transform.AssessmentTemplateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

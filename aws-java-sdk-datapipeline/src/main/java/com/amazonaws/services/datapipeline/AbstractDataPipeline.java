@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.datapipeline;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.datapipeline.model.*;
 import com.amazonaws.*;
 
 /**
- * Abstract implementation of {@code DataPipeline}. Convenient method forms pass
- * through to the corresponding overload that takes a request object, which
- * throws an {@code UnsupportedOperationException}.
+ * Abstract implementation of {@code DataPipeline}. Convenient method forms pass through to the corresponding overload
+ * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractDataPipeline implements DataPipeline {
 
     protected AbstractDataPipeline() {
@@ -38,8 +38,7 @@ public class AbstractDataPipeline implements DataPipeline {
     }
 
     @Override
-    public ActivatePipelineResult activatePipeline(
-            ActivatePipelineRequest request) {
+    public ActivatePipelineResult activatePipeline(ActivatePipelineRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -54,8 +53,7 @@ public class AbstractDataPipeline implements DataPipeline {
     }
 
     @Override
-    public DeactivatePipelineResult deactivatePipeline(
-            DeactivatePipelineRequest request) {
+    public DeactivatePipelineResult deactivatePipeline(DeactivatePipelineRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -70,20 +68,17 @@ public class AbstractDataPipeline implements DataPipeline {
     }
 
     @Override
-    public DescribePipelinesResult describePipelines(
-            DescribePipelinesRequest request) {
+    public DescribePipelinesResult describePipelines(DescribePipelinesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public EvaluateExpressionResult evaluateExpression(
-            EvaluateExpressionRequest request) {
+    public EvaluateExpressionResult evaluateExpression(EvaluateExpressionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public GetPipelineDefinitionResult getPipelineDefinition(
-            GetPipelineDefinitionRequest request) {
+    public GetPipelineDefinitionResult getPipelineDefinition(GetPipelineDefinitionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -103,8 +98,7 @@ public class AbstractDataPipeline implements DataPipeline {
     }
 
     @Override
-    public PutPipelineDefinitionResult putPipelineDefinition(
-            PutPipelineDefinitionRequest request) {
+    public PutPipelineDefinitionResult putPipelineDefinition(PutPipelineDefinitionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -119,14 +113,12 @@ public class AbstractDataPipeline implements DataPipeline {
     }
 
     @Override
-    public ReportTaskProgressResult reportTaskProgress(
-            ReportTaskProgressRequest request) {
+    public ReportTaskProgressResult reportTaskProgress(ReportTaskProgressRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public ReportTaskRunnerHeartbeatResult reportTaskRunnerHeartbeat(
-            ReportTaskRunnerHeartbeatRequest request) {
+    public ReportTaskRunnerHeartbeatResult reportTaskRunnerHeartbeat(ReportTaskRunnerHeartbeatRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -141,8 +133,7 @@ public class AbstractDataPipeline implements DataPipeline {
     }
 
     @Override
-    public ValidatePipelineDefinitionResult validatePipelineDefinition(
-            ValidatePipelineDefinitionRequest request) {
+    public ValidatePipelineDefinitionResult validatePipelineDefinition(ValidatePipelineDefinitionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -152,8 +143,7 @@ public class AbstractDataPipeline implements DataPipeline {
     }
 
     @Override
-    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(
-            com.amazonaws.AmazonWebServiceRequest request) {
+    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

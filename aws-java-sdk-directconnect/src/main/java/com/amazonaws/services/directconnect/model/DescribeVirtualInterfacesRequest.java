@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Container for the parameters to the DescribeVirtualInterfaces operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeVirtualInterfaces"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeVirtualInterfacesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String connectionId;
 
@@ -47,8 +50,7 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest
 
     /**
      * @param connectionId
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeVirtualInterfacesRequest withConnectionId(String connectionId) {
@@ -74,19 +76,16 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest
 
     /**
      * @param virtualInterfaceId
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeVirtualInterfacesRequest withVirtualInterfaceId(
-            String virtualInterfaceId) {
+    public DescribeVirtualInterfacesRequest withVirtualInterfaceId(String virtualInterfaceId) {
         setVirtualInterfaceId(virtualInterfaceId);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -97,9 +96,9 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConnectionId() != null)
-            sb.append("ConnectionId: " + getConnectionId() + ",");
+            sb.append("ConnectionId: ").append(getConnectionId()).append(",");
         if (getVirtualInterfaceId() != null)
-            sb.append("VirtualInterfaceId: " + getVirtualInterfaceId());
+            sb.append("VirtualInterfaceId: ").append(getVirtualInterfaceId());
         sb.append("}");
         return sb.toString();
     }
@@ -116,15 +115,11 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest
         DescribeVirtualInterfacesRequest other = (DescribeVirtualInterfacesRequest) obj;
         if (other.getConnectionId() == null ^ this.getConnectionId() == null)
             return false;
-        if (other.getConnectionId() != null
-                && other.getConnectionId().equals(this.getConnectionId()) == false)
+        if (other.getConnectionId() != null && other.getConnectionId().equals(this.getConnectionId()) == false)
             return false;
-        if (other.getVirtualInterfaceId() == null
-                ^ this.getVirtualInterfaceId() == null)
+        if (other.getVirtualInterfaceId() == null ^ this.getVirtualInterfaceId() == null)
             return false;
-        if (other.getVirtualInterfaceId() != null
-                && other.getVirtualInterfaceId().equals(
-                        this.getVirtualInterfaceId()) == false)
+        if (other.getVirtualInterfaceId() != null && other.getVirtualInterfaceId().equals(this.getVirtualInterfaceId()) == false)
             return false;
         return true;
     }
@@ -134,14 +129,8 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getConnectionId() == null) ? 0 : getConnectionId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getVirtualInterfaceId() == null) ? 0
-                        : getVirtualInterfaceId().hashCode());
+        hashCode = prime * hashCode + ((getConnectionId() == null) ? 0 : getConnectionId().hashCode());
+        hashCode = prime * hashCode + ((getVirtualInterfaceId() == null) ? 0 : getVirtualInterfaceId().hashCode());
         return hashCode;
     }
 
@@ -149,4 +138,5 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest
     public DescribeVirtualInterfacesRequest clone() {
         return (DescribeVirtualInterfacesRequest) super.clone();
     }
+
 }

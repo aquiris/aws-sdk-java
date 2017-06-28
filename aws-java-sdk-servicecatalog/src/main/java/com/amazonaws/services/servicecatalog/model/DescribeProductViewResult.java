@@ -1,25 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProductView" target="_top">AWS
+ *      API Documentation</a>
  */
-public class DescribeProductViewResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeProductViewResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -29,9 +31,8 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
     private ProductViewSummary productViewSummary;
     /**
      * <p>
-     * A list of provisioning artifact objects for the specified product. The
-     * <code>ProvisioningArtifacts</code> represent the ways in which the
-     * specified product can be provisioned.
+     * A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     * represent the ways in which the specified product can be provisioned.
      * </p>
      */
     private java.util.List<ProvisioningArtifact> provisioningArtifacts;
@@ -68,26 +69,22 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
      * 
      * @param productViewSummary
      *        The summary metadata about the specified product.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeProductViewResult withProductViewSummary(
-            ProductViewSummary productViewSummary) {
+    public DescribeProductViewResult withProductViewSummary(ProductViewSummary productViewSummary) {
         setProductViewSummary(productViewSummary);
         return this;
     }
 
     /**
      * <p>
-     * A list of provisioning artifact objects for the specified product. The
-     * <code>ProvisioningArtifacts</code> represent the ways in which the
-     * specified product can be provisioned.
+     * A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     * represent the ways in which the specified product can be provisioned.
      * </p>
      * 
-     * @return A list of provisioning artifact objects for the specified
-     *         product. The <code>ProvisioningArtifacts</code> represent the
-     *         ways in which the specified product can be provisioned.
+     * @return A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     *         represent the ways in which the specified product can be provisioned.
      */
 
     public java.util.List<ProvisioningArtifact> getProvisioningArtifacts() {
@@ -96,54 +93,44 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of provisioning artifact objects for the specified product. The
-     * <code>ProvisioningArtifacts</code> represent the ways in which the
-     * specified product can be provisioned.
+     * A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     * represent the ways in which the specified product can be provisioned.
      * </p>
      * 
      * @param provisioningArtifacts
-     *        A list of provisioning artifact objects for the specified product.
-     *        The <code>ProvisioningArtifacts</code> represent the ways in which
-     *        the specified product can be provisioned.
+     *        A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     *        represent the ways in which the specified product can be provisioned.
      */
 
-    public void setProvisioningArtifacts(
-            java.util.Collection<ProvisioningArtifact> provisioningArtifacts) {
+    public void setProvisioningArtifacts(java.util.Collection<ProvisioningArtifact> provisioningArtifacts) {
         if (provisioningArtifacts == null) {
             this.provisioningArtifacts = null;
             return;
         }
 
-        this.provisioningArtifacts = new java.util.ArrayList<ProvisioningArtifact>(
-                provisioningArtifacts);
+        this.provisioningArtifacts = new java.util.ArrayList<ProvisioningArtifact>(provisioningArtifacts);
     }
 
     /**
      * <p>
-     * A list of provisioning artifact objects for the specified product. The
-     * <code>ProvisioningArtifacts</code> represent the ways in which the
-     * specified product can be provisioned.
+     * A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     * represent the ways in which the specified product can be provisioned.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setProvisioningArtifacts(java.util.Collection)} or
-     * {@link #withProvisioningArtifacts(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setProvisioningArtifacts(java.util.Collection)} or
+     * {@link #withProvisioningArtifacts(java.util.Collection)} if you want to override the existing values.
      * </p>
      * 
      * @param provisioningArtifacts
-     *        A list of provisioning artifact objects for the specified product.
-     *        The <code>ProvisioningArtifacts</code> represent the ways in which
-     *        the specified product can be provisioned.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     *        represent the ways in which the specified product can be provisioned.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeProductViewResult withProvisioningArtifacts(
-            ProvisioningArtifact... provisioningArtifacts) {
+    public DescribeProductViewResult withProvisioningArtifacts(ProvisioningArtifact... provisioningArtifacts) {
         if (this.provisioningArtifacts == null) {
-            setProvisioningArtifacts(new java.util.ArrayList<ProvisioningArtifact>(
-                    provisioningArtifacts.length));
+            setProvisioningArtifacts(new java.util.ArrayList<ProvisioningArtifact>(provisioningArtifacts.length));
         }
         for (ProvisioningArtifact ele : provisioningArtifacts) {
             this.provisioningArtifacts.add(ele);
@@ -153,28 +140,23 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of provisioning artifact objects for the specified product. The
-     * <code>ProvisioningArtifacts</code> represent the ways in which the
-     * specified product can be provisioned.
+     * A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     * represent the ways in which the specified product can be provisioned.
      * </p>
      * 
      * @param provisioningArtifacts
-     *        A list of provisioning artifact objects for the specified product.
-     *        The <code>ProvisioningArtifacts</code> represent the ways in which
-     *        the specified product can be provisioned.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code>
+     *        represent the ways in which the specified product can be provisioned.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeProductViewResult withProvisioningArtifacts(
-            java.util.Collection<ProvisioningArtifact> provisioningArtifacts) {
+    public DescribeProductViewResult withProvisioningArtifacts(java.util.Collection<ProvisioningArtifact> provisioningArtifacts) {
         setProvisioningArtifacts(provisioningArtifacts);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -185,9 +167,9 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProductViewSummary() != null)
-            sb.append("ProductViewSummary: " + getProductViewSummary() + ",");
+            sb.append("ProductViewSummary: ").append(getProductViewSummary()).append(",");
         if (getProvisioningArtifacts() != null)
-            sb.append("ProvisioningArtifacts: " + getProvisioningArtifacts());
+            sb.append("ProvisioningArtifacts: ").append(getProvisioningArtifacts());
         sb.append("}");
         return sb.toString();
     }
@@ -202,19 +184,13 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
         if (obj instanceof DescribeProductViewResult == false)
             return false;
         DescribeProductViewResult other = (DescribeProductViewResult) obj;
-        if (other.getProductViewSummary() == null
-                ^ this.getProductViewSummary() == null)
+        if (other.getProductViewSummary() == null ^ this.getProductViewSummary() == null)
             return false;
-        if (other.getProductViewSummary() != null
-                && other.getProductViewSummary().equals(
-                        this.getProductViewSummary()) == false)
+        if (other.getProductViewSummary() != null && other.getProductViewSummary().equals(this.getProductViewSummary()) == false)
             return false;
-        if (other.getProvisioningArtifacts() == null
-                ^ this.getProvisioningArtifacts() == null)
+        if (other.getProvisioningArtifacts() == null ^ this.getProvisioningArtifacts() == null)
             return false;
-        if (other.getProvisioningArtifacts() != null
-                && other.getProvisioningArtifacts().equals(
-                        this.getProvisioningArtifacts()) == false)
+        if (other.getProvisioningArtifacts() != null && other.getProvisioningArtifacts().equals(this.getProvisioningArtifacts()) == false)
             return false;
         return true;
     }
@@ -224,14 +200,8 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getProductViewSummary() == null) ? 0
-                        : getProductViewSummary().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getProvisioningArtifacts() == null) ? 0
-                        : getProvisioningArtifacts().hashCode());
+        hashCode = prime * hashCode + ((getProductViewSummary() == null) ? 0 : getProductViewSummary().hashCode());
+        hashCode = prime * hashCode + ((getProvisioningArtifacts() == null) ? 0 : getProvisioningArtifacts().hashCode());
         return hashCode;
     }
 
@@ -240,9 +210,8 @@ public class DescribeProductViewResult implements Serializable, Cloneable {
         try {
             return (DescribeProductViewResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

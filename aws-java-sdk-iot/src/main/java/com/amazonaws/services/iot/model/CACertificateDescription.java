@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes a CA certificate.
  * </p>
  */
-public class CACertificateDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CACertificateDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -61,8 +63,8 @@ public class CACertificateDescription implements Serializable, Cloneable {
     private java.util.Date creationDate;
     /**
      * <p>
-     * Whether the CA certificate configured for auto registration of device
-     * certificates. Valid values are "ENABLE" and "DISABLE"
+     * Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and
+     * "DISABLE"
      * </p>
      */
     private String autoRegistrationStatus;
@@ -99,8 +101,7 @@ public class CACertificateDescription implements Serializable, Cloneable {
      * 
      * @param certificateArn
      *        The CA certificate ARN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CACertificateDescription withCertificateArn(String certificateArn) {
@@ -140,8 +141,7 @@ public class CACertificateDescription implements Serializable, Cloneable {
      * 
      * @param certificateId
      *        The CA certificate ID.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CACertificateDescription withCertificateId(String certificateId) {
@@ -183,8 +183,7 @@ public class CACertificateDescription implements Serializable, Cloneable {
      * 
      * @param status
      *        The status of a CA certificate.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see CACertificateStatus
      */
 
@@ -214,8 +213,7 @@ public class CACertificateDescription implements Serializable, Cloneable {
      * 
      * @param status
      *        The status of a CA certificate.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see CACertificateStatus
      */
 
@@ -256,8 +254,7 @@ public class CACertificateDescription implements Serializable, Cloneable {
      * 
      * @param certificatePem
      *        The CA certificate data, in PEM format.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CACertificateDescription withCertificatePem(String certificatePem) {
@@ -297,8 +294,7 @@ public class CACertificateDescription implements Serializable, Cloneable {
      * 
      * @param ownedBy
      *        The owner of the CA certificate.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CACertificateDescription withOwnedBy(String ownedBy) {
@@ -338,8 +334,7 @@ public class CACertificateDescription implements Serializable, Cloneable {
      * 
      * @param creationDate
      *        The date the CA certificate was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CACertificateDescription withCreationDate(java.util.Date creationDate) {
@@ -349,13 +344,13 @@ public class CACertificateDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the CA certificate configured for auto registration of device
-     * certificates. Valid values are "ENABLE" and "DISABLE"
+     * Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and
+     * "DISABLE"
      * </p>
      * 
      * @param autoRegistrationStatus
-     *        Whether the CA certificate configured for auto registration of
-     *        device certificates. Valid values are "ENABLE" and "DISABLE"
+     *        Whether the CA certificate configured for auto registration of device certificates. Valid values are
+     *        "ENABLE" and "DISABLE"
      * @see AutoRegistrationStatus
      */
 
@@ -365,12 +360,12 @@ public class CACertificateDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the CA certificate configured for auto registration of device
-     * certificates. Valid values are "ENABLE" and "DISABLE"
+     * Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and
+     * "DISABLE"
      * </p>
      * 
-     * @return Whether the CA certificate configured for auto registration of
-     *         device certificates. Valid values are "ENABLE" and "DISABLE"
+     * @return Whether the CA certificate configured for auto registration of device certificates. Valid values are
+     *         "ENABLE" and "DISABLE"
      * @see AutoRegistrationStatus
      */
 
@@ -380,64 +375,58 @@ public class CACertificateDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the CA certificate configured for auto registration of device
-     * certificates. Valid values are "ENABLE" and "DISABLE"
+     * Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and
+     * "DISABLE"
      * </p>
      * 
      * @param autoRegistrationStatus
-     *        Whether the CA certificate configured for auto registration of
-     *        device certificates. Valid values are "ENABLE" and "DISABLE"
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Whether the CA certificate configured for auto registration of device certificates. Valid values are
+     *        "ENABLE" and "DISABLE"
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see AutoRegistrationStatus
      */
 
-    public CACertificateDescription withAutoRegistrationStatus(
-            String autoRegistrationStatus) {
+    public CACertificateDescription withAutoRegistrationStatus(String autoRegistrationStatus) {
         setAutoRegistrationStatus(autoRegistrationStatus);
         return this;
     }
 
     /**
      * <p>
-     * Whether the CA certificate configured for auto registration of device
-     * certificates. Valid values are "ENABLE" and "DISABLE"
+     * Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and
+     * "DISABLE"
      * </p>
      * 
      * @param autoRegistrationStatus
-     *        Whether the CA certificate configured for auto registration of
-     *        device certificates. Valid values are "ENABLE" and "DISABLE"
+     *        Whether the CA certificate configured for auto registration of device certificates. Valid values are
+     *        "ENABLE" and "DISABLE"
      * @see AutoRegistrationStatus
      */
 
-    public void setAutoRegistrationStatus(
-            AutoRegistrationStatus autoRegistrationStatus) {
+    public void setAutoRegistrationStatus(AutoRegistrationStatus autoRegistrationStatus) {
         this.autoRegistrationStatus = autoRegistrationStatus.toString();
     }
 
     /**
      * <p>
-     * Whether the CA certificate configured for auto registration of device
-     * certificates. Valid values are "ENABLE" and "DISABLE"
+     * Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and
+     * "DISABLE"
      * </p>
      * 
      * @param autoRegistrationStatus
-     *        Whether the CA certificate configured for auto registration of
-     *        device certificates. Valid values are "ENABLE" and "DISABLE"
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Whether the CA certificate configured for auto registration of device certificates. Valid values are
+     *        "ENABLE" and "DISABLE"
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see AutoRegistrationStatus
      */
 
-    public CACertificateDescription withAutoRegistrationStatus(
-            AutoRegistrationStatus autoRegistrationStatus) {
+    public CACertificateDescription withAutoRegistrationStatus(AutoRegistrationStatus autoRegistrationStatus) {
         setAutoRegistrationStatus(autoRegistrationStatus);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -448,19 +437,19 @@ public class CACertificateDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCertificateArn() != null)
-            sb.append("CertificateArn: " + getCertificateArn() + ",");
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getCertificateId() != null)
-            sb.append("CertificateId: " + getCertificateId() + ",");
+            sb.append("CertificateId: ").append(getCertificateId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getCertificatePem() != null)
-            sb.append("CertificatePem: " + getCertificatePem() + ",");
+            sb.append("CertificatePem: ").append(getCertificatePem()).append(",");
         if (getOwnedBy() != null)
-            sb.append("OwnedBy: " + getOwnedBy() + ",");
+            sb.append("OwnedBy: ").append(getOwnedBy()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getAutoRegistrationStatus() != null)
-            sb.append("AutoRegistrationStatus: " + getAutoRegistrationStatus());
+            sb.append("AutoRegistrationStatus: ").append(getAutoRegistrationStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -475,44 +464,33 @@ public class CACertificateDescription implements Serializable, Cloneable {
         if (obj instanceof CACertificateDescription == false)
             return false;
         CACertificateDescription other = (CACertificateDescription) obj;
-        if (other.getCertificateArn() == null
-                ^ this.getCertificateArn() == null)
+        if (other.getCertificateArn() == null ^ this.getCertificateArn() == null)
             return false;
-        if (other.getCertificateArn() != null
-                && other.getCertificateArn().equals(this.getCertificateArn()) == false)
+        if (other.getCertificateArn() != null && other.getCertificateArn().equals(this.getCertificateArn()) == false)
             return false;
         if (other.getCertificateId() == null ^ this.getCertificateId() == null)
             return false;
-        if (other.getCertificateId() != null
-                && other.getCertificateId().equals(this.getCertificateId()) == false)
+        if (other.getCertificateId() != null && other.getCertificateId().equals(this.getCertificateId()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
-        if (other.getCertificatePem() == null
-                ^ this.getCertificatePem() == null)
+        if (other.getCertificatePem() == null ^ this.getCertificatePem() == null)
             return false;
-        if (other.getCertificatePem() != null
-                && other.getCertificatePem().equals(this.getCertificatePem()) == false)
+        if (other.getCertificatePem() != null && other.getCertificatePem().equals(this.getCertificatePem()) == false)
             return false;
         if (other.getOwnedBy() == null ^ this.getOwnedBy() == null)
             return false;
-        if (other.getOwnedBy() != null
-                && other.getOwnedBy().equals(this.getOwnedBy()) == false)
+        if (other.getOwnedBy() != null && other.getOwnedBy().equals(this.getOwnedBy()) == false)
             return false;
         if (other.getCreationDate() == null ^ this.getCreationDate() == null)
             return false;
-        if (other.getCreationDate() != null
-                && other.getCreationDate().equals(this.getCreationDate()) == false)
+        if (other.getCreationDate() != null && other.getCreationDate().equals(this.getCreationDate()) == false)
             return false;
-        if (other.getAutoRegistrationStatus() == null
-                ^ this.getAutoRegistrationStatus() == null)
+        if (other.getAutoRegistrationStatus() == null ^ this.getAutoRegistrationStatus() == null)
             return false;
-        if (other.getAutoRegistrationStatus() != null
-                && other.getAutoRegistrationStatus().equals(
-                        this.getAutoRegistrationStatus()) == false)
+        if (other.getAutoRegistrationStatus() != null && other.getAutoRegistrationStatus().equals(this.getAutoRegistrationStatus()) == false)
             return false;
         return true;
     }
@@ -522,30 +500,13 @@ public class CACertificateDescription implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCertificateArn() == null) ? 0 : getCertificateArn()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCertificateId() == null) ? 0 : getCertificateId()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCertificatePem() == null) ? 0 : getCertificatePem()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getOwnedBy() == null) ? 0 : getOwnedBy().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreationDate() == null) ? 0 : getCreationDate()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAutoRegistrationStatus() == null) ? 0
-                        : getAutoRegistrationStatus().hashCode());
+        hashCode = prime * hashCode + ((getCertificateArn() == null) ? 0 : getCertificateArn().hashCode());
+        hashCode = prime * hashCode + ((getCertificateId() == null) ? 0 : getCertificateId().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getCertificatePem() == null) ? 0 : getCertificatePem().hashCode());
+        hashCode = prime * hashCode + ((getOwnedBy() == null) ? 0 : getOwnedBy().hashCode());
+        hashCode = prime * hashCode + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
+        hashCode = prime * hashCode + ((getAutoRegistrationStatus() == null) ? 0 : getAutoRegistrationStatus().hashCode());
         return hashCode;
     }
 
@@ -554,9 +515,13 @@ public class CACertificateDescription implements Serializable, Cloneable {
         try {
             return (CACertificateDescription) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.iot.model.transform.CACertificateDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

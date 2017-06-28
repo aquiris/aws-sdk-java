@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -173,6 +173,16 @@ public class AmazonSQSBufferedAsyncClient implements AmazonSQSAsync {
             buffer.shutdown();
         }
         realSQS.shutdown();
+    }
+
+    /**
+     * Flushes all outstanding outbound requests. Calling this method will wait for
+     * the pending outbound tasks in the {@link QueueBuffer} to finish.
+     */
+    public void flush() {
+        for (QueueBuffer buffer : buffers.values()) {
+            buffer.flush();
+        }
     }
 
     public Future<ChangeMessageVisibilityBatchResult> changeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest changeMessageVisibilityBatchRequest)

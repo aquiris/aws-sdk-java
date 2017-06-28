@@ -1,35 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * DeleteTapeInput
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTape" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeleteTapeRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeleteTapeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unique Amazon Resource Name (ARN) of the gateway that the virtual
-     * tape to delete is associated with. Use the <a>ListGateways</a> operation
-     * to return a list of gateways for your account and region.
+     * The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      */
     private String gatewayARN;
@@ -42,16 +44,13 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The unique Amazon Resource Name (ARN) of the gateway that the virtual
-     * tape to delete is associated with. Use the <a>ListGateways</a> operation
-     * to return a list of gateways for your account and region.
+     * The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      * 
      * @param gatewayARN
-     *        The unique Amazon Resource Name (ARN) of the gateway that the
-     *        virtual tape to delete is associated with. Use the
-     *        <a>ListGateways</a> operation to return a list of gateways for
-     *        your account and region.
+     *        The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with.
+     *        Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.
      */
 
     public void setGatewayARN(String gatewayARN) {
@@ -60,15 +59,12 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The unique Amazon Resource Name (ARN) of the gateway that the virtual
-     * tape to delete is associated with. Use the <a>ListGateways</a> operation
-     * to return a list of gateways for your account and region.
+     * The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      * 
-     * @return The unique Amazon Resource Name (ARN) of the gateway that the
-     *         virtual tape to delete is associated with. Use the
-     *         <a>ListGateways</a> operation to return a list of gateways for
-     *         your account and region.
+     * @return The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with.
+     *         Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.
      */
 
     public String getGatewayARN() {
@@ -77,18 +73,14 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The unique Amazon Resource Name (ARN) of the gateway that the virtual
-     * tape to delete is associated with. Use the <a>ListGateways</a> operation
-     * to return a list of gateways for your account and region.
+     * The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your account and region.
      * </p>
      * 
      * @param gatewayARN
-     *        The unique Amazon Resource Name (ARN) of the gateway that the
-     *        virtual tape to delete is associated with. Use the
-     *        <a>ListGateways</a> operation to return a list of gateways for
-     *        your account and region.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with.
+     *        Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteTapeRequest withGatewayARN(String gatewayARN) {
@@ -128,8 +120,7 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
      * 
      * @param tapeARN
      *        The Amazon Resource Name (ARN) of the virtual tape to delete.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteTapeRequest withTapeARN(String tapeARN) {
@@ -138,8 +129,7 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -150,9 +140,9 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN() + ",");
+            sb.append("GatewayARN: ").append(getGatewayARN()).append(",");
         if (getTapeARN() != null)
-            sb.append("TapeARN: " + getTapeARN());
+            sb.append("TapeARN: ").append(getTapeARN());
         sb.append("}");
         return sb.toString();
     }
@@ -169,13 +159,11 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
         DeleteTapeRequest other = (DeleteTapeRequest) obj;
         if (other.getGatewayARN() == null ^ this.getGatewayARN() == null)
             return false;
-        if (other.getGatewayARN() != null
-                && other.getGatewayARN().equals(this.getGatewayARN()) == false)
+        if (other.getGatewayARN() != null && other.getGatewayARN().equals(this.getGatewayARN()) == false)
             return false;
         if (other.getTapeARN() == null ^ this.getTapeARN() == null)
             return false;
-        if (other.getTapeARN() != null
-                && other.getTapeARN().equals(this.getTapeARN()) == false)
+        if (other.getTapeARN() != null && other.getTapeARN().equals(this.getTapeARN()) == false)
             return false;
         return true;
     }
@@ -185,10 +173,8 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getGatewayARN() == null) ? 0 : getGatewayARN().hashCode());
-        hashCode = prime * hashCode
-                + ((getTapeARN() == null) ? 0 : getTapeARN().hashCode());
+        hashCode = prime * hashCode + ((getGatewayARN() == null) ? 0 : getGatewayARN().hashCode());
+        hashCode = prime * hashCode + ((getTapeARN() == null) ? 0 : getTapeARN().hashCode());
         return hashCode;
     }
 
@@ -196,4 +182,5 @@ public class DeleteTapeRequest extends AmazonWebServiceRequest implements
     public DeleteTapeRequest clone() {
         return (DeleteTapeRequest) super.clone();
     }
+
 }

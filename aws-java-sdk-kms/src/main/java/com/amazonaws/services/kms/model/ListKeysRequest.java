@@ -1,69 +1,64 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys" target="_top">AWS API Documentation</a>
  */
-public class ListKeysRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListKeysRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * When paginating results, specify the maximum number of items to return in
-     * the response. If additional items exist beyond the number you specify,
-     * the <code>Truncated</code> element in the response is set to true.
+     * Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not
+     * return more than the specified number of items, but it might return fewer.
      * </p>
      * <p>
-     * This value is optional. If you include a value, it must be between 1 and
-     * 1000, inclusive. If you do not include a value, it defaults to 100.
+     * This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a
+     * value, it defaults to 100.
      * </p>
      */
     private Integer limit;
     /**
      * <p>
-     * Use this parameter only when paginating results and only in a subsequent
-     * request after you receive a response with truncated results. Set it to
-     * the value of <code>NextMarker</code> from the response you just received.
+     * Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the
+     * value of <code>NextMarker</code> from the truncated response you just received.
      * </p>
      */
     private String marker;
 
     /**
      * <p>
-     * When paginating results, specify the maximum number of items to return in
-     * the response. If additional items exist beyond the number you specify,
-     * the <code>Truncated</code> element in the response is set to true.
+     * Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not
+     * return more than the specified number of items, but it might return fewer.
      * </p>
      * <p>
-     * This value is optional. If you include a value, it must be between 1 and
-     * 1000, inclusive. If you do not include a value, it defaults to 100.
+     * This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a
+     * value, it defaults to 100.
      * </p>
      * 
      * @param limit
-     *        When paginating results, specify the maximum number of items to
-     *        return in the response. If additional items exist beyond the
-     *        number you specify, the <code>Truncated</code> element in the
-     *        response is set to true.</p>
+     *        Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS
+     *        does not return more than the specified number of items, but it might return fewer.</p>
      *        <p>
-     *        This value is optional. If you include a value, it must be between
-     *        1 and 1000, inclusive. If you do not include a value, it defaults
-     *        to 100.
+     *        This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not
+     *        include a value, it defaults to 100.
      */
 
     public void setLimit(Integer limit) {
@@ -72,23 +67,19 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * When paginating results, specify the maximum number of items to return in
-     * the response. If additional items exist beyond the number you specify,
-     * the <code>Truncated</code> element in the response is set to true.
+     * Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not
+     * return more than the specified number of items, but it might return fewer.
      * </p>
      * <p>
-     * This value is optional. If you include a value, it must be between 1 and
-     * 1000, inclusive. If you do not include a value, it defaults to 100.
+     * This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a
+     * value, it defaults to 100.
      * </p>
      * 
-     * @return When paginating results, specify the maximum number of items to
-     *         return in the response. If additional items exist beyond the
-     *         number you specify, the <code>Truncated</code> element in the
-     *         response is set to true.</p>
+     * @return Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS
+     *         does not return more than the specified number of items, but it might return fewer.</p>
      *         <p>
-     *         This value is optional. If you include a value, it must be
-     *         between 1 and 1000, inclusive. If you do not include a value, it
-     *         defaults to 100.
+     *         This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not
+     *         include a value, it defaults to 100.
      */
 
     public Integer getLimit() {
@@ -97,26 +88,21 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * When paginating results, specify the maximum number of items to return in
-     * the response. If additional items exist beyond the number you specify,
-     * the <code>Truncated</code> element in the response is set to true.
+     * Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not
+     * return more than the specified number of items, but it might return fewer.
      * </p>
      * <p>
-     * This value is optional. If you include a value, it must be between 1 and
-     * 1000, inclusive. If you do not include a value, it defaults to 100.
+     * This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a
+     * value, it defaults to 100.
      * </p>
      * 
      * @param limit
-     *        When paginating results, specify the maximum number of items to
-     *        return in the response. If additional items exist beyond the
-     *        number you specify, the <code>Truncated</code> element in the
-     *        response is set to true.</p>
+     *        Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS
+     *        does not return more than the specified number of items, but it might return fewer.</p>
      *        <p>
-     *        This value is optional. If you include a value, it must be between
-     *        1 and 1000, inclusive. If you do not include a value, it defaults
-     *        to 100.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not
+     *        include a value, it defaults to 100.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListKeysRequest withLimit(Integer limit) {
@@ -126,16 +112,13 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Use this parameter only when paginating results and only in a subsequent
-     * request after you receive a response with truncated results. Set it to
-     * the value of <code>NextMarker</code> from the response you just received.
+     * Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the
+     * value of <code>NextMarker</code> from the truncated response you just received.
      * </p>
      * 
      * @param marker
-     *        Use this parameter only when paginating results and only in a
-     *        subsequent request after you receive a response with truncated
-     *        results. Set it to the value of <code>NextMarker</code> from the
-     *        response you just received.
+     *        Use this parameter in a subsequent request after you receive a response with truncated results. Set it to
+     *        the value of <code>NextMarker</code> from the truncated response you just received.
      */
 
     public void setMarker(String marker) {
@@ -144,15 +127,12 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Use this parameter only when paginating results and only in a subsequent
-     * request after you receive a response with truncated results. Set it to
-     * the value of <code>NextMarker</code> from the response you just received.
+     * Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the
+     * value of <code>NextMarker</code> from the truncated response you just received.
      * </p>
      * 
-     * @return Use this parameter only when paginating results and only in a
-     *         subsequent request after you receive a response with truncated
-     *         results. Set it to the value of <code>NextMarker</code> from the
-     *         response you just received.
+     * @return Use this parameter in a subsequent request after you receive a response with truncated results. Set it to
+     *         the value of <code>NextMarker</code> from the truncated response you just received.
      */
 
     public String getMarker() {
@@ -161,18 +141,14 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Use this parameter only when paginating results and only in a subsequent
-     * request after you receive a response with truncated results. Set it to
-     * the value of <code>NextMarker</code> from the response you just received.
+     * Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the
+     * value of <code>NextMarker</code> from the truncated response you just received.
      * </p>
      * 
      * @param marker
-     *        Use this parameter only when paginating results and only in a
-     *        subsequent request after you receive a response with truncated
-     *        results. Set it to the value of <code>NextMarker</code> from the
-     *        response you just received.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Use this parameter in a subsequent request after you receive a response with truncated results. Set it to
+     *        the value of <code>NextMarker</code> from the truncated response you just received.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListKeysRequest withMarker(String marker) {
@@ -181,8 +157,7 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -193,9 +168,9 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit() + ",");
+            sb.append("Limit: ").append(getLimit()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker());
+            sb.append("Marker: ").append(getMarker());
         sb.append("}");
         return sb.toString();
     }
@@ -212,13 +187,11 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
         ListKeysRequest other = (ListKeysRequest) obj;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
-        if (other.getLimit() != null
-                && other.getLimit().equals(this.getLimit()) == false)
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
             return false;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         return true;
     }
@@ -228,10 +201,8 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getLimit() == null) ? 0 : getLimit().hashCode());
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
         return hashCode;
     }
 
@@ -239,4 +210,5 @@ public class ListKeysRequest extends AmazonWebServiceRequest implements
     public ListKeysRequest clone() {
         return (ListKeysRequest) super.clone();
     }
+
 }

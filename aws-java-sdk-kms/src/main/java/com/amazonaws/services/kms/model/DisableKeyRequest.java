@@ -1,35 +1,36 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kms.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DisableKeyRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DisableKeyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * A unique identifier for the CMK.
      * </p>
      * <p>
-     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For
-     * example:
+     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:
      * </p>
      * <ul>
      * <li>
@@ -39,8 +40,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-
-     * 56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
@@ -52,8 +52,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * A unique identifier for the CMK.
      * </p>
      * <p>
-     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For
-     * example:
+     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:
      * </p>
      * <ul>
      * <li>
@@ -63,8 +62,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-
-     * 56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
@@ -72,8 +70,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * @param keyId
      *        A unique identifier for the CMK.</p>
      *        <p>
-     *        Use the CMK's unique identifier or its Amazon Resource Name (ARN).
-     *        For example:
+     *        Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:
      *        </p>
      *        <ul>
      *        <li>
@@ -83,8 +80,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-
-     *        56ef-1234567890ab
+     *        ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      *        </p>
      *        </li>
      */
@@ -98,8 +94,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * A unique identifier for the CMK.
      * </p>
      * <p>
-     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For
-     * example:
+     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:
      * </p>
      * <ul>
      * <li>
@@ -109,16 +104,14 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-
-     * 56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
      * 
      * @return A unique identifier for the CMK.</p>
      *         <p>
-     *         Use the CMK's unique identifier or its Amazon Resource Name
-     *         (ARN). For example:
+     *         Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:
      *         </p>
      *         <ul>
      *         <li>
@@ -128,8 +121,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      *         </li>
      *         <li>
      *         <p>
-     *         ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-
-     *         56ef-1234567890ab
+     *         ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      *         </p>
      *         </li>
      */
@@ -143,8 +135,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * A unique identifier for the CMK.
      * </p>
      * <p>
-     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For
-     * example:
+     * Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:
      * </p>
      * <ul>
      * <li>
@@ -154,8 +145,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-
-     * 56ef-1234567890ab
+     * ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      * </p>
      * </li>
      * </ul>
@@ -163,8 +153,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      * @param keyId
      *        A unique identifier for the CMK.</p>
      *        <p>
-     *        Use the CMK's unique identifier or its Amazon Resource Name (ARN).
-     *        For example:
+     *        Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:
      *        </p>
      *        <ul>
      *        <li>
@@ -174,12 +163,10 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-
-     *        56ef-1234567890ab
+     *        ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DisableKeyRequest withKeyId(String keyId) {
@@ -188,8 +175,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -200,7 +186,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId());
+            sb.append("KeyId: ").append(getKeyId());
         sb.append("}");
         return sb.toString();
     }
@@ -217,8 +203,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
         DisableKeyRequest other = (DisableKeyRequest) obj;
         if (other.getKeyId() == null ^ this.getKeyId() == null)
             return false;
-        if (other.getKeyId() != null
-                && other.getKeyId().equals(this.getKeyId()) == false)
+        if (other.getKeyId() != null && other.getKeyId().equals(this.getKeyId()) == false)
             return false;
         return true;
     }
@@ -228,8 +213,7 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getKeyId() == null) ? 0 : getKeyId().hashCode());
+        hashCode = prime * hashCode + ((getKeyId() == null) ? 0 : getKeyId().hashCode());
         return hashCode;
     }
 
@@ -237,4 +221,5 @@ public class DisableKeyRequest extends AmazonWebServiceRequest implements
     public DisableKeyRequest clone() {
         return (DisableKeyRequest) super.clone();
     }
+
 }

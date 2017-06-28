@@ -1,56 +1,198 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Initiates the authentication response.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/InitiateAuth" target="_top">AWS API
+ *      Documentation</a>
  */
-public class InitiateAuthResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InitiateAuthResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the challenge.
+     * The name of the challenge which you are responding to with this call. This is returned to you in the
+     * <code>AdminInitiateAuth</code> response if you need to pass another challenge.
      * </p>
+     * <p>
+     * Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     * <code>SECRET_HASH</code> (if applicable) in the parameters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     * <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user
+     * should pass another challenge before tokens are issued.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were
+     * passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first
+     * login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String challengeName;
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      */
     private String session;
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need to pass
+     * another challenge. The responses in this parameter should be used to compute inputs to the next call (
+     * <code>RespondToAuthChallenge</code>).
+     * </p>
+     * <p>
+     * All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).
      * </p>
      */
     private java.util.Map<String, String> challengeParameters;
-
+    /**
+     * <p>
+     * The result of the authentication response. This is only returned if the caller does not need to pass another
+     * challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>,
+     * <code>ChallengeParameters</code>, and <code>Session</code> are returned.
+     * </p>
+     */
     private AuthenticationResultType authenticationResult;
 
     /**
      * <p>
-     * The name of the challenge.
+     * The name of the challenge which you are responding to with this call. This is returned to you in the
+     * <code>AdminInitiateAuth</code> response if you need to pass another challenge.
      * </p>
+     * <p>
+     * Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     * <code>SECRET_HASH</code> (if applicable) in the parameters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     * <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user
+     * should pass another challenge before tokens are issued.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were
+     * passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first
+     * login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param challengeName
-     *        The name of the challenge.
+     *        The name of the challenge which you are responding to with this call. This is returned to you in the
+     *        <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p>
+     *        <p>
+     *        Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     *        <code>SECRET_HASH</code> (if applicable) in the parameters.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *        <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP
+     *        calculations.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the
+     *        user should pass another challenge before tokens are issued.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges
+     *        were passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after
+     *        successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other
+     *        required attributes.
+     *        </p>
+     *        </li>
      * @see ChallengeNameType
      */
 
@@ -60,10 +202,93 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the challenge.
+     * The name of the challenge which you are responding to with this call. This is returned to you in the
+     * <code>AdminInitiateAuth</code> response if you need to pass another challenge.
      * </p>
+     * <p>
+     * Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     * <code>SECRET_HASH</code> (if applicable) in the parameters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     * <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user
+     * should pass another challenge before tokens are issued.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were
+     * passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first
+     * login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The name of the challenge.
+     * @return The name of the challenge which you are responding to with this call. This is returned to you in the
+     *         <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p>
+     *         <p>
+     *         Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     *         <code>SECRET_HASH</code> (if applicable) in the parameters.
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *         <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP
+     *         calculations.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the
+     *         user should pass another challenge before tokens are issued.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous
+     *         challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after
+     *         successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other
+     *         required attributes.
+     *         </p>
+     *         </li>
      * @see ChallengeNameType
      */
 
@@ -73,13 +298,95 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the challenge.
+     * The name of the challenge which you are responding to with this call. This is returned to you in the
+     * <code>AdminInitiateAuth</code> response if you need to pass another challenge.
      * </p>
+     * <p>
+     * Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     * <code>SECRET_HASH</code> (if applicable) in the parameters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     * <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user
+     * should pass another challenge before tokens are issued.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were
+     * passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first
+     * login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param challengeName
-     *        The name of the challenge.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the challenge which you are responding to with this call. This is returned to you in the
+     *        <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p>
+     *        <p>
+     *        Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     *        <code>SECRET_HASH</code> (if applicable) in the parameters.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *        <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP
+     *        calculations.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the
+     *        user should pass another challenge before tokens are issued.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges
+     *        were passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after
+     *        successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other
+     *        required attributes.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChallengeNameType
      */
 
@@ -90,11 +397,94 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the challenge.
+     * The name of the challenge which you are responding to with this call. This is returned to you in the
+     * <code>AdminInitiateAuth</code> response if you need to pass another challenge.
      * </p>
+     * <p>
+     * Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     * <code>SECRET_HASH</code> (if applicable) in the parameters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     * <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user
+     * should pass another challenge before tokens are issued.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were
+     * passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first
+     * login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param challengeName
-     *        The name of the challenge.
+     *        The name of the challenge which you are responding to with this call. This is returned to you in the
+     *        <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p>
+     *        <p>
+     *        Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     *        <code>SECRET_HASH</code> (if applicable) in the parameters.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *        <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP
+     *        calculations.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the
+     *        user should pass another challenge before tokens are issued.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges
+     *        were passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after
+     *        successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other
+     *        required attributes.
+     *        </p>
+     *        </li>
      * @see ChallengeNameType
      */
 
@@ -104,13 +494,95 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the challenge.
+     * The name of the challenge which you are responding to with this call. This is returned to you in the
+     * <code>AdminInitiateAuth</code> response if you need to pass another challenge.
      * </p>
+     * <p>
+     * Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     * <code>SECRET_HASH</code> (if applicable) in the parameters.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     * <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user
+     * should pass another challenge before tokens are issued.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were
+     * passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first
+     * login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param challengeName
-     *        The name of the challenge.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the challenge which you are responding to with this call. This is returned to you in the
+     *        <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p>
+     *        <p>
+     *        Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and
+     *        <code>SECRET_HASH</code> (if applicable) in the parameters.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *        <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP
+     *        calculations.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the
+     *        user should pass another challenge before tokens are issued.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges
+     *        were passed, this challenge is returned so that Amazon Cognito can start tracking this device.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after
+     *        successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other
+     *        required attributes.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChallengeNameType
      */
 
@@ -121,11 +593,19 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
      * @param session
-     *        The session.
+     *        The session which should be passed both ways in challenge-response calls to the service. If the <a
+     *        href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     *        href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller
+     *        needs to go through another challenge, they return a session with other challenge parameters. This session
+     *        should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
      */
 
     public void setSession(String session) {
@@ -134,10 +614,18 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
-     * @return The session.
+     * @return The session which should be passed both ways in challenge-response calls to the service. If the <a
+     *         href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     *         href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller
+     *         needs to go through another challenge, they return a session with other challenge parameters. This
+     *         session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
      */
 
     public String getSession() {
@@ -146,13 +634,20 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
      * @param session
-     *        The session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The session which should be passed both ways in challenge-response calls to the service. If the <a
+     *        href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     *        href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller
+     *        needs to go through another challenge, they return a session with other challenge parameters. This session
+     *        should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InitiateAuthResult withSession(String session) {
@@ -162,10 +657,19 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need to pass
+     * another challenge. The responses in this parameter should be used to compute inputs to the next call (
+     * <code>RespondToAuthChallenge</code>).
+     * </p>
+     * <p>
+     * All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).
      * </p>
      * 
-     * @return The challenge parameters.
+     * @return The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need
+     *         to pass another challenge. The responses in this parameter should be used to compute inputs to the next
+     *         call (<code>RespondToAuthChallenge</code>). </p>
+     *         <p>
+     *         All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).
      */
 
     public java.util.Map<String, String> getChallengeParameters() {
@@ -174,50 +678,64 @@ public class InitiateAuthResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need to pass
+     * another challenge. The responses in this parameter should be used to compute inputs to the next call (
+     * <code>RespondToAuthChallenge</code>).
+     * </p>
+     * <p>
+     * All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).
      * </p>
      * 
      * @param challengeParameters
-     *        The challenge parameters.
+     *        The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need
+     *        to pass another challenge. The responses in this parameter should be used to compute inputs to the next
+     *        call (<code>RespondToAuthChallenge</code>). </p>
+     *        <p>
+     *        All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).
      */
 
-    public void setChallengeParameters(
-            java.util.Map<String, String> challengeParameters) {
+    public void setChallengeParameters(java.util.Map<String, String> challengeParameters) {
         this.challengeParameters = challengeParameters;
     }
 
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need to pass
+     * another challenge. The responses in this parameter should be used to compute inputs to the next call (
+     * <code>RespondToAuthChallenge</code>).
+     * </p>
+     * <p>
+     * All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).
      * </p>
      * 
      * @param challengeParameters
-     *        The challenge parameters.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need
+     *        to pass another challenge. The responses in this parameter should be used to compute inputs to the next
+     *        call (<code>RespondToAuthChallenge</code>). </p>
+     *        <p>
+     *        All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public InitiateAuthResult withChallengeParameters(
-            java.util.Map<String, String> challengeParameters) {
+    public InitiateAuthResult withChallengeParameters(java.util.Map<String, String> challengeParameters) {
         setChallengeParameters(challengeParameters);
         return this;
     }
 
-    public InitiateAuthResult addChallengeParametersEntry(String key,
-            String value) {
+    public InitiateAuthResult addChallengeParametersEntry(String key, String value) {
         if (null == this.challengeParameters) {
             this.challengeParameters = new java.util.HashMap<String, String>();
         }
         if (this.challengeParameters.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.challengeParameters.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into ChallengeParameters. &lt;p> Returns a
-     * reference to this object so that method calls can be chained together.
+     * Removes all the entries added into ChallengeParameters.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InitiateAuthResult clearChallengeParametersEntries() {
@@ -226,16 +744,32 @@ public class InitiateAuthResult implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The result of the authentication response. This is only returned if the caller does not need to pass another
+     * challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>,
+     * <code>ChallengeParameters</code>, and <code>Session</code> are returned.
+     * </p>
+     * 
      * @param authenticationResult
+     *        The result of the authentication response. This is only returned if the caller does not need to pass
+     *        another challenge. If the caller does need to pass another challenge before it gets tokens,
+     *        <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.
      */
 
-    public void setAuthenticationResult(
-            AuthenticationResultType authenticationResult) {
+    public void setAuthenticationResult(AuthenticationResultType authenticationResult) {
         this.authenticationResult = authenticationResult;
     }
 
     /**
-     * @return
+     * <p>
+     * The result of the authentication response. This is only returned if the caller does not need to pass another
+     * challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>,
+     * <code>ChallengeParameters</code>, and <code>Session</code> are returned.
+     * </p>
+     * 
+     * @return The result of the authentication response. This is only returned if the caller does not need to pass
+     *         another challenge. If the caller does need to pass another challenge before it gets tokens,
+     *         <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.
      */
 
     public AuthenticationResultType getAuthenticationResult() {
@@ -243,20 +777,26 @@ public class InitiateAuthResult implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The result of the authentication response. This is only returned if the caller does not need to pass another
+     * challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>,
+     * <code>ChallengeParameters</code>, and <code>Session</code> are returned.
+     * </p>
+     * 
      * @param authenticationResult
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The result of the authentication response. This is only returned if the caller does not need to pass
+     *        another challenge. If the caller does need to pass another challenge before it gets tokens,
+     *        <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public InitiateAuthResult withAuthenticationResult(
-            AuthenticationResultType authenticationResult) {
+    public InitiateAuthResult withAuthenticationResult(AuthenticationResultType authenticationResult) {
         setAuthenticationResult(authenticationResult);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -267,13 +807,13 @@ public class InitiateAuthResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getChallengeName() != null)
-            sb.append("ChallengeName: " + getChallengeName() + ",");
+            sb.append("ChallengeName: ").append(getChallengeName()).append(",");
         if (getSession() != null)
-            sb.append("Session: " + getSession() + ",");
+            sb.append("Session: ").append(getSession()).append(",");
         if (getChallengeParameters() != null)
-            sb.append("ChallengeParameters: " + getChallengeParameters() + ",");
+            sb.append("ChallengeParameters: ").append(getChallengeParameters()).append(",");
         if (getAuthenticationResult() != null)
-            sb.append("AuthenticationResult: " + getAuthenticationResult());
+            sb.append("AuthenticationResult: ").append(getAuthenticationResult());
         sb.append("}");
         return sb.toString();
     }
@@ -290,27 +830,19 @@ public class InitiateAuthResult implements Serializable, Cloneable {
         InitiateAuthResult other = (InitiateAuthResult) obj;
         if (other.getChallengeName() == null ^ this.getChallengeName() == null)
             return false;
-        if (other.getChallengeName() != null
-                && other.getChallengeName().equals(this.getChallengeName()) == false)
+        if (other.getChallengeName() != null && other.getChallengeName().equals(this.getChallengeName()) == false)
             return false;
         if (other.getSession() == null ^ this.getSession() == null)
             return false;
-        if (other.getSession() != null
-                && other.getSession().equals(this.getSession()) == false)
+        if (other.getSession() != null && other.getSession().equals(this.getSession()) == false)
             return false;
-        if (other.getChallengeParameters() == null
-                ^ this.getChallengeParameters() == null)
+        if (other.getChallengeParameters() == null ^ this.getChallengeParameters() == null)
             return false;
-        if (other.getChallengeParameters() != null
-                && other.getChallengeParameters().equals(
-                        this.getChallengeParameters()) == false)
+        if (other.getChallengeParameters() != null && other.getChallengeParameters().equals(this.getChallengeParameters()) == false)
             return false;
-        if (other.getAuthenticationResult() == null
-                ^ this.getAuthenticationResult() == null)
+        if (other.getAuthenticationResult() == null ^ this.getAuthenticationResult() == null)
             return false;
-        if (other.getAuthenticationResult() != null
-                && other.getAuthenticationResult().equals(
-                        this.getAuthenticationResult()) == false)
+        if (other.getAuthenticationResult() != null && other.getAuthenticationResult().equals(this.getAuthenticationResult()) == false)
             return false;
         return true;
     }
@@ -320,20 +852,10 @@ public class InitiateAuthResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getChallengeName() == null) ? 0 : getChallengeName()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getSession() == null) ? 0 : getSession().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChallengeParameters() == null) ? 0
-                        : getChallengeParameters().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAuthenticationResult() == null) ? 0
-                        : getAuthenticationResult().hashCode());
+        hashCode = prime * hashCode + ((getChallengeName() == null) ? 0 : getChallengeName().hashCode());
+        hashCode = prime * hashCode + ((getSession() == null) ? 0 : getSession().hashCode());
+        hashCode = prime * hashCode + ((getChallengeParameters() == null) ? 0 : getChallengeParameters().hashCode());
+        hashCode = prime * hashCode + ((getAuthenticationResult() == null) ? 0 : getAuthenticationResult().hashCode());
         return hashCode;
     }
 
@@ -342,9 +864,8 @@ public class InitiateAuthResult implements Serializable, Cloneable {
         try {
             return (InitiateAuthResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

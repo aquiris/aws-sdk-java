@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * A complex type that contains the response information for the request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GetTrafficPolicyResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetTrafficPolicyResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -36,8 +39,7 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param trafficPolicy
-     *        A complex type that contains settings for the specified traffic
-     *        policy.
+     *        A complex type that contains settings for the specified traffic policy.
      */
 
     public void setTrafficPolicy(TrafficPolicy trafficPolicy) {
@@ -49,8 +51,7 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
      * A complex type that contains settings for the specified traffic policy.
      * </p>
      * 
-     * @return A complex type that contains settings for the specified traffic
-     *         policy.
+     * @return A complex type that contains settings for the specified traffic policy.
      */
 
     public TrafficPolicy getTrafficPolicy() {
@@ -63,10 +64,8 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param trafficPolicy
-     *        A complex type that contains settings for the specified traffic
-     *        policy.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains settings for the specified traffic policy.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetTrafficPolicyResult withTrafficPolicy(TrafficPolicy trafficPolicy) {
@@ -75,8 +74,7 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -87,7 +85,7 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTrafficPolicy() != null)
-            sb.append("TrafficPolicy: " + getTrafficPolicy());
+            sb.append("TrafficPolicy: ").append(getTrafficPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -104,8 +102,7 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
         GetTrafficPolicyResult other = (GetTrafficPolicyResult) obj;
         if (other.getTrafficPolicy() == null ^ this.getTrafficPolicy() == null)
             return false;
-        if (other.getTrafficPolicy() != null
-                && other.getTrafficPolicy().equals(this.getTrafficPolicy()) == false)
+        if (other.getTrafficPolicy() != null && other.getTrafficPolicy().equals(this.getTrafficPolicy()) == false)
             return false;
         return true;
     }
@@ -115,10 +112,7 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getTrafficPolicy() == null) ? 0 : getTrafficPolicy()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getTrafficPolicy() == null) ? 0 : getTrafficPolicy().hashCode());
         return hashCode;
     }
 
@@ -127,9 +121,8 @@ public class GetTrafficPolicyResult implements Serializable, Cloneable {
         try {
             return (GetTrafficPolicyResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

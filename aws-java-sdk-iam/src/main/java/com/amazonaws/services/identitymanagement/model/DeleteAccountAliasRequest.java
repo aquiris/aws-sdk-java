@@ -1,61 +1,59 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteAccountAlias" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeleteAccountAliasRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
      * The name of the account alias to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of lowercase letters,
-     * digits, and dashes. You cannot start or finish with a dash, nor can you
-     * have two dashes in a row.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can
+     * you have two dashes in a row.
      * </p>
      */
     private String accountAlias;
 
     /**
-     * Default constructor for DeleteAccountAliasRequest object. Callers should
-     * use the setter or fluent setter (with...) methods to initialize the
-     * object after creating it.
+     * Default constructor for DeleteAccountAliasRequest object. Callers should use the setter or fluent setter
+     * (with...) methods to initialize the object after creating it.
      */
     public DeleteAccountAliasRequest() {
     }
 
     /**
-     * Constructs a new DeleteAccountAliasRequest object. Callers should use the
-     * setter or fluent setter (with...) methods to initialize any additional
-     * object members.
+     * Constructs a new DeleteAccountAliasRequest object. Callers should use the setter or fluent setter (with...)
+     * methods to initialize any additional object members.
      * 
      * @param accountAlias
      *        The name of the account alias to delete.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of
-     *        lowercase letters, digits, and dashes. You cannot start or finish
-     *        with a dash, nor can you have two dashes in a row.
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash,
+     *        nor can you have two dashes in a row.
      */
     public DeleteAccountAliasRequest(String accountAlias) {
         setAccountAlias(accountAlias);
@@ -66,19 +64,17 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
      * The name of the account alias to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of lowercase letters,
-     * digits, and dashes. You cannot start or finish with a dash, nor can you
-     * have two dashes in a row.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can
+     * you have two dashes in a row.
      * </p>
      * 
      * @param accountAlias
      *        The name of the account alias to delete.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of
-     *        lowercase letters, digits, and dashes. You cannot start or finish
-     *        with a dash, nor can you have two dashes in a row.
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash,
+     *        nor can you have two dashes in a row.
      */
 
     public void setAccountAlias(String accountAlias) {
@@ -90,18 +86,16 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
      * The name of the account alias to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of lowercase letters,
-     * digits, and dashes. You cannot start or finish with a dash, nor can you
-     * have two dashes in a row.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can
+     * you have two dashes in a row.
      * </p>
      * 
      * @return The name of the account alias to delete.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *         for this parameter is a string of characters consisting of
-     *         lowercase letters, digits, and dashes. You cannot start or finish
-     *         with a dash, nor can you have two dashes in a row.
+     *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *         characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash,
+     *         nor can you have two dashes in a row.
      */
 
     public String getAccountAlias() {
@@ -113,21 +107,18 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
      * The name of the account alias to delete.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this
-     * parameter is a string of characters consisting of lowercase letters,
-     * digits, and dashes. You cannot start or finish with a dash, nor can you
-     * have two dashes in a row.
+     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can
+     * you have two dashes in a row.
      * </p>
      * 
      * @param accountAlias
      *        The name of the account alias to delete.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-     *        for this parameter is a string of characters consisting of
-     *        lowercase letters, digits, and dashes. You cannot start or finish
-     *        with a dash, nor can you have two dashes in a row.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     *        characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash,
+     *        nor can you have two dashes in a row.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteAccountAliasRequest withAccountAlias(String accountAlias) {
@@ -136,8 +127,7 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -148,7 +138,7 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccountAlias() != null)
-            sb.append("AccountAlias: " + getAccountAlias());
+            sb.append("AccountAlias: ").append(getAccountAlias());
         sb.append("}");
         return sb.toString();
     }
@@ -165,8 +155,7 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
         DeleteAccountAliasRequest other = (DeleteAccountAliasRequest) obj;
         if (other.getAccountAlias() == null ^ this.getAccountAlias() == null)
             return false;
-        if (other.getAccountAlias() != null
-                && other.getAccountAlias().equals(this.getAccountAlias()) == false)
+        if (other.getAccountAlias() != null && other.getAccountAlias().equals(this.getAccountAlias()) == false)
             return false;
         return true;
     }
@@ -176,10 +165,7 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAccountAlias() == null) ? 0 : getAccountAlias()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getAccountAlias() == null) ? 0 : getAccountAlias().hashCode());
         return hashCode;
     }
 
@@ -187,4 +173,5 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest
     public DeleteAccountAliasRequest clone() {
         return (DeleteAccountAliasRequest) super.clone();
     }
+
 }

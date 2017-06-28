@@ -1,24 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OptionGroup" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class OptionGroup implements Serializable, Cloneable {
 
     /**
@@ -35,8 +38,7 @@ public class OptionGroup implements Serializable, Cloneable {
     private String optionGroupDescription;
     /**
      * <p>
-     * Indicates the name of the engine that this option group can be applied
-     * to.
+     * Indicates the name of the engine that this option group can be applied to.
      * </p>
      */
     private String engineName;
@@ -54,20 +56,17 @@ public class OptionGroup implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<Option> options;
     /**
      * <p>
-     * Indicates whether this option group can be applied to both VPC and
-     * non-VPC instances. The value <code>true</code> indicates the option group
-     * can be applied to both VPC and non-VPC instances.
+     * Indicates whether this option group can be applied to both VPC and non-VPC instances. The value <code>true</code>
+     * indicates the option group can be applied to both VPC and non-VPC instances.
      * </p>
      */
     private Boolean allowsVpcAndNonVpcInstanceMemberships;
     /**
      * <p>
-     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>,
-     * this field is blank. If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is
-     * <code>true</code> and this field is blank, then this option group can be
-     * applied to both VPC and non-VPC instances. If this field contains a
-     * value, then this option group can only be applied to instances that are
-     * in the VPC indicated by this field.
+     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If
+     * <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this option group
+     * can be applied to both VPC and non-VPC instances. If this field contains a value, then this option group can only
+     * be applied to instances that are in the VPC indicated by this field.
      * </p>
      */
     private String vpcId;
@@ -110,8 +109,7 @@ public class OptionGroup implements Serializable, Cloneable {
      * 
      * @param optionGroupName
      *        Specifies the name of the option group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withOptionGroupName(String optionGroupName) {
@@ -151,8 +149,7 @@ public class OptionGroup implements Serializable, Cloneable {
      * 
      * @param optionGroupDescription
      *        Provides a description of the option group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withOptionGroupDescription(String optionGroupDescription) {
@@ -162,13 +159,11 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates the name of the engine that this option group can be applied
-     * to.
+     * Indicates the name of the engine that this option group can be applied to.
      * </p>
      * 
      * @param engineName
-     *        Indicates the name of the engine that this option group can be
-     *        applied to.
+     *        Indicates the name of the engine that this option group can be applied to.
      */
 
     public void setEngineName(String engineName) {
@@ -177,12 +172,10 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates the name of the engine that this option group can be applied
-     * to.
+     * Indicates the name of the engine that this option group can be applied to.
      * </p>
      * 
-     * @return Indicates the name of the engine that this option group can be
-     *         applied to.
+     * @return Indicates the name of the engine that this option group can be applied to.
      */
 
     public String getEngineName() {
@@ -191,15 +184,12 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates the name of the engine that this option group can be applied
-     * to.
+     * Indicates the name of the engine that this option group can be applied to.
      * </p>
      * 
      * @param engineName
-     *        Indicates the name of the engine that this option group can be
-     *        applied to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates the name of the engine that this option group can be applied to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withEngineName(String engineName) {
@@ -213,8 +203,7 @@ public class OptionGroup implements Serializable, Cloneable {
      * </p>
      * 
      * @param majorEngineVersion
-     *        Indicates the major engine version associated with this option
-     *        group.
+     *        Indicates the major engine version associated with this option group.
      */
 
     public void setMajorEngineVersion(String majorEngineVersion) {
@@ -226,8 +215,7 @@ public class OptionGroup implements Serializable, Cloneable {
      * Indicates the major engine version associated with this option group.
      * </p>
      * 
-     * @return Indicates the major engine version associated with this option
-     *         group.
+     * @return Indicates the major engine version associated with this option group.
      */
 
     public String getMajorEngineVersion() {
@@ -240,10 +228,8 @@ public class OptionGroup implements Serializable, Cloneable {
      * </p>
      * 
      * @param majorEngineVersion
-     *        Indicates the major engine version associated with this option
-     *        group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates the major engine version associated with this option group.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withMajorEngineVersion(String majorEngineVersion) {
@@ -281,8 +267,7 @@ public class OptionGroup implements Serializable, Cloneable {
             return;
         }
 
-        this.options = new com.amazonaws.internal.SdkInternalList<Option>(
-                options);
+        this.options = new com.amazonaws.internal.SdkInternalList<Option>(options);
     }
 
     /**
@@ -290,22 +275,19 @@ public class OptionGroup implements Serializable, Cloneable {
      * Indicates what options are available in the option group.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setOptions(java.util.Collection)} or
-     * {@link #withOptions(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setOptions(java.util.Collection)} or {@link #withOptions(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param options
      *        Indicates what options are available in the option group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withOptions(Option... options) {
         if (this.options == null) {
-            setOptions(new com.amazonaws.internal.SdkInternalList<Option>(
-                    options.length));
+            setOptions(new com.amazonaws.internal.SdkInternalList<Option>(options.length));
         }
         for (Option ele : options) {
             this.options.add(ele);
@@ -320,8 +302,7 @@ public class OptionGroup implements Serializable, Cloneable {
      * 
      * @param options
      *        Indicates what options are available in the option group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withOptions(java.util.Collection<Option> options) {
@@ -331,32 +312,27 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this option group can be applied to both VPC and
-     * non-VPC instances. The value <code>true</code> indicates the option group
-     * can be applied to both VPC and non-VPC instances.
+     * Indicates whether this option group can be applied to both VPC and non-VPC instances. The value <code>true</code>
+     * indicates the option group can be applied to both VPC and non-VPC instances.
      * </p>
      * 
      * @param allowsVpcAndNonVpcInstanceMemberships
-     *        Indicates whether this option group can be applied to both VPC and
-     *        non-VPC instances. The value <code>true</code> indicates the
-     *        option group can be applied to both VPC and non-VPC instances.
+     *        Indicates whether this option group can be applied to both VPC and non-VPC instances. The value
+     *        <code>true</code> indicates the option group can be applied to both VPC and non-VPC instances.
      */
 
-    public void setAllowsVpcAndNonVpcInstanceMemberships(
-            Boolean allowsVpcAndNonVpcInstanceMemberships) {
+    public void setAllowsVpcAndNonVpcInstanceMemberships(Boolean allowsVpcAndNonVpcInstanceMemberships) {
         this.allowsVpcAndNonVpcInstanceMemberships = allowsVpcAndNonVpcInstanceMemberships;
     }
 
     /**
      * <p>
-     * Indicates whether this option group can be applied to both VPC and
-     * non-VPC instances. The value <code>true</code> indicates the option group
-     * can be applied to both VPC and non-VPC instances.
+     * Indicates whether this option group can be applied to both VPC and non-VPC instances. The value <code>true</code>
+     * indicates the option group can be applied to both VPC and non-VPC instances.
      * </p>
      * 
-     * @return Indicates whether this option group can be applied to both VPC
-     *         and non-VPC instances. The value <code>true</code> indicates the
-     *         option group can be applied to both VPC and non-VPC instances.
+     * @return Indicates whether this option group can be applied to both VPC and non-VPC instances. The value
+     *         <code>true</code> indicates the option group can be applied to both VPC and non-VPC instances.
      */
 
     public Boolean getAllowsVpcAndNonVpcInstanceMemberships() {
@@ -365,35 +341,29 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this option group can be applied to both VPC and
-     * non-VPC instances. The value <code>true</code> indicates the option group
-     * can be applied to both VPC and non-VPC instances.
+     * Indicates whether this option group can be applied to both VPC and non-VPC instances. The value <code>true</code>
+     * indicates the option group can be applied to both VPC and non-VPC instances.
      * </p>
      * 
      * @param allowsVpcAndNonVpcInstanceMemberships
-     *        Indicates whether this option group can be applied to both VPC and
-     *        non-VPC instances. The value <code>true</code> indicates the
-     *        option group can be applied to both VPC and non-VPC instances.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether this option group can be applied to both VPC and non-VPC instances. The value
+     *        <code>true</code> indicates the option group can be applied to both VPC and non-VPC instances.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public OptionGroup withAllowsVpcAndNonVpcInstanceMemberships(
-            Boolean allowsVpcAndNonVpcInstanceMemberships) {
+    public OptionGroup withAllowsVpcAndNonVpcInstanceMemberships(Boolean allowsVpcAndNonVpcInstanceMemberships) {
         setAllowsVpcAndNonVpcInstanceMemberships(allowsVpcAndNonVpcInstanceMemberships);
         return this;
     }
 
     /**
      * <p>
-     * Indicates whether this option group can be applied to both VPC and
-     * non-VPC instances. The value <code>true</code> indicates the option group
-     * can be applied to both VPC and non-VPC instances.
+     * Indicates whether this option group can be applied to both VPC and non-VPC instances. The value <code>true</code>
+     * indicates the option group can be applied to both VPC and non-VPC instances.
      * </p>
      * 
-     * @return Indicates whether this option group can be applied to both VPC
-     *         and non-VPC instances. The value <code>true</code> indicates the
-     *         option group can be applied to both VPC and non-VPC instances.
+     * @return Indicates whether this option group can be applied to both VPC and non-VPC instances. The value
+     *         <code>true</code> indicates the option group can be applied to both VPC and non-VPC instances.
      */
 
     public Boolean isAllowsVpcAndNonVpcInstanceMemberships() {
@@ -402,22 +372,17 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>,
-     * this field is blank. If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is
-     * <code>true</code> and this field is blank, then this option group can be
-     * applied to both VPC and non-VPC instances. If this field contains a
-     * value, then this option group can only be applied to instances that are
-     * in the VPC indicated by this field.
+     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If
+     * <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this option group
+     * can be applied to both VPC and non-VPC instances. If this field contains a value, then this option group can only
+     * be applied to instances that are in the VPC indicated by this field.
      * </p>
      * 
      * @param vpcId
-     *        If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is
-     *        <code>false</code>, this field is blank. If
-     *        <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code>
-     *        and this field is blank, then this option group can be applied to
-     *        both VPC and non-VPC instances. If this field contains a value,
-     *        then this option group can only be applied to instances that are
-     *        in the VPC indicated by this field.
+     *        If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If
+     *        <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this
+     *        option group can be applied to both VPC and non-VPC instances. If this field contains a value, then this
+     *        option group can only be applied to instances that are in the VPC indicated by this field.
      */
 
     public void setVpcId(String vpcId) {
@@ -426,21 +391,16 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>,
-     * this field is blank. If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is
-     * <code>true</code> and this field is blank, then this option group can be
-     * applied to both VPC and non-VPC instances. If this field contains a
-     * value, then this option group can only be applied to instances that are
-     * in the VPC indicated by this field.
+     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If
+     * <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this option group
+     * can be applied to both VPC and non-VPC instances. If this field contains a value, then this option group can only
+     * be applied to instances that are in the VPC indicated by this field.
      * </p>
      * 
-     * @return If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is
-     *         <code>false</code>, this field is blank. If
-     *         <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code>
-     *         and this field is blank, then this option group can be applied to
-     *         both VPC and non-VPC instances. If this field contains a value,
-     *         then this option group can only be applied to instances that are
-     *         in the VPC indicated by this field.
+     * @return If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If
+     *         <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this
+     *         option group can be applied to both VPC and non-VPC instances. If this field contains a value, then this
+     *         option group can only be applied to instances that are in the VPC indicated by this field.
      */
 
     public String getVpcId() {
@@ -449,24 +409,18 @@ public class OptionGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>,
-     * this field is blank. If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is
-     * <code>true</code> and this field is blank, then this option group can be
-     * applied to both VPC and non-VPC instances. If this field contains a
-     * value, then this option group can only be applied to instances that are
-     * in the VPC indicated by this field.
+     * If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If
+     * <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this option group
+     * can be applied to both VPC and non-VPC instances. If this field contains a value, then this option group can only
+     * be applied to instances that are in the VPC indicated by this field.
      * </p>
      * 
      * @param vpcId
-     *        If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is
-     *        <code>false</code>, this field is blank. If
-     *        <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code>
-     *        and this field is blank, then this option group can be applied to
-     *        both VPC and non-VPC instances. If this field contains a value,
-     *        then this option group can only be applied to instances that are
-     *        in the VPC indicated by this field.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If
+     *        <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this
+     *        option group can be applied to both VPC and non-VPC instances. If this field contains a value, then this
+     *        option group can only be applied to instances that are in the VPC indicated by this field.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withVpcId(String vpcId) {
@@ -506,8 +460,7 @@ public class OptionGroup implements Serializable, Cloneable {
      * 
      * @param optionGroupArn
      *        The Amazon Resource Name (ARN) for the option group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public OptionGroup withOptionGroupArn(String optionGroupArn) {
@@ -516,8 +469,7 @@ public class OptionGroup implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -528,23 +480,21 @@ public class OptionGroup implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOptionGroupName() != null)
-            sb.append("OptionGroupName: " + getOptionGroupName() + ",");
+            sb.append("OptionGroupName: ").append(getOptionGroupName()).append(",");
         if (getOptionGroupDescription() != null)
-            sb.append("OptionGroupDescription: " + getOptionGroupDescription()
-                    + ",");
+            sb.append("OptionGroupDescription: ").append(getOptionGroupDescription()).append(",");
         if (getEngineName() != null)
-            sb.append("EngineName: " + getEngineName() + ",");
+            sb.append("EngineName: ").append(getEngineName()).append(",");
         if (getMajorEngineVersion() != null)
-            sb.append("MajorEngineVersion: " + getMajorEngineVersion() + ",");
+            sb.append("MajorEngineVersion: ").append(getMajorEngineVersion()).append(",");
         if (getOptions() != null)
-            sb.append("Options: " + getOptions() + ",");
+            sb.append("Options: ").append(getOptions()).append(",");
         if (getAllowsVpcAndNonVpcInstanceMemberships() != null)
-            sb.append("AllowsVpcAndNonVpcInstanceMemberships: "
-                    + getAllowsVpcAndNonVpcInstanceMemberships() + ",");
+            sb.append("AllowsVpcAndNonVpcInstanceMemberships: ").append(getAllowsVpcAndNonVpcInstanceMemberships()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
+            sb.append("VpcId: ").append(getVpcId()).append(",");
         if (getOptionGroupArn() != null)
-            sb.append("OptionGroupArn: " + getOptionGroupArn());
+            sb.append("OptionGroupArn: ").append(getOptionGroupArn());
         sb.append("}");
         return sb.toString();
     }
@@ -559,53 +509,38 @@ public class OptionGroup implements Serializable, Cloneable {
         if (obj instanceof OptionGroup == false)
             return false;
         OptionGroup other = (OptionGroup) obj;
-        if (other.getOptionGroupName() == null
-                ^ this.getOptionGroupName() == null)
+        if (other.getOptionGroupName() == null ^ this.getOptionGroupName() == null)
             return false;
-        if (other.getOptionGroupName() != null
-                && other.getOptionGroupName().equals(this.getOptionGroupName()) == false)
+        if (other.getOptionGroupName() != null && other.getOptionGroupName().equals(this.getOptionGroupName()) == false)
             return false;
-        if (other.getOptionGroupDescription() == null
-                ^ this.getOptionGroupDescription() == null)
+        if (other.getOptionGroupDescription() == null ^ this.getOptionGroupDescription() == null)
             return false;
-        if (other.getOptionGroupDescription() != null
-                && other.getOptionGroupDescription().equals(
-                        this.getOptionGroupDescription()) == false)
+        if (other.getOptionGroupDescription() != null && other.getOptionGroupDescription().equals(this.getOptionGroupDescription()) == false)
             return false;
         if (other.getEngineName() == null ^ this.getEngineName() == null)
             return false;
-        if (other.getEngineName() != null
-                && other.getEngineName().equals(this.getEngineName()) == false)
+        if (other.getEngineName() != null && other.getEngineName().equals(this.getEngineName()) == false)
             return false;
-        if (other.getMajorEngineVersion() == null
-                ^ this.getMajorEngineVersion() == null)
+        if (other.getMajorEngineVersion() == null ^ this.getMajorEngineVersion() == null)
             return false;
-        if (other.getMajorEngineVersion() != null
-                && other.getMajorEngineVersion().equals(
-                        this.getMajorEngineVersion()) == false)
+        if (other.getMajorEngineVersion() != null && other.getMajorEngineVersion().equals(this.getMajorEngineVersion()) == false)
             return false;
         if (other.getOptions() == null ^ this.getOptions() == null)
             return false;
-        if (other.getOptions() != null
-                && other.getOptions().equals(this.getOptions()) == false)
+        if (other.getOptions() != null && other.getOptions().equals(this.getOptions()) == false)
             return false;
-        if (other.getAllowsVpcAndNonVpcInstanceMemberships() == null
-                ^ this.getAllowsVpcAndNonVpcInstanceMemberships() == null)
+        if (other.getAllowsVpcAndNonVpcInstanceMemberships() == null ^ this.getAllowsVpcAndNonVpcInstanceMemberships() == null)
             return false;
         if (other.getAllowsVpcAndNonVpcInstanceMemberships() != null
-                && other.getAllowsVpcAndNonVpcInstanceMemberships().equals(
-                        this.getAllowsVpcAndNonVpcInstanceMemberships()) == false)
+                && other.getAllowsVpcAndNonVpcInstanceMemberships().equals(this.getAllowsVpcAndNonVpcInstanceMemberships()) == false)
             return false;
         if (other.getVpcId() == null ^ this.getVpcId() == null)
             return false;
-        if (other.getVpcId() != null
-                && other.getVpcId().equals(this.getVpcId()) == false)
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false)
             return false;
-        if (other.getOptionGroupArn() == null
-                ^ this.getOptionGroupArn() == null)
+        if (other.getOptionGroupArn() == null ^ this.getOptionGroupArn() == null)
             return false;
-        if (other.getOptionGroupArn() != null
-                && other.getOptionGroupArn().equals(this.getOptionGroupArn()) == false)
+        if (other.getOptionGroupArn() != null && other.getOptionGroupArn().equals(this.getOptionGroupArn()) == false)
             return false;
         return true;
     }
@@ -615,32 +550,14 @@ public class OptionGroup implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getOptionGroupName() == null) ? 0 : getOptionGroupName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOptionGroupDescription() == null) ? 0
-                        : getOptionGroupDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getEngineName() == null) ? 0 : getEngineName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getMajorEngineVersion() == null) ? 0
-                        : getMajorEngineVersion().hashCode());
-        hashCode = prime * hashCode
-                + ((getOptions() == null) ? 0 : getOptions().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAllowsVpcAndNonVpcInstanceMemberships() == null) ? 0
-                        : getAllowsVpcAndNonVpcInstanceMemberships().hashCode());
-        hashCode = prime * hashCode
-                + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOptionGroupArn() == null) ? 0 : getOptionGroupArn()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getOptionGroupName() == null) ? 0 : getOptionGroupName().hashCode());
+        hashCode = prime * hashCode + ((getOptionGroupDescription() == null) ? 0 : getOptionGroupDescription().hashCode());
+        hashCode = prime * hashCode + ((getEngineName() == null) ? 0 : getEngineName().hashCode());
+        hashCode = prime * hashCode + ((getMajorEngineVersion() == null) ? 0 : getMajorEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getOptions() == null) ? 0 : getOptions().hashCode());
+        hashCode = prime * hashCode + ((getAllowsVpcAndNonVpcInstanceMemberships() == null) ? 0 : getAllowsVpcAndNonVpcInstanceMemberships().hashCode());
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
+        hashCode = prime * hashCode + ((getOptionGroupArn() == null) ? 0 : getOptionGroupArn().hashCode());
         return hashCode;
     }
 
@@ -649,9 +566,8 @@ public class OptionGroup implements Serializable, Cloneable {
         try {
             return (OptionGroup) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

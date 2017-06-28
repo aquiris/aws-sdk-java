@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DiscoverInputSchema"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DiscoverInputSchemaRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,15 +34,14 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
     private String resourceARN;
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
      * </p>
      */
     private String roleARN;
     /**
      * <p>
-     * Point at which you want Amazon Kinesis Analytics to start reading records
-     * from the specified streaming source discovery purposes.
+     * Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source
+     * discovery purposes.
      * </p>
      */
     private InputStartingPositionConfiguration inputStartingPositionConfiguration;
@@ -76,8 +78,7 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
      * 
      * @param resourceARN
      *        Amazon Resource Name (ARN) of the streaming source.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DiscoverInputSchemaRequest withResourceARN(String resourceARN) {
@@ -87,13 +88,11 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
      * </p>
      * 
      * @param roleARN
-     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *        access the stream on your behalf.
+     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
      */
 
     public void setRoleARN(String roleARN) {
@@ -102,12 +101,10 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
      * </p>
      * 
-     * @return ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *         access the stream on your behalf.
+     * @return ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
      */
 
     public String getRoleARN() {
@@ -116,15 +113,12 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-     * the stream on your behalf.
+     * ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
      * </p>
      * 
      * @param roleARN
-     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to
-     *        access the stream on your behalf.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DiscoverInputSchemaRequest withRoleARN(String roleARN) {
@@ -134,28 +128,27 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Point at which you want Amazon Kinesis Analytics to start reading records
-     * from the specified streaming source discovery purposes.
+     * Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source
+     * discovery purposes.
      * </p>
      * 
      * @param inputStartingPositionConfiguration
-     *        Point at which you want Amazon Kinesis Analytics to start reading
-     *        records from the specified streaming source discovery purposes.
+     *        Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming
+     *        source discovery purposes.
      */
 
-    public void setInputStartingPositionConfiguration(
-            InputStartingPositionConfiguration inputStartingPositionConfiguration) {
+    public void setInputStartingPositionConfiguration(InputStartingPositionConfiguration inputStartingPositionConfiguration) {
         this.inputStartingPositionConfiguration = inputStartingPositionConfiguration;
     }
 
     /**
      * <p>
-     * Point at which you want Amazon Kinesis Analytics to start reading records
-     * from the specified streaming source discovery purposes.
+     * Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source
+     * discovery purposes.
      * </p>
      * 
-     * @return Point at which you want Amazon Kinesis Analytics to start reading
-     *         records from the specified streaming source discovery purposes.
+     * @return Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming
+     *         source discovery purposes.
      */
 
     public InputStartingPositionConfiguration getInputStartingPositionConfiguration() {
@@ -164,26 +157,23 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Point at which you want Amazon Kinesis Analytics to start reading records
-     * from the specified streaming source discovery purposes.
+     * Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source
+     * discovery purposes.
      * </p>
      * 
      * @param inputStartingPositionConfiguration
-     *        Point at which you want Amazon Kinesis Analytics to start reading
-     *        records from the specified streaming source discovery purposes.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming
+     *        source discovery purposes.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DiscoverInputSchemaRequest withInputStartingPositionConfiguration(
-            InputStartingPositionConfiguration inputStartingPositionConfiguration) {
+    public DiscoverInputSchemaRequest withInputStartingPositionConfiguration(InputStartingPositionConfiguration inputStartingPositionConfiguration) {
         setInputStartingPositionConfiguration(inputStartingPositionConfiguration);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -194,12 +184,11 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceARN() != null)
-            sb.append("ResourceARN: " + getResourceARN() + ",");
+            sb.append("ResourceARN: ").append(getResourceARN()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getInputStartingPositionConfiguration() != null)
-            sb.append("InputStartingPositionConfiguration: "
-                    + getInputStartingPositionConfiguration());
+            sb.append("InputStartingPositionConfiguration: ").append(getInputStartingPositionConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -216,20 +205,16 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
         DiscoverInputSchemaRequest other = (DiscoverInputSchemaRequest) obj;
         if (other.getResourceARN() == null ^ this.getResourceARN() == null)
             return false;
-        if (other.getResourceARN() != null
-                && other.getResourceARN().equals(this.getResourceARN()) == false)
+        if (other.getResourceARN() != null && other.getResourceARN().equals(this.getResourceARN()) == false)
             return false;
         if (other.getRoleARN() == null ^ this.getRoleARN() == null)
             return false;
-        if (other.getRoleARN() != null
-                && other.getRoleARN().equals(this.getRoleARN()) == false)
+        if (other.getRoleARN() != null && other.getRoleARN().equals(this.getRoleARN()) == false)
             return false;
-        if (other.getInputStartingPositionConfiguration() == null
-                ^ this.getInputStartingPositionConfiguration() == null)
+        if (other.getInputStartingPositionConfiguration() == null ^ this.getInputStartingPositionConfiguration() == null)
             return false;
         if (other.getInputStartingPositionConfiguration() != null
-                && other.getInputStartingPositionConfiguration().equals(
-                        this.getInputStartingPositionConfiguration()) == false)
+                && other.getInputStartingPositionConfiguration().equals(this.getInputStartingPositionConfiguration()) == false)
             return false;
         return true;
     }
@@ -239,15 +224,9 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getResourceARN() == null) ? 0 : getResourceARN().hashCode());
-        hashCode = prime * hashCode
-                + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getInputStartingPositionConfiguration() == null) ? 0
-                        : getInputStartingPositionConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getResourceARN() == null) ? 0 : getResourceARN().hashCode());
+        hashCode = prime * hashCode + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
+        hashCode = prime * hashCode + ((getInputStartingPositionConfiguration() == null) ? 0 : getInputStartingPositionConfiguration().hashCode());
         return hashCode;
     }
 
@@ -255,4 +234,5 @@ public class DiscoverInputSchemaRequest extends AmazonWebServiceRequest
     public DiscoverInputSchemaRequest clone() {
         return (DiscoverInputSchemaRequest) super.clone();
     }
+
 }

@@ -1,61 +1,138 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A complex type that contains the health check request information.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateHealthCheck" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateHealthCheckRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A unique string that identifies the request and that allows failed
-     * <code>CreateHealthCheck</code> requests to be retried without the risk of
-     * executing the operation twice. You must use a unique
-     * <code>CallerReference</code> string every time you create a health check.
+     * A unique string that identifies the request and that allows you to retry a failed <code>CreateHealthCheck</code>
+     * request without the risk of creating two identical health checks:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and settings as a
+     * previous request, and if the health check doesn't exist, Amazon Route 53 creates the health check. If the health
+     * check does exist, Amazon Route 53 returns the settings for the existing health check.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a deleted
+     * health check, regardless of the settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an existing
+     * health check but with different settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but settings
+     * identical to an existing health check, Amazon Route 53 creates the health check.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String callerReference;
     /**
      * <p>
-     * A complex type that contains the response to a
-     * <code>CreateHealthCheck</code> request.
+     * A complex type that contains the response to a <code>CreateHealthCheck</code> request.
      * </p>
      */
     private HealthCheckConfig healthCheckConfig;
 
     /**
      * <p>
-     * A unique string that identifies the request and that allows failed
-     * <code>CreateHealthCheck</code> requests to be retried without the risk of
-     * executing the operation twice. You must use a unique
-     * <code>CallerReference</code> string every time you create a health check.
+     * A unique string that identifies the request and that allows you to retry a failed <code>CreateHealthCheck</code>
+     * request without the risk of creating two identical health checks:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and settings as a
+     * previous request, and if the health check doesn't exist, Amazon Route 53 creates the health check. If the health
+     * check does exist, Amazon Route 53 returns the settings for the existing health check.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a deleted
+     * health check, regardless of the settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an existing
+     * health check but with different settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but settings
+     * identical to an existing health check, Amazon Route 53 creates the health check.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param callerReference
-     *        A unique string that identifies the request and that allows failed
-     *        <code>CreateHealthCheck</code> requests to be retried without the
-     *        risk of executing the operation twice. You must use a unique
-     *        <code>CallerReference</code> string every time you create a health
-     *        check.
+     *        A unique string that identifies the request and that allows you to retry a failed
+     *        <code>CreateHealthCheck</code> request without the risk of creating two identical health checks:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and
+     *        settings as a previous request, and if the health check doesn't exist, Amazon Route 53 creates the health
+     *        check. If the health check does exist, Amazon Route 53 returns the settings for the existing health check.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a
+     *        deleted health check, regardless of the settings, Amazon Route 53 returns a
+     *        <code>HealthCheckAlreadyExists</code> error.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an
+     *        existing health check but with different settings, Amazon Route 53 returns a
+     *        <code>HealthCheckAlreadyExists</code> error.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but
+     *        settings identical to an existing health check, Amazon Route 53 creates the health check.
+     *        </p>
+     *        </li>
      */
 
     public void setCallerReference(String callerReference) {
@@ -64,17 +141,68 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A unique string that identifies the request and that allows failed
-     * <code>CreateHealthCheck</code> requests to be retried without the risk of
-     * executing the operation twice. You must use a unique
-     * <code>CallerReference</code> string every time you create a health check.
+     * A unique string that identifies the request and that allows you to retry a failed <code>CreateHealthCheck</code>
+     * request without the risk of creating two identical health checks:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and settings as a
+     * previous request, and if the health check doesn't exist, Amazon Route 53 creates the health check. If the health
+     * check does exist, Amazon Route 53 returns the settings for the existing health check.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a deleted
+     * health check, regardless of the settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an existing
+     * health check but with different settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but settings
+     * identical to an existing health check, Amazon Route 53 creates the health check.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return A unique string that identifies the request and that allows
-     *         failed <code>CreateHealthCheck</code> requests to be retried
-     *         without the risk of executing the operation twice. You must use a
-     *         unique <code>CallerReference</code> string every time you create
-     *         a health check.
+     * @return A unique string that identifies the request and that allows you to retry a failed
+     *         <code>CreateHealthCheck</code> request without the risk of creating two identical health checks:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and
+     *         settings as a previous request, and if the health check doesn't exist, Amazon Route 53 creates the health
+     *         check. If the health check does exist, Amazon Route 53 returns the settings for the existing health
+     *         check.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a
+     *         deleted health check, regardless of the settings, Amazon Route 53 returns a
+     *         <code>HealthCheckAlreadyExists</code> error.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an
+     *         existing health check but with different settings, Amazon Route 53 returns a
+     *         <code>HealthCheckAlreadyExists</code> error.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but
+     *         settings identical to an existing health check, Amazon Route 53 creates the health check.
+     *         </p>
+     *         </li>
      */
 
     public String getCallerReference() {
@@ -83,20 +211,69 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A unique string that identifies the request and that allows failed
-     * <code>CreateHealthCheck</code> requests to be retried without the risk of
-     * executing the operation twice. You must use a unique
-     * <code>CallerReference</code> string every time you create a health check.
+     * A unique string that identifies the request and that allows you to retry a failed <code>CreateHealthCheck</code>
+     * request without the risk of creating two identical health checks:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and settings as a
+     * previous request, and if the health check doesn't exist, Amazon Route 53 creates the health check. If the health
+     * check does exist, Amazon Route 53 returns the settings for the existing health check.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a deleted
+     * health check, regardless of the settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an existing
+     * health check but with different settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but settings
+     * identical to an existing health check, Amazon Route 53 creates the health check.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param callerReference
-     *        A unique string that identifies the request and that allows failed
-     *        <code>CreateHealthCheck</code> requests to be retried without the
-     *        risk of executing the operation twice. You must use a unique
-     *        <code>CallerReference</code> string every time you create a health
-     *        check.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A unique string that identifies the request and that allows you to retry a failed
+     *        <code>CreateHealthCheck</code> request without the risk of creating two identical health checks:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and
+     *        settings as a previous request, and if the health check doesn't exist, Amazon Route 53 creates the health
+     *        check. If the health check does exist, Amazon Route 53 returns the settings for the existing health check.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a
+     *        deleted health check, regardless of the settings, Amazon Route 53 returns a
+     *        <code>HealthCheckAlreadyExists</code> error.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an
+     *        existing health check but with different settings, Amazon Route 53 returns a
+     *        <code>HealthCheckAlreadyExists</code> error.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but
+     *        settings identical to an existing health check, Amazon Route 53 creates the health check.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateHealthCheckRequest withCallerReference(String callerReference) {
@@ -106,13 +283,11 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A complex type that contains the response to a
-     * <code>CreateHealthCheck</code> request.
+     * A complex type that contains the response to a <code>CreateHealthCheck</code> request.
      * </p>
      * 
      * @param healthCheckConfig
-     *        A complex type that contains the response to a
-     *        <code>CreateHealthCheck</code> request.
+     *        A complex type that contains the response to a <code>CreateHealthCheck</code> request.
      */
 
     public void setHealthCheckConfig(HealthCheckConfig healthCheckConfig) {
@@ -121,12 +296,10 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A complex type that contains the response to a
-     * <code>CreateHealthCheck</code> request.
+     * A complex type that contains the response to a <code>CreateHealthCheck</code> request.
      * </p>
      * 
-     * @return A complex type that contains the response to a
-     *         <code>CreateHealthCheck</code> request.
+     * @return A complex type that contains the response to a <code>CreateHealthCheck</code> request.
      */
 
     public HealthCheckConfig getHealthCheckConfig() {
@@ -135,26 +308,21 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A complex type that contains the response to a
-     * <code>CreateHealthCheck</code> request.
+     * A complex type that contains the response to a <code>CreateHealthCheck</code> request.
      * </p>
      * 
      * @param healthCheckConfig
-     *        A complex type that contains the response to a
-     *        <code>CreateHealthCheck</code> request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains the response to a <code>CreateHealthCheck</code> request.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateHealthCheckRequest withHealthCheckConfig(
-            HealthCheckConfig healthCheckConfig) {
+    public CreateHealthCheckRequest withHealthCheckConfig(HealthCheckConfig healthCheckConfig) {
         setHealthCheckConfig(healthCheckConfig);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -165,9 +333,9 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCallerReference() != null)
-            sb.append("CallerReference: " + getCallerReference() + ",");
+            sb.append("CallerReference: ").append(getCallerReference()).append(",");
         if (getHealthCheckConfig() != null)
-            sb.append("HealthCheckConfig: " + getHealthCheckConfig());
+            sb.append("HealthCheckConfig: ").append(getHealthCheckConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -182,18 +350,13 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
         if (obj instanceof CreateHealthCheckRequest == false)
             return false;
         CreateHealthCheckRequest other = (CreateHealthCheckRequest) obj;
-        if (other.getCallerReference() == null
-                ^ this.getCallerReference() == null)
+        if (other.getCallerReference() == null ^ this.getCallerReference() == null)
             return false;
-        if (other.getCallerReference() != null
-                && other.getCallerReference().equals(this.getCallerReference()) == false)
+        if (other.getCallerReference() != null && other.getCallerReference().equals(this.getCallerReference()) == false)
             return false;
-        if (other.getHealthCheckConfig() == null
-                ^ this.getHealthCheckConfig() == null)
+        if (other.getHealthCheckConfig() == null ^ this.getHealthCheckConfig() == null)
             return false;
-        if (other.getHealthCheckConfig() != null
-                && other.getHealthCheckConfig().equals(
-                        this.getHealthCheckConfig()) == false)
+        if (other.getHealthCheckConfig() != null && other.getHealthCheckConfig().equals(this.getHealthCheckConfig()) == false)
             return false;
         return true;
     }
@@ -203,14 +366,8 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCallerReference() == null) ? 0 : getCallerReference()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getHealthCheckConfig() == null) ? 0
-                        : getHealthCheckConfig().hashCode());
+        hashCode = prime * hashCode + ((getCallerReference() == null) ? 0 : getCallerReference().hashCode());
+        hashCode = prime * hashCode + ((getHealthCheckConfig() == null) ? 0 : getHealthCheckConfig().hashCode());
         return hashCode;
     }
 
@@ -218,4 +375,5 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements
     public CreateHealthCheckRequest clone() {
         return (CreateHealthCheckRequest) super.clone();
     }
+
 }

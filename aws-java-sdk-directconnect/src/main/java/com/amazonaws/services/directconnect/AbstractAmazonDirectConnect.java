@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directconnect;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.directconnect.model.*;
 import com.amazonaws.*;
 
 /**
- * Abstract implementation of {@code AmazonDirectConnect}. Convenient method
- * forms pass through to the corresponding overload that takes a request object,
- * which throws an {@code UnsupportedOperationException}.
+ * Abstract implementation of {@code AmazonDirectConnect}. Convenient method forms pass through to the corresponding
+ * overload that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonDirectConnect implements AmazonDirectConnect {
 
     protected AbstractAmazonDirectConnect() {
@@ -38,92 +38,119 @@ public class AbstractAmazonDirectConnect implements AmazonDirectConnect {
     }
 
     @Override
-    public AllocateConnectionOnInterconnectResult allocateConnectionOnInterconnect(
-            AllocateConnectionOnInterconnectRequest request) {
+    @Deprecated
+    public AllocateConnectionOnInterconnectResult allocateConnectionOnInterconnect(AllocateConnectionOnInterconnectRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public AllocatePrivateVirtualInterfaceResult allocatePrivateVirtualInterface(
-            AllocatePrivateVirtualInterfaceRequest request) {
+    public AllocateHostedConnectionResult allocateHostedConnection(AllocateHostedConnectionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public AllocatePublicVirtualInterfaceResult allocatePublicVirtualInterface(
-            AllocatePublicVirtualInterfaceRequest request) {
+    public AllocatePrivateVirtualInterfaceResult allocatePrivateVirtualInterface(AllocatePrivateVirtualInterfaceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public ConfirmConnectionResult confirmConnection(
-            ConfirmConnectionRequest request) {
+    public AllocatePublicVirtualInterfaceResult allocatePublicVirtualInterface(AllocatePublicVirtualInterfaceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public ConfirmPrivateVirtualInterfaceResult confirmPrivateVirtualInterface(
-            ConfirmPrivateVirtualInterfaceRequest request) {
+    public AssociateConnectionWithLagResult associateConnectionWithLag(AssociateConnectionWithLagRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public ConfirmPublicVirtualInterfaceResult confirmPublicVirtualInterface(
-            ConfirmPublicVirtualInterfaceRequest request) {
+    public AssociateHostedConnectionResult associateHostedConnection(AssociateHostedConnectionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public CreateConnectionResult createConnection(
-            CreateConnectionRequest request) {
+    public AssociateVirtualInterfaceResult associateVirtualInterface(AssociateVirtualInterfaceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public CreateInterconnectResult createInterconnect(
-            CreateInterconnectRequest request) {
+    public ConfirmConnectionResult confirmConnection(ConfirmConnectionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public CreatePrivateVirtualInterfaceResult createPrivateVirtualInterface(
-            CreatePrivateVirtualInterfaceRequest request) {
+    public ConfirmPrivateVirtualInterfaceResult confirmPrivateVirtualInterface(ConfirmPrivateVirtualInterfaceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public CreatePublicVirtualInterfaceResult createPublicVirtualInterface(
-            CreatePublicVirtualInterfaceRequest request) {
+    public ConfirmPublicVirtualInterfaceResult confirmPublicVirtualInterface(ConfirmPublicVirtualInterfaceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DeleteConnectionResult deleteConnection(
-            DeleteConnectionRequest request) {
+    public CreateBGPPeerResult createBGPPeer(CreateBGPPeerRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DeleteInterconnectResult deleteInterconnect(
-            DeleteInterconnectRequest request) {
+    public CreateConnectionResult createConnection(CreateConnectionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DeleteVirtualInterfaceResult deleteVirtualInterface(
-            DeleteVirtualInterfaceRequest request) {
+    public CreateInterconnectResult createInterconnect(CreateInterconnectRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DescribeConnectionLoaResult describeConnectionLoa(
-            DescribeConnectionLoaRequest request) {
+    public CreateLagResult createLag(CreateLagRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DescribeConnectionsResult describeConnections(
-            DescribeConnectionsRequest request) {
+    public CreatePrivateVirtualInterfaceResult createPrivateVirtualInterface(CreatePrivateVirtualInterfaceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreatePublicVirtualInterfaceResult createPublicVirtualInterface(CreatePublicVirtualInterfaceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteBGPPeerResult deleteBGPPeer(DeleteBGPPeerRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteConnectionResult deleteConnection(DeleteConnectionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteInterconnectResult deleteInterconnect(DeleteInterconnectRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteLagResult deleteLag(DeleteLagRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteVirtualInterfaceResult deleteVirtualInterface(DeleteVirtualInterfaceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    @Deprecated
+    public DescribeConnectionLoaResult describeConnectionLoa(DescribeConnectionLoaRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeConnectionsResult describeConnections(DescribeConnectionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -133,20 +160,24 @@ public class AbstractAmazonDirectConnect implements AmazonDirectConnect {
     }
 
     @Override
-    public DescribeConnectionsOnInterconnectResult describeConnectionsOnInterconnect(
-            DescribeConnectionsOnInterconnectRequest request) {
+    @Deprecated
+    public DescribeConnectionsOnInterconnectResult describeConnectionsOnInterconnect(DescribeConnectionsOnInterconnectRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DescribeInterconnectLoaResult describeInterconnectLoa(
-            DescribeInterconnectLoaRequest request) {
+    public DescribeHostedConnectionsResult describeHostedConnections(DescribeHostedConnectionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DescribeInterconnectsResult describeInterconnects(
-            DescribeInterconnectsRequest request) {
+    @Deprecated
+    public DescribeInterconnectLoaResult describeInterconnectLoa(DescribeInterconnectLoaRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeInterconnectsResult describeInterconnects(DescribeInterconnectsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -156,8 +187,17 @@ public class AbstractAmazonDirectConnect implements AmazonDirectConnect {
     }
 
     @Override
-    public DescribeLocationsResult describeLocations(
-            DescribeLocationsRequest request) {
+    public DescribeLagsResult describeLags(DescribeLagsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeLoaResult describeLoa(DescribeLoaRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeLocationsResult describeLocations(DescribeLocationsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -167,8 +207,12 @@ public class AbstractAmazonDirectConnect implements AmazonDirectConnect {
     }
 
     @Override
-    public DescribeVirtualGatewaysResult describeVirtualGateways(
-            DescribeVirtualGatewaysRequest request) {
+    public DescribeTagsResult describeTags(DescribeTagsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeVirtualGatewaysResult describeVirtualGateways(DescribeVirtualGatewaysRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -178,8 +222,7 @@ public class AbstractAmazonDirectConnect implements AmazonDirectConnect {
     }
 
     @Override
-    public DescribeVirtualInterfacesResult describeVirtualInterfaces(
-            DescribeVirtualInterfacesRequest request) {
+    public DescribeVirtualInterfacesResult describeVirtualInterfaces(DescribeVirtualInterfacesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -189,13 +232,32 @@ public class AbstractAmazonDirectConnect implements AmazonDirectConnect {
     }
 
     @Override
+    public DisassociateConnectionFromLagResult disassociateConnectionFromLag(DisassociateConnectionFromLagRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateLagResult updateLag(UpdateLagRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public void shutdown() {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(
-            com.amazonaws.AmazonWebServiceRequest request) {
+    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

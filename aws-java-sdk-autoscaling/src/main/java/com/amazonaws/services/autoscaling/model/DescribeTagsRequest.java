@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for DescribeTags.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTags" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeTagsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,14 +33,13 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      */
     private String nextToken;
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      */
     private Integer maxRecords;
@@ -75,8 +74,7 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
             return;
         }
 
-        this.filters = new com.amazonaws.internal.SdkInternalList<Filter>(
-                filters);
+        this.filters = new com.amazonaws.internal.SdkInternalList<Filter>(filters);
     }
 
     /**
@@ -84,22 +82,19 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
      * A filter used to scope the tags to return.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setFilters(java.util.Collection)} or
-     * {@link #withFilters(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setFilters(java.util.Collection)} or {@link #withFilters(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param filters
      *        A filter used to scope the tags to return.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeTagsRequest withFilters(Filter... filters) {
         if (this.filters == null) {
-            setFilters(new com.amazonaws.internal.SdkInternalList<Filter>(
-                    filters.length));
+            setFilters(new com.amazonaws.internal.SdkInternalList<Filter>(filters.length));
         }
         for (Filter ele : filters) {
             this.filters.add(ele);
@@ -114,8 +109,7 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
      * 
      * @param filters
      *        A filter used to scope the tags to return.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeTagsRequest withFilters(java.util.Collection<Filter> filters) {
@@ -125,13 +119,11 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of items to return. (You received this
-     *        token from a previous call.)
+     *        The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public void setNextToken(String nextToken) {
@@ -140,12 +132,10 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
-     * @return The token for the next set of items to return. (You received this
-     *         token from a previous call.)
+     * @return The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public String getNextToken() {
@@ -154,15 +144,12 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of items to return. (You received this
-     *        token from a previous call.)
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The token for the next set of items to return. (You received this token from a previous call.)
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeTagsRequest withNextToken(String nextToken) {
@@ -172,11 +159,12 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of items to return with this call.
+     *        The maximum number of items to return with this call. The default value is 50 and the maximum value is
+     *        100.
      */
 
     public void setMaxRecords(Integer maxRecords) {
@@ -185,10 +173,11 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      * 
-     * @return The maximum number of items to return with this call.
+     * @return The maximum number of items to return with this call. The default value is 50 and the maximum value is
+     *         100.
      */
 
     public Integer getMaxRecords() {
@@ -197,13 +186,13 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of items to return with this call.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of items to return with this call. The default value is 50 and the maximum value is
+     *        100.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeTagsRequest withMaxRecords(Integer maxRecords) {
@@ -212,8 +201,7 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -224,11 +212,11 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFilters() != null)
-            sb.append("Filters: " + getFilters() + ",");
+            sb.append("Filters: ").append(getFilters()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxRecords() != null)
-            sb.append("MaxRecords: " + getMaxRecords());
+            sb.append("MaxRecords: ").append(getMaxRecords());
         sb.append("}");
         return sb.toString();
     }
@@ -245,18 +233,15 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
         DescribeTagsRequest other = (DescribeTagsRequest) obj;
         if (other.getFilters() == null ^ this.getFilters() == null)
             return false;
-        if (other.getFilters() != null
-                && other.getFilters().equals(this.getFilters()) == false)
+        if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         if (other.getMaxRecords() == null ^ this.getMaxRecords() == null)
             return false;
-        if (other.getMaxRecords() != null
-                && other.getMaxRecords().equals(this.getMaxRecords()) == false)
+        if (other.getMaxRecords() != null && other.getMaxRecords().equals(this.getMaxRecords()) == false)
             return false;
         return true;
     }
@@ -266,12 +251,9 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getFilters() == null) ? 0 : getFilters().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
+        hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
         return hashCode;
     }
 
@@ -279,4 +261,5 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest implements
     public DescribeTagsRequest clone() {
         return (DescribeTagsRequest) super.clone();
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -35,6 +35,11 @@ public interface ProtocolMetadataProvider {
     boolean isCborProtocol();
 
     /**
+     * @return True if protocol uses Ion as the wire format. False otherwise.
+     */
+    boolean isIonProtocol();
+
+    /**
      * @return The content type to use when sending requests. Currently only respected by JSON
      * protocols.
      */
@@ -59,6 +64,11 @@ public interface ProtocolMetadataProvider {
     String getExceptionUnmarshallerImpl();
 
     /**
+     * @return The protocol factory implementation to use for JSON services.
+     */
+    String getProtocolFactoryImplFqcn();
+
+    /**
      * @return The fully qualified class name of the exception class that all service exceptions
      * will be inherited from. Not to be confused with the service specific base exception which
      * would extend from this base exception.
@@ -66,7 +76,8 @@ public interface ProtocolMetadataProvider {
     String getBaseExceptionFqcn();
 
     /**
-     * @return True if the protocol supports generation of an async client. False if not.
+     * @return The fully qualified class name of the base request class.
      */
-    boolean hasAsyncClient();
+    String getRequestBaseFqcn();
+
 }

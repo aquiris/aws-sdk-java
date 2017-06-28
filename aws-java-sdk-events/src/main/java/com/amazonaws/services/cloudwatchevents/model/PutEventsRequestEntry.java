@@ -1,34 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains information about the event to be used in PutEvents.
+ * Represents an event to be submitted.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/PutEventsRequestEntry" target="_top">AWS API
+ *      Documentation</a>
  */
-public class PutEventsRequestEntry implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PutEventsRequestEntry implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Timestamp of event, per <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no
-     * timestamp is provided, the timestamp of the <a>PutEvents</a> call will be
-     * used.
+     * The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp
+     * is provided, the timestamp of the <a>PutEvents</a> call is used.
      * </p>
      */
     private java.util.Date time;
@@ -40,39 +43,34 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
     private String source;
     /**
      * <p>
-     * AWS resources, identified by Amazon Resource Name (ARN), which the event
-     * primarily concerns. Any number, including zero, may be present.
+     * AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     * including zero, may be present.
      * </p>
      */
     private java.util.List<String> resources;
     /**
      * <p>
-     * Free-form string used to decide what fields to expect in the event
-     * detail.
+     * Free-form string used to decide what fields to expect in the event detail.
      * </p>
      */
     private String detailType;
     /**
      * <p>
-     * In the JSON sense, an object containing fields, which may also contain
-     * nested sub-objects. No constraints are imposed on its contents.
+     * In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are
+     * imposed on its contents.
      * </p>
      */
     private String detail;
 
     /**
      * <p>
-     * Timestamp of event, per <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no
-     * timestamp is provided, the timestamp of the <a>PutEvents</a> call will be
-     * used.
+     * The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp
+     * is provided, the timestamp of the <a>PutEvents</a> call is used.
      * </p>
      * 
      * @param time
-     *        Timestamp of event, per <a
-     *        href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If
-     *        no timestamp is provided, the timestamp of the <a>PutEvents</a>
-     *        call will be used.
+     *        The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no
+     *        timestamp is provided, the timestamp of the <a>PutEvents</a> call is used.
      */
 
     public void setTime(java.util.Date time) {
@@ -81,16 +79,12 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Timestamp of event, per <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no
-     * timestamp is provided, the timestamp of the <a>PutEvents</a> call will be
-     * used.
+     * The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp
+     * is provided, the timestamp of the <a>PutEvents</a> call is used.
      * </p>
      * 
-     * @return Timestamp of event, per <a
-     *         href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If
-     *         no timestamp is provided, the timestamp of the <a>PutEvents</a>
-     *         call will be used.
+     * @return The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no
+     *         timestamp is provided, the timestamp of the <a>PutEvents</a> call is used.
      */
 
     public java.util.Date getTime() {
@@ -99,19 +93,14 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Timestamp of event, per <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no
-     * timestamp is provided, the timestamp of the <a>PutEvents</a> call will be
-     * used.
+     * The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp
+     * is provided, the timestamp of the <a>PutEvents</a> call is used.
      * </p>
      * 
      * @param time
-     *        Timestamp of event, per <a
-     *        href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If
-     *        no timestamp is provided, the timestamp of the <a>PutEvents</a>
-     *        call will be used.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no
+     *        timestamp is provided, the timestamp of the <a>PutEvents</a> call is used.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutEventsRequestEntry withTime(java.util.Date time) {
@@ -151,8 +140,7 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
      * 
      * @param source
      *        The source of the event.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutEventsRequestEntry withSource(String source) {
@@ -162,13 +150,12 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS resources, identified by Amazon Resource Name (ARN), which the event
-     * primarily concerns. Any number, including zero, may be present.
+     * AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     * including zero, may be present.
      * </p>
      * 
-     * @return AWS resources, identified by Amazon Resource Name (ARN), which
-     *         the event primarily concerns. Any number, including zero, may be
-     *         present.
+     * @return AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     *         including zero, may be present.
      */
 
     public java.util.List<String> getResources() {
@@ -177,14 +164,13 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS resources, identified by Amazon Resource Name (ARN), which the event
-     * primarily concerns. Any number, including zero, may be present.
+     * AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     * including zero, may be present.
      * </p>
      * 
      * @param resources
-     *        AWS resources, identified by Amazon Resource Name (ARN), which the
-     *        event primarily concerns. Any number, including zero, may be
-     *        present.
+     *        AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     *        including zero, may be present.
      */
 
     public void setResources(java.util.Collection<String> resources) {
@@ -198,22 +184,19 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS resources, identified by Amazon Resource Name (ARN), which the event
-     * primarily concerns. Any number, including zero, may be present.
+     * AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     * including zero, may be present.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setResources(java.util.Collection)} or
-     * {@link #withResources(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setResources(java.util.Collection)} or {@link #withResources(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param resources
-     *        AWS resources, identified by Amazon Resource Name (ARN), which the
-     *        event primarily concerns. Any number, including zero, may be
-     *        present.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     *        including zero, may be present.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutEventsRequestEntry withResources(String... resources) {
@@ -228,33 +211,28 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * AWS resources, identified by Amazon Resource Name (ARN), which the event
-     * primarily concerns. Any number, including zero, may be present.
+     * AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     * including zero, may be present.
      * </p>
      * 
      * @param resources
-     *        AWS resources, identified by Amazon Resource Name (ARN), which the
-     *        event primarily concerns. Any number, including zero, may be
-     *        present.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number,
+     *        including zero, may be present.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PutEventsRequestEntry withResources(
-            java.util.Collection<String> resources) {
+    public PutEventsRequestEntry withResources(java.util.Collection<String> resources) {
         setResources(resources);
         return this;
     }
 
     /**
      * <p>
-     * Free-form string used to decide what fields to expect in the event
-     * detail.
+     * Free-form string used to decide what fields to expect in the event detail.
      * </p>
      * 
      * @param detailType
-     *        Free-form string used to decide what fields to expect in the event
-     *        detail.
+     *        Free-form string used to decide what fields to expect in the event detail.
      */
 
     public void setDetailType(String detailType) {
@@ -263,12 +241,10 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Free-form string used to decide what fields to expect in the event
-     * detail.
+     * Free-form string used to decide what fields to expect in the event detail.
      * </p>
      * 
-     * @return Free-form string used to decide what fields to expect in the
-     *         event detail.
+     * @return Free-form string used to decide what fields to expect in the event detail.
      */
 
     public String getDetailType() {
@@ -277,15 +253,12 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Free-form string used to decide what fields to expect in the event
-     * detail.
+     * Free-form string used to decide what fields to expect in the event detail.
      * </p>
      * 
      * @param detailType
-     *        Free-form string used to decide what fields to expect in the event
-     *        detail.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Free-form string used to decide what fields to expect in the event detail.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutEventsRequestEntry withDetailType(String detailType) {
@@ -295,14 +268,13 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * In the JSON sense, an object containing fields, which may also contain
-     * nested sub-objects. No constraints are imposed on its contents.
+     * In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are
+     * imposed on its contents.
      * </p>
      * 
      * @param detail
-     *        In the JSON sense, an object containing fields, which may also
-     *        contain nested sub-objects. No constraints are imposed on its
-     *        contents.
+     *        In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints
+     *        are imposed on its contents.
      */
 
     public void setDetail(String detail) {
@@ -311,13 +283,12 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * In the JSON sense, an object containing fields, which may also contain
-     * nested sub-objects. No constraints are imposed on its contents.
+     * In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are
+     * imposed on its contents.
      * </p>
      * 
-     * @return In the JSON sense, an object containing fields, which may also
-     *         contain nested sub-objects. No constraints are imposed on its
-     *         contents.
+     * @return In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints
+     *         are imposed on its contents.
      */
 
     public String getDetail() {
@@ -326,16 +297,14 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
 
     /**
      * <p>
-     * In the JSON sense, an object containing fields, which may also contain
-     * nested sub-objects. No constraints are imposed on its contents.
+     * In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are
+     * imposed on its contents.
      * </p>
      * 
      * @param detail
-     *        In the JSON sense, an object containing fields, which may also
-     *        contain nested sub-objects. No constraints are imposed on its
-     *        contents.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints
+     *        are imposed on its contents.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutEventsRequestEntry withDetail(String detail) {
@@ -344,8 +313,7 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -356,15 +324,15 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTime() != null)
-            sb.append("Time: " + getTime() + ",");
+            sb.append("Time: ").append(getTime()).append(",");
         if (getSource() != null)
-            sb.append("Source: " + getSource() + ",");
+            sb.append("Source: ").append(getSource()).append(",");
         if (getResources() != null)
-            sb.append("Resources: " + getResources() + ",");
+            sb.append("Resources: ").append(getResources()).append(",");
         if (getDetailType() != null)
-            sb.append("DetailType: " + getDetailType() + ",");
+            sb.append("DetailType: ").append(getDetailType()).append(",");
         if (getDetail() != null)
-            sb.append("Detail: " + getDetail());
+            sb.append("Detail: ").append(getDetail());
         sb.append("}");
         return sb.toString();
     }
@@ -381,28 +349,23 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
         PutEventsRequestEntry other = (PutEventsRequestEntry) obj;
         if (other.getTime() == null ^ this.getTime() == null)
             return false;
-        if (other.getTime() != null
-                && other.getTime().equals(this.getTime()) == false)
+        if (other.getTime() != null && other.getTime().equals(this.getTime()) == false)
             return false;
         if (other.getSource() == null ^ this.getSource() == null)
             return false;
-        if (other.getSource() != null
-                && other.getSource().equals(this.getSource()) == false)
+        if (other.getSource() != null && other.getSource().equals(this.getSource()) == false)
             return false;
         if (other.getResources() == null ^ this.getResources() == null)
             return false;
-        if (other.getResources() != null
-                && other.getResources().equals(this.getResources()) == false)
+        if (other.getResources() != null && other.getResources().equals(this.getResources()) == false)
             return false;
         if (other.getDetailType() == null ^ this.getDetailType() == null)
             return false;
-        if (other.getDetailType() != null
-                && other.getDetailType().equals(this.getDetailType()) == false)
+        if (other.getDetailType() != null && other.getDetailType().equals(this.getDetailType()) == false)
             return false;
         if (other.getDetail() == null ^ this.getDetail() == null)
             return false;
-        if (other.getDetail() != null
-                && other.getDetail().equals(this.getDetail()) == false)
+        if (other.getDetail() != null && other.getDetail().equals(this.getDetail()) == false)
             return false;
         return true;
     }
@@ -412,16 +375,11 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getTime() == null) ? 0 : getTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getSource() == null) ? 0 : getSource().hashCode());
-        hashCode = prime * hashCode
-                + ((getResources() == null) ? 0 : getResources().hashCode());
-        hashCode = prime * hashCode
-                + ((getDetailType() == null) ? 0 : getDetailType().hashCode());
-        hashCode = prime * hashCode
-                + ((getDetail() == null) ? 0 : getDetail().hashCode());
+        hashCode = prime * hashCode + ((getTime() == null) ? 0 : getTime().hashCode());
+        hashCode = prime * hashCode + ((getSource() == null) ? 0 : getSource().hashCode());
+        hashCode = prime * hashCode + ((getResources() == null) ? 0 : getResources().hashCode());
+        hashCode = prime * hashCode + ((getDetailType() == null) ? 0 : getDetailType().hashCode());
+        hashCode = prime * hashCode + ((getDetail() == null) ? 0 : getDetail().hashCode());
         return hashCode;
     }
 
@@ -430,9 +388,13 @@ public class PutEventsRequestEntry implements Serializable, Cloneable {
         try {
             return (PutEventsRequestEntry) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.cloudwatchevents.model.transform.PutEventsRequestEntryMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

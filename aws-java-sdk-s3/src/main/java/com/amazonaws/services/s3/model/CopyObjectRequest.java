@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -149,6 +149,8 @@ public class CopyObjectRequest extends AmazonWebServiceRequest implements
      * Requester Pays Buckets.
      */
     private boolean isRequesterPays;
+
+    private ObjectTagging newObjectTagging;
 
     /**
      * <p>
@@ -1173,6 +1175,34 @@ public class CopyObjectRequest extends AmazonWebServiceRequest implements
      */
     public CopyObjectRequest withRequesterPays(boolean isRequesterPays) {
         setRequesterPays(isRequesterPays);
+        return this;
+    }
+
+    /**
+     * @return the tagging for the new object.
+     */
+    public ObjectTagging getNewObjectTagging() {
+        return newObjectTagging;
+    }
+
+    /**
+     * set the tagging for the new object.
+     *
+     * @param newObjectTagging the tagging for the new object.
+     */
+    public void setNewObjectTagging(ObjectTagging newObjectTagging) {
+        this.newObjectTagging = newObjectTagging;
+    }
+
+    /**
+     * set the tagging for the new object.
+     *
+     * @param newObjectTagging the tagging for the new object.
+     *
+     * @return This object for chaining.
+     */
+    public CopyObjectRequest withNewObjectTagging(ObjectTagging newObjectTagging) {
+        setNewObjectTagging(newObjectTagging);
         return this;
     }
 }

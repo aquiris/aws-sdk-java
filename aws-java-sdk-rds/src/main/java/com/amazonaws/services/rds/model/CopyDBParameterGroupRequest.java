@@ -1,34 +1,36 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBParameterGroup" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CopyDBParameterGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier or ARN for the source DB parameter group. For information
-     * about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -41,8 +43,7 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * Must specify a valid DB parameter group identifier, for example
-     * <code>my-db-param-group</code>, or a valid ARN.
+     * Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.
      * </p>
      * </li>
      * </ul>
@@ -93,10 +94,9 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier or ARN for the source DB parameter group. For information
-     * about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -109,15 +109,14 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * Must specify a valid DB parameter group identifier, for example
-     * <code>my-db-param-group</code>, or a valid ARN.
+     * Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.
      * </p>
      * </li>
      * </ul>
      * 
      * @param sourceDBParameterGroupIdentifier
-     *        The identifier or ARN for the source DB parameter group. For
-     *        information about creating an ARN, see <a href=
+     *        The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a
+     *        href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>. </p>
      *        <p>
@@ -131,23 +130,21 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        Must specify a valid DB parameter group identifier, for example
-     *        <code>my-db-param-group</code>, or a valid ARN.
+     *        Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid
+     *        ARN.
      *        </p>
      *        </li>
      */
 
-    public void setSourceDBParameterGroupIdentifier(
-            String sourceDBParameterGroupIdentifier) {
+    public void setSourceDBParameterGroupIdentifier(String sourceDBParameterGroupIdentifier) {
         this.sourceDBParameterGroupIdentifier = sourceDBParameterGroupIdentifier;
     }
 
     /**
      * <p>
-     * The identifier or ARN for the source DB parameter group. For information
-     * about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -160,14 +157,13 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * Must specify a valid DB parameter group identifier, for example
-     * <code>my-db-param-group</code>, or a valid ARN.
+     * Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The identifier or ARN for the source DB parameter group. For
-     *         information about creating an ARN, see <a href=
+     * @return The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a
+     *         href=
      *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *         > Constructing an RDS Amazon Resource Name (ARN)</a>. </p>
      *         <p>
@@ -181,8 +177,8 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         Must specify a valid DB parameter group identifier, for example
-     *         <code>my-db-param-group</code>, or a valid ARN.
+     *         Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a
+     *         valid ARN.
      *         </p>
      *         </li>
      */
@@ -193,10 +189,9 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier or ARN for the source DB parameter group. For information
-     * about creating an ARN, see <a href=
-     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     * > Constructing an RDS Amazon Resource Name (ARN)</a>.
+     * The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href=
+     * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * <p>
      * Constraints:
@@ -209,15 +204,14 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * Must specify a valid DB parameter group identifier, for example
-     * <code>my-db-param-group</code>, or a valid ARN.
+     * Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.
      * </p>
      * </li>
      * </ul>
      * 
      * @param sourceDBParameterGroupIdentifier
-     *        The identifier or ARN for the source DB parameter group. For
-     *        information about creating an ARN, see <a href=
+     *        The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a
+     *        href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>. </p>
      *        <p>
@@ -231,16 +225,14 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        Must specify a valid DB parameter group identifier, for example
-     *        <code>my-db-param-group</code>, or a valid ARN.
+     *        Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid
+     *        ARN.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CopyDBParameterGroupRequest withSourceDBParameterGroupIdentifier(
-            String sourceDBParameterGroupIdentifier) {
+    public CopyDBParameterGroupRequest withSourceDBParameterGroupIdentifier(String sourceDBParameterGroupIdentifier) {
         setSourceDBParameterGroupIdentifier(sourceDBParameterGroupIdentifier);
         return this;
     }
@@ -309,8 +301,7 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      *        Example: <code>my-db-parameter-group</code>
      */
 
-    public void setTargetDBParameterGroupIdentifier(
-            String targetDBParameterGroupIdentifier) {
+    public void setTargetDBParameterGroupIdentifier(String targetDBParameterGroupIdentifier) {
         this.targetDBParameterGroupIdentifier = targetDBParameterGroupIdentifier;
     }
 
@@ -443,12 +434,10 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      *        </ul>
      *        <p>
      *        Example: <code>my-db-parameter-group</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CopyDBParameterGroupRequest withTargetDBParameterGroupIdentifier(
-            String targetDBParameterGroupIdentifier) {
+    public CopyDBParameterGroupRequest withTargetDBParameterGroupIdentifier(String targetDBParameterGroupIdentifier) {
         setTargetDBParameterGroupIdentifier(targetDBParameterGroupIdentifier);
         return this;
     }
@@ -462,8 +451,7 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      *        A description for the copied DB parameter group.
      */
 
-    public void setTargetDBParameterGroupDescription(
-            String targetDBParameterGroupDescription) {
+    public void setTargetDBParameterGroupDescription(String targetDBParameterGroupDescription) {
         this.targetDBParameterGroupDescription = targetDBParameterGroupDescription;
     }
 
@@ -486,12 +474,10 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
      * 
      * @param targetDBParameterGroupDescription
      *        A description for the copied DB parameter group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CopyDBParameterGroupRequest withTargetDBParameterGroupDescription(
-            String targetDBParameterGroupDescription) {
+    public CopyDBParameterGroupRequest withTargetDBParameterGroupDescription(String targetDBParameterGroupDescription) {
         setTargetDBParameterGroupDescription(targetDBParameterGroupDescription);
         return this;
     }
@@ -522,15 +508,13 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTags(java.util.Collection)} or
-     * {@link #withTags(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param tags
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CopyDBParameterGroupRequest withTags(Tag... tags) {
@@ -545,8 +529,7 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * @param tags
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CopyDBParameterGroupRequest withTags(java.util.Collection<Tag> tags) {
@@ -555,8 +538,7 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -567,16 +549,13 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSourceDBParameterGroupIdentifier() != null)
-            sb.append("SourceDBParameterGroupIdentifier: "
-                    + getSourceDBParameterGroupIdentifier() + ",");
+            sb.append("SourceDBParameterGroupIdentifier: ").append(getSourceDBParameterGroupIdentifier()).append(",");
         if (getTargetDBParameterGroupIdentifier() != null)
-            sb.append("TargetDBParameterGroupIdentifier: "
-                    + getTargetDBParameterGroupIdentifier() + ",");
+            sb.append("TargetDBParameterGroupIdentifier: ").append(getTargetDBParameterGroupIdentifier()).append(",");
         if (getTargetDBParameterGroupDescription() != null)
-            sb.append("TargetDBParameterGroupDescription: "
-                    + getTargetDBParameterGroupDescription() + ",");
+            sb.append("TargetDBParameterGroupDescription: ").append(getTargetDBParameterGroupDescription()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -591,31 +570,24 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
         if (obj instanceof CopyDBParameterGroupRequest == false)
             return false;
         CopyDBParameterGroupRequest other = (CopyDBParameterGroupRequest) obj;
-        if (other.getSourceDBParameterGroupIdentifier() == null
-                ^ this.getSourceDBParameterGroupIdentifier() == null)
+        if (other.getSourceDBParameterGroupIdentifier() == null ^ this.getSourceDBParameterGroupIdentifier() == null)
             return false;
         if (other.getSourceDBParameterGroupIdentifier() != null
-                && other.getSourceDBParameterGroupIdentifier().equals(
-                        this.getSourceDBParameterGroupIdentifier()) == false)
+                && other.getSourceDBParameterGroupIdentifier().equals(this.getSourceDBParameterGroupIdentifier()) == false)
             return false;
-        if (other.getTargetDBParameterGroupIdentifier() == null
-                ^ this.getTargetDBParameterGroupIdentifier() == null)
+        if (other.getTargetDBParameterGroupIdentifier() == null ^ this.getTargetDBParameterGroupIdentifier() == null)
             return false;
         if (other.getTargetDBParameterGroupIdentifier() != null
-                && other.getTargetDBParameterGroupIdentifier().equals(
-                        this.getTargetDBParameterGroupIdentifier()) == false)
+                && other.getTargetDBParameterGroupIdentifier().equals(this.getTargetDBParameterGroupIdentifier()) == false)
             return false;
-        if (other.getTargetDBParameterGroupDescription() == null
-                ^ this.getTargetDBParameterGroupDescription() == null)
+        if (other.getTargetDBParameterGroupDescription() == null ^ this.getTargetDBParameterGroupDescription() == null)
             return false;
         if (other.getTargetDBParameterGroupDescription() != null
-                && other.getTargetDBParameterGroupDescription().equals(
-                        this.getTargetDBParameterGroupDescription()) == false)
+                && other.getTargetDBParameterGroupDescription().equals(this.getTargetDBParameterGroupDescription()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -625,20 +597,10 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getSourceDBParameterGroupIdentifier() == null) ? 0
-                        : getSourceDBParameterGroupIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTargetDBParameterGroupIdentifier() == null) ? 0
-                        : getTargetDBParameterGroupIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTargetDBParameterGroupDescription() == null) ? 0
-                        : getTargetDBParameterGroupDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getSourceDBParameterGroupIdentifier() == null) ? 0 : getSourceDBParameterGroupIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getTargetDBParameterGroupIdentifier() == null) ? 0 : getTargetDBParameterGroupIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getTargetDBParameterGroupDescription() == null) ? 0 : getTargetDBParameterGroupDescription().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
@@ -646,4 +608,5 @@ public class CopyDBParameterGroupRequest extends AmazonWebServiceRequest
     public CopyDBParameterGroupRequest clone() {
         return (CopyDBParameterGroupRequest) super.clone();
     }
+
 }

@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Sends the forgot device request, as an administrator.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminForgetDevice" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AdminForgetDeviceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -76,8 +79,7 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
      * 
      * @param userPoolId
      *        The user pool ID.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AdminForgetDeviceRequest withUserPoolId(String userPoolId) {
@@ -117,8 +119,7 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
      * 
      * @param username
      *        The user name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AdminForgetDeviceRequest withUsername(String username) {
@@ -158,8 +159,7 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
      * 
      * @param deviceKey
      *        The device key.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AdminForgetDeviceRequest withDeviceKey(String deviceKey) {
@@ -168,8 +168,7 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -180,11 +179,11 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUserPoolId() != null)
-            sb.append("UserPoolId: " + getUserPoolId() + ",");
+            sb.append("UserPoolId: ").append(getUserPoolId()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername() + ",");
+            sb.append("Username: ").append(getUsername()).append(",");
         if (getDeviceKey() != null)
-            sb.append("DeviceKey: " + getDeviceKey());
+            sb.append("DeviceKey: ").append(getDeviceKey());
         sb.append("}");
         return sb.toString();
     }
@@ -201,18 +200,15 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
         AdminForgetDeviceRequest other = (AdminForgetDeviceRequest) obj;
         if (other.getUserPoolId() == null ^ this.getUserPoolId() == null)
             return false;
-        if (other.getUserPoolId() != null
-                && other.getUserPoolId().equals(this.getUserPoolId()) == false)
+        if (other.getUserPoolId() != null && other.getUserPoolId().equals(this.getUserPoolId()) == false)
             return false;
         if (other.getUsername() == null ^ this.getUsername() == null)
             return false;
-        if (other.getUsername() != null
-                && other.getUsername().equals(this.getUsername()) == false)
+        if (other.getUsername() != null && other.getUsername().equals(this.getUsername()) == false)
             return false;
         if (other.getDeviceKey() == null ^ this.getDeviceKey() == null)
             return false;
-        if (other.getDeviceKey() != null
-                && other.getDeviceKey().equals(this.getDeviceKey()) == false)
+        if (other.getDeviceKey() != null && other.getDeviceKey().equals(this.getDeviceKey()) == false)
             return false;
         return true;
     }
@@ -222,12 +218,9 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getUserPoolId() == null) ? 0 : getUserPoolId().hashCode());
-        hashCode = prime * hashCode
-                + ((getUsername() == null) ? 0 : getUsername().hashCode());
-        hashCode = prime * hashCode
-                + ((getDeviceKey() == null) ? 0 : getDeviceKey().hashCode());
+        hashCode = prime * hashCode + ((getUserPoolId() == null) ? 0 : getUserPoolId().hashCode());
+        hashCode = prime * hashCode + ((getUsername() == null) ? 0 : getUsername().hashCode());
+        hashCode = prime * hashCode + ((getDeviceKey() == null) ? 0 : getDeviceKey().hashCode());
         return hashCode;
     }
 
@@ -235,4 +228,5 @@ public class AdminForgetDeviceRequest extends AmazonWebServiceRequest implements
     public AdminForgetDeviceRequest clone() {
         return (AdminForgetDeviceRequest) super.clone();
     }
+
 }

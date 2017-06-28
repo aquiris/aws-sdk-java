@@ -17,11 +17,8 @@ package com.amazonaws.codegen.model.intermediate;
 
 import com.amazonaws.codegen.internal.Utils;
 import com.amazonaws.codegen.model.config.customization.CustomizationConfig;
-
 import com.amazonaws.util.IOUtils;
-
 import com.amazonaws.util.ValidationUtils;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +47,8 @@ public class IntermediateModel {
 
     private final ServiceExamples examples;
 
+    private final Map<String, AuthorizerModel> customAuthorizers;
+
     @JsonIgnore
     private final Map<String, WaiterDefinitionModel> waiters;
 
@@ -61,7 +60,7 @@ public class IntermediateModel {
             @JsonProperty("customizationConfig") CustomizationConfig customizationConfig,
             @JsonProperty("serviceExamples") ServiceExamples examples) {
 
-        this(metadata, operations, shapes, customizationConfig, examples, Collections.emptyMap());
+        this(metadata, operations, shapes, customizationConfig, examples, Collections.emptyMap(), Collections.emptyMap());
     }
 
     public IntermediateModel(
@@ -70,13 +69,15 @@ public class IntermediateModel {
             Map<String, ShapeModel> shapes,
             CustomizationConfig customizationConfig,
             ServiceExamples examples,
-            Map<String, WaiterDefinitionModel> waiters) {
+            Map<String, WaiterDefinitionModel> waiters,
+            Map<String, AuthorizerModel> customAuthorizers) {
         this.metadata = metadata;
         this.operations = operations;
         this.shapes = shapes;
         this.customizationConfig = customizationConfig;
         this.examples = examples;
         this.waiters = ValidationUtils.assertNotNull(waiters, "waiters");
+        this.customAuthorizers = customAuthorizers;
     }
 
     public Metadata getMetadata() {
@@ -174,5 +175,31 @@ public class IntermediateModel {
 
     public boolean getHasWaiters(){
         return waiters.size() > 0;
+    }
+
+    public String getSdkBaseResponseFqcn() {
+        if(metadata.getProtocol() == Protocol.API_GATEWAY) {
+            return "com.amazonaws.opensdk.BaseResult";
+        } else {
+            return String.format("com.amazonaws.AmazonWebServiceResult<%s>",
+                                 getResponseMetadataClassName());
+        }
+    }
+
+    private String getResponseMetadataClassName() {
+        return customizationConfig.getCustomResponseMetadataClassName() == null ?
+                "com.amazonaws.ResponseMetadata" :
+                customizationConfig.getCustomResponseMetadataClassName();
+    }
+
+    public Map<String, AuthorizerModel> getCustomAuthorizers() {
+        return customAuthorizers;
+    }
+
+    /**
+     * @return Name of package that the marshallers/unmarshallers are generated into.
+     */
+    public String getTransformPackage() {
+        return metadata.getPackageName() + ".model." + Utils.directoryToPackage(customizationConfig.getTransformDirectory());
     }
 }

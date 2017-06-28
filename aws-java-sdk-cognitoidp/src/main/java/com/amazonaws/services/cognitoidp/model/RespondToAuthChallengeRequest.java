@@ -1,62 +1,92 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * The request to respond to an authentication challenge.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/RespondToAuthChallenge" target="_top">AWS
+ *      API Documentation</a>
  */
-public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RespondToAuthChallengeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The client ID.
+     * The app client ID.
      * </p>
      */
     private String clientId;
     /**
      * <p>
-     * The name of the challenge.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * </p>
+     * <p>
+     * <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * </p>
      */
     private String challengeName;
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If
+     * <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      */
     private String session;
     /**
      * <p>
-     * The responses to the authentication challenge.
+     * The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client
+     * is configured with client secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>,
+     * <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client
+     * secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes,
+     * <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).
+     * </p>
+     * </li>
+     * </ul>
      */
     private java.util.Map<String, String> challengeResponses;
 
     /**
      * <p>
-     * The client ID.
+     * The app client ID.
      * </p>
      * 
      * @param clientId
-     *        The client ID.
+     *        The app client ID.
      */
 
     public void setClientId(String clientId) {
@@ -65,10 +95,10 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The client ID.
+     * The app client ID.
      * </p>
      * 
-     * @return The client ID.
+     * @return The app client ID.
      */
 
     public String getClientId() {
@@ -77,13 +107,12 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The client ID.
+     * The app client ID.
      * </p>
      * 
      * @param clientId
-     *        The client ID.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The app client ID.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RespondToAuthChallengeRequest withClientId(String clientId) {
@@ -93,11 +122,16 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the challenge.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * </p>
+     * <p>
+     * <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * </p>
      * 
      * @param challengeName
-     *        The name of the challenge.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+     *        <p>
+     *        <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * @see ChallengeNameType
      */
 
@@ -107,10 +141,15 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the challenge.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * </p>
+     * <p>
+     * <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * </p>
      * 
-     * @return The name of the challenge.
+     * @return The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+     *         <p>
+     *         <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * @see ChallengeNameType
      */
 
@@ -120,13 +159,17 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the challenge.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * </p>
+     * <p>
+     * <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * </p>
      * 
      * @param challengeName
-     *        The name of the challenge.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+     *        <p>
+     *        <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChallengeNameType
      */
 
@@ -137,11 +180,16 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the challenge.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * </p>
+     * <p>
+     * <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * </p>
      * 
      * @param challengeName
-     *        The name of the challenge.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+     *        <p>
+     *        <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * @see ChallengeNameType
      */
 
@@ -151,29 +199,38 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The name of the challenge.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * </p>
+     * <p>
+     * <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
      * </p>
      * 
      * @param challengeName
-     *        The name of the challenge.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+     *        <p>
+     *        <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChallengeNameType
      */
 
-    public RespondToAuthChallengeRequest withChallengeName(
-            ChallengeNameType challengeName) {
+    public RespondToAuthChallengeRequest withChallengeName(ChallengeNameType challengeName) {
         setChallengeName(challengeName);
         return this;
     }
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If
+     * <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
      * @param session
-     *        The session.
+     *        The session which should be passed both ways in challenge-response calls to the service. If
+     *        <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs
+     *        to go through another challenge, they return a session with other challenge parameters. This session
+     *        should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
      */
 
     public void setSession(String session) {
@@ -182,10 +239,16 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If
+     * <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
-     * @return The session.
+     * @return The session which should be passed both ways in challenge-response calls to the service. If
+     *         <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller
+     *         needs to go through another challenge, they return a session with other challenge parameters. This
+     *         session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
      */
 
     public String getSession() {
@@ -194,13 +257,18 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If
+     * <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
      * @param session
-     *        The session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The session which should be passed both ways in challenge-response calls to the service. If
+     *        <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs
+     *        to go through another challenge, they return a session with other challenge parameters. This session
+     *        should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RespondToAuthChallengeRequest withSession(String session) {
@@ -210,10 +278,52 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The responses to the authentication challenge.
+     * The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client
+     * is configured with client secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>,
+     * <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client
+     * secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes,
+     * <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The responses to the authentication challenge.
+     * @return The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for
+     *         example:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app
+     *         client is configured with client secret).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *         <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>,
+     *         <code>SECRET_HASH</code> (if app client is configured with client secret).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes,
+     *         <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).
+     *         </p>
+     *         </li>
      */
 
     public java.util.Map<String, String> getChallengeResponses() {
@@ -222,50 +332,130 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The responses to the authentication challenge.
+     * The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client
+     * is configured with client secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>,
+     * <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client
+     * secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes,
+     * <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param challengeResponses
-     *        The responses to the authentication challenge.
+     *        The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for
+     *        example:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app
+     *        client is configured with client secret).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *        <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>,
+     *        <code>SECRET_HASH</code> (if app client is configured with client secret).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes,
+     *        <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).
+     *        </p>
+     *        </li>
      */
 
-    public void setChallengeResponses(
-            java.util.Map<String, String> challengeResponses) {
+    public void setChallengeResponses(java.util.Map<String, String> challengeResponses) {
         this.challengeResponses = challengeResponses;
     }
 
     /**
      * <p>
-     * The responses to the authentication challenge.
+     * The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client
+     * is configured with client secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>,
+     * <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client
+     * secret).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes,
+     * <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param challengeResponses
-     *        The responses to the authentication challenge.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for
+     *        example:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app
+     *        client is configured with client secret).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>,
+     *        <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>,
+     *        <code>SECRET_HASH</code> (if app client is configured with client secret).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes,
+     *        <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RespondToAuthChallengeRequest withChallengeResponses(
-            java.util.Map<String, String> challengeResponses) {
+    public RespondToAuthChallengeRequest withChallengeResponses(java.util.Map<String, String> challengeResponses) {
         setChallengeResponses(challengeResponses);
         return this;
     }
 
-    public RespondToAuthChallengeRequest addChallengeResponsesEntry(String key,
-            String value) {
+    public RespondToAuthChallengeRequest addChallengeResponsesEntry(String key, String value) {
         if (null == this.challengeResponses) {
             this.challengeResponses = new java.util.HashMap<String, String>();
         }
         if (this.challengeResponses.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.challengeResponses.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into ChallengeResponses. &lt;p> Returns a
-     * reference to this object so that method calls can be chained together.
+     * Removes all the entries added into ChallengeResponses.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RespondToAuthChallengeRequest clearChallengeResponsesEntries() {
@@ -274,8 +464,7 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -286,13 +475,13 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClientId() != null)
-            sb.append("ClientId: " + getClientId() + ",");
+            sb.append("ClientId: ").append(getClientId()).append(",");
         if (getChallengeName() != null)
-            sb.append("ChallengeName: " + getChallengeName() + ",");
+            sb.append("ChallengeName: ").append(getChallengeName()).append(",");
         if (getSession() != null)
-            sb.append("Session: " + getSession() + ",");
+            sb.append("Session: ").append(getSession()).append(",");
         if (getChallengeResponses() != null)
-            sb.append("ChallengeResponses: " + getChallengeResponses());
+            sb.append("ChallengeResponses: ").append(getChallengeResponses());
         sb.append("}");
         return sb.toString();
     }
@@ -309,25 +498,19 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
         RespondToAuthChallengeRequest other = (RespondToAuthChallengeRequest) obj;
         if (other.getClientId() == null ^ this.getClientId() == null)
             return false;
-        if (other.getClientId() != null
-                && other.getClientId().equals(this.getClientId()) == false)
+        if (other.getClientId() != null && other.getClientId().equals(this.getClientId()) == false)
             return false;
         if (other.getChallengeName() == null ^ this.getChallengeName() == null)
             return false;
-        if (other.getChallengeName() != null
-                && other.getChallengeName().equals(this.getChallengeName()) == false)
+        if (other.getChallengeName() != null && other.getChallengeName().equals(this.getChallengeName()) == false)
             return false;
         if (other.getSession() == null ^ this.getSession() == null)
             return false;
-        if (other.getSession() != null
-                && other.getSession().equals(this.getSession()) == false)
+        if (other.getSession() != null && other.getSession().equals(this.getSession()) == false)
             return false;
-        if (other.getChallengeResponses() == null
-                ^ this.getChallengeResponses() == null)
+        if (other.getChallengeResponses() == null ^ this.getChallengeResponses() == null)
             return false;
-        if (other.getChallengeResponses() != null
-                && other.getChallengeResponses().equals(
-                        this.getChallengeResponses()) == false)
+        if (other.getChallengeResponses() != null && other.getChallengeResponses().equals(this.getChallengeResponses()) == false)
             return false;
         return true;
     }
@@ -337,18 +520,10 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getClientId() == null) ? 0 : getClientId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChallengeName() == null) ? 0 : getChallengeName()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getSession() == null) ? 0 : getSession().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChallengeResponses() == null) ? 0
-                        : getChallengeResponses().hashCode());
+        hashCode = prime * hashCode + ((getClientId() == null) ? 0 : getClientId().hashCode());
+        hashCode = prime * hashCode + ((getChallengeName() == null) ? 0 : getChallengeName().hashCode());
+        hashCode = prime * hashCode + ((getSession() == null) ? 0 : getSession().hashCode());
+        hashCode = prime * hashCode + ((getChallengeResponses() == null) ? 0 : getChallengeResponses().hashCode());
         return hashCode;
     }
 
@@ -356,4 +531,5 @@ public class RespondToAuthChallengeRequest extends AmazonWebServiceRequest
     public RespondToAuthChallengeRequest clone() {
         return (RespondToAuthChallengeRequest) super.clone();
     }
+
 }

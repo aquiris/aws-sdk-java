@@ -1,65 +1,61 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationOutput"
+ *      target="_top">AWS API Documentation</a>
  */
-public class AddApplicationOutputRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AddApplicationOutputRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Name of the application to which you want to add the output
-     * configuration.
+     * Name of the application to which you want to add the output configuration.
      * </p>
      */
     private String applicationName;
     /**
      * <p>
-     * Version of the application to which you want add the output
-     * configuration. You can use the <a>DescribeApplication</a> operation to
-     * get the current application version. If the version specified is not the
-     * current version, the <code>ConcurrentModificationException</code> is
-     * returned.
+     * Version of the application to which you want add the output configuration. You can use the
+     * <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the
+     * current version, the <code>ConcurrentModificationException</code> is returned.
      * </p>
      */
     private Long currentApplicationVersionId;
     /**
      * <p>
-     * An array of objects, each describing one output configuration. In the
-     * output configuration, you specify the name of an in-application stream, a
-     * destination (that is, an Amazon Kinesis stream or an Amazon Kinesis
-     * Firehose delivery stream), and record the formation to use when writing
-     * to the destination.
+     * An array of objects, each describing one output configuration. In the output configuration, you specify the name
+     * of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose
+     * delivery stream), and record the formation to use when writing to the destination.
      * </p>
      */
     private Output output;
 
     /**
      * <p>
-     * Name of the application to which you want to add the output
-     * configuration.
+     * Name of the application to which you want to add the output configuration.
      * </p>
      * 
      * @param applicationName
-     *        Name of the application to which you want to add the output
-     *        configuration.
+     *        Name of the application to which you want to add the output configuration.
      */
 
     public void setApplicationName(String applicationName) {
@@ -68,12 +64,10 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Name of the application to which you want to add the output
-     * configuration.
+     * Name of the application to which you want to add the output configuration.
      * </p>
      * 
-     * @return Name of the application to which you want to add the output
-     *         configuration.
+     * @return Name of the application to which you want to add the output configuration.
      */
 
     public String getApplicationName() {
@@ -82,38 +76,30 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Name of the application to which you want to add the output
-     * configuration.
+     * Name of the application to which you want to add the output configuration.
      * </p>
      * 
      * @param applicationName
-     *        Name of the application to which you want to add the output
-     *        configuration.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Name of the application to which you want to add the output configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AddApplicationOutputRequest withApplicationName(
-            String applicationName) {
+    public AddApplicationOutputRequest withApplicationName(String applicationName) {
         setApplicationName(applicationName);
         return this;
     }
 
     /**
      * <p>
-     * Version of the application to which you want add the output
-     * configuration. You can use the <a>DescribeApplication</a> operation to
-     * get the current application version. If the version specified is not the
-     * current version, the <code>ConcurrentModificationException</code> is
-     * returned.
+     * Version of the application to which you want add the output configuration. You can use the
+     * <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the
+     * current version, the <code>ConcurrentModificationException</code> is returned.
      * </p>
      * 
      * @param currentApplicationVersionId
-     *        Version of the application to which you want add the output
-     *        configuration. You can use the <a>DescribeApplication</a>
-     *        operation to get the current application version. If the version
-     *        specified is not the current version, the
-     *        <code>ConcurrentModificationException</code> is returned.
+     *        Version of the application to which you want add the output configuration. You can use the
+     *        <a>DescribeApplication</a> operation to get the current application version. If the version specified is
+     *        not the current version, the <code>ConcurrentModificationException</code> is returned.
      */
 
     public void setCurrentApplicationVersionId(Long currentApplicationVersionId) {
@@ -122,18 +108,14 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Version of the application to which you want add the output
-     * configuration. You can use the <a>DescribeApplication</a> operation to
-     * get the current application version. If the version specified is not the
-     * current version, the <code>ConcurrentModificationException</code> is
-     * returned.
+     * Version of the application to which you want add the output configuration. You can use the
+     * <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the
+     * current version, the <code>ConcurrentModificationException</code> is returned.
      * </p>
      * 
-     * @return Version of the application to which you want add the output
-     *         configuration. You can use the <a>DescribeApplication</a>
-     *         operation to get the current application version. If the version
-     *         specified is not the current version, the
-     *         <code>ConcurrentModificationException</code> is returned.
+     * @return Version of the application to which you want add the output configuration. You can use the
+     *         <a>DescribeApplication</a> operation to get the current application version. If the version specified is
+     *         not the current version, the <code>ConcurrentModificationException</code> is returned.
      */
 
     public Long getCurrentApplicationVersionId() {
@@ -142,44 +124,34 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Version of the application to which you want add the output
-     * configuration. You can use the <a>DescribeApplication</a> operation to
-     * get the current application version. If the version specified is not the
-     * current version, the <code>ConcurrentModificationException</code> is
-     * returned.
+     * Version of the application to which you want add the output configuration. You can use the
+     * <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the
+     * current version, the <code>ConcurrentModificationException</code> is returned.
      * </p>
      * 
      * @param currentApplicationVersionId
-     *        Version of the application to which you want add the output
-     *        configuration. You can use the <a>DescribeApplication</a>
-     *        operation to get the current application version. If the version
-     *        specified is not the current version, the
-     *        <code>ConcurrentModificationException</code> is returned.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Version of the application to which you want add the output configuration. You can use the
+     *        <a>DescribeApplication</a> operation to get the current application version. If the version specified is
+     *        not the current version, the <code>ConcurrentModificationException</code> is returned.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AddApplicationOutputRequest withCurrentApplicationVersionId(
-            Long currentApplicationVersionId) {
+    public AddApplicationOutputRequest withCurrentApplicationVersionId(Long currentApplicationVersionId) {
         setCurrentApplicationVersionId(currentApplicationVersionId);
         return this;
     }
 
     /**
      * <p>
-     * An array of objects, each describing one output configuration. In the
-     * output configuration, you specify the name of an in-application stream, a
-     * destination (that is, an Amazon Kinesis stream or an Amazon Kinesis
-     * Firehose delivery stream), and record the formation to use when writing
-     * to the destination.
+     * An array of objects, each describing one output configuration. In the output configuration, you specify the name
+     * of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose
+     * delivery stream), and record the formation to use when writing to the destination.
      * </p>
      * 
      * @param output
-     *        An array of objects, each describing one output configuration. In
-     *        the output configuration, you specify the name of an
-     *        in-application stream, a destination (that is, an Amazon Kinesis
-     *        stream or an Amazon Kinesis Firehose delivery stream), and record
-     *        the formation to use when writing to the destination.
+     *        An array of objects, each describing one output configuration. In the output configuration, you specify
+     *        the name of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon
+     *        Kinesis Firehose delivery stream), and record the formation to use when writing to the destination.
      */
 
     public void setOutput(Output output) {
@@ -188,18 +160,14 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * An array of objects, each describing one output configuration. In the
-     * output configuration, you specify the name of an in-application stream, a
-     * destination (that is, an Amazon Kinesis stream or an Amazon Kinesis
-     * Firehose delivery stream), and record the formation to use when writing
-     * to the destination.
+     * An array of objects, each describing one output configuration. In the output configuration, you specify the name
+     * of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose
+     * delivery stream), and record the formation to use when writing to the destination.
      * </p>
      * 
-     * @return An array of objects, each describing one output configuration. In
-     *         the output configuration, you specify the name of an
-     *         in-application stream, a destination (that is, an Amazon Kinesis
-     *         stream or an Amazon Kinesis Firehose delivery stream), and record
-     *         the formation to use when writing to the destination.
+     * @return An array of objects, each describing one output configuration. In the output configuration, you specify
+     *         the name of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon
+     *         Kinesis Firehose delivery stream), and record the formation to use when writing to the destination.
      */
 
     public Output getOutput() {
@@ -208,21 +176,16 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * An array of objects, each describing one output configuration. In the
-     * output configuration, you specify the name of an in-application stream, a
-     * destination (that is, an Amazon Kinesis stream or an Amazon Kinesis
-     * Firehose delivery stream), and record the formation to use when writing
-     * to the destination.
+     * An array of objects, each describing one output configuration. In the output configuration, you specify the name
+     * of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose
+     * delivery stream), and record the formation to use when writing to the destination.
      * </p>
      * 
      * @param output
-     *        An array of objects, each describing one output configuration. In
-     *        the output configuration, you specify the name of an
-     *        in-application stream, a destination (that is, an Amazon Kinesis
-     *        stream or an Amazon Kinesis Firehose delivery stream), and record
-     *        the formation to use when writing to the destination.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An array of objects, each describing one output configuration. In the output configuration, you specify
+     *        the name of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon
+     *        Kinesis Firehose delivery stream), and record the formation to use when writing to the destination.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AddApplicationOutputRequest withOutput(Output output) {
@@ -231,8 +194,7 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -243,12 +205,11 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getApplicationName() != null)
-            sb.append("ApplicationName: " + getApplicationName() + ",");
+            sb.append("ApplicationName: ").append(getApplicationName()).append(",");
         if (getCurrentApplicationVersionId() != null)
-            sb.append("CurrentApplicationVersionId: "
-                    + getCurrentApplicationVersionId() + ",");
+            sb.append("CurrentApplicationVersionId: ").append(getCurrentApplicationVersionId()).append(",");
         if (getOutput() != null)
-            sb.append("Output: " + getOutput());
+            sb.append("Output: ").append(getOutput());
         sb.append("}");
         return sb.toString();
     }
@@ -263,23 +224,17 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
         if (obj instanceof AddApplicationOutputRequest == false)
             return false;
         AddApplicationOutputRequest other = (AddApplicationOutputRequest) obj;
-        if (other.getApplicationName() == null
-                ^ this.getApplicationName() == null)
+        if (other.getApplicationName() == null ^ this.getApplicationName() == null)
             return false;
-        if (other.getApplicationName() != null
-                && other.getApplicationName().equals(this.getApplicationName()) == false)
+        if (other.getApplicationName() != null && other.getApplicationName().equals(this.getApplicationName()) == false)
             return false;
-        if (other.getCurrentApplicationVersionId() == null
-                ^ this.getCurrentApplicationVersionId() == null)
+        if (other.getCurrentApplicationVersionId() == null ^ this.getCurrentApplicationVersionId() == null)
             return false;
-        if (other.getCurrentApplicationVersionId() != null
-                && other.getCurrentApplicationVersionId().equals(
-                        this.getCurrentApplicationVersionId()) == false)
+        if (other.getCurrentApplicationVersionId() != null && other.getCurrentApplicationVersionId().equals(this.getCurrentApplicationVersionId()) == false)
             return false;
         if (other.getOutput() == null ^ this.getOutput() == null)
             return false;
-        if (other.getOutput() != null
-                && other.getOutput().equals(this.getOutput()) == false)
+        if (other.getOutput() != null && other.getOutput().equals(this.getOutput()) == false)
             return false;
         return true;
     }
@@ -289,16 +244,9 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getApplicationName() == null) ? 0 : getApplicationName()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCurrentApplicationVersionId() == null) ? 0
-                        : getCurrentApplicationVersionId().hashCode());
-        hashCode = prime * hashCode
-                + ((getOutput() == null) ? 0 : getOutput().hashCode());
+        hashCode = prime * hashCode + ((getApplicationName() == null) ? 0 : getApplicationName().hashCode());
+        hashCode = prime * hashCode + ((getCurrentApplicationVersionId() == null) ? 0 : getCurrentApplicationVersionId().hashCode());
+        hashCode = prime * hashCode + ((getOutput() == null) ? 0 : getOutput().hashCode());
         return hashCode;
     }
 
@@ -306,4 +254,5 @@ public class AddApplicationOutputRequest extends AmazonWebServiceRequest
     public AddApplicationOutputRequest clone() {
         return (AddApplicationOutputRequest) super.clone();
     }
+
 }

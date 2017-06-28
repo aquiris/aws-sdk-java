@@ -1,30 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ReplicationInstance" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ReplicationInstance implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReplicationInstance implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The replication instance identifier. This parameter is stored as a
-     * lowercase string.
+     * The replication instance identifier. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -69,8 +73,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
     private String replicationInstanceStatus;
     /**
      * <p>
-     * The amount of storage (in gigabytes) that is allocated for the
-     * replication instance.
+     * The amount of storage (in gigabytes) that is allocated for the replication instance.
      * </p>
      */
     private Integer allocatedStorage;
@@ -112,9 +115,8 @@ public class ReplicationInstance implements Serializable, Cloneable {
     private ReplicationPendingModifiedValues pendingModifiedValues;
     /**
      * <p>
-     * Specifies if the replication instance is a Multi-AZ deployment. You
-     * cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ
-     * parameter is set to <code>true</code>.
+     * Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code>
+     * parameter if the Multi-AZ parameter is set to <code>true</code>.
      * </p>
      */
     private Boolean multiAZ;
@@ -126,18 +128,15 @@ public class ReplicationInstance implements Serializable, Cloneable {
     private String engineVersion;
     /**
      * <p>
-     * Boolean value indicating if minor version upgrades will be automatically
-     * applied to the instance.
+     * Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      * </p>
      */
     private Boolean autoMinorVersionUpgrade;
     /**
      * <p>
-     * The KMS key identifier that is used to encrypt the content on the
-     * replication instance. If you do not specify a value for the KmsKeyId
-     * parameter, then AWS DMS will use your default encryption key. AWS KMS
-     * creates the default encryption key for your AWS account. Your AWS account
-     * has a different default encryption key for each AWS region.
+     * The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a
+     * value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default
+     * encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      */
     private String kmsKeyId;
@@ -175,18 +174,22 @@ public class ReplicationInstance implements Serializable, Cloneable {
     private java.util.List<String> replicationInstancePrivateIpAddresses;
     /**
      * <p>
-     * Specifies the accessibility options for the replication instance. A value
-     * of <code>true</code> represents an instance with a public IP address. A
-     * value of <code>false</code> represents an instance with a private IP
+     * Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an
+     * instance with a public IP address. A value of <code>false</code> represents an instance with a private IP
      * address. The default value is <code>true</code>.
      * </p>
      */
     private Boolean publiclyAccessible;
+    /**
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     */
+    private String secondaryAvailabilityZone;
 
     /**
      * <p>
-     * The replication instance identifier. This parameter is stored as a
-     * lowercase string.
+     * The replication instance identifier. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -213,8 +216,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param replicationInstanceIdentifier
-     *        The replication instance identifier. This parameter is stored as a
-     *        lowercase string.</p>
+     *        The replication instance identifier. This parameter is stored as a lowercase string.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -239,15 +241,13 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        Example: <code>myrepinstance</code>
      */
 
-    public void setReplicationInstanceIdentifier(
-            String replicationInstanceIdentifier) {
+    public void setReplicationInstanceIdentifier(String replicationInstanceIdentifier) {
         this.replicationInstanceIdentifier = replicationInstanceIdentifier;
     }
 
     /**
      * <p>
-     * The replication instance identifier. This parameter is stored as a
-     * lowercase string.
+     * The replication instance identifier. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -273,8 +273,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * Example: <code>myrepinstance</code>
      * </p>
      * 
-     * @return The replication instance identifier. This parameter is stored as
-     *         a lowercase string.</p>
+     * @return The replication instance identifier. This parameter is stored as a lowercase string.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -305,8 +304,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The replication instance identifier. This parameter is stored as a
-     * lowercase string.
+     * The replication instance identifier. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -333,8 +331,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param replicationInstanceIdentifier
-     *        The replication instance identifier. This parameter is stored as a
-     *        lowercase string.</p>
+     *        The replication instance identifier. This parameter is stored as a lowercase string.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -357,12 +354,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        </ul>
      *        <p>
      *        Example: <code>myrepinstance</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstanceIdentifier(
-            String replicationInstanceIdentifier) {
+    public ReplicationInstance withReplicationInstanceIdentifier(String replicationInstanceIdentifier) {
         setReplicationInstanceIdentifier(replicationInstanceIdentifier);
         return this;
     }
@@ -420,12 +415,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        <p>
      *        Valid Values:
      *        <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstanceClass(
-            String replicationInstanceClass) {
+    public ReplicationInstance withReplicationInstanceClass(String replicationInstanceClass) {
         setReplicationInstanceClass(replicationInstanceClass);
         return this;
     }
@@ -462,25 +455,21 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param replicationInstanceStatus
      *        The status of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstanceStatus(
-            String replicationInstanceStatus) {
+    public ReplicationInstance withReplicationInstanceStatus(String replicationInstanceStatus) {
         setReplicationInstanceStatus(replicationInstanceStatus);
         return this;
     }
 
     /**
      * <p>
-     * The amount of storage (in gigabytes) that is allocated for the
-     * replication instance.
+     * The amount of storage (in gigabytes) that is allocated for the replication instance.
      * </p>
      * 
      * @param allocatedStorage
-     *        The amount of storage (in gigabytes) that is allocated for the
-     *        replication instance.
+     *        The amount of storage (in gigabytes) that is allocated for the replication instance.
      */
 
     public void setAllocatedStorage(Integer allocatedStorage) {
@@ -489,12 +478,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The amount of storage (in gigabytes) that is allocated for the
-     * replication instance.
+     * The amount of storage (in gigabytes) that is allocated for the replication instance.
      * </p>
      * 
-     * @return The amount of storage (in gigabytes) that is allocated for the
-     *         replication instance.
+     * @return The amount of storage (in gigabytes) that is allocated for the replication instance.
      */
 
     public Integer getAllocatedStorage() {
@@ -503,15 +490,12 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The amount of storage (in gigabytes) that is allocated for the
-     * replication instance.
+     * The amount of storage (in gigabytes) that is allocated for the replication instance.
      * </p>
      * 
      * @param allocatedStorage
-     *        The amount of storage (in gigabytes) that is allocated for the
-     *        replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The amount of storage (in gigabytes) that is allocated for the replication instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReplicationInstance withAllocatedStorage(Integer allocatedStorage) {
@@ -551,12 +535,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param instanceCreateTime
      *        The time the replication instance was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withInstanceCreateTime(
-            java.util.Date instanceCreateTime) {
+    public ReplicationInstance withInstanceCreateTime(java.util.Date instanceCreateTime) {
         setInstanceCreateTime(instanceCreateTime);
         return this;
     }
@@ -582,15 +564,13 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        The VPC security group for the instance.
      */
 
-    public void setVpcSecurityGroups(
-            java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
+    public void setVpcSecurityGroups(java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
         if (vpcSecurityGroups == null) {
             this.vpcSecurityGroups = null;
             return;
         }
 
-        this.vpcSecurityGroups = new java.util.ArrayList<VpcSecurityGroupMembership>(
-                vpcSecurityGroups);
+        this.vpcSecurityGroups = new java.util.ArrayList<VpcSecurityGroupMembership>(vpcSecurityGroups);
     }
 
     /**
@@ -598,23 +578,19 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * The VPC security group for the instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVpcSecurityGroups(java.util.Collection)} or
-     * {@link #withVpcSecurityGroups(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setVpcSecurityGroups(java.util.Collection)} or {@link #withVpcSecurityGroups(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param vpcSecurityGroups
      *        The VPC security group for the instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withVpcSecurityGroups(
-            VpcSecurityGroupMembership... vpcSecurityGroups) {
+    public ReplicationInstance withVpcSecurityGroups(VpcSecurityGroupMembership... vpcSecurityGroups) {
         if (this.vpcSecurityGroups == null) {
-            setVpcSecurityGroups(new java.util.ArrayList<VpcSecurityGroupMembership>(
-                    vpcSecurityGroups.length));
+            setVpcSecurityGroups(new java.util.ArrayList<VpcSecurityGroupMembership>(vpcSecurityGroups.length));
         }
         for (VpcSecurityGroupMembership ele : vpcSecurityGroups) {
             this.vpcSecurityGroups.add(ele);
@@ -629,12 +605,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param vpcSecurityGroups
      *        The VPC security group for the instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withVpcSecurityGroups(
-            java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
+    public ReplicationInstance withVpcSecurityGroups(java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
         setVpcSecurityGroups(vpcSecurityGroups);
         return this;
     }
@@ -671,8 +645,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param availabilityZone
      *        The Availability Zone for the instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReplicationInstance withAvailabilityZone(String availabilityZone) {
@@ -689,8 +662,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        The subnet group for the replication instance.
      */
 
-    public void setReplicationSubnetGroup(
-            ReplicationSubnetGroup replicationSubnetGroup) {
+    public void setReplicationSubnetGroup(ReplicationSubnetGroup replicationSubnetGroup) {
         this.replicationSubnetGroup = replicationSubnetGroup;
     }
 
@@ -713,12 +685,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param replicationSubnetGroup
      *        The subnet group for the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationSubnetGroup(
-            ReplicationSubnetGroup replicationSubnetGroup) {
+    public ReplicationInstance withReplicationSubnetGroup(ReplicationSubnetGroup replicationSubnetGroup) {
         setReplicationSubnetGroup(replicationSubnetGroup);
         return this;
     }
@@ -755,12 +725,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param preferredMaintenanceWindow
      *        The maintenance window times for the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withPreferredMaintenanceWindow(
-            String preferredMaintenanceWindow) {
+    public ReplicationInstance withPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
         setPreferredMaintenanceWindow(preferredMaintenanceWindow);
         return this;
     }
@@ -774,8 +742,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        The pending modification values.
      */
 
-    public void setPendingModifiedValues(
-            ReplicationPendingModifiedValues pendingModifiedValues) {
+    public void setPendingModifiedValues(ReplicationPendingModifiedValues pendingModifiedValues) {
         this.pendingModifiedValues = pendingModifiedValues;
     }
 
@@ -798,27 +765,23 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param pendingModifiedValues
      *        The pending modification values.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withPendingModifiedValues(
-            ReplicationPendingModifiedValues pendingModifiedValues) {
+    public ReplicationInstance withPendingModifiedValues(ReplicationPendingModifiedValues pendingModifiedValues) {
         setPendingModifiedValues(pendingModifiedValues);
         return this;
     }
 
     /**
      * <p>
-     * Specifies if the replication instance is a Multi-AZ deployment. You
-     * cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ
-     * parameter is set to <code>true</code>.
+     * Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code>
+     * parameter if the Multi-AZ parameter is set to <code>true</code>.
      * </p>
      * 
      * @param multiAZ
-     *        Specifies if the replication instance is a Multi-AZ deployment.
-     *        You cannot set the <code>AvailabilityZone</code> parameter if the
-     *        Multi-AZ parameter is set to <code>true</code>.
+     *        Specifies if the replication instance is a Multi-AZ deployment. You cannot set the
+     *        <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>.
      */
 
     public void setMultiAZ(Boolean multiAZ) {
@@ -827,14 +790,12 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies if the replication instance is a Multi-AZ deployment. You
-     * cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ
-     * parameter is set to <code>true</code>.
+     * Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code>
+     * parameter if the Multi-AZ parameter is set to <code>true</code>.
      * </p>
      * 
-     * @return Specifies if the replication instance is a Multi-AZ deployment.
-     *         You cannot set the <code>AvailabilityZone</code> parameter if the
-     *         Multi-AZ parameter is set to <code>true</code>.
+     * @return Specifies if the replication instance is a Multi-AZ deployment. You cannot set the
+     *         <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>.
      */
 
     public Boolean getMultiAZ() {
@@ -843,17 +804,14 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies if the replication instance is a Multi-AZ deployment. You
-     * cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ
-     * parameter is set to <code>true</code>.
+     * Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code>
+     * parameter if the Multi-AZ parameter is set to <code>true</code>.
      * </p>
      * 
      * @param multiAZ
-     *        Specifies if the replication instance is a Multi-AZ deployment.
-     *        You cannot set the <code>AvailabilityZone</code> parameter if the
-     *        Multi-AZ parameter is set to <code>true</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies if the replication instance is a Multi-AZ deployment. You cannot set the
+     *        <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReplicationInstance withMultiAZ(Boolean multiAZ) {
@@ -863,14 +821,12 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies if the replication instance is a Multi-AZ deployment. You
-     * cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ
-     * parameter is set to <code>true</code>.
+     * Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code>
+     * parameter if the Multi-AZ parameter is set to <code>true</code>.
      * </p>
      * 
-     * @return Specifies if the replication instance is a Multi-AZ deployment.
-     *         You cannot set the <code>AvailabilityZone</code> parameter if the
-     *         Multi-AZ parameter is set to <code>true</code>.
+     * @return Specifies if the replication instance is a Multi-AZ deployment. You cannot set the
+     *         <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>.
      */
 
     public Boolean isMultiAZ() {
@@ -909,8 +865,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param engineVersion
      *        The engine version number of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReplicationInstance withEngineVersion(String engineVersion) {
@@ -920,13 +875,11 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Boolean value indicating if minor version upgrades will be automatically
-     * applied to the instance.
+     * Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        Boolean value indicating if minor version upgrades will be
-     *        automatically applied to the instance.
+     *        Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      */
 
     public void setAutoMinorVersionUpgrade(Boolean autoMinorVersionUpgrade) {
@@ -935,12 +888,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Boolean value indicating if minor version upgrades will be automatically
-     * applied to the instance.
+     * Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      * </p>
      * 
-     * @return Boolean value indicating if minor version upgrades will be
-     *         automatically applied to the instance.
+     * @return Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      */
 
     public Boolean getAutoMinorVersionUpgrade() {
@@ -949,31 +900,25 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Boolean value indicating if minor version upgrades will be automatically
-     * applied to the instance.
+     * Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        Boolean value indicating if minor version upgrades will be
-     *        automatically applied to the instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Boolean value indicating if minor version upgrades will be automatically applied to the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withAutoMinorVersionUpgrade(
-            Boolean autoMinorVersionUpgrade) {
+    public ReplicationInstance withAutoMinorVersionUpgrade(Boolean autoMinorVersionUpgrade) {
         setAutoMinorVersionUpgrade(autoMinorVersionUpgrade);
         return this;
     }
 
     /**
      * <p>
-     * Boolean value indicating if minor version upgrades will be automatically
-     * applied to the instance.
+     * Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      * </p>
      * 
-     * @return Boolean value indicating if minor version upgrades will be
-     *         automatically applied to the instance.
+     * @return Boolean value indicating if minor version upgrades will be automatically applied to the instance.
      */
 
     public Boolean isAutoMinorVersionUpgrade() {
@@ -982,20 +927,16 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The KMS key identifier that is used to encrypt the content on the
-     * replication instance. If you do not specify a value for the KmsKeyId
-     * parameter, then AWS DMS will use your default encryption key. AWS KMS
-     * creates the default encryption key for your AWS account. Your AWS account
-     * has a different default encryption key for each AWS region.
+     * The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a
+     * value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default
+     * encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      * 
      * @param kmsKeyId
-     *        The KMS key identifier that is used to encrypt the content on the
-     *        replication instance. If you do not specify a value for the
-     *        KmsKeyId parameter, then AWS DMS will use your default encryption
-     *        key. AWS KMS creates the default encryption key for your AWS
-     *        account. Your AWS account has a different default encryption key
-     *        for each AWS region.
+     *        The KMS key identifier that is used to encrypt the content on the replication instance. If you do not
+     *        specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS
+     *        creates the default encryption key for your AWS account. Your AWS account has a different default
+     *        encryption key for each AWS region.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -1004,19 +945,15 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The KMS key identifier that is used to encrypt the content on the
-     * replication instance. If you do not specify a value for the KmsKeyId
-     * parameter, then AWS DMS will use your default encryption key. AWS KMS
-     * creates the default encryption key for your AWS account. Your AWS account
-     * has a different default encryption key for each AWS region.
+     * The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a
+     * value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default
+     * encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      * 
-     * @return The KMS key identifier that is used to encrypt the content on the
-     *         replication instance. If you do not specify a value for the
-     *         KmsKeyId parameter, then AWS DMS will use your default encryption
-     *         key. AWS KMS creates the default encryption key for your AWS
-     *         account. Your AWS account has a different default encryption key
-     *         for each AWS region.
+     * @return The KMS key identifier that is used to encrypt the content on the replication instance. If you do not
+     *         specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS
+     *         creates the default encryption key for your AWS account. Your AWS account has a different default
+     *         encryption key for each AWS region.
      */
 
     public String getKmsKeyId() {
@@ -1025,22 +962,17 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The KMS key identifier that is used to encrypt the content on the
-     * replication instance. If you do not specify a value for the KmsKeyId
-     * parameter, then AWS DMS will use your default encryption key. AWS KMS
-     * creates the default encryption key for your AWS account. Your AWS account
-     * has a different default encryption key for each AWS region.
+     * The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a
+     * value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default
+     * encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
      * </p>
      * 
      * @param kmsKeyId
-     *        The KMS key identifier that is used to encrypt the content on the
-     *        replication instance. If you do not specify a value for the
-     *        KmsKeyId parameter, then AWS DMS will use your default encryption
-     *        key. AWS KMS creates the default encryption key for your AWS
-     *        account. Your AWS account has a different default encryption key
-     *        for each AWS region.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The KMS key identifier that is used to encrypt the content on the replication instance. If you do not
+     *        specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS
+     *        creates the default encryption key for your AWS account. Your AWS account has a different default
+     *        encryption key for each AWS region.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReplicationInstance withKmsKeyId(String kmsKeyId) {
@@ -1080,12 +1012,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param replicationInstanceArn
      *        The Amazon Resource Name (ARN) of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstanceArn(
-            String replicationInstanceArn) {
+    public ReplicationInstance withReplicationInstanceArn(String replicationInstanceArn) {
         setReplicationInstanceArn(replicationInstanceArn);
         return this;
     }
@@ -1099,8 +1029,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        The public IP address of the replication instance.
      */
     @Deprecated
-    public void setReplicationInstancePublicIpAddress(
-            String replicationInstancePublicIpAddress) {
+    public void setReplicationInstancePublicIpAddress(String replicationInstancePublicIpAddress) {
         this.replicationInstancePublicIpAddress = replicationInstancePublicIpAddress;
     }
 
@@ -1123,12 +1052,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param replicationInstancePublicIpAddress
      *        The public IP address of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
     @Deprecated
-    public ReplicationInstance withReplicationInstancePublicIpAddress(
-            String replicationInstancePublicIpAddress) {
+    public ReplicationInstance withReplicationInstancePublicIpAddress(String replicationInstancePublicIpAddress) {
         setReplicationInstancePublicIpAddress(replicationInstancePublicIpAddress);
         return this;
     }
@@ -1142,8 +1069,7 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        The private IP address of the replication instance.
      */
     @Deprecated
-    public void setReplicationInstancePrivateIpAddress(
-            String replicationInstancePrivateIpAddress) {
+    public void setReplicationInstancePrivateIpAddress(String replicationInstancePrivateIpAddress) {
         this.replicationInstancePrivateIpAddress = replicationInstancePrivateIpAddress;
     }
 
@@ -1166,12 +1092,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param replicationInstancePrivateIpAddress
      *        The private IP address of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
     @Deprecated
-    public ReplicationInstance withReplicationInstancePrivateIpAddress(
-            String replicationInstancePrivateIpAddress) {
+    public ReplicationInstance withReplicationInstancePrivateIpAddress(String replicationInstancePrivateIpAddress) {
         setReplicationInstancePrivateIpAddress(replicationInstancePrivateIpAddress);
         return this;
     }
@@ -1197,15 +1121,13 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        The public IP address of the replication instance.
      */
 
-    public void setReplicationInstancePublicIpAddresses(
-            java.util.Collection<String> replicationInstancePublicIpAddresses) {
+    public void setReplicationInstancePublicIpAddresses(java.util.Collection<String> replicationInstancePublicIpAddresses) {
         if (replicationInstancePublicIpAddresses == null) {
             this.replicationInstancePublicIpAddresses = null;
             return;
         }
 
-        this.replicationInstancePublicIpAddresses = new java.util.ArrayList<String>(
-                replicationInstancePublicIpAddresses);
+        this.replicationInstancePublicIpAddresses = new java.util.ArrayList<String>(replicationInstancePublicIpAddresses);
     }
 
     /**
@@ -1213,24 +1135,20 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * The public IP address of the replication instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setReplicationInstancePublicIpAddresses(java.util.Collection)} or
-     * {@link #withReplicationInstancePublicIpAddresses(java.util.Collection)}
-     * if you want to override the existing values.
+     * {@link #withReplicationInstancePublicIpAddresses(java.util.Collection)} if you want to override the existing
+     * values.
      * </p>
      * 
      * @param replicationInstancePublicIpAddresses
      *        The public IP address of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstancePublicIpAddresses(
-            String... replicationInstancePublicIpAddresses) {
+    public ReplicationInstance withReplicationInstancePublicIpAddresses(String... replicationInstancePublicIpAddresses) {
         if (this.replicationInstancePublicIpAddresses == null) {
-            setReplicationInstancePublicIpAddresses(new java.util.ArrayList<String>(
-                    replicationInstancePublicIpAddresses.length));
+            setReplicationInstancePublicIpAddresses(new java.util.ArrayList<String>(replicationInstancePublicIpAddresses.length));
         }
         for (String ele : replicationInstancePublicIpAddresses) {
             this.replicationInstancePublicIpAddresses.add(ele);
@@ -1245,12 +1163,10 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param replicationInstancePublicIpAddresses
      *        The public IP address of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstancePublicIpAddresses(
-            java.util.Collection<String> replicationInstancePublicIpAddresses) {
+    public ReplicationInstance withReplicationInstancePublicIpAddresses(java.util.Collection<String> replicationInstancePublicIpAddresses) {
         setReplicationInstancePublicIpAddresses(replicationInstancePublicIpAddresses);
         return this;
     }
@@ -1276,15 +1192,13 @@ public class ReplicationInstance implements Serializable, Cloneable {
      *        The private IP address of the replication instance.
      */
 
-    public void setReplicationInstancePrivateIpAddresses(
-            java.util.Collection<String> replicationInstancePrivateIpAddresses) {
+    public void setReplicationInstancePrivateIpAddresses(java.util.Collection<String> replicationInstancePrivateIpAddresses) {
         if (replicationInstancePrivateIpAddresses == null) {
             this.replicationInstancePrivateIpAddresses = null;
             return;
         }
 
-        this.replicationInstancePrivateIpAddresses = new java.util.ArrayList<String>(
-                replicationInstancePrivateIpAddresses);
+        this.replicationInstancePrivateIpAddresses = new java.util.ArrayList<String>(replicationInstancePrivateIpAddresses);
     }
 
     /**
@@ -1292,25 +1206,20 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * The private IP address of the replication instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use
-     * {@link #setReplicationInstancePrivateIpAddresses(java.util.Collection)}
-     * or
-     * {@link #withReplicationInstancePrivateIpAddresses(java.util.Collection)}
-     * if you want to override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setReplicationInstancePrivateIpAddresses(java.util.Collection)} or
+     * {@link #withReplicationInstancePrivateIpAddresses(java.util.Collection)} if you want to override the existing
+     * values.
      * </p>
      * 
      * @param replicationInstancePrivateIpAddresses
      *        The private IP address of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstancePrivateIpAddresses(
-            String... replicationInstancePrivateIpAddresses) {
+    public ReplicationInstance withReplicationInstancePrivateIpAddresses(String... replicationInstancePrivateIpAddresses) {
         if (this.replicationInstancePrivateIpAddresses == null) {
-            setReplicationInstancePrivateIpAddresses(new java.util.ArrayList<String>(
-                    replicationInstancePrivateIpAddresses.length));
+            setReplicationInstancePrivateIpAddresses(new java.util.ArrayList<String>(replicationInstancePrivateIpAddresses.length));
         }
         for (String ele : replicationInstancePrivateIpAddresses) {
             this.replicationInstancePrivateIpAddresses.add(ele);
@@ -1325,29 +1234,25 @@ public class ReplicationInstance implements Serializable, Cloneable {
      * 
      * @param replicationInstancePrivateIpAddresses
      *        The private IP address of the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplicationInstance withReplicationInstancePrivateIpAddresses(
-            java.util.Collection<String> replicationInstancePrivateIpAddresses) {
+    public ReplicationInstance withReplicationInstancePrivateIpAddresses(java.util.Collection<String> replicationInstancePrivateIpAddresses) {
         setReplicationInstancePrivateIpAddresses(replicationInstancePrivateIpAddresses);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the accessibility options for the replication instance. A value
-     * of <code>true</code> represents an instance with a public IP address. A
-     * value of <code>false</code> represents an instance with a private IP
+     * Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an
+     * instance with a public IP address. A value of <code>false</code> represents an instance with a private IP
      * address. The default value is <code>true</code>.
      * </p>
      * 
      * @param publiclyAccessible
-     *        Specifies the accessibility options for the replication instance.
-     *        A value of <code>true</code> represents an instance with a public
-     *        IP address. A value of <code>false</code> represents an instance
-     *        with a private IP address. The default value is <code>true</code>.
+     *        Specifies the accessibility options for the replication instance. A value of <code>true</code> represents
+     *        an instance with a public IP address. A value of <code>false</code> represents an instance with a private
+     *        IP address. The default value is <code>true</code>.
      */
 
     public void setPubliclyAccessible(Boolean publiclyAccessible) {
@@ -1356,17 +1261,14 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the accessibility options for the replication instance. A value
-     * of <code>true</code> represents an instance with a public IP address. A
-     * value of <code>false</code> represents an instance with a private IP
+     * Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an
+     * instance with a public IP address. A value of <code>false</code> represents an instance with a private IP
      * address. The default value is <code>true</code>.
      * </p>
      * 
-     * @return Specifies the accessibility options for the replication instance.
-     *         A value of <code>true</code> represents an instance with a public
-     *         IP address. A value of <code>false</code> represents an instance
-     *         with a private IP address. The default value is <code>true</code>
-     *         .
+     * @return Specifies the accessibility options for the replication instance. A value of <code>true</code> represents
+     *         an instance with a public IP address. A value of <code>false</code> represents an instance with a private
+     *         IP address. The default value is <code>true</code>.
      */
 
     public Boolean getPubliclyAccessible() {
@@ -1375,19 +1277,16 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the accessibility options for the replication instance. A value
-     * of <code>true</code> represents an instance with a public IP address. A
-     * value of <code>false</code> represents an instance with a private IP
+     * Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an
+     * instance with a public IP address. A value of <code>false</code> represents an instance with a private IP
      * address. The default value is <code>true</code>.
      * </p>
      * 
      * @param publiclyAccessible
-     *        Specifies the accessibility options for the replication instance.
-     *        A value of <code>true</code> represents an instance with a public
-     *        IP address. A value of <code>false</code> represents an instance
-     *        with a private IP address. The default value is <code>true</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the accessibility options for the replication instance. A value of <code>true</code> represents
+     *        an instance with a public IP address. A value of <code>false</code> represents an instance with a private
+     *        IP address. The default value is <code>true</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReplicationInstance withPubliclyAccessible(Boolean publiclyAccessible) {
@@ -1397,17 +1296,14 @@ public class ReplicationInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the accessibility options for the replication instance. A value
-     * of <code>true</code> represents an instance with a public IP address. A
-     * value of <code>false</code> represents an instance with a private IP
+     * Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an
+     * instance with a public IP address. A value of <code>false</code> represents an instance with a private IP
      * address. The default value is <code>true</code>.
      * </p>
      * 
-     * @return Specifies the accessibility options for the replication instance.
-     *         A value of <code>true</code> represents an instance with a public
-     *         IP address. A value of <code>false</code> represents an instance
-     *         with a private IP address. The default value is <code>true</code>
-     *         .
+     * @return Specifies the accessibility options for the replication instance. A value of <code>true</code> represents
+     *         an instance with a public IP address. A value of <code>false</code> represents an instance with a private
+     *         IP address. The default value is <code>true</code>.
      */
 
     public Boolean isPubliclyAccessible() {
@@ -1415,8 +1311,47 @@ public class ReplicationInstance implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     * 
+     * @param secondaryAvailabilityZone
+     *        The availability zone of the standby replication instance in a Multi-AZ deployment.
+     */
+
+    public void setSecondaryAvailabilityZone(String secondaryAvailabilityZone) {
+        this.secondaryAvailabilityZone = secondaryAvailabilityZone;
+    }
+
+    /**
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     * 
+     * @return The availability zone of the standby replication instance in a Multi-AZ deployment.
+     */
+
+    public String getSecondaryAvailabilityZone() {
+        return this.secondaryAvailabilityZone;
+    }
+
+    /**
+     * <p>
+     * The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * </p>
+     * 
+     * @param secondaryAvailabilityZone
+     *        The availability zone of the standby replication instance in a Multi-AZ deployment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ReplicationInstance withSecondaryAvailabilityZone(String secondaryAvailabilityZone) {
+        setSecondaryAvailabilityZone(secondaryAvailabilityZone);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -1427,57 +1362,47 @@ public class ReplicationInstance implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReplicationInstanceIdentifier() != null)
-            sb.append("ReplicationInstanceIdentifier: "
-                    + getReplicationInstanceIdentifier() + ",");
+            sb.append("ReplicationInstanceIdentifier: ").append(getReplicationInstanceIdentifier()).append(",");
         if (getReplicationInstanceClass() != null)
-            sb.append("ReplicationInstanceClass: "
-                    + getReplicationInstanceClass() + ",");
+            sb.append("ReplicationInstanceClass: ").append(getReplicationInstanceClass()).append(",");
         if (getReplicationInstanceStatus() != null)
-            sb.append("ReplicationInstanceStatus: "
-                    + getReplicationInstanceStatus() + ",");
+            sb.append("ReplicationInstanceStatus: ").append(getReplicationInstanceStatus()).append(",");
         if (getAllocatedStorage() != null)
-            sb.append("AllocatedStorage: " + getAllocatedStorage() + ",");
+            sb.append("AllocatedStorage: ").append(getAllocatedStorage()).append(",");
         if (getInstanceCreateTime() != null)
-            sb.append("InstanceCreateTime: " + getInstanceCreateTime() + ",");
+            sb.append("InstanceCreateTime: ").append(getInstanceCreateTime()).append(",");
         if (getVpcSecurityGroups() != null)
-            sb.append("VpcSecurityGroups: " + getVpcSecurityGroups() + ",");
+            sb.append("VpcSecurityGroups: ").append(getVpcSecurityGroups()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
         if (getReplicationSubnetGroup() != null)
-            sb.append("ReplicationSubnetGroup: " + getReplicationSubnetGroup()
-                    + ",");
+            sb.append("ReplicationSubnetGroup: ").append(getReplicationSubnetGroup()).append(",");
         if (getPreferredMaintenanceWindow() != null)
-            sb.append("PreferredMaintenanceWindow: "
-                    + getPreferredMaintenanceWindow() + ",");
+            sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getPendingModifiedValues() != null)
-            sb.append("PendingModifiedValues: " + getPendingModifiedValues()
-                    + ",");
+            sb.append("PendingModifiedValues: ").append(getPendingModifiedValues()).append(",");
         if (getMultiAZ() != null)
-            sb.append("MultiAZ: " + getMultiAZ() + ",");
+            sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getAutoMinorVersionUpgrade() != null)
-            sb.append("AutoMinorVersionUpgrade: "
-                    + getAutoMinorVersionUpgrade() + ",");
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: " + getKmsKeyId() + ",");
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getReplicationInstanceArn() != null)
-            sb.append("ReplicationInstanceArn: " + getReplicationInstanceArn()
-                    + ",");
+            sb.append("ReplicationInstanceArn: ").append(getReplicationInstanceArn()).append(",");
         if (getReplicationInstancePublicIpAddress() != null)
-            sb.append("ReplicationInstancePublicIpAddress: "
-                    + getReplicationInstancePublicIpAddress() + ",");
+            sb.append("ReplicationInstancePublicIpAddress: ").append(getReplicationInstancePublicIpAddress()).append(",");
         if (getReplicationInstancePrivateIpAddress() != null)
-            sb.append("ReplicationInstancePrivateIpAddress: "
-                    + getReplicationInstancePrivateIpAddress() + ",");
+            sb.append("ReplicationInstancePrivateIpAddress: ").append(getReplicationInstancePrivateIpAddress()).append(",");
         if (getReplicationInstancePublicIpAddresses() != null)
-            sb.append("ReplicationInstancePublicIpAddresses: "
-                    + getReplicationInstancePublicIpAddresses() + ",");
+            sb.append("ReplicationInstancePublicIpAddresses: ").append(getReplicationInstancePublicIpAddresses()).append(",");
         if (getReplicationInstancePrivateIpAddresses() != null)
-            sb.append("ReplicationInstancePrivateIpAddresses: "
-                    + getReplicationInstancePrivateIpAddresses() + ",");
+            sb.append("ReplicationInstancePrivateIpAddresses: ").append(getReplicationInstancePrivateIpAddresses()).append(",");
         if (getPubliclyAccessible() != null)
-            sb.append("PubliclyAccessible: " + getPubliclyAccessible());
+            sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
+        if (getSecondaryAvailabilityZone() != null)
+            sb.append("SecondaryAvailabilityZone: ").append(getSecondaryAvailabilityZone());
         sb.append("}");
         return sb.toString();
     }
@@ -1492,139 +1417,94 @@ public class ReplicationInstance implements Serializable, Cloneable {
         if (obj instanceof ReplicationInstance == false)
             return false;
         ReplicationInstance other = (ReplicationInstance) obj;
-        if (other.getReplicationInstanceIdentifier() == null
-                ^ this.getReplicationInstanceIdentifier() == null)
+        if (other.getReplicationInstanceIdentifier() == null ^ this.getReplicationInstanceIdentifier() == null)
             return false;
         if (other.getReplicationInstanceIdentifier() != null
-                && other.getReplicationInstanceIdentifier().equals(
-                        this.getReplicationInstanceIdentifier()) == false)
+                && other.getReplicationInstanceIdentifier().equals(this.getReplicationInstanceIdentifier()) == false)
             return false;
-        if (other.getReplicationInstanceClass() == null
-                ^ this.getReplicationInstanceClass() == null)
+        if (other.getReplicationInstanceClass() == null ^ this.getReplicationInstanceClass() == null)
             return false;
-        if (other.getReplicationInstanceClass() != null
-                && other.getReplicationInstanceClass().equals(
-                        this.getReplicationInstanceClass()) == false)
+        if (other.getReplicationInstanceClass() != null && other.getReplicationInstanceClass().equals(this.getReplicationInstanceClass()) == false)
             return false;
-        if (other.getReplicationInstanceStatus() == null
-                ^ this.getReplicationInstanceStatus() == null)
+        if (other.getReplicationInstanceStatus() == null ^ this.getReplicationInstanceStatus() == null)
             return false;
-        if (other.getReplicationInstanceStatus() != null
-                && other.getReplicationInstanceStatus().equals(
-                        this.getReplicationInstanceStatus()) == false)
+        if (other.getReplicationInstanceStatus() != null && other.getReplicationInstanceStatus().equals(this.getReplicationInstanceStatus()) == false)
             return false;
-        if (other.getAllocatedStorage() == null
-                ^ this.getAllocatedStorage() == null)
+        if (other.getAllocatedStorage() == null ^ this.getAllocatedStorage() == null)
             return false;
-        if (other.getAllocatedStorage() != null
-                && other.getAllocatedStorage().equals(
-                        this.getAllocatedStorage()) == false)
+        if (other.getAllocatedStorage() != null && other.getAllocatedStorage().equals(this.getAllocatedStorage()) == false)
             return false;
-        if (other.getInstanceCreateTime() == null
-                ^ this.getInstanceCreateTime() == null)
+        if (other.getInstanceCreateTime() == null ^ this.getInstanceCreateTime() == null)
             return false;
-        if (other.getInstanceCreateTime() != null
-                && other.getInstanceCreateTime().equals(
-                        this.getInstanceCreateTime()) == false)
+        if (other.getInstanceCreateTime() != null && other.getInstanceCreateTime().equals(this.getInstanceCreateTime()) == false)
             return false;
-        if (other.getVpcSecurityGroups() == null
-                ^ this.getVpcSecurityGroups() == null)
+        if (other.getVpcSecurityGroups() == null ^ this.getVpcSecurityGroups() == null)
             return false;
-        if (other.getVpcSecurityGroups() != null
-                && other.getVpcSecurityGroups().equals(
-                        this.getVpcSecurityGroups()) == false)
+        if (other.getVpcSecurityGroups() != null && other.getVpcSecurityGroups().equals(this.getVpcSecurityGroups()) == false)
             return false;
-        if (other.getAvailabilityZone() == null
-                ^ this.getAvailabilityZone() == null)
+        if (other.getAvailabilityZone() == null ^ this.getAvailabilityZone() == null)
             return false;
-        if (other.getAvailabilityZone() != null
-                && other.getAvailabilityZone().equals(
-                        this.getAvailabilityZone()) == false)
+        if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false)
             return false;
-        if (other.getReplicationSubnetGroup() == null
-                ^ this.getReplicationSubnetGroup() == null)
+        if (other.getReplicationSubnetGroup() == null ^ this.getReplicationSubnetGroup() == null)
             return false;
-        if (other.getReplicationSubnetGroup() != null
-                && other.getReplicationSubnetGroup().equals(
-                        this.getReplicationSubnetGroup()) == false)
+        if (other.getReplicationSubnetGroup() != null && other.getReplicationSubnetGroup().equals(this.getReplicationSubnetGroup()) == false)
             return false;
-        if (other.getPreferredMaintenanceWindow() == null
-                ^ this.getPreferredMaintenanceWindow() == null)
+        if (other.getPreferredMaintenanceWindow() == null ^ this.getPreferredMaintenanceWindow() == null)
             return false;
-        if (other.getPreferredMaintenanceWindow() != null
-                && other.getPreferredMaintenanceWindow().equals(
-                        this.getPreferredMaintenanceWindow()) == false)
+        if (other.getPreferredMaintenanceWindow() != null && other.getPreferredMaintenanceWindow().equals(this.getPreferredMaintenanceWindow()) == false)
             return false;
-        if (other.getPendingModifiedValues() == null
-                ^ this.getPendingModifiedValues() == null)
+        if (other.getPendingModifiedValues() == null ^ this.getPendingModifiedValues() == null)
             return false;
-        if (other.getPendingModifiedValues() != null
-                && other.getPendingModifiedValues().equals(
-                        this.getPendingModifiedValues()) == false)
+        if (other.getPendingModifiedValues() != null && other.getPendingModifiedValues().equals(this.getPendingModifiedValues()) == false)
             return false;
         if (other.getMultiAZ() == null ^ this.getMultiAZ() == null)
             return false;
-        if (other.getMultiAZ() != null
-                && other.getMultiAZ().equals(this.getMultiAZ()) == false)
+        if (other.getMultiAZ() != null && other.getMultiAZ().equals(this.getMultiAZ()) == false)
             return false;
         if (other.getEngineVersion() == null ^ this.getEngineVersion() == null)
             return false;
-        if (other.getEngineVersion() != null
-                && other.getEngineVersion().equals(this.getEngineVersion()) == false)
+        if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
             return false;
-        if (other.getAutoMinorVersionUpgrade() == null
-                ^ this.getAutoMinorVersionUpgrade() == null)
+        if (other.getAutoMinorVersionUpgrade() == null ^ this.getAutoMinorVersionUpgrade() == null)
             return false;
-        if (other.getAutoMinorVersionUpgrade() != null
-                && other.getAutoMinorVersionUpgrade().equals(
-                        this.getAutoMinorVersionUpgrade()) == false)
+        if (other.getAutoMinorVersionUpgrade() != null && other.getAutoMinorVersionUpgrade().equals(this.getAutoMinorVersionUpgrade()) == false)
             return false;
         if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
             return false;
-        if (other.getKmsKeyId() != null
-                && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
-        if (other.getReplicationInstanceArn() == null
-                ^ this.getReplicationInstanceArn() == null)
+        if (other.getReplicationInstanceArn() == null ^ this.getReplicationInstanceArn() == null)
             return false;
-        if (other.getReplicationInstanceArn() != null
-                && other.getReplicationInstanceArn().equals(
-                        this.getReplicationInstanceArn()) == false)
+        if (other.getReplicationInstanceArn() != null && other.getReplicationInstanceArn().equals(this.getReplicationInstanceArn()) == false)
             return false;
-        if (other.getReplicationInstancePublicIpAddress() == null
-                ^ this.getReplicationInstancePublicIpAddress() == null)
+        if (other.getReplicationInstancePublicIpAddress() == null ^ this.getReplicationInstancePublicIpAddress() == null)
             return false;
         if (other.getReplicationInstancePublicIpAddress() != null
-                && other.getReplicationInstancePublicIpAddress().equals(
-                        this.getReplicationInstancePublicIpAddress()) == false)
+                && other.getReplicationInstancePublicIpAddress().equals(this.getReplicationInstancePublicIpAddress()) == false)
             return false;
-        if (other.getReplicationInstancePrivateIpAddress() == null
-                ^ this.getReplicationInstancePrivateIpAddress() == null)
+        if (other.getReplicationInstancePrivateIpAddress() == null ^ this.getReplicationInstancePrivateIpAddress() == null)
             return false;
         if (other.getReplicationInstancePrivateIpAddress() != null
-                && other.getReplicationInstancePrivateIpAddress().equals(
-                        this.getReplicationInstancePrivateIpAddress()) == false)
+                && other.getReplicationInstancePrivateIpAddress().equals(this.getReplicationInstancePrivateIpAddress()) == false)
             return false;
-        if (other.getReplicationInstancePublicIpAddresses() == null
-                ^ this.getReplicationInstancePublicIpAddresses() == null)
+        if (other.getReplicationInstancePublicIpAddresses() == null ^ this.getReplicationInstancePublicIpAddresses() == null)
             return false;
         if (other.getReplicationInstancePublicIpAddresses() != null
-                && other.getReplicationInstancePublicIpAddresses().equals(
-                        this.getReplicationInstancePublicIpAddresses()) == false)
+                && other.getReplicationInstancePublicIpAddresses().equals(this.getReplicationInstancePublicIpAddresses()) == false)
             return false;
-        if (other.getReplicationInstancePrivateIpAddresses() == null
-                ^ this.getReplicationInstancePrivateIpAddresses() == null)
+        if (other.getReplicationInstancePrivateIpAddresses() == null ^ this.getReplicationInstancePrivateIpAddresses() == null)
             return false;
         if (other.getReplicationInstancePrivateIpAddresses() != null
-                && other.getReplicationInstancePrivateIpAddresses().equals(
-                        this.getReplicationInstancePrivateIpAddresses()) == false)
+                && other.getReplicationInstancePrivateIpAddresses().equals(this.getReplicationInstancePrivateIpAddresses()) == false)
             return false;
-        if (other.getPubliclyAccessible() == null
-                ^ this.getPubliclyAccessible() == null)
+        if (other.getPubliclyAccessible() == null ^ this.getPubliclyAccessible() == null)
             return false;
-        if (other.getPubliclyAccessible() != null
-                && other.getPubliclyAccessible().equals(
-                        this.getPubliclyAccessible()) == false)
+        if (other.getPubliclyAccessible() != null && other.getPubliclyAccessible().equals(this.getPubliclyAccessible()) == false)
+            return false;
+        if (other.getSecondaryAvailabilityZone() == null ^ this.getSecondaryAvailabilityZone() == null)
+            return false;
+        if (other.getSecondaryAvailabilityZone() != null && other.getSecondaryAvailabilityZone().equals(this.getSecondaryAvailabilityZone()) == false)
             return false;
         return true;
     }
@@ -1634,82 +1514,27 @@ public class ReplicationInstance implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstanceIdentifier() == null) ? 0
-                        : getReplicationInstanceIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstanceClass() == null) ? 0
-                        : getReplicationInstanceClass().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstanceStatus() == null) ? 0
-                        : getReplicationInstanceStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAllocatedStorage() == null) ? 0 : getAllocatedStorage()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getInstanceCreateTime() == null) ? 0
-                        : getInstanceCreateTime().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getVpcSecurityGroups() == null) ? 0
-                        : getVpcSecurityGroups().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationSubnetGroup() == null) ? 0
-                        : getReplicationSubnetGroup().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPreferredMaintenanceWindow() == null) ? 0
-                        : getPreferredMaintenanceWindow().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPendingModifiedValues() == null) ? 0
-                        : getPendingModifiedValues().hashCode());
-        hashCode = prime * hashCode
-                + ((getMultiAZ() == null) ? 0 : getMultiAZ().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEngineVersion() == null) ? 0 : getEngineVersion()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAutoMinorVersionUpgrade() == null) ? 0
-                        : getAutoMinorVersionUpgrade().hashCode());
-        hashCode = prime * hashCode
-                + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstanceArn() == null) ? 0
-                        : getReplicationInstanceArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstancePublicIpAddress() == null) ? 0
-                        : getReplicationInstancePublicIpAddress().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstancePrivateIpAddress() == null) ? 0
-                        : getReplicationInstancePrivateIpAddress().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstancePublicIpAddresses() == null) ? 0
-                        : getReplicationInstancePublicIpAddresses().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationInstancePrivateIpAddresses() == null) ? 0
-                        : getReplicationInstancePrivateIpAddresses().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPubliclyAccessible() == null) ? 0
-                        : getPubliclyAccessible().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstanceIdentifier() == null) ? 0 : getReplicationInstanceIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstanceClass() == null) ? 0 : getReplicationInstanceClass().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstanceStatus() == null) ? 0 : getReplicationInstanceStatus().hashCode());
+        hashCode = prime * hashCode + ((getAllocatedStorage() == null) ? 0 : getAllocatedStorage().hashCode());
+        hashCode = prime * hashCode + ((getInstanceCreateTime() == null) ? 0 : getInstanceCreateTime().hashCode());
+        hashCode = prime * hashCode + ((getVpcSecurityGroups() == null) ? 0 : getVpcSecurityGroups().hashCode());
+        hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getReplicationSubnetGroup() == null) ? 0 : getReplicationSubnetGroup().hashCode());
+        hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode());
+        hashCode = prime * hashCode + ((getPendingModifiedValues() == null) ? 0 : getPendingModifiedValues().hashCode());
+        hashCode = prime * hashCode + ((getMultiAZ() == null) ? 0 : getMultiAZ().hashCode());
+        hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getAutoMinorVersionUpgrade() == null) ? 0 : getAutoMinorVersionUpgrade().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstanceArn() == null) ? 0 : getReplicationInstanceArn().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstancePublicIpAddress() == null) ? 0 : getReplicationInstancePublicIpAddress().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstancePrivateIpAddress() == null) ? 0 : getReplicationInstancePrivateIpAddress().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstancePublicIpAddresses() == null) ? 0 : getReplicationInstancePublicIpAddresses().hashCode());
+        hashCode = prime * hashCode + ((getReplicationInstancePrivateIpAddresses() == null) ? 0 : getReplicationInstancePrivateIpAddresses().hashCode());
+        hashCode = prime * hashCode + ((getPubliclyAccessible() == null) ? 0 : getPubliclyAccessible().hashCode());
+        hashCode = prime * hashCode + ((getSecondaryAvailabilityZone() == null) ? 0 : getSecondaryAvailabilityZone().hashCode());
         return hashCode;
     }
 
@@ -1718,9 +1543,13 @@ public class ReplicationInstance implements Serializable, Cloneable {
         try {
             return (ReplicationInstance) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.databasemigrationservice.model.transform.ReplicationInstanceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

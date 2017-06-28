@@ -1,28 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * A complex type that contains the response to a <code>TestDNSAnswer</code>
- * request.
+ * A complex type that contains the response to a <code>TestDNSAnswer</code> request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/TestDNSAnswer" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TestDNSAnswerResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TestDNSAnswerResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -44,27 +46,23 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
     private String recordType;
     /**
      * <p>
-     * A list that contains values that Amazon Route 53 returned for this
-     * resource record set.
+     * A list that contains values that Amazon Route 53 returned for this resource record set.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> recordData;
     /**
      * <p>
-     * A code that indicates whether the request is valid or not. The most
-     * common response code is <code>NOERROR</code>, meaning that the request is
-     * valid. If the response is not valid, Amazon Route 53 returns a response
-     * code that describes the error. For a list of possible response codes, see
-     * <a href=
-     * "http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6"
-     * >DNS RCODES</a> on the IANA website.
+     * A code that indicates whether the request is valid or not. The most common response code is <code>NOERROR</code>,
+     * meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that
+     * describes the error. For a list of possible response codes, see <a
+     * href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a> on the
+     * IANA website.
      * </p>
      */
     private String responseCode;
     /**
      * <p>
-     * The protocol that Amazon Route 53 used to respond to the request, either
-     * <code>UDP</code> or <code>TCP</code>.
+     * The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or <code>TCP</code>.
      * </p>
      */
     private String protocol;
@@ -101,8 +99,7 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * 
      * @param nameserver
      *        The Amazon Route 53 name server used to respond to the request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestDNSAnswerResult withNameserver(String nameserver) {
@@ -116,8 +113,7 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordName
-     *        The name of the resource record set that you submitted a request
-     *        for.
+     *        The name of the resource record set that you submitted a request for.
      */
 
     public void setRecordName(String recordName) {
@@ -129,8 +125,7 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * The name of the resource record set that you submitted a request for.
      * </p>
      * 
-     * @return The name of the resource record set that you submitted a request
-     *         for.
+     * @return The name of the resource record set that you submitted a request for.
      */
 
     public String getRecordName() {
@@ -143,10 +138,8 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordName
-     *        The name of the resource record set that you submitted a request
-     *        for.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the resource record set that you submitted a request for.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestDNSAnswerResult withRecordName(String recordName) {
@@ -160,8 +153,7 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordType
-     *        The type of the resource record set that you submitted a request
-     *        for.
+     *        The type of the resource record set that you submitted a request for.
      * @see RRType
      */
 
@@ -174,8 +166,7 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * The type of the resource record set that you submitted a request for.
      * </p>
      * 
-     * @return The type of the resource record set that you submitted a request
-     *         for.
+     * @return The type of the resource record set that you submitted a request for.
      * @see RRType
      */
 
@@ -189,10 +180,8 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordType
-     *        The type of the resource record set that you submitted a request
-     *        for.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of the resource record set that you submitted a request for.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RRType
      */
 
@@ -207,8 +196,7 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordType
-     *        The type of the resource record set that you submitted a request
-     *        for.
+     *        The type of the resource record set that you submitted a request for.
      * @see RRType
      */
 
@@ -222,10 +210,8 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordType
-     *        The type of the resource record set that you submitted a request
-     *        for.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of the resource record set that you submitted a request for.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RRType
      */
 
@@ -236,12 +222,10 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list that contains values that Amazon Route 53 returned for this
-     * resource record set.
+     * A list that contains values that Amazon Route 53 returned for this resource record set.
      * </p>
      * 
-     * @return A list that contains values that Amazon Route 53 returned for
-     *         this resource record set.
+     * @return A list that contains values that Amazon Route 53 returned for this resource record set.
      */
 
     public java.util.List<String> getRecordData() {
@@ -253,13 +237,11 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list that contains values that Amazon Route 53 returned for this
-     * resource record set.
+     * A list that contains values that Amazon Route 53 returned for this resource record set.
      * </p>
      * 
      * @param recordData
-     *        A list that contains values that Amazon Route 53 returned for this
-     *        resource record set.
+     *        A list that contains values that Amazon Route 53 returned for this resource record set.
      */
 
     public void setRecordData(java.util.Collection<String> recordData) {
@@ -268,33 +250,27 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
             return;
         }
 
-        this.recordData = new com.amazonaws.internal.SdkInternalList<String>(
-                recordData);
+        this.recordData = new com.amazonaws.internal.SdkInternalList<String>(recordData);
     }
 
     /**
      * <p>
-     * A list that contains values that Amazon Route 53 returned for this
-     * resource record set.
+     * A list that contains values that Amazon Route 53 returned for this resource record set.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setRecordData(java.util.Collection)} or
-     * {@link #withRecordData(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setRecordData(java.util.Collection)} or {@link #withRecordData(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param recordData
-     *        A list that contains values that Amazon Route 53 returned for this
-     *        resource record set.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list that contains values that Amazon Route 53 returned for this resource record set.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestDNSAnswerResult withRecordData(String... recordData) {
         if (this.recordData == null) {
-            setRecordData(new com.amazonaws.internal.SdkInternalList<String>(
-                    recordData.length));
+            setRecordData(new com.amazonaws.internal.SdkInternalList<String>(recordData.length));
         }
         for (String ele : recordData) {
             this.recordData.add(ele);
@@ -304,42 +280,34 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list that contains values that Amazon Route 53 returned for this
-     * resource record set.
+     * A list that contains values that Amazon Route 53 returned for this resource record set.
      * </p>
      * 
      * @param recordData
-     *        A list that contains values that Amazon Route 53 returned for this
-     *        resource record set.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list that contains values that Amazon Route 53 returned for this resource record set.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public TestDNSAnswerResult withRecordData(
-            java.util.Collection<String> recordData) {
+    public TestDNSAnswerResult withRecordData(java.util.Collection<String> recordData) {
         setRecordData(recordData);
         return this;
     }
 
     /**
      * <p>
-     * A code that indicates whether the request is valid or not. The most
-     * common response code is <code>NOERROR</code>, meaning that the request is
-     * valid. If the response is not valid, Amazon Route 53 returns a response
-     * code that describes the error. For a list of possible response codes, see
-     * <a href=
-     * "http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6"
-     * >DNS RCODES</a> on the IANA website.
+     * A code that indicates whether the request is valid or not. The most common response code is <code>NOERROR</code>,
+     * meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that
+     * describes the error. For a list of possible response codes, see <a
+     * href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a> on the
+     * IANA website.
      * </p>
      * 
      * @param responseCode
-     *        A code that indicates whether the request is valid or not. The
-     *        most common response code is <code>NOERROR</code>, meaning that
-     *        the request is valid. If the response is not valid, Amazon Route
-     *        53 returns a response code that describes the error. For a list of
-     *        possible response codes, see <a href=
-     *        "http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6"
-     *        >DNS RCODES</a> on the IANA website.
+     *        A code that indicates whether the request is valid or not. The most common response code is
+     *        <code>NOERROR</code>, meaning that the request is valid. If the response is not valid, Amazon Route 53
+     *        returns a response code that describes the error. For a list of possible response codes, see <a
+     *        href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a>
+     *        on the IANA website.
      */
 
     public void setResponseCode(String responseCode) {
@@ -348,22 +316,18 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A code that indicates whether the request is valid or not. The most
-     * common response code is <code>NOERROR</code>, meaning that the request is
-     * valid. If the response is not valid, Amazon Route 53 returns a response
-     * code that describes the error. For a list of possible response codes, see
-     * <a href=
-     * "http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6"
-     * >DNS RCODES</a> on the IANA website.
+     * A code that indicates whether the request is valid or not. The most common response code is <code>NOERROR</code>,
+     * meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that
+     * describes the error. For a list of possible response codes, see <a
+     * href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a> on the
+     * IANA website.
      * </p>
      * 
-     * @return A code that indicates whether the request is valid or not. The
-     *         most common response code is <code>NOERROR</code>, meaning that
-     *         the request is valid. If the response is not valid, Amazon Route
-     *         53 returns a response code that describes the error. For a list
-     *         of possible response codes, see <a href=
-     *         "http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6"
-     *         >DNS RCODES</a> on the IANA website.
+     * @return A code that indicates whether the request is valid or not. The most common response code is
+     *         <code>NOERROR</code>, meaning that the request is valid. If the response is not valid, Amazon Route 53
+     *         returns a response code that describes the error. For a list of possible response codes, see <a
+     *         href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS
+     *         RCODES</a> on the IANA website.
      */
 
     public String getResponseCode() {
@@ -372,25 +336,20 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A code that indicates whether the request is valid or not. The most
-     * common response code is <code>NOERROR</code>, meaning that the request is
-     * valid. If the response is not valid, Amazon Route 53 returns a response
-     * code that describes the error. For a list of possible response codes, see
-     * <a href=
-     * "http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6"
-     * >DNS RCODES</a> on the IANA website.
+     * A code that indicates whether the request is valid or not. The most common response code is <code>NOERROR</code>,
+     * meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that
+     * describes the error. For a list of possible response codes, see <a
+     * href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a> on the
+     * IANA website.
      * </p>
      * 
      * @param responseCode
-     *        A code that indicates whether the request is valid or not. The
-     *        most common response code is <code>NOERROR</code>, meaning that
-     *        the request is valid. If the response is not valid, Amazon Route
-     *        53 returns a response code that describes the error. For a list of
-     *        possible response codes, see <a href=
-     *        "http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6"
-     *        >DNS RCODES</a> on the IANA website.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A code that indicates whether the request is valid or not. The most common response code is
+     *        <code>NOERROR</code>, meaning that the request is valid. If the response is not valid, Amazon Route 53
+     *        returns a response code that describes the error. For a list of possible response codes, see <a
+     *        href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a>
+     *        on the IANA website.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestDNSAnswerResult withResponseCode(String responseCode) {
@@ -400,13 +359,12 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The protocol that Amazon Route 53 used to respond to the request, either
-     * <code>UDP</code> or <code>TCP</code>.
+     * The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or <code>TCP</code>.
      * </p>
      * 
      * @param protocol
-     *        The protocol that Amazon Route 53 used to respond to the request,
-     *        either <code>UDP</code> or <code>TCP</code>.
+     *        The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or
+     *        <code>TCP</code>.
      */
 
     public void setProtocol(String protocol) {
@@ -415,12 +373,11 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The protocol that Amazon Route 53 used to respond to the request, either
-     * <code>UDP</code> or <code>TCP</code>.
+     * The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or <code>TCP</code>.
      * </p>
      * 
-     * @return The protocol that Amazon Route 53 used to respond to the request,
-     *         either <code>UDP</code> or <code>TCP</code>.
+     * @return The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or
+     *         <code>TCP</code>.
      */
 
     public String getProtocol() {
@@ -429,15 +386,13 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The protocol that Amazon Route 53 used to respond to the request, either
-     * <code>UDP</code> or <code>TCP</code>.
+     * The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or <code>TCP</code>.
      * </p>
      * 
      * @param protocol
-     *        The protocol that Amazon Route 53 used to respond to the request,
-     *        either <code>UDP</code> or <code>TCP</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or
+     *        <code>TCP</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestDNSAnswerResult withProtocol(String protocol) {
@@ -446,8 +401,7 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -458,17 +412,17 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNameserver() != null)
-            sb.append("Nameserver: " + getNameserver() + ",");
+            sb.append("Nameserver: ").append(getNameserver()).append(",");
         if (getRecordName() != null)
-            sb.append("RecordName: " + getRecordName() + ",");
+            sb.append("RecordName: ").append(getRecordName()).append(",");
         if (getRecordType() != null)
-            sb.append("RecordType: " + getRecordType() + ",");
+            sb.append("RecordType: ").append(getRecordType()).append(",");
         if (getRecordData() != null)
-            sb.append("RecordData: " + getRecordData() + ",");
+            sb.append("RecordData: ").append(getRecordData()).append(",");
         if (getResponseCode() != null)
-            sb.append("ResponseCode: " + getResponseCode() + ",");
+            sb.append("ResponseCode: ").append(getResponseCode()).append(",");
         if (getProtocol() != null)
-            sb.append("Protocol: " + getProtocol());
+            sb.append("Protocol: ").append(getProtocol());
         sb.append("}");
         return sb.toString();
     }
@@ -485,33 +439,27 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
         TestDNSAnswerResult other = (TestDNSAnswerResult) obj;
         if (other.getNameserver() == null ^ this.getNameserver() == null)
             return false;
-        if (other.getNameserver() != null
-                && other.getNameserver().equals(this.getNameserver()) == false)
+        if (other.getNameserver() != null && other.getNameserver().equals(this.getNameserver()) == false)
             return false;
         if (other.getRecordName() == null ^ this.getRecordName() == null)
             return false;
-        if (other.getRecordName() != null
-                && other.getRecordName().equals(this.getRecordName()) == false)
+        if (other.getRecordName() != null && other.getRecordName().equals(this.getRecordName()) == false)
             return false;
         if (other.getRecordType() == null ^ this.getRecordType() == null)
             return false;
-        if (other.getRecordType() != null
-                && other.getRecordType().equals(this.getRecordType()) == false)
+        if (other.getRecordType() != null && other.getRecordType().equals(this.getRecordType()) == false)
             return false;
         if (other.getRecordData() == null ^ this.getRecordData() == null)
             return false;
-        if (other.getRecordData() != null
-                && other.getRecordData().equals(this.getRecordData()) == false)
+        if (other.getRecordData() != null && other.getRecordData().equals(this.getRecordData()) == false)
             return false;
         if (other.getResponseCode() == null ^ this.getResponseCode() == null)
             return false;
-        if (other.getResponseCode() != null
-                && other.getResponseCode().equals(this.getResponseCode()) == false)
+        if (other.getResponseCode() != null && other.getResponseCode().equals(this.getResponseCode()) == false)
             return false;
         if (other.getProtocol() == null ^ this.getProtocol() == null)
             return false;
-        if (other.getProtocol() != null
-                && other.getProtocol().equals(this.getProtocol()) == false)
+        if (other.getProtocol() != null && other.getProtocol().equals(this.getProtocol()) == false)
             return false;
         return true;
     }
@@ -521,20 +469,12 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getNameserver() == null) ? 0 : getNameserver().hashCode());
-        hashCode = prime * hashCode
-                + ((getRecordName() == null) ? 0 : getRecordName().hashCode());
-        hashCode = prime * hashCode
-                + ((getRecordType() == null) ? 0 : getRecordType().hashCode());
-        hashCode = prime * hashCode
-                + ((getRecordData() == null) ? 0 : getRecordData().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getResponseCode() == null) ? 0 : getResponseCode()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getProtocol() == null) ? 0 : getProtocol().hashCode());
+        hashCode = prime * hashCode + ((getNameserver() == null) ? 0 : getNameserver().hashCode());
+        hashCode = prime * hashCode + ((getRecordName() == null) ? 0 : getRecordName().hashCode());
+        hashCode = prime * hashCode + ((getRecordType() == null) ? 0 : getRecordType().hashCode());
+        hashCode = prime * hashCode + ((getRecordData() == null) ? 0 : getRecordData().hashCode());
+        hashCode = prime * hashCode + ((getResponseCode() == null) ? 0 : getResponseCode().hashCode());
+        hashCode = prime * hashCode + ((getProtocol() == null) ? 0 : getProtocol().hashCode());
         return hashCode;
     }
 
@@ -543,9 +483,8 @@ public class TestDNSAnswerResult implements Serializable, Cloneable {
         try {
             return (TestDNSAnswerResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

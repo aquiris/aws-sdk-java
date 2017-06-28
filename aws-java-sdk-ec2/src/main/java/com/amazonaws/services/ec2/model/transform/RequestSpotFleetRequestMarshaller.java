@@ -1,633 +1,418 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model.transform;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Generated;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.Request;
 import com.amazonaws.DefaultRequest;
 import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.transform.Marshaller;
 import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
 
 /**
  * RequestSpotFleetRequest Marshaller
  */
 
-public class RequestSpotFleetRequestMarshaller implements
-        Marshaller<Request<RequestSpotFleetRequest>, RequestSpotFleetRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RequestSpotFleetRequestMarshaller implements Marshaller<Request<RequestSpotFleetRequest>, RequestSpotFleetRequest> {
 
-    public Request<RequestSpotFleetRequest> marshall(
-            RequestSpotFleetRequest requestSpotFleetRequest) {
+    public Request<RequestSpotFleetRequest> marshall(RequestSpotFleetRequest requestSpotFleetRequest) {
 
         if (requestSpotFleetRequest == null) {
-            throw new AmazonClientException(
-                    "Invalid argument passed to marshall(...)");
+            throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<RequestSpotFleetRequest> request = new DefaultRequest<RequestSpotFleetRequest>(
-                requestSpotFleetRequest, "AmazonEC2");
+        Request<RequestSpotFleetRequest> request = new DefaultRequest<RequestSpotFleetRequest>(requestSpotFleetRequest, "AmazonEC2");
         request.addParameter("Action", "RequestSpotFleet");
-        request.addParameter("Version", "2016-04-01");
+        request.addParameter("Version", "2016-11-15");
         request.setHttpMethod(HttpMethodName.POST);
 
-        SpotFleetRequestConfigData spotFleetRequestConfig = requestSpotFleetRequest
-                .getSpotFleetRequestConfig();
+        SpotFleetRequestConfigData spotFleetRequestConfig = requestSpotFleetRequest.getSpotFleetRequestConfig();
         if (spotFleetRequestConfig != null) {
 
+            if (spotFleetRequestConfig.getAllocationStrategy() != null) {
+                request.addParameter("SpotFleetRequestConfig.AllocationStrategy", StringUtils.fromString(spotFleetRequestConfig.getAllocationStrategy()));
+            }
+
             if (spotFleetRequestConfig.getClientToken() != null) {
-                request.addParameter("SpotFleetRequestConfig.ClientToken",
-                        StringUtils.fromString(spotFleetRequestConfig
-                                .getClientToken()));
+                request.addParameter("SpotFleetRequestConfig.ClientToken", StringUtils.fromString(spotFleetRequestConfig.getClientToken()));
             }
 
-            if (spotFleetRequestConfig.getSpotPrice() != null) {
-                request.addParameter("SpotFleetRequestConfig.SpotPrice",
-                        StringUtils.fromString(spotFleetRequestConfig
-                                .getSpotPrice()));
+            if (spotFleetRequestConfig.getExcessCapacityTerminationPolicy() != null) {
+                request.addParameter("SpotFleetRequestConfig.ExcessCapacityTerminationPolicy",
+                        StringUtils.fromString(spotFleetRequestConfig.getExcessCapacityTerminationPolicy()));
             }
 
-            if (spotFleetRequestConfig.getTargetCapacity() != null) {
-                request.addParameter("SpotFleetRequestConfig.TargetCapacity",
-                        StringUtils.fromInteger(spotFleetRequestConfig
-                                .getTargetCapacity()));
-            }
-
-            if (spotFleetRequestConfig.getValidFrom() != null) {
-                request.addParameter("SpotFleetRequestConfig.ValidFrom",
-                        StringUtils.fromDate(spotFleetRequestConfig
-                                .getValidFrom()));
-            }
-
-            if (spotFleetRequestConfig.getValidUntil() != null) {
-                request.addParameter("SpotFleetRequestConfig.ValidUntil",
-                        StringUtils.fromDate(spotFleetRequestConfig
-                                .getValidUntil()));
-            }
-
-            if (spotFleetRequestConfig.getTerminateInstancesWithExpiration() != null) {
-                request.addParameter(
-                        "SpotFleetRequestConfig.TerminateInstancesWithExpiration",
-                        StringUtils.fromBoolean(spotFleetRequestConfig
-                                .getTerminateInstancesWithExpiration()));
+            if (spotFleetRequestConfig.getFulfilledCapacity() != null) {
+                request.addParameter("SpotFleetRequestConfig.FulfilledCapacity", StringUtils.fromDouble(spotFleetRequestConfig.getFulfilledCapacity()));
             }
 
             if (spotFleetRequestConfig.getIamFleetRole() != null) {
-                request.addParameter("SpotFleetRequestConfig.IamFleetRole",
-                        StringUtils.fromString(spotFleetRequestConfig
-                                .getIamFleetRole()));
+                request.addParameter("SpotFleetRequestConfig.IamFleetRole", StringUtils.fromString(spotFleetRequestConfig.getIamFleetRole()));
             }
 
-            com.amazonaws.internal.SdkInternalList<SpotFleetLaunchSpecification> launchSpecificationsList = (com.amazonaws.internal.SdkInternalList<SpotFleetLaunchSpecification>) spotFleetRequestConfig
+            com.amazonaws.internal.SdkInternalList<SpotFleetLaunchSpecification> spotFleetRequestConfigDataLaunchSpecificationsList = (com.amazonaws.internal.SdkInternalList<SpotFleetLaunchSpecification>) spotFleetRequestConfig
                     .getLaunchSpecifications();
-            if (!launchSpecificationsList.isEmpty()
-                    || !launchSpecificationsList.isAutoConstruct()) {
+            if (!spotFleetRequestConfigDataLaunchSpecificationsList.isEmpty() || !spotFleetRequestConfigDataLaunchSpecificationsList.isAutoConstruct()) {
                 int launchSpecificationsListIndex = 1;
 
-                for (SpotFleetLaunchSpecification launchSpecificationsListValue : launchSpecificationsList) {
+                for (SpotFleetLaunchSpecification spotFleetRequestConfigDataLaunchSpecificationsListValue : spotFleetRequestConfigDataLaunchSpecificationsList) {
 
-                    if (launchSpecificationsListValue.getImageId() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".ImageId",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getImageId()));
-                    }
-
-                    if (launchSpecificationsListValue.getKeyName() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".KeyName",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getKeyName()));
-                    }
-
-                    com.amazonaws.internal.SdkInternalList<GroupIdentifier> securityGroupsList = (com.amazonaws.internal.SdkInternalList<GroupIdentifier>) launchSpecificationsListValue
+                    com.amazonaws.internal.SdkInternalList<GroupIdentifier> spotFleetLaunchSpecificationSecurityGroupsList = (com.amazonaws.internal.SdkInternalList<GroupIdentifier>) spotFleetRequestConfigDataLaunchSpecificationsListValue
                             .getSecurityGroups();
-                    if (!securityGroupsList.isEmpty()
-                            || !securityGroupsList.isAutoConstruct()) {
+                    if (!spotFleetLaunchSpecificationSecurityGroupsList.isEmpty() || !spotFleetLaunchSpecificationSecurityGroupsList.isAutoConstruct()) {
                         int securityGroupsListIndex = 1;
 
-                        for (GroupIdentifier securityGroupsListValue : securityGroupsList) {
+                        for (GroupIdentifier spotFleetLaunchSpecificationSecurityGroupsListValue : spotFleetLaunchSpecificationSecurityGroupsList) {
 
-                            if (securityGroupsListValue.getGroupName() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".GroupSet."
-                                                + securityGroupsListIndex
-                                                + ".GroupName",
-                                        StringUtils
-                                                .fromString(securityGroupsListValue
-                                                        .getGroupName()));
+                            if (spotFleetLaunchSpecificationSecurityGroupsListValue.getGroupName() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".GroupSet."
+                                        + securityGroupsListIndex + ".GroupName",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationSecurityGroupsListValue.getGroupName()));
                             }
 
-                            if (securityGroupsListValue.getGroupId() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".GroupSet."
-                                                + securityGroupsListIndex
-                                                + ".GroupId",
-                                        StringUtils
-                                                .fromString(securityGroupsListValue
-                                                        .getGroupId()));
+                            if (spotFleetLaunchSpecificationSecurityGroupsListValue.getGroupId() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".GroupSet."
+                                        + securityGroupsListIndex + ".GroupId",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationSecurityGroupsListValue.getGroupId()));
                             }
                             securityGroupsListIndex++;
                         }
                     }
 
-                    if (launchSpecificationsListValue.getUserData() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".UserData",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getUserData()));
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getAddressingType() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".AddressingType",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getAddressingType()));
                     }
 
-                    if (launchSpecificationsListValue.getAddressingType() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".AddressingType",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getAddressingType()));
-                    }
-
-                    if (launchSpecificationsListValue.getInstanceType() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".InstanceType",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getInstanceType()));
-                    }
-
-                    SpotPlacement placement = launchSpecificationsListValue
-                            .getPlacement();
-                    if (placement != null) {
-
-                        if (placement.getAvailabilityZone() != null) {
-                            request.addParameter(
-                                    "SpotFleetRequestConfig.LaunchSpecifications."
-                                            + launchSpecificationsListIndex
-                                            + ".Placement.AvailabilityZone",
-                                    StringUtils.fromString(placement
-                                            .getAvailabilityZone()));
-                        }
-
-                        if (placement.getGroupName() != null) {
-                            request.addParameter(
-                                    "SpotFleetRequestConfig.LaunchSpecifications."
-                                            + launchSpecificationsListIndex
-                                            + ".Placement.GroupName",
-                                    StringUtils.fromString(placement
-                                            .getGroupName()));
-                        }
-                    }
-
-                    if (launchSpecificationsListValue.getKernelId() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".KernelId",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getKernelId()));
-                    }
-
-                    if (launchSpecificationsListValue.getRamdiskId() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".RamdiskId",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getRamdiskId()));
-                    }
-
-                    com.amazonaws.internal.SdkInternalList<BlockDeviceMapping> blockDeviceMappingsList = (com.amazonaws.internal.SdkInternalList<BlockDeviceMapping>) launchSpecificationsListValue
+                    com.amazonaws.internal.SdkInternalList<BlockDeviceMapping> spotFleetLaunchSpecificationBlockDeviceMappingsList = (com.amazonaws.internal.SdkInternalList<BlockDeviceMapping>) spotFleetRequestConfigDataLaunchSpecificationsListValue
                             .getBlockDeviceMappings();
-                    if (!blockDeviceMappingsList.isEmpty()
-                            || !blockDeviceMappingsList.isAutoConstruct()) {
+                    if (!spotFleetLaunchSpecificationBlockDeviceMappingsList.isEmpty()
+                            || !spotFleetLaunchSpecificationBlockDeviceMappingsList.isAutoConstruct()) {
                         int blockDeviceMappingsListIndex = 1;
 
-                        for (BlockDeviceMapping blockDeviceMappingsListValue : blockDeviceMappingsList) {
+                        for (BlockDeviceMapping spotFleetLaunchSpecificationBlockDeviceMappingsListValue : spotFleetLaunchSpecificationBlockDeviceMappingsList) {
 
-                            if (blockDeviceMappingsListValue.getVirtualName() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".BlockDeviceMapping."
-                                                + blockDeviceMappingsListIndex
-                                                + ".VirtualName",
-                                        StringUtils
-                                                .fromString(blockDeviceMappingsListValue
-                                                        .getVirtualName()));
+                            if (spotFleetLaunchSpecificationBlockDeviceMappingsListValue.getDeviceName() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".BlockDeviceMapping."
+                                        + blockDeviceMappingsListIndex + ".DeviceName",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationBlockDeviceMappingsListValue.getDeviceName()));
                             }
 
-                            if (blockDeviceMappingsListValue.getDeviceName() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".BlockDeviceMapping."
-                                                + blockDeviceMappingsListIndex
-                                                + ".DeviceName",
-                                        StringUtils
-                                                .fromString(blockDeviceMappingsListValue
-                                                        .getDeviceName()));
+                            if (spotFleetLaunchSpecificationBlockDeviceMappingsListValue.getVirtualName() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".BlockDeviceMapping."
+                                        + blockDeviceMappingsListIndex + ".VirtualName",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationBlockDeviceMappingsListValue.getVirtualName()));
                             }
 
-                            EbsBlockDevice ebs = blockDeviceMappingsListValue
-                                    .getEbs();
+                            EbsBlockDevice ebs = spotFleetLaunchSpecificationBlockDeviceMappingsListValue.getEbs();
                             if (ebs != null) {
 
-                                if (ebs.getSnapshotId() != null) {
-                                    request.addParameter(
-                                            "SpotFleetRequestConfig.LaunchSpecifications."
-                                                    + launchSpecificationsListIndex
-                                                    + ".BlockDeviceMapping."
-                                                    + blockDeviceMappingsListIndex
-                                                    + ".Ebs.SnapshotId",
-                                            StringUtils.fromString(ebs
-                                                    .getSnapshotId()));
-                                }
-
-                                if (ebs.getVolumeSize() != null) {
-                                    request.addParameter(
-                                            "SpotFleetRequestConfig.LaunchSpecifications."
-                                                    + launchSpecificationsListIndex
-                                                    + ".BlockDeviceMapping."
-                                                    + blockDeviceMappingsListIndex
-                                                    + ".Ebs.VolumeSize",
-                                            StringUtils.fromInteger(ebs
-                                                    .getVolumeSize()));
+                                if (ebs.getEncrypted() != null) {
+                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.Encrypted",
+                                            StringUtils.fromBoolean(ebs.getEncrypted()));
                                 }
 
                                 if (ebs.getDeleteOnTermination() != null) {
-                                    request.addParameter(
-                                            "SpotFleetRequestConfig.LaunchSpecifications."
-                                                    + launchSpecificationsListIndex
-                                                    + ".BlockDeviceMapping."
-                                                    + blockDeviceMappingsListIndex
-                                                    + ".Ebs.DeleteOnTermination",
-                                            StringUtils.fromBoolean(ebs
-                                                    .getDeleteOnTermination()));
-                                }
-
-                                if (ebs.getVolumeType() != null) {
-                                    request.addParameter(
-                                            "SpotFleetRequestConfig.LaunchSpecifications."
-                                                    + launchSpecificationsListIndex
-                                                    + ".BlockDeviceMapping."
-                                                    + blockDeviceMappingsListIndex
-                                                    + ".Ebs.VolumeType",
-                                            StringUtils.fromString(ebs
-                                                    .getVolumeType()));
+                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.DeleteOnTermination",
+                                            StringUtils.fromBoolean(ebs.getDeleteOnTermination()));
                                 }
 
                                 if (ebs.getIops() != null) {
-                                    request.addParameter(
-                                            "SpotFleetRequestConfig.LaunchSpecifications."
-                                                    + launchSpecificationsListIndex
-                                                    + ".BlockDeviceMapping."
-                                                    + blockDeviceMappingsListIndex
-                                                    + ".Ebs.Iops", StringUtils
-                                                    .fromInteger(ebs.getIops()));
+                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.Iops", StringUtils.fromInteger(ebs.getIops()));
                                 }
 
-                                if (ebs.getEncrypted() != null) {
-                                    request.addParameter(
-                                            "SpotFleetRequestConfig.LaunchSpecifications."
-                                                    + launchSpecificationsListIndex
-                                                    + ".BlockDeviceMapping."
-                                                    + blockDeviceMappingsListIndex
-                                                    + ".Ebs.Encrypted",
-                                            StringUtils.fromBoolean(ebs
-                                                    .getEncrypted()));
+                                if (ebs.getSnapshotId() != null) {
+                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.SnapshotId",
+                                            StringUtils.fromString(ebs.getSnapshotId()));
+                                }
+
+                                if (ebs.getVolumeSize() != null) {
+                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.VolumeSize",
+                                            StringUtils.fromInteger(ebs.getVolumeSize()));
+                                }
+
+                                if (ebs.getVolumeType() != null) {
+                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.VolumeType",
+                                            StringUtils.fromString(ebs.getVolumeType()));
                                 }
                             }
 
-                            if (blockDeviceMappingsListValue.getNoDevice() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".BlockDeviceMapping."
-                                                + blockDeviceMappingsListIndex
-                                                + ".NoDevice",
-                                        StringUtils
-                                                .fromString(blockDeviceMappingsListValue
-                                                        .getNoDevice()));
+                            if (spotFleetLaunchSpecificationBlockDeviceMappingsListValue.getNoDevice() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".BlockDeviceMapping."
+                                        + blockDeviceMappingsListIndex + ".NoDevice",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationBlockDeviceMappingsListValue.getNoDevice()));
                             }
                             blockDeviceMappingsListIndex++;
                         }
                     }
 
-                    SpotFleetMonitoring monitoring = launchSpecificationsListValue
-                            .getMonitoring();
-                    if (monitoring != null) {
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getEbsOptimized() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".EbsOptimized",
+                                StringUtils.fromBoolean(spotFleetRequestConfigDataLaunchSpecificationsListValue.getEbsOptimized()));
+                    }
 
-                        if (monitoring.getEnabled() != null) {
-                            request.addParameter(
-                                    "SpotFleetRequestConfig.LaunchSpecifications."
-                                            + launchSpecificationsListIndex
-                                            + ".Monitoring.Enabled",
-                                    StringUtils.fromBoolean(monitoring
-                                            .getEnabled()));
+                    IamInstanceProfileSpecification iamInstanceProfile = spotFleetRequestConfigDataLaunchSpecificationsListValue.getIamInstanceProfile();
+                    if (iamInstanceProfile != null) {
+
+                        if (iamInstanceProfile.getArn() != null) {
+                            request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".IamInstanceProfile.Arn",
+                                    StringUtils.fromString(iamInstanceProfile.getArn()));
+                        }
+
+                        if (iamInstanceProfile.getName() != null) {
+                            request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".IamInstanceProfile.Name",
+                                    StringUtils.fromString(iamInstanceProfile.getName()));
                         }
                     }
 
-                    if (launchSpecificationsListValue.getSubnetId() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".SubnetId",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getSubnetId()));
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getImageId() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".ImageId",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getImageId()));
                     }
 
-                    com.amazonaws.internal.SdkInternalList<InstanceNetworkInterfaceSpecification> networkInterfacesList = (com.amazonaws.internal.SdkInternalList<InstanceNetworkInterfaceSpecification>) launchSpecificationsListValue
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getInstanceType() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".InstanceType",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getInstanceType()));
+                    }
+
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getKernelId() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".KernelId",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getKernelId()));
+                    }
+
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getKeyName() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".KeyName",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getKeyName()));
+                    }
+
+                    SpotFleetMonitoring monitoring = spotFleetRequestConfigDataLaunchSpecificationsListValue.getMonitoring();
+                    if (monitoring != null) {
+
+                        if (monitoring.getEnabled() != null) {
+                            request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".Monitoring.Enabled",
+                                    StringUtils.fromBoolean(monitoring.getEnabled()));
+                        }
+                    }
+
+                    com.amazonaws.internal.SdkInternalList<InstanceNetworkInterfaceSpecification> spotFleetLaunchSpecificationNetworkInterfacesList = (com.amazonaws.internal.SdkInternalList<InstanceNetworkInterfaceSpecification>) spotFleetRequestConfigDataLaunchSpecificationsListValue
                             .getNetworkInterfaces();
-                    if (!networkInterfacesList.isEmpty()
-                            || !networkInterfacesList.isAutoConstruct()) {
+                    if (!spotFleetLaunchSpecificationNetworkInterfacesList.isEmpty() || !spotFleetLaunchSpecificationNetworkInterfacesList.isAutoConstruct()) {
                         int networkInterfacesListIndex = 1;
 
-                        for (InstanceNetworkInterfaceSpecification networkInterfacesListValue : networkInterfacesList) {
+                        for (InstanceNetworkInterfaceSpecification spotFleetLaunchSpecificationNetworkInterfacesListValue : spotFleetLaunchSpecificationNetworkInterfacesList) {
 
-                            if (networkInterfacesListValue
-                                    .getNetworkInterfaceId() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".NetworkInterfaceId",
-                                        StringUtils
-                                                .fromString(networkInterfacesListValue
-                                                        .getNetworkInterfaceId()));
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getAssociatePublicIpAddress() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".AssociatePublicIpAddress",
+                                        StringUtils.fromBoolean(spotFleetLaunchSpecificationNetworkInterfacesListValue.getAssociatePublicIpAddress()));
                             }
 
-                            if (networkInterfacesListValue.getDeviceIndex() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".DeviceIndex",
-                                        StringUtils
-                                                .fromInteger(networkInterfacesListValue
-                                                        .getDeviceIndex()));
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getDeleteOnTermination() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".DeleteOnTermination",
+                                        StringUtils.fromBoolean(spotFleetLaunchSpecificationNetworkInterfacesListValue.getDeleteOnTermination()));
                             }
 
-                            if (networkInterfacesListValue.getSubnetId() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".SubnetId",
-                                        StringUtils
-                                                .fromString(networkInterfacesListValue
-                                                        .getSubnetId()));
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getDescription() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".Description",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationNetworkInterfacesListValue.getDescription()));
                             }
 
-                            if (networkInterfacesListValue.getDescription() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".Description",
-                                        StringUtils
-                                                .fromString(networkInterfacesListValue
-                                                        .getDescription()));
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getDeviceIndex() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".DeviceIndex",
+                                        StringUtils.fromInteger(spotFleetLaunchSpecificationNetworkInterfacesListValue.getDeviceIndex()));
                             }
 
-                            if (networkInterfacesListValue
-                                    .getPrivateIpAddress() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".PrivateIpAddress",
-                                        StringUtils
-                                                .fromString(networkInterfacesListValue
-                                                        .getPrivateIpAddress()));
-                            }
-
-                            com.amazonaws.internal.SdkInternalList<String> groupsList = (com.amazonaws.internal.SdkInternalList<String>) networkInterfacesListValue
+                            com.amazonaws.internal.SdkInternalList<String> instanceNetworkInterfaceSpecificationGroupsList = (com.amazonaws.internal.SdkInternalList<String>) spotFleetLaunchSpecificationNetworkInterfacesListValue
                                     .getGroups();
-                            if (!groupsList.isEmpty()
-                                    || !groupsList.isAutoConstruct()) {
+                            if (!instanceNetworkInterfaceSpecificationGroupsList.isEmpty()
+                                    || !instanceNetworkInterfaceSpecificationGroupsList.isAutoConstruct()) {
                                 int groupsListIndex = 1;
 
-                                for (String groupsListValue : groupsList) {
-                                    if (groupsListValue != null) {
-                                        request.addParameter(
-                                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                                        + launchSpecificationsListIndex
-                                                        + ".NetworkInterfaceSet."
-                                                        + networkInterfacesListIndex
-                                                        + ".SecurityGroupId."
-                                                        + groupsListIndex,
-                                                StringUtils
-                                                        .fromString(groupsListValue));
+                                for (String instanceNetworkInterfaceSpecificationGroupsListValue : instanceNetworkInterfaceSpecificationGroupsList) {
+                                    if (instanceNetworkInterfaceSpecificationGroupsListValue != null) {
+                                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                                + ".NetworkInterfaceSet." + networkInterfacesListIndex + ".SecurityGroupId." + groupsListIndex,
+                                                StringUtils.fromString(instanceNetworkInterfaceSpecificationGroupsListValue));
                                     }
                                     groupsListIndex++;
                                 }
                             }
 
-                            if (networkInterfacesListValue
-                                    .getDeleteOnTermination() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".DeleteOnTermination",
-                                        StringUtils
-                                                .fromBoolean(networkInterfacesListValue
-                                                        .getDeleteOnTermination()));
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getIpv6AddressCount() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".Ipv6AddressCount",
+                                        StringUtils.fromInteger(spotFleetLaunchSpecificationNetworkInterfacesListValue.getIpv6AddressCount()));
                             }
 
-                            com.amazonaws.internal.SdkInternalList<PrivateIpAddressSpecification> privateIpAddressesList = (com.amazonaws.internal.SdkInternalList<PrivateIpAddressSpecification>) networkInterfacesListValue
+                            com.amazonaws.internal.SdkInternalList<InstanceIpv6Address> instanceNetworkInterfaceSpecificationIpv6AddressesList = (com.amazonaws.internal.SdkInternalList<InstanceIpv6Address>) spotFleetLaunchSpecificationNetworkInterfacesListValue
+                                    .getIpv6Addresses();
+                            if (!instanceNetworkInterfaceSpecificationIpv6AddressesList.isEmpty()
+                                    || !instanceNetworkInterfaceSpecificationIpv6AddressesList.isAutoConstruct()) {
+                                int ipv6AddressesListIndex = 1;
+
+                                for (InstanceIpv6Address instanceNetworkInterfaceSpecificationIpv6AddressesListValue : instanceNetworkInterfaceSpecificationIpv6AddressesList) {
+
+                                    if (instanceNetworkInterfaceSpecificationIpv6AddressesListValue.getIpv6Address() != null) {
+                                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                                + ".NetworkInterfaceSet." + networkInterfacesListIndex + ".Ipv6Addresses." + ipv6AddressesListIndex
+                                                + ".Ipv6Address",
+                                                StringUtils.fromString(instanceNetworkInterfaceSpecificationIpv6AddressesListValue.getIpv6Address()));
+                                    }
+                                    ipv6AddressesListIndex++;
+                                }
+                            }
+
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getNetworkInterfaceId() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".NetworkInterfaceId",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationNetworkInterfacesListValue.getNetworkInterfaceId()));
+                            }
+
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getPrivateIpAddress() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".PrivateIpAddress",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationNetworkInterfacesListValue.getPrivateIpAddress()));
+                            }
+
+                            com.amazonaws.internal.SdkInternalList<PrivateIpAddressSpecification> instanceNetworkInterfaceSpecificationPrivateIpAddressesList = (com.amazonaws.internal.SdkInternalList<PrivateIpAddressSpecification>) spotFleetLaunchSpecificationNetworkInterfacesListValue
                                     .getPrivateIpAddresses();
-                            if (!privateIpAddressesList.isEmpty()
-                                    || !privateIpAddressesList
-                                            .isAutoConstruct()) {
+                            if (!instanceNetworkInterfaceSpecificationPrivateIpAddressesList.isEmpty()
+                                    || !instanceNetworkInterfaceSpecificationPrivateIpAddressesList.isAutoConstruct()) {
                                 int privateIpAddressesListIndex = 1;
 
-                                for (PrivateIpAddressSpecification privateIpAddressesListValue : privateIpAddressesList) {
+                                for (PrivateIpAddressSpecification instanceNetworkInterfaceSpecificationPrivateIpAddressesListValue : instanceNetworkInterfaceSpecificationPrivateIpAddressesList) {
 
-                                    if (privateIpAddressesListValue
-                                            .getPrivateIpAddress() != null) {
-                                        request.addParameter(
-                                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                                        + launchSpecificationsListIndex
-                                                        + ".NetworkInterfaceSet."
-                                                        + networkInterfacesListIndex
-                                                        + ".PrivateIpAddresses."
-                                                        + privateIpAddressesListIndex
-                                                        + ".PrivateIpAddress",
-                                                StringUtils
-                                                        .fromString(privateIpAddressesListValue
-                                                                .getPrivateIpAddress()));
+                                    if (instanceNetworkInterfaceSpecificationPrivateIpAddressesListValue.getPrimary() != null) {
+                                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                                + ".NetworkInterfaceSet." + networkInterfacesListIndex + ".PrivateIpAddresses." + privateIpAddressesListIndex
+                                                + ".Primary",
+                                                StringUtils.fromBoolean(instanceNetworkInterfaceSpecificationPrivateIpAddressesListValue.getPrimary()));
                                     }
 
-                                    if (privateIpAddressesListValue
-                                            .getPrimary() != null) {
-                                        request.addParameter(
-                                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                                        + launchSpecificationsListIndex
-                                                        + ".NetworkInterfaceSet."
-                                                        + networkInterfacesListIndex
-                                                        + ".PrivateIpAddresses."
-                                                        + privateIpAddressesListIndex
-                                                        + ".Primary",
-                                                StringUtils
-                                                        .fromBoolean(privateIpAddressesListValue
-                                                                .getPrimary()));
+                                    if (instanceNetworkInterfaceSpecificationPrivateIpAddressesListValue.getPrivateIpAddress() != null) {
+                                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                                + ".NetworkInterfaceSet." + networkInterfacesListIndex + ".PrivateIpAddresses." + privateIpAddressesListIndex
+                                                + ".PrivateIpAddress",
+                                                StringUtils.fromString(instanceNetworkInterfaceSpecificationPrivateIpAddressesListValue.getPrivateIpAddress()));
                                     }
                                     privateIpAddressesListIndex++;
                                 }
                             }
 
-                            if (networkInterfacesListValue
-                                    .getSecondaryPrivateIpAddressCount() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".SecondaryPrivateIpAddressCount",
-                                        StringUtils
-                                                .fromInteger(networkInterfacesListValue
-                                                        .getSecondaryPrivateIpAddressCount()));
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getSecondaryPrivateIpAddressCount() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".SecondaryPrivateIpAddressCount",
+                                        StringUtils.fromInteger(spotFleetLaunchSpecificationNetworkInterfacesListValue.getSecondaryPrivateIpAddressCount()));
                             }
 
-                            if (networkInterfacesListValue
-                                    .getAssociatePublicIpAddress() != null) {
-                                request.addParameter(
-                                        "SpotFleetRequestConfig.LaunchSpecifications."
-                                                + launchSpecificationsListIndex
-                                                + ".NetworkInterfaceSet."
-                                                + networkInterfacesListIndex
-                                                + ".AssociatePublicIpAddress",
-                                        StringUtils
-                                                .fromBoolean(networkInterfacesListValue
-                                                        .getAssociatePublicIpAddress()));
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getSubnetId() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".SubnetId",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationNetworkInterfacesListValue.getSubnetId()));
                             }
                             networkInterfacesListIndex++;
                         }
                     }
 
-                    IamInstanceProfileSpecification iamInstanceProfile = launchSpecificationsListValue
-                            .getIamInstanceProfile();
-                    if (iamInstanceProfile != null) {
+                    SpotPlacement placement = spotFleetRequestConfigDataLaunchSpecificationsListValue.getPlacement();
+                    if (placement != null) {
 
-                        if (iamInstanceProfile.getArn() != null) {
+                        if (placement.getAvailabilityZone() != null) {
                             request.addParameter(
-                                    "SpotFleetRequestConfig.LaunchSpecifications."
-                                            + launchSpecificationsListIndex
-                                            + ".IamInstanceProfile.Arn",
-                                    StringUtils.fromString(iamInstanceProfile
-                                            .getArn()));
+                                    "SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".Placement.AvailabilityZone",
+                                    StringUtils.fromString(placement.getAvailabilityZone()));
                         }
 
-                        if (iamInstanceProfile.getName() != null) {
-                            request.addParameter(
-                                    "SpotFleetRequestConfig.LaunchSpecifications."
-                                            + launchSpecificationsListIndex
-                                            + ".IamInstanceProfile.Name",
-                                    StringUtils.fromString(iamInstanceProfile
-                                            .getName()));
+                        if (placement.getGroupName() != null) {
+                            request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".Placement.GroupName",
+                                    StringUtils.fromString(placement.getGroupName()));
+                        }
+
+                        if (placement.getTenancy() != null) {
+                            request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".Placement.Tenancy",
+                                    StringUtils.fromString(placement.getTenancy()));
                         }
                     }
 
-                    if (launchSpecificationsListValue.getEbsOptimized() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".EbsOptimized",
-                                StringUtils
-                                        .fromBoolean(launchSpecificationsListValue
-                                                .getEbsOptimized()));
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getRamdiskId() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".RamdiskId",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getRamdiskId()));
                     }
 
-                    if (launchSpecificationsListValue.getWeightedCapacity() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".WeightedCapacity",
-                                StringUtils
-                                        .fromDouble(launchSpecificationsListValue
-                                                .getWeightedCapacity()));
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getSpotPrice() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".SpotPrice",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getSpotPrice()));
                     }
 
-                    if (launchSpecificationsListValue.getSpotPrice() != null) {
-                        request.addParameter(
-                                "SpotFleetRequestConfig.LaunchSpecifications."
-                                        + launchSpecificationsListIndex
-                                        + ".SpotPrice",
-                                StringUtils
-                                        .fromString(launchSpecificationsListValue
-                                                .getSpotPrice()));
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getSubnetId() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".SubnetId",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getSubnetId()));
+                    }
+
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getUserData() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".UserData",
+                                StringUtils.fromString(spotFleetRequestConfigDataLaunchSpecificationsListValue.getUserData()));
+                    }
+
+                    if (spotFleetRequestConfigDataLaunchSpecificationsListValue.getWeightedCapacity() != null) {
+                        request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".WeightedCapacity",
+                                StringUtils.fromDouble(spotFleetRequestConfigDataLaunchSpecificationsListValue.getWeightedCapacity()));
                     }
                     launchSpecificationsListIndex++;
                 }
             }
 
-            if (spotFleetRequestConfig.getExcessCapacityTerminationPolicy() != null) {
-                request.addParameter(
-                        "SpotFleetRequestConfig.ExcessCapacityTerminationPolicy",
-                        StringUtils.fromString(spotFleetRequestConfig
-                                .getExcessCapacityTerminationPolicy()));
+            if (spotFleetRequestConfig.getSpotPrice() != null) {
+                request.addParameter("SpotFleetRequestConfig.SpotPrice", StringUtils.fromString(spotFleetRequestConfig.getSpotPrice()));
             }
 
-            if (spotFleetRequestConfig.getAllocationStrategy() != null) {
-                request.addParameter(
-                        "SpotFleetRequestConfig.AllocationStrategy",
-                        StringUtils.fromString(spotFleetRequestConfig
-                                .getAllocationStrategy()));
+            if (spotFleetRequestConfig.getTargetCapacity() != null) {
+                request.addParameter("SpotFleetRequestConfig.TargetCapacity", StringUtils.fromInteger(spotFleetRequestConfig.getTargetCapacity()));
             }
 
-            if (spotFleetRequestConfig.getFulfilledCapacity() != null) {
-                request.addParameter(
-                        "SpotFleetRequestConfig.FulfilledCapacity", StringUtils
-                                .fromDouble(spotFleetRequestConfig
-                                        .getFulfilledCapacity()));
+            if (spotFleetRequestConfig.getTerminateInstancesWithExpiration() != null) {
+                request.addParameter("SpotFleetRequestConfig.TerminateInstancesWithExpiration",
+                        StringUtils.fromBoolean(spotFleetRequestConfig.getTerminateInstancesWithExpiration()));
             }
 
             if (spotFleetRequestConfig.getType() != null) {
-                request.addParameter("SpotFleetRequestConfig.Type", StringUtils
-                        .fromString(spotFleetRequestConfig.getType()));
+                request.addParameter("SpotFleetRequestConfig.Type", StringUtils.fromString(spotFleetRequestConfig.getType()));
+            }
+
+            if (spotFleetRequestConfig.getValidFrom() != null) {
+                request.addParameter("SpotFleetRequestConfig.ValidFrom", StringUtils.fromDate(spotFleetRequestConfig.getValidFrom()));
+            }
+
+            if (spotFleetRequestConfig.getValidUntil() != null) {
+                request.addParameter("SpotFleetRequestConfig.ValidUntil", StringUtils.fromDate(spotFleetRequestConfig.getValidUntil()));
+            }
+
+            if (spotFleetRequestConfig.getReplaceUnhealthyInstances() != null) {
+                request.addParameter("SpotFleetRequestConfig.ReplaceUnhealthyInstances",
+                        StringUtils.fromBoolean(spotFleetRequestConfig.getReplaceUnhealthyInstances()));
             }
         }
 

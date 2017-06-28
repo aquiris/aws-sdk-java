@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -163,8 +163,18 @@ public class DownloadImpl extends AbstractTransfer implements Download {
     public void setState(TransferState state) {
         super.setState(state);
 
-        if (state == TransferState.Completed) {
-            fireProgressEvent(ProgressEventType.TRANSFER_COMPLETED_EVENT);
+        switch (state) {
+            case Completed :
+                fireProgressEvent(ProgressEventType.TRANSFER_COMPLETED_EVENT);
+                break;
+            case Canceled:
+                fireProgressEvent(ProgressEventType.TRANSFER_CANCELED_EVENT);
+                break;
+            case Failed:
+                fireProgressEvent(ProgressEventType.TRANSFER_FAILED_EVENT);
+                break;
+            default:
+                break;
         }
     }
 

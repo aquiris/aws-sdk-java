@@ -1,31 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticsearch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Container for the parameters to the
- * <code><a>UpdateElasticsearchDomain</a></code> operation. Specifies the type
- * and number of instances in the domain cluster.
+ * Container for the parameters to the <code><a>UpdateElasticsearchDomain</a></code> operation. Specifies the type and
+ * number of instances in the domain cluster.
  * </p>
  */
-public class UpdateElasticsearchDomainConfigRequest extends
-        AmazonWebServiceRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -47,17 +46,14 @@ public class UpdateElasticsearchDomainConfigRequest extends
     private EBSOptions eBSOptions;
     /**
      * <p>
-     * Option to set the time, in UTC format, for the daily automated snapshot.
-     * Default value is <code>0</code> hours.
+     * Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours.
      * </p>
      */
     private SnapshotOptions snapshotOptions;
     /**
      * <p>
-     * Modifies the advanced option to allow references to indices in an HTTP
-     * request body. Must be <code>false</code> when configuring access to
-     * individual sub-resources. By default, the value is <code>true</code>. See
-     * <a href=
+     * Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code>
+     * when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href=
      * "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
      * target="_blank">Configuration Advanced Options</a> for more information.
      * </p>
@@ -102,12 +98,10 @@ public class UpdateElasticsearchDomainConfigRequest extends
      * 
      * @param domainName
      *        The name of the Elasticsearch domain that you are updating.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateElasticsearchDomainConfigRequest withDomainName(
-            String domainName) {
+    public UpdateElasticsearchDomainConfigRequest withDomainName(String domainName) {
         setDomainName(domainName);
         return this;
     }
@@ -118,12 +112,10 @@ public class UpdateElasticsearchDomainConfigRequest extends
      * </p>
      * 
      * @param elasticsearchClusterConfig
-     *        The type and number of instances to instantiate for the domain
-     *        cluster.
+     *        The type and number of instances to instantiate for the domain cluster.
      */
 
-    public void setElasticsearchClusterConfig(
-            ElasticsearchClusterConfig elasticsearchClusterConfig) {
+    public void setElasticsearchClusterConfig(ElasticsearchClusterConfig elasticsearchClusterConfig) {
         this.elasticsearchClusterConfig = elasticsearchClusterConfig;
     }
 
@@ -132,8 +124,7 @@ public class UpdateElasticsearchDomainConfigRequest extends
      * The type and number of instances to instantiate for the domain cluster.
      * </p>
      * 
-     * @return The type and number of instances to instantiate for the domain
-     *         cluster.
+     * @return The type and number of instances to instantiate for the domain cluster.
      */
 
     public ElasticsearchClusterConfig getElasticsearchClusterConfig() {
@@ -146,14 +137,11 @@ public class UpdateElasticsearchDomainConfigRequest extends
      * </p>
      * 
      * @param elasticsearchClusterConfig
-     *        The type and number of instances to instantiate for the domain
-     *        cluster.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type and number of instances to instantiate for the domain cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateElasticsearchDomainConfigRequest withElasticsearchClusterConfig(
-            ElasticsearchClusterConfig elasticsearchClusterConfig) {
+    public UpdateElasticsearchDomainConfigRequest withElasticsearchClusterConfig(ElasticsearchClusterConfig elasticsearchClusterConfig) {
         setElasticsearchClusterConfig(elasticsearchClusterConfig);
         return this;
     }
@@ -190,25 +178,22 @@ public class UpdateElasticsearchDomainConfigRequest extends
      * 
      * @param eBSOptions
      *        Specify the type and size of the EBS volume that you want to use.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateElasticsearchDomainConfigRequest withEBSOptions(
-            EBSOptions eBSOptions) {
+    public UpdateElasticsearchDomainConfigRequest withEBSOptions(EBSOptions eBSOptions) {
         setEBSOptions(eBSOptions);
         return this;
     }
 
     /**
      * <p>
-     * Option to set the time, in UTC format, for the daily automated snapshot.
-     * Default value is <code>0</code> hours.
+     * Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours.
      * </p>
      * 
      * @param snapshotOptions
-     *        Option to set the time, in UTC format, for the daily automated
-     *        snapshot. Default value is <code>0</code> hours.
+     *        Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code>
+     *        hours.
      */
 
     public void setSnapshotOptions(SnapshotOptions snapshotOptions) {
@@ -217,12 +202,11 @@ public class UpdateElasticsearchDomainConfigRequest extends
 
     /**
      * <p>
-     * Option to set the time, in UTC format, for the daily automated snapshot.
-     * Default value is <code>0</code> hours.
+     * Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours.
      * </p>
      * 
-     * @return Option to set the time, in UTC format, for the daily automated
-     *         snapshot. Default value is <code>0</code> hours.
+     * @return Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code>
+     *         hours.
      */
 
     public SnapshotOptions getSnapshotOptions() {
@@ -231,40 +215,33 @@ public class UpdateElasticsearchDomainConfigRequest extends
 
     /**
      * <p>
-     * Option to set the time, in UTC format, for the daily automated snapshot.
-     * Default value is <code>0</code> hours.
+     * Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours.
      * </p>
      * 
      * @param snapshotOptions
-     *        Option to set the time, in UTC format, for the daily automated
-     *        snapshot. Default value is <code>0</code> hours.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code>
+     *        hours.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateElasticsearchDomainConfigRequest withSnapshotOptions(
-            SnapshotOptions snapshotOptions) {
+    public UpdateElasticsearchDomainConfigRequest withSnapshotOptions(SnapshotOptions snapshotOptions) {
         setSnapshotOptions(snapshotOptions);
         return this;
     }
 
     /**
      * <p>
-     * Modifies the advanced option to allow references to indices in an HTTP
-     * request body. Must be <code>false</code> when configuring access to
-     * individual sub-resources. By default, the value is <code>true</code>. See
-     * <a href=
+     * Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code>
+     * when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href=
      * "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
      * target="_blank">Configuration Advanced Options</a> for more information.
      * </p>
      * 
-     * @return Modifies the advanced option to allow references to indices in an
-     *         HTTP request body. Must be <code>false</code> when configuring
-     *         access to individual sub-resources. By default, the value is
+     * @return Modifies the advanced option to allow references to indices in an HTTP request body. Must be
+     *         <code>false</code> when configuring access to individual sub-resources. By default, the value is
      *         <code>true</code>. See <a href=
      *         "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     *         target="_blank">Configuration Advanced Options</a> for more
-     *         information.
+     *         target="_blank">Configuration Advanced Options</a> for more information.
      */
 
     public java.util.Map<String, String> getAdvancedOptions() {
@@ -273,22 +250,18 @@ public class UpdateElasticsearchDomainConfigRequest extends
 
     /**
      * <p>
-     * Modifies the advanced option to allow references to indices in an HTTP
-     * request body. Must be <code>false</code> when configuring access to
-     * individual sub-resources. By default, the value is <code>true</code>. See
-     * <a href=
+     * Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code>
+     * when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href=
      * "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
      * target="_blank">Configuration Advanced Options</a> for more information.
      * </p>
      * 
      * @param advancedOptions
-     *        Modifies the advanced option to allow references to indices in an
-     *        HTTP request body. Must be <code>false</code> when configuring
-     *        access to individual sub-resources. By default, the value is
+     *        Modifies the advanced option to allow references to indices in an HTTP request body. Must be
+     *        <code>false</code> when configuring access to individual sub-resources. By default, the value is
      *        <code>true</code>. See <a href=
      *        "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     *        target="_blank">Configuration Advanced Options</a> for more
-     *        information.
+     *        target="_blank">Configuration Advanced Options</a> for more information.
      */
 
     public void setAdvancedOptions(java.util.Map<String, String> advancedOptions) {
@@ -297,47 +270,40 @@ public class UpdateElasticsearchDomainConfigRequest extends
 
     /**
      * <p>
-     * Modifies the advanced option to allow references to indices in an HTTP
-     * request body. Must be <code>false</code> when configuring access to
-     * individual sub-resources. By default, the value is <code>true</code>. See
-     * <a href=
+     * Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code>
+     * when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href=
      * "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
      * target="_blank">Configuration Advanced Options</a> for more information.
      * </p>
      * 
      * @param advancedOptions
-     *        Modifies the advanced option to allow references to indices in an
-     *        HTTP request body. Must be <code>false</code> when configuring
-     *        access to individual sub-resources. By default, the value is
+     *        Modifies the advanced option to allow references to indices in an HTTP request body. Must be
+     *        <code>false</code> when configuring access to individual sub-resources. By default, the value is
      *        <code>true</code>. See <a href=
      *        "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     *        target="_blank">Configuration Advanced Options</a> for more
-     *        information.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        target="_blank">Configuration Advanced Options</a> for more information.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateElasticsearchDomainConfigRequest withAdvancedOptions(
-            java.util.Map<String, String> advancedOptions) {
+    public UpdateElasticsearchDomainConfigRequest withAdvancedOptions(java.util.Map<String, String> advancedOptions) {
         setAdvancedOptions(advancedOptions);
         return this;
     }
 
-    public UpdateElasticsearchDomainConfigRequest addAdvancedOptionsEntry(
-            String key, String value) {
+    public UpdateElasticsearchDomainConfigRequest addAdvancedOptionsEntry(String key, String value) {
         if (null == this.advancedOptions) {
             this.advancedOptions = new java.util.HashMap<String, String>();
         }
         if (this.advancedOptions.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.advancedOptions.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into AdvancedOptions. &lt;p> Returns a
-     * reference to this object so that method calls can be chained together.
+     * Removes all the entries added into AdvancedOptions.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateElasticsearchDomainConfigRequest clearAdvancedOptionsEntries() {
@@ -377,19 +343,16 @@ public class UpdateElasticsearchDomainConfigRequest extends
      * 
      * @param accessPolicies
      *        IAM access policy as a JSON-formatted string.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateElasticsearchDomainConfigRequest withAccessPolicies(
-            String accessPolicies) {
+    public UpdateElasticsearchDomainConfigRequest withAccessPolicies(String accessPolicies) {
         setAccessPolicies(accessPolicies);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -400,18 +363,17 @@ public class UpdateElasticsearchDomainConfigRequest extends
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainName() != null)
-            sb.append("DomainName: " + getDomainName() + ",");
+            sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getElasticsearchClusterConfig() != null)
-            sb.append("ElasticsearchClusterConfig: "
-                    + getElasticsearchClusterConfig() + ",");
+            sb.append("ElasticsearchClusterConfig: ").append(getElasticsearchClusterConfig()).append(",");
         if (getEBSOptions() != null)
-            sb.append("EBSOptions: " + getEBSOptions() + ",");
+            sb.append("EBSOptions: ").append(getEBSOptions()).append(",");
         if (getSnapshotOptions() != null)
-            sb.append("SnapshotOptions: " + getSnapshotOptions() + ",");
+            sb.append("SnapshotOptions: ").append(getSnapshotOptions()).append(",");
         if (getAdvancedOptions() != null)
-            sb.append("AdvancedOptions: " + getAdvancedOptions() + ",");
+            sb.append("AdvancedOptions: ").append(getAdvancedOptions()).append(",");
         if (getAccessPolicies() != null)
-            sb.append("AccessPolicies: " + getAccessPolicies());
+            sb.append("AccessPolicies: ").append(getAccessPolicies());
         sb.append("}");
         return sb.toString();
     }
@@ -428,38 +390,27 @@ public class UpdateElasticsearchDomainConfigRequest extends
         UpdateElasticsearchDomainConfigRequest other = (UpdateElasticsearchDomainConfigRequest) obj;
         if (other.getDomainName() == null ^ this.getDomainName() == null)
             return false;
-        if (other.getDomainName() != null
-                && other.getDomainName().equals(this.getDomainName()) == false)
+        if (other.getDomainName() != null && other.getDomainName().equals(this.getDomainName()) == false)
             return false;
-        if (other.getElasticsearchClusterConfig() == null
-                ^ this.getElasticsearchClusterConfig() == null)
+        if (other.getElasticsearchClusterConfig() == null ^ this.getElasticsearchClusterConfig() == null)
             return false;
-        if (other.getElasticsearchClusterConfig() != null
-                && other.getElasticsearchClusterConfig().equals(
-                        this.getElasticsearchClusterConfig()) == false)
+        if (other.getElasticsearchClusterConfig() != null && other.getElasticsearchClusterConfig().equals(this.getElasticsearchClusterConfig()) == false)
             return false;
         if (other.getEBSOptions() == null ^ this.getEBSOptions() == null)
             return false;
-        if (other.getEBSOptions() != null
-                && other.getEBSOptions().equals(this.getEBSOptions()) == false)
+        if (other.getEBSOptions() != null && other.getEBSOptions().equals(this.getEBSOptions()) == false)
             return false;
-        if (other.getSnapshotOptions() == null
-                ^ this.getSnapshotOptions() == null)
+        if (other.getSnapshotOptions() == null ^ this.getSnapshotOptions() == null)
             return false;
-        if (other.getSnapshotOptions() != null
-                && other.getSnapshotOptions().equals(this.getSnapshotOptions()) == false)
+        if (other.getSnapshotOptions() != null && other.getSnapshotOptions().equals(this.getSnapshotOptions()) == false)
             return false;
-        if (other.getAdvancedOptions() == null
-                ^ this.getAdvancedOptions() == null)
+        if (other.getAdvancedOptions() == null ^ this.getAdvancedOptions() == null)
             return false;
-        if (other.getAdvancedOptions() != null
-                && other.getAdvancedOptions().equals(this.getAdvancedOptions()) == false)
+        if (other.getAdvancedOptions() != null && other.getAdvancedOptions().equals(this.getAdvancedOptions()) == false)
             return false;
-        if (other.getAccessPolicies() == null
-                ^ this.getAccessPolicies() == null)
+        if (other.getAccessPolicies() == null ^ this.getAccessPolicies() == null)
             return false;
-        if (other.getAccessPolicies() != null
-                && other.getAccessPolicies().equals(this.getAccessPolicies()) == false)
+        if (other.getAccessPolicies() != null && other.getAccessPolicies().equals(this.getAccessPolicies()) == false)
             return false;
         return true;
     }
@@ -469,26 +420,12 @@ public class UpdateElasticsearchDomainConfigRequest extends
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getElasticsearchClusterConfig() == null) ? 0
-                        : getElasticsearchClusterConfig().hashCode());
-        hashCode = prime * hashCode
-                + ((getEBSOptions() == null) ? 0 : getEBSOptions().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnapshotOptions() == null) ? 0 : getSnapshotOptions()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAdvancedOptions() == null) ? 0 : getAdvancedOptions()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAccessPolicies() == null) ? 0 : getAccessPolicies()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
+        hashCode = prime * hashCode + ((getElasticsearchClusterConfig() == null) ? 0 : getElasticsearchClusterConfig().hashCode());
+        hashCode = prime * hashCode + ((getEBSOptions() == null) ? 0 : getEBSOptions().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotOptions() == null) ? 0 : getSnapshotOptions().hashCode());
+        hashCode = prime * hashCode + ((getAdvancedOptions() == null) ? 0 : getAdvancedOptions().hashCode());
+        hashCode = prime * hashCode + ((getAccessPolicies() == null) ? 0 : getAccessPolicies().hashCode());
         return hashCode;
     }
 
@@ -496,4 +433,5 @@ public class UpdateElasticsearchDomainConfigRequest extends
     public UpdateElasticsearchDomainConfigRequest clone() {
         return (UpdateElasticsearchDomainConfigRequest) super.clone();
     }
+
 }

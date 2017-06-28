@@ -1,44 +1,41 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.machinelearning.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the output of an <code>CreateRealtimeEndpoint</code> operation.
  * </p>
  * <p>
- * The result contains the <code>MLModelId</code> and the endpoint information
- * for the <code>MLModel</code>.
+ * The result contains the <code>MLModelId</code> and the endpoint information for the <code>MLModel</code>.
  * </p>
  * <note>
  * <p>
- * The endpoint information includes the URI of the <code>MLModel</code>; that
- * is, the location to send online prediction requests for the specified
- * <code>MLModel</code>.
+ * The endpoint information includes the URI of the <code>MLModel</code>; that is, the location to send online
+ * prediction requests for the specified <code>MLModel</code>.
  * </p>
  * </note>
  */
-public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateRealtimeEndpointResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A user-supplied ID that uniquely identifies the <code>MLModel</code>.
-     * This value should be identical to the value of the <code>MLModelId</code>
-     * in the request.
+     * A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value
+     * of the <code>MLModelId</code> in the request.
      * </p>
      */
     private String mLModelId;
@@ -51,15 +48,13 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A user-supplied ID that uniquely identifies the <code>MLModel</code>.
-     * This value should be identical to the value of the <code>MLModelId</code>
-     * in the request.
+     * A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value
+     * of the <code>MLModelId</code> in the request.
      * </p>
      * 
      * @param mLModelId
-     *        A user-supplied ID that uniquely identifies the
-     *        <code>MLModel</code>. This value should be identical to the value
-     *        of the <code>MLModelId</code> in the request.
+     *        A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to
+     *        the value of the <code>MLModelId</code> in the request.
      */
 
     public void setMLModelId(String mLModelId) {
@@ -68,14 +63,12 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A user-supplied ID that uniquely identifies the <code>MLModel</code>.
-     * This value should be identical to the value of the <code>MLModelId</code>
-     * in the request.
+     * A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value
+     * of the <code>MLModelId</code> in the request.
      * </p>
      * 
-     * @return A user-supplied ID that uniquely identifies the
-     *         <code>MLModel</code>. This value should be identical to the value
-     *         of the <code>MLModelId</code> in the request.
+     * @return A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to
+     *         the value of the <code>MLModelId</code> in the request.
      */
 
     public String getMLModelId() {
@@ -84,17 +77,14 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A user-supplied ID that uniquely identifies the <code>MLModel</code>.
-     * This value should be identical to the value of the <code>MLModelId</code>
-     * in the request.
+     * A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value
+     * of the <code>MLModelId</code> in the request.
      * </p>
      * 
      * @param mLModelId
-     *        A user-supplied ID that uniquely identifies the
-     *        <code>MLModel</code>. This value should be identical to the value
-     *        of the <code>MLModelId</code> in the request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to
+     *        the value of the <code>MLModelId</code> in the request.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateRealtimeEndpointResult withMLModelId(String mLModelId) {
@@ -111,8 +101,7 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
      *        The endpoint information of the <code>MLModel</code>
      */
 
-    public void setRealtimeEndpointInfo(
-            RealtimeEndpointInfo realtimeEndpointInfo) {
+    public void setRealtimeEndpointInfo(RealtimeEndpointInfo realtimeEndpointInfo) {
         this.realtimeEndpointInfo = realtimeEndpointInfo;
     }
 
@@ -135,19 +124,16 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
      * 
      * @param realtimeEndpointInfo
      *        The endpoint information of the <code>MLModel</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateRealtimeEndpointResult withRealtimeEndpointInfo(
-            RealtimeEndpointInfo realtimeEndpointInfo) {
+    public CreateRealtimeEndpointResult withRealtimeEndpointInfo(RealtimeEndpointInfo realtimeEndpointInfo) {
         setRealtimeEndpointInfo(realtimeEndpointInfo);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -158,9 +144,9 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMLModelId() != null)
-            sb.append("MLModelId: " + getMLModelId() + ",");
+            sb.append("MLModelId: ").append(getMLModelId()).append(",");
         if (getRealtimeEndpointInfo() != null)
-            sb.append("RealtimeEndpointInfo: " + getRealtimeEndpointInfo());
+            sb.append("RealtimeEndpointInfo: ").append(getRealtimeEndpointInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -177,15 +163,11 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
         CreateRealtimeEndpointResult other = (CreateRealtimeEndpointResult) obj;
         if (other.getMLModelId() == null ^ this.getMLModelId() == null)
             return false;
-        if (other.getMLModelId() != null
-                && other.getMLModelId().equals(this.getMLModelId()) == false)
+        if (other.getMLModelId() != null && other.getMLModelId().equals(this.getMLModelId()) == false)
             return false;
-        if (other.getRealtimeEndpointInfo() == null
-                ^ this.getRealtimeEndpointInfo() == null)
+        if (other.getRealtimeEndpointInfo() == null ^ this.getRealtimeEndpointInfo() == null)
             return false;
-        if (other.getRealtimeEndpointInfo() != null
-                && other.getRealtimeEndpointInfo().equals(
-                        this.getRealtimeEndpointInfo()) == false)
+        if (other.getRealtimeEndpointInfo() != null && other.getRealtimeEndpointInfo().equals(this.getRealtimeEndpointInfo()) == false)
             return false;
         return true;
     }
@@ -195,12 +177,8 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getMLModelId() == null) ? 0 : getMLModelId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRealtimeEndpointInfo() == null) ? 0
-                        : getRealtimeEndpointInfo().hashCode());
+        hashCode = prime * hashCode + ((getMLModelId() == null) ? 0 : getMLModelId().hashCode());
+        hashCode = prime * hashCode + ((getRealtimeEndpointInfo() == null) ? 0 : getRealtimeEndpointInfo().hashCode());
         return hashCode;
     }
 
@@ -209,9 +187,8 @@ public class CreateRealtimeEndpointResult implements Serializable, Cloneable {
         try {
             return (CreateRealtimeEndpointResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

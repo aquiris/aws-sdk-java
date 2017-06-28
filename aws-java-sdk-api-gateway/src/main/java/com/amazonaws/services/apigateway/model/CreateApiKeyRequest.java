@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Request to create an <a>ApiKey</a> resource.
  * </p>
  */
-public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateApiKeyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -45,8 +45,8 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
     private Boolean enabled;
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key
-     * identifier is distinct from the created API key value.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created
+     * API key value.
      * </p>
      */
     private Boolean generateDistinctId;
@@ -58,11 +58,16 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
     private String value;
     /**
      * <p>
-     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
-     * key.
+     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
      * </p>
      */
     private java.util.List<StageKey> stageKeys;
+    /**
+     * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     */
+    private String customerId;
 
     /**
      * <p>
@@ -96,8 +101,7 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
      * 
      * @param name
      *        The name of the <a>ApiKey</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateApiKeyRequest withName(String name) {
@@ -137,8 +141,7 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
      * 
      * @param description
      *        The description of the <a>ApiKey</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateApiKeyRequest withDescription(String description) {
@@ -178,8 +181,7 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
      * 
      * @param enabled
      *        Specifies whether the <a>ApiKey</a> can be used by callers.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateApiKeyRequest withEnabled(Boolean enabled) {
@@ -201,13 +203,13 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key
-     * identifier is distinct from the created API key value.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created
+     * API key value.
      * </p>
      * 
      * @param generateDistinctId
-     *        Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *        the key identifier is distinct from the created API key value.
+     *        Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the
+     *        created API key value.
      */
 
     public void setGenerateDistinctId(Boolean generateDistinctId) {
@@ -216,12 +218,12 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key
-     * identifier is distinct from the created API key value.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created
+     * API key value.
      * </p>
      * 
-     * @return Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *         the key identifier is distinct from the created API key value.
+     * @return Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the
+     *         created API key value.
      */
 
     public Boolean getGenerateDistinctId() {
@@ -230,15 +232,14 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key
-     * identifier is distinct from the created API key value.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created
+     * API key value.
      * </p>
      * 
      * @param generateDistinctId
-     *        Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *        the key identifier is distinct from the created API key value.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the
+     *        created API key value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateApiKeyRequest withGenerateDistinctId(Boolean generateDistinctId) {
@@ -248,12 +249,12 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key
-     * identifier is distinct from the created API key value.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created
+     * API key value.
      * </p>
      * 
-     * @return Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *         the key identifier is distinct from the created API key value.
+     * @return Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the
+     *         created API key value.
      */
 
     public Boolean isGenerateDistinctId() {
@@ -292,8 +293,7 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
      * 
      * @param value
      *        Specifies a value of the API key.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateApiKeyRequest withValue(String value) {
@@ -303,12 +303,10 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
-     * key.
+     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
      * </p>
      * 
-     * @return DEPRECATED FOR USAGE PLANS - Specifies stages associated with the
-     *         API key.
+     * @return DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
      */
 
     public java.util.List<StageKey> getStageKeys() {
@@ -317,13 +315,11 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
-     * key.
+     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
      * </p>
      * 
      * @param stageKeys
-     *        DEPRECATED FOR USAGE PLANS - Specifies stages associated with the
-     *        API key.
+     *        DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
      */
 
     public void setStageKeys(java.util.Collection<StageKey> stageKeys) {
@@ -337,21 +333,17 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
-     * key.
+     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setStageKeys(java.util.Collection)} or
-     * {@link #withStageKeys(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setStageKeys(java.util.Collection)} or {@link #withStageKeys(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param stageKeys
-     *        DEPRECATED FOR USAGE PLANS - Specifies stages associated with the
-     *        API key.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateApiKeyRequest withStageKeys(StageKey... stageKeys) {
@@ -366,26 +358,61 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
-     * key.
+     * DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
      * </p>
      * 
      * @param stageKeys
-     *        DEPRECATED FOR USAGE PLANS - Specifies stages associated with the
-     *        API key.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateApiKeyRequest withStageKeys(
-            java.util.Collection<StageKey> stageKeys) {
+    public CreateApiKeyRequest withStageKeys(java.util.Collection<StageKey> stageKeys) {
         setStageKeys(stageKeys);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     * 
+     * @param customerId
+     *        An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     */
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    /**
+     * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     * 
+     * @return An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     */
+
+    public String getCustomerId() {
+        return this.customerId;
+    }
+
+    /**
+     * <p>
+     * An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * </p>
+     * 
+     * @param customerId
+     *        An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateApiKeyRequest withCustomerId(String customerId) {
+        setCustomerId(customerId);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -396,17 +423,19 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getEnabled() != null)
-            sb.append("Enabled: " + getEnabled() + ",");
+            sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getGenerateDistinctId() != null)
-            sb.append("GenerateDistinctId: " + getGenerateDistinctId() + ",");
+            sb.append("GenerateDistinctId: ").append(getGenerateDistinctId()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue() + ",");
+            sb.append("Value: ").append(getValue()).append(",");
         if (getStageKeys() != null)
-            sb.append("StageKeys: " + getStageKeys());
+            sb.append("StageKeys: ").append(getStageKeys()).append(",");
+        if (getCustomerId() != null)
+            sb.append("CustomerId: ").append(getCustomerId());
         sb.append("}");
         return sb.toString();
     }
@@ -423,35 +452,31 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
         CreateApiKeyRequest other = (CreateApiKeyRequest) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getEnabled() == null ^ this.getEnabled() == null)
             return false;
-        if (other.getEnabled() != null
-                && other.getEnabled().equals(this.getEnabled()) == false)
+        if (other.getEnabled() != null && other.getEnabled().equals(this.getEnabled()) == false)
             return false;
-        if (other.getGenerateDistinctId() == null
-                ^ this.getGenerateDistinctId() == null)
+        if (other.getGenerateDistinctId() == null ^ this.getGenerateDistinctId() == null)
             return false;
-        if (other.getGenerateDistinctId() != null
-                && other.getGenerateDistinctId().equals(
-                        this.getGenerateDistinctId()) == false)
+        if (other.getGenerateDistinctId() != null && other.getGenerateDistinctId().equals(this.getGenerateDistinctId()) == false)
             return false;
         if (other.getValue() == null ^ this.getValue() == null)
             return false;
-        if (other.getValue() != null
-                && other.getValue().equals(this.getValue()) == false)
+        if (other.getValue() != null && other.getValue().equals(this.getValue()) == false)
             return false;
         if (other.getStageKeys() == null ^ this.getStageKeys() == null)
             return false;
-        if (other.getStageKeys() != null
-                && other.getStageKeys().equals(this.getStageKeys()) == false)
+        if (other.getStageKeys() != null && other.getStageKeys().equals(this.getStageKeys()) == false)
+            return false;
+        if (other.getCustomerId() == null ^ this.getCustomerId() == null)
+            return false;
+        if (other.getCustomerId() != null && other.getCustomerId().equals(this.getCustomerId()) == false)
             return false;
         return true;
     }
@@ -461,21 +486,13 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getGenerateDistinctId() == null) ? 0
-                        : getGenerateDistinctId().hashCode());
-        hashCode = prime * hashCode
-                + ((getValue() == null) ? 0 : getValue().hashCode());
-        hashCode = prime * hashCode
-                + ((getStageKeys() == null) ? 0 : getStageKeys().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
+        hashCode = prime * hashCode + ((getGenerateDistinctId() == null) ? 0 : getGenerateDistinctId().hashCode());
+        hashCode = prime * hashCode + ((getValue() == null) ? 0 : getValue().hashCode());
+        hashCode = prime * hashCode + ((getStageKeys() == null) ? 0 : getStageKeys().hashCode());
+        hashCode = prime * hashCode + ((getCustomerId() == null) ? 0 : getCustomerId().hashCode());
         return hashCode;
     }
 
@@ -483,4 +500,5 @@ public class CreateApiKeyRequest extends AmazonWebServiceRequest implements
     public CreateApiKeyRequest clone() {
         return (CreateApiKeyRequest) super.clone();
     }
+
 }

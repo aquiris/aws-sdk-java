@@ -1,25 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/SearchProducts" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SearchProductsResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SearchProductsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -35,8 +37,8 @@ public class SearchProductsResult implements Serializable, Cloneable {
     private java.util.Map<String, java.util.List<ProductViewAggregationValue>> productViewAggregations;
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      */
     private String nextPageToken;
@@ -62,15 +64,13 @@ public class SearchProductsResult implements Serializable, Cloneable {
      *        A list of the product view summary objects.
      */
 
-    public void setProductViewSummaries(
-            java.util.Collection<ProductViewSummary> productViewSummaries) {
+    public void setProductViewSummaries(java.util.Collection<ProductViewSummary> productViewSummaries) {
         if (productViewSummaries == null) {
             this.productViewSummaries = null;
             return;
         }
 
-        this.productViewSummaries = new java.util.ArrayList<ProductViewSummary>(
-                productViewSummaries);
+        this.productViewSummaries = new java.util.ArrayList<ProductViewSummary>(productViewSummaries);
     }
 
     /**
@@ -78,23 +78,19 @@ public class SearchProductsResult implements Serializable, Cloneable {
      * A list of the product view summary objects.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setProductViewSummaries(java.util.Collection)} or
-     * {@link #withProductViewSummaries(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setProductViewSummaries(java.util.Collection)} or {@link #withProductViewSummaries(java.util.Collection)}
+     * if you want to override the existing values.
      * </p>
      * 
      * @param productViewSummaries
      *        A list of the product view summary objects.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public SearchProductsResult withProductViewSummaries(
-            ProductViewSummary... productViewSummaries) {
+    public SearchProductsResult withProductViewSummaries(ProductViewSummary... productViewSummaries) {
         if (this.productViewSummaries == null) {
-            setProductViewSummaries(new java.util.ArrayList<ProductViewSummary>(
-                    productViewSummaries.length));
+            setProductViewSummaries(new java.util.ArrayList<ProductViewSummary>(productViewSummaries.length));
         }
         for (ProductViewSummary ele : productViewSummaries) {
             this.productViewSummaries.add(ele);
@@ -109,12 +105,10 @@ public class SearchProductsResult implements Serializable, Cloneable {
      * 
      * @param productViewSummaries
      *        A list of the product view summary objects.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public SearchProductsResult withProductViewSummaries(
-            java.util.Collection<ProductViewSummary> productViewSummaries) {
+    public SearchProductsResult withProductViewSummaries(java.util.Collection<ProductViewSummary> productViewSummaries) {
         setProductViewSummaries(productViewSummaries);
         return this;
     }
@@ -140,8 +134,7 @@ public class SearchProductsResult implements Serializable, Cloneable {
      *        A list of the product view aggregation value objects.
      */
 
-    public void setProductViewAggregations(
-            java.util.Map<String, java.util.List<ProductViewAggregationValue>> productViewAggregations) {
+    public void setProductViewAggregations(java.util.Map<String, java.util.List<ProductViewAggregationValue>> productViewAggregations) {
         this.productViewAggregations = productViewAggregations;
     }
 
@@ -152,32 +145,28 @@ public class SearchProductsResult implements Serializable, Cloneable {
      * 
      * @param productViewAggregations
      *        A list of the product view aggregation value objects.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public SearchProductsResult withProductViewAggregations(
-            java.util.Map<String, java.util.List<ProductViewAggregationValue>> productViewAggregations) {
+    public SearchProductsResult withProductViewAggregations(java.util.Map<String, java.util.List<ProductViewAggregationValue>> productViewAggregations) {
         setProductViewAggregations(productViewAggregations);
         return this;
     }
 
-    public SearchProductsResult addProductViewAggregationsEntry(String key,
-            java.util.List<ProductViewAggregationValue> value) {
+    public SearchProductsResult addProductViewAggregationsEntry(String key, java.util.List<ProductViewAggregationValue> value) {
         if (null == this.productViewAggregations) {
             this.productViewAggregations = new java.util.HashMap<String, java.util.List<ProductViewAggregationValue>>();
         }
         if (this.productViewAggregations.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.productViewAggregations.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into ProductViewAggregations. &lt;p>
-     * Returns a reference to this object so that method calls can be chained
-     * together.
+     * Removes all the entries added into ProductViewAggregations.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SearchProductsResult clearProductViewAggregationsEntries() {
@@ -187,13 +176,13 @@ public class SearchProductsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      * 
      * @param nextPageToken
-     *        The page token to use to retrieve the next page of results for
-     *        this operation. If there are no more pages, this value is null.
+     *        The page token to use to retrieve the next page of results for this operation. If there are no more pages,
+     *        this value is null.
      */
 
     public void setNextPageToken(String nextPageToken) {
@@ -202,12 +191,12 @@ public class SearchProductsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      * 
-     * @return The page token to use to retrieve the next page of results for
-     *         this operation. If there are no more pages, this value is null.
+     * @return The page token to use to retrieve the next page of results for this operation. If there are no more
+     *         pages, this value is null.
      */
 
     public String getNextPageToken() {
@@ -216,15 +205,14 @@ public class SearchProductsResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      * 
      * @param nextPageToken
-     *        The page token to use to retrieve the next page of results for
-     *        this operation. If there are no more pages, this value is null.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The page token to use to retrieve the next page of results for this operation. If there are no more pages,
+     *        this value is null.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SearchProductsResult withNextPageToken(String nextPageToken) {
@@ -233,8 +221,7 @@ public class SearchProductsResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -245,13 +232,11 @@ public class SearchProductsResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getProductViewSummaries() != null)
-            sb.append("ProductViewSummaries: " + getProductViewSummaries()
-                    + ",");
+            sb.append("ProductViewSummaries: ").append(getProductViewSummaries()).append(",");
         if (getProductViewAggregations() != null)
-            sb.append("ProductViewAggregations: "
-                    + getProductViewAggregations() + ",");
+            sb.append("ProductViewAggregations: ").append(getProductViewAggregations()).append(",");
         if (getNextPageToken() != null)
-            sb.append("NextPageToken: " + getNextPageToken());
+            sb.append("NextPageToken: ").append(getNextPageToken());
         sb.append("}");
         return sb.toString();
     }
@@ -266,24 +251,17 @@ public class SearchProductsResult implements Serializable, Cloneable {
         if (obj instanceof SearchProductsResult == false)
             return false;
         SearchProductsResult other = (SearchProductsResult) obj;
-        if (other.getProductViewSummaries() == null
-                ^ this.getProductViewSummaries() == null)
+        if (other.getProductViewSummaries() == null ^ this.getProductViewSummaries() == null)
             return false;
-        if (other.getProductViewSummaries() != null
-                && other.getProductViewSummaries().equals(
-                        this.getProductViewSummaries()) == false)
+        if (other.getProductViewSummaries() != null && other.getProductViewSummaries().equals(this.getProductViewSummaries()) == false)
             return false;
-        if (other.getProductViewAggregations() == null
-                ^ this.getProductViewAggregations() == null)
+        if (other.getProductViewAggregations() == null ^ this.getProductViewAggregations() == null)
             return false;
-        if (other.getProductViewAggregations() != null
-                && other.getProductViewAggregations().equals(
-                        this.getProductViewAggregations()) == false)
+        if (other.getProductViewAggregations() != null && other.getProductViewAggregations().equals(this.getProductViewAggregations()) == false)
             return false;
         if (other.getNextPageToken() == null ^ this.getNextPageToken() == null)
             return false;
-        if (other.getNextPageToken() != null
-                && other.getNextPageToken().equals(this.getNextPageToken()) == false)
+        if (other.getNextPageToken() != null && other.getNextPageToken().equals(this.getNextPageToken()) == false)
             return false;
         return true;
     }
@@ -293,18 +271,9 @@ public class SearchProductsResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getProductViewSummaries() == null) ? 0
-                        : getProductViewSummaries().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getProductViewAggregations() == null) ? 0
-                        : getProductViewAggregations().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNextPageToken() == null) ? 0 : getNextPageToken()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getProductViewSummaries() == null) ? 0 : getProductViewSummaries().hashCode());
+        hashCode = prime * hashCode + ((getProductViewAggregations() == null) ? 0 : getProductViewAggregations().hashCode());
+        hashCode = prime * hashCode + ((getNextPageToken() == null) ? 0 : getNextPageToken().hashCode());
         return hashCode;
     }
 
@@ -313,9 +282,8 @@ public class SearchProductsResult implements Serializable, Cloneable {
         try {
             return (SearchProductsResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/CountPendingDecisionTasks" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CountPendingDecisionTasksRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -68,8 +70,7 @@ public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
      * 
      * @param domain
      *        The name of the domain that contains the task list.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CountPendingDecisionTasksRequest withDomain(String domain) {
@@ -109,8 +110,7 @@ public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
      * 
      * @param taskList
      *        The name of the task list.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CountPendingDecisionTasksRequest withTaskList(TaskList taskList) {
@@ -119,8 +119,7 @@ public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -131,9 +130,9 @@ public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getTaskList() != null)
-            sb.append("TaskList: " + getTaskList());
+            sb.append("TaskList: ").append(getTaskList());
         sb.append("}");
         return sb.toString();
     }
@@ -150,13 +149,11 @@ public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
         CountPendingDecisionTasksRequest other = (CountPendingDecisionTasksRequest) obj;
         if (other.getDomain() == null ^ this.getDomain() == null)
             return false;
-        if (other.getDomain() != null
-                && other.getDomain().equals(this.getDomain()) == false)
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
             return false;
         if (other.getTaskList() == null ^ this.getTaskList() == null)
             return false;
-        if (other.getTaskList() != null
-                && other.getTaskList().equals(this.getTaskList()) == false)
+        if (other.getTaskList() != null && other.getTaskList().equals(this.getTaskList()) == false)
             return false;
         return true;
     }
@@ -166,10 +163,8 @@ public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDomain() == null) ? 0 : getDomain().hashCode());
-        hashCode = prime * hashCode
-                + ((getTaskList() == null) ? 0 : getTaskList().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
+        hashCode = prime * hashCode + ((getTaskList() == null) ? 0 : getTaskList().hashCode());
         return hashCode;
     }
 
@@ -177,4 +172,5 @@ public class CountPendingDecisionTasksRequest extends AmazonWebServiceRequest
     public CountPendingDecisionTasksRequest clone() {
         return (CountPendingDecisionTasksRequest) super.clone();
     }
+
 }

@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.snowball;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.snowball.model.*;
 import com.amazonaws.*;
 
 /**
- * Abstract implementation of {@code AmazonSnowball}. Convenient method forms
- * pass through to the corresponding overload that takes a request object, which
- * throws an {@code UnsupportedOperationException}.
+ * Abstract implementation of {@code AmazonSnowball}. Convenient method forms pass through to the corresponding overload
+ * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAmazonSnowball implements AmazonSnowball {
 
     protected AbstractAmazonSnowball() {
@@ -38,12 +38,22 @@ public class AbstractAmazonSnowball implements AmazonSnowball {
     }
 
     @Override
+    public CancelClusterResult cancelCluster(CancelClusterRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CancelJobResult cancelJob(CancelJobRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public CreateAddressResult createAddress(CreateAddressRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateClusterResult createCluster(CreateClusterRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -58,8 +68,12 @@ public class AbstractAmazonSnowball implements AmazonSnowball {
     }
 
     @Override
-    public DescribeAddressesResult describeAddresses(
-            DescribeAddressesRequest request) {
+    public DescribeAddressesResult describeAddresses(DescribeAddressesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeClusterResult describeCluster(DescribeClusterRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -74,19 +88,32 @@ public class AbstractAmazonSnowball implements AmazonSnowball {
     }
 
     @Override
-    public GetJobUnlockCodeResult getJobUnlockCode(
-            GetJobUnlockCodeRequest request) {
+    public GetJobUnlockCodeResult getJobUnlockCode(GetJobUnlockCodeRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public GetSnowballUsageResult getSnowballUsage(
-            GetSnowballUsageRequest request) {
+    public GetSnowballUsageResult getSnowballUsage(GetSnowballUsageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListClusterJobsResult listClusterJobs(ListClusterJobsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListClustersResult listClusters(ListClustersRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public ListJobsResult listJobs(ListJobsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateClusterResult updateCluster(UpdateClusterRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -101,8 +128,7 @@ public class AbstractAmazonSnowball implements AmazonSnowball {
     }
 
     @Override
-    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(
-            com.amazonaws.AmazonWebServiceRequest request) {
+    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

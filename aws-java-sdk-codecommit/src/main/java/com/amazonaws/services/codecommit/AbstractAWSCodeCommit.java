@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.codecommit;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.codecommit.model.*;
 import com.amazonaws.*;
 
 /**
- * Abstract implementation of {@code AWSCodeCommit}. Convenient method forms
- * pass through to the corresponding overload that takes a request object, which
- * throws an {@code UnsupportedOperationException}.
+ * Abstract implementation of {@code AWSCodeCommit}. Convenient method forms pass through to the corresponding overload
+ * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSCodeCommit implements AWSCodeCommit {
 
     protected AbstractAWSCodeCommit() {
@@ -38,8 +38,7 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
-    public BatchGetRepositoriesResult batchGetRepositories(
-            BatchGetRepositoriesRequest request) {
+    public BatchGetRepositoriesResult batchGetRepositories(BatchGetRepositoriesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -49,14 +48,17 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
-    public CreateRepositoryResult createRepository(
-            CreateRepositoryRequest request) {
+    public CreateRepositoryResult createRepository(CreateRepositoryRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public DeleteRepositoryResult deleteRepository(
-            DeleteRepositoryRequest request) {
+    public DeleteRepositoryResult deleteRepository(DeleteRepositoryRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetBlobResult getBlob(GetBlobRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -71,13 +73,17 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
+    public GetDifferencesResult getDifferences(GetDifferencesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetRepositoryResult getRepository(GetRepositoryRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public GetRepositoryTriggersResult getRepositoryTriggers(
-            GetRepositoryTriggersRequest request) {
+    public GetRepositoryTriggersResult getRepositoryTriggers(GetRepositoryTriggersRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -87,38 +93,32 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
-    public ListRepositoriesResult listRepositories(
-            ListRepositoriesRequest request) {
+    public ListRepositoriesResult listRepositories(ListRepositoriesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public PutRepositoryTriggersResult putRepositoryTriggers(
-            PutRepositoryTriggersRequest request) {
+    public PutRepositoryTriggersResult putRepositoryTriggers(PutRepositoryTriggersRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public TestRepositoryTriggersResult testRepositoryTriggers(
-            TestRepositoryTriggersRequest request) {
+    public TestRepositoryTriggersResult testRepositoryTriggers(TestRepositoryTriggersRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public UpdateDefaultBranchResult updateDefaultBranch(
-            UpdateDefaultBranchRequest request) {
+    public UpdateDefaultBranchResult updateDefaultBranch(UpdateDefaultBranchRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public UpdateRepositoryDescriptionResult updateRepositoryDescription(
-            UpdateRepositoryDescriptionRequest request) {
+    public UpdateRepositoryDescriptionResult updateRepositoryDescription(UpdateRepositoryDescriptionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
-    public UpdateRepositoryNameResult updateRepositoryName(
-            UpdateRepositoryNameRequest request) {
+    public UpdateRepositoryNameResult updateRepositoryName(UpdateRepositoryNameRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -128,8 +128,7 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
-    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(
-            com.amazonaws.AmazonWebServiceRequest request) {
+    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

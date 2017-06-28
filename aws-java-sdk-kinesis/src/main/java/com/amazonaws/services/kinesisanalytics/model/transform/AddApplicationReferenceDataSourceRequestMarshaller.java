@@ -1,111 +1,61 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model.transform;
 
-import java.io.ByteArrayInputStream;
-import java.util.Collections;
-import java.util.Map;
-import java.util.List;
-import java.util.regex.Pattern;
+import javax.annotation.Generated;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.Request;
-import com.amazonaws.DefaultRequest;
-import com.amazonaws.http.HttpMethodName;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.services.kinesisanalytics.model.*;
-import com.amazonaws.transform.Marshaller;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.StringUtils;
-import com.amazonaws.util.IdempotentUtils;
-import com.amazonaws.util.StringInputStream;
-import com.amazonaws.protocol.json.*;
+
+import com.amazonaws.protocol.*;
+import com.amazonaws.annotation.SdkInternalApi;
 
 /**
- * AddApplicationReferenceDataSourceRequest Marshaller
+ * AddApplicationReferenceDataSourceRequestMarshaller
  */
-public class AddApplicationReferenceDataSourceRequestMarshaller
-        implements
-        Marshaller<Request<AddApplicationReferenceDataSourceRequest>, AddApplicationReferenceDataSourceRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+@SdkInternalApi
+public class AddApplicationReferenceDataSourceRequestMarshaller {
 
-    private final SdkJsonProtocolFactory protocolFactory;
+    private static final MarshallingInfo<String> APPLICATIONNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ApplicationName").build();
+    private static final MarshallingInfo<Long> CURRENTAPPLICATIONVERSIONID_BINDING = MarshallingInfo.builder(MarshallingType.LONG)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CurrentApplicationVersionId").build();
+    private static final MarshallingInfo<StructuredPojo> REFERENCEDATASOURCE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ReferenceDataSource").build();
 
-    public AddApplicationReferenceDataSourceRequestMarshaller(
-            SdkJsonProtocolFactory protocolFactory) {
-        this.protocolFactory = protocolFactory;
+    private static final AddApplicationReferenceDataSourceRequestMarshaller instance = new AddApplicationReferenceDataSourceRequestMarshaller();
+
+    public static AddApplicationReferenceDataSourceRequestMarshaller getInstance() {
+        return instance;
     }
 
-    public Request<AddApplicationReferenceDataSourceRequest> marshall(
-            AddApplicationReferenceDataSourceRequest addApplicationReferenceDataSourceRequest) {
+    /**
+     * Marshall the given parameter object.
+     */
+    public void marshall(AddApplicationReferenceDataSourceRequest addApplicationReferenceDataSourceRequest, ProtocolMarshaller protocolMarshaller) {
 
         if (addApplicationReferenceDataSourceRequest == null) {
-            throw new AmazonClientException(
-                    "Invalid argument passed to marshall(...)");
+            throw new SdkClientException("Invalid argument passed to marshall(...)");
         }
-
-        Request<AddApplicationReferenceDataSourceRequest> request = new DefaultRequest<AddApplicationReferenceDataSourceRequest>(
-                addApplicationReferenceDataSourceRequest,
-                "AmazonKinesisAnalytics");
-        request.addHeader("X-Amz-Target",
-                "KinesisAnalytics_20150814.AddApplicationReferenceDataSource");
-
-        request.setHttpMethod(HttpMethodName.POST);
-
-        request.setResourcePath("");
 
         try {
-            final StructuredJsonGenerator jsonGenerator = protocolFactory
-                    .createGenerator();
-
-            jsonGenerator.writeStartObject();
-
-            if (addApplicationReferenceDataSourceRequest.getApplicationName() != null) {
-                jsonGenerator.writeFieldName("ApplicationName").writeValue(
-                        addApplicationReferenceDataSourceRequest
-                                .getApplicationName());
-            }
-            if (addApplicationReferenceDataSourceRequest
-                    .getCurrentApplicationVersionId() != null) {
-                jsonGenerator.writeFieldName("CurrentApplicationVersionId")
-                        .writeValue(
-                                addApplicationReferenceDataSourceRequest
-                                        .getCurrentApplicationVersionId());
-            }
-            if (addApplicationReferenceDataSourceRequest
-                    .getReferenceDataSource() != null) {
-                jsonGenerator.writeFieldName("ReferenceDataSource");
-                ReferenceDataSourceJsonMarshaller
-                        .getInstance()
-                        .marshall(
-                                addApplicationReferenceDataSourceRequest
-                                        .getReferenceDataSource(),
-                                jsonGenerator);
-            }
-
-            jsonGenerator.writeEndObject();
-
-            byte[] content = jsonGenerator.getBytes();
-            request.setContent(new ByteArrayInputStream(content));
-            request.addHeader("Content-Length",
-                    Integer.toString(content.length));
-            request.addHeader("Content-Type", protocolFactory.getContentType());
-        } catch (Throwable t) {
-            throw new AmazonClientException(
-                    "Unable to marshall request to JSON: " + t.getMessage(), t);
+            protocolMarshaller.marshall(addApplicationReferenceDataSourceRequest.getApplicationName(), APPLICATIONNAME_BINDING);
+            protocolMarshaller.marshall(addApplicationReferenceDataSourceRequest.getCurrentApplicationVersionId(), CURRENTAPPLICATIONVERSIONID_BINDING);
+            protocolMarshaller.marshall(addApplicationReferenceDataSourceRequest.getReferenceDataSource(), REFERENCEDATASOURCE_BINDING);
+        } catch (Exception e) {
+            throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
-
-        return request;
     }
 
 }

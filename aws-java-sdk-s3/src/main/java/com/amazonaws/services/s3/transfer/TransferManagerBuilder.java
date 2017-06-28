@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -54,6 +54,8 @@ public final class TransferManagerBuilder {
 
     private Long multipartCopyPartSize;
 
+    private Boolean disableParallelDownloads;
+
     /**
      * @return Create new instance of builder with all defaults set.
      */
@@ -66,7 +68,7 @@ public final class TransferManagerBuilder {
      * AmazonS3ClientBuilder} to create a default {@link AmazonS3} client implementation.
      */
     public static TransferManager defaultTransferManager() {
-        return standard().withS3Client(AmazonS3ClientBuilder.defaultClient()).build();
+        return standard().build();
     }
 
     private TransferManagerBuilder() {
@@ -107,10 +109,7 @@ public final class TransferManagerBuilder {
     }
 
     private AmazonS3 resolveS3Client() {
-        if (s3Client == null) {
-            throw new IllegalStateException("S3 Client must be provided to build TransferManager");
-        }
-        return s3Client;
+        return s3Client == null ? AmazonS3ClientBuilder.defaultClient() : s3Client;
     }
 
     /**
@@ -322,6 +321,86 @@ public final class TransferManagerBuilder {
         return this;
     }
 
+    /**
+     * Returns if the parallel downloads are disabled or not. By default, the value is set to false.
+     *
+     * <p>
+     * TransferManager automatically detects and downloads a multipart object
+     * in parallel. Setting this option to true will disable parallel downloads.
+     * </p>
+     * <p>
+     * During parallel downloads, each part is downloaded to a temporary file, gets merged
+     * into the final destination file and will be deleted. These temporary files uses disk space temporarily.
+     * Disable parallel downloads if your system do not have enough space to store these files during download.
+     * </p>
+     * <p>
+     * Disabling parallel downloads might reduce performance for large files.
+     * </p>
+     *
+     * @return true if parallel downloads are disabled, otherwise false.
+     */
+    public Boolean isDisableParallelDownloads() {
+        return disableParallelDownloads;
+    }
+
+    /**
+     * Sets the option to disable parallel downloads. By default, the value is set to false.
+     *
+     * <p>
+     * TransferManager automatically detects and downloads a multipart object
+     * in parallel. Setting this option to true will disable parallel downloads.
+     * </p>
+     * <p>
+     * During parallel downloads, each part is downloaded to a temporary file, gets merged
+     * into the final destination file and will be deleted. These temporary files uses disk space temporarily.
+     * Disable parallel downloads if your system do not have enough space to store these files during download.
+     * </p>
+     * <p>
+     * Disabling parallel downloads might reduce performance for large files.
+     * </p>
+     *
+     * @param disableParallelDownloads boolean value to disable parallel downloads.
+     */
+    public void setDisableParallelDownloads(Boolean disableParallelDownloads) {
+        this.disableParallelDownloads = disableParallelDownloads;
+    }
+
+    /**
+     * Sets the option to disable parallel downloads. By default, the value is set to false.
+     *
+     * <p>
+     * TransferManager automatically detects and downloads a multipart object
+     * in parallel. Setting this option to true will disable parallel downloads.
+     * </p>
+     * <p>
+     * During parallel downloads, each part is downloaded to a temporary file, gets merged
+     * into the final destination file and will be deleted. These temporary files uses disk space temporarily.
+     * Disable parallel downloads if your system do not have enough space to store these files during download.
+     * </p>
+     * <p>
+     * Disabling parallel downloads might reduce performance for large files.
+     * </p>
+     *
+     * @param disableParallelDownloads boolean value to disable parallel downloads.
+     * @return this object for method changing
+     */
+    public TransferManagerBuilder withDisableParallelDownloads(Boolean disableParallelDownloads) {
+        setDisableParallelDownloads(disableParallelDownloads);
+        return this;
+    }
+
+    /**
+     * Disables parallel downloads, see {@link #setDisableParallelDownloads(Boolean)}
+     * <p>
+     * Disabling parallel downloads might reduce performance for large files.
+     * </p>
+     *
+     * @return This object for method chaining
+     */
+    public TransferManagerBuilder disableParallelDownloads() {
+        return withDisableParallelDownloads(Boolean.TRUE);
+    }
+
     private TransferManagerConfiguration resolveConfiguration() {
         TransferManagerConfiguration configuration = new TransferManagerConfiguration();
         if (this.minimumUploadPartSize != null) {
@@ -336,7 +415,18 @@ public final class TransferManagerBuilder {
         if (this.multipartUploadThreshold != null) {
             configuration.setMultipartUploadThreshold(multipartUploadThreshold);
         }
+
+        if (this.disableParallelDownloads != null) {
+            configuration.setDisableParallelDownloads(disableParallelDownloads);
+        }
         return configuration;
+    }
+
+    TransferManagerParams getParams() {
+        return new TransferManagerParams().withS3Client(resolveS3Client())
+                .withExecutorService(resolveExecutorService())
+                .withShutDownThreadPools(resolveShutDownThreadPools())
+                .withTransferManagerConfiguration(resolveConfiguration());
     }
 
     /**
@@ -345,11 +435,7 @@ public final class TransferManagerBuilder {
      * @return TransferManager with configured AmazonS3 client.
      */
     public final TransferManager build() {
-        return transferManagerFactory
-                .apply(new TransferManagerParams().withS3Client(resolveS3Client())
-                               .withExecutorService(resolveExecutorService())
-                               .withShutDownThreadPools(resolveShutDownThreadPools())
-                               .withTransferManagerConfiguration(resolveConfiguration()));
+        return transferManagerFactory.apply(getParams());
     }
 
 }

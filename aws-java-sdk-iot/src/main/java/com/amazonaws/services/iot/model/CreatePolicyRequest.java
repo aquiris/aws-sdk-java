@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The input for the CreatePolicy operation.
  * </p>
  */
-public class CreatePolicyRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreatePolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,9 +33,8 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
     private String policyName;
     /**
      * <p>
-     * The JSON document that describes the policy. <b>policyDocument</b> must
-     * have a minimum length of 1, with a maximum length of 2048, excluding
-     * whitespace.
+     * The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a
+     * maximum length of 2048, excluding whitespace.
      * </p>
      */
     private String policyDocument;
@@ -72,8 +71,7 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
      * 
      * @param policyName
      *        The policy name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreatePolicyRequest withPolicyName(String policyName) {
@@ -83,15 +81,13 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The JSON document that describes the policy. <b>policyDocument</b> must
-     * have a minimum length of 1, with a maximum length of 2048, excluding
-     * whitespace.
+     * The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a
+     * maximum length of 2048, excluding whitespace.
      * </p>
      * 
      * @param policyDocument
-     *        The JSON document that describes the policy. <b>policyDocument</b>
-     *        must have a minimum length of 1, with a maximum length of 2048,
-     *        excluding whitespace.
+     *        The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a
+     *        maximum length of 2048, excluding whitespace.
      */
 
     public void setPolicyDocument(String policyDocument) {
@@ -100,14 +96,12 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The JSON document that describes the policy. <b>policyDocument</b> must
-     * have a minimum length of 1, with a maximum length of 2048, excluding
-     * whitespace.
+     * The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a
+     * maximum length of 2048, excluding whitespace.
      * </p>
      * 
-     * @return The JSON document that describes the policy.
-     *         <b>policyDocument</b> must have a minimum length of 1, with a
-     *         maximum length of 2048, excluding whitespace.
+     * @return The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with
+     *         a maximum length of 2048, excluding whitespace.
      */
 
     public String getPolicyDocument() {
@@ -116,17 +110,14 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The JSON document that describes the policy. <b>policyDocument</b> must
-     * have a minimum length of 1, with a maximum length of 2048, excluding
-     * whitespace.
+     * The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a
+     * maximum length of 2048, excluding whitespace.
      * </p>
      * 
      * @param policyDocument
-     *        The JSON document that describes the policy. <b>policyDocument</b>
-     *        must have a minimum length of 1, with a maximum length of 2048,
-     *        excluding whitespace.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a
+     *        maximum length of 2048, excluding whitespace.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreatePolicyRequest withPolicyDocument(String policyDocument) {
@@ -135,8 +126,7 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -147,9 +137,9 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPolicyName() != null)
-            sb.append("PolicyName: " + getPolicyName() + ",");
+            sb.append("PolicyName: ").append(getPolicyName()).append(",");
         if (getPolicyDocument() != null)
-            sb.append("PolicyDocument: " + getPolicyDocument());
+            sb.append("PolicyDocument: ").append(getPolicyDocument());
         sb.append("}");
         return sb.toString();
     }
@@ -166,14 +156,11 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
         CreatePolicyRequest other = (CreatePolicyRequest) obj;
         if (other.getPolicyName() == null ^ this.getPolicyName() == null)
             return false;
-        if (other.getPolicyName() != null
-                && other.getPolicyName().equals(this.getPolicyName()) == false)
+        if (other.getPolicyName() != null && other.getPolicyName().equals(this.getPolicyName()) == false)
             return false;
-        if (other.getPolicyDocument() == null
-                ^ this.getPolicyDocument() == null)
+        if (other.getPolicyDocument() == null ^ this.getPolicyDocument() == null)
             return false;
-        if (other.getPolicyDocument() != null
-                && other.getPolicyDocument().equals(this.getPolicyDocument()) == false)
+        if (other.getPolicyDocument() != null && other.getPolicyDocument().equals(this.getPolicyDocument()) == false)
             return false;
         return true;
     }
@@ -183,12 +170,8 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getPolicyName() == null) ? 0 : getPolicyName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPolicyDocument() == null) ? 0 : getPolicyDocument()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getPolicyName() == null) ? 0 : getPolicyName().hashCode());
+        hashCode = prime * hashCode + ((getPolicyDocument() == null) ? 0 : getPolicyDocument().hashCode());
         return hashCode;
     }
 
@@ -196,4 +179,5 @@ public class CreatePolicyRequest extends AmazonWebServiceRequest implements
     public CreatePolicyRequest clone() {
         return (CreatePolicyRequest) super.clone();
     }
+
 }

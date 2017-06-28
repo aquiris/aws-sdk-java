@@ -1,49 +1,48 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitosync.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * A request for information about the usage of an identity pool.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityUsage" target="_top">AWS
+ *      API Documentation</a>
  */
-public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeIdentityUsageRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      */
     private String identityPoolId;
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      */
     private String identityId;
 
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      * 
      * @param identityPoolId
-     *        A name-spaced GUID (for example,
-     *        us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+     *        A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
      *        Cognito. GUID generation is unique within a region.
      */
 
@@ -52,12 +51,10 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      * 
-     * @return A name-spaced GUID (for example,
-     *         us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+     * @return A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
      *         Cognito. GUID generation is unique within a region.
      */
 
@@ -66,16 +63,13 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      * 
      * @param identityPoolId
-     *        A name-spaced GUID (for example,
-     *        us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+     *        A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
      *        Cognito. GUID generation is unique within a region.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeIdentityUsageRequest withIdentityPoolId(String identityPoolId) {
@@ -84,13 +78,11 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      * 
      * @param identityId
-     *        A name-spaced GUID (for example,
-     *        us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+     *        A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
      *        Cognito. GUID generation is unique within a region.
      */
 
@@ -99,12 +91,10 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      * 
-     * @return A name-spaced GUID (for example,
-     *         us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+     * @return A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
      *         Cognito. GUID generation is unique within a region.
      */
 
@@ -113,16 +103,13 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * A name-spaced GUID (for example,
-     * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-     * Cognito. GUID generation is unique within a region.
+     * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID
+     * generation is unique within a region.
      * 
      * @param identityId
-     *        A name-spaced GUID (for example,
-     *        us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+     *        A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
      *        Cognito. GUID generation is unique within a region.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeIdentityUsageRequest withIdentityId(String identityId) {
@@ -131,8 +118,7 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -143,9 +129,9 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityPoolId() != null)
-            sb.append("IdentityPoolId: " + getIdentityPoolId() + ",");
+            sb.append("IdentityPoolId: ").append(getIdentityPoolId()).append(",");
         if (getIdentityId() != null)
-            sb.append("IdentityId: " + getIdentityId());
+            sb.append("IdentityId: ").append(getIdentityId());
         sb.append("}");
         return sb.toString();
     }
@@ -160,16 +146,13 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeIdentityUsageRequest == false)
             return false;
         DescribeIdentityUsageRequest other = (DescribeIdentityUsageRequest) obj;
-        if (other.getIdentityPoolId() == null
-                ^ this.getIdentityPoolId() == null)
+        if (other.getIdentityPoolId() == null ^ this.getIdentityPoolId() == null)
             return false;
-        if (other.getIdentityPoolId() != null
-                && other.getIdentityPoolId().equals(this.getIdentityPoolId()) == false)
+        if (other.getIdentityPoolId() != null && other.getIdentityPoolId().equals(this.getIdentityPoolId()) == false)
             return false;
         if (other.getIdentityId() == null ^ this.getIdentityId() == null)
             return false;
-        if (other.getIdentityId() != null
-                && other.getIdentityId().equals(this.getIdentityId()) == false)
+        if (other.getIdentityId() != null && other.getIdentityId().equals(this.getIdentityId()) == false)
             return false;
         return true;
     }
@@ -179,12 +162,8 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getIdentityPoolId() == null) ? 0 : getIdentityPoolId()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getIdentityId() == null) ? 0 : getIdentityId().hashCode());
+        hashCode = prime * hashCode + ((getIdentityPoolId() == null) ? 0 : getIdentityPoolId().hashCode());
+        hashCode = prime * hashCode + ((getIdentityId() == null) ? 0 : getIdentityId().hashCode());
         return hashCode;
     }
 
@@ -192,4 +171,5 @@ public class DescribeIdentityUsageRequest extends AmazonWebServiceRequest
     public DescribeIdentityUsageRequest clone() {
         return (DescribeIdentityUsageRequest) super.clone();
     }
+
 }

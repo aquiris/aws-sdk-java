@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes the parameters for a document.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/AssociationDescription" target="_top">AWS API
+ *      Documentation</a>
  */
-public class AssociationDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AssociationDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -43,16 +48,70 @@ public class AssociationDescription implements Serializable, Cloneable {
     private java.util.Date dateValue;
     /**
      * <p>
+     * The date when the association was last updated.
+     * </p>
+     */
+    private java.util.Date lastUpdateAssociationDate;
+    /**
+     * <p>
      * The association status.
      * </p>
      */
     private AssociationStatus status;
     /**
      * <p>
+     * Information about the association.
+     * </p>
+     */
+    private AssociationOverview overview;
+    /**
+     * <p>
+     * The document version.
+     * </p>
+     */
+    private String documentVersion;
+    /**
+     * <p>
      * A description of the parameters for a document.
      * </p>
      */
     private java.util.Map<String, java.util.List<String>> parameters;
+    /**
+     * <p>
+     * The association ID.
+     * </p>
+     */
+    private String associationId;
+    /**
+     * <p>
+     * The instances targeted by the request.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Target> targets;
+    /**
+     * <p>
+     * A cron expression that specifies a schedule when the association runs.
+     * </p>
+     */
+    private String scheduleExpression;
+    /**
+     * <p>
+     * An Amazon S3 bucket where you want to store the output details of the request.
+     * </p>
+     */
+    private InstanceAssociationOutputLocation outputLocation;
+    /**
+     * <p>
+     * The date on which the association was last run.
+     * </p>
+     */
+    private java.util.Date lastExecutionDate;
+    /**
+     * <p>
+     * The last date on which the association was successfully run.
+     * </p>
+     */
+    private java.util.Date lastSuccessfulExecutionDate;
 
     /**
      * <p>
@@ -86,8 +145,7 @@ public class AssociationDescription implements Serializable, Cloneable {
      * 
      * @param name
      *        The name of the SSM document.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssociationDescription withName(String name) {
@@ -127,8 +185,7 @@ public class AssociationDescription implements Serializable, Cloneable {
      * 
      * @param instanceId
      *        The ID of the instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssociationDescription withInstanceId(String instanceId) {
@@ -168,12 +225,51 @@ public class AssociationDescription implements Serializable, Cloneable {
      * 
      * @param dateValue
      *        The date when the association was made.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssociationDescription withDate(java.util.Date dateValue) {
         setDate(dateValue);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The date when the association was last updated.
+     * </p>
+     * 
+     * @param lastUpdateAssociationDate
+     *        The date when the association was last updated.
+     */
+
+    public void setLastUpdateAssociationDate(java.util.Date lastUpdateAssociationDate) {
+        this.lastUpdateAssociationDate = lastUpdateAssociationDate;
+    }
+
+    /**
+     * <p>
+     * The date when the association was last updated.
+     * </p>
+     * 
+     * @return The date when the association was last updated.
+     */
+
+    public java.util.Date getLastUpdateAssociationDate() {
+        return this.lastUpdateAssociationDate;
+    }
+
+    /**
+     * <p>
+     * The date when the association was last updated.
+     * </p>
+     * 
+     * @param lastUpdateAssociationDate
+     *        The date when the association was last updated.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withLastUpdateAssociationDate(java.util.Date lastUpdateAssociationDate) {
+        setLastUpdateAssociationDate(lastUpdateAssociationDate);
         return this;
     }
 
@@ -209,12 +305,91 @@ public class AssociationDescription implements Serializable, Cloneable {
      * 
      * @param status
      *        The association status.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssociationDescription withStatus(AssociationStatus status) {
         setStatus(status);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the association.
+     * </p>
+     * 
+     * @param overview
+     *        Information about the association.
+     */
+
+    public void setOverview(AssociationOverview overview) {
+        this.overview = overview;
+    }
+
+    /**
+     * <p>
+     * Information about the association.
+     * </p>
+     * 
+     * @return Information about the association.
+     */
+
+    public AssociationOverview getOverview() {
+        return this.overview;
+    }
+
+    /**
+     * <p>
+     * Information about the association.
+     * </p>
+     * 
+     * @param overview
+     *        Information about the association.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withOverview(AssociationOverview overview) {
+        setOverview(overview);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The document version.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The document version.
+     */
+
+    public void setDocumentVersion(String documentVersion) {
+        this.documentVersion = documentVersion;
+    }
+
+    /**
+     * <p>
+     * The document version.
+     * </p>
+     * 
+     * @return The document version.
+     */
+
+    public String getDocumentVersion() {
+        return this.documentVersion;
+    }
+
+    /**
+     * <p>
+     * The document version.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The document version.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withDocumentVersion(String documentVersion) {
+        setDocumentVersion(documentVersion);
         return this;
     }
 
@@ -239,8 +414,7 @@ public class AssociationDescription implements Serializable, Cloneable {
      *        A description of the parameters for a document.
      */
 
-    public void setParameters(
-            java.util.Map<String, java.util.List<String>> parameters) {
+    public void setParameters(java.util.Map<String, java.util.List<String>> parameters) {
         this.parameters = parameters;
     }
 
@@ -251,31 +425,28 @@ public class AssociationDescription implements Serializable, Cloneable {
      * 
      * @param parameters
      *        A description of the parameters for a document.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AssociationDescription withParameters(
-            java.util.Map<String, java.util.List<String>> parameters) {
+    public AssociationDescription withParameters(java.util.Map<String, java.util.List<String>> parameters) {
         setParameters(parameters);
         return this;
     }
 
-    public AssociationDescription addParametersEntry(String key,
-            java.util.List<String> value) {
+    public AssociationDescription addParametersEntry(String key, java.util.List<String> value) {
         if (null == this.parameters) {
             this.parameters = new java.util.HashMap<String, java.util.List<String>>();
         }
         if (this.parameters.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.parameters.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into Parameters. &lt;p> Returns a reference
-     * to this object so that method calls can be chained together.
+     * Removes all the entries added into Parameters.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AssociationDescription clearParametersEntries() {
@@ -284,8 +455,280 @@ public class AssociationDescription implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * The association ID.
+     * </p>
+     * 
+     * @param associationId
+     *        The association ID.
+     */
+
+    public void setAssociationId(String associationId) {
+        this.associationId = associationId;
+    }
+
+    /**
+     * <p>
+     * The association ID.
+     * </p>
+     * 
+     * @return The association ID.
+     */
+
+    public String getAssociationId() {
+        return this.associationId;
+    }
+
+    /**
+     * <p>
+     * The association ID.
+     * </p>
+     * 
+     * @param associationId
+     *        The association ID.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withAssociationId(String associationId) {
+        setAssociationId(associationId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The instances targeted by the request.
+     * </p>
+     * 
+     * @return The instances targeted by the request.
+     */
+
+    public java.util.List<Target> getTargets() {
+        if (targets == null) {
+            targets = new com.amazonaws.internal.SdkInternalList<Target>();
+        }
+        return targets;
+    }
+
+    /**
+     * <p>
+     * The instances targeted by the request.
+     * </p>
+     * 
+     * @param targets
+     *        The instances targeted by the request.
+     */
+
+    public void setTargets(java.util.Collection<Target> targets) {
+        if (targets == null) {
+            this.targets = null;
+            return;
+        }
+
+        this.targets = new com.amazonaws.internal.SdkInternalList<Target>(targets);
+    }
+
+    /**
+     * <p>
+     * The instances targeted by the request.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTargets(java.util.Collection)} or {@link #withTargets(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param targets
+     *        The instances targeted by the request.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withTargets(Target... targets) {
+        if (this.targets == null) {
+            setTargets(new com.amazonaws.internal.SdkInternalList<Target>(targets.length));
+        }
+        for (Target ele : targets) {
+            this.targets.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The instances targeted by the request.
+     * </p>
+     * 
+     * @param targets
+     *        The instances targeted by the request.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withTargets(java.util.Collection<Target> targets) {
+        setTargets(targets);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A cron expression that specifies a schedule when the association runs.
+     * </p>
+     * 
+     * @param scheduleExpression
+     *        A cron expression that specifies a schedule when the association runs.
+     */
+
+    public void setScheduleExpression(String scheduleExpression) {
+        this.scheduleExpression = scheduleExpression;
+    }
+
+    /**
+     * <p>
+     * A cron expression that specifies a schedule when the association runs.
+     * </p>
+     * 
+     * @return A cron expression that specifies a schedule when the association runs.
+     */
+
+    public String getScheduleExpression() {
+        return this.scheduleExpression;
+    }
+
+    /**
+     * <p>
+     * A cron expression that specifies a schedule when the association runs.
+     * </p>
+     * 
+     * @param scheduleExpression
+     *        A cron expression that specifies a schedule when the association runs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withScheduleExpression(String scheduleExpression) {
+        setScheduleExpression(scheduleExpression);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An Amazon S3 bucket where you want to store the output details of the request.
+     * </p>
+     * 
+     * @param outputLocation
+     *        An Amazon S3 bucket where you want to store the output details of the request.
+     */
+
+    public void setOutputLocation(InstanceAssociationOutputLocation outputLocation) {
+        this.outputLocation = outputLocation;
+    }
+
+    /**
+     * <p>
+     * An Amazon S3 bucket where you want to store the output details of the request.
+     * </p>
+     * 
+     * @return An Amazon S3 bucket where you want to store the output details of the request.
+     */
+
+    public InstanceAssociationOutputLocation getOutputLocation() {
+        return this.outputLocation;
+    }
+
+    /**
+     * <p>
+     * An Amazon S3 bucket where you want to store the output details of the request.
+     * </p>
+     * 
+     * @param outputLocation
+     *        An Amazon S3 bucket where you want to store the output details of the request.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withOutputLocation(InstanceAssociationOutputLocation outputLocation) {
+        setOutputLocation(outputLocation);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The date on which the association was last run.
+     * </p>
+     * 
+     * @param lastExecutionDate
+     *        The date on which the association was last run.
+     */
+
+    public void setLastExecutionDate(java.util.Date lastExecutionDate) {
+        this.lastExecutionDate = lastExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The date on which the association was last run.
+     * </p>
+     * 
+     * @return The date on which the association was last run.
+     */
+
+    public java.util.Date getLastExecutionDate() {
+        return this.lastExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The date on which the association was last run.
+     * </p>
+     * 
+     * @param lastExecutionDate
+     *        The date on which the association was last run.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withLastExecutionDate(java.util.Date lastExecutionDate) {
+        setLastExecutionDate(lastExecutionDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The last date on which the association was successfully run.
+     * </p>
+     * 
+     * @param lastSuccessfulExecutionDate
+     *        The last date on which the association was successfully run.
+     */
+
+    public void setLastSuccessfulExecutionDate(java.util.Date lastSuccessfulExecutionDate) {
+        this.lastSuccessfulExecutionDate = lastSuccessfulExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The last date on which the association was successfully run.
+     * </p>
+     * 
+     * @return The last date on which the association was successfully run.
+     */
+
+    public java.util.Date getLastSuccessfulExecutionDate() {
+        return this.lastSuccessfulExecutionDate;
+    }
+
+    /**
+     * <p>
+     * The last date on which the association was successfully run.
+     * </p>
+     * 
+     * @param lastSuccessfulExecutionDate
+     *        The last date on which the association was successfully run.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withLastSuccessfulExecutionDate(java.util.Date lastSuccessfulExecutionDate) {
+        setLastSuccessfulExecutionDate(lastSuccessfulExecutionDate);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -296,15 +739,33 @@ public class AssociationDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getDate() != null)
-            sb.append("Date: " + getDate() + ",");
+            sb.append("Date: ").append(getDate()).append(",");
+        if (getLastUpdateAssociationDate() != null)
+            sb.append("LastUpdateAssociationDate: ").append(getLastUpdateAssociationDate()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
+        if (getOverview() != null)
+            sb.append("Overview: ").append(getOverview()).append(",");
+        if (getDocumentVersion() != null)
+            sb.append("DocumentVersion: ").append(getDocumentVersion()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters());
+            sb.append("Parameters: ").append(getParameters()).append(",");
+        if (getAssociationId() != null)
+            sb.append("AssociationId: ").append(getAssociationId()).append(",");
+        if (getTargets() != null)
+            sb.append("Targets: ").append(getTargets()).append(",");
+        if (getScheduleExpression() != null)
+            sb.append("ScheduleExpression: ").append(getScheduleExpression()).append(",");
+        if (getOutputLocation() != null)
+            sb.append("OutputLocation: ").append(getOutputLocation()).append(",");
+        if (getLastExecutionDate() != null)
+            sb.append("LastExecutionDate: ").append(getLastExecutionDate()).append(",");
+        if (getLastSuccessfulExecutionDate() != null)
+            sb.append("LastSuccessfulExecutionDate: ").append(getLastSuccessfulExecutionDate());
         sb.append("}");
         return sb.toString();
     }
@@ -321,28 +782,59 @@ public class AssociationDescription implements Serializable, Cloneable {
         AssociationDescription other = (AssociationDescription) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getInstanceId() == null ^ this.getInstanceId() == null)
             return false;
-        if (other.getInstanceId() != null
-                && other.getInstanceId().equals(this.getInstanceId()) == false)
+        if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
             return false;
         if (other.getDate() == null ^ this.getDate() == null)
             return false;
-        if (other.getDate() != null
-                && other.getDate().equals(this.getDate()) == false)
+        if (other.getDate() != null && other.getDate().equals(this.getDate()) == false)
+            return false;
+        if (other.getLastUpdateAssociationDate() == null ^ this.getLastUpdateAssociationDate() == null)
+            return false;
+        if (other.getLastUpdateAssociationDate() != null && other.getLastUpdateAssociationDate().equals(this.getLastUpdateAssociationDate()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
+            return false;
+        if (other.getOverview() == null ^ this.getOverview() == null)
+            return false;
+        if (other.getOverview() != null && other.getOverview().equals(this.getOverview()) == false)
+            return false;
+        if (other.getDocumentVersion() == null ^ this.getDocumentVersion() == null)
+            return false;
+        if (other.getDocumentVersion() != null && other.getDocumentVersion().equals(this.getDocumentVersion()) == false)
             return false;
         if (other.getParameters() == null ^ this.getParameters() == null)
             return false;
-        if (other.getParameters() != null
-                && other.getParameters().equals(this.getParameters()) == false)
+        if (other.getParameters() != null && other.getParameters().equals(this.getParameters()) == false)
+            return false;
+        if (other.getAssociationId() == null ^ this.getAssociationId() == null)
+            return false;
+        if (other.getAssociationId() != null && other.getAssociationId().equals(this.getAssociationId()) == false)
+            return false;
+        if (other.getTargets() == null ^ this.getTargets() == null)
+            return false;
+        if (other.getTargets() != null && other.getTargets().equals(this.getTargets()) == false)
+            return false;
+        if (other.getScheduleExpression() == null ^ this.getScheduleExpression() == null)
+            return false;
+        if (other.getScheduleExpression() != null && other.getScheduleExpression().equals(this.getScheduleExpression()) == false)
+            return false;
+        if (other.getOutputLocation() == null ^ this.getOutputLocation() == null)
+            return false;
+        if (other.getOutputLocation() != null && other.getOutputLocation().equals(this.getOutputLocation()) == false)
+            return false;
+        if (other.getLastExecutionDate() == null ^ this.getLastExecutionDate() == null)
+            return false;
+        if (other.getLastExecutionDate() != null && other.getLastExecutionDate().equals(this.getLastExecutionDate()) == false)
+            return false;
+        if (other.getLastSuccessfulExecutionDate() == null ^ this.getLastSuccessfulExecutionDate() == null)
+            return false;
+        if (other.getLastSuccessfulExecutionDate() != null && other.getLastSuccessfulExecutionDate().equals(this.getLastSuccessfulExecutionDate()) == false)
             return false;
         return true;
     }
@@ -352,16 +844,20 @@ public class AssociationDescription implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
-        hashCode = prime * hashCode
-                + ((getDate() == null) ? 0 : getDate().hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime * hashCode
-                + ((getParameters() == null) ? 0 : getParameters().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
+        hashCode = prime * hashCode + ((getDate() == null) ? 0 : getDate().hashCode());
+        hashCode = prime * hashCode + ((getLastUpdateAssociationDate() == null) ? 0 : getLastUpdateAssociationDate().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getOverview() == null) ? 0 : getOverview().hashCode());
+        hashCode = prime * hashCode + ((getDocumentVersion() == null) ? 0 : getDocumentVersion().hashCode());
+        hashCode = prime * hashCode + ((getParameters() == null) ? 0 : getParameters().hashCode());
+        hashCode = prime * hashCode + ((getAssociationId() == null) ? 0 : getAssociationId().hashCode());
+        hashCode = prime * hashCode + ((getTargets() == null) ? 0 : getTargets().hashCode());
+        hashCode = prime * hashCode + ((getScheduleExpression() == null) ? 0 : getScheduleExpression().hashCode());
+        hashCode = prime * hashCode + ((getOutputLocation() == null) ? 0 : getOutputLocation().hashCode());
+        hashCode = prime * hashCode + ((getLastExecutionDate() == null) ? 0 : getLastExecutionDate().hashCode());
+        hashCode = prime * hashCode + ((getLastSuccessfulExecutionDate() == null) ? 0 : getLastSuccessfulExecutionDate().hashCode());
         return hashCode;
     }
 
@@ -370,9 +866,13 @@ public class AssociationDescription implements Serializable, Cloneable {
         try {
             return (AssociationDescription) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simplesystemsmanagement.model.transform.AssociationDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

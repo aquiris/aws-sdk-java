@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.CreateSubnetRequestMarshaller;
@@ -24,55 +24,198 @@ import com.amazonaws.services.ec2.model.transform.CreateSubnetRequestMarshaller;
  * Contains the parameters for CreateSubnet.
  * </p>
  */
-public class CreateSubnetRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable, DryRunSupportedRequest<CreateSubnetRequest> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateSubnetRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<CreateSubnetRequest> {
 
+    /**
+     * <p>
+     * The Availability Zone for the subnet.
+     * </p>
+     * <p>
+     * Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily select a
+     * different zone for each subnet.
+     * </p>
+     */
+    private String availabilityZone;
+    /**
+     * <p>
+     * The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
+     * </p>
+     */
+    private String cidrBlock;
+    /**
+     * <p>
+     * The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
+     * </p>
+     */
+    private String ipv6CidrBlock;
     /**
      * <p>
      * The ID of the VPC.
      * </p>
      */
     private String vpcId;
-    /**
-     * <p>
-     * The network range for the subnet, in CIDR notation. For example,
-     * <code>10.0.0.0/24</code>.
-     * </p>
-     */
-    private String cidrBlock;
-    /**
-     * <p>
-     * The Availability Zone for the subnet.
-     * </p>
-     * <p>
-     * Default: AWS selects one for you. If you create more than one subnet in
-     * your VPC, we may not necessarily select a different zone for each subnet.
-     * </p>
-     */
-    private String availabilityZone;
 
     /**
-     * Default constructor for CreateSubnetRequest object. Callers should use
-     * the setter or fluent setter (with...) methods to initialize the object
-     * after creating it.
+     * Default constructor for CreateSubnetRequest object. Callers should use the setter or fluent setter (with...)
+     * methods to initialize the object after creating it.
      */
     public CreateSubnetRequest() {
     }
 
     /**
-     * Constructs a new CreateSubnetRequest object. Callers should use the
-     * setter or fluent setter (with...) methods to initialize any additional
-     * object members.
+     * Constructs a new CreateSubnetRequest object. Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
      * 
      * @param vpcId
      *        The ID of the VPC.
      * @param cidrBlock
-     *        The network range for the subnet, in CIDR notation. For example,
-     *        <code>10.0.0.0/24</code>.
+     *        The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
      */
     public CreateSubnetRequest(String vpcId, String cidrBlock) {
         setVpcId(vpcId);
         setCidrBlock(cidrBlock);
+    }
+
+    /**
+     * <p>
+     * The Availability Zone for the subnet.
+     * </p>
+     * <p>
+     * Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily select a
+     * different zone for each subnet.
+     * </p>
+     * 
+     * @param availabilityZone
+     *        The Availability Zone for the subnet.</p>
+     *        <p>
+     *        Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily
+     *        select a different zone for each subnet.
+     */
+
+    public void setAvailabilityZone(String availabilityZone) {
+        this.availabilityZone = availabilityZone;
+    }
+
+    /**
+     * <p>
+     * The Availability Zone for the subnet.
+     * </p>
+     * <p>
+     * Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily select a
+     * different zone for each subnet.
+     * </p>
+     * 
+     * @return The Availability Zone for the subnet.</p>
+     *         <p>
+     *         Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily
+     *         select a different zone for each subnet.
+     */
+
+    public String getAvailabilityZone() {
+        return this.availabilityZone;
+    }
+
+    /**
+     * <p>
+     * The Availability Zone for the subnet.
+     * </p>
+     * <p>
+     * Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily select a
+     * different zone for each subnet.
+     * </p>
+     * 
+     * @param availabilityZone
+     *        The Availability Zone for the subnet.</p>
+     *        <p>
+     *        Default: AWS selects one for you. If you create more than one subnet in your VPC, we may not necessarily
+     *        select a different zone for each subnet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateSubnetRequest withAvailabilityZone(String availabilityZone) {
+        setAvailabilityZone(availabilityZone);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
+     * </p>
+     * 
+     * @param cidrBlock
+     *        The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
+     */
+
+    public void setCidrBlock(String cidrBlock) {
+        this.cidrBlock = cidrBlock;
+    }
+
+    /**
+     * <p>
+     * The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
+     * </p>
+     * 
+     * @return The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
+     */
+
+    public String getCidrBlock() {
+        return this.cidrBlock;
+    }
+
+    /**
+     * <p>
+     * The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
+     * </p>
+     * 
+     * @param cidrBlock
+     *        The IPv4 network range for the subnet, in CIDR notation. For example, <code>10.0.0.0/24</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateSubnetRequest withCidrBlock(String cidrBlock) {
+        setCidrBlock(cidrBlock);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
+     * </p>
+     * 
+     * @param ipv6CidrBlock
+     *        The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
+     */
+
+    public void setIpv6CidrBlock(String ipv6CidrBlock) {
+        this.ipv6CidrBlock = ipv6CidrBlock;
+    }
+
+    /**
+     * <p>
+     * The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
+     * </p>
+     * 
+     * @return The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
+     */
+
+    public String getIpv6CidrBlock() {
+        return this.ipv6CidrBlock;
+    }
+
+    /**
+     * <p>
+     * The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
+     * </p>
+     * 
+     * @param ipv6CidrBlock
+     *        The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateSubnetRequest withIpv6CidrBlock(String ipv6CidrBlock) {
+        setIpv6CidrBlock(ipv6CidrBlock);
+        return this;
     }
 
     /**
@@ -107,8 +250,7 @@ public class CreateSubnetRequest extends AmazonWebServiceRequest implements
      * 
      * @param vpcId
      *        The ID of the VPC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateSubnetRequest withVpcId(String vpcId) {
@@ -117,133 +259,18 @@ public class CreateSubnetRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * <p>
-     * The network range for the subnet, in CIDR notation. For example,
-     * <code>10.0.0.0/24</code>.
-     * </p>
-     * 
-     * @param cidrBlock
-     *        The network range for the subnet, in CIDR notation. For example,
-     *        <code>10.0.0.0/24</code>.
-     */
-
-    public void setCidrBlock(String cidrBlock) {
-        this.cidrBlock = cidrBlock;
-    }
-
-    /**
-     * <p>
-     * The network range for the subnet, in CIDR notation. For example,
-     * <code>10.0.0.0/24</code>.
-     * </p>
-     * 
-     * @return The network range for the subnet, in CIDR notation. For example,
-     *         <code>10.0.0.0/24</code>.
-     */
-
-    public String getCidrBlock() {
-        return this.cidrBlock;
-    }
-
-    /**
-     * <p>
-     * The network range for the subnet, in CIDR notation. For example,
-     * <code>10.0.0.0/24</code>.
-     * </p>
-     * 
-     * @param cidrBlock
-     *        The network range for the subnet, in CIDR notation. For example,
-     *        <code>10.0.0.0/24</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
-
-    public CreateSubnetRequest withCidrBlock(String cidrBlock) {
-        setCidrBlock(cidrBlock);
-        return this;
-    }
-
-    /**
-     * <p>
-     * The Availability Zone for the subnet.
-     * </p>
-     * <p>
-     * Default: AWS selects one for you. If you create more than one subnet in
-     * your VPC, we may not necessarily select a different zone for each subnet.
-     * </p>
-     * 
-     * @param availabilityZone
-     *        The Availability Zone for the subnet.</p>
-     *        <p>
-     *        Default: AWS selects one for you. If you create more than one
-     *        subnet in your VPC, we may not necessarily select a different zone
-     *        for each subnet.
-     */
-
-    public void setAvailabilityZone(String availabilityZone) {
-        this.availabilityZone = availabilityZone;
-    }
-
-    /**
-     * <p>
-     * The Availability Zone for the subnet.
-     * </p>
-     * <p>
-     * Default: AWS selects one for you. If you create more than one subnet in
-     * your VPC, we may not necessarily select a different zone for each subnet.
-     * </p>
-     * 
-     * @return The Availability Zone for the subnet.</p>
-     *         <p>
-     *         Default: AWS selects one for you. If you create more than one
-     *         subnet in your VPC, we may not necessarily select a different
-     *         zone for each subnet.
-     */
-
-    public String getAvailabilityZone() {
-        return this.availabilityZone;
-    }
-
-    /**
-     * <p>
-     * The Availability Zone for the subnet.
-     * </p>
-     * <p>
-     * Default: AWS selects one for you. If you create more than one subnet in
-     * your VPC, we may not necessarily select a different zone for each subnet.
-     * </p>
-     * 
-     * @param availabilityZone
-     *        The Availability Zone for the subnet.</p>
-     *        <p>
-     *        Default: AWS selects one for you. If you create more than one
-     *        subnet in your VPC, we may not necessarily select a different zone
-     *        for each subnet.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
-
-    public CreateSubnetRequest withAvailabilityZone(String availabilityZone) {
-        setAvailabilityZone(availabilityZone);
-        return this;
-    }
-
-    /**
-     * This method is intended for internal use only. Returns the marshaled
-     * request configured with additional parameters to enable operation
-     * dry-run.
+     * This method is intended for internal use only. Returns the marshaled request configured with additional
+     * parameters to enable operation dry-run.
      */
     @Override
     public Request<CreateSubnetRequest> getDryRunRequest() {
-        Request<CreateSubnetRequest> request = new CreateSubnetRequestMarshaller()
-                .marshall(this);
+        Request<CreateSubnetRequest> request = new CreateSubnetRequestMarshaller().marshall(this);
         request.addParameter("DryRun", Boolean.toString(true));
         return request;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -253,12 +280,14 @@ public class CreateSubnetRequest extends AmazonWebServiceRequest implements
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getVpcId() != null)
-            sb.append("VpcId: " + getVpcId() + ",");
-        if (getCidrBlock() != null)
-            sb.append("CidrBlock: " + getCidrBlock() + ",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: " + getAvailabilityZone());
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
+        if (getCidrBlock() != null)
+            sb.append("CidrBlock: ").append(getCidrBlock()).append(",");
+        if (getIpv6CidrBlock() != null)
+            sb.append("Ipv6CidrBlock: ").append(getIpv6CidrBlock()).append(",");
+        if (getVpcId() != null)
+            sb.append("VpcId: ").append(getVpcId());
         sb.append("}");
         return sb.toString();
     }
@@ -273,22 +302,21 @@ public class CreateSubnetRequest extends AmazonWebServiceRequest implements
         if (obj instanceof CreateSubnetRequest == false)
             return false;
         CreateSubnetRequest other = (CreateSubnetRequest) obj;
-        if (other.getVpcId() == null ^ this.getVpcId() == null)
+        if (other.getAvailabilityZone() == null ^ this.getAvailabilityZone() == null)
             return false;
-        if (other.getVpcId() != null
-                && other.getVpcId().equals(this.getVpcId()) == false)
+        if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false)
             return false;
         if (other.getCidrBlock() == null ^ this.getCidrBlock() == null)
             return false;
-        if (other.getCidrBlock() != null
-                && other.getCidrBlock().equals(this.getCidrBlock()) == false)
+        if (other.getCidrBlock() != null && other.getCidrBlock().equals(this.getCidrBlock()) == false)
             return false;
-        if (other.getAvailabilityZone() == null
-                ^ this.getAvailabilityZone() == null)
+        if (other.getIpv6CidrBlock() == null ^ this.getIpv6CidrBlock() == null)
             return false;
-        if (other.getAvailabilityZone() != null
-                && other.getAvailabilityZone().equals(
-                        this.getAvailabilityZone()) == false)
+        if (other.getIpv6CidrBlock() != null && other.getIpv6CidrBlock().equals(this.getIpv6CidrBlock()) == false)
+            return false;
+        if (other.getVpcId() == null ^ this.getVpcId() == null)
+            return false;
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false)
             return false;
         return true;
     }
@@ -298,14 +326,10 @@ public class CreateSubnetRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
-        hashCode = prime * hashCode
-                + ((getCidrBlock() == null) ? 0 : getCidrBlock().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getCidrBlock() == null) ? 0 : getCidrBlock().hashCode());
+        hashCode = prime * hashCode + ((getIpv6CidrBlock() == null) ? 0 : getIpv6CidrBlock().hashCode());
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
         return hashCode;
     }
 

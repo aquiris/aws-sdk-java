@@ -1,23 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simplesystemsmanagement.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.simplesystemsmanagement.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -29,11 +26,10 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * NotificationConfig JSON Unmarshaller
  */
-public class NotificationConfigJsonUnmarshaller implements
-        Unmarshaller<NotificationConfig, JsonUnmarshallerContext> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class NotificationConfigJsonUnmarshaller implements Unmarshaller<NotificationConfig, JsonUnmarshallerContext> {
 
-    public NotificationConfig unmarshall(JsonUnmarshallerContext context)
-            throws Exception {
+    public NotificationConfig unmarshall(JsonUnmarshallerContext context) throws Exception {
         NotificationConfig notificationConfig = new NotificationConfig();
 
         int originalDepth = context.getCurrentDepth();
@@ -43,8 +39,9 @@ public class NotificationConfigJsonUnmarshaller implements
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -53,25 +50,18 @@ public class NotificationConfigJsonUnmarshaller implements
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("NotificationArn", targetDepth)) {
                     context.nextToken();
-                    notificationConfig.setNotificationArn(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    notificationConfig.setNotificationArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("NotificationEvents", targetDepth)) {
                     context.nextToken();
-                    notificationConfig
-                            .setNotificationEvents(new ListUnmarshaller<String>(
-                                    context.getUnmarshaller(String.class))
-                                    .unmarshall(context));
+                    notificationConfig.setNotificationEvents(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
                 }
                 if (context.testExpression("NotificationType", targetDepth)) {
                     context.nextToken();
-                    notificationConfig.setNotificationType(context
-                            .getUnmarshaller(String.class).unmarshall(context));
+                    notificationConfig.setNotificationType(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
-                if (context.getLastParsedParentElement() == null
-                        || context.getLastParsedParentElement().equals(
-                                currentParentElement)) {
+                if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)
                         break;
                 }

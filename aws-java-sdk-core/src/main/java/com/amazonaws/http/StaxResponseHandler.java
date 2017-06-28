@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,23 +14,24 @@
  */
 package com.amazonaws.http;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Map;
-
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.amazonaws.AmazonWebServiceResponse;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.Unmarshaller;
 import com.amazonaws.transform.VoidStaxUnmarshaller;
 import com.amazonaws.util.StringUtils;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Default implementation of HttpResponseHandler that handles a successful
@@ -77,7 +78,7 @@ public class StaxResponseHandler<T> implements HttpResponseHandler<AmazonWebServ
 
 
     /**
-     * @see com.amazonaws.http.HttpResponseHandler#handle(com.amazonaws.http.HttpResponse)
+     * @see HttpResponseHandler#handle(HttpResponse)
      */
     public AmazonWebServiceResponse<T> handle(HttpResponse response) throws Exception {
         log.trace("Parsing service response XML");
@@ -109,10 +110,17 @@ public class StaxResponseHandler<T> implements HttpResponseHandler<AmazonWebServ
                             responseHeaders.get(X_AMZN_REQUEST_ID_HEADER));
                 }
             }
-            awsResponse.setResponseMetadata(new ResponseMetadata(metadata));
+            awsResponse.setResponseMetadata(getResponseMetadata(metadata));
 
             log.trace("Done parsing service response");
             return awsResponse;
+        } catch (XMLStreamException e) {
+            // If the exception was caused by an IOE, wrap this in an IOE so
+            // that it will be exposed to the RetryPolicy.
+            if (e.getNestedException() instanceof IOException) {
+                throw new IOException(e);
+            }
+            throw e;
         } finally {
             try {
                 eventReader.close();
@@ -120,6 +128,14 @@ public class StaxResponseHandler<T> implements HttpResponseHandler<AmazonWebServ
                 log.warn("Error closing xml parser", e);
             }
         }
+    }
+
+    /**
+     * Create the default {@link ResponseMetadata}. Subclasses may override this to create a
+     * subclass of {@link ResponseMetadata}. Currently only SimpleDB does this.
+     */
+    protected ResponseMetadata getResponseMetadata(Map<String, String> metadata) {
+        return new ResponseMetadata(metadata);
     }
 
     /**
@@ -142,5 +158,4 @@ public class StaxResponseHandler<T> implements HttpResponseHandler<AmazonWebServ
     public boolean needsConnectionLeftOpen() {
         return false;
     }
-
 }

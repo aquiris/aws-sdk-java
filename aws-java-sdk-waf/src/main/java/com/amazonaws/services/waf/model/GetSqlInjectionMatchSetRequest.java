@@ -1,36 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A request to get a <a>SqlInjectionMatchSet</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetSqlInjectionMatchSet"
+ *      target="_top">AWS API Documentation</a>
  */
-public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetSqlInjectionMatchSetRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to get.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      */
@@ -38,18 +39,14 @@ public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to get.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      * 
      * @param sqlInjectionMatchSetId
-     *        The <code>SqlInjectionMatchSetId</code> of the
-     *        <a>SqlInjectionMatchSet</a> that you want to get.
-     *        <code>SqlInjectionMatchSetId</code> is returned by
-     *        <a>CreateSqlInjectionMatchSet</a> and by
+     *        The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get.
+     *        <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      *        <a>ListSqlInjectionMatchSets</a>.
      */
 
@@ -59,17 +56,13 @@ public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to get.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      * 
-     * @return The <code>SqlInjectionMatchSetId</code> of the
-     *         <a>SqlInjectionMatchSet</a> that you want to get.
-     *         <code>SqlInjectionMatchSetId</code> is returned by
-     *         <a>CreateSqlInjectionMatchSet</a> and by
+     * @return The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get.
+     *         <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      *         <a>ListSqlInjectionMatchSets</a>.
      */
 
@@ -79,32 +72,25 @@ public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to get.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      * 
      * @param sqlInjectionMatchSetId
-     *        The <code>SqlInjectionMatchSetId</code> of the
-     *        <a>SqlInjectionMatchSet</a> that you want to get.
-     *        <code>SqlInjectionMatchSetId</code> is returned by
-     *        <a>CreateSqlInjectionMatchSet</a> and by
+     *        The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get.
+     *        <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      *        <a>ListSqlInjectionMatchSets</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GetSqlInjectionMatchSetRequest withSqlInjectionMatchSetId(
-            String sqlInjectionMatchSetId) {
+    public GetSqlInjectionMatchSetRequest withSqlInjectionMatchSetId(String sqlInjectionMatchSetId) {
         setSqlInjectionMatchSetId(sqlInjectionMatchSetId);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -115,7 +101,7 @@ public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSqlInjectionMatchSetId() != null)
-            sb.append("SqlInjectionMatchSetId: " + getSqlInjectionMatchSetId());
+            sb.append("SqlInjectionMatchSetId: ").append(getSqlInjectionMatchSetId());
         sb.append("}");
         return sb.toString();
     }
@@ -130,12 +116,9 @@ public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
         if (obj instanceof GetSqlInjectionMatchSetRequest == false)
             return false;
         GetSqlInjectionMatchSetRequest other = (GetSqlInjectionMatchSetRequest) obj;
-        if (other.getSqlInjectionMatchSetId() == null
-                ^ this.getSqlInjectionMatchSetId() == null)
+        if (other.getSqlInjectionMatchSetId() == null ^ this.getSqlInjectionMatchSetId() == null)
             return false;
-        if (other.getSqlInjectionMatchSetId() != null
-                && other.getSqlInjectionMatchSetId().equals(
-                        this.getSqlInjectionMatchSetId()) == false)
+        if (other.getSqlInjectionMatchSetId() != null && other.getSqlInjectionMatchSetId().equals(this.getSqlInjectionMatchSetId()) == false)
             return false;
         return true;
     }
@@ -145,10 +128,7 @@ public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getSqlInjectionMatchSetId() == null) ? 0
-                        : getSqlInjectionMatchSetId().hashCode());
+        hashCode = prime * hashCode + ((getSqlInjectionMatchSetId() == null) ? 0 : getSqlInjectionMatchSetId().hashCode());
         return hashCode;
     }
 
@@ -156,4 +136,5 @@ public class GetSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
     public GetSqlInjectionMatchSetRequest clone() {
         return (GetSqlInjectionMatchSetRequest) super.clone();
     }
+
 }

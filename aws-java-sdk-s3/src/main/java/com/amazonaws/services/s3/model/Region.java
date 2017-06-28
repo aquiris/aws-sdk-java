@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,13 +14,12 @@
  */
 package com.amazonaws.services.s3.model;
 
+import com.amazonaws.regions.RegionUtils;
+import com.amazonaws.services.s3.AmazonS3Client;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-
-import com.amazonaws.regions.RegionUtils;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.internal.Constants;
 
 
 /**
@@ -58,6 +57,18 @@ public enum Region {
     US_Standard((String[])null),
 
     /**
+     * The US-East-2 (Ohio) Region. This region
+     * uses Amazon S3 servers located in Ohio.
+     * <p>
+     * When using buckets in this region, set the client
+     * endpoint to <code>s3.us-east-2.amazonaws.com</code> on all requests to these buckets
+     * to reduce any latency experienced after the first hour of
+     * creating a bucket in this region.
+     * </p>
+     */
+    US_East_2("us-east-2"),
+
+    /**
      * The US-West (Northern California) Amazon S3 Region. This region uses Amazon S3
      * servers located in Northern California.
      * <p>
@@ -92,6 +103,12 @@ public enum Region {
      * in Ireland.
      */
     EU_Ireland("eu-west-1","EU"),
+
+    /**
+     * The EU (London) Amazon S3 Region. This region uses Amazon S3 servers located
+     * in London.
+     */
+    EU_London("eu-west-2"),
 
     /**
      * The EU (Frankfurt) Amazon S3 Region. This region uses Amazon S3 servers
@@ -187,11 +204,24 @@ public enum Region {
     SA_SaoPaulo("sa-east-1"),
 
     /**
+     * The Canada (Central) Region. This region uses Amazon S3 servers
+     * located in Canada.
+     * <p>
+     * When using buckets in this region, set the client endpoint to
+     * <code>s3.ca-central-1.amazonaws.com</code> on all requests to these buckets
+     * to reduce any latency experienced after the first hour of creating a
+     * bucket in this region.
+     * </p>
+     */
+    CA_Central("ca-central-1"),
+
+    /**
      * The China (Beijing) Region. This region uses Amazon S3 servers
      * located in Beijing.
      * <p>
      * When using buckets in this region, you must set the client endpoint to
      * <code>s3.cn-north-1.amazonaws.com.cn</code>.
+     * </p>
      */
     CN_Beijing("cn-north-1");
 
@@ -259,8 +289,9 @@ public enum Region {
      */
     public static Region fromValue(final String s3RegionId) throws IllegalArgumentException
     {
-        if (s3RegionId == null || s3RegionId.equals("US"))
+        if (s3RegionId == null || s3RegionId.equals("US") || s3RegionId.equals("us-east-1")) {
             return Region.US_Standard;
+        }
         for (Region region : Region.values()) {
             List<String> regionIds = region.regionIds;
             if (regionIds != null && regionIds.contains(s3RegionId))

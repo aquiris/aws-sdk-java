@@ -1,22 +1,23 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.config.model;
+
+import javax.annotation.Generated;
 
 /**
  * 
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum ResourceType {
 
     AWSEC2CustomerGateway("AWS::EC2::CustomerGateway"),
@@ -44,8 +45,16 @@ public enum ResourceType {
     AWSRDSDBSecurityGroup("AWS::RDS::DBSecurityGroup"),
     AWSRDSDBSnapshot("AWS::RDS::DBSnapshot"),
     AWSRDSEventSubscription("AWS::RDS::EventSubscription"),
-    AWSElasticLoadBalancingV2LoadBalancer(
-            "AWS::ElasticLoadBalancingV2::LoadBalancer");
+    AWSElasticLoadBalancingV2LoadBalancer("AWS::ElasticLoadBalancingV2::LoadBalancer"),
+    AWSS3Bucket("AWS::S3::Bucket"),
+    AWSSSMManagedInstanceInventory("AWS::SSM::ManagedInstanceInventory"),
+    AWSRedshiftCluster("AWS::Redshift::Cluster"),
+    AWSRedshiftClusterSnapshot("AWS::Redshift::ClusterSnapshot"),
+    AWSRedshiftClusterParameterGroup("AWS::Redshift::ClusterParameterGroup"),
+    AWSRedshiftClusterSecurityGroup("AWS::Redshift::ClusterSecurityGroup"),
+    AWSRedshiftClusterSubnetGroup("AWS::Redshift::ClusterSubnetGroup"),
+    AWSRedshiftEventSubscription("AWS::Redshift::EventSubscription"),
+    AWSCloudWatchAlarm("AWS::CloudWatch::Alarm");
 
     private String value;
 
@@ -76,7 +85,6 @@ public enum ResourceType {
             }
         }
 
-        throw new IllegalArgumentException("Cannot create enum from " + value
-                + " value!");
+        throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
     }
 }

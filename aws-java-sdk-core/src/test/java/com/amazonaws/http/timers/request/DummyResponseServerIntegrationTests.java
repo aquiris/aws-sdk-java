@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,12 +18,16 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.TestPreConditions;
 import com.amazonaws.http.AmazonHttpClient;
+import com.amazonaws.http.ExecutionContext;
 import com.amazonaws.http.MockServerTestBase;
 import com.amazonaws.http.apache.client.impl.ApacheHttpClientFactory;
 import com.amazonaws.http.apache.client.impl.ConnectionManagerAwareHttpClient;
 import com.amazonaws.http.client.HttpClientFactory;
+import com.amazonaws.http.response.ErrorDuringUnmarshallingResponseHandler;
+import com.amazonaws.http.response.NullErrorResponseHandler;
 import com.amazonaws.http.server.MockServer;
 import com.amazonaws.http.settings.HttpClientSettings;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -31,7 +35,6 @@ import java.io.IOException;
 
 import static com.amazonaws.http.timers.ClientExecutionAndRequestTimerTestUtils.assertNumberOfRetries;
 import static com.amazonaws.http.timers.ClientExecutionAndRequestTimerTestUtils.assertNumberOfTasksTriggered;
-import static com.amazonaws.http.timers.ClientExecutionAndRequestTimerTestUtils.execute;
 import static com.amazonaws.http.timers.TimeoutTestConstants.TEST_TIMEOUT;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -68,7 +71,10 @@ public class DummyResponseServerIntegrationTests extends MockServerTestBase {
         httpClient = new AmazonHttpClient(config, rawHttpClient, null);
 
         try {
-            execute(httpClient, newGetRequest());
+            httpClient.execute(newGetRequest(),
+                               new ErrorDuringUnmarshallingResponseHandler(),
+                               new NullErrorResponseHandler(),
+                               new ExecutionContext());
             fail("Exception expected");
         } catch (AmazonServiceException e) {
             assertEquals(e.getStatusCode(), STATUS_CODE);
@@ -78,5 +84,6 @@ public class DummyResponseServerIntegrationTests extends MockServerTestBase {
             assertNumberOfTasksTriggered(httpClient.getClientExecutionTimer(), 0);
         }
     }
+
 
 }

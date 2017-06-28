@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateJobRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -34,23 +36,20 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * Defines the Amazon S3 buckets associated with this job.
      * </p>
      * <p>
-     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be imported into.
+     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported
+     * into.
      * </p>
      * <p>
-     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be exported from. Optionally, you can also
-     * specify a <code>KeyRange</code> value. If you choose to export a range,
-     * you define the length of the range by providing either an inclusive
-     * <code>BeginMarker</code> value, an inclusive <code>EndMarker</code>
-     * value, or both. Ranges are UTF-8 binary sorted.
+     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported
+     * from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define
+     * the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive
+     * <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.
      * </p>
      */
     private JobResource resources;
     /**
      * <p>
-     * Defines an optional description of this specific job, for example
-     * <code>Important Photos 2016-08-11</code>.
+     * Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.
      * </p>
      */
     private String description;
@@ -62,50 +61,45 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
     private String addressId;
     /**
      * <p>
-     * The <code>KmsKeyARN</code> that you want to associate with this job.
-     * <code>KmsKeyARN</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html"
-     * >CreateKey</a> AWS Key Management Service (KMS) API action.
+     * The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created using
+     * the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> AWS Key
+     * Management Service (KMS) API action.
      * </p>
      */
     private String kmsKeyARN;
     /**
      * <p>
-     * The <code>RoleARN</code> that you want to associate with this job.
-     * <code>RoleArn</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html"
-     * >CreateRole</a> AWS Identity and Access Management (IAM) API action.
+     * The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using the <a
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS Identity and
+     * Access Management (IAM) API action.
      * </p>
      */
     private String roleARN;
     /**
      * <p>
-     * If your job is being created in one of the US regions, you have the
-     * option of specifying what size Snowball you'd like for this job. In all
-     * other regions, Snowballs come with 80 TB in storage capacity.
+     * If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd
+     * like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * </p>
      */
     private String snowballCapacityPreference;
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate
-     * how soon you'll get the Snowball, rather it represents how quickly the
-     * Snowball moves to its destination while in transit. Regional shipping
-     * speeds are as follows:
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * follows:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * In Australia, you have access to express shipping. Typically, Snowballs
-     * shipped express are delivered in about a day.
+     * In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a
+     * day.
      * </p>
      * </li>
      * <li>
      * <p>
-     * In the European Union (EU), you have access to express shipping.
-     * Typically, Snowballs shipped express are delivered in about a day. In
-     * addition, most countries in the EU have access to standard shipping,
-     * which typically takes less than a week, one way.
+     * In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     * delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically
+     * takes less than a week, one way.
      * </p>
      * </li>
      * <li>
@@ -123,11 +117,30 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
     private String shippingOption;
     /**
      * <p>
-     * Defines the Amazon Simple Notification Service (Amazon SNS) notification
-     * settings for this job.
+     * Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
      * </p>
      */
     private Notification notification;
+    /**
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     */
+    private String clusterId;
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     */
+    private String snowballType;
+    /**
+     * <p>
+     * The forwarding address ID for a job. This field is not supported in most regions.
+     * </p>
+     */
+    private String forwardingAddressId;
 
     /**
      * <p>
@@ -163,8 +176,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * 
      * @param jobType
      *        Defines the type of job that you're creating.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see JobType
      */
 
@@ -194,8 +206,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * 
      * @param jobType
      *        Defines the type of job that you're creating.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see JobType
      */
 
@@ -209,32 +220,27 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * Defines the Amazon S3 buckets associated with this job.
      * </p>
      * <p>
-     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be imported into.
+     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported
+     * into.
      * </p>
      * <p>
-     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be exported from. Optionally, you can also
-     * specify a <code>KeyRange</code> value. If you choose to export a range,
-     * you define the length of the range by providing either an inclusive
-     * <code>BeginMarker</code> value, an inclusive <code>EndMarker</code>
-     * value, or both. Ranges are UTF-8 binary sorted.
+     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported
+     * from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define
+     * the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive
+     * <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.
      * </p>
      * 
      * @param resources
      *        Defines the Amazon S3 buckets associated with this job.</p>
      *        <p>
-     *        With <code>IMPORT</code> jobs, you specify the bucket or buckets
-     *        that your transferred data will be imported into.
+     *        With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be
+     *        imported into.
      *        </p>
      *        <p>
-     *        With <code>EXPORT</code> jobs, you specify the bucket or buckets
-     *        that your transferred data will be exported from. Optionally, you
-     *        can also specify a <code>KeyRange</code> value. If you choose to
-     *        export a range, you define the length of the range by providing
-     *        either an inclusive <code>BeginMarker</code> value, an inclusive
-     *        <code>EndMarker</code> value, or both. Ranges are UTF-8 binary
-     *        sorted.
+     *        With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be
+     *        exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a
+     *        range, you define the length of the range by providing either an inclusive <code>BeginMarker</code> value,
+     *        an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.
      */
 
     public void setResources(JobResource resources) {
@@ -246,31 +252,26 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * Defines the Amazon S3 buckets associated with this job.
      * </p>
      * <p>
-     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be imported into.
+     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported
+     * into.
      * </p>
      * <p>
-     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be exported from. Optionally, you can also
-     * specify a <code>KeyRange</code> value. If you choose to export a range,
-     * you define the length of the range by providing either an inclusive
-     * <code>BeginMarker</code> value, an inclusive <code>EndMarker</code>
-     * value, or both. Ranges are UTF-8 binary sorted.
+     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported
+     * from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define
+     * the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive
+     * <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.
      * </p>
      * 
      * @return Defines the Amazon S3 buckets associated with this job.</p>
      *         <p>
-     *         With <code>IMPORT</code> jobs, you specify the bucket or buckets
-     *         that your transferred data will be imported into.
+     *         With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be
+     *         imported into.
      *         </p>
      *         <p>
-     *         With <code>EXPORT</code> jobs, you specify the bucket or buckets
-     *         that your transferred data will be exported from. Optionally, you
-     *         can also specify a <code>KeyRange</code> value. If you choose to
-     *         export a range, you define the length of the range by providing
-     *         either an inclusive <code>BeginMarker</code> value, an inclusive
-     *         <code>EndMarker</code> value, or both. Ranges are UTF-8 binary
-     *         sorted.
+     *         With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be
+     *         exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a
+     *         range, you define the length of the range by providing either an inclusive <code>BeginMarker</code>
+     *         value, an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.
      */
 
     public JobResource getResources() {
@@ -282,34 +283,28 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * Defines the Amazon S3 buckets associated with this job.
      * </p>
      * <p>
-     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be imported into.
+     * With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported
+     * into.
      * </p>
      * <p>
-     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that
-     * your transferred data will be exported from. Optionally, you can also
-     * specify a <code>KeyRange</code> value. If you choose to export a range,
-     * you define the length of the range by providing either an inclusive
-     * <code>BeginMarker</code> value, an inclusive <code>EndMarker</code>
-     * value, or both. Ranges are UTF-8 binary sorted.
+     * With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported
+     * from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define
+     * the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive
+     * <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.
      * </p>
      * 
      * @param resources
      *        Defines the Amazon S3 buckets associated with this job.</p>
      *        <p>
-     *        With <code>IMPORT</code> jobs, you specify the bucket or buckets
-     *        that your transferred data will be imported into.
+     *        With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be
+     *        imported into.
      *        </p>
      *        <p>
-     *        With <code>EXPORT</code> jobs, you specify the bucket or buckets
-     *        that your transferred data will be exported from. Optionally, you
-     *        can also specify a <code>KeyRange</code> value. If you choose to
-     *        export a range, you define the length of the range by providing
-     *        either an inclusive <code>BeginMarker</code> value, an inclusive
-     *        <code>EndMarker</code> value, or both. Ranges are UTF-8 binary
-     *        sorted.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be
+     *        exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a
+     *        range, you define the length of the range by providing either an inclusive <code>BeginMarker</code> value,
+     *        an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateJobRequest withResources(JobResource resources) {
@@ -319,13 +314,12 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Defines an optional description of this specific job, for example
-     * <code>Important Photos 2016-08-11</code>.
+     * Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.
      * </p>
      * 
      * @param description
-     *        Defines an optional description of this specific job, for example
-     *        <code>Important Photos 2016-08-11</code>.
+     *        Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>
+     *        .
      */
 
     public void setDescription(String description) {
@@ -334,8 +328,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Defines an optional description of this specific job, for example
-     * <code>Important Photos 2016-08-11</code>.
+     * Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.
      * </p>
      * 
      * @return Defines an optional description of this specific job, for example
@@ -348,15 +341,13 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Defines an optional description of this specific job, for example
-     * <code>Important Photos 2016-08-11</code>.
+     * Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.
      * </p>
      * 
      * @param description
-     *        Defines an optional description of this specific job, for example
-     *        <code>Important Photos 2016-08-11</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>
+     *        .
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateJobRequest withDescription(String description) {
@@ -396,8 +387,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * 
      * @param addressId
      *        The ID for the address that you want the Snowball shipped to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateJobRequest withAddressId(String addressId) {
@@ -407,17 +397,15 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <code>KmsKeyARN</code> that you want to associate with this job.
-     * <code>KmsKeyARN</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html"
-     * >CreateKey</a> AWS Key Management Service (KMS) API action.
+     * The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created using
+     * the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> AWS Key
+     * Management Service (KMS) API action.
      * </p>
      * 
      * @param kmsKeyARN
-     *        The <code>KmsKeyARN</code> that you want to associate with this
-     *        job. <code>KmsKeyARN</code>s are created using the <a href=
-     *        "http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html"
-     *        >CreateKey</a> AWS Key Management Service (KMS) API action.
+     *        The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created
+     *        using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a>
+     *        AWS Key Management Service (KMS) API action.
      */
 
     public void setKmsKeyARN(String kmsKeyARN) {
@@ -426,16 +414,14 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <code>KmsKeyARN</code> that you want to associate with this job.
-     * <code>KmsKeyARN</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html"
-     * >CreateKey</a> AWS Key Management Service (KMS) API action.
+     * The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created using
+     * the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> AWS Key
+     * Management Service (KMS) API action.
      * </p>
      * 
-     * @return The <code>KmsKeyARN</code> that you want to associate with this
-     *         job. <code>KmsKeyARN</code>s are created using the <a href=
-     *         "http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html"
-     *         >CreateKey</a> AWS Key Management Service (KMS) API action.
+     * @return The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created
+     *         using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a>
+     *         AWS Key Management Service (KMS) API action.
      */
 
     public String getKmsKeyARN() {
@@ -444,19 +430,16 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <code>KmsKeyARN</code> that you want to associate with this job.
-     * <code>KmsKeyARN</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html"
-     * >CreateKey</a> AWS Key Management Service (KMS) API action.
+     * The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created using
+     * the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> AWS Key
+     * Management Service (KMS) API action.
      * </p>
      * 
      * @param kmsKeyARN
-     *        The <code>KmsKeyARN</code> that you want to associate with this
-     *        job. <code>KmsKeyARN</code>s are created using the <a href=
-     *        "http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html"
-     *        >CreateKey</a> AWS Key Management Service (KMS) API action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created
+     *        using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a>
+     *        AWS Key Management Service (KMS) API action.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateJobRequest withKmsKeyARN(String kmsKeyARN) {
@@ -466,18 +449,15 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <code>RoleARN</code> that you want to associate with this job.
-     * <code>RoleArn</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html"
-     * >CreateRole</a> AWS Identity and Access Management (IAM) API action.
+     * The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using the <a
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS Identity and
+     * Access Management (IAM) API action.
      * </p>
      * 
      * @param roleARN
-     *        The <code>RoleARN</code> that you want to associate with this job.
-     *        <code>RoleArn</code>s are created using the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html"
-     *        >CreateRole</a> AWS Identity and Access Management (IAM) API
-     *        action.
+     *        The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using
+     *        the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS
+     *        Identity and Access Management (IAM) API action.
      */
 
     public void setRoleARN(String roleARN) {
@@ -486,17 +466,14 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <code>RoleARN</code> that you want to associate with this job.
-     * <code>RoleArn</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html"
-     * >CreateRole</a> AWS Identity and Access Management (IAM) API action.
+     * The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using the <a
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS Identity and
+     * Access Management (IAM) API action.
      * </p>
      * 
-     * @return The <code>RoleARN</code> that you want to associate with this
-     *         job. <code>RoleArn</code>s are created using the <a href=
-     *         "http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html"
-     *         >CreateRole</a> AWS Identity and Access Management (IAM) API
-     *         action.
+     * @return The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created
+     *         using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
+     *         AWS Identity and Access Management (IAM) API action.
      */
 
     public String getRoleARN() {
@@ -505,20 +482,16 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The <code>RoleARN</code> that you want to associate with this job.
-     * <code>RoleArn</code>s are created using the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html"
-     * >CreateRole</a> AWS Identity and Access Management (IAM) API action.
+     * The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using the <a
+     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS Identity and
+     * Access Management (IAM) API action.
      * </p>
      * 
      * @param roleARN
-     *        The <code>RoleARN</code> that you want to associate with this job.
-     *        <code>RoleArn</code>s are created using the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html"
-     *        >CreateRole</a> AWS Identity and Access Management (IAM) API
-     *        action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using
+     *        the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS
+     *        Identity and Access Management (IAM) API action.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateJobRequest withRoleARN(String roleARN) {
@@ -528,16 +501,13 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If your job is being created in one of the US regions, you have the
-     * option of specifying what size Snowball you'd like for this job. In all
-     * other regions, Snowballs come with 80 TB in storage capacity.
+     * If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd
+     * like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        If your job is being created in one of the US regions, you have
-     *        the option of specifying what size Snowball you'd like for this
-     *        job. In all other regions, Snowballs come with 80 TB in storage
-     *        capacity.
+     *        If your job is being created in one of the US regions, you have the option of specifying what size
+     *        Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * @see SnowballCapacity
      */
 
@@ -547,15 +517,12 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If your job is being created in one of the US regions, you have the
-     * option of specifying what size Snowball you'd like for this job. In all
-     * other regions, Snowballs come with 80 TB in storage capacity.
+     * If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd
+     * like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * </p>
      * 
-     * @return If your job is being created in one of the US regions, you have
-     *         the option of specifying what size Snowball you'd like for this
-     *         job. In all other regions, Snowballs come with 80 TB in storage
-     *         capacity.
+     * @return If your job is being created in one of the US regions, you have the option of specifying what size
+     *         Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * @see SnowballCapacity
      */
 
@@ -565,90 +532,74 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If your job is being created in one of the US regions, you have the
-     * option of specifying what size Snowball you'd like for this job. In all
-     * other regions, Snowballs come with 80 TB in storage capacity.
+     * If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd
+     * like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        If your job is being created in one of the US regions, you have
-     *        the option of specifying what size Snowball you'd like for this
-     *        job. In all other regions, Snowballs come with 80 TB in storage
-     *        capacity.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If your job is being created in one of the US regions, you have the option of specifying what size
+     *        Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see SnowballCapacity
      */
 
-    public CreateJobRequest withSnowballCapacityPreference(
-            String snowballCapacityPreference) {
+    public CreateJobRequest withSnowballCapacityPreference(String snowballCapacityPreference) {
         setSnowballCapacityPreference(snowballCapacityPreference);
         return this;
     }
 
     /**
      * <p>
-     * If your job is being created in one of the US regions, you have the
-     * option of specifying what size Snowball you'd like for this job. In all
-     * other regions, Snowballs come with 80 TB in storage capacity.
+     * If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd
+     * like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        If your job is being created in one of the US regions, you have
-     *        the option of specifying what size Snowball you'd like for this
-     *        job. In all other regions, Snowballs come with 80 TB in storage
-     *        capacity.
+     *        If your job is being created in one of the US regions, you have the option of specifying what size
+     *        Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * @see SnowballCapacity
      */
 
-    public void setSnowballCapacityPreference(
-            SnowballCapacity snowballCapacityPreference) {
+    public void setSnowballCapacityPreference(SnowballCapacity snowballCapacityPreference) {
         this.snowballCapacityPreference = snowballCapacityPreference.toString();
     }
 
     /**
      * <p>
-     * If your job is being created in one of the US regions, you have the
-     * option of specifying what size Snowball you'd like for this job. In all
-     * other regions, Snowballs come with 80 TB in storage capacity.
+     * If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd
+     * like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
      * </p>
      * 
      * @param snowballCapacityPreference
-     *        If your job is being created in one of the US regions, you have
-     *        the option of specifying what size Snowball you'd like for this
-     *        job. In all other regions, Snowballs come with 80 TB in storage
-     *        capacity.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If your job is being created in one of the US regions, you have the option of specifying what size
+     *        Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see SnowballCapacity
      */
 
-    public CreateJobRequest withSnowballCapacityPreference(
-            SnowballCapacity snowballCapacityPreference) {
+    public CreateJobRequest withSnowballCapacityPreference(SnowballCapacity snowballCapacityPreference) {
         setSnowballCapacityPreference(snowballCapacityPreference);
         return this;
     }
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate
-     * how soon you'll get the Snowball, rather it represents how quickly the
-     * Snowball moves to its destination while in transit. Regional shipping
-     * speeds are as follows:
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * follows:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * In Australia, you have access to express shipping. Typically, Snowballs
-     * shipped express are delivered in about a day.
+     * In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a
+     * day.
      * </p>
      * </li>
      * <li>
      * <p>
-     * In the European Union (EU), you have access to express shipping.
-     * Typically, Snowballs shipped express are delivered in about a day. In
-     * addition, most countries in the EU have access to standard shipping,
-     * which typically takes less than a week, one way.
+     * In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     * delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically
+     * takes less than a week, one way.
      * </p>
      * </li>
      * <li>
@@ -664,23 +615,21 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not
-     *        dictate how soon you'll get the Snowball, rather it represents how
-     *        quickly the Snowball moves to its destination while in transit.
-     *        Regional shipping speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        In Australia, you have access to express shipping. Typically,
-     *        Snowballs shipped express are delivered in about a day.
+     *        In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in
+     *        about a day.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        In the European Union (EU), you have access to express shipping.
-     *        Typically, Snowballs shipped express are delivered in about a day.
-     *        In addition, most countries in the EU have access to standard
-     *        shipping, which typically takes less than a week, one way.
+     *        In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     *        delivered in about a day. In addition, most countries in the EU have access to standard shipping, which
+     *        typically takes less than a week, one way.
      *        </p>
      *        </li>
      *        <li>
@@ -690,8 +639,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        In the US, you have access to one-day shipping and two-day
-     *        shipping.
+     *        In the US, you have access to one-day shipping and two-day shipping.
      *        </p>
      *        </li>
      * @see ShippingOption
@@ -703,24 +651,22 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate
-     * how soon you'll get the Snowball, rather it represents how quickly the
-     * Snowball moves to its destination while in transit. Regional shipping
-     * speeds are as follows:
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * follows:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * In Australia, you have access to express shipping. Typically, Snowballs
-     * shipped express are delivered in about a day.
+     * In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a
+     * day.
      * </p>
      * </li>
      * <li>
      * <p>
-     * In the European Union (EU), you have access to express shipping.
-     * Typically, Snowballs shipped express are delivered in about a day. In
-     * addition, most countries in the EU have access to standard shipping,
-     * which typically takes less than a week, one way.
+     * In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     * delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically
+     * takes less than a week, one way.
      * </p>
      * </li>
      * <li>
@@ -735,24 +681,21 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * </li>
      * </ul>
      * 
-     * @return The shipping speed for this job. Note that this speed does not
-     *         dictate how soon you'll get the Snowball, rather it represents
-     *         how quickly the Snowball moves to its destination while in
-     *         transit. Regional shipping speeds are as follows:</p>
+     * @return The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *         represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *         are as follows:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         In Australia, you have access to express shipping. Typically,
-     *         Snowballs shipped express are delivered in about a day.
+     *         In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in
+     *         about a day.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         In the European Union (EU), you have access to express shipping.
-     *         Typically, Snowballs shipped express are delivered in about a
-     *         day. In addition, most countries in the EU have access to
-     *         standard shipping, which typically takes less than a week, one
-     *         way.
+     *         In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     *         delivered in about a day. In addition, most countries in the EU have access to standard shipping, which
+     *         typically takes less than a week, one way.
      *         </p>
      *         </li>
      *         <li>
@@ -762,8 +705,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      *         </li>
      *         <li>
      *         <p>
-     *         In the US, you have access to one-day shipping and two-day
-     *         shipping.
+     *         In the US, you have access to one-day shipping and two-day shipping.
      *         </p>
      *         </li>
      * @see ShippingOption
@@ -775,24 +717,22 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate
-     * how soon you'll get the Snowball, rather it represents how quickly the
-     * Snowball moves to its destination while in transit. Regional shipping
-     * speeds are as follows:
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * follows:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * In Australia, you have access to express shipping. Typically, Snowballs
-     * shipped express are delivered in about a day.
+     * In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a
+     * day.
      * </p>
      * </li>
      * <li>
      * <p>
-     * In the European Union (EU), you have access to express shipping.
-     * Typically, Snowballs shipped express are delivered in about a day. In
-     * addition, most countries in the EU have access to standard shipping,
-     * which typically takes less than a week, one way.
+     * In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     * delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically
+     * takes less than a week, one way.
      * </p>
      * </li>
      * <li>
@@ -808,23 +748,21 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not
-     *        dictate how soon you'll get the Snowball, rather it represents how
-     *        quickly the Snowball moves to its destination while in transit.
-     *        Regional shipping speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        In Australia, you have access to express shipping. Typically,
-     *        Snowballs shipped express are delivered in about a day.
+     *        In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in
+     *        about a day.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        In the European Union (EU), you have access to express shipping.
-     *        Typically, Snowballs shipped express are delivered in about a day.
-     *        In addition, most countries in the EU have access to standard
-     *        shipping, which typically takes less than a week, one way.
+     *        In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     *        delivered in about a day. In addition, most countries in the EU have access to standard shipping, which
+     *        typically takes less than a week, one way.
      *        </p>
      *        </li>
      *        <li>
@@ -834,12 +772,10 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        In the US, you have access to one-day shipping and two-day
-     *        shipping.
+     *        In the US, you have access to one-day shipping and two-day shipping.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ShippingOption
      */
 
@@ -850,24 +786,22 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate
-     * how soon you'll get the Snowball, rather it represents how quickly the
-     * Snowball moves to its destination while in transit. Regional shipping
-     * speeds are as follows:
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * follows:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * In Australia, you have access to express shipping. Typically, Snowballs
-     * shipped express are delivered in about a day.
+     * In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a
+     * day.
      * </p>
      * </li>
      * <li>
      * <p>
-     * In the European Union (EU), you have access to express shipping.
-     * Typically, Snowballs shipped express are delivered in about a day. In
-     * addition, most countries in the EU have access to standard shipping,
-     * which typically takes less than a week, one way.
+     * In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     * delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically
+     * takes less than a week, one way.
      * </p>
      * </li>
      * <li>
@@ -883,23 +817,21 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not
-     *        dictate how soon you'll get the Snowball, rather it represents how
-     *        quickly the Snowball moves to its destination while in transit.
-     *        Regional shipping speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        In Australia, you have access to express shipping. Typically,
-     *        Snowballs shipped express are delivered in about a day.
+     *        In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in
+     *        about a day.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        In the European Union (EU), you have access to express shipping.
-     *        Typically, Snowballs shipped express are delivered in about a day.
-     *        In addition, most countries in the EU have access to standard
-     *        shipping, which typically takes less than a week, one way.
+     *        In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     *        delivered in about a day. In addition, most countries in the EU have access to standard shipping, which
+     *        typically takes less than a week, one way.
      *        </p>
      *        </li>
      *        <li>
@@ -909,8 +841,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        In the US, you have access to one-day shipping and two-day
-     *        shipping.
+     *        In the US, you have access to one-day shipping and two-day shipping.
      *        </p>
      *        </li>
      * @see ShippingOption
@@ -922,24 +853,22 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The shipping speed for this job. Note that this speed does not dictate
-     * how soon you'll get the Snowball, rather it represents how quickly the
-     * Snowball moves to its destination while in transit. Regional shipping
-     * speeds are as follows:
+     * The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     * represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as
+     * follows:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * In Australia, you have access to express shipping. Typically, Snowballs
-     * shipped express are delivered in about a day.
+     * In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a
+     * day.
      * </p>
      * </li>
      * <li>
      * <p>
-     * In the European Union (EU), you have access to express shipping.
-     * Typically, Snowballs shipped express are delivered in about a day. In
-     * addition, most countries in the EU have access to standard shipping,
-     * which typically takes less than a week, one way.
+     * In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     * delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically
+     * takes less than a week, one way.
      * </p>
      * </li>
      * <li>
@@ -955,23 +884,21 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      * </ul>
      * 
      * @param shippingOption
-     *        The shipping speed for this job. Note that this speed does not
-     *        dictate how soon you'll get the Snowball, rather it represents how
-     *        quickly the Snowball moves to its destination while in transit.
-     *        Regional shipping speeds are as follows:</p>
+     *        The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it
+     *        represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds
+     *        are as follows:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        In Australia, you have access to express shipping. Typically,
-     *        Snowballs shipped express are delivered in about a day.
+     *        In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in
+     *        about a day.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        In the European Union (EU), you have access to express shipping.
-     *        Typically, Snowballs shipped express are delivered in about a day.
-     *        In addition, most countries in the EU have access to standard
-     *        shipping, which typically takes less than a week, one way.
+     *        In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are
+     *        delivered in about a day. In addition, most countries in the EU have access to standard shipping, which
+     *        typically takes less than a week, one way.
      *        </p>
      *        </li>
      *        <li>
@@ -981,12 +908,10 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        In the US, you have access to one-day shipping and two-day
-     *        shipping.
+     *        In the US, you have access to one-day shipping and two-day shipping.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ShippingOption
      */
 
@@ -997,13 +922,11 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Defines the Amazon Simple Notification Service (Amazon SNS) notification
-     * settings for this job.
+     * Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
      * </p>
      * 
      * @param notification
-     *        Defines the Amazon Simple Notification Service (Amazon SNS)
-     *        notification settings for this job.
+     *        Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
      */
 
     public void setNotification(Notification notification) {
@@ -1012,12 +935,10 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Defines the Amazon Simple Notification Service (Amazon SNS) notification
-     * settings for this job.
+     * Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
      * </p>
      * 
-     * @return Defines the Amazon Simple Notification Service (Amazon SNS)
-     *         notification settings for this job.
+     * @return Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
      */
 
     public Notification getNotification() {
@@ -1026,15 +947,12 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Defines the Amazon Simple Notification Service (Amazon SNS) notification
-     * settings for this job.
+     * Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
      * </p>
      * 
      * @param notification
-     *        Defines the Amazon Simple Notification Service (Amazon SNS)
-     *        notification settings for this job.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateJobRequest withNotification(Notification notification) {
@@ -1043,8 +961,176 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     * 
+     * @param clusterId
+     *        The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     *        <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     */
+
+    public void setClusterId(String clusterId) {
+        this.clusterId = clusterId;
+    }
+
+    /**
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     * 
+     * @return The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     *         <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     */
+
+    public String getClusterId() {
+        return this.clusterId;
+    }
+
+    /**
+     * <p>
+     * The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     * <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * </p>
+     * 
+     * @param clusterId
+     *        The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this
+     *        <code>clusterId</code> value. The other job attributes are inherited from the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withClusterId(String clusterId) {
+        setClusterId(clusterId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @see SnowballType
+     */
+
+    public void setSnowballType(String snowballType) {
+        this.snowballType = snowballType;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @return The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *         cluster jobs is <code>EDGE</code>.
+     * @see SnowballType
+     */
+
+    public String getSnowballType() {
+        return this.snowballType;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SnowballType
+     */
+
+    public CreateJobRequest withSnowballType(String snowballType) {
+        setSnowballType(snowballType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @see SnowballType
+     */
+
+    public void setSnowballType(SnowballType snowballType) {
+        this.snowballType = snowballType.toString();
+    }
+
+    /**
+     * <p>
+     * The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster
+     * jobs is <code>EDGE</code>.
+     * </p>
+     * 
+     * @param snowballType
+     *        The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for
+     *        cluster jobs is <code>EDGE</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SnowballType
+     */
+
+    public CreateJobRequest withSnowballType(SnowballType snowballType) {
+        setSnowballType(snowballType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The forwarding address ID for a job. This field is not supported in most regions.
+     * </p>
+     * 
+     * @param forwardingAddressId
+     *        The forwarding address ID for a job. This field is not supported in most regions.
+     */
+
+    public void setForwardingAddressId(String forwardingAddressId) {
+        this.forwardingAddressId = forwardingAddressId;
+    }
+
+    /**
+     * <p>
+     * The forwarding address ID for a job. This field is not supported in most regions.
+     * </p>
+     * 
+     * @return The forwarding address ID for a job. This field is not supported in most regions.
+     */
+
+    public String getForwardingAddressId() {
+        return this.forwardingAddressId;
+    }
+
+    /**
+     * <p>
+     * The forwarding address ID for a job. This field is not supported in most regions.
+     * </p>
+     * 
+     * @param forwardingAddressId
+     *        The forwarding address ID for a job. This field is not supported in most regions.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withForwardingAddressId(String forwardingAddressId) {
+        setForwardingAddressId(forwardingAddressId);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -1055,24 +1141,29 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getJobType() != null)
-            sb.append("JobType: " + getJobType() + ",");
+            sb.append("JobType: ").append(getJobType()).append(",");
         if (getResources() != null)
-            sb.append("Resources: " + getResources() + ",");
+            sb.append("Resources: ").append(getResources()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getAddressId() != null)
-            sb.append("AddressId: " + getAddressId() + ",");
+            sb.append("AddressId: ").append(getAddressId()).append(",");
         if (getKmsKeyARN() != null)
-            sb.append("KmsKeyARN: " + getKmsKeyARN() + ",");
+            sb.append("KmsKeyARN: ").append(getKmsKeyARN()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getSnowballCapacityPreference() != null)
-            sb.append("SnowballCapacityPreference: "
-                    + getSnowballCapacityPreference() + ",");
+            sb.append("SnowballCapacityPreference: ").append(getSnowballCapacityPreference()).append(",");
         if (getShippingOption() != null)
-            sb.append("ShippingOption: " + getShippingOption() + ",");
+            sb.append("ShippingOption: ").append(getShippingOption()).append(",");
         if (getNotification() != null)
-            sb.append("Notification: " + getNotification());
+            sb.append("Notification: ").append(getNotification()).append(",");
+        if (getClusterId() != null)
+            sb.append("ClusterId: ").append(getClusterId()).append(",");
+        if (getSnowballType() != null)
+            sb.append("SnowballType: ").append(getSnowballType()).append(",");
+        if (getForwardingAddressId() != null)
+            sb.append("ForwardingAddressId: ").append(getForwardingAddressId());
         sb.append("}");
         return sb.toString();
     }
@@ -1089,51 +1180,51 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
         CreateJobRequest other = (CreateJobRequest) obj;
         if (other.getJobType() == null ^ this.getJobType() == null)
             return false;
-        if (other.getJobType() != null
-                && other.getJobType().equals(this.getJobType()) == false)
+        if (other.getJobType() != null && other.getJobType().equals(this.getJobType()) == false)
             return false;
         if (other.getResources() == null ^ this.getResources() == null)
             return false;
-        if (other.getResources() != null
-                && other.getResources().equals(this.getResources()) == false)
+        if (other.getResources() != null && other.getResources().equals(this.getResources()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getAddressId() == null ^ this.getAddressId() == null)
             return false;
-        if (other.getAddressId() != null
-                && other.getAddressId().equals(this.getAddressId()) == false)
+        if (other.getAddressId() != null && other.getAddressId().equals(this.getAddressId()) == false)
             return false;
         if (other.getKmsKeyARN() == null ^ this.getKmsKeyARN() == null)
             return false;
-        if (other.getKmsKeyARN() != null
-                && other.getKmsKeyARN().equals(this.getKmsKeyARN()) == false)
+        if (other.getKmsKeyARN() != null && other.getKmsKeyARN().equals(this.getKmsKeyARN()) == false)
             return false;
         if (other.getRoleARN() == null ^ this.getRoleARN() == null)
             return false;
-        if (other.getRoleARN() != null
-                && other.getRoleARN().equals(this.getRoleARN()) == false)
+        if (other.getRoleARN() != null && other.getRoleARN().equals(this.getRoleARN()) == false)
             return false;
-        if (other.getSnowballCapacityPreference() == null
-                ^ this.getSnowballCapacityPreference() == null)
+        if (other.getSnowballCapacityPreference() == null ^ this.getSnowballCapacityPreference() == null)
             return false;
-        if (other.getSnowballCapacityPreference() != null
-                && other.getSnowballCapacityPreference().equals(
-                        this.getSnowballCapacityPreference()) == false)
+        if (other.getSnowballCapacityPreference() != null && other.getSnowballCapacityPreference().equals(this.getSnowballCapacityPreference()) == false)
             return false;
-        if (other.getShippingOption() == null
-                ^ this.getShippingOption() == null)
+        if (other.getShippingOption() == null ^ this.getShippingOption() == null)
             return false;
-        if (other.getShippingOption() != null
-                && other.getShippingOption().equals(this.getShippingOption()) == false)
+        if (other.getShippingOption() != null && other.getShippingOption().equals(this.getShippingOption()) == false)
             return false;
         if (other.getNotification() == null ^ this.getNotification() == null)
             return false;
-        if (other.getNotification() != null
-                && other.getNotification().equals(this.getNotification()) == false)
+        if (other.getNotification() != null && other.getNotification().equals(this.getNotification()) == false)
+            return false;
+        if (other.getClusterId() == null ^ this.getClusterId() == null)
+            return false;
+        if (other.getClusterId() != null && other.getClusterId().equals(this.getClusterId()) == false)
+            return false;
+        if (other.getSnowballType() == null ^ this.getSnowballType() == null)
+            return false;
+        if (other.getSnowballType() != null && other.getSnowballType().equals(this.getSnowballType()) == false)
+            return false;
+        if (other.getForwardingAddressId() == null ^ this.getForwardingAddressId() == null)
+            return false;
+        if (other.getForwardingAddressId() != null && other.getForwardingAddressId().equals(this.getForwardingAddressId()) == false)
             return false;
         return true;
     }
@@ -1143,31 +1234,18 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getJobType() == null) ? 0 : getJobType().hashCode());
-        hashCode = prime * hashCode
-                + ((getResources() == null) ? 0 : getResources().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getAddressId() == null) ? 0 : getAddressId().hashCode());
-        hashCode = prime * hashCode
-                + ((getKmsKeyARN() == null) ? 0 : getKmsKeyARN().hashCode());
-        hashCode = prime * hashCode
-                + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getSnowballCapacityPreference() == null) ? 0
-                        : getSnowballCapacityPreference().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getShippingOption() == null) ? 0 : getShippingOption()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNotification() == null) ? 0 : getNotification()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getJobType() == null) ? 0 : getJobType().hashCode());
+        hashCode = prime * hashCode + ((getResources() == null) ? 0 : getResources().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getAddressId() == null) ? 0 : getAddressId().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyARN() == null) ? 0 : getKmsKeyARN().hashCode());
+        hashCode = prime * hashCode + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
+        hashCode = prime * hashCode + ((getSnowballCapacityPreference() == null) ? 0 : getSnowballCapacityPreference().hashCode());
+        hashCode = prime * hashCode + ((getShippingOption() == null) ? 0 : getShippingOption().hashCode());
+        hashCode = prime * hashCode + ((getNotification() == null) ? 0 : getNotification().hashCode());
+        hashCode = prime * hashCode + ((getClusterId() == null) ? 0 : getClusterId().hashCode());
+        hashCode = prime * hashCode + ((getSnowballType() == null) ? 0 : getSnowballType().hashCode());
+        hashCode = prime * hashCode + ((getForwardingAddressId() == null) ? 0 : getForwardingAddressId().hashCode());
         return hashCode;
     }
 
@@ -1175,4 +1253,5 @@ public class CreateJobRequest extends AmazonWebServiceRequest implements
     public CreateJobRequest clone() {
         return (CreateJobRequest) super.clone();
     }
+
 }

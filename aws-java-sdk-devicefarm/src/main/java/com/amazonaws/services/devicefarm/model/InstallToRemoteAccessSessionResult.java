@@ -1,34 +1,45 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the response from the server after AWS Device Farm makes a request
- * to install to a remote access session.
+ * Represents the response from the server after AWS Device Farm makes a request to install to a remote access session.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/InstallToRemoteAccessSession"
+ *      target="_top">AWS API Documentation</a>
  */
-public class InstallToRemoteAccessSessionResult implements Serializable,
-        Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstallToRemoteAccessSessionResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     */
     private Upload appUpload;
 
     /**
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     * 
      * @param appUpload
+     *        An app to upload or that has been uploaded.
      */
 
     public void setAppUpload(Upload appUpload) {
@@ -36,7 +47,11 @@ public class InstallToRemoteAccessSessionResult implements Serializable,
     }
 
     /**
-     * @return
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     * 
+     * @return An app to upload or that has been uploaded.
      */
 
     public Upload getAppUpload() {
@@ -44,9 +59,13 @@ public class InstallToRemoteAccessSessionResult implements Serializable,
     }
 
     /**
+     * <p>
+     * An app to upload or that has been uploaded.
+     * </p>
+     * 
      * @param appUpload
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        An app to upload or that has been uploaded.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InstallToRemoteAccessSessionResult withAppUpload(Upload appUpload) {
@@ -55,8 +74,7 @@ public class InstallToRemoteAccessSessionResult implements Serializable,
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -67,7 +85,7 @@ public class InstallToRemoteAccessSessionResult implements Serializable,
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAppUpload() != null)
-            sb.append("AppUpload: " + getAppUpload());
+            sb.append("AppUpload: ").append(getAppUpload());
         sb.append("}");
         return sb.toString();
     }
@@ -84,8 +102,7 @@ public class InstallToRemoteAccessSessionResult implements Serializable,
         InstallToRemoteAccessSessionResult other = (InstallToRemoteAccessSessionResult) obj;
         if (other.getAppUpload() == null ^ this.getAppUpload() == null)
             return false;
-        if (other.getAppUpload() != null
-                && other.getAppUpload().equals(this.getAppUpload()) == false)
+        if (other.getAppUpload() != null && other.getAppUpload().equals(this.getAppUpload()) == false)
             return false;
         return true;
     }
@@ -95,8 +112,7 @@ public class InstallToRemoteAccessSessionResult implements Serializable,
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getAppUpload() == null) ? 0 : getAppUpload().hashCode());
+        hashCode = prime * hashCode + ((getAppUpload() == null) ? 0 : getAppUpload().hashCode());
         return hashCode;
     }
 
@@ -105,9 +121,8 @@ public class InstallToRemoteAccessSessionResult implements Serializable,
         try {
             return (InstallToRemoteAccessSessionResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

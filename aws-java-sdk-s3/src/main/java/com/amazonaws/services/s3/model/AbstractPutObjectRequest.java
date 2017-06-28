@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -97,6 +97,8 @@ public abstract class AbstractPutObjectRequest extends AmazonWebServiceRequest i
      * the the object on the server side.
      */
     private SSEAwsKeyManagementParams sseAwsKeyManagementParams;
+
+    private ObjectTagging tagging;
 
     /**
      * Constructs a new
@@ -756,6 +758,20 @@ public abstract class AbstractPutObjectRequest extends AmazonWebServiceRequest i
             SSECustomerKey sseKey) {
         setSSECustomerKey(sseKey);
         @SuppressWarnings("unchecked") T t = (T)this;
+        return t;
+    }
+
+    public ObjectTagging getTagging() {
+        return tagging;
+    }
+
+    public void setTagging(ObjectTagging tagging) {
+        this.tagging = tagging;
+    }
+
+    public <T extends PutObjectRequest> T withTagging(ObjectTagging tagSet) {
+        setTagging(tagSet);
+        T t = (T)this;
         return t;
     }
 

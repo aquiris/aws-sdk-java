@@ -15,11 +15,13 @@
 
 package com.amazonaws.codegen.internal;
 
+import com.amazonaws.codegen.model.config.customization.CustomizationConfig;
 import com.amazonaws.codegen.model.config.templates.ChildTemplate;
 import com.amazonaws.codegen.model.config.templates.CodeGenTemplatesConfig;
 import com.amazonaws.codegen.model.config.templates.TopLevelTemplate;
+import com.amazonaws.codegen.model.intermediate.IntermediateModel;
+import com.amazonaws.codegen.model.intermediate.Protocol;
 import com.amazonaws.codegen.model.intermediate.ShapeModel;
-import com.amazonaws.codegen.model.intermediate.ShapeType;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -35,7 +37,30 @@ public class Freemarker {
 
     private final CodeGenTemplatesConfig templateConfig;
 
-    public Freemarker(CodeGenTemplatesConfig templateConfig) {
+    public static Freemarker create(IntermediateModel model) {
+        return new Freemarker(loadProtocolTemplatesConfig(model));
+    }
+
+    private static CodeGenTemplatesConfig loadProtocolTemplatesConfig(IntermediateModel model) {
+        // CBOR is a type of JSON Protocol.  Use JSON Protocol for templates
+        Protocol templateProtocol = model.getMetadata().getProtocol();
+        if (Protocol.CBOR.equals(model.getMetadata().getProtocol()) ||
+            Protocol.ION.equals(model.getMetadata().getProtocol())) {
+            templateProtocol = Protocol.AWS_JSON;
+        }
+        CodeGenTemplatesConfig protocolDefaultConfig = CodeGenTemplatesConfig.load(templateProtocol);
+
+        CustomizationConfig customConfig = model.getCustomizationConfig();
+
+        if (customConfig == null || customConfig.getCustomCodeTemplates() == null) {
+            return protocolDefaultConfig;
+        }
+
+        // merge any custom config and return the result.
+        return CodeGenTemplatesConfig.merge(protocolDefaultConfig, customConfig.getCustomCodeTemplates());
+    }
+
+    private Freemarker(CodeGenTemplatesConfig templateConfig) {
         this.templateConfig = templateConfig;
     }
 
@@ -128,6 +153,10 @@ public class Freemarker {
         return getTemplate(templateConfig.getModelMarshaller());
     }
 
+    public Template getRequestMarshallerTemplate() throws IOException {
+        return getTemplate(templateConfig.getRequestMarshaller());
+    }
+
     public Template getModelUnmarshallerTemplate() throws IOException {
         return getTemplate(templateConfig.getModelUnmarshaller());
     }
@@ -156,8 +185,24 @@ public class Freemarker {
         return getTemplate(templateConfig.getCucumberPropertiesFile());
     }
 
+    public Template getApiGatewayPomTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayPomTemplate());
+    }
+
+    public Template getApiGatewayGradleBuildTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayGradleBuildTemplate());
+    }
+
+    public Template getApiGatewayGradleSettingsTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayGradleSettingsTemplate());
+    }
+
+    public Template getApiGatewayReadmeTemplate() throws IOException {
+        return getTemplate(templateConfig.getApiGatewayReadmeTemplate());
+    }
+
     public Template getShapeTemplate(ShapeModel shape) throws IOException {
-        switch (ShapeType.fromValue(shape.getType())) {
+        switch (shape.getShapeType()) {
         case Request:
             return getRequestClassTemplate();
         case Response:
@@ -193,7 +238,9 @@ public class Freemarker {
 
     public Template getWaiterTemplate() throws IOException{
         return getTemplate(templateConfig.getWaiterClass());
+    }
 
-
+    public Template getCustomAuthorizerTemplate() throws IOException{
+        return getTemplate(templateConfig.getCustomRequestSignerClass());
     }
 }

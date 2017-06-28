@@ -1,37 +1,38 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Contains information about the last time an AWS access key was used.
  * </p>
  * <p>
- * This data type is used as a response element in the
- * <a>GetAccessKeyLastUsed</a> action.
+ * This data type is used as a response element in the <a>GetAccessKeyLastUsed</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AccessKeyLastUsed" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
-     * date-time format</a>, when the access key was most recently used. This
-     * field is null when:
+     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key
+     * was most recently used. This field is null when:
      * </p>
      * <ul>
      * <li>
@@ -41,8 +42,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -55,8 +56,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
     private java.util.Date lastUsedDate;
     /**
      * <p>
-     * The name of the AWS service with which this access key was most recently
-     * used. This field is null when:
+     * The name of the AWS service with which this access key was most recently used. This field displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -66,8 +66,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -80,8 +80,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
     private String serviceName;
     /**
      * <p>
-     * The AWS region where this access key was most recently used. This field
-     * is null when:
+     * The AWS region where this access key was most recently used. This field is displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -91,8 +90,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -103,17 +102,16 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * <p>
      * For more information about AWS regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a> in the Amazon Web Services General Reference.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web
+     * Services General Reference.
      * </p>
      */
     private String region;
 
     /**
      * <p>
-     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
-     * date-time format</a>, when the access key was most recently used. This
-     * field is null when:
+     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key
+     * was most recently used. This field is null when:
      * </p>
      * <ul>
      * <li>
@@ -123,8 +121,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -135,9 +133,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * 
      * @param lastUsedDate
-     *        The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO
-     *        8601 date-time format</a>, when the access key was most recently
-     *        used. This field is null when:</p>
+     *        The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the
+     *        access key was most recently used. This field is null when:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -146,8 +143,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        An access key exists but has never been used, at least not since
-     *        IAM started tracking this information on April 22nd, 2015.
+     *        An access key exists but has never been used, at least not since IAM started tracking this information on
+     *        April 22nd, 2015.
      *        </p>
      *        </li>
      *        <li>
@@ -163,9 +160,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
-     * date-time format</a>, when the access key was most recently used. This
-     * field is null when:
+     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key
+     * was most recently used. This field is null when:
      * </p>
      * <ul>
      * <li>
@@ -175,8 +171,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -186,10 +182,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * </ul>
      * 
-     * @return The date and time, in <a
-     *         href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-     *         format</a>, when the access key was most recently used. This
-     *         field is null when:</p>
+     * @return The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the
+     *         access key was most recently used. This field is null when:</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -198,8 +192,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         An access key exists but has never been used, at least not since
-     *         IAM started tracking this information on April 22nd, 2015.
+     *         An access key exists but has never been used, at least not since IAM started tracking this information on
+     *         April 22nd, 2015.
      *         </p>
      *         </li>
      *         <li>
@@ -215,9 +209,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
-     * date-time format</a>, when the access key was most recently used. This
-     * field is null when:
+     * The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key
+     * was most recently used. This field is null when:
      * </p>
      * <ul>
      * <li>
@@ -227,8 +220,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -239,9 +232,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * 
      * @param lastUsedDate
-     *        The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO
-     *        8601 date-time format</a>, when the access key was most recently
-     *        used. This field is null when:</p>
+     *        The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the
+     *        access key was most recently used. This field is null when:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -250,8 +242,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        An access key exists but has never been used, at least not since
-     *        IAM started tracking this information on April 22nd, 2015.
+     *        An access key exists but has never been used, at least not since IAM started tracking this information on
+     *        April 22nd, 2015.
      *        </p>
      *        </li>
      *        <li>
@@ -259,8 +251,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        There is no sign-in data associated with the user
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AccessKeyLastUsed withLastUsedDate(java.util.Date lastUsedDate) {
@@ -270,8 +261,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS service with which this access key was most recently
-     * used. This field is null when:
+     * The name of the AWS service with which this access key was most recently used. This field displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -281,8 +271,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -293,8 +283,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * 
      * @param serviceName
-     *        The name of the AWS service with which this access key was most
-     *        recently used. This field is null when:</p>
+     *        The name of the AWS service with which this access key was most recently used. This field displays "N/A"
+     *        when:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -303,8 +293,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        An access key exists but has never been used, at least not since
-     *        IAM started tracking this information on April 22nd, 2015.
+     *        An access key exists but has never been used, at least not since IAM started tracking this information on
+     *        April 22nd, 2015.
      *        </p>
      *        </li>
      *        <li>
@@ -320,8 +310,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS service with which this access key was most recently
-     * used. This field is null when:
+     * The name of the AWS service with which this access key was most recently used. This field displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -331,8 +320,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -342,8 +331,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * </ul>
      * 
-     * @return The name of the AWS service with which this access key was most
-     *         recently used. This field is null when:</p>
+     * @return The name of the AWS service with which this access key was most recently used. This field displays "N/A"
+     *         when:</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -352,8 +341,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         An access key exists but has never been used, at least not since
-     *         IAM started tracking this information on April 22nd, 2015.
+     *         An access key exists but has never been used, at least not since IAM started tracking this information on
+     *         April 22nd, 2015.
      *         </p>
      *         </li>
      *         <li>
@@ -369,8 +358,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS service with which this access key was most recently
-     * used. This field is null when:
+     * The name of the AWS service with which this access key was most recently used. This field displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -380,8 +368,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -392,8 +380,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * 
      * @param serviceName
-     *        The name of the AWS service with which this access key was most
-     *        recently used. This field is null when:</p>
+     *        The name of the AWS service with which this access key was most recently used. This field displays "N/A"
+     *        when:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -402,8 +390,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        An access key exists but has never been used, at least not since
-     *        IAM started tracking this information on April 22nd, 2015.
+     *        An access key exists but has never been used, at least not since IAM started tracking this information on
+     *        April 22nd, 2015.
      *        </p>
      *        </li>
      *        <li>
@@ -411,8 +399,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        There is no sign-in data associated with the user
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AccessKeyLastUsed withServiceName(String serviceName) {
@@ -422,8 +409,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The AWS region where this access key was most recently used. This field
-     * is null when:
+     * The AWS region where this access key was most recently used. This field is displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -433,8 +419,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -445,13 +431,12 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * <p>
      * For more information about AWS regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a> in the Amazon Web Services General Reference.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web
+     * Services General Reference.
      * </p>
      * 
      * @param region
-     *        The AWS region where this access key was most recently used. This
-     *        field is null when:</p>
+     *        The AWS region where this access key was most recently used. This field is displays "N/A" when:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -460,8 +445,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        An access key exists but has never been used, at least not since
-     *        IAM started tracking this information on April 22nd, 2015.
+     *        An access key exists but has never been used, at least not since IAM started tracking this information on
+     *        April 22nd, 2015.
      *        </p>
      *        </li>
      *        <li>
@@ -472,9 +457,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </ul>
      *        <p>
      *        For more information about AWS regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html"
-     *        >Regions and Endpoints</a> in the Amazon Web Services General
-     *        Reference.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web
+     *        Services General Reference.
      */
 
     public void setRegion(String region) {
@@ -483,8 +467,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The AWS region where this access key was most recently used. This field
-     * is null when:
+     * The AWS region where this access key was most recently used. This field is displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -494,8 +477,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -506,12 +489,11 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * <p>
      * For more information about AWS regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a> in the Amazon Web Services General Reference.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web
+     * Services General Reference.
      * </p>
      * 
-     * @return The AWS region where this access key was most recently used. This
-     *         field is null when:</p>
+     * @return The AWS region where this access key was most recently used. This field is displays "N/A" when:</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -520,8 +502,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         An access key exists but has never been used, at least not since
-     *         IAM started tracking this information on April 22nd, 2015.
+     *         An access key exists but has never been used, at least not since IAM started tracking this information on
+     *         April 22nd, 2015.
      *         </p>
      *         </li>
      *         <li>
@@ -532,9 +514,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *         </ul>
      *         <p>
      *         For more information about AWS regions, see <a
-     *         href="http://docs.aws.amazon.com/general/latest/gr/rande.html"
-     *         >Regions and Endpoints</a> in the Amazon Web Services General
-     *         Reference.
+     *         href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon
+     *         Web Services General Reference.
      */
 
     public String getRegion() {
@@ -543,8 +524,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The AWS region where this access key was most recently used. This field
-     * is null when:
+     * The AWS region where this access key was most recently used. This field is displays "N/A" when:
      * </p>
      * <ul>
      * <li>
@@ -554,8 +534,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * An access key exists but has never been used, at least not since IAM
-     * started tracking this information on April 22nd, 2015.
+     * An access key exists but has never been used, at least not since IAM started tracking this information on April
+     * 22nd, 2015.
      * </p>
      * </li>
      * <li>
@@ -566,13 +546,12 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      * </ul>
      * <p>
      * For more information about AWS regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a> in the Amazon Web Services General Reference.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web
+     * Services General Reference.
      * </p>
      * 
      * @param region
-     *        The AWS region where this access key was most recently used. This
-     *        field is null when:</p>
+     *        The AWS region where this access key was most recently used. This field is displays "N/A" when:</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -581,8 +560,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        An access key exists but has never been used, at least not since
-     *        IAM started tracking this information on April 22nd, 2015.
+     *        An access key exists but has never been used, at least not since IAM started tracking this information on
+     *        April 22nd, 2015.
      *        </p>
      *        </li>
      *        <li>
@@ -593,11 +572,9 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
      *        </ul>
      *        <p>
      *        For more information about AWS regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html"
-     *        >Regions and Endpoints</a> in the Amazon Web Services General
-     *        Reference.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web
+     *        Services General Reference.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AccessKeyLastUsed withRegion(String region) {
@@ -606,8 +583,7 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -618,11 +594,11 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLastUsedDate() != null)
-            sb.append("LastUsedDate: " + getLastUsedDate() + ",");
+            sb.append("LastUsedDate: ").append(getLastUsedDate()).append(",");
         if (getServiceName() != null)
-            sb.append("ServiceName: " + getServiceName() + ",");
+            sb.append("ServiceName: ").append(getServiceName()).append(",");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion());
+            sb.append("Region: ").append(getRegion());
         sb.append("}");
         return sb.toString();
     }
@@ -639,18 +615,15 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
         AccessKeyLastUsed other = (AccessKeyLastUsed) obj;
         if (other.getLastUsedDate() == null ^ this.getLastUsedDate() == null)
             return false;
-        if (other.getLastUsedDate() != null
-                && other.getLastUsedDate().equals(this.getLastUsedDate()) == false)
+        if (other.getLastUsedDate() != null && other.getLastUsedDate().equals(this.getLastUsedDate()) == false)
             return false;
         if (other.getServiceName() == null ^ this.getServiceName() == null)
             return false;
-        if (other.getServiceName() != null
-                && other.getServiceName().equals(this.getServiceName()) == false)
+        if (other.getServiceName() != null && other.getServiceName().equals(this.getServiceName()) == false)
             return false;
         if (other.getRegion() == null ^ this.getRegion() == null)
             return false;
-        if (other.getRegion() != null
-                && other.getRegion().equals(this.getRegion()) == false)
+        if (other.getRegion() != null && other.getRegion().equals(this.getRegion()) == false)
             return false;
         return true;
     }
@@ -660,15 +633,9 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getLastUsedDate() == null) ? 0 : getLastUsedDate()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getServiceName() == null) ? 0 : getServiceName().hashCode());
-        hashCode = prime * hashCode
-                + ((getRegion() == null) ? 0 : getRegion().hashCode());
+        hashCode = prime * hashCode + ((getLastUsedDate() == null) ? 0 : getLastUsedDate().hashCode());
+        hashCode = prime * hashCode + ((getServiceName() == null) ? 0 : getServiceName().hashCode());
+        hashCode = prime * hashCode + ((getRegion() == null) ? 0 : getRegion().hashCode());
         return hashCode;
     }
 
@@ -677,9 +644,8 @@ public class AccessKeyLastUsed implements Serializable, Cloneable {
         try {
             return (AccessKeyLastUsed) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

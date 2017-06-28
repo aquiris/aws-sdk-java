@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.devicefarm.model.*;
 import com.amazonaws.*;
 
 /**
- * Abstract implementation of {@code AWSDeviceFarm}. Convenient method forms
- * pass through to the corresponding overload that takes a request object, which
- * throws an {@code UnsupportedOperationException}.
+ * Abstract implementation of {@code AWSDeviceFarm}. Convenient method forms pass through to the corresponding overload
+ * that takes a request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
 
     protected AbstractAWSDeviceFarm() {
@@ -38,8 +38,12 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public CreateDevicePoolResult createDevicePool(
-            CreateDevicePoolRequest request) {
+    public CreateDevicePoolResult createDevicePool(CreateDevicePoolRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateNetworkProfileResult createNetworkProfile(CreateNetworkProfileRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -49,8 +53,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public CreateRemoteAccessSessionResult createRemoteAccessSession(
-            CreateRemoteAccessSessionRequest request) {
+    public CreateRemoteAccessSessionResult createRemoteAccessSession(CreateRemoteAccessSessionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -60,8 +63,12 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public DeleteDevicePoolResult deleteDevicePool(
-            DeleteDevicePoolRequest request) {
+    public DeleteDevicePoolResult deleteDevicePool(DeleteDevicePoolRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteNetworkProfileResult deleteNetworkProfile(DeleteNetworkProfileRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -71,8 +78,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public DeleteRemoteAccessSessionResult deleteRemoteAccessSession(
-            DeleteRemoteAccessSessionRequest request) {
+    public DeleteRemoteAccessSessionResult deleteRemoteAccessSession(DeleteRemoteAccessSessionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -87,8 +93,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public GetAccountSettingsResult getAccountSettings(
-            GetAccountSettingsRequest request) {
+    public GetAccountSettingsResult getAccountSettings(GetAccountSettingsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -103,8 +108,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public GetDevicePoolCompatibilityResult getDevicePoolCompatibility(
-            GetDevicePoolCompatibilityRequest request) {
+    public GetDevicePoolCompatibilityResult getDevicePoolCompatibility(GetDevicePoolCompatibilityRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -114,8 +118,12 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public GetOfferingStatusResult getOfferingStatus(
-            GetOfferingStatusRequest request) {
+    public GetNetworkProfileResult getNetworkProfile(GetNetworkProfileRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetOfferingStatusResult getOfferingStatus(GetOfferingStatusRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -125,8 +133,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public GetRemoteAccessSessionResult getRemoteAccessSession(
-            GetRemoteAccessSessionRequest request) {
+    public GetRemoteAccessSessionResult getRemoteAccessSession(GetRemoteAccessSessionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -151,8 +158,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public InstallToRemoteAccessSessionResult installToRemoteAccessSession(
-            InstallToRemoteAccessSessionRequest request) {
+    public InstallToRemoteAccessSessionResult installToRemoteAccessSession(InstallToRemoteAccessSessionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -177,8 +183,17 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public ListOfferingTransactionsResult listOfferingTransactions(
-            ListOfferingTransactionsRequest request) {
+    public ListNetworkProfilesResult listNetworkProfiles(ListNetworkProfilesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListOfferingPromotionsResult listOfferingPromotions(ListOfferingPromotionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListOfferingTransactionsResult listOfferingTransactions(ListOfferingTransactionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -193,8 +208,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public ListRemoteAccessSessionsResult listRemoteAccessSessions(
-            ListRemoteAccessSessionsRequest request) {
+    public ListRemoteAccessSessionsResult listRemoteAccessSessions(ListRemoteAccessSessionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -219,8 +233,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public ListUniqueProblemsResult listUniqueProblems(
-            ListUniqueProblemsRequest request) {
+    public ListUniqueProblemsResult listUniqueProblems(ListUniqueProblemsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -230,8 +243,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public PurchaseOfferingResult purchaseOffering(
-            PurchaseOfferingRequest request) {
+    public PurchaseOfferingResult purchaseOffering(PurchaseOfferingRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -246,8 +258,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public StopRemoteAccessSessionResult stopRemoteAccessSession(
-            StopRemoteAccessSessionRequest request) {
+    public StopRemoteAccessSessionResult stopRemoteAccessSession(StopRemoteAccessSessionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -257,8 +268,12 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public UpdateDevicePoolResult updateDevicePool(
-            UpdateDevicePoolRequest request) {
+    public UpdateDevicePoolResult updateDevicePool(UpdateDevicePoolRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateNetworkProfileResult updateNetworkProfile(UpdateNetworkProfileRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -273,8 +288,7 @@ public class AbstractAWSDeviceFarm implements AWSDeviceFarm {
     }
 
     @Override
-    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(
-            com.amazonaws.AmazonWebServiceRequest request) {
+    public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

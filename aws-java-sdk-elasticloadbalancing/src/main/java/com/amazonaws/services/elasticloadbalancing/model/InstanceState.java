@@ -1,26 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Information about the state of an EC2 instance.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/InstanceState" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstanceState implements Serializable, Cloneable {
 
     /**
@@ -34,16 +37,14 @@ public class InstanceState implements Serializable, Cloneable {
      * The current state of the instance.
      * </p>
      * <p>
-     * Valid values: <code>InService</code> | <code>OutOfService</code> |
-     * <code>Unknown</code>
+     * Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code>
      * </p>
      */
     private String state;
     /**
      * <p>
-     * Information about the cause of <code>OutOfService</code> instances.
-     * Specifically, whether the cause is Elastic Load Balancing or the
-     * instance.
+     * Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is Elastic
+     * Load Balancing or the instance.
      * </p>
      * <p>
      * Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
@@ -52,8 +53,7 @@ public class InstanceState implements Serializable, Cloneable {
     private String reasonCode;
     /**
      * <p>
-     * A description of the instance state. This string can contain one or more
-     * of the following messages.
+     * A description of the instance state. This string can contain one or more of the following messages.
      * </p>
      * <ul>
      * <li>
@@ -152,8 +152,7 @@ public class InstanceState implements Serializable, Cloneable {
      * 
      * @param instanceId
      *        The ID of the instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InstanceState withInstanceId(String instanceId) {
@@ -166,15 +165,13 @@ public class InstanceState implements Serializable, Cloneable {
      * The current state of the instance.
      * </p>
      * <p>
-     * Valid values: <code>InService</code> | <code>OutOfService</code> |
-     * <code>Unknown</code>
+     * Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code>
      * </p>
      * 
      * @param state
      *        The current state of the instance.</p>
      *        <p>
-     *        Valid values: <code>InService</code> | <code>OutOfService</code> |
-     *        <code>Unknown</code>
+     *        Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code>
      */
 
     public void setState(String state) {
@@ -186,14 +183,12 @@ public class InstanceState implements Serializable, Cloneable {
      * The current state of the instance.
      * </p>
      * <p>
-     * Valid values: <code>InService</code> | <code>OutOfService</code> |
-     * <code>Unknown</code>
+     * Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code>
      * </p>
      * 
      * @return The current state of the instance.</p>
      *         <p>
-     *         Valid values: <code>InService</code> | <code>OutOfService</code>
-     *         | <code>Unknown</code>
+     *         Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code>
      */
 
     public String getState() {
@@ -205,17 +200,14 @@ public class InstanceState implements Serializable, Cloneable {
      * The current state of the instance.
      * </p>
      * <p>
-     * Valid values: <code>InService</code> | <code>OutOfService</code> |
-     * <code>Unknown</code>
+     * Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code>
      * </p>
      * 
      * @param state
      *        The current state of the instance.</p>
      *        <p>
-     *        Valid values: <code>InService</code> | <code>OutOfService</code> |
-     *        <code>Unknown</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Valid values: <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InstanceState withState(String state) {
@@ -225,21 +217,18 @@ public class InstanceState implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Information about the cause of <code>OutOfService</code> instances.
-     * Specifically, whether the cause is Elastic Load Balancing or the
-     * instance.
+     * Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is Elastic
+     * Load Balancing or the instance.
      * </p>
      * <p>
      * Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
      * </p>
      * 
      * @param reasonCode
-     *        Information about the cause of <code>OutOfService</code>
-     *        instances. Specifically, whether the cause is Elastic Load
-     *        Balancing or the instance.</p>
+     *        Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is
+     *        Elastic Load Balancing or the instance.</p>
      *        <p>
-     *        Valid values: <code>ELB</code> | <code>Instance</code> |
-     *        <code>N/A</code>
+     *        Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
      */
 
     public void setReasonCode(String reasonCode) {
@@ -248,20 +237,17 @@ public class InstanceState implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Information about the cause of <code>OutOfService</code> instances.
-     * Specifically, whether the cause is Elastic Load Balancing or the
-     * instance.
+     * Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is Elastic
+     * Load Balancing or the instance.
      * </p>
      * <p>
      * Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
      * </p>
      * 
-     * @return Information about the cause of <code>OutOfService</code>
-     *         instances. Specifically, whether the cause is Elastic Load
-     *         Balancing or the instance.</p>
+     * @return Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is
+     *         Elastic Load Balancing or the instance.</p>
      *         <p>
-     *         Valid values: <code>ELB</code> | <code>Instance</code> |
-     *         <code>N/A</code>
+     *         Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
      */
 
     public String getReasonCode() {
@@ -270,23 +256,19 @@ public class InstanceState implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Information about the cause of <code>OutOfService</code> instances.
-     * Specifically, whether the cause is Elastic Load Balancing or the
-     * instance.
+     * Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is Elastic
+     * Load Balancing or the instance.
      * </p>
      * <p>
      * Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
      * </p>
      * 
      * @param reasonCode
-     *        Information about the cause of <code>OutOfService</code>
-     *        instances. Specifically, whether the cause is Elastic Load
-     *        Balancing or the instance.</p>
+     *        Information about the cause of <code>OutOfService</code> instances. Specifically, whether the cause is
+     *        Elastic Load Balancing or the instance.</p>
      *        <p>
-     *        Valid values: <code>ELB</code> | <code>Instance</code> |
-     *        <code>N/A</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InstanceState withReasonCode(String reasonCode) {
@@ -296,8 +278,7 @@ public class InstanceState implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A description of the instance state. This string can contain one or more
-     * of the following messages.
+     * A description of the instance state. This string can contain one or more of the following messages.
      * </p>
      * <ul>
      * <li>
@@ -363,8 +344,7 @@ public class InstanceState implements Serializable, Cloneable {
      * </ul>
      * 
      * @param description
-     *        A description of the instance state. This string can contain one
-     *        or more of the following messages.</p>
+     *        A description of the instance state. This string can contain one or more of the following messages.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -434,8 +414,7 @@ public class InstanceState implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A description of the instance state. This string can contain one or more
-     * of the following messages.
+     * A description of the instance state. This string can contain one or more of the following messages.
      * </p>
      * <ul>
      * <li>
@@ -500,8 +479,7 @@ public class InstanceState implements Serializable, Cloneable {
      * </li>
      * </ul>
      * 
-     * @return A description of the instance state. This string can contain one
-     *         or more of the following messages.</p>
+     * @return A description of the instance state. This string can contain one or more of the following messages.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -571,8 +549,7 @@ public class InstanceState implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A description of the instance state. This string can contain one or more
-     * of the following messages.
+     * A description of the instance state. This string can contain one or more of the following messages.
      * </p>
      * <ul>
      * <li>
@@ -638,8 +615,7 @@ public class InstanceState implements Serializable, Cloneable {
      * </ul>
      * 
      * @param description
-     *        A description of the instance state. This string can contain one
-     *        or more of the following messages.</p>
+     *        A description of the instance state. This string can contain one or more of the following messages.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -701,8 +677,7 @@ public class InstanceState implements Serializable, Cloneable {
      *        <code>Instance is in terminated state.</code>
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InstanceState withDescription(String description) {
@@ -711,8 +686,7 @@ public class InstanceState implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -723,13 +697,13 @@ public class InstanceState implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getState() != null)
-            sb.append("State: " + getState() + ",");
+            sb.append("State: ").append(getState()).append(",");
         if (getReasonCode() != null)
-            sb.append("ReasonCode: " + getReasonCode() + ",");
+            sb.append("ReasonCode: ").append(getReasonCode()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription());
+            sb.append("Description: ").append(getDescription());
         sb.append("}");
         return sb.toString();
     }
@@ -746,23 +720,19 @@ public class InstanceState implements Serializable, Cloneable {
         InstanceState other = (InstanceState) obj;
         if (other.getInstanceId() == null ^ this.getInstanceId() == null)
             return false;
-        if (other.getInstanceId() != null
-                && other.getInstanceId().equals(this.getInstanceId()) == false)
+        if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
             return false;
         if (other.getState() == null ^ this.getState() == null)
             return false;
-        if (other.getState() != null
-                && other.getState().equals(this.getState()) == false)
+        if (other.getState() != null && other.getState().equals(this.getState()) == false)
             return false;
         if (other.getReasonCode() == null ^ this.getReasonCode() == null)
             return false;
-        if (other.getReasonCode() != null
-                && other.getReasonCode().equals(this.getReasonCode()) == false)
+        if (other.getReasonCode() != null && other.getReasonCode().equals(this.getReasonCode()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         return true;
     }
@@ -772,15 +742,10 @@ public class InstanceState implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
-        hashCode = prime * hashCode
-                + ((getState() == null) ? 0 : getState().hashCode());
-        hashCode = prime * hashCode
-                + ((getReasonCode() == null) ? 0 : getReasonCode().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
+        hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
+        hashCode = prime * hashCode + ((getReasonCode() == null) ? 0 : getReasonCode().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         return hashCode;
     }
 
@@ -789,9 +754,8 @@ public class InstanceState implements Serializable, Cloneable {
         try {
             return (InstanceState) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

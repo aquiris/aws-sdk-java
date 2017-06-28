@@ -1,63 +1,62 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object that represents the recording of configuration changes of an AWS
- * resource.
+ * An object that represents the recording of configuration changes of an AWS resource.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigurationRecorder" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ConfigurationRecorder implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ConfigurationRecorder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the recorder. By default, AWS Config automatically assigns
-     * the name &quot;default&quot; when creating the configuration recorder.
-     * You cannot change the assigned name.
+     * The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the
+     * configuration recorder. You cannot change the assigned name.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS
-     * resources associated with the account.
+     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.
      * </p>
      */
     private String roleARN;
     /**
      * <p>
-     * Specifies the types of AWS resource for which AWS Config records
-     * configuration changes.
+     * Specifies the types of AWS resource for which AWS Config records configuration changes.
      * </p>
      */
     private RecordingGroup recordingGroup;
 
     /**
      * <p>
-     * The name of the recorder. By default, AWS Config automatically assigns
-     * the name &quot;default&quot; when creating the configuration recorder.
-     * You cannot change the assigned name.
+     * The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the
+     * configuration recorder. You cannot change the assigned name.
      * </p>
      * 
      * @param name
-     *        The name of the recorder. By default, AWS Config automatically
-     *        assigns the name &quot;default&quot; when creating the
-     *        configuration recorder. You cannot change the assigned name.
+     *        The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating
+     *        the configuration recorder. You cannot change the assigned name.
      */
 
     public void setName(String name) {
@@ -66,14 +65,12 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the recorder. By default, AWS Config automatically assigns
-     * the name &quot;default&quot; when creating the configuration recorder.
-     * You cannot change the assigned name.
+     * The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the
+     * configuration recorder. You cannot change the assigned name.
      * </p>
      * 
-     * @return The name of the recorder. By default, AWS Config automatically
-     *         assigns the name &quot;default&quot; when creating the
-     *         configuration recorder. You cannot change the assigned name.
+     * @return The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating
+     *         the configuration recorder. You cannot change the assigned name.
      */
 
     public String getName() {
@@ -82,17 +79,14 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the recorder. By default, AWS Config automatically assigns
-     * the name &quot;default&quot; when creating the configuration recorder.
-     * You cannot change the assigned name.
+     * The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the
+     * configuration recorder. You cannot change the assigned name.
      * </p>
      * 
      * @param name
-     *        The name of the recorder. By default, AWS Config automatically
-     *        assigns the name &quot;default&quot; when creating the
-     *        configuration recorder. You cannot change the assigned name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating
+     *        the configuration recorder. You cannot change the assigned name.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ConfigurationRecorder withName(String name) {
@@ -102,13 +96,11 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS
-     * resources associated with the account.
+     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.
      * </p>
      * 
      * @param roleARN
-     *        Amazon Resource Name (ARN) of the IAM role used to describe the
-     *        AWS resources associated with the account.
+     *        Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.
      */
 
     public void setRoleARN(String roleARN) {
@@ -117,12 +109,11 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS
-     * resources associated with the account.
+     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.
      * </p>
      * 
-     * @return Amazon Resource Name (ARN) of the IAM role used to describe the
-     *         AWS resources associated with the account.
+     * @return Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the
+     *         account.
      */
 
     public String getRoleARN() {
@@ -131,15 +122,12 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS
-     * resources associated with the account.
+     * Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.
      * </p>
      * 
      * @param roleARN
-     *        Amazon Resource Name (ARN) of the IAM role used to describe the
-     *        AWS resources associated with the account.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ConfigurationRecorder withRoleARN(String roleARN) {
@@ -149,13 +137,11 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the types of AWS resource for which AWS Config records
-     * configuration changes.
+     * Specifies the types of AWS resource for which AWS Config records configuration changes.
      * </p>
      * 
      * @param recordingGroup
-     *        Specifies the types of AWS resource for which AWS Config records
-     *        configuration changes.
+     *        Specifies the types of AWS resource for which AWS Config records configuration changes.
      */
 
     public void setRecordingGroup(RecordingGroup recordingGroup) {
@@ -164,12 +150,10 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the types of AWS resource for which AWS Config records
-     * configuration changes.
+     * Specifies the types of AWS resource for which AWS Config records configuration changes.
      * </p>
      * 
-     * @return Specifies the types of AWS resource for which AWS Config records
-     *         configuration changes.
+     * @return Specifies the types of AWS resource for which AWS Config records configuration changes.
      */
 
     public RecordingGroup getRecordingGroup() {
@@ -178,26 +162,21 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the types of AWS resource for which AWS Config records
-     * configuration changes.
+     * Specifies the types of AWS resource for which AWS Config records configuration changes.
      * </p>
      * 
      * @param recordingGroup
-     *        Specifies the types of AWS resource for which AWS Config records
-     *        configuration changes.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the types of AWS resource for which AWS Config records configuration changes.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ConfigurationRecorder withRecordingGroup(
-            RecordingGroup recordingGroup) {
+    public ConfigurationRecorder withRecordingGroup(RecordingGroup recordingGroup) {
         setRecordingGroup(recordingGroup);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -208,11 +187,11 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: " + getRoleARN() + ",");
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
         if (getRecordingGroup() != null)
-            sb.append("RecordingGroup: " + getRecordingGroup());
+            sb.append("RecordingGroup: ").append(getRecordingGroup());
         sb.append("}");
         return sb.toString();
     }
@@ -229,19 +208,15 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
         ConfigurationRecorder other = (ConfigurationRecorder) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getRoleARN() == null ^ this.getRoleARN() == null)
             return false;
-        if (other.getRoleARN() != null
-                && other.getRoleARN().equals(this.getRoleARN()) == false)
+        if (other.getRoleARN() != null && other.getRoleARN().equals(this.getRoleARN()) == false)
             return false;
-        if (other.getRecordingGroup() == null
-                ^ this.getRecordingGroup() == null)
+        if (other.getRecordingGroup() == null ^ this.getRecordingGroup() == null)
             return false;
-        if (other.getRecordingGroup() != null
-                && other.getRecordingGroup().equals(this.getRecordingGroup()) == false)
+        if (other.getRecordingGroup() != null && other.getRecordingGroup().equals(this.getRecordingGroup()) == false)
             return false;
         return true;
     }
@@ -251,14 +226,9 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRecordingGroup() == null) ? 0 : getRecordingGroup()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
+        hashCode = prime * hashCode + ((getRecordingGroup() == null) ? 0 : getRecordingGroup().hashCode());
         return hashCode;
     }
 
@@ -267,9 +237,13 @@ public class ConfigurationRecorder implements Serializable, Cloneable {
         try {
             return (ConfigurationRecorder) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.ConfigurationRecorderMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

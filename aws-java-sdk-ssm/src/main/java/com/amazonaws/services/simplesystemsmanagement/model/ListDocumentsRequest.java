@@ -1,59 +1,56 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simplesystemsmanagement.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListDocuments" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListDocumentsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListDocumentsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more filters. Use a filter to return a more specific list of
-     * results.
+     * One or more filters. Use a filter to return a more specific list of results.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DocumentFilter> documentFilterList;
     /**
      * <p>
-     * The maximum number of items to return for this call. The call also
-     * returns a token that you can specify in a subsequent call to get the next
-     * set of results.
+     * The maximum number of items to return for this call. The call also returns a token that you can specify in a
+     * subsequent call to get the next set of results.
      * </p>
      */
     private Integer maxResults;
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * One or more filters. Use a filter to return a more specific list of
-     * results.
+     * One or more filters. Use a filter to return a more specific list of results.
      * </p>
      * 
-     * @return One or more filters. Use a filter to return a more specific list
-     *         of results.
+     * @return One or more filters. Use a filter to return a more specific list of results.
      */
 
     public java.util.List<DocumentFilter> getDocumentFilterList() {
@@ -65,50 +62,40 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * One or more filters. Use a filter to return a more specific list of
-     * results.
+     * One or more filters. Use a filter to return a more specific list of results.
      * </p>
      * 
      * @param documentFilterList
-     *        One or more filters. Use a filter to return a more specific list
-     *        of results.
+     *        One or more filters. Use a filter to return a more specific list of results.
      */
 
-    public void setDocumentFilterList(
-            java.util.Collection<DocumentFilter> documentFilterList) {
+    public void setDocumentFilterList(java.util.Collection<DocumentFilter> documentFilterList) {
         if (documentFilterList == null) {
             this.documentFilterList = null;
             return;
         }
 
-        this.documentFilterList = new com.amazonaws.internal.SdkInternalList<DocumentFilter>(
-                documentFilterList);
+        this.documentFilterList = new com.amazonaws.internal.SdkInternalList<DocumentFilter>(documentFilterList);
     }
 
     /**
      * <p>
-     * One or more filters. Use a filter to return a more specific list of
-     * results.
+     * One or more filters. Use a filter to return a more specific list of results.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDocumentFilterList(java.util.Collection)} or
-     * {@link #withDocumentFilterList(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDocumentFilterList(java.util.Collection)} or {@link #withDocumentFilterList(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param documentFilterList
-     *        One or more filters. Use a filter to return a more specific list
-     *        of results.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        One or more filters. Use a filter to return a more specific list of results.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListDocumentsRequest withDocumentFilterList(
-            DocumentFilter... documentFilterList) {
+    public ListDocumentsRequest withDocumentFilterList(DocumentFilter... documentFilterList) {
         if (this.documentFilterList == null) {
-            setDocumentFilterList(new com.amazonaws.internal.SdkInternalList<DocumentFilter>(
-                    documentFilterList.length));
+            setDocumentFilterList(new com.amazonaws.internal.SdkInternalList<DocumentFilter>(documentFilterList.length));
         }
         for (DocumentFilter ele : documentFilterList) {
             this.documentFilterList.add(ele);
@@ -118,34 +105,28 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * One or more filters. Use a filter to return a more specific list of
-     * results.
+     * One or more filters. Use a filter to return a more specific list of results.
      * </p>
      * 
      * @param documentFilterList
-     *        One or more filters. Use a filter to return a more specific list
-     *        of results.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        One or more filters. Use a filter to return a more specific list of results.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListDocumentsRequest withDocumentFilterList(
-            java.util.Collection<DocumentFilter> documentFilterList) {
+    public ListDocumentsRequest withDocumentFilterList(java.util.Collection<DocumentFilter> documentFilterList) {
         setDocumentFilterList(documentFilterList);
         return this;
     }
 
     /**
      * <p>
-     * The maximum number of items to return for this call. The call also
-     * returns a token that you can specify in a subsequent call to get the next
-     * set of results.
+     * The maximum number of items to return for this call. The call also returns a token that you can specify in a
+     * subsequent call to get the next set of results.
      * </p>
      * 
      * @param maxResults
-     *        The maximum number of items to return for this call. The call also
-     *        returns a token that you can specify in a subsequent call to get
-     *        the next set of results.
+     *        The maximum number of items to return for this call. The call also returns a token that you can specify in
+     *        a subsequent call to get the next set of results.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -154,14 +135,12 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return for this call. The call also
-     * returns a token that you can specify in a subsequent call to get the next
-     * set of results.
+     * The maximum number of items to return for this call. The call also returns a token that you can specify in a
+     * subsequent call to get the next set of results.
      * </p>
      * 
-     * @return The maximum number of items to return for this call. The call
-     *         also returns a token that you can specify in a subsequent call to
-     *         get the next set of results.
+     * @return The maximum number of items to return for this call. The call also returns a token that you can specify
+     *         in a subsequent call to get the next set of results.
      */
 
     public Integer getMaxResults() {
@@ -170,17 +149,14 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of items to return for this call. The call also
-     * returns a token that you can specify in a subsequent call to get the next
-     * set of results.
+     * The maximum number of items to return for this call. The call also returns a token that you can specify in a
+     * subsequent call to get the next set of results.
      * </p>
      * 
      * @param maxResults
-     *        The maximum number of items to return for this call. The call also
-     *        returns a token that you can specify in a subsequent call to get
-     *        the next set of results.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of items to return for this call. The call also returns a token that you can specify in
+     *        a subsequent call to get the next set of results.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListDocumentsRequest withMaxResults(Integer maxResults) {
@@ -190,13 +166,11 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of items to return. (You received this
-     *        token from a previous call.)
+     *        The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public void setNextToken(String nextToken) {
@@ -205,12 +179,10 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
-     * @return The token for the next set of items to return. (You received this
-     *         token from a previous call.)
+     * @return The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public String getNextToken() {
@@ -219,15 +191,12 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of items to return. (You received this
-     *        token from a previous call.)
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The token for the next set of items to return. (You received this token from a previous call.)
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListDocumentsRequest withNextToken(String nextToken) {
@@ -236,8 +205,7 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -248,11 +216,11 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDocumentFilterList() != null)
-            sb.append("DocumentFilterList: " + getDocumentFilterList() + ",");
+            sb.append("DocumentFilterList: ").append(getDocumentFilterList()).append(",");
         if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults() + ",");
+            sb.append("MaxResults: ").append(getMaxResults()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -267,22 +235,17 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
         if (obj instanceof ListDocumentsRequest == false)
             return false;
         ListDocumentsRequest other = (ListDocumentsRequest) obj;
-        if (other.getDocumentFilterList() == null
-                ^ this.getDocumentFilterList() == null)
+        if (other.getDocumentFilterList() == null ^ this.getDocumentFilterList() == null)
             return false;
-        if (other.getDocumentFilterList() != null
-                && other.getDocumentFilterList().equals(
-                        this.getDocumentFilterList()) == false)
+        if (other.getDocumentFilterList() != null && other.getDocumentFilterList().equals(this.getDocumentFilterList()) == false)
             return false;
         if (other.getMaxResults() == null ^ this.getMaxResults() == null)
             return false;
-        if (other.getMaxResults() != null
-                && other.getMaxResults().equals(this.getMaxResults()) == false)
+        if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -292,14 +255,9 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDocumentFilterList() == null) ? 0
-                        : getDocumentFilterList().hashCode());
-        hashCode = prime * hashCode
-                + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getDocumentFilterList() == null) ? 0 : getDocumentFilterList().hashCode());
+        hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -307,4 +265,5 @@ public class ListDocumentsRequest extends AmazonWebServiceRequest implements
     public ListDocumentsRequest clone() {
         return (ListDocumentsRequest) super.clone();
     }
+
 }

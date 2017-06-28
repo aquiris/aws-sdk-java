@@ -1,46 +1,58 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
+ * <p>
  * The returned result of the corresponding request.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListCloudFrontOriginAccessIdentities"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ListCloudFrontOriginAccessIdentitiesResult implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListCloudFrontOriginAccessIdentitiesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable,
+        Cloneable {
 
-    /** The CloudFrontOriginAccessIdentityList type. */
+    /**
+     * <p>
+     * The <code>CloudFrontOriginAccessIdentityList</code> type.
+     * </p>
+     */
     private CloudFrontOriginAccessIdentityList cloudFrontOriginAccessIdentityList;
 
     /**
-     * The CloudFrontOriginAccessIdentityList type.
+     * <p>
+     * The <code>CloudFrontOriginAccessIdentityList</code> type.
+     * </p>
      * 
      * @param cloudFrontOriginAccessIdentityList
-     *        The CloudFrontOriginAccessIdentityList type.
+     *        The <code>CloudFrontOriginAccessIdentityList</code> type.
      */
 
-    public void setCloudFrontOriginAccessIdentityList(
-            CloudFrontOriginAccessIdentityList cloudFrontOriginAccessIdentityList) {
+    public void setCloudFrontOriginAccessIdentityList(CloudFrontOriginAccessIdentityList cloudFrontOriginAccessIdentityList) {
         this.cloudFrontOriginAccessIdentityList = cloudFrontOriginAccessIdentityList;
     }
 
     /**
-     * The CloudFrontOriginAccessIdentityList type.
+     * <p>
+     * The <code>CloudFrontOriginAccessIdentityList</code> type.
+     * </p>
      * 
-     * @return The CloudFrontOriginAccessIdentityList type.
+     * @return The <code>CloudFrontOriginAccessIdentityList</code> type.
      */
 
     public CloudFrontOriginAccessIdentityList getCloudFrontOriginAccessIdentityList() {
@@ -48,12 +60,13 @@ public class ListCloudFrontOriginAccessIdentitiesResult implements
     }
 
     /**
-     * The CloudFrontOriginAccessIdentityList type.
+     * <p>
+     * The <code>CloudFrontOriginAccessIdentityList</code> type.
+     * </p>
      * 
      * @param cloudFrontOriginAccessIdentityList
-     *        The CloudFrontOriginAccessIdentityList type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <code>CloudFrontOriginAccessIdentityList</code> type.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListCloudFrontOriginAccessIdentitiesResult withCloudFrontOriginAccessIdentityList(
@@ -63,8 +76,7 @@ public class ListCloudFrontOriginAccessIdentitiesResult implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -75,8 +87,7 @@ public class ListCloudFrontOriginAccessIdentitiesResult implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCloudFrontOriginAccessIdentityList() != null)
-            sb.append("CloudFrontOriginAccessIdentityList: "
-                    + getCloudFrontOriginAccessIdentityList());
+            sb.append("CloudFrontOriginAccessIdentityList: ").append(getCloudFrontOriginAccessIdentityList());
         sb.append("}");
         return sb.toString();
     }
@@ -91,12 +102,10 @@ public class ListCloudFrontOriginAccessIdentitiesResult implements
         if (obj instanceof ListCloudFrontOriginAccessIdentitiesResult == false)
             return false;
         ListCloudFrontOriginAccessIdentitiesResult other = (ListCloudFrontOriginAccessIdentitiesResult) obj;
-        if (other.getCloudFrontOriginAccessIdentityList() == null
-                ^ this.getCloudFrontOriginAccessIdentityList() == null)
+        if (other.getCloudFrontOriginAccessIdentityList() == null ^ this.getCloudFrontOriginAccessIdentityList() == null)
             return false;
         if (other.getCloudFrontOriginAccessIdentityList() != null
-                && other.getCloudFrontOriginAccessIdentityList().equals(
-                        this.getCloudFrontOriginAccessIdentityList()) == false)
+                && other.getCloudFrontOriginAccessIdentityList().equals(this.getCloudFrontOriginAccessIdentityList()) == false)
             return false;
         return true;
     }
@@ -106,10 +115,7 @@ public class ListCloudFrontOriginAccessIdentitiesResult implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCloudFrontOriginAccessIdentityList() == null) ? 0
-                        : getCloudFrontOriginAccessIdentityList().hashCode());
+        hashCode = prime * hashCode + ((getCloudFrontOriginAccessIdentityList() == null) ? 0 : getCloudFrontOriginAccessIdentityList().hashCode());
         return hashCode;
     }
 
@@ -118,9 +124,8 @@ public class ListCloudFrontOriginAccessIdentitiesResult implements
         try {
             return (ListCloudFrontOriginAccessIdentitiesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * <p>
- * Contains the output of CreateTargetGroup.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateTargetGroup"
+ *      target="_top">AWS API Documentation</a>
  */
-public class CreateTargetGroupResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateTargetGroupResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -65,22 +65,19 @@ public class CreateTargetGroupResult implements Serializable, Cloneable {
      * Information about the target group.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTargetGroups(java.util.Collection)} or
-     * {@link #withTargetGroups(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTargetGroups(java.util.Collection)} or {@link #withTargetGroups(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param targetGroups
      *        Information about the target group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateTargetGroupResult withTargetGroups(TargetGroup... targetGroups) {
         if (this.targetGroups == null) {
-            setTargetGroups(new java.util.ArrayList<TargetGroup>(
-                    targetGroups.length));
+            setTargetGroups(new java.util.ArrayList<TargetGroup>(targetGroups.length));
         }
         for (TargetGroup ele : targetGroups) {
             this.targetGroups.add(ele);
@@ -95,19 +92,16 @@ public class CreateTargetGroupResult implements Serializable, Cloneable {
      * 
      * @param targetGroups
      *        Information about the target group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateTargetGroupResult withTargetGroups(
-            java.util.Collection<TargetGroup> targetGroups) {
+    public CreateTargetGroupResult withTargetGroups(java.util.Collection<TargetGroup> targetGroups) {
         setTargetGroups(targetGroups);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -118,7 +112,7 @@ public class CreateTargetGroupResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetGroups() != null)
-            sb.append("TargetGroups: " + getTargetGroups());
+            sb.append("TargetGroups: ").append(getTargetGroups());
         sb.append("}");
         return sb.toString();
     }
@@ -135,8 +129,7 @@ public class CreateTargetGroupResult implements Serializable, Cloneable {
         CreateTargetGroupResult other = (CreateTargetGroupResult) obj;
         if (other.getTargetGroups() == null ^ this.getTargetGroups() == null)
             return false;
-        if (other.getTargetGroups() != null
-                && other.getTargetGroups().equals(this.getTargetGroups()) == false)
+        if (other.getTargetGroups() != null && other.getTargetGroups().equals(this.getTargetGroups()) == false)
             return false;
         return true;
     }
@@ -146,10 +139,7 @@ public class CreateTargetGroupResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getTargetGroups() == null) ? 0 : getTargetGroups()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getTargetGroups() == null) ? 0 : getTargetGroups().hashCode());
         return hashCode;
     }
 
@@ -158,9 +148,8 @@ public class CreateTargetGroupResult implements Serializable, Cloneable {
         try {
             return (CreateTargetGroupResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

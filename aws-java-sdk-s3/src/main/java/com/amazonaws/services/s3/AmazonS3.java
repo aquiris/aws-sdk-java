@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,19 +20,27 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.HttpMethod;
+import com.amazonaws.regions.RegionUtils;
 import com.amazonaws.services.s3.internal.Constants;
 import com.amazonaws.services.s3.internal.S3DirectSpi;
 import com.amazonaws.services.s3.model.*;
+import com.amazonaws.services.s3.model.metrics.MetricsConfiguration;
+import com.amazonaws.services.s3.model.analytics.AnalyticsConfiguration;
+import com.amazonaws.services.s3.model.inventory.InventoryConfiguration;
 import com.amazonaws.services.s3.waiters.AmazonS3Waiters;
 
 /**
  * <p>
  * Provides an interface for accessing the Amazon S3 web service.
+ * </p>
+ * <p>
+ *     <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly.
+ *     Extend from {@link AbstractAmazonS3} instead.
  * </p>
  * <p>
  * Amazon S3 provides storage for the Internet, and is designed to make
@@ -64,7 +72,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see RegionUtils#getRegionsForService(String)
      */
-    String ENDPOINT_PREFIX = "s3"; 
+    String ENDPOINT_PREFIX = "s3";
     /**
      * <p>
      * Overrides the default endpoint for this client.
@@ -142,7 +150,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param newStorageClass
      *            The new storage class for the specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -154,7 +162,7 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     @Deprecated
     void changeObjectStorageClass(String bucketName, String key, StorageClass newStorageClass)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
 
     /**
@@ -168,7 +176,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param newRedirectLocation
      *            The new redirect location for the specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -180,7 +188,7 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     @Deprecated
     void setObjectRedirectLocation(String bucketName, String key, String newRedirectLocation)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -211,7 +219,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         other associated information, such as common prefixes (if a
      *         delimiter was specified), the original request parameters, etc.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -220,8 +228,9 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3Client#listObjects(String, String)
      * @see AmazonS3Client#listObjects(ListObjectsRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects">AWS API Documentation</a>
      */
-    public ObjectListing listObjects(String bucketName) throws AmazonClientException,
+    public ObjectListing listObjects(String bucketName) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -276,7 +285,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         other associated information, such as common prefixes (if a
      *         delimiter was specified), the original request parameters, etc.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -285,9 +294,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3Client#listObjects(String)
      * @see AmazonS3Client#listObjects(ListObjectsRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects">AWS API Documentation</a>
      */
     public ObjectListing listObjects(String bucketName, String prefix)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -345,7 +355,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         other associated information, such as common prefixes (if a
      *         delimiter was specified), the original request parameters, etc.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -354,18 +364,19 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3Client#listObjects(String)
      * @see AmazonS3Client#listObjects(String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects">AWS API Documentation</a>
      * @sample AmazonS3.ListObjects
      */
     public ObjectListing listObjects(ListObjectsRequest listObjectsRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
-    public ListObjectsV2Result listObjectsV2(String bucketName) throws AmazonClientException,
+    public ListObjectsV2Result listObjectsV2(String bucketName) throws SdkClientException,
             AmazonServiceException;
 
-    public ListObjectsV2Result listObjectsV2(String bucketName, String prefix) throws AmazonClientException,
+    public ListObjectsV2Result listObjectsV2(String bucketName, String prefix) throws SdkClientException,
             AmazonServiceException;
 
-    public ListObjectsV2Result listObjectsV2(ListObjectsV2Request listObjectsV2Request) throws AmazonClientException,
+    public ListObjectsV2Result listObjectsV2(ListObjectsV2Request listObjectsV2Request) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -395,7 +406,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return The next set of <code>ObjectListing</code> results, beginning immediately
      *         after the last result in the specified previous <code>ObjectListing</code>.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -406,9 +417,10 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3Client#listObjects(String, String)
      * @see AmazonS3Client#listObjects(ListObjectsRequest)
      * @see AmazonS3Client#listNextBatchOfObjects(ListNextBatchOfObjectsRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects">AWS API Documentation</a>
      */
     public ObjectListing listNextBatchOfObjects(ObjectListing previousObjectListing)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -437,7 +449,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return The next set of <code>ObjectListing</code> results, beginning immediately
      *         after the last result in the specified previous <code>ObjectListing</code>.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -448,10 +460,11 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3Client#listObjects(String, String)
      * @see AmazonS3Client#listObjects(ListObjectsRequest)
      * @see AmazonS3Client#listNextBatchOfObjects(ObjectListing)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects">AWS API Documentation</a>
      */
     public ObjectListing listNextBatchOfObjects(
             ListNextBatchOfObjectsRequest listNextBatchOfObjectsRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -494,7 +507,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A listing of the versions in the specified bucket, along with any
      *         other associated information and original request parameters.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -503,9 +516,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3Client#listVersions(ListVersionsRequest)
      * @see AmazonS3Client#listVersions(String, String, String, String, String, Integer)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions">AWS API Documentation</a>
      */
     public VersionListing listVersions(String bucketName, String prefix)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -536,7 +550,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return The next set of <code>VersionListing</code> results, beginning immediately
      *         after the last result in the specified previous <code>VersionListing</code>.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -547,9 +561,10 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3Client#listVersions(ListVersionsRequest)
      * @see AmazonS3Client#listVersions(String, String, String, String, String, Integer)
      * @see AmazonS3Client#listNextBatchOfVersions(ListNextBatchOfVersionsRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions">AWS API Documentation</a>
      */
     public VersionListing listNextBatchOfVersions(VersionListing previousVersionListing)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -580,7 +595,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return The next set of <code>VersionListing</code> results, beginning immediately
      *         after the last result in the specified previous <code>VersionListing</code>.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -591,10 +606,11 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3Client#listVersions(ListVersionsRequest)
      * @see AmazonS3Client#listVersions(String, String, String, String, String, Integer)
      * @see AmazonS3Client#listNextBatchOfVersions(VersionListing)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions">AWS API Documentation</a>
      */
     public VersionListing listNextBatchOfVersions(
             ListNextBatchOfVersionsRequest listNextBatchOfVersionsRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -723,7 +739,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         other associated information such as common prefixes (if a
      *         delimiter was specified), the original request parameters, etc.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -733,10 +749,11 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3Client#listVersions(String, String)
      * @see AmazonS3Client#listVersions(ListVersionsRequest)
      * @see AmazonS3Client#listNextBatchOfVersions(VersionListing)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions">AWS API Documentation</a>
      */
     public VersionListing listVersions(String bucketName, String prefix,
             String keyMarker, String versionIdMarker, String delimiter, Integer maxResults)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -810,7 +827,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         other associated information such as common prefixes (if a
      *         delimiter was specified), the original request parameters, etc.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -820,9 +837,10 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3Client#listVersions(String, String)
      * @see AmazonS3Client#listVersions(String, String, String, String, String, Integer)
      * @see AmazonS3Client#listNextBatchOfVersions(VersionListing)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions">AWS API Documentation</a>
      */
     public VersionListing listVersions(ListVersionsRequest listVersionsRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -836,7 +854,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The account of the authenticated sender
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -845,7 +863,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#getS3AccountOwner(GetS3AccountOwnerRequest)
      */
-    public Owner getS3AccountOwner() throws AmazonClientException,
+    public Owner getS3AccountOwner() throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -863,7 +881,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The account of the authenticated sender
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -873,7 +891,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#getS3AccountOwner()
      */
     public Owner getS3AccountOwner(GetS3AccountOwnerRequest getS3AccountOwnerRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Checks if the specified bucket exists. Amazon S3 buckets are named in a
@@ -892,7 +910,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         Amazon S3; the value <code>false</code> if there is no bucket in
      *         Amazon S3 with that name.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -902,7 +920,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#createBucket(CreateBucketRequest)
      */
     public boolean doesBucketExist(String bucketName)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Performs a head bucket operation on the requested bucket name. This operation is useful to
@@ -916,14 +934,15 @@ public interface AmazonS3 extends S3DirectSpi {
      *         does not exist, {@code '403 Forbidden'} if the user does not have access to the
      *         bucket, or {@code '301 Moved Permanently'} if the bucket is in a different region
      *         than the client is configured with
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the request or handling
      *             the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadBucket">AWS API Documentation</a>
      */
     public HeadBucketResult headBucket(HeadBucketRequest headBucketRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -939,7 +958,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A list of all of the Amazon S3 buckets owned by the authenticated
      *         sender of the request.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -947,9 +966,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#listBuckets(ListBucketsRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBuckets">AWS API Documentation</a>
      * @sample AmazonS3.ListBuckets
      */
-    public List<Bucket> listBuckets() throws AmazonClientException,
+    public List<Bucket> listBuckets() throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -970,7 +990,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A list of all of the Amazon S3 buckets owned by the authenticated
      *         sender of the request.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -978,9 +998,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#listBuckets()
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBuckets">AWS API Documentation</a>
      */
     public List<Bucket> listBuckets(ListBucketsRequest listBucketsRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
 
     /**
@@ -1009,7 +1030,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The location of the specified Amazon S3 bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1017,8 +1038,9 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see Region
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadBucket">AWS API Documentation</a>
      */
-    public String getBucketLocation(String bucketName) throws AmazonClientException,
+    public String getBucketLocation(String bucketName) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -1047,7 +1069,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The location of the specified Amazon S3 bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1055,14 +1077,23 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see Region
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadBucket">AWS API Documentation</a>
      */
     public String getBucketLocation(GetBucketLocationRequest getBucketLocationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
-     * Creates a new Amazon S3 bucket in the default
-     * region, {@link Region#US_Standard}.
+     * Creates a new Amazon S3 bucket in the region that the client was created
+     * in. If no region or AWS S3 endpoint was specified when creating the client,
+     * the bucket will be created within the default (US) region, {@link Region#US_Standard}
+     * or the region that was specified within the {@link CreateBucketRequest#region} field.
+     * </p>
+     * <p>
+     * Requests that specify a region using the {@link CreateBucketRequest#setRegion(String)}
+     * method or through either constructor that allows passing in the region will return an
+     * error if the client is not configured to use the default (US) region, {@link Region#US_Standard}
+     * or the same region that is specified in the request.
      * </p>
      * <p>
      * Every object stored in Amazon S3 is contained within a bucket. Buckets
@@ -1115,20 +1146,23 @@ public interface AmazonS3 extends S3DirectSpi {
      *            bucket.
      * @return The newly created bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucket">AWS API Documentation</a>
      */
     public Bucket createBucket(CreateBucketRequest createBucketRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
 
     /**
      * <p>
-     * Creates a new Amazon S3 bucket with the specified name in the default
+     * Creates a new Amazon S3 bucket with the specified name in the region
+     * that the client was created in. If no region or AWS S3 endpoint was specified
+     * when creating the client, the bucket will be created within the default
      * (US) region, {@link Region#US_Standard}.
      * </p>
      * <p>
@@ -1184,16 +1218,17 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The newly created bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucket">AWS API Documentation</a>
      * @sample AmazonS3.CreateBucket
      */
     public Bucket createBucket(String bucketName)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1254,17 +1289,21 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The newly created bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
      *
+     * @deprecated Use regional endpoint and call {@link #createBucket(String)} instead.
+     *
      * @see com.amazonaws.services.s3.model.Region
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucket">AWS API Documentation</a>
      */
+    @Deprecated
     public Bucket createBucket(String bucketName, Region region)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1327,17 +1366,21 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The newly created bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
      *
+     * @deprecated Use regional endpoint and call {@link #createBucket(String)} instead.
+     *
      * @see com.amazonaws.services.s3.model.Region
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucket">AWS API Documentation</a>
      */
+    @Deprecated
     public Bucket createBucket(String bucketName, String region)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1361,7 +1404,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The <code>AccessControlList</code> for the specified Amazon S3 object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1369,9 +1412,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getObjectAcl(String, String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectAcl">AWS API Documentation</a>
      */
     public AccessControlList getObjectAcl(String bucketName, String key)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1405,7 +1449,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The <code>AccessControlList</code> for the specified Amazon S3 object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1413,9 +1457,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getObjectAcl(String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectAcl">AWS API Documentation</a>
      */
     public AccessControlList getObjectAcl(String bucketName, String key, String versionId)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1430,13 +1475,13 @@ public interface AmazonS3 extends S3DirectSpi {
      * returns an error.
      * </p>
      *
-     * @param getObjectRequest
+     * @param getObjectAclRequest
      *            the request object containing all the information needed for retrieving
      *            the object ACL.
      *
      * @return The <code>AccessControlList</code> for the specified Amazon S3 object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1444,9 +1489,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getObjectAcl(String, String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectAcl">AWS API Documentation</a>
      */
     public AccessControlList getObjectAcl(GetObjectAclRequest getObjectAclRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1477,7 +1523,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param acl
      *            The new <code>AccessControlList</code> for the specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1487,9 +1533,10 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#setObjectAcl(String, String, CannedAccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, String, AccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, String, CannedAccessControlList)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl">AWS API Documentation</a>
      */
     public void setObjectAcl(String bucketName, String key, AccessControlList acl)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1519,7 +1566,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The new pre-configured <code>CannedAccessControlList</code> for the
      *            specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1529,9 +1576,10 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#setObjectAcl(String, String, AccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, String, AccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, String, CannedAccessControlList)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl">AWS API Documentation</a>
      */
     public void setObjectAcl(String bucketName, String key, CannedAccessControlList acl)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1570,7 +1618,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param acl
      *            The new <code>AccessControlList</code> for the specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1580,9 +1628,10 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#setObjectAcl(String, String, AccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, CannedAccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, String, CannedAccessControlList)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl">AWS API Documentation</a>
      */
     public void setObjectAcl(String bucketName, String key, String versionId, AccessControlList acl)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1618,7 +1667,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The new pre-configured <code>CannedAccessControlList</code> for the
      *            specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1628,9 +1677,10 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#setObjectAcl(String, String, AccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, CannedAccessControlList)
      * @see AmazonS3#setObjectAcl(String, String, String, AccessControlList)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl">AWS API Documentation</a>
      */
     public void setObjectAcl(String bucketName, String key, String versionId, CannedAccessControlList acl)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Sets the {@link AccessControlList} for the specified Amazon S3 object
@@ -1652,15 +1702,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing the S3 object to modify and the
      *            ACL to set.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl">AWS API Documentation</a>
      */
     public void setObjectAcl(SetObjectAclRequest setObjectAclRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1680,14 +1731,15 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The <code>AccessControlList</code> for the specified S3 bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAcl">AWS API Documentation</a>
      */
-    public AccessControlList getBucketAcl(String bucketName) throws AmazonClientException,
+    public AccessControlList getBucketAcl(String bucketName) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -1709,15 +1761,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing the bucket to modify and the ACL
      *            to set.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAcl">AWS API Documentation</a>
      */
     public void setBucketAcl(SetBucketAclRequest setBucketAclRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Gets the {@link AccessControlList} (ACL) for the specified Amazon S3
@@ -1736,15 +1789,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The <code>AccessControlList</code> for the specified S3 bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAcl">AWS API Documentation</a>
      */
     public AccessControlList getBucketAcl(GetBucketAclRequest getBucketAclRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1769,7 +1823,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param acl
      *            The new AccessControlList for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1777,9 +1831,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#setBucketAcl(String, CannedAccessControlList)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAcl">AWS API Documentation</a>
      */
     public void setBucketAcl(String bucketName, AccessControlList acl)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1804,7 +1859,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The pre-configured <code>CannedAccessControlLists</code> to set for the
      *            specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1812,9 +1867,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#setBucketAcl(String, AccessControlList)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAcl">AWS API Documentation</a>
      */
     public void setBucketAcl(String bucketName, CannedAccessControlList acl)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1838,7 +1894,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return All Amazon S3 object metadata for the specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1846,9 +1902,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getObjectMetadata(GetObjectMetadataRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadObject">AWS API Documentation</a>
      */
     public ObjectMetadata getObjectMetadata(String bucketName, String key)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1874,7 +1931,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return All S3 object metadata for the specified object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1882,9 +1939,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getObjectMetadata(String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadObject">AWS API Documentation</a>
      */
     public ObjectMetadata getObjectMetadata(GetObjectMetadataRequest getObjectMetadataRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -1893,12 +1951,14 @@ public interface AmazonS3 extends S3DirectSpi {
      * <p>
      * Be extremely careful when using this method; the returned Amazon S3
      * object contains a direct stream of data from the HTTP connection. The
-     * underlying HTTP connection cannot be closed until the user finishes
-     * reading the data and closes the stream. Therefore:
+     * underlying HTTP connection cannot be reused until the user finishes
+     * reading the data and closes the stream. Also note that if not all data
+     * is read from the stream then the SDK will abort the underlying connection,
+     * this may have a negative impact on performance. Therefore:
      * </p>
      * <ul>
-     * <li>Use the data from the input stream in Amazon S3 object as soon as
-     * possible</li>
+     * <li>Use the data from the input stream in Amazon S3 object as soon as possible</li>
+     * <li>Read all data from the stream (use {@link GetObjectRequest#setRange(long, long)} to request only the bytes you need)</li>
      * <li>Close the input stream in Amazon S3 object as soon as possible</li>
      * </ul>
      * If these rules are not followed, the client can run out of resources by
@@ -1932,7 +1992,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The object stored in Amazon S3 in the specified bucket and key.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -1941,8 +2001,9 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#getObject(GetObjectRequest)
      * @see AmazonS3#getObject(GetObjectRequest, File)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObject">AWS API Documentation</a>
      */
-    public S3Object getObject(String bucketName, String key) throws AmazonClientException,
+    public S3Object getObject(String bucketName, String key) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -1952,20 +2013,21 @@ public interface AmazonS3 extends S3DirectSpi {
      * Returns <code>null</code> if the specified constraints weren't met.
      * </p>
      * <p>
-     * Callers should be very careful when using this method; the returned
-     * Amazon S3 object contains a direct stream of data from the HTTP connection.
-     * The underlying HTTP connection cannot be closed until the user
-     * finishes reading the data and closes the stream. Callers should
-     * therefore:
+     * Be extremely careful when using this method; the returned Amazon S3
+     * object contains a direct stream of data from the HTTP connection. The
+     * underlying HTTP connection cannot be reused until the user finishes
+     * reading the data and closes the stream. Also note that if not all data
+     * is read from the stream then the SDK will abort the underlying connection,
+     * this may have a negative impact on performance. Therefore:
      * </p>
      * <ul>
-     *  <li>Use the data from the input stream in Amazon S3 object as soon as possible,</li>
-     *  <li>Close the input stream in Amazon S3 object as soon as possible.</li>
+     * <li>Use the data from the input stream in Amazon S3 object as soon as possible</li>
+     * <li>Read all data from the stream (use {@link GetObjectRequest#setRange(long, long)} to request only the bytes you need)</li>
+     * <li>Close the input stream in Amazon S3 object as soon as possible</li>
      * </ul>
+     * If these rules are not followed, the client can run out of resources by
+     * allocating too many open, but unused, HTTP connections. </p>
      * <p>
-     * If callers do not follow those rules, then the client can run out of
-     * resources if allocating too many open, but unused, HTTP connections.
-     * </p>
      * <p>
      * To get an object from Amazon S3, the caller must have {@link Permission#Read}
      * access to the object.
@@ -1999,7 +2061,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return The object stored in Amazon S3 in the specified bucket and key.
      *         Returns <code>null</code> if constraints were specified but not met.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2007,10 +2069,11 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      * @see AmazonS3#getObject(String, String)
      * @see AmazonS3#getObject(GetObjectRequest, File)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObject">AWS API Documentation</a>
      * @sample AmazonS3.GetObject
      */
     public S3Object getObject(GetObjectRequest getObjectRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
 
     /**
@@ -2060,7 +2123,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return All S3 object metadata for the specified object.
      *         Returns <code>null</code> if constraints were specified but not met.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request, handling the response, or writing the incoming data
      *             from S3 to the specified destination file.
@@ -2070,9 +2133,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#getObject(String, String)
      * @see AmazonS3#getObject(GetObjectRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObject">AWS API Documentation</a>
      */
     ObjectMetadata getObject(GetObjectRequest getObjectRequest, File destinationFile)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2086,7 +2150,41 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return contents of the object as a String
      */
     String getObjectAsString(String bucketName, String key)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Returns the tags for the specified object.
+     *
+     * @param getObjectTaggingRequest
+     *            The request object containing all the options on how to
+     *            retrieve the Amazon S3 object tags.
+     * @return The tags for the specified object.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectTagging">AWS API Documentation</a>
+     */
+    public GetObjectTaggingResult getObjectTagging(GetObjectTaggingRequest getObjectTaggingRequest);
+
+    /**
+     * Set the tags for the specified object.
+     *
+     * @param setObjectTaggingRequest
+     *            The request object containing all the options for setting the
+     *            tags for the specified object.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectTagging">AWS API Documentation</a>
+     */
+    public SetObjectTaggingResult setObjectTagging(SetObjectTaggingRequest setObjectTaggingRequest);
+
+    /**
+     * Remove the tags for the specified object.
+     *
+     * @param deleteObjectTaggingRequest
+     *            The request object containing all the options for deleting
+     *            the tags for the specified object.
+     *
+     * @return a {@link DeleteObjectTaggingResult} object containing the
+     * information returned by S3 for the the tag deletion.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObjectTagging">AWS API Documentation</a>
+     */
+    public DeleteObjectTaggingResult deleteObjectTagging(DeleteObjectTaggingRequest deleteObjectTaggingRequest);
 
     /**
      * <p>
@@ -2102,7 +2200,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param deleteBucketRequest
      *            The request object containing all options for deleting an Amazon S3
      *            bucket.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2110,9 +2208,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#deleteBucket(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucket">AWS API Documentation</a>
      */
     public void deleteBucket(DeleteBucketRequest deleteBucketRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2128,7 +2227,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param bucketName
      *            The name of the bucket to delete.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2136,10 +2235,11 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#deleteBucket(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucket">AWS API Documentation</a>
      * @sample AmazonS3.DeleteBucket
      */
     public void deleteBucket(String bucketName)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2224,7 +2324,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A {@link PutObjectResult} object containing the information
      *         returned by Amazon S3 for the newly created object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2233,10 +2333,11 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#putObject(String, String, File)
      * @see AmazonS3#putObject(String, String, InputStream, ObjectMetadata)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject">AWS API Documentation</a>
      * @sample AmazonS3.PutObject
      */
     public PutObjectResult putObject(PutObjectRequest putObjectRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2307,7 +2408,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A {@link PutObjectResult} object containing the information
      *         returned by Amazon S3 for the newly created object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2316,9 +2417,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#putObject(PutObjectRequest)
      * @see AmazonS3#putObject(String, String, InputStream, ObjectMetadata)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject">AWS API Documentation</a>
      */
     public PutObjectResult putObject(String bucketName, String key, File file)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2411,7 +2513,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A {@link PutObjectResult} object containing the information
      *         returned by Amazon S3 for the newly created object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2420,10 +2522,11 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#putObject(String, String, File)
      * @see AmazonS3#putObject(PutObjectRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject">AWS API Documentation</a>
      */
     public PutObjectResult putObject(
             String bucketName, String key, InputStream input, ObjectMetadata metadata)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2439,9 +2542,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The key of the object to create.
      * @param content
      *            The String to encode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject">AWS API Documentation</a>
      */
     public PutObjectResult putObject(String bucketName, String key, String content)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * <p>
@@ -2495,7 +2599,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A {@link CopyObjectResult} object containing the information
      *         returned by Amazon S3 for the newly created object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2503,9 +2607,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3Client#copyObject(CopyObjectRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CopyObject">AWS API Documentation</a>
      */
     public CopyObjectResult copyObject(String sourceBucketName, String sourceKey,
-            String destinationBucketName, String destinationKey) throws AmazonClientException,
+            String destinationBucketName, String destinationKey) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -2560,7 +2665,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         <code>null</code> if constraints were specified that weren't met
      *         when Amazon S3 attempted to copy the object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2568,9 +2673,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3Client#copyObject(String, String, String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CopyObject">AWS API Documentation</a>
      */
     public CopyObjectResult copyObject(CopyObjectRequest copyObjectRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Copies a source object to a part of a multipart upload.
@@ -2606,7 +2712,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         constraints were specified that weren't met when Amazon S3 attempted
      *         to copy the object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2615,8 +2721,9 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3Client#copyObject(CopyObjectRequest)
      * @see AmazonS3Client#initiateMultipartUpload(InitiateMultipartUploadRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPartCopy">AWS API Documentation</a>
      */
-    public CopyPartResult copyPart(CopyPartRequest copyPartRequest) throws AmazonClientException,
+    public CopyPartResult copyPart(CopyPartRequest copyPartRequest) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -2636,7 +2743,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param key
      *            The key of the object to delete.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2644,10 +2751,11 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3Client#deleteObject(DeleteObjectRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject">AWS API Documentation</a>
      * @sample AmazonS3.DeleteObject
      */
     public void deleteObject(String bucketName, String key)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2665,7 +2773,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing all options for deleting an Amazon S3
      *            object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2673,9 +2781,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3Client#deleteObject(String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject">AWS API Documentation</a>
      */
     public void deleteObject(DeleteObjectRequest deleteObjectRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Deletes multiple objects in a single bucket from S3.
@@ -2690,14 +2799,15 @@ public interface AmazonS3 extends S3DirectSpi {
      *            multiple objects.
      * @throws MultiObjectDeleteException
      *             if one or more of the objects couldn't be deleted.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject">AWS API Documentation</a>
      */
-    public DeleteObjectsResult deleteObjects(DeleteObjectsRequest deleteObjectsRequest) throws AmazonClientException,
+    public DeleteObjectsResult deleteObjects(DeleteObjectsRequest deleteObjectsRequest) throws SdkClientException,
             AmazonServiceException;
 
     /**
@@ -2733,15 +2843,16 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param versionId
      *            The version of the object to delete.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject">AWS API Documentation</a>
      */
     public void deleteVersion(String bucketName, String key, String versionId)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2772,15 +2883,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing all options for deleting a
      *            specific version of an Amazon S3 object.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject">AWS API Documentation</a>
      */
     public void deleteVersion(DeleteVersionRequest deleteVersionRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2797,7 +2909,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The bucket logging configuration for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2806,9 +2918,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#setBucketLoggingConfiguration(SetBucketLoggingConfigurationRequest)
      * @see AmazonS3#getBucketLoggingConfiguration(GetBucketLoggingConfigurationRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLogging">AWS API Documentation</a>
      */
     public BucketLoggingConfiguration getBucketLoggingConfiguration(String bucketName)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2824,7 +2937,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The bucket logging configuration for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2833,10 +2946,11 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#setBucketLoggingConfiguration(SetBucketLoggingConfigurationRequest)
      * @see AmazonS3#getBucketLoggingConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLogging">AWS API Documentation</a>
      */
     public BucketLoggingConfiguration getBucketLoggingConfiguration(
             GetBucketLoggingConfigurationRequest getBucketLoggingConfigurationRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2870,7 +2984,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing all options for setting the
      *            bucket logging configuration.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2878,9 +2992,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getBucketLoggingConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLogging">AWS API Documentation</a>
      */
     public void setBucketLoggingConfiguration(SetBucketLoggingConfigurationRequest setBucketLoggingConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2925,7 +3040,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The bucket versioning configuration for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2934,9 +3049,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#setBucketVersioningConfiguration(SetBucketVersioningConfigurationRequest)
      * @see AmazonS3#getBucketVersioningConfiguration(GetBucketVersioningConfigurationRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketVersioning">AWS API Documentation</a>
      */
     public BucketVersioningConfiguration getBucketVersioningConfiguration(String bucketName)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -2981,7 +3097,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The bucket versioning configuration for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -2990,9 +3106,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @see AmazonS3#setBucketVersioningConfiguration(SetBucketVersioningConfigurationRequest)
      * @see AmazonS3#getBucketVersioningConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketVersioning">AWS API Documentation</a>
      */
     public BucketVersioningConfiguration getBucketVersioningConfiguration(GetBucketVersioningConfigurationRequest getBucketVersioningConfigurationRequest)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3043,7 +3160,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing all options for setting the
      *            bucket versioning configuration.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -3051,33 +3168,34 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getBucketVersioningConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketVersioning">AWS API Documentation</a>
      */
     public void setBucketVersioningConfiguration(SetBucketVersioningConfigurationRequest setBucketVersioningConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Gets the lifecycle configuration for the specified bucket, or null if
-     * the specified bucket does not exists, or an empty list if no
-     * configuration has been established.
+     * the specified bucket does not exist or if no configuration has been established.
      *
      * @param bucketName
      *            The name of the bucket for which to retrieve lifecycle
      *            configuration.
      *
      * @see AmazonS3#getBucketLifecycleConfiguration(GetBucketLifecycleConfigurationRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLifecycleConfiguration">AWS API Documentation</a>
      */
     public BucketLifecycleConfiguration getBucketLifecycleConfiguration(String bucketName);
 
     /**
      * Gets the lifecycle configuration for the specified bucket, or null if
-     * the specified bucket does not exists, or an empty list if no
-     * configuration has been established.
+     * the specified bucket does not exist or if no configuration has been established.
      *
      * @param getBucketLifecycleConfigurationRequest
      *            The request object for retrieving the bucket lifecycle
      *            configuration.
      *
      * @see AmazonS3#getBucketLifecycleConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLifecycleConfiguration">AWS API Documentation</a>
      */
     public BucketLifecycleConfiguration getBucketLifecycleConfiguration(
             GetBucketLifecycleConfigurationRequest getBucketLifecycleConfigurationRequest);
@@ -3091,6 +3209,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param bucketLifecycleConfiguration
      *            The new lifecycle configuration for this bucket, which
      *            completely replaces any existing configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLifecycleConfiguration">AWS API Documentation</a>
      */
     public void setBucketLifecycleConfiguration(String bucketName, BucketLifecycleConfiguration bucketLifecycleConfiguration);
 
@@ -3100,6 +3219,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param setBucketLifecycleConfigurationRequest
      *            The request object containing all options for setting the
      *            bucket lifecycle configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLifecycleConfiguration">AWS API Documentation</a>
      */
     public void setBucketLifecycleConfiguration(SetBucketLifecycleConfigurationRequest setBucketLifecycleConfigurationRequest);
 
@@ -3109,6 +3229,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param bucketName
      *            The name of the bucket for which to remove the lifecycle
      *            configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketLifecycleConfiguration">AWS API Documentation</a>
      */
     public void deleteBucketLifecycleConfiguration(String bucketName);
 
@@ -3118,12 +3239,13 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param deleteBucketLifecycleConfigurationRequest
      *            The request object containing all options for removing the
      *            bucket lifecycle configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketLifecycleConfiguration">AWS API Documentation</a>
      */
     public void deleteBucketLifecycleConfiguration(DeleteBucketLifecycleConfigurationRequest deleteBucketLifecycleConfigurationRequest);
 
     /**
      * Gets the cross origin configuration for the specified bucket, or null if
-     * the specified bucket does not exists, or an empty list if no
+     * the specified bucket does not exist, or an empty list if no
      * configuration has been established.
      *
      * @param bucketName
@@ -3131,6 +3253,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            configuration.
      *
      * @see AmazonS3#getBucketCrossOriginConfiguration(GetBucketCrossOriginConfigurationRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketCors">AWS API Documentation</a>
      */
     public BucketCrossOriginConfiguration getBucketCrossOriginConfiguration(String bucketName);
 
@@ -3143,6 +3266,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            configuration.
      *
      * @see AmazonS3#getBucketCrossOriginConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketCors">AWS API Documentation</a>
      */
     public BucketCrossOriginConfiguration getBucketCrossOriginConfiguration(
             GetBucketCrossOriginConfigurationRequest getBucketCrossOriginConfigurationRequest);
@@ -3156,6 +3280,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param bucketCrossOriginConfiguration
      * 			  The new cross origin configuration for this bucket, which
      *            completely replaces any existing configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketCors">AWS API Documentation</a>
      */
     public void setBucketCrossOriginConfiguration(String bucketName, BucketCrossOriginConfiguration bucketCrossOriginConfiguration);
 
@@ -3165,6 +3290,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param setBucketCrossOriginConfigurationRequest
      *            The request object containing all options for setting the
      *            bucket cross origin configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketCors">AWS API Documentation</a>
      */
     public void setBucketCrossOriginConfiguration(SetBucketCrossOriginConfigurationRequest setBucketCrossOriginConfigurationRequest);
 
@@ -3183,12 +3309,13 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param deleteBucketCrossOriginConfigurationRequest
      *            The request object containing all options for deleting the
      *            bucket cross origin configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketCors">AWS API Documentation</a>
      */
     public void deleteBucketCrossOriginConfiguration(DeleteBucketCrossOriginConfigurationRequest deleteBucketCrossOriginConfigurationRequest);
 
     /**
      * Gets the tagging configuration for the specified bucket, or null if
-     * the specified bucket does not exists, or an empty list if no
+     * the specified bucket does not exist, or an empty list if no
      * configuration has been established.
      *
      * @param bucketName
@@ -3196,12 +3323,13 @@ public interface AmazonS3 extends S3DirectSpi {
      *            configuration.
      *
      * @see AmazonS3#getBucketTaggingConfiguration(GetBucketTaggingConfigurationRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketTagging">AWS API Documentation</a>
      */
     public BucketTaggingConfiguration getBucketTaggingConfiguration(String bucketName);
 
     /**
      * Gets the tagging configuration for the specified bucket, or null if
-     * the specified bucket does not exists, or an empty list if no
+     * the specified bucket does not exist, or an empty list if no
      * configuration has been established.
      *
      * @param getBucketTaggingConfigurationRequest
@@ -3209,6 +3337,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *            configuration.
      *
      * @see AmazonS3#getBucketTaggingConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketTagging">AWS API Documentation</a>
      */
     public BucketTaggingConfiguration getBucketTaggingConfiguration(
             GetBucketTaggingConfigurationRequest getBucketTaggingConfigurationRequest);
@@ -3222,6 +3351,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param bucketTaggingConfiguration
      *            The new tagging configuration for this bucket, which
      *            completely replaces any existing configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketTagging">AWS API Documentation</a>
      */
     public void setBucketTaggingConfiguration(String bucketName, BucketTaggingConfiguration bucketTaggingConfiguration);
 
@@ -3231,6 +3361,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param setBucketTaggingConfigurationRequest
      *            The request object containing all options for setting the
      *            bucket tagging configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketTagging">AWS API Documentation</a>
      */
     public void setBucketTaggingConfiguration(SetBucketTaggingConfigurationRequest setBucketTaggingConfigurationRequest);
 
@@ -3240,6 +3371,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param bucketName
      *            The name of the bucket for which to remove the tagging
      *            configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketTagging">AWS API Documentation</a>
      */
     public void deleteBucketTaggingConfiguration(String bucketName);
 
@@ -3249,6 +3381,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param deleteBucketTaggingConfigurationRequest
      *            The request object containing all options for removing the
      *            bucket tagging configuration.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketTagging">AWS API Documentation</a>
      */
     public void deleteBucketTaggingConfiguration(
             DeleteBucketTaggingConfigurationRequest deleteBucketTaggingConfigurationRequest);
@@ -3276,7 +3409,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The bucket notification configuration for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -3284,9 +3417,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getBucketNotificationConfiguration(GetBucketNotificationConfigurationRequest)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketNotification">AWS API Documentation</a>
      */
     public BucketNotificationConfiguration getBucketNotificationConfiguration(String bucketName)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Gets the notification configuration for the specified bucket.
@@ -3311,7 +3445,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The bucket notification configuration for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -3319,9 +3453,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#getBucketNotificationConfiguration(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketNotification">AWS API Documentation</a>
      */
     public BucketNotificationConfiguration getBucketNotificationConfiguration(GetBucketNotificationConfigurationRequest getBucketNotificationConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Sets the notification configuration for the specified bucket.
@@ -3345,15 +3480,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing all options for setting the
      *            bucket notification configuration.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketNotification">AWS API Documentation</a>
      */
     public void setBucketNotificationConfiguration(SetBucketNotificationConfigurationRequest setBucketNotificationConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Sets the notification configuration for the specified bucket.
@@ -3380,15 +3516,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing all options for setting the
      *            bucket notification configuration.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketNotification">AWS API Documentation</a>
      */
     public void setBucketNotificationConfiguration(String bucketName, BucketNotificationConfiguration bucketNotificationConfiguration)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Returns the website configuration for the specified bucket. Bucket
@@ -3419,15 +3556,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *         otherwise null if there is no website configuration set for the
      *         specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketWebsite">AWS API Documentation</a>
      */
     public BucketWebsiteConfiguration getBucketWebsiteConfiguration(String bucketName)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Returns the website configuration for the specified bucket. Bucket
@@ -3459,15 +3597,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *         otherwise null if there is no website configuration set for the
      *         specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketWebsite">AWS API Documentation</a>
      */
     public BucketWebsiteConfiguration getBucketWebsiteConfiguration(GetBucketWebsiteConfigurationRequest getBucketWebsiteConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Sets the website configuration for the specified bucket. Bucket
@@ -3497,15 +3636,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The configuration describing how the specified bucket will
      *            serve web requests (i.e. default index page, error page).
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketWebsite">AWS API Documentation</a>
      */
     public void setBucketWebsiteConfiguration(String bucketName, BucketWebsiteConfiguration configuration)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * Sets the website configuration for the specified bucket. Bucket website
@@ -3535,15 +3675,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            website configuration is being updated, and the new website
      *            configuration values.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketWebsite">AWS API Documentation</a>
      */
     public void setBucketWebsiteConfiguration(SetBucketWebsiteConfigurationRequest setBucketWebsiteConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * This operation removes the website configuration for a bucket. Calling
@@ -3565,15 +3706,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The name of the bucket whose website configuration is being
      *            deleted.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketWebsite">AWS API Documentation</a>
      */
     public void deleteBucketWebsiteConfiguration(String bucketName)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * This operation removes the website configuration for a bucket. Calling
@@ -3597,15 +3739,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object specifying the name of the bucket whose
      *            website configuration is to be deleted.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered on the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketWebsite">AWS API Documentation</a>
      */
     public void deleteBucketWebsiteConfiguration(DeleteBucketWebsiteConfigurationRequest deleteBucketWebsiteConfigurationRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3631,7 +3774,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The Amazon S3 bucket policy for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -3639,9 +3782,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#setBucketPolicy(String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketPolicy">AWS API Documentation</a>
      */
     public BucketPolicy getBucketPolicy(String bucketName)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3667,7 +3811,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return The Amazon S3 bucket policy for the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
@@ -3675,9 +3819,10 @@ public interface AmazonS3 extends S3DirectSpi {
      *             request.
      *
      * @see AmazonS3#setBucketPolicy(String, String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketPolicy">AWS API Documentation</a>
      */
     public BucketPolicy getBucketPolicy(GetBucketPolicyRequest getBucketPolicyRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3701,15 +3846,16 @@ public interface AmazonS3 extends S3DirectSpi {
      * @param policyText
      *            The policy to apply to the specified bucket.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketPolicy">AWS API Documentation</a>
      */
     public void setBucketPolicy(String bucketName, String policyText)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3732,15 +3878,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing the details of the bucket and
      *            policy to update.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketPolicy">AWS API Documentation</a>
      */
     public void setBucketPolicy(SetBucketPolicyRequest setBucketPolicyRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3762,15 +3909,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The name of the Amazon S3 bucket whose policy is being
      *            deleted.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketPolicy">AWS API Documentation</a>
      */
     public void deleteBucketPolicy(String bucketName)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3792,15 +3940,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The request object containing all the details for deleting a
      *            bucket's policy.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketPolicy">AWS API Documentation</a>
      */
     public void deleteBucketPolicy(DeleteBucketPolicyRequest deleteBucketPolicyRequest)
-        throws AmazonClientException, AmazonServiceException;
+        throws SdkClientException, AmazonServiceException;
 
     /**
      * <p>
@@ -3848,7 +3997,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         used to allow anyone to download the specified object from S3,
      *         without exposing the owner's AWS secret access key.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If there were any problems pre-signing the request for the
      *             specified S3 object.
      *
@@ -3856,7 +4005,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#generatePresignedUrl(GeneratePresignedUrlRequest)
      */
     public URL generatePresignedUrl(String bucketName, String key, Date expiration)
-            throws AmazonClientException;
+            throws SdkClientException;
 
     /**
      * <p>
@@ -3906,7 +4055,7 @@ public interface AmazonS3 extends S3DirectSpi {
      *         used to allow anyone to download the specified object from S3,
      *         without exposing the owner's AWS secret access key.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If there were any problems pre-signing the request for the
      *             specified S3 object.
      *
@@ -3914,7 +4063,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#generatePresignedUrl(GeneratePresignedUrlRequest)
      */
     public URL generatePresignedUrl(String bucketName, String key, Date expiration, HttpMethod method)
-            throws AmazonClientException;
+            throws SdkClientException;
 
 
     /**
@@ -3963,14 +4112,14 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A pre-signed URL that can be used to access an Amazon S3 resource
      *         without requiring the user of the URL to know the account's AWS
      *         security credentials.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If there were any problems pre-signing the request for the
      *             Amazon S3 resource.
      * @see AmazonS3#generatePresignedUrl(String, String, Date)
      * @see AmazonS3#generatePresignedUrl(String, String, Date, HttpMethod)
      */
     public URL generatePresignedUrl(GeneratePresignedUrlRequest generatePresignedUrlRequest)
-            throws AmazonClientException;
+            throws SdkClientException;
 
     /**
      * Initiates a multipart upload and returns an InitiateMultipartUploadResult
@@ -4002,15 +4151,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return An InitiateMultipartUploadResult from Amazon S3.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html">AWS API Documentation</a>
      */
     public InitiateMultipartUploadResult initiateMultipartUpload(InitiateMultipartUploadRequest request)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Uploads a part in a multipart upload. You must initiate a multipart
@@ -4053,6 +4203,13 @@ public interface AmazonS3 extends S3DirectSpi {
      * http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#
      * specify-signature-version
      * </p>
+     * <p>
+     * When supplying an {@link InputStream} using {@link
+     * UploadPartRequest#withInputStream(InputStream)} or {@link
+     * UploadPartRequest#setInputStream(InputStream)}, the stream will only be
+     * closed by the client if {@link UploadPartRequest#isLastPart()} is {@code
+     * true}. If this is not the last part, the stream will be left open.
+     * </p>
      * @param request
      *            The UploadPartRequest object that specifies all the parameters
      *            of this operation.
@@ -4060,15 +4217,16 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return An UploadPartResult from Amazon S3 containing the part number and
      *         ETag of the new part.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPart">AWS API Documentation</a>
      */
     public UploadPartResult uploadPart(UploadPartRequest request)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Lists the parts that have been uploaded for a specific multipart upload.
@@ -4090,15 +4248,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return Returns a PartListing from Amazon S3.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListParts">AWS API Documentation</a>
      */
     public PartListing listParts(ListPartsRequest request)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Aborts a multipart upload. After a multipart upload is aborted, no
@@ -4113,15 +4272,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *            The AbortMultipartUploadRequest object that specifies all the
      *            parameters of this operation.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/AbortMultipartUpload">AWS API Documentation</a>
      */
     public void abortMultipartUpload(AbortMultipartUploadRequest request)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Completes a multipart upload by assembling previously uploaded parts.
@@ -4155,15 +4315,16 @@ public interface AmazonS3 extends S3DirectSpi {
      * @return A CompleteMultipartUploadResult from S3 containing the ETag for
      *         the new object composed of the individual parts.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CompleteMultipartUpload">AWS API Documentation</a>
      */
     public CompleteMultipartUploadResult completeMultipartUpload(CompleteMultipartUploadRequest request)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Lists in-progress multipart uploads. An in-progress multipart upload is a
@@ -4185,15 +4346,16 @@ public interface AmazonS3 extends S3DirectSpi {
      *
      * @return A MultipartUploadListing from Amazon S3.
      *
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListMultipartUploads">AWS API Documentation</a>
      */
     public MultipartUploadListing listMultipartUploads(ListMultipartUploadsRequest request)
-            throws AmazonClientException, AmazonServiceException;
+            throws SdkClientException, AmazonServiceException;
 
     /**
      * Gets additional metadata for a previously executed successful request.
@@ -4286,14 +4448,15 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @see AmazonS3#disableRequesterPays(String)
      * @see AmazonS3#isRequesterPaysEnabled(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketRequestPayment">AWS API Documentation</a>
      */
     public void enableRequesterPays(String bucketName)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Allows Amazon S3 bucket owner to disable the Requester Pays for the
@@ -4318,14 +4481,15 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @see AmazonS3#enableRequesterPays(String)
      * @see AmazonS3#isRequesterPaysEnabled(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketRequestPayment">AWS API Documentation</a>
      */
     public void disableRequesterPays(String bucketName)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Retrieves the Requester Pays configuration associated with an Amazon S3
@@ -4351,14 +4515,15 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      * @see AmazonS3#enableRequesterPays(String)
      * @see AmazonS3#disableRequesterPays(String)
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketRequestPayment">AWS API Documentation</a>
      */
     public boolean isRequesterPaysEnabled(String bucketName)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Sets a replication configuration for the Amazon S3 bucket.
@@ -4371,7 +4536,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      *
@@ -4381,7 +4546,7 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     public void setBucketReplicationConfiguration(String bucketName,
             BucketReplicationConfiguration configuration)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Sets a replication configuration for the Amazon S3 bucket.
@@ -4392,7 +4557,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      *
@@ -4402,7 +4567,7 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     public void setBucketReplicationConfiguration(
             SetBucketReplicationConfigurationRequest setBucketReplicationConfigurationRequest)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Retrieves the replication configuration for the given Amazon S3 bucket.
@@ -4414,7 +4579,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      *
@@ -4424,7 +4589,7 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     public BucketReplicationConfiguration getBucketReplicationConfiguration(
             String bucketName) throws AmazonServiceException,
-            AmazonClientException;
+            SdkClientException;
 
     /**
      * Retrieves the replication configuration for the given Amazon S3 bucket.
@@ -4435,7 +4600,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      *
@@ -4444,7 +4609,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#deleteBucketReplicationConfiguration(String)
      */
     BucketReplicationConfiguration getBucketReplicationConfiguration(GetBucketReplicationConfigurationRequest getBucketReplicationConfigurationRequest)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Deletes the replication configuration for the given Amazon S3 bucket.
@@ -4455,7 +4620,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      *
@@ -4465,7 +4630,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @see AmazonS3#deleteBucketReplicationConfiguration(DeleteBucketReplicationConfigurationRequest)
      */
     void deleteBucketReplicationConfiguration(String bucketName)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Deletes the replication configuration for the given Amazon S3 bucket.
@@ -4476,7 +4641,7 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      *
@@ -4487,7 +4652,7 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     void deleteBucketReplicationConfiguration
     (DeleteBucketReplicationConfigurationRequest request)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * @param bucketName
@@ -4498,12 +4663,12 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      */
     boolean doesObjectExist(String bucketName, String objectName)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Retrieves the accelerate configuration for the given bucket.
@@ -4515,12 +4680,12 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      */
     public BucketAccelerateConfiguration getBucketAccelerateConfiguration(
-            String bucket) throws AmazonServiceException, AmazonClientException;
+            String bucketName) throws AmazonServiceException, SdkClientException;
 
     /**
      * Retrieves the accelerate configuration for the given bucket.
@@ -4532,13 +4697,13 @@ public interface AmazonS3 extends S3DirectSpi {
      * @throws AmazonServiceException
      *             If any errors occurred in Amazon S3 while processing the
      *             request.
-     * @throws AmazonClientException
+     * @throws SdkClientException
      *             If any errors are encountered in the client while making the
      *             request or handling the response.
      */
     public BucketAccelerateConfiguration getBucketAccelerateConfiguration(
             GetBucketAccelerateConfigurationRequest getBucketAccelerateConfigurationRequest)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Sets the accelerate configuration for the specified bucket. *
@@ -4552,7 +4717,7 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     public void setBucketAccelerateConfiguration(String bucketName,
             BucketAccelerateConfiguration accelerateConfiguration)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
 
     /**
      * Sets the accelerate configuration for the specified bucket.
@@ -4563,7 +4728,257 @@ public interface AmazonS3 extends S3DirectSpi {
      */
     public void setBucketAccelerateConfiguration(
             SetBucketAccelerateConfigurationRequest setBucketAccelerateConfigurationRequest)
-            throws AmazonServiceException, AmazonClientException;
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket.
+     *
+     * @param bucketName
+     *              The name of the bucket from which the metrics configuration is to be deleted
+     * @param id
+     *              The ID of the metrics configuration to delete.
+     */
+    public DeleteBucketMetricsConfigurationResult deleteBucketMetricsConfiguration(
+            String bucketName, String id) throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket.
+     *
+     * @param deleteBucketMetricsConfigurationRequest
+     *              The request object to delete the metrics configuration.
+     */
+    public DeleteBucketMetricsConfigurationResult deleteBucketMetricsConfiguration(
+            DeleteBucketMetricsConfigurationRequest deleteBucketMetricsConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Gets a metrics configuration (specified by the metrics configuration ID) from the bucket.
+     *
+     * @param bucketName
+     *              The name of the bucket to get the metrics configuration from.
+     * @param id
+     *              The ID of the metrics configuration to get.
+     * @return
+     *              The result containing the requested metrics configuration.
+     */
+    public GetBucketMetricsConfigurationResult getBucketMetricsConfiguration(
+            String bucketName, String id) throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Gets a metrics configuration (specified by the metrics configuration ID) from the bucket.
+     *
+     * @param getBucketMetricsConfigurationRequest
+     *              The request object to retrieve the metrics configuration.
+     * @return
+     *              The result containing the requested metrics configuration.
+     */
+    public GetBucketMetricsConfigurationResult getBucketMetricsConfiguration(
+            GetBucketMetricsConfigurationRequest getBucketMetricsConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Sets a metrics configuration (specified by the metrics configuration ID) for the bucket.
+     *
+     * @param bucketName
+     *              The name of the bucket to set the metrics configuration.
+     * @param metricsConfiguration
+     *              The metrics configuration to set.
+     */
+    public SetBucketMetricsConfigurationResult setBucketMetricsConfiguration(
+            String bucketName, MetricsConfiguration metricsConfiguration)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Sets a metrics configuration (specified by the metrics configuration ID) for the bucket.
+     *
+     * @param setBucketMetricsConfigurationRequest
+     *              The request object to set the metrics configuration.
+     */
+    public SetBucketMetricsConfigurationResult setBucketMetricsConfiguration(
+            SetBucketMetricsConfigurationRequest setBucketMetricsConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Lists the metrics configurations for the bucket.
+     *
+     * @param listBucketMetricsConfigurationsRequest
+     *              The request object to list all the metrics configurations for a bucket.
+     * @return
+     *              The result containing the list of all the metrics configurations for the bucket.
+     */
+    public ListBucketMetricsConfigurationsResult listBucketMetricsConfigurations(
+            ListBucketMetricsConfigurationsRequest listBucketMetricsConfigurationsRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
+     *
+     * @param bucketName
+     *              The name of the bucket from which the analytics configuration is to be deleted
+     * @param id
+     *              The ID of the analytics configuration to delete.
+     */
+    public DeleteBucketAnalyticsConfigurationResult deleteBucketAnalyticsConfiguration(
+            String bucketName, String id) throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
+     *
+     * @param deleteBucketAnalyticsConfigurationRequest
+     *              The request object to delete the analytics configuration.
+     */
+    public DeleteBucketAnalyticsConfigurationResult deleteBucketAnalyticsConfiguration(
+            DeleteBucketAnalyticsConfigurationRequest deleteBucketAnalyticsConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Gets an analytics configuration for the bucket (specified by the analytics configuration ID).
+     *
+     * @param bucketName
+     *               The name of the bucket to get the analytics configuration from.
+     * @param id
+     *              The ID of the analytics configuration to get.
+     * @return
+     *              The result containing the requested analytics configuration.
+     */
+    public GetBucketAnalyticsConfigurationResult getBucketAnalyticsConfiguration(
+            String bucketName, String id) throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Gets an analytics configuration for the bucket (specified by the analytics configuration ID).
+     *
+     * @param getBucketAnalyticsConfigurationRequest
+     *              The request object to retrieve the analytics configuration.
+     * @return
+     *              The result containing the requested analytics configuration.
+     */
+    public GetBucketAnalyticsConfigurationResult getBucketAnalyticsConfiguration(
+            GetBucketAnalyticsConfigurationRequest getBucketAnalyticsConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
+     *
+     * @param bucketName
+     *              The name of the bucket to set the analytics configuration.
+     * @param analyticsConfiguration
+     *              The analytics configuration to set.
+     */
+    public SetBucketAnalyticsConfigurationResult setBucketAnalyticsConfiguration(
+            String bucketName, AnalyticsConfiguration analyticsConfiguration)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
+     *
+     * @param setBucketAnalyticsConfigurationRequest
+     *              The request object to set the analytics configuration.
+     */
+    public SetBucketAnalyticsConfigurationResult setBucketAnalyticsConfiguration(
+            SetBucketAnalyticsConfigurationRequest setBucketAnalyticsConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Lists the analytics configurations for the bucket.
+     *
+     * @param listBucketAnalyticsConfigurationsRequest
+     *              The request object to list all the analytics configurations for a bucket.
+     *
+     * @return All the analytics configurations for the bucket.
+     */
+    public ListBucketAnalyticsConfigurationsResult listBucketAnalyticsConfigurations(
+            ListBucketAnalyticsConfigurationsRequest listBucketAnalyticsConfigurationsRequest)
+            throws AmazonServiceException, SdkClientException;
+
+
+    /**
+     * Deletes an inventory configuration (identified by the inventory ID) from the bucket.
+     *
+     * @param bucketName
+     *              The name of the bucket from which the inventory configuration is to be deleted.
+     * @param id
+     *              The ID of the inventory configuration to delete.
+     */
+    public DeleteBucketInventoryConfigurationResult deleteBucketInventoryConfiguration(
+            String bucketName, String id) throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Deletes an inventory configuration (identified by the inventory ID) from the bucket.
+     *
+     * @param deleteBucketInventoryConfigurationRequest
+     *              The request object for deleting an inventory configuration.
+     */
+    public DeleteBucketInventoryConfigurationResult deleteBucketInventoryConfiguration(
+            DeleteBucketInventoryConfigurationRequest deleteBucketInventoryConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Returns an inventory configuration (identified by the inventory ID) from the bucket.
+     *
+     * @param bucketName
+     *              The name of the bucket to get the inventory configuration from.
+     * @param id
+     *              The ID of the inventory configuration to delete.
+     * @return
+     *              An {@link GetBucketInventoryConfigurationResult} object containing the inventory configuration.
+     */
+    public GetBucketInventoryConfigurationResult getBucketInventoryConfiguration(
+            String bucketName, String id) throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Returns an inventory configuration (identified by the inventory ID) from the bucket.
+     *
+     * @param getBucketInventoryConfigurationRequest
+     *              The request object to retreive an inventory configuration.
+     * @return
+     *              An {@link GetBucketInventoryConfigurationResult} object containing the inventory configuration.
+     */
+    public GetBucketInventoryConfigurationResult getBucketInventoryConfiguration(
+            GetBucketInventoryConfigurationRequest getBucketInventoryConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Sets an inventory configuration (identified by the inventory ID) to the bucket.
+     *
+     * @param bucketName
+     *              The name of the bucket to set the inventory configuration to.
+     * @param inventoryConfiguration
+     *              The inventory configuration to set.
+     */
+    public SetBucketInventoryConfigurationResult setBucketInventoryConfiguration(
+            String bucketName, InventoryConfiguration inventoryConfiguration)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Sets an inventory configuration (identified by the inventory ID) to the bucket.
+     *
+     * @param setBucketInventoryConfigurationRequest
+     *              The request object for setting an inventory configuration.
+     */
+    public SetBucketInventoryConfigurationResult setBucketInventoryConfiguration(
+            SetBucketInventoryConfigurationRequest setBucketInventoryConfigurationRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Returns the list of inventory configurations for the bucket.
+     *
+     * @param listBucketInventoryConfigurationsRequest
+     *              The request object to list the inventory configurations in a bucket.
+     * @return
+     *              An {@link ListBucketInventoryConfigurationsResult} object containing the list of {@link InventoryConfiguration}s.
+     */
+    public ListBucketInventoryConfigurationsResult listBucketInventoryConfigurations(
+            ListBucketInventoryConfigurationsRequest listBucketInventoryConfigurationsRequest)
+            throws AmazonServiceException, SdkClientException;
+
+    /**
+     * Shuts down this client object, releasing any resources that might be held
+     * open. This is an optional method, and callers are not expected to call
+     * it, but can if they want to explicitly release any open resources. Once a
+     * client has been shutdown, it should not be used to make any more
+     * requests.
+     */
+    void shutdown();
 
     /**
      * Returns the region with which the client is configured.

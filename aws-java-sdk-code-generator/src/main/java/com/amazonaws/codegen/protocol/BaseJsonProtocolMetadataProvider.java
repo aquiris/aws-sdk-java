@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -41,5 +41,10 @@ public abstract class BaseJsonProtocolMetadataProvider extends BaseProtocolMetad
     @Override
     public String getExceptionUnmarshallerImpl() {
         return null;
+    }
+
+    @Override
+    public String getProtocolFactoryImplFqcn() {
+        return "com.amazonaws.protocol.json.SdkJsonProtocolFactory";
     }
 }

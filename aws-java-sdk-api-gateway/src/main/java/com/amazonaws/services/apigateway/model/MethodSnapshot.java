@@ -1,32 +1,35 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents a summary of a <a>Method</a> resource, given a particular date and
- * time.
+ * Represents a summary of a <a>Method</a> resource, given a particular date and time.
  * </p>
  */
-public class MethodSnapshot implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class MethodSnapshot implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies the type of authorization used for the method.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      */
     private String authorizationType;
@@ -39,11 +42,15 @@ public class MethodSnapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the type of authorization used for the method.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      * 
      * @param authorizationType
-     *        Specifies the type of authorization used for the method.
+     *        The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code>
+     *        for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or
+     *        <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.
      */
 
     public void setAuthorizationType(String authorizationType) {
@@ -52,10 +59,14 @@ public class MethodSnapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the type of authorization used for the method.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      * 
-     * @return Specifies the type of authorization used for the method.
+     * @return The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code>
+     *         for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or
+     *         <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.
      */
 
     public String getAuthorizationType() {
@@ -64,13 +75,16 @@ public class MethodSnapshot implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the type of authorization used for the method.
+     * The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for
+     * using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code>
+     * for using a Cognito user pool.
      * </p>
      * 
      * @param authorizationType
-     *        Specifies the type of authorization used for the method.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code>
+     *        for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or
+     *        <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public MethodSnapshot withAuthorizationType(String authorizationType) {
@@ -110,8 +124,7 @@ public class MethodSnapshot implements Serializable, Cloneable {
      * 
      * @param apiKeyRequired
      *        Specifies whether the method requires a valid <a>ApiKey</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public MethodSnapshot withApiKeyRequired(Boolean apiKeyRequired) {
@@ -132,8 +145,7 @@ public class MethodSnapshot implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -144,9 +156,9 @@ public class MethodSnapshot implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAuthorizationType() != null)
-            sb.append("AuthorizationType: " + getAuthorizationType() + ",");
+            sb.append("AuthorizationType: ").append(getAuthorizationType()).append(",");
         if (getApiKeyRequired() != null)
-            sb.append("ApiKeyRequired: " + getApiKeyRequired());
+            sb.append("ApiKeyRequired: ").append(getApiKeyRequired());
         sb.append("}");
         return sb.toString();
     }
@@ -161,18 +173,13 @@ public class MethodSnapshot implements Serializable, Cloneable {
         if (obj instanceof MethodSnapshot == false)
             return false;
         MethodSnapshot other = (MethodSnapshot) obj;
-        if (other.getAuthorizationType() == null
-                ^ this.getAuthorizationType() == null)
+        if (other.getAuthorizationType() == null ^ this.getAuthorizationType() == null)
             return false;
-        if (other.getAuthorizationType() != null
-                && other.getAuthorizationType().equals(
-                        this.getAuthorizationType()) == false)
+        if (other.getAuthorizationType() != null && other.getAuthorizationType().equals(this.getAuthorizationType()) == false)
             return false;
-        if (other.getApiKeyRequired() == null
-                ^ this.getApiKeyRequired() == null)
+        if (other.getApiKeyRequired() == null ^ this.getApiKeyRequired() == null)
             return false;
-        if (other.getApiKeyRequired() != null
-                && other.getApiKeyRequired().equals(this.getApiKeyRequired()) == false)
+        if (other.getApiKeyRequired() != null && other.getApiKeyRequired().equals(this.getApiKeyRequired()) == false)
             return false;
         return true;
     }
@@ -182,14 +189,8 @@ public class MethodSnapshot implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAuthorizationType() == null) ? 0
-                        : getAuthorizationType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getApiKeyRequired() == null) ? 0 : getApiKeyRequired()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getAuthorizationType() == null) ? 0 : getAuthorizationType().hashCode());
+        hashCode = prime * hashCode + ((getApiKeyRequired() == null) ? 0 : getApiKeyRequired().hashCode());
         return hashCode;
     }
 
@@ -198,9 +199,13 @@ public class MethodSnapshot implements Serializable, Cloneable {
         try {
             return (MethodSnapshot) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.apigateway.model.transform.MethodSnapshotMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Detailed information about an activity type.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ActivityTypeInfo" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ActivityTypeInfo implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ActivityTypeInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -37,15 +42,13 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
     private String status;
     /**
      * <p>
-     * The description of the activity type provided in
-     * <a>RegisterActivityType</a>.
+     * The description of the activity type provided in <a>RegisterActivityType</a>.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * The date and time this activity type was created through
-     * <a>RegisterActivityType</a>.
+     * The date and time this activity type was created through <a>RegisterActivityType</a>.
      * </p>
      */
     private java.util.Date creationDate;
@@ -62,8 +65,7 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * </p>
      * 
      * @param activityType
-     *        The <a>ActivityType</a> type structure representing the activity
-     *        type.
+     *        The <a>ActivityType</a> type structure representing the activity type.
      */
 
     public void setActivityType(ActivityType activityType) {
@@ -75,8 +77,7 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * The <a>ActivityType</a> type structure representing the activity type.
      * </p>
      * 
-     * @return The <a>ActivityType</a> type structure representing the activity
-     *         type.
+     * @return The <a>ActivityType</a> type structure representing the activity type.
      */
 
     public ActivityType getActivityType() {
@@ -89,10 +90,8 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * </p>
      * 
      * @param activityType
-     *        The <a>ActivityType</a> type structure representing the activity
-     *        type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The <a>ActivityType</a> type structure representing the activity type.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ActivityTypeInfo withActivityType(ActivityType activityType) {
@@ -134,8 +133,7 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * 
      * @param status
      *        The current status of the activity type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RegistrationStatus
      */
 
@@ -165,8 +163,7 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * 
      * @param status
      *        The current status of the activity type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RegistrationStatus
      */
 
@@ -177,13 +174,11 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The description of the activity type provided in
-     * <a>RegisterActivityType</a>.
+     * The description of the activity type provided in <a>RegisterActivityType</a>.
      * </p>
      * 
      * @param description
-     *        The description of the activity type provided in
-     *        <a>RegisterActivityType</a>.
+     *        The description of the activity type provided in <a>RegisterActivityType</a>.
      */
 
     public void setDescription(String description) {
@@ -192,12 +187,10 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The description of the activity type provided in
-     * <a>RegisterActivityType</a>.
+     * The description of the activity type provided in <a>RegisterActivityType</a>.
      * </p>
      * 
-     * @return The description of the activity type provided in
-     *         <a>RegisterActivityType</a>.
+     * @return The description of the activity type provided in <a>RegisterActivityType</a>.
      */
 
     public String getDescription() {
@@ -206,15 +199,12 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The description of the activity type provided in
-     * <a>RegisterActivityType</a>.
+     * The description of the activity type provided in <a>RegisterActivityType</a>.
      * </p>
      * 
      * @param description
-     *        The description of the activity type provided in
-     *        <a>RegisterActivityType</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The description of the activity type provided in <a>RegisterActivityType</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ActivityTypeInfo withDescription(String description) {
@@ -224,13 +214,11 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time this activity type was created through
-     * <a>RegisterActivityType</a>.
+     * The date and time this activity type was created through <a>RegisterActivityType</a>.
      * </p>
      * 
      * @param creationDate
-     *        The date and time this activity type was created through
-     *        <a>RegisterActivityType</a>.
+     *        The date and time this activity type was created through <a>RegisterActivityType</a>.
      */
 
     public void setCreationDate(java.util.Date creationDate) {
@@ -239,12 +227,10 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time this activity type was created through
-     * <a>RegisterActivityType</a>.
+     * The date and time this activity type was created through <a>RegisterActivityType</a>.
      * </p>
      * 
-     * @return The date and time this activity type was created through
-     *         <a>RegisterActivityType</a>.
+     * @return The date and time this activity type was created through <a>RegisterActivityType</a>.
      */
 
     public java.util.Date getCreationDate() {
@@ -253,15 +239,12 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time this activity type was created through
-     * <a>RegisterActivityType</a>.
+     * The date and time this activity type was created through <a>RegisterActivityType</a>.
      * </p>
      * 
      * @param creationDate
-     *        The date and time this activity type was created through
-     *        <a>RegisterActivityType</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The date and time this activity type was created through <a>RegisterActivityType</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ActivityTypeInfo withCreationDate(java.util.Date creationDate) {
@@ -275,8 +258,7 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * </p>
      * 
      * @param deprecationDate
-     *        If DEPRECATED, the date and time <a>DeprecateActivityType</a> was
-     *        called.
+     *        If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.
      */
 
     public void setDeprecationDate(java.util.Date deprecationDate) {
@@ -288,8 +270,7 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.
      * </p>
      * 
-     * @return If DEPRECATED, the date and time <a>DeprecateActivityType</a> was
-     *         called.
+     * @return If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.
      */
 
     public java.util.Date getDeprecationDate() {
@@ -302,10 +283,8 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
      * </p>
      * 
      * @param deprecationDate
-     *        If DEPRECATED, the date and time <a>DeprecateActivityType</a> was
-     *        called.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ActivityTypeInfo withDeprecationDate(java.util.Date deprecationDate) {
@@ -314,8 +293,7 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -326,15 +304,15 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getActivityType() != null)
-            sb.append("ActivityType: " + getActivityType() + ",");
+            sb.append("ActivityType: ").append(getActivityType()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCreationDate() != null)
-            sb.append("CreationDate: " + getCreationDate() + ",");
+            sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getDeprecationDate() != null)
-            sb.append("DeprecationDate: " + getDeprecationDate());
+            sb.append("DeprecationDate: ").append(getDeprecationDate());
         sb.append("}");
         return sb.toString();
     }
@@ -351,29 +329,23 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
         ActivityTypeInfo other = (ActivityTypeInfo) obj;
         if (other.getActivityType() == null ^ this.getActivityType() == null)
             return false;
-        if (other.getActivityType() != null
-                && other.getActivityType().equals(this.getActivityType()) == false)
+        if (other.getActivityType() != null && other.getActivityType().equals(this.getActivityType()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getCreationDate() == null ^ this.getCreationDate() == null)
             return false;
-        if (other.getCreationDate() != null
-                && other.getCreationDate().equals(this.getCreationDate()) == false)
+        if (other.getCreationDate() != null && other.getCreationDate().equals(this.getCreationDate()) == false)
             return false;
-        if (other.getDeprecationDate() == null
-                ^ this.getDeprecationDate() == null)
+        if (other.getDeprecationDate() == null ^ this.getDeprecationDate() == null)
             return false;
-        if (other.getDeprecationDate() != null
-                && other.getDeprecationDate().equals(this.getDeprecationDate()) == false)
+        if (other.getDeprecationDate() != null && other.getDeprecationDate().equals(this.getDeprecationDate()) == false)
             return false;
         return true;
     }
@@ -383,23 +355,11 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getActivityType() == null) ? 0 : getActivityType()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreationDate() == null) ? 0 : getCreationDate()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDeprecationDate() == null) ? 0 : getDeprecationDate()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getActivityType() == null) ? 0 : getActivityType().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
+        hashCode = prime * hashCode + ((getDeprecationDate() == null) ? 0 : getDeprecationDate().hashCode());
         return hashCode;
     }
 
@@ -408,9 +368,13 @@ public class ActivityTypeInfo implements Serializable, Cloneable {
         try {
             return (ActivityTypeInfo) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.ActivityTypeInfoMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

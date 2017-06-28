@@ -1,23 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.apigateway.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -29,11 +26,10 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * GetUsageResult JSON Unmarshaller
  */
-public class GetUsageResultJsonUnmarshaller implements
-        Unmarshaller<GetUsageResult, JsonUnmarshallerContext> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetUsageResultJsonUnmarshaller implements Unmarshaller<GetUsageResult, JsonUnmarshallerContext> {
 
-    public GetUsageResult unmarshall(JsonUnmarshallerContext context)
-            throws Exception {
+    public GetUsageResult unmarshall(JsonUnmarshallerContext context) throws Exception {
         GetUsageResult getUsageResult = new GetUsageResult();
 
         int originalDepth = context.getCurrentDepth();
@@ -43,8 +39,9 @@ public class GetUsageResultJsonUnmarshaller implements
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
-            return null;
+        if (token == VALUE_NULL) {
+            return getUsageResult;
+        }
 
         while (true) {
             if (token == null)
@@ -53,38 +50,27 @@ public class GetUsageResultJsonUnmarshaller implements
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("usagePlanId", targetDepth)) {
                     context.nextToken();
-                    getUsageResult.setUsagePlanId(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    getUsageResult.setUsagePlanId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("startDate", targetDepth)) {
                     context.nextToken();
-                    getUsageResult.setStartDate(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    getUsageResult.setStartDate(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("endDate", targetDepth)) {
                     context.nextToken();
-                    getUsageResult.setEndDate(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    getUsageResult.setEndDate(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("position", targetDepth)) {
                     context.nextToken();
-                    getUsageResult.setPosition(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    getUsageResult.setPosition(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("values", targetDepth)) {
                     context.nextToken();
-                    getUsageResult
-                            .setItems(new MapUnmarshaller<String, java.util.List<java.util.List<Long>>>(
-                                    context.getUnmarshaller(String.class),
-                                    new ListUnmarshaller<java.util.List<Long>>(
-                                            new ListUnmarshaller<Long>(
-                                                    context.getUnmarshaller(Long.class))))
-                                    .unmarshall(context));
+                    getUsageResult.setItems(new MapUnmarshaller<String, java.util.List<java.util.List<Long>>>(context.getUnmarshaller(String.class),
+                            new ListUnmarshaller<java.util.List<Long>>(new ListUnmarshaller<Long>(context.getUnmarshaller(Long.class)))).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
-                if (context.getLastParsedParentElement() == null
-                        || context.getLastParsedParentElement().equals(
-                                currentParentElement)) {
+                if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)
                         break;
                 }

@@ -1,35 +1,50 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
+ * <p>
  * The request to add tags to a CloudFront resource.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/TagResource" target="_top">AWS API
+ *      Documentation</a>
  */
-public class TagResourceRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** An ARN of a CloudFront resource. */
+    /**
+     * <p>
+     * An ARN of a CloudFront resource.
+     * </p>
+     */
     private String resource;
-    /** A complex type that contains zero or more Tag elements. */
+    /**
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
+     */
     private Tags tags;
 
     /**
+     * <p>
      * An ARN of a CloudFront resource.
+     * </p>
      * 
      * @param resource
      *        An ARN of a CloudFront resource.
@@ -40,7 +55,9 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
     }
 
     /**
+     * <p>
      * An ARN of a CloudFront resource.
+     * </p>
      * 
      * @return An ARN of a CloudFront resource.
      */
@@ -50,12 +67,13 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
     }
 
     /**
+     * <p>
      * An ARN of a CloudFront resource.
+     * </p>
      * 
      * @param resource
      *        An ARN of a CloudFront resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TagResourceRequest withResource(String resource) {
@@ -64,10 +82,12 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * A complex type that contains zero or more Tag elements.
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
      * 
      * @param tags
-     *        A complex type that contains zero or more Tag elements.
+     *        A complex type that contains zero or more <code>Tag</code> elements.
      */
 
     public void setTags(Tags tags) {
@@ -75,9 +95,11 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * A complex type that contains zero or more Tag elements.
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
      * 
-     * @return A complex type that contains zero or more Tag elements.
+     * @return A complex type that contains zero or more <code>Tag</code> elements.
      */
 
     public Tags getTags() {
@@ -85,12 +107,13 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * A complex type that contains zero or more Tag elements.
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
      * 
      * @param tags
-     *        A complex type that contains zero or more Tag elements.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains zero or more <code>Tag</code> elements.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TagResourceRequest withTags(Tags tags) {
@@ -99,8 +122,7 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -111,9 +133,9 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResource() != null)
-            sb.append("Resource: " + getResource() + ",");
+            sb.append("Resource: ").append(getResource()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -130,13 +152,11 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
         TagResourceRequest other = (TagResourceRequest) obj;
         if (other.getResource() == null ^ this.getResource() == null)
             return false;
-        if (other.getResource() != null
-                && other.getResource().equals(this.getResource()) == false)
+        if (other.getResource() != null && other.getResource().equals(this.getResource()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -146,10 +166,8 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getResource() == null) ? 0 : getResource().hashCode());
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getResource() == null) ? 0 : getResource().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
@@ -157,4 +175,5 @@ public class TagResourceRequest extends AmazonWebServiceRequest implements
     public TagResourceRequest clone() {
         return (TagResourceRequest) super.clone();
     }
+
 }

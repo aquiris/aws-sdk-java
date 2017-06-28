@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Request to describe an existing <a>Authorizers</a> resource.
  * </p>
  */
-public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetAuthorizersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,14 +33,13 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
     private String restApiId;
     /**
      * <p>
-     * If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.
+     * The current pagination position in the paged result set.
      * </p>
      */
     private String position;
     /**
      * <p>
-     * Limit the number of <a>Authorizer</a> resources in the response.
+     * The maximum number of returned results per page.
      * </p>
      */
     private Integer limit;
@@ -63,8 +62,7 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
      * The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.
      * </p>
      * 
-     * @return The <a>RestApi</a> identifier for the <a>Authorizers</a>
-     *         resource.
+     * @return The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.
      */
 
     public String getRestApiId() {
@@ -78,8 +76,7 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
      * 
      * @param restApiId
      *        The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetAuthorizersRequest withRestApiId(String restApiId) {
@@ -89,14 +86,11 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        If not all <a>Authorizer</a> resources in the response were
-     *        present, the position will specify where to start the next page of
-     *        results.
+     *        The current pagination position in the paged result set.
      */
 
     public void setPosition(String position) {
@@ -105,13 +99,10 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.
+     * The current pagination position in the paged result set.
      * </p>
      * 
-     * @return If not all <a>Authorizer</a> resources in the response were
-     *         present, the position will specify where to start the next page
-     *         of results.
+     * @return The current pagination position in the paged result set.
      */
 
     public String getPosition() {
@@ -120,16 +111,12 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        If not all <a>Authorizer</a> resources in the response were
-     *        present, the position will specify where to start the next page of
-     *        results.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The current pagination position in the paged result set.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetAuthorizersRequest withPosition(String position) {
@@ -139,11 +126,11 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Limit the number of <a>Authorizer</a> resources in the response.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        Limit the number of <a>Authorizer</a> resources in the response.
+     *        The maximum number of returned results per page.
      */
 
     public void setLimit(Integer limit) {
@@ -152,10 +139,10 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Limit the number of <a>Authorizer</a> resources in the response.
+     * The maximum number of returned results per page.
      * </p>
      * 
-     * @return Limit the number of <a>Authorizer</a> resources in the response.
+     * @return The maximum number of returned results per page.
      */
 
     public Integer getLimit() {
@@ -164,13 +151,12 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Limit the number of <a>Authorizer</a> resources in the response.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        Limit the number of <a>Authorizer</a> resources in the response.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of returned results per page.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetAuthorizersRequest withLimit(Integer limit) {
@@ -179,8 +165,7 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -191,11 +176,11 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getPosition() != null)
-            sb.append("Position: " + getPosition() + ",");
+            sb.append("Position: ").append(getPosition()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -212,18 +197,15 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
         GetAuthorizersRequest other = (GetAuthorizersRequest) obj;
         if (other.getRestApiId() == null ^ this.getRestApiId() == null)
             return false;
-        if (other.getRestApiId() != null
-                && other.getRestApiId().equals(this.getRestApiId()) == false)
+        if (other.getRestApiId() != null && other.getRestApiId().equals(this.getRestApiId()) == false)
             return false;
         if (other.getPosition() == null ^ this.getPosition() == null)
             return false;
-        if (other.getPosition() != null
-                && other.getPosition().equals(this.getPosition()) == false)
+        if (other.getPosition() != null && other.getPosition().equals(this.getPosition()) == false)
             return false;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
-        if (other.getLimit() != null
-                && other.getLimit().equals(this.getLimit()) == false)
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
             return false;
         return true;
     }
@@ -233,12 +215,9 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getPosition() == null) ? 0 : getPosition().hashCode());
-        hashCode = prime * hashCode
-                + ((getLimit() == null) ? 0 : getLimit().hashCode());
+        hashCode = prime * hashCode + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
+        hashCode = prime * hashCode + ((getPosition() == null) ? 0 : getPosition().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;
     }
 
@@ -246,4 +225,5 @@ public class GetAuthorizersRequest extends AmazonWebServiceRequest implements
     public GetAuthorizersRequest clone() {
         return (GetAuthorizersRequest) super.clone();
     }
+
 }

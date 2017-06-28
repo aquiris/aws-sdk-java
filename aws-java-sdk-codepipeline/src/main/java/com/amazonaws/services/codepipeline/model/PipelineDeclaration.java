@@ -1,28 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents the structure of actions and stages to be performed in the
- * pipeline.
+ * Represents the structure of actions and stages to be performed in the pipeline.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PipelineDeclaration" target="_top">AWS
+ *      API Documentation</a>
  */
-public class PipelineDeclaration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PipelineDeclaration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -32,13 +36,16 @@ public class PipelineDeclaration implements Serializable, Cloneable {
     private String name;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
-     * perform actions with no actionRoleArn, or to use to assume roles for
-     * actions with an actionRoleArn.
+     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to
+     * use to assume roles for actions with an actionRoleArn.
      * </p>
      */
     private String roleArn;
-
+    /**
+     * <p>
+     * Represents the context of an action within the stage of a pipeline to a job worker.
+     * </p>
+     */
     private ArtifactStore artifactStore;
     /**
      * <p>
@@ -48,9 +55,8 @@ public class PipelineDeclaration implements Serializable, Cloneable {
     private java.util.List<StageDeclaration> stages;
     /**
      * <p>
-     * The version number of the pipeline. A new pipeline always has a version
-     * number of 1. This number is automatically incremented when a pipeline is
-     * updated.
+     * The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically
+     * incremented when a pipeline is updated.
      * </p>
      */
     private Integer version;
@@ -87,8 +93,7 @@ public class PipelineDeclaration implements Serializable, Cloneable {
      * 
      * @param name
      *        The name of the action to be performed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PipelineDeclaration withName(String name) {
@@ -98,15 +103,13 @@ public class PipelineDeclaration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
-     * perform actions with no actionRoleArn, or to use to assume roles for
-     * actions with an actionRoleArn.
+     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to
+     * use to assume roles for actions with an actionRoleArn.
      * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) for AWS CodePipeline to use to
-     *        either perform actions with no actionRoleArn, or to use to assume
-     *        roles for actions with an actionRoleArn.
+     *        The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no
+     *        actionRoleArn, or to use to assume roles for actions with an actionRoleArn.
      */
 
     public void setRoleArn(String roleArn) {
@@ -115,14 +118,12 @@ public class PipelineDeclaration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
-     * perform actions with no actionRoleArn, or to use to assume roles for
-     * actions with an actionRoleArn.
+     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to
+     * use to assume roles for actions with an actionRoleArn.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) for AWS CodePipeline to use to
-     *         either perform actions with no actionRoleArn, or to use to assume
-     *         roles for actions with an actionRoleArn.
+     * @return The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no
+     *         actionRoleArn, or to use to assume roles for actions with an actionRoleArn.
      */
 
     public String getRoleArn() {
@@ -131,17 +132,14 @@ public class PipelineDeclaration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
-     * perform actions with no actionRoleArn, or to use to assume roles for
-     * actions with an actionRoleArn.
+     * The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to
+     * use to assume roles for actions with an actionRoleArn.
      * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) for AWS CodePipeline to use to
-     *        either perform actions with no actionRoleArn, or to use to assume
-     *        roles for actions with an actionRoleArn.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no
+     *        actionRoleArn, or to use to assume roles for actions with an actionRoleArn.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PipelineDeclaration withRoleArn(String roleArn) {
@@ -150,7 +148,12 @@ public class PipelineDeclaration implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Represents the context of an action within the stage of a pipeline to a job worker.
+     * </p>
+     * 
      * @param artifactStore
+     *        Represents the context of an action within the stage of a pipeline to a job worker.
      */
 
     public void setArtifactStore(ArtifactStore artifactStore) {
@@ -158,7 +161,11 @@ public class PipelineDeclaration implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Represents the context of an action within the stage of a pipeline to a job worker.
+     * </p>
+     * 
+     * @return Represents the context of an action within the stage of a pipeline to a job worker.
      */
 
     public ArtifactStore getArtifactStore() {
@@ -166,9 +173,13 @@ public class PipelineDeclaration implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Represents the context of an action within the stage of a pipeline to a job worker.
+     * </p>
+     * 
      * @param artifactStore
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Represents the context of an action within the stage of a pipeline to a job worker.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PipelineDeclaration withArtifactStore(ArtifactStore artifactStore) {
@@ -211,16 +222,14 @@ public class PipelineDeclaration implements Serializable, Cloneable {
      * The stage in which to perform the action.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setStages(java.util.Collection)} or
-     * {@link #withStages(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setStages(java.util.Collection)} or {@link #withStages(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param stages
      *        The stage in which to perform the action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PipelineDeclaration withStages(StageDeclaration... stages) {
@@ -240,27 +249,23 @@ public class PipelineDeclaration implements Serializable, Cloneable {
      * 
      * @param stages
      *        The stage in which to perform the action.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PipelineDeclaration withStages(
-            java.util.Collection<StageDeclaration> stages) {
+    public PipelineDeclaration withStages(java.util.Collection<StageDeclaration> stages) {
         setStages(stages);
         return this;
     }
 
     /**
      * <p>
-     * The version number of the pipeline. A new pipeline always has a version
-     * number of 1. This number is automatically incremented when a pipeline is
-     * updated.
+     * The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically
+     * incremented when a pipeline is updated.
      * </p>
      * 
      * @param version
-     *        The version number of the pipeline. A new pipeline always has a
-     *        version number of 1. This number is automatically incremented when
-     *        a pipeline is updated.
+     *        The version number of the pipeline. A new pipeline always has a version number of 1. This number is
+     *        automatically incremented when a pipeline is updated.
      */
 
     public void setVersion(Integer version) {
@@ -269,14 +274,12 @@ public class PipelineDeclaration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version number of the pipeline. A new pipeline always has a version
-     * number of 1. This number is automatically incremented when a pipeline is
-     * updated.
+     * The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically
+     * incremented when a pipeline is updated.
      * </p>
      * 
-     * @return The version number of the pipeline. A new pipeline always has a
-     *         version number of 1. This number is automatically incremented
-     *         when a pipeline is updated.
+     * @return The version number of the pipeline. A new pipeline always has a version number of 1. This number is
+     *         automatically incremented when a pipeline is updated.
      */
 
     public Integer getVersion() {
@@ -285,17 +288,14 @@ public class PipelineDeclaration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version number of the pipeline. A new pipeline always has a version
-     * number of 1. This number is automatically incremented when a pipeline is
-     * updated.
+     * The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically
+     * incremented when a pipeline is updated.
      * </p>
      * 
      * @param version
-     *        The version number of the pipeline. A new pipeline always has a
-     *        version number of 1. This number is automatically incremented when
-     *        a pipeline is updated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The version number of the pipeline. A new pipeline always has a version number of 1. This number is
+     *        automatically incremented when a pipeline is updated.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PipelineDeclaration withVersion(Integer version) {
@@ -304,8 +304,7 @@ public class PipelineDeclaration implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -316,15 +315,15 @@ public class PipelineDeclaration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: " + getRoleArn() + ",");
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
         if (getArtifactStore() != null)
-            sb.append("ArtifactStore: " + getArtifactStore() + ",");
+            sb.append("ArtifactStore: ").append(getArtifactStore()).append(",");
         if (getStages() != null)
-            sb.append("Stages: " + getStages() + ",");
+            sb.append("Stages: ").append(getStages()).append(",");
         if (getVersion() != null)
-            sb.append("Version: " + getVersion());
+            sb.append("Version: ").append(getVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -341,28 +340,23 @@ public class PipelineDeclaration implements Serializable, Cloneable {
         PipelineDeclaration other = (PipelineDeclaration) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getRoleArn() == null ^ this.getRoleArn() == null)
             return false;
-        if (other.getRoleArn() != null
-                && other.getRoleArn().equals(this.getRoleArn()) == false)
+        if (other.getRoleArn() != null && other.getRoleArn().equals(this.getRoleArn()) == false)
             return false;
         if (other.getArtifactStore() == null ^ this.getArtifactStore() == null)
             return false;
-        if (other.getArtifactStore() != null
-                && other.getArtifactStore().equals(this.getArtifactStore()) == false)
+        if (other.getArtifactStore() != null && other.getArtifactStore().equals(this.getArtifactStore()) == false)
             return false;
         if (other.getStages() == null ^ this.getStages() == null)
             return false;
-        if (other.getStages() != null
-                && other.getStages().equals(this.getStages()) == false)
+        if (other.getStages() != null && other.getStages().equals(this.getStages()) == false)
             return false;
         if (other.getVersion() == null ^ this.getVersion() == null)
             return false;
-        if (other.getVersion() != null
-                && other.getVersion().equals(this.getVersion()) == false)
+        if (other.getVersion() != null && other.getVersion().equals(this.getVersion()) == false)
             return false;
         return true;
     }
@@ -372,18 +366,11 @@ public class PipelineDeclaration implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getArtifactStore() == null) ? 0 : getArtifactStore()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getStages() == null) ? 0 : getStages().hashCode());
-        hashCode = prime * hashCode
-                + ((getVersion() == null) ? 0 : getVersion().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getArtifactStore() == null) ? 0 : getArtifactStore().hashCode());
+        hashCode = prime * hashCode + ((getStages() == null) ? 0 : getStages().hashCode());
+        hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         return hashCode;
     }
 
@@ -392,9 +379,13 @@ public class PipelineDeclaration implements Serializable, Cloneable {
         try {
             return (PipelineDeclaration) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.PipelineDeclarationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

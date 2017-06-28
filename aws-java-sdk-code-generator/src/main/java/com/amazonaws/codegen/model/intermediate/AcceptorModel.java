@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import com.amazonaws.codegen.JmesPathCodeGenVisitor;
 import com.amazonaws.codegen.internal.Utils;
 import com.amazonaws.jmespath.JmesPathExpression;
 import com.fasterxml.jackson.databind.JsonNode;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.math.BigDecimal;

@@ -1,28 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * A complex type that contains the response to the
- * UpdateHostedZoneCommentRequest.
+ * A complex type that contains the response to the <code>UpdateHostedZoneComment</code> request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHostedZoneComment" target="_top">AWS
+ *      API Documentation</a>
  */
-public class UpdateHostedZoneCommentResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateHostedZoneCommentResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     private HostedZone hostedZone;
 
@@ -44,8 +46,7 @@ public class UpdateHostedZoneCommentResult implements Serializable, Cloneable {
 
     /**
      * @param hostedZone
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateHostedZoneCommentResult withHostedZone(HostedZone hostedZone) {
@@ -54,8 +55,7 @@ public class UpdateHostedZoneCommentResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -66,7 +66,7 @@ public class UpdateHostedZoneCommentResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHostedZone() != null)
-            sb.append("HostedZone: " + getHostedZone());
+            sb.append("HostedZone: ").append(getHostedZone());
         sb.append("}");
         return sb.toString();
     }
@@ -83,8 +83,7 @@ public class UpdateHostedZoneCommentResult implements Serializable, Cloneable {
         UpdateHostedZoneCommentResult other = (UpdateHostedZoneCommentResult) obj;
         if (other.getHostedZone() == null ^ this.getHostedZone() == null)
             return false;
-        if (other.getHostedZone() != null
-                && other.getHostedZone().equals(this.getHostedZone()) == false)
+        if (other.getHostedZone() != null && other.getHostedZone().equals(this.getHostedZone()) == false)
             return false;
         return true;
     }
@@ -94,8 +93,7 @@ public class UpdateHostedZoneCommentResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getHostedZone() == null) ? 0 : getHostedZone().hashCode());
+        hashCode = prime * hashCode + ((getHostedZone() == null) ? 0 : getHostedZone().hashCode());
         return hashCode;
     }
 
@@ -104,9 +102,8 @@ public class UpdateHostedZoneCommentResult implements Serializable, Cloneable {
         try {
             return (UpdateHostedZoneCommentResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

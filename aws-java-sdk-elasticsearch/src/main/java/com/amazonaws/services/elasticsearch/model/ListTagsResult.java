@@ -1,28 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticsearch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The result of a <code>ListTags</code> operation. Contains tags for all
- * requested Elasticsearch domains.
+ * The result of a <code>ListTags</code> operation. Contains tags for all requested Elasticsearch domains.
  * </p>
  */
-public class ListTagsResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListTagsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -66,16 +65,14 @@ public class ListTagsResult implements Serializable, Cloneable {
      * List of <code>Tag</code> for the requested Elasticsearch domain.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTagList(java.util.Collection)} or
-     * {@link #withTagList(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagList(java.util.Collection)} or {@link #withTagList(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param tagList
      *        List of <code>Tag</code> for the requested Elasticsearch domain.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListTagsResult withTagList(Tag... tagList) {
@@ -95,8 +92,7 @@ public class ListTagsResult implements Serializable, Cloneable {
      * 
      * @param tagList
      *        List of <code>Tag</code> for the requested Elasticsearch domain.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListTagsResult withTagList(java.util.Collection<Tag> tagList) {
@@ -105,8 +101,7 @@ public class ListTagsResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -117,7 +112,7 @@ public class ListTagsResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTagList() != null)
-            sb.append("TagList: " + getTagList());
+            sb.append("TagList: ").append(getTagList());
         sb.append("}");
         return sb.toString();
     }
@@ -134,8 +129,7 @@ public class ListTagsResult implements Serializable, Cloneable {
         ListTagsResult other = (ListTagsResult) obj;
         if (other.getTagList() == null ^ this.getTagList() == null)
             return false;
-        if (other.getTagList() != null
-                && other.getTagList().equals(this.getTagList()) == false)
+        if (other.getTagList() != null && other.getTagList().equals(this.getTagList()) == false)
             return false;
         return true;
     }
@@ -145,8 +139,7 @@ public class ListTagsResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getTagList() == null) ? 0 : getTagList().hashCode());
+        hashCode = prime * hashCode + ((getTagList() == null) ? 0 : getTagList().hashCode());
         return hashCode;
     }
 
@@ -155,9 +148,8 @@ public class ListTagsResult implements Serializable, Cloneable {
         try {
             return (ListTagsResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

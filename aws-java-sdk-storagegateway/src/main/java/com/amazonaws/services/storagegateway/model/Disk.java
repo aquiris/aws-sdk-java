@@ -1,25 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/Disk" target="_top">AWS API
+ *      Documentation</a>
  */
-public class Disk implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Disk implements Serializable, Cloneable, StructuredPojo {
 
     private String diskId;
 
@@ -53,8 +57,7 @@ public class Disk implements Serializable, Cloneable {
 
     /**
      * @param diskId
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Disk withDiskId(String diskId) {
@@ -80,8 +83,7 @@ public class Disk implements Serializable, Cloneable {
 
     /**
      * @param diskPath
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Disk withDiskPath(String diskPath) {
@@ -107,8 +109,7 @@ public class Disk implements Serializable, Cloneable {
 
     /**
      * @param diskNode
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Disk withDiskNode(String diskNode) {
@@ -134,8 +135,7 @@ public class Disk implements Serializable, Cloneable {
 
     /**
      * @param diskStatus
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Disk withDiskStatus(String diskStatus) {
@@ -161,8 +161,7 @@ public class Disk implements Serializable, Cloneable {
 
     /**
      * @param diskSizeInBytes
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Disk withDiskSizeInBytes(Long diskSizeInBytes) {
@@ -188,8 +187,7 @@ public class Disk implements Serializable, Cloneable {
 
     /**
      * @param diskAllocationType
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Disk withDiskAllocationType(String diskAllocationType) {
@@ -215,8 +213,7 @@ public class Disk implements Serializable, Cloneable {
 
     /**
      * @param diskAllocationResource
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Disk withDiskAllocationResource(String diskAllocationResource) {
@@ -225,8 +222,7 @@ public class Disk implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -237,19 +233,19 @@ public class Disk implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDiskId() != null)
-            sb.append("DiskId: " + getDiskId() + ",");
+            sb.append("DiskId: ").append(getDiskId()).append(",");
         if (getDiskPath() != null)
-            sb.append("DiskPath: " + getDiskPath() + ",");
+            sb.append("DiskPath: ").append(getDiskPath()).append(",");
         if (getDiskNode() != null)
-            sb.append("DiskNode: " + getDiskNode() + ",");
+            sb.append("DiskNode: ").append(getDiskNode()).append(",");
         if (getDiskStatus() != null)
-            sb.append("DiskStatus: " + getDiskStatus() + ",");
+            sb.append("DiskStatus: ").append(getDiskStatus()).append(",");
         if (getDiskSizeInBytes() != null)
-            sb.append("DiskSizeInBytes: " + getDiskSizeInBytes() + ",");
+            sb.append("DiskSizeInBytes: ").append(getDiskSizeInBytes()).append(",");
         if (getDiskAllocationType() != null)
-            sb.append("DiskAllocationType: " + getDiskAllocationType() + ",");
+            sb.append("DiskAllocationType: ").append(getDiskAllocationType()).append(",");
         if (getDiskAllocationResource() != null)
-            sb.append("DiskAllocationResource: " + getDiskAllocationResource());
+            sb.append("DiskAllocationResource: ").append(getDiskAllocationResource());
         sb.append("}");
         return sb.toString();
     }
@@ -266,43 +262,31 @@ public class Disk implements Serializable, Cloneable {
         Disk other = (Disk) obj;
         if (other.getDiskId() == null ^ this.getDiskId() == null)
             return false;
-        if (other.getDiskId() != null
-                && other.getDiskId().equals(this.getDiskId()) == false)
+        if (other.getDiskId() != null && other.getDiskId().equals(this.getDiskId()) == false)
             return false;
         if (other.getDiskPath() == null ^ this.getDiskPath() == null)
             return false;
-        if (other.getDiskPath() != null
-                && other.getDiskPath().equals(this.getDiskPath()) == false)
+        if (other.getDiskPath() != null && other.getDiskPath().equals(this.getDiskPath()) == false)
             return false;
         if (other.getDiskNode() == null ^ this.getDiskNode() == null)
             return false;
-        if (other.getDiskNode() != null
-                && other.getDiskNode().equals(this.getDiskNode()) == false)
+        if (other.getDiskNode() != null && other.getDiskNode().equals(this.getDiskNode()) == false)
             return false;
         if (other.getDiskStatus() == null ^ this.getDiskStatus() == null)
             return false;
-        if (other.getDiskStatus() != null
-                && other.getDiskStatus().equals(this.getDiskStatus()) == false)
+        if (other.getDiskStatus() != null && other.getDiskStatus().equals(this.getDiskStatus()) == false)
             return false;
-        if (other.getDiskSizeInBytes() == null
-                ^ this.getDiskSizeInBytes() == null)
+        if (other.getDiskSizeInBytes() == null ^ this.getDiskSizeInBytes() == null)
             return false;
-        if (other.getDiskSizeInBytes() != null
-                && other.getDiskSizeInBytes().equals(this.getDiskSizeInBytes()) == false)
+        if (other.getDiskSizeInBytes() != null && other.getDiskSizeInBytes().equals(this.getDiskSizeInBytes()) == false)
             return false;
-        if (other.getDiskAllocationType() == null
-                ^ this.getDiskAllocationType() == null)
+        if (other.getDiskAllocationType() == null ^ this.getDiskAllocationType() == null)
             return false;
-        if (other.getDiskAllocationType() != null
-                && other.getDiskAllocationType().equals(
-                        this.getDiskAllocationType()) == false)
+        if (other.getDiskAllocationType() != null && other.getDiskAllocationType().equals(this.getDiskAllocationType()) == false)
             return false;
-        if (other.getDiskAllocationResource() == null
-                ^ this.getDiskAllocationResource() == null)
+        if (other.getDiskAllocationResource() == null ^ this.getDiskAllocationResource() == null)
             return false;
-        if (other.getDiskAllocationResource() != null
-                && other.getDiskAllocationResource().equals(
-                        this.getDiskAllocationResource()) == false)
+        if (other.getDiskAllocationResource() != null && other.getDiskAllocationResource().equals(this.getDiskAllocationResource()) == false)
             return false;
         return true;
     }
@@ -312,26 +296,13 @@ public class Disk implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDiskId() == null) ? 0 : getDiskId().hashCode());
-        hashCode = prime * hashCode
-                + ((getDiskPath() == null) ? 0 : getDiskPath().hashCode());
-        hashCode = prime * hashCode
-                + ((getDiskNode() == null) ? 0 : getDiskNode().hashCode());
-        hashCode = prime * hashCode
-                + ((getDiskStatus() == null) ? 0 : getDiskStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDiskSizeInBytes() == null) ? 0 : getDiskSizeInBytes()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDiskAllocationType() == null) ? 0
-                        : getDiskAllocationType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDiskAllocationResource() == null) ? 0
-                        : getDiskAllocationResource().hashCode());
+        hashCode = prime * hashCode + ((getDiskId() == null) ? 0 : getDiskId().hashCode());
+        hashCode = prime * hashCode + ((getDiskPath() == null) ? 0 : getDiskPath().hashCode());
+        hashCode = prime * hashCode + ((getDiskNode() == null) ? 0 : getDiskNode().hashCode());
+        hashCode = prime * hashCode + ((getDiskStatus() == null) ? 0 : getDiskStatus().hashCode());
+        hashCode = prime * hashCode + ((getDiskSizeInBytes() == null) ? 0 : getDiskSizeInBytes().hashCode());
+        hashCode = prime * hashCode + ((getDiskAllocationType() == null) ? 0 : getDiskAllocationType().hashCode());
+        hashCode = prime * hashCode + ((getDiskAllocationResource() == null) ? 0 : getDiskAllocationResource().hashCode());
         return hashCode;
     }
 
@@ -340,9 +311,13 @@ public class Disk implements Serializable, Cloneable {
         try {
             return (Disk) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.storagegateway.model.transform.DiskMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

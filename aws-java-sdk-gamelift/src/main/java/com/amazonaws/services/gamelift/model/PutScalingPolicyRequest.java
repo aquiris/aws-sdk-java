@@ -1,41 +1,43 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.gamelift.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the input for a request action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/PutScalingPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
-public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class PutScalingPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not
-     * need to be unique. A fleet can have only one scaling policy with the same
-     * name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      */
     private String fleetId;
@@ -47,19 +49,27 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
     private Integer scalingAdjustment;
     /**
      * <p>
-     * Type of adjustment to make to a fleet's instance count (see
-     * <a>FleetCapacity</a>):
+     * Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):
      * </p>
      * <ul>
-     * <li><b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment
-     * value from the current instance count. Positive values scale up while
-     * negative values scale down.</li>
-     * <li><b>ExactCapacity</b> – set the instance count to the scaling
-     * adjustment value.</li>
-     * <li><b>PercentChangeInCapacity</b> – increase or reduce the current
-     * instance count by the scaling adjustment, read as a percentage. Positive
-     * values scale up while negative values scale down; for example, a value of
-     * "-10" scales the fleet down by 10%.</li>
+     * <li>
+     * <p>
+     * <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     * Positive values scale up while negative values scale down.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as
+     * a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the
+     * fleet down by 10%.
+     * </p>
+     * </li>
      * </ul>
      */
     private String scalingAdjustmentType;
@@ -71,57 +81,70 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
     private Double threshold;
     /**
      * <p>
-     * Comparison operator to use when measuring the metric against the
-     * threshold value.
+     * Comparison operator to use when measuring the metric against the threshold value.
      * </p>
      */
     private String comparisonOperator;
     /**
      * <p>
-     * Length of time (in minutes) the metric must be at or beyond the threshold
-     * before a scaling event is triggered.
+     * Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.
      * </p>
      */
     private Integer evaluationPeriods;
     /**
      * <p>
-     * Name of the Amazon GameLift-defined metric that is used to trigger an
-     * adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
-     * <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     * process of being created (game session status = <code>ACTIVATING</code>).
+     * <li>
+     * <p>
+     * <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status =
+     * <code>ACTIVATING</code>).
+     * </p>
      * </li>
-     * <li><b>ActiveGameSessions</b> – number of game sessions currently running
-     * (game session status = <code>ACTIVE</code>).</li>
-     * <li><b>CurrentPlayerSessions</b> – number of active or reserved player
-     * sessions (player session status = <code>ACTIVE</code> or
-     * <code>RESERVED</code>).</li>
-     * <li><b>AvailablePlayerSessions</b> – number of player session slots
-     * currently available in active game sessions across the fleet, calculated
-     * by subtracting a game session's current player session count from its
-     * maximum player session count. This number includes game sessions that are
-     * not currently accepting players (game session
-     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</li>
-     * <li><b>ActiveInstances</b> – number of instances currently running a game
-     * session.</li>
-     * <li><b>IdleInstances</b> – number of instances not currently running a
-     * game session.</li>
+     * <li>
+     * <p>
+     * <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>
+     * ).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     * <code>ACTIVE</code> or <code>RESERVED</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions
+     * across the fleet, calculated by subtracting a game session's current player session count from its maximum player
+     * session count. This number includes game sessions that are not currently accepting players (game session
+     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ActiveInstances</b> – number of instances currently running a game session.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IdleInstances</b> – number of instances not currently running a game session.
+     * </p>
+     * </li>
      * </ul>
      */
     private String metricName;
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not
-     * need to be unique. A fleet can have only one scaling policy with the same
-     * name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names
-     *        do not need to be unique. A fleet can have only one scaling policy
-     *        with the same name.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet
+     *        can have only one scaling policy with the same name.
      */
 
     public void setName(String name) {
@@ -130,14 +153,12 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not
-     * need to be unique. A fleet can have only one scaling policy with the same
-     * name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      * 
-     * @return Descriptive label associated with a scaling policy. Policy names
-     *         do not need to be unique. A fleet can have only one scaling
-     *         policy with the same name.
+     * @return Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A
+     *         fleet can have only one scaling policy with the same name.
      */
 
     public String getName() {
@@ -146,17 +167,14 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Descriptive label associated with a scaling policy. Policy names do not
-     * need to be unique. A fleet can have only one scaling policy with the same
-     * name.
+     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can
+     * have only one scaling policy with the same name.
      * </p>
      * 
      * @param name
-     *        Descriptive label associated with a scaling policy. Policy names
-     *        do not need to be unique. A fleet can have only one scaling policy
-     *        with the same name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet
+     *        can have only one scaling policy with the same name.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutScalingPolicyRequest withName(String name) {
@@ -166,11 +184,11 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      * 
      * @param fleetId
-     *        Unique identity for the fleet to scale with this policy.
+     *        Unique identifier for a fleet to apply this policy to.
      */
 
     public void setFleetId(String fleetId) {
@@ -179,10 +197,10 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      * 
-     * @return Unique identity for the fleet to scale with this policy.
+     * @return Unique identifier for a fleet to apply this policy to.
      */
 
     public String getFleetId() {
@@ -191,13 +209,12 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Unique identity for the fleet to scale with this policy.
+     * Unique identifier for a fleet to apply this policy to.
      * </p>
      * 
      * @param fleetId
-     *        Unique identity for the fleet to scale with this policy.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Unique identifier for a fleet to apply this policy to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutScalingPolicyRequest withFleetId(String fleetId) {
@@ -211,8 +228,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param scalingAdjustment
-     *        Amount of adjustment to make, based on the scaling adjustment
-     *        type.
+     *        Amount of adjustment to make, based on the scaling adjustment type.
      */
 
     public void setScalingAdjustment(Integer scalingAdjustment) {
@@ -224,8 +240,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
      * Amount of adjustment to make, based on the scaling adjustment type.
      * </p>
      * 
-     * @return Amount of adjustment to make, based on the scaling adjustment
-     *         type.
+     * @return Amount of adjustment to make, based on the scaling adjustment type.
      */
 
     public Integer getScalingAdjustment() {
@@ -238,48 +253,61 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param scalingAdjustment
-     *        Amount of adjustment to make, based on the scaling adjustment
-     *        type.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Amount of adjustment to make, based on the scaling adjustment type.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PutScalingPolicyRequest withScalingAdjustment(
-            Integer scalingAdjustment) {
+    public PutScalingPolicyRequest withScalingAdjustment(Integer scalingAdjustment) {
         setScalingAdjustment(scalingAdjustment);
         return this;
     }
 
     /**
      * <p>
-     * Type of adjustment to make to a fleet's instance count (see
-     * <a>FleetCapacity</a>):
+     * Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):
      * </p>
      * <ul>
-     * <li><b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment
-     * value from the current instance count. Positive values scale up while
-     * negative values scale down.</li>
-     * <li><b>ExactCapacity</b> – set the instance count to the scaling
-     * adjustment value.</li>
-     * <li><b>PercentChangeInCapacity</b> – increase or reduce the current
-     * instance count by the scaling adjustment, read as a percentage. Positive
-     * values scale up while negative values scale down; for example, a value of
-     * "-10" scales the fleet down by 10%.</li>
+     * <li>
+     * <p>
+     * <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     * Positive values scale up while negative values scale down.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as
+     * a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the
+     * fleet down by 10%.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param scalingAdjustmentType
-     *        Type of adjustment to make to a fleet's instance count (see
-     *        <a>FleetCapacity</a>):</p>
+     *        Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p>
      *        <ul>
-     *        <li><b>ChangeInCapacity</b> – add (or subtract) the scaling
-     *        adjustment value from the current instance count. Positive values
-     *        scale up while negative values scale down.</li>
-     *        <li><b>ExactCapacity</b> – set the instance count to the scaling
-     *        adjustment value.</li>
-     *        <li><b>PercentChangeInCapacity</b> – increase or reduce the
-     *        current instance count by the scaling adjustment, read as a
-     *        percentage. Positive values scale up while negative values scale
-     *        down; for example, a value of "-10" scales the fleet down by 10%.</li>
+     *        <li>
+     *        <p>
+     *        <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     *        Positive values scale up while negative values scale down.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment,
+     *        read as a percentage. Positive values scale up while negative values scale down; for example, a value of
+     *        "-10" scales the fleet down by 10%.
+     *        </p>
+     *        </li>
      * @see ScalingAdjustmentType
      */
 
@@ -289,33 +317,48 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Type of adjustment to make to a fleet's instance count (see
-     * <a>FleetCapacity</a>):
+     * Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):
      * </p>
      * <ul>
-     * <li><b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment
-     * value from the current instance count. Positive values scale up while
-     * negative values scale down.</li>
-     * <li><b>ExactCapacity</b> – set the instance count to the scaling
-     * adjustment value.</li>
-     * <li><b>PercentChangeInCapacity</b> – increase or reduce the current
-     * instance count by the scaling adjustment, read as a percentage. Positive
-     * values scale up while negative values scale down; for example, a value of
-     * "-10" scales the fleet down by 10%.</li>
+     * <li>
+     * <p>
+     * <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     * Positive values scale up while negative values scale down.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as
+     * a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the
+     * fleet down by 10%.
+     * </p>
+     * </li>
      * </ul>
      * 
-     * @return Type of adjustment to make to a fleet's instance count (see
-     *         <a>FleetCapacity</a>):</p>
+     * @return Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p>
      *         <ul>
-     *         <li><b>ChangeInCapacity</b> – add (or subtract) the scaling
-     *         adjustment value from the current instance count. Positive values
-     *         scale up while negative values scale down.</li>
-     *         <li><b>ExactCapacity</b> – set the instance count to the scaling
-     *         adjustment value.</li>
-     *         <li><b>PercentChangeInCapacity</b> – increase or reduce the
-     *         current instance count by the scaling adjustment, read as a
-     *         percentage. Positive values scale up while negative values scale
-     *         down; for example, a value of "-10" scales the fleet down by 10%.
+     *         <li>
+     *         <p>
+     *         <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     *         Positive values scale up while negative values scale down.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment,
+     *         read as a percentage. Positive values scale up while negative values scale down; for example, a value of
+     *         "-10" scales the fleet down by 10%.
+     *         </p>
      *         </li>
      * @see ScalingAdjustmentType
      */
@@ -326,120 +369,163 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Type of adjustment to make to a fleet's instance count (see
-     * <a>FleetCapacity</a>):
+     * Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):
      * </p>
      * <ul>
-     * <li><b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment
-     * value from the current instance count. Positive values scale up while
-     * negative values scale down.</li>
-     * <li><b>ExactCapacity</b> – set the instance count to the scaling
-     * adjustment value.</li>
-     * <li><b>PercentChangeInCapacity</b> – increase or reduce the current
-     * instance count by the scaling adjustment, read as a percentage. Positive
-     * values scale up while negative values scale down; for example, a value of
-     * "-10" scales the fleet down by 10%.</li>
+     * <li>
+     * <p>
+     * <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     * Positive values scale up while negative values scale down.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as
+     * a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the
+     * fleet down by 10%.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param scalingAdjustmentType
-     *        Type of adjustment to make to a fleet's instance count (see
-     *        <a>FleetCapacity</a>):</p>
+     *        Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p>
      *        <ul>
-     *        <li><b>ChangeInCapacity</b> – add (or subtract) the scaling
-     *        adjustment value from the current instance count. Positive values
-     *        scale up while negative values scale down.</li>
-     *        <li><b>ExactCapacity</b> – set the instance count to the scaling
-     *        adjustment value.</li>
-     *        <li><b>PercentChangeInCapacity</b> – increase or reduce the
-     *        current instance count by the scaling adjustment, read as a
-     *        percentage. Positive values scale up while negative values scale
-     *        down; for example, a value of "-10" scales the fleet down by 10%.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     *        Positive values scale up while negative values scale down.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment,
+     *        read as a percentage. Positive values scale up while negative values scale down; for example, a value of
+     *        "-10" scales the fleet down by 10%.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalingAdjustmentType
      */
 
-    public PutScalingPolicyRequest withScalingAdjustmentType(
-            String scalingAdjustmentType) {
+    public PutScalingPolicyRequest withScalingAdjustmentType(String scalingAdjustmentType) {
         setScalingAdjustmentType(scalingAdjustmentType);
         return this;
     }
 
     /**
      * <p>
-     * Type of adjustment to make to a fleet's instance count (see
-     * <a>FleetCapacity</a>):
+     * Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):
      * </p>
      * <ul>
-     * <li><b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment
-     * value from the current instance count. Positive values scale up while
-     * negative values scale down.</li>
-     * <li><b>ExactCapacity</b> – set the instance count to the scaling
-     * adjustment value.</li>
-     * <li><b>PercentChangeInCapacity</b> – increase or reduce the current
-     * instance count by the scaling adjustment, read as a percentage. Positive
-     * values scale up while negative values scale down; for example, a value of
-     * "-10" scales the fleet down by 10%.</li>
+     * <li>
+     * <p>
+     * <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     * Positive values scale up while negative values scale down.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as
+     * a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the
+     * fleet down by 10%.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param scalingAdjustmentType
-     *        Type of adjustment to make to a fleet's instance count (see
-     *        <a>FleetCapacity</a>):</p>
+     *        Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p>
      *        <ul>
-     *        <li><b>ChangeInCapacity</b> – add (or subtract) the scaling
-     *        adjustment value from the current instance count. Positive values
-     *        scale up while negative values scale down.</li>
-     *        <li><b>ExactCapacity</b> – set the instance count to the scaling
-     *        adjustment value.</li>
-     *        <li><b>PercentChangeInCapacity</b> – increase or reduce the
-     *        current instance count by the scaling adjustment, read as a
-     *        percentage. Positive values scale up while negative values scale
-     *        down; for example, a value of "-10" scales the fleet down by 10%.</li>
+     *        <li>
+     *        <p>
+     *        <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     *        Positive values scale up while negative values scale down.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment,
+     *        read as a percentage. Positive values scale up while negative values scale down; for example, a value of
+     *        "-10" scales the fleet down by 10%.
+     *        </p>
+     *        </li>
      * @see ScalingAdjustmentType
      */
 
-    public void setScalingAdjustmentType(
-            ScalingAdjustmentType scalingAdjustmentType) {
+    public void setScalingAdjustmentType(ScalingAdjustmentType scalingAdjustmentType) {
         this.scalingAdjustmentType = scalingAdjustmentType.toString();
     }
 
     /**
      * <p>
-     * Type of adjustment to make to a fleet's instance count (see
-     * <a>FleetCapacity</a>):
+     * Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):
      * </p>
      * <ul>
-     * <li><b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment
-     * value from the current instance count. Positive values scale up while
-     * negative values scale down.</li>
-     * <li><b>ExactCapacity</b> – set the instance count to the scaling
-     * adjustment value.</li>
-     * <li><b>PercentChangeInCapacity</b> – increase or reduce the current
-     * instance count by the scaling adjustment, read as a percentage. Positive
-     * values scale up while negative values scale down; for example, a value of
-     * "-10" scales the fleet down by 10%.</li>
+     * <li>
+     * <p>
+     * <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     * Positive values scale up while negative values scale down.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as
+     * a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the
+     * fleet down by 10%.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param scalingAdjustmentType
-     *        Type of adjustment to make to a fleet's instance count (see
-     *        <a>FleetCapacity</a>):</p>
+     *        Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p>
      *        <ul>
-     *        <li><b>ChangeInCapacity</b> – add (or subtract) the scaling
-     *        adjustment value from the current instance count. Positive values
-     *        scale up while negative values scale down.</li>
-     *        <li><b>ExactCapacity</b> – set the instance count to the scaling
-     *        adjustment value.</li>
-     *        <li><b>PercentChangeInCapacity</b> – increase or reduce the
-     *        current instance count by the scaling adjustment, read as a
-     *        percentage. Positive values scale up while negative values scale
-     *        down; for example, a value of "-10" scales the fleet down by 10%.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count.
+     *        Positive values scale up while negative values scale down.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment,
+     *        read as a percentage. Positive values scale up while negative values scale down; for example, a value of
+     *        "-10" scales the fleet down by 10%.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalingAdjustmentType
      */
 
-    public PutScalingPolicyRequest withScalingAdjustmentType(
-            ScalingAdjustmentType scalingAdjustmentType) {
+    public PutScalingPolicyRequest withScalingAdjustmentType(ScalingAdjustmentType scalingAdjustmentType) {
         setScalingAdjustmentType(scalingAdjustmentType);
         return this;
     }
@@ -476,8 +562,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
      * 
      * @param threshold
      *        Metric value used to trigger a scaling event.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutScalingPolicyRequest withThreshold(Double threshold) {
@@ -487,13 +572,11 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Comparison operator to use when measuring the metric against the
-     * threshold value.
+     * Comparison operator to use when measuring the metric against the threshold value.
      * </p>
      * 
      * @param comparisonOperator
-     *        Comparison operator to use when measuring the metric against the
-     *        threshold value.
+     *        Comparison operator to use when measuring the metric against the threshold value.
      * @see ComparisonOperatorType
      */
 
@@ -503,12 +586,10 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Comparison operator to use when measuring the metric against the
-     * threshold value.
+     * Comparison operator to use when measuring the metric against the threshold value.
      * </p>
      * 
-     * @return Comparison operator to use when measuring the metric against the
-     *         threshold value.
+     * @return Comparison operator to use when measuring the metric against the threshold value.
      * @see ComparisonOperatorType
      */
 
@@ -518,33 +599,27 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Comparison operator to use when measuring the metric against the
-     * threshold value.
+     * Comparison operator to use when measuring the metric against the threshold value.
      * </p>
      * 
      * @param comparisonOperator
-     *        Comparison operator to use when measuring the metric against the
-     *        threshold value.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Comparison operator to use when measuring the metric against the threshold value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComparisonOperatorType
      */
 
-    public PutScalingPolicyRequest withComparisonOperator(
-            String comparisonOperator) {
+    public PutScalingPolicyRequest withComparisonOperator(String comparisonOperator) {
         setComparisonOperator(comparisonOperator);
         return this;
     }
 
     /**
      * <p>
-     * Comparison operator to use when measuring the metric against the
-     * threshold value.
+     * Comparison operator to use when measuring the metric against the threshold value.
      * </p>
      * 
      * @param comparisonOperator
-     *        Comparison operator to use when measuring the metric against the
-     *        threshold value.
+     *        Comparison operator to use when measuring the metric against the threshold value.
      * @see ComparisonOperatorType
      */
 
@@ -554,33 +629,28 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Comparison operator to use when measuring the metric against the
-     * threshold value.
+     * Comparison operator to use when measuring the metric against the threshold value.
      * </p>
      * 
      * @param comparisonOperator
-     *        Comparison operator to use when measuring the metric against the
-     *        threshold value.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Comparison operator to use when measuring the metric against the threshold value.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComparisonOperatorType
      */
 
-    public PutScalingPolicyRequest withComparisonOperator(
-            ComparisonOperatorType comparisonOperator) {
+    public PutScalingPolicyRequest withComparisonOperator(ComparisonOperatorType comparisonOperator) {
         setComparisonOperator(comparisonOperator);
         return this;
     }
 
     /**
      * <p>
-     * Length of time (in minutes) the metric must be at or beyond the threshold
-     * before a scaling event is triggered.
+     * Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.
      * </p>
      * 
      * @param evaluationPeriods
-     *        Length of time (in minutes) the metric must be at or beyond the
-     *        threshold before a scaling event is triggered.
+     *        Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is
+     *        triggered.
      */
 
     public void setEvaluationPeriods(Integer evaluationPeriods) {
@@ -589,12 +659,11 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Length of time (in minutes) the metric must be at or beyond the threshold
-     * before a scaling event is triggered.
+     * Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.
      * </p>
      * 
-     * @return Length of time (in minutes) the metric must be at or beyond the
-     *         threshold before a scaling event is triggered.
+     * @return Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is
+     *         triggered.
      */
 
     public Integer getEvaluationPeriods() {
@@ -603,72 +672,102 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Length of time (in minutes) the metric must be at or beyond the threshold
-     * before a scaling event is triggered.
+     * Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.
      * </p>
      * 
      * @param evaluationPeriods
-     *        Length of time (in minutes) the metric must be at or beyond the
-     *        threshold before a scaling event is triggered.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is
+     *        triggered.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PutScalingPolicyRequest withEvaluationPeriods(
-            Integer evaluationPeriods) {
+    public PutScalingPolicyRequest withEvaluationPeriods(Integer evaluationPeriods) {
         setEvaluationPeriods(evaluationPeriods);
         return this;
     }
 
     /**
      * <p>
-     * Name of the Amazon GameLift-defined metric that is used to trigger an
-     * adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
-     * <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     * process of being created (game session status = <code>ACTIVATING</code>).
+     * <li>
+     * <p>
+     * <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status =
+     * <code>ACTIVATING</code>).
+     * </p>
      * </li>
-     * <li><b>ActiveGameSessions</b> – number of game sessions currently running
-     * (game session status = <code>ACTIVE</code>).</li>
-     * <li><b>CurrentPlayerSessions</b> – number of active or reserved player
-     * sessions (player session status = <code>ACTIVE</code> or
-     * <code>RESERVED</code>).</li>
-     * <li><b>AvailablePlayerSessions</b> – number of player session slots
-     * currently available in active game sessions across the fleet, calculated
-     * by subtracting a game session's current player session count from its
-     * maximum player session count. This number includes game sessions that are
-     * not currently accepting players (game session
-     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</li>
-     * <li><b>ActiveInstances</b> – number of instances currently running a game
-     * session.</li>
-     * <li><b>IdleInstances</b> – number of instances not currently running a
-     * game session.</li>
+     * <li>
+     * <p>
+     * <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>
+     * ).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     * <code>ACTIVE</code> or <code>RESERVED</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions
+     * across the fleet, calculated by subtracting a game session's current player session count from its maximum player
+     * session count. This number includes game sessions that are not currently accepting players (game session
+     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ActiveInstances</b> – number of instances currently running a game session.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IdleInstances</b> – number of instances not currently running a game session.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param metricName
-     *        Name of the Amazon GameLift-defined metric that is used to trigger
-     *        an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
-     *        <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     *        process of being created (game session status =
-     *        <code>ACTIVATING</code>).</li>
-     *        <li><b>ActiveGameSessions</b> – number of game sessions currently
-     *        running (game session status = <code>ACTIVE</code>).</li>
-     *        <li><b>CurrentPlayerSessions</b> – number of active or reserved
-     *        player sessions (player session status = <code>ACTIVE</code> or
-     *        <code>RESERVED</code>).</li>
-     *        <li><b>AvailablePlayerSessions</b> – number of player session
-     *        slots currently available in active game sessions across the
-     *        fleet, calculated by subtracting a game session's current player
-     *        session count from its maximum player session count. This number
-     *        includes game sessions that are not currently accepting players
-     *        (game session <code>PlayerSessionCreationPolicy</code> =
-     *        <code>DENY_ALL</code>).</li>
-     *        <li><b>ActiveInstances</b> – number of instances currently running
-     *        a game session.</li>
-     *        <li><b>IdleInstances</b> – number of instances not currently
-     *        running a game session.</li>
+     *        <li>
+     *        <p>
+     *        <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session
+     *        status = <code>ACTIVATING</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveGameSessions</b> – number of game sessions currently running (game session status =
+     *        <code>ACTIVE</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     *        <code>ACTIVE</code> or <code>RESERVED</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game
+     *        sessions across the fleet, calculated by subtracting a game session's current player session count from
+     *        its maximum player session count. This number includes game sessions that are not currently accepting
+     *        players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveInstances</b> – number of instances currently running a game session.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>IdleInstances</b> – number of instances not currently running a game session.
+     *        </p>
+     *        </li>
      * @see MetricName
      */
 
@@ -678,52 +777,85 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Name of the Amazon GameLift-defined metric that is used to trigger an
-     * adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
-     * <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     * process of being created (game session status = <code>ACTIVATING</code>).
+     * <li>
+     * <p>
+     * <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status =
+     * <code>ACTIVATING</code>).
+     * </p>
      * </li>
-     * <li><b>ActiveGameSessions</b> – number of game sessions currently running
-     * (game session status = <code>ACTIVE</code>).</li>
-     * <li><b>CurrentPlayerSessions</b> – number of active or reserved player
-     * sessions (player session status = <code>ACTIVE</code> or
-     * <code>RESERVED</code>).</li>
-     * <li><b>AvailablePlayerSessions</b> – number of player session slots
-     * currently available in active game sessions across the fleet, calculated
-     * by subtracting a game session's current player session count from its
-     * maximum player session count. This number includes game sessions that are
-     * not currently accepting players (game session
-     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</li>
-     * <li><b>ActiveInstances</b> – number of instances currently running a game
-     * session.</li>
-     * <li><b>IdleInstances</b> – number of instances not currently running a
-     * game session.</li>
+     * <li>
+     * <p>
+     * <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>
+     * ).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     * <code>ACTIVE</code> or <code>RESERVED</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions
+     * across the fleet, calculated by subtracting a game session's current player session count from its maximum player
+     * session count. This number includes game sessions that are not currently accepting players (game session
+     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ActiveInstances</b> – number of instances currently running a game session.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IdleInstances</b> – number of instances not currently running a game session.
+     * </p>
+     * </li>
      * </ul>
      * 
-     * @return Name of the Amazon GameLift-defined metric that is used to
-     *         trigger an adjustment.</p>
+     * @return Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *         <ul>
-     *         <li><b>ActivatingGameSessions</b> – number of game sessions in
-     *         the process of being created (game session status =
-     *         <code>ACTIVATING</code>).</li>
-     *         <li><b>ActiveGameSessions</b> – number of game sessions currently
-     *         running (game session status = <code>ACTIVE</code>).</li>
-     *         <li><b>CurrentPlayerSessions</b> – number of active or reserved
-     *         player sessions (player session status = <code>ACTIVE</code> or
-     *         <code>RESERVED</code>).</li>
-     *         <li><b>AvailablePlayerSessions</b> – number of player session
-     *         slots currently available in active game sessions across the
-     *         fleet, calculated by subtracting a game session's current player
-     *         session count from its maximum player session count. This number
-     *         includes game sessions that are not currently accepting players
-     *         (game session <code>PlayerSessionCreationPolicy</code> =
-     *         <code>DENY_ALL</code>).</li>
-     *         <li><b>ActiveInstances</b> – number of instances currently
-     *         running a game session.</li>
-     *         <li><b>IdleInstances</b> – number of instances not currently
-     *         running a game session.</li>
+     *         <li>
+     *         <p>
+     *         <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session
+     *         status = <code>ACTIVATING</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>ActiveGameSessions</b> – number of game sessions currently running (game session status =
+     *         <code>ACTIVE</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     *         <code>ACTIVE</code> or <code>RESERVED</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game
+     *         sessions across the fleet, calculated by subtracting a game session's current player session count from
+     *         its maximum player session count. This number includes game sessions that are not currently accepting
+     *         players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>ActiveInstances</b> – number of instances currently running a game session.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>IdleInstances</b> – number of instances not currently running a game session.
+     *         </p>
+     *         </li>
      * @see MetricName
      */
 
@@ -733,55 +865,87 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Name of the Amazon GameLift-defined metric that is used to trigger an
-     * adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
-     * <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     * process of being created (game session status = <code>ACTIVATING</code>).
+     * <li>
+     * <p>
+     * <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status =
+     * <code>ACTIVATING</code>).
+     * </p>
      * </li>
-     * <li><b>ActiveGameSessions</b> – number of game sessions currently running
-     * (game session status = <code>ACTIVE</code>).</li>
-     * <li><b>CurrentPlayerSessions</b> – number of active or reserved player
-     * sessions (player session status = <code>ACTIVE</code> or
-     * <code>RESERVED</code>).</li>
-     * <li><b>AvailablePlayerSessions</b> – number of player session slots
-     * currently available in active game sessions across the fleet, calculated
-     * by subtracting a game session's current player session count from its
-     * maximum player session count. This number includes game sessions that are
-     * not currently accepting players (game session
-     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</li>
-     * <li><b>ActiveInstances</b> – number of instances currently running a game
-     * session.</li>
-     * <li><b>IdleInstances</b> – number of instances not currently running a
-     * game session.</li>
+     * <li>
+     * <p>
+     * <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>
+     * ).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     * <code>ACTIVE</code> or <code>RESERVED</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions
+     * across the fleet, calculated by subtracting a game session's current player session count from its maximum player
+     * session count. This number includes game sessions that are not currently accepting players (game session
+     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ActiveInstances</b> – number of instances currently running a game session.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IdleInstances</b> – number of instances not currently running a game session.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param metricName
-     *        Name of the Amazon GameLift-defined metric that is used to trigger
-     *        an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
-     *        <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     *        process of being created (game session status =
-     *        <code>ACTIVATING</code>).</li>
-     *        <li><b>ActiveGameSessions</b> – number of game sessions currently
-     *        running (game session status = <code>ACTIVE</code>).</li>
-     *        <li><b>CurrentPlayerSessions</b> – number of active or reserved
-     *        player sessions (player session status = <code>ACTIVE</code> or
-     *        <code>RESERVED</code>).</li>
-     *        <li><b>AvailablePlayerSessions</b> – number of player session
-     *        slots currently available in active game sessions across the
-     *        fleet, calculated by subtracting a game session's current player
-     *        session count from its maximum player session count. This number
-     *        includes game sessions that are not currently accepting players
-     *        (game session <code>PlayerSessionCreationPolicy</code> =
-     *        <code>DENY_ALL</code>).</li>
-     *        <li><b>ActiveInstances</b> – number of instances currently running
-     *        a game session.</li>
-     *        <li><b>IdleInstances</b> – number of instances not currently
-     *        running a game session.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session
+     *        status = <code>ACTIVATING</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveGameSessions</b> – number of game sessions currently running (game session status =
+     *        <code>ACTIVE</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     *        <code>ACTIVE</code> or <code>RESERVED</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game
+     *        sessions across the fleet, calculated by subtracting a game session's current player session count from
+     *        its maximum player session count. This number includes game sessions that are not currently accepting
+     *        players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveInstances</b> – number of instances currently running a game session.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>IdleInstances</b> – number of instances not currently running a game session.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see MetricName
      */
 
@@ -792,53 +956,86 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Name of the Amazon GameLift-defined metric that is used to trigger an
-     * adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
-     * <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     * process of being created (game session status = <code>ACTIVATING</code>).
+     * <li>
+     * <p>
+     * <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status =
+     * <code>ACTIVATING</code>).
+     * </p>
      * </li>
-     * <li><b>ActiveGameSessions</b> – number of game sessions currently running
-     * (game session status = <code>ACTIVE</code>).</li>
-     * <li><b>CurrentPlayerSessions</b> – number of active or reserved player
-     * sessions (player session status = <code>ACTIVE</code> or
-     * <code>RESERVED</code>).</li>
-     * <li><b>AvailablePlayerSessions</b> – number of player session slots
-     * currently available in active game sessions across the fleet, calculated
-     * by subtracting a game session's current player session count from its
-     * maximum player session count. This number includes game sessions that are
-     * not currently accepting players (game session
-     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</li>
-     * <li><b>ActiveInstances</b> – number of instances currently running a game
-     * session.</li>
-     * <li><b>IdleInstances</b> – number of instances not currently running a
-     * game session.</li>
+     * <li>
+     * <p>
+     * <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>
+     * ).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     * <code>ACTIVE</code> or <code>RESERVED</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions
+     * across the fleet, calculated by subtracting a game session's current player session count from its maximum player
+     * session count. This number includes game sessions that are not currently accepting players (game session
+     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ActiveInstances</b> – number of instances currently running a game session.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IdleInstances</b> – number of instances not currently running a game session.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param metricName
-     *        Name of the Amazon GameLift-defined metric that is used to trigger
-     *        an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
-     *        <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     *        process of being created (game session status =
-     *        <code>ACTIVATING</code>).</li>
-     *        <li><b>ActiveGameSessions</b> – number of game sessions currently
-     *        running (game session status = <code>ACTIVE</code>).</li>
-     *        <li><b>CurrentPlayerSessions</b> – number of active or reserved
-     *        player sessions (player session status = <code>ACTIVE</code> or
-     *        <code>RESERVED</code>).</li>
-     *        <li><b>AvailablePlayerSessions</b> – number of player session
-     *        slots currently available in active game sessions across the
-     *        fleet, calculated by subtracting a game session's current player
-     *        session count from its maximum player session count. This number
-     *        includes game sessions that are not currently accepting players
-     *        (game session <code>PlayerSessionCreationPolicy</code> =
-     *        <code>DENY_ALL</code>).</li>
-     *        <li><b>ActiveInstances</b> – number of instances currently running
-     *        a game session.</li>
-     *        <li><b>IdleInstances</b> – number of instances not currently
-     *        running a game session.</li>
+     *        <li>
+     *        <p>
+     *        <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session
+     *        status = <code>ACTIVATING</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveGameSessions</b> – number of game sessions currently running (game session status =
+     *        <code>ACTIVE</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     *        <code>ACTIVE</code> or <code>RESERVED</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game
+     *        sessions across the fleet, calculated by subtracting a game session's current player session count from
+     *        its maximum player session count. This number includes game sessions that are not currently accepting
+     *        players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveInstances</b> – number of instances currently running a game session.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>IdleInstances</b> – number of instances not currently running a game session.
+     *        </p>
+     *        </li>
      * @see MetricName
      */
 
@@ -848,55 +1045,87 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Name of the Amazon GameLift-defined metric that is used to trigger an
-     * adjustment.
+     * Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
      * </p>
      * <ul>
-     * <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     * process of being created (game session status = <code>ACTIVATING</code>).
+     * <li>
+     * <p>
+     * <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status =
+     * <code>ACTIVATING</code>).
+     * </p>
      * </li>
-     * <li><b>ActiveGameSessions</b> – number of game sessions currently running
-     * (game session status = <code>ACTIVE</code>).</li>
-     * <li><b>CurrentPlayerSessions</b> – number of active or reserved player
-     * sessions (player session status = <code>ACTIVE</code> or
-     * <code>RESERVED</code>).</li>
-     * <li><b>AvailablePlayerSessions</b> – number of player session slots
-     * currently available in active game sessions across the fleet, calculated
-     * by subtracting a game session's current player session count from its
-     * maximum player session count. This number includes game sessions that are
-     * not currently accepting players (game session
-     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</li>
-     * <li><b>ActiveInstances</b> – number of instances currently running a game
-     * session.</li>
-     * <li><b>IdleInstances</b> – number of instances not currently running a
-     * game session.</li>
+     * <li>
+     * <p>
+     * <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>
+     * ).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     * <code>ACTIVE</code> or <code>RESERVED</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions
+     * across the fleet, calculated by subtracting a game session's current player session count from its maximum player
+     * session count. This number includes game sessions that are not currently accepting players (game session
+     * <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>ActiveInstances</b> – number of instances currently running a game session.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>IdleInstances</b> – number of instances not currently running a game session.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param metricName
-     *        Name of the Amazon GameLift-defined metric that is used to trigger
-     *        an adjustment.</p>
+     *        Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
      *        <ul>
-     *        <li><b>ActivatingGameSessions</b> – number of game sessions in the
-     *        process of being created (game session status =
-     *        <code>ACTIVATING</code>).</li>
-     *        <li><b>ActiveGameSessions</b> – number of game sessions currently
-     *        running (game session status = <code>ACTIVE</code>).</li>
-     *        <li><b>CurrentPlayerSessions</b> – number of active or reserved
-     *        player sessions (player session status = <code>ACTIVE</code> or
-     *        <code>RESERVED</code>).</li>
-     *        <li><b>AvailablePlayerSessions</b> – number of player session
-     *        slots currently available in active game sessions across the
-     *        fleet, calculated by subtracting a game session's current player
-     *        session count from its maximum player session count. This number
-     *        includes game sessions that are not currently accepting players
-     *        (game session <code>PlayerSessionCreationPolicy</code> =
-     *        <code>DENY_ALL</code>).</li>
-     *        <li><b>ActiveInstances</b> – number of instances currently running
-     *        a game session.</li>
-     *        <li><b>IdleInstances</b> – number of instances not currently
-     *        running a game session.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session
+     *        status = <code>ACTIVATING</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveGameSessions</b> – number of game sessions currently running (game session status =
+     *        <code>ACTIVE</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status =
+     *        <code>ACTIVE</code> or <code>RESERVED</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game
+     *        sessions across the fleet, calculated by subtracting a game session's current player session count from
+     *        its maximum player session count. This number includes game sessions that are not currently accepting
+     *        players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>ActiveInstances</b> – number of instances currently running a game session.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>IdleInstances</b> – number of instances not currently running a game session.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see MetricName
      */
 
@@ -906,8 +1135,7 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -918,22 +1146,21 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getFleetId() != null)
-            sb.append("FleetId: " + getFleetId() + ",");
+            sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getScalingAdjustment() != null)
-            sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");
+            sb.append("ScalingAdjustment: ").append(getScalingAdjustment()).append(",");
         if (getScalingAdjustmentType() != null)
-            sb.append("ScalingAdjustmentType: " + getScalingAdjustmentType()
-                    + ",");
+            sb.append("ScalingAdjustmentType: ").append(getScalingAdjustmentType()).append(",");
         if (getThreshold() != null)
-            sb.append("Threshold: " + getThreshold() + ",");
+            sb.append("Threshold: ").append(getThreshold()).append(",");
         if (getComparisonOperator() != null)
-            sb.append("ComparisonOperator: " + getComparisonOperator() + ",");
+            sb.append("ComparisonOperator: ").append(getComparisonOperator()).append(",");
         if (getEvaluationPeriods() != null)
-            sb.append("EvaluationPeriods: " + getEvaluationPeriods() + ",");
+            sb.append("EvaluationPeriods: ").append(getEvaluationPeriods()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName());
+            sb.append("MetricName: ").append(getMetricName());
         sb.append("}");
         return sb.toString();
     }
@@ -950,51 +1177,35 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
         PutScalingPolicyRequest other = (PutScalingPolicyRequest) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getFleetId() == null ^ this.getFleetId() == null)
             return false;
-        if (other.getFleetId() != null
-                && other.getFleetId().equals(this.getFleetId()) == false)
+        if (other.getFleetId() != null && other.getFleetId().equals(this.getFleetId()) == false)
             return false;
-        if (other.getScalingAdjustment() == null
-                ^ this.getScalingAdjustment() == null)
+        if (other.getScalingAdjustment() == null ^ this.getScalingAdjustment() == null)
             return false;
-        if (other.getScalingAdjustment() != null
-                && other.getScalingAdjustment().equals(
-                        this.getScalingAdjustment()) == false)
+        if (other.getScalingAdjustment() != null && other.getScalingAdjustment().equals(this.getScalingAdjustment()) == false)
             return false;
-        if (other.getScalingAdjustmentType() == null
-                ^ this.getScalingAdjustmentType() == null)
+        if (other.getScalingAdjustmentType() == null ^ this.getScalingAdjustmentType() == null)
             return false;
-        if (other.getScalingAdjustmentType() != null
-                && other.getScalingAdjustmentType().equals(
-                        this.getScalingAdjustmentType()) == false)
+        if (other.getScalingAdjustmentType() != null && other.getScalingAdjustmentType().equals(this.getScalingAdjustmentType()) == false)
             return false;
         if (other.getThreshold() == null ^ this.getThreshold() == null)
             return false;
-        if (other.getThreshold() != null
-                && other.getThreshold().equals(this.getThreshold()) == false)
+        if (other.getThreshold() != null && other.getThreshold().equals(this.getThreshold()) == false)
             return false;
-        if (other.getComparisonOperator() == null
-                ^ this.getComparisonOperator() == null)
+        if (other.getComparisonOperator() == null ^ this.getComparisonOperator() == null)
             return false;
-        if (other.getComparisonOperator() != null
-                && other.getComparisonOperator().equals(
-                        this.getComparisonOperator()) == false)
+        if (other.getComparisonOperator() != null && other.getComparisonOperator().equals(this.getComparisonOperator()) == false)
             return false;
-        if (other.getEvaluationPeriods() == null
-                ^ this.getEvaluationPeriods() == null)
+        if (other.getEvaluationPeriods() == null ^ this.getEvaluationPeriods() == null)
             return false;
-        if (other.getEvaluationPeriods() != null
-                && other.getEvaluationPeriods().equals(
-                        this.getEvaluationPeriods()) == false)
+        if (other.getEvaluationPeriods() != null && other.getEvaluationPeriods().equals(this.getEvaluationPeriods()) == false)
             return false;
         if (other.getMetricName() == null ^ this.getMetricName() == null)
             return false;
-        if (other.getMetricName() != null
-                && other.getMetricName().equals(this.getMetricName()) == false)
+        if (other.getMetricName() != null && other.getMetricName().equals(this.getMetricName()) == false)
             return false;
         return true;
     }
@@ -1004,30 +1215,14 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getFleetId() == null) ? 0 : getFleetId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getScalingAdjustment() == null) ? 0
-                        : getScalingAdjustment().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getScalingAdjustmentType() == null) ? 0
-                        : getScalingAdjustmentType().hashCode());
-        hashCode = prime * hashCode
-                + ((getThreshold() == null) ? 0 : getThreshold().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getComparisonOperator() == null) ? 0
-                        : getComparisonOperator().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEvaluationPeriods() == null) ? 0
-                        : getEvaluationPeriods().hashCode());
-        hashCode = prime * hashCode
-                + ((getMetricName() == null) ? 0 : getMetricName().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getFleetId() == null) ? 0 : getFleetId().hashCode());
+        hashCode = prime * hashCode + ((getScalingAdjustment() == null) ? 0 : getScalingAdjustment().hashCode());
+        hashCode = prime * hashCode + ((getScalingAdjustmentType() == null) ? 0 : getScalingAdjustmentType().hashCode());
+        hashCode = prime * hashCode + ((getThreshold() == null) ? 0 : getThreshold().hashCode());
+        hashCode = prime * hashCode + ((getComparisonOperator() == null) ? 0 : getComparisonOperator().hashCode());
+        hashCode = prime * hashCode + ((getEvaluationPeriods() == null) ? 0 : getEvaluationPeriods().hashCode());
+        hashCode = prime * hashCode + ((getMetricName() == null) ? 0 : getMetricName().hashCode());
         return hashCode;
     }
 
@@ -1035,4 +1230,5 @@ public class PutScalingPolicyRequest extends AmazonWebServiceRequest implements
     public PutScalingPolicyRequest clone() {
         return (PutScalingPolicyRequest) super.clone();
     }
+
 }

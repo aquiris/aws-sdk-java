@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Results of a <a>CreateStorageLocationResult</a> call.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateStorageLocation"
+ *      target="_top">AWS API Documentation</a>
  */
-public class CreateStorageLocationResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateStorageLocationResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -62,8 +65,7 @@ public class CreateStorageLocationResult implements Serializable, Cloneable {
      * 
      * @param s3Bucket
      *        The name of the Amazon S3 bucket created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStorageLocationResult withS3Bucket(String s3Bucket) {
@@ -72,8 +74,7 @@ public class CreateStorageLocationResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -84,7 +85,7 @@ public class CreateStorageLocationResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getS3Bucket() != null)
-            sb.append("S3Bucket: " + getS3Bucket());
+            sb.append("S3Bucket: ").append(getS3Bucket());
         sb.append("}");
         return sb.toString();
     }
@@ -101,8 +102,7 @@ public class CreateStorageLocationResult implements Serializable, Cloneable {
         CreateStorageLocationResult other = (CreateStorageLocationResult) obj;
         if (other.getS3Bucket() == null ^ this.getS3Bucket() == null)
             return false;
-        if (other.getS3Bucket() != null
-                && other.getS3Bucket().equals(this.getS3Bucket()) == false)
+        if (other.getS3Bucket() != null && other.getS3Bucket().equals(this.getS3Bucket()) == false)
             return false;
         return true;
     }
@@ -112,8 +112,7 @@ public class CreateStorageLocationResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getS3Bucket() == null) ? 0 : getS3Bucket().hashCode());
+        hashCode = prime * hashCode + ((getS3Bucket() == null) ? 0 : getS3Bucket().hashCode());
         return hashCode;
     }
 
@@ -122,9 +121,8 @@ public class CreateStorageLocationResult implements Serializable, Cloneable {
         try {
             return (CreateStorageLocationResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

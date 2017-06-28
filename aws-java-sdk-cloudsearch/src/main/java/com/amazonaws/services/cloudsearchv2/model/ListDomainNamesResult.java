@@ -1,28 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudsearchv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The result of a <code>ListDomainNames</code> request. Contains a list of the
- * domains owned by an account.
+ * The result of a <code>ListDomainNames</code> request. Contains a list of the domains owned by an account.
  * </p>
  */
-public class ListDomainNamesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListDomainNamesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -56,9 +55,7 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
      */
 
     public void setDomainNames(java.util.Map<String, String> domainNames) {
-        this.domainNames = domainNames == null ? null
-                : new com.amazonaws.internal.SdkInternalMap<String, String>(
-                        domainNames);
+        this.domainNames = domainNames == null ? null : new com.amazonaws.internal.SdkInternalMap<String, String>(domainNames);
     }
 
     /**
@@ -68,12 +65,10 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
      * 
      * @param domainNames
      *        The names of the search domains owned by an account.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListDomainNamesResult withDomainNames(
-            java.util.Map<String, String> domainNames) {
+    public ListDomainNamesResult withDomainNames(java.util.Map<String, String> domainNames) {
         setDomainNames(domainNames);
         return this;
     }
@@ -83,15 +78,15 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
             this.domainNames = new com.amazonaws.internal.SdkInternalMap<String, String>();
         }
         if (this.domainNames.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.domainNames.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into DomainNames. &lt;p> Returns a
-     * reference to this object so that method calls can be chained together.
+     * Removes all the entries added into DomainNames.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListDomainNamesResult clearDomainNamesEntries() {
@@ -100,8 +95,7 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -112,7 +106,7 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDomainNames() != null)
-            sb.append("DomainNames: " + getDomainNames());
+            sb.append("DomainNames: ").append(getDomainNames());
         sb.append("}");
         return sb.toString();
     }
@@ -129,8 +123,7 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
         ListDomainNamesResult other = (ListDomainNamesResult) obj;
         if (other.getDomainNames() == null ^ this.getDomainNames() == null)
             return false;
-        if (other.getDomainNames() != null
-                && other.getDomainNames().equals(this.getDomainNames()) == false)
+        if (other.getDomainNames() != null && other.getDomainNames().equals(this.getDomainNames()) == false)
             return false;
         return true;
     }
@@ -140,9 +133,7 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDomainNames() == null) ? 0 : getDomainNames().hashCode());
+        hashCode = prime * hashCode + ((getDomainNames() == null) ? 0 : getDomainNames().hashCode());
         return hashCode;
     }
 
@@ -151,9 +142,8 @@ public class ListDomainNamesResult implements Serializable, Cloneable {
         try {
             return (ListDomainNamesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

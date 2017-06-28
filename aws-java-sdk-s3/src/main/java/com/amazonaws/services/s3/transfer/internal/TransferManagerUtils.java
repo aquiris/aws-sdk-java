@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -133,7 +133,8 @@ public class TransferManagerUtils {
      */
     public static boolean shouldUseMultipartUpload(PutObjectRequest putObjectRequest, TransferManagerConfiguration configuration) {
         long contentLength = TransferManagerUtils.getContentLength(putObjectRequest);
-        return (contentLength > configuration.getMultipartUploadThreshold());
+        return (contentLength > configuration.getMultipartUploadThreshold())
+                && putObjectRequest.getTagging() == null;
     }
 
     /**

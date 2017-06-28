@@ -1,33 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.config.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The number of AWS resources or AWS Config rules responsible for the current
- * compliance of the item, up to a maximum number.
+ * The number of AWS resources or AWS Config rules responsible for the current compliance of the item, up to a maximum
+ * number.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ComplianceContributorCount" target="_top">AWS
+ *      API Documentation</a>
  */
-public class ComplianceContributorCount implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ComplianceContributorCount implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number of AWS resources or AWS Config rules responsible for the
-     * current compliance of the item.
+     * The number of AWS resources or AWS Config rules responsible for the current compliance of the item.
      * </p>
      */
     private Integer cappedCount;
@@ -40,13 +44,11 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of AWS resources or AWS Config rules responsible for the
-     * current compliance of the item.
+     * The number of AWS resources or AWS Config rules responsible for the current compliance of the item.
      * </p>
      * 
      * @param cappedCount
-     *        The number of AWS resources or AWS Config rules responsible for
-     *        the current compliance of the item.
+     *        The number of AWS resources or AWS Config rules responsible for the current compliance of the item.
      */
 
     public void setCappedCount(Integer cappedCount) {
@@ -55,12 +57,10 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of AWS resources or AWS Config rules responsible for the
-     * current compliance of the item.
+     * The number of AWS resources or AWS Config rules responsible for the current compliance of the item.
      * </p>
      * 
-     * @return The number of AWS resources or AWS Config rules responsible for
-     *         the current compliance of the item.
+     * @return The number of AWS resources or AWS Config rules responsible for the current compliance of the item.
      */
 
     public Integer getCappedCount() {
@@ -69,15 +69,12 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of AWS resources or AWS Config rules responsible for the
-     * current compliance of the item.
+     * The number of AWS resources or AWS Config rules responsible for the current compliance of the item.
      * </p>
      * 
      * @param cappedCount
-     *        The number of AWS resources or AWS Config rules responsible for
-     *        the current compliance of the item.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The number of AWS resources or AWS Config rules responsible for the current compliance of the item.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ComplianceContributorCount withCappedCount(Integer cappedCount) {
@@ -117,8 +114,7 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
      * 
      * @param capExceeded
      *        Indicates whether the maximum count is reached.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ComplianceContributorCount withCapExceeded(Boolean capExceeded) {
@@ -139,8 +135,7 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -151,9 +146,9 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCappedCount() != null)
-            sb.append("CappedCount: " + getCappedCount() + ",");
+            sb.append("CappedCount: ").append(getCappedCount()).append(",");
         if (getCapExceeded() != null)
-            sb.append("CapExceeded: " + getCapExceeded());
+            sb.append("CapExceeded: ").append(getCapExceeded());
         sb.append("}");
         return sb.toString();
     }
@@ -170,13 +165,11 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
         ComplianceContributorCount other = (ComplianceContributorCount) obj;
         if (other.getCappedCount() == null ^ this.getCappedCount() == null)
             return false;
-        if (other.getCappedCount() != null
-                && other.getCappedCount().equals(this.getCappedCount()) == false)
+        if (other.getCappedCount() != null && other.getCappedCount().equals(this.getCappedCount()) == false)
             return false;
         if (other.getCapExceeded() == null ^ this.getCapExceeded() == null)
             return false;
-        if (other.getCapExceeded() != null
-                && other.getCapExceeded().equals(this.getCapExceeded()) == false)
+        if (other.getCapExceeded() != null && other.getCapExceeded().equals(this.getCapExceeded()) == false)
             return false;
         return true;
     }
@@ -186,12 +179,8 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCappedCount() == null) ? 0 : getCappedCount().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCapExceeded() == null) ? 0 : getCapExceeded().hashCode());
+        hashCode = prime * hashCode + ((getCappedCount() == null) ? 0 : getCappedCount().hashCode());
+        hashCode = prime * hashCode + ((getCapExceeded() == null) ? 0 : getCapExceeded().hashCode());
         return hashCode;
     }
 
@@ -200,9 +189,13 @@ public class ComplianceContributorCount implements Serializable, Cloneable {
         try {
             return (ComplianceContributorCount) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.config.model.transform.ComplianceContributorCountMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

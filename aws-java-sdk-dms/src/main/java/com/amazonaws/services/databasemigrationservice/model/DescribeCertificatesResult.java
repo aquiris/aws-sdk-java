@@ -1,25 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.databasemigrationservice.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeCertificates" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeCertificatesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeCertificatesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -29,7 +31,7 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
     private String marker;
     /**
      * <p>
-     * The SSL certificates associated with the replication instance.
+     * The Secure Sockets Layer (SSL) certificates associated with the replication instance.
      * </p>
      */
     private java.util.List<Certificate> certificates;
@@ -66,8 +68,7 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
      * 
      * @param marker
      *        The pagination token.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeCertificatesResult withMarker(String marker) {
@@ -77,10 +78,10 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The SSL certificates associated with the replication instance.
+     * The Secure Sockets Layer (SSL) certificates associated with the replication instance.
      * </p>
      * 
-     * @return The SSL certificates associated with the replication instance.
+     * @return The Secure Sockets Layer (SSL) certificates associated with the replication instance.
      */
 
     public java.util.List<Certificate> getCertificates() {
@@ -89,11 +90,11 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The SSL certificates associated with the replication instance.
+     * The Secure Sockets Layer (SSL) certificates associated with the replication instance.
      * </p>
      * 
      * @param certificates
-     *        The SSL certificates associated with the replication instance.
+     *        The Secure Sockets Layer (SSL) certificates associated with the replication instance.
      */
 
     public void setCertificates(java.util.Collection<Certificate> certificates) {
@@ -107,26 +108,22 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The SSL certificates associated with the replication instance.
+     * The Secure Sockets Layer (SSL) certificates associated with the replication instance.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setCertificates(java.util.Collection)} or
-     * {@link #withCertificates(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCertificates(java.util.Collection)} or {@link #withCertificates(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param certificates
-     *        The SSL certificates associated with the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Secure Sockets Layer (SSL) certificates associated with the replication instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeCertificatesResult withCertificates(
-            Certificate... certificates) {
+    public DescribeCertificatesResult withCertificates(Certificate... certificates) {
         if (this.certificates == null) {
-            setCertificates(new java.util.ArrayList<Certificate>(
-                    certificates.length));
+            setCertificates(new java.util.ArrayList<Certificate>(certificates.length));
         }
         for (Certificate ele : certificates) {
             this.certificates.add(ele);
@@ -136,24 +133,21 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The SSL certificates associated with the replication instance.
+     * The Secure Sockets Layer (SSL) certificates associated with the replication instance.
      * </p>
      * 
      * @param certificates
-     *        The SSL certificates associated with the replication instance.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Secure Sockets Layer (SSL) certificates associated with the replication instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeCertificatesResult withCertificates(
-            java.util.Collection<Certificate> certificates) {
+    public DescribeCertificatesResult withCertificates(java.util.Collection<Certificate> certificates) {
         setCertificates(certificates);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -164,9 +158,9 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getCertificates() != null)
-            sb.append("Certificates: " + getCertificates());
+            sb.append("Certificates: ").append(getCertificates());
         sb.append("}");
         return sb.toString();
     }
@@ -183,13 +177,11 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
         DescribeCertificatesResult other = (DescribeCertificatesResult) obj;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         if (other.getCertificates() == null ^ this.getCertificates() == null)
             return false;
-        if (other.getCertificates() != null
-                && other.getCertificates().equals(this.getCertificates()) == false)
+        if (other.getCertificates() != null && other.getCertificates().equals(this.getCertificates()) == false)
             return false;
         return true;
     }
@@ -199,12 +191,8 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCertificates() == null) ? 0 : getCertificates()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getCertificates() == null) ? 0 : getCertificates().hashCode());
         return hashCode;
     }
 
@@ -213,9 +201,8 @@ public class DescribeCertificatesResult implements Serializable, Cloneable {
         try {
             return (DescribeCertificatesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

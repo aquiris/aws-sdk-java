@@ -1,27 +1,26 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.inspector.model;
 
+import javax.annotation.Generated;
+
 /**
  * <p>
- * The request was rejected because it referenced an entity that does not exist.
- * The error code describes the entity.
+ * The request was rejected because it referenced an entity that does not exist. The error code describes the entity.
  * </p>
  */
-public class NoSuchEntityException extends
-        com.amazonaws.services.inspector.model.AmazonInspectorException {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class NoSuchEntityException extends com.amazonaws.services.inspector.model.AmazonInspectorException {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -81,8 +80,7 @@ public class NoSuchEntityException extends
      * 
      * @param canRetry
      *        You can immediately retry your request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public NoSuchEntityException withCanRetry(Boolean canRetry) {
@@ -138,13 +136,11 @@ public class NoSuchEntityException extends
      * 
      * @param inspectorErrorCode
      *        Code that indicates the type of error that is generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see NoSuchEntityErrorCode
      */
 
-    public NoSuchEntityException withInspectorErrorCode(
-            String inspectorErrorCode) {
+    public NoSuchEntityException withInspectorErrorCode(String inspectorErrorCode) {
         setInspectorErrorCode(inspectorErrorCode);
         return this;
     }
@@ -170,13 +166,11 @@ public class NoSuchEntityException extends
      * 
      * @param inspectorErrorCode
      *        Code that indicates the type of error that is generated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see NoSuchEntityErrorCode
      */
 
-    public NoSuchEntityException withInspectorErrorCode(
-            NoSuchEntityErrorCode inspectorErrorCode) {
+    public NoSuchEntityException withInspectorErrorCode(NoSuchEntityErrorCode inspectorErrorCode) {
         setInspectorErrorCode(inspectorErrorCode);
         return this;
     }

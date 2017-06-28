@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
+import com.amazonaws.AmazonWebServiceResult;
 
 /**
  * <p>
  * Contains the output of DescribeInstances.
  * </p>
  */
-public class DescribeInstancesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeInstancesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,8 +33,8 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<Reservation> reservations;
     /**
      * <p>
-     * The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.
+     * The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more
+     * results to return.
      * </p>
      */
     private String nextToken;
@@ -67,8 +69,7 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
             return;
         }
 
-        this.reservations = new com.amazonaws.internal.SdkInternalList<Reservation>(
-                reservations);
+        this.reservations = new com.amazonaws.internal.SdkInternalList<Reservation>(reservations);
     }
 
     /**
@@ -76,22 +77,19 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
      * Zero or more reservations.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setReservations(java.util.Collection)} or
-     * {@link #withReservations(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setReservations(java.util.Collection)} or {@link #withReservations(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param reservations
      *        Zero or more reservations.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeInstancesResult withReservations(Reservation... reservations) {
         if (this.reservations == null) {
-            setReservations(new com.amazonaws.internal.SdkInternalList<Reservation>(
-                    reservations.length));
+            setReservations(new com.amazonaws.internal.SdkInternalList<Reservation>(reservations.length));
         }
         for (Reservation ele : reservations) {
             this.reservations.add(ele);
@@ -106,25 +104,23 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
      * 
      * @param reservations
      *        Zero or more reservations.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeInstancesResult withReservations(
-            java.util.Collection<Reservation> reservations) {
+    public DescribeInstancesResult withReservations(java.util.Collection<Reservation> reservations) {
         setReservations(reservations);
         return this;
     }
 
     /**
      * <p>
-     * The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.
+     * The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more
+     * results to return.
      * </p>
      * 
      * @param nextToken
-     *        The token to use to retrieve the next page of results. This value
-     *        is <code>null</code> when there are no more results to return.
+     *        The token to use to retrieve the next page of results. This value is <code>null</code> when there are no
+     *        more results to return.
      */
 
     public void setNextToken(String nextToken) {
@@ -133,12 +129,12 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.
+     * The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more
+     * results to return.
      * </p>
      * 
-     * @return The token to use to retrieve the next page of results. This value
-     *         is <code>null</code> when there are no more results to return.
+     * @return The token to use to retrieve the next page of results. This value is <code>null</code> when there are no
+     *         more results to return.
      */
 
     public String getNextToken() {
@@ -147,15 +143,14 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.
+     * The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more
+     * results to return.
      * </p>
      * 
      * @param nextToken
-     *        The token to use to retrieve the next page of results. This value
-     *        is <code>null</code> when there are no more results to return.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The token to use to retrieve the next page of results. This value is <code>null</code> when there are no
+     *        more results to return.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeInstancesResult withNextToken(String nextToken) {
@@ -164,8 +159,7 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -176,9 +170,9 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getReservations() != null)
-            sb.append("Reservations: " + getReservations() + ",");
+            sb.append("Reservations: ").append(getReservations()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -195,13 +189,11 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
         DescribeInstancesResult other = (DescribeInstancesResult) obj;
         if (other.getReservations() == null ^ this.getReservations() == null)
             return false;
-        if (other.getReservations() != null
-                && other.getReservations().equals(this.getReservations()) == false)
+        if (other.getReservations() != null && other.getReservations().equals(this.getReservations()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -211,12 +203,8 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getReservations() == null) ? 0 : getReservations()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getReservations() == null) ? 0 : getReservations().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -225,9 +213,7 @@ public class DescribeInstancesResult implements Serializable, Cloneable {
         try {
             return (DescribeInstancesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

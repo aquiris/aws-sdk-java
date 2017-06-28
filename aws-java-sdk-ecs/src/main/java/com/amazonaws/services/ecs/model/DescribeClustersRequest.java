@@ -1,47 +1,46 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ecs.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeClusters" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeClustersRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeClustersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A space-separated list of up to 100 cluster names or full cluster Amazon
-     * Resource Name (ARN) entries. If you do not specify a cluster, the default
-     * cluster is assumed.
+     * A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a
+     * cluster, the default cluster is assumed.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> clusters;
 
     /**
      * <p>
-     * A space-separated list of up to 100 cluster names or full cluster Amazon
-     * Resource Name (ARN) entries. If you do not specify a cluster, the default
-     * cluster is assumed.
+     * A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a
+     * cluster, the default cluster is assumed.
      * </p>
      * 
-     * @return A space-separated list of up to 100 cluster names or full cluster
-     *         Amazon Resource Name (ARN) entries. If you do not specify a
-     *         cluster, the default cluster is assumed.
+     * @return A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not
+     *         specify a cluster, the default cluster is assumed.
      */
 
     public java.util.List<String> getClusters() {
@@ -53,15 +52,13 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A space-separated list of up to 100 cluster names or full cluster Amazon
-     * Resource Name (ARN) entries. If you do not specify a cluster, the default
-     * cluster is assumed.
+     * A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a
+     * cluster, the default cluster is assumed.
      * </p>
      * 
      * @param clusters
-     *        A space-separated list of up to 100 cluster names or full cluster
-     *        Amazon Resource Name (ARN) entries. If you do not specify a
-     *        cluster, the default cluster is assumed.
+     *        A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not
+     *        specify a cluster, the default cluster is assumed.
      */
 
     public void setClusters(java.util.Collection<String> clusters) {
@@ -70,35 +67,29 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest implements
             return;
         }
 
-        this.clusters = new com.amazonaws.internal.SdkInternalList<String>(
-                clusters);
+        this.clusters = new com.amazonaws.internal.SdkInternalList<String>(clusters);
     }
 
     /**
      * <p>
-     * A space-separated list of up to 100 cluster names or full cluster Amazon
-     * Resource Name (ARN) entries. If you do not specify a cluster, the default
-     * cluster is assumed.
+     * A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a
+     * cluster, the default cluster is assumed.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setClusters(java.util.Collection)} or
-     * {@link #withClusters(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setClusters(java.util.Collection)} or {@link #withClusters(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param clusters
-     *        A space-separated list of up to 100 cluster names or full cluster
-     *        Amazon Resource Name (ARN) entries. If you do not specify a
-     *        cluster, the default cluster is assumed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not
+     *        specify a cluster, the default cluster is assumed.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeClustersRequest withClusters(String... clusters) {
         if (this.clusters == null) {
-            setClusters(new com.amazonaws.internal.SdkInternalList<String>(
-                    clusters.length));
+            setClusters(new com.amazonaws.internal.SdkInternalList<String>(clusters.length));
         }
         for (String ele : clusters) {
             this.clusters.add(ele);
@@ -108,28 +99,23 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A space-separated list of up to 100 cluster names or full cluster Amazon
-     * Resource Name (ARN) entries. If you do not specify a cluster, the default
-     * cluster is assumed.
+     * A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a
+     * cluster, the default cluster is assumed.
      * </p>
      * 
      * @param clusters
-     *        A space-separated list of up to 100 cluster names or full cluster
-     *        Amazon Resource Name (ARN) entries. If you do not specify a
-     *        cluster, the default cluster is assumed.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not
+     *        specify a cluster, the default cluster is assumed.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeClustersRequest withClusters(
-            java.util.Collection<String> clusters) {
+    public DescribeClustersRequest withClusters(java.util.Collection<String> clusters) {
         setClusters(clusters);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -140,7 +126,7 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClusters() != null)
-            sb.append("Clusters: " + getClusters());
+            sb.append("Clusters: ").append(getClusters());
         sb.append("}");
         return sb.toString();
     }
@@ -157,8 +143,7 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest implements
         DescribeClustersRequest other = (DescribeClustersRequest) obj;
         if (other.getClusters() == null ^ this.getClusters() == null)
             return false;
-        if (other.getClusters() != null
-                && other.getClusters().equals(this.getClusters()) == false)
+        if (other.getClusters() != null && other.getClusters().equals(this.getClusters()) == false)
             return false;
         return true;
     }
@@ -168,8 +153,7 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getClusters() == null) ? 0 : getClusters().hashCode());
+        hashCode = prime * hashCode + ((getClusters() == null) ? 0 : getClusters().hashCode());
         return hashCode;
     }
 
@@ -177,4 +161,5 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest implements
     public DescribeClustersRequest clone() {
         return (DescribeClustersRequest) super.clone();
     }
+
 }

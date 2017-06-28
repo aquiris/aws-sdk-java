@@ -1,54 +1,55 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.codepipeline.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents information about the key used to encrypt data in the artifact
- * store, such as an AWS Key Management Service (AWS KMS) key.
+ * Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management
+ * Service (AWS KMS) key.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/EncryptionKey" target="_top">AWS API
+ *      Documentation</a>
  */
-public class EncryptionKey implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class EncryptionKey implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID used to identify the key. For an AWS KMS key, this is the key ID
-     * or key ARN.
+     * The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.
      * </p>
      */
     private String id;
     /**
      * <p>
-     * The type of encryption key, such as an AWS Key Management Service (AWS
-     * KMS) key. When creating or updating a pipeline, the value must be set to
-     * 'KMS'.
+     * The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a
+     * pipeline, the value must be set to 'KMS'.
      * </p>
      */
     private String type;
 
     /**
      * <p>
-     * The ID used to identify the key. For an AWS KMS key, this is the key ID
-     * or key ARN.
+     * The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.
      * </p>
      * 
      * @param id
-     *        The ID used to identify the key. For an AWS KMS key, this is the
-     *        key ID or key ARN.
+     *        The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.
      */
 
     public void setId(String id) {
@@ -57,12 +58,10 @@ public class EncryptionKey implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID used to identify the key. For an AWS KMS key, this is the key ID
-     * or key ARN.
+     * The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.
      * </p>
      * 
-     * @return The ID used to identify the key. For an AWS KMS key, this is the
-     *         key ID or key ARN.
+     * @return The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.
      */
 
     public String getId() {
@@ -71,15 +70,12 @@ public class EncryptionKey implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID used to identify the key. For an AWS KMS key, this is the key ID
-     * or key ARN.
+     * The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.
      * </p>
      * 
      * @param id
-     *        The ID used to identify the key. For an AWS KMS key, this is the
-     *        key ID or key ARN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public EncryptionKey withId(String id) {
@@ -89,15 +85,13 @@ public class EncryptionKey implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of encryption key, such as an AWS Key Management Service (AWS
-     * KMS) key. When creating or updating a pipeline, the value must be set to
-     * 'KMS'.
+     * The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a
+     * pipeline, the value must be set to 'KMS'.
      * </p>
      * 
      * @param type
-     *        The type of encryption key, such as an AWS Key Management Service
-     *        (AWS KMS) key. When creating or updating a pipeline, the value
-     *        must be set to 'KMS'.
+     *        The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating
+     *        a pipeline, the value must be set to 'KMS'.
      * @see EncryptionKeyType
      */
 
@@ -107,14 +101,12 @@ public class EncryptionKey implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of encryption key, such as an AWS Key Management Service (AWS
-     * KMS) key. When creating or updating a pipeline, the value must be set to
-     * 'KMS'.
+     * The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a
+     * pipeline, the value must be set to 'KMS'.
      * </p>
      * 
-     * @return The type of encryption key, such as an AWS Key Management Service
-     *         (AWS KMS) key. When creating or updating a pipeline, the value
-     *         must be set to 'KMS'.
+     * @return The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or
+     *         updating a pipeline, the value must be set to 'KMS'.
      * @see EncryptionKeyType
      */
 
@@ -124,17 +116,14 @@ public class EncryptionKey implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of encryption key, such as an AWS Key Management Service (AWS
-     * KMS) key. When creating or updating a pipeline, the value must be set to
-     * 'KMS'.
+     * The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a
+     * pipeline, the value must be set to 'KMS'.
      * </p>
      * 
      * @param type
-     *        The type of encryption key, such as an AWS Key Management Service
-     *        (AWS KMS) key. When creating or updating a pipeline, the value
-     *        must be set to 'KMS'.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating
+     *        a pipeline, the value must be set to 'KMS'.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see EncryptionKeyType
      */
 
@@ -145,15 +134,13 @@ public class EncryptionKey implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of encryption key, such as an AWS Key Management Service (AWS
-     * KMS) key. When creating or updating a pipeline, the value must be set to
-     * 'KMS'.
+     * The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a
+     * pipeline, the value must be set to 'KMS'.
      * </p>
      * 
      * @param type
-     *        The type of encryption key, such as an AWS Key Management Service
-     *        (AWS KMS) key. When creating or updating a pipeline, the value
-     *        must be set to 'KMS'.
+     *        The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating
+     *        a pipeline, the value must be set to 'KMS'.
      * @see EncryptionKeyType
      */
 
@@ -163,17 +150,14 @@ public class EncryptionKey implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of encryption key, such as an AWS Key Management Service (AWS
-     * KMS) key. When creating or updating a pipeline, the value must be set to
-     * 'KMS'.
+     * The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a
+     * pipeline, the value must be set to 'KMS'.
      * </p>
      * 
      * @param type
-     *        The type of encryption key, such as an AWS Key Management Service
-     *        (AWS KMS) key. When creating or updating a pipeline, the value
-     *        must be set to 'KMS'.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating
+     *        a pipeline, the value must be set to 'KMS'.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see EncryptionKeyType
      */
 
@@ -183,8 +167,7 @@ public class EncryptionKey implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -195,9 +178,9 @@ public class EncryptionKey implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType());
+            sb.append("Type: ").append(getType());
         sb.append("}");
         return sb.toString();
     }
@@ -214,13 +197,11 @@ public class EncryptionKey implements Serializable, Cloneable {
         EncryptionKey other = (EncryptionKey) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getType() == null ^ this.getType() == null)
             return false;
-        if (other.getType() != null
-                && other.getType().equals(this.getType()) == false)
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
         return true;
     }
@@ -230,10 +211,8 @@ public class EncryptionKey implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         return hashCode;
     }
 
@@ -242,9 +221,13 @@ public class EncryptionKey implements Serializable, Cloneable {
         try {
             return (EncryptionKey) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codepipeline.model.transform.EncryptionKeyMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -236,6 +236,11 @@ public class PutObjectRequest extends AbstractPutObjectRequest implements Serial
     @SuppressWarnings("unchecked")
     public PutObjectRequest withSSECustomerKey(SSECustomerKey sseKey) {
         return super.withSSECustomerKey(sseKey);
+    }
+
+    public PutObjectRequest withTagging(ObjectTagging tagSet) {
+        super.setTagging(tagSet);
+        return this;
     }
 
     @Deprecated

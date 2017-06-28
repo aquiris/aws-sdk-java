@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for DescribeScheduledActions.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScheduledActions"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeScheduledActionsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,41 +33,36 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
     private String autoScalingGroupName;
     /**
      * <p>
-     * Describes one or more scheduled actions. If you omit this parameter, all
-     * scheduled actions are described. If you specify an unknown scheduled
-     * action, it is ignored with no error.
+     * Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you
+     * specify an unknown scheduled action, it is ignored with no error.
      * </p>
      * <p>
-     * You can describe up to a maximum of 50 instances with a single call. If
-     * there are more items to return, the call returns a token. To get the next
-     * set of items, repeat the call with the returned token.
+     * You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call
+     * returns a token. To get the next set of items, repeat the call with the returned token.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> scheduledActionNames;
     /**
      * <p>
-     * The earliest scheduled start time to return. If scheduled action names
-     * are provided, this parameter is ignored.
+     * The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      */
     private java.util.Date startTime;
     /**
      * <p>
-     * The latest scheduled start time to return. If scheduled action names are
-     * provided, this parameter is ignored.
+     * The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      */
     private java.util.Date endTime;
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      */
     private String nextToken;
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      */
     private Integer maxRecords;
@@ -104,36 +99,29 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
      * 
      * @param autoScalingGroupName
      *        The name of the group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeScheduledActionsRequest withAutoScalingGroupName(
-            String autoScalingGroupName) {
+    public DescribeScheduledActionsRequest withAutoScalingGroupName(String autoScalingGroupName) {
         setAutoScalingGroupName(autoScalingGroupName);
         return this;
     }
 
     /**
      * <p>
-     * Describes one or more scheduled actions. If you omit this parameter, all
-     * scheduled actions are described. If you specify an unknown scheduled
-     * action, it is ignored with no error.
+     * Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you
+     * specify an unknown scheduled action, it is ignored with no error.
      * </p>
      * <p>
-     * You can describe up to a maximum of 50 instances with a single call. If
-     * there are more items to return, the call returns a token. To get the next
-     * set of items, repeat the call with the returned token.
+     * You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call
+     * returns a token. To get the next set of items, repeat the call with the returned token.
      * </p>
      * 
-     * @return Describes one or more scheduled actions. If you omit this
-     *         parameter, all scheduled actions are described. If you specify an
-     *         unknown scheduled action, it is ignored with no error.</p>
+     * @return Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described.
+     *         If you specify an unknown scheduled action, it is ignored with no error.</p>
      *         <p>
-     *         You can describe up to a maximum of 50 instances with a single
-     *         call. If there are more items to return, the call returns a
-     *         token. To get the next set of items, repeat the call with the
-     *         returned token.
+     *         You can describe up to a maximum of 50 instances with a single call. If there are more items to return,
+     *         the call returns a token. To get the next set of items, repeat the call with the returned token.
      */
 
     public java.util.List<String> getScheduledActionNames() {
@@ -145,74 +133,58 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Describes one or more scheduled actions. If you omit this parameter, all
-     * scheduled actions are described. If you specify an unknown scheduled
-     * action, it is ignored with no error.
+     * Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you
+     * specify an unknown scheduled action, it is ignored with no error.
      * </p>
      * <p>
-     * You can describe up to a maximum of 50 instances with a single call. If
-     * there are more items to return, the call returns a token. To get the next
-     * set of items, repeat the call with the returned token.
+     * You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call
+     * returns a token. To get the next set of items, repeat the call with the returned token.
      * </p>
      * 
      * @param scheduledActionNames
-     *        Describes one or more scheduled actions. If you omit this
-     *        parameter, all scheduled actions are described. If you specify an
-     *        unknown scheduled action, it is ignored with no error.</p>
+     *        Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described.
+     *        If you specify an unknown scheduled action, it is ignored with no error.</p>
      *        <p>
-     *        You can describe up to a maximum of 50 instances with a single
-     *        call. If there are more items to return, the call returns a token.
-     *        To get the next set of items, repeat the call with the returned
-     *        token.
+     *        You can describe up to a maximum of 50 instances with a single call. If there are more items to return,
+     *        the call returns a token. To get the next set of items, repeat the call with the returned token.
      */
 
-    public void setScheduledActionNames(
-            java.util.Collection<String> scheduledActionNames) {
+    public void setScheduledActionNames(java.util.Collection<String> scheduledActionNames) {
         if (scheduledActionNames == null) {
             this.scheduledActionNames = null;
             return;
         }
 
-        this.scheduledActionNames = new com.amazonaws.internal.SdkInternalList<String>(
-                scheduledActionNames);
+        this.scheduledActionNames = new com.amazonaws.internal.SdkInternalList<String>(scheduledActionNames);
     }
 
     /**
      * <p>
-     * Describes one or more scheduled actions. If you omit this parameter, all
-     * scheduled actions are described. If you specify an unknown scheduled
-     * action, it is ignored with no error.
+     * Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you
+     * specify an unknown scheduled action, it is ignored with no error.
      * </p>
      * <p>
-     * You can describe up to a maximum of 50 instances with a single call. If
-     * there are more items to return, the call returns a token. To get the next
-     * set of items, repeat the call with the returned token.
+     * You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call
+     * returns a token. To get the next set of items, repeat the call with the returned token.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setScheduledActionNames(java.util.Collection)} or
-     * {@link #withScheduledActionNames(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setScheduledActionNames(java.util.Collection)} or {@link #withScheduledActionNames(java.util.Collection)}
+     * if you want to override the existing values.
      * </p>
      * 
      * @param scheduledActionNames
-     *        Describes one or more scheduled actions. If you omit this
-     *        parameter, all scheduled actions are described. If you specify an
-     *        unknown scheduled action, it is ignored with no error.</p>
+     *        Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described.
+     *        If you specify an unknown scheduled action, it is ignored with no error.</p>
      *        <p>
-     *        You can describe up to a maximum of 50 instances with a single
-     *        call. If there are more items to return, the call returns a token.
-     *        To get the next set of items, repeat the call with the returned
-     *        token.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        You can describe up to a maximum of 50 instances with a single call. If there are more items to return,
+     *        the call returns a token. To get the next set of items, repeat the call with the returned token.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeScheduledActionsRequest withScheduledActionNames(
-            String... scheduledActionNames) {
+    public DescribeScheduledActionsRequest withScheduledActionNames(String... scheduledActionNames) {
         if (this.scheduledActionNames == null) {
-            setScheduledActionNames(new com.amazonaws.internal.SdkInternalList<String>(
-                    scheduledActionNames.length));
+            setScheduledActionNames(new com.amazonaws.internal.SdkInternalList<String>(scheduledActionNames.length));
         }
         for (String ele : scheduledActionNames) {
             this.scheduledActionNames.add(ele);
@@ -222,44 +194,36 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Describes one or more scheduled actions. If you omit this parameter, all
-     * scheduled actions are described. If you specify an unknown scheduled
-     * action, it is ignored with no error.
+     * Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you
+     * specify an unknown scheduled action, it is ignored with no error.
      * </p>
      * <p>
-     * You can describe up to a maximum of 50 instances with a single call. If
-     * there are more items to return, the call returns a token. To get the next
-     * set of items, repeat the call with the returned token.
+     * You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call
+     * returns a token. To get the next set of items, repeat the call with the returned token.
      * </p>
      * 
      * @param scheduledActionNames
-     *        Describes one or more scheduled actions. If you omit this
-     *        parameter, all scheduled actions are described. If you specify an
-     *        unknown scheduled action, it is ignored with no error.</p>
+     *        Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described.
+     *        If you specify an unknown scheduled action, it is ignored with no error.</p>
      *        <p>
-     *        You can describe up to a maximum of 50 instances with a single
-     *        call. If there are more items to return, the call returns a token.
-     *        To get the next set of items, repeat the call with the returned
-     *        token.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        You can describe up to a maximum of 50 instances with a single call. If there are more items to return,
+     *        the call returns a token. To get the next set of items, repeat the call with the returned token.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeScheduledActionsRequest withScheduledActionNames(
-            java.util.Collection<String> scheduledActionNames) {
+    public DescribeScheduledActionsRequest withScheduledActionNames(java.util.Collection<String> scheduledActionNames) {
         setScheduledActionNames(scheduledActionNames);
         return this;
     }
 
     /**
      * <p>
-     * The earliest scheduled start time to return. If scheduled action names
-     * are provided, this parameter is ignored.
+     * The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      * 
      * @param startTime
-     *        The earliest scheduled start time to return. If scheduled action
-     *        names are provided, this parameter is ignored.
+     *        The earliest scheduled start time to return. If scheduled action names are provided, this parameter is
+     *        ignored.
      */
 
     public void setStartTime(java.util.Date startTime) {
@@ -268,12 +232,11 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The earliest scheduled start time to return. If scheduled action names
-     * are provided, this parameter is ignored.
+     * The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      * 
-     * @return The earliest scheduled start time to return. If scheduled action
-     *         names are provided, this parameter is ignored.
+     * @return The earliest scheduled start time to return. If scheduled action names are provided, this parameter is
+     *         ignored.
      */
 
     public java.util.Date getStartTime() {
@@ -282,32 +245,28 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The earliest scheduled start time to return. If scheduled action names
-     * are provided, this parameter is ignored.
+     * The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      * 
      * @param startTime
-     *        The earliest scheduled start time to return. If scheduled action
-     *        names are provided, this parameter is ignored.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The earliest scheduled start time to return. If scheduled action names are provided, this parameter is
+     *        ignored.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeScheduledActionsRequest withStartTime(
-            java.util.Date startTime) {
+    public DescribeScheduledActionsRequest withStartTime(java.util.Date startTime) {
         setStartTime(startTime);
         return this;
     }
 
     /**
      * <p>
-     * The latest scheduled start time to return. If scheduled action names are
-     * provided, this parameter is ignored.
+     * The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      * 
      * @param endTime
-     *        The latest scheduled start time to return. If scheduled action
-     *        names are provided, this parameter is ignored.
+     *        The latest scheduled start time to return. If scheduled action names are provided, this parameter is
+     *        ignored.
      */
 
     public void setEndTime(java.util.Date endTime) {
@@ -316,12 +275,11 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The latest scheduled start time to return. If scheduled action names are
-     * provided, this parameter is ignored.
+     * The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      * 
-     * @return The latest scheduled start time to return. If scheduled action
-     *         names are provided, this parameter is ignored.
+     * @return The latest scheduled start time to return. If scheduled action names are provided, this parameter is
+     *         ignored.
      */
 
     public java.util.Date getEndTime() {
@@ -330,15 +288,13 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The latest scheduled start time to return. If scheduled action names are
-     * provided, this parameter is ignored.
+     * The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
      * </p>
      * 
      * @param endTime
-     *        The latest scheduled start time to return. If scheduled action
-     *        names are provided, this parameter is ignored.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The latest scheduled start time to return. If scheduled action names are provided, this parameter is
+     *        ignored.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeScheduledActionsRequest withEndTime(java.util.Date endTime) {
@@ -348,13 +304,11 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of items to return. (You received this
-     *        token from a previous call.)
+     *        The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public void setNextToken(String nextToken) {
@@ -363,12 +317,10 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
-     * @return The token for the next set of items to return. (You received this
-     *         token from a previous call.)
+     * @return The token for the next set of items to return. (You received this token from a previous call.)
      */
 
     public String getNextToken() {
@@ -377,15 +329,12 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The token for the next set of items to return. (You received this token
-     * from a previous call.)
+     * The token for the next set of items to return. (You received this token from a previous call.)
      * </p>
      * 
      * @param nextToken
-     *        The token for the next set of items to return. (You received this
-     *        token from a previous call.)
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The token for the next set of items to return. (You received this token from a previous call.)
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeScheduledActionsRequest withNextToken(String nextToken) {
@@ -395,11 +344,12 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of items to return with this call.
+     *        The maximum number of items to return with this call. The default value is 50 and the maximum value is
+     *        100.
      */
 
     public void setMaxRecords(Integer maxRecords) {
@@ -408,10 +358,11 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      * 
-     * @return The maximum number of items to return with this call.
+     * @return The maximum number of items to return with this call. The default value is 50 and the maximum value is
+     *         100.
      */
 
     public Integer getMaxRecords() {
@@ -420,13 +371,13 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The maximum number of items to return with this call.
+     * The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of items to return with this call.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of items to return with this call. The default value is 50 and the maximum value is
+     *        100.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeScheduledActionsRequest withMaxRecords(Integer maxRecords) {
@@ -435,8 +386,7 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -447,19 +397,17 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName()
-                    + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getScheduledActionNames() != null)
-            sb.append("ScheduledActionNames: " + getScheduledActionNames()
-                    + ",");
+            sb.append("ScheduledActionNames: ").append(getScheduledActionNames()).append(",");
         if (getStartTime() != null)
-            sb.append("StartTime: " + getStartTime() + ",");
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getEndTime() != null)
-            sb.append("EndTime: " + getEndTime() + ",");
+            sb.append("EndTime: ").append(getEndTime()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
+            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getMaxRecords() != null)
-            sb.append("MaxRecords: " + getMaxRecords());
+            sb.append("MaxRecords: ").append(getMaxRecords());
         sb.append("}");
         return sb.toString();
     }
@@ -474,39 +422,29 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeScheduledActionsRequest == false)
             return false;
         DescribeScheduledActionsRequest other = (DescribeScheduledActionsRequest) obj;
-        if (other.getAutoScalingGroupName() == null
-                ^ this.getAutoScalingGroupName() == null)
+        if (other.getAutoScalingGroupName() == null ^ this.getAutoScalingGroupName() == null)
             return false;
-        if (other.getAutoScalingGroupName() != null
-                && other.getAutoScalingGroupName().equals(
-                        this.getAutoScalingGroupName()) == false)
+        if (other.getAutoScalingGroupName() != null && other.getAutoScalingGroupName().equals(this.getAutoScalingGroupName()) == false)
             return false;
-        if (other.getScheduledActionNames() == null
-                ^ this.getScheduledActionNames() == null)
+        if (other.getScheduledActionNames() == null ^ this.getScheduledActionNames() == null)
             return false;
-        if (other.getScheduledActionNames() != null
-                && other.getScheduledActionNames().equals(
-                        this.getScheduledActionNames()) == false)
+        if (other.getScheduledActionNames() != null && other.getScheduledActionNames().equals(this.getScheduledActionNames()) == false)
             return false;
         if (other.getStartTime() == null ^ this.getStartTime() == null)
             return false;
-        if (other.getStartTime() != null
-                && other.getStartTime().equals(this.getStartTime()) == false)
+        if (other.getStartTime() != null && other.getStartTime().equals(this.getStartTime()) == false)
             return false;
         if (other.getEndTime() == null ^ this.getEndTime() == null)
             return false;
-        if (other.getEndTime() != null
-                && other.getEndTime().equals(this.getEndTime()) == false)
+        if (other.getEndTime() != null && other.getEndTime().equals(this.getEndTime()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         if (other.getMaxRecords() == null ^ this.getMaxRecords() == null)
             return false;
-        if (other.getMaxRecords() != null
-                && other.getMaxRecords().equals(this.getMaxRecords()) == false)
+        if (other.getMaxRecords() != null && other.getMaxRecords().equals(this.getMaxRecords()) == false)
             return false;
         return true;
     }
@@ -516,22 +454,12 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAutoScalingGroupName() == null) ? 0
-                        : getAutoScalingGroupName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getScheduledActionNames() == null) ? 0
-                        : getScheduledActionNames().hashCode());
-        hashCode = prime * hashCode
-                + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
+        hashCode = prime * hashCode + ((getAutoScalingGroupName() == null) ? 0 : getAutoScalingGroupName().hashCode());
+        hashCode = prime * hashCode + ((getScheduledActionNames() == null) ? 0 : getScheduledActionNames().hashCode());
+        hashCode = prime * hashCode + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
+        hashCode = prime * hashCode + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
         return hashCode;
     }
 
@@ -539,4 +467,5 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest
     public DescribeScheduledActionsRequest clone() {
         return (DescribeScheduledActionsRequest) super.clone();
     }
+
 }

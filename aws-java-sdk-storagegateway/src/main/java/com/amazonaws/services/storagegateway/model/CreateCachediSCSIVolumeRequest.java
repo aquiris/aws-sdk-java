@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateCachediSCSIVolume"
+ *      target="_top">AWS API Documentation</a>
  */
-public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateCachediSCSIVolumeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private String gatewayARN;
 
@@ -30,6 +32,14 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
     private String snapshotId;
 
     private String targetName;
+    /**
+     * <p>
+     * The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified
+     * existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be
+     * equal to or larger than the size of the existing volume, in bytes.
+     * </p>
+     */
+    private String sourceVolumeARN;
 
     private String networkInterfaceId;
 
@@ -53,8 +63,7 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
 
     /**
      * @param gatewayARN
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateCachediSCSIVolumeRequest withGatewayARN(String gatewayARN) {
@@ -80,12 +89,10 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
 
     /**
      * @param volumeSizeInBytes
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateCachediSCSIVolumeRequest withVolumeSizeInBytes(
-            Long volumeSizeInBytes) {
+    public CreateCachediSCSIVolumeRequest withVolumeSizeInBytes(Long volumeSizeInBytes) {
         setVolumeSizeInBytes(volumeSizeInBytes);
         return this;
     }
@@ -108,8 +115,7 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
 
     /**
      * @param snapshotId
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateCachediSCSIVolumeRequest withSnapshotId(String snapshotId) {
@@ -135,12 +141,63 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
 
     /**
      * @param targetName
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateCachediSCSIVolumeRequest withTargetName(String targetName) {
         setTargetName(targetName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified
+     * existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be
+     * equal to or larger than the size of the existing volume, in bytes.
+     * </p>
+     * 
+     * @param sourceVolumeARN
+     *        The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the
+     *        specified existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new
+     *        volume must be equal to or larger than the size of the existing volume, in bytes.
+     */
+
+    public void setSourceVolumeARN(String sourceVolumeARN) {
+        this.sourceVolumeARN = sourceVolumeARN;
+    }
+
+    /**
+     * <p>
+     * The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified
+     * existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be
+     * equal to or larger than the size of the existing volume, in bytes.
+     * </p>
+     * 
+     * @return The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the
+     *         specified existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new
+     *         volume must be equal to or larger than the size of the existing volume, in bytes.
+     */
+
+    public String getSourceVolumeARN() {
+        return this.sourceVolumeARN;
+    }
+
+    /**
+     * <p>
+     * The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified
+     * existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be
+     * equal to or larger than the size of the existing volume, in bytes.
+     * </p>
+     * 
+     * @param sourceVolumeARN
+     *        The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the
+     *        specified existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new
+     *        volume must be equal to or larger than the size of the existing volume, in bytes.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateCachediSCSIVolumeRequest withSourceVolumeARN(String sourceVolumeARN) {
+        setSourceVolumeARN(sourceVolumeARN);
         return this;
     }
 
@@ -162,12 +219,10 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
 
     /**
      * @param networkInterfaceId
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateCachediSCSIVolumeRequest withNetworkInterfaceId(
-            String networkInterfaceId) {
+    public CreateCachediSCSIVolumeRequest withNetworkInterfaceId(String networkInterfaceId) {
         setNetworkInterfaceId(networkInterfaceId);
         return this;
     }
@@ -190,8 +245,7 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
 
     /**
      * @param clientToken
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateCachediSCSIVolumeRequest withClientToken(String clientToken) {
@@ -200,8 +254,7 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -212,17 +265,19 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getGatewayARN() != null)
-            sb.append("GatewayARN: " + getGatewayARN() + ",");
+            sb.append("GatewayARN: ").append(getGatewayARN()).append(",");
         if (getVolumeSizeInBytes() != null)
-            sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes() + ",");
+            sb.append("VolumeSizeInBytes: ").append(getVolumeSizeInBytes()).append(",");
         if (getSnapshotId() != null)
-            sb.append("SnapshotId: " + getSnapshotId() + ",");
+            sb.append("SnapshotId: ").append(getSnapshotId()).append(",");
         if (getTargetName() != null)
-            sb.append("TargetName: " + getTargetName() + ",");
+            sb.append("TargetName: ").append(getTargetName()).append(",");
+        if (getSourceVolumeARN() != null)
+            sb.append("SourceVolumeARN: ").append(getSourceVolumeARN()).append(",");
         if (getNetworkInterfaceId() != null)
-            sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+            sb.append("NetworkInterfaceId: ").append(getNetworkInterfaceId()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: " + getClientToken());
+            sb.append("ClientToken: ").append(getClientToken());
         sb.append("}");
         return sb.toString();
     }
@@ -239,37 +294,31 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
         CreateCachediSCSIVolumeRequest other = (CreateCachediSCSIVolumeRequest) obj;
         if (other.getGatewayARN() == null ^ this.getGatewayARN() == null)
             return false;
-        if (other.getGatewayARN() != null
-                && other.getGatewayARN().equals(this.getGatewayARN()) == false)
+        if (other.getGatewayARN() != null && other.getGatewayARN().equals(this.getGatewayARN()) == false)
             return false;
-        if (other.getVolumeSizeInBytes() == null
-                ^ this.getVolumeSizeInBytes() == null)
+        if (other.getVolumeSizeInBytes() == null ^ this.getVolumeSizeInBytes() == null)
             return false;
-        if (other.getVolumeSizeInBytes() != null
-                && other.getVolumeSizeInBytes().equals(
-                        this.getVolumeSizeInBytes()) == false)
+        if (other.getVolumeSizeInBytes() != null && other.getVolumeSizeInBytes().equals(this.getVolumeSizeInBytes()) == false)
             return false;
         if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
             return false;
-        if (other.getSnapshotId() != null
-                && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
             return false;
         if (other.getTargetName() == null ^ this.getTargetName() == null)
             return false;
-        if (other.getTargetName() != null
-                && other.getTargetName().equals(this.getTargetName()) == false)
+        if (other.getTargetName() != null && other.getTargetName().equals(this.getTargetName()) == false)
             return false;
-        if (other.getNetworkInterfaceId() == null
-                ^ this.getNetworkInterfaceId() == null)
+        if (other.getSourceVolumeARN() == null ^ this.getSourceVolumeARN() == null)
             return false;
-        if (other.getNetworkInterfaceId() != null
-                && other.getNetworkInterfaceId().equals(
-                        this.getNetworkInterfaceId()) == false)
+        if (other.getSourceVolumeARN() != null && other.getSourceVolumeARN().equals(this.getSourceVolumeARN()) == false)
+            return false;
+        if (other.getNetworkInterfaceId() == null ^ this.getNetworkInterfaceId() == null)
+            return false;
+        if (other.getNetworkInterfaceId() != null && other.getNetworkInterfaceId().equals(this.getNetworkInterfaceId()) == false)
             return false;
         if (other.getClientToken() == null ^ this.getClientToken() == null)
             return false;
-        if (other.getClientToken() != null
-                && other.getClientToken().equals(this.getClientToken()) == false)
+        if (other.getClientToken() != null && other.getClientToken().equals(this.getClientToken()) == false)
             return false;
         return true;
     }
@@ -279,23 +328,13 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getGatewayARN() == null) ? 0 : getGatewayARN().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getVolumeSizeInBytes() == null) ? 0
-                        : getVolumeSizeInBytes().hashCode());
-        hashCode = prime * hashCode
-                + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
-        hashCode = prime * hashCode
-                + ((getTargetName() == null) ? 0 : getTargetName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNetworkInterfaceId() == null) ? 0
-                        : getNetworkInterfaceId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
+        hashCode = prime * hashCode + ((getGatewayARN() == null) ? 0 : getGatewayARN().hashCode());
+        hashCode = prime * hashCode + ((getVolumeSizeInBytes() == null) ? 0 : getVolumeSizeInBytes().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
+        hashCode = prime * hashCode + ((getTargetName() == null) ? 0 : getTargetName().hashCode());
+        hashCode = prime * hashCode + ((getSourceVolumeARN() == null) ? 0 : getSourceVolumeARN().hashCode());
+        hashCode = prime * hashCode + ((getNetworkInterfaceId() == null) ? 0 : getNetworkInterfaceId().hashCode());
+        hashCode = prime * hashCode + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
         return hashCode;
     }
 
@@ -303,4 +342,5 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest
     public CreateCachediSCSIVolumeRequest clone() {
         return (CreateCachediSCSIVolumeRequest) super.clone();
     }
+
 }

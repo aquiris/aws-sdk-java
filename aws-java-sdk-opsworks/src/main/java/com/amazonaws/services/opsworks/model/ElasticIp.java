@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Describes an Elastic IP address.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/ElasticIp" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ElasticIp implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ElasticIp implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -44,8 +49,7 @@ public class ElasticIp implements Serializable, Cloneable {
     /**
      * <p>
      * The AWS region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
      */
     private String region;
@@ -88,8 +92,7 @@ public class ElasticIp implements Serializable, Cloneable {
      * 
      * @param ip
      *        The IP address.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ElasticIp withIp(String ip) {
@@ -129,8 +132,7 @@ public class ElasticIp implements Serializable, Cloneable {
      * 
      * @param name
      *        The name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ElasticIp withName(String name) {
@@ -170,8 +172,7 @@ public class ElasticIp implements Serializable, Cloneable {
      * 
      * @param domain
      *        The domain.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ElasticIp withDomain(String domain) {
@@ -182,14 +183,12 @@ public class ElasticIp implements Serializable, Cloneable {
     /**
      * <p>
      * The AWS region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
      * 
      * @param region
      *        The AWS region. For more information, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html"
-     *        >Regions and Endpoints</a>.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      */
 
     public void setRegion(String region) {
@@ -199,13 +198,11 @@ public class ElasticIp implements Serializable, Cloneable {
     /**
      * <p>
      * The AWS region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
      * 
      * @return The AWS region. For more information, see <a
-     *         href="http://docs.aws.amazon.com/general/latest/gr/rande.html"
-     *         >Regions and Endpoints</a>.
+     *         href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      */
 
     public String getRegion() {
@@ -215,16 +212,13 @@ public class ElasticIp implements Serializable, Cloneable {
     /**
      * <p>
      * The AWS region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
-     * and Endpoints</a>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
      * 
      * @param region
      *        The AWS region. For more information, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html"
-     *        >Regions and Endpoints</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ElasticIp withRegion(String region) {
@@ -264,8 +258,7 @@ public class ElasticIp implements Serializable, Cloneable {
      * 
      * @param instanceId
      *        The ID of the instance that the address is attached to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ElasticIp withInstanceId(String instanceId) {
@@ -274,8 +267,7 @@ public class ElasticIp implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -286,15 +278,15 @@ public class ElasticIp implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIp() != null)
-            sb.append("Ip: " + getIp() + ",");
+            sb.append("Ip: ").append(getIp()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getRegion() != null)
-            sb.append("Region: " + getRegion() + ",");
+            sb.append("Region: ").append(getRegion()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId());
+            sb.append("InstanceId: ").append(getInstanceId());
         sb.append("}");
         return sb.toString();
     }
@@ -311,28 +303,23 @@ public class ElasticIp implements Serializable, Cloneable {
         ElasticIp other = (ElasticIp) obj;
         if (other.getIp() == null ^ this.getIp() == null)
             return false;
-        if (other.getIp() != null
-                && other.getIp().equals(this.getIp()) == false)
+        if (other.getIp() != null && other.getIp().equals(this.getIp()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getDomain() == null ^ this.getDomain() == null)
             return false;
-        if (other.getDomain() != null
-                && other.getDomain().equals(this.getDomain()) == false)
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
             return false;
         if (other.getRegion() == null ^ this.getRegion() == null)
             return false;
-        if (other.getRegion() != null
-                && other.getRegion().equals(this.getRegion()) == false)
+        if (other.getRegion() != null && other.getRegion().equals(this.getRegion()) == false)
             return false;
         if (other.getInstanceId() == null ^ this.getInstanceId() == null)
             return false;
-        if (other.getInstanceId() != null
-                && other.getInstanceId().equals(this.getInstanceId()) == false)
+        if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
             return false;
         return true;
     }
@@ -342,16 +329,11 @@ public class ElasticIp implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getIp() == null) ? 0 : getIp().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getDomain() == null) ? 0 : getDomain().hashCode());
-        hashCode = prime * hashCode
-                + ((getRegion() == null) ? 0 : getRegion().hashCode());
-        hashCode = prime * hashCode
-                + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
+        hashCode = prime * hashCode + ((getIp() == null) ? 0 : getIp().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
+        hashCode = prime * hashCode + ((getRegion() == null) ? 0 : getRegion().hashCode());
+        hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
         return hashCode;
     }
 
@@ -360,9 +342,13 @@ public class ElasticIp implements Serializable, Cloneable {
         try {
             return (ElasticIp) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.opsworks.model.transform.ElasticIpMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

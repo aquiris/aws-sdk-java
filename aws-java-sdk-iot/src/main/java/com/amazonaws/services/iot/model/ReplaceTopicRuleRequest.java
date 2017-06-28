@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,8 +22,8 @@ import com.amazonaws.AmazonWebServiceRequest;
  * The input for the ReplaceTopicRule operation.
  * </p>
  */
-public class ReplaceTopicRuleRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReplaceTopicRuleRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -70,8 +70,7 @@ public class ReplaceTopicRuleRequest extends AmazonWebServiceRequest implements
      * 
      * @param ruleName
      *        The name of the rule.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReplaceTopicRuleRequest withRuleName(String ruleName) {
@@ -111,19 +110,16 @@ public class ReplaceTopicRuleRequest extends AmazonWebServiceRequest implements
      * 
      * @param topicRulePayload
      *        The rule payload.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReplaceTopicRuleRequest withTopicRulePayload(
-            TopicRulePayload topicRulePayload) {
+    public ReplaceTopicRuleRequest withTopicRulePayload(TopicRulePayload topicRulePayload) {
         setTopicRulePayload(topicRulePayload);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -134,9 +130,9 @@ public class ReplaceTopicRuleRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRuleName() != null)
-            sb.append("RuleName: " + getRuleName() + ",");
+            sb.append("RuleName: ").append(getRuleName()).append(",");
         if (getTopicRulePayload() != null)
-            sb.append("TopicRulePayload: " + getTopicRulePayload());
+            sb.append("TopicRulePayload: ").append(getTopicRulePayload());
         sb.append("}");
         return sb.toString();
     }
@@ -153,15 +149,11 @@ public class ReplaceTopicRuleRequest extends AmazonWebServiceRequest implements
         ReplaceTopicRuleRequest other = (ReplaceTopicRuleRequest) obj;
         if (other.getRuleName() == null ^ this.getRuleName() == null)
             return false;
-        if (other.getRuleName() != null
-                && other.getRuleName().equals(this.getRuleName()) == false)
+        if (other.getRuleName() != null && other.getRuleName().equals(this.getRuleName()) == false)
             return false;
-        if (other.getTopicRulePayload() == null
-                ^ this.getTopicRulePayload() == null)
+        if (other.getTopicRulePayload() == null ^ this.getTopicRulePayload() == null)
             return false;
-        if (other.getTopicRulePayload() != null
-                && other.getTopicRulePayload().equals(
-                        this.getTopicRulePayload()) == false)
+        if (other.getTopicRulePayload() != null && other.getTopicRulePayload().equals(this.getTopicRulePayload()) == false)
             return false;
         return true;
     }
@@ -171,12 +163,8 @@ public class ReplaceTopicRuleRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRuleName() == null) ? 0 : getRuleName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getTopicRulePayload() == null) ? 0 : getTopicRulePayload()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getRuleName() == null) ? 0 : getRuleName().hashCode());
+        hashCode = prime * hashCode + ((getTopicRulePayload() == null) ? 0 : getTopicRulePayload().hashCode());
         return hashCode;
     }
 
@@ -184,4 +172,5 @@ public class ReplaceTopicRuleRequest extends AmazonWebServiceRequest implements
     public ReplaceTopicRuleRequest clone() {
         return (ReplaceTopicRuleRequest) super.clone();
     }
+
 }

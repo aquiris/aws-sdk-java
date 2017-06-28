@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,9 +14,8 @@
  */
 package com.amazonaws.protocol.json;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.annotation.SdkInternalApi;
-import com.amazonaws.protocol.json.StructuredJsonGenerator;
 import com.amazonaws.util.BinaryUtils;
 import com.amazonaws.util.DateUtils;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -44,7 +43,7 @@ public class SdkJsonGenerator implements StructuredJsonGenerator {
     /**
      * Indicates an issue writing JSON content.
      */
-    public static class JsonGenerationException extends AmazonClientException {
+    public static class JsonGenerationException extends SdkClientException {
 
         public JsonGenerationException(Throwable t) {
             super(t);
@@ -84,6 +83,16 @@ public class SdkJsonGenerator implements StructuredJsonGenerator {
     public StructuredJsonGenerator writeEndArray() {
         try {
             generator.writeEndArray();
+        } catch (IOException e) {
+            throw new JsonGenerationException(e);
+        }
+        return this;
+    }
+
+    @Override
+    public StructuredJsonGenerator writeNull() {
+        try {
+            generator.writeNull();
         } catch (IOException e) {
             throw new JsonGenerationException(e);
         }
@@ -213,7 +222,12 @@ public class SdkJsonGenerator implements StructuredJsonGenerator {
     @Override
     public StructuredJsonGenerator writeValue(BigDecimal value) {
         try {
-            generator.writeNumber(value);
+            /**
+             * Note that this is not how the backend represents BigDecimal types. On the wire
+             * it's normally a JSON number but this causes problems with certain JSON implementations
+             * that parse JSON numbers as floating points automatically. (See API-433)
+             */
+            generator.writeString(value.toString());
         } catch (IOException e) {
             throw new JsonGenerationException(e);
         }

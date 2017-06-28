@@ -1,32 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBClusterSnapshot" target="_top">AWS API
+ *      Documentation</a>
  */
-public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateDBClusterSnapshotRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier of the DB cluster snapshot. This parameter is stored as a
-     * lowercase string.
+     * The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -55,8 +57,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
     private String dBClusterSnapshotIdentifier;
     /**
      * <p>
-     * The identifier of the DB cluster to create a snapshot for. This parameter
-     * is not case-sensitive.
+     * The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -92,8 +93,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the DB cluster snapshot. This parameter is stored as a
-     * lowercase string.
+     * The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -120,8 +120,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param dBClusterSnapshotIdentifier
-     *        The identifier of the DB cluster snapshot. This parameter is
-     *        stored as a lowercase string.</p>
+     *        The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -146,15 +145,13 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      *        Example: <code>my-cluster1-snapshot1</code>
      */
 
-    public void setDBClusterSnapshotIdentifier(
-            String dBClusterSnapshotIdentifier) {
+    public void setDBClusterSnapshotIdentifier(String dBClusterSnapshotIdentifier) {
         this.dBClusterSnapshotIdentifier = dBClusterSnapshotIdentifier;
     }
 
     /**
      * <p>
-     * The identifier of the DB cluster snapshot. This parameter is stored as a
-     * lowercase string.
+     * The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -180,8 +177,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * Example: <code>my-cluster1-snapshot1</code>
      * </p>
      * 
-     * @return The identifier of the DB cluster snapshot. This parameter is
-     *         stored as a lowercase string.</p>
+     * @return The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -212,8 +208,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the DB cluster snapshot. This parameter is stored as a
-     * lowercase string.
+     * The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -240,8 +235,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param dBClusterSnapshotIdentifier
-     *        The identifier of the DB cluster snapshot. This parameter is
-     *        stored as a lowercase string.</p>
+     *        The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -264,20 +258,17 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      *        </ul>
      *        <p>
      *        Example: <code>my-cluster1-snapshot1</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateDBClusterSnapshotRequest withDBClusterSnapshotIdentifier(
-            String dBClusterSnapshotIdentifier) {
+    public CreateDBClusterSnapshotRequest withDBClusterSnapshotIdentifier(String dBClusterSnapshotIdentifier) {
         setDBClusterSnapshotIdentifier(dBClusterSnapshotIdentifier);
         return this;
     }
 
     /**
      * <p>
-     * The identifier of the DB cluster to create a snapshot for. This parameter
-     * is not case-sensitive.
+     * The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -304,8 +295,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param dBClusterIdentifier
-     *        The identifier of the DB cluster to create a snapshot for. This
-     *        parameter is not case-sensitive.</p>
+     *        The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -336,8 +326,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the DB cluster to create a snapshot for. This parameter
-     * is not case-sensitive.
+     * The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -363,8 +352,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * Example: <code>my-cluster1</code>
      * </p>
      * 
-     * @return The identifier of the DB cluster to create a snapshot for. This
-     *         parameter is not case-sensitive.</p>
+     * @return The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -395,8 +383,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the DB cluster to create a snapshot for. This parameter
-     * is not case-sensitive.
+     * The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -423,8 +410,7 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param dBClusterIdentifier
-     *        The identifier of the DB cluster to create a snapshot for. This
-     *        parameter is not case-sensitive.</p>
+     *        The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -447,12 +433,10 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      *        </ul>
      *        <p>
      *        Example: <code>my-cluster1</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateDBClusterSnapshotRequest withDBClusterIdentifier(
-            String dBClusterIdentifier) {
+    public CreateDBClusterSnapshotRequest withDBClusterIdentifier(String dBClusterIdentifier) {
         setDBClusterIdentifier(dBClusterIdentifier);
         return this;
     }
@@ -495,16 +479,14 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * The tags to be assigned to the DB cluster snapshot.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTags(java.util.Collection)} or
-     * {@link #withTags(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param tags
      *        The tags to be assigned to the DB cluster snapshot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateDBClusterSnapshotRequest withTags(Tag... tags) {
@@ -524,19 +506,16 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
      * 
      * @param tags
      *        The tags to be assigned to the DB cluster snapshot.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateDBClusterSnapshotRequest withTags(
-            java.util.Collection<Tag> tags) {
+    public CreateDBClusterSnapshotRequest withTags(java.util.Collection<Tag> tags) {
         setTags(tags);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -547,12 +526,11 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBClusterSnapshotIdentifier() != null)
-            sb.append("DBClusterSnapshotIdentifier: "
-                    + getDBClusterSnapshotIdentifier() + ",");
+            sb.append("DBClusterSnapshotIdentifier: ").append(getDBClusterSnapshotIdentifier()).append(",");
         if (getDBClusterIdentifier() != null)
-            sb.append("DBClusterIdentifier: " + getDBClusterIdentifier() + ",");
+            sb.append("DBClusterIdentifier: ").append(getDBClusterIdentifier()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -567,24 +545,17 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
         if (obj instanceof CreateDBClusterSnapshotRequest == false)
             return false;
         CreateDBClusterSnapshotRequest other = (CreateDBClusterSnapshotRequest) obj;
-        if (other.getDBClusterSnapshotIdentifier() == null
-                ^ this.getDBClusterSnapshotIdentifier() == null)
+        if (other.getDBClusterSnapshotIdentifier() == null ^ this.getDBClusterSnapshotIdentifier() == null)
             return false;
-        if (other.getDBClusterSnapshotIdentifier() != null
-                && other.getDBClusterSnapshotIdentifier().equals(
-                        this.getDBClusterSnapshotIdentifier()) == false)
+        if (other.getDBClusterSnapshotIdentifier() != null && other.getDBClusterSnapshotIdentifier().equals(this.getDBClusterSnapshotIdentifier()) == false)
             return false;
-        if (other.getDBClusterIdentifier() == null
-                ^ this.getDBClusterIdentifier() == null)
+        if (other.getDBClusterIdentifier() == null ^ this.getDBClusterIdentifier() == null)
             return false;
-        if (other.getDBClusterIdentifier() != null
-                && other.getDBClusterIdentifier().equals(
-                        this.getDBClusterIdentifier()) == false)
+        if (other.getDBClusterIdentifier() != null && other.getDBClusterIdentifier().equals(this.getDBClusterIdentifier()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -594,16 +565,9 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDBClusterSnapshotIdentifier() == null) ? 0
-                        : getDBClusterSnapshotIdentifier().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDBClusterIdentifier() == null) ? 0
-                        : getDBClusterIdentifier().hashCode());
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getDBClusterSnapshotIdentifier() == null) ? 0 : getDBClusterSnapshotIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getDBClusterIdentifier() == null) ? 0 : getDBClusterIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
@@ -611,4 +575,5 @@ public class CreateDBClusterSnapshotRequest extends AmazonWebServiceRequest
     public CreateDBClusterSnapshotRequest clone() {
         return (CreateDBClusterSnapshotRequest) super.clone();
     }
+
 }

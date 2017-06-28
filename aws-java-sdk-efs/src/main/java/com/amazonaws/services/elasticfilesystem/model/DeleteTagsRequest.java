@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticfilesystem.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DeleteTags" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeleteTagsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeleteTagsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -68,8 +71,7 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
      * 
      * @param fileSystemId
      *        ID of the file system whose tags you want to delete (String).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteTagsRequest withFileSystemId(String fileSystemId) {
@@ -107,8 +109,7 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
             return;
         }
 
-        this.tagKeys = new com.amazonaws.internal.SdkInternalList<String>(
-                tagKeys);
+        this.tagKeys = new com.amazonaws.internal.SdkInternalList<String>(tagKeys);
     }
 
     /**
@@ -116,22 +117,19 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
      * List of tag keys to delete.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setTagKeys(java.util.Collection)} or
-     * {@link #withTagKeys(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagKeys(java.util.Collection)} or {@link #withTagKeys(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param tagKeys
      *        List of tag keys to delete.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteTagsRequest withTagKeys(String... tagKeys) {
         if (this.tagKeys == null) {
-            setTagKeys(new com.amazonaws.internal.SdkInternalList<String>(
-                    tagKeys.length));
+            setTagKeys(new com.amazonaws.internal.SdkInternalList<String>(tagKeys.length));
         }
         for (String ele : tagKeys) {
             this.tagKeys.add(ele);
@@ -146,8 +144,7 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
      * 
      * @param tagKeys
      *        List of tag keys to delete.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteTagsRequest withTagKeys(java.util.Collection<String> tagKeys) {
@@ -156,8 +153,7 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -168,9 +164,9 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getFileSystemId() != null)
-            sb.append("FileSystemId: " + getFileSystemId() + ",");
+            sb.append("FileSystemId: ").append(getFileSystemId()).append(",");
         if (getTagKeys() != null)
-            sb.append("TagKeys: " + getTagKeys());
+            sb.append("TagKeys: ").append(getTagKeys());
         sb.append("}");
         return sb.toString();
     }
@@ -187,13 +183,11 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
         DeleteTagsRequest other = (DeleteTagsRequest) obj;
         if (other.getFileSystemId() == null ^ this.getFileSystemId() == null)
             return false;
-        if (other.getFileSystemId() != null
-                && other.getFileSystemId().equals(this.getFileSystemId()) == false)
+        if (other.getFileSystemId() != null && other.getFileSystemId().equals(this.getFileSystemId()) == false)
             return false;
         if (other.getTagKeys() == null ^ this.getTagKeys() == null)
             return false;
-        if (other.getTagKeys() != null
-                && other.getTagKeys().equals(this.getTagKeys()) == false)
+        if (other.getTagKeys() != null && other.getTagKeys().equals(this.getTagKeys()) == false)
             return false;
         return true;
     }
@@ -203,12 +197,8 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getFileSystemId() == null) ? 0 : getFileSystemId()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getTagKeys() == null) ? 0 : getTagKeys().hashCode());
+        hashCode = prime * hashCode + ((getFileSystemId() == null) ? 0 : getFileSystemId().hashCode());
+        hashCode = prime * hashCode + ((getTagKeys() == null) ? 0 : getTagKeys().hashCode());
         return hashCode;
     }
 
@@ -216,4 +206,5 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest implements
     public DeleteTagsRequest clone() {
         return (DeleteTagsRequest) super.clone();
     }
+
 }

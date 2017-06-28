@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the response to list devices.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListDevices" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListDevicesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListDevicesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -71,16 +74,14 @@ public class ListDevicesResult implements Serializable, Cloneable {
      * The devices returned in the list devices response.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDevices(java.util.Collection)} or
-     * {@link #withDevices(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDevices(java.util.Collection)} or {@link #withDevices(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param devices
      *        The devices returned in the list devices response.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListDevicesResult withDevices(DeviceType... devices) {
@@ -100,12 +101,10 @@ public class ListDevicesResult implements Serializable, Cloneable {
      * 
      * @param devices
      *        The devices returned in the list devices response.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListDevicesResult withDevices(
-            java.util.Collection<DeviceType> devices) {
+    public ListDevicesResult withDevices(java.util.Collection<DeviceType> devices) {
         setDevices(devices);
         return this;
     }
@@ -142,8 +141,7 @@ public class ListDevicesResult implements Serializable, Cloneable {
      * 
      * @param paginationToken
      *        The pagination token for the list device response.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListDevicesResult withPaginationToken(String paginationToken) {
@@ -152,8 +150,7 @@ public class ListDevicesResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -164,9 +161,9 @@ public class ListDevicesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDevices() != null)
-            sb.append("Devices: " + getDevices() + ",");
+            sb.append("Devices: ").append(getDevices()).append(",");
         if (getPaginationToken() != null)
-            sb.append("PaginationToken: " + getPaginationToken());
+            sb.append("PaginationToken: ").append(getPaginationToken());
         sb.append("}");
         return sb.toString();
     }
@@ -183,14 +180,11 @@ public class ListDevicesResult implements Serializable, Cloneable {
         ListDevicesResult other = (ListDevicesResult) obj;
         if (other.getDevices() == null ^ this.getDevices() == null)
             return false;
-        if (other.getDevices() != null
-                && other.getDevices().equals(this.getDevices()) == false)
+        if (other.getDevices() != null && other.getDevices().equals(this.getDevices()) == false)
             return false;
-        if (other.getPaginationToken() == null
-                ^ this.getPaginationToken() == null)
+        if (other.getPaginationToken() == null ^ this.getPaginationToken() == null)
             return false;
-        if (other.getPaginationToken() != null
-                && other.getPaginationToken().equals(this.getPaginationToken()) == false)
+        if (other.getPaginationToken() != null && other.getPaginationToken().equals(this.getPaginationToken()) == false)
             return false;
         return true;
     }
@@ -200,12 +194,8 @@ public class ListDevicesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getDevices() == null) ? 0 : getDevices().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPaginationToken() == null) ? 0 : getPaginationToken()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getDevices() == null) ? 0 : getDevices().hashCode());
+        hashCode = prime * hashCode + ((getPaginationToken() == null) ? 0 : getPaginationToken().hashCode());
         return hashCode;
     }
 
@@ -214,9 +204,8 @@ public class ListDevicesResult implements Serializable, Cloneable {
         try {
             return (ListDevicesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

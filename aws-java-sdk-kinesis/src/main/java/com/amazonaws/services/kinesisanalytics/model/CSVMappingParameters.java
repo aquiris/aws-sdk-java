@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Provides additional mapping information when the record format uses
- * delimiters, such as CSV. For example, the following sample records use CSV
- * format, where the records use the <i>'\n'</i> as the row delimiter and a
- * comma (",") as the column delimiter:
+ * Provides additional mapping information when the record format uses delimiters, such as CSV. For example, the
+ * following sample records use CSV format, where the records use the <i>'\n'</i> as the row delimiter and a comma (",")
+ * as the column delimiter:
  * </p>
  * <p>
  * <code>"name1", "address1" </code>
@@ -29,33 +29,33 @@ import java.io.Serializable;
  * <p>
  * <code>"name2, "address2"</code>
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/CSVMappingParameters"
+ *      target="_top">AWS API Documentation</a>
  */
-public class CSVMappingParameters implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CSVMappingParameters implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical
-     * row delimiter.
+     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.
      * </p>
      */
     private String recordRowDelimiter;
     /**
      * <p>
-     * Column delimiter. For example, in a CSV format, a comma (",") is the
-     * typical column delimiter.
+     * Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.
      * </p>
      */
     private String recordColumnDelimiter;
 
     /**
      * <p>
-     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical
-     * row delimiter.
+     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.
      * </p>
      * 
      * @param recordRowDelimiter
-     *        Row delimiter. For example, in a CSV format, <i>'\n'</i> is the
-     *        typical row delimiter.
+     *        Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.
      */
 
     public void setRecordRowDelimiter(String recordRowDelimiter) {
@@ -64,12 +64,10 @@ public class CSVMappingParameters implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical
-     * row delimiter.
+     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.
      * </p>
      * 
-     * @return Row delimiter. For example, in a CSV format, <i>'\n'</i> is the
-     *         typical row delimiter.
+     * @return Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.
      */
 
     public String getRecordRowDelimiter() {
@@ -78,15 +76,12 @@ public class CSVMappingParameters implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical
-     * row delimiter.
+     * Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.
      * </p>
      * 
      * @param recordRowDelimiter
-     *        Row delimiter. For example, in a CSV format, <i>'\n'</i> is the
-     *        typical row delimiter.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CSVMappingParameters withRecordRowDelimiter(String recordRowDelimiter) {
@@ -96,13 +91,11 @@ public class CSVMappingParameters implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Column delimiter. For example, in a CSV format, a comma (",") is the
-     * typical column delimiter.
+     * Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.
      * </p>
      * 
      * @param recordColumnDelimiter
-     *        Column delimiter. For example, in a CSV format, a comma (",") is
-     *        the typical column delimiter.
+     *        Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.
      */
 
     public void setRecordColumnDelimiter(String recordColumnDelimiter) {
@@ -111,12 +104,10 @@ public class CSVMappingParameters implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Column delimiter. For example, in a CSV format, a comma (",") is the
-     * typical column delimiter.
+     * Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.
      * </p>
      * 
-     * @return Column delimiter. For example, in a CSV format, a comma (",") is
-     *         the typical column delimiter.
+     * @return Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.
      */
 
     public String getRecordColumnDelimiter() {
@@ -125,26 +116,21 @@ public class CSVMappingParameters implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Column delimiter. For example, in a CSV format, a comma (",") is the
-     * typical column delimiter.
+     * Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.
      * </p>
      * 
      * @param recordColumnDelimiter
-     *        Column delimiter. For example, in a CSV format, a comma (",") is
-     *        the typical column delimiter.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CSVMappingParameters withRecordColumnDelimiter(
-            String recordColumnDelimiter) {
+    public CSVMappingParameters withRecordColumnDelimiter(String recordColumnDelimiter) {
         setRecordColumnDelimiter(recordColumnDelimiter);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -155,9 +141,9 @@ public class CSVMappingParameters implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRecordRowDelimiter() != null)
-            sb.append("RecordRowDelimiter: " + getRecordRowDelimiter() + ",");
+            sb.append("RecordRowDelimiter: ").append(getRecordRowDelimiter()).append(",");
         if (getRecordColumnDelimiter() != null)
-            sb.append("RecordColumnDelimiter: " + getRecordColumnDelimiter());
+            sb.append("RecordColumnDelimiter: ").append(getRecordColumnDelimiter());
         sb.append("}");
         return sb.toString();
     }
@@ -172,19 +158,13 @@ public class CSVMappingParameters implements Serializable, Cloneable {
         if (obj instanceof CSVMappingParameters == false)
             return false;
         CSVMappingParameters other = (CSVMappingParameters) obj;
-        if (other.getRecordRowDelimiter() == null
-                ^ this.getRecordRowDelimiter() == null)
+        if (other.getRecordRowDelimiter() == null ^ this.getRecordRowDelimiter() == null)
             return false;
-        if (other.getRecordRowDelimiter() != null
-                && other.getRecordRowDelimiter().equals(
-                        this.getRecordRowDelimiter()) == false)
+        if (other.getRecordRowDelimiter() != null && other.getRecordRowDelimiter().equals(this.getRecordRowDelimiter()) == false)
             return false;
-        if (other.getRecordColumnDelimiter() == null
-                ^ this.getRecordColumnDelimiter() == null)
+        if (other.getRecordColumnDelimiter() == null ^ this.getRecordColumnDelimiter() == null)
             return false;
-        if (other.getRecordColumnDelimiter() != null
-                && other.getRecordColumnDelimiter().equals(
-                        this.getRecordColumnDelimiter()) == false)
+        if (other.getRecordColumnDelimiter() != null && other.getRecordColumnDelimiter().equals(this.getRecordColumnDelimiter()) == false)
             return false;
         return true;
     }
@@ -194,14 +174,8 @@ public class CSVMappingParameters implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getRecordRowDelimiter() == null) ? 0
-                        : getRecordRowDelimiter().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRecordColumnDelimiter() == null) ? 0
-                        : getRecordColumnDelimiter().hashCode());
+        hashCode = prime * hashCode + ((getRecordRowDelimiter() == null) ? 0 : getRecordRowDelimiter().hashCode());
+        hashCode = prime * hashCode + ((getRecordColumnDelimiter() == null) ? 0 : getRecordColumnDelimiter().hashCode());
         return hashCode;
     }
 
@@ -210,9 +184,13 @@ public class CSVMappingParameters implements Serializable, Cloneable {
         try {
             return (CSVMappingParameters) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.CSVMappingParametersMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

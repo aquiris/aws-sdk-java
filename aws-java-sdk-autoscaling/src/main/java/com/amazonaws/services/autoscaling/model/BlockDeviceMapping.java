@@ -1,26 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes a block device mapping.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/BlockDeviceMapping" target="_top">AWS API
+ *      Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BlockDeviceMapping implements Serializable, Cloneable {
 
     /**
@@ -31,8 +34,7 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
     private String virtualName;
     /**
      * <p>
-     * The device name exposed to the EC2 instance (for example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>).
+     * The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      */
     private String deviceName;
@@ -47,9 +49,8 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * Suppresses a device mapping.
      * </p>
      * <p>
-     * If this parameter is true for the root device, the instance might fail
-     * the EC2 health check. Auto Scaling launches a replacement instance if the
-     * instance fails the health check.
+     * If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     * launches a replacement instance if the instance fails the health check.
      * </p>
      */
     private Boolean noDevice;
@@ -60,8 +61,7 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * </p>
      * 
      * @param virtualName
-     *        The name of the virtual device (for example,
-     *        <code>ephemeral0</code>).
+     *        The name of the virtual device (for example, <code>ephemeral0</code>).
      */
 
     public void setVirtualName(String virtualName) {
@@ -73,8 +73,7 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * The name of the virtual device (for example, <code>ephemeral0</code>).
      * </p>
      * 
-     * @return The name of the virtual device (for example,
-     *         <code>ephemeral0</code>).
+     * @return The name of the virtual device (for example, <code>ephemeral0</code>).
      */
 
     public String getVirtualName() {
@@ -87,10 +86,8 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * </p>
      * 
      * @param virtualName
-     *        The name of the virtual device (for example,
-     *        <code>ephemeral0</code>).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the virtual device (for example, <code>ephemeral0</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public BlockDeviceMapping withVirtualName(String virtualName) {
@@ -100,13 +97,11 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The device name exposed to the EC2 instance (for example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>).
+     * The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * 
      * @param deviceName
-     *        The device name exposed to the EC2 instance (for example,
-     *        <code>/dev/sdh</code> or <code>xvdh</code>).
+     *        The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      */
 
     public void setDeviceName(String deviceName) {
@@ -115,12 +110,10 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The device name exposed to the EC2 instance (for example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>).
+     * The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * 
-     * @return The device name exposed to the EC2 instance (for example,
-     *         <code>/dev/sdh</code> or <code>xvdh</code>).
+     * @return The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      */
 
     public String getDeviceName() {
@@ -129,15 +122,12 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The device name exposed to the EC2 instance (for example,
-     * <code>/dev/sdh</code> or <code>xvdh</code>).
+     * The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * 
      * @param deviceName
-     *        The device name exposed to the EC2 instance (for example,
-     *        <code>/dev/sdh</code> or <code>xvdh</code>).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public BlockDeviceMapping withDeviceName(String deviceName) {
@@ -177,8 +167,7 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * 
      * @param ebs
      *        The information about the Amazon EBS volume.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public BlockDeviceMapping withEbs(Ebs ebs) {
@@ -191,17 +180,15 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * Suppresses a device mapping.
      * </p>
      * <p>
-     * If this parameter is true for the root device, the instance might fail
-     * the EC2 health check. Auto Scaling launches a replacement instance if the
-     * instance fails the health check.
+     * If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     * launches a replacement instance if the instance fails the health check.
      * </p>
      * 
      * @param noDevice
      *        Suppresses a device mapping.</p>
      *        <p>
-     *        If this parameter is true for the root device, the instance might
-     *        fail the EC2 health check. Auto Scaling launches a replacement
-     *        instance if the instance fails the health check.
+     *        If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     *        launches a replacement instance if the instance fails the health check.
      */
 
     public void setNoDevice(Boolean noDevice) {
@@ -213,16 +200,14 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * Suppresses a device mapping.
      * </p>
      * <p>
-     * If this parameter is true for the root device, the instance might fail
-     * the EC2 health check. Auto Scaling launches a replacement instance if the
-     * instance fails the health check.
+     * If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     * launches a replacement instance if the instance fails the health check.
      * </p>
      * 
      * @return Suppresses a device mapping.</p>
      *         <p>
-     *         If this parameter is true for the root device, the instance might
-     *         fail the EC2 health check. Auto Scaling launches a replacement
-     *         instance if the instance fails the health check.
+     *         If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     *         launches a replacement instance if the instance fails the health check.
      */
 
     public Boolean getNoDevice() {
@@ -234,19 +219,16 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * Suppresses a device mapping.
      * </p>
      * <p>
-     * If this parameter is true for the root device, the instance might fail
-     * the EC2 health check. Auto Scaling launches a replacement instance if the
-     * instance fails the health check.
+     * If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     * launches a replacement instance if the instance fails the health check.
      * </p>
      * 
      * @param noDevice
      *        Suppresses a device mapping.</p>
      *        <p>
-     *        If this parameter is true for the root device, the instance might
-     *        fail the EC2 health check. Auto Scaling launches a replacement
-     *        instance if the instance fails the health check.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     *        launches a replacement instance if the instance fails the health check.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public BlockDeviceMapping withNoDevice(Boolean noDevice) {
@@ -259,16 +241,14 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
      * Suppresses a device mapping.
      * </p>
      * <p>
-     * If this parameter is true for the root device, the instance might fail
-     * the EC2 health check. Auto Scaling launches a replacement instance if the
-     * instance fails the health check.
+     * If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     * launches a replacement instance if the instance fails the health check.
      * </p>
      * 
      * @return Suppresses a device mapping.</p>
      *         <p>
-     *         If this parameter is true for the root device, the instance might
-     *         fail the EC2 health check. Auto Scaling launches a replacement
-     *         instance if the instance fails the health check.
+     *         If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling
+     *         launches a replacement instance if the instance fails the health check.
      */
 
     public Boolean isNoDevice() {
@@ -276,8 +256,7 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -288,13 +267,13 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getVirtualName() != null)
-            sb.append("VirtualName: " + getVirtualName() + ",");
+            sb.append("VirtualName: ").append(getVirtualName()).append(",");
         if (getDeviceName() != null)
-            sb.append("DeviceName: " + getDeviceName() + ",");
+            sb.append("DeviceName: ").append(getDeviceName()).append(",");
         if (getEbs() != null)
-            sb.append("Ebs: " + getEbs() + ",");
+            sb.append("Ebs: ").append(getEbs()).append(",");
         if (getNoDevice() != null)
-            sb.append("NoDevice: " + getNoDevice());
+            sb.append("NoDevice: ").append(getNoDevice());
         sb.append("}");
         return sb.toString();
     }
@@ -311,23 +290,19 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
         BlockDeviceMapping other = (BlockDeviceMapping) obj;
         if (other.getVirtualName() == null ^ this.getVirtualName() == null)
             return false;
-        if (other.getVirtualName() != null
-                && other.getVirtualName().equals(this.getVirtualName()) == false)
+        if (other.getVirtualName() != null && other.getVirtualName().equals(this.getVirtualName()) == false)
             return false;
         if (other.getDeviceName() == null ^ this.getDeviceName() == null)
             return false;
-        if (other.getDeviceName() != null
-                && other.getDeviceName().equals(this.getDeviceName()) == false)
+        if (other.getDeviceName() != null && other.getDeviceName().equals(this.getDeviceName()) == false)
             return false;
         if (other.getEbs() == null ^ this.getEbs() == null)
             return false;
-        if (other.getEbs() != null
-                && other.getEbs().equals(this.getEbs()) == false)
+        if (other.getEbs() != null && other.getEbs().equals(this.getEbs()) == false)
             return false;
         if (other.getNoDevice() == null ^ this.getNoDevice() == null)
             return false;
-        if (other.getNoDevice() != null
-                && other.getNoDevice().equals(this.getNoDevice()) == false)
+        if (other.getNoDevice() != null && other.getNoDevice().equals(this.getNoDevice()) == false)
             return false;
         return true;
     }
@@ -337,15 +312,10 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getVirtualName() == null) ? 0 : getVirtualName().hashCode());
-        hashCode = prime * hashCode
-                + ((getDeviceName() == null) ? 0 : getDeviceName().hashCode());
-        hashCode = prime * hashCode
-                + ((getEbs() == null) ? 0 : getEbs().hashCode());
-        hashCode = prime * hashCode
-                + ((getNoDevice() == null) ? 0 : getNoDevice().hashCode());
+        hashCode = prime * hashCode + ((getVirtualName() == null) ? 0 : getVirtualName().hashCode());
+        hashCode = prime * hashCode + ((getDeviceName() == null) ? 0 : getDeviceName().hashCode());
+        hashCode = prime * hashCode + ((getEbs() == null) ? 0 : getEbs().hashCode());
+        hashCode = prime * hashCode + ((getNoDevice() == null) ? 0 : getNoDevice().hashCode());
         return hashCode;
     }
 
@@ -354,9 +324,8 @@ public class BlockDeviceMapping implements Serializable, Cloneable {
         try {
             return (BlockDeviceMapping) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

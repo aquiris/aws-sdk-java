@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Describes the inputs for GetMetricStatistics.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetMetricStatistics" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -39,64 +39,101 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
     private String metricName;
     /**
      * <p>
-     * A list of dimensions describing qualities of the metric.
+     * The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     * CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using
+     * combinations of dimensions that were not specially published. You must specify the same dimensions that were used
+     * when the metrics were created. For an example, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     * dimensions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Dimension> dimensions;
     /**
      * <p>
-     * The time stamp to use for determining the first datapoint to return. The
-     * value specified is inclusive; results include datapoints with the time
-     * stamp specified. The time stamp must be in ISO 8601 UTC format (e.g.,
-     * 2014-09-03T23:00:00Z).
-     * </p>
-     * <note>
-     * <p>
-     * The specified start time is rounded down to the nearest value. Datapoints
-     * are returned for start times up to two weeks in the past. Specified start
-     * times that are more than two weeks in the past will not return datapoints
-     * for metrics that are older than two weeks.
+     * The time stamp that determines the first data point to return. Note that start times are evaluated relative to
+     * the time that CloudWatch receives the request.
      * </p>
      * <p>
-     * Data that is timestamped 24 hours or more in the past may take in excess
-     * of 48 hours to become available from submission time using
-     * <code>GetMetricStatistics</code>.
+     * The value specified is inclusive; results include data points with the specified time stamp. The time stamp must
+     * be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
      * </p>
-     * </note>
+     * <p>
+     * CloudWatch rounds the specified time stamp as follows:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down
+     * to 12:32:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34
+     * is rounded down to 12:30:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.
+     * </p>
+     * </li>
+     * </ul>
      */
     private java.util.Date startTime;
     /**
      * <p>
-     * The time stamp to use for determining the last datapoint to return. The
-     * value specified is exclusive; results will include datapoints up to the
-     * time stamp specified. The time stamp must be in ISO 8601 UTC format
-     * (e.g., 2014-09-03T23:00:00Z).
+     * The time stamp that determines the last data point to return.
+     * </p>
+     * <p>
+     * The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp
+     * must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
      * </p>
      */
     private java.util.Date endTime;
     /**
      * <p>
-     * The granularity, in seconds, of the returned datapoints. A
-     * <code>Period</code> can be as short as one minute (60 seconds) or as long
-     * as one day (86,400 seconds), and must be a multiple of 60. The default
-     * value is 60.
+     * The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and
+     * must be a multiple of 60. The default value is 60.
      * </p>
+     * <p>
+     * If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify
+     * the period as follows or no data points in that time range is returned:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).
+     * </p>
+     * </li>
+     * </ul>
      */
     private Integer period;
     /**
      * <p>
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     * >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> statistics;
     /**
      * <p>
-     * The specific unit for a given metric. Metrics may be reported in multiple
-     * units. Not supplying a unit results in all units being returned. If the
-     * metric only ever reports one unit, specifying a unit will have no effect.
+     * The percentile statistics. Specify values between p0.0 and p100.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> extendedStatistics;
+    /**
+     * <p>
+     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
+     * being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * </p>
      */
     private String unit;
@@ -133,8 +170,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
      * 
      * @param namespace
      *        The namespace of the metric, with or without spaces.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMetricStatisticsRequest withNamespace(String namespace) {
@@ -174,8 +210,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
      * 
      * @param metricName
      *        The name of the metric, with or without spaces.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMetricStatisticsRequest withMetricName(String metricName) {
@@ -185,10 +220,26 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of dimensions describing qualities of the metric.
+     * The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     * CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using
+     * combinations of dimensions that were not specially published. You must specify the same dimensions that were used
+     * when the metrics were created. For an example, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     * dimensions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
-     * @return A list of dimensions describing qualities of the metric.
+     * @return The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     *         CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve
+     *         statistics using combinations of dimensions that were not specially published. You must specify the same
+     *         dimensions that were used when the metrics were created. For an example, see <a href=
+     *         "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *         >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on
+     *         specifying dimensions, see <a
+     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *         Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
     public java.util.List<Dimension> getDimensions() {
@@ -200,11 +251,27 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of dimensions describing qualities of the metric.
+     * The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     * CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using
+     * combinations of dimensions that were not specially published. You must specify the same dimensions that were used
+     * when the metrics were created. For an example, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     * dimensions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions describing qualities of the metric.
+     *        The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     *        CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve
+     *        statistics using combinations of dimensions that were not specially published. You must specify the same
+     *        dimensions that were used when the metrics were created. For an example, see <a href=
+     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *        >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     *        dimensions, see <a
+     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *        Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
     public void setDimensions(java.util.Collection<Dimension> dimensions) {
@@ -213,31 +280,43 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
             return;
         }
 
-        this.dimensions = new com.amazonaws.internal.SdkInternalList<Dimension>(
-                dimensions);
+        this.dimensions = new com.amazonaws.internal.SdkInternalList<Dimension>(dimensions);
     }
 
     /**
      * <p>
-     * A list of dimensions describing qualities of the metric.
+     * The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     * CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using
+     * combinations of dimensions that were not specially published. You must specify the same dimensions that were used
+     * when the metrics were created. For an example, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     * dimensions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDimensions(java.util.Collection)} or
-     * {@link #withDimensions(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDimensions(java.util.Collection)} or {@link #withDimensions(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions describing qualities of the metric.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     *        CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve
+     *        statistics using combinations of dimensions that were not specially published. You must specify the same
+     *        dimensions that were used when the metrics were created. For an example, see <a href=
+     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *        >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     *        dimensions, see <a
+     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *        Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMetricStatisticsRequest withDimensions(Dimension... dimensions) {
         if (this.dimensions == null) {
-            setDimensions(new com.amazonaws.internal.SdkInternalList<Dimension>(
-                    dimensions.length));
+            setDimensions(new com.amazonaws.internal.SdkInternalList<Dimension>(dimensions.length));
         }
         for (Dimension ele : dimensions) {
             this.dimensions.add(ele);
@@ -247,59 +326,97 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A list of dimensions describing qualities of the metric.
+     * The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     * CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using
+     * combinations of dimensions that were not specially published. You must specify the same dimensions that were used
+     * when the metrics were created. For an example, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     * dimensions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
      * @param dimensions
-     *        A list of dimensions describing qualities of the metric.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension.
+     *        CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve
+     *        statistics using combinations of dimensions that were not specially published. You must specify the same
+     *        dimensions that were used when the metrics were created. For an example, see <a href=
+     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *        >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying
+     *        dimensions, see <a
+     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *        Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GetMetricStatisticsRequest withDimensions(
-            java.util.Collection<Dimension> dimensions) {
+    public GetMetricStatisticsRequest withDimensions(java.util.Collection<Dimension> dimensions) {
         setDimensions(dimensions);
         return this;
     }
 
     /**
      * <p>
-     * The time stamp to use for determining the first datapoint to return. The
-     * value specified is inclusive; results include datapoints with the time
-     * stamp specified. The time stamp must be in ISO 8601 UTC format (e.g.,
-     * 2014-09-03T23:00:00Z).
-     * </p>
-     * <note>
-     * <p>
-     * The specified start time is rounded down to the nearest value. Datapoints
-     * are returned for start times up to two weeks in the past. Specified start
-     * times that are more than two weeks in the past will not return datapoints
-     * for metrics that are older than two weeks.
+     * The time stamp that determines the first data point to return. Note that start times are evaluated relative to
+     * the time that CloudWatch receives the request.
      * </p>
      * <p>
-     * Data that is timestamped 24 hours or more in the past may take in excess
-     * of 48 hours to become available from submission time using
-     * <code>GetMetricStatistics</code>.
+     * The value specified is inclusive; results include data points with the specified time stamp. The time stamp must
+     * be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
      * </p>
-     * </note>
+     * <p>
+     * CloudWatch rounds the specified time stamp as follows:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down
+     * to 12:32:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34
+     * is rounded down to 12:30:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param startTime
-     *        The time stamp to use for determining the first datapoint to
-     *        return. The value specified is inclusive; results include
-     *        datapoints with the time stamp specified. The time stamp must be
-     *        in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).</p> <note>
+     *        The time stamp that determines the first data point to return. Note that start times are evaluated
+     *        relative to the time that CloudWatch receives the request.</p>
      *        <p>
-     *        The specified start time is rounded down to the nearest value.
-     *        Datapoints are returned for start times up to two weeks in the
-     *        past. Specified start times that are more than two weeks in the
-     *        past will not return datapoints for metrics that are older than
-     *        two weeks.
+     *        The value specified is inclusive; results include data points with the specified time stamp. The time
+     *        stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
      *        </p>
      *        <p>
-     *        Data that is timestamped 24 hours or more in the past may take in
-     *        excess of 48 hours to become available from submission time using
-     *        <code>GetMetricStatistics</code>.
+     *        CloudWatch rounds the specified time stamp as follows:
      *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is
+     *        rounded down to 12:32:00.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example,
+     *        12:32:34 is rounded down to 12:30:00.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example,
+     *        12:32:34 is rounded down to 12:00:00.
+     *        </p>
+     *        </li>
      */
 
     public void setStartTime(java.util.Date startTime) {
@@ -308,41 +425,65 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The time stamp to use for determining the first datapoint to return. The
-     * value specified is inclusive; results include datapoints with the time
-     * stamp specified. The time stamp must be in ISO 8601 UTC format (e.g.,
-     * 2014-09-03T23:00:00Z).
-     * </p>
-     * <note>
-     * <p>
-     * The specified start time is rounded down to the nearest value. Datapoints
-     * are returned for start times up to two weeks in the past. Specified start
-     * times that are more than two weeks in the past will not return datapoints
-     * for metrics that are older than two weeks.
+     * The time stamp that determines the first data point to return. Note that start times are evaluated relative to
+     * the time that CloudWatch receives the request.
      * </p>
      * <p>
-     * Data that is timestamped 24 hours or more in the past may take in excess
-     * of 48 hours to become available from submission time using
-     * <code>GetMetricStatistics</code>.
+     * The value specified is inclusive; results include data points with the specified time stamp. The time stamp must
+     * be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
      * </p>
-     * </note>
+     * <p>
+     * CloudWatch rounds the specified time stamp as follows:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down
+     * to 12:32:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34
+     * is rounded down to 12:30:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The time stamp to use for determining the first datapoint to
-     *         return. The value specified is inclusive; results include
-     *         datapoints with the time stamp specified. The time stamp must be
-     *         in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).</p> <note>
+     * @return The time stamp that determines the first data point to return. Note that start times are evaluated
+     *         relative to the time that CloudWatch receives the request.</p>
      *         <p>
-     *         The specified start time is rounded down to the nearest value.
-     *         Datapoints are returned for start times up to two weeks in the
-     *         past. Specified start times that are more than two weeks in the
-     *         past will not return datapoints for metrics that are older than
-     *         two weeks.
+     *         The value specified is inclusive; results include data points with the specified time stamp. The time
+     *         stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
      *         </p>
      *         <p>
-     *         Data that is timestamped 24 hours or more in the past may take in
-     *         excess of 48 hours to become available from submission time using
-     *         <code>GetMetricStatistics</code>.
+     *         CloudWatch rounds the specified time stamp as follows:
      *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is
+     *         rounded down to 12:32:00.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example,
+     *         12:32:34 is rounded down to 12:30:00.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example,
+     *         12:32:34 is rounded down to 12:00:00.
+     *         </p>
+     *         </li>
      */
 
     public java.util.Date getStartTime() {
@@ -351,44 +492,67 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The time stamp to use for determining the first datapoint to return. The
-     * value specified is inclusive; results include datapoints with the time
-     * stamp specified. The time stamp must be in ISO 8601 UTC format (e.g.,
-     * 2014-09-03T23:00:00Z).
-     * </p>
-     * <note>
-     * <p>
-     * The specified start time is rounded down to the nearest value. Datapoints
-     * are returned for start times up to two weeks in the past. Specified start
-     * times that are more than two weeks in the past will not return datapoints
-     * for metrics that are older than two weeks.
+     * The time stamp that determines the first data point to return. Note that start times are evaluated relative to
+     * the time that CloudWatch receives the request.
      * </p>
      * <p>
-     * Data that is timestamped 24 hours or more in the past may take in excess
-     * of 48 hours to become available from submission time using
-     * <code>GetMetricStatistics</code>.
+     * The value specified is inclusive; results include data points with the specified time stamp. The time stamp must
+     * be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
      * </p>
-     * </note>
+     * <p>
+     * CloudWatch rounds the specified time stamp as follows:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down
+     * to 12:32:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34
+     * is rounded down to 12:30:00.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is
+     * rounded down to 12:00:00.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param startTime
-     *        The time stamp to use for determining the first datapoint to
-     *        return. The value specified is inclusive; results include
-     *        datapoints with the time stamp specified. The time stamp must be
-     *        in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).</p> <note>
+     *        The time stamp that determines the first data point to return. Note that start times are evaluated
+     *        relative to the time that CloudWatch receives the request.</p>
      *        <p>
-     *        The specified start time is rounded down to the nearest value.
-     *        Datapoints are returned for start times up to two weeks in the
-     *        past. Specified start times that are more than two weeks in the
-     *        past will not return datapoints for metrics that are older than
-     *        two weeks.
+     *        The value specified is inclusive; results include data points with the specified time stamp. The time
+     *        stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
      *        </p>
      *        <p>
-     *        Data that is timestamped 24 hours or more in the past may take in
-     *        excess of 48 hours to become available from submission time using
-     *        <code>GetMetricStatistics</code>.
+     *        CloudWatch rounds the specified time stamp as follows:
      *        </p>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is
+     *        rounded down to 12:32:00.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example,
+     *        12:32:34 is rounded down to 12:30:00.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example,
+     *        12:32:34 is rounded down to 12:00:00.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMetricStatisticsRequest withStartTime(java.util.Date startTime) {
@@ -398,17 +562,18 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The time stamp to use for determining the last datapoint to return. The
-     * value specified is exclusive; results will include datapoints up to the
-     * time stamp specified. The time stamp must be in ISO 8601 UTC format
-     * (e.g., 2014-09-03T23:00:00Z).
+     * The time stamp that determines the last data point to return.
+     * </p>
+     * <p>
+     * The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp
+     * must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
      * </p>
      * 
      * @param endTime
-     *        The time stamp to use for determining the last datapoint to
-     *        return. The value specified is exclusive; results will include
-     *        datapoints up to the time stamp specified. The time stamp must be
-     *        in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).
+     *        The time stamp that determines the last data point to return.</p>
+     *        <p>
+     *        The value specified is exclusive; results will include data points up to the specified time stamp. The
+     *        time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
      */
 
     public void setEndTime(java.util.Date endTime) {
@@ -417,16 +582,17 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The time stamp to use for determining the last datapoint to return. The
-     * value specified is exclusive; results will include datapoints up to the
-     * time stamp specified. The time stamp must be in ISO 8601 UTC format
-     * (e.g., 2014-09-03T23:00:00Z).
+     * The time stamp that determines the last data point to return.
+     * </p>
+     * <p>
+     * The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp
+     * must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
      * </p>
      * 
-     * @return The time stamp to use for determining the last datapoint to
-     *         return. The value specified is exclusive; results will include
-     *         datapoints up to the time stamp specified. The time stamp must be
-     *         in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).
+     * @return The time stamp that determines the last data point to return.</p>
+     *         <p>
+     *         The value specified is exclusive; results will include data points up to the specified time stamp. The
+     *         time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
      */
 
     public java.util.Date getEndTime() {
@@ -435,19 +601,19 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The time stamp to use for determining the last datapoint to return. The
-     * value specified is exclusive; results will include datapoints up to the
-     * time stamp specified. The time stamp must be in ISO 8601 UTC format
-     * (e.g., 2014-09-03T23:00:00Z).
+     * The time stamp that determines the last data point to return.
+     * </p>
+     * <p>
+     * The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp
+     * must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
      * </p>
      * 
      * @param endTime
-     *        The time stamp to use for determining the last datapoint to
-     *        return. The value specified is exclusive; results will include
-     *        datapoints up to the time stamp specified. The time stamp must be
-     *        in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The time stamp that determines the last data point to return.</p>
+     *        <p>
+     *        The value specified is exclusive; results will include data points up to the specified time stamp. The
+     *        time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMetricStatisticsRequest withEndTime(java.util.Date endTime) {
@@ -457,17 +623,44 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The granularity, in seconds, of the returned datapoints. A
-     * <code>Period</code> can be as short as one minute (60 seconds) or as long
-     * as one day (86,400 seconds), and must be a multiple of 60. The default
-     * value is 60.
+     * The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and
+     * must be a multiple of 60. The default value is 60.
      * </p>
+     * <p>
+     * If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify
+     * the period as follows or no data points in that time range is returned:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param period
-     *        The granularity, in seconds, of the returned datapoints. A
-     *        <code>Period</code> can be as short as one minute (60 seconds) or
-     *        as long as one day (86,400 seconds), and must be a multiple of 60.
-     *        The default value is 60.
+     *        The granularity, in seconds, of the returned data points. A period can be as short as one minute (60
+     *        seconds) and must be a multiple of 60. The default value is 60.</p>
+     *        <p>
+     *        If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must
+     *        specify the period as follows or no data points in that time range is returned:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).
+     *        </p>
+     *        </li>
      */
 
     public void setPeriod(Integer period) {
@@ -476,16 +669,43 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The granularity, in seconds, of the returned datapoints. A
-     * <code>Period</code> can be as short as one minute (60 seconds) or as long
-     * as one day (86,400 seconds), and must be a multiple of 60. The default
-     * value is 60.
+     * The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and
+     * must be a multiple of 60. The default value is 60.
      * </p>
+     * <p>
+     * If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify
+     * the period as follows or no data points in that time range is returned:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The granularity, in seconds, of the returned datapoints. A
-     *         <code>Period</code> can be as short as one minute (60 seconds) or
-     *         as long as one day (86,400 seconds), and must be a multiple of
-     *         60. The default value is 60.
+     * @return The granularity, in seconds, of the returned data points. A period can be as short as one minute (60
+     *         seconds) and must be a multiple of 60. The default value is 60.</p>
+     *         <p>
+     *         If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must
+     *         specify the period as follows or no data points in that time range is returned:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).
+     *         </p>
+     *         </li>
      */
 
     public Integer getPeriod() {
@@ -494,19 +714,45 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The granularity, in seconds, of the returned datapoints. A
-     * <code>Period</code> can be as short as one minute (60 seconds) or as long
-     * as one day (86,400 seconds), and must be a multiple of 60. The default
-     * value is 60.
+     * The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and
+     * must be a multiple of 60. The default value is 60.
      * </p>
+     * <p>
+     * If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify
+     * the period as follows or no data points in that time range is returned:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param period
-     *        The granularity, in seconds, of the returned datapoints. A
-     *        <code>Period</code> can be as short as one minute (60 seconds) or
-     *        as long as one day (86,400 seconds), and must be a multiple of 60.
-     *        The default value is 60.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The granularity, in seconds, of the returned data points. A period can be as short as one minute (60
+     *        seconds) and must be a multiple of 60. The default value is 60.</p>
+     *        <p>
+     *        If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must
+     *        specify the period as follows or no data points in that time range is returned:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetMetricStatisticsRequest withPeriod(Integer period) {
@@ -516,16 +762,11 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     * >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.
      * </p>
      * 
-     * @return The metric statistics to return. For information about specific
-     *         statistics returned by GetMetricStatistics, see <a href=
-     *         "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     *         >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * @return The metric statistics, other than percentile. For percentile statistics, use
+     *         <code>ExtendedStatistic</code>.
      * @see Statistic
      */
 
@@ -538,17 +779,12 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     * >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.
      * </p>
      * 
      * @param statistics
-     *        The metric statistics to return. For information about specific
-     *        statistics returned by GetMetricStatistics, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     *        >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     *        The metric statistics, other than percentile. For percentile statistics, use
+     *        <code>ExtendedStatistic</code>.
      * @see Statistic
      */
 
@@ -558,38 +794,29 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
             return;
         }
 
-        this.statistics = new com.amazonaws.internal.SdkInternalList<String>(
-                statistics);
+        this.statistics = new com.amazonaws.internal.SdkInternalList<String>(statistics);
     }
 
     /**
      * <p>
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     * >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setStatistics(java.util.Collection)} or
-     * {@link #withStatistics(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setStatistics(java.util.Collection)} or {@link #withStatistics(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param statistics
-     *        The metric statistics to return. For information about specific
-     *        statistics returned by GetMetricStatistics, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     *        >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The metric statistics, other than percentile. For percentile statistics, use
+     *        <code>ExtendedStatistic</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see Statistic
      */
 
     public GetMetricStatisticsRequest withStatistics(String... statistics) {
         if (this.statistics == null) {
-            setStatistics(new com.amazonaws.internal.SdkInternalList<String>(
-                    statistics.length));
+            setStatistics(new com.amazonaws.internal.SdkInternalList<String>(statistics.length));
         }
         for (String ele : statistics) {
             this.statistics.add(ele);
@@ -599,49 +826,35 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     * >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.
      * </p>
      * 
      * @param statistics
-     *        The metric statistics to return. For information about specific
-     *        statistics returned by GetMetricStatistics, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     *        >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The metric statistics, other than percentile. For percentile statistics, use
+     *        <code>ExtendedStatistic</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see Statistic
      */
 
-    public GetMetricStatisticsRequest withStatistics(
-            java.util.Collection<String> statistics) {
+    public GetMetricStatisticsRequest withStatistics(java.util.Collection<String> statistics) {
         setStatistics(statistics);
         return this;
     }
 
     /**
      * <p>
-     * The metric statistics to return. For information about specific
-     * statistics returned by GetMetricStatistics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     * >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
+     * The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.
      * </p>
      * 
      * @param statistics
-     *        The metric statistics to return. For information about specific
-     *        statistics returned by GetMetricStatistics, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic"
-     *        >Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The metric statistics, other than percentile. For percentile statistics, use
+     *        <code>ExtendedStatistic</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see Statistic
      */
 
     public GetMetricStatisticsRequest withStatistics(Statistic... statistics) {
-        com.amazonaws.internal.SdkInternalList<String> statisticsCopy = new com.amazonaws.internal.SdkInternalList<String>(
-                statistics.length);
+        com.amazonaws.internal.SdkInternalList<String> statisticsCopy = new com.amazonaws.internal.SdkInternalList<String>(statistics.length);
         for (Statistic value : statistics) {
             statisticsCopy.add(value.toString());
         }
@@ -655,16 +868,86 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The specific unit for a given metric. Metrics may be reported in multiple
-     * units. Not supplying a unit results in all units being returned. If the
-     * metric only ever reports one unit, specifying a unit will have no effect.
+     * The percentile statistics. Specify values between p0.0 and p100.
+     * </p>
+     * 
+     * @return The percentile statistics. Specify values between p0.0 and p100.
+     */
+
+    public java.util.List<String> getExtendedStatistics() {
+        if (extendedStatistics == null) {
+            extendedStatistics = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return extendedStatistics;
+    }
+
+    /**
+     * <p>
+     * The percentile statistics. Specify values between p0.0 and p100.
+     * </p>
+     * 
+     * @param extendedStatistics
+     *        The percentile statistics. Specify values between p0.0 and p100.
+     */
+
+    public void setExtendedStatistics(java.util.Collection<String> extendedStatistics) {
+        if (extendedStatistics == null) {
+            this.extendedStatistics = null;
+            return;
+        }
+
+        this.extendedStatistics = new com.amazonaws.internal.SdkInternalList<String>(extendedStatistics);
+    }
+
+    /**
+     * <p>
+     * The percentile statistics. Specify values between p0.0 and p100.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setExtendedStatistics(java.util.Collection)} or {@link #withExtendedStatistics(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param extendedStatistics
+     *        The percentile statistics. Specify values between p0.0 and p100.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GetMetricStatisticsRequest withExtendedStatistics(String... extendedStatistics) {
+        if (this.extendedStatistics == null) {
+            setExtendedStatistics(new com.amazonaws.internal.SdkInternalList<String>(extendedStatistics.length));
+        }
+        for (String ele : extendedStatistics) {
+            this.extendedStatistics.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The percentile statistics. Specify values between p0.0 and p100.
+     * </p>
+     * 
+     * @param extendedStatistics
+     *        The percentile statistics. Specify values between p0.0 and p100.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GetMetricStatisticsRequest withExtendedStatistics(java.util.Collection<String> extendedStatistics) {
+        setExtendedStatistics(extendedStatistics);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
+     * being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * </p>
      * 
      * @param unit
-     *        The specific unit for a given metric. Metrics may be reported in
-     *        multiple units. Not supplying a unit results in all units being
-     *        returned. If the metric only ever reports one unit, specifying a
-     *        unit will have no effect.
+     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
+     *        all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * @see StandardUnit
      */
 
@@ -674,15 +957,12 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The specific unit for a given metric. Metrics may be reported in multiple
-     * units. Not supplying a unit results in all units being returned. If the
-     * metric only ever reports one unit, specifying a unit will have no effect.
+     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
+     * being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * </p>
      * 
-     * @return The specific unit for a given metric. Metrics may be reported in
-     *         multiple units. Not supplying a unit results in all units being
-     *         returned. If the metric only ever reports one unit, specifying a
-     *         unit will have no effect.
+     * @return The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
+     *         all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * @see StandardUnit
      */
 
@@ -692,18 +972,14 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The specific unit for a given metric. Metrics may be reported in multiple
-     * units. Not supplying a unit results in all units being returned. If the
-     * metric only ever reports one unit, specifying a unit will have no effect.
+     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
+     * being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * </p>
      * 
      * @param unit
-     *        The specific unit for a given metric. Metrics may be reported in
-     *        multiple units. Not supplying a unit results in all units being
-     *        returned. If the metric only ever reports one unit, specifying a
-     *        unit will have no effect.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
+     *        all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
 
@@ -714,16 +990,13 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The specific unit for a given metric. Metrics may be reported in multiple
-     * units. Not supplying a unit results in all units being returned. If the
-     * metric only ever reports one unit, specifying a unit will have no effect.
+     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
+     * being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * </p>
      * 
      * @param unit
-     *        The specific unit for a given metric. Metrics may be reported in
-     *        multiple units. Not supplying a unit results in all units being
-     *        returned. If the metric only ever reports one unit, specifying a
-     *        unit will have no effect.
+     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
+     *        all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * @see StandardUnit
      */
 
@@ -733,18 +1006,14 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The specific unit for a given metric. Metrics may be reported in multiple
-     * units. Not supplying a unit results in all units being returned. If the
-     * metric only ever reports one unit, specifying a unit will have no effect.
+     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
+     * being returned. If the metric only ever reports one unit, specifying a unit has no effect.
      * </p>
      * 
      * @param unit
-     *        The specific unit for a given metric. Metrics may be reported in
-     *        multiple units. Not supplying a unit results in all units being
-     *        returned. If the metric only ever reports one unit, specifying a
-     *        unit will have no effect.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
+     *        all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
 
@@ -754,8 +1023,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -766,21 +1034,23 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNamespace() != null)
-            sb.append("Namespace: " + getNamespace() + ",");
+            sb.append("Namespace: ").append(getNamespace()).append(",");
         if (getMetricName() != null)
-            sb.append("MetricName: " + getMetricName() + ",");
+            sb.append("MetricName: ").append(getMetricName()).append(",");
         if (getDimensions() != null)
-            sb.append("Dimensions: " + getDimensions() + ",");
+            sb.append("Dimensions: ").append(getDimensions()).append(",");
         if (getStartTime() != null)
-            sb.append("StartTime: " + getStartTime() + ",");
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getEndTime() != null)
-            sb.append("EndTime: " + getEndTime() + ",");
+            sb.append("EndTime: ").append(getEndTime()).append(",");
         if (getPeriod() != null)
-            sb.append("Period: " + getPeriod() + ",");
+            sb.append("Period: ").append(getPeriod()).append(",");
         if (getStatistics() != null)
-            sb.append("Statistics: " + getStatistics() + ",");
+            sb.append("Statistics: ").append(getStatistics()).append(",");
+        if (getExtendedStatistics() != null)
+            sb.append("ExtendedStatistics: ").append(getExtendedStatistics()).append(",");
         if (getUnit() != null)
-            sb.append("Unit: " + getUnit());
+            sb.append("Unit: ").append(getUnit());
         sb.append("}");
         return sb.toString();
     }
@@ -797,43 +1067,39 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
         GetMetricStatisticsRequest other = (GetMetricStatisticsRequest) obj;
         if (other.getNamespace() == null ^ this.getNamespace() == null)
             return false;
-        if (other.getNamespace() != null
-                && other.getNamespace().equals(this.getNamespace()) == false)
+        if (other.getNamespace() != null && other.getNamespace().equals(this.getNamespace()) == false)
             return false;
         if (other.getMetricName() == null ^ this.getMetricName() == null)
             return false;
-        if (other.getMetricName() != null
-                && other.getMetricName().equals(this.getMetricName()) == false)
+        if (other.getMetricName() != null && other.getMetricName().equals(this.getMetricName()) == false)
             return false;
         if (other.getDimensions() == null ^ this.getDimensions() == null)
             return false;
-        if (other.getDimensions() != null
-                && other.getDimensions().equals(this.getDimensions()) == false)
+        if (other.getDimensions() != null && other.getDimensions().equals(this.getDimensions()) == false)
             return false;
         if (other.getStartTime() == null ^ this.getStartTime() == null)
             return false;
-        if (other.getStartTime() != null
-                && other.getStartTime().equals(this.getStartTime()) == false)
+        if (other.getStartTime() != null && other.getStartTime().equals(this.getStartTime()) == false)
             return false;
         if (other.getEndTime() == null ^ this.getEndTime() == null)
             return false;
-        if (other.getEndTime() != null
-                && other.getEndTime().equals(this.getEndTime()) == false)
+        if (other.getEndTime() != null && other.getEndTime().equals(this.getEndTime()) == false)
             return false;
         if (other.getPeriod() == null ^ this.getPeriod() == null)
             return false;
-        if (other.getPeriod() != null
-                && other.getPeriod().equals(this.getPeriod()) == false)
+        if (other.getPeriod() != null && other.getPeriod().equals(this.getPeriod()) == false)
             return false;
         if (other.getStatistics() == null ^ this.getStatistics() == null)
             return false;
-        if (other.getStatistics() != null
-                && other.getStatistics().equals(this.getStatistics()) == false)
+        if (other.getStatistics() != null && other.getStatistics().equals(this.getStatistics()) == false)
+            return false;
+        if (other.getExtendedStatistics() == null ^ this.getExtendedStatistics() == null)
+            return false;
+        if (other.getExtendedStatistics() != null && other.getExtendedStatistics().equals(this.getExtendedStatistics()) == false)
             return false;
         if (other.getUnit() == null ^ this.getUnit() == null)
             return false;
-        if (other.getUnit() != null
-                && other.getUnit().equals(this.getUnit()) == false)
+        if (other.getUnit() != null && other.getUnit().equals(this.getUnit()) == false)
             return false;
         return true;
     }
@@ -843,22 +1109,15 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getNamespace() == null) ? 0 : getNamespace().hashCode());
-        hashCode = prime * hashCode
-                + ((getMetricName() == null) ? 0 : getMetricName().hashCode());
-        hashCode = prime * hashCode
-                + ((getDimensions() == null) ? 0 : getDimensions().hashCode());
-        hashCode = prime * hashCode
-                + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getPeriod() == null) ? 0 : getPeriod().hashCode());
-        hashCode = prime * hashCode
-                + ((getStatistics() == null) ? 0 : getStatistics().hashCode());
-        hashCode = prime * hashCode
-                + ((getUnit() == null) ? 0 : getUnit().hashCode());
+        hashCode = prime * hashCode + ((getNamespace() == null) ? 0 : getNamespace().hashCode());
+        hashCode = prime * hashCode + ((getMetricName() == null) ? 0 : getMetricName().hashCode());
+        hashCode = prime * hashCode + ((getDimensions() == null) ? 0 : getDimensions().hashCode());
+        hashCode = prime * hashCode + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
+        hashCode = prime * hashCode + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
+        hashCode = prime * hashCode + ((getPeriod() == null) ? 0 : getPeriod().hashCode());
+        hashCode = prime * hashCode + ((getStatistics() == null) ? 0 : getStatistics().hashCode());
+        hashCode = prime * hashCode + ((getExtendedStatistics() == null) ? 0 : getExtendedStatistics().hashCode());
+        hashCode = prime * hashCode + ((getUnit() == null) ? 0 : getUnit().hashCode());
         return hashCode;
     }
 
@@ -866,4 +1125,5 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest
     public GetMetricStatisticsRequest clone() {
         return (GetMetricStatisticsRequest) super.clone();
     }
+
 }

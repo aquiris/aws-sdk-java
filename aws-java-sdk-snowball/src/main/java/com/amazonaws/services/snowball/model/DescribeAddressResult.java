@@ -1,43 +1,42 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeAddressResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeAddressResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The address that you want the Snowball or Snowballs associated with a
-     * specific job to be shipped to.
+     * The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
      * </p>
      */
     private Address address;
 
     /**
      * <p>
-     * The address that you want the Snowball or Snowballs associated with a
-     * specific job to be shipped to.
+     * The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
      * </p>
      * 
      * @param address
-     *        The address that you want the Snowball or Snowballs associated
-     *        with a specific job to be shipped to.
+     *        The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
      */
 
     public void setAddress(Address address) {
@@ -46,12 +45,10 @@ public class DescribeAddressResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The address that you want the Snowball or Snowballs associated with a
-     * specific job to be shipped to.
+     * The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
      * </p>
      * 
-     * @return The address that you want the Snowball or Snowballs associated
-     *         with a specific job to be shipped to.
+     * @return The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
      */
 
     public Address getAddress() {
@@ -60,15 +57,12 @@ public class DescribeAddressResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The address that you want the Snowball or Snowballs associated with a
-     * specific job to be shipped to.
+     * The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
      * </p>
      * 
      * @param address
-     *        The address that you want the Snowball or Snowballs associated
-     *        with a specific job to be shipped to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeAddressResult withAddress(Address address) {
@@ -77,8 +71,7 @@ public class DescribeAddressResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -89,7 +82,7 @@ public class DescribeAddressResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAddress() != null)
-            sb.append("Address: " + getAddress());
+            sb.append("Address: ").append(getAddress());
         sb.append("}");
         return sb.toString();
     }
@@ -106,8 +99,7 @@ public class DescribeAddressResult implements Serializable, Cloneable {
         DescribeAddressResult other = (DescribeAddressResult) obj;
         if (other.getAddress() == null ^ this.getAddress() == null)
             return false;
-        if (other.getAddress() != null
-                && other.getAddress().equals(this.getAddress()) == false)
+        if (other.getAddress() != null && other.getAddress().equals(this.getAddress()) == false)
             return false;
         return true;
     }
@@ -117,8 +109,7 @@ public class DescribeAddressResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getAddress() == null) ? 0 : getAddress().hashCode());
+        hashCode = prime * hashCode + ((getAddress() == null) ? 0 : getAddress().hashCode());
         return hashCode;
     }
 
@@ -127,9 +118,8 @@ public class DescribeAddressResult implements Serializable, Cloneable {
         try {
             return (DescribeAddressResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

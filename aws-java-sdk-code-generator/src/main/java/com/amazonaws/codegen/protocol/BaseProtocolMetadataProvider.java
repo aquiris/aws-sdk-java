@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -47,6 +47,14 @@ public abstract class BaseProtocolMetadataProvider implements ProtocolMetadataPr
     }
 
     /**
+     * Default is false, subclasses can override to indicate they are Ion protocols.
+     */
+    @Override
+    public boolean isIonProtocol() {
+        return false;
+    }
+
+    /**
      * Content type is hardcoded for very few protocols so we return null here for convenience.
      * Subclasses may override to set an explicit content type.
      */
@@ -61,10 +69,10 @@ public abstract class BaseProtocolMetadataProvider implements ProtocolMetadataPr
     }
 
     /**
-     * All AWS clients generate async variants of the service clients.
+     * @return The default base request class name for AWS clients.
      */
     @Override
-    public boolean hasAsyncClient() {
-        return true;
+    public String getRequestBaseFqcn() {
+        return "com.amazonaws.AmazonWebServiceRequest";
     }
 }

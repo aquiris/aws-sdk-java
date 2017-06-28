@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon Technologies, Inc.
+ * Copyright 2011-2017 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
  */
 package com.amazonaws;
 
+import com.amazonaws.annotation.NotThreadSafe;
+
 import java.io.InputStream;
 import java.util.EnumMap;
-
-import org.apache.http.annotation.NotThreadSafe;
 
 /**
  * Client request options such as client markers for individual

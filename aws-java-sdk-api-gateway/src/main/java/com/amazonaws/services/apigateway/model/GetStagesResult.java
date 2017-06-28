@@ -1,31 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a>
- * resource.
+ * A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.
  * </p>
- * <div class="seeAlso"><a href=
- * "http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html"
- * >Deploying API in Stages</a></div>
+ * <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html">Deploying API
+ * in Stages</a></div>
  */
-public class GetStagesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetStagesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -69,16 +67,14 @@ public class GetStagesResult implements Serializable, Cloneable {
      * An individual <a>Stage</a> resource.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setItem(java.util.Collection)} or
-     * {@link #withItem(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setItem(java.util.Collection)} or {@link #withItem(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param item
      *        An individual <a>Stage</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetStagesResult withItem(Stage... item) {
@@ -98,8 +94,7 @@ public class GetStagesResult implements Serializable, Cloneable {
      * 
      * @param item
      *        An individual <a>Stage</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetStagesResult withItem(java.util.Collection<Stage> item) {
@@ -108,8 +103,7 @@ public class GetStagesResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -120,7 +114,7 @@ public class GetStagesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getItem() != null)
-            sb.append("Item: " + getItem());
+            sb.append("Item: ").append(getItem());
         sb.append("}");
         return sb.toString();
     }
@@ -137,8 +131,7 @@ public class GetStagesResult implements Serializable, Cloneable {
         GetStagesResult other = (GetStagesResult) obj;
         if (other.getItem() == null ^ this.getItem() == null)
             return false;
-        if (other.getItem() != null
-                && other.getItem().equals(this.getItem()) == false)
+        if (other.getItem() != null && other.getItem().equals(this.getItem()) == false)
             return false;
         return true;
     }
@@ -148,8 +141,7 @@ public class GetStagesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getItem() == null) ? 0 : getItem().hashCode());
+        hashCode = prime * hashCode + ((getItem() == null) ? 0 : getItem().hashCode());
         return hashCode;
     }
 
@@ -158,9 +150,8 @@ public class GetStagesResult implements Serializable, Cloneable {
         try {
             return (GetStagesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

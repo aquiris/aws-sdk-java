@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Result message containing a description of the requested environment info.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RetrieveEnvironmentInfo"
+ *      target="_top">AWS API Documentation</a>
  */
-public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RetrieveEnvironmentInfoResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -54,15 +57,13 @@ public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
      *        The <a>EnvironmentInfoDescription</a> of the environment.
      */
 
-    public void setEnvironmentInfo(
-            java.util.Collection<EnvironmentInfoDescription> environmentInfo) {
+    public void setEnvironmentInfo(java.util.Collection<EnvironmentInfoDescription> environmentInfo) {
         if (environmentInfo == null) {
             this.environmentInfo = null;
             return;
         }
 
-        this.environmentInfo = new com.amazonaws.internal.SdkInternalList<EnvironmentInfoDescription>(
-                environmentInfo);
+        this.environmentInfo = new com.amazonaws.internal.SdkInternalList<EnvironmentInfoDescription>(environmentInfo);
     }
 
     /**
@@ -70,23 +71,19 @@ public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
      * The <a>EnvironmentInfoDescription</a> of the environment.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setEnvironmentInfo(java.util.Collection)} or
-     * {@link #withEnvironmentInfo(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setEnvironmentInfo(java.util.Collection)} or {@link #withEnvironmentInfo(java.util.Collection)} if you
+     * want to override the existing values.
      * </p>
      * 
      * @param environmentInfo
      *        The <a>EnvironmentInfoDescription</a> of the environment.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RetrieveEnvironmentInfoResult withEnvironmentInfo(
-            EnvironmentInfoDescription... environmentInfo) {
+    public RetrieveEnvironmentInfoResult withEnvironmentInfo(EnvironmentInfoDescription... environmentInfo) {
         if (this.environmentInfo == null) {
-            setEnvironmentInfo(new com.amazonaws.internal.SdkInternalList<EnvironmentInfoDescription>(
-                    environmentInfo.length));
+            setEnvironmentInfo(new com.amazonaws.internal.SdkInternalList<EnvironmentInfoDescription>(environmentInfo.length));
         }
         for (EnvironmentInfoDescription ele : environmentInfo) {
             this.environmentInfo.add(ele);
@@ -101,19 +98,16 @@ public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
      * 
      * @param environmentInfo
      *        The <a>EnvironmentInfoDescription</a> of the environment.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RetrieveEnvironmentInfoResult withEnvironmentInfo(
-            java.util.Collection<EnvironmentInfoDescription> environmentInfo) {
+    public RetrieveEnvironmentInfoResult withEnvironmentInfo(java.util.Collection<EnvironmentInfoDescription> environmentInfo) {
         setEnvironmentInfo(environmentInfo);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -124,7 +118,7 @@ public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getEnvironmentInfo() != null)
-            sb.append("EnvironmentInfo: " + getEnvironmentInfo());
+            sb.append("EnvironmentInfo: ").append(getEnvironmentInfo());
         sb.append("}");
         return sb.toString();
     }
@@ -139,11 +133,9 @@ public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
         if (obj instanceof RetrieveEnvironmentInfoResult == false)
             return false;
         RetrieveEnvironmentInfoResult other = (RetrieveEnvironmentInfoResult) obj;
-        if (other.getEnvironmentInfo() == null
-                ^ this.getEnvironmentInfo() == null)
+        if (other.getEnvironmentInfo() == null ^ this.getEnvironmentInfo() == null)
             return false;
-        if (other.getEnvironmentInfo() != null
-                && other.getEnvironmentInfo().equals(this.getEnvironmentInfo()) == false)
+        if (other.getEnvironmentInfo() != null && other.getEnvironmentInfo().equals(this.getEnvironmentInfo()) == false)
             return false;
         return true;
     }
@@ -153,10 +145,7 @@ public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getEnvironmentInfo() == null) ? 0 : getEnvironmentInfo()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getEnvironmentInfo() == null) ? 0 : getEnvironmentInfo().hashCode());
         return hashCode;
     }
 
@@ -165,9 +154,8 @@ public class RetrieveEnvironmentInfoResult implements Serializable, Cloneable {
         try {
             return (RetrieveEnvironmentInfoResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

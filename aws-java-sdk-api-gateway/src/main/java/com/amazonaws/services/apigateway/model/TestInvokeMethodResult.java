@@ -1,30 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the response of the test invoke request in the HTTP method.
  * </p>
  * <div class="seeAlso"> <a href=
- * "http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console"
- * >Test API using the API Gateway console</a> </div>
+ * "http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test
+ * API using the API Gateway console</a> </div>
  */
-public class TestInvokeMethodResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class TestInvokeMethodResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -89,8 +89,7 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
      * 
      * @param status
      *        The HTTP status code.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestInvokeMethodResult withStatus(Integer status) {
@@ -130,8 +129,7 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
      * 
      * @param body
      *        The body of the HTTP response.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestInvokeMethodResult withBody(String body) {
@@ -171,12 +169,10 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
      * 
      * @param headers
      *        The headers of the HTTP response.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public TestInvokeMethodResult withHeaders(
-            java.util.Map<String, String> headers) {
+    public TestInvokeMethodResult withHeaders(java.util.Map<String, String> headers) {
         setHeaders(headers);
         return this;
     }
@@ -186,15 +182,15 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
             this.headers = new java.util.HashMap<String, String>();
         }
         if (this.headers.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.headers.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into Headers. &lt;p> Returns a reference to
-     * this object so that method calls can be chained together.
+     * Removes all the entries added into Headers.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestInvokeMethodResult clearHeadersEntries() {
@@ -234,8 +230,7 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
      * 
      * @param log
      *        The Amazon API Gateway execution log for the test invoke request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestInvokeMethodResult withLog(String log) {
@@ -275,8 +270,7 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
      * 
      * @param latency
      *        The execution latency of the test invoke request.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public TestInvokeMethodResult withLatency(Long latency) {
@@ -285,8 +279,7 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -297,15 +290,15 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getBody() != null)
-            sb.append("Body: " + getBody() + ",");
+            sb.append("Body: ").append(getBody()).append(",");
         if (getHeaders() != null)
-            sb.append("Headers: " + getHeaders() + ",");
+            sb.append("Headers: ").append(getHeaders()).append(",");
         if (getLog() != null)
-            sb.append("Log: " + getLog() + ",");
+            sb.append("Log: ").append(getLog()).append(",");
         if (getLatency() != null)
-            sb.append("Latency: " + getLatency());
+            sb.append("Latency: ").append(getLatency());
         sb.append("}");
         return sb.toString();
     }
@@ -322,28 +315,23 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
         TestInvokeMethodResult other = (TestInvokeMethodResult) obj;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         if (other.getBody() == null ^ this.getBody() == null)
             return false;
-        if (other.getBody() != null
-                && other.getBody().equals(this.getBody()) == false)
+        if (other.getBody() != null && other.getBody().equals(this.getBody()) == false)
             return false;
         if (other.getHeaders() == null ^ this.getHeaders() == null)
             return false;
-        if (other.getHeaders() != null
-                && other.getHeaders().equals(this.getHeaders()) == false)
+        if (other.getHeaders() != null && other.getHeaders().equals(this.getHeaders()) == false)
             return false;
         if (other.getLog() == null ^ this.getLog() == null)
             return false;
-        if (other.getLog() != null
-                && other.getLog().equals(this.getLog()) == false)
+        if (other.getLog() != null && other.getLog().equals(this.getLog()) == false)
             return false;
         if (other.getLatency() == null ^ this.getLatency() == null)
             return false;
-        if (other.getLatency() != null
-                && other.getLatency().equals(this.getLatency()) == false)
+        if (other.getLatency() != null && other.getLatency().equals(this.getLatency()) == false)
             return false;
         return true;
     }
@@ -353,16 +341,11 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime * hashCode
-                + ((getBody() == null) ? 0 : getBody().hashCode());
-        hashCode = prime * hashCode
-                + ((getHeaders() == null) ? 0 : getHeaders().hashCode());
-        hashCode = prime * hashCode
-                + ((getLog() == null) ? 0 : getLog().hashCode());
-        hashCode = prime * hashCode
-                + ((getLatency() == null) ? 0 : getLatency().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getBody() == null) ? 0 : getBody().hashCode());
+        hashCode = prime * hashCode + ((getHeaders() == null) ? 0 : getHeaders().hashCode());
+        hashCode = prime * hashCode + ((getLog() == null) ? 0 : getLog().hashCode());
+        hashCode = prime * hashCode + ((getLatency() == null) ? 0 : getLatency().hashCode());
         return hashCode;
     }
 
@@ -371,9 +354,8 @@ public class TestInvokeMethodResult implements Serializable, Cloneable {
         try {
             return (TestInvokeMethodResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

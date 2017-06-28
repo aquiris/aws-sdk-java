@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.regions;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 
 import static com.amazonaws.SDKGlobalConfiguration.AWS_REGION_ENV_VAR;
 
@@ -25,7 +25,7 @@ import static com.amazonaws.SDKGlobalConfiguration.AWS_REGION_ENV_VAR;
 public class AwsEnvVarOverrideRegionProvider extends AwsRegionProvider {
 
     @Override
-    public String getRegion() throws AmazonClientException {
+    public String getRegion() throws SdkClientException {
         return System.getenv(AWS_REGION_ENV_VAR);
     }
 }

@@ -1,32 +1,35 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents a request to update a receipt rule. You use receipt rules to
- * receive email with Amazon SES. For more information, see the <a href=
- * "http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html"
- * >Amazon SES Developer Guide</a>.
+ * Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES. For more
+ * information, see the <a
+ * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer
+ * Guide</a>.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateReceiptRule" target="_top">AWS API
+ *      Documentation</a>
  */
-public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateReceiptRuleRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -47,8 +50,7 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param ruleSetName
-     *        The name of the receipt rule set to which the receipt rule
-     *        belongs.
+     *        The name of the receipt rule set to which the receipt rule belongs.
      */
 
     public void setRuleSetName(String ruleSetName) {
@@ -60,8 +62,7 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
      * The name of the receipt rule set to which the receipt rule belongs.
      * </p>
      * 
-     * @return The name of the receipt rule set to which the receipt rule
-     *         belongs.
+     * @return The name of the receipt rule set to which the receipt rule belongs.
      */
 
     public String getRuleSetName() {
@@ -74,10 +75,8 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param ruleSetName
-     *        The name of the receipt rule set to which the receipt rule
-     *        belongs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the receipt rule set to which the receipt rule belongs.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateReceiptRuleRequest withRuleSetName(String ruleSetName) {
@@ -91,8 +90,7 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param rule
-     *        A data structure that contains the updated receipt rule
-     *        information.
+     *        A data structure that contains the updated receipt rule information.
      */
 
     public void setRule(ReceiptRule rule) {
@@ -104,8 +102,7 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
      * A data structure that contains the updated receipt rule information.
      * </p>
      * 
-     * @return A data structure that contains the updated receipt rule
-     *         information.
+     * @return A data structure that contains the updated receipt rule information.
      */
 
     public ReceiptRule getRule() {
@@ -118,10 +115,8 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
      * </p>
      * 
      * @param rule
-     *        A data structure that contains the updated receipt rule
-     *        information.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A data structure that contains the updated receipt rule information.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateReceiptRuleRequest withRule(ReceiptRule rule) {
@@ -130,8 +125,7 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -142,9 +136,9 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRuleSetName() != null)
-            sb.append("RuleSetName: " + getRuleSetName() + ",");
+            sb.append("RuleSetName: ").append(getRuleSetName()).append(",");
         if (getRule() != null)
-            sb.append("Rule: " + getRule());
+            sb.append("Rule: ").append(getRule());
         sb.append("}");
         return sb.toString();
     }
@@ -161,13 +155,11 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
         UpdateReceiptRuleRequest other = (UpdateReceiptRuleRequest) obj;
         if (other.getRuleSetName() == null ^ this.getRuleSetName() == null)
             return false;
-        if (other.getRuleSetName() != null
-                && other.getRuleSetName().equals(this.getRuleSetName()) == false)
+        if (other.getRuleSetName() != null && other.getRuleSetName().equals(this.getRuleSetName()) == false)
             return false;
         if (other.getRule() == null ^ this.getRule() == null)
             return false;
-        if (other.getRule() != null
-                && other.getRule().equals(this.getRule()) == false)
+        if (other.getRule() != null && other.getRule().equals(this.getRule()) == false)
             return false;
         return true;
     }
@@ -177,11 +169,8 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getRuleSetName() == null) ? 0 : getRuleSetName().hashCode());
-        hashCode = prime * hashCode
-                + ((getRule() == null) ? 0 : getRule().hashCode());
+        hashCode = prime * hashCode + ((getRuleSetName() == null) ? 0 : getRuleSetName().hashCode());
+        hashCode = prime * hashCode + ((getRule() == null) ? 0 : getRule().hashCode());
         return hashCode;
     }
 
@@ -189,4 +178,5 @@ public class UpdateReceiptRuleRequest extends AmazonWebServiceRequest implements
     public UpdateReceiptRuleRequest clone() {
         return (UpdateReceiptRuleRequest) super.clone();
     }
+
 }

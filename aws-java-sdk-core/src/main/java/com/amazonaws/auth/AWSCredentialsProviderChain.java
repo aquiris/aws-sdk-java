@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 
 /**
  * {@link AWSCredentialsProvider} implementation that chains together multiple
@@ -128,7 +128,7 @@ public class AWSCredentialsProviderChain implements AWSCredentialsProvider {
             }
         }
 
-        throw new AmazonClientException("Unable to load AWS credentials from any provider in the chain");
+        throw new SdkClientException("Unable to load AWS credentials from any provider in the chain");
     }
 
     public void refresh() {

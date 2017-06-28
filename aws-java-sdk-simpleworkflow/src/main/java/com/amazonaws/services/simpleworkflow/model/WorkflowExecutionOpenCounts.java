@@ -1,28 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains the counts of open tasks, child workflow executions and timers for a
- * workflow execution.
+ * Contains the counts of open tasks, child workflow executions and timers for a workflow execution.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/WorkflowExecutionOpenCounts" target="_top">AWS
+ *      API Documentation</a>
  */
-public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class WorkflowExecutionOpenCounts implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -32,15 +36,13 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
     private Integer openActivityTasks;
     /**
      * <p>
-     * The count of decision tasks whose status is OPEN. A workflow execution
-     * can have at most one open decision task.
+     * The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision task.
      * </p>
      */
     private Integer openDecisionTasks;
     /**
      * <p>
-     * The count of timers started by this workflow execution that have not
-     * fired yet.
+     * The count of timers started by this workflow execution that have not fired yet.
      * </p>
      */
     private Integer openTimers;
@@ -89,25 +91,22 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
      * 
      * @param openActivityTasks
      *        The count of activity tasks whose status is OPEN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public WorkflowExecutionOpenCounts withOpenActivityTasks(
-            Integer openActivityTasks) {
+    public WorkflowExecutionOpenCounts withOpenActivityTasks(Integer openActivityTasks) {
         setOpenActivityTasks(openActivityTasks);
         return this;
     }
 
     /**
      * <p>
-     * The count of decision tasks whose status is OPEN. A workflow execution
-     * can have at most one open decision task.
+     * The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision task.
      * </p>
      * 
      * @param openDecisionTasks
-     *        The count of decision tasks whose status is OPEN. A workflow
-     *        execution can have at most one open decision task.
+     *        The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision
+     *        task.
      */
 
     public void setOpenDecisionTasks(Integer openDecisionTasks) {
@@ -116,12 +115,11 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The count of decision tasks whose status is OPEN. A workflow execution
-     * can have at most one open decision task.
+     * The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision task.
      * </p>
      * 
-     * @return The count of decision tasks whose status is OPEN. A workflow
-     *         execution can have at most one open decision task.
+     * @return The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision
+     *         task.
      */
 
     public Integer getOpenDecisionTasks() {
@@ -130,32 +128,27 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The count of decision tasks whose status is OPEN. A workflow execution
-     * can have at most one open decision task.
+     * The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision task.
      * </p>
      * 
      * @param openDecisionTasks
-     *        The count of decision tasks whose status is OPEN. A workflow
-     *        execution can have at most one open decision task.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision
+     *        task.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public WorkflowExecutionOpenCounts withOpenDecisionTasks(
-            Integer openDecisionTasks) {
+    public WorkflowExecutionOpenCounts withOpenDecisionTasks(Integer openDecisionTasks) {
         setOpenDecisionTasks(openDecisionTasks);
         return this;
     }
 
     /**
      * <p>
-     * The count of timers started by this workflow execution that have not
-     * fired yet.
+     * The count of timers started by this workflow execution that have not fired yet.
      * </p>
      * 
      * @param openTimers
-     *        The count of timers started by this workflow execution that have
-     *        not fired yet.
+     *        The count of timers started by this workflow execution that have not fired yet.
      */
 
     public void setOpenTimers(Integer openTimers) {
@@ -164,12 +157,10 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The count of timers started by this workflow execution that have not
-     * fired yet.
+     * The count of timers started by this workflow execution that have not fired yet.
      * </p>
      * 
-     * @return The count of timers started by this workflow execution that have
-     *         not fired yet.
+     * @return The count of timers started by this workflow execution that have not fired yet.
      */
 
     public Integer getOpenTimers() {
@@ -178,15 +169,12 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The count of timers started by this workflow execution that have not
-     * fired yet.
+     * The count of timers started by this workflow execution that have not fired yet.
      * </p>
      * 
      * @param openTimers
-     *        The count of timers started by this workflow execution that have
-     *        not fired yet.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The count of timers started by this workflow execution that have not fired yet.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public WorkflowExecutionOpenCounts withOpenTimers(Integer openTimers) {
@@ -203,8 +191,7 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
      *        The count of child workflow executions whose status is OPEN.
      */
 
-    public void setOpenChildWorkflowExecutions(
-            Integer openChildWorkflowExecutions) {
+    public void setOpenChildWorkflowExecutions(Integer openChildWorkflowExecutions) {
         this.openChildWorkflowExecutions = openChildWorkflowExecutions;
     }
 
@@ -227,12 +214,10 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
      * 
      * @param openChildWorkflowExecutions
      *        The count of child workflow executions whose status is OPEN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public WorkflowExecutionOpenCounts withOpenChildWorkflowExecutions(
-            Integer openChildWorkflowExecutions) {
+    public WorkflowExecutionOpenCounts withOpenChildWorkflowExecutions(Integer openChildWorkflowExecutions) {
         setOpenChildWorkflowExecutions(openChildWorkflowExecutions);
         return this;
     }
@@ -269,19 +254,16 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
      * 
      * @param openLambdaFunctions
      *        The count of AWS Lambda functions that are currently executing.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public WorkflowExecutionOpenCounts withOpenLambdaFunctions(
-            Integer openLambdaFunctions) {
+    public WorkflowExecutionOpenCounts withOpenLambdaFunctions(Integer openLambdaFunctions) {
         setOpenLambdaFunctions(openLambdaFunctions);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -292,16 +274,15 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOpenActivityTasks() != null)
-            sb.append("OpenActivityTasks: " + getOpenActivityTasks() + ",");
+            sb.append("OpenActivityTasks: ").append(getOpenActivityTasks()).append(",");
         if (getOpenDecisionTasks() != null)
-            sb.append("OpenDecisionTasks: " + getOpenDecisionTasks() + ",");
+            sb.append("OpenDecisionTasks: ").append(getOpenDecisionTasks()).append(",");
         if (getOpenTimers() != null)
-            sb.append("OpenTimers: " + getOpenTimers() + ",");
+            sb.append("OpenTimers: ").append(getOpenTimers()).append(",");
         if (getOpenChildWorkflowExecutions() != null)
-            sb.append("OpenChildWorkflowExecutions: "
-                    + getOpenChildWorkflowExecutions() + ",");
+            sb.append("OpenChildWorkflowExecutions: ").append(getOpenChildWorkflowExecutions()).append(",");
         if (getOpenLambdaFunctions() != null)
-            sb.append("OpenLambdaFunctions: " + getOpenLambdaFunctions());
+            sb.append("OpenLambdaFunctions: ").append(getOpenLambdaFunctions());
         sb.append("}");
         return sb.toString();
     }
@@ -316,38 +297,25 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
         if (obj instanceof WorkflowExecutionOpenCounts == false)
             return false;
         WorkflowExecutionOpenCounts other = (WorkflowExecutionOpenCounts) obj;
-        if (other.getOpenActivityTasks() == null
-                ^ this.getOpenActivityTasks() == null)
+        if (other.getOpenActivityTasks() == null ^ this.getOpenActivityTasks() == null)
             return false;
-        if (other.getOpenActivityTasks() != null
-                && other.getOpenActivityTasks().equals(
-                        this.getOpenActivityTasks()) == false)
+        if (other.getOpenActivityTasks() != null && other.getOpenActivityTasks().equals(this.getOpenActivityTasks()) == false)
             return false;
-        if (other.getOpenDecisionTasks() == null
-                ^ this.getOpenDecisionTasks() == null)
+        if (other.getOpenDecisionTasks() == null ^ this.getOpenDecisionTasks() == null)
             return false;
-        if (other.getOpenDecisionTasks() != null
-                && other.getOpenDecisionTasks().equals(
-                        this.getOpenDecisionTasks()) == false)
+        if (other.getOpenDecisionTasks() != null && other.getOpenDecisionTasks().equals(this.getOpenDecisionTasks()) == false)
             return false;
         if (other.getOpenTimers() == null ^ this.getOpenTimers() == null)
             return false;
-        if (other.getOpenTimers() != null
-                && other.getOpenTimers().equals(this.getOpenTimers()) == false)
+        if (other.getOpenTimers() != null && other.getOpenTimers().equals(this.getOpenTimers()) == false)
             return false;
-        if (other.getOpenChildWorkflowExecutions() == null
-                ^ this.getOpenChildWorkflowExecutions() == null)
+        if (other.getOpenChildWorkflowExecutions() == null ^ this.getOpenChildWorkflowExecutions() == null)
             return false;
-        if (other.getOpenChildWorkflowExecutions() != null
-                && other.getOpenChildWorkflowExecutions().equals(
-                        this.getOpenChildWorkflowExecutions()) == false)
+        if (other.getOpenChildWorkflowExecutions() != null && other.getOpenChildWorkflowExecutions().equals(this.getOpenChildWorkflowExecutions()) == false)
             return false;
-        if (other.getOpenLambdaFunctions() == null
-                ^ this.getOpenLambdaFunctions() == null)
+        if (other.getOpenLambdaFunctions() == null ^ this.getOpenLambdaFunctions() == null)
             return false;
-        if (other.getOpenLambdaFunctions() != null
-                && other.getOpenLambdaFunctions().equals(
-                        this.getOpenLambdaFunctions()) == false)
+        if (other.getOpenLambdaFunctions() != null && other.getOpenLambdaFunctions().equals(this.getOpenLambdaFunctions()) == false)
             return false;
         return true;
     }
@@ -357,24 +325,11 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getOpenActivityTasks() == null) ? 0
-                        : getOpenActivityTasks().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOpenDecisionTasks() == null) ? 0
-                        : getOpenDecisionTasks().hashCode());
-        hashCode = prime * hashCode
-                + ((getOpenTimers() == null) ? 0 : getOpenTimers().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOpenChildWorkflowExecutions() == null) ? 0
-                        : getOpenChildWorkflowExecutions().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOpenLambdaFunctions() == null) ? 0
-                        : getOpenLambdaFunctions().hashCode());
+        hashCode = prime * hashCode + ((getOpenActivityTasks() == null) ? 0 : getOpenActivityTasks().hashCode());
+        hashCode = prime * hashCode + ((getOpenDecisionTasks() == null) ? 0 : getOpenDecisionTasks().hashCode());
+        hashCode = prime * hashCode + ((getOpenTimers() == null) ? 0 : getOpenTimers().hashCode());
+        hashCode = prime * hashCode + ((getOpenChildWorkflowExecutions() == null) ? 0 : getOpenChildWorkflowExecutions().hashCode());
+        hashCode = prime * hashCode + ((getOpenLambdaFunctions() == null) ? 0 : getOpenLambdaFunctions().hashCode());
         return hashCode;
     }
 
@@ -383,9 +338,13 @@ public class WorkflowExecutionOpenCounts implements Serializable, Cloneable {
         try {
             return (WorkflowExecutionOpenCounts) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.WorkflowExecutionOpenCountsMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

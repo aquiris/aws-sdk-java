@@ -1,30 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * A complex type that contains information about the health checks or hosted
- * zones for which you want to list tags.
+ * A complex type that contains information about the health checks or hosted zones for which you want to list tags.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTagsForResources" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListTagsForResourcesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -46,8 +48,7 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
     private String resourceType;
     /**
      * <p>
-     * A complex type that contains the ResourceId element for each resource for
-     * which you want to get a list of tags.
+     * A complex type that contains the ResourceId element for each resource for which you want to get a list of tags.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> resourceIds;
@@ -155,8 +156,7 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
      *        The resource type for hosted zones is <code>hostedzone</code>.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see TagResourceType
      */
 
@@ -232,25 +232,22 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
      *        The resource type for hosted zones is <code>hostedzone</code>.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see TagResourceType
      */
 
-    public ListTagsForResourcesRequest withResourceType(
-            TagResourceType resourceType) {
+    public ListTagsForResourcesRequest withResourceType(TagResourceType resourceType) {
         setResourceType(resourceType);
         return this;
     }
 
     /**
      * <p>
-     * A complex type that contains the ResourceId element for each resource for
-     * which you want to get a list of tags.
+     * A complex type that contains the ResourceId element for each resource for which you want to get a list of tags.
      * </p>
      * 
-     * @return A complex type that contains the ResourceId element for each
-     *         resource for which you want to get a list of tags.
+     * @return A complex type that contains the ResourceId element for each resource for which you want to get a list of
+     *         tags.
      */
 
     public java.util.List<String> getResourceIds() {
@@ -262,13 +259,12 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A complex type that contains the ResourceId element for each resource for
-     * which you want to get a list of tags.
+     * A complex type that contains the ResourceId element for each resource for which you want to get a list of tags.
      * </p>
      * 
      * @param resourceIds
-     *        A complex type that contains the ResourceId element for each
-     *        resource for which you want to get a list of tags.
+     *        A complex type that contains the ResourceId element for each resource for which you want to get a list of
+     *        tags.
      */
 
     public void setResourceIds(java.util.Collection<String> resourceIds) {
@@ -277,33 +273,28 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
             return;
         }
 
-        this.resourceIds = new com.amazonaws.internal.SdkInternalList<String>(
-                resourceIds);
+        this.resourceIds = new com.amazonaws.internal.SdkInternalList<String>(resourceIds);
     }
 
     /**
      * <p>
-     * A complex type that contains the ResourceId element for each resource for
-     * which you want to get a list of tags.
+     * A complex type that contains the ResourceId element for each resource for which you want to get a list of tags.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setResourceIds(java.util.Collection)} or
-     * {@link #withResourceIds(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setResourceIds(java.util.Collection)} or {@link #withResourceIds(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param resourceIds
-     *        A complex type that contains the ResourceId element for each
-     *        resource for which you want to get a list of tags.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains the ResourceId element for each resource for which you want to get a list of
+     *        tags.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListTagsForResourcesRequest withResourceIds(String... resourceIds) {
         if (this.resourceIds == null) {
-            setResourceIds(new com.amazonaws.internal.SdkInternalList<String>(
-                    resourceIds.length));
+            setResourceIds(new com.amazonaws.internal.SdkInternalList<String>(resourceIds.length));
         }
         for (String ele : resourceIds) {
             this.resourceIds.add(ele);
@@ -313,26 +304,22 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A complex type that contains the ResourceId element for each resource for
-     * which you want to get a list of tags.
+     * A complex type that contains the ResourceId element for each resource for which you want to get a list of tags.
      * </p>
      * 
      * @param resourceIds
-     *        A complex type that contains the ResourceId element for each
-     *        resource for which you want to get a list of tags.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains the ResourceId element for each resource for which you want to get a list of
+     *        tags.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListTagsForResourcesRequest withResourceIds(
-            java.util.Collection<String> resourceIds) {
+    public ListTagsForResourcesRequest withResourceIds(java.util.Collection<String> resourceIds) {
         setResourceIds(resourceIds);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -343,9 +330,9 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getResourceType() != null)
-            sb.append("ResourceType: " + getResourceType() + ",");
+            sb.append("ResourceType: ").append(getResourceType()).append(",");
         if (getResourceIds() != null)
-            sb.append("ResourceIds: " + getResourceIds());
+            sb.append("ResourceIds: ").append(getResourceIds());
         sb.append("}");
         return sb.toString();
     }
@@ -362,13 +349,11 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
         ListTagsForResourcesRequest other = (ListTagsForResourcesRequest) obj;
         if (other.getResourceType() == null ^ this.getResourceType() == null)
             return false;
-        if (other.getResourceType() != null
-                && other.getResourceType().equals(this.getResourceType()) == false)
+        if (other.getResourceType() != null && other.getResourceType().equals(this.getResourceType()) == false)
             return false;
         if (other.getResourceIds() == null ^ this.getResourceIds() == null)
             return false;
-        if (other.getResourceIds() != null
-                && other.getResourceIds().equals(this.getResourceIds()) == false)
+        if (other.getResourceIds() != null && other.getResourceIds().equals(this.getResourceIds()) == false)
             return false;
         return true;
     }
@@ -378,13 +363,8 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getResourceType() == null) ? 0 : getResourceType()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getResourceIds() == null) ? 0 : getResourceIds().hashCode());
+        hashCode = prime * hashCode + ((getResourceType() == null) ? 0 : getResourceType().hashCode());
+        hashCode = prime * hashCode + ((getResourceIds() == null) ? 0 : getResourceIds().hashCode());
         return hashCode;
     }
 
@@ -392,4 +372,5 @@ public class ListTagsForResourcesRequest extends AmazonWebServiceRequest
     public ListTagsForResourcesRequest clone() {
         return (ListTagsForResourcesRequest) super.clone();
     }
+
 }

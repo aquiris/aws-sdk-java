@@ -1,34 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents the settings for a run. Includes things like location, radio
- * states, auxiliary apps, and network profiles.
+ * Represents the settings for a run. Includes things like location, radio states, auxiliary apps, and network profiles.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ScheduleRunConfiguration"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ScheduleRunConfiguration implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ScheduleRunConfiguration implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN of the extra data for the run. The extra data is a .zip file that
-     * AWS Device Farm will extract to external data for Android or the app's
-     * sandbox for iOS.
+     * The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to
+     * external data for Android or the app's sandbox for iOS.
      * </p>
      */
     private String extraDataPackageArn;
@@ -64,24 +67,21 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
     private java.util.List<String> auxiliaryApps;
     /**
      * <p>
-     * Specifies the billing method for a test run: <code>metered</code> or
-     * <code>unmetered</code>. If the parameter is not specified, the default
-     * value is <code>unmetered</code>.
+     * Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is
+     * not specified, the default value is <code>metered</code>.
      * </p>
      */
     private String billingMethod;
 
     /**
      * <p>
-     * The ARN of the extra data for the run. The extra data is a .zip file that
-     * AWS Device Farm will extract to external data for Android or the app's
-     * sandbox for iOS.
+     * The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to
+     * external data for Android or the app's sandbox for iOS.
      * </p>
      * 
      * @param extraDataPackageArn
-     *        The ARN of the extra data for the run. The extra data is a .zip
-     *        file that AWS Device Farm will extract to external data for
-     *        Android or the app's sandbox for iOS.
+     *        The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to
+     *        external data for Android or the app's sandbox for iOS.
      */
 
     public void setExtraDataPackageArn(String extraDataPackageArn) {
@@ -90,14 +90,12 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the extra data for the run. The extra data is a .zip file that
-     * AWS Device Farm will extract to external data for Android or the app's
-     * sandbox for iOS.
+     * The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to
+     * external data for Android or the app's sandbox for iOS.
      * </p>
      * 
-     * @return The ARN of the extra data for the run. The extra data is a .zip
-     *         file that AWS Device Farm will extract to external data for
-     *         Android or the app's sandbox for iOS.
+     * @return The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to
+     *         external data for Android or the app's sandbox for iOS.
      */
 
     public String getExtraDataPackageArn() {
@@ -106,21 +104,17 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN of the extra data for the run. The extra data is a .zip file that
-     * AWS Device Farm will extract to external data for Android or the app's
-     * sandbox for iOS.
+     * The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to
+     * external data for Android or the app's sandbox for iOS.
      * </p>
      * 
      * @param extraDataPackageArn
-     *        The ARN of the extra data for the run. The extra data is a .zip
-     *        file that AWS Device Farm will extract to external data for
-     *        Android or the app's sandbox for iOS.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to
+     *        external data for Android or the app's sandbox for iOS.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ScheduleRunConfiguration withExtraDataPackageArn(
-            String extraDataPackageArn) {
+    public ScheduleRunConfiguration withExtraDataPackageArn(String extraDataPackageArn) {
         setExtraDataPackageArn(extraDataPackageArn);
         return this;
     }
@@ -157,12 +151,10 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
      * 
      * @param networkProfileArn
      *        Reserved for internal use.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ScheduleRunConfiguration withNetworkProfileArn(
-            String networkProfileArn) {
+    public ScheduleRunConfiguration withNetworkProfileArn(String networkProfileArn) {
         setNetworkProfileArn(networkProfileArn);
         return this;
     }
@@ -199,8 +191,7 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
      * 
      * @param locale
      *        Information about the locale that is used for the run.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScheduleRunConfiguration withLocale(String locale) {
@@ -240,8 +231,7 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
      * 
      * @param location
      *        Information about the location that is used for the run.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScheduleRunConfiguration withLocation(Location location) {
@@ -281,8 +271,7 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
      * 
      * @param radios
      *        Information about the radio states for the run.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScheduleRunConfiguration withRadios(Radios radios) {
@@ -325,22 +314,19 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
      * A list of auxiliary apps for the run.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setAuxiliaryApps(java.util.Collection)} or
-     * {@link #withAuxiliaryApps(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAuxiliaryApps(java.util.Collection)} or {@link #withAuxiliaryApps(java.util.Collection)} if you want
+     * to override the existing values.
      * </p>
      * 
      * @param auxiliaryApps
      *        A list of auxiliary apps for the run.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ScheduleRunConfiguration withAuxiliaryApps(String... auxiliaryApps) {
         if (this.auxiliaryApps == null) {
-            setAuxiliaryApps(new java.util.ArrayList<String>(
-                    auxiliaryApps.length));
+            setAuxiliaryApps(new java.util.ArrayList<String>(auxiliaryApps.length));
         }
         for (String ele : auxiliaryApps) {
             this.auxiliaryApps.add(ele);
@@ -355,27 +341,23 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
      * 
      * @param auxiliaryApps
      *        A list of auxiliary apps for the run.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ScheduleRunConfiguration withAuxiliaryApps(
-            java.util.Collection<String> auxiliaryApps) {
+    public ScheduleRunConfiguration withAuxiliaryApps(java.util.Collection<String> auxiliaryApps) {
         setAuxiliaryApps(auxiliaryApps);
         return this;
     }
 
     /**
      * <p>
-     * Specifies the billing method for a test run: <code>metered</code> or
-     * <code>unmetered</code>. If the parameter is not specified, the default
-     * value is <code>unmetered</code>.
+     * Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is
+     * not specified, the default value is <code>metered</code>.
      * </p>
      * 
      * @param billingMethod
-     *        Specifies the billing method for a test run: <code>metered</code>
-     *        or <code>unmetered</code>. If the parameter is not specified, the
-     *        default value is <code>unmetered</code>.
+     *        Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the
+     *        parameter is not specified, the default value is <code>metered</code>.
      * @see BillingMethod
      */
 
@@ -385,14 +367,12 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the billing method for a test run: <code>metered</code> or
-     * <code>unmetered</code>. If the parameter is not specified, the default
-     * value is <code>unmetered</code>.
+     * Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is
+     * not specified, the default value is <code>metered</code>.
      * </p>
      * 
-     * @return Specifies the billing method for a test run: <code>metered</code>
-     *         or <code>unmetered</code>. If the parameter is not specified, the
-     *         default value is <code>unmetered</code>.
+     * @return Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the
+     *         parameter is not specified, the default value is <code>metered</code>.
      * @see BillingMethod
      */
 
@@ -402,17 +382,14 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the billing method for a test run: <code>metered</code> or
-     * <code>unmetered</code>. If the parameter is not specified, the default
-     * value is <code>unmetered</code>.
+     * Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is
+     * not specified, the default value is <code>metered</code>.
      * </p>
      * 
      * @param billingMethod
-     *        Specifies the billing method for a test run: <code>metered</code>
-     *        or <code>unmetered</code>. If the parameter is not specified, the
-     *        default value is <code>unmetered</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the
+     *        parameter is not specified, the default value is <code>metered</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see BillingMethod
      */
 
@@ -423,15 +400,13 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the billing method for a test run: <code>metered</code> or
-     * <code>unmetered</code>. If the parameter is not specified, the default
-     * value is <code>unmetered</code>.
+     * Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is
+     * not specified, the default value is <code>metered</code>.
      * </p>
      * 
      * @param billingMethod
-     *        Specifies the billing method for a test run: <code>metered</code>
-     *        or <code>unmetered</code>. If the parameter is not specified, the
-     *        default value is <code>unmetered</code>.
+     *        Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the
+     *        parameter is not specified, the default value is <code>metered</code>.
      * @see BillingMethod
      */
 
@@ -441,29 +416,24 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the billing method for a test run: <code>metered</code> or
-     * <code>unmetered</code>. If the parameter is not specified, the default
-     * value is <code>unmetered</code>.
+     * Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is
+     * not specified, the default value is <code>metered</code>.
      * </p>
      * 
      * @param billingMethod
-     *        Specifies the billing method for a test run: <code>metered</code>
-     *        or <code>unmetered</code>. If the parameter is not specified, the
-     *        default value is <code>unmetered</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the
+     *        parameter is not specified, the default value is <code>metered</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see BillingMethod
      */
 
-    public ScheduleRunConfiguration withBillingMethod(
-            BillingMethod billingMethod) {
+    public ScheduleRunConfiguration withBillingMethod(BillingMethod billingMethod) {
         setBillingMethod(billingMethod);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -474,19 +444,19 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getExtraDataPackageArn() != null)
-            sb.append("ExtraDataPackageArn: " + getExtraDataPackageArn() + ",");
+            sb.append("ExtraDataPackageArn: ").append(getExtraDataPackageArn()).append(",");
         if (getNetworkProfileArn() != null)
-            sb.append("NetworkProfileArn: " + getNetworkProfileArn() + ",");
+            sb.append("NetworkProfileArn: ").append(getNetworkProfileArn()).append(",");
         if (getLocale() != null)
-            sb.append("Locale: " + getLocale() + ",");
+            sb.append("Locale: ").append(getLocale()).append(",");
         if (getLocation() != null)
-            sb.append("Location: " + getLocation() + ",");
+            sb.append("Location: ").append(getLocation()).append(",");
         if (getRadios() != null)
-            sb.append("Radios: " + getRadios() + ",");
+            sb.append("Radios: ").append(getRadios()).append(",");
         if (getAuxiliaryApps() != null)
-            sb.append("AuxiliaryApps: " + getAuxiliaryApps() + ",");
+            sb.append("AuxiliaryApps: ").append(getAuxiliaryApps()).append(",");
         if (getBillingMethod() != null)
-            sb.append("BillingMethod: " + getBillingMethod());
+            sb.append("BillingMethod: ").append(getBillingMethod());
         sb.append("}");
         return sb.toString();
     }
@@ -501,44 +471,33 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
         if (obj instanceof ScheduleRunConfiguration == false)
             return false;
         ScheduleRunConfiguration other = (ScheduleRunConfiguration) obj;
-        if (other.getExtraDataPackageArn() == null
-                ^ this.getExtraDataPackageArn() == null)
+        if (other.getExtraDataPackageArn() == null ^ this.getExtraDataPackageArn() == null)
             return false;
-        if (other.getExtraDataPackageArn() != null
-                && other.getExtraDataPackageArn().equals(
-                        this.getExtraDataPackageArn()) == false)
+        if (other.getExtraDataPackageArn() != null && other.getExtraDataPackageArn().equals(this.getExtraDataPackageArn()) == false)
             return false;
-        if (other.getNetworkProfileArn() == null
-                ^ this.getNetworkProfileArn() == null)
+        if (other.getNetworkProfileArn() == null ^ this.getNetworkProfileArn() == null)
             return false;
-        if (other.getNetworkProfileArn() != null
-                && other.getNetworkProfileArn().equals(
-                        this.getNetworkProfileArn()) == false)
+        if (other.getNetworkProfileArn() != null && other.getNetworkProfileArn().equals(this.getNetworkProfileArn()) == false)
             return false;
         if (other.getLocale() == null ^ this.getLocale() == null)
             return false;
-        if (other.getLocale() != null
-                && other.getLocale().equals(this.getLocale()) == false)
+        if (other.getLocale() != null && other.getLocale().equals(this.getLocale()) == false)
             return false;
         if (other.getLocation() == null ^ this.getLocation() == null)
             return false;
-        if (other.getLocation() != null
-                && other.getLocation().equals(this.getLocation()) == false)
+        if (other.getLocation() != null && other.getLocation().equals(this.getLocation()) == false)
             return false;
         if (other.getRadios() == null ^ this.getRadios() == null)
             return false;
-        if (other.getRadios() != null
-                && other.getRadios().equals(this.getRadios()) == false)
+        if (other.getRadios() != null && other.getRadios().equals(this.getRadios()) == false)
             return false;
         if (other.getAuxiliaryApps() == null ^ this.getAuxiliaryApps() == null)
             return false;
-        if (other.getAuxiliaryApps() != null
-                && other.getAuxiliaryApps().equals(this.getAuxiliaryApps()) == false)
+        if (other.getAuxiliaryApps() != null && other.getAuxiliaryApps().equals(this.getAuxiliaryApps()) == false)
             return false;
         if (other.getBillingMethod() == null ^ this.getBillingMethod() == null)
             return false;
-        if (other.getBillingMethod() != null
-                && other.getBillingMethod().equals(this.getBillingMethod()) == false)
+        if (other.getBillingMethod() != null && other.getBillingMethod().equals(this.getBillingMethod()) == false)
             return false;
         return true;
     }
@@ -548,28 +507,13 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getExtraDataPackageArn() == null) ? 0
-                        : getExtraDataPackageArn().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNetworkProfileArn() == null) ? 0
-                        : getNetworkProfileArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getLocale() == null) ? 0 : getLocale().hashCode());
-        hashCode = prime * hashCode
-                + ((getLocation() == null) ? 0 : getLocation().hashCode());
-        hashCode = prime * hashCode
-                + ((getRadios() == null) ? 0 : getRadios().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAuxiliaryApps() == null) ? 0 : getAuxiliaryApps()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getBillingMethod() == null) ? 0 : getBillingMethod()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getExtraDataPackageArn() == null) ? 0 : getExtraDataPackageArn().hashCode());
+        hashCode = prime * hashCode + ((getNetworkProfileArn() == null) ? 0 : getNetworkProfileArn().hashCode());
+        hashCode = prime * hashCode + ((getLocale() == null) ? 0 : getLocale().hashCode());
+        hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode());
+        hashCode = prime * hashCode + ((getRadios() == null) ? 0 : getRadios().hashCode());
+        hashCode = prime * hashCode + ((getAuxiliaryApps() == null) ? 0 : getAuxiliaryApps().hashCode());
+        hashCode = prime * hashCode + ((getBillingMethod() == null) ? 0 : getBillingMethod().hashCode());
         return hashCode;
     }
 
@@ -578,9 +522,13 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable {
         try {
             return (ScheduleRunConfiguration) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.devicefarm.model.transform.ScheduleRunConfigurationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

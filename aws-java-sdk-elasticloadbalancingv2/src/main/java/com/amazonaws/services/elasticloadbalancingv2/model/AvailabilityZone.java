@@ -1,26 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Information about an Availability Zone.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/AvailabilityZone"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AvailabilityZone implements Serializable, Cloneable {
 
     /**
@@ -68,8 +71,7 @@ public class AvailabilityZone implements Serializable, Cloneable {
      * 
      * @param zoneName
      *        The name of the Availability Zone.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AvailabilityZone withZoneName(String zoneName) {
@@ -109,8 +111,7 @@ public class AvailabilityZone implements Serializable, Cloneable {
      * 
      * @param subnetId
      *        The ID of the subnet.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public AvailabilityZone withSubnetId(String subnetId) {
@@ -119,8 +120,7 @@ public class AvailabilityZone implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -131,9 +131,9 @@ public class AvailabilityZone implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getZoneName() != null)
-            sb.append("ZoneName: " + getZoneName() + ",");
+            sb.append("ZoneName: ").append(getZoneName()).append(",");
         if (getSubnetId() != null)
-            sb.append("SubnetId: " + getSubnetId());
+            sb.append("SubnetId: ").append(getSubnetId());
         sb.append("}");
         return sb.toString();
     }
@@ -150,13 +150,11 @@ public class AvailabilityZone implements Serializable, Cloneable {
         AvailabilityZone other = (AvailabilityZone) obj;
         if (other.getZoneName() == null ^ this.getZoneName() == null)
             return false;
-        if (other.getZoneName() != null
-                && other.getZoneName().equals(this.getZoneName()) == false)
+        if (other.getZoneName() != null && other.getZoneName().equals(this.getZoneName()) == false)
             return false;
         if (other.getSubnetId() == null ^ this.getSubnetId() == null)
             return false;
-        if (other.getSubnetId() != null
-                && other.getSubnetId().equals(this.getSubnetId()) == false)
+        if (other.getSubnetId() != null && other.getSubnetId().equals(this.getSubnetId()) == false)
             return false;
         return true;
     }
@@ -166,10 +164,8 @@ public class AvailabilityZone implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getZoneName() == null) ? 0 : getZoneName().hashCode());
-        hashCode = prime * hashCode
-                + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode());
+        hashCode = prime * hashCode + ((getZoneName() == null) ? 0 : getZoneName().hashCode());
+        hashCode = prime * hashCode + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode());
         return hashCode;
     }
 
@@ -178,9 +174,8 @@ public class AvailabilityZone implements Serializable, Cloneable {
         try {
             return (AvailabilityZone) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

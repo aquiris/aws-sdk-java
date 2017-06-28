@@ -1,56 +1,67 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The response to respond to the authentication challenge.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/RespondToAuthChallenge" target="_top">AWS
+ *      API Documentation</a>
  */
-public class RespondToAuthChallengeResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RespondToAuthChallengeResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge name.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      */
     private String challengeName;
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      */
     private String session;
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      */
     private java.util.Map<String, String> challengeParameters;
-
+    /**
+     * <p>
+     * The result returned by the server in response to the request to respond to the authentication challenge.
+     * </p>
+     */
     private AuthenticationResultType authenticationResult;
 
     /**
      * <p>
-     * The challenge name.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
      * @param challengeName
-     *        The challenge name.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * @see ChallengeNameType
      */
 
@@ -60,10 +71,10 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge name.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
-     * @return The challenge name.
+     * @return The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * @see ChallengeNameType
      */
 
@@ -73,13 +84,12 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge name.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
      * @param challengeName
-     *        The challenge name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChallengeNameType
      */
 
@@ -90,11 +100,11 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge name.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
      * @param challengeName
-     *        The challenge name.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * @see ChallengeNameType
      */
 
@@ -104,29 +114,35 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge name.
+     * The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
      * @param challengeName
-     *        The challenge name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChallengeNameType
      */
 
-    public RespondToAuthChallengeResult withChallengeName(
-            ChallengeNameType challengeName) {
+    public RespondToAuthChallengeResult withChallengeName(ChallengeNameType challengeName) {
         setChallengeName(challengeName);
         return this;
     }
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
      * @param session
-     *        The session.
+     *        The session which should be passed both ways in challenge-response calls to the service. If the <a
+     *        href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     *        href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller
+     *        needs to go through another challenge, they return a session with other challenge parameters. This session
+     *        should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
      */
 
     public void setSession(String session) {
@@ -135,10 +151,18 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
-     * @return The session.
+     * @return The session which should be passed both ways in challenge-response calls to the service. If the <a
+     *         href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     *         href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller
+     *         needs to go through another challenge, they return a session with other challenge parameters. This
+     *         session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
      */
 
     public String getSession() {
@@ -147,13 +171,20 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The session.
+     * The session which should be passed both ways in challenge-response calls to the service. If the <a
+     * href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     * href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go
+     * through another challenge, they return a session with other challenge parameters. This session should be passed
+     * as it is to the next <code>RespondToAuthChallenge</code> API call.
      * </p>
      * 
      * @param session
-     *        The session.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The session which should be passed both ways in challenge-response calls to the service. If the <a
+     *        href="API_InitiateAuth.html">InitiateAuth</a> or <a
+     *        href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller
+     *        needs to go through another challenge, they return a session with other challenge parameters. This session
+     *        should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RespondToAuthChallengeResult withSession(String session) {
@@ -163,10 +194,10 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
-     * @return The challenge parameters.
+     * @return The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      */
 
     public java.util.Map<String, String> getChallengeParameters() {
@@ -175,50 +206,46 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
      * @param challengeParameters
-     *        The challenge parameters.
+     *        The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      */
 
-    public void setChallengeParameters(
-            java.util.Map<String, String> challengeParameters) {
+    public void setChallengeParameters(java.util.Map<String, String> challengeParameters) {
         this.challengeParameters = challengeParameters;
     }
 
     /**
      * <p>
-     * The challenge parameters.
+     * The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
      * </p>
      * 
      * @param challengeParameters
-     *        The challenge parameters.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RespondToAuthChallengeResult withChallengeParameters(
-            java.util.Map<String, String> challengeParameters) {
+    public RespondToAuthChallengeResult withChallengeParameters(java.util.Map<String, String> challengeParameters) {
         setChallengeParameters(challengeParameters);
         return this;
     }
 
-    public RespondToAuthChallengeResult addChallengeParametersEntry(String key,
-            String value) {
+    public RespondToAuthChallengeResult addChallengeParametersEntry(String key, String value) {
         if (null == this.challengeParameters) {
             this.challengeParameters = new java.util.HashMap<String, String>();
         }
         if (this.challengeParameters.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.challengeParameters.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into ChallengeParameters. &lt;p> Returns a
-     * reference to this object so that method calls can be chained together.
+     * Removes all the entries added into ChallengeParameters.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RespondToAuthChallengeResult clearChallengeParametersEntries() {
@@ -227,16 +254,24 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The result returned by the server in response to the request to respond to the authentication challenge.
+     * </p>
+     * 
      * @param authenticationResult
+     *        The result returned by the server in response to the request to respond to the authentication challenge.
      */
 
-    public void setAuthenticationResult(
-            AuthenticationResultType authenticationResult) {
+    public void setAuthenticationResult(AuthenticationResultType authenticationResult) {
         this.authenticationResult = authenticationResult;
     }
 
     /**
-     * @return
+     * <p>
+     * The result returned by the server in response to the request to respond to the authentication challenge.
+     * </p>
+     * 
+     * @return The result returned by the server in response to the request to respond to the authentication challenge.
      */
 
     public AuthenticationResultType getAuthenticationResult() {
@@ -244,20 +279,22 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The result returned by the server in response to the request to respond to the authentication challenge.
+     * </p>
+     * 
      * @param authenticationResult
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The result returned by the server in response to the request to respond to the authentication challenge.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public RespondToAuthChallengeResult withAuthenticationResult(
-            AuthenticationResultType authenticationResult) {
+    public RespondToAuthChallengeResult withAuthenticationResult(AuthenticationResultType authenticationResult) {
         setAuthenticationResult(authenticationResult);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -268,13 +305,13 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getChallengeName() != null)
-            sb.append("ChallengeName: " + getChallengeName() + ",");
+            sb.append("ChallengeName: ").append(getChallengeName()).append(",");
         if (getSession() != null)
-            sb.append("Session: " + getSession() + ",");
+            sb.append("Session: ").append(getSession()).append(",");
         if (getChallengeParameters() != null)
-            sb.append("ChallengeParameters: " + getChallengeParameters() + ",");
+            sb.append("ChallengeParameters: ").append(getChallengeParameters()).append(",");
         if (getAuthenticationResult() != null)
-            sb.append("AuthenticationResult: " + getAuthenticationResult());
+            sb.append("AuthenticationResult: ").append(getAuthenticationResult());
         sb.append("}");
         return sb.toString();
     }
@@ -291,27 +328,19 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
         RespondToAuthChallengeResult other = (RespondToAuthChallengeResult) obj;
         if (other.getChallengeName() == null ^ this.getChallengeName() == null)
             return false;
-        if (other.getChallengeName() != null
-                && other.getChallengeName().equals(this.getChallengeName()) == false)
+        if (other.getChallengeName() != null && other.getChallengeName().equals(this.getChallengeName()) == false)
             return false;
         if (other.getSession() == null ^ this.getSession() == null)
             return false;
-        if (other.getSession() != null
-                && other.getSession().equals(this.getSession()) == false)
+        if (other.getSession() != null && other.getSession().equals(this.getSession()) == false)
             return false;
-        if (other.getChallengeParameters() == null
-                ^ this.getChallengeParameters() == null)
+        if (other.getChallengeParameters() == null ^ this.getChallengeParameters() == null)
             return false;
-        if (other.getChallengeParameters() != null
-                && other.getChallengeParameters().equals(
-                        this.getChallengeParameters()) == false)
+        if (other.getChallengeParameters() != null && other.getChallengeParameters().equals(this.getChallengeParameters()) == false)
             return false;
-        if (other.getAuthenticationResult() == null
-                ^ this.getAuthenticationResult() == null)
+        if (other.getAuthenticationResult() == null ^ this.getAuthenticationResult() == null)
             return false;
-        if (other.getAuthenticationResult() != null
-                && other.getAuthenticationResult().equals(
-                        this.getAuthenticationResult()) == false)
+        if (other.getAuthenticationResult() != null && other.getAuthenticationResult().equals(this.getAuthenticationResult()) == false)
             return false;
         return true;
     }
@@ -321,20 +350,10 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getChallengeName() == null) ? 0 : getChallengeName()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getSession() == null) ? 0 : getSession().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChallengeParameters() == null) ? 0
-                        : getChallengeParameters().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAuthenticationResult() == null) ? 0
-                        : getAuthenticationResult().hashCode());
+        hashCode = prime * hashCode + ((getChallengeName() == null) ? 0 : getChallengeName().hashCode());
+        hashCode = prime * hashCode + ((getSession() == null) ? 0 : getSession().hashCode());
+        hashCode = prime * hashCode + ((getChallengeParameters() == null) ? 0 : getChallengeParameters().hashCode());
+        hashCode = prime * hashCode + ((getAuthenticationResult() == null) ? 0 : getAuthenticationResult().hashCode());
         return hashCode;
     }
 
@@ -343,9 +362,8 @@ public class RespondToAuthChallengeResult implements Serializable, Cloneable {
         try {
             return (RespondToAuthChallengeResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

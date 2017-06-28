@@ -1,30 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.kinesisanalytics.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Describes the reference data source by providing the source information (S3
- * bucket name and object key name), the resulting in-application table name
- * that is created, and the necessary schema to map the data elements in the
- * Amazon S3 object to the in-application table.
+ * Describes the reference data source by providing the source information (S3 bucket name and object key name), the
+ * resulting in-application table name that is created, and the necessary schema to map the data elements in the Amazon
+ * S3 object to the in-application table.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ReferenceDataSource"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ReferenceDataSource implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ReferenceDataSource implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -69,8 +73,7 @@ public class ReferenceDataSource implements Serializable, Cloneable {
      * 
      * @param tableName
      *        Name of the in-application table to create.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReferenceDataSource withTableName(String tableName) {
@@ -82,8 +85,7 @@ public class ReferenceDataSource implements Serializable, Cloneable {
      * @param s3ReferenceDataSource
      */
 
-    public void setS3ReferenceDataSource(
-            S3ReferenceDataSource s3ReferenceDataSource) {
+    public void setS3ReferenceDataSource(S3ReferenceDataSource s3ReferenceDataSource) {
         this.s3ReferenceDataSource = s3ReferenceDataSource;
     }
 
@@ -97,12 +99,10 @@ public class ReferenceDataSource implements Serializable, Cloneable {
 
     /**
      * @param s3ReferenceDataSource
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ReferenceDataSource withS3ReferenceDataSource(
-            S3ReferenceDataSource s3ReferenceDataSource) {
+    public ReferenceDataSource withS3ReferenceDataSource(S3ReferenceDataSource s3ReferenceDataSource) {
         setS3ReferenceDataSource(s3ReferenceDataSource);
         return this;
     }
@@ -125,8 +125,7 @@ public class ReferenceDataSource implements Serializable, Cloneable {
 
     /**
      * @param referenceSchema
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ReferenceDataSource withReferenceSchema(SourceSchema referenceSchema) {
@@ -135,8 +134,7 @@ public class ReferenceDataSource implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -147,12 +145,11 @@ public class ReferenceDataSource implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTableName() != null)
-            sb.append("TableName: " + getTableName() + ",");
+            sb.append("TableName: ").append(getTableName()).append(",");
         if (getS3ReferenceDataSource() != null)
-            sb.append("S3ReferenceDataSource: " + getS3ReferenceDataSource()
-                    + ",");
+            sb.append("S3ReferenceDataSource: ").append(getS3ReferenceDataSource()).append(",");
         if (getReferenceSchema() != null)
-            sb.append("ReferenceSchema: " + getReferenceSchema());
+            sb.append("ReferenceSchema: ").append(getReferenceSchema());
         sb.append("}");
         return sb.toString();
     }
@@ -169,21 +166,15 @@ public class ReferenceDataSource implements Serializable, Cloneable {
         ReferenceDataSource other = (ReferenceDataSource) obj;
         if (other.getTableName() == null ^ this.getTableName() == null)
             return false;
-        if (other.getTableName() != null
-                && other.getTableName().equals(this.getTableName()) == false)
+        if (other.getTableName() != null && other.getTableName().equals(this.getTableName()) == false)
             return false;
-        if (other.getS3ReferenceDataSource() == null
-                ^ this.getS3ReferenceDataSource() == null)
+        if (other.getS3ReferenceDataSource() == null ^ this.getS3ReferenceDataSource() == null)
             return false;
-        if (other.getS3ReferenceDataSource() != null
-                && other.getS3ReferenceDataSource().equals(
-                        this.getS3ReferenceDataSource()) == false)
+        if (other.getS3ReferenceDataSource() != null && other.getS3ReferenceDataSource().equals(this.getS3ReferenceDataSource()) == false)
             return false;
-        if (other.getReferenceSchema() == null
-                ^ this.getReferenceSchema() == null)
+        if (other.getReferenceSchema() == null ^ this.getReferenceSchema() == null)
             return false;
-        if (other.getReferenceSchema() != null
-                && other.getReferenceSchema().equals(this.getReferenceSchema()) == false)
+        if (other.getReferenceSchema() != null && other.getReferenceSchema().equals(this.getReferenceSchema()) == false)
             return false;
         return true;
     }
@@ -193,16 +184,9 @@ public class ReferenceDataSource implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getTableName() == null) ? 0 : getTableName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getS3ReferenceDataSource() == null) ? 0
-                        : getS3ReferenceDataSource().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReferenceSchema() == null) ? 0 : getReferenceSchema()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getTableName() == null) ? 0 : getTableName().hashCode());
+        hashCode = prime * hashCode + ((getS3ReferenceDataSource() == null) ? 0 : getS3ReferenceDataSource().hashCode());
+        hashCode = prime * hashCode + ((getReferenceSchema() == null) ? 0 : getReferenceSchema().hashCode());
         return hashCode;
     }
 
@@ -211,9 +195,13 @@ public class ReferenceDataSource implements Serializable, Cloneable {
         try {
             return (ReferenceDataSource) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.kinesisanalytics.model.transform.ReferenceDataSourceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

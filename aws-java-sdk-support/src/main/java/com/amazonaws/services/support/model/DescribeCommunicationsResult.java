@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.support.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The communications returned by the <a>DescribeCommunications</a> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DescribeCommunicationsResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeCommunicationsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -60,15 +63,13 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
      *        The communications for the case.
      */
 
-    public void setCommunications(
-            java.util.Collection<Communication> communications) {
+    public void setCommunications(java.util.Collection<Communication> communications) {
         if (communications == null) {
             this.communications = null;
             return;
         }
 
-        this.communications = new com.amazonaws.internal.SdkInternalList<Communication>(
-                communications);
+        this.communications = new com.amazonaws.internal.SdkInternalList<Communication>(communications);
     }
 
     /**
@@ -76,23 +77,19 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
      * The communications for the case.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setCommunications(java.util.Collection)} or
-     * {@link #withCommunications(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCommunications(java.util.Collection)} or {@link #withCommunications(java.util.Collection)} if you want
+     * to override the existing values.
      * </p>
      * 
      * @param communications
      *        The communications for the case.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeCommunicationsResult withCommunications(
-            Communication... communications) {
+    public DescribeCommunicationsResult withCommunications(Communication... communications) {
         if (this.communications == null) {
-            setCommunications(new com.amazonaws.internal.SdkInternalList<Communication>(
-                    communications.length));
+            setCommunications(new com.amazonaws.internal.SdkInternalList<Communication>(communications.length));
         }
         for (Communication ele : communications) {
             this.communications.add(ele);
@@ -107,12 +104,10 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
      * 
      * @param communications
      *        The communications for the case.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeCommunicationsResult withCommunications(
-            java.util.Collection<Communication> communications) {
+    public DescribeCommunicationsResult withCommunications(java.util.Collection<Communication> communications) {
         setCommunications(communications);
         return this;
     }
@@ -149,8 +144,7 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
      * 
      * @param nextToken
      *        A resumption point for pagination.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeCommunicationsResult withNextToken(String nextToken) {
@@ -159,8 +153,7 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -171,9 +164,9 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCommunications() != null)
-            sb.append("Communications: " + getCommunications() + ",");
+            sb.append("Communications: ").append(getCommunications()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -188,16 +181,13 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
         if (obj instanceof DescribeCommunicationsResult == false)
             return false;
         DescribeCommunicationsResult other = (DescribeCommunicationsResult) obj;
-        if (other.getCommunications() == null
-                ^ this.getCommunications() == null)
+        if (other.getCommunications() == null ^ this.getCommunications() == null)
             return false;
-        if (other.getCommunications() != null
-                && other.getCommunications().equals(this.getCommunications()) == false)
+        if (other.getCommunications() != null && other.getCommunications().equals(this.getCommunications()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -207,12 +197,8 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getCommunications() == null) ? 0 : getCommunications()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getCommunications() == null) ? 0 : getCommunications().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -221,9 +207,8 @@ public class DescribeCommunicationsResult implements Serializable, Cloneable {
         try {
             return (DescribeCommunicationsResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

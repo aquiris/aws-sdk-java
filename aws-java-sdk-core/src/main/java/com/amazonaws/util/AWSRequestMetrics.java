@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
 
 package com.amazonaws.util;
 
+import com.amazonaws.annotation.NotThreadSafe;
 import com.amazonaws.metrics.MetricType;
 import com.amazonaws.metrics.RequestMetricType;
-import org.apache.http.annotation.NotThreadSafe;
 
 import java.util.Collections;
 import java.util.List;

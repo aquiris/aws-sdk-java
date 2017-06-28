@@ -1,25 +1,25 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.auth.policy.actions;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.auth.policy.Action;
 
 /**
  * The available AWS access control policy actions for Route 53.
  */
-
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum Route53Actions implements Action {
 
     /** Represents any action executed on Route 53. */
@@ -43,6 +43,8 @@ public enum Route53Actions implements Action {
     CreateTrafficPolicyInstance("route53:CreateTrafficPolicyInstance"),
     /** Action for the CreateTrafficPolicyVersion operation. */
     CreateTrafficPolicyVersion("route53:CreateTrafficPolicyVersion"),
+    /** Action for the CreateVPCAssociationAuthorization operation. */
+    CreateVPCAssociationAuthorization("route53:CreateVPCAssociationAuthorization"),
     /** Action for the DeleteHealthCheck operation. */
     DeleteHealthCheck("route53:DeleteHealthCheck"),
     /** Action for the DeleteHostedZone operation. */
@@ -53,12 +55,12 @@ public enum Route53Actions implements Action {
     DeleteTrafficPolicy("route53:DeleteTrafficPolicy"),
     /** Action for the DeleteTrafficPolicyInstance operation. */
     DeleteTrafficPolicyInstance("route53:DeleteTrafficPolicyInstance"),
+    /** Action for the DeleteVPCAssociationAuthorization operation. */
+    DeleteVPCAssociationAuthorization("route53:DeleteVPCAssociationAuthorization"),
     /** Action for the DisassociateVPCFromHostedZone operation. */
     DisassociateVPCFromHostedZone("route53:DisassociateVPCFromHostedZone"),
     /** Action for the GetChange operation. */
     GetChange("route53:GetChange"),
-    /** Action for the GetChangeDetails operation. */
-    GetChangeDetails("route53:GetChangeDetails"),
     /** Action for the GetCheckerIpRanges operation. */
     GetCheckerIpRanges("route53:GetCheckerIpRanges"),
     /** Action for the GetGeoLocation operation. */
@@ -83,10 +85,6 @@ public enum Route53Actions implements Action {
     GetTrafficPolicyInstance("route53:GetTrafficPolicyInstance"),
     /** Action for the GetTrafficPolicyInstanceCount operation. */
     GetTrafficPolicyInstanceCount("route53:GetTrafficPolicyInstanceCount"),
-    /** Action for the ListChangeBatchesByHostedZone operation. */
-    ListChangeBatchesByHostedZone("route53:ListChangeBatchesByHostedZone"),
-    /** Action for the ListChangeBatchesByRRSet operation. */
-    ListChangeBatchesByRRSet("route53:ListChangeBatchesByRRSet"),
     /** Action for the ListGeoLocations operation. */
     ListGeoLocations("route53:ListGeoLocations"),
     /** Action for the ListHealthChecks operation. */
@@ -108,13 +106,13 @@ public enum Route53Actions implements Action {
     /** Action for the ListTrafficPolicyInstances operation. */
     ListTrafficPolicyInstances("route53:ListTrafficPolicyInstances"),
     /** Action for the ListTrafficPolicyInstancesByHostedZone operation. */
-    ListTrafficPolicyInstancesByHostedZone(
-            "route53:ListTrafficPolicyInstancesByHostedZone"),
+    ListTrafficPolicyInstancesByHostedZone("route53:ListTrafficPolicyInstancesByHostedZone"),
     /** Action for the ListTrafficPolicyInstancesByPolicy operation. */
-    ListTrafficPolicyInstancesByPolicy(
-            "route53:ListTrafficPolicyInstancesByPolicy"),
+    ListTrafficPolicyInstancesByPolicy("route53:ListTrafficPolicyInstancesByPolicy"),
     /** Action for the ListTrafficPolicyVersions operation. */
     ListTrafficPolicyVersions("route53:ListTrafficPolicyVersions"),
+    /** Action for the ListVPCAssociationAuthorizations operation. */
+    ListVPCAssociationAuthorizations("route53:ListVPCAssociationAuthorizations"),
     /** Action for the TestDNSAnswer operation. */
     TestDNSAnswer("route53:TestDNSAnswer"),
     /** Action for the UpdateHealthCheck operation. */

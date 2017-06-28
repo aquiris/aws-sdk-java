@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.transform;
+
+import com.amazonaws.SdkClientException;
+import com.amazonaws.util.Base64;
+import com.amazonaws.util.DateUtils;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.Date;
-
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.util.Base64;
-import com.amazonaws.util.DateUtils;
 
 public class SimpleTypeJsonUnmarshallers {
     /**
@@ -35,6 +36,24 @@ public class SimpleTypeJsonUnmarshallers {
 
         public static StringJsonUnmarshaller getInstance() {
             return instance;
+        }
+    }
+
+    /**
+     * Unmarshaller for fields with JSON values. For headers, JSON values are base-64 encoded and are decoded here. For payloads,
+     * JSON values are treated like normal strings.
+     */
+    public static class JsonValueStringUnmarshaller extends StringJsonUnmarshaller {
+        public String unmarshall(JsonUnmarshallerContext unmarshallerContext) throws Exception {
+            String stringValue = super.unmarshall(unmarshallerContext);
+            return !unmarshallerContext.isInsideResponseHeader()
+                   ? stringValue
+                   : new String(Base64.decode(stringValue), Charset.forName("utf-8"));
+        }
+
+        private static final JsonValueStringUnmarshaller INSTANCE = new JsonValueStringUnmarshaller();
+        public static JsonValueStringUnmarshaller getInstance() {
+            return INSTANCE;
         }
     }
 
@@ -209,7 +228,7 @@ public class SimpleTypeJsonUnmarshallers {
 
             charString = charString.trim();
             if (charString.isEmpty() || charString.length() > 1)
-                throw new AmazonClientException("'" + charString
+                throw new SdkClientException("'" + charString
                         + "' cannot be converted to Character");
             return Character.valueOf(charString.charAt(0));
         }

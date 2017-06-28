@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -61,8 +61,7 @@ public class DummyErrorResponseServerIntegrationTests extends MockServerTestBase
         httpClient = new AmazonHttpClient(
                 new ClientConfiguration().withClientExecutionTimeout(CLIENT_EXECUTION_TIMEOUT));
 
-        httpClient.execute(newGetRequest(), new NullResponseHandler(), new UnresponsiveErrorResponseHandler(),
-                new ExecutionContext());
+        httpClient.requestExecutionBuilder().request(newGetRequest()).errorResponseHandler(new UnresponsiveErrorResponseHandler()).execute();
     }
 
     @Test(timeout = TEST_TIMEOUT, expected = ClientExecutionTimeoutException.class)
@@ -74,8 +73,11 @@ public class DummyErrorResponseServerIntegrationTests extends MockServerTestBase
         List<RequestHandler2> requestHandlers = RequestHandlerTestUtils.buildRequestHandlerList(
                 new SlowRequestHandler().withAfterErrorWaitInSeconds(SLOW_REQUEST_HANDLER_TIMEOUT));
 
-        httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                new ExecutionContext(requestHandlers, false, null));
+        httpClient.requestExecutionBuilder()
+                .request(newGetRequest())
+                .errorResponseHandler(new NullErrorResponseHandler())
+                .executionContext(ExecutionContext.builder().withRequestHandler2s(requestHandlers).build())
+                .execute();
     }
 
 }

@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * The identifier of an API key used to reference an API key in a usage plan.
+ * The identifier of an <a>ApiKey</a> used in a <a>UsagePlan</a>.
  * </p>
  */
-public class ImportApiKeysResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ImportApiKeysResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -71,16 +71,14 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
      * A list of all the <a>ApiKey</a> identifiers.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setIds(java.util.Collection)} or
-     * {@link #withIds(java.util.Collection)} if you want to override the
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIds(java.util.Collection)} or {@link #withIds(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param ids
      *        A list of all the <a>ApiKey</a> identifiers.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ImportApiKeysResult withIds(String... ids) {
@@ -100,8 +98,7 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
      * 
      * @param ids
      *        A list of all the <a>ApiKey</a> identifiers.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ImportApiKeysResult withIds(java.util.Collection<String> ids) {
@@ -144,16 +141,14 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
      * A list of warning messages.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setWarnings(java.util.Collection)} or
-     * {@link #withWarnings(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setWarnings(java.util.Collection)} or {@link #withWarnings(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param warnings
      *        A list of warning messages.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ImportApiKeysResult withWarnings(String... warnings) {
@@ -173,19 +168,16 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
      * 
      * @param warnings
      *        A list of warning messages.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ImportApiKeysResult withWarnings(
-            java.util.Collection<String> warnings) {
+    public ImportApiKeysResult withWarnings(java.util.Collection<String> warnings) {
         setWarnings(warnings);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -196,9 +188,9 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIds() != null)
-            sb.append("Ids: " + getIds() + ",");
+            sb.append("Ids: ").append(getIds()).append(",");
         if (getWarnings() != null)
-            sb.append("Warnings: " + getWarnings());
+            sb.append("Warnings: ").append(getWarnings());
         sb.append("}");
         return sb.toString();
     }
@@ -215,13 +207,11 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
         ImportApiKeysResult other = (ImportApiKeysResult) obj;
         if (other.getIds() == null ^ this.getIds() == null)
             return false;
-        if (other.getIds() != null
-                && other.getIds().equals(this.getIds()) == false)
+        if (other.getIds() != null && other.getIds().equals(this.getIds()) == false)
             return false;
         if (other.getWarnings() == null ^ this.getWarnings() == null)
             return false;
-        if (other.getWarnings() != null
-                && other.getWarnings().equals(this.getWarnings()) == false)
+        if (other.getWarnings() != null && other.getWarnings().equals(this.getWarnings()) == false)
             return false;
         return true;
     }
@@ -231,10 +221,8 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getIds() == null) ? 0 : getIds().hashCode());
-        hashCode = prime * hashCode
-                + ((getWarnings() == null) ? 0 : getWarnings().hashCode());
+        hashCode = prime * hashCode + ((getIds() == null) ? 0 : getIds().hashCode());
+        hashCode = prime * hashCode + ((getWarnings() == null) ? 0 : getWarnings().hashCode());
         return hashCode;
     }
 
@@ -243,9 +231,8 @@ public class ImportApiKeysResult implements Serializable, Cloneable {
         try {
             return (ImportApiKeysResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

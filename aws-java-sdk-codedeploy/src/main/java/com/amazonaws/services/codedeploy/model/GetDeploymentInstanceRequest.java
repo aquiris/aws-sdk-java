@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a get deployment instance operation.
+ * Represents the input of a GetDeploymentInstance operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetDeploymentInstance" target="_top">AWS
+ *      API Documentation</a>
  */
-public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetDeploymentInstanceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -70,8 +73,7 @@ public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
      * 
      * @param deploymentId
      *        The unique ID of a deployment.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetDeploymentInstanceRequest withDeploymentId(String deploymentId) {
@@ -111,8 +113,7 @@ public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
      * 
      * @param instanceId
      *        The unique ID of an instance in the deployment group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetDeploymentInstanceRequest withInstanceId(String instanceId) {
@@ -121,8 +122,7 @@ public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -133,9 +133,9 @@ public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDeploymentId() != null)
-            sb.append("DeploymentId: " + getDeploymentId() + ",");
+            sb.append("DeploymentId: ").append(getDeploymentId()).append(",");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId());
+            sb.append("InstanceId: ").append(getInstanceId());
         sb.append("}");
         return sb.toString();
     }
@@ -152,13 +152,11 @@ public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
         GetDeploymentInstanceRequest other = (GetDeploymentInstanceRequest) obj;
         if (other.getDeploymentId() == null ^ this.getDeploymentId() == null)
             return false;
-        if (other.getDeploymentId() != null
-                && other.getDeploymentId().equals(this.getDeploymentId()) == false)
+        if (other.getDeploymentId() != null && other.getDeploymentId().equals(this.getDeploymentId()) == false)
             return false;
         if (other.getInstanceId() == null ^ this.getInstanceId() == null)
             return false;
-        if (other.getInstanceId() != null
-                && other.getInstanceId().equals(this.getInstanceId()) == false)
+        if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
             return false;
         return true;
     }
@@ -168,12 +166,8 @@ public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDeploymentId() == null) ? 0 : getDeploymentId()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
+        hashCode = prime * hashCode + ((getDeploymentId() == null) ? 0 : getDeploymentId().hashCode());
+        hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
         return hashCode;
     }
 
@@ -181,4 +175,5 @@ public class GetDeploymentInstanceRequest extends AmazonWebServiceRequest
     public GetDeploymentInstanceRequest clone() {
         return (GetDeploymentInstanceRequest) super.clone();
     }
+
 }

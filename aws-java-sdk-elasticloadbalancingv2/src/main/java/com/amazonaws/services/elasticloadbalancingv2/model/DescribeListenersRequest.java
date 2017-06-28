@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for DescribeListeners.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeListeners"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeListenersRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeListenersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -39,8 +39,7 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
     private java.util.List<String> listenerArns;
     /**
      * <p>
-     * The marker for the next set of results. (You received this marker from a
-     * previous call.)
+     * The marker for the next set of results. (You received this marker from a previous call.)
      * </p>
      */
     private String marker;
@@ -83,8 +82,7 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
      * 
      * @param loadBalancerArn
      *        The Amazon Resource Name (ARN) of the load balancer.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeListenersRequest withLoadBalancerArn(String loadBalancerArn) {
@@ -127,16 +125,14 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
      * The Amazon Resource Names (ARN) of the listeners.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setListenerArns(java.util.Collection)} or
-     * {@link #withListenerArns(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setListenerArns(java.util.Collection)} or {@link #withListenerArns(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param listenerArns
      *        The Amazon Resource Names (ARN) of the listeners.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeListenersRequest withListenerArns(String... listenerArns) {
@@ -156,25 +152,21 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
      * 
      * @param listenerArns
      *        The Amazon Resource Names (ARN) of the listeners.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeListenersRequest withListenerArns(
-            java.util.Collection<String> listenerArns) {
+    public DescribeListenersRequest withListenerArns(java.util.Collection<String> listenerArns) {
         setListenerArns(listenerArns);
         return this;
     }
 
     /**
      * <p>
-     * The marker for the next set of results. (You received this marker from a
-     * previous call.)
+     * The marker for the next set of results. (You received this marker from a previous call.)
      * </p>
      * 
      * @param marker
-     *        The marker for the next set of results. (You received this marker
-     *        from a previous call.)
+     *        The marker for the next set of results. (You received this marker from a previous call.)
      */
 
     public void setMarker(String marker) {
@@ -183,12 +175,10 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The marker for the next set of results. (You received this marker from a
-     * previous call.)
+     * The marker for the next set of results. (You received this marker from a previous call.)
      * </p>
      * 
-     * @return The marker for the next set of results. (You received this marker
-     *         from a previous call.)
+     * @return The marker for the next set of results. (You received this marker from a previous call.)
      */
 
     public String getMarker() {
@@ -197,15 +187,12 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The marker for the next set of results. (You received this marker from a
-     * previous call.)
+     * The marker for the next set of results. (You received this marker from a previous call.)
      * </p>
      * 
      * @param marker
-     *        The marker for the next set of results. (You received this marker
-     *        from a previous call.)
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The marker for the next set of results. (You received this marker from a previous call.)
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeListenersRequest withMarker(String marker) {
@@ -245,8 +232,7 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
      * 
      * @param pageSize
      *        The maximum number of results to return with this call.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeListenersRequest withPageSize(Integer pageSize) {
@@ -255,8 +241,7 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -267,13 +252,13 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getLoadBalancerArn() != null)
-            sb.append("LoadBalancerArn: " + getLoadBalancerArn() + ",");
+            sb.append("LoadBalancerArn: ").append(getLoadBalancerArn()).append(",");
         if (getListenerArns() != null)
-            sb.append("ListenerArns: " + getListenerArns() + ",");
+            sb.append("ListenerArns: ").append(getListenerArns()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getPageSize() != null)
-            sb.append("PageSize: " + getPageSize());
+            sb.append("PageSize: ").append(getPageSize());
         sb.append("}");
         return sb.toString();
     }
@@ -288,26 +273,21 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
         if (obj instanceof DescribeListenersRequest == false)
             return false;
         DescribeListenersRequest other = (DescribeListenersRequest) obj;
-        if (other.getLoadBalancerArn() == null
-                ^ this.getLoadBalancerArn() == null)
+        if (other.getLoadBalancerArn() == null ^ this.getLoadBalancerArn() == null)
             return false;
-        if (other.getLoadBalancerArn() != null
-                && other.getLoadBalancerArn().equals(this.getLoadBalancerArn()) == false)
+        if (other.getLoadBalancerArn() != null && other.getLoadBalancerArn().equals(this.getLoadBalancerArn()) == false)
             return false;
         if (other.getListenerArns() == null ^ this.getListenerArns() == null)
             return false;
-        if (other.getListenerArns() != null
-                && other.getListenerArns().equals(this.getListenerArns()) == false)
+        if (other.getListenerArns() != null && other.getListenerArns().equals(this.getListenerArns()) == false)
             return false;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         if (other.getPageSize() == null ^ this.getPageSize() == null)
             return false;
-        if (other.getPageSize() != null
-                && other.getPageSize().equals(this.getPageSize()) == false)
+        if (other.getPageSize() != null && other.getPageSize().equals(this.getPageSize()) == false)
             return false;
         return true;
     }
@@ -317,18 +297,10 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getLoadBalancerArn() == null) ? 0 : getLoadBalancerArn()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getListenerArns() == null) ? 0 : getListenerArns()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
-        hashCode = prime * hashCode
-                + ((getPageSize() == null) ? 0 : getPageSize().hashCode());
+        hashCode = prime * hashCode + ((getLoadBalancerArn() == null) ? 0 : getLoadBalancerArn().hashCode());
+        hashCode = prime * hashCode + ((getListenerArns() == null) ? 0 : getListenerArns().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getPageSize() == null) ? 0 : getPageSize().hashCode());
         return hashCode;
     }
 
@@ -336,4 +308,5 @@ public class DescribeListenersRequest extends AmazonWebServiceRequest implements
     public DescribeListenersRequest clone() {
         return (DescribeListenersRequest) super.clone();
     }
+
 }

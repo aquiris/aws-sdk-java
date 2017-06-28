@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.transform;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.util.Base64;
 import com.amazonaws.util.DateUtils;
 
@@ -224,7 +224,7 @@ public class SimpleTypeStaxUnmarshallers {
 
             charString = charString.trim();
             if (charString.isEmpty() || charString.length() > 1)
-                throw new AmazonClientException("'" + charString
+                throw new SdkClientException("'" + charString
                         + "' cannot be converted to Character");
             return Character.valueOf(charString.charAt(0));
         }

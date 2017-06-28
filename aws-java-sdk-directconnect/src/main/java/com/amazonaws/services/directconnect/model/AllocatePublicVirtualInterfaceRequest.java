@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Container for the parameters to the AllocatePublicVirtualInterface operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocatePublicVirtualInterface"
+ *      target="_top">AWS API Documentation</a>
  */
-public class AllocatePublicVirtualInterfaceRequest extends
-        AmazonWebServiceRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AllocatePublicVirtualInterfaceRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -62,8 +65,7 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * </p>
      * 
      * @param connectionId
-     *        The connection ID on which the public virtual interface is
-     *        provisioned.</p>
+     *        The connection ID on which the public virtual interface is provisioned.</p>
      *        <p>
      *        Default: None
      */
@@ -80,8 +82,7 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * Default: None
      * </p>
      * 
-     * @return The connection ID on which the public virtual interface is
-     *         provisioned.</p>
+     * @return The connection ID on which the public virtual interface is provisioned.</p>
      *         <p>
      *         Default: None
      */
@@ -99,16 +100,13 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * </p>
      * 
      * @param connectionId
-     *        The connection ID on which the public virtual interface is
-     *        provisioned.</p>
+     *        The connection ID on which the public virtual interface is provisioned.</p>
      *        <p>
      *        Default: None
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AllocatePublicVirtualInterfaceRequest withConnectionId(
-            String connectionId) {
+    public AllocatePublicVirtualInterfaceRequest withConnectionId(String connectionId) {
         setConnectionId(connectionId);
         return this;
     }
@@ -122,8 +120,7 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * </p>
      * 
      * @param ownerAccount
-     *        The AWS account that will own the new public virtual
-     *        interface.</p>
+     *        The AWS account that will own the new public virtual interface.</p>
      *        <p>
      *        Default: None
      */
@@ -140,8 +137,7 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * Default: None
      * </p>
      * 
-     * @return The AWS account that will own the new public virtual
-     *         interface.</p>
+     * @return The AWS account that will own the new public virtual interface.</p>
      *         <p>
      *         Default: None
      */
@@ -159,16 +155,13 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * </p>
      * 
      * @param ownerAccount
-     *        The AWS account that will own the new public virtual
-     *        interface.</p>
+     *        The AWS account that will own the new public virtual interface.</p>
      *        <p>
      *        Default: None
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AllocatePublicVirtualInterfaceRequest withOwnerAccount(
-            String ownerAccount) {
+    public AllocatePublicVirtualInterfaceRequest withOwnerAccount(String ownerAccount) {
         setOwnerAccount(ownerAccount);
         return this;
     }
@@ -182,14 +175,12 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * </p>
      * 
      * @param newPublicVirtualInterfaceAllocation
-     *        Detailed information for the public virtual interface to be
-     *        provisioned.</p>
+     *        Detailed information for the public virtual interface to be provisioned.</p>
      *        <p>
      *        Default: None
      */
 
-    public void setNewPublicVirtualInterfaceAllocation(
-            NewPublicVirtualInterfaceAllocation newPublicVirtualInterfaceAllocation) {
+    public void setNewPublicVirtualInterfaceAllocation(NewPublicVirtualInterfaceAllocation newPublicVirtualInterfaceAllocation) {
         this.newPublicVirtualInterfaceAllocation = newPublicVirtualInterfaceAllocation;
     }
 
@@ -201,8 +192,7 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * Default: None
      * </p>
      * 
-     * @return Detailed information for the public virtual interface to be
-     *         provisioned.</p>
+     * @return Detailed information for the public virtual interface to be provisioned.</p>
      *         <p>
      *         Default: None
      */
@@ -220,23 +210,19 @@ public class AllocatePublicVirtualInterfaceRequest extends
      * </p>
      * 
      * @param newPublicVirtualInterfaceAllocation
-     *        Detailed information for the public virtual interface to be
-     *        provisioned.</p>
+     *        Detailed information for the public virtual interface to be provisioned.</p>
      *        <p>
      *        Default: None
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AllocatePublicVirtualInterfaceRequest withNewPublicVirtualInterfaceAllocation(
-            NewPublicVirtualInterfaceAllocation newPublicVirtualInterfaceAllocation) {
+    public AllocatePublicVirtualInterfaceRequest withNewPublicVirtualInterfaceAllocation(NewPublicVirtualInterfaceAllocation newPublicVirtualInterfaceAllocation) {
         setNewPublicVirtualInterfaceAllocation(newPublicVirtualInterfaceAllocation);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -247,12 +233,11 @@ public class AllocatePublicVirtualInterfaceRequest extends
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getConnectionId() != null)
-            sb.append("ConnectionId: " + getConnectionId() + ",");
+            sb.append("ConnectionId: ").append(getConnectionId()).append(",");
         if (getOwnerAccount() != null)
-            sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+            sb.append("OwnerAccount: ").append(getOwnerAccount()).append(",");
         if (getNewPublicVirtualInterfaceAllocation() != null)
-            sb.append("NewPublicVirtualInterfaceAllocation: "
-                    + getNewPublicVirtualInterfaceAllocation());
+            sb.append("NewPublicVirtualInterfaceAllocation: ").append(getNewPublicVirtualInterfaceAllocation());
         sb.append("}");
         return sb.toString();
     }
@@ -269,20 +254,16 @@ public class AllocatePublicVirtualInterfaceRequest extends
         AllocatePublicVirtualInterfaceRequest other = (AllocatePublicVirtualInterfaceRequest) obj;
         if (other.getConnectionId() == null ^ this.getConnectionId() == null)
             return false;
-        if (other.getConnectionId() != null
-                && other.getConnectionId().equals(this.getConnectionId()) == false)
+        if (other.getConnectionId() != null && other.getConnectionId().equals(this.getConnectionId()) == false)
             return false;
         if (other.getOwnerAccount() == null ^ this.getOwnerAccount() == null)
             return false;
-        if (other.getOwnerAccount() != null
-                && other.getOwnerAccount().equals(this.getOwnerAccount()) == false)
+        if (other.getOwnerAccount() != null && other.getOwnerAccount().equals(this.getOwnerAccount()) == false)
             return false;
-        if (other.getNewPublicVirtualInterfaceAllocation() == null
-                ^ this.getNewPublicVirtualInterfaceAllocation() == null)
+        if (other.getNewPublicVirtualInterfaceAllocation() == null ^ this.getNewPublicVirtualInterfaceAllocation() == null)
             return false;
         if (other.getNewPublicVirtualInterfaceAllocation() != null
-                && other.getNewPublicVirtualInterfaceAllocation().equals(
-                        this.getNewPublicVirtualInterfaceAllocation()) == false)
+                && other.getNewPublicVirtualInterfaceAllocation().equals(this.getNewPublicVirtualInterfaceAllocation()) == false)
             return false;
         return true;
     }
@@ -292,18 +273,9 @@ public class AllocatePublicVirtualInterfaceRequest extends
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getConnectionId() == null) ? 0 : getConnectionId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getOwnerAccount() == null) ? 0 : getOwnerAccount()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNewPublicVirtualInterfaceAllocation() == null) ? 0
-                        : getNewPublicVirtualInterfaceAllocation().hashCode());
+        hashCode = prime * hashCode + ((getConnectionId() == null) ? 0 : getConnectionId().hashCode());
+        hashCode = prime * hashCode + ((getOwnerAccount() == null) ? 0 : getOwnerAccount().hashCode());
+        hashCode = prime * hashCode + ((getNewPublicVirtualInterfaceAllocation() == null) ? 0 : getNewPublicVirtualInterfaceAllocation().hashCode());
         return hashCode;
     }
 
@@ -311,4 +283,5 @@ public class AllocatePublicVirtualInterfaceRequest extends
     public AllocatePublicVirtualInterfaceRequest clone() {
         return (AllocatePublicVirtualInterfaceRequest) super.clone();
     }
+
 }

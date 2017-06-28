@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -42,17 +42,17 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.amazonaws.services.kms.AWSKMS;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.internal.ReleasableInputStream;
 import com.amazonaws.internal.ResettableInputStream;
 import com.amazonaws.internal.SdkFilterInputStream;
-import com.amazonaws.services.kms.AWSKMSClient;
 import com.amazonaws.services.kms.model.GenerateDataKeyRequest;
 import com.amazonaws.services.kms.model.GenerateDataKeyResult;
 import com.amazonaws.services.s3.Headers;
@@ -106,12 +106,12 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
     protected final  Map<String, T> multipartUploadContexts =
         Collections.synchronizedMap(new HashMap<String,T>());
     protected final S3Direct s3;
-    protected final AWSKMSClient kms;
+    protected final AWSKMS kms;
 
     /**
      * @param cryptoConfig a read-only copy of the crypto configuration.
      */
-    protected S3CryptoModuleBase(AWSKMSClient kms, S3Direct s3,
+    protected S3CryptoModuleBase(AWSKMS kms, S3Direct s3,
             AWSCredentialsProvider credentialsProvider,
             EncryptionMaterialsProvider kekMaterialsProvider,
             CryptoConfiguration cryptoConfig) {
@@ -288,7 +288,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
         final long partSize = req.getPartSize();
         final boolean partSizeMultipleOfCipherBlockSize = 0 == (partSize % blockSize);
         if (!isLastPart && !partSizeMultipleOfCipherBlockSize) {
-            throw new AmazonClientException(
+            throw new SdkClientException(
                 "Invalid part size: part sizes for encrypted multipart uploads must be multiples "
                     + "of the cipher block size ("
                     + blockSize
@@ -296,7 +296,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
         }
         final T uploadContext = multipartUploadContexts.get(uploadId);
         if (uploadContext == null) {
-            throw new AmazonClientException(
+            throw new SdkClientException(
                 "No client-side information available on upload ID " + uploadId);
         }
         final UploadPartResult result;
@@ -324,7 +324,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
                 if (lastPartSize > -1)
                     req.setPartSize(lastPartSize);
                 if (uploadContext.hasFinalPartBeenSeen()) {
-                    throw new AmazonClientException(
+                    throw new SdkClientException(
                         "This part was specified as the last part in a multipart upload, but a previous part was already marked as the last part.  "
                       + "Only the last part of the upload should be marked as the last part.");
                 }
@@ -381,7 +381,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
         final T uploadContext = multipartUploadContexts.get(uploadId);
 
         if (uploadContext != null && !uploadContext.hasFinalPartBeenSeen()) {
-            throw new AmazonClientException(
+            throw new SdkClientException(
                 "Unable to complete an encrypted multipart upload without being told which part was the last.  "
                 + "Without knowing which part was the last, the encrypted data in Amazon S3 is incomplete and corrupt.");
         }
@@ -415,7 +415,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
      * Creates and returns a non-null content crypto material for the given
      * request.
      *
-     * @throws AmazonClientException if no encryption material can be found.
+     * @throws SdkClientException if no encryption material can be found.
      */
     protected final ContentCryptoMaterial createContentCryptoMaterial(
             AmazonWebServiceRequest req) {
@@ -444,7 +444,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
                 EncryptionMaterials material =
                         kekMaterialsProvider.getEncryptionMaterials();
                 if (!material.isKMSEnabled()) {
-                    throw new AmazonClientException(
+                    throw new SdkClientException(
                         "No material available from the encryption material provider for description "
                             + matdesc_req);
                 }
@@ -478,7 +478,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
      * Returns a non-null content encryption material generated with the given kek
      * material and security providers.
      *
-     * @throws AmazonClientException if no encryption material can be found from
+     * @throws SdkClientException if no encryption material can be found from
      * the given encryption material provider.
      */
     private ContentCryptoMaterial newContentCryptoMaterial(
@@ -486,7 +486,7 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
             Provider provider, AmazonWebServiceRequest req) {
         EncryptionMaterials kekMaterials = kekMaterialProvider.getEncryptionMaterials();
         if (kekMaterials == null)
-            throw new AmazonClientException("No material available from the encryption material provider");
+            throw new SdkClientException("No material available from the encryption material provider");
         return buildContentCryptoMaterial(kekMaterials, provider, req);
     }
 
@@ -588,9 +588,9 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
                     return secretKey;
             }
             // The probability of getting here is 2^80, which is impossible in practice.
-            throw new AmazonClientException("Failed to generate secret key");
+            throw new SdkClientException("Failed to generate secret key");
         } catch (NoSuchAlgorithmException e) {
-            throw new AmazonClientException(
+            throw new SdkClientException(
                     "Unable to generate envelope symmetric key:"
                             + e.getMessage(), e);
         }
@@ -868,10 +868,6 @@ public abstract class S3CryptoModuleBase<T extends MultipartUploadCryptoContext>
         if (orig_ifile == null) {
             throw new IllegalArgumentException(
                 "S3 object is not encrypted: " + s3w);
-        }
-        if (!orig_ifile.isInstructionFile()) {
-            throw new AmazonClientException(
-                "Invalid instruction file for S3 object: " + s3w);
         }
         String json = orig_ifile.toJsonString();
         return ccmFromJson(json);

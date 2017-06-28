@@ -1,27 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * A group of settings that will be applied to the cache cluster in the future,
- * or that are currently being applied.
+ * A group of settings that are applied to the cache cluster in the future, or that are currently being applied.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/PendingModifiedValues" target="_top">AWS
+ *      API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
@@ -29,28 +31,27 @@ public class PendingModifiedValues implements Serializable, Cloneable {
      * The new number of cache nodes for the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      */
     private Integer numCacheNodes;
     /**
      * <p>
-     * A list of cache node IDs that are being removed (or will be removed) from
-     * the cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is a
+     * numeric identifier (0001, 0002, etc.).
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> cacheNodeIdsToRemove;
     /**
      * <p>
-     * The new cache engine version that the cache cluster will run.
+     * The new cache engine version that the cache cluster runs.
      * </p>
      */
     private String engineVersion;
     /**
      * <p>
-     * The cache node type that this cache cluster or replication group will be
-     * scaled to.
+     * The cache node type that this cache cluster or replication group is scaled to.
      * </p>
      */
     private String cacheNodeType;
@@ -60,15 +61,15 @@ public class PendingModifiedValues implements Serializable, Cloneable {
      * The new number of cache nodes for the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      * 
      * @param numCacheNodes
      *        The new number of cache nodes for the cache cluster.</p>
      *        <p>
-     *        For clusters running Redis, this value must be 1. For clusters
-     *        running Memcached, this value must be between 1 and 20.
+     *        For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
+     *        between 1 and 20.
      */
 
     public void setNumCacheNodes(Integer numCacheNodes) {
@@ -80,14 +81,14 @@ public class PendingModifiedValues implements Serializable, Cloneable {
      * The new number of cache nodes for the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      * 
      * @return The new number of cache nodes for the cache cluster.</p>
      *         <p>
-     *         For clusters running Redis, this value must be 1. For clusters
-     *         running Memcached, this value must be between 1 and 20.
+     *         For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
+     *         between 1 and 20.
      */
 
     public Integer getNumCacheNodes() {
@@ -99,17 +100,16 @@ public class PendingModifiedValues implements Serializable, Cloneable {
      * The new number of cache nodes for the cache cluster.
      * </p>
      * <p>
-     * For clusters running Redis, this value must be 1. For clusters running
-     * Memcached, this value must be between 1 and 20.
+     * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
+     * and 20.
      * </p>
      * 
      * @param numCacheNodes
      *        The new number of cache nodes for the cache cluster.</p>
      *        <p>
-     *        For clusters running Redis, this value must be 1. For clusters
-     *        running Memcached, this value must be between 1 and 20.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
+     *        between 1 and 20.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PendingModifiedValues withNumCacheNodes(Integer numCacheNodes) {
@@ -119,13 +119,12 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of cache node IDs that are being removed (or will be removed) from
-     * the cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is a
+     * numeric identifier (0001, 0002, etc.).
      * </p>
      * 
-     * @return A list of cache node IDs that are being removed (or will be
-     *         removed) from the cache cluster. A node ID is a numeric
-     *         identifier (0001, 0002, etc.).
+     * @return A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is
+     *         a numeric identifier (0001, 0002, etc.).
      */
 
     public java.util.List<String> getCacheNodeIdsToRemove() {
@@ -137,52 +136,44 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of cache node IDs that are being removed (or will be removed) from
-     * the cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is a
+     * numeric identifier (0001, 0002, etc.).
      * </p>
      * 
      * @param cacheNodeIdsToRemove
-     *        A list of cache node IDs that are being removed (or will be
-     *        removed) from the cache cluster. A node ID is a numeric identifier
-     *        (0001, 0002, etc.).
+     *        A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is
+     *        a numeric identifier (0001, 0002, etc.).
      */
 
-    public void setCacheNodeIdsToRemove(
-            java.util.Collection<String> cacheNodeIdsToRemove) {
+    public void setCacheNodeIdsToRemove(java.util.Collection<String> cacheNodeIdsToRemove) {
         if (cacheNodeIdsToRemove == null) {
             this.cacheNodeIdsToRemove = null;
             return;
         }
 
-        this.cacheNodeIdsToRemove = new com.amazonaws.internal.SdkInternalList<String>(
-                cacheNodeIdsToRemove);
+        this.cacheNodeIdsToRemove = new com.amazonaws.internal.SdkInternalList<String>(cacheNodeIdsToRemove);
     }
 
     /**
      * <p>
-     * A list of cache node IDs that are being removed (or will be removed) from
-     * the cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is a
+     * numeric identifier (0001, 0002, etc.).
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setCacheNodeIdsToRemove(java.util.Collection)} or
-     * {@link #withCacheNodeIdsToRemove(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCacheNodeIdsToRemove(java.util.Collection)} or {@link #withCacheNodeIdsToRemove(java.util.Collection)}
+     * if you want to override the existing values.
      * </p>
      * 
      * @param cacheNodeIdsToRemove
-     *        A list of cache node IDs that are being removed (or will be
-     *        removed) from the cache cluster. A node ID is a numeric identifier
-     *        (0001, 0002, etc.).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is
+     *        a numeric identifier (0001, 0002, etc.).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PendingModifiedValues withCacheNodeIdsToRemove(
-            String... cacheNodeIdsToRemove) {
+    public PendingModifiedValues withCacheNodeIdsToRemove(String... cacheNodeIdsToRemove) {
         if (this.cacheNodeIdsToRemove == null) {
-            setCacheNodeIdsToRemove(new com.amazonaws.internal.SdkInternalList<String>(
-                    cacheNodeIdsToRemove.length));
+            setCacheNodeIdsToRemove(new com.amazonaws.internal.SdkInternalList<String>(cacheNodeIdsToRemove.length));
         }
         for (String ele : cacheNodeIdsToRemove) {
             this.cacheNodeIdsToRemove.add(ele);
@@ -192,31 +183,28 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A list of cache node IDs that are being removed (or will be removed) from
-     * the cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is a
+     * numeric identifier (0001, 0002, etc.).
      * </p>
      * 
      * @param cacheNodeIdsToRemove
-     *        A list of cache node IDs that are being removed (or will be
-     *        removed) from the cache cluster. A node ID is a numeric identifier
-     *        (0001, 0002, etc.).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is
+     *        a numeric identifier (0001, 0002, etc.).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PendingModifiedValues withCacheNodeIdsToRemove(
-            java.util.Collection<String> cacheNodeIdsToRemove) {
+    public PendingModifiedValues withCacheNodeIdsToRemove(java.util.Collection<String> cacheNodeIdsToRemove) {
         setCacheNodeIdsToRemove(cacheNodeIdsToRemove);
         return this;
     }
 
     /**
      * <p>
-     * The new cache engine version that the cache cluster will run.
+     * The new cache engine version that the cache cluster runs.
      * </p>
      * 
      * @param engineVersion
-     *        The new cache engine version that the cache cluster will run.
+     *        The new cache engine version that the cache cluster runs.
      */
 
     public void setEngineVersion(String engineVersion) {
@@ -225,10 +213,10 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The new cache engine version that the cache cluster will run.
+     * The new cache engine version that the cache cluster runs.
      * </p>
      * 
-     * @return The new cache engine version that the cache cluster will run.
+     * @return The new cache engine version that the cache cluster runs.
      */
 
     public String getEngineVersion() {
@@ -237,13 +225,12 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The new cache engine version that the cache cluster will run.
+     * The new cache engine version that the cache cluster runs.
      * </p>
      * 
      * @param engineVersion
-     *        The new cache engine version that the cache cluster will run.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The new cache engine version that the cache cluster runs.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PendingModifiedValues withEngineVersion(String engineVersion) {
@@ -253,13 +240,11 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The cache node type that this cache cluster or replication group will be
-     * scaled to.
+     * The cache node type that this cache cluster or replication group is scaled to.
      * </p>
      * 
      * @param cacheNodeType
-     *        The cache node type that this cache cluster or replication group
-     *        will be scaled to.
+     *        The cache node type that this cache cluster or replication group is scaled to.
      */
 
     public void setCacheNodeType(String cacheNodeType) {
@@ -268,12 +253,10 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The cache node type that this cache cluster or replication group will be
-     * scaled to.
+     * The cache node type that this cache cluster or replication group is scaled to.
      * </p>
      * 
-     * @return The cache node type that this cache cluster or replication group
-     *         will be scaled to.
+     * @return The cache node type that this cache cluster or replication group is scaled to.
      */
 
     public String getCacheNodeType() {
@@ -282,15 +265,12 @@ public class PendingModifiedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The cache node type that this cache cluster or replication group will be
-     * scaled to.
+     * The cache node type that this cache cluster or replication group is scaled to.
      * </p>
      * 
      * @param cacheNodeType
-     *        The cache node type that this cache cluster or replication group
-     *        will be scaled to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The cache node type that this cache cluster or replication group is scaled to.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PendingModifiedValues withCacheNodeType(String cacheNodeType) {
@@ -299,8 +279,7 @@ public class PendingModifiedValues implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -311,14 +290,13 @@ public class PendingModifiedValues implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNumCacheNodes() != null)
-            sb.append("NumCacheNodes: " + getNumCacheNodes() + ",");
+            sb.append("NumCacheNodes: ").append(getNumCacheNodes()).append(",");
         if (getCacheNodeIdsToRemove() != null)
-            sb.append("CacheNodeIdsToRemove: " + getCacheNodeIdsToRemove()
-                    + ",");
+            sb.append("CacheNodeIdsToRemove: ").append(getCacheNodeIdsToRemove()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: " + getEngineVersion() + ",");
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
         if (getCacheNodeType() != null)
-            sb.append("CacheNodeType: " + getCacheNodeType());
+            sb.append("CacheNodeType: ").append(getCacheNodeType());
         sb.append("}");
         return sb.toString();
     }
@@ -335,25 +313,19 @@ public class PendingModifiedValues implements Serializable, Cloneable {
         PendingModifiedValues other = (PendingModifiedValues) obj;
         if (other.getNumCacheNodes() == null ^ this.getNumCacheNodes() == null)
             return false;
-        if (other.getNumCacheNodes() != null
-                && other.getNumCacheNodes().equals(this.getNumCacheNodes()) == false)
+        if (other.getNumCacheNodes() != null && other.getNumCacheNodes().equals(this.getNumCacheNodes()) == false)
             return false;
-        if (other.getCacheNodeIdsToRemove() == null
-                ^ this.getCacheNodeIdsToRemove() == null)
+        if (other.getCacheNodeIdsToRemove() == null ^ this.getCacheNodeIdsToRemove() == null)
             return false;
-        if (other.getCacheNodeIdsToRemove() != null
-                && other.getCacheNodeIdsToRemove().equals(
-                        this.getCacheNodeIdsToRemove()) == false)
+        if (other.getCacheNodeIdsToRemove() != null && other.getCacheNodeIdsToRemove().equals(this.getCacheNodeIdsToRemove()) == false)
             return false;
         if (other.getEngineVersion() == null ^ this.getEngineVersion() == null)
             return false;
-        if (other.getEngineVersion() != null
-                && other.getEngineVersion().equals(this.getEngineVersion()) == false)
+        if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
             return false;
         if (other.getCacheNodeType() == null ^ this.getCacheNodeType() == null)
             return false;
-        if (other.getCacheNodeType() != null
-                && other.getCacheNodeType().equals(this.getCacheNodeType()) == false)
+        if (other.getCacheNodeType() != null && other.getCacheNodeType().equals(this.getCacheNodeType()) == false)
             return false;
         return true;
     }
@@ -363,22 +335,10 @@ public class PendingModifiedValues implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getNumCacheNodes() == null) ? 0 : getNumCacheNodes()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheNodeIdsToRemove() == null) ? 0
-                        : getCacheNodeIdsToRemove().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getEngineVersion() == null) ? 0 : getEngineVersion()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheNodeType() == null) ? 0 : getCacheNodeType()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getNumCacheNodes() == null) ? 0 : getNumCacheNodes().hashCode());
+        hashCode = prime * hashCode + ((getCacheNodeIdsToRemove() == null) ? 0 : getCacheNodeIdsToRemove().hashCode());
+        hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getCacheNodeType() == null) ? 0 : getCacheNodeType().hashCode());
         return hashCode;
     }
 
@@ -387,9 +347,8 @@ public class PendingModifiedValues implements Serializable, Cloneable {
         try {
             return (PendingModifiedValues) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

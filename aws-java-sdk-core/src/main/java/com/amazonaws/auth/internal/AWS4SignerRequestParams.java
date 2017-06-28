@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
  */
 package com.amazonaws.auth.internal;
 
+import com.amazonaws.auth.SdkClock;
 import java.util.Date;
 
 import com.amazonaws.SignableRequest;
@@ -99,7 +100,7 @@ public final class AWS4SignerRequestParams {
      * Returns the signing date from the request.
      */
     private final long getSigningDate(SignableRequest<?> request) {
-        return System.currentTimeMillis() - request.getTimeOffset() * 1000L;
+        return SdkClock.Instance.get().currentTimeMillis() - request.getTimeOffset() * 1000L;
     }
 
     /**

@@ -1,23 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directory.model.transform;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import java.math.*;
-import java.nio.ByteBuffer;
+
+import javax.annotation.Generated;
 
 import com.amazonaws.services.directory.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
@@ -29,11 +26,10 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * IpRouteInfo JSON Unmarshaller
  */
-public class IpRouteInfoJsonUnmarshaller implements
-        Unmarshaller<IpRouteInfo, JsonUnmarshallerContext> {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class IpRouteInfoJsonUnmarshaller implements Unmarshaller<IpRouteInfo, JsonUnmarshallerContext> {
 
-    public IpRouteInfo unmarshall(JsonUnmarshallerContext context)
-            throws Exception {
+    public IpRouteInfo unmarshall(JsonUnmarshallerContext context) throws Exception {
         IpRouteInfo ipRouteInfo = new IpRouteInfo();
 
         int originalDepth = context.getCurrentDepth();
@@ -43,8 +39,9 @@ public class IpRouteInfoJsonUnmarshaller implements
         JsonToken token = context.getCurrentToken();
         if (token == null)
             token = context.nextToken();
-        if (token == VALUE_NULL)
+        if (token == VALUE_NULL) {
             return null;
+        }
 
         while (true) {
             if (token == null)
@@ -53,38 +50,30 @@ public class IpRouteInfoJsonUnmarshaller implements
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("DirectoryId", targetDepth)) {
                     context.nextToken();
-                    ipRouteInfo.setDirectoryId(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    ipRouteInfo.setDirectoryId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("CidrIp", targetDepth)) {
                     context.nextToken();
-                    ipRouteInfo.setCidrIp(context.getUnmarshaller(String.class)
-                            .unmarshall(context));
+                    ipRouteInfo.setCidrIp(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("IpRouteStatusMsg", targetDepth)) {
                     context.nextToken();
-                    ipRouteInfo.setIpRouteStatusMsg(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    ipRouteInfo.setIpRouteStatusMsg(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("AddedDateTime", targetDepth)) {
                     context.nextToken();
-                    ipRouteInfo.setAddedDateTime(context.getUnmarshaller(
-                            java.util.Date.class).unmarshall(context));
+                    ipRouteInfo.setAddedDateTime(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
                 }
                 if (context.testExpression("IpRouteStatusReason", targetDepth)) {
                     context.nextToken();
-                    ipRouteInfo.setIpRouteStatusReason(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    ipRouteInfo.setIpRouteStatusReason(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("Description", targetDepth)) {
                     context.nextToken();
-                    ipRouteInfo.setDescription(context.getUnmarshaller(
-                            String.class).unmarshall(context));
+                    ipRouteInfo.setDescription(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
-                if (context.getLastParsedParentElement() == null
-                        || context.getLastParsedParentElement().equals(
-                                currentParentElement)) {
+                if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)
                         break;
                 }

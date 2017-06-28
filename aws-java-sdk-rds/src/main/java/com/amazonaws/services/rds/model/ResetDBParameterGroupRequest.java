@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p/>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ResetDBParameterGroup" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ResetDBParameterGroupRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -51,8 +54,8 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
     private String dBParameterGroupName;
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to
-     * reset all parameters in the DB parameter group to default values.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
+     * group to default values.
      * </p>
      * <p>
      * Default: <code>true</code>
@@ -61,34 +64,30 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
     private Boolean resetAllParameters;
     /**
      * <p>
-     * An array of parameter names, values, and the apply method for the
-     * parameter update. At least one parameter name, value, and apply method
-     * must be supplied; subsequent arguments are optional. A maximum of 20
-     * parameters can be modified in a single request.
+     * To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     * <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     * <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a single
+     * request.
      * </p>
      * <p>
      * <b>MySQL</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>Oracle</b>
@@ -100,17 +99,15 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
     private com.amazonaws.internal.SdkInternalList<Parameter> parameters;
 
     /**
-     * Default constructor for ResetDBParameterGroupRequest object. Callers
-     * should use the setter or fluent setter (with...) methods to initialize
-     * the object after creating it.
+     * Default constructor for ResetDBParameterGroupRequest object. Callers should use the setter or fluent setter
+     * (with...) methods to initialize the object after creating it.
      */
     public ResetDBParameterGroupRequest() {
     }
 
     /**
-     * Constructs a new ResetDBParameterGroupRequest object. Callers should use
-     * the setter or fluent setter (with...) methods to initialize any
-     * additional object members.
+     * Constructs a new ResetDBParameterGroupRequest object. Callers should use the setter or fluent setter (with...)
+     * methods to initialize any additional object members.
      * 
      * @param dBParameterGroupName
      *        The name of the DB parameter group.</p>
@@ -287,29 +284,26 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
      *        Cannot end with a hyphen or contain two consecutive hyphens
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ResetDBParameterGroupRequest withDBParameterGroupName(
-            String dBParameterGroupName) {
+    public ResetDBParameterGroupRequest withDBParameterGroupName(String dBParameterGroupName) {
         setDBParameterGroupName(dBParameterGroupName);
         return this;
     }
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to
-     * reset all parameters in the DB parameter group to default values.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
+     * group to default values.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
      * @param resetAllParameters
-     *        Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *        to reset all parameters in the DB parameter group to default
-     *        values. </p>
+     *        Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
+     *        parameter group to default values. </p>
      *        <p>
      *        Default: <code>true</code>
      */
@@ -320,16 +314,15 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to
-     * reset all parameters in the DB parameter group to default values.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
+     * group to default values.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
-     * @return Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *         to reset all parameters in the DB parameter group to default
-     *         values. </p>
+     * @return Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
+     *         parameter group to default values. </p>
      *         <p>
      *         Default: <code>true</code>
      */
@@ -340,41 +333,37 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to
-     * reset all parameters in the DB parameter group to default values.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
+     * group to default values.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
      * @param resetAllParameters
-     *        Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *        to reset all parameters in the DB parameter group to default
-     *        values. </p>
+     *        Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
+     *        parameter group to default values. </p>
      *        <p>
      *        Default: <code>true</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ResetDBParameterGroupRequest withResetAllParameters(
-            Boolean resetAllParameters) {
+    public ResetDBParameterGroupRequest withResetAllParameters(Boolean resetAllParameters) {
         setResetAllParameters(resetAllParameters);
         return this;
     }
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to
-     * reset all parameters in the DB parameter group to default values.
+     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
+     * group to default values.
      * </p>
      * <p>
      * Default: <code>true</code>
      * </p>
      * 
-     * @return Specifies whether (<code>true</code>) or not (<code>false</code>)
-     *         to reset all parameters in the DB parameter group to default
-     *         values. </p>
+     * @return Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
+     *         parameter group to default values. </p>
      *         <p>
      *         Default: <code>true</code>
      */
@@ -385,34 +374,30 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * An array of parameter names, values, and the apply method for the
-     * parameter update. At least one parameter name, value, and apply method
-     * must be supplied; subsequent arguments are optional. A maximum of 20
-     * parameters can be modified in a single request.
+     * To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     * <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     * <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a single
+     * request.
      * </p>
      * <p>
      * <b>MySQL</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>Oracle</b>
@@ -421,35 +406,29 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
      * Valid Values (for Apply method): <code>pending-reboot</code>
      * </p>
      * 
-     * @return An array of parameter names, values, and the apply method for the
-     *         parameter update. At least one parameter name, value, and apply
-     *         method must be supplied; subsequent arguments are optional. A
-     *         maximum of 20 parameters can be modified in a single request.</p>
+     * @return To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     *         <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the
+     *         following: <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be
+     *         modified in a single request.</p>
      *         <p>
      *         <b>MySQL</b>
      *         </p>
      *         <p>
-     *         Valid Values (for Apply method): <code>immediate</code> |
-     *         <code>pending-reboot</code>
+     *         Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *         </p>
      *         <p>
-     *         You can use the immediate value with dynamic parameters only. You
-     *         can use the <code>pending-reboot</code> value for both dynamic
-     *         and static parameters, and changes are applied when DB instance
-     *         reboots.
+     *         You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *         value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *         </p>
      *         <p>
      *         <b>MariaDB</b>
      *         </p>
      *         <p>
-     *         Valid Values (for Apply method): <code>immediate</code> |
-     *         <code>pending-reboot</code>
+     *         Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *         </p>
      *         <p>
-     *         You can use the immediate value with dynamic parameters only. You
-     *         can use the <code>pending-reboot</code> value for both dynamic
-     *         and static parameters, and changes are applied when DB instance
-     *         reboots.
+     *         You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *         value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *         </p>
      *         <p>
      *         <b>Oracle</b>
@@ -467,34 +446,30 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * An array of parameter names, values, and the apply method for the
-     * parameter update. At least one parameter name, value, and apply method
-     * must be supplied; subsequent arguments are optional. A maximum of 20
-     * parameters can be modified in a single request.
+     * To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     * <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     * <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a single
+     * request.
      * </p>
      * <p>
      * <b>MySQL</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>Oracle</b>
@@ -504,35 +479,29 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param parameters
-     *        An array of parameter names, values, and the apply method for the
-     *        parameter update. At least one parameter name, value, and apply
-     *        method must be supplied; subsequent arguments are optional. A
-     *        maximum of 20 parameters can be modified in a single request.</p>
+     *        To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     *        <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     *        <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a
+     *        single request.</p>
      *        <p>
      *        <b>MySQL</b>
      *        </p>
      *        <p>
-     *        Valid Values (for Apply method): <code>immediate</code> |
-     *        <code>pending-reboot</code>
+     *        Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *        </p>
      *        <p>
-     *        You can use the immediate value with dynamic parameters only. You
-     *        can use the <code>pending-reboot</code> value for both dynamic and
-     *        static parameters, and changes are applied when DB instance
-     *        reboots.
+     *        You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *        value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *        </p>
      *        <p>
      *        <b>MariaDB</b>
      *        </p>
      *        <p>
-     *        Valid Values (for Apply method): <code>immediate</code> |
-     *        <code>pending-reboot</code>
+     *        Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *        </p>
      *        <p>
-     *        You can use the immediate value with dynamic parameters only. You
-     *        can use the <code>pending-reboot</code> value for both dynamic and
-     *        static parameters, and changes are applied when DB instance
-     *        reboots.
+     *        You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *        value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *        </p>
      *        <p>
      *        <b>Oracle</b>
@@ -547,40 +516,35 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
             return;
         }
 
-        this.parameters = new com.amazonaws.internal.SdkInternalList<Parameter>(
-                parameters);
+        this.parameters = new com.amazonaws.internal.SdkInternalList<Parameter>(parameters);
     }
 
     /**
      * <p>
-     * An array of parameter names, values, and the apply method for the
-     * parameter update. At least one parameter name, value, and apply method
-     * must be supplied; subsequent arguments are optional. A maximum of 20
-     * parameters can be modified in a single request.
+     * To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     * <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     * <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a single
+     * request.
      * </p>
      * <p>
      * <b>MySQL</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>Oracle</b>
@@ -589,56 +553,47 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
      * Valid Values (for Apply method): <code>pending-reboot</code>
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setParameters(java.util.Collection)} or
-     * {@link #withParameters(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setParameters(java.util.Collection)} or {@link #withParameters(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param parameters
-     *        An array of parameter names, values, and the apply method for the
-     *        parameter update. At least one parameter name, value, and apply
-     *        method must be supplied; subsequent arguments are optional. A
-     *        maximum of 20 parameters can be modified in a single request.</p>
+     *        To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     *        <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     *        <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a
+     *        single request.</p>
      *        <p>
      *        <b>MySQL</b>
      *        </p>
      *        <p>
-     *        Valid Values (for Apply method): <code>immediate</code> |
-     *        <code>pending-reboot</code>
+     *        Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *        </p>
      *        <p>
-     *        You can use the immediate value with dynamic parameters only. You
-     *        can use the <code>pending-reboot</code> value for both dynamic and
-     *        static parameters, and changes are applied when DB instance
-     *        reboots.
+     *        You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *        value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *        </p>
      *        <p>
      *        <b>MariaDB</b>
      *        </p>
      *        <p>
-     *        Valid Values (for Apply method): <code>immediate</code> |
-     *        <code>pending-reboot</code>
+     *        Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *        </p>
      *        <p>
-     *        You can use the immediate value with dynamic parameters only. You
-     *        can use the <code>pending-reboot</code> value for both dynamic and
-     *        static parameters, and changes are applied when DB instance
-     *        reboots.
+     *        You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *        value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *        </p>
      *        <p>
      *        <b>Oracle</b>
      *        </p>
      *        <p>
      *        Valid Values (for Apply method): <code>pending-reboot</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ResetDBParameterGroupRequest withParameters(Parameter... parameters) {
         if (this.parameters == null) {
-            setParameters(new com.amazonaws.internal.SdkInternalList<Parameter>(
-                    parameters.length));
+            setParameters(new com.amazonaws.internal.SdkInternalList<Parameter>(parameters.length));
         }
         for (Parameter ele : parameters) {
             this.parameters.add(ele);
@@ -648,34 +603,30 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * An array of parameter names, values, and the apply method for the
-     * parameter update. At least one parameter name, value, and apply method
-     * must be supplied; subsequent arguments are optional. A maximum of 20
-     * parameters can be modified in a single request.
+     * To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     * <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     * <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a single
+     * request.
      * </p>
      * <p>
      * <b>MySQL</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * Valid Values (for Apply method): <code>immediate</code> |
-     * <code>pending-reboot</code>
+     * Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      * </p>
      * <p>
-     * You can use the immediate value with dynamic parameters only. You can use
-     * the <code>pending-reboot</code> value for both dynamic and static
-     * parameters, and changes are applied when DB instance reboots.
+     * You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value
+     * for both dynamic and static parameters, and changes are applied when DB instance reboots.
      * </p>
      * <p>
      * <b>Oracle</b>
@@ -685,54 +636,45 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param parameters
-     *        An array of parameter names, values, and the apply method for the
-     *        parameter update. At least one parameter name, value, and apply
-     *        method must be supplied; subsequent arguments are optional. A
-     *        maximum of 20 parameters can be modified in a single request.</p>
+     *        To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and
+     *        <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following:
+     *        <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a
+     *        single request.</p>
      *        <p>
      *        <b>MySQL</b>
      *        </p>
      *        <p>
-     *        Valid Values (for Apply method): <code>immediate</code> |
-     *        <code>pending-reboot</code>
+     *        Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *        </p>
      *        <p>
-     *        You can use the immediate value with dynamic parameters only. You
-     *        can use the <code>pending-reboot</code> value for both dynamic and
-     *        static parameters, and changes are applied when DB instance
-     *        reboots.
+     *        You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *        value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *        </p>
      *        <p>
      *        <b>MariaDB</b>
      *        </p>
      *        <p>
-     *        Valid Values (for Apply method): <code>immediate</code> |
-     *        <code>pending-reboot</code>
+     *        Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code>
      *        </p>
      *        <p>
-     *        You can use the immediate value with dynamic parameters only. You
-     *        can use the <code>pending-reboot</code> value for both dynamic and
-     *        static parameters, and changes are applied when DB instance
-     *        reboots.
+     *        You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code>
+     *        value for both dynamic and static parameters, and changes are applied when DB instance reboots.
      *        </p>
      *        <p>
      *        <b>Oracle</b>
      *        </p>
      *        <p>
      *        Valid Values (for Apply method): <code>pending-reboot</code>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ResetDBParameterGroupRequest withParameters(
-            java.util.Collection<Parameter> parameters) {
+    public ResetDBParameterGroupRequest withParameters(java.util.Collection<Parameter> parameters) {
         setParameters(parameters);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -743,12 +685,11 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDBParameterGroupName() != null)
-            sb.append("DBParameterGroupName: " + getDBParameterGroupName()
-                    + ",");
+            sb.append("DBParameterGroupName: ").append(getDBParameterGroupName()).append(",");
         if (getResetAllParameters() != null)
-            sb.append("ResetAllParameters: " + getResetAllParameters() + ",");
+            sb.append("ResetAllParameters: ").append(getResetAllParameters()).append(",");
         if (getParameters() != null)
-            sb.append("Parameters: " + getParameters());
+            sb.append("Parameters: ").append(getParameters());
         sb.append("}");
         return sb.toString();
     }
@@ -763,24 +704,17 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
         if (obj instanceof ResetDBParameterGroupRequest == false)
             return false;
         ResetDBParameterGroupRequest other = (ResetDBParameterGroupRequest) obj;
-        if (other.getDBParameterGroupName() == null
-                ^ this.getDBParameterGroupName() == null)
+        if (other.getDBParameterGroupName() == null ^ this.getDBParameterGroupName() == null)
             return false;
-        if (other.getDBParameterGroupName() != null
-                && other.getDBParameterGroupName().equals(
-                        this.getDBParameterGroupName()) == false)
+        if (other.getDBParameterGroupName() != null && other.getDBParameterGroupName().equals(this.getDBParameterGroupName()) == false)
             return false;
-        if (other.getResetAllParameters() == null
-                ^ this.getResetAllParameters() == null)
+        if (other.getResetAllParameters() == null ^ this.getResetAllParameters() == null)
             return false;
-        if (other.getResetAllParameters() != null
-                && other.getResetAllParameters().equals(
-                        this.getResetAllParameters()) == false)
+        if (other.getResetAllParameters() != null && other.getResetAllParameters().equals(this.getResetAllParameters()) == false)
             return false;
         if (other.getParameters() == null ^ this.getParameters() == null)
             return false;
-        if (other.getParameters() != null
-                && other.getParameters().equals(this.getParameters()) == false)
+        if (other.getParameters() != null && other.getParameters().equals(this.getParameters()) == false)
             return false;
         return true;
     }
@@ -790,16 +724,9 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDBParameterGroupName() == null) ? 0
-                        : getDBParameterGroupName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getResetAllParameters() == null) ? 0
-                        : getResetAllParameters().hashCode());
-        hashCode = prime * hashCode
-                + ((getParameters() == null) ? 0 : getParameters().hashCode());
+        hashCode = prime * hashCode + ((getDBParameterGroupName() == null) ? 0 : getDBParameterGroupName().hashCode());
+        hashCode = prime * hashCode + ((getResetAllParameters() == null) ? 0 : getResetAllParameters().hashCode());
+        hashCode = prime * hashCode + ((getParameters() == null) ? 0 : getParameters().hashCode());
         return hashCode;
     }
 
@@ -807,4 +734,5 @@ public class ResetDBParameterGroupRequest extends AmazonWebServiceRequest
     public ResetDBParameterGroupRequest clone() {
         return (ResetDBParameterGroupRequest) super.clone();
     }
+
 }

@@ -1,41 +1,62 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.codedeploy.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Information about the location of an application revision.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/RevisionLocation" target="_top">AWS API
+ *      Documentation</a>
  */
-public class RevisionLocation implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class RevisionLocation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
      * The type of application revision:
      * </p>
      * <ul>
-     * <li>S3: An application revision stored in Amazon S3.</li>
-     * <li>GitHub: An application revision stored in GitHub.</li>
+     * <li>
+     * <p>
+     * S3: An application revision stored in Amazon S3.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GitHub: An application revision stored in GitHub.
+     * </p>
+     * </li>
      * </ul>
      */
     private String revisionType;
-
+    /**
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     */
     private S3Location s3Location;
-
+    /**
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     */
     private GitHubLocation gitHubLocation;
 
     /**
@@ -43,15 +64,31 @@ public class RevisionLocation implements Serializable, Cloneable {
      * The type of application revision:
      * </p>
      * <ul>
-     * <li>S3: An application revision stored in Amazon S3.</li>
-     * <li>GitHub: An application revision stored in GitHub.</li>
+     * <li>
+     * <p>
+     * S3: An application revision stored in Amazon S3.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GitHub: An application revision stored in GitHub.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param revisionType
      *        The type of application revision:</p>
      *        <ul>
-     *        <li>S3: An application revision stored in Amazon S3.</li>
-     *        <li>GitHub: An application revision stored in GitHub.</li>
+     *        <li>
+     *        <p>
+     *        S3: An application revision stored in Amazon S3.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GitHub: An application revision stored in GitHub.
+     *        </p>
+     *        </li>
      * @see RevisionLocationType
      */
 
@@ -64,14 +101,30 @@ public class RevisionLocation implements Serializable, Cloneable {
      * The type of application revision:
      * </p>
      * <ul>
-     * <li>S3: An application revision stored in Amazon S3.</li>
-     * <li>GitHub: An application revision stored in GitHub.</li>
+     * <li>
+     * <p>
+     * S3: An application revision stored in Amazon S3.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GitHub: An application revision stored in GitHub.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The type of application revision:</p>
      *         <ul>
-     *         <li>S3: An application revision stored in Amazon S3.</li>
-     *         <li>GitHub: An application revision stored in GitHub.</li>
+     *         <li>
+     *         <p>
+     *         S3: An application revision stored in Amazon S3.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         GitHub: An application revision stored in GitHub.
+     *         </p>
+     *         </li>
      * @see RevisionLocationType
      */
 
@@ -84,17 +137,32 @@ public class RevisionLocation implements Serializable, Cloneable {
      * The type of application revision:
      * </p>
      * <ul>
-     * <li>S3: An application revision stored in Amazon S3.</li>
-     * <li>GitHub: An application revision stored in GitHub.</li>
+     * <li>
+     * <p>
+     * S3: An application revision stored in Amazon S3.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GitHub: An application revision stored in GitHub.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param revisionType
      *        The type of application revision:</p>
      *        <ul>
-     *        <li>S3: An application revision stored in Amazon S3.</li>
-     *        <li>GitHub: An application revision stored in GitHub.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        S3: An application revision stored in Amazon S3.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GitHub: An application revision stored in GitHub.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RevisionLocationType
      */
 
@@ -108,15 +176,31 @@ public class RevisionLocation implements Serializable, Cloneable {
      * The type of application revision:
      * </p>
      * <ul>
-     * <li>S3: An application revision stored in Amazon S3.</li>
-     * <li>GitHub: An application revision stored in GitHub.</li>
+     * <li>
+     * <p>
+     * S3: An application revision stored in Amazon S3.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GitHub: An application revision stored in GitHub.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param revisionType
      *        The type of application revision:</p>
      *        <ul>
-     *        <li>S3: An application revision stored in Amazon S3.</li>
-     *        <li>GitHub: An application revision stored in GitHub.</li>
+     *        <li>
+     *        <p>
+     *        S3: An application revision stored in Amazon S3.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GitHub: An application revision stored in GitHub.
+     *        </p>
+     *        </li>
      * @see RevisionLocationType
      */
 
@@ -129,17 +213,32 @@ public class RevisionLocation implements Serializable, Cloneable {
      * The type of application revision:
      * </p>
      * <ul>
-     * <li>S3: An application revision stored in Amazon S3.</li>
-     * <li>GitHub: An application revision stored in GitHub.</li>
+     * <li>
+     * <p>
+     * S3: An application revision stored in Amazon S3.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GitHub: An application revision stored in GitHub.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param revisionType
      *        The type of application revision:</p>
      *        <ul>
-     *        <li>S3: An application revision stored in Amazon S3.</li>
-     *        <li>GitHub: An application revision stored in GitHub.</li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        <li>
+     *        <p>
+     *        S3: An application revision stored in Amazon S3.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GitHub: An application revision stored in GitHub.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RevisionLocationType
      */
 
@@ -149,7 +248,12 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     * 
      * @param s3Location
+     *        Information about the location of application artifacts stored in Amazon S3.
      */
 
     public void setS3Location(S3Location s3Location) {
@@ -157,7 +261,11 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     * 
+     * @return Information about the location of application artifacts stored in Amazon S3.
      */
 
     public S3Location getS3Location() {
@@ -165,9 +273,13 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in Amazon S3.
+     * </p>
+     * 
      * @param s3Location
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Information about the location of application artifacts stored in Amazon S3.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RevisionLocation withS3Location(S3Location s3Location) {
@@ -176,7 +288,12 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     * 
      * @param gitHubLocation
+     *        Information about the location of application artifacts stored in GitHub.
      */
 
     public void setGitHubLocation(GitHubLocation gitHubLocation) {
@@ -184,7 +301,11 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     * 
+     * @return Information about the location of application artifacts stored in GitHub.
      */
 
     public GitHubLocation getGitHubLocation() {
@@ -192,9 +313,13 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information about the location of application artifacts stored in GitHub.
+     * </p>
+     * 
      * @param gitHubLocation
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Information about the location of application artifacts stored in GitHub.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public RevisionLocation withGitHubLocation(GitHubLocation gitHubLocation) {
@@ -203,8 +328,7 @@ public class RevisionLocation implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -215,11 +339,11 @@ public class RevisionLocation implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRevisionType() != null)
-            sb.append("RevisionType: " + getRevisionType() + ",");
+            sb.append("RevisionType: ").append(getRevisionType()).append(",");
         if (getS3Location() != null)
-            sb.append("S3Location: " + getS3Location() + ",");
+            sb.append("S3Location: ").append(getS3Location()).append(",");
         if (getGitHubLocation() != null)
-            sb.append("GitHubLocation: " + getGitHubLocation());
+            sb.append("GitHubLocation: ").append(getGitHubLocation());
         sb.append("}");
         return sb.toString();
     }
@@ -236,19 +360,15 @@ public class RevisionLocation implements Serializable, Cloneable {
         RevisionLocation other = (RevisionLocation) obj;
         if (other.getRevisionType() == null ^ this.getRevisionType() == null)
             return false;
-        if (other.getRevisionType() != null
-                && other.getRevisionType().equals(this.getRevisionType()) == false)
+        if (other.getRevisionType() != null && other.getRevisionType().equals(this.getRevisionType()) == false)
             return false;
         if (other.getS3Location() == null ^ this.getS3Location() == null)
             return false;
-        if (other.getS3Location() != null
-                && other.getS3Location().equals(this.getS3Location()) == false)
+        if (other.getS3Location() != null && other.getS3Location().equals(this.getS3Location()) == false)
             return false;
-        if (other.getGitHubLocation() == null
-                ^ this.getGitHubLocation() == null)
+        if (other.getGitHubLocation() == null ^ this.getGitHubLocation() == null)
             return false;
-        if (other.getGitHubLocation() != null
-                && other.getGitHubLocation().equals(this.getGitHubLocation()) == false)
+        if (other.getGitHubLocation() != null && other.getGitHubLocation().equals(this.getGitHubLocation()) == false)
             return false;
         return true;
     }
@@ -258,16 +378,9 @@ public class RevisionLocation implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getRevisionType() == null) ? 0 : getRevisionType()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getS3Location() == null) ? 0 : getS3Location().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getGitHubLocation() == null) ? 0 : getGitHubLocation()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getRevisionType() == null) ? 0 : getRevisionType().hashCode());
+        hashCode = prime * hashCode + ((getS3Location() == null) ? 0 : getS3Location().hashCode());
+        hashCode = prime * hashCode + ((getGitHubLocation() == null) ? 0 : getGitHubLocation().hashCode());
         return hashCode;
     }
 
@@ -276,9 +389,13 @@ public class RevisionLocation implements Serializable, Cloneable {
         try {
             return (RevisionLocation) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.codedeploy.model.transform.RevisionLocationMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

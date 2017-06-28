@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2016-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
 import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
+import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
+import com.amazonaws.services.dynamodbv2.model.GlobalSecondaryIndex;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 import com.amazonaws.services.dynamodbv2.model.ResourceInUseException;
 import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
@@ -105,9 +107,10 @@ import org.apache.commons.logging.LogFactory;
  * int limit = 10;
  * List&lt;TestClass&gt; objects = new ArrayList&lt;TestClass&gt;(limit);
  *
- * DynamoDBQueryExpression&lt;TestClass&gt; query = table.expressionForKey(1234L)
+ * DynamoDBQueryExpression&lt;TestClass&gt; query = new DynamoDBQueryExpression()
  *     .withRangeKeyCondition(table.rangeKey().name(), table.rangeKey().ge(&quot;ABAA&quot;))
  *     .withQueryFilterEntry(&quot;amount&quot;, table.field(&quot;amount&quot;).gt(100D))
+ *     .withHashKeyValues(1234L)
  *     .withConsistentReads(true);
  *
  * QueryResultPage&lt;TestClass&gt; results = new QueryResultPage&lt;TestClass&gt;();
@@ -148,7 +151,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @param mapper The DynamoDB mapper.
      * @param db The service object to use for all service calls.
      */
-    protected DynamoDBTableMapper(final AmazonDynamoDB db, final DynamoDBMapper mapper, final DynamoDBMapperConfig config, final DynamoDBMapperTableModel<T> model) {
+    protected DynamoDBTableMapper(AmazonDynamoDB db, DynamoDBMapper mapper, final DynamoDBMapperConfig config, final DynamoDBMapperTableModel<T> model) {
         this.rk = model.rangeKeyIfExists();
         this.hk = model.hashKey();
         this.model = model;
@@ -163,7 +166,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @param attributeName The attribute name.
      * @return The field model.
      */
-    public <V> DynamoDBMapperFieldModel<T,V> field(final String attributeName) {
+    public <V> DynamoDBMapperFieldModel<T,V> field(String attributeName) {
         return this.model.field(attributeName);
     }
 
@@ -188,22 +191,17 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
     }
 
     /**
-     * Gets the underlying DynamoDB config used to initialize this mapper.
-     * @return The DynamoDB config.
-     */
-    public DynamoDBMapperConfig config() {
-        return this.config;
-    }
-
-    /**
      * Retrieves multiple items from the table using their primary keys.
      * @param itemsToGet The items to get.
      * @return The list of objects.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#batchLoad
      */
-    public final List<T> batchLoad(final Iterable<T> itemsToGet) {
+    public List<T> batchLoad(Iterable<T> itemsToGet) {
         final Map<String,List<Object>> results = mapper.batchLoad(itemsToGet);
-        return results.isEmpty() ? Collections.<T>emptyList() : (List<T>)results.get(mapper.getTableName(model.targetType(), config));
+        if (results.isEmpty()) {
+            return Collections.<T>emptyList();
+        }
+        return (List<T>)results.get(mapper.getTableName(model.targetType(), config));
     }
 
     /**
@@ -212,7 +210,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The list of failed batches.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#batchSave
      */
-    public final List<DynamoDBMapper.FailedBatch> batchSave(final Iterable<T> objectsToSave) {
+    public List<DynamoDBMapper.FailedBatch> batchSave(Iterable<T> objectsToSave) {
         return mapper.batchWrite(objectsToSave, (Iterable<T>)Collections.<T>emptyList());
     }
 
@@ -222,7 +220,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The list of failed batches.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#batchDelete
      */
-    public final List<DynamoDBMapper.FailedBatch> batchDelete(final Iterable<T> objectsToDelete) {
+    public List<DynamoDBMapper.FailedBatch> batchDelete(Iterable<T> objectsToDelete) {
         return mapper.batchWrite((Iterable<T>)Collections.<T>emptyList(), objectsToDelete);
     }
 
@@ -234,7 +232,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The list of failed batches.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#batchWrite
      */
-    public final List<DynamoDBMapper.FailedBatch> batchWrite(final Iterable<T> objectsToWrite, final Iterable<T> objectsToDelete) {
+    public List<DynamoDBMapper.FailedBatch> batchWrite(Iterable<T> objectsToWrite, Iterable<T> objectsToDelete) {
         return mapper.batchWrite(objectsToWrite, objectsToDelete);
     }
 
@@ -244,7 +242,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The object.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#load
      */
-    public final T load(final H hashKey) {
+    public T load(H hashKey) {
         return mapper.<T>load(model.targetType(), hashKey);
     }
 
@@ -255,7 +253,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The object.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#load
      */
-    public final T load(final H hashKey, final R rangeKey) {
+    public T load(H hashKey, R rangeKey) {
         return mapper.<T>load(model.targetType(), hashKey, rangeKey);
     }
 
@@ -264,7 +262,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @param object The object to save.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#save
      */
-    public final void save(final T object) {
+    public void save(T object) {
         mapper.<T>save(object);
     }
 
@@ -274,7 +272,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @param saveExpression The save expression.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#save
      */
-    public final void save(final T object, final DynamoDBSaveExpression saveExpression) {
+    public void save(T object, DynamoDBSaveExpression saveExpression) {
         mapper.<T>save(object, saveExpression);
     }
 
@@ -287,11 +285,11 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression
      * @see com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue
      */
-    public final void saveIfNotExists(final T object) throws ConditionalCheckFailedException {
+    public void saveIfNotExists(T object) throws ConditionalCheckFailedException {
         final DynamoDBSaveExpression saveExpression = new DynamoDBSaveExpression();
-        saveExpression.withExpectedEntry(hk.name(), hk.expectedNotExists());
-        if (rk != null) {
-            saveExpression.withExpectedEntry(rk.name(), rk.expectedNotExists());
+        for (final DynamoDBMapperFieldModel<T,Object> key : model.keys()) {
+            saveExpression.withExpectedEntry(key.name(), new ExpectedAttributeValue()
+                .withExists(false));
         }
         mapper.<T>save(object, saveExpression);
     }
@@ -305,11 +303,11 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression
      * @see com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue
      */
-    public final void saveIfExists(final T object) throws ConditionalCheckFailedException {
+    public void saveIfExists(T object) throws ConditionalCheckFailedException {
         final DynamoDBSaveExpression saveExpression = new DynamoDBSaveExpression();
-        saveExpression.withExpectedEntry(hk.name(), hk.expectedExists(hk.get(object)));
-        if (rk != null) {
-            saveExpression.withExpectedEntry(rk.name(), rk.expectedExists(rk.get(object)));
+        for (final DynamoDBMapperFieldModel<T,Object> key : model.keys()) {
+            saveExpression.withExpectedEntry(key.name(), new ExpectedAttributeValue()
+                .withExists(true).withValue(key.convert(key.get(object))));
         }
         mapper.<T>save(object, saveExpression);
     }
@@ -335,7 +333,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
     }
 
     /**
-     * Deletes the given object from its DynamoDB table with the condition that 
+     * Deletes the given object from its DynamoDB table with the condition that
      * the hash and, if applicable, the range key, already exist.
      * @param object The object to delete.
      * @throws ConditionalCheckFailedException If the object does not exist.
@@ -343,11 +341,11 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDeleteExpression
      * @see com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue
      */
-    public final void deleteIfExists(final T object) throws ConditionalCheckFailedException {
+    public void deleteIfExists(T object) throws ConditionalCheckFailedException {
         final DynamoDBDeleteExpression deleteExpression = new DynamoDBDeleteExpression();
-        deleteExpression.withExpectedEntry(hk.name(), hk.expectedExists(hk.get(object)));
-        if (rk != null) {
-            deleteExpression.withExpectedEntry(rk.name(), rk.expectedExists(rk.get(object)));
+        for (final DynamoDBMapperFieldModel<T,Object> key : model.keys()) {
+            deleteExpression.withExpectedEntry(key.name(), new ExpectedAttributeValue()
+                .withExists(true).withValue(key.convert(key.get(object))));
         }
         mapper.delete(object, deleteExpression);
     }
@@ -358,9 +356,8 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @param queryExpression The query expression.
      * @return The count.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#count
-     * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTableMapper#expressionForKey
      */
-    public final int count(final DynamoDBQueryExpression<T> queryExpression) {
+    public int count(DynamoDBQueryExpression<T> queryExpression) {
         return mapper.<T>count(model.targetType(), queryExpression);
     }
 
@@ -370,10 +367,9 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @param queryExpression The query expression.
      * @return The query results.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#query
-     * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTableMapper#expressionForKey
      */
-    public final QueryResultPage<T> query(final DynamoDBQueryExpression<T> queryExpression) {
-        return mapper.<T>queryPage(model.targetType(), queryExpression);
+    public PaginatedQueryList<T> query(DynamoDBQueryExpression<T> queryExpression) {
+        return mapper.<T>query(model.targetType(), queryExpression);
     }
 
     /**
@@ -382,23 +378,9 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @param queryExpression The query expression.
      * @return The query results.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#query
-     * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTableMapper#expressionForKey
      */
-    public final QueryResultPage<T> queryPage(final DynamoDBQueryExpression<T> queryExpression) {
+    public QueryResultPage<T> queryPage(DynamoDBQueryExpression<T> queryExpression) {
         return mapper.<T>queryPage(model.targetType(), queryExpression);
-    }
-
-    /**
-     * Creates a new {@link DynamoDBQueryExpression} with the specified hash key
-     * value populated.
-     * @param hashKey The hash key value.
-     * @return The query expression.
-     * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTableMapper#count
-     * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTableMapper#query
-     * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTableMapper#queryPage
-     */
-    public final DynamoDBQueryExpression<T> expressionForKey(final H hashKey) {
-        return new DynamoDBQueryExpression<T>().withHashKeyValues(model.asKey(hashKey, (R)null));
     }
 
     /**
@@ -408,7 +390,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The count.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#count
      */
-    public final int count(final DynamoDBScanExpression scanExpression) {
+    public int count(DynamoDBScanExpression scanExpression) {
         return mapper.count(model.targetType(), scanExpression);
     }
 
@@ -419,7 +401,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The scan results.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#scan
      */
-    public final PaginatedScanList<T> scan(final DynamoDBScanExpression scanExpression) {
+    public PaginatedScanList<T> scan(DynamoDBScanExpression scanExpression) {
         return mapper.<T>scan(model.targetType(), scanExpression);
     }
 
@@ -430,7 +412,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The scan results.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#scanPage
      */
-    public final ScanResultPage<T> scanPage(final DynamoDBScanExpression scanExpression) {
+    public ScanResultPage<T> scanPage(DynamoDBScanExpression scanExpression) {
         return mapper.<T>scanPage(model.targetType(), scanExpression);
     }
 
@@ -443,7 +425,7 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The scan results.
      * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper#parallelScan
      */
-    public final PaginatedParallelScanList<T> parallelScan(final DynamoDBScanExpression scanExpression, int totalSegments) {
+    public PaginatedParallelScanList<T> parallelScan(DynamoDBScanExpression scanExpression, int totalSegments) {
         return mapper.<T>parallelScan(model.targetType(), scanExpression, totalSegments);
     }
 
@@ -454,8 +436,29 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @return The describe table results.
      * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#describeTable
      */
-    public final TableDescription describeTable() {
-        return db.describeTable(mapper.getTableName(model.targetType(), config)).getTable();
+    public TableDescription describeTable() {
+        return db.describeTable(
+            mapper.getTableName(model.targetType(), config)
+        ).getTable();
+    }
+
+    /**
+     * Creates the table with the specified throughput; also populates the same
+     * throughput for all global secondary indexes.
+     * @param throughput The provisioned throughput.
+     * @return The table decription.
+     * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#createTable
+     * @see com.amazonaws.services.dynamodbv2.model.CreateTableRequest
+     */
+    public TableDescription createTable(ProvisionedThroughput throughput) {
+        final CreateTableRequest request = mapper.generateCreateTableRequest(model.targetType());
+        request.setProvisionedThroughput(throughput);
+        if (request.getGlobalSecondaryIndexes() != null) {
+            for (final GlobalSecondaryIndex gsi : request.getGlobalSecondaryIndexes()) {
+                gsi.setProvisionedThroughput(throughput);
+            }
+        }
+        return db.createTable(request).getTableDescription();
     }
 
     /**
@@ -466,18 +469,28 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#createTable
      * @see com.amazonaws.services.dynamodbv2.model.CreateTableRequest
      */
-    public final boolean createTableIfNotExists(final ProvisionedThroughput throughput) {
-        final CreateTableRequest request = mapper.generateCreateTableRequest(model.targetType());
-        request.setProvisionedThroughput(throughput);
+    public boolean createTableIfNotExists(ProvisionedThroughput throughput) {
         try {
-            db.createTable(request);
+            createTable(throughput);
         } catch (final ResourceInUseException e) {
             if (LOG.isTraceEnabled()) {
-                LOG.trace("Table " + request.getTableName() + " already exists, no need to create", e);
+                LOG.trace("Table already exists, no need to create", e);
             }
             return false;
         }
         return true;
+    }
+
+    /**
+     * Deletes the table.
+     * @return The table decription.
+     * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteTable
+     * @see com.amazonaws.services.dynamodbv2.model.DeleteTableRequest
+     */
+    public TableDescription deleteTable() {
+        return db.deleteTable(
+            mapper.generateDeleteTableRequest(model.targetType())
+        ).getTableDescription();
     }
 
     /**
@@ -487,13 +500,12 @@ public final class DynamoDBTableMapper<T extends Object, H extends Object, R ext
      * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#deleteTable
      * @see com.amazonaws.services.dynamodbv2.model.DeleteTableRequest
      */
-    public final boolean deleteTableIfExists() {
-        final DeleteTableRequest request = mapper.generateDeleteTableRequest(model.targetType());
+    public boolean deleteTableIfExists() {
         try {
-            db.deleteTable(request);
+            deleteTable();
         } catch (final ResourceNotFoundException e) {
             if (LOG.isTraceEnabled()) {
-                LOG.trace("Table " + request.getTableName() + " does not exist, no need to delete", e);
+                LOG.trace("Table does not exist, no need to delete", e);
             }
             return false;
         }

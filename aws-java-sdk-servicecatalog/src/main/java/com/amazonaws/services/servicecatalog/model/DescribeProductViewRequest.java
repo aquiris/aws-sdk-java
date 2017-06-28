@@ -1,31 +1,33 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProductView" target="_top">AWS
+ *      API Documentation</a>
  */
-public class DescribeProductViewRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeProductViewRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -50,7 +52,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -66,8 +68,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param acceptLanguage
-     *        Optional language code. Supported language codes are as
-     *        follows:</p>
+     *        The language code to use for this operation. Supported language codes are as follows:</p>
      *        <p>
      *        "en" (English)
      *        </p>
@@ -87,7 +88,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -102,8 +103,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
      * If no code is specified, "en" is used as the default.
      * </p>
      * 
-     * @return Optional language code. Supported language codes are as
-     *         follows:</p>
+     * @return The language code to use for this operation. Supported language codes are as follows:</p>
      *         <p>
      *         "en" (English)
      *         </p>
@@ -123,7 +123,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * Optional language code. Supported language codes are as follows:
+     * The language code to use for this operation. Supported language codes are as follows:
      * </p>
      * <p>
      * "en" (English)
@@ -139,8 +139,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param acceptLanguage
-     *        Optional language code. Supported language codes are as
-     *        follows:</p>
+     *        The language code to use for this operation. Supported language codes are as follows:</p>
      *        <p>
      *        "en" (English)
      *        </p>
@@ -152,8 +151,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
      *        </p>
      *        <p>
      *        If no code is specified, "en" is used as the default.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeProductViewRequest withAcceptLanguage(String acceptLanguage) {
@@ -193,8 +191,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
      * 
      * @param id
      *        The <code>ProductViewId</code> of the product to describe.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeProductViewRequest withId(String id) {
@@ -203,8 +200,7 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -215,9 +211,9 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAcceptLanguage() != null)
-            sb.append("AcceptLanguage: " + getAcceptLanguage() + ",");
+            sb.append("AcceptLanguage: ").append(getAcceptLanguage()).append(",");
         if (getId() != null)
-            sb.append("Id: " + getId());
+            sb.append("Id: ").append(getId());
         sb.append("}");
         return sb.toString();
     }
@@ -232,16 +228,13 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
         if (obj instanceof DescribeProductViewRequest == false)
             return false;
         DescribeProductViewRequest other = (DescribeProductViewRequest) obj;
-        if (other.getAcceptLanguage() == null
-                ^ this.getAcceptLanguage() == null)
+        if (other.getAcceptLanguage() == null ^ this.getAcceptLanguage() == null)
             return false;
-        if (other.getAcceptLanguage() != null
-                && other.getAcceptLanguage().equals(this.getAcceptLanguage()) == false)
+        if (other.getAcceptLanguage() != null && other.getAcceptLanguage().equals(this.getAcceptLanguage()) == false)
             return false;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         return true;
     }
@@ -251,12 +244,8 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAcceptLanguage() == null) ? 0 : getAcceptLanguage()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getAcceptLanguage() == null) ? 0 : getAcceptLanguage().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
         return hashCode;
     }
 
@@ -264,4 +253,5 @@ public class DescribeProductViewRequest extends AmazonWebServiceRequest
     public DescribeProductViewRequest clone() {
         return (DescribeProductViewRequest) super.clone();
     }
+
 }

@@ -1,32 +1,35 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.snowball.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Each <code>S3Resource</code> object represents an Amazon S3 bucket that your
- * transferred data will be exported from or imported into. For export jobs,
- * this object can have an optional <code>KeyRange</code> value. The length of
- * the range is defined at job creation, and has either an inclusive
- * <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both.
- * Ranges are UTF-8 binary sorted.
+ * Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from
+ * or imported into. For export jobs, this object can have an optional <code>KeyRange</code> value. The length of the
+ * range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive
+ * <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/S3Resource" target="_top">AWS API
+ *      Documentation</a>
  */
-public class S3Resource implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class S3Resource implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -36,11 +39,9 @@ public class S3Resource implements Serializable, Cloneable {
     private String bucketArn;
     /**
      * <p>
-     * For export jobs, you can provide an optional <code>KeyRange</code> within
-     * a specific Amazon S3 bucket. The length of the range is defined at job
-     * creation, and has either an inclusive <code>BeginMarker</code>, an
-     * inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary
-     * sorted.
+     * For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length
+     * of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive
+     * <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
      * </p>
      */
     private KeyRange keyRange;
@@ -77,8 +78,7 @@ public class S3Resource implements Serializable, Cloneable {
      * 
      * @param bucketArn
      *        The Amazon Resource Name (ARN) of an Amazon S3 bucket.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public S3Resource withBucketArn(String bucketArn) {
@@ -88,19 +88,15 @@ public class S3Resource implements Serializable, Cloneable {
 
     /**
      * <p>
-     * For export jobs, you can provide an optional <code>KeyRange</code> within
-     * a specific Amazon S3 bucket. The length of the range is defined at job
-     * creation, and has either an inclusive <code>BeginMarker</code>, an
-     * inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary
-     * sorted.
+     * For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length
+     * of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive
+     * <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
      * </p>
      * 
      * @param keyRange
-     *        For export jobs, you can provide an optional <code>KeyRange</code>
-     *        within a specific Amazon S3 bucket. The length of the range is
-     *        defined at job creation, and has either an inclusive
-     *        <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or
-     *        both. Ranges are UTF-8 binary sorted.
+     *        For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The
+     *        length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an
+     *        inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
      */
 
     public void setKeyRange(KeyRange keyRange) {
@@ -109,18 +105,14 @@ public class S3Resource implements Serializable, Cloneable {
 
     /**
      * <p>
-     * For export jobs, you can provide an optional <code>KeyRange</code> within
-     * a specific Amazon S3 bucket. The length of the range is defined at job
-     * creation, and has either an inclusive <code>BeginMarker</code>, an
-     * inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary
-     * sorted.
+     * For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length
+     * of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive
+     * <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
      * </p>
      * 
-     * @return For export jobs, you can provide an optional
-     *         <code>KeyRange</code> within a specific Amazon S3 bucket. The
-     *         length of the range is defined at job creation, and has either an
-     *         inclusive <code>BeginMarker</code>, an inclusive
-     *         <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
+     * @return For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket.
+     *         The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>,
+     *         an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
      */
 
     public KeyRange getKeyRange() {
@@ -129,21 +121,16 @@ public class S3Resource implements Serializable, Cloneable {
 
     /**
      * <p>
-     * For export jobs, you can provide an optional <code>KeyRange</code> within
-     * a specific Amazon S3 bucket. The length of the range is defined at job
-     * creation, and has either an inclusive <code>BeginMarker</code>, an
-     * inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary
-     * sorted.
+     * For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length
+     * of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive
+     * <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
      * </p>
      * 
      * @param keyRange
-     *        For export jobs, you can provide an optional <code>KeyRange</code>
-     *        within a specific Amazon S3 bucket. The length of the range is
-     *        defined at job creation, and has either an inclusive
-     *        <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or
-     *        both. Ranges are UTF-8 binary sorted.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The
+     *        length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an
+     *        inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public S3Resource withKeyRange(KeyRange keyRange) {
@@ -152,8 +139,7 @@ public class S3Resource implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -164,9 +150,9 @@ public class S3Resource implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBucketArn() != null)
-            sb.append("BucketArn: " + getBucketArn() + ",");
+            sb.append("BucketArn: ").append(getBucketArn()).append(",");
         if (getKeyRange() != null)
-            sb.append("KeyRange: " + getKeyRange());
+            sb.append("KeyRange: ").append(getKeyRange());
         sb.append("}");
         return sb.toString();
     }
@@ -183,13 +169,11 @@ public class S3Resource implements Serializable, Cloneable {
         S3Resource other = (S3Resource) obj;
         if (other.getBucketArn() == null ^ this.getBucketArn() == null)
             return false;
-        if (other.getBucketArn() != null
-                && other.getBucketArn().equals(this.getBucketArn()) == false)
+        if (other.getBucketArn() != null && other.getBucketArn().equals(this.getBucketArn()) == false)
             return false;
         if (other.getKeyRange() == null ^ this.getKeyRange() == null)
             return false;
-        if (other.getKeyRange() != null
-                && other.getKeyRange().equals(this.getKeyRange()) == false)
+        if (other.getKeyRange() != null && other.getKeyRange().equals(this.getKeyRange()) == false)
             return false;
         return true;
     }
@@ -199,10 +183,8 @@ public class S3Resource implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getBucketArn() == null) ? 0 : getBucketArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getKeyRange() == null) ? 0 : getKeyRange().hashCode());
+        hashCode = prime * hashCode + ((getBucketArn() == null) ? 0 : getBucketArn().hashCode());
+        hashCode = prime * hashCode + ((getKeyRange() == null) ? 0 : getKeyRange().hashCode());
         return hashCode;
     }
 
@@ -211,9 +193,13 @@ public class S3Resource implements Serializable, Cloneable {
         try {
             return (S3Resource) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.snowball.model.transform.S3ResourceMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

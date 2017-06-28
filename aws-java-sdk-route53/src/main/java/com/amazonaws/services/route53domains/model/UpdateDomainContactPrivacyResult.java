@@ -1,72 +1,48 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.route53domains.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The UpdateDomainContactPrivacy response includes the following element.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContactPrivacy"
+ *      target="_top">AWS API Documentation</a>
  */
-public class UpdateDomainContactPrivacyResult implements Serializable,
-        Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateDomainContactPrivacyResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Identifier for tracking the progress of the request. To use this ID to
-     * query the operation status, use GetOperationDetail.
-     * </p>
-     * <p>
-     * Type: String
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Constraints: Maximum 255 characters.
+     * Identifier for tracking the progress of the request. To use this ID to query the operation status, use
+     * GetOperationDetail.
      * </p>
      */
     private String operationId;
 
     /**
      * <p>
-     * Identifier for tracking the progress of the request. To use this ID to
-     * query the operation status, use GetOperationDetail.
-     * </p>
-     * <p>
-     * Type: String
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Constraints: Maximum 255 characters.
+     * Identifier for tracking the progress of the request. To use this ID to query the operation status, use
+     * GetOperationDetail.
      * </p>
      * 
      * @param operationId
-     *        Identifier for tracking the progress of the request. To use this
-     *        ID to query the operation status, use GetOperationDetail.</p>
-     *        <p>
-     *        Type: String
-     *        </p>
-     *        <p>
-     *        Default: None
-     *        </p>
-     *        <p>
-     *        Constraints: Maximum 255 characters.
+     *        Identifier for tracking the progress of the request. To use this ID to query the operation status, use
+     *        GetOperationDetail.
      */
 
     public void setOperationId(String operationId) {
@@ -75,29 +51,12 @@ public class UpdateDomainContactPrivacyResult implements Serializable,
 
     /**
      * <p>
-     * Identifier for tracking the progress of the request. To use this ID to
-     * query the operation status, use GetOperationDetail.
-     * </p>
-     * <p>
-     * Type: String
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Constraints: Maximum 255 characters.
+     * Identifier for tracking the progress of the request. To use this ID to query the operation status, use
+     * GetOperationDetail.
      * </p>
      * 
-     * @return Identifier for tracking the progress of the request. To use this
-     *         ID to query the operation status, use GetOperationDetail.</p>
-     *         <p>
-     *         Type: String
-     *         </p>
-     *         <p>
-     *         Default: None
-     *         </p>
-     *         <p>
-     *         Constraints: Maximum 255 characters.
+     * @return Identifier for tracking the progress of the request. To use this ID to query the operation status, use
+     *         GetOperationDetail.
      */
 
     public String getOperationId() {
@@ -106,32 +65,14 @@ public class UpdateDomainContactPrivacyResult implements Serializable,
 
     /**
      * <p>
-     * Identifier for tracking the progress of the request. To use this ID to
-     * query the operation status, use GetOperationDetail.
-     * </p>
-     * <p>
-     * Type: String
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Constraints: Maximum 255 characters.
+     * Identifier for tracking the progress of the request. To use this ID to query the operation status, use
+     * GetOperationDetail.
      * </p>
      * 
      * @param operationId
-     *        Identifier for tracking the progress of the request. To use this
-     *        ID to query the operation status, use GetOperationDetail.</p>
-     *        <p>
-     *        Type: String
-     *        </p>
-     *        <p>
-     *        Default: None
-     *        </p>
-     *        <p>
-     *        Constraints: Maximum 255 characters.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Identifier for tracking the progress of the request. To use this ID to query the operation status, use
+     *        GetOperationDetail.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateDomainContactPrivacyResult withOperationId(String operationId) {
@@ -140,8 +81,7 @@ public class UpdateDomainContactPrivacyResult implements Serializable,
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -152,7 +92,7 @@ public class UpdateDomainContactPrivacyResult implements Serializable,
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getOperationId() != null)
-            sb.append("OperationId: " + getOperationId());
+            sb.append("OperationId: ").append(getOperationId());
         sb.append("}");
         return sb.toString();
     }
@@ -169,8 +109,7 @@ public class UpdateDomainContactPrivacyResult implements Serializable,
         UpdateDomainContactPrivacyResult other = (UpdateDomainContactPrivacyResult) obj;
         if (other.getOperationId() == null ^ this.getOperationId() == null)
             return false;
-        if (other.getOperationId() != null
-                && other.getOperationId().equals(this.getOperationId()) == false)
+        if (other.getOperationId() != null && other.getOperationId().equals(this.getOperationId()) == false)
             return false;
         return true;
     }
@@ -180,9 +119,7 @@ public class UpdateDomainContactPrivacyResult implements Serializable,
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getOperationId() == null) ? 0 : getOperationId().hashCode());
+        hashCode = prime * hashCode + ((getOperationId() == null) ? 0 : getOperationId().hashCode());
         return hashCode;
     }
 
@@ -191,9 +128,8 @@ public class UpdateDomainContactPrivacyResult implements Serializable,
         try {
             return (UpdateDomainContactPrivacyResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

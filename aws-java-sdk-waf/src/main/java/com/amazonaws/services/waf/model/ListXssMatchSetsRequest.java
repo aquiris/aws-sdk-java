@@ -1,74 +1,67 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * A request to list the <a>XssMatchSet</a> objects created by the current AWS
- * account.
+ * A request to list the <a>XssMatchSet</a> objects created by the current AWS account.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListXssMatchSets" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListXssMatchSetsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more
-     * <a>XssMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF
-     * returns a <code>NextMarker</code> value in the response that allows you
-     * to list another group of <code>XssMatchSets</code>. For the second and
-     * subsequent <code>ListXssMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information
-     * about another batch of <code>XssMatchSets</code>.
+     * If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value of
+     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
+     * another group of <code>XssMatchSets</code>. For the second and subsequent <code>ListXssMatchSets</code> requests,
+     * specify the value of <code>NextMarker</code> from the previous response to get information about another batch of
+     * <code>XssMatchSets</code>.
      * </p>
      */
     private String nextMarker;
     /**
      * <p>
-     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF
-     * to return for this request. If you have more <code>XssMatchSet</code>
-     * objects than the number you specify for <code>Limit</code>, the response
-     * includes a <code>NextMarker</code> value that you can use to get another
-     * batch of <code>Rules</code>.
+     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have
+     * more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a
+     * <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.
      * </p>
      */
     private Integer limit;
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more
-     * <a>XssMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF
-     * returns a <code>NextMarker</code> value in the response that allows you
-     * to list another group of <code>XssMatchSets</code>. For the second and
-     * subsequent <code>ListXssMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information
-     * about another batch of <code>XssMatchSets</code>.
+     * If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value of
+     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
+     * another group of <code>XssMatchSets</code>. For the second and subsequent <code>ListXssMatchSets</code> requests,
+     * specify the value of <code>NextMarker</code> from the previous response to get information about another batch of
+     * <code>XssMatchSets</code>.
      * </p>
      * 
      * @param nextMarker
-     *        If you specify a value for <code>Limit</code> and you have more
-     *        <a>XssMatchSet</a> objects than the value of <code>Limit</code>,
-     *        AWS WAF returns a <code>NextMarker</code> value in the response
-     *        that allows you to list another group of <code>XssMatchSets</code>
-     *        . For the second and subsequent <code>ListXssMatchSets</code>
-     *        requests, specify the value of <code>NextMarker</code> from the
-     *        previous response to get information about another batch of
-     *        <code>XssMatchSets</code>.
+     *        If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value
+     *        of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to
+     *        list another group of <code>XssMatchSets</code>. For the second and subsequent
+     *        <code>ListXssMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous
+     *        response to get information about another batch of <code>XssMatchSets</code>.
      */
 
     public void setNextMarker(String nextMarker) {
@@ -77,23 +70,18 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more
-     * <a>XssMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF
-     * returns a <code>NextMarker</code> value in the response that allows you
-     * to list another group of <code>XssMatchSets</code>. For the second and
-     * subsequent <code>ListXssMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information
-     * about another batch of <code>XssMatchSets</code>.
+     * If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value of
+     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
+     * another group of <code>XssMatchSets</code>. For the second and subsequent <code>ListXssMatchSets</code> requests,
+     * specify the value of <code>NextMarker</code> from the previous response to get information about another batch of
+     * <code>XssMatchSets</code>.
      * </p>
      * 
-     * @return If you specify a value for <code>Limit</code> and you have more
-     *         <a>XssMatchSet</a> objects than the value of <code>Limit</code>,
-     *         AWS WAF returns a <code>NextMarker</code> value in the response
-     *         that allows you to list another group of
-     *         <code>XssMatchSets</code>. For the second and subsequent
-     *         <code>ListXssMatchSets</code> requests, specify the value of
-     *         <code>NextMarker</code> from the previous response to get
-     *         information about another batch of <code>XssMatchSets</code>.
+     * @return If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value
+     *         of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to
+     *         list another group of <code>XssMatchSets</code>. For the second and subsequent
+     *         <code>ListXssMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous
+     *         response to get information about another batch of <code>XssMatchSets</code>.
      */
 
     public String getNextMarker() {
@@ -102,26 +90,20 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more
-     * <a>XssMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF
-     * returns a <code>NextMarker</code> value in the response that allows you
-     * to list another group of <code>XssMatchSets</code>. For the second and
-     * subsequent <code>ListXssMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information
-     * about another batch of <code>XssMatchSets</code>.
+     * If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value of
+     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
+     * another group of <code>XssMatchSets</code>. For the second and subsequent <code>ListXssMatchSets</code> requests,
+     * specify the value of <code>NextMarker</code> from the previous response to get information about another batch of
+     * <code>XssMatchSets</code>.
      * </p>
      * 
      * @param nextMarker
-     *        If you specify a value for <code>Limit</code> and you have more
-     *        <a>XssMatchSet</a> objects than the value of <code>Limit</code>,
-     *        AWS WAF returns a <code>NextMarker</code> value in the response
-     *        that allows you to list another group of <code>XssMatchSets</code>
-     *        . For the second and subsequent <code>ListXssMatchSets</code>
-     *        requests, specify the value of <code>NextMarker</code> from the
-     *        previous response to get information about another batch of
-     *        <code>XssMatchSets</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value
+     *        of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to
+     *        list another group of <code>XssMatchSets</code>. For the second and subsequent
+     *        <code>ListXssMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous
+     *        response to get information about another batch of <code>XssMatchSets</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListXssMatchSetsRequest withNextMarker(String nextMarker) {
@@ -131,20 +113,16 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF
-     * to return for this request. If you have more <code>XssMatchSet</code>
-     * objects than the number you specify for <code>Limit</code>, the response
-     * includes a <code>NextMarker</code> value that you can use to get another
-     * batch of <code>Rules</code>.
+     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have
+     * more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a
+     * <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.
      * </p>
      * 
      * @param limit
-     *        Specifies the number of <a>XssMatchSet</a> objects that you want
-     *        AWS WAF to return for this request. If you have more
-     *        <code>XssMatchSet</code> objects than the number you specify for
-     *        <code>Limit</code>, the response includes a
-     *        <code>NextMarker</code> value that you can use to get another
-     *        batch of <code>Rules</code>.
+     *        Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If
+     *        you have more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the
+     *        response includes a <code>NextMarker</code> value that you can use to get another batch of
+     *        <code>Rules</code>.
      */
 
     public void setLimit(Integer limit) {
@@ -153,19 +131,15 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF
-     * to return for this request. If you have more <code>XssMatchSet</code>
-     * objects than the number you specify for <code>Limit</code>, the response
-     * includes a <code>NextMarker</code> value that you can use to get another
-     * batch of <code>Rules</code>.
+     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have
+     * more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a
+     * <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.
      * </p>
      * 
-     * @return Specifies the number of <a>XssMatchSet</a> objects that you want
-     *         AWS WAF to return for this request. If you have more
-     *         <code>XssMatchSet</code> objects than the number you specify for
-     *         <code>Limit</code>, the response includes a
-     *         <code>NextMarker</code> value that you can use to get another
-     *         batch of <code>Rules</code>.
+     * @return Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If
+     *         you have more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the
+     *         response includes a <code>NextMarker</code> value that you can use to get another batch of
+     *         <code>Rules</code>.
      */
 
     public Integer getLimit() {
@@ -174,22 +148,17 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF
-     * to return for this request. If you have more <code>XssMatchSet</code>
-     * objects than the number you specify for <code>Limit</code>, the response
-     * includes a <code>NextMarker</code> value that you can use to get another
-     * batch of <code>Rules</code>.
+     * Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have
+     * more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a
+     * <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.
      * </p>
      * 
      * @param limit
-     *        Specifies the number of <a>XssMatchSet</a> objects that you want
-     *        AWS WAF to return for this request. If you have more
-     *        <code>XssMatchSet</code> objects than the number you specify for
-     *        <code>Limit</code>, the response includes a
-     *        <code>NextMarker</code> value that you can use to get another
-     *        batch of <code>Rules</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If
+     *        you have more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the
+     *        response includes a <code>NextMarker</code> value that you can use to get another batch of
+     *        <code>Rules</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListXssMatchSetsRequest withLimit(Integer limit) {
@@ -198,8 +167,7 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -210,9 +178,9 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNextMarker() != null)
-            sb.append("NextMarker: " + getNextMarker() + ",");
+            sb.append("NextMarker: ").append(getNextMarker()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -229,13 +197,11 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
         ListXssMatchSetsRequest other = (ListXssMatchSetsRequest) obj;
         if (other.getNextMarker() == null ^ this.getNextMarker() == null)
             return false;
-        if (other.getNextMarker() != null
-                && other.getNextMarker().equals(this.getNextMarker()) == false)
+        if (other.getNextMarker() != null && other.getNextMarker().equals(this.getNextMarker()) == false)
             return false;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
-        if (other.getLimit() != null
-                && other.getLimit().equals(this.getLimit()) == false)
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
             return false;
         return true;
     }
@@ -245,10 +211,8 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getNextMarker() == null) ? 0 : getNextMarker().hashCode());
-        hashCode = prime * hashCode
-                + ((getLimit() == null) ? 0 : getLimit().hashCode());
+        hashCode = prime * hashCode + ((getNextMarker() == null) ? 0 : getNextMarker().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;
     }
 
@@ -256,4 +220,5 @@ public class ListXssMatchSetsRequest extends AmazonWebServiceRequest implements
     public ListXssMatchSetsRequest clone() {
         return (ListXssMatchSetsRequest) super.clone();
     }
+
 }

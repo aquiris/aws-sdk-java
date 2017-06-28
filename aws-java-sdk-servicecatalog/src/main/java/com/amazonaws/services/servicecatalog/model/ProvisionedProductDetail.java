@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Detailed information about a ProvisionedProduct object.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProvisionedProductDetail"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ProvisionedProductDetail implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ProvisionedProductDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -51,6 +56,23 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * <p>
      * The current status of the ProvisionedProduct.
      * </p>
+     * <p>
+     * <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded
+     * and completed.
+     * </p>
+     * <p>
+     * <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an
+     * <code>AVAILABLE</code> status before performing operations.
+     * </p>
+     * <p>
+     * <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     * operation but is not exactly what was requested. For example, a request to update to a new version failed and the
+     * stack rolled back to the current version.
+     * </p>
+     * <p>
+     * <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not
+     * running. For example, CloudFormation received an invalid parameter value and could not launch the stack.
+     * </p>
      */
     private String status;
     /**
@@ -61,20 +83,20 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
     private String statusMessage;
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      */
     private java.util.Date createdTime;
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      */
     private String idempotencyToken;
     /**
      * <p>
-     * The record identifier of the last request performed on this
-     * ProvisionedProduct object.
+     * The record identifier of the last request performed on this ProvisionedProduct object.
      * </p>
      */
     private String lastRecordId;
@@ -111,8 +133,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * 
      * @param name
      *        The user-friendly name of the ProvisionedProduct object.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withName(String name) {
@@ -152,8 +173,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * 
      * @param arn
      *        The ARN associated with the ProvisionedProduct object.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withArn(String arn) {
@@ -193,8 +213,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * 
      * @param type
      *        The type of the ProvisionedProduct object.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withType(String type) {
@@ -234,8 +253,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * 
      * @param id
      *        The identifier of the ProvisionedProduct object.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withId(String id) {
@@ -247,10 +265,44 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * <p>
      * The current status of the ProvisionedProduct.
      * </p>
+     * <p>
+     * <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded
+     * and completed.
+     * </p>
+     * <p>
+     * <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an
+     * <code>AVAILABLE</code> status before performing operations.
+     * </p>
+     * <p>
+     * <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     * operation but is not exactly what was requested. For example, a request to update to a new version failed and the
+     * stack rolled back to the current version.
+     * </p>
+     * <p>
+     * <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not
+     * running. For example, CloudFormation received an invalid parameter value and could not launch the stack.
+     * </p>
      * 
      * @param status
-     *        The current status of the ProvisionedProduct.
-     * @see RecordStatus
+     *        The current status of the ProvisionedProduct.</p>
+     *        <p>
+     *        <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request
+     *        succeeded and completed.
+     *        </p>
+     *        <p>
+     *        <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait
+     *        for an <code>AVAILABLE</code> status before performing operations.
+     *        </p>
+     *        <p>
+     *        <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     *        operation but is not exactly what was requested. For example, a request to update to a new version failed
+     *        and the stack rolled back to the current version.
+     *        </p>
+     *        <p>
+     *        <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack
+     *        is not running. For example, CloudFormation received an invalid parameter value and could not launch the
+     *        stack.
+     * @see ProvisionedProductStatus
      */
 
     public void setStatus(String status) {
@@ -261,9 +313,43 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * <p>
      * The current status of the ProvisionedProduct.
      * </p>
+     * <p>
+     * <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded
+     * and completed.
+     * </p>
+     * <p>
+     * <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an
+     * <code>AVAILABLE</code> status before performing operations.
+     * </p>
+     * <p>
+     * <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     * operation but is not exactly what was requested. For example, a request to update to a new version failed and the
+     * stack rolled back to the current version.
+     * </p>
+     * <p>
+     * <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not
+     * running. For example, CloudFormation received an invalid parameter value and could not launch the stack.
+     * </p>
      * 
-     * @return The current status of the ProvisionedProduct.
-     * @see RecordStatus
+     * @return The current status of the ProvisionedProduct.</p>
+     *         <p>
+     *         <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request
+     *         succeeded and completed.
+     *         </p>
+     *         <p>
+     *         <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results.
+     *         Wait for an <code>AVAILABLE</code> status before performing operations.
+     *         </p>
+     *         <p>
+     *         <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the
+     *         requested operation but is not exactly what was requested. For example, a request to update to a new
+     *         version failed and the stack rolled back to the current version.
+     *         </p>
+     *         <p>
+     *         <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack
+     *         is not running. For example, CloudFormation received an invalid parameter value and could not launch the
+     *         stack.
+     * @see ProvisionedProductStatus
      */
 
     public String getStatus() {
@@ -274,12 +360,45 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * <p>
      * The current status of the ProvisionedProduct.
      * </p>
+     * <p>
+     * <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded
+     * and completed.
+     * </p>
+     * <p>
+     * <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an
+     * <code>AVAILABLE</code> status before performing operations.
+     * </p>
+     * <p>
+     * <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     * operation but is not exactly what was requested. For example, a request to update to a new version failed and the
+     * stack rolled back to the current version.
+     * </p>
+     * <p>
+     * <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not
+     * running. For example, CloudFormation received an invalid parameter value and could not launch the stack.
+     * </p>
      * 
      * @param status
-     *        The current status of the ProvisionedProduct.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     * @see RecordStatus
+     *        The current status of the ProvisionedProduct.</p>
+     *        <p>
+     *        <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request
+     *        succeeded and completed.
+     *        </p>
+     *        <p>
+     *        <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait
+     *        for an <code>AVAILABLE</code> status before performing operations.
+     *        </p>
+     *        <p>
+     *        <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     *        operation but is not exactly what was requested. For example, a request to update to a new version failed
+     *        and the stack rolled back to the current version.
+     *        </p>
+     *        <p>
+     *        <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack
+     *        is not running. For example, CloudFormation received an invalid parameter value and could not launch the
+     *        stack.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ProvisionedProductStatus
      */
 
     public ProvisionedProductDetail withStatus(String status) {
@@ -291,13 +410,47 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * <p>
      * The current status of the ProvisionedProduct.
      * </p>
+     * <p>
+     * <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded
+     * and completed.
+     * </p>
+     * <p>
+     * <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an
+     * <code>AVAILABLE</code> status before performing operations.
+     * </p>
+     * <p>
+     * <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     * operation but is not exactly what was requested. For example, a request to update to a new version failed and the
+     * stack rolled back to the current version.
+     * </p>
+     * <p>
+     * <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not
+     * running. For example, CloudFormation received an invalid parameter value and could not launch the stack.
+     * </p>
      * 
      * @param status
-     *        The current status of the ProvisionedProduct.
-     * @see RecordStatus
+     *        The current status of the ProvisionedProduct.</p>
+     *        <p>
+     *        <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request
+     *        succeeded and completed.
+     *        </p>
+     *        <p>
+     *        <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait
+     *        for an <code>AVAILABLE</code> status before performing operations.
+     *        </p>
+     *        <p>
+     *        <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     *        operation but is not exactly what was requested. For example, a request to update to a new version failed
+     *        and the stack rolled back to the current version.
+     *        </p>
+     *        <p>
+     *        <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack
+     *        is not running. For example, CloudFormation received an invalid parameter value and could not launch the
+     *        stack.
+     * @see ProvisionedProductStatus
      */
 
-    public void setStatus(RecordStatus status) {
+    public void setStatus(ProvisionedProductStatus status) {
         this.status = status.toString();
     }
 
@@ -305,15 +458,48 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * <p>
      * The current status of the ProvisionedProduct.
      * </p>
+     * <p>
+     * <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded
+     * and completed.
+     * </p>
+     * <p>
+     * <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an
+     * <code>AVAILABLE</code> status before performing operations.
+     * </p>
+     * <p>
+     * <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     * operation but is not exactly what was requested. For example, a request to update to a new version failed and the
+     * stack rolled back to the current version.
+     * </p>
+     * <p>
+     * <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not
+     * running. For example, CloudFormation received an invalid parameter value and could not launch the stack.
+     * </p>
      * 
      * @param status
-     *        The current status of the ProvisionedProduct.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     * @see RecordStatus
+     *        The current status of the ProvisionedProduct.</p>
+     *        <p>
+     *        <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request
+     *        succeeded and completed.
+     *        </p>
+     *        <p>
+     *        <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait
+     *        for an <code>AVAILABLE</code> status before performing operations.
+     *        </p>
+     *        <p>
+     *        <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested
+     *        operation but is not exactly what was requested. For example, a request to update to a new version failed
+     *        and the stack rolled back to the current version.
+     *        </p>
+     *        <p>
+     *        <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack
+     *        is not running. For example, CloudFormation received an invalid parameter value and could not launch the
+     *        stack.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ProvisionedProductStatus
      */
 
-    public ProvisionedProductDetail withStatus(RecordStatus status) {
+    public ProvisionedProductDetail withStatus(ProvisionedProductStatus status) {
         setStatus(status);
         return this;
     }
@@ -350,8 +536,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
      * 
      * @param statusMessage
      *        The current status message of the ProvisionedProduct.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withStatusMessage(String statusMessage) {
@@ -361,11 +546,11 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time the ProvisionedProduct was created.
+     *        The UTC timestamp of the creation time.
      */
 
     public void setCreatedTime(java.util.Date createdTime) {
@@ -374,10 +559,10 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
-     * @return The time the ProvisionedProduct was created.
+     * @return The UTC timestamp of the creation time.
      */
 
     public java.util.Date getCreatedTime() {
@@ -386,13 +571,12 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The time the ProvisionedProduct was created.
+     * The UTC timestamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The time the ProvisionedProduct was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The UTC timestamp of the creation time.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withCreatedTime(java.util.Date createdTime) {
@@ -402,12 +586,13 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      * 
      * @param idempotencyToken
-     *        An idempotency token that uniquely identifies this
-     *        ProvisionedProduct.
+     *        A token to disambiguate duplicate requests. You can create multiple resources using the same input in
+     *        multiple requests, provided that you also specify a different idempotency token for each request.
      */
 
     public void setIdempotencyToken(String idempotencyToken) {
@@ -416,11 +601,12 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      * 
-     * @return An idempotency token that uniquely identifies this
-     *         ProvisionedProduct.
+     * @return A token to disambiguate duplicate requests. You can create multiple resources using the same input in
+     *         multiple requests, provided that you also specify a different idempotency token for each request.
      */
 
     public String getIdempotencyToken() {
@@ -429,14 +615,14 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * An idempotency token that uniquely identifies this ProvisionedProduct.
+     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
+     * requests, provided that you also specify a different idempotency token for each request.
      * </p>
      * 
      * @param idempotencyToken
-     *        An idempotency token that uniquely identifies this
-     *        ProvisionedProduct.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A token to disambiguate duplicate requests. You can create multiple resources using the same input in
+     *        multiple requests, provided that you also specify a different idempotency token for each request.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withIdempotencyToken(String idempotencyToken) {
@@ -446,13 +632,11 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The record identifier of the last request performed on this
-     * ProvisionedProduct object.
+     * The record identifier of the last request performed on this ProvisionedProduct object.
      * </p>
      * 
      * @param lastRecordId
-     *        The record identifier of the last request performed on this
-     *        ProvisionedProduct object.
+     *        The record identifier of the last request performed on this ProvisionedProduct object.
      */
 
     public void setLastRecordId(String lastRecordId) {
@@ -461,12 +645,10 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The record identifier of the last request performed on this
-     * ProvisionedProduct object.
+     * The record identifier of the last request performed on this ProvisionedProduct object.
      * </p>
      * 
-     * @return The record identifier of the last request performed on this
-     *         ProvisionedProduct object.
+     * @return The record identifier of the last request performed on this ProvisionedProduct object.
      */
 
     public String getLastRecordId() {
@@ -475,15 +657,12 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The record identifier of the last request performed on this
-     * ProvisionedProduct object.
+     * The record identifier of the last request performed on this ProvisionedProduct object.
      * </p>
      * 
      * @param lastRecordId
-     *        The record identifier of the last request performed on this
-     *        ProvisionedProduct object.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The record identifier of the last request performed on this ProvisionedProduct object.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ProvisionedProductDetail withLastRecordId(String lastRecordId) {
@@ -492,8 +671,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -504,23 +682,23 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getStatus() != null)
-            sb.append("Status: " + getStatus() + ",");
+            sb.append("Status: ").append(getStatus()).append(",");
         if (getStatusMessage() != null)
-            sb.append("StatusMessage: " + getStatusMessage() + ",");
+            sb.append("StatusMessage: ").append(getStatusMessage()).append(",");
         if (getCreatedTime() != null)
-            sb.append("CreatedTime: " + getCreatedTime() + ",");
+            sb.append("CreatedTime: ").append(getCreatedTime()).append(",");
         if (getIdempotencyToken() != null)
-            sb.append("IdempotencyToken: " + getIdempotencyToken() + ",");
+            sb.append("IdempotencyToken: ").append(getIdempotencyToken()).append(",");
         if (getLastRecordId() != null)
-            sb.append("LastRecordId: " + getLastRecordId());
+            sb.append("LastRecordId: ").append(getLastRecordId());
         sb.append("}");
         return sb.toString();
     }
@@ -537,50 +715,39 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
         ProvisionedProductDetail other = (ProvisionedProductDetail) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
-        if (other.getArn() != null
-                && other.getArn().equals(this.getArn()) == false)
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
             return false;
         if (other.getType() == null ^ this.getType() == null)
             return false;
-        if (other.getType() != null
-                && other.getType().equals(this.getType()) == false)
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
-        if (other.getStatus() != null
-                && other.getStatus().equals(this.getStatus()) == false)
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
         if (other.getStatusMessage() == null ^ this.getStatusMessage() == null)
             return false;
-        if (other.getStatusMessage() != null
-                && other.getStatusMessage().equals(this.getStatusMessage()) == false)
+        if (other.getStatusMessage() != null && other.getStatusMessage().equals(this.getStatusMessage()) == false)
             return false;
         if (other.getCreatedTime() == null ^ this.getCreatedTime() == null)
             return false;
-        if (other.getCreatedTime() != null
-                && other.getCreatedTime().equals(this.getCreatedTime()) == false)
+        if (other.getCreatedTime() != null && other.getCreatedTime().equals(this.getCreatedTime()) == false)
             return false;
-        if (other.getIdempotencyToken() == null
-                ^ this.getIdempotencyToken() == null)
+        if (other.getIdempotencyToken() == null ^ this.getIdempotencyToken() == null)
             return false;
-        if (other.getIdempotencyToken() != null
-                && other.getIdempotencyToken().equals(
-                        this.getIdempotencyToken()) == false)
+        if (other.getIdempotencyToken() != null && other.getIdempotencyToken().equals(this.getIdempotencyToken()) == false)
             return false;
         if (other.getLastRecordId() == null ^ this.getLastRecordId() == null)
             return false;
-        if (other.getLastRecordId() != null
-                && other.getLastRecordId().equals(this.getLastRecordId()) == false)
+        if (other.getLastRecordId() != null && other.getLastRecordId().equals(this.getLastRecordId()) == false)
             return false;
         return true;
     }
@@ -590,31 +757,15 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getArn() == null) ? 0 : getArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getType() == null) ? 0 : getType().hashCode());
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStatusMessage() == null) ? 0 : getStatusMessage()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreatedTime() == null) ? 0 : getCreatedTime().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getIdempotencyToken() == null) ? 0 : getIdempotencyToken()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getLastRecordId() == null) ? 0 : getLastRecordId()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getStatusMessage() == null) ? 0 : getStatusMessage().hashCode());
+        hashCode = prime * hashCode + ((getCreatedTime() == null) ? 0 : getCreatedTime().hashCode());
+        hashCode = prime * hashCode + ((getIdempotencyToken() == null) ? 0 : getIdempotencyToken().hashCode());
+        hashCode = prime * hashCode + ((getLastRecordId() == null) ? 0 : getLastRecordId().hashCode());
         return hashCode;
     }
 
@@ -623,9 +774,13 @@ public class ProvisionedProductDetail implements Serializable, Cloneable {
         try {
             return (ProvisionedProductDetail) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.servicecatalog.model.transform.ProvisionedProductDetailMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

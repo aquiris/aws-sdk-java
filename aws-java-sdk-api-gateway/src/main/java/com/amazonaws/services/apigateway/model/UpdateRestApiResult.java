@@ -1,35 +1,33 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents a REST API.
  * </p>
- * <div class="seeAlso"> <a href=
- * "http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html"
- * >Create an API</a> </div>
+ * <div class="seeAlso"> <a
+ * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
  */
-public class UpdateRestApiResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class UpdateRestApiResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The API's identifier. This identifier is unique across all of your APIs
-     * in Amazon API Gateway.
+     * The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.
      * </p>
      */
     private String id;
@@ -47,29 +45,37 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
     private String description;
     /**
      * <p>
-     * The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      */
     private java.util.Date createdDate;
     /**
      * <p>
-     * The warning messages reported when <code>failonwarnings</code> is turned
-     * on during API import.
+     * A version identifier for the API.
+     * </p>
+     */
+    private String version;
+    /**
+     * <p>
+     * The warning messages reported when <code>failonwarnings</code> is turned on during API import.
      * </p>
      */
     private java.util.List<String> warnings;
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     */
+    private java.util.List<String> binaryMediaTypes;
 
     /**
      * <p>
-     * The API's identifier. This identifier is unique across all of your APIs
-     * in Amazon API Gateway.
+     * The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.
      * </p>
      * 
      * @param id
-     *        The API's identifier. This identifier is unique across all of your
-     *        APIs in Amazon API Gateway.
+     *        The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.
      */
 
     public void setId(String id) {
@@ -78,12 +84,10 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The API's identifier. This identifier is unique across all of your APIs
-     * in Amazon API Gateway.
+     * The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.
      * </p>
      * 
-     * @return The API's identifier. This identifier is unique across all of
-     *         your APIs in Amazon API Gateway.
+     * @return The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.
      */
 
     public String getId() {
@@ -92,15 +96,12 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The API's identifier. This identifier is unique across all of your APIs
-     * in Amazon API Gateway.
+     * The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.
      * </p>
      * 
      * @param id
-     *        The API's identifier. This identifier is unique across all of your
-     *        APIs in Amazon API Gateway.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateRestApiResult withId(String id) {
@@ -140,8 +141,7 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
      * 
      * @param name
      *        The API's name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateRestApiResult withName(String name) {
@@ -181,8 +181,7 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
      * 
      * @param description
      *        The API's description.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateRestApiResult withDescription(String description) {
@@ -192,15 +191,11 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the API was created, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *        target="_blank">ISO 8601 format</a>.
+     *        The timestamp when the API was created.
      */
 
     public void setCreatedDate(java.util.Date createdDate) {
@@ -209,14 +204,10 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      * 
-     * @return The date when the API was created, in <a
-     *         href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *         target="_blank">ISO 8601 format</a>.
+     * @return The timestamp when the API was created.
      */
 
     public java.util.Date getCreatedDate() {
@@ -225,17 +216,12 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     * target="_blank">ISO 8601 format</a>.
+     * The timestamp when the API was created.
      * </p>
      * 
      * @param createdDate
-     *        The date when the API was created, in <a
-     *        href="http://www.iso.org/iso/home/standards/iso8601.htm"
-     *        target="_blank">ISO 8601 format</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The timestamp when the API was created.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateRestApiResult withCreatedDate(java.util.Date createdDate) {
@@ -245,12 +231,50 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The warning messages reported when <code>failonwarnings</code> is turned
-     * on during API import.
+     * A version identifier for the API.
      * </p>
      * 
-     * @return The warning messages reported when <code>failonwarnings</code> is
-     *         turned on during API import.
+     * @param version
+     *        A version identifier for the API.
+     */
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    /**
+     * <p>
+     * A version identifier for the API.
+     * </p>
+     * 
+     * @return A version identifier for the API.
+     */
+
+    public String getVersion() {
+        return this.version;
+    }
+
+    /**
+     * <p>
+     * A version identifier for the API.
+     * </p>
+     * 
+     * @param version
+     *        A version identifier for the API.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateRestApiResult withVersion(String version) {
+        setVersion(version);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The warning messages reported when <code>failonwarnings</code> is turned on during API import.
+     * </p>
+     * 
+     * @return The warning messages reported when <code>failonwarnings</code> is turned on during API import.
      */
 
     public java.util.List<String> getWarnings() {
@@ -259,13 +283,11 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The warning messages reported when <code>failonwarnings</code> is turned
-     * on during API import.
+     * The warning messages reported when <code>failonwarnings</code> is turned on during API import.
      * </p>
      * 
      * @param warnings
-     *        The warning messages reported when <code>failonwarnings</code> is
-     *        turned on during API import.
+     *        The warning messages reported when <code>failonwarnings</code> is turned on during API import.
      */
 
     public void setWarnings(java.util.Collection<String> warnings) {
@@ -279,21 +301,17 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The warning messages reported when <code>failonwarnings</code> is turned
-     * on during API import.
+     * The warning messages reported when <code>failonwarnings</code> is turned on during API import.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setWarnings(java.util.Collection)} or
-     * {@link #withWarnings(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setWarnings(java.util.Collection)} or {@link #withWarnings(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param warnings
-     *        The warning messages reported when <code>failonwarnings</code> is
-     *        turned on during API import.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The warning messages reported when <code>failonwarnings</code> is turned on during API import.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public UpdateRestApiResult withWarnings(String... warnings) {
@@ -308,26 +326,99 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The warning messages reported when <code>failonwarnings</code> is turned
-     * on during API import.
+     * The warning messages reported when <code>failonwarnings</code> is turned on during API import.
      * </p>
      * 
      * @param warnings
-     *        The warning messages reported when <code>failonwarnings</code> is
-     *        turned on during API import.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The warning messages reported when <code>failonwarnings</code> is turned on during API import.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public UpdateRestApiResult withWarnings(
-            java.util.Collection<String> warnings) {
+    public UpdateRestApiResult withWarnings(java.util.Collection<String> warnings) {
         setWarnings(warnings);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * 
+     * @return The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *         only UTF-8-encoded text payloads.
+     */
+
+    public java.util.List<String> getBinaryMediaTypes() {
+        return binaryMediaTypes;
+    }
+
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * 
+     * @param binaryMediaTypes
+     *        The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *        only UTF-8-encoded text payloads.
+     */
+
+    public void setBinaryMediaTypes(java.util.Collection<String> binaryMediaTypes) {
+        if (binaryMediaTypes == null) {
+            this.binaryMediaTypes = null;
+            return;
+        }
+
+        this.binaryMediaTypes = new java.util.ArrayList<String>(binaryMediaTypes);
+    }
+
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setBinaryMediaTypes(java.util.Collection)} or {@link #withBinaryMediaTypes(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param binaryMediaTypes
+     *        The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *        only UTF-8-encoded text payloads.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateRestApiResult withBinaryMediaTypes(String... binaryMediaTypes) {
+        if (this.binaryMediaTypes == null) {
+            setBinaryMediaTypes(new java.util.ArrayList<String>(binaryMediaTypes.length));
+        }
+        for (String ele : binaryMediaTypes) {
+            this.binaryMediaTypes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only
+     * UTF-8-encoded text payloads.
+     * </p>
+     * 
+     * @param binaryMediaTypes
+     *        The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports
+     *        only UTF-8-encoded text payloads.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateRestApiResult withBinaryMediaTypes(java.util.Collection<String> binaryMediaTypes) {
+        setBinaryMediaTypes(binaryMediaTypes);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -338,15 +429,19 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCreatedDate() != null)
-            sb.append("CreatedDate: " + getCreatedDate() + ",");
+            sb.append("CreatedDate: ").append(getCreatedDate()).append(",");
+        if (getVersion() != null)
+            sb.append("Version: ").append(getVersion()).append(",");
         if (getWarnings() != null)
-            sb.append("Warnings: " + getWarnings());
+            sb.append("Warnings: ").append(getWarnings()).append(",");
+        if (getBinaryMediaTypes() != null)
+            sb.append("BinaryMediaTypes: ").append(getBinaryMediaTypes());
         sb.append("}");
         return sb.toString();
     }
@@ -363,28 +458,31 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
         UpdateRestApiResult other = (UpdateRestApiResult) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getCreatedDate() == null ^ this.getCreatedDate() == null)
             return false;
-        if (other.getCreatedDate() != null
-                && other.getCreatedDate().equals(this.getCreatedDate()) == false)
+        if (other.getCreatedDate() != null && other.getCreatedDate().equals(this.getCreatedDate()) == false)
+            return false;
+        if (other.getVersion() == null ^ this.getVersion() == null)
+            return false;
+        if (other.getVersion() != null && other.getVersion().equals(this.getVersion()) == false)
             return false;
         if (other.getWarnings() == null ^ this.getWarnings() == null)
             return false;
-        if (other.getWarnings() != null
-                && other.getWarnings().equals(this.getWarnings()) == false)
+        if (other.getWarnings() != null && other.getWarnings().equals(this.getWarnings()) == false)
+            return false;
+        if (other.getBinaryMediaTypes() == null ^ this.getBinaryMediaTypes() == null)
+            return false;
+        if (other.getBinaryMediaTypes() != null && other.getBinaryMediaTypes().equals(this.getBinaryMediaTypes()) == false)
             return false;
         return true;
     }
@@ -394,18 +492,13 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCreatedDate() == null) ? 0 : getCreatedDate().hashCode());
-        hashCode = prime * hashCode
-                + ((getWarnings() == null) ? 0 : getWarnings().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getCreatedDate() == null) ? 0 : getCreatedDate().hashCode());
+        hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
+        hashCode = prime * hashCode + ((getWarnings() == null) ? 0 : getWarnings().hashCode());
+        hashCode = prime * hashCode + ((getBinaryMediaTypes() == null) ? 0 : getBinaryMediaTypes().hashCode());
         return hashCode;
     }
 
@@ -414,9 +507,8 @@ public class UpdateRestApiResult implements Serializable, Cloneable {
         try {
             return (UpdateRestApiResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of a <i>DescribeReplicationGroups</i> action.
+ * Represents the output of a <code>DescribeReplicationGroups</code> operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReplicationGroups"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DescribeReplicationGroupsResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DescribeReplicationGroupsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,8 +34,7 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
     private String marker;
     /**
      * <p>
-     * A list of replication groups. Each item in the list contains detailed
-     * information about one replication group.
+     * A list of replication groups. Each item in the list contains detailed information about one replication group.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<ReplicationGroup> replicationGroups;
@@ -69,8 +71,7 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
      * 
      * @param marker
      *        Provides an identifier to allow retrieval of paginated results.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeReplicationGroupsResult withMarker(String marker) {
@@ -80,12 +81,11 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
 
     /**
      * <p>
-     * A list of replication groups. Each item in the list contains detailed
-     * information about one replication group.
+     * A list of replication groups. Each item in the list contains detailed information about one replication group.
      * </p>
      * 
-     * @return A list of replication groups. Each item in the list contains
-     *         detailed information about one replication group.
+     * @return A list of replication groups. Each item in the list contains detailed information about one replication
+     *         group.
      */
 
     public java.util.List<ReplicationGroup> getReplicationGroups() {
@@ -97,50 +97,42 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
 
     /**
      * <p>
-     * A list of replication groups. Each item in the list contains detailed
-     * information about one replication group.
+     * A list of replication groups. Each item in the list contains detailed information about one replication group.
      * </p>
      * 
      * @param replicationGroups
-     *        A list of replication groups. Each item in the list contains
-     *        detailed information about one replication group.
+     *        A list of replication groups. Each item in the list contains detailed information about one replication
+     *        group.
      */
 
-    public void setReplicationGroups(
-            java.util.Collection<ReplicationGroup> replicationGroups) {
+    public void setReplicationGroups(java.util.Collection<ReplicationGroup> replicationGroups) {
         if (replicationGroups == null) {
             this.replicationGroups = null;
             return;
         }
 
-        this.replicationGroups = new com.amazonaws.internal.SdkInternalList<ReplicationGroup>(
-                replicationGroups);
+        this.replicationGroups = new com.amazonaws.internal.SdkInternalList<ReplicationGroup>(replicationGroups);
     }
 
     /**
      * <p>
-     * A list of replication groups. Each item in the list contains detailed
-     * information about one replication group.
+     * A list of replication groups. Each item in the list contains detailed information about one replication group.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setReplicationGroups(java.util.Collection)} or
-     * {@link #withReplicationGroups(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setReplicationGroups(java.util.Collection)} or {@link #withReplicationGroups(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param replicationGroups
-     *        A list of replication groups. Each item in the list contains
-     *        detailed information about one replication group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of replication groups. Each item in the list contains detailed information about one replication
+     *        group.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeReplicationGroupsResult withReplicationGroups(
-            ReplicationGroup... replicationGroups) {
+    public DescribeReplicationGroupsResult withReplicationGroups(ReplicationGroup... replicationGroups) {
         if (this.replicationGroups == null) {
-            setReplicationGroups(new com.amazonaws.internal.SdkInternalList<ReplicationGroup>(
-                    replicationGroups.length));
+            setReplicationGroups(new com.amazonaws.internal.SdkInternalList<ReplicationGroup>(replicationGroups.length));
         }
         for (ReplicationGroup ele : replicationGroups) {
             this.replicationGroups.add(ele);
@@ -150,26 +142,22 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
 
     /**
      * <p>
-     * A list of replication groups. Each item in the list contains detailed
-     * information about one replication group.
+     * A list of replication groups. Each item in the list contains detailed information about one replication group.
      * </p>
      * 
      * @param replicationGroups
-     *        A list of replication groups. Each item in the list contains
-     *        detailed information about one replication group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of replication groups. Each item in the list contains detailed information about one replication
+     *        group.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DescribeReplicationGroupsResult withReplicationGroups(
-            java.util.Collection<ReplicationGroup> replicationGroups) {
+    public DescribeReplicationGroupsResult withReplicationGroups(java.util.Collection<ReplicationGroup> replicationGroups) {
         setReplicationGroups(replicationGroups);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -180,9 +168,9 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getReplicationGroups() != null)
-            sb.append("ReplicationGroups: " + getReplicationGroups());
+            sb.append("ReplicationGroups: ").append(getReplicationGroups());
         sb.append("}");
         return sb.toString();
     }
@@ -199,15 +187,11 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
         DescribeReplicationGroupsResult other = (DescribeReplicationGroupsResult) obj;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
-        if (other.getReplicationGroups() == null
-                ^ this.getReplicationGroups() == null)
+        if (other.getReplicationGroups() == null ^ this.getReplicationGroups() == null)
             return false;
-        if (other.getReplicationGroups() != null
-                && other.getReplicationGroups().equals(
-                        this.getReplicationGroups()) == false)
+        if (other.getReplicationGroups() != null && other.getReplicationGroups().equals(this.getReplicationGroups()) == false)
             return false;
         return true;
     }
@@ -217,12 +201,8 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getReplicationGroups() == null) ? 0
-                        : getReplicationGroups().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getReplicationGroups() == null) ? 0 : getReplicationGroups().hashCode());
         return hashCode;
     }
 
@@ -231,9 +211,8 @@ public class DescribeReplicationGroupsResult implements Serializable, Cloneable 
         try {
             return (DescribeReplicationGroupsResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

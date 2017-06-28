@@ -1,36 +1,37 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * A request to delete a <a>SqlInjectionMatchSet</a> from AWS WAF.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteSqlInjectionMatchSet"
+ *      target="_top">AWS API Documentation</a>
  */
-public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeleteSqlInjectionMatchSetRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to delete.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      */
@@ -44,18 +45,14 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to delete.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      * 
      * @param sqlInjectionMatchSetId
-     *        The <code>SqlInjectionMatchSetId</code> of the
-     *        <a>SqlInjectionMatchSet</a> that you want to delete.
-     *        <code>SqlInjectionMatchSetId</code> is returned by
-     *        <a>CreateSqlInjectionMatchSet</a> and by
+     *        The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete.
+     *        <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      *        <a>ListSqlInjectionMatchSets</a>.
      */
 
@@ -65,17 +62,13 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to delete.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      * 
-     * @return The <code>SqlInjectionMatchSetId</code> of the
-     *         <a>SqlInjectionMatchSet</a> that you want to delete.
-     *         <code>SqlInjectionMatchSetId</code> is returned by
-     *         <a>CreateSqlInjectionMatchSet</a> and by
+     * @return The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete.
+     *         <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      *         <a>ListSqlInjectionMatchSets</a>.
      */
 
@@ -85,25 +78,19 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The <code>SqlInjectionMatchSetId</code> of the
-     * <a>SqlInjectionMatchSet</a> that you want to delete.
-     * <code>SqlInjectionMatchSetId</code> is returned by
-     * <a>CreateSqlInjectionMatchSet</a> and by
+     * The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete.
+     * <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      * <a>ListSqlInjectionMatchSets</a>.
      * </p>
      * 
      * @param sqlInjectionMatchSetId
-     *        The <code>SqlInjectionMatchSetId</code> of the
-     *        <a>SqlInjectionMatchSet</a> that you want to delete.
-     *        <code>SqlInjectionMatchSetId</code> is returned by
-     *        <a>CreateSqlInjectionMatchSet</a> and by
+     *        The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete.
+     *        <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by
      *        <a>ListSqlInjectionMatchSets</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DeleteSqlInjectionMatchSetRequest withSqlInjectionMatchSetId(
-            String sqlInjectionMatchSetId) {
+    public DeleteSqlInjectionMatchSetRequest withSqlInjectionMatchSetId(String sqlInjectionMatchSetId) {
         setSqlInjectionMatchSetId(sqlInjectionMatchSetId);
         return this;
     }
@@ -114,8 +101,7 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param changeToken
-     *        The value returned by the most recent call to
-     *        <a>GetChangeToken</a>.
+     *        The value returned by the most recent call to <a>GetChangeToken</a>.
      */
 
     public void setChangeToken(String changeToken) {
@@ -127,8 +113,7 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
      * The value returned by the most recent call to <a>GetChangeToken</a>.
      * </p>
      * 
-     * @return The value returned by the most recent call to
-     *         <a>GetChangeToken</a>.
+     * @return The value returned by the most recent call to <a>GetChangeToken</a>.
      */
 
     public String getChangeToken() {
@@ -141,10 +126,8 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param changeToken
-     *        The value returned by the most recent call to
-     *        <a>GetChangeToken</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The value returned by the most recent call to <a>GetChangeToken</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteSqlInjectionMatchSetRequest withChangeToken(String changeToken) {
@@ -153,8 +136,7 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -165,10 +147,9 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSqlInjectionMatchSetId() != null)
-            sb.append("SqlInjectionMatchSetId: " + getSqlInjectionMatchSetId()
-                    + ",");
+            sb.append("SqlInjectionMatchSetId: ").append(getSqlInjectionMatchSetId()).append(",");
         if (getChangeToken() != null)
-            sb.append("ChangeToken: " + getChangeToken());
+            sb.append("ChangeToken: ").append(getChangeToken());
         sb.append("}");
         return sb.toString();
     }
@@ -183,17 +164,13 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
         if (obj instanceof DeleteSqlInjectionMatchSetRequest == false)
             return false;
         DeleteSqlInjectionMatchSetRequest other = (DeleteSqlInjectionMatchSetRequest) obj;
-        if (other.getSqlInjectionMatchSetId() == null
-                ^ this.getSqlInjectionMatchSetId() == null)
+        if (other.getSqlInjectionMatchSetId() == null ^ this.getSqlInjectionMatchSetId() == null)
             return false;
-        if (other.getSqlInjectionMatchSetId() != null
-                && other.getSqlInjectionMatchSetId().equals(
-                        this.getSqlInjectionMatchSetId()) == false)
+        if (other.getSqlInjectionMatchSetId() != null && other.getSqlInjectionMatchSetId().equals(this.getSqlInjectionMatchSetId()) == false)
             return false;
         if (other.getChangeToken() == null ^ this.getChangeToken() == null)
             return false;
-        if (other.getChangeToken() != null
-                && other.getChangeToken().equals(this.getChangeToken()) == false)
+        if (other.getChangeToken() != null && other.getChangeToken().equals(this.getChangeToken()) == false)
             return false;
         return true;
     }
@@ -203,13 +180,8 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getSqlInjectionMatchSetId() == null) ? 0
-                        : getSqlInjectionMatchSetId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChangeToken() == null) ? 0 : getChangeToken().hashCode());
+        hashCode = prime * hashCode + ((getSqlInjectionMatchSetId() == null) ? 0 : getSqlInjectionMatchSetId().hashCode());
+        hashCode = prime * hashCode + ((getChangeToken() == null) ? 0 : getChangeToken().hashCode());
         return hashCode;
     }
 
@@ -217,4 +189,5 @@ public class DeleteSqlInjectionMatchSetRequest extends AmazonWebServiceRequest
     public DeleteSqlInjectionMatchSetRequest clone() {
         return (DeleteSqlInjectionMatchSetRequest) super.clone();
     }
+
 }

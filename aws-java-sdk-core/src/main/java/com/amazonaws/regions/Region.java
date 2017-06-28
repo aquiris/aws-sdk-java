@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -135,7 +135,11 @@ public class Region {
      *                     credentials provider
      * @param config       The configuration to use, or null for the default
      *                     configuration
+     * @deprecated use appropriate {@link com.amazonaws.client.builder.AwsClientBuilder} implementation
+     *             for the service being constructed. For example:
+     *             {@code AmazonSNSClientBuilder.standard().withRegion(region).build();}
      */
+    @Deprecated
     public <T extends AmazonWebServiceClient> T createClient(Class<T> serviceClass,
                                                              AWSCredentialsProvider credentials,
                                                              ClientConfiguration config) {

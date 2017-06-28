@@ -1,5 +1,5 @@
 ${fileHeader}
-package ${metadata.packageName}.model.transform;
+package ${transformPackage};
 
 import java.util.Map;
 import java.util.HashMap;
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Map.Entry;
 
 import javax.xml.stream.events.XMLEvent;
+import javax.annotation.Generated;
 
 import ${metadata.packageName}.model.*;
 import com.amazonaws.transform.Unmarshaller;
@@ -18,6 +19,8 @@ import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 /**
  * ${shape.shapeName} StAX Unmarshaller
  */
+
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ${shape.shapeName}StaxUnmarshaller implements Unmarshaller<${shape.shapeName}, StaxUnmarshallerContext> {
 
 <#if shape.members?has_content>
@@ -54,7 +57,7 @@ public class ${shape.shapeName}StaxUnmarshaller implements Unmarshaller<${shape.
     <#list shape.members as memberModel>
         <#if memberModel.http.isHeader() >
             context.setCurrentHeader("${memberModel.http.unmarshallLocationName}");
-            ${shape.variable.variableName}.set${memberModel.name}(
+            ${shape.variable.variableName}.${memberModel.setterMethodName}(
             <#if memberModel.variable.simpleType == "Date">
                 com.amazonaws.util.DateUtils.parseRFC822Date(context.readText()));
             <#else>
@@ -69,7 +72,7 @@ public class ${shape.shapeName}StaxUnmarshaller implements Unmarshaller<${shape.
 <#if shape.hasStatusCodeMember >
     <#list shape.members as memberModel>
         <#if memberModel.http.isStatusCode() >
-        ${shape.variable.variableName}.set${memberModel.name}(context.getHttpResponse().getStatusCode());
+        ${shape.variable.variableName}.${memberModel.setterMethodName}(context.getHttpResponse().getStatusCode());
         </#if>
     </#list>
 </#if>

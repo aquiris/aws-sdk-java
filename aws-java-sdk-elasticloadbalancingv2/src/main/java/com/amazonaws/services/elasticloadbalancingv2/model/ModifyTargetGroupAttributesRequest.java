@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for ModifyTargetGroupAttributes.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyTargetGroupAttributes"
+ *      target="_top">AWS API Documentation</a>
  */
-public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ModifyTargetGroupAttributesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -70,12 +70,10 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
      * 
      * @param targetGroupArn
      *        The Amazon Resource Name (ARN) of the target group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ModifyTargetGroupAttributesRequest withTargetGroupArn(
-            String targetGroupArn) {
+    public ModifyTargetGroupAttributesRequest withTargetGroupArn(String targetGroupArn) {
         setTargetGroupArn(targetGroupArn);
         return this;
     }
@@ -101,15 +99,13 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
      *        The attributes.
      */
 
-    public void setAttributes(
-            java.util.Collection<TargetGroupAttribute> attributes) {
+    public void setAttributes(java.util.Collection<TargetGroupAttribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
             return;
         }
 
-        this.attributes = new java.util.ArrayList<TargetGroupAttribute>(
-                attributes);
+        this.attributes = new java.util.ArrayList<TargetGroupAttribute>(attributes);
     }
 
     /**
@@ -117,23 +113,19 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
      * The attributes.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setAttributes(java.util.Collection)} or
-     * {@link #withAttributes(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAttributes(java.util.Collection)} or {@link #withAttributes(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param attributes
      *        The attributes.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ModifyTargetGroupAttributesRequest withAttributes(
-            TargetGroupAttribute... attributes) {
+    public ModifyTargetGroupAttributesRequest withAttributes(TargetGroupAttribute... attributes) {
         if (this.attributes == null) {
-            setAttributes(new java.util.ArrayList<TargetGroupAttribute>(
-                    attributes.length));
+            setAttributes(new java.util.ArrayList<TargetGroupAttribute>(attributes.length));
         }
         for (TargetGroupAttribute ele : attributes) {
             this.attributes.add(ele);
@@ -148,19 +140,16 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
      * 
      * @param attributes
      *        The attributes.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ModifyTargetGroupAttributesRequest withAttributes(
-            java.util.Collection<TargetGroupAttribute> attributes) {
+    public ModifyTargetGroupAttributesRequest withAttributes(java.util.Collection<TargetGroupAttribute> attributes) {
         setAttributes(attributes);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -171,9 +160,9 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTargetGroupArn() != null)
-            sb.append("TargetGroupArn: " + getTargetGroupArn() + ",");
+            sb.append("TargetGroupArn: ").append(getTargetGroupArn()).append(",");
         if (getAttributes() != null)
-            sb.append("Attributes: " + getAttributes());
+            sb.append("Attributes: ").append(getAttributes());
         sb.append("}");
         return sb.toString();
     }
@@ -188,16 +177,13 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
         if (obj instanceof ModifyTargetGroupAttributesRequest == false)
             return false;
         ModifyTargetGroupAttributesRequest other = (ModifyTargetGroupAttributesRequest) obj;
-        if (other.getTargetGroupArn() == null
-                ^ this.getTargetGroupArn() == null)
+        if (other.getTargetGroupArn() == null ^ this.getTargetGroupArn() == null)
             return false;
-        if (other.getTargetGroupArn() != null
-                && other.getTargetGroupArn().equals(this.getTargetGroupArn()) == false)
+        if (other.getTargetGroupArn() != null && other.getTargetGroupArn().equals(this.getTargetGroupArn()) == false)
             return false;
         if (other.getAttributes() == null ^ this.getAttributes() == null)
             return false;
-        if (other.getAttributes() != null
-                && other.getAttributes().equals(this.getAttributes()) == false)
+        if (other.getAttributes() != null && other.getAttributes().equals(this.getAttributes()) == false)
             return false;
         return true;
     }
@@ -207,12 +193,8 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getTargetGroupArn() == null) ? 0 : getTargetGroupArn()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getAttributes() == null) ? 0 : getAttributes().hashCode());
+        hashCode = prime * hashCode + ((getTargetGroupArn() == null) ? 0 : getTargetGroupArn().hashCode());
+        hashCode = prime * hashCode + ((getAttributes() == null) ? 0 : getAttributes().hashCode());
         return hashCode;
     }
 
@@ -220,4 +202,5 @@ public class ModifyTargetGroupAttributesRequest extends AmazonWebServiceRequest
     public ModifyTargetGroupAttributesRequest clone() {
         return (ModifyTargetGroupAttributesRequest) super.clone();
     }
+
 }

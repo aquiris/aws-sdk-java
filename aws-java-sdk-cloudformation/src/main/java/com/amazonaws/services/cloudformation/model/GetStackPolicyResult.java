@@ -1,54 +1,51 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The output for the <a>GetStackPolicy</a> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetStackPolicy" target="_top">AWS API
+ *      Documentation</a>
  */
-public class GetStackPolicyResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetStackPolicyResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Structure containing the stack policy body. (For more information, go to
-     * <a href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"
-     * > Prevent Updates to Stack Resources</a> in the AWS CloudFormation User
-     * Guide.)
+     * Structure containing the stack policy body. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent
+     * Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)
      * </p>
      */
     private String stackPolicyBody;
 
     /**
      * <p>
-     * Structure containing the stack policy body. (For more information, go to
-     * <a href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"
-     * > Prevent Updates to Stack Resources</a> in the AWS CloudFormation User
-     * Guide.)
+     * Structure containing the stack policy body. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent
+     * Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)
      * </p>
      * 
      * @param stackPolicyBody
-     *        Structure containing the stack policy body. (For more information,
-     *        go to <a href=
-     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"
-     *        > Prevent Updates to Stack Resources</a> in the AWS CloudFormation
-     *        User Guide.)
+     *        Structure containing the stack policy body. (For more information, go to <a
+     *        href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent
+     *        Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)
      */
 
     public void setStackPolicyBody(String stackPolicyBody) {
@@ -57,18 +54,14 @@ public class GetStackPolicyResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Structure containing the stack policy body. (For more information, go to
-     * <a href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"
-     * > Prevent Updates to Stack Resources</a> in the AWS CloudFormation User
-     * Guide.)
+     * Structure containing the stack policy body. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent
+     * Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)
      * </p>
      * 
-     * @return Structure containing the stack policy body. (For more
-     *         information, go to <a href=
-     *         "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"
-     *         > Prevent Updates to Stack Resources</a> in the AWS
-     *         CloudFormation User Guide.)
+     * @return Structure containing the stack policy body. (For more information, go to <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
+     *         Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)
      */
 
     public String getStackPolicyBody() {
@@ -77,21 +70,16 @@ public class GetStackPolicyResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Structure containing the stack policy body. (For more information, go to
-     * <a href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"
-     * > Prevent Updates to Stack Resources</a> in the AWS CloudFormation User
-     * Guide.)
+     * Structure containing the stack policy body. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent
+     * Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)
      * </p>
      * 
      * @param stackPolicyBody
-     *        Structure containing the stack policy body. (For more information,
-     *        go to <a href=
-     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"
-     *        > Prevent Updates to Stack Resources</a> in the AWS CloudFormation
-     *        User Guide.)
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Structure containing the stack policy body. (For more information, go to <a
+     *        href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent
+     *        Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetStackPolicyResult withStackPolicyBody(String stackPolicyBody) {
@@ -100,8 +88,7 @@ public class GetStackPolicyResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -112,7 +99,7 @@ public class GetStackPolicyResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStackPolicyBody() != null)
-            sb.append("StackPolicyBody: " + getStackPolicyBody());
+            sb.append("StackPolicyBody: ").append(getStackPolicyBody());
         sb.append("}");
         return sb.toString();
     }
@@ -127,11 +114,9 @@ public class GetStackPolicyResult implements Serializable, Cloneable {
         if (obj instanceof GetStackPolicyResult == false)
             return false;
         GetStackPolicyResult other = (GetStackPolicyResult) obj;
-        if (other.getStackPolicyBody() == null
-                ^ this.getStackPolicyBody() == null)
+        if (other.getStackPolicyBody() == null ^ this.getStackPolicyBody() == null)
             return false;
-        if (other.getStackPolicyBody() != null
-                && other.getStackPolicyBody().equals(this.getStackPolicyBody()) == false)
+        if (other.getStackPolicyBody() != null && other.getStackPolicyBody().equals(this.getStackPolicyBody()) == false)
             return false;
         return true;
     }
@@ -141,10 +126,7 @@ public class GetStackPolicyResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getStackPolicyBody() == null) ? 0 : getStackPolicyBody()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getStackPolicyBody() == null) ? 0 : getStackPolicyBody().hashCode());
         return hashCode;
     }
 
@@ -153,9 +135,8 @@ public class GetStackPolicyResult implements Serializable, Cloneable {
         try {
             return (GetStackPolicyResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

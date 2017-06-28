@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the request to resend the confirmation code.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ResendConfirmationCode" target="_top">AWS
+ *      API Documentation</a>
  */
-public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ResendConfirmationCodeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,9 +36,8 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
     private String clientId;
     /**
      * <p>
-     * A keyed-hash message authentication code (HMAC) calculated using the
-     * secret key of a user pool client and username plus the client ID in the
-     * message.
+     * A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and
+     * username plus the client ID in the message.
      * </p>
      */
     private String secretHash;
@@ -78,8 +80,7 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
      * 
      * @param clientId
      *        The ID of the client associated with the user pool.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ResendConfirmationCodeRequest withClientId(String clientId) {
@@ -89,15 +90,13 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A keyed-hash message authentication code (HMAC) calculated using the
-     * secret key of a user pool client and username plus the client ID in the
-     * message.
+     * A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and
+     * username plus the client ID in the message.
      * </p>
      * 
      * @param secretHash
-     *        A keyed-hash message authentication code (HMAC) calculated using
-     *        the secret key of a user pool client and username plus the client
-     *        ID in the message.
+     *        A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and
+     *        username plus the client ID in the message.
      */
 
     public void setSecretHash(String secretHash) {
@@ -106,14 +105,12 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A keyed-hash message authentication code (HMAC) calculated using the
-     * secret key of a user pool client and username plus the client ID in the
-     * message.
+     * A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and
+     * username plus the client ID in the message.
      * </p>
      * 
-     * @return A keyed-hash message authentication code (HMAC) calculated using
-     *         the secret key of a user pool client and username plus the client
-     *         ID in the message.
+     * @return A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and
+     *         username plus the client ID in the message.
      */
 
     public String getSecretHash() {
@@ -122,17 +119,14 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A keyed-hash message authentication code (HMAC) calculated using the
-     * secret key of a user pool client and username plus the client ID in the
-     * message.
+     * A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and
+     * username plus the client ID in the message.
      * </p>
      * 
      * @param secretHash
-     *        A keyed-hash message authentication code (HMAC) calculated using
-     *        the secret key of a user pool client and username plus the client
-     *        ID in the message.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and
+     *        username plus the client ID in the message.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ResendConfirmationCodeRequest withSecretHash(String secretHash) {
@@ -146,8 +140,7 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param username
-     *        The user name of the user to whom you wish to resend a
-     *        confirmation code.
+     *        The user name of the user to whom you wish to resend a confirmation code.
      */
 
     public void setUsername(String username) {
@@ -159,8 +152,7 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
      * The user name of the user to whom you wish to resend a confirmation code.
      * </p>
      * 
-     * @return The user name of the user to whom you wish to resend a
-     *         confirmation code.
+     * @return The user name of the user to whom you wish to resend a confirmation code.
      */
 
     public String getUsername() {
@@ -173,10 +165,8 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param username
-     *        The user name of the user to whom you wish to resend a
-     *        confirmation code.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The user name of the user to whom you wish to resend a confirmation code.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ResendConfirmationCodeRequest withUsername(String username) {
@@ -185,8 +175,7 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -197,11 +186,11 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getClientId() != null)
-            sb.append("ClientId: " + getClientId() + ",");
+            sb.append("ClientId: ").append(getClientId()).append(",");
         if (getSecretHash() != null)
-            sb.append("SecretHash: " + getSecretHash() + ",");
+            sb.append("SecretHash: ").append(getSecretHash()).append(",");
         if (getUsername() != null)
-            sb.append("Username: " + getUsername());
+            sb.append("Username: ").append(getUsername());
         sb.append("}");
         return sb.toString();
     }
@@ -218,18 +207,15 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
         ResendConfirmationCodeRequest other = (ResendConfirmationCodeRequest) obj;
         if (other.getClientId() == null ^ this.getClientId() == null)
             return false;
-        if (other.getClientId() != null
-                && other.getClientId().equals(this.getClientId()) == false)
+        if (other.getClientId() != null && other.getClientId().equals(this.getClientId()) == false)
             return false;
         if (other.getSecretHash() == null ^ this.getSecretHash() == null)
             return false;
-        if (other.getSecretHash() != null
-                && other.getSecretHash().equals(this.getSecretHash()) == false)
+        if (other.getSecretHash() != null && other.getSecretHash().equals(this.getSecretHash()) == false)
             return false;
         if (other.getUsername() == null ^ this.getUsername() == null)
             return false;
-        if (other.getUsername() != null
-                && other.getUsername().equals(this.getUsername()) == false)
+        if (other.getUsername() != null && other.getUsername().equals(this.getUsername()) == false)
             return false;
         return true;
     }
@@ -239,12 +225,9 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getClientId() == null) ? 0 : getClientId().hashCode());
-        hashCode = prime * hashCode
-                + ((getSecretHash() == null) ? 0 : getSecretHash().hashCode());
-        hashCode = prime * hashCode
-                + ((getUsername() == null) ? 0 : getUsername().hashCode());
+        hashCode = prime * hashCode + ((getClientId() == null) ? 0 : getClientId().hashCode());
+        hashCode = prime * hashCode + ((getSecretHash() == null) ? 0 : getSecretHash().hashCode());
+        hashCode = prime * hashCode + ((getUsername() == null) ? 0 : getUsername().hashCode());
         return hashCode;
     }
 
@@ -252,4 +235,5 @@ public class ResendConfirmationCodeRequest extends AmazonWebServiceRequest
     public ResendConfirmationCodeRequest clone() {
         return (ResendConfirmationCodeRequest) super.clone();
     }
+
 }

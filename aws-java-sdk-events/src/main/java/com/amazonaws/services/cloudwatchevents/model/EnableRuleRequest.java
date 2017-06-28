@@ -1,44 +1,44 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudwatchevents.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Container for the parameters to the <a>EnableRule</a> operation.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/EnableRule" target="_top">AWS API
+ *      Documentation</a>
  */
-public class EnableRuleRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class EnableRuleRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the rule that you want to enable.
+     * The name of the rule.
      * </p>
      */
     private String name;
 
     /**
      * <p>
-     * The name of the rule that you want to enable.
+     * The name of the rule.
      * </p>
      * 
      * @param name
-     *        The name of the rule that you want to enable.
+     *        The name of the rule.
      */
 
     public void setName(String name) {
@@ -47,10 +47,10 @@ public class EnableRuleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The name of the rule that you want to enable.
+     * The name of the rule.
      * </p>
      * 
-     * @return The name of the rule that you want to enable.
+     * @return The name of the rule.
      */
 
     public String getName() {
@@ -59,13 +59,12 @@ public class EnableRuleRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The name of the rule that you want to enable.
+     * The name of the rule.
      * </p>
      * 
      * @param name
-     *        The name of the rule that you want to enable.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The name of the rule.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public EnableRuleRequest withName(String name) {
@@ -74,8 +73,7 @@ public class EnableRuleRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -86,7 +84,7 @@ public class EnableRuleRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName());
+            sb.append("Name: ").append(getName());
         sb.append("}");
         return sb.toString();
     }
@@ -103,8 +101,7 @@ public class EnableRuleRequest extends AmazonWebServiceRequest implements
         EnableRuleRequest other = (EnableRuleRequest) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         return true;
     }
@@ -114,8 +111,7 @@ public class EnableRuleRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         return hashCode;
     }
 
@@ -123,4 +119,5 @@ public class EnableRuleRequest extends AmazonWebServiceRequest implements
     public EnableRuleRequest clone() {
         return (EnableRuleRequest) super.clone();
     }
+
 }

@@ -1,30 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * The GET request to get the usage data of a usage plan in a specified time
- * interval.
+ * The GET request to get the usage data of a usage plan in a specified time interval.
  * </p>
  */
-public class GetUsageRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetUsageRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -52,13 +51,13 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
     private String endDate;
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      */
     private String position;
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      */
     private Integer limit;
@@ -95,8 +94,7 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
      * 
      * @param usagePlanId
      *        The Id of the usage plan associated with the usage data.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsageRequest withUsagePlanId(String usagePlanId) {
@@ -136,8 +134,7 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
      * 
      * @param keyId
      *        The Id of the API key associated with the resultant usage data.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsageRequest withKeyId(String keyId) {
@@ -177,8 +174,7 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
      * 
      * @param startDate
      *        The starting date (e.g., 2016-01-01) of the usage data.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsageRequest withStartDate(String startDate) {
@@ -218,8 +214,7 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
      * 
      * @param endDate
      *        The ending date (e.g., 2016-12-31) of the usage data.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsageRequest withEndDate(String endDate) {
@@ -229,11 +224,11 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        Position
+     *        The current pagination position in the paged result set.
      */
 
     public void setPosition(String position) {
@@ -242,10 +237,10 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      * 
-     * @return Position
+     * @return The current pagination position in the paged result set.
      */
 
     public String getPosition() {
@@ -254,13 +249,12 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * Position
+     * The current pagination position in the paged result set.
      * </p>
      * 
      * @param position
-     *        Position
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The current pagination position in the paged result set.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsageRequest withPosition(String position) {
@@ -270,11 +264,11 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        The maximum number of results to be returned.
+     *        The maximum number of returned results per page.
      */
 
     public void setLimit(Integer limit) {
@@ -283,10 +277,10 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      * 
-     * @return The maximum number of results to be returned.
+     * @return The maximum number of returned results per page.
      */
 
     public Integer getLimit() {
@@ -295,13 +289,12 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The maximum number of results to be returned.
+     * The maximum number of returned results per page.
      * </p>
      * 
      * @param limit
-     *        The maximum number of results to be returned.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The maximum number of returned results per page.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetUsageRequest withLimit(Integer limit) {
@@ -310,8 +303,7 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -322,17 +314,17 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getUsagePlanId() != null)
-            sb.append("UsagePlanId: " + getUsagePlanId() + ",");
+            sb.append("UsagePlanId: ").append(getUsagePlanId()).append(",");
         if (getKeyId() != null)
-            sb.append("KeyId: " + getKeyId() + ",");
+            sb.append("KeyId: ").append(getKeyId()).append(",");
         if (getStartDate() != null)
-            sb.append("StartDate: " + getStartDate() + ",");
+            sb.append("StartDate: ").append(getStartDate()).append(",");
         if (getEndDate() != null)
-            sb.append("EndDate: " + getEndDate() + ",");
+            sb.append("EndDate: ").append(getEndDate()).append(",");
         if (getPosition() != null)
-            sb.append("Position: " + getPosition() + ",");
+            sb.append("Position: ").append(getPosition()).append(",");
         if (getLimit() != null)
-            sb.append("Limit: " + getLimit());
+            sb.append("Limit: ").append(getLimit());
         sb.append("}");
         return sb.toString();
     }
@@ -349,33 +341,27 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
         GetUsageRequest other = (GetUsageRequest) obj;
         if (other.getUsagePlanId() == null ^ this.getUsagePlanId() == null)
             return false;
-        if (other.getUsagePlanId() != null
-                && other.getUsagePlanId().equals(this.getUsagePlanId()) == false)
+        if (other.getUsagePlanId() != null && other.getUsagePlanId().equals(this.getUsagePlanId()) == false)
             return false;
         if (other.getKeyId() == null ^ this.getKeyId() == null)
             return false;
-        if (other.getKeyId() != null
-                && other.getKeyId().equals(this.getKeyId()) == false)
+        if (other.getKeyId() != null && other.getKeyId().equals(this.getKeyId()) == false)
             return false;
         if (other.getStartDate() == null ^ this.getStartDate() == null)
             return false;
-        if (other.getStartDate() != null
-                && other.getStartDate().equals(this.getStartDate()) == false)
+        if (other.getStartDate() != null && other.getStartDate().equals(this.getStartDate()) == false)
             return false;
         if (other.getEndDate() == null ^ this.getEndDate() == null)
             return false;
-        if (other.getEndDate() != null
-                && other.getEndDate().equals(this.getEndDate()) == false)
+        if (other.getEndDate() != null && other.getEndDate().equals(this.getEndDate()) == false)
             return false;
         if (other.getPosition() == null ^ this.getPosition() == null)
             return false;
-        if (other.getPosition() != null
-                && other.getPosition().equals(this.getPosition()) == false)
+        if (other.getPosition() != null && other.getPosition().equals(this.getPosition()) == false)
             return false;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
-        if (other.getLimit() != null
-                && other.getLimit().equals(this.getLimit()) == false)
+        if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
             return false;
         return true;
     }
@@ -385,19 +371,12 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getUsagePlanId() == null) ? 0 : getUsagePlanId().hashCode());
-        hashCode = prime * hashCode
-                + ((getKeyId() == null) ? 0 : getKeyId().hashCode());
-        hashCode = prime * hashCode
-                + ((getStartDate() == null) ? 0 : getStartDate().hashCode());
-        hashCode = prime * hashCode
-                + ((getEndDate() == null) ? 0 : getEndDate().hashCode());
-        hashCode = prime * hashCode
-                + ((getPosition() == null) ? 0 : getPosition().hashCode());
-        hashCode = prime * hashCode
-                + ((getLimit() == null) ? 0 : getLimit().hashCode());
+        hashCode = prime * hashCode + ((getUsagePlanId() == null) ? 0 : getUsagePlanId().hashCode());
+        hashCode = prime * hashCode + ((getKeyId() == null) ? 0 : getKeyId().hashCode());
+        hashCode = prime * hashCode + ((getStartDate() == null) ? 0 : getStartDate().hashCode());
+        hashCode = prime * hashCode + ((getEndDate() == null) ? 0 : getEndDate().hashCode());
+        hashCode = prime * hashCode + ((getPosition() == null) ? 0 : getPosition().hashCode());
+        hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;
     }
 
@@ -405,4 +384,5 @@ public class GetUsageRequest extends AmazonWebServiceRequest implements
     public GetUsageRequest clone() {
         return (GetUsageRequest) super.clone();
     }
+
 }

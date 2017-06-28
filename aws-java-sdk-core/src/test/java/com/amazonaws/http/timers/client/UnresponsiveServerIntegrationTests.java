@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -63,8 +63,7 @@ public class UnresponsiveServerIntegrationTests extends UnresponsiveMockServerTe
         httpClient = new AmazonHttpClient(new ClientConfiguration().withSocketTimeout(1 * 1000).withMaxErrorRetry(0));
 
         try {
-            httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                    new ExecutionContext());
+            httpClient.requestExecutionBuilder().request(newGetRequest()).execute();
             fail("Exception expected");
         } catch (AmazonClientException e) {
             assertThat(e.getCause(), instanceOf(SocketTimeoutException.class));
@@ -93,8 +92,7 @@ public class UnresponsiveServerIntegrationTests extends UnresponsiveMockServerTe
         interruptCurrentThreadAfterDelay(socketTimeoutInMillis * 2);
 
         try {
-            httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                    new ExecutionContext());
+            httpClient.requestExecutionBuilder().request(newGetRequest()).execute();
             fail("Exception expected");
         } catch (AmazonClientException e) {
             assertTrue(Thread.currentThread().isInterrupted());
@@ -109,8 +107,7 @@ public class UnresponsiveServerIntegrationTests extends UnresponsiveMockServerTe
                 .withSocketTimeout(LONGER_SOCKET_TIMEOUT).withMaxErrorRetry(0));
 
         try {
-            httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                    new ExecutionContext());
+            httpClient.requestExecutionBuilder().request(newGetRequest()).execute();
             fail("Exception expected");
         } catch (AmazonClientException e) {
             assertThat(e, instanceOf(ClientExecutionTimeoutException.class));
@@ -125,8 +122,7 @@ public class UnresponsiveServerIntegrationTests extends UnresponsiveMockServerTe
                 .withSocketTimeout(SHORTER_SOCKET_TIMEOUT).withMaxErrorRetry(0));
 
         try {
-            httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                    new ExecutionContext());
+            httpClient.requestExecutionBuilder().request(newGetRequest()).execute();
             fail("Exception expected");
         } catch (AmazonClientException e) {
             assertThat(e.getCause(), instanceOf(SocketTimeoutException.class));
@@ -141,8 +137,7 @@ public class UnresponsiveServerIntegrationTests extends UnresponsiveMockServerTe
                 .withRequestTimeout(LONGER_REQUEST_TIMEOUT).withMaxErrorRetry(0));
 
         try {
-            httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                    new ExecutionContext());
+            httpClient.requestExecutionBuilder().request(newGetRequest()).execute();
             fail("Exception expected");
         } catch (AmazonClientException e) {
             assertThat(e, instanceOf(ClientExecutionTimeoutException.class));
@@ -158,8 +153,7 @@ public class UnresponsiveServerIntegrationTests extends UnresponsiveMockServerTe
                 .withRequestTimeout(SHORTER_REQUEST_TIMEOUT).withMaxErrorRetry(0));
 
         try {
-            httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                    new ExecutionContext());
+            httpClient.requestExecutionBuilder().request(newGetRequest()).execute();
             fail("Exception expected");
         } catch (AmazonClientException e) {
             assertThat(e.getCause(), instanceOf(HttpRequestTimeoutException.class));
@@ -181,8 +175,7 @@ public class UnresponsiveServerIntegrationTests extends UnresponsiveMockServerTe
                         new FixedTimeBackoffStrategy(backoffTime), Integer.MAX_VALUE, false)));
 
         try {
-            httpClient.execute(newGetRequest(), new NullResponseHandler(), new NullErrorResponseHandler(),
-                    new ExecutionContext());
+            httpClient.requestExecutionBuilder().request(newGetRequest()).execute();
             fail("Exception expected");
         } catch (AmazonClientException e) {
             assertThat(e, instanceOf(ClientExecutionTimeoutException.class));

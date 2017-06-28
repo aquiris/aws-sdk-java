@@ -1,37 +1,36 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Presets are templates that contain most of the settings for transcoding media
- * files from one format to another. Elastic Transcoder includes some default
- * presets for common formats, for example, several iPod and iPhone versions.
- * You can also create your own presets for formats that aren't included among
- * the default presets. You specify which preset you want to use when you create
- * a job.
+ * Presets are templates that contain most of the settings for transcoding media files from one format to another.
+ * Elastic Transcoder includes some default presets for common formats, for example, several iPod and iPhone versions.
+ * You can also create your own presets for formats that aren't included among the default presets. You specify which
+ * preset you want to use when you create a job.
  * </p>
  */
-public class Preset implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class Preset implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Identifier for the new preset. You use this value to get settings for the
-     * preset or to delete it.
+     * Identifier for the new preset. You use this value to get settings for the preset or to delete it.
      * </p>
      */
     private String id;
@@ -55,53 +54,45 @@ public class Preset implements Serializable, Cloneable {
     private String description;
     /**
      * <p>
-     * The container type for the output file. Valid values include
-     * <code>flac</code>, <code>flv</code>, <code>fmp4</code>, <code>gif</code>,
-     * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
-     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and
-     * <code>webm</code>.
+     * The container type for the output file. Valid values include <code>flac</code>, <code>flv</code>,
+     * <code>fmp4</code>, <code>gif</code>, <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
+     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
      * </p>
      */
     private String container;
     /**
      * <p>
-     * A section of the response body that provides information about the audio
-     * preset values.
+     * A section of the response body that provides information about the audio preset values.
      * </p>
      */
     private AudioParameters audio;
     /**
      * <p>
-     * A section of the response body that provides information about the video
-     * preset values.
+     * A section of the response body that provides information about the video preset values.
      * </p>
      */
     private VideoParameters video;
     /**
      * <p>
-     * A section of the response body that provides information about the
-     * thumbnail preset values, if any.
+     * A section of the response body that provides information about the thumbnail preset values, if any.
      * </p>
      */
     private Thumbnails thumbnails;
     /**
      * <p>
-     * Whether the preset is a default preset provided by Elastic Transcoder (
-     * <code>System</code>) or a preset that you have defined (
-     * <code>Custom</code>).
+     * Whether the preset is a default preset provided by Elastic Transcoder (<code>System</code>) or a preset that you
+     * have defined (<code>Custom</code>).
      * </p>
      */
     private String type;
 
     /**
      * <p>
-     * Identifier for the new preset. You use this value to get settings for the
-     * preset or to delete it.
+     * Identifier for the new preset. You use this value to get settings for the preset or to delete it.
      * </p>
      * 
      * @param id
-     *        Identifier for the new preset. You use this value to get settings
-     *        for the preset or to delete it.
+     *        Identifier for the new preset. You use this value to get settings for the preset or to delete it.
      */
 
     public void setId(String id) {
@@ -110,12 +101,10 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Identifier for the new preset. You use this value to get settings for the
-     * preset or to delete it.
+     * Identifier for the new preset. You use this value to get settings for the preset or to delete it.
      * </p>
      * 
-     * @return Identifier for the new preset. You use this value to get settings
-     *         for the preset or to delete it.
+     * @return Identifier for the new preset. You use this value to get settings for the preset or to delete it.
      */
 
     public String getId() {
@@ -124,15 +113,12 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Identifier for the new preset. You use this value to get settings for the
-     * preset or to delete it.
+     * Identifier for the new preset. You use this value to get settings for the preset or to delete it.
      * </p>
      * 
      * @param id
-     *        Identifier for the new preset. You use this value to get settings
-     *        for the preset or to delete it.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Identifier for the new preset. You use this value to get settings for the preset or to delete it.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withId(String id) {
@@ -172,8 +158,7 @@ public class Preset implements Serializable, Cloneable {
      * 
      * @param arn
      *        The Amazon Resource Name (ARN) for the preset.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withArn(String arn) {
@@ -213,8 +198,7 @@ public class Preset implements Serializable, Cloneable {
      * 
      * @param name
      *        The name of the preset.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withName(String name) {
@@ -254,8 +238,7 @@ public class Preset implements Serializable, Cloneable {
      * 
      * @param description
      *        A description of the preset.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withDescription(String description) {
@@ -265,19 +248,15 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The container type for the output file. Valid values include
-     * <code>flac</code>, <code>flv</code>, <code>fmp4</code>, <code>gif</code>,
-     * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
-     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and
-     * <code>webm</code>.
+     * The container type for the output file. Valid values include <code>flac</code>, <code>flv</code>,
+     * <code>fmp4</code>, <code>gif</code>, <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
+     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
      * </p>
      * 
      * @param container
-     *        The container type for the output file. Valid values include
-     *        <code>flac</code>, <code>flv</code>, <code>fmp4</code>,
-     *        <code>gif</code>, <code>mp3</code>, <code>mp4</code>,
-     *        <code>mpg</code>, <code>mxf</code>, <code>oga</code>,
-     *        <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
+     *        The container type for the output file. Valid values include <code>flac</code>, <code>flv</code>,
+     *        <code>fmp4</code>, <code>gif</code>, <code>mp3</code>, <code>mp4</code>, <code>mpg</code>,
+     *        <code>mxf</code>, <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
      */
 
     public void setContainer(String container) {
@@ -286,18 +265,14 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The container type for the output file. Valid values include
-     * <code>flac</code>, <code>flv</code>, <code>fmp4</code>, <code>gif</code>,
-     * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
-     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and
-     * <code>webm</code>.
+     * The container type for the output file. Valid values include <code>flac</code>, <code>flv</code>,
+     * <code>fmp4</code>, <code>gif</code>, <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
+     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
      * </p>
      * 
-     * @return The container type for the output file. Valid values include
-     *         <code>flac</code>, <code>flv</code>, <code>fmp4</code>,
-     *         <code>gif</code>, <code>mp3</code>, <code>mp4</code>,
-     *         <code>mpg</code>, <code>mxf</code>, <code>oga</code>,
-     *         <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
+     * @return The container type for the output file. Valid values include <code>flac</code>, <code>flv</code>,
+     *         <code>fmp4</code>, <code>gif</code>, <code>mp3</code>, <code>mp4</code>, <code>mpg</code>,
+     *         <code>mxf</code>, <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
      */
 
     public String getContainer() {
@@ -306,21 +281,16 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The container type for the output file. Valid values include
-     * <code>flac</code>, <code>flv</code>, <code>fmp4</code>, <code>gif</code>,
-     * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
-     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and
-     * <code>webm</code>.
+     * The container type for the output file. Valid values include <code>flac</code>, <code>flv</code>,
+     * <code>fmp4</code>, <code>gif</code>, <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
+     * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
      * </p>
      * 
      * @param container
-     *        The container type for the output file. Valid values include
-     *        <code>flac</code>, <code>flv</code>, <code>fmp4</code>,
-     *        <code>gif</code>, <code>mp3</code>, <code>mp4</code>,
-     *        <code>mpg</code>, <code>mxf</code>, <code>oga</code>,
-     *        <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The container type for the output file. Valid values include <code>flac</code>, <code>flv</code>,
+     *        <code>fmp4</code>, <code>gif</code>, <code>mp3</code>, <code>mp4</code>, <code>mpg</code>,
+     *        <code>mxf</code>, <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withContainer(String container) {
@@ -330,13 +300,11 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the audio
-     * preset values.
+     * A section of the response body that provides information about the audio preset values.
      * </p>
      * 
      * @param audio
-     *        A section of the response body that provides information about the
-     *        audio preset values.
+     *        A section of the response body that provides information about the audio preset values.
      */
 
     public void setAudio(AudioParameters audio) {
@@ -345,12 +313,10 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the audio
-     * preset values.
+     * A section of the response body that provides information about the audio preset values.
      * </p>
      * 
-     * @return A section of the response body that provides information about
-     *         the audio preset values.
+     * @return A section of the response body that provides information about the audio preset values.
      */
 
     public AudioParameters getAudio() {
@@ -359,15 +325,12 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the audio
-     * preset values.
+     * A section of the response body that provides information about the audio preset values.
      * </p>
      * 
      * @param audio
-     *        A section of the response body that provides information about the
-     *        audio preset values.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A section of the response body that provides information about the audio preset values.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withAudio(AudioParameters audio) {
@@ -377,13 +340,11 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the video
-     * preset values.
+     * A section of the response body that provides information about the video preset values.
      * </p>
      * 
      * @param video
-     *        A section of the response body that provides information about the
-     *        video preset values.
+     *        A section of the response body that provides information about the video preset values.
      */
 
     public void setVideo(VideoParameters video) {
@@ -392,12 +353,10 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the video
-     * preset values.
+     * A section of the response body that provides information about the video preset values.
      * </p>
      * 
-     * @return A section of the response body that provides information about
-     *         the video preset values.
+     * @return A section of the response body that provides information about the video preset values.
      */
 
     public VideoParameters getVideo() {
@@ -406,15 +365,12 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the video
-     * preset values.
+     * A section of the response body that provides information about the video preset values.
      * </p>
      * 
      * @param video
-     *        A section of the response body that provides information about the
-     *        video preset values.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A section of the response body that provides information about the video preset values.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withVideo(VideoParameters video) {
@@ -424,13 +380,11 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the
-     * thumbnail preset values, if any.
+     * A section of the response body that provides information about the thumbnail preset values, if any.
      * </p>
      * 
      * @param thumbnails
-     *        A section of the response body that provides information about the
-     *        thumbnail preset values, if any.
+     *        A section of the response body that provides information about the thumbnail preset values, if any.
      */
 
     public void setThumbnails(Thumbnails thumbnails) {
@@ -439,12 +393,10 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the
-     * thumbnail preset values, if any.
+     * A section of the response body that provides information about the thumbnail preset values, if any.
      * </p>
      * 
-     * @return A section of the response body that provides information about
-     *         the thumbnail preset values, if any.
+     * @return A section of the response body that provides information about the thumbnail preset values, if any.
      */
 
     public Thumbnails getThumbnails() {
@@ -453,15 +405,12 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A section of the response body that provides information about the
-     * thumbnail preset values, if any.
+     * A section of the response body that provides information about the thumbnail preset values, if any.
      * </p>
      * 
      * @param thumbnails
-     *        A section of the response body that provides information about the
-     *        thumbnail preset values, if any.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A section of the response body that provides information about the thumbnail preset values, if any.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withThumbnails(Thumbnails thumbnails) {
@@ -471,15 +420,13 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the preset is a default preset provided by Elastic Transcoder (
-     * <code>System</code>) or a preset that you have defined (
-     * <code>Custom</code>).
+     * Whether the preset is a default preset provided by Elastic Transcoder (<code>System</code>) or a preset that you
+     * have defined (<code>Custom</code>).
      * </p>
      * 
      * @param type
-     *        Whether the preset is a default preset provided by Elastic
-     *        Transcoder (<code>System</code>) or a preset that you have defined
-     *        (<code>Custom</code>).
+     *        Whether the preset is a default preset provided by Elastic Transcoder (<code>System</code>) or a preset
+     *        that you have defined (<code>Custom</code>).
      */
 
     public void setType(String type) {
@@ -488,14 +435,12 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the preset is a default preset provided by Elastic Transcoder (
-     * <code>System</code>) or a preset that you have defined (
-     * <code>Custom</code>).
+     * Whether the preset is a default preset provided by Elastic Transcoder (<code>System</code>) or a preset that you
+     * have defined (<code>Custom</code>).
      * </p>
      * 
-     * @return Whether the preset is a default preset provided by Elastic
-     *         Transcoder (<code>System</code>) or a preset that you have
-     *         defined (<code>Custom</code>).
+     * @return Whether the preset is a default preset provided by Elastic Transcoder (<code>System</code>) or a preset
+     *         that you have defined (<code>Custom</code>).
      */
 
     public String getType() {
@@ -504,17 +449,14 @@ public class Preset implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the preset is a default preset provided by Elastic Transcoder (
-     * <code>System</code>) or a preset that you have defined (
-     * <code>Custom</code>).
+     * Whether the preset is a default preset provided by Elastic Transcoder (<code>System</code>) or a preset that you
+     * have defined (<code>Custom</code>).
      * </p>
      * 
      * @param type
-     *        Whether the preset is a default preset provided by Elastic
-     *        Transcoder (<code>System</code>) or a preset that you have defined
-     *        (<code>Custom</code>).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Whether the preset is a default preset provided by Elastic Transcoder (<code>System</code>) or a preset
+     *        that you have defined (<code>Custom</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Preset withType(String type) {
@@ -523,8 +465,7 @@ public class Preset implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -535,23 +476,23 @@ public class Preset implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getId() != null)
-            sb.append("Id: " + getId() + ",");
+            sb.append("Id: ").append(getId()).append(",");
         if (getArn() != null)
-            sb.append("Arn: " + getArn() + ",");
+            sb.append("Arn: ").append(getArn()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getContainer() != null)
-            sb.append("Container: " + getContainer() + ",");
+            sb.append("Container: ").append(getContainer()).append(",");
         if (getAudio() != null)
-            sb.append("Audio: " + getAudio() + ",");
+            sb.append("Audio: ").append(getAudio()).append(",");
         if (getVideo() != null)
-            sb.append("Video: " + getVideo() + ",");
+            sb.append("Video: ").append(getVideo()).append(",");
         if (getThumbnails() != null)
-            sb.append("Thumbnails: " + getThumbnails() + ",");
+            sb.append("Thumbnails: ").append(getThumbnails()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType());
+            sb.append("Type: ").append(getType());
         sb.append("}");
         return sb.toString();
     }
@@ -568,48 +509,39 @@ public class Preset implements Serializable, Cloneable {
         Preset other = (Preset) obj;
         if (other.getId() == null ^ this.getId() == null)
             return false;
-        if (other.getId() != null
-                && other.getId().equals(this.getId()) == false)
+        if (other.getId() != null && other.getId().equals(this.getId()) == false)
             return false;
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
-        if (other.getArn() != null
-                && other.getArn().equals(this.getArn()) == false)
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getContainer() == null ^ this.getContainer() == null)
             return false;
-        if (other.getContainer() != null
-                && other.getContainer().equals(this.getContainer()) == false)
+        if (other.getContainer() != null && other.getContainer().equals(this.getContainer()) == false)
             return false;
         if (other.getAudio() == null ^ this.getAudio() == null)
             return false;
-        if (other.getAudio() != null
-                && other.getAudio().equals(this.getAudio()) == false)
+        if (other.getAudio() != null && other.getAudio().equals(this.getAudio()) == false)
             return false;
         if (other.getVideo() == null ^ this.getVideo() == null)
             return false;
-        if (other.getVideo() != null
-                && other.getVideo().equals(this.getVideo()) == false)
+        if (other.getVideo() != null && other.getVideo().equals(this.getVideo()) == false)
             return false;
         if (other.getThumbnails() == null ^ this.getThumbnails() == null)
             return false;
-        if (other.getThumbnails() != null
-                && other.getThumbnails().equals(this.getThumbnails()) == false)
+        if (other.getThumbnails() != null && other.getThumbnails().equals(this.getThumbnails()) == false)
             return false;
         if (other.getType() == null ^ this.getType() == null)
             return false;
-        if (other.getType() != null
-                && other.getType().equals(this.getType()) == false)
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
         return true;
     }
@@ -619,25 +551,15 @@ public class Preset implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getId() == null) ? 0 : getId().hashCode());
-        hashCode = prime * hashCode
-                + ((getArn() == null) ? 0 : getArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getContainer() == null) ? 0 : getContainer().hashCode());
-        hashCode = prime * hashCode
-                + ((getAudio() == null) ? 0 : getAudio().hashCode());
-        hashCode = prime * hashCode
-                + ((getVideo() == null) ? 0 : getVideo().hashCode());
-        hashCode = prime * hashCode
-                + ((getThumbnails() == null) ? 0 : getThumbnails().hashCode());
-        hashCode = prime * hashCode
-                + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getContainer() == null) ? 0 : getContainer().hashCode());
+        hashCode = prime * hashCode + ((getAudio() == null) ? 0 : getAudio().hashCode());
+        hashCode = prime * hashCode + ((getVideo() == null) ? 0 : getVideo().hashCode());
+        hashCode = prime * hashCode + ((getThumbnails() == null) ? 0 : getThumbnails().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         return hashCode;
     }
 
@@ -646,9 +568,13 @@ public class Preset implements Serializable, Cloneable {
         try {
             return (Preset) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.elastictranscoder.model.transform.PresetMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

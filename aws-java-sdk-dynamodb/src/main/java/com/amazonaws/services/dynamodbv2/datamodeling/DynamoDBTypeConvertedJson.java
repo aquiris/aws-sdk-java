@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2016-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,33 +19,22 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 /**
  * A simple JSON converter that uses the Jackson JSON processor.
  *
- * It shares all limitations of that library.
- * For more information about Jackson, see: http://wiki.fasterxml.com/JacksonHome
+ * <p>It shares all limitations of that library. For more information about
+ * Jackson, see: http://wiki.fasterxml.com/JacksonHome</p>
  *
- * A minimal example using getter annotations,
  * <pre class="brush: java">
- * &#064;DynamoDBTable(tableName=&quot;TestTable&quot;)
- * public class TestClass {
- *     private String key;
- *     private Currency currency;
- *
- *     &#064;DynamoDBHashKey
- *     public String getKey() { return key; }
- *     public void setKey(String key) { this.key = key; }
- *
- *     &#064;DynamoDBTypeConvertedJson
- *     public Currency getCurrency() { return currency; }
- *     public void setCurrency(Currency currency) { this.currency = currency; }
- * }
+ * &#064;DynamoDBTypeConvertedJson
+ * public Currency getCurrency()
  * </pre>
  *
- * With the following complex type to convert,
+ * <p>Where,</p>
  * <pre class="brush: java">
  * public class Currency {
  *     private Double amount;
@@ -59,7 +48,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
  * }
  * </pre>
  *
- * Would write the following value to DynamoDB given,
+ * <p>Would write the following value to DynamoDB given,</p>
  * <ul>
  *     <li><code>Currency(79.99,"USD")</code> = <code> "{\"amount\":79.99,\"unit\":\"USD\"}"</code></li>
  * </ul>
@@ -67,6 +56,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
  * @see com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted
  */
 @DynamoDBTypeConverted(converter=DynamoDBTypeConvertedJson.Converter.class)
+@DynamoDBTyped(DynamoDBMapperFieldModel.DynamoDBAttributeType.S)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
 public @interface DynamoDBTypeConvertedJson {
@@ -80,19 +70,18 @@ public @interface DynamoDBTypeConvertedJson {
     /**
      * JSON type converter.
      */
-    static final class Converter<T> implements DynamoDBTypeConverter<String,T> {
-        private static final ObjectMapper mapper = new ObjectMapper();
-        private static final ObjectWriter writer = mapper.writer();
+    final class Converter<T> implements DynamoDBTypeConverter<String,T> {
+        private static final ObjectMapper mapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         private final Class<T> targetType;
 
-        public Converter(final Class<T> targetType, final DynamoDBTypeConvertedJson annotation) {
+        public Converter(Class<T> targetType, DynamoDBTypeConvertedJson annotation) {
             this.targetType = annotation.targetType() == void.class ? targetType : (Class<T>)annotation.targetType();
         }
 
         @Override
         public final String convert(final T object) {
             try {
-                return writer.writeValueAsString(object);
+                return mapper.writeValueAsString(object);
             } catch (final Exception e) {
                 throw new DynamoDBMappingException("Unable to write object to JSON", e);
             }

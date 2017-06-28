@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for SuspendProcesses and ResumeProcesses.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SuspendProcesses" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SuspendProcessesRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,8 +33,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
     private String autoScalingGroupName;
     /**
      * <p>
-     * One or more of the following processes. If you omit this parameter, all
-     * processes are specified.
+     * One or more of the following processes. If you omit this parameter, all processes are specified.
      * </p>
      * <ul>
      * <li>
@@ -113,20 +112,17 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      * 
      * @param autoScalingGroupName
      *        The name or Amazon Resource Name (ARN) of the Auto Scaling group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public SuspendProcessesRequest withAutoScalingGroupName(
-            String autoScalingGroupName) {
+    public SuspendProcessesRequest withAutoScalingGroupName(String autoScalingGroupName) {
         setAutoScalingGroupName(autoScalingGroupName);
         return this;
     }
 
     /**
      * <p>
-     * One or more of the following processes. If you omit this parameter, all
-     * processes are specified.
+     * One or more of the following processes. If you omit this parameter, all processes are specified.
      * </p>
      * <ul>
      * <li>
@@ -171,8 +167,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      * </li>
      * </ul>
      * 
-     * @return One or more of the following processes. If you omit this
-     *         parameter, all processes are specified.</p>
+     * @return One or more of the following processes. If you omit this parameter, all processes are specified.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -225,8 +220,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * One or more of the following processes. If you omit this parameter, all
-     * processes are specified.
+     * One or more of the following processes. If you omit this parameter, all processes are specified.
      * </p>
      * <ul>
      * <li>
@@ -272,8 +266,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      * </ul>
      * 
      * @param scalingProcesses
-     *        One or more of the following processes. If you omit this
-     *        parameter, all processes are specified.</p>
+     *        One or more of the following processes. If you omit this parameter, all processes are specified.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -317,21 +310,18 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      *        </li>
      */
 
-    public void setScalingProcesses(
-            java.util.Collection<String> scalingProcesses) {
+    public void setScalingProcesses(java.util.Collection<String> scalingProcesses) {
         if (scalingProcesses == null) {
             this.scalingProcesses = null;
             return;
         }
 
-        this.scalingProcesses = new com.amazonaws.internal.SdkInternalList<String>(
-                scalingProcesses);
+        this.scalingProcesses = new com.amazonaws.internal.SdkInternalList<String>(scalingProcesses);
     }
 
     /**
      * <p>
-     * One or more of the following processes. If you omit this parameter, all
-     * processes are specified.
+     * One or more of the following processes. If you omit this parameter, all processes are specified.
      * </p>
      * <ul>
      * <li>
@@ -376,15 +366,13 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      * </li>
      * </ul>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setScalingProcesses(java.util.Collection)} or
-     * {@link #withScalingProcesses(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setScalingProcesses(java.util.Collection)} or {@link #withScalingProcesses(java.util.Collection)} if you
+     * want to override the existing values.
      * </p>
      * 
      * @param scalingProcesses
-     *        One or more of the following processes. If you omit this
-     *        parameter, all processes are specified.</p>
+     *        One or more of the following processes. If you omit this parameter, all processes are specified.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -426,15 +414,12 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      *        <code>AddToLoadBalancer</code>
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public SuspendProcessesRequest withScalingProcesses(
-            String... scalingProcesses) {
+    public SuspendProcessesRequest withScalingProcesses(String... scalingProcesses) {
         if (this.scalingProcesses == null) {
-            setScalingProcesses(new com.amazonaws.internal.SdkInternalList<String>(
-                    scalingProcesses.length));
+            setScalingProcesses(new com.amazonaws.internal.SdkInternalList<String>(scalingProcesses.length));
         }
         for (String ele : scalingProcesses) {
             this.scalingProcesses.add(ele);
@@ -444,8 +429,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * One or more of the following processes. If you omit this parameter, all
-     * processes are specified.
+     * One or more of the following processes. If you omit this parameter, all processes are specified.
      * </p>
      * <ul>
      * <li>
@@ -491,8 +475,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      * </ul>
      * 
      * @param scalingProcesses
-     *        One or more of the following processes. If you omit this
-     *        parameter, all processes are specified.</p>
+     *        One or more of the following processes. If you omit this parameter, all processes are specified.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -534,19 +517,16 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
      *        <code>AddToLoadBalancer</code>
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public SuspendProcessesRequest withScalingProcesses(
-            java.util.Collection<String> scalingProcesses) {
+    public SuspendProcessesRequest withScalingProcesses(java.util.Collection<String> scalingProcesses) {
         setScalingProcesses(scalingProcesses);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -557,10 +537,9 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName()
-                    + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getScalingProcesses() != null)
-            sb.append("ScalingProcesses: " + getScalingProcesses());
+            sb.append("ScalingProcesses: ").append(getScalingProcesses());
         sb.append("}");
         return sb.toString();
     }
@@ -575,19 +554,13 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
         if (obj instanceof SuspendProcessesRequest == false)
             return false;
         SuspendProcessesRequest other = (SuspendProcessesRequest) obj;
-        if (other.getAutoScalingGroupName() == null
-                ^ this.getAutoScalingGroupName() == null)
+        if (other.getAutoScalingGroupName() == null ^ this.getAutoScalingGroupName() == null)
             return false;
-        if (other.getAutoScalingGroupName() != null
-                && other.getAutoScalingGroupName().equals(
-                        this.getAutoScalingGroupName()) == false)
+        if (other.getAutoScalingGroupName() != null && other.getAutoScalingGroupName().equals(this.getAutoScalingGroupName()) == false)
             return false;
-        if (other.getScalingProcesses() == null
-                ^ this.getScalingProcesses() == null)
+        if (other.getScalingProcesses() == null ^ this.getScalingProcesses() == null)
             return false;
-        if (other.getScalingProcesses() != null
-                && other.getScalingProcesses().equals(
-                        this.getScalingProcesses()) == false)
+        if (other.getScalingProcesses() != null && other.getScalingProcesses().equals(this.getScalingProcesses()) == false)
             return false;
         return true;
     }
@@ -597,14 +570,8 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAutoScalingGroupName() == null) ? 0
-                        : getAutoScalingGroupName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getScalingProcesses() == null) ? 0 : getScalingProcesses()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getAutoScalingGroupName() == null) ? 0 : getAutoScalingGroupName().hashCode());
+        hashCode = prime * hashCode + ((getScalingProcesses() == null) ? 0 : getScalingProcesses().hashCode());
         return hashCode;
     }
 
@@ -612,4 +579,5 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest implements
     public SuspendProcessesRequest clone() {
         return (SuspendProcessesRequest) super.clone();
     }
+
 }

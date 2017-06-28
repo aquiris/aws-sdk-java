@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,9 +14,10 @@
  */
 package com.amazonaws.auth;
 
-import com.amazonaws.AmazonClientException;
 import com.amazonaws.ReadLimitInfo;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.SignableRequest;
+import com.amazonaws.annotation.SdkTestInternalApi;
 import com.amazonaws.auth.internal.AWS4SignerRequestParams;
 import com.amazonaws.auth.internal.AWS4SignerUtils;
 import com.amazonaws.auth.internal.SignerKey;
@@ -64,7 +65,9 @@ public class AWS4Signer extends AbstractAWSSigner implements
     protected static final InternalLogApi log = InternalLogFactory.getLog(AWS4Signer.class);
     private static final int SIGNER_CACHE_MAX_SIZE = 300;
     private static final FIFOCache<SignerKey> signerCache = new FIFOCache<SignerKey>(SIGNER_CACHE_MAX_SIZE);
-    private static final List<String> listOfHeadersToIgnoreInLowerCase = Arrays.asList("connection");
+    private static final List<String> listOfHeadersToIgnoreInLowerCase = Arrays.asList("connection", "x-amzn-trace-id");
+
+    private final SdkClock clock;
 
     /**
      * Service name override for use when the endpoint can't be used to
@@ -107,7 +110,17 @@ public class AWS4Signer extends AbstractAWSSigner implements
      *            the canonical request.
      */
     public AWS4Signer(boolean doubleUrlEncoding) {
-        this.doubleUrlEncode = doubleUrlEncoding;
+        this(doubleUrlEncoding, SdkClock.Instance.get());
+    }
+
+    @SdkTestInternalApi
+    public AWS4Signer(SdkClock clock) {
+        this(true, clock);
+    }
+
+    private AWS4Signer(boolean doubleUrlEncode, SdkClock clock) {
+        this.doubleUrlEncode = doubleUrlEncode;
+        this.clock = clock;
     }
 
     /**
@@ -144,8 +157,13 @@ public class AWS4Signer extends AbstractAWSSigner implements
      * Sets the date that overrides the signing date in the request. This method
      * is internal and should be used only for testing purposes.
      */
-    void setOverrideDate(Date overriddenDate) {
-        this.overriddenDate = overriddenDate;
+    @SdkTestInternalApi
+    public void setOverrideDate(Date overriddenDate) {
+        if (overriddenDate != null) {
+            this.overriddenDate = new Date(overriddenDate.getTime());
+        } else {
+            this.overriddenDate = null;
+        }
     }
 
     /**
@@ -521,7 +539,7 @@ public class AWS4Signer extends AbstractAWSSigner implements
         try {
             payloadStream.reset();
         } catch (IOException e) {
-            throw new AmazonClientException(
+            throw new SdkClientException(
                     "Unable to reset stream after calculating AWS4 signature",
                     e);
         }
@@ -566,11 +584,11 @@ public class AWS4Signer extends AbstractAWSSigner implements
     private long generateExpirationDate(Date expirationDate) {
 
         long expirationInSeconds = expirationDate != null ? ((expirationDate
-                .getTime() - System.currentTimeMillis()) / 1000L)
+                .getTime() - clock.currentTimeMillis()) / 1000L)
                 : PRESIGN_URL_MAX_EXPIRATION_SECONDS;
 
         if (expirationInSeconds > PRESIGN_URL_MAX_EXPIRATION_SECONDS) {
-            throw new AmazonClientException(
+            throw new SdkClientException(
                     "Requests that are pre-signed by SigV4 algorithm are valid for at most 7 days. "
                             + "The expiration date set on the current request ["
                             + AWS4SignerUtils.formatTimestamp(expirationDate

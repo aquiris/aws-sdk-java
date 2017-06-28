@@ -1,27 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.directory.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Contains information about an AWS Directory Service directory.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DirectoryDescription" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DirectoryDescription implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DirectoryDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
@@ -49,18 +54,16 @@ public class DirectoryDescription implements Serializable, Cloneable {
     private String size;
     /**
      * <p>
-     * The alias for the directory. If no alias has been created for the
-     * directory, the alias is the directory identifier, such as
-     * <code>d-XXXXXXXXXX</code>.
+     * The alias for the directory. If no alias has been created for the directory, the alias is the directory
+     * identifier, such as <code>d-XXXXXXXXXX</code>.
      * </p>
      */
     private String alias;
     /**
      * <p>
-     * The access URL for the directory, such as
-     * <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
-     * created for the directory, <code>&lt;alias&gt;</code> is the directory
-     * identifier, such as <code>d-XXXXXXXXXX</code>.
+     * The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
+     * created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as
+     * <code>d-XXXXXXXXXX</code>.
      * </p>
      */
     private String accessUrl;
@@ -72,11 +75,10 @@ public class DirectoryDescription implements Serializable, Cloneable {
     private String description;
     /**
      * <p>
-     * The IP addresses of the DNS servers for the directory. For a Simple AD or
-     * Microsoft AD directory, these are the IP addresses of the Simple AD or
-     * Microsoft AD directory servers. For an AD Connector directory, these are
-     * the IP addresses of the DNS servers or domain controllers in the
-     * on-premises directory to which the AD Connector is connected.
+     * The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the
+     * IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP
+     * addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is
+     * connected.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> dnsIpAddrs;
@@ -106,24 +108,21 @@ public class DirectoryDescription implements Serializable, Cloneable {
     private String type;
     /**
      * <p>
-     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional
-     * information about a directory. This member is only present if the
-     * directory is a Simple AD or Managed AD directory.
+     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This
+     * member is only present if the directory is a Simple AD or Managed AD directory.
      * </p>
      */
     private DirectoryVpcSettingsDescription vpcSettings;
     /**
      * <p>
-     * A <a>DirectoryConnectSettingsDescription</a> object that contains
-     * additional information about an AD Connector directory. This member is
-     * only present if the directory is an AD Connector directory.
+     * A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector
+     * directory. This member is only present if the directory is an AD Connector directory.
      * </p>
      */
     private DirectoryConnectSettingsDescription connectSettings;
     /**
      * <p>
-     * A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server configured for this directory.
+     * A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.
      * </p>
      */
     private RadiusSettings radiusSettings;
@@ -141,8 +140,8 @@ public class DirectoryDescription implements Serializable, Cloneable {
     private String stageReason;
     /**
      * <p>
-     * Indicates if single-sign on is enabled for the directory. For more
-     * information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     * Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     * <a>DisableSso</a>.
      * </p>
      */
     private Boolean ssoEnabled;
@@ -179,8 +178,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param directoryId
      *        The directory identifier.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withDirectoryId(String directoryId) {
@@ -220,8 +218,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param name
      *        The fully-qualified name of the directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withName(String name) {
@@ -261,8 +258,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param shortName
      *        The short name of the directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withShortName(String shortName) {
@@ -304,8 +300,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param size
      *        The directory size.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectorySize
      */
 
@@ -335,8 +330,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param size
      *        The directory size.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectorySize
      */
 
@@ -347,15 +341,13 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The alias for the directory. If no alias has been created for the
-     * directory, the alias is the directory identifier, such as
-     * <code>d-XXXXXXXXXX</code>.
+     * The alias for the directory. If no alias has been created for the directory, the alias is the directory
+     * identifier, such as <code>d-XXXXXXXXXX</code>.
      * </p>
      * 
      * @param alias
-     *        The alias for the directory. If no alias has been created for the
-     *        directory, the alias is the directory identifier, such as
-     *        <code>d-XXXXXXXXXX</code>.
+     *        The alias for the directory. If no alias has been created for the directory, the alias is the directory
+     *        identifier, such as <code>d-XXXXXXXXXX</code>.
      */
 
     public void setAlias(String alias) {
@@ -364,14 +356,12 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The alias for the directory. If no alias has been created for the
-     * directory, the alias is the directory identifier, such as
-     * <code>d-XXXXXXXXXX</code>.
+     * The alias for the directory. If no alias has been created for the directory, the alias is the directory
+     * identifier, such as <code>d-XXXXXXXXXX</code>.
      * </p>
      * 
-     * @return The alias for the directory. If no alias has been created for the
-     *         directory, the alias is the directory identifier, such as
-     *         <code>d-XXXXXXXXXX</code>.
+     * @return The alias for the directory. If no alias has been created for the directory, the alias is the directory
+     *         identifier, such as <code>d-XXXXXXXXXX</code>.
      */
 
     public String getAlias() {
@@ -380,17 +370,14 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The alias for the directory. If no alias has been created for the
-     * directory, the alias is the directory identifier, such as
-     * <code>d-XXXXXXXXXX</code>.
+     * The alias for the directory. If no alias has been created for the directory, the alias is the directory
+     * identifier, such as <code>d-XXXXXXXXXX</code>.
      * </p>
      * 
      * @param alias
-     *        The alias for the directory. If no alias has been created for the
-     *        directory, the alias is the directory identifier, such as
-     *        <code>d-XXXXXXXXXX</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The alias for the directory. If no alias has been created for the directory, the alias is the directory
+     *        identifier, such as <code>d-XXXXXXXXXX</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withAlias(String alias) {
@@ -400,17 +387,15 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The access URL for the directory, such as
-     * <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
-     * created for the directory, <code>&lt;alias&gt;</code> is the directory
-     * identifier, such as <code>d-XXXXXXXXXX</code>.
+     * The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
+     * created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as
+     * <code>d-XXXXXXXXXX</code>.
      * </p>
      * 
      * @param accessUrl
-     *        The access URL for the directory, such as
-     *        <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has
-     *        been created for the directory, <code>&lt;alias&gt;</code> is the
-     *        directory identifier, such as <code>d-XXXXXXXXXX</code>.
+     *        The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has
+     *        been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as
+     *        <code>d-XXXXXXXXXX</code>.
      */
 
     public void setAccessUrl(String accessUrl) {
@@ -419,16 +404,14 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The access URL for the directory, such as
-     * <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
-     * created for the directory, <code>&lt;alias&gt;</code> is the directory
-     * identifier, such as <code>d-XXXXXXXXXX</code>.
+     * The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
+     * created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as
+     * <code>d-XXXXXXXXXX</code>.
      * </p>
      * 
-     * @return The access URL for the directory, such as
-     *         <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has
-     *         been created for the directory, <code>&lt;alias&gt;</code> is the
-     *         directory identifier, such as <code>d-XXXXXXXXXX</code>.
+     * @return The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has
+     *         been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as
+     *         <code>d-XXXXXXXXXX</code>.
      */
 
     public String getAccessUrl() {
@@ -437,19 +420,16 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The access URL for the directory, such as
-     * <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
-     * created for the directory, <code>&lt;alias&gt;</code> is the directory
-     * identifier, such as <code>d-XXXXXXXXXX</code>.
+     * The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been
+     * created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as
+     * <code>d-XXXXXXXXXX</code>.
      * </p>
      * 
      * @param accessUrl
-     *        The access URL for the directory, such as
-     *        <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has
-     *        been created for the directory, <code>&lt;alias&gt;</code> is the
-     *        directory identifier, such as <code>d-XXXXXXXXXX</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has
+     *        been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as
+     *        <code>d-XXXXXXXXXX</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withAccessUrl(String accessUrl) {
@@ -489,8 +469,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param description
      *        The textual description for the directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withDescription(String description) {
@@ -500,19 +479,16 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP addresses of the DNS servers for the directory. For a Simple AD or
-     * Microsoft AD directory, these are the IP addresses of the Simple AD or
-     * Microsoft AD directory servers. For an AD Connector directory, these are
-     * the IP addresses of the DNS servers or domain controllers in the
-     * on-premises directory to which the AD Connector is connected.
+     * The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the
+     * IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP
+     * addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is
+     * connected.
      * </p>
      * 
-     * @return The IP addresses of the DNS servers for the directory. For a
-     *         Simple AD or Microsoft AD directory, these are the IP addresses
-     *         of the Simple AD or Microsoft AD directory servers. For an AD
-     *         Connector directory, these are the IP addresses of the DNS
-     *         servers or domain controllers in the on-premises directory to
-     *         which the AD Connector is connected.
+     * @return The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these
+     *         are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory,
+     *         these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which
+     *         the AD Connector is connected.
      */
 
     public java.util.List<String> getDnsIpAddrs() {
@@ -524,20 +500,17 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP addresses of the DNS servers for the directory. For a Simple AD or
-     * Microsoft AD directory, these are the IP addresses of the Simple AD or
-     * Microsoft AD directory servers. For an AD Connector directory, these are
-     * the IP addresses of the DNS servers or domain controllers in the
-     * on-premises directory to which the AD Connector is connected.
+     * The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the
+     * IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP
+     * addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is
+     * connected.
      * </p>
      * 
      * @param dnsIpAddrs
-     *        The IP addresses of the DNS servers for the directory. For a
-     *        Simple AD or Microsoft AD directory, these are the IP addresses of
-     *        the Simple AD or Microsoft AD directory servers. For an AD
-     *        Connector directory, these are the IP addresses of the DNS servers
-     *        or domain controllers in the on-premises directory to which the AD
-     *        Connector is connected.
+     *        The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these
+     *        are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory,
+     *        these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which
+     *        the AD Connector is connected.
      */
 
     public void setDnsIpAddrs(java.util.Collection<String> dnsIpAddrs) {
@@ -546,40 +519,33 @@ public class DirectoryDescription implements Serializable, Cloneable {
             return;
         }
 
-        this.dnsIpAddrs = new com.amazonaws.internal.SdkInternalList<String>(
-                dnsIpAddrs);
+        this.dnsIpAddrs = new com.amazonaws.internal.SdkInternalList<String>(dnsIpAddrs);
     }
 
     /**
      * <p>
-     * The IP addresses of the DNS servers for the directory. For a Simple AD or
-     * Microsoft AD directory, these are the IP addresses of the Simple AD or
-     * Microsoft AD directory servers. For an AD Connector directory, these are
-     * the IP addresses of the DNS servers or domain controllers in the
-     * on-premises directory to which the AD Connector is connected.
+     * The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the
+     * IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP
+     * addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is
+     * connected.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setDnsIpAddrs(java.util.Collection)} or
-     * {@link #withDnsIpAddrs(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDnsIpAddrs(java.util.Collection)} or {@link #withDnsIpAddrs(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param dnsIpAddrs
-     *        The IP addresses of the DNS servers for the directory. For a
-     *        Simple AD or Microsoft AD directory, these are the IP addresses of
-     *        the Simple AD or Microsoft AD directory servers. For an AD
-     *        Connector directory, these are the IP addresses of the DNS servers
-     *        or domain controllers in the on-premises directory to which the AD
-     *        Connector is connected.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these
+     *        are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory,
+     *        these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which
+     *        the AD Connector is connected.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withDnsIpAddrs(String... dnsIpAddrs) {
         if (this.dnsIpAddrs == null) {
-            setDnsIpAddrs(new com.amazonaws.internal.SdkInternalList<String>(
-                    dnsIpAddrs.length));
+            setDnsIpAddrs(new com.amazonaws.internal.SdkInternalList<String>(dnsIpAddrs.length));
         }
         for (String ele : dnsIpAddrs) {
             this.dnsIpAddrs.add(ele);
@@ -589,26 +555,21 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The IP addresses of the DNS servers for the directory. For a Simple AD or
-     * Microsoft AD directory, these are the IP addresses of the Simple AD or
-     * Microsoft AD directory servers. For an AD Connector directory, these are
-     * the IP addresses of the DNS servers or domain controllers in the
-     * on-premises directory to which the AD Connector is connected.
+     * The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the
+     * IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP
+     * addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is
+     * connected.
      * </p>
      * 
      * @param dnsIpAddrs
-     *        The IP addresses of the DNS servers for the directory. For a
-     *        Simple AD or Microsoft AD directory, these are the IP addresses of
-     *        the Simple AD or Microsoft AD directory servers. For an AD
-     *        Connector directory, these are the IP addresses of the DNS servers
-     *        or domain controllers in the on-premises directory to which the AD
-     *        Connector is connected.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these
+     *        are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory,
+     *        these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which
+     *        the AD Connector is connected.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryDescription withDnsIpAddrs(
-            java.util.Collection<String> dnsIpAddrs) {
+    public DirectoryDescription withDnsIpAddrs(java.util.Collection<String> dnsIpAddrs) {
         setDnsIpAddrs(dnsIpAddrs);
         return this;
     }
@@ -647,8 +608,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param stage
      *        The current stage of the directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectoryStage
      */
 
@@ -678,8 +638,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param stage
      *        The current stage of the directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectoryStage
      */
 
@@ -720,8 +679,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param launchTime
      *        Specifies when the directory was created.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withLaunchTime(java.util.Date launchTime) {
@@ -738,8 +696,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      *        The date and time that the stage was last updated.
      */
 
-    public void setStageLastUpdatedDateTime(
-            java.util.Date stageLastUpdatedDateTime) {
+    public void setStageLastUpdatedDateTime(java.util.Date stageLastUpdatedDateTime) {
         this.stageLastUpdatedDateTime = stageLastUpdatedDateTime;
     }
 
@@ -762,12 +719,10 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param stageLastUpdatedDateTime
      *        The date and time that the stage was last updated.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryDescription withStageLastUpdatedDateTime(
-            java.util.Date stageLastUpdatedDateTime) {
+    public DirectoryDescription withStageLastUpdatedDateTime(java.util.Date stageLastUpdatedDateTime) {
         setStageLastUpdatedDateTime(stageLastUpdatedDateTime);
         return this;
     }
@@ -806,8 +761,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param type
      *        The directory size.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectoryType
      */
 
@@ -837,8 +791,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param type
      *        The directory size.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectoryType
      */
 
@@ -849,15 +802,13 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional
-     * information about a directory. This member is only present if the
-     * directory is a Simple AD or Managed AD directory.
+     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This
+     * member is only present if the directory is a Simple AD or Managed AD directory.
      * </p>
      * 
      * @param vpcSettings
-     *        A <a>DirectoryVpcSettingsDescription</a> object that contains
-     *        additional information about a directory. This member is only
-     *        present if the directory is a Simple AD or Managed AD directory.
+     *        A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory.
+     *        This member is only present if the directory is a Simple AD or Managed AD directory.
      */
 
     public void setVpcSettings(DirectoryVpcSettingsDescription vpcSettings) {
@@ -866,14 +817,12 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional
-     * information about a directory. This member is only present if the
-     * directory is a Simple AD or Managed AD directory.
+     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This
+     * member is only present if the directory is a Simple AD or Managed AD directory.
      * </p>
      * 
-     * @return A <a>DirectoryVpcSettingsDescription</a> object that contains
-     *         additional information about a directory. This member is only
-     *         present if the directory is a Simple AD or Managed AD directory.
+     * @return A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory.
+     *         This member is only present if the directory is a Simple AD or Managed AD directory.
      */
 
     public DirectoryVpcSettingsDescription getVpcSettings() {
@@ -882,55 +831,44 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional
-     * information about a directory. This member is only present if the
-     * directory is a Simple AD or Managed AD directory.
+     * A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This
+     * member is only present if the directory is a Simple AD or Managed AD directory.
      * </p>
      * 
      * @param vpcSettings
-     *        A <a>DirectoryVpcSettingsDescription</a> object that contains
-     *        additional information about a directory. This member is only
-     *        present if the directory is a Simple AD or Managed AD directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory.
+     *        This member is only present if the directory is a Simple AD or Managed AD directory.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryDescription withVpcSettings(
-            DirectoryVpcSettingsDescription vpcSettings) {
+    public DirectoryDescription withVpcSettings(DirectoryVpcSettingsDescription vpcSettings) {
         setVpcSettings(vpcSettings);
         return this;
     }
 
     /**
      * <p>
-     * A <a>DirectoryConnectSettingsDescription</a> object that contains
-     * additional information about an AD Connector directory. This member is
-     * only present if the directory is an AD Connector directory.
+     * A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector
+     * directory. This member is only present if the directory is an AD Connector directory.
      * </p>
      * 
      * @param connectSettings
-     *        A <a>DirectoryConnectSettingsDescription</a> object that contains
-     *        additional information about an AD Connector directory. This
-     *        member is only present if the directory is an AD Connector
-     *        directory.
+     *        A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD
+     *        Connector directory. This member is only present if the directory is an AD Connector directory.
      */
 
-    public void setConnectSettings(
-            DirectoryConnectSettingsDescription connectSettings) {
+    public void setConnectSettings(DirectoryConnectSettingsDescription connectSettings) {
         this.connectSettings = connectSettings;
     }
 
     /**
      * <p>
-     * A <a>DirectoryConnectSettingsDescription</a> object that contains
-     * additional information about an AD Connector directory. This member is
-     * only present if the directory is an AD Connector directory.
+     * A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector
+     * directory. This member is only present if the directory is an AD Connector directory.
      * </p>
      * 
-     * @return A <a>DirectoryConnectSettingsDescription</a> object that contains
-     *         additional information about an AD Connector directory. This
-     *         member is only present if the directory is an AD Connector
-     *         directory.
+     * @return A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD
+     *         Connector directory. This member is only present if the directory is an AD Connector directory.
      */
 
     public DirectoryConnectSettingsDescription getConnectSettings() {
@@ -939,35 +877,29 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A <a>DirectoryConnectSettingsDescription</a> object that contains
-     * additional information about an AD Connector directory. This member is
-     * only present if the directory is an AD Connector directory.
+     * A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector
+     * directory. This member is only present if the directory is an AD Connector directory.
      * </p>
      * 
      * @param connectSettings
-     *        A <a>DirectoryConnectSettingsDescription</a> object that contains
-     *        additional information about an AD Connector directory. This
-     *        member is only present if the directory is an AD Connector
-     *        directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD
+     *        Connector directory. This member is only present if the directory is an AD Connector directory.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DirectoryDescription withConnectSettings(
-            DirectoryConnectSettingsDescription connectSettings) {
+    public DirectoryDescription withConnectSettings(DirectoryConnectSettingsDescription connectSettings) {
         setConnectSettings(connectSettings);
         return this;
     }
 
     /**
      * <p>
-     * A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server configured for this directory.
+     * A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.
      * </p>
      * 
      * @param radiusSettings
-     *        A <a>RadiusSettings</a> object that contains information about the
-     *        RADIUS server configured for this directory.
+     *        A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this
+     *        directory.
      */
 
     public void setRadiusSettings(RadiusSettings radiusSettings) {
@@ -976,12 +908,11 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server configured for this directory.
+     * A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.
      * </p>
      * 
-     * @return A <a>RadiusSettings</a> object that contains information about
-     *         the RADIUS server configured for this directory.
+     * @return A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this
+     *         directory.
      */
 
     public RadiusSettings getRadiusSettings() {
@@ -990,15 +921,13 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server configured for this directory.
+     * A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.
      * </p>
      * 
      * @param radiusSettings
-     *        A <a>RadiusSettings</a> object that contains information about the
-     *        RADIUS server configured for this directory.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this
+     *        directory.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withRadiusSettings(RadiusSettings radiusSettings) {
@@ -1040,8 +969,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param radiusStatus
      *        The status of the RADIUS MFA server connection.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RadiusStatus
      */
 
@@ -1071,8 +999,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param radiusStatus
      *        The status of the RADIUS MFA server connection.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see RadiusStatus
      */
 
@@ -1113,8 +1040,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
      * 
      * @param stageReason
      *        Additional information about the directory stage.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withStageReason(String stageReason) {
@@ -1124,13 +1050,13 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if single-sign on is enabled for the directory. For more
-     * information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     * Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     * <a>DisableSso</a>.
      * </p>
      * 
      * @param ssoEnabled
-     *        Indicates if single-sign on is enabled for the directory. For more
-     *        information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     *        Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     *        <a>DisableSso</a>.
      */
 
     public void setSsoEnabled(Boolean ssoEnabled) {
@@ -1139,12 +1065,12 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if single-sign on is enabled for the directory. For more
-     * information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     * Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     * <a>DisableSso</a>.
      * </p>
      * 
-     * @return Indicates if single-sign on is enabled for the directory. For
-     *         more information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     * @return Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     *         <a>DisableSso</a>.
      */
 
     public Boolean getSsoEnabled() {
@@ -1153,15 +1079,14 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if single-sign on is enabled for the directory. For more
-     * information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     * Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     * <a>DisableSso</a>.
      * </p>
      * 
      * @param ssoEnabled
-     *        Indicates if single-sign on is enabled for the directory. For more
-     *        information, see <a>EnableSso</a> and <a>DisableSso</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     *        <a>DisableSso</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DirectoryDescription withSsoEnabled(Boolean ssoEnabled) {
@@ -1171,12 +1096,12 @@ public class DirectoryDescription implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if single-sign on is enabled for the directory. For more
-     * information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     * Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     * <a>DisableSso</a>.
      * </p>
      * 
-     * @return Indicates if single-sign on is enabled for the directory. For
-     *         more information, see <a>EnableSso</a> and <a>DisableSso</a>.
+     * @return Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and
+     *         <a>DisableSso</a>.
      */
 
     public Boolean isSsoEnabled() {
@@ -1184,8 +1109,7 @@ public class DirectoryDescription implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -1196,42 +1120,41 @@ public class DirectoryDescription implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDirectoryId() != null)
-            sb.append("DirectoryId: " + getDirectoryId() + ",");
+            sb.append("DirectoryId: ").append(getDirectoryId()).append(",");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getShortName() != null)
-            sb.append("ShortName: " + getShortName() + ",");
+            sb.append("ShortName: ").append(getShortName()).append(",");
         if (getSize() != null)
-            sb.append("Size: " + getSize() + ",");
+            sb.append("Size: ").append(getSize()).append(",");
         if (getAlias() != null)
-            sb.append("Alias: " + getAlias() + ",");
+            sb.append("Alias: ").append(getAlias()).append(",");
         if (getAccessUrl() != null)
-            sb.append("AccessUrl: " + getAccessUrl() + ",");
+            sb.append("AccessUrl: ").append(getAccessUrl()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getDnsIpAddrs() != null)
-            sb.append("DnsIpAddrs: " + getDnsIpAddrs() + ",");
+            sb.append("DnsIpAddrs: ").append(getDnsIpAddrs()).append(",");
         if (getStage() != null)
-            sb.append("Stage: " + getStage() + ",");
+            sb.append("Stage: ").append(getStage()).append(",");
         if (getLaunchTime() != null)
-            sb.append("LaunchTime: " + getLaunchTime() + ",");
+            sb.append("LaunchTime: ").append(getLaunchTime()).append(",");
         if (getStageLastUpdatedDateTime() != null)
-            sb.append("StageLastUpdatedDateTime: "
-                    + getStageLastUpdatedDateTime() + ",");
+            sb.append("StageLastUpdatedDateTime: ").append(getStageLastUpdatedDateTime()).append(",");
         if (getType() != null)
-            sb.append("Type: " + getType() + ",");
+            sb.append("Type: ").append(getType()).append(",");
         if (getVpcSettings() != null)
-            sb.append("VpcSettings: " + getVpcSettings() + ",");
+            sb.append("VpcSettings: ").append(getVpcSettings()).append(",");
         if (getConnectSettings() != null)
-            sb.append("ConnectSettings: " + getConnectSettings() + ",");
+            sb.append("ConnectSettings: ").append(getConnectSettings()).append(",");
         if (getRadiusSettings() != null)
-            sb.append("RadiusSettings: " + getRadiusSettings() + ",");
+            sb.append("RadiusSettings: ").append(getRadiusSettings()).append(",");
         if (getRadiusStatus() != null)
-            sb.append("RadiusStatus: " + getRadiusStatus() + ",");
+            sb.append("RadiusStatus: ").append(getRadiusStatus()).append(",");
         if (getStageReason() != null)
-            sb.append("StageReason: " + getStageReason() + ",");
+            sb.append("StageReason: ").append(getStageReason()).append(",");
         if (getSsoEnabled() != null)
-            sb.append("SsoEnabled: " + getSsoEnabled());
+            sb.append("SsoEnabled: ").append(getSsoEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -1248,97 +1171,75 @@ public class DirectoryDescription implements Serializable, Cloneable {
         DirectoryDescription other = (DirectoryDescription) obj;
         if (other.getDirectoryId() == null ^ this.getDirectoryId() == null)
             return false;
-        if (other.getDirectoryId() != null
-                && other.getDirectoryId().equals(this.getDirectoryId()) == false)
+        if (other.getDirectoryId() != null && other.getDirectoryId().equals(this.getDirectoryId()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getShortName() == null ^ this.getShortName() == null)
             return false;
-        if (other.getShortName() != null
-                && other.getShortName().equals(this.getShortName()) == false)
+        if (other.getShortName() != null && other.getShortName().equals(this.getShortName()) == false)
             return false;
         if (other.getSize() == null ^ this.getSize() == null)
             return false;
-        if (other.getSize() != null
-                && other.getSize().equals(this.getSize()) == false)
+        if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
             return false;
         if (other.getAlias() == null ^ this.getAlias() == null)
             return false;
-        if (other.getAlias() != null
-                && other.getAlias().equals(this.getAlias()) == false)
+        if (other.getAlias() != null && other.getAlias().equals(this.getAlias()) == false)
             return false;
         if (other.getAccessUrl() == null ^ this.getAccessUrl() == null)
             return false;
-        if (other.getAccessUrl() != null
-                && other.getAccessUrl().equals(this.getAccessUrl()) == false)
+        if (other.getAccessUrl() != null && other.getAccessUrl().equals(this.getAccessUrl()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getDnsIpAddrs() == null ^ this.getDnsIpAddrs() == null)
             return false;
-        if (other.getDnsIpAddrs() != null
-                && other.getDnsIpAddrs().equals(this.getDnsIpAddrs()) == false)
+        if (other.getDnsIpAddrs() != null && other.getDnsIpAddrs().equals(this.getDnsIpAddrs()) == false)
             return false;
         if (other.getStage() == null ^ this.getStage() == null)
             return false;
-        if (other.getStage() != null
-                && other.getStage().equals(this.getStage()) == false)
+        if (other.getStage() != null && other.getStage().equals(this.getStage()) == false)
             return false;
         if (other.getLaunchTime() == null ^ this.getLaunchTime() == null)
             return false;
-        if (other.getLaunchTime() != null
-                && other.getLaunchTime().equals(this.getLaunchTime()) == false)
+        if (other.getLaunchTime() != null && other.getLaunchTime().equals(this.getLaunchTime()) == false)
             return false;
-        if (other.getStageLastUpdatedDateTime() == null
-                ^ this.getStageLastUpdatedDateTime() == null)
+        if (other.getStageLastUpdatedDateTime() == null ^ this.getStageLastUpdatedDateTime() == null)
             return false;
-        if (other.getStageLastUpdatedDateTime() != null
-                && other.getStageLastUpdatedDateTime().equals(
-                        this.getStageLastUpdatedDateTime()) == false)
+        if (other.getStageLastUpdatedDateTime() != null && other.getStageLastUpdatedDateTime().equals(this.getStageLastUpdatedDateTime()) == false)
             return false;
         if (other.getType() == null ^ this.getType() == null)
             return false;
-        if (other.getType() != null
-                && other.getType().equals(this.getType()) == false)
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
             return false;
         if (other.getVpcSettings() == null ^ this.getVpcSettings() == null)
             return false;
-        if (other.getVpcSettings() != null
-                && other.getVpcSettings().equals(this.getVpcSettings()) == false)
+        if (other.getVpcSettings() != null && other.getVpcSettings().equals(this.getVpcSettings()) == false)
             return false;
-        if (other.getConnectSettings() == null
-                ^ this.getConnectSettings() == null)
+        if (other.getConnectSettings() == null ^ this.getConnectSettings() == null)
             return false;
-        if (other.getConnectSettings() != null
-                && other.getConnectSettings().equals(this.getConnectSettings()) == false)
+        if (other.getConnectSettings() != null && other.getConnectSettings().equals(this.getConnectSettings()) == false)
             return false;
-        if (other.getRadiusSettings() == null
-                ^ this.getRadiusSettings() == null)
+        if (other.getRadiusSettings() == null ^ this.getRadiusSettings() == null)
             return false;
-        if (other.getRadiusSettings() != null
-                && other.getRadiusSettings().equals(this.getRadiusSettings()) == false)
+        if (other.getRadiusSettings() != null && other.getRadiusSettings().equals(this.getRadiusSettings()) == false)
             return false;
         if (other.getRadiusStatus() == null ^ this.getRadiusStatus() == null)
             return false;
-        if (other.getRadiusStatus() != null
-                && other.getRadiusStatus().equals(this.getRadiusStatus()) == false)
+        if (other.getRadiusStatus() != null && other.getRadiusStatus().equals(this.getRadiusStatus()) == false)
             return false;
         if (other.getStageReason() == null ^ this.getStageReason() == null)
             return false;
-        if (other.getStageReason() != null
-                && other.getStageReason().equals(this.getStageReason()) == false)
+        if (other.getStageReason() != null && other.getStageReason().equals(this.getStageReason()) == false)
             return false;
         if (other.getSsoEnabled() == null ^ this.getSsoEnabled() == null)
             return false;
-        if (other.getSsoEnabled() != null
-                && other.getSsoEnabled().equals(this.getSsoEnabled()) == false)
+        if (other.getSsoEnabled() != null && other.getSsoEnabled().equals(this.getSsoEnabled()) == false)
             return false;
         return true;
     }
@@ -1348,54 +1249,24 @@ public class DirectoryDescription implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDirectoryId() == null) ? 0 : getDirectoryId().hashCode());
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime * hashCode
-                + ((getShortName() == null) ? 0 : getShortName().hashCode());
-        hashCode = prime * hashCode
-                + ((getSize() == null) ? 0 : getSize().hashCode());
-        hashCode = prime * hashCode
-                + ((getAlias() == null) ? 0 : getAlias().hashCode());
-        hashCode = prime * hashCode
-                + ((getAccessUrl() == null) ? 0 : getAccessUrl().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getDnsIpAddrs() == null) ? 0 : getDnsIpAddrs().hashCode());
-        hashCode = prime * hashCode
-                + ((getStage() == null) ? 0 : getStage().hashCode());
-        hashCode = prime * hashCode
-                + ((getLaunchTime() == null) ? 0 : getLaunchTime().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStageLastUpdatedDateTime() == null) ? 0
-                        : getStageLastUpdatedDateTime().hashCode());
-        hashCode = prime * hashCode
-                + ((getType() == null) ? 0 : getType().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getVpcSettings() == null) ? 0 : getVpcSettings().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getConnectSettings() == null) ? 0 : getConnectSettings()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRadiusSettings() == null) ? 0 : getRadiusSettings()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getRadiusStatus() == null) ? 0 : getRadiusStatus()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStageReason() == null) ? 0 : getStageReason().hashCode());
-        hashCode = prime * hashCode
-                + ((getSsoEnabled() == null) ? 0 : getSsoEnabled().hashCode());
+        hashCode = prime * hashCode + ((getDirectoryId() == null) ? 0 : getDirectoryId().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getShortName() == null) ? 0 : getShortName().hashCode());
+        hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
+        hashCode = prime * hashCode + ((getAlias() == null) ? 0 : getAlias().hashCode());
+        hashCode = prime * hashCode + ((getAccessUrl() == null) ? 0 : getAccessUrl().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getDnsIpAddrs() == null) ? 0 : getDnsIpAddrs().hashCode());
+        hashCode = prime * hashCode + ((getStage() == null) ? 0 : getStage().hashCode());
+        hashCode = prime * hashCode + ((getLaunchTime() == null) ? 0 : getLaunchTime().hashCode());
+        hashCode = prime * hashCode + ((getStageLastUpdatedDateTime() == null) ? 0 : getStageLastUpdatedDateTime().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getVpcSettings() == null) ? 0 : getVpcSettings().hashCode());
+        hashCode = prime * hashCode + ((getConnectSettings() == null) ? 0 : getConnectSettings().hashCode());
+        hashCode = prime * hashCode + ((getRadiusSettings() == null) ? 0 : getRadiusSettings().hashCode());
+        hashCode = prime * hashCode + ((getRadiusStatus() == null) ? 0 : getRadiusStatus().hashCode());
+        hashCode = prime * hashCode + ((getStageReason() == null) ? 0 : getStageReason().hashCode());
+        hashCode = prime * hashCode + ((getSsoEnabled() == null) ? 0 : getSsoEnabled().hashCode());
         return hashCode;
     }
 
@@ -1404,9 +1275,13 @@ public class DirectoryDescription implements Serializable, Cloneable {
         try {
             return (DirectoryDescription) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.directory.model.transform.DirectoryDescriptionMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

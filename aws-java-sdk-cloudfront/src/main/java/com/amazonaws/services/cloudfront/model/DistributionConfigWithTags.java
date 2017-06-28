@@ -1,37 +1,51 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
- * A distribution Configuration and a list of tags to be associated with the
- * distribution.
+ * <p>
+ * A distribution Configuration and a list of tags to be associated with the distribution.
+ * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DistributionConfigWithTags"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DistributionConfigWithTags implements Serializable, Cloneable {
 
-    /** A distribution Configuration. */
+    /**
+     * <p>
+     * A distribution configuration.
+     * </p>
+     */
     private DistributionConfig distributionConfig;
-    /** A complex type that contains zero or more Tag elements. */
+    /**
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
+     */
     private Tags tags;
 
     /**
-     * A distribution Configuration.
+     * <p>
+     * A distribution configuration.
+     * </p>
      * 
      * @param distributionConfig
-     *        A distribution Configuration.
+     *        A distribution configuration.
      */
 
     public void setDistributionConfig(DistributionConfig distributionConfig) {
@@ -39,9 +53,11 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
     }
 
     /**
-     * A distribution Configuration.
+     * <p>
+     * A distribution configuration.
+     * </p>
      * 
-     * @return A distribution Configuration.
+     * @return A distribution configuration.
      */
 
     public DistributionConfig getDistributionConfig() {
@@ -49,25 +65,27 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
     }
 
     /**
-     * A distribution Configuration.
+     * <p>
+     * A distribution configuration.
+     * </p>
      * 
      * @param distributionConfig
-     *        A distribution Configuration.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A distribution configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public DistributionConfigWithTags withDistributionConfig(
-            DistributionConfig distributionConfig) {
+    public DistributionConfigWithTags withDistributionConfig(DistributionConfig distributionConfig) {
         setDistributionConfig(distributionConfig);
         return this;
     }
 
     /**
-     * A complex type that contains zero or more Tag elements.
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
      * 
      * @param tags
-     *        A complex type that contains zero or more Tag elements.
+     *        A complex type that contains zero or more <code>Tag</code> elements.
      */
 
     public void setTags(Tags tags) {
@@ -75,9 +93,11 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that contains zero or more Tag elements.
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
      * 
-     * @return A complex type that contains zero or more Tag elements.
+     * @return A complex type that contains zero or more <code>Tag</code> elements.
      */
 
     public Tags getTags() {
@@ -85,12 +105,13 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
     }
 
     /**
-     * A complex type that contains zero or more Tag elements.
+     * <p>
+     * A complex type that contains zero or more <code>Tag</code> elements.
+     * </p>
      * 
      * @param tags
-     *        A complex type that contains zero or more Tag elements.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A complex type that contains zero or more <code>Tag</code> elements.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DistributionConfigWithTags withTags(Tags tags) {
@@ -99,8 +120,7 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -111,9 +131,9 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDistributionConfig() != null)
-            sb.append("DistributionConfig: " + getDistributionConfig() + ",");
+            sb.append("DistributionConfig: ").append(getDistributionConfig()).append(",");
         if (getTags() != null)
-            sb.append("Tags: " + getTags());
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -128,17 +148,13 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
         if (obj instanceof DistributionConfigWithTags == false)
             return false;
         DistributionConfigWithTags other = (DistributionConfigWithTags) obj;
-        if (other.getDistributionConfig() == null
-                ^ this.getDistributionConfig() == null)
+        if (other.getDistributionConfig() == null ^ this.getDistributionConfig() == null)
             return false;
-        if (other.getDistributionConfig() != null
-                && other.getDistributionConfig().equals(
-                        this.getDistributionConfig()) == false)
+        if (other.getDistributionConfig() != null && other.getDistributionConfig().equals(this.getDistributionConfig()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
-        if (other.getTags() != null
-                && other.getTags().equals(this.getTags()) == false)
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -148,12 +164,8 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDistributionConfig() == null) ? 0
-                        : getDistributionConfig().hashCode());
-        hashCode = prime * hashCode
-                + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getDistributionConfig() == null) ? 0 : getDistributionConfig().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 
@@ -162,9 +174,8 @@ public class DistributionConfigWithTags implements Serializable, Cloneable {
         try {
             return (DistributionConfigWithTags) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

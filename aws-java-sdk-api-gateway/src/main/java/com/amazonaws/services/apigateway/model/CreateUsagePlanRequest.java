@@ -1,31 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * The POST request to create a usage plan with the name, description, throttle
- * limits and quota limits, as well as the associated API stages, specified in
- * the payload.
+ * The POST request to create a usage plan with the name, description, throttle limits and quota limits, as well as the
+ * associated API stages, specified in the payload.
  * </p>
  */
-public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateUsagePlanRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -90,8 +89,7 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
      * 
      * @param name
      *        The name of the usage plan.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateUsagePlanRequest withName(String name) {
@@ -131,8 +129,7 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
      * 
      * @param description
      *        The description of the usage plan.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateUsagePlanRequest withDescription(String description) {
@@ -175,16 +172,14 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
      * The associated API stages of the usage plan.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setApiStages(java.util.Collection)} or
-     * {@link #withApiStages(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setApiStages(java.util.Collection)} or {@link #withApiStages(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param apiStages
      *        The associated API stages of the usage plan.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateUsagePlanRequest withApiStages(ApiStage... apiStages) {
@@ -204,12 +199,10 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
      * 
      * @param apiStages
      *        The associated API stages of the usage plan.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateUsagePlanRequest withApiStages(
-            java.util.Collection<ApiStage> apiStages) {
+    public CreateUsagePlanRequest withApiStages(java.util.Collection<ApiStage> apiStages) {
         setApiStages(apiStages);
         return this;
     }
@@ -246,8 +239,7 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
      * 
      * @param throttle
      *        The throttling limits of the usage plan.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateUsagePlanRequest withThrottle(ThrottleSettings throttle) {
@@ -287,8 +279,7 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
      * 
      * @param quota
      *        The quota of the usage plan.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateUsagePlanRequest withQuota(QuotaSettings quota) {
@@ -297,8 +288,7 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -309,15 +299,15 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getApiStages() != null)
-            sb.append("ApiStages: " + getApiStages() + ",");
+            sb.append("ApiStages: ").append(getApiStages()).append(",");
         if (getThrottle() != null)
-            sb.append("Throttle: " + getThrottle() + ",");
+            sb.append("Throttle: ").append(getThrottle()).append(",");
         if (getQuota() != null)
-            sb.append("Quota: " + getQuota());
+            sb.append("Quota: ").append(getQuota());
         sb.append("}");
         return sb.toString();
     }
@@ -334,28 +324,23 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
         CreateUsagePlanRequest other = (CreateUsagePlanRequest) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getApiStages() == null ^ this.getApiStages() == null)
             return false;
-        if (other.getApiStages() != null
-                && other.getApiStages().equals(this.getApiStages()) == false)
+        if (other.getApiStages() != null && other.getApiStages().equals(this.getApiStages()) == false)
             return false;
         if (other.getThrottle() == null ^ this.getThrottle() == null)
             return false;
-        if (other.getThrottle() != null
-                && other.getThrottle().equals(this.getThrottle()) == false)
+        if (other.getThrottle() != null && other.getThrottle().equals(this.getThrottle()) == false)
             return false;
         if (other.getQuota() == null ^ this.getQuota() == null)
             return false;
-        if (other.getQuota() != null
-                && other.getQuota().equals(this.getQuota()) == false)
+        if (other.getQuota() != null && other.getQuota().equals(this.getQuota()) == false)
             return false;
         return true;
     }
@@ -365,17 +350,11 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime * hashCode
-                + ((getApiStages() == null) ? 0 : getApiStages().hashCode());
-        hashCode = prime * hashCode
-                + ((getThrottle() == null) ? 0 : getThrottle().hashCode());
-        hashCode = prime * hashCode
-                + ((getQuota() == null) ? 0 : getQuota().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getApiStages() == null) ? 0 : getApiStages().hashCode());
+        hashCode = prime * hashCode + ((getThrottle() == null) ? 0 : getThrottle().hashCode());
+        hashCode = prime * hashCode + ((getQuota() == null) ? 0 : getQuota().hashCode());
         return hashCode;
     }
 
@@ -383,4 +362,5 @@ public class CreateUsagePlanRequest extends AmazonWebServiceRequest implements
     public CreateUsagePlanRequest clone() {
         return (CreateUsagePlanRequest) super.clone();
     }
+
 }

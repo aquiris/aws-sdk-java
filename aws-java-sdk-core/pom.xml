@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-pom</artifactId>
-    <version>1.11.31</version>
+    <version>1.11.157-SNAPSHOT</version>
   </parent>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-core</artifactId>
   <name>AWS SDK for Java - Core</name>
-  <description>The AWS SDK for Java - Core module holds the classes that is used by the individual service clients to interact with Amazon Web Services. Users need to depend on aws-java-sdk artifact for accessing individual client classes.</description>
+  <description>The AWS SDK for Java - Core module holds the classes that are used by the individual service clients to interact with Amazon Web Services. Users need to depend on aws-java-sdk artifact for accessing individual client classes.</description>
   <url>https://aws.amazon.com/sdkforjava</url>
   <dependencies>
     <dependency>
@@ -22,6 +22,11 @@
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
       <version>${httpcomponents.httpclient.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.ion</groupId>
+      <artifactId>ion-java</artifactId>
+      <version>${ion.java.version}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -90,6 +95,12 @@
       <version>${equalsverifier.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.unitils</groupId>
+      <artifactId>unitils-core</artifactId>
+      <version>${unitils.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -100,6 +111,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration combine.self="override">
+            <!-- We don't want to exclude transform package for core -->
+            <excludePackageNames></excludePackageNames>
+            <minmemory>128m</minmemory>
+            <maxmemory>1024m</maxmemory>
+        </configuration>
       </plugin>
     </plugins>
   </build>

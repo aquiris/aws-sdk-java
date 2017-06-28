@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for ModifyRules.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyRule" target="_top">AWS
+ *      API Documentation</a>
  */
-public class ModifyRuleRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ModifyRuleRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -76,8 +76,7 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
      * 
      * @param ruleArn
      *        The Amazon Resource Name (ARN) of the rule.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ModifyRuleRequest withRuleArn(String ruleArn) {
@@ -120,22 +119,19 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
      * The conditions.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setConditions(java.util.Collection)} or
-     * {@link #withConditions(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setConditions(java.util.Collection)} or {@link #withConditions(java.util.Collection)} if you want to
+     * override the existing values.
      * </p>
      * 
      * @param conditions
      *        The conditions.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ModifyRuleRequest withConditions(RuleCondition... conditions) {
         if (this.conditions == null) {
-            setConditions(new java.util.ArrayList<RuleCondition>(
-                    conditions.length));
+            setConditions(new java.util.ArrayList<RuleCondition>(conditions.length));
         }
         for (RuleCondition ele : conditions) {
             this.conditions.add(ele);
@@ -150,12 +146,10 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
      * 
      * @param conditions
      *        The conditions.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ModifyRuleRequest withConditions(
-            java.util.Collection<RuleCondition> conditions) {
+    public ModifyRuleRequest withConditions(java.util.Collection<RuleCondition> conditions) {
         setConditions(conditions);
         return this;
     }
@@ -195,16 +189,14 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
      * The actions.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setActions(java.util.Collection)} or
-     * {@link #withActions(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setActions(java.util.Collection)} or {@link #withActions(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param actions
      *        The actions.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ModifyRuleRequest withActions(Action... actions) {
@@ -224,8 +216,7 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
      * 
      * @param actions
      *        The actions.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ModifyRuleRequest withActions(java.util.Collection<Action> actions) {
@@ -234,8 +225,7 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -246,11 +236,11 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRuleArn() != null)
-            sb.append("RuleArn: " + getRuleArn() + ",");
+            sb.append("RuleArn: ").append(getRuleArn()).append(",");
         if (getConditions() != null)
-            sb.append("Conditions: " + getConditions() + ",");
+            sb.append("Conditions: ").append(getConditions()).append(",");
         if (getActions() != null)
-            sb.append("Actions: " + getActions());
+            sb.append("Actions: ").append(getActions());
         sb.append("}");
         return sb.toString();
     }
@@ -267,18 +257,15 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
         ModifyRuleRequest other = (ModifyRuleRequest) obj;
         if (other.getRuleArn() == null ^ this.getRuleArn() == null)
             return false;
-        if (other.getRuleArn() != null
-                && other.getRuleArn().equals(this.getRuleArn()) == false)
+        if (other.getRuleArn() != null && other.getRuleArn().equals(this.getRuleArn()) == false)
             return false;
         if (other.getConditions() == null ^ this.getConditions() == null)
             return false;
-        if (other.getConditions() != null
-                && other.getConditions().equals(this.getConditions()) == false)
+        if (other.getConditions() != null && other.getConditions().equals(this.getConditions()) == false)
             return false;
         if (other.getActions() == null ^ this.getActions() == null)
             return false;
-        if (other.getActions() != null
-                && other.getActions().equals(this.getActions()) == false)
+        if (other.getActions() != null && other.getActions().equals(this.getActions()) == false)
             return false;
         return true;
     }
@@ -288,12 +275,9 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRuleArn() == null) ? 0 : getRuleArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getConditions() == null) ? 0 : getConditions().hashCode());
-        hashCode = prime * hashCode
-                + ((getActions() == null) ? 0 : getActions().hashCode());
+        hashCode = prime * hashCode + ((getRuleArn() == null) ? 0 : getRuleArn().hashCode());
+        hashCode = prime * hashCode + ((getConditions() == null) ? 0 : getConditions().hashCode());
+        hashCode = prime * hashCode + ((getActions() == null) ? 0 : getActions().hashCode());
         return hashCode;
     }
 
@@ -301,4 +285,5 @@ public class ModifyRuleRequest extends AmazonWebServiceRequest implements
     public ModifyRuleRequest clone() {
         return (ModifyRuleRequest) super.clone();
     }
+
 }

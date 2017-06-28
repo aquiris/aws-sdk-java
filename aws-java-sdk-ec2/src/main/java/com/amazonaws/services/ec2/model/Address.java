@@ -1,26 +1,28 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Describes an Elastic IP address.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Address" target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Address implements Serializable, Cloneable {
 
     /**
@@ -43,16 +45,14 @@ public class Address implements Serializable, Cloneable {
     private String allocationId;
     /**
      * <p>
-     * The ID representing the association of the address with an instance in a
-     * VPC.
+     * The ID representing the association of the address with an instance in a VPC.
      * </p>
      */
     private String associationId;
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      */
     private String domain;
@@ -81,8 +81,7 @@ public class Address implements Serializable, Cloneable {
      * </p>
      * 
      * @param instanceId
-     *        The ID of the instance that the address is associated with (if
-     *        any).
+     *        The ID of the instance that the address is associated with (if any).
      */
 
     public void setInstanceId(String instanceId) {
@@ -94,8 +93,7 @@ public class Address implements Serializable, Cloneable {
      * The ID of the instance that the address is associated with (if any).
      * </p>
      * 
-     * @return The ID of the instance that the address is associated with (if
-     *         any).
+     * @return The ID of the instance that the address is associated with (if any).
      */
 
     public String getInstanceId() {
@@ -108,10 +106,8 @@ public class Address implements Serializable, Cloneable {
      * </p>
      * 
      * @param instanceId
-     *        The ID of the instance that the address is associated with (if
-     *        any).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID of the instance that the address is associated with (if any).
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Address withInstanceId(String instanceId) {
@@ -151,8 +147,7 @@ public class Address implements Serializable, Cloneable {
      * 
      * @param publicIp
      *        The Elastic IP address.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Address withPublicIp(String publicIp) {
@@ -166,8 +161,7 @@ public class Address implements Serializable, Cloneable {
      * </p>
      * 
      * @param allocationId
-     *        The ID representing the allocation of the address for use with
-     *        EC2-VPC.
+     *        The ID representing the allocation of the address for use with EC2-VPC.
      */
 
     public void setAllocationId(String allocationId) {
@@ -179,8 +173,7 @@ public class Address implements Serializable, Cloneable {
      * The ID representing the allocation of the address for use with EC2-VPC.
      * </p>
      * 
-     * @return The ID representing the allocation of the address for use with
-     *         EC2-VPC.
+     * @return The ID representing the allocation of the address for use with EC2-VPC.
      */
 
     public String getAllocationId() {
@@ -193,10 +186,8 @@ public class Address implements Serializable, Cloneable {
      * </p>
      * 
      * @param allocationId
-     *        The ID representing the allocation of the address for use with
-     *        EC2-VPC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID representing the allocation of the address for use with EC2-VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Address withAllocationId(String allocationId) {
@@ -206,13 +197,11 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID representing the association of the address with an instance in a
-     * VPC.
+     * The ID representing the association of the address with an instance in a VPC.
      * </p>
      * 
      * @param associationId
-     *        The ID representing the association of the address with an
-     *        instance in a VPC.
+     *        The ID representing the association of the address with an instance in a VPC.
      */
 
     public void setAssociationId(String associationId) {
@@ -221,12 +210,10 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID representing the association of the address with an instance in a
-     * VPC.
+     * The ID representing the association of the address with an instance in a VPC.
      * </p>
      * 
-     * @return The ID representing the association of the address with an
-     *         instance in a VPC.
+     * @return The ID representing the association of the address with an instance in a VPC.
      */
 
     public String getAssociationId() {
@@ -235,15 +222,12 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID representing the association of the address with an instance in a
-     * VPC.
+     * The ID representing the association of the address with an instance in a VPC.
      * </p>
      * 
      * @param associationId
-     *        The ID representing the association of the address with an
-     *        instance in a VPC.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID representing the association of the address with an instance in a VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Address withAssociationId(String associationId) {
@@ -253,15 +237,13 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
      * @see DomainType
      */
 
@@ -271,14 +253,12 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
-     * @return Indicates whether this Elastic IP address is for use with
-     *         instances in EC2-Classic (<code>standard</code>) or instances in
-     *         a VPC (<code>vpc</code>).
+     * @return Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>
+     *         ) or instances in a VPC (<code>vpc</code>).
      * @see DomainType
      */
 
@@ -288,17 +268,14 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DomainType
      */
 
@@ -309,15 +286,13 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
      * @see DomainType
      */
 
@@ -327,17 +302,14 @@ public class Address implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether this Elastic IP address is for use with instances in
-     * EC2-Classic (<code>standard</code>) or instances in a VPC (
-     * <code>vpc</code>).
+     * Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>) or
+     * instances in a VPC (<code>vpc</code>).
      * </p>
      * 
      * @param domain
-     *        Indicates whether this Elastic IP address is for use with
-     *        instances in EC2-Classic (<code>standard</code>) or instances in a
-     *        VPC (<code>vpc</code>).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        Indicates whether this Elastic IP address is for use with instances in EC2-Classic (<code>standard</code>)
+     *        or instances in a VPC (<code>vpc</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see DomainType
      */
 
@@ -378,8 +350,7 @@ public class Address implements Serializable, Cloneable {
      * 
      * @param networkInterfaceId
      *        The ID of the network interface.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Address withNetworkInterfaceId(String networkInterfaceId) {
@@ -419,8 +390,7 @@ public class Address implements Serializable, Cloneable {
      * 
      * @param networkInterfaceOwnerId
      *        The ID of the AWS account that owns the network interface.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Address withNetworkInterfaceOwnerId(String networkInterfaceOwnerId) {
@@ -460,8 +430,7 @@ public class Address implements Serializable, Cloneable {
      * 
      * @param privateIpAddress
      *        The private IP address associated with the Elastic IP address.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Address withPrivateIpAddress(String privateIpAddress) {
@@ -470,8 +439,7 @@ public class Address implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -482,22 +450,21 @@ public class Address implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInstanceId() != null)
-            sb.append("InstanceId: " + getInstanceId() + ",");
+            sb.append("InstanceId: ").append(getInstanceId()).append(",");
         if (getPublicIp() != null)
-            sb.append("PublicIp: " + getPublicIp() + ",");
+            sb.append("PublicIp: ").append(getPublicIp()).append(",");
         if (getAllocationId() != null)
-            sb.append("AllocationId: " + getAllocationId() + ",");
+            sb.append("AllocationId: ").append(getAllocationId()).append(",");
         if (getAssociationId() != null)
-            sb.append("AssociationId: " + getAssociationId() + ",");
+            sb.append("AssociationId: ").append(getAssociationId()).append(",");
         if (getDomain() != null)
-            sb.append("Domain: " + getDomain() + ",");
+            sb.append("Domain: ").append(getDomain()).append(",");
         if (getNetworkInterfaceId() != null)
-            sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+            sb.append("NetworkInterfaceId: ").append(getNetworkInterfaceId()).append(",");
         if (getNetworkInterfaceOwnerId() != null)
-            sb.append("NetworkInterfaceOwnerId: "
-                    + getNetworkInterfaceOwnerId() + ",");
+            sb.append("NetworkInterfaceOwnerId: ").append(getNetworkInterfaceOwnerId()).append(",");
         if (getPrivateIpAddress() != null)
-            sb.append("PrivateIpAddress: " + getPrivateIpAddress());
+            sb.append("PrivateIpAddress: ").append(getPrivateIpAddress());
         sb.append("}");
         return sb.toString();
     }
@@ -514,49 +481,35 @@ public class Address implements Serializable, Cloneable {
         Address other = (Address) obj;
         if (other.getInstanceId() == null ^ this.getInstanceId() == null)
             return false;
-        if (other.getInstanceId() != null
-                && other.getInstanceId().equals(this.getInstanceId()) == false)
+        if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
             return false;
         if (other.getPublicIp() == null ^ this.getPublicIp() == null)
             return false;
-        if (other.getPublicIp() != null
-                && other.getPublicIp().equals(this.getPublicIp()) == false)
+        if (other.getPublicIp() != null && other.getPublicIp().equals(this.getPublicIp()) == false)
             return false;
         if (other.getAllocationId() == null ^ this.getAllocationId() == null)
             return false;
-        if (other.getAllocationId() != null
-                && other.getAllocationId().equals(this.getAllocationId()) == false)
+        if (other.getAllocationId() != null && other.getAllocationId().equals(this.getAllocationId()) == false)
             return false;
         if (other.getAssociationId() == null ^ this.getAssociationId() == null)
             return false;
-        if (other.getAssociationId() != null
-                && other.getAssociationId().equals(this.getAssociationId()) == false)
+        if (other.getAssociationId() != null && other.getAssociationId().equals(this.getAssociationId()) == false)
             return false;
         if (other.getDomain() == null ^ this.getDomain() == null)
             return false;
-        if (other.getDomain() != null
-                && other.getDomain().equals(this.getDomain()) == false)
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
             return false;
-        if (other.getNetworkInterfaceId() == null
-                ^ this.getNetworkInterfaceId() == null)
+        if (other.getNetworkInterfaceId() == null ^ this.getNetworkInterfaceId() == null)
             return false;
-        if (other.getNetworkInterfaceId() != null
-                && other.getNetworkInterfaceId().equals(
-                        this.getNetworkInterfaceId()) == false)
+        if (other.getNetworkInterfaceId() != null && other.getNetworkInterfaceId().equals(this.getNetworkInterfaceId()) == false)
             return false;
-        if (other.getNetworkInterfaceOwnerId() == null
-                ^ this.getNetworkInterfaceOwnerId() == null)
+        if (other.getNetworkInterfaceOwnerId() == null ^ this.getNetworkInterfaceOwnerId() == null)
             return false;
-        if (other.getNetworkInterfaceOwnerId() != null
-                && other.getNetworkInterfaceOwnerId().equals(
-                        this.getNetworkInterfaceOwnerId()) == false)
+        if (other.getNetworkInterfaceOwnerId() != null && other.getNetworkInterfaceOwnerId().equals(this.getNetworkInterfaceOwnerId()) == false)
             return false;
-        if (other.getPrivateIpAddress() == null
-                ^ this.getPrivateIpAddress() == null)
+        if (other.getPrivateIpAddress() == null ^ this.getPrivateIpAddress() == null)
             return false;
-        if (other.getPrivateIpAddress() != null
-                && other.getPrivateIpAddress().equals(
-                        this.getPrivateIpAddress()) == false)
+        if (other.getPrivateIpAddress() != null && other.getPrivateIpAddress().equals(this.getPrivateIpAddress()) == false)
             return false;
         return true;
     }
@@ -566,32 +519,14 @@ public class Address implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
-        hashCode = prime * hashCode
-                + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAllocationId() == null) ? 0 : getAllocationId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getAssociationId() == null) ? 0 : getAssociationId()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getDomain() == null) ? 0 : getDomain().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNetworkInterfaceId() == null) ? 0
-                        : getNetworkInterfaceId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNetworkInterfaceOwnerId() == null) ? 0
-                        : getNetworkInterfaceOwnerId().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPrivateIpAddress() == null) ? 0 : getPrivateIpAddress()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
+        hashCode = prime * hashCode + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode());
+        hashCode = prime * hashCode + ((getAllocationId() == null) ? 0 : getAllocationId().hashCode());
+        hashCode = prime * hashCode + ((getAssociationId() == null) ? 0 : getAssociationId().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
+        hashCode = prime * hashCode + ((getNetworkInterfaceId() == null) ? 0 : getNetworkInterfaceId().hashCode());
+        hashCode = prime * hashCode + ((getNetworkInterfaceOwnerId() == null) ? 0 : getNetworkInterfaceOwnerId().hashCode());
+        hashCode = prime * hashCode + ((getPrivateIpAddress() == null) ? 0 : getPrivateIpAddress().hashCode());
         return hashCode;
     }
 
@@ -600,9 +535,8 @@ public class Address implements Serializable, Cloneable {
         try {
             return (Address) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

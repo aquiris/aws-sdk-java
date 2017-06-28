@@ -2,6 +2,8 @@ ${fileHeader}
 <#assign serviceAbbreviation = (metadata.serviceAbbreviation)!metadata.serviceFullName/>
 package ${metadata.packageName};
 
+import javax.annotation.Generated;
+
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 
@@ -12,11 +14,16 @@ import ${metadata.packageName}.waiters.${metadata.syncInterface}Waiters;
 
 /**
  * Interface for accessing ${serviceAbbreviation}.
+ * <p>
+ * <b>Note:</b> Do not directly implement this interface, new methods are added to it regularly. Extend from
+ * {@link ${metadata.packageName}.Abstract${metadata.syncInterface}} instead.
+ * </p>
 <#if metadata.documentation??>
  * <p>
  * ${metadata.documentation}
 </#if>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public interface ${metadata.syncInterface} {
 
     /**
@@ -27,6 +34,7 @@ public interface ${metadata.syncInterface} {
      */
     String ENDPOINT_PREFIX = "${metadata.endpointPrefix}";
 
+<#if customizationConfig.emitClientMutationMethods() >
     /**
      * Overrides the default endpoint for this client<#if metadata.defaultEndpoint?has_content> ("${metadata.defaultEndpoint}")</#if>.
      * Callers can use this method to control which AWS region they want to work with.
@@ -51,14 +59,19 @@ public interface ${metadata.syncInterface} {
      *            including the protocol<#if metadata.defaultEndpoint?has_content> (ex: "${metadata.defaultEndpoint}")</#if> of
      *            the region specific AWS endpoint this client will communicate
      *            with.
+     * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for example:
+     * {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
      */
+    @Deprecated
     void setEndpoint(String endpoint);
-
+</#if>
   <#if shapes.Region?has_content>
     <#assign regionClassType="com.amazonaws.regions.Region" />
   <#else>
     <#assign regionClassType="Region" />
   </#if>
+
+<#if customizationConfig.emitClientMutationMethods() >
     /**
      * An alternative to {@link ${metadata.syncInterface}#setEndpoint(String)}, sets the
      * regional endpoint for this client's service calls. Callers can use this
@@ -82,8 +95,11 @@ public interface ${metadata.syncInterface} {
      * @see Region#getRegion(com.amazonaws.regions.Regions)
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      * @see ${regionClassType}#isServiceSupported(String)
+     * @deprecated use {@link AwsClientBuilder#setRegion(String)}
      */
+    @Deprecated
     void setRegion(${regionClassType} region);
+</#if>
 
   <#list operations?values as operationModel>
     <@InterfaceMethodForOperationMacro.content metadata operationModel />
@@ -126,4 +142,14 @@ public interface ${metadata.syncInterface} {
   <#if hasWaiters>
     ${metadata.syncInterface}Waiters waiters();
   </#if>
+
+    <#if customizationConfig.presignersFqcn??>
+    /**
+     * {@link ${customizationConfig.presignersFqcn}} contains extension methods for presigning certain requests. The
+     * presigner will use the endpoint and credentials currently configured in the client.
+     *
+     * @return Presigners utility object.
+     */
+    ${customizationConfig.presignersFqcn} presigners();
+    </#if>
 }

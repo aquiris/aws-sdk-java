@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Input structure for the ListJobs operation.
  */
-public class ListJobsRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListJobsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     private Integer maxJobs;
 
@@ -47,8 +47,7 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
 
     /**
      * @param maxJobs
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListJobsRequest withMaxJobs(Integer maxJobs) {
@@ -74,8 +73,7 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
 
     /**
      * @param marker
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListJobsRequest withMarker(String marker) {
@@ -101,8 +99,7 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
 
     /**
      * @param aPIVersion
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListJobsRequest withAPIVersion(String aPIVersion) {
@@ -111,8 +108,7 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -123,11 +119,11 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMaxJobs() != null)
-            sb.append("MaxJobs: " + getMaxJobs() + ",");
+            sb.append("MaxJobs: ").append(getMaxJobs()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: " + getMarker() + ",");
+            sb.append("Marker: ").append(getMarker()).append(",");
         if (getAPIVersion() != null)
-            sb.append("APIVersion: " + getAPIVersion());
+            sb.append("APIVersion: ").append(getAPIVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -144,18 +140,15 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
         ListJobsRequest other = (ListJobsRequest) obj;
         if (other.getMaxJobs() == null ^ this.getMaxJobs() == null)
             return false;
-        if (other.getMaxJobs() != null
-                && other.getMaxJobs().equals(this.getMaxJobs()) == false)
+        if (other.getMaxJobs() != null && other.getMaxJobs().equals(this.getMaxJobs()) == false)
             return false;
         if (other.getMarker() == null ^ this.getMarker() == null)
             return false;
-        if (other.getMarker() != null
-                && other.getMarker().equals(this.getMarker()) == false)
+        if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
         if (other.getAPIVersion() == null ^ this.getAPIVersion() == null)
             return false;
-        if (other.getAPIVersion() != null
-                && other.getAPIVersion().equals(this.getAPIVersion()) == false)
+        if (other.getAPIVersion() != null && other.getAPIVersion().equals(this.getAPIVersion()) == false)
             return false;
         return true;
     }
@@ -165,12 +158,9 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getMaxJobs() == null) ? 0 : getMaxJobs().hashCode());
-        hashCode = prime * hashCode
-                + ((getMarker() == null) ? 0 : getMarker().hashCode());
-        hashCode = prime * hashCode
-                + ((getAPIVersion() == null) ? 0 : getAPIVersion().hashCode());
+        hashCode = prime * hashCode + ((getMaxJobs() == null) ? 0 : getMaxJobs().hashCode());
+        hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getAPIVersion() == null) ? 0 : getAPIVersion().hashCode());
         return hashCode;
     }
 
@@ -178,4 +168,5 @@ public class ListJobsRequest extends AmazonWebServiceRequest implements
     public ListJobsRequest clone() {
         return (ListJobsRequest) super.clone();
     }
+
 }

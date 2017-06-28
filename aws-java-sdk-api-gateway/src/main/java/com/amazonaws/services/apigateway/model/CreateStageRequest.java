@@ -1,20 +1,20 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
@@ -22,13 +22,12 @@ import com.amazonaws.AmazonWebServiceRequest;
  * Requests Amazon API Gateway to create a <a>Stage</a> resource.
  * </p>
  */
-public class CreateStageRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a>
-     * resource to create.
+     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.
      * </p>
      */
     private String restApiId;
@@ -40,8 +39,7 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
     private String stageName;
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
-     * resource.
+     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.
      * </p>
      */
     private String deploymentId;
@@ -65,22 +63,25 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
     private String cacheClusterSize;
     /**
      * <p>
-     * A map that defines the stage variables for the new <a>Stage</a> resource.
-     * Variable names can have alphanumeric and underscore characters, and the
-     * values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
+     * A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric
+     * and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
      * </p>
      */
     private java.util.Map<String, String> variables;
+    /**
+     * <p>
+     * The version of the associated API documentation.
+     * </p>
+     */
+    private String documentationVersion;
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a>
-     * resource to create.
+     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.
      * </p>
      * 
      * @param restApiId
-     *        The identifier of the <a>RestApi</a> resource for the <a>Stage</a>
-     *        resource to create.
+     *        The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.
      */
 
     public void setRestApiId(String restApiId) {
@@ -89,12 +90,10 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a>
-     * resource to create.
+     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.
      * </p>
      * 
-     * @return The identifier of the <a>RestApi</a> resource for the
-     *         <a>Stage</a> resource to create.
+     * @return The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.
      */
 
     public String getRestApiId() {
@@ -103,15 +102,12 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a>
-     * resource to create.
+     * The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.
      * </p>
      * 
      * @param restApiId
-     *        The identifier of the <a>RestApi</a> resource for the <a>Stage</a>
-     *        resource to create.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStageRequest withRestApiId(String restApiId) {
@@ -151,8 +147,7 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
      * 
      * @param stageName
      *        The name for the <a>Stage</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStageRequest withStageName(String stageName) {
@@ -162,13 +157,11 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
-     * resource.
+     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.
      * </p>
      * 
      * @param deploymentId
-     *        The identifier of the <a>Deployment</a> resource for the
-     *        <a>Stage</a> resource.
+     *        The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.
      */
 
     public void setDeploymentId(String deploymentId) {
@@ -177,12 +170,10 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
-     * resource.
+     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.
      * </p>
      * 
-     * @return The identifier of the <a>Deployment</a> resource for the
-     *         <a>Stage</a> resource.
+     * @return The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.
      */
 
     public String getDeploymentId() {
@@ -191,15 +182,12 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
-     * resource.
+     * The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.
      * </p>
      * 
      * @param deploymentId
-     *        The identifier of the <a>Deployment</a> resource for the
-     *        <a>Stage</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStageRequest withDeploymentId(String deploymentId) {
@@ -239,8 +227,7 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
      * 
      * @param description
      *        The description of the <a>Stage</a> resource.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStageRequest withDescription(String description) {
@@ -280,12 +267,10 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
      * 
      * @param cacheClusterEnabled
      *        Whether cache clustering is enabled for the stage.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateStageRequest withCacheClusterEnabled(
-            Boolean cacheClusterEnabled) {
+    public CreateStageRequest withCacheClusterEnabled(Boolean cacheClusterEnabled) {
         setCacheClusterEnabled(cacheClusterEnabled);
         return this;
     }
@@ -334,8 +319,7 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
      * 
      * @param cacheClusterSize
      *        The stage's cache cluster size.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStageRequest withCacheClusterSize(String cacheClusterSize) {
@@ -345,14 +329,12 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A map that defines the stage variables for the new <a>Stage</a> resource.
-     * Variable names can have alphanumeric and underscore characters, and the
-     * values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
+     * A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric
+     * and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
      * </p>
      * 
-     * @return A map that defines the stage variables for the new <a>Stage</a>
-     *         resource. Variable names can have alphanumeric and underscore
-     *         characters, and the values must match
+     * @return A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have
+     *         alphanumeric and underscore characters, and the values must match
      *         <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
      */
 
@@ -362,16 +344,14 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A map that defines the stage variables for the new <a>Stage</a> resource.
-     * Variable names can have alphanumeric and underscore characters, and the
-     * values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
+     * A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric
+     * and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
      * </p>
      * 
      * @param variables
-     *        A map that defines the stage variables for the new <a>Stage</a>
-     *        resource. Variable names can have alphanumeric and underscore
-     *        characters, and the values must match
-     *        <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
+     *        A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have
+     *        alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>
+     *        .
      */
 
     public void setVariables(java.util.Map<String, String> variables) {
@@ -380,22 +360,18 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * A map that defines the stage variables for the new <a>Stage</a> resource.
-     * Variable names can have alphanumeric and underscore characters, and the
-     * values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
+     * A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric
+     * and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
      * </p>
      * 
      * @param variables
-     *        A map that defines the stage variables for the new <a>Stage</a>
-     *        resource. Variable names can have alphanumeric and underscore
-     *        characters, and the values must match
-     *        <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have
+     *        alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>
+     *        .
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public CreateStageRequest withVariables(
-            java.util.Map<String, String> variables) {
+    public CreateStageRequest withVariables(java.util.Map<String, String> variables) {
         setVariables(variables);
         return this;
     }
@@ -405,15 +381,15 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
             this.variables = new java.util.HashMap<String, String>();
         }
         if (this.variables.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.variables.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into Variables. &lt;p> Returns a reference
-     * to this object so that method calls can be chained together.
+     * Removes all the entries added into Variables.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStageRequest clearVariablesEntries() {
@@ -422,8 +398,47 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * The version of the associated API documentation.
+     * </p>
+     * 
+     * @param documentationVersion
+     *        The version of the associated API documentation.
+     */
+
+    public void setDocumentationVersion(String documentationVersion) {
+        this.documentationVersion = documentationVersion;
+    }
+
+    /**
+     * <p>
+     * The version of the associated API documentation.
+     * </p>
+     * 
+     * @return The version of the associated API documentation.
+     */
+
+    public String getDocumentationVersion() {
+        return this.documentationVersion;
+    }
+
+    /**
+     * <p>
+     * The version of the associated API documentation.
+     * </p>
+     * 
+     * @param documentationVersion
+     *        The version of the associated API documentation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateStageRequest withDocumentationVersion(String documentationVersion) {
+        setDocumentationVersion(documentationVersion);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -434,19 +449,21 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getStageName() != null)
-            sb.append("StageName: " + getStageName() + ",");
+            sb.append("StageName: ").append(getStageName()).append(",");
         if (getDeploymentId() != null)
-            sb.append("DeploymentId: " + getDeploymentId() + ",");
+            sb.append("DeploymentId: ").append(getDeploymentId()).append(",");
         if (getDescription() != null)
-            sb.append("Description: " + getDescription() + ",");
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getCacheClusterEnabled() != null)
-            sb.append("CacheClusterEnabled: " + getCacheClusterEnabled() + ",");
+            sb.append("CacheClusterEnabled: ").append(getCacheClusterEnabled()).append(",");
         if (getCacheClusterSize() != null)
-            sb.append("CacheClusterSize: " + getCacheClusterSize() + ",");
+            sb.append("CacheClusterSize: ").append(getCacheClusterSize()).append(",");
         if (getVariables() != null)
-            sb.append("Variables: " + getVariables());
+            sb.append("Variables: ").append(getVariables()).append(",");
+        if (getDocumentationVersion() != null)
+            sb.append("DocumentationVersion: ").append(getDocumentationVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -463,42 +480,35 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
         CreateStageRequest other = (CreateStageRequest) obj;
         if (other.getRestApiId() == null ^ this.getRestApiId() == null)
             return false;
-        if (other.getRestApiId() != null
-                && other.getRestApiId().equals(this.getRestApiId()) == false)
+        if (other.getRestApiId() != null && other.getRestApiId().equals(this.getRestApiId()) == false)
             return false;
         if (other.getStageName() == null ^ this.getStageName() == null)
             return false;
-        if (other.getStageName() != null
-                && other.getStageName().equals(this.getStageName()) == false)
+        if (other.getStageName() != null && other.getStageName().equals(this.getStageName()) == false)
             return false;
         if (other.getDeploymentId() == null ^ this.getDeploymentId() == null)
             return false;
-        if (other.getDeploymentId() != null
-                && other.getDeploymentId().equals(this.getDeploymentId()) == false)
+        if (other.getDeploymentId() != null && other.getDeploymentId().equals(this.getDeploymentId()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
-        if (other.getDescription() != null
-                && other.getDescription().equals(this.getDescription()) == false)
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
-        if (other.getCacheClusterEnabled() == null
-                ^ this.getCacheClusterEnabled() == null)
+        if (other.getCacheClusterEnabled() == null ^ this.getCacheClusterEnabled() == null)
             return false;
-        if (other.getCacheClusterEnabled() != null
-                && other.getCacheClusterEnabled().equals(
-                        this.getCacheClusterEnabled()) == false)
+        if (other.getCacheClusterEnabled() != null && other.getCacheClusterEnabled().equals(this.getCacheClusterEnabled()) == false)
             return false;
-        if (other.getCacheClusterSize() == null
-                ^ this.getCacheClusterSize() == null)
+        if (other.getCacheClusterSize() == null ^ this.getCacheClusterSize() == null)
             return false;
-        if (other.getCacheClusterSize() != null
-                && other.getCacheClusterSize().equals(
-                        this.getCacheClusterSize()) == false)
+        if (other.getCacheClusterSize() != null && other.getCacheClusterSize().equals(this.getCacheClusterSize()) == false)
             return false;
         if (other.getVariables() == null ^ this.getVariables() == null)
             return false;
-        if (other.getVariables() != null
-                && other.getVariables().equals(this.getVariables()) == false)
+        if (other.getVariables() != null && other.getVariables().equals(this.getVariables()) == false)
+            return false;
+        if (other.getDocumentationVersion() == null ^ this.getDocumentationVersion() == null)
+            return false;
+        if (other.getDocumentationVersion() != null && other.getDocumentationVersion().equals(this.getDocumentationVersion()) == false)
             return false;
         return true;
     }
@@ -508,27 +518,14 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getStageName() == null) ? 0 : getStageName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDeploymentId() == null) ? 0 : getDeploymentId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheClusterEnabled() == null) ? 0
-                        : getCacheClusterEnabled().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCacheClusterSize() == null) ? 0 : getCacheClusterSize()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getVariables() == null) ? 0 : getVariables().hashCode());
+        hashCode = prime * hashCode + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
+        hashCode = prime * hashCode + ((getStageName() == null) ? 0 : getStageName().hashCode());
+        hashCode = prime * hashCode + ((getDeploymentId() == null) ? 0 : getDeploymentId().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getCacheClusterEnabled() == null) ? 0 : getCacheClusterEnabled().hashCode());
+        hashCode = prime * hashCode + ((getCacheClusterSize() == null) ? 0 : getCacheClusterSize().hashCode());
+        hashCode = prime * hashCode + ((getVariables() == null) ? 0 : getVariables().hashCode());
+        hashCode = prime * hashCode + ((getDocumentationVersion() == null) ? 0 : getDocumentationVersion().hashCode());
         return hashCode;
     }
 
@@ -536,4 +533,5 @@ public class CreateStageRequest extends AmazonWebServiceRequest implements
     public CreateStageRequest clone() {
         return (CreateStageRequest) super.clone();
     }
+
 }

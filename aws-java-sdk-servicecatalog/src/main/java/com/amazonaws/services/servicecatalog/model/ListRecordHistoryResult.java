@@ -1,25 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.servicecatalog.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListRecordHistory" target="_top">AWS
+ *      API Documentation</a>
  */
-public class ListRecordHistoryResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListRecordHistoryResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -29,8 +31,8 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
     private java.util.List<RecordDetail> recordDetails;
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      */
     private String nextPageToken;
@@ -40,8 +42,7 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
      * A list of record detail objects, listed in reverse chronological order.
      * </p>
      * 
-     * @return A list of record detail objects, listed in reverse chronological
-     *         order.
+     * @return A list of record detail objects, listed in reverse chronological order.
      */
 
     public java.util.List<RecordDetail> getRecordDetails() {
@@ -54,19 +55,16 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordDetails
-     *        A list of record detail objects, listed in reverse chronological
-     *        order.
+     *        A list of record detail objects, listed in reverse chronological order.
      */
 
-    public void setRecordDetails(
-            java.util.Collection<RecordDetail> recordDetails) {
+    public void setRecordDetails(java.util.Collection<RecordDetail> recordDetails) {
         if (recordDetails == null) {
             this.recordDetails = null;
             return;
         }
 
-        this.recordDetails = new java.util.ArrayList<RecordDetail>(
-                recordDetails);
+        this.recordDetails = new java.util.ArrayList<RecordDetail>(recordDetails);
     }
 
     /**
@@ -74,24 +72,19 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
      * A list of record detail objects, listed in reverse chronological order.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setRecordDetails(java.util.Collection)} or
-     * {@link #withRecordDetails(java.util.Collection)} if you want to override
-     * the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setRecordDetails(java.util.Collection)} or {@link #withRecordDetails(java.util.Collection)} if you want
+     * to override the existing values.
      * </p>
      * 
      * @param recordDetails
-     *        A list of record detail objects, listed in reverse chronological
-     *        order.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of record detail objects, listed in reverse chronological order.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListRecordHistoryResult withRecordDetails(
-            RecordDetail... recordDetails) {
+    public ListRecordHistoryResult withRecordDetails(RecordDetail... recordDetails) {
         if (this.recordDetails == null) {
-            setRecordDetails(new java.util.ArrayList<RecordDetail>(
-                    recordDetails.length));
+            setRecordDetails(new java.util.ArrayList<RecordDetail>(recordDetails.length));
         }
         for (RecordDetail ele : recordDetails) {
             this.recordDetails.add(ele);
@@ -105,27 +98,24 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
      * </p>
      * 
      * @param recordDetails
-     *        A list of record detail objects, listed in reverse chronological
-     *        order.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A list of record detail objects, listed in reverse chronological order.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public ListRecordHistoryResult withRecordDetails(
-            java.util.Collection<RecordDetail> recordDetails) {
+    public ListRecordHistoryResult withRecordDetails(java.util.Collection<RecordDetail> recordDetails) {
         setRecordDetails(recordDetails);
         return this;
     }
 
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      * 
      * @param nextPageToken
-     *        The page token to use to retrieve the next page of results for
-     *        this operation. If there are no more pages, this value is null.
+     *        The page token to use to retrieve the next page of results for this operation. If there are no more pages,
+     *        this value is null.
      */
 
     public void setNextPageToken(String nextPageToken) {
@@ -134,12 +124,12 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      * 
-     * @return The page token to use to retrieve the next page of results for
-     *         this operation. If there are no more pages, this value is null.
+     * @return The page token to use to retrieve the next page of results for this operation. If there are no more
+     *         pages, this value is null.
      */
 
     public String getNextPageToken() {
@@ -148,15 +138,14 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The page token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.
+     * The page token to use to retrieve the next page of results for this operation. If there are no more pages, this
+     * value is null.
      * </p>
      * 
      * @param nextPageToken
-     *        The page token to use to retrieve the next page of results for
-     *        this operation. If there are no more pages, this value is null.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The page token to use to retrieve the next page of results for this operation. If there are no more pages,
+     *        this value is null.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListRecordHistoryResult withNextPageToken(String nextPageToken) {
@@ -165,8 +154,7 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -177,9 +165,9 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRecordDetails() != null)
-            sb.append("RecordDetails: " + getRecordDetails() + ",");
+            sb.append("RecordDetails: ").append(getRecordDetails()).append(",");
         if (getNextPageToken() != null)
-            sb.append("NextPageToken: " + getNextPageToken());
+            sb.append("NextPageToken: ").append(getNextPageToken());
         sb.append("}");
         return sb.toString();
     }
@@ -196,13 +184,11 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
         ListRecordHistoryResult other = (ListRecordHistoryResult) obj;
         if (other.getRecordDetails() == null ^ this.getRecordDetails() == null)
             return false;
-        if (other.getRecordDetails() != null
-                && other.getRecordDetails().equals(this.getRecordDetails()) == false)
+        if (other.getRecordDetails() != null && other.getRecordDetails().equals(this.getRecordDetails()) == false)
             return false;
         if (other.getNextPageToken() == null ^ this.getNextPageToken() == null)
             return false;
-        if (other.getNextPageToken() != null
-                && other.getNextPageToken().equals(this.getNextPageToken()) == false)
+        if (other.getNextPageToken() != null && other.getNextPageToken().equals(this.getNextPageToken()) == false)
             return false;
         return true;
     }
@@ -212,14 +198,8 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getRecordDetails() == null) ? 0 : getRecordDetails()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getNextPageToken() == null) ? 0 : getNextPageToken()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getRecordDetails() == null) ? 0 : getRecordDetails().hashCode());
+        hashCode = prime * hashCode + ((getNextPageToken() == null) ? 0 : getNextPageToken().hashCode());
         return hashCode;
     }
 
@@ -228,9 +208,8 @@ public class ListRecordHistoryResult implements Serializable, Cloneable {
         try {
             return (ListRecordHistoryResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input for Subscribe action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Subscribe" target="_top">AWS API
+ *      Documentation</a>
  */
-public class SubscribeRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class SubscribeRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -63,20 +66,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS
-     * queue
+     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>application</code> -- delivery of JSON-encoded message to an
-     * EndpointArn for a mobile app and device.
+     * <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda
-     * function.
+     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
@@ -84,20 +84,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
     private String protocol;
     /**
      * <p>
-     * The endpoint that you want to receive notifications. Endpoints vary by
-     * protocol:
+     * The endpoint that you want to receive notifications. Endpoints vary by protocol:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * For the <code>http</code> protocol, the endpoint is an URL beginning with
-     * "http://"
+     * For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>https</code> protocol, the endpoint is a URL beginning with
-     * "https://"
+     * For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      * </p>
      * </li>
      * <li>
@@ -107,32 +104,27 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * For the <code>email-json</code> protocol, the endpoint is an email
-     * address
+     * For the <code>email-json</code> protocol, the endpoint is an email address
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sms</code> protocol, the endpoint is a phone number of an
-     * SMS-enabled device
+     * For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon
-     * SQS queue
+     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>application</code> protocol, the endpoint is the
-     * EndpointArn of a mobile app and device.
+     * For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS
-     * Lambda function.
+     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
@@ -140,17 +132,15 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
     private String endpoint;
 
     /**
-     * Default constructor for SubscribeRequest object. Callers should use the
-     * setter or fluent setter (with...) methods to initialize the object after
-     * creating it.
+     * Default constructor for SubscribeRequest object. Callers should use the setter or fluent setter (with...) methods
+     * to initialize the object after creating it.
      */
     public SubscribeRequest() {
     }
 
     /**
-     * Constructs a new SubscribeRequest object. Callers should use the setter
-     * or fluent setter (with...) methods to initialize any additional object
-     * members.
+     * Constructs a new SubscribeRequest object. Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
      * 
      * @param topicArn
      *        The ARN of the topic you want to subscribe to.
@@ -159,14 +149,12 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>http</code> -- delivery of JSON-encoded message via HTTP
-     *        POST
+     *        <code>http</code> -- delivery of JSON-encoded message via HTTP POST
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>https</code> -- delivery of JSON-encoded message via HTTPS
-     *        POST
+     *        <code>https</code> -- delivery of JSON-encoded message via HTTPS POST
      *        </p>
      *        </li>
      *        <li>
@@ -176,8 +164,7 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        <code>email-json</code> -- delivery of JSON-encoded message via
-     *        SMTP
+     *        <code>email-json</code> -- delivery of JSON-encoded message via SMTP
      *        </p>
      *        </li>
      *        <li>
@@ -187,72 +174,61 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        <code>sqs</code> -- delivery of JSON-encoded message to an Amazon
-     *        SQS queue
+     *        <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>application</code> -- delivery of JSON-encoded message to an
-     *        EndpointArn for a mobile app and device.
+     *        <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and
+     *        device.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>lambda</code> -- delivery of JSON-encoded message to an AWS
-     *        Lambda function.
+     *        <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      *        </p>
      *        </li>
      * @param endpoint
-     *        The endpoint that you want to receive notifications. Endpoints
-     *        vary by protocol:</p>
+     *        The endpoint that you want to receive notifications. Endpoints vary by protocol:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        For the <code>http</code> protocol, the endpoint is an URL
-     *        beginning with "http://"
+     *        For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>https</code> protocol, the endpoint is a URL
-     *        beginning with "https://"
+     *        For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>email</code> protocol, the endpoint is an email
-     *        address
+     *        For the <code>email</code> protocol, the endpoint is an email address
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>email-json</code> protocol, the endpoint is an email
-     *        address
+     *        For the <code>email-json</code> protocol, the endpoint is an email address
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>sms</code> protocol, the endpoint is a phone number
-     *        of an SMS-enabled device
+     *        For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>sqs</code> protocol, the endpoint is the ARN of an
-     *        Amazon SQS queue
+     *        For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>application</code> protocol, the endpoint is the
-     *        EndpointArn of a mobile app and device.
+     *        For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>lambda</code> protocol, the endpoint is the ARN of
-     *        an AWS Lambda function.
+     *        For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      *        </p>
      *        </li>
      */
@@ -294,8 +270,7 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * 
      * @param topicArn
      *        The ARN of the topic you want to subscribe to.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SubscribeRequest withTopicArn(String topicArn) {
@@ -335,20 +310,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS
-     * queue
+     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>application</code> -- delivery of JSON-encoded message to an
-     * EndpointArn for a mobile app and device.
+     * <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda
-     * function.
+     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
@@ -358,14 +330,12 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>http</code> -- delivery of JSON-encoded message via HTTP
-     *        POST
+     *        <code>http</code> -- delivery of JSON-encoded message via HTTP POST
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>https</code> -- delivery of JSON-encoded message via HTTPS
-     *        POST
+     *        <code>https</code> -- delivery of JSON-encoded message via HTTPS POST
      *        </p>
      *        </li>
      *        <li>
@@ -375,8 +345,7 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        <code>email-json</code> -- delivery of JSON-encoded message via
-     *        SMTP
+     *        <code>email-json</code> -- delivery of JSON-encoded message via SMTP
      *        </p>
      *        </li>
      *        <li>
@@ -386,20 +355,18 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        <code>sqs</code> -- delivery of JSON-encoded message to an Amazon
-     *        SQS queue
+     *        <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>application</code> -- delivery of JSON-encoded message to an
-     *        EndpointArn for a mobile app and device.
+     *        <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and
+     *        device.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>lambda</code> -- delivery of JSON-encoded message to an AWS
-     *        Lambda function.
+     *        <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      *        </p>
      *        </li>
      */
@@ -440,20 +407,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS
-     * queue
+     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>application</code> -- delivery of JSON-encoded message to an
-     * EndpointArn for a mobile app and device.
+     * <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda
-     * function.
+     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
@@ -462,14 +426,12 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>http</code> -- delivery of JSON-encoded message via HTTP
-     *         POST
+     *         <code>http</code> -- delivery of JSON-encoded message via HTTP POST
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>https</code> -- delivery of JSON-encoded message via HTTPS
-     *         POST
+     *         <code>https</code> -- delivery of JSON-encoded message via HTTPS POST
      *         </p>
      *         </li>
      *         <li>
@@ -479,8 +441,7 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *         </li>
      *         <li>
      *         <p>
-     *         <code>email-json</code> -- delivery of JSON-encoded message via
-     *         SMTP
+     *         <code>email-json</code> -- delivery of JSON-encoded message via SMTP
      *         </p>
      *         </li>
      *         <li>
@@ -490,20 +451,18 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *         </li>
      *         <li>
      *         <p>
-     *         <code>sqs</code> -- delivery of JSON-encoded message to an Amazon
-     *         SQS queue
+     *         <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>application</code> -- delivery of JSON-encoded message to
-     *         an EndpointArn for a mobile app and device.
+     *         <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and
+     *         device.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>lambda</code> -- delivery of JSON-encoded message to an AWS
-     *         Lambda function.
+     *         <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      *         </p>
      *         </li>
      */
@@ -544,20 +503,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS
-     * queue
+     * <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>application</code> -- delivery of JSON-encoded message to an
-     * EndpointArn for a mobile app and device.
+     * <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda
-     * function.
+     * <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
@@ -567,14 +523,12 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>http</code> -- delivery of JSON-encoded message via HTTP
-     *        POST
+     *        <code>http</code> -- delivery of JSON-encoded message via HTTP POST
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>https</code> -- delivery of JSON-encoded message via HTTPS
-     *        POST
+     *        <code>https</code> -- delivery of JSON-encoded message via HTTPS POST
      *        </p>
      *        </li>
      *        <li>
@@ -584,8 +538,7 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        <code>email-json</code> -- delivery of JSON-encoded message via
-     *        SMTP
+     *        <code>email-json</code> -- delivery of JSON-encoded message via SMTP
      *        </p>
      *        </li>
      *        <li>
@@ -595,24 +548,21 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      *        </li>
      *        <li>
      *        <p>
-     *        <code>sqs</code> -- delivery of JSON-encoded message to an Amazon
-     *        SQS queue
+     *        <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>application</code> -- delivery of JSON-encoded message to an
-     *        EndpointArn for a mobile app and device.
+     *        <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and
+     *        device.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>lambda</code> -- delivery of JSON-encoded message to an AWS
-     *        Lambda function.
+     *        <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SubscribeRequest withProtocol(String protocol) {
@@ -622,20 +572,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The endpoint that you want to receive notifications. Endpoints vary by
-     * protocol:
+     * The endpoint that you want to receive notifications. Endpoints vary by protocol:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * For the <code>http</code> protocol, the endpoint is an URL beginning with
-     * "http://"
+     * For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>https</code> protocol, the endpoint is a URL beginning with
-     * "https://"
+     * For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      * </p>
      * </li>
      * <li>
@@ -645,86 +592,72 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * For the <code>email-json</code> protocol, the endpoint is an email
-     * address
+     * For the <code>email-json</code> protocol, the endpoint is an email address
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sms</code> protocol, the endpoint is a phone number of an
-     * SMS-enabled device
+     * For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon
-     * SQS queue
+     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>application</code> protocol, the endpoint is the
-     * EndpointArn of a mobile app and device.
+     * For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS
-     * Lambda function.
+     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
      * 
      * @param endpoint
-     *        The endpoint that you want to receive notifications. Endpoints
-     *        vary by protocol:</p>
+     *        The endpoint that you want to receive notifications. Endpoints vary by protocol:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        For the <code>http</code> protocol, the endpoint is an URL
-     *        beginning with "http://"
+     *        For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>https</code> protocol, the endpoint is a URL
-     *        beginning with "https://"
+     *        For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>email</code> protocol, the endpoint is an email
-     *        address
+     *        For the <code>email</code> protocol, the endpoint is an email address
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>email-json</code> protocol, the endpoint is an email
-     *        address
+     *        For the <code>email-json</code> protocol, the endpoint is an email address
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>sms</code> protocol, the endpoint is a phone number
-     *        of an SMS-enabled device
+     *        For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>sqs</code> protocol, the endpoint is the ARN of an
-     *        Amazon SQS queue
+     *        For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>application</code> protocol, the endpoint is the
-     *        EndpointArn of a mobile app and device.
+     *        For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>lambda</code> protocol, the endpoint is the ARN of
-     *        an AWS Lambda function.
+     *        For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      *        </p>
      *        </li>
      */
@@ -735,20 +668,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The endpoint that you want to receive notifications. Endpoints vary by
-     * protocol:
+     * The endpoint that you want to receive notifications. Endpoints vary by protocol:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * For the <code>http</code> protocol, the endpoint is an URL beginning with
-     * "http://"
+     * For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>https</code> protocol, the endpoint is a URL beginning with
-     * "https://"
+     * For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      * </p>
      * </li>
      * <li>
@@ -758,85 +688,71 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * For the <code>email-json</code> protocol, the endpoint is an email
-     * address
+     * For the <code>email-json</code> protocol, the endpoint is an email address
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sms</code> protocol, the endpoint is a phone number of an
-     * SMS-enabled device
+     * For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon
-     * SQS queue
+     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>application</code> protocol, the endpoint is the
-     * EndpointArn of a mobile app and device.
+     * For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS
-     * Lambda function.
+     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The endpoint that you want to receive notifications. Endpoints
-     *         vary by protocol:</p>
+     * @return The endpoint that you want to receive notifications. Endpoints vary by protocol:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         For the <code>http</code> protocol, the endpoint is an URL
-     *         beginning with "http://"
+     *         For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the <code>https</code> protocol, the endpoint is a URL
-     *         beginning with "https://"
+     *         For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the <code>email</code> protocol, the endpoint is an email
-     *         address
+     *         For the <code>email</code> protocol, the endpoint is an email address
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the <code>email-json</code> protocol, the endpoint is an
-     *         email address
+     *         For the <code>email-json</code> protocol, the endpoint is an email address
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the <code>sms</code> protocol, the endpoint is a phone number
-     *         of an SMS-enabled device
+     *         For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the <code>sqs</code> protocol, the endpoint is the ARN of an
-     *         Amazon SQS queue
+     *         For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the <code>application</code> protocol, the endpoint is the
-     *         EndpointArn of a mobile app and device.
+     *         For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the <code>lambda</code> protocol, the endpoint is the ARN of
-     *         an AWS Lambda function.
+     *         For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      *         </p>
      *         </li>
      */
@@ -847,20 +763,17 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The endpoint that you want to receive notifications. Endpoints vary by
-     * protocol:
+     * The endpoint that you want to receive notifications. Endpoints vary by protocol:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * For the <code>http</code> protocol, the endpoint is an URL beginning with
-     * "http://"
+     * For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>https</code> protocol, the endpoint is a URL beginning with
-     * "https://"
+     * For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      * </p>
      * </li>
      * <li>
@@ -870,90 +783,75 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
-     * For the <code>email-json</code> protocol, the endpoint is an email
-     * address
+     * For the <code>email-json</code> protocol, the endpoint is an email address
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sms</code> protocol, the endpoint is a phone number of an
-     * SMS-enabled device
+     * For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon
-     * SQS queue
+     * For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>application</code> protocol, the endpoint is the
-     * EndpointArn of a mobile app and device.
+     * For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS
-     * Lambda function.
+     * For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      * </p>
      * </li>
      * </ul>
      * 
      * @param endpoint
-     *        The endpoint that you want to receive notifications. Endpoints
-     *        vary by protocol:</p>
+     *        The endpoint that you want to receive notifications. Endpoints vary by protocol:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        For the <code>http</code> protocol, the endpoint is an URL
-     *        beginning with "http://"
+     *        For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>https</code> protocol, the endpoint is a URL
-     *        beginning with "https://"
+     *        For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>email</code> protocol, the endpoint is an email
-     *        address
+     *        For the <code>email</code> protocol, the endpoint is an email address
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>email-json</code> protocol, the endpoint is an email
-     *        address
+     *        For the <code>email-json</code> protocol, the endpoint is an email address
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>sms</code> protocol, the endpoint is a phone number
-     *        of an SMS-enabled device
+     *        For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>sqs</code> protocol, the endpoint is the ARN of an
-     *        Amazon SQS queue
+     *        For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>application</code> protocol, the endpoint is the
-     *        EndpointArn of a mobile app and device.
+     *        For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the <code>lambda</code> protocol, the endpoint is the ARN of
-     *        an AWS Lambda function.
+     *        For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SubscribeRequest withEndpoint(String endpoint) {
@@ -962,8 +860,7 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -974,11 +871,11 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getTopicArn() != null)
-            sb.append("TopicArn: " + getTopicArn() + ",");
+            sb.append("TopicArn: ").append(getTopicArn()).append(",");
         if (getProtocol() != null)
-            sb.append("Protocol: " + getProtocol() + ",");
+            sb.append("Protocol: ").append(getProtocol()).append(",");
         if (getEndpoint() != null)
-            sb.append("Endpoint: " + getEndpoint());
+            sb.append("Endpoint: ").append(getEndpoint());
         sb.append("}");
         return sb.toString();
     }
@@ -995,18 +892,15 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
         SubscribeRequest other = (SubscribeRequest) obj;
         if (other.getTopicArn() == null ^ this.getTopicArn() == null)
             return false;
-        if (other.getTopicArn() != null
-                && other.getTopicArn().equals(this.getTopicArn()) == false)
+        if (other.getTopicArn() != null && other.getTopicArn().equals(this.getTopicArn()) == false)
             return false;
         if (other.getProtocol() == null ^ this.getProtocol() == null)
             return false;
-        if (other.getProtocol() != null
-                && other.getProtocol().equals(this.getProtocol()) == false)
+        if (other.getProtocol() != null && other.getProtocol().equals(this.getProtocol()) == false)
             return false;
         if (other.getEndpoint() == null ^ this.getEndpoint() == null)
             return false;
-        if (other.getEndpoint() != null
-                && other.getEndpoint().equals(this.getEndpoint()) == false)
+        if (other.getEndpoint() != null && other.getEndpoint().equals(this.getEndpoint()) == false)
             return false;
         return true;
     }
@@ -1016,12 +910,9 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getTopicArn() == null) ? 0 : getTopicArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getProtocol() == null) ? 0 : getProtocol().hashCode());
-        hashCode = prime * hashCode
-                + ((getEndpoint() == null) ? 0 : getEndpoint().hashCode());
+        hashCode = prime * hashCode + ((getTopicArn() == null) ? 0 : getTopicArn().hashCode());
+        hashCode = prime * hashCode + ((getProtocol() == null) ? 0 : getProtocol().hashCode());
+        hashCode = prime * hashCode + ((getEndpoint() == null) ? 0 : getEndpoint().hashCode());
         return hashCode;
     }
 
@@ -1029,4 +920,5 @@ public class SubscribeRequest extends AmazonWebServiceRequest implements
     public SubscribeRequest clone() {
         return (SubscribeRequest) super.clone();
     }
+
 }

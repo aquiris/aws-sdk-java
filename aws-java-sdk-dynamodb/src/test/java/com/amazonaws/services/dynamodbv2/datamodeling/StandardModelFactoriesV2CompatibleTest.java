@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -43,15 +43,16 @@ import com.amazonaws.services.dynamodbv2.pojos.UnannotatedSubClass;
 public class StandardModelFactoriesV2CompatibleTest {
 
     protected static final DynamoDBMapperConfig CONFIG = new DynamoDBMapperConfig.Builder()
+        .withTypeConverterFactory(DynamoDBMapperConfig.DEFAULT.getTypeConverterFactory())
         .withConversionSchema(ConversionSchemas.V2_COMPATIBLE)
         .build();
 
-    private static final DynamoDBMapperModelFactory.Factory factory = StandardModelFactories.newFactory(null);
-    private static final DynamoDBMapperModelFactory models = factory.getModelFactory(CONFIG);
+    private static final DynamoDBMapperModelFactory factory = StandardModelFactories.of(S3Link.Factory.of(null));
+    private static final DynamoDBMapperModelFactory.TableFactory models = factory.getTableFactory(CONFIG);
 
     protected <T> AttributeValue convert(Class<T> clazz, Method getter, Object value) {
-        final StandardAnnotationMaps.FieldMap<T,Object> map = StandardAnnotationMaps.of(clazz, getter);
-        return models.getTableModel(clazz).field(map.attributeName()).convert(value);
+        final StandardAnnotationMaps.FieldMap<Object> map = StandardAnnotationMaps.of(getter, null);
+        return models.getTable(clazz).field(map.attributeName()).convert(value);
     }
 
     @Test

@@ -1,26 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancingv2.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Information about a load balancer attribute.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/LoadBalancerAttribute"
+ *      target="_top">AWS API Documentation</a>
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class LoadBalancerAttribute implements Serializable, Cloneable {
 
     /**
@@ -30,36 +33,33 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>access_logs.s3.enabled</code> - Indicates whether access logs
-     * stored in Amazon S3 are enabled.
+     * <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the
-     * access logs. This attribute is required if access logs in Amazon S3 are
-     * enabled. The bucket must exist in the same region as the load balancer
-     * and have a bucket policy that grants Elastic Load Balancing permission to
-     * write to the bucket.
+     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if
+     * access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a
+     * bucket policy that grants Elastic Load Balancing permission to write to the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.prefix</code> - The prefix for the location in the
-     * S3 bucket. If you don't specify a prefix, the access logs are stored in
-     * the root of the bucket.
+     * <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix,
+     * the access logs are stored in the root of the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>deletion_protection.enabled</code> - Indicates whether deletion
-     * protection is enabled.
+     * <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in
-     * seconds. The valid range is 1-3600. The default is 60 seconds.
+     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The
+     * default is 60 seconds.
      * </p>
      * </li>
      * </ul>
@@ -79,36 +79,33 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>access_logs.s3.enabled</code> - Indicates whether access logs
-     * stored in Amazon S3 are enabled.
+     * <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the
-     * access logs. This attribute is required if access logs in Amazon S3 are
-     * enabled. The bucket must exist in the same region as the load balancer
-     * and have a bucket policy that grants Elastic Load Balancing permission to
-     * write to the bucket.
+     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if
+     * access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a
+     * bucket policy that grants Elastic Load Balancing permission to write to the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.prefix</code> - The prefix for the location in the
-     * S3 bucket. If you don't specify a prefix, the access logs are stored in
-     * the root of the bucket.
+     * <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix,
+     * the access logs are stored in the root of the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>deletion_protection.enabled</code> - Indicates whether deletion
-     * protection is enabled.
+     * <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in
-     * seconds. The valid range is 1-3600. The default is 60 seconds.
+     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The
+     * default is 60 seconds.
      * </p>
      * </li>
      * </ul>
@@ -118,37 +115,33 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>access_logs.s3.enabled</code> - Indicates whether access
-     *        logs stored in Amazon S3 are enabled.
+     *        <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The
+     *        value is <code>true</code> or <code>false</code>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>access_logs.s3.bucket</code> - The name of the S3 bucket for
-     *        the access logs. This attribute is required if access logs in
-     *        Amazon S3 are enabled. The bucket must exist in the same region as
-     *        the load balancer and have a bucket policy that grants Elastic
-     *        Load Balancing permission to write to the bucket.
+     *        <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is
+     *        required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load
+     *        balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>access_logs.s3.prefix</code> - The prefix for the location
-     *        in the S3 bucket. If you don't specify a prefix, the access logs
-     *        are stored in the root of the bucket.
+     *        <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a
+     *        prefix, the access logs are stored in the root of the bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>deletion_protection.enabled</code> - Indicates whether
-     *        deletion protection is enabled.
+     *        <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is
+     *        <code>true</code> or <code>false</code>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>idle_timeout.timeout_seconds</code> - The idle timeout
-     *        value, in seconds. The valid range is 1-3600. The default is 60
-     *        seconds.
+     *        <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600.
+     *        The default is 60 seconds.
      *        </p>
      *        </li>
      */
@@ -164,36 +157,33 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>access_logs.s3.enabled</code> - Indicates whether access logs
-     * stored in Amazon S3 are enabled.
+     * <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the
-     * access logs. This attribute is required if access logs in Amazon S3 are
-     * enabled. The bucket must exist in the same region as the load balancer
-     * and have a bucket policy that grants Elastic Load Balancing permission to
-     * write to the bucket.
+     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if
+     * access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a
+     * bucket policy that grants Elastic Load Balancing permission to write to the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.prefix</code> - The prefix for the location in the
-     * S3 bucket. If you don't specify a prefix, the access logs are stored in
-     * the root of the bucket.
+     * <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix,
+     * the access logs are stored in the root of the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>deletion_protection.enabled</code> - Indicates whether deletion
-     * protection is enabled.
+     * <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in
-     * seconds. The valid range is 1-3600. The default is 60 seconds.
+     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The
+     * default is 60 seconds.
      * </p>
      * </li>
      * </ul>
@@ -202,37 +192,33 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>access_logs.s3.enabled</code> - Indicates whether access
-     *         logs stored in Amazon S3 are enabled.
+     *         <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The
+     *         value is <code>true</code> or <code>false</code>.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>access_logs.s3.bucket</code> - The name of the S3 bucket
-     *         for the access logs. This attribute is required if access logs in
-     *         Amazon S3 are enabled. The bucket must exist in the same region
-     *         as the load balancer and have a bucket policy that grants Elastic
-     *         Load Balancing permission to write to the bucket.
+     *         <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is
+     *         required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load
+     *         balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>access_logs.s3.prefix</code> - The prefix for the location
-     *         in the S3 bucket. If you don't specify a prefix, the access logs
-     *         are stored in the root of the bucket.
+     *         <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a
+     *         prefix, the access logs are stored in the root of the bucket.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>deletion_protection.enabled</code> - Indicates whether
-     *         deletion protection is enabled.
+     *         <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is
+     *         <code>true</code> or <code>false</code>.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>idle_timeout.timeout_seconds</code> - The idle timeout
-     *         value, in seconds. The valid range is 1-3600. The default is 60
-     *         seconds.
+     *         <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is
+     *         1-3600. The default is 60 seconds.
      *         </p>
      *         </li>
      */
@@ -248,36 +234,33 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>access_logs.s3.enabled</code> - Indicates whether access logs
-     * stored in Amazon S3 are enabled.
+     * <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the
-     * access logs. This attribute is required if access logs in Amazon S3 are
-     * enabled. The bucket must exist in the same region as the load balancer
-     * and have a bucket policy that grants Elastic Load Balancing permission to
-     * write to the bucket.
+     * <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if
+     * access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a
+     * bucket policy that grants Elastic Load Balancing permission to write to the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>access_logs.s3.prefix</code> - The prefix for the location in the
-     * S3 bucket. If you don't specify a prefix, the access logs are stored in
-     * the root of the bucket.
+     * <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix,
+     * the access logs are stored in the root of the bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>deletion_protection.enabled</code> - Indicates whether deletion
-     * protection is enabled.
+     * <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is
+     * <code>true</code> or <code>false</code>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in
-     * seconds. The valid range is 1-3600. The default is 60 seconds.
+     * <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The
+     * default is 60 seconds.
      * </p>
      * </li>
      * </ul>
@@ -287,41 +270,36 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>access_logs.s3.enabled</code> - Indicates whether access
-     *        logs stored in Amazon S3 are enabled.
+     *        <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The
+     *        value is <code>true</code> or <code>false</code>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>access_logs.s3.bucket</code> - The name of the S3 bucket for
-     *        the access logs. This attribute is required if access logs in
-     *        Amazon S3 are enabled. The bucket must exist in the same region as
-     *        the load balancer and have a bucket policy that grants Elastic
-     *        Load Balancing permission to write to the bucket.
+     *        <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is
+     *        required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load
+     *        balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>access_logs.s3.prefix</code> - The prefix for the location
-     *        in the S3 bucket. If you don't specify a prefix, the access logs
-     *        are stored in the root of the bucket.
+     *        <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a
+     *        prefix, the access logs are stored in the root of the bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>deletion_protection.enabled</code> - Indicates whether
-     *        deletion protection is enabled.
+     *        <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is
+     *        <code>true</code> or <code>false</code>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>idle_timeout.timeout_seconds</code> - The idle timeout
-     *        value, in seconds. The valid range is 1-3600. The default is 60
-     *        seconds.
+     *        <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600.
+     *        The default is 60 seconds.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public LoadBalancerAttribute withKey(String key) {
@@ -361,8 +339,7 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * 
      * @param value
      *        The value of the attribute.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public LoadBalancerAttribute withValue(String value) {
@@ -371,8 +348,7 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -383,9 +359,9 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getKey() != null)
-            sb.append("Key: " + getKey() + ",");
+            sb.append("Key: ").append(getKey()).append(",");
         if (getValue() != null)
-            sb.append("Value: " + getValue());
+            sb.append("Value: ").append(getValue());
         sb.append("}");
         return sb.toString();
     }
@@ -402,13 +378,11 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
         LoadBalancerAttribute other = (LoadBalancerAttribute) obj;
         if (other.getKey() == null ^ this.getKey() == null)
             return false;
-        if (other.getKey() != null
-                && other.getKey().equals(this.getKey()) == false)
+        if (other.getKey() != null && other.getKey().equals(this.getKey()) == false)
             return false;
         if (other.getValue() == null ^ this.getValue() == null)
             return false;
-        if (other.getValue() != null
-                && other.getValue().equals(this.getValue()) == false)
+        if (other.getValue() != null && other.getValue().equals(this.getValue()) == false)
             return false;
         return true;
     }
@@ -418,10 +392,8 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getKey() == null) ? 0 : getKey().hashCode());
-        hashCode = prime * hashCode
-                + ((getValue() == null) ? 0 : getValue().hashCode());
+        hashCode = prime * hashCode + ((getKey() == null) ? 0 : getKey().hashCode());
+        hashCode = prime * hashCode + ((getValue() == null) ? 0 : getValue().hashCode());
         return hashCode;
     }
 
@@ -430,9 +402,8 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
         try {
             return (LoadBalancerAttribute) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

@@ -16,6 +16,7 @@
 package com.amazonaws.codegen.model.intermediate;
 
 import static com.amazonaws.codegen.internal.Constants.SMOKE_TESTS_DIR_NAME;
+
 import com.amazonaws.codegen.protocol.ProtocolMetadataProvider;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,6 +35,8 @@ public class Metadata {
     private String documentation;
 
     private String defaultEndpoint;
+
+    private String defaultRegion;
 
     private String defaultEndpointWithoutHttpProtocol;
 
@@ -62,6 +65,12 @@ public class Metadata {
     private String endpointPrefix;
 
     private String signingName;
+
+    private boolean requiresIamSigners;
+
+    private boolean requiresApiKey;
+
+    private String uid;
 
     public String getApiVersion() {
         return apiVersion;
@@ -134,6 +143,19 @@ public class Metadata {
 
     public Metadata withDefaultEndpoint(String defaultEndpoint) {
         setDefaultEndpoint(defaultEndpoint);
+        return this;
+    }
+
+    public String getDefaultRegion() {
+        return defaultRegion;
+    }
+
+    public void setDefaultRegion(String defaultRegion) {
+        this.defaultRegion = defaultRegion;
+    }
+
+    public Metadata withDefaultRegion(String defaultRegion) {
+        setDefaultRegion(defaultRegion);
         return this;
     }
 
@@ -345,6 +367,10 @@ public class Metadata {
         return this;
     }
 
+    public boolean isIonProtocol() {
+        return protocolMetadataProvider.isIonProtocol();
+    }
+
     public boolean isCborProtocol() {
         return protocolMetadataProvider.isCborProtocol();
     }
@@ -355,6 +381,20 @@ public class Metadata {
 
     public boolean isXmlProtocol() {
         return protocolMetadataProvider.isXmlProtocol();
+    }
+
+    /**
+     * @return True for RESTful protocols. False for all other protocols (RPC, Query, etc).
+     */
+    public static boolean isNotRestProtocol(String protocol) {
+        switch (Protocol.fromValue(protocol)) {
+            case API_GATEWAY:
+            case REST_JSON:
+            case REST_XML:
+                return false;
+            default:
+                return true;
+        }
     }
 
     public String getEndpointPrefix() {
@@ -402,8 +442,41 @@ public class Metadata {
         return protocolMetadataProvider.getUnmarshallerClassSuffix();
     }
 
-    public boolean hasAsyncClient() {
-        return protocolMetadataProvider.hasAsyncClient();
+    public String getProtocolFactory() {
+        return protocolMetadataProvider.getProtocolFactoryImplFqcn();
     }
 
+    public boolean isRequiresIamSigners() {
+        return requiresIamSigners;
+    }
+
+    public void setRequiresIamSigners(boolean requiresIamSigners) {
+        this.requiresIamSigners = requiresIamSigners;
+    }
+
+    public String getRequestBaseFqcn() {
+        return protocolMetadataProvider.getRequestBaseFqcn();
+    }
+
+    public boolean isRequiresApiKey() {
+        return requiresApiKey;
+    }
+
+    public Metadata withRequiresApiKey(boolean requiresApiKey) {
+        this.requiresApiKey = requiresApiKey;
+        return this;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public Metadata withUid(String uid) {
+        setUid(uid);
+        return this;
+    }
 }

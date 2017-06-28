@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents a request to the get device pool compatibility operation.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetDevicePoolCompatibility"
+ *      target="_top">AWS API Documentation</a>
  */
-public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetDevicePoolCompatibilityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -52,9 +55,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
-     * Android app, interacting with it and capturing screenshots at the same
-     * time.
+     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     * capturing screenshots at the same time.
      * </p>
      * </li>
      * <li>
@@ -120,6 +122,12 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </ul>
      */
     private String testType;
+    /**
+     * <p>
+     * Information about the uploaded test to be run against the device pool.
+     * </p>
+     */
+    private ScheduleRunTest test;
 
     /**
      * <p>
@@ -153,12 +161,10 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * 
      * @param devicePoolArn
      *        The device pool's ARN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GetDevicePoolCompatibilityRequest withDevicePoolArn(
-            String devicePoolArn) {
+    public GetDevicePoolCompatibilityRequest withDevicePoolArn(String devicePoolArn) {
         setDevicePoolArn(devicePoolArn);
         return this;
     }
@@ -169,8 +175,7 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param appArn
-     *        The ARN of the app that is associated with the specified device
-     *        pool.
+     *        The ARN of the app that is associated with the specified device pool.
      */
 
     public void setAppArn(String appArn) {
@@ -182,8 +187,7 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * The ARN of the app that is associated with the specified device pool.
      * </p>
      * 
-     * @return The ARN of the app that is associated with the specified device
-     *         pool.
+     * @return The ARN of the app that is associated with the specified device pool.
      */
 
     public String getAppArn() {
@@ -196,10 +200,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param appArn
-     *        The ARN of the app that is associated with the specified device
-     *        pool.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ARN of the app that is associated with the specified device pool.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetDevicePoolCompatibilityRequest withAppArn(String appArn) {
@@ -222,9 +224,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
-     * Android app, interacting with it and capturing screenshots at the same
-     * time.
+     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     * capturing screenshots at the same time.
      * </p>
      * </li>
      * <li>
@@ -302,9 +303,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse
-     *        an Android app, interacting with it and capturing screenshots at
-     *        the same time.
+     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     *        capturing screenshots at the same time.
      *        </p>
      *        </li>
      *        <li>
@@ -389,9 +389,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
-     * Android app, interacting with it and capturing screenshots at the same
-     * time.
+     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     * capturing screenshots at the same time.
      * </p>
      * </li>
      * <li>
@@ -468,9 +467,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         BUILTIN_EXPLORER: For Android, an app explorer that will traverse
-     *         an Android app, interacting with it and capturing screenshots at
-     *         the same time.
+     *         BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     *         capturing screenshots at the same time.
      *         </p>
      *         </li>
      *         <li>
@@ -555,9 +553,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
-     * Android app, interacting with it and capturing screenshots at the same
-     * time.
+     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     * capturing screenshots at the same time.
      * </p>
      * </li>
      * <li>
@@ -635,9 +632,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse
-     *        an Android app, interacting with it and capturing screenshots at
-     *        the same time.
+     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     *        capturing screenshots at the same time.
      *        </p>
      *        </li>
      *        <li>
@@ -700,8 +696,7 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      *        XCTEST_UI: The XCode UI test type.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see TestType
      */
 
@@ -725,9 +720,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
-     * Android app, interacting with it and capturing screenshots at the same
-     * time.
+     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     * capturing screenshots at the same time.
      * </p>
      * </li>
      * <li>
@@ -805,9 +799,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse
-     *        an Android app, interacting with it and capturing screenshots at
-     *        the same time.
+     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     *        capturing screenshots at the same time.
      *        </p>
      *        </li>
      *        <li>
@@ -892,9 +885,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
-     * Android app, interacting with it and capturing screenshots at the same
-     * time.
+     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     * capturing screenshots at the same time.
      * </p>
      * </li>
      * <li>
@@ -972,9 +964,8 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse
-     *        an Android app, interacting with it and capturing screenshots at
-     *        the same time.
+     *        BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and
+     *        capturing screenshots at the same time.
      *        </p>
      *        </li>
      *        <li>
@@ -1037,8 +1028,7 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
      *        XCTEST_UI: The XCode UI test type.
      *        </p>
      *        </li>
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      * @see TestType
      */
 
@@ -1048,8 +1038,47 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * <p>
+     * Information about the uploaded test to be run against the device pool.
+     * </p>
+     * 
+     * @param test
+     *        Information about the uploaded test to be run against the device pool.
+     */
+
+    public void setTest(ScheduleRunTest test) {
+        this.test = test;
+    }
+
+    /**
+     * <p>
+     * Information about the uploaded test to be run against the device pool.
+     * </p>
+     * 
+     * @return Information about the uploaded test to be run against the device pool.
+     */
+
+    public ScheduleRunTest getTest() {
+        return this.test;
+    }
+
+    /**
+     * <p>
+     * Information about the uploaded test to be run against the device pool.
+     * </p>
+     * 
+     * @param test
+     *        Information about the uploaded test to be run against the device pool.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GetDevicePoolCompatibilityRequest withTest(ScheduleRunTest test) {
+        setTest(test);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -1060,11 +1089,13 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getDevicePoolArn() != null)
-            sb.append("DevicePoolArn: " + getDevicePoolArn() + ",");
+            sb.append("DevicePoolArn: ").append(getDevicePoolArn()).append(",");
         if (getAppArn() != null)
-            sb.append("AppArn: " + getAppArn() + ",");
+            sb.append("AppArn: ").append(getAppArn()).append(",");
         if (getTestType() != null)
-            sb.append("TestType: " + getTestType());
+            sb.append("TestType: ").append(getTestType()).append(",");
+        if (getTest() != null)
+            sb.append("Test: ").append(getTest());
         sb.append("}");
         return sb.toString();
     }
@@ -1081,18 +1112,19 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
         GetDevicePoolCompatibilityRequest other = (GetDevicePoolCompatibilityRequest) obj;
         if (other.getDevicePoolArn() == null ^ this.getDevicePoolArn() == null)
             return false;
-        if (other.getDevicePoolArn() != null
-                && other.getDevicePoolArn().equals(this.getDevicePoolArn()) == false)
+        if (other.getDevicePoolArn() != null && other.getDevicePoolArn().equals(this.getDevicePoolArn()) == false)
             return false;
         if (other.getAppArn() == null ^ this.getAppArn() == null)
             return false;
-        if (other.getAppArn() != null
-                && other.getAppArn().equals(this.getAppArn()) == false)
+        if (other.getAppArn() != null && other.getAppArn().equals(this.getAppArn()) == false)
             return false;
         if (other.getTestType() == null ^ this.getTestType() == null)
             return false;
-        if (other.getTestType() != null
-                && other.getTestType().equals(this.getTestType()) == false)
+        if (other.getTestType() != null && other.getTestType().equals(this.getTestType()) == false)
+            return false;
+        if (other.getTest() == null ^ this.getTest() == null)
+            return false;
+        if (other.getTest() != null && other.getTest().equals(this.getTest()) == false)
             return false;
         return true;
     }
@@ -1102,14 +1134,10 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getDevicePoolArn() == null) ? 0 : getDevicePoolArn()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getAppArn() == null) ? 0 : getAppArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getTestType() == null) ? 0 : getTestType().hashCode());
+        hashCode = prime * hashCode + ((getDevicePoolArn() == null) ? 0 : getDevicePoolArn().hashCode());
+        hashCode = prime * hashCode + ((getAppArn() == null) ? 0 : getAppArn().hashCode());
+        hashCode = prime * hashCode + ((getTestType() == null) ? 0 : getTestType().hashCode());
+        hashCode = prime * hashCode + ((getTest() == null) ? 0 : getTest().hashCode());
         return hashCode;
     }
 
@@ -1117,4 +1145,5 @@ public class GetDevicePoolCompatibilityRequest extends AmazonWebServiceRequest
     public GetDevicePoolCompatibilityRequest clone() {
         return (GetDevicePoolCompatibilityRequest) super.clone();
     }
+
 }

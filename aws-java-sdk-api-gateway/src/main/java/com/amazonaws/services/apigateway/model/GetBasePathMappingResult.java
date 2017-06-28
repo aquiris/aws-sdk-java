@@ -1,38 +1,35 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the base path that callers of the API must provide as part of the
- * URL after the domain name.
+ * Represents the base path that callers of the API must provide as part of the URL after the domain name.
  * </p>
- * <div class="remarks">A custom domain name plus a <code>BasePathMapping</code>
- * specification identifies a deployed <a>RestApi</a> in a given stage of the
- * owner <a>Account</a>.</div> <div class="seeAlso"> <a href=
- * "http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html"
- * >Use Custom Domain Names</a> </div>
+ * <div class="remarks">A custom domain name plus a <code>BasePathMapping</code> specification identifies a deployed
+ * <a>RestApi</a> in a given stage of the owner <a>Account</a>.</div> <div class="seeAlso"> <a
+ * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain
+ * Names</a> </div>
  */
-public class GetBasePathMappingResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetBasePathMappingResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name.
      * </p>
      */
     private String basePath;
@@ -51,13 +48,11 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name.
      * </p>
      * 
      * @param basePath
-     *        The base path name that callers of the API must provide as part of
-     *        the URL after the domain name.
+     *        The base path name that callers of the API must provide as part of the URL after the domain name.
      */
 
     public void setBasePath(String basePath) {
@@ -66,12 +61,10 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name.
      * </p>
      * 
-     * @return The base path name that callers of the API must provide as part
-     *         of the URL after the domain name.
+     * @return The base path name that callers of the API must provide as part of the URL after the domain name.
      */
 
     public String getBasePath() {
@@ -80,15 +73,12 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The base path name that callers of the API must provide as part of the
-     * URL after the domain name.
+     * The base path name that callers of the API must provide as part of the URL after the domain name.
      * </p>
      * 
      * @param basePath
-     *        The base path name that callers of the API must provide as part of
-     *        the URL after the domain name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The base path name that callers of the API must provide as part of the URL after the domain name.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetBasePathMappingResult withBasePath(String basePath) {
@@ -128,8 +118,7 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
      * 
      * @param restApiId
      *        The name of the API.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetBasePathMappingResult withRestApiId(String restApiId) {
@@ -169,8 +158,7 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
      * 
      * @param stage
      *        The name of the API's stage.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetBasePathMappingResult withStage(String stage) {
@@ -179,8 +167,7 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -191,11 +178,11 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getBasePath() != null)
-            sb.append("BasePath: " + getBasePath() + ",");
+            sb.append("BasePath: ").append(getBasePath()).append(",");
         if (getRestApiId() != null)
-            sb.append("RestApiId: " + getRestApiId() + ",");
+            sb.append("RestApiId: ").append(getRestApiId()).append(",");
         if (getStage() != null)
-            sb.append("Stage: " + getStage());
+            sb.append("Stage: ").append(getStage());
         sb.append("}");
         return sb.toString();
     }
@@ -212,18 +199,15 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
         GetBasePathMappingResult other = (GetBasePathMappingResult) obj;
         if (other.getBasePath() == null ^ this.getBasePath() == null)
             return false;
-        if (other.getBasePath() != null
-                && other.getBasePath().equals(this.getBasePath()) == false)
+        if (other.getBasePath() != null && other.getBasePath().equals(this.getBasePath()) == false)
             return false;
         if (other.getRestApiId() == null ^ this.getRestApiId() == null)
             return false;
-        if (other.getRestApiId() != null
-                && other.getRestApiId().equals(this.getRestApiId()) == false)
+        if (other.getRestApiId() != null && other.getRestApiId().equals(this.getRestApiId()) == false)
             return false;
         if (other.getStage() == null ^ this.getStage() == null)
             return false;
-        if (other.getStage() != null
-                && other.getStage().equals(this.getStage()) == false)
+        if (other.getStage() != null && other.getStage().equals(this.getStage()) == false)
             return false;
         return true;
     }
@@ -233,12 +217,9 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getBasePath() == null) ? 0 : getBasePath().hashCode());
-        hashCode = prime * hashCode
-                + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
-        hashCode = prime * hashCode
-                + ((getStage() == null) ? 0 : getStage().hashCode());
+        hashCode = prime * hashCode + ((getBasePath() == null) ? 0 : getBasePath().hashCode());
+        hashCode = prime * hashCode + ((getRestApiId() == null) ? 0 : getRestApiId().hashCode());
+        hashCode = prime * hashCode + ((getStage() == null) ? 0 : getStage().hashCode());
         return hashCode;
     }
 
@@ -247,9 +228,8 @@ public class GetBasePathMappingResult implements Serializable, Cloneable {
         try {
             return (GetBasePathMappingResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

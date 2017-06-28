@@ -1,27 +1,30 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * Represents the result of a list samples request.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListSamples" target="_top">AWS API
+ *      Documentation</a>
  */
-public class ListSamplesResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class ListSamplesResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -31,9 +34,8 @@ public class ListSamplesResult implements Serializable, Cloneable {
     private java.util.List<Sample> samples;
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is
-     * an identifier that is also returned, which can be used in a subsequent
-     * call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
+     * which can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      */
     private String nextToken;
@@ -73,16 +75,14 @@ public class ListSamplesResult implements Serializable, Cloneable {
      * Information about the samples.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setSamples(java.util.Collection)} or
-     * {@link #withSamples(java.util.Collection)} if you want to override the
-     * existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSamples(java.util.Collection)} or {@link #withSamples(java.util.Collection)} if you want to override
+     * the existing values.
      * </p>
      * 
      * @param samples
      *        Information about the samples.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListSamplesResult withSamples(Sample... samples) {
@@ -102,8 +102,7 @@ public class ListSamplesResult implements Serializable, Cloneable {
      * 
      * @param samples
      *        Information about the samples.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListSamplesResult withSamples(java.util.Collection<Sample> samples) {
@@ -113,16 +112,14 @@ public class ListSamplesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is
-     * an identifier that is also returned, which can be used in a subsequent
-     * call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
+     * which can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      * 
      * @param nextToken
-     *        If the number of items that are returned is significantly large,
-     *        this is an identifier that is also returned, which can be used in
-     *        a subsequent call to this operation to return the next set of
-     *        items in the list.
+     *        If the number of items that are returned is significantly large, this is an identifier that is also
+     *        returned, which can be used in a subsequent call to this operation to return the next set of items in the
+     *        list.
      */
 
     public void setNextToken(String nextToken) {
@@ -131,15 +128,13 @@ public class ListSamplesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is
-     * an identifier that is also returned, which can be used in a subsequent
-     * call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
+     * which can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      * 
-     * @return If the number of items that are returned is significantly large,
-     *         this is an identifier that is also returned, which can be used in
-     *         a subsequent call to this operation to return the next set of
-     *         items in the list.
+     * @return If the number of items that are returned is significantly large, this is an identifier that is also
+     *         returned, which can be used in a subsequent call to this operation to return the next set of items in the
+     *         list.
      */
 
     public String getNextToken() {
@@ -148,18 +143,15 @@ public class ListSamplesResult implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is
-     * an identifier that is also returned, which can be used in a subsequent
-     * call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
+     * which can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      * 
      * @param nextToken
-     *        If the number of items that are returned is significantly large,
-     *        this is an identifier that is also returned, which can be used in
-     *        a subsequent call to this operation to return the next set of
-     *        items in the list.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        If the number of items that are returned is significantly large, this is an identifier that is also
+     *        returned, which can be used in a subsequent call to this operation to return the next set of items in the
+     *        list.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ListSamplesResult withNextToken(String nextToken) {
@@ -168,8 +160,7 @@ public class ListSamplesResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -180,9 +171,9 @@ public class ListSamplesResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSamples() != null)
-            sb.append("Samples: " + getSamples() + ",");
+            sb.append("Samples: ").append(getSamples()).append(",");
         if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken());
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -199,13 +190,11 @@ public class ListSamplesResult implements Serializable, Cloneable {
         ListSamplesResult other = (ListSamplesResult) obj;
         if (other.getSamples() == null ^ this.getSamples() == null)
             return false;
-        if (other.getSamples() != null
-                && other.getSamples().equals(this.getSamples()) == false)
+        if (other.getSamples() != null && other.getSamples().equals(this.getSamples()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -215,10 +204,8 @@ public class ListSamplesResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getSamples() == null) ? 0 : getSamples().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getSamples() == null) ? 0 : getSamples().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -227,9 +214,8 @@ public class ListSamplesResult implements Serializable, Cloneable {
         try {
             return (ListSamplesResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

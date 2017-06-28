@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidentity.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Input to the <code>GetCredentialsForIdentity</code> action.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetCredentialsForIdentity"
+ *      target="_top">AWS API Documentation</a>
  */
-public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetCredentialsForIdentityRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -33,17 +36,15 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
     private String identityId;
     /**
      * <p>
-     * A set of optional name-value pairs that map provider names to provider
-     * tokens.
+     * A set of optional name-value pairs that map provider names to provider tokens.
      * </p>
      */
     private java.util.Map<String, String> logins;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the role to be assumed when multiple
-     * roles were received in the token from the identity provider. For example,
-     * a SAML-based identity provider. This parameter is optional for identity
-     * providers that do not support role customization.
+     * The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the
+     * identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers
+     * that do not support role customization.
      * </p>
      */
     private String customRoleArn;
@@ -80,8 +81,7 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
      * 
      * @param identityId
      *        A unique identifier in the format REGION:GUID.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetCredentialsForIdentityRequest withIdentityId(String identityId) {
@@ -91,12 +91,10 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A set of optional name-value pairs that map provider names to provider
-     * tokens.
+     * A set of optional name-value pairs that map provider names to provider tokens.
      * </p>
      * 
-     * @return A set of optional name-value pairs that map provider names to
-     *         provider tokens.
+     * @return A set of optional name-value pairs that map provider names to provider tokens.
      */
 
     public java.util.Map<String, String> getLogins() {
@@ -105,13 +103,11 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A set of optional name-value pairs that map provider names to provider
-     * tokens.
+     * A set of optional name-value pairs that map provider names to provider tokens.
      * </p>
      * 
      * @param logins
-     *        A set of optional name-value pairs that map provider names to
-     *        provider tokens.
+     *        A set of optional name-value pairs that map provider names to provider tokens.
      */
 
     public void setLogins(java.util.Map<String, String> logins) {
@@ -120,38 +116,33 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A set of optional name-value pairs that map provider names to provider
-     * tokens.
+     * A set of optional name-value pairs that map provider names to provider tokens.
      * </p>
      * 
      * @param logins
-     *        A set of optional name-value pairs that map provider names to
-     *        provider tokens.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A set of optional name-value pairs that map provider names to provider tokens.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GetCredentialsForIdentityRequest withLogins(
-            java.util.Map<String, String> logins) {
+    public GetCredentialsForIdentityRequest withLogins(java.util.Map<String, String> logins) {
         setLogins(logins);
         return this;
     }
 
-    public GetCredentialsForIdentityRequest addLoginsEntry(String key,
-            String value) {
+    public GetCredentialsForIdentityRequest addLoginsEntry(String key, String value) {
         if (null == this.logins) {
             this.logins = new java.util.HashMap<String, String>();
         }
         if (this.logins.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys ("
-                    + key.toString() + ") are provided.");
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
         this.logins.put(key, value);
         return this;
     }
 
     /**
-     * Removes all the entries added into Logins. &lt;p> Returns a reference to
-     * this object so that method calls can be chained together.
+     * Removes all the entries added into Logins.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetCredentialsForIdentityRequest clearLoginsEntries() {
@@ -161,18 +152,15 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the role to be assumed when multiple
-     * roles were received in the token from the identity provider. For example,
-     * a SAML-based identity provider. This parameter is optional for identity
-     * providers that do not support role customization.
+     * The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the
+     * identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers
+     * that do not support role customization.
      * </p>
      * 
      * @param customRoleArn
-     *        The Amazon Resource Name (ARN) of the role to be assumed when
-     *        multiple roles were received in the token from the identity
-     *        provider. For example, a SAML-based identity provider. This
-     *        parameter is optional for identity providers that do not support
-     *        role customization.
+     *        The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token
+     *        from the identity provider. For example, a SAML-based identity provider. This parameter is optional for
+     *        identity providers that do not support role customization.
      */
 
     public void setCustomRoleArn(String customRoleArn) {
@@ -181,17 +169,14 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the role to be assumed when multiple
-     * roles were received in the token from the identity provider. For example,
-     * a SAML-based identity provider. This parameter is optional for identity
-     * providers that do not support role customization.
+     * The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the
+     * identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers
+     * that do not support role customization.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the role to be assumed when
-     *         multiple roles were received in the token from the identity
-     *         provider. For example, a SAML-based identity provider. This
-     *         parameter is optional for identity providers that do not support
-     *         role customization.
+     * @return The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token
+     *         from the identity provider. For example, a SAML-based identity provider. This parameter is optional for
+     *         identity providers that do not support role customization.
      */
 
     public String getCustomRoleArn() {
@@ -200,31 +185,25 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the role to be assumed when multiple
-     * roles were received in the token from the identity provider. For example,
-     * a SAML-based identity provider. This parameter is optional for identity
-     * providers that do not support role customization.
+     * The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the
+     * identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers
+     * that do not support role customization.
      * </p>
      * 
      * @param customRoleArn
-     *        The Amazon Resource Name (ARN) of the role to be assumed when
-     *        multiple roles were received in the token from the identity
-     *        provider. For example, a SAML-based identity provider. This
-     *        parameter is optional for identity providers that do not support
-     *        role customization.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token
+     *        from the identity provider. For example, a SAML-based identity provider. This parameter is optional for
+     *        identity providers that do not support role customization.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public GetCredentialsForIdentityRequest withCustomRoleArn(
-            String customRoleArn) {
+    public GetCredentialsForIdentityRequest withCustomRoleArn(String customRoleArn) {
         setCustomRoleArn(customRoleArn);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -235,11 +214,11 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getIdentityId() != null)
-            sb.append("IdentityId: " + getIdentityId() + ",");
+            sb.append("IdentityId: ").append(getIdentityId()).append(",");
         if (getLogins() != null)
-            sb.append("Logins: " + getLogins() + ",");
+            sb.append("Logins: ").append(getLogins()).append(",");
         if (getCustomRoleArn() != null)
-            sb.append("CustomRoleArn: " + getCustomRoleArn());
+            sb.append("CustomRoleArn: ").append(getCustomRoleArn());
         sb.append("}");
         return sb.toString();
     }
@@ -256,18 +235,15 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
         GetCredentialsForIdentityRequest other = (GetCredentialsForIdentityRequest) obj;
         if (other.getIdentityId() == null ^ this.getIdentityId() == null)
             return false;
-        if (other.getIdentityId() != null
-                && other.getIdentityId().equals(this.getIdentityId()) == false)
+        if (other.getIdentityId() != null && other.getIdentityId().equals(this.getIdentityId()) == false)
             return false;
         if (other.getLogins() == null ^ this.getLogins() == null)
             return false;
-        if (other.getLogins() != null
-                && other.getLogins().equals(this.getLogins()) == false)
+        if (other.getLogins() != null && other.getLogins().equals(this.getLogins()) == false)
             return false;
         if (other.getCustomRoleArn() == null ^ this.getCustomRoleArn() == null)
             return false;
-        if (other.getCustomRoleArn() != null
-                && other.getCustomRoleArn().equals(this.getCustomRoleArn()) == false)
+        if (other.getCustomRoleArn() != null && other.getCustomRoleArn().equals(this.getCustomRoleArn()) == false)
             return false;
         return true;
     }
@@ -277,14 +253,9 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getIdentityId() == null) ? 0 : getIdentityId().hashCode());
-        hashCode = prime * hashCode
-                + ((getLogins() == null) ? 0 : getLogins().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getCustomRoleArn() == null) ? 0 : getCustomRoleArn()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getIdentityId() == null) ? 0 : getIdentityId().hashCode());
+        hashCode = prime * hashCode + ((getLogins() == null) ? 0 : getLogins().hashCode());
+        hashCode = prime * hashCode + ((getCustomRoleArn() == null) ? 0 : getCustomRoleArn().hashCode());
         return hashCode;
     }
 
@@ -292,4 +263,5 @@ public class GetCredentialsForIdentityRequest extends AmazonWebServiceRequest
     public GetCredentialsForIdentityRequest clone() {
         return (GetCredentialsForIdentityRequest) super.clone();
     }
+
 }

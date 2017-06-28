@@ -16,12 +16,14 @@
 package com.amazonaws.codegen.internal;
 
 import com.amazonaws.codegen.model.intermediate.IntermediateModel;
+import com.amazonaws.codegen.model.intermediate.Metadata;
 import com.amazonaws.codegen.model.intermediate.Protocol;
 import com.amazonaws.codegen.model.intermediate.ShapeMarshaller;
 import com.amazonaws.codegen.model.intermediate.ShapeModel;
 import com.amazonaws.codegen.model.service.Input;
 import com.amazonaws.codegen.model.service.Operation;
 import com.amazonaws.codegen.model.service.ServiceMetadata;
+import com.amazonaws.codegen.model.service.ServiceModel;
 import com.amazonaws.codegen.model.service.Shape;
 import com.amazonaws.codegen.model.service.XmlNamespace;
 import com.amazonaws.util.StringUtils;
@@ -85,7 +87,24 @@ public class Utils {
 
         return name.length() < 2 ? StringUtils.upperCase(name) : StringUtils.upperCase(name.substring(0, 1))
                 + name.substring(1);
+    }
 
+    /**
+     * * @param serviceModel Service model to get prefix for.
+     * * @return Prefix to use when writing model files (service and intermediate).
+     */
+    public static String getFileNamePrefix(ServiceModel serviceModel) {
+        return String.format("%s-%s", serviceModel.getMetadata().getEndpointPrefix(), serviceModel.getMetadata().getApiVersion());
+    }
+
+    /**
+     * Converts a directory to a Java package name.
+     *
+     * @param directoryPath Directory to convert.
+     * @return Package name
+     */
+    public static String directoryToPackage(String directoryPath) {
+        return directoryPath.replace('/', '.');
     }
 
     public static String getDefaultEndpointWithoutHttpProtocol(String endpoint) {
@@ -274,11 +293,11 @@ public class Utils {
                 marshaller.setXmlNameSpaceUri(xmlNamespace.getUri());
             }
         }
-        if (!StringUtils.isNullOrEmpty(service.getTargetPrefix())) {
-            marshaller.setTarget(service.getTargetPrefix() + "."
-                    + operation.getName());
+        if (!StringUtils.isNullOrEmpty(service.getTargetPrefix()) && Metadata.isNotRestProtocol(service.getProtocol())) {
+            marshaller.setTarget(service.getTargetPrefix() + "." + operation.getName());
         }
         return marshaller;
 
     }
+
 }

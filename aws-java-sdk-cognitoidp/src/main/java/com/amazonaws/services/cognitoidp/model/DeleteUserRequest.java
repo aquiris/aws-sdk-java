@@ -1,29 +1,32 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
  * Represents the request to delete a user.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUser" target="_top">AWS API
+ *      Documentation</a>
  */
-public class DeleteUserRequest extends AmazonWebServiceRequest implements
-        Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class DeleteUserRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -64,8 +67,7 @@ public class DeleteUserRequest extends AmazonWebServiceRequest implements
      * 
      * @param accessToken
      *        The access token from a request to delete a user.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DeleteUserRequest withAccessToken(String accessToken) {
@@ -74,8 +76,7 @@ public class DeleteUserRequest extends AmazonWebServiceRequest implements
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -86,7 +87,7 @@ public class DeleteUserRequest extends AmazonWebServiceRequest implements
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAccessToken() != null)
-            sb.append("AccessToken: " + getAccessToken());
+            sb.append("AccessToken: ").append(getAccessToken());
         sb.append("}");
         return sb.toString();
     }
@@ -103,8 +104,7 @@ public class DeleteUserRequest extends AmazonWebServiceRequest implements
         DeleteUserRequest other = (DeleteUserRequest) obj;
         if (other.getAccessToken() == null ^ this.getAccessToken() == null)
             return false;
-        if (other.getAccessToken() != null
-                && other.getAccessToken().equals(this.getAccessToken()) == false)
+        if (other.getAccessToken() != null && other.getAccessToken().equals(this.getAccessToken()) == false)
             return false;
         return true;
     }
@@ -114,9 +114,7 @@ public class DeleteUserRequest extends AmazonWebServiceRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAccessToken() == null) ? 0 : getAccessToken().hashCode());
+        hashCode = prime * hashCode + ((getAccessToken() == null) ? 0 : getAccessToken().hashCode());
         return hashCode;
     }
 
@@ -124,4 +122,5 @@ public class DeleteUserRequest extends AmazonWebServiceRequest implements
     public DeleteUserRequest clone() {
         return (DeleteUserRequest) super.clone();
     }
+
 }

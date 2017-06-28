@@ -1,29 +1,29 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Contains the parameters for AttachLoadBalancers.
- * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancers" target="_top">AWS
+ *      API Documentation</a>
  */
-public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class AttachLoadBalancersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -70,12 +70,10 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
      * 
      * @param autoScalingGroupName
      *        The name of the group.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AttachLoadBalancersRequest withAutoScalingGroupName(
-            String autoScalingGroupName) {
+    public AttachLoadBalancersRequest withAutoScalingGroupName(String autoScalingGroupName) {
         setAutoScalingGroupName(autoScalingGroupName);
         return this;
     }
@@ -104,15 +102,13 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
      *        One or more load balancer names.
      */
 
-    public void setLoadBalancerNames(
-            java.util.Collection<String> loadBalancerNames) {
+    public void setLoadBalancerNames(java.util.Collection<String> loadBalancerNames) {
         if (loadBalancerNames == null) {
             this.loadBalancerNames = null;
             return;
         }
 
-        this.loadBalancerNames = new com.amazonaws.internal.SdkInternalList<String>(
-                loadBalancerNames);
+        this.loadBalancerNames = new com.amazonaws.internal.SdkInternalList<String>(loadBalancerNames);
     }
 
     /**
@@ -120,23 +116,19 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
      * One or more load balancer names.
      * </p>
      * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setLoadBalancerNames(java.util.Collection)} or
-     * {@link #withLoadBalancerNames(java.util.Collection)} if you want to
-     * override the existing values.
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setLoadBalancerNames(java.util.Collection)} or {@link #withLoadBalancerNames(java.util.Collection)} if
+     * you want to override the existing values.
      * </p>
      * 
      * @param loadBalancerNames
      *        One or more load balancer names.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AttachLoadBalancersRequest withLoadBalancerNames(
-            String... loadBalancerNames) {
+    public AttachLoadBalancersRequest withLoadBalancerNames(String... loadBalancerNames) {
         if (this.loadBalancerNames == null) {
-            setLoadBalancerNames(new com.amazonaws.internal.SdkInternalList<String>(
-                    loadBalancerNames.length));
+            setLoadBalancerNames(new com.amazonaws.internal.SdkInternalList<String>(loadBalancerNames.length));
         }
         for (String ele : loadBalancerNames) {
             this.loadBalancerNames.add(ele);
@@ -151,19 +143,16 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
      * 
      * @param loadBalancerNames
      *        One or more load balancer names.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AttachLoadBalancersRequest withLoadBalancerNames(
-            java.util.Collection<String> loadBalancerNames) {
+    public AttachLoadBalancersRequest withLoadBalancerNames(java.util.Collection<String> loadBalancerNames) {
         setLoadBalancerNames(loadBalancerNames);
         return this;
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -174,10 +163,9 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getAutoScalingGroupName() != null)
-            sb.append("AutoScalingGroupName: " + getAutoScalingGroupName()
-                    + ",");
+            sb.append("AutoScalingGroupName: ").append(getAutoScalingGroupName()).append(",");
         if (getLoadBalancerNames() != null)
-            sb.append("LoadBalancerNames: " + getLoadBalancerNames());
+            sb.append("LoadBalancerNames: ").append(getLoadBalancerNames());
         sb.append("}");
         return sb.toString();
     }
@@ -192,19 +180,13 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
         if (obj instanceof AttachLoadBalancersRequest == false)
             return false;
         AttachLoadBalancersRequest other = (AttachLoadBalancersRequest) obj;
-        if (other.getAutoScalingGroupName() == null
-                ^ this.getAutoScalingGroupName() == null)
+        if (other.getAutoScalingGroupName() == null ^ this.getAutoScalingGroupName() == null)
             return false;
-        if (other.getAutoScalingGroupName() != null
-                && other.getAutoScalingGroupName().equals(
-                        this.getAutoScalingGroupName()) == false)
+        if (other.getAutoScalingGroupName() != null && other.getAutoScalingGroupName().equals(this.getAutoScalingGroupName()) == false)
             return false;
-        if (other.getLoadBalancerNames() == null
-                ^ this.getLoadBalancerNames() == null)
+        if (other.getLoadBalancerNames() == null ^ this.getLoadBalancerNames() == null)
             return false;
-        if (other.getLoadBalancerNames() != null
-                && other.getLoadBalancerNames().equals(
-                        this.getLoadBalancerNames()) == false)
+        if (other.getLoadBalancerNames() != null && other.getLoadBalancerNames().equals(this.getLoadBalancerNames()) == false)
             return false;
         return true;
     }
@@ -214,14 +196,8 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getAutoScalingGroupName() == null) ? 0
-                        : getAutoScalingGroupName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getLoadBalancerNames() == null) ? 0
-                        : getLoadBalancerNames().hashCode());
+        hashCode = prime * hashCode + ((getAutoScalingGroupName() == null) ? 0 : getAutoScalingGroupName().hashCode());
+        hashCode = prime * hashCode + ((getLoadBalancerNames() == null) ? 0 : getLoadBalancerNames().hashCode());
         return hashCode;
     }
 
@@ -229,4 +205,5 @@ public class AttachLoadBalancersRequest extends AmazonWebServiceRequest
     public AttachLoadBalancersRequest clone() {
         return (AttachLoadBalancersRequest) super.clone();
     }
+
 }

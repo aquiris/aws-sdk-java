@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.auth;
 
-import com.amazonaws.AmazonClientException;
+import com.amazonaws.SdkClientException;
 
 import javax.crypto.Mac;
 import java.security.NoSuchAlgorithmException;
@@ -34,7 +34,7 @@ public enum SigningAlgorithm {
                 try {
                     return Mac.getInstance(algorithmName);
                 } catch (NoSuchAlgorithmException e) {
-                    throw new AmazonClientException("Unable to fetch Mac instance for Algorithm "
+                    throw new SdkClientException("Unable to fetch Mac instance for Algorithm "
                             + algorithmName + e.getMessage(),e);
 
                 }

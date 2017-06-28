@@ -1,27 +1,27 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.iot.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  * <p>
  * The output from the GetPolicyVersion operation.
  * </p>
  */
-public class GetPolicyVersionResult implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class GetPolicyVersionResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
     /**
      * <p>
@@ -86,8 +86,7 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
      * 
      * @param policyArn
      *        The policy ARN.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetPolicyVersionResult withPolicyArn(String policyArn) {
@@ -127,8 +126,7 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
      * 
      * @param policyName
      *        The policy name.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetPolicyVersionResult withPolicyName(String policyName) {
@@ -168,8 +166,7 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
      * 
      * @param policyDocument
      *        The JSON document that describes the policy.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetPolicyVersionResult withPolicyDocument(String policyDocument) {
@@ -209,8 +206,7 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
      * 
      * @param policyVersionId
      *        The policy version ID.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetPolicyVersionResult withPolicyVersionId(String policyVersionId) {
@@ -250,8 +246,7 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
      * 
      * @param isDefaultVersion
      *        Specifies whether the policy version is the default.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public GetPolicyVersionResult withIsDefaultVersion(Boolean isDefaultVersion) {
@@ -272,8 +267,7 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -284,15 +278,15 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPolicyArn() != null)
-            sb.append("PolicyArn: " + getPolicyArn() + ",");
+            sb.append("PolicyArn: ").append(getPolicyArn()).append(",");
         if (getPolicyName() != null)
-            sb.append("PolicyName: " + getPolicyName() + ",");
+            sb.append("PolicyName: ").append(getPolicyName()).append(",");
         if (getPolicyDocument() != null)
-            sb.append("PolicyDocument: " + getPolicyDocument() + ",");
+            sb.append("PolicyDocument: ").append(getPolicyDocument()).append(",");
         if (getPolicyVersionId() != null)
-            sb.append("PolicyVersionId: " + getPolicyVersionId() + ",");
+            sb.append("PolicyVersionId: ").append(getPolicyVersionId()).append(",");
         if (getIsDefaultVersion() != null)
-            sb.append("IsDefaultVersion: " + getIsDefaultVersion());
+            sb.append("IsDefaultVersion: ").append(getIsDefaultVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -309,32 +303,23 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
         GetPolicyVersionResult other = (GetPolicyVersionResult) obj;
         if (other.getPolicyArn() == null ^ this.getPolicyArn() == null)
             return false;
-        if (other.getPolicyArn() != null
-                && other.getPolicyArn().equals(this.getPolicyArn()) == false)
+        if (other.getPolicyArn() != null && other.getPolicyArn().equals(this.getPolicyArn()) == false)
             return false;
         if (other.getPolicyName() == null ^ this.getPolicyName() == null)
             return false;
-        if (other.getPolicyName() != null
-                && other.getPolicyName().equals(this.getPolicyName()) == false)
+        if (other.getPolicyName() != null && other.getPolicyName().equals(this.getPolicyName()) == false)
             return false;
-        if (other.getPolicyDocument() == null
-                ^ this.getPolicyDocument() == null)
+        if (other.getPolicyDocument() == null ^ this.getPolicyDocument() == null)
             return false;
-        if (other.getPolicyDocument() != null
-                && other.getPolicyDocument().equals(this.getPolicyDocument()) == false)
+        if (other.getPolicyDocument() != null && other.getPolicyDocument().equals(this.getPolicyDocument()) == false)
             return false;
-        if (other.getPolicyVersionId() == null
-                ^ this.getPolicyVersionId() == null)
+        if (other.getPolicyVersionId() == null ^ this.getPolicyVersionId() == null)
             return false;
-        if (other.getPolicyVersionId() != null
-                && other.getPolicyVersionId().equals(this.getPolicyVersionId()) == false)
+        if (other.getPolicyVersionId() != null && other.getPolicyVersionId().equals(this.getPolicyVersionId()) == false)
             return false;
-        if (other.getIsDefaultVersion() == null
-                ^ this.getIsDefaultVersion() == null)
+        if (other.getIsDefaultVersion() == null ^ this.getIsDefaultVersion() == null)
             return false;
-        if (other.getIsDefaultVersion() != null
-                && other.getIsDefaultVersion().equals(
-                        this.getIsDefaultVersion()) == false)
+        if (other.getIsDefaultVersion() != null && other.getIsDefaultVersion().equals(this.getIsDefaultVersion()) == false)
             return false;
         return true;
     }
@@ -344,22 +329,11 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getPolicyArn() == null) ? 0 : getPolicyArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getPolicyName() == null) ? 0 : getPolicyName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPolicyDocument() == null) ? 0 : getPolicyDocument()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getPolicyVersionId() == null) ? 0 : getPolicyVersionId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getIsDefaultVersion() == null) ? 0 : getIsDefaultVersion()
-                        .hashCode());
+        hashCode = prime * hashCode + ((getPolicyArn() == null) ? 0 : getPolicyArn().hashCode());
+        hashCode = prime * hashCode + ((getPolicyName() == null) ? 0 : getPolicyName().hashCode());
+        hashCode = prime * hashCode + ((getPolicyDocument() == null) ? 0 : getPolicyDocument().hashCode());
+        hashCode = prime * hashCode + ((getPolicyVersionId() == null) ? 0 : getPolicyVersionId().hashCode());
+        hashCode = prime * hashCode + ((getIsDefaultVersion() == null) ? 0 : getIsDefaultVersion().hashCode());
         return hashCode;
     }
 
@@ -368,9 +342,8 @@ public class GetPolicyVersionResult implements Serializable, Cloneable {
         try {
             return (GetPolicyVersionResult) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
+
 }

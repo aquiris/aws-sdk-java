@@ -1,55 +1,54 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.devicefarm.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the request to install an Android application (in .apk format) or
- * an iOS application (in .ipa format) as part of a remote access session.
+ * Represents the request to install an Android application (in .apk format) or an iOS application (in .ipa format) as
+ * part of a remote access session.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/InstallToRemoteAccessSession"
+ *      target="_top">AWS API Documentation</a>
  */
-public class InstallToRemoteAccessSessionRequest extends
-        AmazonWebServiceRequest implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class InstallToRemoteAccessSessionRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the remote access session about which
-     * you are requesting information.
+     * The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
      * </p>
      */
     private String remoteAccessSessionArn;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the app about which you are requesting
-     * information.
+     * The Amazon Resource Name (ARN) of the app about which you are requesting information.
      * </p>
      */
     private String appArn;
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the remote access session about which
-     * you are requesting information.
+     * The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
      * </p>
      * 
      * @param remoteAccessSessionArn
-     *        The Amazon Resource Name (ARN) of the remote access session about
-     *        which you are requesting information.
+     *        The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
      */
 
     public void setRemoteAccessSessionArn(String remoteAccessSessionArn) {
@@ -58,12 +57,10 @@ public class InstallToRemoteAccessSessionRequest extends
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the remote access session about which
-     * you are requesting information.
+     * The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the remote access session about
-     *         which you are requesting information.
+     * @return The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
      */
 
     public String getRemoteAccessSessionArn() {
@@ -72,32 +69,26 @@ public class InstallToRemoteAccessSessionRequest extends
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the remote access session about which
-     * you are requesting information.
+     * The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
      * </p>
      * 
      * @param remoteAccessSessionArn
-     *        The Amazon Resource Name (ARN) of the remote access session about
-     *        which you are requesting information.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resource Name (ARN) of the remote access session about which you are requesting information.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public InstallToRemoteAccessSessionRequest withRemoteAccessSessionArn(
-            String remoteAccessSessionArn) {
+    public InstallToRemoteAccessSessionRequest withRemoteAccessSessionArn(String remoteAccessSessionArn) {
         setRemoteAccessSessionArn(remoteAccessSessionArn);
         return this;
     }
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the app about which you are requesting
-     * information.
+     * The Amazon Resource Name (ARN) of the app about which you are requesting information.
      * </p>
      * 
      * @param appArn
-     *        The Amazon Resource Name (ARN) of the app about which you are
-     *        requesting information.
+     *        The Amazon Resource Name (ARN) of the app about which you are requesting information.
      */
 
     public void setAppArn(String appArn) {
@@ -106,12 +97,10 @@ public class InstallToRemoteAccessSessionRequest extends
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the app about which you are requesting
-     * information.
+     * The Amazon Resource Name (ARN) of the app about which you are requesting information.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the app about which you are
-     *         requesting information.
+     * @return The Amazon Resource Name (ARN) of the app about which you are requesting information.
      */
 
     public String getAppArn() {
@@ -120,15 +109,12 @@ public class InstallToRemoteAccessSessionRequest extends
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the app about which you are requesting
-     * information.
+     * The Amazon Resource Name (ARN) of the app about which you are requesting information.
      * </p>
      * 
      * @param appArn
-     *        The Amazon Resource Name (ARN) of the app about which you are
-     *        requesting information.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The Amazon Resource Name (ARN) of the app about which you are requesting information.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InstallToRemoteAccessSessionRequest withAppArn(String appArn) {
@@ -137,8 +123,7 @@ public class InstallToRemoteAccessSessionRequest extends
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -149,10 +134,9 @@ public class InstallToRemoteAccessSessionRequest extends
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getRemoteAccessSessionArn() != null)
-            sb.append("RemoteAccessSessionArn: " + getRemoteAccessSessionArn()
-                    + ",");
+            sb.append("RemoteAccessSessionArn: ").append(getRemoteAccessSessionArn()).append(",");
         if (getAppArn() != null)
-            sb.append("AppArn: " + getAppArn());
+            sb.append("AppArn: ").append(getAppArn());
         sb.append("}");
         return sb.toString();
     }
@@ -167,17 +151,13 @@ public class InstallToRemoteAccessSessionRequest extends
         if (obj instanceof InstallToRemoteAccessSessionRequest == false)
             return false;
         InstallToRemoteAccessSessionRequest other = (InstallToRemoteAccessSessionRequest) obj;
-        if (other.getRemoteAccessSessionArn() == null
-                ^ this.getRemoteAccessSessionArn() == null)
+        if (other.getRemoteAccessSessionArn() == null ^ this.getRemoteAccessSessionArn() == null)
             return false;
-        if (other.getRemoteAccessSessionArn() != null
-                && other.getRemoteAccessSessionArn().equals(
-                        this.getRemoteAccessSessionArn()) == false)
+        if (other.getRemoteAccessSessionArn() != null && other.getRemoteAccessSessionArn().equals(this.getRemoteAccessSessionArn()) == false)
             return false;
         if (other.getAppArn() == null ^ this.getAppArn() == null)
             return false;
-        if (other.getAppArn() != null
-                && other.getAppArn().equals(this.getAppArn()) == false)
+        if (other.getAppArn() != null && other.getAppArn().equals(this.getAppArn()) == false)
             return false;
         return true;
     }
@@ -187,12 +167,8 @@ public class InstallToRemoteAccessSessionRequest extends
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getRemoteAccessSessionArn() == null) ? 0
-                        : getRemoteAccessSessionArn().hashCode());
-        hashCode = prime * hashCode
-                + ((getAppArn() == null) ? 0 : getAppArn().hashCode());
+        hashCode = prime * hashCode + ((getRemoteAccessSessionArn() == null) ? 0 : getRemoteAccessSessionArn().hashCode());
+        hashCode = prime * hashCode + ((getAppArn() == null) ? 0 : getAppArn().hashCode());
         return hashCode;
     }
 
@@ -200,4 +176,5 @@ public class InstallToRemoteAccessSessionRequest extends
     public InstallToRemoteAccessSessionRequest clone() {
         return (InstallToRemoteAccessSessionRequest) super.clone();
     }
+
 }

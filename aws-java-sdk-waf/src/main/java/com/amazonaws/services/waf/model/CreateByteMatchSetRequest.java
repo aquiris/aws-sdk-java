@@ -1,32 +1,34 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.waf.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateByteMatchSet" target="_top">AWS
+ *      API Documentation</a>
  */
-public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
-        implements Serializable, Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class CreateByteMatchSetRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A friendly name or description of the <a>ByteMatchSet</a>. You can't
-     * change <code>Name</code> after you create a <code>ByteMatchSet</code>.
+     * A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a
+     * <code>ByteMatchSet</code>.
      * </p>
      */
     private String name;
@@ -39,14 +41,13 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A friendly name or description of the <a>ByteMatchSet</a>. You can't
-     * change <code>Name</code> after you create a <code>ByteMatchSet</code>.
+     * A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a
+     * <code>ByteMatchSet</code>.
      * </p>
      * 
      * @param name
-     *        A friendly name or description of the <a>ByteMatchSet</a>. You
-     *        can't change <code>Name</code> after you create a
-     *        <code>ByteMatchSet</code>.
+     *        A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you
+     *        create a <code>ByteMatchSet</code>.
      */
 
     public void setName(String name) {
@@ -55,13 +56,12 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A friendly name or description of the <a>ByteMatchSet</a>. You can't
-     * change <code>Name</code> after you create a <code>ByteMatchSet</code>.
+     * A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a
+     * <code>ByteMatchSet</code>.
      * </p>
      * 
-     * @return A friendly name or description of the <a>ByteMatchSet</a>. You
-     *         can't change <code>Name</code> after you create a
-     *         <code>ByteMatchSet</code>.
+     * @return A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you
+     *         create a <code>ByteMatchSet</code>.
      */
 
     public String getName() {
@@ -70,16 +70,14 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * A friendly name or description of the <a>ByteMatchSet</a>. You can't
-     * change <code>Name</code> after you create a <code>ByteMatchSet</code>.
+     * A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a
+     * <code>ByteMatchSet</code>.
      * </p>
      * 
      * @param name
-     *        A friendly name or description of the <a>ByteMatchSet</a>. You
-     *        can't change <code>Name</code> after you create a
-     *        <code>ByteMatchSet</code>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you
+     *        create a <code>ByteMatchSet</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateByteMatchSetRequest withName(String name) {
@@ -93,8 +91,7 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param changeToken
-     *        The value returned by the most recent call to
-     *        <a>GetChangeToken</a>.
+     *        The value returned by the most recent call to <a>GetChangeToken</a>.
      */
 
     public void setChangeToken(String changeToken) {
@@ -106,8 +103,7 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
      * The value returned by the most recent call to <a>GetChangeToken</a>.
      * </p>
      * 
-     * @return The value returned by the most recent call to
-     *         <a>GetChangeToken</a>.
+     * @return The value returned by the most recent call to <a>GetChangeToken</a>.
      */
 
     public String getChangeToken() {
@@ -120,10 +116,8 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param changeToken
-     *        The value returned by the most recent call to
-     *        <a>GetChangeToken</a>.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The value returned by the most recent call to <a>GetChangeToken</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateByteMatchSetRequest withChangeToken(String changeToken) {
@@ -132,8 +126,7 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -144,9 +137,9 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: " + getName() + ",");
+            sb.append("Name: ").append(getName()).append(",");
         if (getChangeToken() != null)
-            sb.append("ChangeToken: " + getChangeToken());
+            sb.append("ChangeToken: ").append(getChangeToken());
         sb.append("}");
         return sb.toString();
     }
@@ -163,13 +156,11 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
         CreateByteMatchSetRequest other = (CreateByteMatchSetRequest) obj;
         if (other.getName() == null ^ this.getName() == null)
             return false;
-        if (other.getName() != null
-                && other.getName().equals(this.getName()) == false)
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
         if (other.getChangeToken() == null ^ this.getChangeToken() == null)
             return false;
-        if (other.getChangeToken() != null
-                && other.getChangeToken().equals(this.getChangeToken()) == false)
+        if (other.getChangeToken() != null && other.getChangeToken().equals(this.getChangeToken()) == false)
             return false;
         return true;
     }
@@ -179,11 +170,8 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getName() == null) ? 0 : getName().hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getChangeToken() == null) ? 0 : getChangeToken().hashCode());
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getChangeToken() == null) ? 0 : getChangeToken().hashCode());
         return hashCode;
     }
 
@@ -191,4 +179,5 @@ public class CreateByteMatchSetRequest extends AmazonWebServiceRequest
     public CreateByteMatchSetRequest clone() {
         return (CreateByteMatchSetRequest) super.clone();
     }
+
 }

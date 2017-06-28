@@ -1,42 +1,44 @@
 /*
- * Copyright 2011-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. A copy of the License is
- * located at
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
+ * the License. A copy of the License is located at
  * 
  * http://aws.amazon.com/apache2.0
  * 
- * or in the "license" file accompanying this file. This file is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import com.amazonaws.protocol.StructuredPojo;
+import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
  * Provides details for the <code>LambdaFunctionCompleted</code> event.
  * </p>
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/LambdaFunctionCompletedEventAttributes"
+ *      target="_top">AWS API Documentation</a>
  */
-public class LambdaFunctionCompletedEventAttributes implements Serializable,
-        Cloneable {
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
+public class LambdaFunctionCompletedEventAttributes implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionScheduled</code> event that was
-     * recorded when this AWS Lambda function was scheduled. This information
-     * can be useful for diagnosing problems by tracing back the chain of events
-     * leading up to this event.
+     * The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was
+     * scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up
+     * to this event.
      * </p>
      */
     private Long scheduledEventId;
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the
-     * history.
+     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.
      * </p>
      */
     private Long startedEventId;
@@ -49,17 +51,15 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
 
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionScheduled</code> event that was
-     * recorded when this AWS Lambda function was scheduled. This information
-     * can be useful for diagnosing problems by tracing back the chain of events
-     * leading up to this event.
+     * The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was
+     * scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up
+     * to this event.
      * </p>
      * 
      * @param scheduledEventId
-     *        The ID of the <code>LambdaFunctionScheduled</code> event that was
-     *        recorded when this AWS Lambda function was scheduled. This
-     *        information can be useful for diagnosing problems by tracing back
-     *        the chain of events leading up to this event.
+     *        The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function
+     *        was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events
+     *        leading up to this event.
      */
 
     public void setScheduledEventId(Long scheduledEventId) {
@@ -68,16 +68,14 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
 
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionScheduled</code> event that was
-     * recorded when this AWS Lambda function was scheduled. This information
-     * can be useful for diagnosing problems by tracing back the chain of events
-     * leading up to this event.
+     * The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was
+     * scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up
+     * to this event.
      * </p>
      * 
-     * @return The ID of the <code>LambdaFunctionScheduled</code> event that was
-     *         recorded when this AWS Lambda function was scheduled. This
-     *         information can be useful for diagnosing problems by tracing back
-     *         the chain of events leading up to this event.
+     * @return The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function
+     *         was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events
+     *         leading up to this event.
      */
 
     public Long getScheduledEventId() {
@@ -86,36 +84,30 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
 
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionScheduled</code> event that was
-     * recorded when this AWS Lambda function was scheduled. This information
-     * can be useful for diagnosing problems by tracing back the chain of events
-     * leading up to this event.
+     * The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was
+     * scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up
+     * to this event.
      * </p>
      * 
      * @param scheduledEventId
-     *        The ID of the <code>LambdaFunctionScheduled</code> event that was
-     *        recorded when this AWS Lambda function was scheduled. This
-     *        information can be useful for diagnosing problems by tracing back
-     *        the chain of events leading up to this event.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function
+     *        was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events
+     *        leading up to this event.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public LambdaFunctionCompletedEventAttributes withScheduledEventId(
-            Long scheduledEventId) {
+    public LambdaFunctionCompletedEventAttributes withScheduledEventId(Long scheduledEventId) {
         setScheduledEventId(scheduledEventId);
         return this;
     }
 
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the
-     * history.
+     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.
      * </p>
      * 
      * @param startedEventId
-     *        The ID of the <code>LambdaFunctionStarted</code> event recorded in
-     *        the history.
+     *        The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.
      */
 
     public void setStartedEventId(Long startedEventId) {
@@ -124,12 +116,10 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
 
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the
-     * history.
+     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.
      * </p>
      * 
-     * @return The ID of the <code>LambdaFunctionStarted</code> event recorded
-     *         in the history.
+     * @return The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.
      */
 
     public Long getStartedEventId() {
@@ -138,19 +128,15 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
 
     /**
      * <p>
-     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the
-     * history.
+     * The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.
      * </p>
      * 
      * @param startedEventId
-     *        The ID of the <code>LambdaFunctionStarted</code> event recorded in
-     *        the history.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     *        The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public LambdaFunctionCompletedEventAttributes withStartedEventId(
-            Long startedEventId) {
+    public LambdaFunctionCompletedEventAttributes withStartedEventId(Long startedEventId) {
         setStartedEventId(startedEventId);
         return this;
     }
@@ -187,8 +173,7 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
      * 
      * @param result
      *        The result of the function execution (if any).
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
+     * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public LambdaFunctionCompletedEventAttributes withResult(String result) {
@@ -197,8 +182,7 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and
-     * debugging.
+     * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
      *
@@ -209,11 +193,11 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getScheduledEventId() != null)
-            sb.append("ScheduledEventId: " + getScheduledEventId() + ",");
+            sb.append("ScheduledEventId: ").append(getScheduledEventId()).append(",");
         if (getStartedEventId() != null)
-            sb.append("StartedEventId: " + getStartedEventId() + ",");
+            sb.append("StartedEventId: ").append(getStartedEventId()).append(",");
         if (getResult() != null)
-            sb.append("Result: " + getResult());
+            sb.append("Result: ").append(getResult());
         sb.append("}");
         return sb.toString();
     }
@@ -228,23 +212,17 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
         if (obj instanceof LambdaFunctionCompletedEventAttributes == false)
             return false;
         LambdaFunctionCompletedEventAttributes other = (LambdaFunctionCompletedEventAttributes) obj;
-        if (other.getScheduledEventId() == null
-                ^ this.getScheduledEventId() == null)
+        if (other.getScheduledEventId() == null ^ this.getScheduledEventId() == null)
             return false;
-        if (other.getScheduledEventId() != null
-                && other.getScheduledEventId().equals(
-                        this.getScheduledEventId()) == false)
+        if (other.getScheduledEventId() != null && other.getScheduledEventId().equals(this.getScheduledEventId()) == false)
             return false;
-        if (other.getStartedEventId() == null
-                ^ this.getStartedEventId() == null)
+        if (other.getStartedEventId() == null ^ this.getStartedEventId() == null)
             return false;
-        if (other.getStartedEventId() != null
-                && other.getStartedEventId().equals(this.getStartedEventId()) == false)
+        if (other.getStartedEventId() != null && other.getStartedEventId().equals(this.getStartedEventId()) == false)
             return false;
         if (other.getResult() == null ^ this.getResult() == null)
             return false;
-        if (other.getResult() != null
-                && other.getResult().equals(this.getResult()) == false)
+        if (other.getResult() != null && other.getResult().equals(this.getResult()) == false)
             return false;
         return true;
     }
@@ -254,16 +232,9 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime
-                * hashCode
-                + ((getScheduledEventId() == null) ? 0 : getScheduledEventId()
-                        .hashCode());
-        hashCode = prime
-                * hashCode
-                + ((getStartedEventId() == null) ? 0 : getStartedEventId()
-                        .hashCode());
-        hashCode = prime * hashCode
-                + ((getResult() == null) ? 0 : getResult().hashCode());
+        hashCode = prime * hashCode + ((getScheduledEventId() == null) ? 0 : getScheduledEventId().hashCode());
+        hashCode = prime * hashCode + ((getStartedEventId() == null) ? 0 : getStartedEventId().hashCode());
+        hashCode = prime * hashCode + ((getResult() == null) ? 0 : getResult().hashCode());
         return hashCode;
     }
 
@@ -272,9 +243,13 @@ public class LambdaFunctionCompletedEventAttributes implements Serializable,
         try {
             return (LambdaFunctionCompletedEventAttributes) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+            throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    @Override
+    public void marshall(ProtocolMarshaller protocolMarshaller) {
+        com.amazonaws.services.simpleworkflow.model.transform.LambdaFunctionCompletedEventAttributesMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

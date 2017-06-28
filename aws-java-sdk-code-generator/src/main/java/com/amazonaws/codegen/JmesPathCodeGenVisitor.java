@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -15,7 +15,22 @@
 
 package com.amazonaws.codegen;
 
-import com.amazonaws.jmespath.*;
+import com.amazonaws.jmespath.Comparator;
+import com.amazonaws.jmespath.InvalidTypeException;
+import com.amazonaws.jmespath.JmesPathAndExpression;
+import com.amazonaws.jmespath.JmesPathField;
+import com.amazonaws.jmespath.JmesPathFilter;
+import com.amazonaws.jmespath.JmesPathFlatten;
+import com.amazonaws.jmespath.JmesPathFunction;
+import com.amazonaws.jmespath.JmesPathIdentity;
+import com.amazonaws.jmespath.JmesPathLiteral;
+import com.amazonaws.jmespath.JmesPathMultiSelectList;
+import com.amazonaws.jmespath.JmesPathNotExpression;
+import com.amazonaws.jmespath.JmesPathProjection;
+import com.amazonaws.jmespath.JmesPathSubExpression;
+import com.amazonaws.jmespath.JmesPathValueProjection;
+import com.amazonaws.jmespath.JmesPathVisitor;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.util.stream.Collectors;

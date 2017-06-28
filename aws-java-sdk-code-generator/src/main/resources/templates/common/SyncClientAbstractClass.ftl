@@ -1,6 +1,8 @@
 ${fileHeader}
 package ${metadata.packageName};
 
+import javax.annotation.Generated;
+
 import ${metadata.packageName}.model.*;
 import com.amazonaws.*;
 <#if hasWaiters>
@@ -12,11 +14,13 @@ import ${metadata.packageName}.waiters.${metadata.syncInterface}Waiters;
  * method forms pass through to the corresponding overload that takes a
  * request object, which throws an {@code UnsupportedOperationException}.
  */
+@Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ${metadata.syncAbstractClass} implements ${metadata.syncInterface} {
 
     protected ${metadata.syncAbstractClass}() {
     }
 
+<#if customizationConfig.emitClientMutationMethods() >
     @Override
     public void setEndpoint(String endpoint) {
         throw new java.lang.UnsupportedOperationException();
@@ -26,6 +30,7 @@ public class ${metadata.syncAbstractClass} implements ${metadata.syncInterface} 
     public void setRegion(com.amazonaws.regions.Region region) {
         throw new java.lang.UnsupportedOperationException();
     }
+</#if>
 
   <#list operations?values as operationModel>
     <@ClientMethodForUnsupportedOperation.content operationModel />
@@ -55,4 +60,11 @@ public class ${metadata.syncAbstractClass} implements ${metadata.syncInterface} 
            throw new java.lang.UnsupportedOperationException();
       }
   </#if>
+
+    <#if customizationConfig.presignersFqcn??>
+    @Override
+    public ${customizationConfig.presignersFqcn} presigners() {
+        throw new java.lang.UnsupportedOperationException();
+    }
+    </#if>
 }
