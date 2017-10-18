@@ -16,6 +16,7 @@ build/
 out/
 classes/
 .gradle/
+.idea/
 files/
 data/
 
