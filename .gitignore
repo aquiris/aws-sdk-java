@@ -15,9 +15,7 @@ hs_err_pid*
 build/
 out/
 classes/
-.idea/
 .gradle/
-*.iml
 files/
 data/
 
