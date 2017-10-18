@@ -17,6 +17,7 @@ out/
 classes/
 .gradle/
 .idea/
+*.iml
 files/
 data/
 
