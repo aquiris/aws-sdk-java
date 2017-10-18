@@ -15,11 +15,12 @@ package com.amazonaws.services.budgets.model;
 import javax.annotation.Generated;
 
 /**
- * The time unit of the budget. e.g. weekly, monthly, etc.
+ * The time unit of the budget. e.g. MONTHLY, QUARTERLY, etc.
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum TimeUnit {
 
+    DAILY("DAILY"),
     MONTHLY("MONTHLY"),
     QUARTERLY("QUARTERLY"),
     ANNUALLY("ANNUALLY");
@@ -41,6 +42,9 @@ public enum TimeUnit {
      * @param value
      *        real value
      * @return TimeUnit corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static TimeUnit fromValue(String value) {
         if (value == null || "".equals(value)) {

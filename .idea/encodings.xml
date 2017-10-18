@@ -17,6 +17,7 @@
     <file url="file://$PROJECT_DIR$/aws-java-sdk-cloudformation" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-cloudfront" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-cloudhsm" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aws-java-sdk-cloudhsmv2" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-cloudsearch" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-cloudtrail" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-cloudwatch" charset="UTF-8" />
@@ -56,6 +57,7 @@
     <file url="file://$PROJECT_DIR$/aws-java-sdk-events" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-gamelift" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-glacier" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aws-java-sdk-glue" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-greengrass" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-health" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-iam" charset="UTF-8" />
@@ -74,6 +76,8 @@
     <file url="file://$PROJECT_DIR$/aws-java-sdk-marketplaceentitlement" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-marketplacemeteringservice" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-mechanicalturkrequester" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aws-java-sdk-migrationhub" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aws-java-sdk-mobile" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-models" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-opensdk" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aws-java-sdk-opsworks" charset="UTF-8" />

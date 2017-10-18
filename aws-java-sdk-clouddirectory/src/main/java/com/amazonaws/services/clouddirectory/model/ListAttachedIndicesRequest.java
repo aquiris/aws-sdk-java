@@ -33,7 +33,7 @@ public class ListAttachedIndicesRequest extends com.amazonaws.AmazonWebServiceRe
     private String directoryArn;
     /**
      * <p>
-     * A reference to the object to that has indices attached.
+     * A reference to the object that has indices attached.
      * </p>
      */
     private ObjectReference targetReference;
@@ -98,11 +98,11 @@ public class ListAttachedIndicesRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A reference to the object to that has indices attached.
+     * A reference to the object that has indices attached.
      * </p>
      * 
      * @param targetReference
-     *        A reference to the object to that has indices attached.
+     *        A reference to the object that has indices attached.
      */
 
     public void setTargetReference(ObjectReference targetReference) {
@@ -111,10 +111,10 @@ public class ListAttachedIndicesRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A reference to the object to that has indices attached.
+     * A reference to the object that has indices attached.
      * </p>
      * 
-     * @return A reference to the object to that has indices attached.
+     * @return A reference to the object that has indices attached.
      */
 
     public ObjectReference getTargetReference() {
@@ -123,11 +123,11 @@ public class ListAttachedIndicesRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A reference to the object to that has indices attached.
+     * A reference to the object that has indices attached.
      * </p>
      * 
      * @param targetReference
-     *        A reference to the object to that has indices attached.
+     *        A reference to the object that has indices attached.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -270,7 +270,7 @@ public class ListAttachedIndicesRequest extends com.amazonaws.AmazonWebServiceRe
      */
 
     public void setConsistencyLevel(ConsistencyLevel consistencyLevel) {
-        this.consistencyLevel = consistencyLevel.toString();
+        withConsistencyLevel(consistencyLevel);
     }
 
     /**
@@ -285,7 +285,7 @@ public class ListAttachedIndicesRequest extends com.amazonaws.AmazonWebServiceRe
      */
 
     public ListAttachedIndicesRequest withConsistencyLevel(ConsistencyLevel consistencyLevel) {
-        setConsistencyLevel(consistencyLevel);
+        this.consistencyLevel = consistencyLevel.toString();
         return this;
     }
 

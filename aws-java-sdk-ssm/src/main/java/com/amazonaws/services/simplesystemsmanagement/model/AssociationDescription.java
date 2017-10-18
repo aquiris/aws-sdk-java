@@ -30,7 +30,7 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      */
     private String name;
@@ -42,10 +42,16 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
     private String instanceId;
     /**
      * <p>
+     * The association version.
+     * </p>
+     */
+    private String associationVersion;
+    /**
+     * <p>
      * The date when the association was made.
      * </p>
      */
-    private java.util.Date dateValue;
+    private java.util.Date date;
     /**
      * <p>
      * The date when the association was last updated.
@@ -112,14 +118,20 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
      * </p>
      */
     private java.util.Date lastSuccessfulExecutionDate;
+    /**
+     * <p>
+     * The association name.
+     * </p>
+     */
+    private String associationName;
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      * 
      * @param name
-     *        The name of the SSM document.
+     *        The name of the Systems Manager document.
      */
 
     public void setName(String name) {
@@ -128,10 +140,10 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      * 
-     * @return The name of the SSM document.
+     * @return The name of the Systems Manager document.
      */
 
     public String getName() {
@@ -140,11 +152,11 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      * 
      * @param name
-     *        The name of the SSM document.
+     *        The name of the Systems Manager document.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -195,15 +207,55 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
 
     /**
      * <p>
+     * The association version.
+     * </p>
+     * 
+     * @param associationVersion
+     *        The association version.
+     */
+
+    public void setAssociationVersion(String associationVersion) {
+        this.associationVersion = associationVersion;
+    }
+
+    /**
+     * <p>
+     * The association version.
+     * </p>
+     * 
+     * @return The association version.
+     */
+
+    public String getAssociationVersion() {
+        return this.associationVersion;
+    }
+
+    /**
+     * <p>
+     * The association version.
+     * </p>
+     * 
+     * @param associationVersion
+     *        The association version.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withAssociationVersion(String associationVersion) {
+        setAssociationVersion(associationVersion);
+        return this;
+    }
+
+    /**
+     * <p>
      * The date when the association was made.
      * </p>
      * 
-     * @param dateValue
+     * @param date
      *        The date when the association was made.
      */
 
-    public void setDate(java.util.Date dateValue) {
-        this.dateValue = dateValue;
+    public void setDate(java.util.Date date) {
+        this.date = date;
     }
 
     /**
@@ -215,7 +267,7 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
      */
 
     public java.util.Date getDate() {
-        return this.dateValue;
+        return this.date;
     }
 
     /**
@@ -223,13 +275,13 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
      * The date when the association was made.
      * </p>
      * 
-     * @param dateValue
+     * @param date
      *        The date when the association was made.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public AssociationDescription withDate(java.util.Date dateValue) {
-        setDate(dateValue);
+    public AssociationDescription withDate(java.util.Date date) {
+        setDate(date);
         return this;
     }
 
@@ -728,6 +780,46 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
     }
 
     /**
+     * <p>
+     * The association name.
+     * </p>
+     * 
+     * @param associationName
+     *        The association name.
+     */
+
+    public void setAssociationName(String associationName) {
+        this.associationName = associationName;
+    }
+
+    /**
+     * <p>
+     * The association name.
+     * </p>
+     * 
+     * @return The association name.
+     */
+
+    public String getAssociationName() {
+        return this.associationName;
+    }
+
+    /**
+     * <p>
+     * The association name.
+     * </p>
+     * 
+     * @param associationName
+     *        The association name.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AssociationDescription withAssociationName(String associationName) {
+        setAssociationName(associationName);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -742,6 +834,8 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
             sb.append("Name: ").append(getName()).append(",");
         if (getInstanceId() != null)
             sb.append("InstanceId: ").append(getInstanceId()).append(",");
+        if (getAssociationVersion() != null)
+            sb.append("AssociationVersion: ").append(getAssociationVersion()).append(",");
         if (getDate() != null)
             sb.append("Date: ").append(getDate()).append(",");
         if (getLastUpdateAssociationDate() != null)
@@ -765,7 +859,9 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
         if (getLastExecutionDate() != null)
             sb.append("LastExecutionDate: ").append(getLastExecutionDate()).append(",");
         if (getLastSuccessfulExecutionDate() != null)
-            sb.append("LastSuccessfulExecutionDate: ").append(getLastSuccessfulExecutionDate());
+            sb.append("LastSuccessfulExecutionDate: ").append(getLastSuccessfulExecutionDate()).append(",");
+        if (getAssociationName() != null)
+            sb.append("AssociationName: ").append(getAssociationName());
         sb.append("}");
         return sb.toString();
     }
@@ -787,6 +883,10 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
         if (other.getInstanceId() == null ^ this.getInstanceId() == null)
             return false;
         if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false)
+            return false;
+        if (other.getAssociationVersion() == null ^ this.getAssociationVersion() == null)
+            return false;
+        if (other.getAssociationVersion() != null && other.getAssociationVersion().equals(this.getAssociationVersion()) == false)
             return false;
         if (other.getDate() == null ^ this.getDate() == null)
             return false;
@@ -836,6 +936,10 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
             return false;
         if (other.getLastSuccessfulExecutionDate() != null && other.getLastSuccessfulExecutionDate().equals(this.getLastSuccessfulExecutionDate()) == false)
             return false;
+        if (other.getAssociationName() == null ^ this.getAssociationName() == null)
+            return false;
+        if (other.getAssociationName() != null && other.getAssociationName().equals(this.getAssociationName()) == false)
+            return false;
         return true;
     }
 
@@ -846,6 +950,7 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
+        hashCode = prime * hashCode + ((getAssociationVersion() == null) ? 0 : getAssociationVersion().hashCode());
         hashCode = prime * hashCode + ((getDate() == null) ? 0 : getDate().hashCode());
         hashCode = prime * hashCode + ((getLastUpdateAssociationDate() == null) ? 0 : getLastUpdateAssociationDate().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
@@ -858,6 +963,7 @@ public class AssociationDescription implements Serializable, Cloneable, Structur
         hashCode = prime * hashCode + ((getOutputLocation() == null) ? 0 : getOutputLocation().hashCode());
         hashCode = prime * hashCode + ((getLastExecutionDate() == null) ? 0 : getLastExecutionDate().hashCode());
         hashCode = prime * hashCode + ((getLastSuccessfulExecutionDate() == null) ? 0 : getLastSuccessfulExecutionDate().hashCode());
+        hashCode = prime * hashCode + ((getAssociationName() == null) ? 0 : getAssociationName().hashCode());
         return hashCode;
     }
 

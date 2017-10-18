@@ -254,6 +254,72 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
 
     /**
      * <p>
+     * Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a
+     * stack in a specific account and region. <code>Accounts</code> and <code>Regions</code> are required
+     * parameters—you must specify at least one account and one region.
+     * </p>
+     * 
+     * @param createStackInstancesRequest
+     * @return A Java Future containing the result of the CreateStackInstances operation returned by the service.
+     * @sample AmazonCloudFormationAsync.CreateStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateStackInstancesResult> createStackInstancesAsync(CreateStackInstancesRequest createStackInstancesRequest);
+
+    /**
+     * <p>
+     * Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a
+     * stack in a specific account and region. <code>Accounts</code> and <code>Regions</code> are required
+     * parameters—you must specify at least one account and one region.
+     * </p>
+     * 
+     * @param createStackInstancesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateStackInstances operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.CreateStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateStackInstancesResult> createStackInstancesAsync(CreateStackInstancesRequest createStackInstancesRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateStackInstancesRequest, CreateStackInstancesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a stack set.
+     * </p>
+     * 
+     * @param createStackSetRequest
+     * @return A Java Future containing the result of the CreateStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsync.CreateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateStackSetResult> createStackSetAsync(CreateStackSetRequest createStackSetRequest);
+
+    /**
+     * <p>
+     * Creates a stack set.
+     * </p>
+     * 
+     * @param createStackSetRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.CreateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateStackSetResult> createStackSetAsync(CreateStackSetRequest createStackSetRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateStackSetRequest, CreateStackSetResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.
      * </p>
      * <p>
@@ -325,6 +391,70 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      */
     java.util.concurrent.Future<DeleteStackResult> deleteStackAsync(DeleteStackRequest deleteStackRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteStackRequest, DeleteStackResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes stack instances for the specified accounts, in the specified regions.
+     * </p>
+     * 
+     * @param deleteStackInstancesRequest
+     * @return A Java Future containing the result of the DeleteStackInstances operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DeleteStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteStackInstancesResult> deleteStackInstancesAsync(DeleteStackInstancesRequest deleteStackInstancesRequest);
+
+    /**
+     * <p>
+     * Deletes stack instances for the specified accounts, in the specified regions.
+     * </p>
+     * 
+     * @param deleteStackInstancesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteStackInstances operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DeleteStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteStackInstancesResult> deleteStackInstancesAsync(DeleteStackInstancesRequest deleteStackInstancesRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteStackInstancesRequest, DeleteStackInstancesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For
+     * more information about how to do this, see <a>DeleteStackInstances</a>.
+     * </p>
+     * 
+     * @param deleteStackSetRequest
+     * @return A Java Future containing the result of the DeleteStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DeleteStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteStackSetResult> deleteStackSetAsync(DeleteStackSetRequest deleteStackSetRequest);
+
+    /**
+     * <p>
+     * Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For
+     * more information about how to do this, see <a>DeleteStackInstances</a>.
+     * </p>
+     * 
+     * @param deleteStackSetRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DeleteStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteStackSetResult> deleteStackSetAsync(DeleteStackSetRequest deleteStackSetRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteStackSetRequest, DeleteStackSetResult> asyncHandler);
 
     /**
      * <p>
@@ -453,6 +583,43 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
 
     /**
      * <p>
+     * Returns the stack instance that's associated with the specified stack set, AWS account, and region.
+     * </p>
+     * <p>
+     * For a list of stack instances that are associated with a specific stack set, use <a>ListStackInstances</a>.
+     * </p>
+     * 
+     * @param describeStackInstanceRequest
+     * @return A Java Future containing the result of the DescribeStackInstance operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DescribeStackInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackInstance"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeStackInstanceResult> describeStackInstanceAsync(DescribeStackInstanceRequest describeStackInstanceRequest);
+
+    /**
+     * <p>
+     * Returns the stack instance that's associated with the specified stack set, AWS account, and region.
+     * </p>
+     * <p>
+     * For a list of stack instances that are associated with a specific stack set, use <a>ListStackInstances</a>.
+     * </p>
+     * 
+     * @param describeStackInstanceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeStackInstance operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DescribeStackInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackInstance"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeStackInstanceResult> describeStackInstanceAsync(DescribeStackInstanceRequest describeStackInstanceRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeStackInstanceRequest, DescribeStackInstanceResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a description of the specified resource in the specified stack.
      * </p>
      * <p>
@@ -572,6 +739,70 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      */
     java.util.concurrent.Future<DescribeStackResourcesResult> describeStackResourcesAsync(DescribeStackResourcesRequest describeStackResourcesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeStackResourcesRequest, DescribeStackResourcesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set.
+     * </p>
+     * 
+     * @param describeStackSetRequest
+     * @return A Java Future containing the result of the DescribeStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DescribeStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeStackSetResult> describeStackSetAsync(DescribeStackSetRequest describeStackSetRequest);
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set.
+     * </p>
+     * 
+     * @param describeStackSetRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DescribeStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeStackSetResult> describeStackSetAsync(DescribeStackSetRequest describeStackSetRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeStackSetRequest, DescribeStackSetResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set operation.
+     * </p>
+     * 
+     * @param describeStackSetOperationRequest
+     * @return A Java Future containing the result of the DescribeStackSetOperation operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DescribeStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeStackSetOperationResult> describeStackSetOperationAsync(
+            DescribeStackSetOperationRequest describeStackSetOperationRequest);
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set operation.
+     * </p>
+     * 
+     * @param describeStackSetOperationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeStackSetOperation operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DescribeStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeStackSetOperationResult> describeStackSetOperationAsync(
+            DescribeStackSetOperationRequest describeStackSetOperationRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeStackSetOperationRequest, DescribeStackSetOperationResult> asyncHandler);
 
     /**
      * <p>
@@ -822,11 +1053,11 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <p>
      * Returns information about a new or existing template. The <code>GetTemplateSummary</code> action is useful for
      * viewing parameter information, such as default parameter values and parameter types, before you create or update
-     * a stack.
+     * a stack or stack set.
      * </p>
      * <p>
      * You can use the <code>GetTemplateSummary</code> action when you submit a template, or you can get template
-     * information for a running or deleted stack.
+     * information for a stack set, or a running or deleted stack.
      * </p>
      * <p>
      * For deleted stacks, <code>GetTemplateSummary</code> returns the template information for up to 90 days after the
@@ -846,11 +1077,11 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <p>
      * Returns information about a new or existing template. The <code>GetTemplateSummary</code> action is useful for
      * viewing parameter information, such as default parameter values and parameter types, before you create or update
-     * a stack.
+     * a stack or stack set.
      * </p>
      * <p>
      * You can use the <code>GetTemplateSummary</code> action when you submit a template, or you can get template
-     * information for a running or deleted stack.
+     * information for a stack set, or a running or deleted stack.
      * </p>
      * <p>
      * For deleted stacks, <code>GetTemplateSummary</code> returns the template information for up to 90 days after the
@@ -1015,6 +1246,39 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
 
     /**
      * <p>
+     * Returns summary information about stack instances that are associated with the specified stack set. You can
+     * filter for stack instances that are associated with a specific AWS account name or region.
+     * </p>
+     * 
+     * @param listStackInstancesRequest
+     * @return A Java Future containing the result of the ListStackInstances operation returned by the service.
+     * @sample AmazonCloudFormationAsync.ListStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackInstancesResult> listStackInstancesAsync(ListStackInstancesRequest listStackInstancesRequest);
+
+    /**
+     * <p>
+     * Returns summary information about stack instances that are associated with the specified stack set. You can
+     * filter for stack instances that are associated with a specific AWS account name or region.
+     * </p>
+     * 
+     * @param listStackInstancesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListStackInstances operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.ListStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackInstancesResult> listStackInstancesAsync(ListStackInstancesRequest listStackInstancesRequest,
+            com.amazonaws.handlers.AsyncHandler<ListStackInstancesRequest, ListStackInstancesResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns descriptions of all resources of the specified stack.
      * </p>
      * <p>
@@ -1053,6 +1317,103 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      */
     java.util.concurrent.Future<ListStackResourcesResult> listStackResourcesAsync(ListStackResourcesRequest listStackResourcesRequest,
             com.amazonaws.handlers.AsyncHandler<ListStackResourcesRequest, ListStackResourcesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns summary information about the results of a stack set operation.
+     * </p>
+     * 
+     * @param listStackSetOperationResultsRequest
+     * @return A Java Future containing the result of the ListStackSetOperationResults operation returned by the
+     *         service.
+     * @sample AmazonCloudFormationAsync.ListStackSetOperationResults
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperationResults"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackSetOperationResultsResult> listStackSetOperationResultsAsync(
+            ListStackSetOperationResultsRequest listStackSetOperationResultsRequest);
+
+    /**
+     * <p>
+     * Returns summary information about the results of a stack set operation.
+     * </p>
+     * 
+     * @param listStackSetOperationResultsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListStackSetOperationResults operation returned by the
+     *         service.
+     * @sample AmazonCloudFormationAsyncHandler.ListStackSetOperationResults
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperationResults"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackSetOperationResultsResult> listStackSetOperationResultsAsync(
+            ListStackSetOperationResultsRequest listStackSetOperationResultsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListStackSetOperationResultsRequest, ListStackSetOperationResultsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns summary information about operations performed on a stack set.
+     * </p>
+     * 
+     * @param listStackSetOperationsRequest
+     * @return A Java Future containing the result of the ListStackSetOperations operation returned by the service.
+     * @sample AmazonCloudFormationAsync.ListStackSetOperations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackSetOperationsResult> listStackSetOperationsAsync(ListStackSetOperationsRequest listStackSetOperationsRequest);
+
+    /**
+     * <p>
+     * Returns summary information about operations performed on a stack set.
+     * </p>
+     * 
+     * @param listStackSetOperationsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListStackSetOperations operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.ListStackSetOperations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackSetOperationsResult> listStackSetOperationsAsync(ListStackSetOperationsRequest listStackSetOperationsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListStackSetOperationsRequest, ListStackSetOperationsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns summary information about stack sets that are associated with the user.
+     * </p>
+     * 
+     * @param listStackSetsRequest
+     * @return A Java Future containing the result of the ListStackSets operation returned by the service.
+     * @sample AmazonCloudFormationAsync.ListStackSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSets" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackSetsResult> listStackSetsAsync(ListStackSetsRequest listStackSetsRequest);
+
+    /**
+     * <p>
+     * Returns summary information about stack sets that are associated with the user.
+     * </p>
+     * 
+     * @param listStackSetsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListStackSets operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.ListStackSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSets" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListStackSetsResult> listStackSetsAsync(ListStackSetsRequest listStackSetsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListStackSetsRequest, ListStackSetsResult> asyncHandler);
 
     /**
      * <p>
@@ -1183,6 +1544,37 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
 
     /**
      * <p>
+     * Stops an in-progress operation on a stack set and its associated stack instances.
+     * </p>
+     * 
+     * @param stopStackSetOperationRequest
+     * @return A Java Future containing the result of the StopStackSetOperation operation returned by the service.
+     * @sample AmazonCloudFormationAsync.StopStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/StopStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<StopStackSetOperationResult> stopStackSetOperationAsync(StopStackSetOperationRequest stopStackSetOperationRequest);
+
+    /**
+     * <p>
+     * Stops an in-progress operation on a stack set and its associated stack instances.
+     * </p>
+     * 
+     * @param stopStackSetOperationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the StopStackSetOperation operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.StopStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/StopStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<StopStackSetOperationResult> stopStackSetOperationAsync(StopStackSetOperationRequest stopStackSetOperationRequest,
+            com.amazonaws.handlers.AsyncHandler<StopStackSetOperationRequest, StopStackSetOperationResult> asyncHandler);
+
+    /**
+     * <p>
      * Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You
      * can check the status of the stack via the <a>DescribeStacks</a> action.
      * </p>
@@ -1233,6 +1625,94 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      */
     java.util.concurrent.Future<UpdateStackResult> updateStackAsync(UpdateStackRequest updateStackRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateStackRequest, UpdateStackResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the stack set and <i>all</i> associated stack instances.
+     * </p>
+     * <p>
+     * Even if the stack set operation created by updating the stack set fails (completely or partially, below or above
+     * a specified failure tolerance), the stack set is updated with your changes. Subsequent
+     * <a>CreateStackInstances</a> calls on the specified stack set use the updated stack set.
+     * </p>
+     * 
+     * @param updateStackSetRequest
+     * @return A Java Future containing the result of the UpdateStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsync.UpdateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateStackSetResult> updateStackSetAsync(UpdateStackSetRequest updateStackSetRequest);
+
+    /**
+     * <p>
+     * Updates the stack set and <i>all</i> associated stack instances.
+     * </p>
+     * <p>
+     * Even if the stack set operation created by updating the stack set fails (completely or partially, below or above
+     * a specified failure tolerance), the stack set is updated with your changes. Subsequent
+     * <a>CreateStackInstances</a> calls on the specified stack set use the updated stack set.
+     * </p>
+     * 
+     * @param updateStackSetRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateStackSet operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.UpdateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateStackSetResult> updateStackSetAsync(UpdateStackSetRequest updateStackSetRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateStackSetRequest, UpdateStackSetResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates termination protection for the specified stack. If a user attempts to delete a stack with termination
+     * protection enabled, the operation fails and the stack remains unchanged. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a
+     * Stack From Being Deleted</a> in the <i>AWS CloudFormation User Guide</i>.
+     * </p>
+     * <p>
+     * For <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested
+     * stacks</a>, termination protection is set on the root stack and cannot be changed directly on the nested stack.
+     * </p>
+     * 
+     * @param updateTerminationProtectionRequest
+     * @return A Java Future containing the result of the UpdateTerminationProtection operation returned by the service.
+     * @sample AmazonCloudFormationAsync.UpdateTerminationProtection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateTerminationProtection"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateTerminationProtectionResult> updateTerminationProtectionAsync(
+            UpdateTerminationProtectionRequest updateTerminationProtectionRequest);
+
+    /**
+     * <p>
+     * Updates termination protection for the specified stack. If a user attempts to delete a stack with termination
+     * protection enabled, the operation fails and the stack remains unchanged. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a
+     * Stack From Being Deleted</a> in the <i>AWS CloudFormation User Guide</i>.
+     * </p>
+     * <p>
+     * For <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested
+     * stacks</a>, termination protection is set on the root stack and cannot be changed directly on the nested stack.
+     * </p>
+     * 
+     * @param updateTerminationProtectionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateTerminationProtection operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.UpdateTerminationProtection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateTerminationProtection"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateTerminationProtectionResult> updateTerminationProtectionAsync(
+            UpdateTerminationProtectionRequest updateTerminationProtectionRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateTerminationProtectionRequest, UpdateTerminationProtectionResult> asyncHandler);
 
     /**
      * <p>

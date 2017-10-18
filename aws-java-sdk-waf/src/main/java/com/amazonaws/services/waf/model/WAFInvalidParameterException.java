@@ -55,7 +55,7 @@ import javax.annotation.Generated;
  * <li>
  * <p>
  * You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER,
- * QUERY_STRING, or URI.
+ * METHOD, QUERY_STRING, URI, or BODY.
  * </p>
  * </li>
  * <li>
@@ -129,7 +129,7 @@ public class WAFInvalidParameterException extends com.amazonaws.services.waf.mod
      */
 
     public void setField(ParameterExceptionField field) {
-        this.field = field.toString();
+        withField(field);
     }
 
     /**
@@ -139,7 +139,7 @@ public class WAFInvalidParameterException extends com.amazonaws.services.waf.mod
      */
 
     public WAFInvalidParameterException withField(ParameterExceptionField field) {
-        setField(field);
+        this.field = field.toString();
         return this;
     }
 
@@ -208,7 +208,7 @@ public class WAFInvalidParameterException extends com.amazonaws.services.waf.mod
      */
 
     public void setReason(ParameterExceptionReason reason) {
-        this.reason = reason.toString();
+        withReason(reason);
     }
 
     /**
@@ -218,7 +218,7 @@ public class WAFInvalidParameterException extends com.amazonaws.services.waf.mod
      */
 
     public WAFInvalidParameterException withReason(ParameterExceptionReason reason) {
-        setReason(reason);
+        this.reason = reason.toString();
         return this;
     }
 

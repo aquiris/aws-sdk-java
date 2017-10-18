@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * State of the Campaign
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CampaignState" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CampaignState implements Serializable, Cloneable, StructuredPojo {
@@ -92,7 +95,7 @@ public class CampaignState implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setCampaignStatus(CampaignStatus campaignStatus) {
-        this.campaignStatus = campaignStatus.toString();
+        withCampaignStatus(campaignStatus);
     }
 
     /**
@@ -109,7 +112,7 @@ public class CampaignState implements Serializable, Cloneable, StructuredPojo {
      */
 
     public CampaignState withCampaignStatus(CampaignStatus campaignStatus) {
-        setCampaignStatus(campaignStatus);
+        this.campaignStatus = campaignStatus.toString();
         return this;
     }
 

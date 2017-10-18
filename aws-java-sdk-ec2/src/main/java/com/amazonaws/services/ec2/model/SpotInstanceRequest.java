@@ -145,6 +145,12 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
      * </p>
      */
     private java.util.Date validUntil;
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     */
+    private String instanceInterruptionBehavior;
 
     /**
      * <p>
@@ -578,7 +584,7 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
      */
 
     public void setProductDescription(RIProductDescription productDescription) {
-        this.productDescription = productDescription.toString();
+        withProductDescription(productDescription);
     }
 
     /**
@@ -593,7 +599,7 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
      */
 
     public SpotInstanceRequest withProductDescription(RIProductDescription productDescription) {
-        setProductDescription(productDescription);
+        this.productDescription = productDescription.toString();
         return this;
     }
 
@@ -755,7 +761,7 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
      */
 
     public void setState(SpotInstanceState state) {
-        this.state = state.toString();
+        withState(state);
     }
 
     /**
@@ -776,7 +782,7 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
      */
 
     public SpotInstanceRequest withState(SpotInstanceState state) {
-        setState(state);
+        this.state = state.toString();
         return this;
     }
 
@@ -947,7 +953,7 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
      */
 
     public void setType(SpotInstanceType type) {
-        this.type = type.toString();
+        withType(type);
     }
 
     /**
@@ -962,7 +968,7 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
      */
 
     public SpotInstanceRequest withType(SpotInstanceType type) {
-        setType(type);
+        this.type = type.toString();
         return this;
     }
 
@@ -1077,6 +1083,79 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public void setInstanceInterruptionBehavior(String instanceInterruptionBehavior) {
+        this.instanceInterruptionBehavior = instanceInterruptionBehavior;
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @return Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public String getInstanceInterruptionBehavior() {
+        return this.instanceInterruptionBehavior;
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public SpotInstanceRequest withInstanceInterruptionBehavior(String instanceInterruptionBehavior) {
+        setInstanceInterruptionBehavior(instanceInterruptionBehavior);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public void setInstanceInterruptionBehavior(InstanceInterruptionBehavior instanceInterruptionBehavior) {
+        withInstanceInterruptionBehavior(instanceInterruptionBehavior);
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public SpotInstanceRequest withInstanceInterruptionBehavior(InstanceInterruptionBehavior instanceInterruptionBehavior) {
+        this.instanceInterruptionBehavior = instanceInterruptionBehavior.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1122,7 +1201,9 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
         if (getValidFrom() != null)
             sb.append("ValidFrom: ").append(getValidFrom()).append(",");
         if (getValidUntil() != null)
-            sb.append("ValidUntil: ").append(getValidUntil());
+            sb.append("ValidUntil: ").append(getValidUntil()).append(",");
+        if (getInstanceInterruptionBehavior() != null)
+            sb.append("InstanceInterruptionBehavior: ").append(getInstanceInterruptionBehavior());
         sb.append("}");
         return sb.toString();
     }
@@ -1209,6 +1290,10 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
             return false;
         if (other.getValidUntil() != null && other.getValidUntil().equals(this.getValidUntil()) == false)
             return false;
+        if (other.getInstanceInterruptionBehavior() == null ^ this.getInstanceInterruptionBehavior() == null)
+            return false;
+        if (other.getInstanceInterruptionBehavior() != null && other.getInstanceInterruptionBehavior().equals(this.getInstanceInterruptionBehavior()) == false)
+            return false;
         return true;
     }
 
@@ -1235,6 +1320,7 @@ public class SpotInstanceRequest implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         hashCode = prime * hashCode + ((getValidFrom() == null) ? 0 : getValidFrom().hashCode());
         hashCode = prime * hashCode + ((getValidUntil() == null) ? 0 : getValidUntil().hashCode());
+        hashCode = prime * hashCode + ((getInstanceInterruptionBehavior() == null) ? 0 : getInstanceInterruptionBehavior().hashCode());
         return hashCode;
     }
 

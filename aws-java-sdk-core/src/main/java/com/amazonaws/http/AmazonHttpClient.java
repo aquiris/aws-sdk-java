@@ -14,6 +14,16 @@
  */
 package com.amazonaws.http;
 
+import static com.amazonaws.SDKGlobalConfiguration.PROFILING_SYSTEM_PROPERTY;
+import static com.amazonaws.event.SDKProgressPublisher.publishProgress;
+import static com.amazonaws.event.SDKProgressPublisher.publishRequestContentLength;
+import static com.amazonaws.event.SDKProgressPublisher.publishResponseContentLength;
+import static com.amazonaws.util.AWSRequestMetrics.Field.HttpClientPoolAvailableCount;
+import static com.amazonaws.util.AWSRequestMetrics.Field.HttpClientPoolLeasedCount;
+import static com.amazonaws.util.AWSRequestMetrics.Field.HttpClientPoolPendingCount;
+import static com.amazonaws.util.AWSRequestMetrics.Field.ThrottledRetryCount;
+import static com.amazonaws.util.IOUtils.closeQuietly;
+
 import com.amazonaws.AbortedException;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -41,6 +51,8 @@ import com.amazonaws.event.ProgressEventType;
 import com.amazonaws.event.ProgressInputStream;
 import com.amazonaws.event.ProgressListener;
 import com.amazonaws.handlers.CredentialsRequestHandler;
+import com.amazonaws.handlers.HandlerAfterAttemptContext;
+import com.amazonaws.handlers.HandlerBeforeAttemptContext;
 import com.amazonaws.handlers.HandlerContextKey;
 import com.amazonaws.handlers.RequestHandler2;
 import com.amazonaws.http.apache.client.impl.ApacheHttpClientFactory;
@@ -52,6 +64,7 @@ import com.amazonaws.http.exception.HttpRequestTimeoutException;
 import com.amazonaws.http.request.HttpRequestFactory;
 import com.amazonaws.http.response.AwsResponseHandlerAdapter;
 import com.amazonaws.http.settings.HttpClientSettings;
+import com.amazonaws.http.timers.client.ClientExecutionAbortTrackerTask;
 import com.amazonaws.http.timers.client.ClientExecutionTimeoutException;
 import com.amazonaws.http.timers.client.ClientExecutionTimer;
 import com.amazonaws.http.timers.client.SdkInterruptedException;
@@ -85,21 +98,6 @@ import com.amazonaws.util.ResponseMetadataCache;
 import com.amazonaws.util.RuntimeHttpUtils;
 import com.amazonaws.util.SdkHttpUtils;
 import com.amazonaws.util.UnreliableFilterInputStream;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpEntityEnclosingRequest;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.entity.BufferedHttpEntity;
-import org.apache.http.pool.ConnPoolControl;
-import org.apache.http.pool.PoolStats;
-import org.apache.http.protocol.HttpContext;
-
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -115,16 +113,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.UUID;
-
-import static com.amazonaws.SDKGlobalConfiguration.PROFILING_SYSTEM_PROPERTY;
-import static com.amazonaws.event.SDKProgressPublisher.publishProgress;
-import static com.amazonaws.event.SDKProgressPublisher.publishRequestContentLength;
-import static com.amazonaws.event.SDKProgressPublisher.publishResponseContentLength;
-import static com.amazonaws.util.AWSRequestMetrics.Field.HttpClientPoolAvailableCount;
-import static com.amazonaws.util.AWSRequestMetrics.Field.HttpClientPoolLeasedCount;
-import static com.amazonaws.util.AWSRequestMetrics.Field.HttpClientPoolPendingCount;
-import static com.amazonaws.util.AWSRequestMetrics.Field.ThrottledRetryCount;
-import static com.amazonaws.util.IOUtils.closeQuietly;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.entity.BufferedHttpEntity;
+import org.apache.http.pool.ConnPoolControl;
+import org.apache.http.pool.PoolStats;
+import org.apache.http.protocol.HttpContext;
 
 @ThreadSafe
 public class AmazonHttpClient {
@@ -421,8 +422,7 @@ public class AmazonHttpClient {
     public void shutdown() {
         clientExecutionTimer.shutdown();
         httpRequestTimer.shutdown();
-        IdleConnectionReaper.removeConnectionManager(httpClient
-                                                             .getHttpClientConnectionManager());
+        IdleConnectionReaper.removeConnectionManager(httpClient.getHttpClientConnectionManager());
         httpClient.getHttpClientConnectionManager().shutdown();
     }
 
@@ -710,9 +710,10 @@ public class AmazonHttpClient {
          * {@link #execute()} so * the interrupt status doesn't leak out to the callers code
          */
         private Response<Output> executeWithTimer() throws InterruptedException {
+            ClientExecutionAbortTrackerTask clientExecutionTrackerTask =
+                    clientExecutionTimer.startTimer(getClientExecutionTimeout(requestConfig));
             try {
-                executionContext.setClientExecutionTrackerTask(
-                        clientExecutionTimer.startTimer(getClientExecutionTimeout(requestConfig)));
+                executionContext.setClientExecutionTrackerTask(clientExecutionTrackerTask);
                 return doExecute();
             } finally {
                 executionContext.getClientExecutionTrackerTask().cancelTask();
@@ -746,6 +747,8 @@ public class AmazonHttpClient {
                 return response;
             } catch (AmazonClientException e) {
                 publishProgress(listener, ProgressEventType.CLIENT_REQUEST_FAILED_EVENT);
+
+                // Exceptions generated here will block the rethrow of e.
                 afterError(response, e);
                 throw e;
             } finally {
@@ -973,6 +976,20 @@ public class AmazonHttpClient {
             }
         }
 
+        private <T> void beforeAttempt(HandlerBeforeAttemptContext context) throws InterruptedException {
+            for (RequestHandler2 handler2 : requestHandler2s) {
+                handler2.beforeAttempt(context);
+                checkInterrupted();
+            }
+        }
+
+        private <T> void afterAttempt(HandlerAfterAttemptContext context) throws InterruptedException {
+            for (RequestHandler2 handler2 : requestHandler2s) {
+                handler2.afterAttempt(context);
+                checkInterrupted(context.getResponse());
+            }
+        }
+
         /**
          * Internal method to execute the HTTP method given.
          */
@@ -1026,14 +1043,29 @@ public class AmazonHttpClient {
                     request.setHeaders(originalHeaders);
                     request.setContent(originalContent);
                 }
+
+                Response<Output> response = null;
+                Exception savedException = null;
                 try {
-                    Response<Output> response = executeOneRequest(execOneParams);
+                    HandlerBeforeAttemptContext beforeAttemptContext = HandlerBeforeAttemptContext.builder()
+                            .withRequest(request)
+                            .build();
+
+                    beforeAttempt(beforeAttemptContext);
+                    response = executeOneRequest(execOneParams);
+                    savedException = execOneParams.retriedException;
+
                     if (response != null) {
                         return response;
                     }
                 } catch (IOException ioe) {
+                    savedException = ioe;
                     handleRetryableException(execOneParams, ioe);
+                } catch (InterruptedException ie) {
+                    savedException = ie;
+                    throw ie;
                 } catch (RuntimeException e) {
+                    savedException = e;
                     throw lastReset(captureExceptionMetrics(e));
                 } catch (Error e) {
                     throw lastReset(captureExceptionMetrics(e));
@@ -1056,6 +1088,18 @@ public class AmazonHttpClient {
                             }
                         }
                     }
+
+                    HandlerAfterAttemptContext afterAttemptContext = HandlerAfterAttemptContext.builder()
+                            .withRequest(request)
+                            .withResponse(response)
+                            .withException(savedException)
+                            .build();
+
+                    /*
+                     * Exceptions generated here will replace ones rethrown in catch-blocks
+                     * above or thrown in the original try-block.
+                     */
+                    afterAttempt(afterAttemptContext);
                 }
             } /* end while (true) */
         }
@@ -1129,6 +1173,7 @@ public class AmazonHttpClient {
          */
         private Response<Output> executeOneRequest(ExecOneRequestParams execOneParams)
                 throws IOException, InterruptedException {
+
             if (execOneParams.isRetry()) {
                 resetRequestInputStream(request);
             }
@@ -1258,6 +1303,19 @@ public class AmazonHttpClient {
             final SdkBaseException exception = handleErrorResponse(execOneParams.apacheRequest,
                                                              execOneParams.apacheResponse,
                                                              localRequestContext);
+
+            /*
+             * If the exception is related to Clock skew,
+             * then update the client global time offset
+             * irrespective of retry logic
+             */
+            if (RetryUtils.isClockSkewError(exception)) {
+                int clockSkew = parseClockSkewOffset(execOneParams.apacheResponse, exception);
+                SDKGlobalTime.setGlobalTimeOffset(timeOffset = clockSkew);
+                request.setTimeOffset(timeOffset); // adjust time offset for the retry
+            }
+
+
             // Check whether we should internally retry the auth error
             execOneParams.authRetryParam = null;
             AuthErrorRetryStrategy authRetry = executionContext.getAuthErrorRetryStrategy();
@@ -1280,15 +1338,7 @@ public class AmazonHttpClient {
             }
             // Cache the retryable exception
             execOneParams.retriedException = exception;
-        /*
-         * Checking for clock skew error again because we don't want to set the global time offset
-         * for every service exception.
-         */
-            if (RetryUtils.isClockSkewError(exception)) {
-                int clockSkew = parseClockSkewOffset(execOneParams.apacheResponse, exception);
-                SDKGlobalTime.setGlobalTimeOffset(timeOffset = clockSkew);
-                request.setTimeOffset(timeOffset); // adjust time offset for the retry
-            }
+
             return null; // => retry
         }
 

@@ -21,7 +21,9 @@ import javax.annotation.Generated;
 public enum DeploymentType {
 
     NewDeployment("NewDeployment"),
-    Redeployment("Redeployment");
+    Redeployment("Redeployment"),
+    ResetDeployment("ResetDeployment"),
+    ForceResetDeployment("ForceResetDeployment");
 
     private String value;
 
@@ -40,6 +42,9 @@ public enum DeploymentType {
      * @param value
      *        real value
      * @return DeploymentType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static DeploymentType fromValue(String value) {
         if (value == null || "".equals(value)) {

@@ -72,6 +72,10 @@ public class FleetJsonUnmarshaller implements Unmarshaller<Fleet, JsonUnmarshall
                     context.nextToken();
                     fleet.setInstanceType(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("FleetType", targetDepth)) {
+                    context.nextToken();
+                    fleet.setFleetType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("ComputeCapacityStatus", targetDepth)) {
                     context.nextToken();
                     fleet.setComputeCapacityStatus(ComputeCapacityStatusJsonUnmarshaller.getInstance().unmarshall(context));
@@ -103,6 +107,10 @@ public class FleetJsonUnmarshaller implements Unmarshaller<Fleet, JsonUnmarshall
                 if (context.testExpression("EnableDefaultInternetAccess", targetDepth)) {
                     context.nextToken();
                     fleet.setEnableDefaultInternetAccess(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("DomainJoinInfo", targetDepth)) {
+                    context.nextToken();
+                    fleet.setDomainJoinInfo(DomainJoinInfoJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

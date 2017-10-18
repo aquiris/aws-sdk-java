@@ -19,7 +19,7 @@ import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a create custom action operation.
+ * Represents the input of a CreateCustomActionType operation.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreateCustomActionType"
@@ -180,7 +180,7 @@ public class CreateCustomActionTypeRequest extends com.amazonaws.AmazonWebServic
      */
 
     public void setCategory(ActionCategory category) {
-        this.category = category.toString();
+        withCategory(category);
     }
 
     /**
@@ -205,7 +205,7 @@ public class CreateCustomActionTypeRequest extends com.amazonaws.AmazonWebServic
      */
 
     public CreateCustomActionTypeRequest withCategory(ActionCategory category) {
-        setCategory(category);
+        this.category = category.toString();
         return this;
     }
 

@@ -25,6 +25,8 @@ public enum GameliftActions implements Action {
     /** Represents any action executed on Amazon GameLift. */
     AllGameliftActions("gamelift:*"),
 
+    /** Action for the AcceptMatch operation. */
+    AcceptMatch("gamelift:AcceptMatch"),
     /** Action for the CreateAlias operation. */
     CreateAlias("gamelift:CreateAlias"),
     /** Action for the CreateBuild operation. */
@@ -35,10 +37,18 @@ public enum GameliftActions implements Action {
     CreateGameSession("gamelift:CreateGameSession"),
     /** Action for the CreateGameSessionQueue operation. */
     CreateGameSessionQueue("gamelift:CreateGameSessionQueue"),
+    /** Action for the CreateMatchmakingConfiguration operation. */
+    CreateMatchmakingConfiguration("gamelift:CreateMatchmakingConfiguration"),
+    /** Action for the CreateMatchmakingRuleSet operation. */
+    CreateMatchmakingRuleSet("gamelift:CreateMatchmakingRuleSet"),
     /** Action for the CreatePlayerSession operation. */
     CreatePlayerSession("gamelift:CreatePlayerSession"),
     /** Action for the CreatePlayerSessions operation. */
     CreatePlayerSessions("gamelift:CreatePlayerSessions"),
+    /** Action for the CreateVpcPeeringAuthorization operation. */
+    CreateVpcPeeringAuthorization("gamelift:CreateVpcPeeringAuthorization"),
+    /** Action for the CreateVpcPeeringConnection operation. */
+    CreateVpcPeeringConnection("gamelift:CreateVpcPeeringConnection"),
     /** Action for the DeleteAlias operation. */
     DeleteAlias("gamelift:DeleteAlias"),
     /** Action for the DeleteBuild operation. */
@@ -47,8 +57,14 @@ public enum GameliftActions implements Action {
     DeleteFleet("gamelift:DeleteFleet"),
     /** Action for the DeleteGameSessionQueue operation. */
     DeleteGameSessionQueue("gamelift:DeleteGameSessionQueue"),
+    /** Action for the DeleteMatchmakingConfiguration operation. */
+    DeleteMatchmakingConfiguration("gamelift:DeleteMatchmakingConfiguration"),
     /** Action for the DeleteScalingPolicy operation. */
     DeleteScalingPolicy("gamelift:DeleteScalingPolicy"),
+    /** Action for the DeleteVpcPeeringAuthorization operation. */
+    DeleteVpcPeeringAuthorization("gamelift:DeleteVpcPeeringAuthorization"),
+    /** Action for the DeleteVpcPeeringConnection operation. */
+    DeleteVpcPeeringConnection("gamelift:DeleteVpcPeeringConnection"),
     /** Action for the DescribeAlias operation. */
     DescribeAlias("gamelift:DescribeAlias"),
     /** Action for the DescribeBuild operation. */
@@ -75,12 +91,22 @@ public enum GameliftActions implements Action {
     DescribeGameSessions("gamelift:DescribeGameSessions"),
     /** Action for the DescribeInstances operation. */
     DescribeInstances("gamelift:DescribeInstances"),
+    /** Action for the DescribeMatchmaking operation. */
+    DescribeMatchmaking("gamelift:DescribeMatchmaking"),
+    /** Action for the DescribeMatchmakingConfigurations operation. */
+    DescribeMatchmakingConfigurations("gamelift:DescribeMatchmakingConfigurations"),
+    /** Action for the DescribeMatchmakingRuleSets operation. */
+    DescribeMatchmakingRuleSets("gamelift:DescribeMatchmakingRuleSets"),
     /** Action for the DescribePlayerSessions operation. */
     DescribePlayerSessions("gamelift:DescribePlayerSessions"),
     /** Action for the DescribeRuntimeConfiguration operation. */
     DescribeRuntimeConfiguration("gamelift:DescribeRuntimeConfiguration"),
     /** Action for the DescribeScalingPolicies operation. */
     DescribeScalingPolicies("gamelift:DescribeScalingPolicies"),
+    /** Action for the DescribeVpcPeeringAuthorizations operation. */
+    DescribeVpcPeeringAuthorizations("gamelift:DescribeVpcPeeringAuthorizations"),
+    /** Action for the DescribeVpcPeeringConnections operation. */
+    DescribeVpcPeeringConnections("gamelift:DescribeVpcPeeringConnections"),
     /** Action for the GetGameSessionLogUrl operation. */
     GetGameSessionLogUrl("gamelift:GetGameSessionLogUrl"),
     /** Action for the GetInstanceAccess operation. */
@@ -101,8 +127,12 @@ public enum GameliftActions implements Action {
     SearchGameSessions("gamelift:SearchGameSessions"),
     /** Action for the StartGameSessionPlacement operation. */
     StartGameSessionPlacement("gamelift:StartGameSessionPlacement"),
+    /** Action for the StartMatchmaking operation. */
+    StartMatchmaking("gamelift:StartMatchmaking"),
     /** Action for the StopGameSessionPlacement operation. */
     StopGameSessionPlacement("gamelift:StopGameSessionPlacement"),
+    /** Action for the StopMatchmaking operation. */
+    StopMatchmaking("gamelift:StopMatchmaking"),
     /** Action for the UpdateAlias operation. */
     UpdateAlias("gamelift:UpdateAlias"),
     /** Action for the UpdateBuild operation. */
@@ -117,8 +147,12 @@ public enum GameliftActions implements Action {
     UpdateGameSession("gamelift:UpdateGameSession"),
     /** Action for the UpdateGameSessionQueue operation. */
     UpdateGameSessionQueue("gamelift:UpdateGameSessionQueue"),
+    /** Action for the UpdateMatchmakingConfiguration operation. */
+    UpdateMatchmakingConfiguration("gamelift:UpdateMatchmakingConfiguration"),
     /** Action for the UpdateRuntimeConfiguration operation. */
     UpdateRuntimeConfiguration("gamelift:UpdateRuntimeConfiguration"),
+    /** Action for the ValidateMatchmakingRuleSet operation. */
+    ValidateMatchmakingRuleSet("gamelift:ValidateMatchmakingRuleSet"),
 
     ;
 

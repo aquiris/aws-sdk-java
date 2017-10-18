@@ -71,14 +71,14 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
+                                    com.amazonaws.services.pinpoint.model.ForbiddenException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
                                     com.amazonaws.services.pinpoint.model.NotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("MethodNotAllowedException").withModeledClass(
                                     com.amazonaws.services.pinpoint.model.MethodNotAllowedException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
-                                    com.amazonaws.services.pinpoint.model.ForbiddenException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
                                     com.amazonaws.services.pinpoint.model.TooManyRequestsException.class))
@@ -273,6 +273,64 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Creates or updates an app.
+     * 
+     * @param createAppRequest
+     * @return Result of the CreateApp operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.CreateApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateApp" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreateAppResult createApp(CreateAppRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateApp(request);
+    }
+
+    @SdkInternalApi
+    final CreateAppResult executeCreateApp(CreateAppRequest createAppRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createAppRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateAppRequest> request = null;
+        Response<CreateAppResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateAppRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAppRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateAppResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateAppResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Creates or updates a campaign.
      * 
      * @param createCampaignRequest
@@ -290,6 +348,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.CreateCampaign
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateCampaign" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public CreateCampaignResult createCampaign(CreateCampaignRequest request) {
@@ -346,6 +406,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.CreateImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateImportJob" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public CreateImportJobResult createImportJob(CreateImportJobRequest request) {
@@ -402,6 +464,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.CreateSegment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateSegment" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public CreateSegmentResult createSegment(CreateSegmentRequest request) {
@@ -441,6 +505,64 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Delete an ADM channel
+     * 
+     * @param deleteAdmChannelRequest
+     * @return Result of the DeleteAdmChannel operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.DeleteAdmChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteAdmChannel" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteAdmChannelResult deleteAdmChannel(DeleteAdmChannelRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAdmChannel(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAdmChannelResult executeDeleteAdmChannel(DeleteAdmChannelRequest deleteAdmChannelRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteAdmChannelRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteAdmChannelRequest> request = null;
+        Response<DeleteAdmChannelResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteAdmChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAdmChannelRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteAdmChannelResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteAdmChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Deletes the APNs channel for an app.
      * 
      * @param deleteApnsChannelRequest
@@ -458,6 +580,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteApnsChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public DeleteApnsChannelResult deleteApnsChannel(DeleteApnsChannelRequest request) {
@@ -514,6 +638,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteApnsSandboxChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsSandboxChannel"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
     public DeleteApnsSandboxChannelResult deleteApnsSandboxChannel(DeleteApnsSandboxChannelRequest request) {
@@ -555,6 +681,122 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Deletes an app.
+     * 
+     * @param deleteAppRequest
+     * @return Result of the DeleteApp operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.DeleteApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApp" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteAppResult deleteApp(DeleteAppRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteApp(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAppResult executeDeleteApp(DeleteAppRequest deleteAppRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteAppRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteAppRequest> request = null;
+        Response<DeleteAppResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteAppRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAppRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteAppResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteAppResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Delete a BAIDU GCM channel
+     * 
+     * @param deleteBaiduChannelRequest
+     * @return Result of the DeleteBaiduChannel operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.DeleteBaiduChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteBaiduChannel" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeleteBaiduChannelResult deleteBaiduChannel(DeleteBaiduChannelRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteBaiduChannel(request);
+    }
+
+    @SdkInternalApi
+    final DeleteBaiduChannelResult executeDeleteBaiduChannel(DeleteBaiduChannelRequest deleteBaiduChannelRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteBaiduChannelRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteBaiduChannelRequest> request = null;
+        Response<DeleteBaiduChannelResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteBaiduChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteBaiduChannelRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteBaiduChannelResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteBaiduChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Deletes a campaign.
      * 
      * @param deleteCampaignRequest
@@ -572,6 +814,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteCampaign
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteCampaign" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public DeleteCampaignResult deleteCampaign(DeleteCampaignRequest request) {
@@ -628,6 +872,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteEmailChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEmailChannel" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public DeleteEmailChannelResult deleteEmailChannel(DeleteEmailChannelRequest request) {
@@ -685,6 +931,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteEventStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEventStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public DeleteEventStreamResult deleteEventStream(DeleteEventStreamRequest request) {
@@ -741,6 +989,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteGcmChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteGcmChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public DeleteGcmChannelResult deleteGcmChannel(DeleteGcmChannelRequest request) {
@@ -797,6 +1047,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteSegment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteSegment" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public DeleteSegmentResult deleteSegment(DeleteSegmentRequest request) {
@@ -853,6 +1105,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.DeleteSmsChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteSmsChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public DeleteSmsChannelResult deleteSmsChannel(DeleteSmsChannelRequest request) {
@@ -892,6 +1146,64 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Get an ADM channel
+     * 
+     * @param getAdmChannelRequest
+     * @return Result of the GetAdmChannel operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.GetAdmChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetAdmChannel" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetAdmChannelResult getAdmChannel(GetAdmChannelRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAdmChannel(request);
+    }
+
+    @SdkInternalApi
+    final GetAdmChannelResult executeGetAdmChannel(GetAdmChannelRequest getAdmChannelRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getAdmChannelRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetAdmChannelRequest> request = null;
+        Response<GetAdmChannelResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetAdmChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAdmChannelRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetAdmChannelResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetAdmChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Returns information about the APNs channel for an app.
      * 
      * @param getApnsChannelRequest
@@ -909,6 +1221,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetApnsChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetApnsChannelResult getApnsChannel(GetApnsChannelRequest request) {
@@ -965,6 +1279,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetApnsSandboxChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsSandboxChannel" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public GetApnsSandboxChannelResult getApnsSandboxChannel(GetApnsSandboxChannelRequest request) {
@@ -1005,6 +1321,64 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Returns information about an app.
+     * 
+     * @param getAppRequest
+     * @return Result of the GetApp operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.GetApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApp" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetAppResult getApp(GetAppRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetApp(request);
+    }
+
+    @SdkInternalApi
+    final GetAppResult executeGetApp(GetAppRequest getAppRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getAppRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetAppRequest> request = null;
+        Response<GetAppResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetAppRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAppRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetAppResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetAppResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Used to request the settings for an app.
      * 
      * @param getApplicationSettingsRequest
@@ -1022,6 +1396,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetApplicationSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApplicationSettings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
     public GetApplicationSettingsResult getApplicationSettings(GetApplicationSettingsRequest request) {
@@ -1062,6 +1438,122 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Returns information about your apps.
+     * 
+     * @param getAppsRequest
+     * @return Result of the GetApps operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.GetApps
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApps" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetAppsResult getApps(GetAppsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetApps(request);
+    }
+
+    @SdkInternalApi
+    final GetAppsResult executeGetApps(GetAppsRequest getAppsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getAppsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetAppsRequest> request = null;
+        Response<GetAppsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetAppsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAppsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetAppsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetAppsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Get a BAIDU GCM channel
+     * 
+     * @param getBaiduChannelRequest
+     * @return Result of the GetBaiduChannel operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.GetBaiduChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetBaiduChannel" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetBaiduChannelResult getBaiduChannel(GetBaiduChannelRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetBaiduChannel(request);
+    }
+
+    @SdkInternalApi
+    final GetBaiduChannelResult executeGetBaiduChannel(GetBaiduChannelRequest getBaiduChannelRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getBaiduChannelRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetBaiduChannelRequest> request = null;
+        Response<GetBaiduChannelResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetBaiduChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getBaiduChannelRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetBaiduChannelResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetBaiduChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Returns information about a campaign.
      * 
      * @param getCampaignRequest
@@ -1079,6 +1571,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetCampaign
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaign" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetCampaignResult getCampaign(GetCampaignRequest request) {
@@ -1135,6 +1629,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetCampaignActivities
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignActivities" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public GetCampaignActivitiesResult getCampaignActivities(GetCampaignActivitiesRequest request) {
@@ -1192,6 +1688,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetCampaignVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignVersion" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public GetCampaignVersionResult getCampaignVersion(GetCampaignVersionRequest request) {
@@ -1248,6 +1746,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetCampaignVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignVersions" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public GetCampaignVersionsResult getCampaignVersions(GetCampaignVersionsRequest request) {
@@ -1304,6 +1804,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetCampaigns
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaigns" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetCampaignsResult getCampaigns(GetCampaignsRequest request) {
@@ -1360,6 +1862,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetEmailChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEmailChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetEmailChannelResult getEmailChannel(GetEmailChannelRequest request) {
@@ -1416,6 +1920,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetEndpointResult getEndpoint(GetEndpointRequest request) {
@@ -1473,6 +1979,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetEventStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEventStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetEventStreamResult getEventStream(GetEventStreamRequest request) {
@@ -1529,6 +2037,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetGcmChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetGcmChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetGcmChannelResult getGcmChannel(GetGcmChannelRequest request) {
@@ -1585,6 +2095,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetImportJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetImportJob" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetImportJobResult getImportJob(GetImportJobRequest request) {
@@ -1641,6 +2153,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetImportJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetImportJobs" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetImportJobsResult getImportJobs(GetImportJobsRequest request) {
@@ -1697,6 +2211,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetSegment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegment" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetSegmentResult getSegment(GetSegmentRequest request) {
@@ -1753,6 +2269,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetSegmentImportJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentImportJobs" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public GetSegmentImportJobsResult getSegmentImportJobs(GetSegmentImportJobsRequest request) {
@@ -1809,6 +2327,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetSegmentVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentVersion" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetSegmentVersionResult getSegmentVersion(GetSegmentVersionRequest request) {
@@ -1865,6 +2385,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetSegmentVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentVersions" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public GetSegmentVersionsResult getSegmentVersions(GetSegmentVersionsRequest request) {
@@ -1921,6 +2443,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetSegments
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegments" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetSegmentsResult getSegments(GetSegmentsRequest request) {
@@ -1977,6 +2501,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.GetSmsChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSmsChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public GetSmsChannelResult getSmsChannel(GetSmsChannelRequest request) {
@@ -2019,7 +2545,6 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * Use to create or update the event stream for an app.
      * 
      * @param putEventStreamRequest
-     *        PutEventStream Request
      * @return Result of the PutEventStream operation returned by the service.
      * @throws BadRequestException
      *         Simple message object.
@@ -2034,6 +2559,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.PutEventStream
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/PutEventStream" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public PutEventStreamResult putEventStream(PutEventStreamRequest request) {
@@ -2090,6 +2617,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.SendMessages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendMessages" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public SendMessagesResult sendMessages(SendMessagesRequest request) {
@@ -2129,6 +2658,122 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Send a batch of messages to users
+     * 
+     * @param sendUsersMessagesRequest
+     * @return Result of the SendUsersMessages operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.SendUsersMessages
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendUsersMessages" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public SendUsersMessagesResult sendUsersMessages(SendUsersMessagesRequest request) {
+        request = beforeClientExecution(request);
+        return executeSendUsersMessages(request);
+    }
+
+    @SdkInternalApi
+    final SendUsersMessagesResult executeSendUsersMessages(SendUsersMessagesRequest sendUsersMessagesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(sendUsersMessagesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<SendUsersMessagesRequest> request = null;
+        Response<SendUsersMessagesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new SendUsersMessagesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(sendUsersMessagesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<SendUsersMessagesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new SendUsersMessagesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Update an ADM channel
+     * 
+     * @param updateAdmChannelRequest
+     * @return Result of the UpdateAdmChannel operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.UpdateAdmChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateAdmChannel" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UpdateAdmChannelResult updateAdmChannel(UpdateAdmChannelRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateAdmChannel(request);
+    }
+
+    @SdkInternalApi
+    final UpdateAdmChannelResult executeUpdateAdmChannel(UpdateAdmChannelRequest updateAdmChannelRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateAdmChannelRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateAdmChannelRequest> request = null;
+        Response<UpdateAdmChannelResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateAdmChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateAdmChannelRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateAdmChannelResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateAdmChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Use to update the APNs channel for an app.
      * 
      * @param updateApnsChannelRequest
@@ -2146,6 +2791,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateApnsChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public UpdateApnsChannelResult updateApnsChannel(UpdateApnsChannelRequest request) {
@@ -2202,6 +2849,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateApnsSandboxChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsSandboxChannel"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
     public UpdateApnsSandboxChannelResult updateApnsSandboxChannel(UpdateApnsSandboxChannelRequest request) {
@@ -2260,6 +2909,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateApplicationSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApplicationSettings"
+     *      target="_top">AWS API Documentation</a>
      */
     @Override
     public UpdateApplicationSettingsResult updateApplicationSettings(UpdateApplicationSettingsRequest request) {
@@ -2301,6 +2952,64 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * Update a BAIDU GCM channel
+     * 
+     * @param updateBaiduChannelRequest
+     * @return Result of the UpdateBaiduChannel operation returned by the service.
+     * @throws BadRequestException
+     *         Simple message object.
+     * @throws InternalServerErrorException
+     *         Simple message object.
+     * @throws ForbiddenException
+     *         Simple message object.
+     * @throws NotFoundException
+     *         Simple message object.
+     * @throws MethodNotAllowedException
+     *         Simple message object.
+     * @throws TooManyRequestsException
+     *         Simple message object.
+     * @sample AmazonPinpoint.UpdateBaiduChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateBaiduChannel" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public UpdateBaiduChannelResult updateBaiduChannel(UpdateBaiduChannelRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateBaiduChannel(request);
+    }
+
+    @SdkInternalApi
+    final UpdateBaiduChannelResult executeUpdateBaiduChannel(UpdateBaiduChannelRequest updateBaiduChannelRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateBaiduChannelRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateBaiduChannelRequest> request = null;
+        Response<UpdateBaiduChannelResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateBaiduChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateBaiduChannelRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateBaiduChannelResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateBaiduChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Use to update a campaign.
      * 
      * @param updateCampaignRequest
@@ -2318,6 +3027,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateCampaign
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateCampaign" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public UpdateCampaignResult updateCampaign(UpdateCampaignRequest request) {
@@ -2374,6 +3085,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateEmailChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEmailChannel" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public UpdateEmailChannelResult updateEmailChannel(UpdateEmailChannelRequest request) {
@@ -2430,6 +3143,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateEndpoint
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEndpoint" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public UpdateEndpointResult updateEndpoint(UpdateEndpointRequest request) {
@@ -2486,6 +3201,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateEndpointsBatch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEndpointsBatch" target="_top">AWS
+     *      API Documentation</a>
      */
     @Override
     public UpdateEndpointsBatchResult updateEndpointsBatch(UpdateEndpointsBatchRequest request) {
@@ -2542,6 +3259,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateGcmChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateGcmChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public UpdateGcmChannelResult updateGcmChannel(UpdateGcmChannelRequest request) {
@@ -2598,6 +3317,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateSegment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateSegment" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public UpdateSegmentResult updateSegment(UpdateSegmentRequest request) {
@@ -2654,6 +3375,8 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
      * @throws TooManyRequestsException
      *         Simple message object.
      * @sample AmazonPinpoint.UpdateSmsChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateSmsChannel" target="_top">AWS API
+     *      Documentation</a>
      */
     @Override
     public UpdateSmsChannelResult updateSmsChannel(UpdateSmsChannelRequest request) {

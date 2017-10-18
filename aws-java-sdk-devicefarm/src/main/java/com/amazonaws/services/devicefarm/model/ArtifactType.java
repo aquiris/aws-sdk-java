@@ -44,7 +44,9 @@ public enum ArtifactType {
     EXPLORER_SUMMARY_LOG("EXPLORER_SUMMARY_LOG"),
     APPLICATION_CRASH_REPORT("APPLICATION_CRASH_REPORT"),
     XCTEST_LOG("XCTEST_LOG"),
-    VIDEO("VIDEO");
+    VIDEO("VIDEO"),
+    CUSTOMER_ARTIFACT("CUSTOMER_ARTIFACT"),
+    CUSTOMER_ARTIFACT_LOG("CUSTOMER_ARTIFACT_LOG");
 
     private String value;
 
@@ -63,6 +65,9 @@ public enum ArtifactType {
      * @param value
      *        real value
      * @return ArtifactType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static ArtifactType fromValue(String value) {
         if (value == null || "".equals(value)) {

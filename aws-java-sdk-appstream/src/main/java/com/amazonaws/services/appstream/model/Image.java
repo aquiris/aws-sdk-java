@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * New streaming instances are booted from images. The image stores the application catalog and is connected to fleets.
+ * Describes an image.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/Image" target="_top">AWS API
@@ -30,44 +30,44 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique identifier for the image.
+     * The name of the image.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The ARN for the image.
+     * The ARN of the image.
      * </p>
      */
     private String arn;
     /**
      * <p>
-     * The source image ARN from which this image was created.
+     * The ARN of the image from which this image was created.
      * </p>
      */
     private String baseImageArn;
     /**
      * <p>
-     * The display name for the image.
+     * The image name displayed to end users.
      * </p>
      */
     private String displayName;
     /**
      * <p>
-     * The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and
-     * <b>FAILED</b> if image creation has failed.
+     * The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     * <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * </p>
      */
     private String state;
     /**
      * <p>
-     * The visibility of an image to the user; images can be public or private.
+     * Indicates whether the image is public or private.
      * </p>
      */
     private String visibility;
     /**
      * <p>
-     * Whether an image builder can be launched from this image.
+     * Indicates whether an image builder can be launched from this image.
      * </p>
      */
     private Boolean imageBuilderSupported;
@@ -79,7 +79,7 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
     private String platform;
     /**
      * <p>
-     * A meaningful description for the image.
+     * The description displayed to end users.
      * </p>
      */
     private String description;
@@ -91,31 +91,31 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
     private ImageStateChangeReason stateChangeReason;
     /**
      * <p>
-     * The applications associated with an image.
+     * The applications associated with the image.
      * </p>
      */
     private java.util.List<Application> applications;
     /**
      * <p>
-     * The timestamp when the image was created.
+     * The time the image was created.
      * </p>
      */
     private java.util.Date createdTime;
     /**
      * <p>
-     * The AWS release date of the public base image. For private images, this date is the release date of the base
-     * image from which the image was created.
+     * The release date of the public base image. For private images, this date is the release date of the base image
+     * from which the image was created.
      * </p>
      */
     private java.util.Date publicBaseImageReleasedDate;
 
     /**
      * <p>
-     * The unique identifier for the image.
+     * The name of the image.
      * </p>
      * 
      * @param name
-     *        The unique identifier for the image.
+     *        The name of the image.
      */
 
     public void setName(String name) {
@@ -124,10 +124,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique identifier for the image.
+     * The name of the image.
      * </p>
      * 
-     * @return The unique identifier for the image.
+     * @return The name of the image.
      */
 
     public String getName() {
@@ -136,11 +136,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique identifier for the image.
+     * The name of the image.
      * </p>
      * 
      * @param name
-     *        The unique identifier for the image.
+     *        The name of the image.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -151,11 +151,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN for the image.
+     * The ARN of the image.
      * </p>
      * 
      * @param arn
-     *        The ARN for the image.
+     *        The ARN of the image.
      */
 
     public void setArn(String arn) {
@@ -164,10 +164,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN for the image.
+     * The ARN of the image.
      * </p>
      * 
-     * @return The ARN for the image.
+     * @return The ARN of the image.
      */
 
     public String getArn() {
@@ -176,11 +176,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN for the image.
+     * The ARN of the image.
      * </p>
      * 
      * @param arn
-     *        The ARN for the image.
+     *        The ARN of the image.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -191,11 +191,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The source image ARN from which this image was created.
+     * The ARN of the image from which this image was created.
      * </p>
      * 
      * @param baseImageArn
-     *        The source image ARN from which this image was created.
+     *        The ARN of the image from which this image was created.
      */
 
     public void setBaseImageArn(String baseImageArn) {
@@ -204,10 +204,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The source image ARN from which this image was created.
+     * The ARN of the image from which this image was created.
      * </p>
      * 
-     * @return The source image ARN from which this image was created.
+     * @return The ARN of the image from which this image was created.
      */
 
     public String getBaseImageArn() {
@@ -216,11 +216,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The source image ARN from which this image was created.
+     * The ARN of the image from which this image was created.
      * </p>
      * 
      * @param baseImageArn
-     *        The source image ARN from which this image was created.
+     *        The ARN of the image from which this image was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -231,11 +231,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The display name for the image.
+     * The image name displayed to end users.
      * </p>
      * 
      * @param displayName
-     *        The display name for the image.
+     *        The image name displayed to end users.
      */
 
     public void setDisplayName(String displayName) {
@@ -244,10 +244,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The display name for the image.
+     * The image name displayed to end users.
      * </p>
      * 
-     * @return The display name for the image.
+     * @return The image name displayed to end users.
      */
 
     public String getDisplayName() {
@@ -256,11 +256,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The display name for the image.
+     * The image name displayed to end users.
      * </p>
      * 
      * @param displayName
-     *        The display name for the image.
+     *        The image name displayed to end users.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -271,13 +271,13 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and
-     * <b>FAILED</b> if image creation has failed.
+     * The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     * <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * </p>
      * 
      * @param state
-     *        The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation
-     *        succeeds and <b>FAILED</b> if image creation has failed.
+     *        The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     *        <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * @see ImageState
      */
 
@@ -287,12 +287,12 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and
-     * <b>FAILED</b> if image creation has failed.
+     * The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     * <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * </p>
      * 
-     * @return The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation
-     *         succeeds and <b>FAILED</b> if image creation has failed.
+     * @return The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     *         <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * @see ImageState
      */
 
@@ -302,13 +302,13 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and
-     * <b>FAILED</b> if image creation has failed.
+     * The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     * <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * </p>
      * 
      * @param state
-     *        The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation
-     *        succeeds and <b>FAILED</b> if image creation has failed.
+     *        The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     *        <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ImageState
      */
@@ -320,45 +320,45 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and
-     * <b>FAILED</b> if image creation has failed.
+     * The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     * <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * </p>
      * 
      * @param state
-     *        The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation
-     *        succeeds and <b>FAILED</b> if image creation has failed.
+     *        The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     *        <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * @see ImageState
      */
 
     public void setState(ImageState state) {
-        this.state = state.toString();
+        withState(state);
     }
 
     /**
      * <p>
-     * The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and
-     * <b>FAILED</b> if image creation has failed.
+     * The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     * <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * </p>
      * 
      * @param state
-     *        The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation
-     *        succeeds and <b>FAILED</b> if image creation has failed.
+     *        The image starts in the <code>PENDING</code> state. If image creation succeeds, the state is
+     *        <code>AVAILABLE</code>. If image creation fails, the state is <code>FAILED</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ImageState
      */
 
     public Image withState(ImageState state) {
-        setState(state);
+        this.state = state.toString();
         return this;
     }
 
     /**
      * <p>
-     * The visibility of an image to the user; images can be public or private.
+     * Indicates whether the image is public or private.
      * </p>
      * 
      * @param visibility
-     *        The visibility of an image to the user; images can be public or private.
+     *        Indicates whether the image is public or private.
      * @see VisibilityType
      */
 
@@ -368,10 +368,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The visibility of an image to the user; images can be public or private.
+     * Indicates whether the image is public or private.
      * </p>
      * 
-     * @return The visibility of an image to the user; images can be public or private.
+     * @return Indicates whether the image is public or private.
      * @see VisibilityType
      */
 
@@ -381,11 +381,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The visibility of an image to the user; images can be public or private.
+     * Indicates whether the image is public or private.
      * </p>
      * 
      * @param visibility
-     *        The visibility of an image to the user; images can be public or private.
+     *        Indicates whether the image is public or private.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see VisibilityType
      */
@@ -397,41 +397,41 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The visibility of an image to the user; images can be public or private.
+     * Indicates whether the image is public or private.
      * </p>
      * 
      * @param visibility
-     *        The visibility of an image to the user; images can be public or private.
+     *        Indicates whether the image is public or private.
      * @see VisibilityType
      */
 
     public void setVisibility(VisibilityType visibility) {
-        this.visibility = visibility.toString();
+        withVisibility(visibility);
     }
 
     /**
      * <p>
-     * The visibility of an image to the user; images can be public or private.
+     * Indicates whether the image is public or private.
      * </p>
      * 
      * @param visibility
-     *        The visibility of an image to the user; images can be public or private.
+     *        Indicates whether the image is public or private.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see VisibilityType
      */
 
     public Image withVisibility(VisibilityType visibility) {
-        setVisibility(visibility);
+        this.visibility = visibility.toString();
         return this;
     }
 
     /**
      * <p>
-     * Whether an image builder can be launched from this image.
+     * Indicates whether an image builder can be launched from this image.
      * </p>
      * 
      * @param imageBuilderSupported
-     *        Whether an image builder can be launched from this image.
+     *        Indicates whether an image builder can be launched from this image.
      */
 
     public void setImageBuilderSupported(Boolean imageBuilderSupported) {
@@ -440,10 +440,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether an image builder can be launched from this image.
+     * Indicates whether an image builder can be launched from this image.
      * </p>
      * 
-     * @return Whether an image builder can be launched from this image.
+     * @return Indicates whether an image builder can be launched from this image.
      */
 
     public Boolean getImageBuilderSupported() {
@@ -452,11 +452,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether an image builder can be launched from this image.
+     * Indicates whether an image builder can be launched from this image.
      * </p>
      * 
      * @param imageBuilderSupported
-     *        Whether an image builder can be launched from this image.
+     *        Indicates whether an image builder can be launched from this image.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -467,10 +467,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether an image builder can be launched from this image.
+     * Indicates whether an image builder can be launched from this image.
      * </p>
      * 
-     * @return Whether an image builder can be launched from this image.
+     * @return Indicates whether an image builder can be launched from this image.
      */
 
     public Boolean isImageBuilderSupported() {
@@ -531,7 +531,7 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setPlatform(PlatformType platform) {
-        this.platform = platform.toString();
+        withPlatform(platform);
     }
 
     /**
@@ -546,17 +546,17 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Image withPlatform(PlatformType platform) {
-        setPlatform(platform);
+        this.platform = platform.toString();
         return this;
     }
 
     /**
      * <p>
-     * A meaningful description for the image.
+     * The description displayed to end users.
      * </p>
      * 
      * @param description
-     *        A meaningful description for the image.
+     *        The description displayed to end users.
      */
 
     public void setDescription(String description) {
@@ -565,10 +565,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A meaningful description for the image.
+     * The description displayed to end users.
      * </p>
      * 
-     * @return A meaningful description for the image.
+     * @return The description displayed to end users.
      */
 
     public String getDescription() {
@@ -577,11 +577,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A meaningful description for the image.
+     * The description displayed to end users.
      * </p>
      * 
      * @param description
-     *        A meaningful description for the image.
+     *        The description displayed to end users.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -632,10 +632,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The applications associated with an image.
+     * The applications associated with the image.
      * </p>
      * 
-     * @return The applications associated with an image.
+     * @return The applications associated with the image.
      */
 
     public java.util.List<Application> getApplications() {
@@ -644,11 +644,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The applications associated with an image.
+     * The applications associated with the image.
      * </p>
      * 
      * @param applications
-     *        The applications associated with an image.
+     *        The applications associated with the image.
      */
 
     public void setApplications(java.util.Collection<Application> applications) {
@@ -662,7 +662,7 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The applications associated with an image.
+     * The applications associated with the image.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -671,7 +671,7 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param applications
-     *        The applications associated with an image.
+     *        The applications associated with the image.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -687,11 +687,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The applications associated with an image.
+     * The applications associated with the image.
      * </p>
      * 
      * @param applications
-     *        The applications associated with an image.
+     *        The applications associated with the image.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -702,11 +702,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The timestamp when the image was created.
+     * The time the image was created.
      * </p>
      * 
      * @param createdTime
-     *        The timestamp when the image was created.
+     *        The time the image was created.
      */
 
     public void setCreatedTime(java.util.Date createdTime) {
@@ -715,10 +715,10 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The timestamp when the image was created.
+     * The time the image was created.
      * </p>
      * 
-     * @return The timestamp when the image was created.
+     * @return The time the image was created.
      */
 
     public java.util.Date getCreatedTime() {
@@ -727,11 +727,11 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The timestamp when the image was created.
+     * The time the image was created.
      * </p>
      * 
      * @param createdTime
-     *        The timestamp when the image was created.
+     *        The time the image was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -742,13 +742,13 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS release date of the public base image. For private images, this date is the release date of the base
-     * image from which the image was created.
+     * The release date of the public base image. For private images, this date is the release date of the base image
+     * from which the image was created.
      * </p>
      * 
      * @param publicBaseImageReleasedDate
-     *        The AWS release date of the public base image. For private images, this date is the release date of the
-     *        base image from which the image was created.
+     *        The release date of the public base image. For private images, this date is the release date of the base
+     *        image from which the image was created.
      */
 
     public void setPublicBaseImageReleasedDate(java.util.Date publicBaseImageReleasedDate) {
@@ -757,12 +757,12 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS release date of the public base image. For private images, this date is the release date of the base
-     * image from which the image was created.
+     * The release date of the public base image. For private images, this date is the release date of the base image
+     * from which the image was created.
      * </p>
      * 
-     * @return The AWS release date of the public base image. For private images, this date is the release date of the
-     *         base image from which the image was created.
+     * @return The release date of the public base image. For private images, this date is the release date of the base
+     *         image from which the image was created.
      */
 
     public java.util.Date getPublicBaseImageReleasedDate() {
@@ -771,13 +771,13 @@ public class Image implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS release date of the public base image. For private images, this date is the release date of the base
-     * image from which the image was created.
+     * The release date of the public base image. For private images, this date is the release date of the base image
+     * from which the image was created.
      * </p>
      * 
      * @param publicBaseImageReleasedDate
-     *        The AWS release date of the public base image. For private images, this date is the release date of the
-     *        base image from which the image was created.
+     *        The release date of the public base image. For private images, this date is the release date of the base
+     *        image from which the image was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

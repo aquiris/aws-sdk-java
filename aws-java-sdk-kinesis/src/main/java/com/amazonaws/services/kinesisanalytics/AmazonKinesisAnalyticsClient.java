@@ -91,6 +91,9 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
                             new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
                                     com.amazonaws.services.kinesisanalytics.model.ResourceNotFoundException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
+                                    com.amazonaws.services.kinesisanalytics.model.ServiceUnavailableException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceProvisionedThroughputExceededException").withModeledClass(
                                     com.amazonaws.services.kinesisanalytics.model.ResourceProvisionedThroughputExceededException.class))
                     .addErrorMetadata(
@@ -285,8 +288,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
      * <p>
      * Adds a CloudWatch log stream to monitor application configuration errors. For more information about using
      * CloudWatch log streams with Amazon Kinesis Analytics applications, see <a
-     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-monitor-configuration.html">Monitoring
-     * Configuration Errors</a>.
+     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html">Working with Amazon CloudWatch
+     * Logs</a>.
      * </p>
      * 
      * @param addApplicationCloudWatchLoggingOptionRequest
@@ -374,6 +377,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
      * @throws ConcurrentModificationException
      *         Exception thrown as a result of concurrent modification to an application. For example, two individuals
      *         attempting to edit the same application at the same time.
+     * @throws CodeValidationException
+     *         User-provided application code (query) is invalid. This can be a simple syntax error.
      * @sample AmazonKinesisAnalytics.AddApplicationInput
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationInput"
      *      target="_top">AWS API Documentation</a>
@@ -405,6 +410,69 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
 
             HttpResponseHandler<AmazonWebServiceResponse<AddApplicationInputResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new AddApplicationInputResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Adds an <a>InputProcessingConfiguration</a> to an application. An input processor preprocesses records on the
+     * input stream before the application's SQL code executes. Currently, the only input processor available is <a
+     * href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a>.
+     * </p>
+     * 
+     * @param addApplicationInputProcessingConfigurationRequest
+     * @return Result of the AddApplicationInputProcessingConfiguration operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Specified application can't be found.
+     * @throws ResourceInUseException
+     *         Application is not available for this operation.
+     * @throws InvalidArgumentException
+     *         Specified input parameter value is invalid.
+     * @throws ConcurrentModificationException
+     *         Exception thrown as a result of concurrent modification to an application. For example, two individuals
+     *         attempting to edit the same application at the same time.
+     * @sample AmazonKinesisAnalytics.AddApplicationInputProcessingConfiguration
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationInputProcessingConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public AddApplicationInputProcessingConfigurationResult addApplicationInputProcessingConfiguration(AddApplicationInputProcessingConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeAddApplicationInputProcessingConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final AddApplicationInputProcessingConfigurationResult executeAddApplicationInputProcessingConfiguration(
+            AddApplicationInputProcessingConfigurationRequest addApplicationInputProcessingConfigurationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(addApplicationInputProcessingConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AddApplicationInputProcessingConfigurationRequest> request = null;
+        Response<AddApplicationInputProcessingConfigurationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AddApplicationInputProcessingConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(addApplicationInputProcessingConfigurationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<AddApplicationInputProcessingConfigurationResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new AddApplicationInputProcessingConfigurationResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -718,8 +786,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
      * <p>
      * Deletes a CloudWatch log stream from an application. For more information about using CloudWatch log streams with
      * Amazon Kinesis Analytics applications, see <a
-     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-monitor-configuration.html">Monitoring
-     * Configuration Errors</a>.
+     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html">Working with Amazon CloudWatch
+     * Logs</a>.
      * </p>
      * 
      * @param deleteApplicationCloudWatchLoggingOptionRequest
@@ -768,6 +836,68 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
             HttpResponseHandler<AmazonWebServiceResponse<DeleteApplicationCloudWatchLoggingOptionResult>> responseHandler = protocolFactory
                     .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new DeleteApplicationCloudWatchLoggingOptionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes an <a>InputProcessingConfiguration</a> from an input.
+     * </p>
+     * 
+     * @param deleteApplicationInputProcessingConfigurationRequest
+     * @return Result of the DeleteApplicationInputProcessingConfiguration operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Specified application can't be found.
+     * @throws ResourceInUseException
+     *         Application is not available for this operation.
+     * @throws InvalidArgumentException
+     *         Specified input parameter value is invalid.
+     * @throws ConcurrentModificationException
+     *         Exception thrown as a result of concurrent modification to an application. For example, two individuals
+     *         attempting to edit the same application at the same time.
+     * @sample AmazonKinesisAnalytics.DeleteApplicationInputProcessingConfiguration
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplicationInputProcessingConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteApplicationInputProcessingConfigurationResult deleteApplicationInputProcessingConfiguration(
+            DeleteApplicationInputProcessingConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteApplicationInputProcessingConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final DeleteApplicationInputProcessingConfigurationResult executeDeleteApplicationInputProcessingConfiguration(
+            DeleteApplicationInputProcessingConfigurationRequest deleteApplicationInputProcessingConfigurationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteApplicationInputProcessingConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteApplicationInputProcessingConfigurationRequest> request = null;
+        Response<DeleteApplicationInputProcessingConfigurationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteApplicationInputProcessingConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteApplicationInputProcessingConfigurationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteApplicationInputProcessingConfigurationResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new DeleteApplicationInputProcessingConfigurationResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -997,6 +1127,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
      *         ProvisionedThroughputExceededException. For more information, see <a
      *         href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html">GetRecords</a> in the
      *         Amazon Kinesis Streams API Reference.
+     * @throws ServiceUnavailableException
+     *         The service is unavailable, back off and retry the operation.
      * @sample AmazonKinesisAnalytics.DiscoverInputSchema
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DiscoverInputSchema"
      *      target="_top">AWS API Documentation</a>

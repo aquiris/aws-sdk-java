@@ -30,7 +30,8 @@ public enum RRType {
     PTR("PTR"),
     SRV("SRV"),
     SPF("SPF"),
-    AAAA("AAAA");
+    AAAA("AAAA"),
+    CAA("CAA");
 
     private String value;
 
@@ -49,6 +50,9 @@ public enum RRType {
      * @param value
      *        real value
      * @return RRType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static RRType fromValue(String value) {
         if (value == null || "".equals(value)) {

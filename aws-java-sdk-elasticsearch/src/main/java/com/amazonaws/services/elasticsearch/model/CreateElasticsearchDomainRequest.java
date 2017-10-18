@@ -64,6 +64,14 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
     private SnapshotOptions snapshotOptions;
     /**
      * <p>
+     * Options to specify the subnets and security groups for VPC endpoint. For more information, see <a
+     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc"
+     * target="_blank">Creating a VPC</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>
+     * </p>
+     */
+    private VPCOptions vPCOptions;
+    /**
+     * <p>
      * Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access
      * to individual sub-resources. By default, the value is <code>true</code>. See <a href=
      * "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
@@ -71,6 +79,13 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
      * </p>
      */
     private java.util.Map<String, String> advancedOptions;
+    /**
+     * <p>
+     * Map of <code>LogType</code> and <code>LogPublishingOption</code>, each containing options to publish a given type
+     * of Elasticsearch log.
+     * </p>
+     */
+    private java.util.Map<String, LogPublishingOption> logPublishingOptions;
 
     /**
      * <p>
@@ -353,6 +368,58 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
+     * Options to specify the subnets and security groups for VPC endpoint. For more information, see <a
+     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc"
+     * target="_blank">Creating a VPC</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>
+     * </p>
+     * 
+     * @param vPCOptions
+     *        Options to specify the subnets and security groups for VPC endpoint. For more information, see <a href=
+     *        "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc"
+     *        target="_blank">Creating a VPC</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>
+     */
+
+    public void setVPCOptions(VPCOptions vPCOptions) {
+        this.vPCOptions = vPCOptions;
+    }
+
+    /**
+     * <p>
+     * Options to specify the subnets and security groups for VPC endpoint. For more information, see <a
+     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc"
+     * target="_blank">Creating a VPC</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>
+     * </p>
+     * 
+     * @return Options to specify the subnets and security groups for VPC endpoint. For more information, see <a
+     *         href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc"
+     *         target="_blank">Creating a VPC</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>
+     */
+
+    public VPCOptions getVPCOptions() {
+        return this.vPCOptions;
+    }
+
+    /**
+     * <p>
+     * Options to specify the subnets and security groups for VPC endpoint. For more information, see <a
+     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc"
+     * target="_blank">Creating a VPC</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>
+     * </p>
+     * 
+     * @param vPCOptions
+     *        Options to specify the subnets and security groups for VPC endpoint. For more information, see <a href=
+     *        "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc"
+     *        target="_blank">Creating a VPC</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateElasticsearchDomainRequest withVPCOptions(VPCOptions vPCOptions) {
+        setVPCOptions(vPCOptions);
+        return this;
+    }
+
+    /**
+     * <p>
      * Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access
      * to individual sub-resources. By default, the value is <code>true</code>. See <a href=
      * "http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
@@ -431,6 +498,73 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
     }
 
     /**
+     * <p>
+     * Map of <code>LogType</code> and <code>LogPublishingOption</code>, each containing options to publish a given type
+     * of Elasticsearch log.
+     * </p>
+     * 
+     * @return Map of <code>LogType</code> and <code>LogPublishingOption</code>, each containing options to publish a
+     *         given type of Elasticsearch log.
+     */
+
+    public java.util.Map<String, LogPublishingOption> getLogPublishingOptions() {
+        return logPublishingOptions;
+    }
+
+    /**
+     * <p>
+     * Map of <code>LogType</code> and <code>LogPublishingOption</code>, each containing options to publish a given type
+     * of Elasticsearch log.
+     * </p>
+     * 
+     * @param logPublishingOptions
+     *        Map of <code>LogType</code> and <code>LogPublishingOption</code>, each containing options to publish a
+     *        given type of Elasticsearch log.
+     */
+
+    public void setLogPublishingOptions(java.util.Map<String, LogPublishingOption> logPublishingOptions) {
+        this.logPublishingOptions = logPublishingOptions;
+    }
+
+    /**
+     * <p>
+     * Map of <code>LogType</code> and <code>LogPublishingOption</code>, each containing options to publish a given type
+     * of Elasticsearch log.
+     * </p>
+     * 
+     * @param logPublishingOptions
+     *        Map of <code>LogType</code> and <code>LogPublishingOption</code>, each containing options to publish a
+     *        given type of Elasticsearch log.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateElasticsearchDomainRequest withLogPublishingOptions(java.util.Map<String, LogPublishingOption> logPublishingOptions) {
+        setLogPublishingOptions(logPublishingOptions);
+        return this;
+    }
+
+    public CreateElasticsearchDomainRequest addLogPublishingOptionsEntry(String key, LogPublishingOption value) {
+        if (null == this.logPublishingOptions) {
+            this.logPublishingOptions = new java.util.HashMap<String, LogPublishingOption>();
+        }
+        if (this.logPublishingOptions.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.logPublishingOptions.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into LogPublishingOptions.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateElasticsearchDomainRequest clearLogPublishingOptionsEntries() {
+        this.logPublishingOptions = null;
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -453,8 +587,12 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
             sb.append("AccessPolicies: ").append(getAccessPolicies()).append(",");
         if (getSnapshotOptions() != null)
             sb.append("SnapshotOptions: ").append(getSnapshotOptions()).append(",");
+        if (getVPCOptions() != null)
+            sb.append("VPCOptions: ").append(getVPCOptions()).append(",");
         if (getAdvancedOptions() != null)
-            sb.append("AdvancedOptions: ").append(getAdvancedOptions());
+            sb.append("AdvancedOptions: ").append(getAdvancedOptions()).append(",");
+        if (getLogPublishingOptions() != null)
+            sb.append("LogPublishingOptions: ").append(getLogPublishingOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -493,9 +631,17 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
             return false;
         if (other.getSnapshotOptions() != null && other.getSnapshotOptions().equals(this.getSnapshotOptions()) == false)
             return false;
+        if (other.getVPCOptions() == null ^ this.getVPCOptions() == null)
+            return false;
+        if (other.getVPCOptions() != null && other.getVPCOptions().equals(this.getVPCOptions()) == false)
+            return false;
         if (other.getAdvancedOptions() == null ^ this.getAdvancedOptions() == null)
             return false;
         if (other.getAdvancedOptions() != null && other.getAdvancedOptions().equals(this.getAdvancedOptions()) == false)
+            return false;
+        if (other.getLogPublishingOptions() == null ^ this.getLogPublishingOptions() == null)
+            return false;
+        if (other.getLogPublishingOptions() != null && other.getLogPublishingOptions().equals(this.getLogPublishingOptions()) == false)
             return false;
         return true;
     }
@@ -511,7 +657,9 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
         hashCode = prime * hashCode + ((getEBSOptions() == null) ? 0 : getEBSOptions().hashCode());
         hashCode = prime * hashCode + ((getAccessPolicies() == null) ? 0 : getAccessPolicies().hashCode());
         hashCode = prime * hashCode + ((getSnapshotOptions() == null) ? 0 : getSnapshotOptions().hashCode());
+        hashCode = prime * hashCode + ((getVPCOptions() == null) ? 0 : getVPCOptions().hashCode());
         hashCode = prime * hashCode + ((getAdvancedOptions() == null) ? 0 : getAdvancedOptions().hashCode());
+        hashCode = prime * hashCode + ((getLogPublishingOptions() == null) ? 0 : getLogPublishingOptions().hashCode());
         return hashCode;
     }
 

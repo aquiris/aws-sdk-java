@@ -19,7 +19,7 @@ import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a list action types action.
+ * Represents the input of a ListActionTypes action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListActionTypes" target="_top">AWS API
@@ -96,7 +96,7 @@ public class ListActionTypesRequest extends com.amazonaws.AmazonWebServiceReques
      */
 
     public void setActionOwnerFilter(ActionOwner actionOwnerFilter) {
-        this.actionOwnerFilter = actionOwnerFilter.toString();
+        withActionOwnerFilter(actionOwnerFilter);
     }
 
     /**
@@ -111,7 +111,7 @@ public class ListActionTypesRequest extends com.amazonaws.AmazonWebServiceReques
      */
 
     public ListActionTypesRequest withActionOwnerFilter(ActionOwner actionOwnerFilter) {
-        setActionOwnerFilter(actionOwnerFilter);
+        this.actionOwnerFilter = actionOwnerFilter.toString();
         return this;
     }
 

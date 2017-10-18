@@ -34,7 +34,7 @@ public class StopAction implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scope to which the Stop action applies. That is, what is being stopped.
+     * The name of the RuleSet that is being stopped.
      * </p>
      */
     private String scope;
@@ -50,11 +50,11 @@ public class StopAction implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scope to which the Stop action applies. That is, what is being stopped.
+     * The name of the RuleSet that is being stopped.
      * </p>
      * 
      * @param scope
-     *        The scope to which the Stop action applies. That is, what is being stopped.
+     *        The name of the RuleSet that is being stopped.
      * @see StopScope
      */
 
@@ -64,10 +64,10 @@ public class StopAction implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scope to which the Stop action applies. That is, what is being stopped.
+     * The name of the RuleSet that is being stopped.
      * </p>
      * 
-     * @return The scope to which the Stop action applies. That is, what is being stopped.
+     * @return The name of the RuleSet that is being stopped.
      * @see StopScope
      */
 
@@ -77,11 +77,11 @@ public class StopAction implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scope to which the Stop action applies. That is, what is being stopped.
+     * The name of the RuleSet that is being stopped.
      * </p>
      * 
      * @param scope
-     *        The scope to which the Stop action applies. That is, what is being stopped.
+     *        The name of the RuleSet that is being stopped.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StopScope
      */
@@ -93,31 +93,31 @@ public class StopAction implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The scope to which the Stop action applies. That is, what is being stopped.
+     * The name of the RuleSet that is being stopped.
      * </p>
      * 
      * @param scope
-     *        The scope to which the Stop action applies. That is, what is being stopped.
+     *        The name of the RuleSet that is being stopped.
      * @see StopScope
      */
 
     public void setScope(StopScope scope) {
-        this.scope = scope.toString();
+        withScope(scope);
     }
 
     /**
      * <p>
-     * The scope to which the Stop action applies. That is, what is being stopped.
+     * The name of the RuleSet that is being stopped.
      * </p>
      * 
      * @param scope
-     *        The scope to which the Stop action applies. That is, what is being stopped.
+     *        The name of the RuleSet that is being stopped.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StopScope
      */
 
     public StopAction withScope(StopScope scope) {
-        setScope(scope);
+        this.scope = scope.toString();
         return this;
     }
 

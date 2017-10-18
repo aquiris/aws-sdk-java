@@ -36,22 +36,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier for an existing DB instance
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing DBInstance.
      * </p>
      * </li>
      * </ul>
@@ -175,7 +160,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetGroup</code>
@@ -193,17 +178,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing DBSecurityGroups.
      * </p>
      * </li>
      * </ul>
@@ -215,22 +190,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing VpcSecurityGroupIds.
      * </p>
      * </li>
      * </ul>
@@ -257,7 +229,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private Boolean applyImmediately;
     /**
      * <p>
-     * The new password for the DB instance master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -265,11 +237,44 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * element exists in the <code>PendingModifiedValues</code> element of the operation response.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The password for the master user is managed by the DB cluster. For more information, see
+     * <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
-     * Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30 alphanumeric
-     * characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+     * <b>MariaDB</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Microsoft SQL Server</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Oracle</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 30 characters.
+     * </p>
+     * <p>
+     * <b>PostgreSQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
      * </p>
      * <note>
      * <p>
@@ -307,6 +312,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * another non-zero value, the change is asynchronously applied as soon as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The retention period for automated backups is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
@@ -341,6 +353,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * The daily time range during which automated backups are created if automated backups are enabled, as determined
      * by the <code>BackupRetentionPeriod</code> parameter. Changing this parameter does not result in an outage and the
      * change is asynchronously applied as soon as possible.
+     * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
      * </p>
      * <p>
      * Constraints:
@@ -410,7 +429,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <code>true</code> for this request.
      * </p>
      * <p>
-     * For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter group in
+     * For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter group in
      * the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the
      * default for that DB parameter group family.
      * </p>
@@ -514,20 +533,23 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
+     * Must contain from 1 to 63 letters, numbers, or hyphens.
      * </p>
      * </li>
      * <li>
      * <p>
-     * First character must be a letter
+     * The first character must be a letter.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Cannot end with a hyphen or contain two consecutive hyphens.
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * Example: <code>mydbinstance</code>
+     * </p>
      */
     private String newDBInstanceIdentifier;
     /**
@@ -725,6 +747,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * You can enable IAM database authentication for the following database engines
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -742,6 +774,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
+
+    private Boolean enablePerformanceInsights;
+
+    private String performanceInsightsKMSKeyId;
 
     /**
      * Default constructor for ModifyDBInstanceRequest object. Callers should use the setter or fluent setter (with...)
@@ -762,22 +798,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be the identifier for an existing DB instance
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Must contain from 1 to 63 alphanumeric characters or hyphens
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Must match the identifier of an existing DBInstance.
      *        </p>
      *        </li>
      */
@@ -795,22 +816,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier for an existing DB instance
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing DBInstance.
      * </p>
      * </li>
      * </ul>
@@ -823,22 +829,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be the identifier for an existing DB instance
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Must contain from 1 to 63 alphanumeric characters or hyphens
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Must match the identifier of an existing DBInstance.
      *        </p>
      *        </li>
      */
@@ -857,22 +848,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier for an existing DB instance
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing DBInstance.
      * </p>
      * </li>
      * </ul>
@@ -884,22 +860,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <ul>
      *         <li>
      *         <p>
-     *         Must be the identifier for an existing DB instance
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Must contain from 1 to 63 alphanumeric characters or hyphens
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         First character must be a letter
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Cannot end with a hyphen or contain two consecutive hyphens
+     *         Must match the identifier of an existing DBInstance.
      *         </p>
      *         </li>
      */
@@ -918,22 +879,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier for an existing DB instance
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing DBInstance.
      * </p>
      * </li>
      * </ul>
@@ -946,22 +892,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be the identifier for an existing DB instance
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Must contain from 1 to 63 alphanumeric characters or hyphens
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Must match the identifier of an existing DBInstance.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1635,7 +1566,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetGroup</code>
@@ -1652,8 +1583,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        maintenance window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter.
      *        </p>
      *        <p>
-     *        Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or
-     *        hyphens.
+     *        Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      *        </p>
      *        <p>
      *        Example: <code>mySubnetGroup</code>
@@ -1676,7 +1606,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetGroup</code>
@@ -1692,8 +1622,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         maintenance window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter.
      *         </p>
      *         <p>
-     *         Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or
-     *         hyphens.
+     *         Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      *         </p>
      *         <p>
      *         Example: <code>mySubnetGroup</code>
@@ -1716,7 +1645,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetGroup</code>
@@ -1733,8 +1662,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        maintenance window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter.
      *        </p>
      *        <p>
-     *        Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or
-     *        hyphens.
+     *        Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      *        </p>
      *        <p>
      *        Example: <code>mySubnetGroup</code>
@@ -1757,17 +1685,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing DBSecurityGroups.
      * </p>
      * </li>
      * </ul>
@@ -1780,17 +1698,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <ul>
      *         <li>
      *         <p>
-     *         Must be 1 to 255 alphanumeric characters
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         First character must be a letter
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Cannot end with a hyphen or contain two consecutive hyphens
+     *         If supplied, must match existing DBSecurityGroups.
      *         </p>
      *         </li>
      */
@@ -1813,17 +1721,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing DBSecurityGroups.
      * </p>
      * </li>
      * </ul>
@@ -1837,17 +1735,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be 1 to 255 alphanumeric characters
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        If supplied, must match existing DBSecurityGroups.
      *        </p>
      *        </li>
      */
@@ -1872,17 +1760,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing DBSecurityGroups.
      * </p>
      * </li>
      * </ul>
@@ -1901,17 +1779,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be 1 to 255 alphanumeric characters
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        If supplied, must match existing DBSecurityGroups.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1938,17 +1806,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing DBSecurityGroups.
      * </p>
      * </li>
      * </ul>
@@ -1962,17 +1820,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be 1 to 255 alphanumeric characters
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        If supplied, must match existing DBSecurityGroups.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1989,22 +1837,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing VpcSecurityGroupIds.
      * </p>
      * </li>
      * </ul>
@@ -2012,22 +1857,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @return A list of EC2 VPC security groups to authorize on this DB instance. This change is asynchronously applied
      *         as soon as possible.</p>
      *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     *         information, see <a>ModifyDBCluster</a>.
+     *         </p>
+     *         <p>
      *         Constraints:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         Must be 1 to 255 alphanumeric characters
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         First character must be a letter
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Cannot end with a hyphen or contain two consecutive hyphens
+     *         If supplied, must match existing VpcSecurityGroupIds.
      *         </p>
      *         </li>
      */
@@ -2045,22 +1887,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing VpcSecurityGroupIds.
      * </p>
      * </li>
      * </ul>
@@ -2069,22 +1908,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        A list of EC2 VPC security groups to authorize on this DB instance. This change is asynchronously applied
      *        as soon as possible.</p>
      *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
+     *        </p>
+     *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be 1 to 255 alphanumeric characters
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        If supplied, must match existing VpcSecurityGroupIds.
      *        </p>
      *        </li>
      */
@@ -2104,22 +1940,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing VpcSecurityGroupIds.
      * </p>
      * </li>
      * </ul>
@@ -2133,22 +1966,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        A list of EC2 VPC security groups to authorize on this DB instance. This change is asynchronously applied
      *        as soon as possible.</p>
      *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
+     *        </p>
+     *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be 1 to 255 alphanumeric characters
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        If supplied, must match existing VpcSecurityGroupIds.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2170,22 +2000,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Must be 1 to 255 alphanumeric characters
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * If supplied, must match existing VpcSecurityGroupIds.
      * </p>
      * </li>
      * </ul>
@@ -2194,22 +2021,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        A list of EC2 VPC security groups to authorize on this DB instance. This change is asynchronously applied
      *        as soon as possible.</p>
      *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
+     *        </p>
+     *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be 1 to 255 alphanumeric characters
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        If supplied, must match existing VpcSecurityGroupIds.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2378,7 +2202,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new password for the DB instance master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -2386,11 +2210,44 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * element exists in the <code>PendingModifiedValues</code> element of the operation response.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The password for the master user is managed by the DB cluster. For more information, see
+     * <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
-     * Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30 alphanumeric
-     * characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+     * <b>MariaDB</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Microsoft SQL Server</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Oracle</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 30 characters.
+     * </p>
+     * <p>
+     * <b>PostgreSQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
      * </p>
      * <note>
      * <p>
@@ -2401,8 +2258,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </note>
      * 
      * @param masterUserPassword
-     *        The new password for the DB instance master user. Can be any printable ASCII character except "/",
-     *        """, or "@".</p>
+     *        The new password for the master user. Can be any printable ASCII character except "/", """, or "@".</p>
      *        <p>
      *        Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
      *        possible. Between the time of the request and the completion of the request, the
@@ -2410,11 +2266,44 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        operation response.
      *        </p>
      *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The password for the master user is managed by the DB cluster. For more information, see
+     *        <a>ModifyDBCluster</a>.
+     *        </p>
+     *        <p>
      *        Default: Uses existing setting
      *        </p>
      *        <p>
-     *        Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30
-     *        alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+     *        <b>MariaDB</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 41 characters.
+     *        </p>
+     *        <p>
+     *        <b>Microsoft SQL Server</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 128 characters.
+     *        </p>
+     *        <p>
+     *        <b>MySQL</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 41 characters.
+     *        </p>
+     *        <p>
+     *        <b>Oracle</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 30 characters.
+     *        </p>
+     *        <p>
+     *        <b>PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 128 characters.
      *        </p>
      *        <note>
      *        <p>
@@ -2430,7 +2319,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new password for the DB instance master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -2438,11 +2327,44 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * element exists in the <code>PendingModifiedValues</code> element of the operation response.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The password for the master user is managed by the DB cluster. For more information, see
+     * <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
-     * Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30 alphanumeric
-     * characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+     * <b>MariaDB</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Microsoft SQL Server</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Oracle</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 30 characters.
+     * </p>
+     * <p>
+     * <b>PostgreSQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
      * </p>
      * <note>
      * <p>
@@ -2452,8 +2374,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * </note>
      * 
-     * @return The new password for the DB instance master user. Can be any printable ASCII character except "/",
-     *         """, or "@".</p>
+     * @return The new password for the master user. Can be any printable ASCII character except "/", """, or "@".</p>
      *         <p>
      *         Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
      *         possible. Between the time of the request and the completion of the request, the
@@ -2461,11 +2382,44 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         operation response.
      *         </p>
      *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. The password for the master user is managed by the DB cluster. For more information, see
+     *         <a>ModifyDBCluster</a>.
+     *         </p>
+     *         <p>
      *         Default: Uses existing setting
      *         </p>
      *         <p>
-     *         Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30
-     *         alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+     *         <b>MariaDB</b>
+     *         </p>
+     *         <p>
+     *         Constraints: Must contain from 8 to 41 characters.
+     *         </p>
+     *         <p>
+     *         <b>Microsoft SQL Server</b>
+     *         </p>
+     *         <p>
+     *         Constraints: Must contain from 8 to 128 characters.
+     *         </p>
+     *         <p>
+     *         <b>MySQL</b>
+     *         </p>
+     *         <p>
+     *         Constraints: Must contain from 8 to 41 characters.
+     *         </p>
+     *         <p>
+     *         <b>Oracle</b>
+     *         </p>
+     *         <p>
+     *         Constraints: Must contain from 8 to 30 characters.
+     *         </p>
+     *         <p>
+     *         <b>PostgreSQL</b>
+     *         </p>
+     *         <p>
+     *         Constraints: Must contain from 8 to 128 characters.
      *         </p>
      *         <note>
      *         <p>
@@ -2481,7 +2435,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new password for the DB instance master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -2489,11 +2443,44 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * element exists in the <code>PendingModifiedValues</code> element of the operation response.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The password for the master user is managed by the DB cluster. For more information, see
+     * <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
-     * Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30 alphanumeric
-     * characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+     * <b>MariaDB</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Microsoft SQL Server</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 41 characters.
+     * </p>
+     * <p>
+     * <b>Oracle</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 30 characters.
+     * </p>
+     * <p>
+     * <b>PostgreSQL</b>
+     * </p>
+     * <p>
+     * Constraints: Must contain from 8 to 128 characters.
      * </p>
      * <note>
      * <p>
@@ -2504,8 +2491,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </note>
      * 
      * @param masterUserPassword
-     *        The new password for the DB instance master user. Can be any printable ASCII character except "/",
-     *        """, or "@".</p>
+     *        The new password for the master user. Can be any printable ASCII character except "/", """, or "@".</p>
      *        <p>
      *        Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
      *        possible. Between the time of the request and the completion of the request, the
@@ -2513,11 +2499,44 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        operation response.
      *        </p>
      *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The password for the master user is managed by the DB cluster. For more information, see
+     *        <a>ModifyDBCluster</a>.
+     *        </p>
+     *        <p>
      *        Default: Uses existing setting
      *        </p>
      *        <p>
-     *        Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30
-     *        alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+     *        <b>MariaDB</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 41 characters.
+     *        </p>
+     *        <p>
+     *        <b>Microsoft SQL Server</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 128 characters.
+     *        </p>
+     *        <p>
+     *        <b>MySQL</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 41 characters.
+     *        </p>
+     *        <p>
+     *        <b>Oracle</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 30 characters.
+     *        </p>
+     *        <p>
+     *        <b>PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Constraints: Must contain from 8 to 128 characters.
      *        </p>
      *        <note>
      *        <p>
@@ -2636,6 +2655,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * another non-zero value, the change is asynchronously applied as soon as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The retention period for automated backups is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
@@ -2673,6 +2699,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you change the
      *        parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon
      *        as possible.
+     *        </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The retention period for automated backups is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
      *        </p>
      *        <p>
      *        Default: Uses existing setting
@@ -2719,6 +2752,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * another non-zero value, the change is asynchronously applied as soon as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The retention period for automated backups is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
@@ -2755,6 +2795,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you change the
      *         parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon
      *         as possible.
+     *         </p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. The retention period for automated backups is managed by the DB cluster. For more
+     *         information, see <a>ModifyDBCluster</a>.
      *         </p>
      *         <p>
      *         Default: Uses existing setting
@@ -2801,6 +2848,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * another non-zero value, the change is asynchronously applied as soon as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The retention period for automated backups is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Default: Uses existing setting
      * </p>
      * <p>
@@ -2838,6 +2892,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you change the
      *        parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon
      *        as possible.
+     *        </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The retention period for automated backups is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
      *        </p>
      *        <p>
      *        Default: Uses existing setting
@@ -2881,6 +2942,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * change is asynchronously applied as soon as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
@@ -2910,6 +2978,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        The daily time range during which automated backups are created if automated backups are enabled, as
      *        determined by the <code>BackupRetentionPeriod</code> parameter. Changing this parameter does not result in
      *        an outage and the change is asynchronously applied as soon as possible. </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
+     *        </p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -2947,6 +3022,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * change is asynchronously applied as soon as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
@@ -2975,6 +3057,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @return The daily time range during which automated backups are created if automated backups are enabled, as
      *         determined by the <code>BackupRetentionPeriod</code> parameter. Changing this parameter does not result
      *         in an outage and the change is asynchronously applied as soon as possible. </p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For
+     *         more information, see <a>ModifyDBCluster</a>.
+     *         </p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -3012,6 +3101,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * change is asynchronously applied as soon as possible.
      * </p>
      * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more
+     * information, see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
      * Constraints:
      * </p>
      * <ul>
@@ -3041,6 +3137,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        The daily time range during which automated backups are created if automated backups are enabled, as
      *        determined by the <code>BackupRetentionPeriod</code> parameter. Changing this parameter does not result in
      *        an outage and the change is asynchronously applied as soon as possible. </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
+     *        </p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -3307,7 +3410,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <code>true</code> for this request.
      * </p>
      * <p>
-     * For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter group in
+     * For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter group in
      * the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the
      * default for that DB parameter group family.
      * </p>
@@ -3320,7 +3423,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        the change is applied during the next maintenance window unless the <code>ApplyImmediately</code>
      *        parameter is set to <code>true</code> for this request. </p>
      *        <p>
-     *        For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter
+     *        For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter
      *        group in the DB parameter group family for the new engine version must be specified. The new DB parameter
      *        group can be the default for that DB parameter group family.
      *        </p>
@@ -3339,7 +3442,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <code>true</code> for this request.
      * </p>
      * <p>
-     * For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter group in
+     * For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter group in
      * the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the
      * default for that DB parameter group family.
      * </p>
@@ -3351,7 +3454,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         the change is applied during the next maintenance window unless the <code>ApplyImmediately</code>
      *         parameter is set to <code>true</code> for this request. </p>
      *         <p>
-     *         For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter
+     *         For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter
      *         group in the DB parameter group family for the new engine version must be specified. The new DB parameter
      *         group can be the default for that DB parameter group family.
      *         </p>
@@ -3370,7 +3473,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <code>true</code> for this request.
      * </p>
      * <p>
-     * For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter group in
+     * For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter group in
      * the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the
      * default for that DB parameter group family.
      * </p>
@@ -3383,7 +3486,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        the change is applied during the next maintenance window unless the <code>ApplyImmediately</code>
      *        parameter is set to <code>true</code> for this request. </p>
      *        <p>
-     *        For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter
+     *        For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter
      *        group in the DB parameter group family for the new engine version must be specified. The new DB parameter
      *        group can be the default for that DB parameter group family.
      *        </p>
@@ -3960,20 +4063,23 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
+     * Must contain from 1 to 63 letters, numbers, or hyphens.
      * </p>
      * </li>
      * <li>
      * <p>
-     * First character must be a letter
+     * The first character must be a letter.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Cannot end with a hyphen or contain two consecutive hyphens.
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * Example: <code>mydbinstance</code>
+     * </p>
      * 
      * @param newDBInstanceIdentifier
      *        The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB
@@ -3986,19 +4092,22 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must contain from 1 to 63 alphanumeric characters or hyphens
+     *        Must contain from 1 to 63 letters, numbers, or hyphens.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        First character must be a letter
+     *        The first character must be a letter.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Cannot end with a hyphen or contain two consecutive hyphens.
      *        </p>
      *        </li>
+     *        </ul>
+     *        <p>
+     *        Example: <code>mydbinstance</code>
      */
 
     public void setNewDBInstanceIdentifier(String newDBInstanceIdentifier) {
@@ -4018,20 +4127,23 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
+     * Must contain from 1 to 63 letters, numbers, or hyphens.
      * </p>
      * </li>
      * <li>
      * <p>
-     * First character must be a letter
+     * The first character must be a letter.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Cannot end with a hyphen or contain two consecutive hyphens.
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * Example: <code>mydbinstance</code>
+     * </p>
      * 
      * @return The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB
      *         instance identifier, an instance reboot will occur immediately if you set <code>Apply Immediately</code>
@@ -4043,19 +4155,22 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <ul>
      *         <li>
      *         <p>
-     *         Must contain from 1 to 63 alphanumeric characters or hyphens
+     *         Must contain from 1 to 63 letters, numbers, or hyphens.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         First character must be a letter
+     *         The first character must be a letter.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Cannot end with a hyphen or contain two consecutive hyphens
+     *         Cannot end with a hyphen or contain two consecutive hyphens.
      *         </p>
      *         </li>
+     *         </ul>
+     *         <p>
+     *         Example: <code>mydbinstance</code>
      */
 
     public String getNewDBInstanceIdentifier() {
@@ -4075,20 +4190,23 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
+     * Must contain from 1 to 63 letters, numbers, or hyphens.
      * </p>
      * </li>
      * <li>
      * <p>
-     * First character must be a letter
+     * The first character must be a letter.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Cannot end with a hyphen or contain two consecutive hyphens.
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * Example: <code>mydbinstance</code>
+     * </p>
      * 
      * @param newDBInstanceIdentifier
      *        The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB
@@ -4101,19 +4219,22 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <ul>
      *        <li>
      *        <p>
-     *        Must contain from 1 to 63 alphanumeric characters or hyphens
+     *        Must contain from 1 to 63 letters, numbers, or hyphens.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        First character must be a letter
+     *        The first character must be a letter.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Cannot end with a hyphen or contain two consecutive hyphens.
      *        </p>
      *        </li>
+     *        </ul>
+     *        <p>
+     *        Example: <code>mydbinstance</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -5340,6 +5461,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * You can enable IAM database authentication for the following database engines
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -5361,6 +5492,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        otherwise false.</p>
      *        <p>
      *        You can enable IAM database authentication for the following database engines
+     *        </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
+     *        </p>
+     *        <p>
+     *        <b>MySQL</b>
      *        </p>
      *        <ul>
      *        <li>
@@ -5390,6 +5531,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * You can enable IAM database authentication for the following database engines
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -5410,6 +5561,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         otherwise false.</p>
      *         <p>
      *         You can enable IAM database authentication for the following database engines
+     *         </p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
+     *         information, see <a>ModifyDBCluster</a>.
+     *         </p>
+     *         <p>
+     *         <b>MySQL</b>
      *         </p>
      *         <ul>
      *         <li>
@@ -5439,6 +5600,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * You can enable IAM database authentication for the following database engines
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -5460,6 +5631,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        otherwise false.</p>
      *        <p>
      *        You can enable IAM database authentication for the following database engines
+     *        </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
+     *        information, see <a>ModifyDBCluster</a>.
+     *        </p>
+     *        <p>
+     *        <b>MySQL</b>
      *        </p>
      *        <ul>
      *        <li>
@@ -5491,6 +5672,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * You can enable IAM database authentication for the following database engines
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
+     * see <a>ModifyDBCluster</a>.
+     * </p>
+     * <p>
+     * <b>MySQL</b>
+     * </p>
      * <ul>
      * <li>
      * <p>
@@ -5512,6 +5703,16 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <p>
      *         You can enable IAM database authentication for the following database engines
      *         </p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
+     *         information, see <a>ModifyDBCluster</a>.
+     *         </p>
+     *         <p>
+     *         <b>MySQL</b>
+     *         </p>
      *         <ul>
      *         <li>
      *         <p>
@@ -5530,6 +5731,66 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     public Boolean isEnableIAMDatabaseAuthentication() {
         return this.enableIAMDatabaseAuthentication;
+    }
+
+    /**
+     * @param enablePerformanceInsights
+     */
+
+    public void setEnablePerformanceInsights(Boolean enablePerformanceInsights) {
+        this.enablePerformanceInsights = enablePerformanceInsights;
+    }
+
+    /**
+     * @return
+     */
+
+    public Boolean getEnablePerformanceInsights() {
+        return this.enablePerformanceInsights;
+    }
+
+    /**
+     * @param enablePerformanceInsights
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBInstanceRequest withEnablePerformanceInsights(Boolean enablePerformanceInsights) {
+        setEnablePerformanceInsights(enablePerformanceInsights);
+        return this;
+    }
+
+    /**
+     * @return
+     */
+
+    public Boolean isEnablePerformanceInsights() {
+        return this.enablePerformanceInsights;
+    }
+
+    /**
+     * @param performanceInsightsKMSKeyId
+     */
+
+    public void setPerformanceInsightsKMSKeyId(String performanceInsightsKMSKeyId) {
+        this.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getPerformanceInsightsKMSKeyId() {
+        return this.performanceInsightsKMSKeyId;
+    }
+
+    /**
+     * @param performanceInsightsKMSKeyId
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBInstanceRequest withPerformanceInsightsKMSKeyId(String performanceInsightsKMSKeyId) {
+        setPerformanceInsightsKMSKeyId(performanceInsightsKMSKeyId);
+        return this;
     }
 
     /**
@@ -5608,7 +5869,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         if (getPromotionTier() != null)
             sb.append("PromotionTier: ").append(getPromotionTier()).append(",");
         if (getEnableIAMDatabaseAuthentication() != null)
-            sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication());
+            sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication()).append(",");
+        if (getEnablePerformanceInsights() != null)
+            sb.append("EnablePerformanceInsights: ").append(getEnablePerformanceInsights()).append(",");
+        if (getPerformanceInsightsKMSKeyId() != null)
+            sb.append("PerformanceInsightsKMSKeyId: ").append(getPerformanceInsightsKMSKeyId());
         sb.append("}");
         return sb.toString();
     }
@@ -5756,6 +6021,14 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         if (other.getEnableIAMDatabaseAuthentication() != null
                 && other.getEnableIAMDatabaseAuthentication().equals(this.getEnableIAMDatabaseAuthentication()) == false)
             return false;
+        if (other.getEnablePerformanceInsights() == null ^ this.getEnablePerformanceInsights() == null)
+            return false;
+        if (other.getEnablePerformanceInsights() != null && other.getEnablePerformanceInsights().equals(this.getEnablePerformanceInsights()) == false)
+            return false;
+        if (other.getPerformanceInsightsKMSKeyId() == null ^ this.getPerformanceInsightsKMSKeyId() == null)
+            return false;
+        if (other.getPerformanceInsightsKMSKeyId() != null && other.getPerformanceInsightsKMSKeyId().equals(this.getPerformanceInsightsKMSKeyId()) == false)
+            return false;
         return true;
     }
 
@@ -5797,6 +6070,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getDomainIAMRoleName() == null) ? 0 : getDomainIAMRoleName().hashCode());
         hashCode = prime * hashCode + ((getPromotionTier() == null) ? 0 : getPromotionTier().hashCode());
         hashCode = prime * hashCode + ((getEnableIAMDatabaseAuthentication() == null) ? 0 : getEnableIAMDatabaseAuthentication().hashCode());
+        hashCode = prime * hashCode + ((getEnablePerformanceInsights() == null) ? 0 : getEnablePerformanceInsights().hashCode());
+        hashCode = prime * hashCode + ((getPerformanceInsightsKMSKeyId() == null) ? 0 : getPerformanceInsightsKMSKeyId().hashCode());
         return hashCode;
     }
 

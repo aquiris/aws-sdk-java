@@ -121,6 +121,12 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      * </p>
      */
     private Boolean replaceUnhealthyInstances;
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     */
+    private String instanceInterruptionBehavior;
 
     /**
      * <p>
@@ -184,7 +190,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      */
 
     public void setAllocationStrategy(AllocationStrategy allocationStrategy) {
-        this.allocationStrategy = allocationStrategy.toString();
+        withAllocationStrategy(allocationStrategy);
     }
 
     /**
@@ -201,7 +207,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      */
 
     public SpotFleetRequestConfigData withAllocationStrategy(AllocationStrategy allocationStrategy) {
-        setAllocationStrategy(allocationStrategy);
+        this.allocationStrategy = allocationStrategy.toString();
         return this;
     }
 
@@ -325,7 +331,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      */
 
     public void setExcessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy excessCapacityTerminationPolicy) {
-        this.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy.toString();
+        withExcessCapacityTerminationPolicy(excessCapacityTerminationPolicy);
     }
 
     /**
@@ -342,7 +348,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      */
 
     public SpotFleetRequestConfigData withExcessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy excessCapacityTerminationPolicy) {
-        setExcessCapacityTerminationPolicy(excessCapacityTerminationPolicy);
+        this.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy.toString();
         return this;
     }
 
@@ -744,7 +750,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      */
 
     public void setType(FleetType type) {
-        this.type = type.toString();
+        withType(type);
     }
 
     /**
@@ -769,7 +775,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      */
 
     public SpotFleetRequestConfigData withType(FleetType type) {
-        setType(type);
+        this.type = type.toString();
         return this;
     }
 
@@ -930,6 +936,79 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public void setInstanceInterruptionBehavior(String instanceInterruptionBehavior) {
+        this.instanceInterruptionBehavior = instanceInterruptionBehavior;
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @return Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public String getInstanceInterruptionBehavior() {
+        return this.instanceInterruptionBehavior;
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public SpotFleetRequestConfigData withInstanceInterruptionBehavior(String instanceInterruptionBehavior) {
+        setInstanceInterruptionBehavior(instanceInterruptionBehavior);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public void setInstanceInterruptionBehavior(InstanceInterruptionBehavior instanceInterruptionBehavior) {
+        withInstanceInterruptionBehavior(instanceInterruptionBehavior);
+    }
+
+    /**
+     * <p>
+     * Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * </p>
+     * 
+     * @param instanceInterruptionBehavior
+     *        Indicates whether a Spot instance stops or terminates when it is interrupted.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see InstanceInterruptionBehavior
+     */
+
+    public SpotFleetRequestConfigData withInstanceInterruptionBehavior(InstanceInterruptionBehavior instanceInterruptionBehavior) {
+        this.instanceInterruptionBehavior = instanceInterruptionBehavior.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -965,7 +1044,9 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
         if (getValidUntil() != null)
             sb.append("ValidUntil: ").append(getValidUntil()).append(",");
         if (getReplaceUnhealthyInstances() != null)
-            sb.append("ReplaceUnhealthyInstances: ").append(getReplaceUnhealthyInstances());
+            sb.append("ReplaceUnhealthyInstances: ").append(getReplaceUnhealthyInstances()).append(",");
+        if (getInstanceInterruptionBehavior() != null)
+            sb.append("InstanceInterruptionBehavior: ").append(getInstanceInterruptionBehavior());
         sb.append("}");
         return sb.toString();
     }
@@ -1034,6 +1115,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
             return false;
         if (other.getReplaceUnhealthyInstances() != null && other.getReplaceUnhealthyInstances().equals(this.getReplaceUnhealthyInstances()) == false)
             return false;
+        if (other.getInstanceInterruptionBehavior() == null ^ this.getInstanceInterruptionBehavior() == null)
+            return false;
+        if (other.getInstanceInterruptionBehavior() != null && other.getInstanceInterruptionBehavior().equals(this.getInstanceInterruptionBehavior()) == false)
+            return false;
         return true;
     }
 
@@ -1055,6 +1140,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getValidFrom() == null) ? 0 : getValidFrom().hashCode());
         hashCode = prime * hashCode + ((getValidUntil() == null) ? 0 : getValidUntil().hashCode());
         hashCode = prime * hashCode + ((getReplaceUnhealthyInstances() == null) ? 0 : getReplaceUnhealthyInstances().hashCode());
+        hashCode = prime * hashCode + ((getInstanceInterruptionBehavior() == null) ? 0 : getInstanceInterruptionBehavior().hashCode());
         return hashCode;
     }
 

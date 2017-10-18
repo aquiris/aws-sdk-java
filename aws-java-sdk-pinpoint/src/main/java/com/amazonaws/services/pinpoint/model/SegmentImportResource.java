@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Segment import definition.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SegmentImportResource" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SegmentImportResource implements Serializable, Cloneable, StructuredPojo {
@@ -173,7 +176,7 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
      */
 
     public void setFormat(Format format) {
-        this.format = format.toString();
+        withFormat(format);
     }
 
     /**
@@ -186,7 +189,7 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
      */
 
     public SegmentImportResource withFormat(Format format) {
-        setFormat(format);
+        this.format = format.toString();
         return this;
     }
 

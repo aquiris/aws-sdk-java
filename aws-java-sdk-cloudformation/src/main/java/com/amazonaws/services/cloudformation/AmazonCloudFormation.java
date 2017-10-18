@@ -186,11 +186,15 @@ public interface AmazonCloudFormation {
      *        The input for the <a>CreateChangeSet</a> action.
      * @return Result of the CreateChangeSet operation returned by the service.
      * @throws AlreadyExistsException
-     *         Resource with the name requested already exists.
+     *         The resource with the name requested already exists.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @throws LimitExceededException
-     *         Quota for the resource has already been reached.
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
      * @sample AmazonCloudFormation.CreateChangeSet
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet" target="_top">AWS
      *      API Documentation</a>
@@ -207,18 +211,77 @@ public interface AmazonCloudFormation {
      *        The input for <a>CreateStack</a> action.
      * @return Result of the CreateStack operation returned by the service.
      * @throws LimitExceededException
-     *         Quota for the resource has already been reached.
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
      * @throws AlreadyExistsException
-     *         Resource with the name requested already exists.
+     *         The resource with the name requested already exists.
      * @throws TokenAlreadyExistsException
      *         A client request token already exists.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @sample AmazonCloudFormation.CreateStack
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStack" target="_top">AWS API
      *      Documentation</a>
      */
     CreateStackResult createStack(CreateStackRequest createStackRequest);
+
+    /**
+     * <p>
+     * Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a
+     * stack in a specific account and region. <code>Accounts</code> and <code>Regions</code> are required
+     * parameters—you must specify at least one account and one region.
+     * </p>
+     * 
+     * @param createStackInstancesRequest
+     * @return Result of the CreateStackInstances operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @throws OperationIdAlreadyExistsException
+     *         The specified operation ID already exists.
+     * @throws StaleRequestException
+     *         Another operation has been performed on this stack set since the specified operation was performed.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @throws LimitExceededException
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
+     * @sample AmazonCloudFormation.CreateStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateStackInstancesResult createStackInstances(CreateStackInstancesRequest createStackInstancesRequest);
+
+    /**
+     * <p>
+     * Creates a stack set.
+     * </p>
+     * 
+     * @param createStackSetRequest
+     * @return Result of the CreateStackSet operation returned by the service.
+     * @throws NameAlreadyExistsException
+     *         The specified name is already in use.
+     * @throws CreatedButModifiedException
+     *         The specified resource exists, but has been changed.
+     * @throws LimitExceededException
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
+     * @sample AmazonCloudFormation.CreateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateStackSetResult createStackSet(CreateStackSetRequest createStackSetRequest);
 
     /**
      * <p>
@@ -232,8 +295,8 @@ public interface AmazonCloudFormation {
      *        The input for the <a>DeleteChangeSet</a> action.
      * @return Result of the DeleteChangeSet operation returned by the service.
      * @throws InvalidChangeSetStatusException
-     *         The specified change set cannot be used to update the stack. For example, the change set status might be
-     *         <code>CREATE_IN_PROGRESS</code> or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
+     *         The specified change set can't be used to update the stack. For example, the change set status might be
+     *         <code>CREATE_IN_PROGRESS</code>, or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
      * @sample AmazonCloudFormation.DeleteChangeSet
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteChangeSet" target="_top">AWS
      *      API Documentation</a>
@@ -256,6 +319,50 @@ public interface AmazonCloudFormation {
      *      Documentation</a>
      */
     DeleteStackResult deleteStack(DeleteStackRequest deleteStackRequest);
+
+    /**
+     * <p>
+     * Deletes stack instances for the specified accounts, in the specified regions.
+     * </p>
+     * 
+     * @param deleteStackInstancesRequest
+     * @return Result of the DeleteStackInstances operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @throws OperationIdAlreadyExistsException
+     *         The specified operation ID already exists.
+     * @throws StaleRequestException
+     *         Another operation has been performed on this stack set since the specified operation was performed.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @sample AmazonCloudFormation.DeleteStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteStackInstancesResult deleteStackInstances(DeleteStackInstancesRequest deleteStackInstancesRequest);
+
+    /**
+     * <p>
+     * Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For
+     * more information about how to do this, see <a>DeleteStackInstances</a>.
+     * </p>
+     * 
+     * @param deleteStackSetRequest
+     * @return Result of the DeleteStackSet operation returned by the service.
+     * @throws StackSetNotEmptyException
+     *         You can't yet delete this stack set, because it still contains one or more stack instances. Delete all
+     *         stack instances from the stack set before deleting the stack set.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @sample AmazonCloudFormation.DeleteStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteStackSetResult deleteStackSet(DeleteStackSetRequest deleteStackSetRequest);
 
     /**
      * <p>
@@ -317,6 +424,26 @@ public interface AmazonCloudFormation {
 
     /**
      * <p>
+     * Returns the stack instance that's associated with the specified stack set, AWS account, and region.
+     * </p>
+     * <p>
+     * For a list of stack instances that are associated with a specific stack set, use <a>ListStackInstances</a>.
+     * </p>
+     * 
+     * @param describeStackInstanceRequest
+     * @return Result of the DescribeStackInstance operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws StackInstanceNotFoundException
+     *         The specified stack instance doesn't exist.
+     * @sample AmazonCloudFormation.DescribeStackInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackInstance"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeStackInstanceResult describeStackInstance(DescribeStackInstanceRequest describeStackInstanceRequest);
+
+    /**
+     * <p>
      * Returns a description of the specified resource in the specified stack.
      * </p>
      * <p>
@@ -370,6 +497,38 @@ public interface AmazonCloudFormation {
      *      target="_top">AWS API Documentation</a>
      */
     DescribeStackResourcesResult describeStackResources(DescribeStackResourcesRequest describeStackResourcesRequest);
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set.
+     * </p>
+     * 
+     * @param describeStackSetRequest
+     * @return Result of the DescribeStackSet operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @sample AmazonCloudFormation.DescribeStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeStackSetResult describeStackSet(DescribeStackSetRequest describeStackSetRequest);
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set operation.
+     * </p>
+     * 
+     * @param describeStackSetOperationRequest
+     * @return Result of the DescribeStackSetOperation operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationNotFoundException
+     *         The specified ID refers to an operation that doesn't exist.
+     * @sample AmazonCloudFormation.DescribeStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeStackSetOperationResult describeStackSetOperation(DescribeStackSetOperationRequest describeStackSetOperationRequest);
 
     /**
      * <p>
@@ -439,13 +598,13 @@ public interface AmazonCloudFormation {
      *        The input for the <a>ExecuteChangeSet</a> action.
      * @return Result of the ExecuteChangeSet operation returned by the service.
      * @throws InvalidChangeSetStatusException
-     *         The specified change set cannot be used to update the stack. For example, the change set status might be
-     *         <code>CREATE_IN_PROGRESS</code> or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
+     *         The specified change set can't be used to update the stack. For example, the change set status might be
+     *         <code>CREATE_IN_PROGRESS</code>, or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
      * @throws ChangeSetNotFoundException
      *         The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the
      *         <code>ListChangeSets</code> action.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @throws TokenAlreadyExistsException
      *         A client request token already exists.
      * @sample AmazonCloudFormation.ExecuteChangeSet
@@ -497,11 +656,11 @@ public interface AmazonCloudFormation {
      * <p>
      * Returns information about a new or existing template. The <code>GetTemplateSummary</code> action is useful for
      * viewing parameter information, such as default parameter values and parameter types, before you create or update
-     * a stack.
+     * a stack or stack set.
      * </p>
      * <p>
      * You can use the <code>GetTemplateSummary</code> action when you submit a template, or you can get template
-     * information for a running or deleted stack.
+     * information for a stack set, or a running or deleted stack.
      * </p>
      * <p>
      * For deleted stacks, <code>GetTemplateSummary</code> returns the template information for up to 90 days after the
@@ -511,6 +670,8 @@ public interface AmazonCloudFormation {
      * @param getTemplateSummaryRequest
      *        The input for the <a>GetTemplateSummary</a> action.
      * @return Result of the GetTemplateSummary operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
      * @sample AmazonCloudFormation.GetTemplateSummary
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplateSummary"
      *      target="_top">AWS API Documentation</a>
@@ -582,6 +743,22 @@ public interface AmazonCloudFormation {
 
     /**
      * <p>
+     * Returns summary information about stack instances that are associated with the specified stack set. You can
+     * filter for stack instances that are associated with a specific AWS account name or region.
+     * </p>
+     * 
+     * @param listStackInstancesRequest
+     * @return Result of the ListStackInstances operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @sample AmazonCloudFormation.ListStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListStackInstancesResult listStackInstances(ListStackInstancesRequest listStackInstancesRequest);
+
+    /**
+     * <p>
      * Returns descriptions of all resources of the specified stack.
      * </p>
      * <p>
@@ -597,6 +774,51 @@ public interface AmazonCloudFormation {
      *      target="_top">AWS API Documentation</a>
      */
     ListStackResourcesResult listStackResources(ListStackResourcesRequest listStackResourcesRequest);
+
+    /**
+     * <p>
+     * Returns summary information about the results of a stack set operation.
+     * </p>
+     * 
+     * @param listStackSetOperationResultsRequest
+     * @return Result of the ListStackSetOperationResults operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationNotFoundException
+     *         The specified ID refers to an operation that doesn't exist.
+     * @sample AmazonCloudFormation.ListStackSetOperationResults
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperationResults"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListStackSetOperationResultsResult listStackSetOperationResults(ListStackSetOperationResultsRequest listStackSetOperationResultsRequest);
+
+    /**
+     * <p>
+     * Returns summary information about operations performed on a stack set.
+     * </p>
+     * 
+     * @param listStackSetOperationsRequest
+     * @return Result of the ListStackSetOperations operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @sample AmazonCloudFormation.ListStackSetOperations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListStackSetOperationsResult listStackSetOperations(ListStackSetOperationsRequest listStackSetOperationsRequest);
+
+    /**
+     * <p>
+     * Returns summary information about stack sets that are associated with the user.
+     * </p>
+     * 
+     * @param listStackSetsRequest
+     * @return Result of the ListStackSets operation returned by the service.
+     * @sample AmazonCloudFormation.ListStackSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSets" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListStackSetsResult listStackSets(ListStackSetsRequest listStackSetsRequest);
 
     /**
      * <p>
@@ -656,6 +878,25 @@ public interface AmazonCloudFormation {
 
     /**
      * <p>
+     * Stops an in-progress operation on a stack set and its associated stack instances.
+     * </p>
+     * 
+     * @param stopStackSetOperationRequest
+     * @return Result of the StopStackSetOperation operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationNotFoundException
+     *         The specified ID refers to an operation that doesn't exist.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @sample AmazonCloudFormation.StopStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/StopStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    StopStackSetOperationResult stopStackSetOperation(StopStackSetOperationRequest stopStackSetOperationRequest);
+
+    /**
+     * <p>
      * Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You
      * can check the status of the stack via the <a>DescribeStacks</a> action.
      * </p>
@@ -673,7 +914,7 @@ public interface AmazonCloudFormation {
      *        The input for an <a>UpdateStack</a> action.
      * @return Result of the UpdateStack operation returned by the service.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @throws TokenAlreadyExistsException
      *         A client request token already exists.
      * @sample AmazonCloudFormation.UpdateStack
@@ -681,6 +922,55 @@ public interface AmazonCloudFormation {
      *      Documentation</a>
      */
     UpdateStackResult updateStack(UpdateStackRequest updateStackRequest);
+
+    /**
+     * <p>
+     * Updates the stack set and <i>all</i> associated stack instances.
+     * </p>
+     * <p>
+     * Even if the stack set operation created by updating the stack set fails (completely or partially, below or above
+     * a specified failure tolerance), the stack set is updated with your changes. Subsequent
+     * <a>CreateStackInstances</a> calls on the specified stack set use the updated stack set.
+     * </p>
+     * 
+     * @param updateStackSetRequest
+     * @return Result of the UpdateStackSet operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @throws OperationIdAlreadyExistsException
+     *         The specified operation ID already exists.
+     * @throws StaleRequestException
+     *         Another operation has been performed on this stack set since the specified operation was performed.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @sample AmazonCloudFormation.UpdateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateStackSetResult updateStackSet(UpdateStackSetRequest updateStackSetRequest);
+
+    /**
+     * <p>
+     * Updates termination protection for the specified stack. If a user attempts to delete a stack with termination
+     * protection enabled, the operation fails and the stack remains unchanged. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a
+     * Stack From Being Deleted</a> in the <i>AWS CloudFormation User Guide</i>.
+     * </p>
+     * <p>
+     * For <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested
+     * stacks</a>, termination protection is set on the root stack and cannot be changed directly on the nested stack.
+     * </p>
+     * 
+     * @param updateTerminationProtectionRequest
+     * @return Result of the UpdateTerminationProtection operation returned by the service.
+     * @sample AmazonCloudFormation.UpdateTerminationProtection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateTerminationProtection"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateTerminationProtectionResult updateTerminationProtection(UpdateTerminationProtectionRequest updateTerminationProtectionRequest);
 
     /**
      * <p>

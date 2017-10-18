@@ -24,7 +24,8 @@ public enum TargetHealthStateEnum {
     Healthy("healthy"),
     Unhealthy("unhealthy"),
     Unused("unused"),
-    Draining("draining");
+    Draining("draining"),
+    Unavailable("unavailable");
 
     private String value;
 
@@ -43,6 +44,9 @@ public enum TargetHealthStateEnum {
      * @param value
      *        real value
      * @return TargetHealthStateEnum corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static TargetHealthStateEnum fromValue(String value) {
         if (value == null || "".equals(value)) {

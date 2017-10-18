@@ -37,10 +37,14 @@ public class UpdateElasticsearchDomainConfigRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EBSOptions").build();
     private static final MarshallingInfo<StructuredPojo> SNAPSHOTOPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SnapshotOptions").build();
+    private static final MarshallingInfo<StructuredPojo> VPCOPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VPCOptions").build();
     private static final MarshallingInfo<Map> ADVANCEDOPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("AdvancedOptions").build();
     private static final MarshallingInfo<String> ACCESSPOLICIES_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AccessPolicies").build();
+    private static final MarshallingInfo<Map> LOGPUBLISHINGOPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.MAP)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LogPublishingOptions").build();
 
     private static final UpdateElasticsearchDomainConfigRequestMarshaller instance = new UpdateElasticsearchDomainConfigRequestMarshaller();
 
@@ -62,8 +66,10 @@ public class UpdateElasticsearchDomainConfigRequestMarshaller {
             protocolMarshaller.marshall(updateElasticsearchDomainConfigRequest.getElasticsearchClusterConfig(), ELASTICSEARCHCLUSTERCONFIG_BINDING);
             protocolMarshaller.marshall(updateElasticsearchDomainConfigRequest.getEBSOptions(), EBSOPTIONS_BINDING);
             protocolMarshaller.marshall(updateElasticsearchDomainConfigRequest.getSnapshotOptions(), SNAPSHOTOPTIONS_BINDING);
+            protocolMarshaller.marshall(updateElasticsearchDomainConfigRequest.getVPCOptions(), VPCOPTIONS_BINDING);
             protocolMarshaller.marshall(updateElasticsearchDomainConfigRequest.getAdvancedOptions(), ADVANCEDOPTIONS_BINDING);
             protocolMarshaller.marshall(updateElasticsearchDomainConfigRequest.getAccessPolicies(), ACCESSPOLICIES_BINDING);
+            protocolMarshaller.marshall(updateElasticsearchDomainConfigRequest.getLogPublishingOptions(), LOGPUBLISHINGOPTIONS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

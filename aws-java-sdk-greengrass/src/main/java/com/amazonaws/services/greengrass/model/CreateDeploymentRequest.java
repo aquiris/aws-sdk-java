@@ -29,7 +29,7 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
     private String amznClientToken;
     /** Id of the deployment if you wish to redeploy a previous deployment. */
     private String deploymentId;
-    /** Type of deployment */
+    /** Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid. */
     private String deploymentType;
     /** The unique Id of the AWS Greengrass Group */
     private String groupId;
@@ -105,10 +105,10 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Type of deployment
+     * Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * 
      * @param deploymentType
-     *        Type of deployment
+     *        Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * @see DeploymentType
      */
 
@@ -117,9 +117,9 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Type of deployment
+     * Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * 
-     * @return Type of deployment
+     * @return Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * @see DeploymentType
      */
 
@@ -128,10 +128,10 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Type of deployment
+     * Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * 
      * @param deploymentType
-     *        Type of deployment
+     *        Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeploymentType
      */
@@ -142,28 +142,28 @@ public class CreateDeploymentRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Type of deployment
+     * Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * 
      * @param deploymentType
-     *        Type of deployment
+     *        Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * @see DeploymentType
      */
 
     public void setDeploymentType(DeploymentType deploymentType) {
-        this.deploymentType = deploymentType.toString();
+        withDeploymentType(deploymentType);
     }
 
     /**
-     * Type of deployment
+     * Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * 
      * @param deploymentType
-     *        Type of deployment
+     *        Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeploymentType
      */
 
     public CreateDeploymentRequest withDeploymentType(DeploymentType deploymentType) {
-        setDeploymentType(deploymentType);
+        this.deploymentType = deploymentType.toString();
         return this;
     }
 

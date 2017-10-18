@@ -818,6 +818,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         if (listObjectsRequest.getMaxKeys() != null && listObjectsRequest.getMaxKeys().intValue() >= 0) request.addParameter("max-keys", listObjectsRequest.getMaxKeys().toString());
         request.addParameter("encoding-type", shouldSDKDecodeResponse ? Constants.URL_ENCODING : listObjectsRequest.getEncodingType());
 
+        populateRequesterPaysHeader(request, listObjectsRequest.isRequesterPays());
+
         return invoke(request, new Unmarshallers.ListObjectsUnmarshaller(shouldSDKDecodeResponse), listObjectsRequest.getBucketName(), null);
     }
 
@@ -852,6 +854,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         addParameterIfNotNull(request, "prefix", listObjectsV2Request.getPrefix());
         addParameterIfNotNull(request, "encoding-type", listObjectsV2Request.getEncodingType());
         request.addParameter("fetch-owner", Boolean.toString(listObjectsV2Request.isFetchOwner()));
+
+        populateRequesterPaysHeader(request, listObjectsV2Request.isRequesterPays());
 
         /**
          * If URL encoding has been requested from S3 we'll automatically decode the response.
@@ -1258,7 +1262,6 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     @Override
     public boolean doesBucketExist(String bucketName)
             throws SdkClientException, AmazonServiceException {
-
         try {
             headBucket(new HeadBucketRequest(bucketName));
             return true;
@@ -1266,14 +1269,31 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
             // A redirect error or a forbidden error means the bucket exists. So
             // returning true.
             if ((ase.getStatusCode() == Constants.BUCKET_REDIRECT_STATUS_CODE)
-                    || (ase.getStatusCode() == Constants.BUCKET_ACCESS_FORBIDDEN_STATUS_CODE)) {
+                || (ase.getStatusCode() == Constants.BUCKET_ACCESS_FORBIDDEN_STATUS_CODE)) {
                 return true;
             }
             if (ase.getStatusCode() == Constants.NO_SUCH_BUCKET_STATUS_CODE) {
                 return false;
             }
             throw ase;
+        }
+    }
 
+    @Override
+    public boolean doesBucketExistV2(String bucketName) throws SdkClientException {
+        try {
+            getBucketAcl(bucketName);
+            return true;
+        } catch (AmazonServiceException ase) {
+            // A redirect error or an AccessDenied exception means the bucket exists but it's not in this region
+            // or we don't have permissions to it.
+            if ((ase.getStatusCode() == Constants.BUCKET_REDIRECT_STATUS_CODE) || "AccessDenied".equals(ase.getErrorCode())) {
+                return true;
+            }
+            if (ase.getStatusCode() == Constants.NO_SUCH_BUCKET_STATUS_CODE) {
+                return false;
+            }
+            throw ase;
         }
     }
 
@@ -3037,6 +3057,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         populateSSE_KMS(request,
                 initiateMultipartUploadRequest.getSSEAwsKeyManagementParams());
 
+        addHeaderIfNotNull(request, Headers.S3_TAGGING, urlEncodeTags(initiateMultipartUploadRequest.getTagging()));
+
         // Be careful that we don't send the object's total size as the content
         // length for the InitiateMultipartUpload request.
         setZeroContentLength(request);
@@ -3750,8 +3772,12 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         populateRequesterPaysHeader(request, copyObjectRequest.isRequesterPays());
 
         ObjectMetadata newObjectMetadata = copyObjectRequest.getNewObjectMetadata();
-        if (newObjectMetadata != null) {
+        if (copyObjectRequest.getMetadataDirective() != null) {
+            request.addHeader(Headers.METADATA_DIRECTIVE, copyObjectRequest.getMetadataDirective());
+        } else if (newObjectMetadata != null) {
             request.addHeader(Headers.METADATA_DIRECTIVE, "REPLACE");
+        }
+        if (newObjectMetadata != null) {
             populateRequestMetadata(request, newObjectMetadata);
         }
 

@@ -32,7 +32,8 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <p>
  * <fullname>Amazon AppStream 2.0</fullname>
  * <p>
- * API documentation for Amazon AppStream 2.0.
+ * You can use Amazon AppStream 2.0 to stream desktop applications to any device running a web browser, without
+ * rewriting them.
  * </p>
  */
 @ThreadSafe
@@ -279,6 +280,39 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<CreateDirectoryConfigResult> createDirectoryConfigAsync(CreateDirectoryConfigRequest request) {
+
+        return createDirectoryConfigAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateDirectoryConfigResult> createDirectoryConfigAsync(final CreateDirectoryConfigRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateDirectoryConfigRequest, CreateDirectoryConfigResult> asyncHandler) {
+        final CreateDirectoryConfigRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateDirectoryConfigResult>() {
+            @Override
+            public CreateDirectoryConfigResult call() throws Exception {
+                CreateDirectoryConfigResult result = null;
+
+                try {
+                    result = executeCreateDirectoryConfig(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateFleetResult> createFleetAsync(CreateFleetRequest request) {
 
         return createFleetAsync(request, null);
@@ -296,6 +330,73 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
 
                 try {
                     result = executeCreateFleet(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateImageBuilderResult> createImageBuilderAsync(CreateImageBuilderRequest request) {
+
+        return createImageBuilderAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateImageBuilderResult> createImageBuilderAsync(final CreateImageBuilderRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateImageBuilderRequest, CreateImageBuilderResult> asyncHandler) {
+        final CreateImageBuilderRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateImageBuilderResult>() {
+            @Override
+            public CreateImageBuilderResult call() throws Exception {
+                CreateImageBuilderResult result = null;
+
+                try {
+                    result = executeCreateImageBuilder(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateImageBuilderStreamingURLResult> createImageBuilderStreamingURLAsync(CreateImageBuilderStreamingURLRequest request) {
+
+        return createImageBuilderStreamingURLAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateImageBuilderStreamingURLResult> createImageBuilderStreamingURLAsync(
+            final CreateImageBuilderStreamingURLRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateImageBuilderStreamingURLRequest, CreateImageBuilderStreamingURLResult> asyncHandler) {
+        final CreateImageBuilderStreamingURLRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateImageBuilderStreamingURLResult>() {
+            @Override
+            public CreateImageBuilderStreamingURLResult call() throws Exception {
+                CreateImageBuilderStreamingURLResult result = null;
+
+                try {
+                    result = executeCreateImageBuilderStreamingURL(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -378,6 +479,39 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteDirectoryConfigResult> deleteDirectoryConfigAsync(DeleteDirectoryConfigRequest request) {
+
+        return deleteDirectoryConfigAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteDirectoryConfigResult> deleteDirectoryConfigAsync(final DeleteDirectoryConfigRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteDirectoryConfigRequest, DeleteDirectoryConfigResult> asyncHandler) {
+        final DeleteDirectoryConfigRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteDirectoryConfigResult>() {
+            @Override
+            public DeleteDirectoryConfigResult call() throws Exception {
+                DeleteDirectoryConfigResult result = null;
+
+                try {
+                    result = executeDeleteDirectoryConfig(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteFleetResult> deleteFleetAsync(DeleteFleetRequest request) {
 
         return deleteFleetAsync(request, null);
@@ -395,6 +529,72 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
 
                 try {
                     result = executeDeleteFleet(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteImageResult> deleteImageAsync(DeleteImageRequest request) {
+
+        return deleteImageAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteImageResult> deleteImageAsync(final DeleteImageRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteImageRequest, DeleteImageResult> asyncHandler) {
+        final DeleteImageRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteImageResult>() {
+            @Override
+            public DeleteImageResult call() throws Exception {
+                DeleteImageResult result = null;
+
+                try {
+                    result = executeDeleteImage(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteImageBuilderResult> deleteImageBuilderAsync(DeleteImageBuilderRequest request) {
+
+        return deleteImageBuilderAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteImageBuilderResult> deleteImageBuilderAsync(final DeleteImageBuilderRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteImageBuilderRequest, DeleteImageBuilderResult> asyncHandler) {
+        final DeleteImageBuilderRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteImageBuilderResult>() {
+            @Override
+            public DeleteImageBuilderResult call() throws Exception {
+                DeleteImageBuilderResult result = null;
+
+                try {
+                    result = executeDeleteImageBuilder(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -444,6 +644,39 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeDirectoryConfigsResult> describeDirectoryConfigsAsync(DescribeDirectoryConfigsRequest request) {
+
+        return describeDirectoryConfigsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeDirectoryConfigsResult> describeDirectoryConfigsAsync(final DescribeDirectoryConfigsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeDirectoryConfigsRequest, DescribeDirectoryConfigsResult> asyncHandler) {
+        final DescribeDirectoryConfigsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeDirectoryConfigsResult>() {
+            @Override
+            public DescribeDirectoryConfigsResult call() throws Exception {
+                DescribeDirectoryConfigsResult result = null;
+
+                try {
+                    result = executeDescribeDirectoryConfigs(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeFleetsResult> describeFleetsAsync(DescribeFleetsRequest request) {
 
         return describeFleetsAsync(request, null);
@@ -461,6 +694,39 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
 
                 try {
                     result = executeDescribeFleets(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeImageBuildersResult> describeImageBuildersAsync(DescribeImageBuildersRequest request) {
+
+        return describeImageBuildersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeImageBuildersResult> describeImageBuildersAsync(final DescribeImageBuildersRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeImageBuildersRequest, DescribeImageBuildersResult> asyncHandler) {
+        final DescribeImageBuildersRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeImageBuildersResult>() {
+            @Override
+            public DescribeImageBuildersResult call() throws Exception {
+                DescribeImageBuildersResult result = null;
+
+                try {
+                    result = executeDescribeImageBuilders(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -741,6 +1007,39 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<StartImageBuilderResult> startImageBuilderAsync(StartImageBuilderRequest request) {
+
+        return startImageBuilderAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartImageBuilderResult> startImageBuilderAsync(final StartImageBuilderRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartImageBuilderRequest, StartImageBuilderResult> asyncHandler) {
+        final StartImageBuilderRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StartImageBuilderResult>() {
+            @Override
+            public StartImageBuilderResult call() throws Exception {
+                StartImageBuilderResult result = null;
+
+                try {
+                    result = executeStartImageBuilder(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<StopFleetResult> stopFleetAsync(StopFleetRequest request) {
 
         return stopFleetAsync(request, null);
@@ -758,6 +1057,72 @@ public class AmazonAppStreamAsyncClient extends AmazonAppStreamClient implements
 
                 try {
                     result = executeStopFleet(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<StopImageBuilderResult> stopImageBuilderAsync(StopImageBuilderRequest request) {
+
+        return stopImageBuilderAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StopImageBuilderResult> stopImageBuilderAsync(final StopImageBuilderRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StopImageBuilderRequest, StopImageBuilderResult> asyncHandler) {
+        final StopImageBuilderRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StopImageBuilderResult>() {
+            @Override
+            public StopImageBuilderResult call() throws Exception {
+                StopImageBuilderResult result = null;
+
+                try {
+                    result = executeStopImageBuilder(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateDirectoryConfigResult> updateDirectoryConfigAsync(UpdateDirectoryConfigRequest request) {
+
+        return updateDirectoryConfigAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateDirectoryConfigResult> updateDirectoryConfigAsync(final UpdateDirectoryConfigRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateDirectoryConfigRequest, UpdateDirectoryConfigResult> asyncHandler) {
+        final UpdateDirectoryConfigRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateDirectoryConfigResult>() {
+            @Override
+            public UpdateDirectoryConfigResult call() throws Exception {
+                UpdateDirectoryConfigResult result = null;
+
+                try {
+                    result = executeUpdateDirectoryConfig(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

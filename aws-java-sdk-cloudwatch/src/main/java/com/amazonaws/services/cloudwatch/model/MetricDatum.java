@@ -50,9 +50,9 @@ public class MetricDatum implements Serializable, Cloneable {
      * The value for the metric.
      * </p>
      * <p>
-     * Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small
-     * or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base
-     * 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
+     * Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small or too
+     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In
+     * addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
      * </p>
      */
     private Double value;
@@ -68,6 +68,20 @@ public class MetricDatum implements Serializable, Cloneable {
      * </p>
      */
     private String unit;
+    /**
+     * <p>
+     * Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that
+     * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
+     * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
+     * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * </p>
+     * <p>
+     * This field is optional, if you do not specify it the default of 60 is used.
+     * </p>
+     */
+    private Integer storageResolution;
 
     /**
      * <p>
@@ -230,17 +244,17 @@ public class MetricDatum implements Serializable, Cloneable {
      * The value for the metric.
      * </p>
      * <p>
-     * Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small
-     * or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base
-     * 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
+     * Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small or too
+     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In
+     * addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
      * </p>
      * 
      * @param value
      *        The value for the metric.</p>
      *        <p>
-     *        Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either
-     *        too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360
-     *        to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
+     *        Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small
+     *        or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360
+     *        (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
      */
 
     public void setValue(Double value) {
@@ -252,17 +266,16 @@ public class MetricDatum implements Serializable, Cloneable {
      * The value for the metric.
      * </p>
      * <p>
-     * Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small
-     * or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base
-     * 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
+     * Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small or too
+     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In
+     * addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
      * </p>
      * 
      * @return The value for the metric.</p>
      *         <p>
-     *         Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either
-     *         too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360
-     *         to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not
-     *         supported.
+     *         Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too
+     *         small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to
+     *         2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
      */
 
     public Double getValue() {
@@ -274,17 +287,17 @@ public class MetricDatum implements Serializable, Cloneable {
      * The value for the metric.
      * </p>
      * <p>
-     * Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small
-     * or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base
-     * 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
+     * Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small or too
+     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In
+     * addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
      * </p>
      * 
      * @param value
      *        The value for the metric.</p>
      *        <p>
-     *        Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either
-     *        too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360
-     *        to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
+     *        Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small
+     *        or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360
+     *        (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -387,7 +400,7 @@ public class MetricDatum implements Serializable, Cloneable {
      */
 
     public void setUnit(StandardUnit unit) {
-        this.unit = unit.toString();
+        withUnit(unit);
     }
 
     /**
@@ -402,7 +415,95 @@ public class MetricDatum implements Serializable, Cloneable {
      */
 
     public MetricDatum withUnit(StandardUnit unit) {
-        setUnit(unit);
+        this.unit = unit.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that
+     * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
+     * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
+     * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * </p>
+     * <p>
+     * This field is optional, if you do not specify it the default of 60 is used.
+     * </p>
+     * 
+     * @param storageResolution
+     *        Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that
+     *        CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies
+     *        this metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently,
+     *        high resolution is available only for custom metrics. For more information about high-resolution metrics,
+     *        see <a href=
+     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     *        >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>. </p>
+     *        <p>
+     *        This field is optional, if you do not specify it the default of 60 is used.
+     */
+
+    public void setStorageResolution(Integer storageResolution) {
+        this.storageResolution = storageResolution;
+    }
+
+    /**
+     * <p>
+     * Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that
+     * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
+     * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
+     * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * </p>
+     * <p>
+     * This field is optional, if you do not specify it the default of 60 is used.
+     * </p>
+     * 
+     * @return Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that
+     *         CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies
+     *         this metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently,
+     *         high resolution is available only for custom metrics. For more information about high-resolution metrics,
+     *         see <a href=
+     *         "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     *         >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>. </p>
+     *         <p>
+     *         This field is optional, if you do not specify it the default of 60 is used.
+     */
+
+    public Integer getStorageResolution() {
+        return this.storageResolution;
+    }
+
+    /**
+     * <p>
+     * Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that
+     * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
+     * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
+     * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
+     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * </p>
+     * <p>
+     * This field is optional, if you do not specify it the default of 60 is used.
+     * </p>
+     * 
+     * @param storageResolution
+     *        Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that
+     *        CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies
+     *        this metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently,
+     *        high resolution is available only for custom metrics. For more information about high-resolution metrics,
+     *        see <a href=
+     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     *        >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>. </p>
+     *        <p>
+     *        This field is optional, if you do not specify it the default of 60 is used.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricDatum withStorageResolution(Integer storageResolution) {
+        setStorageResolution(storageResolution);
         return this;
     }
 
@@ -428,7 +529,9 @@ public class MetricDatum implements Serializable, Cloneable {
         if (getStatisticValues() != null)
             sb.append("StatisticValues: ").append(getStatisticValues()).append(",");
         if (getUnit() != null)
-            sb.append("Unit: ").append(getUnit());
+            sb.append("Unit: ").append(getUnit()).append(",");
+        if (getStorageResolution() != null)
+            sb.append("StorageResolution: ").append(getStorageResolution());
         sb.append("}");
         return sb.toString();
     }
@@ -467,6 +570,10 @@ public class MetricDatum implements Serializable, Cloneable {
             return false;
         if (other.getUnit() != null && other.getUnit().equals(this.getUnit()) == false)
             return false;
+        if (other.getStorageResolution() == null ^ this.getStorageResolution() == null)
+            return false;
+        if (other.getStorageResolution() != null && other.getStorageResolution().equals(this.getStorageResolution()) == false)
+            return false;
         return true;
     }
 
@@ -481,6 +588,7 @@ public class MetricDatum implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getValue() == null) ? 0 : getValue().hashCode());
         hashCode = prime * hashCode + ((getStatisticValues() == null) ? 0 : getStatisticValues().hashCode());
         hashCode = prime * hashCode + ((getUnit() == null) ? 0 : getUnit().hashCode());
+        hashCode = prime * hashCode + ((getStorageResolution() == null) ? 0 : getStorageResolution().hashCode());
         return hashCode;
     }
 

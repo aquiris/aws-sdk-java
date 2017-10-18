@@ -52,7 +52,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify a server launch path using the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      */
     private String serverLaunchPath;
@@ -60,7 +60,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify server launch parameters in the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      */
     private String serverLaunchParameters;
@@ -101,13 +101,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     * <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a
-     * scale-down event.
+     * <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during
+     * a scale-down event.
      * </p>
      * </li>
      * </ul>
@@ -115,13 +115,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String newGameSessionProtectionPolicy;
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
+     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
      * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
-     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * a run-time configuration with at least one server process configuration; otherwise the request fails with an
      * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
-     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
+     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a run-time
      * configuration will continue to work.)
      * </p>
      */
@@ -135,12 +135,26 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
     private ResourceCreationLimitPolicy resourceCreationLimitPolicy;
     /**
      * <p>
-     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or
-     * use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a
-     * time.
+     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group. Or
+     * use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
      * </p>
      */
     private java.util.List<String> metricGroups;
+    /**
+     * <p>
+     * Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can
+     * find your Account ID in the AWS Management Console under account settings.
+     * </p>
+     */
+    private String peerVpcAwsAccountId;
+    /**
+     * <p>
+     * Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the
+     * same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud
+     * service tools, including the VPC Dashboard in the AWS Management Console.
+     * </p>
+     */
+    private String peerVpcId;
 
     /**
      * <p>
@@ -278,13 +292,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify a server launch path using the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      * 
      * @param serverLaunchPath
      *        This parameter is no longer used. Instead, specify a server launch path using the
      *        <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch
-     *        parameters instead of a runtime configuration will continue to work.)
+     *        parameters instead of a run-time configuration will continue to work.)
      */
 
     public void setServerLaunchPath(String serverLaunchPath) {
@@ -295,12 +309,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify a server launch path using the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      * 
      * @return This parameter is no longer used. Instead, specify a server launch path using the
      *         <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch
-     *         parameters instead of a runtime configuration will continue to work.)
+     *         parameters instead of a run-time configuration will continue to work.)
      */
 
     public String getServerLaunchPath() {
@@ -311,13 +325,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify a server launch path using the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      * 
      * @param serverLaunchPath
      *        This parameter is no longer used. Instead, specify a server launch path using the
      *        <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch
-     *        parameters instead of a runtime configuration will continue to work.)
+     *        parameters instead of a run-time configuration will continue to work.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -330,13 +344,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify server launch parameters in the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      * 
      * @param serverLaunchParameters
      *        This parameter is no longer used. Instead, specify server launch parameters in the
      *        <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch
-     *        parameters instead of a runtime configuration will continue to work.)
+     *        parameters instead of a run-time configuration will continue to work.)
      */
 
     public void setServerLaunchParameters(String serverLaunchParameters) {
@@ -347,12 +361,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify server launch parameters in the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      * 
      * @return This parameter is no longer used. Instead, specify server launch parameters in the
      *         <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch
-     *         parameters instead of a runtime configuration will continue to work.)
+     *         parameters instead of a run-time configuration will continue to work.)
      */
 
     public String getServerLaunchParameters() {
@@ -363,13 +377,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * This parameter is no longer used. Instead, specify server launch parameters in the
      * <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters
-     * instead of a runtime configuration will continue to work.)
+     * instead of a run-time configuration will continue to work.)
      * </p>
      * 
      * @param serverLaunchParameters
      *        This parameter is no longer used. Instead, specify server launch parameters in the
      *        <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch
-     *        parameters instead of a runtime configuration will continue to work.)
+     *        parameters instead of a run-time configuration will continue to work.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -558,7 +572,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      */
 
     public void setEC2InstanceType(EC2InstanceType eC2InstanceType) {
-        this.eC2InstanceType = eC2InstanceType.toString();
+        withEC2InstanceType(eC2InstanceType);
     }
 
     /**
@@ -579,7 +593,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      */
 
     public CreateFleetRequest withEC2InstanceType(EC2InstanceType eC2InstanceType) {
-        setEC2InstanceType(eC2InstanceType);
+        this.eC2InstanceType = eC2InstanceType.toString();
         return this;
     }
 
@@ -683,13 +697,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     * <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a
-     * scale-down event.
+     * <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during
+     * a scale-down event.
      * </p>
      * </li>
      * </ul>
@@ -702,12 +716,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     *        <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
+     *        <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
      *        during a scale-down event.
      *        </p>
      *        </li>
@@ -728,13 +742,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     * <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a
-     * scale-down event.
+     * <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during
+     * a scale-down event.
      * </p>
      * </li>
      * </ul>
@@ -746,12 +760,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     *         <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
+     *         <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
      *         during a scale-down event.
      *         </p>
      *         </li>
@@ -772,13 +786,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     * <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a
-     * scale-down event.
+     * <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during
+     * a scale-down event.
      * </p>
      * </li>
      * </ul>
@@ -791,12 +805,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     *        <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
+     *        <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
      *        during a scale-down event.
      *        </p>
      *        </li>
@@ -819,13 +833,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     * <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a
-     * scale-down event.
+     * <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during
+     * a scale-down event.
      * </p>
      * </li>
      * </ul>
@@ -838,12 +852,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     *        <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
+     *        <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
      *        during a scale-down event.
      *        </p>
      *        </li>
@@ -851,7 +865,7 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      */
 
     public void setNewGameSessionProtectionPolicy(ProtectionPolicy newGameSessionProtectionPolicy) {
-        this.newGameSessionProtectionPolicy = newGameSessionProtectionPolicy.toString();
+        withNewGameSessionProtectionPolicy(newGameSessionProtectionPolicy);
     }
 
     /**
@@ -864,13 +878,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     * <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a
-     * scale-down event.
+     * <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during
+     * a scale-down event.
      * </p>
      * </li>
      * </ul>
@@ -883,12 +897,12 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>NoProtection</b> – The game session can be terminated during a scale-down event.
+     *        <b>NoProtection</b> -- The game session can be terminated during a scale-down event.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
+     *        <b>FullProtection</b> -- If the game session is in an <code>ACTIVE</code> status, it cannot be terminated
      *        during a scale-down event.
      *        </p>
      *        </li>
@@ -897,31 +911,31 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      */
 
     public CreateFleetRequest withNewGameSessionProtectionPolicy(ProtectionPolicy newGameSessionProtectionPolicy) {
-        setNewGameSessionProtectionPolicy(newGameSessionProtectionPolicy);
+        this.newGameSessionProtectionPolicy = newGameSessionProtectionPolicy.toString();
         return this;
     }
 
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
+     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
      * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
-     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * a run-time configuration with at least one server process configuration; otherwise the request fails with an
      * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
-     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
+     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a run-time
      * configuration will continue to work.)
      * </p>
      * 
      * @param runtimeConfiguration
-     *        Instructions for launching server processes on each instance in the fleet. The runtime configuration for a
-     *        fleet has a collection of server process configurations, one for each type of server process to run on an
-     *        instance. A server process configuration specifies the location of the server executable, launch
+     *        Instructions for launching server processes on each instance in the fleet. The run-time configuration for
+     *        a fleet has a collection of server process configurations, one for each type of server process to run on
+     *        an instance. A server process configuration specifies the location of the server executable, launch
      *        parameters, and the number of concurrent processes with that configuration to maintain on each instance. A
-     *        CreateFleet request must include a runtime configuration with at least one server process configuration;
-     *        otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters
+     *        CreateFleet request must include a run-time configuration with at least one server process configuration;
+     *        otherwise the request fails with an invalid request exception. (This parameter replaces the parameters
      *        <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for
-     *        these parameters instead of a runtime configuration will continue to work.)
+     *        these parameters instead of a run-time configuration will continue to work.)
      */
 
     public void setRuntimeConfiguration(RuntimeConfiguration runtimeConfiguration) {
@@ -930,24 +944,24 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
+     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
      * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
-     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * a run-time configuration with at least one server process configuration; otherwise the request fails with an
      * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
-     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
+     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a run-time
      * configuration will continue to work.)
      * </p>
      * 
-     * @return Instructions for launching server processes on each instance in the fleet. The runtime configuration for
+     * @return Instructions for launching server processes on each instance in the fleet. The run-time configuration for
      *         a fleet has a collection of server process configurations, one for each type of server process to run on
      *         an instance. A server process configuration specifies the location of the server executable, launch
      *         parameters, and the number of concurrent processes with that configuration to maintain on each instance.
-     *         A CreateFleet request must include a runtime configuration with at least one server process
-     *         configuration; otherwise the request will fail with an invalid request exception. (This parameter
-     *         replaces the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests
-     *         that contain values for these parameters instead of a runtime configuration will continue to work.)
+     *         A CreateFleet request must include a run-time configuration with at least one server process
+     *         configuration; otherwise the request fails with an invalid request exception. (This parameter replaces
+     *         the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that
+     *         contain values for these parameters instead of a run-time configuration will continue to work.)
      */
 
     public RuntimeConfiguration getRuntimeConfiguration() {
@@ -956,25 +970,25 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet
+     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
      * has a collection of server process configurations, one for each type of server process to run on an instance. A
      * server process configuration specifies the location of the server executable, launch parameters, and the number
      * of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include
-     * a runtime configuration with at least one server process configuration; otherwise the request will fail with an
+     * a run-time configuration with at least one server process configuration; otherwise the request fails with an
      * invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and
-     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime
+     * <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a run-time
      * configuration will continue to work.)
      * </p>
      * 
      * @param runtimeConfiguration
-     *        Instructions for launching server processes on each instance in the fleet. The runtime configuration for a
-     *        fleet has a collection of server process configurations, one for each type of server process to run on an
-     *        instance. A server process configuration specifies the location of the server executable, launch
+     *        Instructions for launching server processes on each instance in the fleet. The run-time configuration for
+     *        a fleet has a collection of server process configurations, one for each type of server process to run on
+     *        an instance. A server process configuration specifies the location of the server executable, launch
      *        parameters, and the number of concurrent processes with that configuration to maintain on each instance. A
-     *        CreateFleet request must include a runtime configuration with at least one server process configuration;
-     *        otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters
+     *        CreateFleet request must include a run-time configuration with at least one server process configuration;
+     *        otherwise the request fails with an invalid request exception. (This parameter replaces the parameters
      *        <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for
-     *        these parameters instead of a runtime configuration will continue to work.)
+     *        these parameters instead of a run-time configuration will continue to work.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1031,14 +1045,13 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or
-     * use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a
-     * time.
+     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group. Or
+     * use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
      * </p>
      * 
      * @return Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the
-     *         group, or use a new name to create a new metric group. Currently, a fleet can only be included in one
-     *         metric group at a time.
+     *         group. Or use a new name to create a new metric group. A fleet can only be included in one metric group
+     *         at a time.
      */
 
     public java.util.List<String> getMetricGroups() {
@@ -1047,15 +1060,14 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or
-     * use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a
-     * time.
+     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group. Or
+     * use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
      * </p>
      * 
      * @param metricGroups
      *        Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the
-     *        group, or use a new name to create a new metric group. Currently, a fleet can only be included in one
-     *        metric group at a time.
+     *        group. Or use a new name to create a new metric group. A fleet can only be included in one metric group at
+     *        a time.
      */
 
     public void setMetricGroups(java.util.Collection<String> metricGroups) {
@@ -1069,9 +1081,8 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or
-     * use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a
-     * time.
+     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group. Or
+     * use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1081,8 +1092,8 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param metricGroups
      *        Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the
-     *        group, or use a new name to create a new metric group. Currently, a fleet can only be included in one
-     *        metric group at a time.
+     *        group. Or use a new name to create a new metric group. A fleet can only be included in one metric group at
+     *        a time.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1098,20 +1109,117 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or
-     * use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a
-     * time.
+     * Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group. Or
+     * use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
      * </p>
      * 
      * @param metricGroups
      *        Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the
-     *        group, or use a new name to create a new metric group. Currently, a fleet can only be included in one
-     *        metric group at a time.
+     *        group. Or use a new name to create a new metric group. A fleet can only be included in one metric group at
+     *        a time.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateFleetRequest withMetricGroups(java.util.Collection<String> metricGroups) {
         setMetricGroups(metricGroups);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can
+     * find your Account ID in the AWS Management Console under account settings.
+     * </p>
+     * 
+     * @param peerVpcAwsAccountId
+     *        Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with.
+     *        You can find your Account ID in the AWS Management Console under account settings.
+     */
+
+    public void setPeerVpcAwsAccountId(String peerVpcAwsAccountId) {
+        this.peerVpcAwsAccountId = peerVpcAwsAccountId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can
+     * find your Account ID in the AWS Management Console under account settings.
+     * </p>
+     * 
+     * @return Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with.
+     *         You can find your Account ID in the AWS Management Console under account settings.
+     */
+
+    public String getPeerVpcAwsAccountId() {
+        return this.peerVpcAwsAccountId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can
+     * find your Account ID in the AWS Management Console under account settings.
+     * </p>
+     * 
+     * @param peerVpcAwsAccountId
+     *        Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with.
+     *        You can find your Account ID in the AWS Management Console under account settings.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFleetRequest withPeerVpcAwsAccountId(String peerVpcAwsAccountId) {
+        setPeerVpcAwsAccountId(peerVpcAwsAccountId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the
+     * same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud
+     * service tools, including the VPC Dashboard in the AWS Management Console.
+     * </p>
+     * 
+     * @param peerVpcId
+     *        Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be
+     *        in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual
+     *        Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+     */
+
+    public void setPeerVpcId(String peerVpcId) {
+        this.peerVpcId = peerVpcId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the
+     * same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud
+     * service tools, including the VPC Dashboard in the AWS Management Console.
+     * </p>
+     * 
+     * @return Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be
+     *         in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual
+     *         Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+     */
+
+    public String getPeerVpcId() {
+        return this.peerVpcId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the
+     * same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud
+     * service tools, including the VPC Dashboard in the AWS Management Console.
+     * </p>
+     * 
+     * @param peerVpcId
+     *        Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be
+     *        in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual
+     *        Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFleetRequest withPeerVpcId(String peerVpcId) {
+        setPeerVpcId(peerVpcId);
         return this;
     }
 
@@ -1149,7 +1257,11 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (getResourceCreationLimitPolicy() != null)
             sb.append("ResourceCreationLimitPolicy: ").append(getResourceCreationLimitPolicy()).append(",");
         if (getMetricGroups() != null)
-            sb.append("MetricGroups: ").append(getMetricGroups());
+            sb.append("MetricGroups: ").append(getMetricGroups()).append(",");
+        if (getPeerVpcAwsAccountId() != null)
+            sb.append("PeerVpcAwsAccountId: ").append(getPeerVpcAwsAccountId()).append(",");
+        if (getPeerVpcId() != null)
+            sb.append("PeerVpcId: ").append(getPeerVpcId());
         sb.append("}");
         return sb.toString();
     }
@@ -1213,6 +1325,14 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getMetricGroups() != null && other.getMetricGroups().equals(this.getMetricGroups()) == false)
             return false;
+        if (other.getPeerVpcAwsAccountId() == null ^ this.getPeerVpcAwsAccountId() == null)
+            return false;
+        if (other.getPeerVpcAwsAccountId() != null && other.getPeerVpcAwsAccountId().equals(this.getPeerVpcAwsAccountId()) == false)
+            return false;
+        if (other.getPeerVpcId() == null ^ this.getPeerVpcId() == null)
+            return false;
+        if (other.getPeerVpcId() != null && other.getPeerVpcId().equals(this.getPeerVpcId()) == false)
+            return false;
         return true;
     }
 
@@ -1233,6 +1353,8 @@ public class CreateFleetRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getRuntimeConfiguration() == null) ? 0 : getRuntimeConfiguration().hashCode());
         hashCode = prime * hashCode + ((getResourceCreationLimitPolicy() == null) ? 0 : getResourceCreationLimitPolicy().hashCode());
         hashCode = prime * hashCode + ((getMetricGroups() == null) ? 0 : getMetricGroups().hashCode());
+        hashCode = prime * hashCode + ((getPeerVpcAwsAccountId() == null) ? 0 : getPeerVpcAwsAccountId().hashCode());
+        hashCode = prime * hashCode + ((getPeerVpcId() == null) ? 0 : getPeerVpcId().hashCode());
         return hashCode;
     }
 

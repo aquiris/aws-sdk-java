@@ -30,20 +30,19 @@ public class CloseStatusFilter implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * <b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of
-     * this filter.
+     * The close status that must match the close status of an execution for it to meet the criteria of this filter.
      * </p>
      */
     private String status;
 
     /**
      * <p>
-     * <b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of
-     * this filter.
+     * The close status that must match the close status of an execution for it to meet the criteria of this filter.
      * </p>
      * 
      * @param status
-     *        Required.
+     *        The close status that must match the close status of an execution for it to meet the criteria of this
+     *        filter.
      * @see CloseStatus
      */
 
@@ -53,11 +52,11 @@ public class CloseStatusFilter implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * <b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of
-     * this filter.
+     * The close status that must match the close status of an execution for it to meet the criteria of this filter.
      * </p>
      * 
-     * @return Required.
+     * @return The close status that must match the close status of an execution for it to meet the criteria of this
+     *         filter.
      * @see CloseStatus
      */
 
@@ -67,12 +66,12 @@ public class CloseStatusFilter implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * <b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of
-     * this filter.
+     * The close status that must match the close status of an execution for it to meet the criteria of this filter.
      * </p>
      * 
      * @param status
-     *        Required.
+     *        The close status that must match the close status of an execution for it to meet the criteria of this
+     *        filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CloseStatus
      */
@@ -84,33 +83,33 @@ public class CloseStatusFilter implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * <b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of
-     * this filter.
+     * The close status that must match the close status of an execution for it to meet the criteria of this filter.
      * </p>
      * 
      * @param status
-     *        Required.
+     *        The close status that must match the close status of an execution for it to meet the criteria of this
+     *        filter.
      * @see CloseStatus
      */
 
     public void setStatus(CloseStatus status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
      * <p>
-     * <b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of
-     * this filter.
+     * The close status that must match the close status of an execution for it to meet the criteria of this filter.
      * </p>
      * 
      * @param status
-     *        Required.
+     *        The close status that must match the close status of an execution for it to meet the criteria of this
+     *        filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CloseStatus
      */
 
     public CloseStatusFilter withStatus(CloseStatus status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 

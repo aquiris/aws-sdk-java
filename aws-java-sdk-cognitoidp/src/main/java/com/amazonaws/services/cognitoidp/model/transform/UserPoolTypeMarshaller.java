@@ -49,12 +49,16 @@ public class UserPoolTypeMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AutoVerifiedAttributes").build();
     private static final MarshallingInfo<List> ALIASATTRIBUTES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AliasAttributes").build();
+    private static final MarshallingInfo<List> USERNAMEATTRIBUTES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("UsernameAttributes").build();
     private static final MarshallingInfo<String> SMSVERIFICATIONMESSAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SmsVerificationMessage").build();
     private static final MarshallingInfo<String> EMAILVERIFICATIONMESSAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EmailVerificationMessage").build();
     private static final MarshallingInfo<String> EMAILVERIFICATIONSUBJECT_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EmailVerificationSubject").build();
+    private static final MarshallingInfo<StructuredPojo> VERIFICATIONMESSAGETEMPLATE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VerificationMessageTemplate").build();
     private static final MarshallingInfo<String> SMSAUTHENTICATIONMESSAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SmsAuthenticationMessage").build();
     private static final MarshallingInfo<String> MFACONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -102,9 +106,11 @@ public class UserPoolTypeMarshaller {
             protocolMarshaller.marshall(userPoolType.getSchemaAttributes(), SCHEMAATTRIBUTES_BINDING);
             protocolMarshaller.marshall(userPoolType.getAutoVerifiedAttributes(), AUTOVERIFIEDATTRIBUTES_BINDING);
             protocolMarshaller.marshall(userPoolType.getAliasAttributes(), ALIASATTRIBUTES_BINDING);
+            protocolMarshaller.marshall(userPoolType.getUsernameAttributes(), USERNAMEATTRIBUTES_BINDING);
             protocolMarshaller.marshall(userPoolType.getSmsVerificationMessage(), SMSVERIFICATIONMESSAGE_BINDING);
             protocolMarshaller.marshall(userPoolType.getEmailVerificationMessage(), EMAILVERIFICATIONMESSAGE_BINDING);
             protocolMarshaller.marshall(userPoolType.getEmailVerificationSubject(), EMAILVERIFICATIONSUBJECT_BINDING);
+            protocolMarshaller.marshall(userPoolType.getVerificationMessageTemplate(), VERIFICATIONMESSAGETEMPLATE_BINDING);
             protocolMarshaller.marshall(userPoolType.getSmsAuthenticationMessage(), SMSAUTHENTICATIONMESSAGE_BINDING);
             protocolMarshaller.marshall(userPoolType.getMfaConfiguration(), MFACONFIGURATION_BINDING);
             protocolMarshaller.marshall(userPoolType.getDeviceConfiguration(), DEVICECONFIGURATION_BINDING);

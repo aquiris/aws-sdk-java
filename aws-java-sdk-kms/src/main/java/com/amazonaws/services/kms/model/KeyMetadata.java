@@ -120,6 +120,14 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String expirationModel;
+    /**
+     * <p>
+     * The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the difference,
+     * see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     * Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     */
+    private String keyManager;
 
     /**
      * <p>
@@ -463,7 +471,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setKeyUsage(KeyUsageType keyUsage) {
-        this.keyUsage = keyUsage.toString();
+        withKeyUsage(keyUsage);
     }
 
     /**
@@ -482,7 +490,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public KeyMetadata withKeyUsage(KeyUsageType keyUsage) {
-        setKeyUsage(keyUsage);
+        this.keyUsage = keyUsage.toString();
         return this;
     }
 
@@ -576,7 +584,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setKeyState(KeyState keyState) {
-        this.keyState = keyState.toString();
+        withKeyState(keyState);
     }
 
     /**
@@ -600,7 +608,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public KeyMetadata withKeyState(KeyState keyState) {
-        setKeyState(keyState);
+        this.keyState = keyState.toString();
         return this;
     }
 
@@ -778,7 +786,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setOrigin(OriginType origin) {
-        this.origin = origin.toString();
+        withOrigin(origin);
     }
 
     /**
@@ -797,7 +805,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public KeyMetadata withOrigin(OriginType origin) {
-        setOrigin(origin);
+        this.origin = origin.toString();
         return this;
     }
 
@@ -863,7 +871,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setExpirationModel(ExpirationModelType expirationModel) {
-        this.expirationModel = expirationModel.toString();
+        withExpirationModel(expirationModel);
     }
 
     /**
@@ -880,7 +888,105 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
      */
 
     public KeyMetadata withExpirationModel(ExpirationModelType expirationModel) {
-        setExpirationModel(expirationModel);
+        this.expirationModel = expirationModel.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the difference,
+     * see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     * Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param keyManager
+     *        The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the
+     *        difference, see <a
+     *        href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     *        Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * @see KeyManagerType
+     */
+
+    public void setKeyManager(String keyManager) {
+        this.keyManager = keyManager;
+    }
+
+    /**
+     * <p>
+     * The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the difference,
+     * see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     * Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * 
+     * @return The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the
+     *         difference, see <a
+     *         href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     *         Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * @see KeyManagerType
+     */
+
+    public String getKeyManager() {
+        return this.keyManager;
+    }
+
+    /**
+     * <p>
+     * The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the difference,
+     * see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     * Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param keyManager
+     *        The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the
+     *        difference, see <a
+     *        href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     *        Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see KeyManagerType
+     */
+
+    public KeyMetadata withKeyManager(String keyManager) {
+        setKeyManager(keyManager);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the difference,
+     * see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     * Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param keyManager
+     *        The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the
+     *        difference, see <a
+     *        href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     *        Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * @see KeyManagerType
+     */
+
+    public void setKeyManager(KeyManagerType keyManager) {
+        withKeyManager(keyManager);
+    }
+
+    /**
+     * <p>
+     * The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the difference,
+     * see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     * Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * 
+     * @param keyManager
+     *        The CMK's manager. CMKs are either customer-managed or AWS-managed. For more information about the
+     *        difference, see <a
+     *        href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer Master
+     *        Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see KeyManagerType
+     */
+
+    public KeyMetadata withKeyManager(KeyManagerType keyManager) {
+        this.keyManager = keyManager.toString();
         return this;
     }
 
@@ -918,7 +1024,9 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
         if (getOrigin() != null)
             sb.append("Origin: ").append(getOrigin()).append(",");
         if (getExpirationModel() != null)
-            sb.append("ExpirationModel: ").append(getExpirationModel());
+            sb.append("ExpirationModel: ").append(getExpirationModel()).append(",");
+        if (getKeyManager() != null)
+            sb.append("KeyManager: ").append(getKeyManager());
         sb.append("}");
         return sb.toString();
     }
@@ -981,6 +1089,10 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getExpirationModel() != null && other.getExpirationModel().equals(this.getExpirationModel()) == false)
             return false;
+        if (other.getKeyManager() == null ^ this.getKeyManager() == null)
+            return false;
+        if (other.getKeyManager() != null && other.getKeyManager().equals(this.getKeyManager()) == false)
+            return false;
         return true;
     }
 
@@ -1001,6 +1113,7 @@ public class KeyMetadata implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getValidTo() == null) ? 0 : getValidTo().hashCode());
         hashCode = prime * hashCode + ((getOrigin() == null) ? 0 : getOrigin().hashCode());
         hashCode = prime * hashCode + ((getExpirationModel() == null) ? 0 : getExpirationModel().hashCode());
+        hashCode = prime * hashCode + ((getKeyManager() == null) ? 0 : getKeyManager().hashCode());
         return hashCode;
     }
 

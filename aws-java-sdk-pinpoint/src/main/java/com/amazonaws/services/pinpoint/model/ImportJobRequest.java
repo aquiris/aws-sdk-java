@@ -17,6 +17,11 @@ import javax.annotation.Generated;
 import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
+/**
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ImportJobRequest" target="_top">AWS API
+ *      Documentation</a>
+ */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ImportJobRequest implements Serializable, Cloneable, StructuredPojo {
 
@@ -171,7 +176,7 @@ public class ImportJobRequest implements Serializable, Cloneable, StructuredPojo
      */
 
     public void setFormat(Format format) {
-        this.format = format.toString();
+        withFormat(format);
     }
 
     /**
@@ -184,7 +189,7 @@ public class ImportJobRequest implements Serializable, Cloneable, StructuredPojo
      */
 
     public ImportJobRequest withFormat(Format format) {
-        setFormat(format);
+        this.format = format.toString();
         return this;
     }
 

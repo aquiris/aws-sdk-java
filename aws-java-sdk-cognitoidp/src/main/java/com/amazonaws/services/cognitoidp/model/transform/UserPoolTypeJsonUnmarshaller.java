@@ -89,6 +89,10 @@ public class UserPoolTypeJsonUnmarshaller implements Unmarshaller<UserPoolType, 
                     context.nextToken();
                     userPoolType.setAliasAttributes(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
                 }
+                if (context.testExpression("UsernameAttributes", targetDepth)) {
+                    context.nextToken();
+                    userPoolType.setUsernameAttributes(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
                 if (context.testExpression("SmsVerificationMessage", targetDepth)) {
                     context.nextToken();
                     userPoolType.setSmsVerificationMessage(context.getUnmarshaller(String.class).unmarshall(context));
@@ -100,6 +104,10 @@ public class UserPoolTypeJsonUnmarshaller implements Unmarshaller<UserPoolType, 
                 if (context.testExpression("EmailVerificationSubject", targetDepth)) {
                     context.nextToken();
                     userPoolType.setEmailVerificationSubject(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("VerificationMessageTemplate", targetDepth)) {
+                    context.nextToken();
+                    userPoolType.setVerificationMessageTemplate(VerificationMessageTemplateTypeJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("SmsAuthenticationMessage", targetDepth)) {
                     context.nextToken();

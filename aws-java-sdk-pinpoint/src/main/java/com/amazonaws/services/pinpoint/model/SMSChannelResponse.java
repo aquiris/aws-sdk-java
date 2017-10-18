@@ -19,11 +19,14 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * SMS Channel Response.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SMSChannelResponse" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SMSChannelResponse implements Serializable, Cloneable, StructuredPojo {
 
-    /** Application id */
+    /** The unique ID of the application to which the SMS channel belongs. */
     private String applicationId;
     /** The date that the settings were last updated in ISO 8601 format. */
     private String creationDate;
@@ -47,10 +50,10 @@ public class SMSChannelResponse implements Serializable, Cloneable, StructuredPo
     private Integer version;
 
     /**
-     * Application id
+     * The unique ID of the application to which the SMS channel belongs.
      * 
      * @param applicationId
-     *        Application id
+     *        The unique ID of the application to which the SMS channel belongs.
      */
 
     public void setApplicationId(String applicationId) {
@@ -58,9 +61,9 @@ public class SMSChannelResponse implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * Application id
+     * The unique ID of the application to which the SMS channel belongs.
      * 
-     * @return Application id
+     * @return The unique ID of the application to which the SMS channel belongs.
      */
 
     public String getApplicationId() {
@@ -68,10 +71,10 @@ public class SMSChannelResponse implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * Application id
+     * The unique ID of the application to which the SMS channel belongs.
      * 
      * @param applicationId
-     *        Application id
+     *        The unique ID of the application to which the SMS channel belongs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

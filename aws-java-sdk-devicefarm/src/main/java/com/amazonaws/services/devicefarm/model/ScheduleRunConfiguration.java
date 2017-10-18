@@ -55,6 +55,12 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable, Struct
     private Location location;
     /**
      * <p>
+     * Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.
+     * </p>
+     */
+    private CustomerArtifactPaths customerArtifactPaths;
+    /**
+     * <p>
      * Information about the radio states for the run.
      * </p>
      */
@@ -241,6 +247,46 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable, Struct
 
     /**
      * <p>
+     * Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.
+     * </p>
+     * 
+     * @param customerArtifactPaths
+     *        Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.
+     */
+
+    public void setCustomerArtifactPaths(CustomerArtifactPaths customerArtifactPaths) {
+        this.customerArtifactPaths = customerArtifactPaths;
+    }
+
+    /**
+     * <p>
+     * Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.
+     * </p>
+     * 
+     * @return Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.
+     */
+
+    public CustomerArtifactPaths getCustomerArtifactPaths() {
+        return this.customerArtifactPaths;
+    }
+
+    /**
+     * <p>
+     * Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.
+     * </p>
+     * 
+     * @param customerArtifactPaths
+     *        Input <code>CustomerArtifactPaths</code> object for the scheduled run configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ScheduleRunConfiguration withCustomerArtifactPaths(CustomerArtifactPaths customerArtifactPaths) {
+        setCustomerArtifactPaths(customerArtifactPaths);
+        return this;
+    }
+
+    /**
+     * <p>
      * Information about the radio states for the run.
      * </p>
      * 
@@ -411,7 +457,7 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable, Struct
      */
 
     public void setBillingMethod(BillingMethod billingMethod) {
-        this.billingMethod = billingMethod.toString();
+        withBillingMethod(billingMethod);
     }
 
     /**
@@ -428,7 +474,7 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable, Struct
      */
 
     public ScheduleRunConfiguration withBillingMethod(BillingMethod billingMethod) {
-        setBillingMethod(billingMethod);
+        this.billingMethod = billingMethod.toString();
         return this;
     }
 
@@ -451,6 +497,8 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable, Struct
             sb.append("Locale: ").append(getLocale()).append(",");
         if (getLocation() != null)
             sb.append("Location: ").append(getLocation()).append(",");
+        if (getCustomerArtifactPaths() != null)
+            sb.append("CustomerArtifactPaths: ").append(getCustomerArtifactPaths()).append(",");
         if (getRadios() != null)
             sb.append("Radios: ").append(getRadios()).append(",");
         if (getAuxiliaryApps() != null)
@@ -487,6 +535,10 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable, Struct
             return false;
         if (other.getLocation() != null && other.getLocation().equals(this.getLocation()) == false)
             return false;
+        if (other.getCustomerArtifactPaths() == null ^ this.getCustomerArtifactPaths() == null)
+            return false;
+        if (other.getCustomerArtifactPaths() != null && other.getCustomerArtifactPaths().equals(this.getCustomerArtifactPaths()) == false)
+            return false;
         if (other.getRadios() == null ^ this.getRadios() == null)
             return false;
         if (other.getRadios() != null && other.getRadios().equals(this.getRadios()) == false)
@@ -511,6 +563,7 @@ public class ScheduleRunConfiguration implements Serializable, Cloneable, Struct
         hashCode = prime * hashCode + ((getNetworkProfileArn() == null) ? 0 : getNetworkProfileArn().hashCode());
         hashCode = prime * hashCode + ((getLocale() == null) ? 0 : getLocale().hashCode());
         hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode());
+        hashCode = prime * hashCode + ((getCustomerArtifactPaths() == null) ? 0 : getCustomerArtifactPaths().hashCode());
         hashCode = prime * hashCode + ((getRadios() == null) ? 0 : getRadios().hashCode());
         hashCode = prime * hashCode + ((getAuxiliaryApps() == null) ? 0 : getAuxiliaryApps().hashCode());
         hashCode = prime * hashCode + ((getBillingMethod() == null) ? 0 : getBillingMethod().hashCode());

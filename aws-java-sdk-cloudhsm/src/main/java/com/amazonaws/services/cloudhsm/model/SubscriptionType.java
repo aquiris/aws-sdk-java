@@ -19,8 +19,16 @@ import javax.annotation.Generated;
  * Specifies the type of subscription for the HSM.
  * </p>
  * <ul>
- * <li><b>PRODUCTION</b> - The HSM is being used in a production environment.</li>
- * <li><b>TRIAL</b> - The HSM is being used in a product trial.</li>
+ * <li>
+ * <p>
+ * <b>PRODUCTION</b> - The HSM is being used in a production environment.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <b>TRIAL</b> - The HSM is being used in a product trial.
+ * </p>
+ * </li>
  * </ul>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -45,6 +53,9 @@ public enum SubscriptionType {
      * @param value
      *        real value
      * @return SubscriptionType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static SubscriptionType fromValue(String value) {
         if (value == null || "".equals(value)) {

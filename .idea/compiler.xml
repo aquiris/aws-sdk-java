@@ -20,6 +20,7 @@
         <module name="aws-java-sdk-cloudformation" />
         <module name="aws-java-sdk-cloudfront" />
         <module name="aws-java-sdk-cloudhsm" />
+        <module name="aws-java-sdk-cloudhsmv2" />
         <module name="aws-java-sdk-cloudsearch" />
         <module name="aws-java-sdk-cloudtrail" />
         <module name="aws-java-sdk-cloudwatch" />
@@ -59,6 +60,7 @@
         <module name="aws-java-sdk-events" />
         <module name="aws-java-sdk-gamelift" />
         <module name="aws-java-sdk-glacier" />
+        <module name="aws-java-sdk-glue" />
         <module name="aws-java-sdk-greengrass" />
         <module name="aws-java-sdk-health" />
         <module name="aws-java-sdk-iam" />
@@ -77,6 +79,8 @@
         <module name="aws-java-sdk-marketplaceentitlement" />
         <module name="aws-java-sdk-marketplacemeteringservice" />
         <module name="aws-java-sdk-mechanicalturkrequester" />
+        <module name="aws-java-sdk-migrationhub" />
+        <module name="aws-java-sdk-mobile" />
         <module name="aws-java-sdk-models" />
         <module name="aws-java-sdk-opensdk" />
         <module name="aws-java-sdk-opsworks" />
@@ -129,6 +133,7 @@
       <module name="aws-java-sdk-cloudformation" target="1.6" />
       <module name="aws-java-sdk-cloudfront" target="1.6" />
       <module name="aws-java-sdk-cloudhsm" target="1.6" />
+      <module name="aws-java-sdk-cloudhsmv2" target="1.6" />
       <module name="aws-java-sdk-cloudsearch" target="1.6" />
       <module name="aws-java-sdk-cloudtrail" target="1.6" />
       <module name="aws-java-sdk-cloudwatch" target="1.6" />
@@ -168,6 +173,7 @@
       <module name="aws-java-sdk-events" target="1.6" />
       <module name="aws-java-sdk-gamelift" target="1.6" />
       <module name="aws-java-sdk-glacier" target="1.6" />
+      <module name="aws-java-sdk-glue" target="1.6" />
       <module name="aws-java-sdk-greengrass" target="1.6" />
       <module name="aws-java-sdk-health" target="1.6" />
       <module name="aws-java-sdk-iam" target="1.6" />
@@ -186,6 +192,8 @@
       <module name="aws-java-sdk-marketplaceentitlement" target="1.6" />
       <module name="aws-java-sdk-marketplacemeteringservice" target="1.6" />
       <module name="aws-java-sdk-mechanicalturkrequester" target="1.6" />
+      <module name="aws-java-sdk-migrationhub" target="1.6" />
+      <module name="aws-java-sdk-mobile" target="1.6" />
       <module name="aws-java-sdk-models" target="1.6" />
       <module name="aws-java-sdk-opensdk" target="1.8" />
       <module name="aws-java-sdk-opsworks" target="1.6" />

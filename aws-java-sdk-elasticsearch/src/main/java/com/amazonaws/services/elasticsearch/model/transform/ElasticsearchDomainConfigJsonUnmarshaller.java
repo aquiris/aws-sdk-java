@@ -68,9 +68,17 @@ public class ElasticsearchDomainConfigJsonUnmarshaller implements Unmarshaller<E
                     context.nextToken();
                     elasticsearchDomainConfig.setSnapshotOptions(SnapshotOptionsStatusJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("VPCOptions", targetDepth)) {
+                    context.nextToken();
+                    elasticsearchDomainConfig.setVPCOptions(VPCDerivedInfoStatusJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("AdvancedOptions", targetDepth)) {
                     context.nextToken();
                     elasticsearchDomainConfig.setAdvancedOptions(AdvancedOptionsStatusJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("LogPublishingOptions", targetDepth)) {
+                    context.nextToken();
+                    elasticsearchDomainConfig.setLogPublishingOptions(LogPublishingOptionsStatusJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

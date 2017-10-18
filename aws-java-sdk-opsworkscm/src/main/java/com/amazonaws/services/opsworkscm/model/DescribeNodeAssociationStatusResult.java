@@ -50,6 +50,12 @@ public class DescribeNodeAssociationStatusResult extends com.amazonaws.AmazonWeb
      * </ul>
      */
     private String nodeAssociationStatus;
+    /**
+     * <p>
+     * Attributes specific to the node association.
+     * </p>
+     */
+    private java.util.List<EngineAttribute> engineAttributes;
 
     /**
      * <p>
@@ -261,7 +267,7 @@ public class DescribeNodeAssociationStatusResult extends com.amazonaws.AmazonWeb
      */
 
     public void setNodeAssociationStatus(NodeAssociationStatus nodeAssociationStatus) {
-        this.nodeAssociationStatus = nodeAssociationStatus.toString();
+        withNodeAssociationStatus(nodeAssociationStatus);
     }
 
     /**
@@ -315,7 +321,77 @@ public class DescribeNodeAssociationStatusResult extends com.amazonaws.AmazonWeb
      */
 
     public DescribeNodeAssociationStatusResult withNodeAssociationStatus(NodeAssociationStatus nodeAssociationStatus) {
-        setNodeAssociationStatus(nodeAssociationStatus);
+        this.nodeAssociationStatus = nodeAssociationStatus.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * Attributes specific to the node association.
+     * </p>
+     * 
+     * @return Attributes specific to the node association.
+     */
+
+    public java.util.List<EngineAttribute> getEngineAttributes() {
+        return engineAttributes;
+    }
+
+    /**
+     * <p>
+     * Attributes specific to the node association.
+     * </p>
+     * 
+     * @param engineAttributes
+     *        Attributes specific to the node association.
+     */
+
+    public void setEngineAttributes(java.util.Collection<EngineAttribute> engineAttributes) {
+        if (engineAttributes == null) {
+            this.engineAttributes = null;
+            return;
+        }
+
+        this.engineAttributes = new java.util.ArrayList<EngineAttribute>(engineAttributes);
+    }
+
+    /**
+     * <p>
+     * Attributes specific to the node association.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setEngineAttributes(java.util.Collection)} or {@link #withEngineAttributes(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param engineAttributes
+     *        Attributes specific to the node association.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeNodeAssociationStatusResult withEngineAttributes(EngineAttribute... engineAttributes) {
+        if (this.engineAttributes == null) {
+            setEngineAttributes(new java.util.ArrayList<EngineAttribute>(engineAttributes.length));
+        }
+        for (EngineAttribute ele : engineAttributes) {
+            this.engineAttributes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Attributes specific to the node association.
+     * </p>
+     * 
+     * @param engineAttributes
+     *        Attributes specific to the node association.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeNodeAssociationStatusResult withEngineAttributes(java.util.Collection<EngineAttribute> engineAttributes) {
+        setEngineAttributes(engineAttributes);
         return this;
     }
 
@@ -331,7 +407,9 @@ public class DescribeNodeAssociationStatusResult extends com.amazonaws.AmazonWeb
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getNodeAssociationStatus() != null)
-            sb.append("NodeAssociationStatus: ").append(getNodeAssociationStatus());
+            sb.append("NodeAssociationStatus: ").append(getNodeAssociationStatus()).append(",");
+        if (getEngineAttributes() != null)
+            sb.append("EngineAttributes: ").append(getEngineAttributes());
         sb.append("}");
         return sb.toString();
     }
@@ -350,6 +428,10 @@ public class DescribeNodeAssociationStatusResult extends com.amazonaws.AmazonWeb
             return false;
         if (other.getNodeAssociationStatus() != null && other.getNodeAssociationStatus().equals(this.getNodeAssociationStatus()) == false)
             return false;
+        if (other.getEngineAttributes() == null ^ this.getEngineAttributes() == null)
+            return false;
+        if (other.getEngineAttributes() != null && other.getEngineAttributes().equals(this.getEngineAttributes()) == false)
+            return false;
         return true;
     }
 
@@ -359,6 +441,7 @@ public class DescribeNodeAssociationStatusResult extends com.amazonaws.AmazonWeb
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getNodeAssociationStatus() == null) ? 0 : getNodeAssociationStatus().hashCode());
+        hashCode = prime * hashCode + ((getEngineAttributes() == null) ? 0 : getEngineAttributes().hashCode());
         return hashCode;
     }
 

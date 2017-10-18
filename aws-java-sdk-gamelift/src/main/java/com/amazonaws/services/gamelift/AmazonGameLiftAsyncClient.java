@@ -33,73 +33,98 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <fullname>Amazon GameLift Service</fullname>
  * <p>
  * Amazon GameLift is a managed service for developers who need a scalable, dedicated server solution for their
- * multiplayer games. Amazon GameLift provides tools to acquire computing resources and deploy game servers, scale game
- * server capacity to meet player demand, and track in-depth metrics on player usage and server performance.
+ * multiplayer games. Amazon GameLift provides tools for the following tasks: (1) acquire computing resources and deploy
+ * game servers, (2) scale game server capacity to meet player demand, (3) host game sessions and manage player access,
+ * and (4) track in-depth metrics on player usage and server performance.
  * </p>
  * <p>
- * The Amazon GameLift service API includes important features:
+ * The Amazon GameLift service API includes two important function sets:
  * </p>
  * <ul>
  * <li>
  * <p>
- * Find game sessions and match players to games – Retrieve information on available game sessions; create new game
+ * <b>Manage game sessions and player access</b> -- Retrieve information on available game sessions; create new game
  * sessions; send player requests to join a game session.
  * </p>
  * </li>
  * <li>
  * <p>
- * Configure and manage game server resources – Manage builds, fleets, queues, and aliases; set autoscaling policies;
- * retrieve logs and metrics.
+ * <b>Configure and manage game server resources</b> -- Manage builds, fleets, queues, and aliases; set autoscaling
+ * policies; retrieve logs and metrics.
  * </p>
  * </li>
  * </ul>
  * <p>
- * This reference guide describes the low-level service API for Amazon GameLift. We recommend using either the Amazon
- * Web Services software development kit (<a href="http://aws.amazon.com/tools/#sdk">AWS SDK</a>), available in multiple
- * languages, or the <a href="http://aws.amazon.com/cli/">AWS command-line interface</a> (CLI) tool. Both of these align
- * with the low-level service API. In addition, you can use the <a
- * href="https://console.aws.amazon.com/gamelift/home">AWS Management Console</a> for Amazon GameLift for many
- * administrative actions.
+ * This reference guide describes the low-level service API for Amazon GameLift. You can use the API functionality with
+ * these tools:
  * </p>
+ * <ul>
+ * <li>
  * <p>
- * You can use some API actions with Amazon GameLift Local, a testing tool that lets you test your game integration
- * locally before deploying on Amazon GameLift. You can call these APIs from the AWS CLI or programmatically; API calls
- * to Amazon GameLift Local servers perform exactly as they do when calling Amazon GameLift web servers. For more
- * information on using Amazon GameLift Local, see <a
+ * The Amazon Web Services software development kit (<a href="http://aws.amazon.com/tools/#sdk">AWS SDK</a>) is
+ * available in <a
+ * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients"
+ * >multiple languages</a> including C++ and C#. Use the SDK to access the API programmatically from an application,
+ * such as a game client.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * The <a href="http://aws.amazon.com/cli/">AWS command-line interface</a> (CLI) tool is primarily useful for handling
+ * administrative actions, such as setting up and managing Amazon GameLift settings and resources. You can use the AWS
+ * CLI to manage all of your AWS services.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * The <a href="https://console.aws.amazon.com/gamelift/home">AWS Management Console</a> for Amazon GameLift provides a
+ * web interface to manage your Amazon GameLift settings and resources. The console includes a dashboard for tracking
+ * key resources, including builds and fleets, and displays usage and performance metrics for your games as customizable
+ * graphs.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon GameLift Local is a tool for testing your game's integration with Amazon GameLift before deploying it on the
+ * service. This tools supports a subset of key API actions, which can be called from either the AWS CLI or
+ * programmatically. See <a
  * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing-local.html">Testing an
  * Integration</a>.
  * </p>
+ * </li>
+ * </ul>
  * <p>
  * <b>MORE RESOURCES</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a> – Learn more
- * about Amazon GameLift features and how to use them.
+ * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a> -- Learn
+ * more about Amazon GameLift features and how to use them.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="https://gamedev.amazon.com/forums/tutorials">Lumberyard and Amazon GameLift Tutorials</a> – Get started fast
- * with walkthroughs and sample projects.
+ * <a href="https://gamedev.amazon.com/forums/tutorials">Lumberyard and Amazon GameLift Tutorials</a> -- Get started
+ * fast with walkthroughs and sample projects.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://aws.amazon.com/blogs/gamedev/">GameDev Blog</a> – Stay up to date with new features and techniques.
+ * <a href="http://aws.amazon.com/blogs/gamedev/">GameDev Blog</a> -- Stay up to date with new features and techniques.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html">GameDev Forums</a> – Connect with the
- * GameDev community.
+ * <a href="https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html">GameDev Forums</a> -- Connect with
+ * the GameDev community.
  * </p>
  * </li>
  * <li>
  * <p>
  * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html">Amazon GameLift Document
- * History</a> – See changes to the Amazon GameLift service, SDKs, and documentation, as well as links to release notes.
+ * History</a> -- See changes to the Amazon GameLift service, SDKs, and documentation, as well as links to release
+ * notes.
  * </p>
  * </li>
  * </ul>
@@ -110,12 +135,11 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * This list offers a functional overview of the Amazon GameLift service API.
  * </p>
  * <p>
- * <b>Finding Games and Joining Players</b>
+ * <b>Managing Games and Players</b>
  * </p>
  * <p>
- * You can enable players to connect to game servers on Amazon GameLift from a game client or through a game service
- * (such as a matchmaking service). You can use these operations to discover actively running game or start new games.
- * You can also match players to games, either singly or as a group.
+ * Use these actions to start new game sessions, find existing game sessions, track game session status and other
+ * information, and enable player access to game sessions.
  * </p>
  * <ul>
  * <li>
@@ -125,96 +149,123 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>SearchGameSessions</a> – Get all available game sessions or search for game sessions that match a set of criteria.
- * <i>Available in Amazon GameLift Local.</i>
+ * <a>SearchGameSessions</a> -- Retrieve all available game sessions or search for game sessions that match a set of
+ * criteria.
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <b>Start a new game session</b>
+ * <b>Start new game sessions</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * Game session placement – Use a queue to process new game session requests and create game sessions on fleets
- * designated for the queue.
+ * Start new games with Queues to find the best available hosting resources across multiple regions, minimize player
+ * latency, and balance game session activity for efficiency and cost effectiveness.
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>StartGameSessionPlacement</a> – Request a new game session placement and add one or more players to it.
+ * <a>StartGameSessionPlacement</a> -- Request a new game session placement and add one or more players to it.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessionPlacement</a> – Get details on a placement request, including status.
+ * <a>DescribeGameSessionPlacement</a> -- Get details on a placement request, including status.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>StopGameSessionPlacement</a> – Cancel a placement request.
+ * <a>StopGameSessionPlacement</a> -- Cancel a placement request.
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <a>CreateGameSession</a> – Start a new game session on a specific fleet. <i>Available in Amazon GameLift Local.</i>
+ * <a>CreateGameSession</a> -- Start a new game session on a specific fleet. <i>Available in Amazon GameLift Local.</i>
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <b>Manage game session objects</b>
+ * <b>Start new game sessions with FlexMatch matchmaking</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>DescribeGameSessions</a> – Retrieve metadata for one or more game sessions, including length of time active and
+ * <a>StartMatchmaking</a> -- Request matchmaking for one players or a group who want to play together.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeMatchmaking</a> -- Get details on a matchmaking request, including status.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>AcceptMatch</a> -- Register that a player accepts a proposed match, for matches that require player acceptance.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StopMatchmaking</a> -- Cancel a matchmaking request.
+ * </p>
+ * </li>
+ * </ul>
+ * </li>
+ * <li>
+ * <p>
+ * <b>Manage game session data</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>DescribeGameSessions</a> -- Retrieve metadata for one or more game sessions, including length of time active and
  * current player count. <i>Available in Amazon GameLift Local.</i>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessionDetails</a> – Retrieve metadata and the game session protection setting for one or more game
+ * <a>DescribeGameSessionDetails</a> -- Retrieve metadata and the game session protection setting for one or more game
  * sessions.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateGameSession</a> – Change game session settings, such as maximum player count and join policy.
+ * <a>UpdateGameSession</a> -- Change game session settings, such as maximum player count and join policy.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>GetGameSessionLogUrl</a> – Get the location of saved logs for a game session.
+ * <a>GetGameSessionLogUrl</a> -- Get the location of saved logs for a game session.
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <b>Manage player sessions objects</b>
+ * <b>Manage player sessions</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>CreatePlayerSession</a> – Send a request for a player to join a game session. <i>Available in Amazon GameLift
+ * <a>CreatePlayerSession</a> -- Send a request for a player to join a game session. <i>Available in Amazon GameLift
  * Local.</i>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>CreatePlayerSessions</a> – Send a request for multiple players to join a game session. <i>Available in Amazon
+ * <a>CreatePlayerSessions</a> -- Send a request for multiple players to join a game session. <i>Available in Amazon
  * GameLift Local.</i>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribePlayerSessions</a> – Get details on player activity, including status, playing time, and player data.
+ * <a>DescribePlayerSessions</a> -- Get details on player activity, including status, playing time, and player data.
  * <i>Available in Amazon GameLift Local.</i>
  * </p>
  * </li>
@@ -225,9 +276,10 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <b>Setting Up and Managing Game Servers</b>
  * </p>
  * <p>
- * When setting up Amazon GameLift, first create a game build and upload the files to Amazon GameLift. Then use these
- * operations to set up a fleet of resources to run your game servers. Manage games to scale capacity, adjust
- * configuration settings, access raw utilization data, and more.
+ * When setting up Amazon GameLift resources for your game, you first <a
+ * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">create a game build</a>
+ * and upload it to Amazon GameLift. You can then use these actions to configure and manage a fleet of resources to run
+ * your game servers, scale capacity to meet player demand, access performance and utilization metrics, and more.
  * </p>
  * <ul>
  * <li>
@@ -237,28 +289,29 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>CreateBuild</a> – Create a new build by uploading files stored in an Amazon S3 bucket. (To create a build stored
- * at a local file location, use the AWS CLI command <code>upload-build</code>.)
+ * <a>CreateBuild</a> -- Create a new build using files stored in an Amazon S3 bucket. (Update uploading permissions
+ * with <a>RequestUploadCredentials</a>.) To create a build and upload files from a local path, use the AWS CLI command
+ * <code>upload-build</code>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ListBuilds</a> – Get a list of all builds uploaded to a Amazon GameLift region.
+ * <a>ListBuilds</a> -- Get a list of all builds uploaded to a Amazon GameLift region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeBuild</a> – Retrieve information associated with a build.
+ * <a>DescribeBuild</a> -- Retrieve information associated with a build.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateBuild</a> – Change build metadata, including build name and version.
+ * <a>UpdateBuild</a> -- Change build metadata, including build name and version.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteBuild</a> – Remove a build from Amazon GameLift.
+ * <a>DeleteBuild</a> -- Remove a build from Amazon GameLift.
  * </p>
  * </li>
  * </ul>
@@ -270,12 +323,17 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>CreateFleet</a> – Configure and activate a new fleet to run a build's game servers.
+ * <a>CreateFleet</a> -- Configure and activate a new fleet to run a build's game servers.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteFleet</a> – Terminate a fleet that is no longer running game servers or hosting players.
+ * <a>ListFleets</a> -- Get a list of all fleet IDs in a Amazon GameLift region (all statuses).
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteFleet</a> -- Terminate a fleet that is no longer running game servers or hosting players.
  * </p>
  * </li>
  * <li>
@@ -285,31 +343,20 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>ListFleets</a> – Get a list of all fleet IDs in a Amazon GameLift region (all statuses).
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeFleetAttributes</a> / <a>UpdateFleetAttributes</a> – View or change a fleet's metadata and settings for
+ * <a>DescribeFleetAttributes</a> / <a>UpdateFleetAttributes</a> -- View or change a fleet's metadata and settings for
  * game session protection and resource creation limits.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeFleetPortSettings</a> / <a>UpdateFleetPortSettings</a> – View or change the inbound permissions (IP
+ * <a>DescribeFleetPortSettings</a> / <a>UpdateFleetPortSettings</a> -- View or change the inbound permissions (IP
  * address and port setting ranges) allowed for a fleet.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeRuntimeConfiguration</a> / <a>UpdateRuntimeConfiguration</a> – View or change what server processes (and
+ * <a>DescribeRuntimeConfiguration</a> / <a>UpdateRuntimeConfiguration</a> -- View or change what server processes (and
  * how many) to run on each instance in a fleet.
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeInstances</a> – Get information on each instance in a fleet, including instance ID, IP address, and
- * status.
  * </p>
  * </li>
  * </ul>
@@ -323,37 +370,76 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>DescribeEC2InstanceLimits</a> – Retrieve maximum number of instances allowed for the current AWS account and the
+ * <a>DescribeEC2InstanceLimits</a> -- Retrieve maximum number of instances allowed for the current AWS account and the
  * current usage level.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeFleetCapacity</a> / <a>UpdateFleetCapacity</a> – Retrieve the capacity settings and the current number of
+ * <a>DescribeFleetCapacity</a> / <a>UpdateFleetCapacity</a> -- Retrieve the capacity settings and the current number of
  * instances in a fleet; adjust fleet capacity settings to scale up or down.
  * </p>
  * </li>
  * <li>
  * <p>
- * Autoscale – Manage autoscaling rules and apply them to a fleet.
+ * Autoscale -- Manage autoscaling rules and apply them to a fleet.
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>PutScalingPolicy</a> – Create a new autoscaling policy, or update an existing one.
+ * <a>PutScalingPolicy</a> -- Create a new autoscaling policy, or update an existing one.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeScalingPolicies</a> – Retrieve an existing autoscaling policy.
+ * <a>DescribeScalingPolicies</a> -- Retrieve an existing autoscaling policy.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteScalingPolicy</a> – Delete an autoscaling policy and stop it from affecting a fleet's capacity.
+ * <a>DeleteScalingPolicy</a> -- Delete an autoscaling policy and stop it from affecting a fleet's capacity.
  * </p>
  * </li>
  * </ul>
+ * </li>
+ * </ul>
+ * </li>
+ * <li>
+ * <p>
+ * <b>Manage VPC peering connections for fleets</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateVpcPeeringAuthorization</a> -- Authorize a peering connection to one of your VPCs.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeVpcPeeringAuthorizations</a> -- Retrieve valid peering connection authorizations.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteVpcPeeringAuthorization</a> -- Delete a peering connection authorization.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>CreateVpcPeeringConnection</a> -- Establish a peering connection between the VPC for a Amazon GameLift fleet and
+ * one of your VPCs.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeVpcPeeringConnections</a> -- Retrieve information on active or pending VPC peering connections with a
+ * Amazon GameLift fleet.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteVpcPeeringConnection</a> -- Delete a VPC peering connection with a Amazon GameLift fleet.
+ * </p>
  * </li>
  * </ul>
  * </li>
@@ -364,18 +450,18 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>DescribeFleetUtilization</a> – Get current data on the number of server processes, game sessions, and players
+ * <a>DescribeFleetUtilization</a> -- Get current data on the number of server processes, game sessions, and players
  * currently active on a fleet.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeFleetEvents</a> – Get a fleet's logged events for a specified time span.
+ * <a>DescribeFleetEvents</a> -- Get a fleet's logged events for a specified time span.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessions</a> – Retrieve metadata associated with one or more game sessions, including length of time
+ * <a>DescribeGameSessions</a> -- Retrieve metadata associated with one or more game sessions, including length of time
  * active and current player count.
  * </p>
  * </li>
@@ -388,7 +474,13 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>GetInstanceAccess</a> – Request access credentials needed to remotely connect to a specified instance in a fleet.
+ * <a>DescribeInstances</a> -- Get information on each instance in a fleet, including instance ID, IP address, and
+ * status.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetInstanceAccess</a> -- Request access credentials needed to remotely connect to a specified instance in a fleet.
  * </p>
  * </li>
  * </ul>
@@ -400,32 +492,32 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>CreateAlias</a> – Define a new alias and optionally assign it to a fleet.
+ * <a>CreateAlias</a> -- Define a new alias and optionally assign it to a fleet.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ListAliases</a> – Get all fleet aliases defined in a Amazon GameLift region.
+ * <a>ListAliases</a> -- Get all fleet aliases defined in a Amazon GameLift region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeAlias</a> – Retrieve information on an existing alias.
+ * <a>DescribeAlias</a> -- Retrieve information on an existing alias.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateAlias</a> – Change settings for a alias, such as redirecting it from one fleet to another.
+ * <a>UpdateAlias</a> -- Change settings for a alias, such as redirecting it from one fleet to another.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteAlias</a> – Remove an alias from the region.
+ * <a>DeleteAlias</a> -- Remove an alias from the region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ResolveAlias</a> – Get the fleet ID that a specified alias points to.
+ * <a>ResolveAlias</a> -- Get the fleet ID that a specified alias points to.
  * </p>
  * </li>
  * </ul>
@@ -437,22 +529,65 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>CreateGameSessionQueue</a> – Create a queue for processing requests for new game sessions.
+ * <a>CreateGameSessionQueue</a> -- Create a queue for processing requests for new game sessions.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessionQueues</a> – Get data on all game session queues defined in a Amazon GameLift region.
+ * <a>DescribeGameSessionQueues</a> -- Retrieve game session queues defined in a Amazon GameLift region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateGameSessionQueue</a> – Change the configuration of a game session queue.
+ * <a>UpdateGameSessionQueue</a> -- Change the configuration of a game session queue.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteGameSessionQueue</a> – Remove a game session queue from the region.
+ * <a>DeleteGameSessionQueue</a> -- Remove a game session queue from the region.
+ * </p>
+ * </li>
+ * </ul>
+ * </li>
+ * <li>
+ * <p>
+ * <b>Manage FlexMatch resources</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateMatchmakingConfiguration</a> -- Create a matchmaking configuration with instructions for building a player
+ * group and placing in a new game session.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeMatchmakingConfigurations</a> -- Retrieve matchmaking configurations defined a Amazon GameLift region.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateMatchmakingConfiguration</a> -- Change settings for matchmaking configuration. queue.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteMatchmakingConfiguration</a> -- Remove a matchmaking configuration from the region.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>CreateMatchmakingRuleSet</a> -- Create a set of rules to use when searching for player matches.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeMatchmakingRuleSets</a> -- Retrieve matchmaking rule sets defined in a Amazon GameLift region.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ValidateMatchmakingRuleSet</a> -- Verify syntax for a set of matchmaking rules.
  * </p>
  * </li>
  * </ul>
@@ -669,6 +804,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<AcceptMatchResult> acceptMatchAsync(AcceptMatchRequest request) {
+
+        return acceptMatchAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<AcceptMatchResult> acceptMatchAsync(final AcceptMatchRequest request,
+            final com.amazonaws.handlers.AsyncHandler<AcceptMatchRequest, AcceptMatchResult> asyncHandler) {
+        final AcceptMatchRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<AcceptMatchResult>() {
+            @Override
+            public AcceptMatchResult call() throws Exception {
+                AcceptMatchResult result = null;
+
+                try {
+                    result = executeAcceptMatch(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateAliasResult> createAliasAsync(CreateAliasRequest request) {
 
         return createAliasAsync(request, null);
@@ -834,6 +1002,73 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<CreateMatchmakingConfigurationResult> createMatchmakingConfigurationAsync(CreateMatchmakingConfigurationRequest request) {
+
+        return createMatchmakingConfigurationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateMatchmakingConfigurationResult> createMatchmakingConfigurationAsync(
+            final CreateMatchmakingConfigurationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateMatchmakingConfigurationRequest, CreateMatchmakingConfigurationResult> asyncHandler) {
+        final CreateMatchmakingConfigurationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateMatchmakingConfigurationResult>() {
+            @Override
+            public CreateMatchmakingConfigurationResult call() throws Exception {
+                CreateMatchmakingConfigurationResult result = null;
+
+                try {
+                    result = executeCreateMatchmakingConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateMatchmakingRuleSetResult> createMatchmakingRuleSetAsync(CreateMatchmakingRuleSetRequest request) {
+
+        return createMatchmakingRuleSetAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateMatchmakingRuleSetResult> createMatchmakingRuleSetAsync(final CreateMatchmakingRuleSetRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateMatchmakingRuleSetRequest, CreateMatchmakingRuleSetResult> asyncHandler) {
+        final CreateMatchmakingRuleSetRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateMatchmakingRuleSetResult>() {
+            @Override
+            public CreateMatchmakingRuleSetResult call() throws Exception {
+                CreateMatchmakingRuleSetResult result = null;
+
+                try {
+                    result = executeCreateMatchmakingRuleSet(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreatePlayerSessionResult> createPlayerSessionAsync(CreatePlayerSessionRequest request) {
 
         return createPlayerSessionAsync(request, null);
@@ -884,6 +1119,73 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeCreatePlayerSessions(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateVpcPeeringAuthorizationResult> createVpcPeeringAuthorizationAsync(CreateVpcPeeringAuthorizationRequest request) {
+
+        return createVpcPeeringAuthorizationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateVpcPeeringAuthorizationResult> createVpcPeeringAuthorizationAsync(
+            final CreateVpcPeeringAuthorizationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateVpcPeeringAuthorizationRequest, CreateVpcPeeringAuthorizationResult> asyncHandler) {
+        final CreateVpcPeeringAuthorizationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateVpcPeeringAuthorizationResult>() {
+            @Override
+            public CreateVpcPeeringAuthorizationResult call() throws Exception {
+                CreateVpcPeeringAuthorizationResult result = null;
+
+                try {
+                    result = executeCreateVpcPeeringAuthorization(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateVpcPeeringConnectionResult> createVpcPeeringConnectionAsync(CreateVpcPeeringConnectionRequest request) {
+
+        return createVpcPeeringConnectionAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateVpcPeeringConnectionResult> createVpcPeeringConnectionAsync(final CreateVpcPeeringConnectionRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateVpcPeeringConnectionRequest, CreateVpcPeeringConnectionResult> asyncHandler) {
+        final CreateVpcPeeringConnectionRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateVpcPeeringConnectionResult>() {
+            @Override
+            public CreateVpcPeeringConnectionResult call() throws Exception {
+                CreateVpcPeeringConnectionResult result = null;
+
+                try {
+                    result = executeCreateVpcPeeringConnection(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1032,6 +1334,40 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteMatchmakingConfigurationResult> deleteMatchmakingConfigurationAsync(DeleteMatchmakingConfigurationRequest request) {
+
+        return deleteMatchmakingConfigurationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteMatchmakingConfigurationResult> deleteMatchmakingConfigurationAsync(
+            final DeleteMatchmakingConfigurationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteMatchmakingConfigurationRequest, DeleteMatchmakingConfigurationResult> asyncHandler) {
+        final DeleteMatchmakingConfigurationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteMatchmakingConfigurationResult>() {
+            @Override
+            public DeleteMatchmakingConfigurationResult call() throws Exception {
+                DeleteMatchmakingConfigurationResult result = null;
+
+                try {
+                    result = executeDeleteMatchmakingConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteScalingPolicyResult> deleteScalingPolicyAsync(DeleteScalingPolicyRequest request) {
 
         return deleteScalingPolicyAsync(request, null);
@@ -1049,6 +1385,73 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeDeleteScalingPolicy(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVpcPeeringAuthorizationResult> deleteVpcPeeringAuthorizationAsync(DeleteVpcPeeringAuthorizationRequest request) {
+
+        return deleteVpcPeeringAuthorizationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVpcPeeringAuthorizationResult> deleteVpcPeeringAuthorizationAsync(
+            final DeleteVpcPeeringAuthorizationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteVpcPeeringAuthorizationRequest, DeleteVpcPeeringAuthorizationResult> asyncHandler) {
+        final DeleteVpcPeeringAuthorizationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteVpcPeeringAuthorizationResult>() {
+            @Override
+            public DeleteVpcPeeringAuthorizationResult call() throws Exception {
+                DeleteVpcPeeringAuthorizationResult result = null;
+
+                try {
+                    result = executeDeleteVpcPeeringAuthorization(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVpcPeeringConnectionResult> deleteVpcPeeringConnectionAsync(DeleteVpcPeeringConnectionRequest request) {
+
+        return deleteVpcPeeringConnectionAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVpcPeeringConnectionResult> deleteVpcPeeringConnectionAsync(final DeleteVpcPeeringConnectionRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteVpcPeeringConnectionRequest, DeleteVpcPeeringConnectionResult> asyncHandler) {
+        final DeleteVpcPeeringConnectionRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteVpcPeeringConnectionResult>() {
+            @Override
+            public DeleteVpcPeeringConnectionResult call() throws Exception {
+                DeleteVpcPeeringConnectionResult result = null;
+
+                try {
+                    result = executeDeleteVpcPeeringConnection(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1494,6 +1897,107 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeMatchmakingResult> describeMatchmakingAsync(DescribeMatchmakingRequest request) {
+
+        return describeMatchmakingAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeMatchmakingResult> describeMatchmakingAsync(final DescribeMatchmakingRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeMatchmakingRequest, DescribeMatchmakingResult> asyncHandler) {
+        final DescribeMatchmakingRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeMatchmakingResult>() {
+            @Override
+            public DescribeMatchmakingResult call() throws Exception {
+                DescribeMatchmakingResult result = null;
+
+                try {
+                    result = executeDescribeMatchmaking(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeMatchmakingConfigurationsResult> describeMatchmakingConfigurationsAsync(
+            DescribeMatchmakingConfigurationsRequest request) {
+
+        return describeMatchmakingConfigurationsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeMatchmakingConfigurationsResult> describeMatchmakingConfigurationsAsync(
+            final DescribeMatchmakingConfigurationsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeMatchmakingConfigurationsRequest, DescribeMatchmakingConfigurationsResult> asyncHandler) {
+        final DescribeMatchmakingConfigurationsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeMatchmakingConfigurationsResult>() {
+            @Override
+            public DescribeMatchmakingConfigurationsResult call() throws Exception {
+                DescribeMatchmakingConfigurationsResult result = null;
+
+                try {
+                    result = executeDescribeMatchmakingConfigurations(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeMatchmakingRuleSetsResult> describeMatchmakingRuleSetsAsync(DescribeMatchmakingRuleSetsRequest request) {
+
+        return describeMatchmakingRuleSetsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeMatchmakingRuleSetsResult> describeMatchmakingRuleSetsAsync(final DescribeMatchmakingRuleSetsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeMatchmakingRuleSetsRequest, DescribeMatchmakingRuleSetsResult> asyncHandler) {
+        final DescribeMatchmakingRuleSetsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeMatchmakingRuleSetsResult>() {
+            @Override
+            public DescribeMatchmakingRuleSetsResult call() throws Exception {
+                DescribeMatchmakingRuleSetsResult result = null;
+
+                try {
+                    result = executeDescribeMatchmakingRuleSets(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribePlayerSessionsResult> describePlayerSessionsAsync(DescribePlayerSessionsRequest request) {
 
         return describePlayerSessionsAsync(request, null);
@@ -1577,6 +2081,75 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeDescribeScalingPolicies(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeVpcPeeringAuthorizationsResult> describeVpcPeeringAuthorizationsAsync(
+            DescribeVpcPeeringAuthorizationsRequest request) {
+
+        return describeVpcPeeringAuthorizationsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeVpcPeeringAuthorizationsResult> describeVpcPeeringAuthorizationsAsync(
+            final DescribeVpcPeeringAuthorizationsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeVpcPeeringAuthorizationsRequest, DescribeVpcPeeringAuthorizationsResult> asyncHandler) {
+        final DescribeVpcPeeringAuthorizationsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeVpcPeeringAuthorizationsResult>() {
+            @Override
+            public DescribeVpcPeeringAuthorizationsResult call() throws Exception {
+                DescribeVpcPeeringAuthorizationsResult result = null;
+
+                try {
+                    result = executeDescribeVpcPeeringAuthorizations(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeVpcPeeringConnectionsResult> describeVpcPeeringConnectionsAsync(DescribeVpcPeeringConnectionsRequest request) {
+
+        return describeVpcPeeringConnectionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeVpcPeeringConnectionsResult> describeVpcPeeringConnectionsAsync(
+            final DescribeVpcPeeringConnectionsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeVpcPeeringConnectionsRequest, DescribeVpcPeeringConnectionsResult> asyncHandler) {
+        final DescribeVpcPeeringConnectionsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeVpcPeeringConnectionsResult>() {
+            @Override
+            public DescribeVpcPeeringConnectionsResult call() throws Exception {
+                DescribeVpcPeeringConnectionsResult result = null;
+
+                try {
+                    result = executeDescribeVpcPeeringConnections(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1923,6 +2496,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<StartMatchmakingResult> startMatchmakingAsync(StartMatchmakingRequest request) {
+
+        return startMatchmakingAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartMatchmakingResult> startMatchmakingAsync(final StartMatchmakingRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartMatchmakingRequest, StartMatchmakingResult> asyncHandler) {
+        final StartMatchmakingRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StartMatchmakingResult>() {
+            @Override
+            public StartMatchmakingResult call() throws Exception {
+                StartMatchmakingResult result = null;
+
+                try {
+                    result = executeStartMatchmaking(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<StopGameSessionPlacementResult> stopGameSessionPlacementAsync(StopGameSessionPlacementRequest request) {
 
         return stopGameSessionPlacementAsync(request, null);
@@ -1940,6 +2546,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeStopGameSessionPlacement(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<StopMatchmakingResult> stopMatchmakingAsync(StopMatchmakingRequest request) {
+
+        return stopMatchmakingAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StopMatchmakingResult> stopMatchmakingAsync(final StopMatchmakingRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StopMatchmakingRequest, StopMatchmakingResult> asyncHandler) {
+        final StopMatchmakingRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StopMatchmakingResult>() {
+            @Override
+            public StopMatchmakingResult call() throws Exception {
+                StopMatchmakingResult result = null;
+
+                try {
+                    result = executeStopMatchmaking(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -2187,6 +2826,40 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<UpdateMatchmakingConfigurationResult> updateMatchmakingConfigurationAsync(UpdateMatchmakingConfigurationRequest request) {
+
+        return updateMatchmakingConfigurationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMatchmakingConfigurationResult> updateMatchmakingConfigurationAsync(
+            final UpdateMatchmakingConfigurationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateMatchmakingConfigurationRequest, UpdateMatchmakingConfigurationResult> asyncHandler) {
+        final UpdateMatchmakingConfigurationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateMatchmakingConfigurationResult>() {
+            @Override
+            public UpdateMatchmakingConfigurationResult call() throws Exception {
+                UpdateMatchmakingConfigurationResult result = null;
+
+                try {
+                    result = executeUpdateMatchmakingConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<UpdateRuntimeConfigurationResult> updateRuntimeConfigurationAsync(UpdateRuntimeConfigurationRequest request) {
 
         return updateRuntimeConfigurationAsync(request, null);
@@ -2204,6 +2877,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeUpdateRuntimeConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ValidateMatchmakingRuleSetResult> validateMatchmakingRuleSetAsync(ValidateMatchmakingRuleSetRequest request) {
+
+        return validateMatchmakingRuleSetAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ValidateMatchmakingRuleSetResult> validateMatchmakingRuleSetAsync(final ValidateMatchmakingRuleSetRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ValidateMatchmakingRuleSetRequest, ValidateMatchmakingRuleSetResult> asyncHandler) {
+        final ValidateMatchmakingRuleSetRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ValidateMatchmakingRuleSetResult>() {
+            @Override
+            public ValidateMatchmakingRuleSetResult call() throws Exception {
+                ValidateMatchmakingRuleSetResult result = null;
+
+                try {
+                    result = executeValidateMatchmakingRuleSet(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

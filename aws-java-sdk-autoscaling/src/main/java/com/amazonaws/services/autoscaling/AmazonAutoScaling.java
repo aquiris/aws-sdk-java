@@ -324,6 +324,8 @@ public interface AmazonAutoScaling {
      * @throws ResourceContentionException
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
+     * @throws ResourceInUseException
+     *         The operation can't be performed because the resource is in use.
      * @sample AmazonAutoScaling.CreateOrUpdateTags
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateOrUpdateTags" target="_top">AWS
      *      API Documentation</a>
@@ -471,6 +473,8 @@ public interface AmazonAutoScaling {
      * @throws ResourceContentionException
      *         You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load
      *         balancer).
+     * @throws ResourceInUseException
+     *         The operation can't be performed because the resource is in use.
      * @sample AmazonAutoScaling.DeleteTags
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteTags" target="_top">AWS API
      *      Documentation</a>

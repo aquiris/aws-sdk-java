@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Provides details of the <code>WorkflowExecutionCancelRequested</code> event.
+ * Provides the details of the <code>WorkflowExecutionCancelRequested</code> event.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/WorkflowExecutionCancelRequestedEventAttributes"
@@ -220,7 +220,7 @@ public class WorkflowExecutionCancelRequestedEventAttributes implements Serializ
      */
 
     public void setCause(WorkflowExecutionCancelRequestedCause cause) {
-        this.cause = cause.toString();
+        withCause(cause);
     }
 
     /**
@@ -239,7 +239,7 @@ public class WorkflowExecutionCancelRequestedEventAttributes implements Serializ
      */
 
     public WorkflowExecutionCancelRequestedEventAttributes withCause(WorkflowExecutionCancelRequestedCause cause) {
-        setCause(cause);
+        this.cause = cause.toString();
         return this;
     }
 

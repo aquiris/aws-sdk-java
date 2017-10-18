@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Segment definition.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SegmentResponse" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SegmentResponse implements Serializable, Cloneable, StructuredPojo {
@@ -364,7 +367,7 @@ public class SegmentResponse implements Serializable, Cloneable, StructuredPojo 
      */
 
     public void setSegmentType(SegmentType segmentType) {
-        this.segmentType = segmentType.toString();
+        withSegmentType(segmentType);
     }
 
     /**
@@ -385,7 +388,7 @@ public class SegmentResponse implements Serializable, Cloneable, StructuredPojo 
      */
 
     public SegmentResponse withSegmentType(SegmentType segmentType) {
-        setSegmentType(segmentType);
+        this.segmentType = segmentType.toString();
         return this;
     }
 

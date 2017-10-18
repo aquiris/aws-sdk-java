@@ -44,7 +44,22 @@ public class AbstractAmazonAppStream implements AmazonAppStream {
     }
 
     @Override
+    public CreateDirectoryConfigResult createDirectoryConfig(CreateDirectoryConfigRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateFleetResult createFleet(CreateFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateImageBuilderResult createImageBuilder(CreateImageBuilderRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateImageBuilderStreamingURLResult createImageBuilderStreamingURL(CreateImageBuilderStreamingURLRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -59,7 +74,22 @@ public class AbstractAmazonAppStream implements AmazonAppStream {
     }
 
     @Override
+    public DeleteDirectoryConfigResult deleteDirectoryConfig(DeleteDirectoryConfigRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteFleetResult deleteFleet(DeleteFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteImageResult deleteImage(DeleteImageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteImageBuilderResult deleteImageBuilder(DeleteImageBuilderRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -69,7 +99,17 @@ public class AbstractAmazonAppStream implements AmazonAppStream {
     }
 
     @Override
+    public DescribeDirectoryConfigsResult describeDirectoryConfigs(DescribeDirectoryConfigsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeFleetsResult describeFleets(DescribeFleetsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeImageBuildersResult describeImageBuilders(DescribeImageBuildersRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -114,7 +154,22 @@ public class AbstractAmazonAppStream implements AmazonAppStream {
     }
 
     @Override
+    public StartImageBuilderResult startImageBuilder(StartImageBuilderRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public StopFleetResult stopFleet(StopFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public StopImageBuilderResult stopImageBuilder(StopImageBuilderRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateDirectoryConfigResult updateDirectoryConfig(UpdateDirectoryConfigRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

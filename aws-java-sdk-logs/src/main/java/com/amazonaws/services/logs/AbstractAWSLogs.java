@@ -38,6 +38,11 @@ public class AbstractAWSLogs implements AWSLogs {
     }
 
     @Override
+    public AssociateKmsKeyResult associateKmsKey(AssociateKmsKeyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CancelExportTaskResult cancelExportTask(CancelExportTaskRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -74,6 +79,11 @@ public class AbstractAWSLogs implements AWSLogs {
 
     @Override
     public DeleteMetricFilterResult deleteMetricFilter(DeleteMetricFilterRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteResourcePolicyResult deleteResourcePolicy(DeleteResourcePolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -123,7 +133,17 @@ public class AbstractAWSLogs implements AWSLogs {
     }
 
     @Override
+    public DescribeResourcePoliciesResult describeResourcePolicies(DescribeResourcePoliciesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeSubscriptionFiltersResult describeSubscriptionFilters(DescribeSubscriptionFiltersRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DisassociateKmsKeyResult disassociateKmsKey(DisassociateKmsKeyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -159,6 +179,11 @@ public class AbstractAWSLogs implements AWSLogs {
 
     @Override
     public PutMetricFilterResult putMetricFilter(PutMetricFilterRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public PutResourcePolicyResult putResourcePolicy(PutResourcePolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

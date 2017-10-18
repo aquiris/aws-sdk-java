@@ -23,7 +23,10 @@ public enum PatchFilterKey {
     PRODUCT("PRODUCT"),
     CLASSIFICATION("CLASSIFICATION"),
     MSRC_SEVERITY("MSRC_SEVERITY"),
-    PATCH_ID("PATCH_ID");
+    PATCH_ID("PATCH_ID"),
+    SECTION("SECTION"),
+    PRIORITY("PRIORITY"),
+    SEVERITY("SEVERITY");
 
     private String value;
 
@@ -42,6 +45,9 @@ public enum PatchFilterKey {
      * @param value
      *        real value
      * @return PatchFilterKey corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static PatchFilterKey fromValue(String value) {
         if (value == null || "".equals(value)) {

@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Endpoint update request
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/EndpointBatchItem" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EndpointBatchItem implements Serializable, Cloneable, StructuredPojo {
@@ -33,7 +36,7 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      */
     private String channelType;
     /** The endpoint demographic attributes. */
@@ -54,7 +57,9 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      */
     private String optOut;
     /** The unique ID for the most recent request to update the endpoint. */
@@ -163,12 +168,12 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @see ChannelType
      */
 
@@ -179,11 +184,11 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @return The channel type.
      * 
-     *         Valid values: APNS, GCM
+     *         Valid values: GCM | APNS | SMS | EMAIL
      * @see ChannelType
      */
 
@@ -194,12 +199,12 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChannelType
      */
@@ -212,34 +217,34 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @see ChannelType
      */
 
     public void setChannelType(ChannelType channelType) {
-        this.channelType = channelType.toString();
+        withChannelType(channelType);
     }
 
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChannelType
      */
 
     public EndpointBatchItem withChannelType(ChannelType channelType) {
-        setChannelType(channelType);
+        this.channelType = channelType.toString();
         return this;
     }
 
@@ -477,12 +482,16 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      * 
      * @param optOut
      *        Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     *        ALL – User receives all messages. NONE – User receives no messages.
+     *        ALL - User has opted out of all messages.
+     * 
+     *        NONE - Users has not opted out and receives all messages.
      */
 
     public void setOptOut(String optOut) {
@@ -492,11 +501,15 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      * 
      * @return Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     *         ALL – User receives all messages. NONE – User receives no messages.
+     *         ALL - User has opted out of all messages.
+     * 
+     *         NONE - Users has not opted out and receives all messages.
      */
 
     public String getOptOut() {
@@ -506,12 +519,16 @@ public class EndpointBatchItem implements Serializable, Cloneable, StructuredPoj
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      * 
      * @param optOut
      *        Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     *        ALL – User receives all messages. NONE – User receives no messages.
+     *        ALL - User has opted out of all messages.
+     * 
+     *        NONE - Users has not opted out and receives all messages.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

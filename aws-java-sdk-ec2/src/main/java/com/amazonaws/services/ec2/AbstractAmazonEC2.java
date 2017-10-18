@@ -194,6 +194,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public CopyFpgaImageResult copyFpgaImage(CopyFpgaImageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CopyImageResult copyImage(CopyImageRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -205,6 +210,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public CreateCustomerGatewayResult createCustomerGateway(CreateCustomerGatewayRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateDefaultVpcResult createDefaultVpc(CreateDefaultVpcRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -270,6 +280,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public CreateNetworkInterfaceResult createNetworkInterface(CreateNetworkInterfaceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateNetworkInterfacePermissionResult createNetworkInterfacePermission(CreateNetworkInterfacePermissionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -379,6 +394,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public DeleteFpgaImageResult deleteFpgaImage(DeleteFpgaImageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteInternetGatewayResult deleteInternetGateway(DeleteInternetGatewayRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -405,6 +425,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteNetworkInterfacePermissionResult deleteNetworkInterfacePermission(DeleteNetworkInterfacePermissionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -579,6 +604,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public DescribeElasticGpusResult describeElasticGpus(DescribeElasticGpusRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeExportTasksResult describeExportTasks(DescribeExportTasksRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -596,6 +626,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     @Override
     public DescribeFlowLogsResult describeFlowLogs() {
         return describeFlowLogs(new DescribeFlowLogsRequest());
+    }
+
+    @Override
+    public DescribeFpgaImageAttributeResult describeFpgaImageAttribute(DescribeFpgaImageAttributeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -750,6 +785,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public DescribeNetworkInterfaceAttributeResult describeNetworkInterfaceAttribute(DescribeNetworkInterfaceAttributeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeNetworkInterfacePermissionsResult describeNetworkInterfacePermissions(DescribeNetworkInterfacePermissionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -1214,6 +1254,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public ModifyFpgaImageAttributeResult modifyFpgaImageAttribute(ModifyFpgaImageAttributeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ModifyHostsResult modifyHosts(ModifyHostsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -1290,6 +1335,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public ModifyVpcPeeringConnectionOptionsResult modifyVpcPeeringConnectionOptions(ModifyVpcPeeringConnectionOptionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ModifyVpcTenancyResult modifyVpcTenancy(ModifyVpcTenancyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -1384,6 +1434,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public ResetFpgaImageAttributeResult resetFpgaImageAttribute(ResetFpgaImageAttributeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ResetImageAttributeResult resetImageAttribute(ResetImageAttributeRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -1461,6 +1516,16 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public UnmonitorInstancesResult unmonitorInstances(UnmonitorInstancesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateSecurityGroupRuleDescriptionsEgressResult updateSecurityGroupRuleDescriptionsEgress(UpdateSecurityGroupRuleDescriptionsEgressRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateSecurityGroupRuleDescriptionsIngressResult updateSecurityGroupRuleDescriptionsIngress(UpdateSecurityGroupRuleDescriptionsIngressRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

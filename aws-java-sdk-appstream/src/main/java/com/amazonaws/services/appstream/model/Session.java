@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains the parameters for a streaming session.
+ * Describes a streaming session.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/Session" target="_top">AWS API
@@ -30,7 +30,7 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique ID for a streaming session.
+     * The ID of the streaming session.
      * </p>
      */
     private String id;
@@ -42,13 +42,13 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
     private String userId;
     /**
      * <p>
-     * The name of the stack for which the streaming session was created.
+     * The name of the stack for the streaming session.
      * </p>
      */
     private String stackName;
     /**
      * <p>
-     * The name of the fleet for which the streaming session was created.
+     * The name of the fleet for the streaming session.
      * </p>
      */
     private String fleetName;
@@ -60,19 +60,19 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
     private String state;
     /**
      * <p>
-     * The authentication method of the user for whom the session was created. It can be <code>API</code> for a user
-     * authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     * The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML federation
+     * (<code>SAML</code>).
      * </p>
      */
     private String authenticationType;
 
     /**
      * <p>
-     * The unique ID for a streaming session.
+     * The ID of the streaming session.
      * </p>
      * 
      * @param id
-     *        The unique ID for a streaming session.
+     *        The ID of the streaming session.
      */
 
     public void setId(String id) {
@@ -81,10 +81,10 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique ID for a streaming session.
+     * The ID of the streaming session.
      * </p>
      * 
-     * @return The unique ID for a streaming session.
+     * @return The ID of the streaming session.
      */
 
     public String getId() {
@@ -93,11 +93,11 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique ID for a streaming session.
+     * The ID of the streaming session.
      * </p>
      * 
      * @param id
-     *        The unique ID for a streaming session.
+     *        The ID of the streaming session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -148,11 +148,11 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the stack for which the streaming session was created.
+     * The name of the stack for the streaming session.
      * </p>
      * 
      * @param stackName
-     *        The name of the stack for which the streaming session was created.
+     *        The name of the stack for the streaming session.
      */
 
     public void setStackName(String stackName) {
@@ -161,10 +161,10 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the stack for which the streaming session was created.
+     * The name of the stack for the streaming session.
      * </p>
      * 
-     * @return The name of the stack for which the streaming session was created.
+     * @return The name of the stack for the streaming session.
      */
 
     public String getStackName() {
@@ -173,11 +173,11 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the stack for which the streaming session was created.
+     * The name of the stack for the streaming session.
      * </p>
      * 
      * @param stackName
-     *        The name of the stack for which the streaming session was created.
+     *        The name of the stack for the streaming session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -188,11 +188,11 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the fleet for which the streaming session was created.
+     * The name of the fleet for the streaming session.
      * </p>
      * 
      * @param fleetName
-     *        The name of the fleet for which the streaming session was created.
+     *        The name of the fleet for the streaming session.
      */
 
     public void setFleetName(String fleetName) {
@@ -201,10 +201,10 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the fleet for which the streaming session was created.
+     * The name of the fleet for the streaming session.
      * </p>
      * 
-     * @return The name of the fleet for which the streaming session was created.
+     * @return The name of the fleet for the streaming session.
      */
 
     public String getFleetName() {
@@ -213,11 +213,11 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the fleet for which the streaming session was created.
+     * The name of the fleet for the streaming session.
      * </p>
      * 
      * @param fleetName
-     *        The name of the fleet for which the streaming session was created.
+     *        The name of the fleet for the streaming session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,7 +280,7 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setState(SessionState state) {
-        this.state = state.toString();
+        withState(state);
     }
 
     /**
@@ -295,19 +295,19 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Session withState(SessionState state) {
-        setState(state);
+        this.state = state.toString();
         return this;
     }
 
     /**
      * <p>
-     * The authentication method of the user for whom the session was created. It can be <code>API</code> for a user
-     * authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     * The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML federation
+     * (<code>SAML</code>).
      * </p>
      * 
      * @param authenticationType
-     *        The authentication method of the user for whom the session was created. It can be <code>API</code> for a
-     *        user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     *        The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML
+     *        federation (<code>SAML</code>).
      * @see AuthenticationType
      */
 
@@ -317,12 +317,12 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method of the user for whom the session was created. It can be <code>API</code> for a user
-     * authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     * The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML federation
+     * (<code>SAML</code>).
      * </p>
      * 
-     * @return The authentication method of the user for whom the session was created. It can be <code>API</code> for a
-     *         user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     * @return The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML
+     *         federation (<code>SAML</code>).
      * @see AuthenticationType
      */
 
@@ -332,13 +332,13 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method of the user for whom the session was created. It can be <code>API</code> for a user
-     * authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     * The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML federation
+     * (<code>SAML</code>).
      * </p>
      * 
      * @param authenticationType
-     *        The authentication method of the user for whom the session was created. It can be <code>API</code> for a
-     *        user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     *        The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML
+     *        federation (<code>SAML</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AuthenticationType
      */
@@ -350,35 +350,35 @@ public class Session implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method of the user for whom the session was created. It can be <code>API</code> for a user
-     * authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     * The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML federation
+     * (<code>SAML</code>).
      * </p>
      * 
      * @param authenticationType
-     *        The authentication method of the user for whom the session was created. It can be <code>API</code> for a
-     *        user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     *        The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML
+     *        federation (<code>SAML</code>).
      * @see AuthenticationType
      */
 
     public void setAuthenticationType(AuthenticationType authenticationType) {
-        this.authenticationType = authenticationType.toString();
+        withAuthenticationType(authenticationType);
     }
 
     /**
      * <p>
-     * The authentication method of the user for whom the session was created. It can be <code>API</code> for a user
-     * authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     * The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML federation
+     * (<code>SAML</code>).
      * </p>
      * 
      * @param authenticationType
-     *        The authentication method of the user for whom the session was created. It can be <code>API</code> for a
-     *        user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.
+     *        The authentication method. The user is authenticated using a streaming URL (<code>API</code>) or SAML
+     *        federation (<code>SAML</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AuthenticationType
      */
 
     public Session withAuthenticationType(AuthenticationType authenticationType) {
-        setAuthenticationType(authenticationType);
+        this.authenticationType = authenticationType.toString();
         return this;
     }
 

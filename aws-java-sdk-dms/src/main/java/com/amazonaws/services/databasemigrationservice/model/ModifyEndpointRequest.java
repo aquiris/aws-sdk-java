@@ -84,7 +84,8 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
     private String databaseName;
     /**
      * <p>
-     * Additional attributes associated with the connection.
+     * Additional attributes associated with the connection. To reset this parameter, pass the empty string ("") as an
+     * argument.
      * </p>
      */
     private String extraConnectionAttributes;
@@ -274,7 +275,7 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public void setEndpointType(ReplicationEndpointTypeValue endpointType) {
-        this.endpointType = endpointType.toString();
+        withEndpointType(endpointType);
     }
 
     /**
@@ -289,7 +290,7 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public ModifyEndpointRequest withEndpointType(ReplicationEndpointTypeValue endpointType) {
-        setEndpointType(endpointType);
+        this.endpointType = endpointType.toString();
         return this;
     }
 
@@ -541,11 +542,13 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Additional attributes associated with the connection.
+     * Additional attributes associated with the connection. To reset this parameter, pass the empty string ("") as an
+     * argument.
      * </p>
      * 
      * @param extraConnectionAttributes
-     *        Additional attributes associated with the connection.
+     *        Additional attributes associated with the connection. To reset this parameter, pass the empty string ("")
+     *        as an argument.
      */
 
     public void setExtraConnectionAttributes(String extraConnectionAttributes) {
@@ -554,10 +557,12 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Additional attributes associated with the connection.
+     * Additional attributes associated with the connection. To reset this parameter, pass the empty string ("") as an
+     * argument.
      * </p>
      * 
-     * @return Additional attributes associated with the connection.
+     * @return Additional attributes associated with the connection. To reset this parameter, pass the empty string ("")
+     *         as an argument.
      */
 
     public String getExtraConnectionAttributes() {
@@ -566,11 +571,13 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Additional attributes associated with the connection.
+     * Additional attributes associated with the connection. To reset this parameter, pass the empty string ("") as an
+     * argument.
      * </p>
      * 
      * @param extraConnectionAttributes
-     *        Additional attributes associated with the connection.
+     *        Additional attributes associated with the connection. To reset this parameter, pass the empty string ("")
+     *        as an argument.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -717,7 +724,7 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public void setSslMode(DmsSslModeValue sslMode) {
-        this.sslMode = sslMode.toString();
+        withSslMode(sslMode);
     }
 
     /**
@@ -743,7 +750,7 @@ public class ModifyEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public ModifyEndpointRequest withSslMode(DmsSslModeValue sslMode) {
-        setSslMode(sslMode);
+        this.sslMode = sslMode.toString();
         return this;
     }
 

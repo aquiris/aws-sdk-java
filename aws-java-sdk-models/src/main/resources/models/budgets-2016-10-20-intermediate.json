@@ -13,7 +13,12 @@
     "customServiceMetadata" : null,
     "customServiceNameForRequest" : null,
     "customSignerProvider" : null,
-    "deprecatedSuppressions" : null,
+    "deprecatedSuppressions" : [ "EnumSetterOverload" ],
+    "emitLegacyEnumSetterFor" : {
+      "Budget" : [ "TimeUnit", "BudgetType" ],
+      "Notification" : [ "NotificationType", "ComparisonOperator" ],
+      "Subscriber" : [ "SubscriptionType" ]
+    },
     "operationModifiers" : null,
     "operationsWithResponseStreamContentLengthValidation" : null,
     "presignersFqcn" : null,
@@ -581,6 +586,10 @@
         "exceptionName" : "NotFoundException",
         "documentation" : "This exception is thrown if a requested entity is not found. E.g., if a budget id doesn't exist for an account ID.",
         "httpStatusCode" : null
+      }, {
+        "exceptionName" : "DuplicateRecordException",
+        "documentation" : "The exception is thrown when customer tries to create a record (e.g. budget) that already exists.",
+        "httpStatusCode" : null
       } ],
       "hasBlobMemberAsPayload" : false,
       "input" : {
@@ -619,6 +628,10 @@
       }, {
         "exceptionName" : "NotFoundException",
         "documentation" : "This exception is thrown if a requested entity is not found. E.g., if a budget id doesn't exist for an account ID.",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "DuplicateRecordException",
+        "documentation" : "The exception is thrown when customer tries to create a record (e.g. budget) that already exists.",
         "httpStatusCode" : null
       } ],
       "hasBlobMemberAsPayload" : false,
@@ -708,6 +721,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -770,6 +784,7 @@
           "simpleType" : "Spend",
           "variableSetterType" : "Spend"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetLimit \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -912,6 +927,7 @@
                   "simpleType" : "String",
                   "variableSetterType" : "String"
                 },
+                "shouldEmitLegacyEnumSetter" : false,
                 "simple" : true,
                 "unmarshallingType" : null,
                 "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -952,6 +968,7 @@
               "simpleType" : "List<String>",
               "variableSetterType" : "java.util.Collection<String>"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setValue(java.util.Collection)} or {@link #withValue(java.util.Collection)} if you want to override the existing values.</p>\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -986,6 +1003,7 @@
           "simpleType" : "List<String>>",
           "variableSetterType" : "java.util.Map<String,java.util.List<String>>"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param costFilters \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1048,6 +1066,7 @@
           "simpleType" : "CostTypes",
           "variableSetterType" : "CostTypes"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param costTypes \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1110,6 +1129,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param timeUnit \n@return Returns a reference to this object so that method calls can be chained together.\n@see TimeUnit*/",
@@ -1172,6 +1192,7 @@
           "simpleType" : "TimePeriod",
           "variableSetterType" : "TimePeriod"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param timePeriod \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1234,6 +1255,7 @@
           "simpleType" : "CalculatedSpend",
           "variableSetterType" : "CalculatedSpend"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param calculatedSpend \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1296,6 +1318,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetType \n@return Returns a reference to this object so that method calls can be chained together.\n@see BudgetType*/",
@@ -1360,6 +1383,7 @@
             "simpleType" : "Spend",
             "variableSetterType" : "Spend"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetLimit \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1423,6 +1447,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1486,6 +1511,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetType \n@return Returns a reference to this object so that method calls can be chained together.\n@see BudgetType*/",
@@ -1549,6 +1575,7 @@
             "simpleType" : "CalculatedSpend",
             "variableSetterType" : "CalculatedSpend"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param calculatedSpend \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1692,6 +1719,7 @@
                     "simpleType" : "String",
                     "variableSetterType" : "String"
                   },
+                  "shouldEmitLegacyEnumSetter" : false,
                   "simple" : true,
                   "unmarshallingType" : null,
                   "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1732,6 +1760,7 @@
                 "simpleType" : "List<String>",
                 "variableSetterType" : "java.util.Collection<String>"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setValue(java.util.Collection)} or {@link #withValue(java.util.Collection)} if you want to override the existing values.</p>\n@param value \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1766,6 +1795,7 @@
             "simpleType" : "List<String>>",
             "variableSetterType" : "java.util.Map<String,java.util.List<String>>"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param costFilters \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1829,6 +1859,7 @@
             "simpleType" : "CostTypes",
             "variableSetterType" : "CostTypes"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param costTypes \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1892,6 +1923,7 @@
             "simpleType" : "TimePeriod",
             "variableSetterType" : "TimePeriod"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param timePeriod \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1955,6 +1987,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param timeUnit \n@return Returns a reference to this object so that method calls can be chained together.\n@see TimeUnit*/",
@@ -1998,13 +2031,16 @@
         "skipGeneratingUnmarshaller" : false
       },
       "deprecated" : false,
-      "documentation" : "The type of a budget. Can be COST or USAGE.",
+      "documentation" : "The type of a budget. It should be COST, USAGE, or RI_UTILIZATION.",
       "enums" : [ {
         "name" : "USAGE",
         "value" : "USAGE"
       }, {
         "name" : "COST",
         "value" : "COST"
+      }, {
+        "name" : "RI_UTILIZATION",
+        "value" : "RI_UTILIZATION"
       } ],
       "errorCode" : null,
       "hasHeaderMember" : false,
@@ -2043,7 +2079,7 @@
         "skipGeneratingUnmarshaller" : false
       },
       "deprecated" : false,
-      "documentation" : "A structure holds the actual and forecasted spend for a budget.",
+      "documentation" : "A structure that holds the actual and forecasted spend for a budget.",
       "enums" : null,
       "errorCode" : null,
       "hasHeaderMember" : false,
@@ -2101,6 +2137,7 @@
           "simpleType" : "Spend",
           "variableSetterType" : "Spend"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param actualSpend \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2163,6 +2200,7 @@
           "simpleType" : "Spend",
           "variableSetterType" : "Spend"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param forecastedSpend \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2227,6 +2265,7 @@
             "simpleType" : "Spend",
             "variableSetterType" : "Spend"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param actualSpend \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2290,6 +2329,7 @@
             "simpleType" : "Spend",
             "variableSetterType" : "Spend"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param forecastedSpend \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2439,6 +2479,7 @@
           "simpleType" : "Boolean",
           "variableSetterType" : "Boolean"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param includeTax \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2501,6 +2542,7 @@
           "simpleType" : "Boolean",
           "variableSetterType" : "Boolean"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param includeSubscription \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2563,6 +2605,7 @@
           "simpleType" : "Boolean",
           "variableSetterType" : "Boolean"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param useBlended \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2627,6 +2670,7 @@
             "simpleType" : "Boolean",
             "variableSetterType" : "Boolean"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param includeSubscription \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2690,6 +2734,7 @@
             "simpleType" : "Boolean",
             "variableSetterType" : "Boolean"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param includeTax \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2753,6 +2798,7 @@
             "simpleType" : "Boolean",
             "variableSetterType" : "Boolean"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param useBlended \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2861,6 +2907,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2923,6 +2970,7 @@
           "simpleType" : "Budget",
           "variableSetterType" : "Budget"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budget \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3022,6 +3070,7 @@
               "simpleType" : "NotificationWithSubscribers",
               "variableSetterType" : "NotificationWithSubscribers"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3062,6 +3111,7 @@
           "simpleType" : "List<NotificationWithSubscribers>",
           "variableSetterType" : "java.util.Collection<NotificationWithSubscribers>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setNotificationsWithSubscribers(java.util.Collection)} or {@link #withNotificationsWithSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param notificationsWithSubscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3126,6 +3176,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3189,6 +3240,7 @@
             "simpleType" : "Budget",
             "variableSetterType" : "Budget"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budget \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3289,6 +3341,7 @@
                 "simpleType" : "NotificationWithSubscribers",
                 "variableSetterType" : "NotificationWithSubscribers"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3329,6 +3382,7 @@
             "simpleType" : "List<NotificationWithSubscribers>",
             "variableSetterType" : "java.util.Collection<NotificationWithSubscribers>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setNotificationsWithSubscribers(java.util.Collection)} or {@link #withNotificationsWithSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param notificationsWithSubscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3473,6 +3527,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3535,6 +3590,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3597,6 +3653,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3696,6 +3753,7 @@
               "simpleType" : "Subscriber",
               "variableSetterType" : "Subscriber"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3736,6 +3794,7 @@
           "simpleType" : "List<Subscriber>",
           "variableSetterType" : "java.util.Collection<Subscriber>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setSubscribers(java.util.Collection)} or {@link #withSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param subscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3800,6 +3859,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3863,6 +3923,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3926,6 +3987,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4026,6 +4088,7 @@
                 "simpleType" : "Subscriber",
                 "variableSetterType" : "Subscriber"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4066,6 +4129,7 @@
             "simpleType" : "List<Subscriber>",
             "variableSetterType" : "java.util.Collection<Subscriber>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setSubscribers(java.util.Collection)} or {@link #withSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param subscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4210,6 +4274,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4272,6 +4337,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4334,6 +4400,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4396,6 +4463,7 @@
           "simpleType" : "Subscriber",
           "variableSetterType" : "Subscriber"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param subscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4460,6 +4528,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4523,6 +4592,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4586,6 +4656,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4649,6 +4720,7 @@
             "simpleType" : "Subscriber",
             "variableSetterType" : "Subscriber"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param subscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4829,6 +4901,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4891,6 +4964,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4955,6 +5029,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5018,6 +5093,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5162,6 +5238,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5224,6 +5301,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5286,6 +5364,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5350,6 +5429,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5413,6 +5493,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5476,6 +5557,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5620,6 +5702,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5682,6 +5765,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5744,6 +5828,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5806,6 +5891,7 @@
           "simpleType" : "Subscriber",
           "variableSetterType" : "Subscriber"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param subscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5870,6 +5956,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5933,6 +6020,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5996,6 +6084,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6059,6 +6148,7 @@
             "simpleType" : "Subscriber",
             "variableSetterType" : "Subscriber"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param subscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6203,6 +6293,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6265,6 +6356,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6329,6 +6421,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6392,6 +6485,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6490,6 +6584,7 @@
           "simpleType" : "Budget",
           "variableSetterType" : "Budget"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budget \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6554,6 +6649,7 @@
             "simpleType" : "Budget",
             "variableSetterType" : "Budget"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budget \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6662,6 +6758,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6724,6 +6821,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6786,6 +6884,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6850,6 +6949,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6913,6 +7013,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6976,6 +7077,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7111,6 +7213,7 @@
               "simpleType" : "Budget",
               "variableSetterType" : "Budget"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7151,6 +7254,7 @@
           "simpleType" : "List<Budget>",
           "variableSetterType" : "java.util.Collection<Budget>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setBudgets(java.util.Collection)} or {@link #withBudgets(java.util.Collection)} if you want to override the existing values.</p>\n@param budgets \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7213,6 +7317,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7314,6 +7419,7 @@
                 "simpleType" : "Budget",
                 "variableSetterType" : "Budget"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7354,6 +7460,7 @@
             "simpleType" : "List<Budget>",
             "variableSetterType" : "java.util.Collection<Budget>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setBudgets(java.util.Collection)} or {@link #withBudgets(java.util.Collection)} if you want to override the existing values.</p>\n@param budgets \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7417,6 +7524,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7525,6 +7633,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7587,6 +7696,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7649,6 +7759,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7711,6 +7822,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7775,6 +7887,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7838,6 +7951,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7901,6 +8015,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7964,6 +8079,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8099,6 +8215,7 @@
               "simpleType" : "Notification",
               "variableSetterType" : "Notification"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8139,6 +8256,7 @@
           "simpleType" : "List<Notification>",
           "variableSetterType" : "java.util.Collection<Notification>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setNotifications(java.util.Collection)} or {@link #withNotifications(java.util.Collection)} if you want to override the existing values.</p>\n@param notifications \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8201,6 +8319,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8265,6 +8384,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8365,6 +8485,7 @@
                 "simpleType" : "Notification",
                 "variableSetterType" : "Notification"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8405,6 +8526,7 @@
             "simpleType" : "List<Notification>",
             "variableSetterType" : "java.util.Collection<Notification>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setNotifications(java.util.Collection)} or {@link #withNotifications(java.util.Collection)} if you want to override the existing values.</p>\n@param notifications \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8513,6 +8635,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8575,6 +8698,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8637,6 +8761,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8699,6 +8824,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8761,6 +8887,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8825,6 +8952,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8888,6 +9016,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8951,6 +9080,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9014,6 +9144,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9077,6 +9208,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9212,6 +9344,7 @@
               "simpleType" : "Subscriber",
               "variableSetterType" : "Subscriber"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9252,6 +9385,7 @@
           "simpleType" : "List<Subscriber>",
           "variableSetterType" : "java.util.Collection<Subscriber>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setSubscribers(java.util.Collection)} or {@link #withSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param subscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9314,6 +9448,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9378,6 +9513,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9478,6 +9614,7 @@
                 "simpleType" : "Subscriber",
                 "variableSetterType" : "Subscriber"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9518,6 +9655,7 @@
             "simpleType" : "List<Subscriber>",
             "variableSetterType" : "java.util.Collection<Subscriber>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setSubscribers(java.util.Collection)} or {@link #withSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param subscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9835,6 +9973,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notificationType \n@return Returns a reference to this object so that method calls can be chained together.\n@see NotificationType*/",
@@ -9897,6 +10036,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param comparisonOperator \n@return Returns a reference to this object so that method calls can be chained together.\n@see ComparisonOperator*/",
@@ -9959,6 +10099,7 @@
           "simpleType" : "Double",
           "variableSetterType" : "Double"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param threshold \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9969,6 +10110,69 @@
           "documentation" : "",
           "simpleType" : "Double",
           "variableSetterType" : "Double"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "ThresholdType",
+        "c2jShape" : "ThresholdType",
+        "deprecated" : false,
+        "documentation" : "",
+        "enumType" : "ThresholdType",
+        "fluentSetterDocumentation" : "/**\n@param thresholdType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ThresholdType*/",
+        "fluentSetterMethodName" : "withThresholdType",
+        "getterDocumentation" : "/**\n@return \n@see ThresholdType*/",
+        "getterMethodName" : "getThresholdType",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "ThresholdType",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "ThresholdType",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "ThresholdType",
+        "setterDocumentation" : "/**\n@param thresholdType \n@see ThresholdType*/",
+        "setterMethodName" : "setThresholdType",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "thresholdType",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : true,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**\n@param thresholdType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ThresholdType*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "thresholdType",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
         },
         "xmlNameSpaceUri" : null
       } ],
@@ -10023,6 +10227,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param comparisonOperator \n@return Returns a reference to this object so that method calls can be chained together.\n@see ComparisonOperator*/",
@@ -10086,6 +10291,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notificationType \n@return Returns a reference to this object so that method calls can be chained together.\n@see NotificationType*/",
@@ -10149,6 +10355,7 @@
             "simpleType" : "Double",
             "variableSetterType" : "Double"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param threshold \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10159,6 +10366,70 @@
             "documentation" : "",
             "simpleType" : "Double",
             "variableSetterType" : "Double"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "ThresholdType" : {
+          "c2jName" : "ThresholdType",
+          "c2jShape" : "ThresholdType",
+          "deprecated" : false,
+          "documentation" : "",
+          "enumType" : "ThresholdType",
+          "fluentSetterDocumentation" : "/**\n@param thresholdType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ThresholdType*/",
+          "fluentSetterMethodName" : "withThresholdType",
+          "getterDocumentation" : "/**\n@return \n@see ThresholdType*/",
+          "getterMethodName" : "getThresholdType",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "ThresholdType",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "ThresholdType",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "ThresholdType",
+          "setterDocumentation" : "/**\n@param thresholdType \n@see ThresholdType*/",
+          "setterMethodName" : "setThresholdType",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "thresholdType",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : true,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**\n@param thresholdType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ThresholdType*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "thresholdType",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
           },
           "xmlNameSpaceUri" : null
         }
@@ -10295,6 +10566,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10394,6 +10666,7 @@
               "simpleType" : "Subscriber",
               "variableSetterType" : "Subscriber"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10434,6 +10707,7 @@
           "simpleType" : "List<Subscriber>",
           "variableSetterType" : "java.util.Collection<Subscriber>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setSubscribers(java.util.Collection)} or {@link #withSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param subscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10498,6 +10772,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10598,6 +10873,7 @@
                 "simpleType" : "Subscriber",
                 "variableSetterType" : "Subscriber"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10638,6 +10914,7 @@
             "simpleType" : "List<Subscriber>",
             "variableSetterType" : "java.util.Collection<Subscriber>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setSubscribers(java.util.Collection)} or {@link #withSubscribers(java.util.Collection)} if you want to override the existing values.</p>\n@param subscribers \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10681,7 +10958,7 @@
         "skipGeneratingUnmarshaller" : false
       },
       "deprecated" : false,
-      "documentation" : "A structure represent either a cost spend or usage spend. Contains an amount and a unit.",
+      "documentation" : "A structure that represents either a cost spend or usage spend. Contains an amount and a unit.",
       "enums" : null,
       "errorCode" : null,
       "hasHeaderMember" : false,
@@ -10739,6 +11016,7 @@
           "simpleType" : "BigDecimal",
           "variableSetterType" : "java.math.BigDecimal"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param amount \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10753,7 +11031,7 @@
         "xmlNameSpaceUri" : null
       }, {
         "c2jName" : "Unit",
-        "c2jShape" : "GenericString",
+        "c2jShape" : "UnitValue",
         "deprecated" : false,
         "documentation" : "",
         "enumType" : null,
@@ -10801,6 +11079,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param unit \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10865,6 +11144,7 @@
             "simpleType" : "BigDecimal",
             "variableSetterType" : "java.math.BigDecimal"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param amount \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10880,7 +11160,7 @@
         },
         "Unit" : {
           "c2jName" : "Unit",
-          "c2jShape" : "GenericString",
+          "c2jShape" : "UnitValue",
           "deprecated" : false,
           "documentation" : "",
           "enumType" : null,
@@ -10928,6 +11208,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param unit \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11029,6 +11310,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param subscriptionType \n@return Returns a reference to this object so that method calls can be chained together.\n@see SubscriptionType*/",
@@ -11091,6 +11373,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param address \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11155,6 +11438,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param address \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11218,6 +11502,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param subscriptionType \n@return Returns a reference to this object so that method calls can be chained together.\n@see SubscriptionType*/",
@@ -11297,6 +11582,51 @@
       },
       "wrapper" : false
     },
+    "ThresholdType" : {
+      "c2jName" : "ThresholdType",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "The type of threshold for a notification. It can be PERCENTAGE or ABSOLUTE_VALUE.",
+      "enums" : [ {
+        "name" : "PERCENTAGE",
+        "value" : "PERCENTAGE"
+      }, {
+        "name" : "ABSOLUTE_VALUE",
+        "value" : "ABSOLUTE_VALUE"
+      } ],
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : null,
+      "membersAsMap" : { },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "ThresholdType",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : {
+        "flattened" : false,
+        "resultWrapper" : null
+      },
+      "variable" : {
+        "variableDeclarationType" : "ThresholdType",
+        "variableName" : "thresholdType",
+        "variableType" : "ThresholdType",
+        "documentation" : null,
+        "simpleType" : "ThresholdType",
+        "variableSetterType" : "ThresholdType"
+      },
+      "wrapper" : false
+    },
     "TimePeriod" : {
       "c2jName" : "TimePeriod",
       "customization" : {
@@ -11306,7 +11636,7 @@
         "skipGeneratingUnmarshaller" : false
       },
       "deprecated" : false,
-      "documentation" : "A time period indicated the start date and end date of a budget.",
+      "documentation" : "A time period indicating the start date and end date of a budget.",
       "enums" : null,
       "errorCode" : null,
       "hasHeaderMember" : false,
@@ -11364,6 +11694,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param start \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11426,6 +11757,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param end \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11490,6 +11822,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param end \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11553,6 +11886,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param start \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11596,8 +11930,11 @@
         "skipGeneratingUnmarshaller" : false
       },
       "deprecated" : false,
-      "documentation" : "The time unit of the budget. e.g. weekly, monthly, etc.",
+      "documentation" : "The time unit of the budget. e.g. MONTHLY, QUARTERLY, etc.",
       "enums" : [ {
+        "name" : "DAILY",
+        "value" : "DAILY"
+      }, {
         "name" : "MONTHLY",
         "value" : "MONTHLY"
       }, {
@@ -11709,6 +12046,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11771,6 +12109,7 @@
           "simpleType" : "Budget",
           "variableSetterType" : "Budget"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param newBudget \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11835,6 +12174,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11898,6 +12238,7 @@
             "simpleType" : "Budget",
             "variableSetterType" : "Budget"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param newBudget \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12042,6 +12383,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12104,6 +12446,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12166,6 +12509,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param oldNotification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12228,6 +12572,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param newNotification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12292,6 +12637,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12355,6 +12701,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12418,6 +12765,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param newNotification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12481,6 +12829,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param oldNotification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12625,6 +12974,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12687,6 +13037,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12749,6 +13100,7 @@
           "simpleType" : "Notification",
           "variableSetterType" : "Notification"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12811,6 +13163,7 @@
           "simpleType" : "Subscriber",
           "variableSetterType" : "Subscriber"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param oldSubscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12873,6 +13226,7 @@
           "simpleType" : "Subscriber",
           "variableSetterType" : "Subscriber"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param newSubscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12937,6 +13291,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param accountId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13000,6 +13355,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param budgetName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13063,6 +13419,7 @@
             "simpleType" : "Subscriber",
             "variableSetterType" : "Subscriber"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param newSubscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13126,6 +13483,7 @@
             "simpleType" : "Notification",
             "variableSetterType" : "Notification"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param notification \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13189,6 +13547,7 @@
             "simpleType" : "Subscriber",
             "variableSetterType" : "Subscriber"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param oldSubscriber \n@return Returns a reference to this object so that method calls can be chained together.*/",

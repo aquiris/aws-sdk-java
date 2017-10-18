@@ -266,11 +266,21 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
 
     private void init() {
         exceptionUnmarshallers.add(new InvalidChangeSetStatusExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new InsufficientCapabilitiesExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new AlreadyExistsExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new StackSetNotEmptyExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InvalidOperationExceptionUnmarshaller());
         exceptionUnmarshallers.add(new TokenAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ChangeSetNotFoundExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new NameAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new LimitExceededExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new OperationNotFoundExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new StackSetNotFoundExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InsufficientCapabilitiesExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new StackInstanceNotFoundExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new AlreadyExistsExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new OperationInProgressExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new StaleRequestExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new OperationIdAlreadyExistsExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new CreatedButModifiedExceptionUnmarshaller());
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller(com.amazonaws.services.cloudformation.model.AmazonCloudFormationException.class));
 
         setServiceNameIntern(DEFAULT_SIGNING_NAME);
@@ -428,11 +438,15 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
      *        The input for the <a>CreateChangeSet</a> action.
      * @return Result of the CreateChangeSet operation returned by the service.
      * @throws AlreadyExistsException
-     *         Resource with the name requested already exists.
+     *         The resource with the name requested already exists.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @throws LimitExceededException
-     *         Quota for the resource has already been reached.
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
      * @sample AmazonCloudFormation.CreateChangeSet
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet" target="_top">AWS
      *      API Documentation</a>
@@ -484,13 +498,17 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
      *        The input for <a>CreateStack</a> action.
      * @return Result of the CreateStack operation returned by the service.
      * @throws LimitExceededException
-     *         Quota for the resource has already been reached.
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
      * @throws AlreadyExistsException
-     *         Resource with the name requested already exists.
+     *         The resource with the name requested already exists.
      * @throws TokenAlreadyExistsException
      *         A client request token already exists.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @sample AmazonCloudFormation.CreateStack
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStack" target="_top">AWS API
      *      Documentation</a>
@@ -533,6 +551,131 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
 
     /**
      * <p>
+     * Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a
+     * stack in a specific account and region. <code>Accounts</code> and <code>Regions</code> are required
+     * parameters—you must specify at least one account and one region.
+     * </p>
+     * 
+     * @param createStackInstancesRequest
+     * @return Result of the CreateStackInstances operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @throws OperationIdAlreadyExistsException
+     *         The specified operation ID already exists.
+     * @throws StaleRequestException
+     *         Another operation has been performed on this stack set since the specified operation was performed.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @throws LimitExceededException
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
+     * @sample AmazonCloudFormation.CreateStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateStackInstancesResult createStackInstances(CreateStackInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateStackInstances(request);
+    }
+
+    @SdkInternalApi
+    final CreateStackInstancesResult executeCreateStackInstances(CreateStackInstancesRequest createStackInstancesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createStackInstancesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateStackInstancesRequest> request = null;
+        Response<CreateStackInstancesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateStackInstancesRequestMarshaller().marshall(super.beforeMarshalling(createStackInstancesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateStackInstancesResult> responseHandler = new StaxResponseHandler<CreateStackInstancesResult>(
+                    new CreateStackInstancesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a stack set.
+     * </p>
+     * 
+     * @param createStackSetRequest
+     * @return Result of the CreateStackSet operation returned by the service.
+     * @throws NameAlreadyExistsException
+     *         The specified name is already in use.
+     * @throws CreatedButModifiedException
+     *         The specified resource exists, but has been changed.
+     * @throws LimitExceededException
+     *         The quota for the resource has already been reached.</p>
+     *         <p>
+     *         For information on stack set limitations, see <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html"
+     *         >Limitations of StackSets</a>.
+     * @sample AmazonCloudFormation.CreateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public CreateStackSetResult createStackSet(CreateStackSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateStackSet(request);
+    }
+
+    @SdkInternalApi
+    final CreateStackSetResult executeCreateStackSet(CreateStackSetRequest createStackSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createStackSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateStackSetRequest> request = null;
+        Response<CreateStackSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateStackSetRequestMarshaller().marshall(super.beforeMarshalling(createStackSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateStackSetResult> responseHandler = new StaxResponseHandler<CreateStackSetResult>(
+                    new CreateStackSetResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.
      * </p>
      * <p>
@@ -543,8 +686,8 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
      *        The input for the <a>DeleteChangeSet</a> action.
      * @return Result of the DeleteChangeSet operation returned by the service.
      * @throws InvalidChangeSetStatusException
-     *         The specified change set cannot be used to update the stack. For example, the change set status might be
-     *         <code>CREATE_IN_PROGRESS</code> or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
+     *         The specified change set can't be used to update the stack. For example, the change set status might be
+     *         <code>CREATE_IN_PROGRESS</code>, or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
      * @sample AmazonCloudFormation.DeleteChangeSet
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteChangeSet" target="_top">AWS
      *      API Documentation</a>
@@ -627,6 +770,120 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
             }
 
             StaxResponseHandler<DeleteStackResult> responseHandler = new StaxResponseHandler<DeleteStackResult>(new DeleteStackResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes stack instances for the specified accounts, in the specified regions.
+     * </p>
+     * 
+     * @param deleteStackInstancesRequest
+     * @return Result of the DeleteStackInstances operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @throws OperationIdAlreadyExistsException
+     *         The specified operation ID already exists.
+     * @throws StaleRequestException
+     *         Another operation has been performed on this stack set since the specified operation was performed.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @sample AmazonCloudFormation.DeleteStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteStackInstancesResult deleteStackInstances(DeleteStackInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteStackInstances(request);
+    }
+
+    @SdkInternalApi
+    final DeleteStackInstancesResult executeDeleteStackInstances(DeleteStackInstancesRequest deleteStackInstancesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteStackInstancesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteStackInstancesRequest> request = null;
+        Response<DeleteStackInstancesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteStackInstancesRequestMarshaller().marshall(super.beforeMarshalling(deleteStackInstancesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteStackInstancesResult> responseHandler = new StaxResponseHandler<DeleteStackInstancesResult>(
+                    new DeleteStackInstancesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For
+     * more information about how to do this, see <a>DeleteStackInstances</a>.
+     * </p>
+     * 
+     * @param deleteStackSetRequest
+     * @return Result of the DeleteStackSet operation returned by the service.
+     * @throws StackSetNotEmptyException
+     *         You can't yet delete this stack set, because it still contains one or more stack instances. Delete all
+     *         stack instances from the stack set before deleting the stack set.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @sample AmazonCloudFormation.DeleteStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeleteStackSetResult deleteStackSet(DeleteStackSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteStackSet(request);
+    }
+
+    @SdkInternalApi
+    final DeleteStackSetResult executeDeleteStackSet(DeleteStackSetRequest deleteStackSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteStackSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteStackSetRequest> request = null;
+        Response<DeleteStackSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteStackSetRequestMarshaller().marshall(super.beforeMarshalling(deleteStackSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteStackSetResult> responseHandler = new StaxResponseHandler<DeleteStackSetResult>(
+                    new DeleteStackSetResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -802,6 +1059,61 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
 
     /**
      * <p>
+     * Returns the stack instance that's associated with the specified stack set, AWS account, and region.
+     * </p>
+     * <p>
+     * For a list of stack instances that are associated with a specific stack set, use <a>ListStackInstances</a>.
+     * </p>
+     * 
+     * @param describeStackInstanceRequest
+     * @return Result of the DescribeStackInstance operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws StackInstanceNotFoundException
+     *         The specified stack instance doesn't exist.
+     * @sample AmazonCloudFormation.DescribeStackInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackInstance"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeStackInstanceResult describeStackInstance(DescribeStackInstanceRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeStackInstance(request);
+    }
+
+    @SdkInternalApi
+    final DescribeStackInstanceResult executeDescribeStackInstance(DescribeStackInstanceRequest describeStackInstanceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeStackInstanceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeStackInstanceRequest> request = null;
+        Response<DescribeStackInstanceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeStackInstanceRequestMarshaller().marshall(super.beforeMarshalling(describeStackInstanceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeStackInstanceResult> responseHandler = new StaxResponseHandler<DescribeStackInstanceResult>(
+                    new DescribeStackInstanceResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns a description of the specified resource in the specified stack.
      * </p>
      * <p>
@@ -916,6 +1228,108 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
 
             StaxResponseHandler<DescribeStackResourcesResult> responseHandler = new StaxResponseHandler<DescribeStackResourcesResult>(
                     new DescribeStackResourcesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set.
+     * </p>
+     * 
+     * @param describeStackSetRequest
+     * @return Result of the DescribeStackSet operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @sample AmazonCloudFormation.DescribeStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeStackSetResult describeStackSet(DescribeStackSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeStackSet(request);
+    }
+
+    @SdkInternalApi
+    final DescribeStackSetResult executeDescribeStackSet(DescribeStackSetRequest describeStackSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeStackSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeStackSetRequest> request = null;
+        Response<DescribeStackSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeStackSetRequestMarshaller().marshall(super.beforeMarshalling(describeStackSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeStackSetResult> responseHandler = new StaxResponseHandler<DescribeStackSetResult>(
+                    new DescribeStackSetResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns the description of the specified stack set operation.
+     * </p>
+     * 
+     * @param describeStackSetOperationRequest
+     * @return Result of the DescribeStackSetOperation operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationNotFoundException
+     *         The specified ID refers to an operation that doesn't exist.
+     * @sample AmazonCloudFormation.DescribeStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeStackSetOperationResult describeStackSetOperation(DescribeStackSetOperationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeStackSetOperation(request);
+    }
+
+    @SdkInternalApi
+    final DescribeStackSetOperationResult executeDescribeStackSetOperation(DescribeStackSetOperationRequest describeStackSetOperationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeStackSetOperationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeStackSetOperationRequest> request = null;
+        Response<DescribeStackSetOperationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeStackSetOperationRequestMarshaller().marshall(super.beforeMarshalling(describeStackSetOperationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeStackSetOperationResult> responseHandler = new StaxResponseHandler<DescribeStackSetOperationResult>(
+                    new DescribeStackSetOperationResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1060,13 +1474,13 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
      *        The input for the <a>ExecuteChangeSet</a> action.
      * @return Result of the ExecuteChangeSet operation returned by the service.
      * @throws InvalidChangeSetStatusException
-     *         The specified change set cannot be used to update the stack. For example, the change set status might be
-     *         <code>CREATE_IN_PROGRESS</code> or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
+     *         The specified change set can't be used to update the stack. For example, the change set status might be
+     *         <code>CREATE_IN_PROGRESS</code>, or the stack status might be <code>UPDATE_IN_PROGRESS</code>.
      * @throws ChangeSetNotFoundException
      *         The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the
      *         <code>ListChangeSets</code> action.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @throws TokenAlreadyExistsException
      *         A client request token already exists.
      * @sample AmazonCloudFormation.ExecuteChangeSet
@@ -1222,11 +1636,11 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
      * <p>
      * Returns information about a new or existing template. The <code>GetTemplateSummary</code> action is useful for
      * viewing parameter information, such as default parameter values and parameter types, before you create or update
-     * a stack.
+     * a stack or stack set.
      * </p>
      * <p>
      * You can use the <code>GetTemplateSummary</code> action when you submit a template, or you can get template
-     * information for a running or deleted stack.
+     * information for a stack set, or a running or deleted stack.
      * </p>
      * <p>
      * For deleted stacks, <code>GetTemplateSummary</code> returns the template information for up to 90 days after the
@@ -1236,6 +1650,8 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
      * @param getTemplateSummaryRequest
      *        The input for the <a>GetTemplateSummary</a> action.
      * @return Result of the GetTemplateSummary operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
      * @sample AmazonCloudFormation.GetTemplateSummary
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplateSummary"
      *      target="_top">AWS API Documentation</a>
@@ -1443,6 +1859,57 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
 
     /**
      * <p>
+     * Returns summary information about stack instances that are associated with the specified stack set. You can
+     * filter for stack instances that are associated with a specific AWS account name or region.
+     * </p>
+     * 
+     * @param listStackInstancesRequest
+     * @return Result of the ListStackInstances operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @sample AmazonCloudFormation.ListStackInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListStackInstancesResult listStackInstances(ListStackInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListStackInstances(request);
+    }
+
+    @SdkInternalApi
+    final ListStackInstancesResult executeListStackInstances(ListStackInstancesRequest listStackInstancesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listStackInstancesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListStackInstancesRequest> request = null;
+        Response<ListStackInstancesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListStackInstancesRequestMarshaller().marshall(super.beforeMarshalling(listStackInstancesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListStackInstancesResult> responseHandler = new StaxResponseHandler<ListStackInstancesResult>(
+                    new ListStackInstancesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns descriptions of all resources of the specified stack.
      * </p>
      * <p>
@@ -1484,6 +1951,155 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
 
             StaxResponseHandler<ListStackResourcesResult> responseHandler = new StaxResponseHandler<ListStackResourcesResult>(
                     new ListStackResourcesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns summary information about the results of a stack set operation.
+     * </p>
+     * 
+     * @param listStackSetOperationResultsRequest
+     * @return Result of the ListStackSetOperationResults operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationNotFoundException
+     *         The specified ID refers to an operation that doesn't exist.
+     * @sample AmazonCloudFormation.ListStackSetOperationResults
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperationResults"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListStackSetOperationResultsResult listStackSetOperationResults(ListStackSetOperationResultsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListStackSetOperationResults(request);
+    }
+
+    @SdkInternalApi
+    final ListStackSetOperationResultsResult executeListStackSetOperationResults(ListStackSetOperationResultsRequest listStackSetOperationResultsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listStackSetOperationResultsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListStackSetOperationResultsRequest> request = null;
+        Response<ListStackSetOperationResultsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListStackSetOperationResultsRequestMarshaller().marshall(super.beforeMarshalling(listStackSetOperationResultsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListStackSetOperationResultsResult> responseHandler = new StaxResponseHandler<ListStackSetOperationResultsResult>(
+                    new ListStackSetOperationResultsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns summary information about operations performed on a stack set.
+     * </p>
+     * 
+     * @param listStackSetOperationsRequest
+     * @return Result of the ListStackSetOperations operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @sample AmazonCloudFormation.ListStackSetOperations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListStackSetOperationsResult listStackSetOperations(ListStackSetOperationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListStackSetOperations(request);
+    }
+
+    @SdkInternalApi
+    final ListStackSetOperationsResult executeListStackSetOperations(ListStackSetOperationsRequest listStackSetOperationsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listStackSetOperationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListStackSetOperationsRequest> request = null;
+        Response<ListStackSetOperationsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListStackSetOperationsRequestMarshaller().marshall(super.beforeMarshalling(listStackSetOperationsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListStackSetOperationsResult> responseHandler = new StaxResponseHandler<ListStackSetOperationsResult>(
+                    new ListStackSetOperationsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns summary information about stack sets that are associated with the user.
+     * </p>
+     * 
+     * @param listStackSetsRequest
+     * @return Result of the ListStackSets operation returned by the service.
+     * @sample AmazonCloudFormation.ListStackSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSets" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ListStackSetsResult listStackSets(ListStackSetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListStackSets(request);
+    }
+
+    @SdkInternalApi
+    final ListStackSetsResult executeListStackSets(ListStackSetsRequest listStackSetsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listStackSetsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListStackSetsRequest> request = null;
+        Response<ListStackSetsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListStackSetsRequestMarshaller().marshall(super.beforeMarshalling(listStackSetsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListStackSetsResult> responseHandler = new StaxResponseHandler<ListStackSetsResult>(new ListStackSetsResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1654,6 +2270,60 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
 
     /**
      * <p>
+     * Stops an in-progress operation on a stack set and its associated stack instances.
+     * </p>
+     * 
+     * @param stopStackSetOperationRequest
+     * @return Result of the StopStackSetOperation operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationNotFoundException
+     *         The specified ID refers to an operation that doesn't exist.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @sample AmazonCloudFormation.StopStackSetOperation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/StopStackSetOperation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public StopStackSetOperationResult stopStackSetOperation(StopStackSetOperationRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopStackSetOperation(request);
+    }
+
+    @SdkInternalApi
+    final StopStackSetOperationResult executeStopStackSetOperation(StopStackSetOperationRequest stopStackSetOperationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(stopStackSetOperationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<StopStackSetOperationRequest> request = null;
+        Response<StopStackSetOperationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new StopStackSetOperationRequestMarshaller().marshall(super.beforeMarshalling(stopStackSetOperationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<StopStackSetOperationResult> responseHandler = new StaxResponseHandler<StopStackSetOperationResult>(
+                    new StopStackSetOperationResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You
      * can check the status of the stack via the <a>DescribeStacks</a> action.
      * </p>
@@ -1671,7 +2341,7 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
      *        The input for an <a>UpdateStack</a> action.
      * @return Result of the UpdateStack operation returned by the service.
      * @throws InsufficientCapabilitiesException
-     *         The template contains resources with capabilities that were not specified in the Capabilities parameter.
+     *         The template contains resources with capabilities that weren't specified in the Capabilities parameter.
      * @throws TokenAlreadyExistsException
      *         A client request token already exists.
      * @sample AmazonCloudFormation.UpdateStack
@@ -1704,6 +2374,125 @@ public class AmazonCloudFormationClient extends AmazonWebServiceClient implement
             }
 
             StaxResponseHandler<UpdateStackResult> responseHandler = new StaxResponseHandler<UpdateStackResult>(new UpdateStackResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates the stack set and <i>all</i> associated stack instances.
+     * </p>
+     * <p>
+     * Even if the stack set operation created by updating the stack set fails (completely or partially, below or above
+     * a specified failure tolerance), the stack set is updated with your changes. Subsequent
+     * <a>CreateStackInstances</a> calls on the specified stack set use the updated stack set.
+     * </p>
+     * 
+     * @param updateStackSetRequest
+     * @return Result of the UpdateStackSet operation returned by the service.
+     * @throws StackSetNotFoundException
+     *         The specified stack set doesn't exist.
+     * @throws OperationInProgressException
+     *         Another operation is currently in progress for this stack set. Only one operation can be performed for a
+     *         stack set at a given time.
+     * @throws OperationIdAlreadyExistsException
+     *         The specified operation ID already exists.
+     * @throws StaleRequestException
+     *         Another operation has been performed on this stack set since the specified operation was performed.
+     * @throws InvalidOperationException
+     *         The specified operation isn't valid.
+     * @sample AmazonCloudFormation.UpdateStackSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStackSet" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public UpdateStackSetResult updateStackSet(UpdateStackSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateStackSet(request);
+    }
+
+    @SdkInternalApi
+    final UpdateStackSetResult executeUpdateStackSet(UpdateStackSetRequest updateStackSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateStackSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateStackSetRequest> request = null;
+        Response<UpdateStackSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateStackSetRequestMarshaller().marshall(super.beforeMarshalling(updateStackSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<UpdateStackSetResult> responseHandler = new StaxResponseHandler<UpdateStackSetResult>(
+                    new UpdateStackSetResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates termination protection for the specified stack. If a user attempts to delete a stack with termination
+     * protection enabled, the operation fails and the stack remains unchanged. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a
+     * Stack From Being Deleted</a> in the <i>AWS CloudFormation User Guide</i>.
+     * </p>
+     * <p>
+     * For <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested
+     * stacks</a>, termination protection is set on the root stack and cannot be changed directly on the nested stack.
+     * </p>
+     * 
+     * @param updateTerminationProtectionRequest
+     * @return Result of the UpdateTerminationProtection operation returned by the service.
+     * @sample AmazonCloudFormation.UpdateTerminationProtection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateTerminationProtection"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateTerminationProtectionResult updateTerminationProtection(UpdateTerminationProtectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateTerminationProtection(request);
+    }
+
+    @SdkInternalApi
+    final UpdateTerminationProtectionResult executeUpdateTerminationProtection(UpdateTerminationProtectionRequest updateTerminationProtectionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateTerminationProtectionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateTerminationProtectionRequest> request = null;
+        Response<UpdateTerminationProtectionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateTerminationProtectionRequestMarshaller().marshall(super.beforeMarshalling(updateTerminationProtectionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<UpdateTerminationProtectionResult> responseHandler = new StaxResponseHandler<UpdateTerminationProtectionResult>(
+                    new UpdateTerminationProtectionResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

@@ -50,7 +50,7 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined
-     * in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     * in the slots. For more information, see <a>how-it-works</a>.
      * </p>
      */
     private java.util.List<Slot> slots;
@@ -96,24 +96,39 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private Statement rejectionStatement;
     /**
      * <p>
-     * A user prompt for additional activity after an intent is fulfilled. For example, after the
-     * <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you might
-     * prompt the user to find if they want to order a drink (assuming that you have defined an <code>OrderDrink</code>
-     * intent in your bot).
-     * </p>
-     * <note>
-     * <p>
-     * The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only
-     * one. For example, your bot may not solicit both the following:
+     * Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after the
+     * <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.
      * </p>
      * <p>
-     * Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to order a
-     * drink or a dessert?"
+     * The action that Amazon Lex takes depends on the user's response, as follows:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed."
+     * If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
      * </p>
-     * </note>
+     * </li>
+     * <li>
+     * <p>
+     * if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation for the
+     * intent.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If it doesn't recognize the utterance it repeats the follow-up prompt again.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually exclusive. You
+     * can specify only one.
+     * </p>
      */
     private FollowUpPrompt followUpPrompt;
     /**
@@ -148,8 +163,8 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private CodeHook dialogCodeHook;
     /**
      * <p>
-     * Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza
-     * order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
+     * Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a
+     * pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
      * </p>
      * <p>
      * You might configure Amazon Lex to return all of the intent information to the client application, or direct it to
@@ -322,11 +337,11 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined
-     * in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     * in the slots. For more information, see <a>how-it-works</a>.
      * </p>
      * 
      * @return An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts
-     *         defined in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     *         defined in the slots. For more information, see <a>how-it-works</a>.
      */
 
     public java.util.List<Slot> getSlots() {
@@ -336,12 +351,12 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined
-     * in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     * in the slots. For more information, see <a>how-it-works</a>.
      * </p>
      * 
      * @param slots
      *        An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts
-     *        defined in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     *        defined in the slots. For more information, see <a>how-it-works</a>.
      */
 
     public void setSlots(java.util.Collection<Slot> slots) {
@@ -356,7 +371,7 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined
-     * in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     * in the slots. For more information, see <a>how-it-works</a>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -366,7 +381,7 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * 
      * @param slots
      *        An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts
-     *        defined in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     *        defined in the slots. For more information, see <a>how-it-works</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -383,12 +398,12 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined
-     * in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     * in the slots. For more information, see <a>how-it-works</a>.
      * </p>
      * 
      * @param slots
      *        An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts
-     *        defined in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;.
+     *        defined in the slots. For more information, see <a>how-it-works</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -679,41 +694,72 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * A user prompt for additional activity after an intent is fulfilled. For example, after the
-     * <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you might
-     * prompt the user to find if they want to order a drink (assuming that you have defined an <code>OrderDrink</code>
-     * intent in your bot).
-     * </p>
-     * <note>
-     * <p>
-     * The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only
-     * one. For example, your bot may not solicit both the following:
+     * Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after the
+     * <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.
      * </p>
      * <p>
-     * Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to order a
-     * drink or a dessert?"
+     * The action that Amazon Lex takes depends on the user's response, as follows:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed."
+     * If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
      * </p>
-     * </note>
+     * </li>
+     * <li>
+     * <p>
+     * if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation for the
+     * intent.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If it doesn't recognize the utterance it repeats the follow-up prompt again.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually exclusive. You
+     * can specify only one.
+     * </p>
      * 
      * @param followUpPrompt
-     *        A user prompt for additional activity after an intent is fulfilled. For example, after the
-     *        <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you
-     *        might prompt the user to find if they want to order a drink (assuming that you have defined an
-     *        <code>OrderDrink</code> intent in your bot).</p> <note>
+     *        Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after
+     *        the <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.</p>
      *        <p>
-     *        The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can
-     *        specify only one. For example, your bot may not solicit both the following:
+     *        The action that Amazon Lex takes depends on the user's response, as follows:
      *        </p>
+     *        <ul>
+     *        <li>
      *        <p>
-     *        Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to
-     *        order a drink or a dessert?"
+     *        If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
-     *        Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed."
+     *        if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation
+     *        for the intent.
      *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If it doesn't recognize the utterance it repeats the follow-up prompt again.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually
+     *        exclusive. You can specify only one.
      */
 
     public void setFollowUpPrompt(FollowUpPrompt followUpPrompt) {
@@ -722,40 +768,71 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * A user prompt for additional activity after an intent is fulfilled. For example, after the
-     * <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you might
-     * prompt the user to find if they want to order a drink (assuming that you have defined an <code>OrderDrink</code>
-     * intent in your bot).
-     * </p>
-     * <note>
-     * <p>
-     * The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only
-     * one. For example, your bot may not solicit both the following:
+     * Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after the
+     * <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.
      * </p>
      * <p>
-     * Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to order a
-     * drink or a dessert?"
+     * The action that Amazon Lex takes depends on the user's response, as follows:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed."
+     * If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
      * </p>
-     * </note>
+     * </li>
+     * <li>
+     * <p>
+     * if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation for the
+     * intent.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If it doesn't recognize the utterance it repeats the follow-up prompt again.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually exclusive. You
+     * can specify only one.
+     * </p>
      * 
-     * @return A user prompt for additional activity after an intent is fulfilled. For example, after the
-     *         <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you
-     *         might prompt the user to find if they want to order a drink (assuming that you have defined an
-     *         <code>OrderDrink</code> intent in your bot).</p> <note>
+     * @return Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after
+     *         the <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.</p>
      *         <p>
-     *         The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can
-     *         specify only one. For example, your bot may not solicit both the following:
+     *         The action that Amazon Lex takes depends on the user's response, as follows:
      *         </p>
+     *         <ul>
+     *         <li>
      *         <p>
-     *         Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to
-     *         order a drink or a dessert?"
+     *         If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
      *         </p>
+     *         </li>
+     *         <li>
      *         <p>
-     *         Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed."
+     *         if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation
+     *         for the intent.
      *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If it doesn't recognize the utterance it repeats the follow-up prompt again.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually
+     *         exclusive. You can specify only one.
      */
 
     public FollowUpPrompt getFollowUpPrompt() {
@@ -764,41 +841,72 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * A user prompt for additional activity after an intent is fulfilled. For example, after the
-     * <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you might
-     * prompt the user to find if they want to order a drink (assuming that you have defined an <code>OrderDrink</code>
-     * intent in your bot).
-     * </p>
-     * <note>
-     * <p>
-     * The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only
-     * one. For example, your bot may not solicit both the following:
+     * Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after the
+     * <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.
      * </p>
      * <p>
-     * Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to order a
-     * drink or a dessert?"
+     * The action that Amazon Lex takes depends on the user's response, as follows:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed."
+     * If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
      * </p>
-     * </note>
+     * </li>
+     * <li>
+     * <p>
+     * if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation for the
+     * intent.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If it doesn't recognize the utterance it repeats the follow-up prompt again.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually exclusive. You
+     * can specify only one.
+     * </p>
      * 
      * @param followUpPrompt
-     *        A user prompt for additional activity after an intent is fulfilled. For example, after the
-     *        <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you
-     *        might prompt the user to find if they want to order a drink (assuming that you have defined an
-     *        <code>OrderDrink</code> intent in your bot).</p> <note>
+     *        Amazon Lex uses this prompt to solicit additional activity after fulfilling an intent. For example, after
+     *        the <code>OrderPizza</code> intent is fulfilled, you might prompt the user to order a drink.</p>
      *        <p>
-     *        The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can
-     *        specify only one. For example, your bot may not solicit both the following:
+     *        The action that Amazon Lex takes depends on the user's response, as follows:
      *        </p>
+     *        <ul>
+     *        <li>
      *        <p>
-     *        Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to
-     *        order a drink or a dessert?"
+     *        If the user says "Yes" it responds with the clarification prompt that is configured for the bot.
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
-     *        Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed."
+     *        if the user says "Yes" and continues with an utterance that triggers an intent it starts a conversation
+     *        for the intent.
      *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If the user says "No" it responds with the rejection statement configured for the the follow-up prompt.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If it doesn't recognize the utterance it repeats the follow-up prompt again.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The <code>followUpPrompt</code> field and the <code>conclusionStatement</code> field are mutually
+     *        exclusive. You can specify only one.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -992,8 +1100,8 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza
-     * order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
+     * Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a
+     * pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
      * </p>
      * <p>
      * You might configure Amazon Lex to return all of the intent information to the client application, or direct it to
@@ -1001,8 +1109,8 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      * 
      * @param fulfillmentActivity
-     *        Describes how the intent is fulfilled. For example, after a user provides all of the information for a
-     *        pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza
+     *        Required. Describes how the intent is fulfilled. For example, after a user provides all of the information
+     *        for a pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza
      *        store. </p>
      *        <p>
      *        You might configure Amazon Lex to return all of the intent information to the client application, or
@@ -1016,17 +1124,17 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza
-     * order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
+     * Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a
+     * pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
      * </p>
      * <p>
      * You might configure Amazon Lex to return all of the intent information to the client application, or direct it to
      * invoke a Lambda function that can process the intent (for example, place an order with a pizzeria).
      * </p>
      * 
-     * @return Describes how the intent is fulfilled. For example, after a user provides all of the information for a
-     *         pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza
-     *         store. </p>
+     * @return Required. Describes how the intent is fulfilled. For example, after a user provides all of the
+     *         information for a pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with
+     *         a local pizza store. </p>
      *         <p>
      *         You might configure Amazon Lex to return all of the intent information to the client application, or
      *         direct it to invoke a Lambda function that can process the intent (for example, place an order with a
@@ -1039,8 +1147,8 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza
-     * order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
+     * Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a
+     * pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store.
      * </p>
      * <p>
      * You might configure Amazon Lex to return all of the intent information to the client application, or direct it to
@@ -1048,8 +1156,8 @@ public class PutIntentRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      * 
      * @param fulfillmentActivity
-     *        Describes how the intent is fulfilled. For example, after a user provides all of the information for a
-     *        pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza
+     *        Required. Describes how the intent is fulfilled. For example, after a user provides all of the information
+     *        for a pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza
      *        store. </p>
      *        <p>
      *        You might configure Amazon Lex to return all of the intent information to the client application, or

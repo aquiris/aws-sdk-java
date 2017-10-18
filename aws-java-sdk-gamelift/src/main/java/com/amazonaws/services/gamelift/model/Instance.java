@@ -19,8 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Properties that describe an instance of a virtual computing resource that hosts one or more game servers. A fleet
- * contains zero or more instances.
+ * Properties that describe an instance of a virtual computing resource that hosts one or more game servers. A fleet may
+ * contain zero or more instances.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/Instance" target="_top">AWS API
@@ -66,21 +66,21 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the
-     * fleet's runtime configuration.
+     * <b>PENDING</b> -- The instance is in the process of being created and launching server processes as defined in
+     * the fleet's run-time configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully
+     * <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has successfully
      * launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now
      * considered ready to host game sessions.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a
-     * scaling down event or to recycle resources in the event of a problem.
+     * <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity during
+     * a scaling down event or to recycle resources in the event of a problem.
      * </p>
      * </li>
      * </ul>
@@ -268,7 +268,7 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setOperatingSystem(OperatingSystem operatingSystem) {
-        this.operatingSystem = operatingSystem.toString();
+        withOperatingSystem(operatingSystem);
     }
 
     /**
@@ -283,7 +283,7 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Instance withOperatingSystem(OperatingSystem operatingSystem) {
-        setOperatingSystem(operatingSystem);
+        this.operatingSystem = operatingSystem.toString();
         return this;
     }
 
@@ -341,7 +341,7 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setType(EC2InstanceType type) {
-        this.type = type.toString();
+        withType(type);
     }
 
     /**
@@ -356,7 +356,7 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Instance withType(EC2InstanceType type) {
-        setType(type);
+        this.type = type.toString();
         return this;
     }
 
@@ -367,21 +367,21 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the
-     * fleet's runtime configuration.
+     * <b>PENDING</b> -- The instance is in the process of being created and launching server processes as defined in
+     * the fleet's run-time configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully
+     * <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has successfully
      * launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now
      * considered ready to host game sessions.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a
-     * scaling down event or to recycle resources in the event of a problem.
+     * <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity during
+     * a scaling down event or to recycle resources in the event of a problem.
      * </p>
      * </li>
      * </ul>
@@ -391,20 +391,20 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined
-     *        in the fleet's runtime configuration.
+     *        <b>PENDING</b> -- The instance is in the process of being created and launching server processes as
+     *        defined in the fleet's run-time configuration.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ACTIVE</b> – The instance has been successfully created and at least one server process has
+     *        <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has
      *        successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The
      *        instance is now considered ready to host game sessions.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity
+     *        <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity
      *        during a scaling down event or to recycle resources in the event of a problem.
      *        </p>
      *        </li>
@@ -422,21 +422,21 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the
-     * fleet's runtime configuration.
+     * <b>PENDING</b> -- The instance is in the process of being created and launching server processes as defined in
+     * the fleet's run-time configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully
+     * <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has successfully
      * launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now
      * considered ready to host game sessions.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a
-     * scaling down event or to recycle resources in the event of a problem.
+     * <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity during
+     * a scaling down event or to recycle resources in the event of a problem.
      * </p>
      * </li>
      * </ul>
@@ -445,20 +445,20 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      *         <ul>
      *         <li>
      *         <p>
-     *         <b>PENDING</b> – The instance is in the process of being created and launching server processes as
-     *         defined in the fleet's runtime configuration.
+     *         <b>PENDING</b> -- The instance is in the process of being created and launching server processes as
+     *         defined in the fleet's run-time configuration.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <b>ACTIVE</b> – The instance has been successfully created and at least one server process has
+     *         <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has
      *         successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The
      *         instance is now considered ready to host game sessions.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity
+     *         <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity
      *         during a scaling down event or to recycle resources in the event of a problem.
      *         </p>
      *         </li>
@@ -476,21 +476,21 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the
-     * fleet's runtime configuration.
+     * <b>PENDING</b> -- The instance is in the process of being created and launching server processes as defined in
+     * the fleet's run-time configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully
+     * <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has successfully
      * launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now
      * considered ready to host game sessions.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a
-     * scaling down event or to recycle resources in the event of a problem.
+     * <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity during
+     * a scaling down event or to recycle resources in the event of a problem.
      * </p>
      * </li>
      * </ul>
@@ -500,20 +500,20 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined
-     *        in the fleet's runtime configuration.
+     *        <b>PENDING</b> -- The instance is in the process of being created and launching server processes as
+     *        defined in the fleet's run-time configuration.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ACTIVE</b> – The instance has been successfully created and at least one server process has
+     *        <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has
      *        successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The
      *        instance is now considered ready to host game sessions.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity
+     *        <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity
      *        during a scaling down event or to recycle resources in the event of a problem.
      *        </p>
      *        </li>
@@ -533,21 +533,21 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the
-     * fleet's runtime configuration.
+     * <b>PENDING</b> -- The instance is in the process of being created and launching server processes as defined in
+     * the fleet's run-time configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully
+     * <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has successfully
      * launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now
      * considered ready to host game sessions.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a
-     * scaling down event or to recycle resources in the event of a problem.
+     * <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity during
+     * a scaling down event or to recycle resources in the event of a problem.
      * </p>
      * </li>
      * </ul>
@@ -557,20 +557,20 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined
-     *        in the fleet's runtime configuration.
+     *        <b>PENDING</b> -- The instance is in the process of being created and launching server processes as
+     *        defined in the fleet's run-time configuration.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ACTIVE</b> – The instance has been successfully created and at least one server process has
+     *        <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has
      *        successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The
      *        instance is now considered ready to host game sessions.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity
+     *        <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity
      *        during a scaling down event or to recycle resources in the event of a problem.
      *        </p>
      *        </li>
@@ -578,7 +578,7 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setStatus(InstanceStatus status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
@@ -588,21 +588,21 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the
-     * fleet's runtime configuration.
+     * <b>PENDING</b> -- The instance is in the process of being created and launching server processes as defined in
+     * the fleet's run-time configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully
+     * <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has successfully
      * launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now
      * considered ready to host game sessions.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a
-     * scaling down event or to recycle resources in the event of a problem.
+     * <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity during
+     * a scaling down event or to recycle resources in the event of a problem.
      * </p>
      * </li>
      * </ul>
@@ -612,20 +612,20 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined
-     *        in the fleet's runtime configuration.
+     *        <b>PENDING</b> -- The instance is in the process of being created and launching server processes as
+     *        defined in the fleet's run-time configuration.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ACTIVE</b> – The instance has been successfully created and at least one server process has
+     *        <b>ACTIVE</b> -- The instance has been successfully created and at least one server process has
      *        successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The
      *        instance is now considered ready to host game sessions.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity
+     *        <b>TERMINATING</b> -- The instance is in the process of shutting down. This may happen to reduce capacity
      *        during a scaling down event or to recycle resources in the event of a problem.
      *        </p>
      *        </li>
@@ -634,7 +634,7 @@ public class Instance implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Instance withStatus(InstanceStatus status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 

@@ -17,6 +17,11 @@ import javax.annotation.Generated;
 import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
+/**
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/Message" target="_top">AWS API
+ *      Documentation</a>
+ */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Message implements Serializable, Cloneable, StructuredPojo {
 
@@ -42,6 +47,8 @@ public class Message implements Serializable, Cloneable, StructuredPojo {
     private String jsonBody;
     /** The URL that points to the media resource, for example a .mp4 or .gif file. */
     private String mediaUrl;
+    /** The Raw JSON formatted string to be used as the payload. This value overrides the message. */
+    private String rawContent;
     /**
      * Indicates if the message should display on the users device.
      * 
@@ -155,7 +162,7 @@ public class Message implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setAction(Action action) {
-        this.action = action.toString();
+        withAction(action);
     }
 
     /**
@@ -182,7 +189,7 @@ public class Message implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Message withAction(Action action) {
-        setAction(action);
+        this.action = action.toString();
         return this;
     }
 
@@ -391,6 +398,40 @@ public class Message implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * The Raw JSON formatted string to be used as the payload. This value overrides the message.
+     * 
+     * @param rawContent
+     *        The Raw JSON formatted string to be used as the payload. This value overrides the message.
+     */
+
+    public void setRawContent(String rawContent) {
+        this.rawContent = rawContent;
+    }
+
+    /**
+     * The Raw JSON formatted string to be used as the payload. This value overrides the message.
+     * 
+     * @return The Raw JSON formatted string to be used as the payload. This value overrides the message.
+     */
+
+    public String getRawContent() {
+        return this.rawContent;
+    }
+
+    /**
+     * The Raw JSON formatted string to be used as the payload. This value overrides the message.
+     * 
+     * @param rawContent
+     *        The Raw JSON formatted string to be used as the payload. This value overrides the message.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Message withRawContent(String rawContent) {
+        setRawContent(rawContent);
+        return this;
+    }
+
+    /**
      * Indicates if the message should display on the users device.
      * 
      * Silent pushes can be used for Remote Configuration and Phone Home use cases.
@@ -543,6 +584,8 @@ public class Message implements Serializable, Cloneable, StructuredPojo {
             sb.append("JsonBody: ").append(getJsonBody()).append(",");
         if (getMediaUrl() != null)
             sb.append("MediaUrl: ").append(getMediaUrl()).append(",");
+        if (getRawContent() != null)
+            sb.append("RawContent: ").append(getRawContent()).append(",");
         if (getSilentPush() != null)
             sb.append("SilentPush: ").append(getSilentPush()).append(",");
         if (getTitle() != null)
@@ -591,6 +634,10 @@ public class Message implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getMediaUrl() != null && other.getMediaUrl().equals(this.getMediaUrl()) == false)
             return false;
+        if (other.getRawContent() == null ^ this.getRawContent() == null)
+            return false;
+        if (other.getRawContent() != null && other.getRawContent().equals(this.getRawContent()) == false)
+            return false;
         if (other.getSilentPush() == null ^ this.getSilentPush() == null)
             return false;
         if (other.getSilentPush() != null && other.getSilentPush().equals(this.getSilentPush()) == false)
@@ -618,6 +665,7 @@ public class Message implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getImageUrl() == null) ? 0 : getImageUrl().hashCode());
         hashCode = prime * hashCode + ((getJsonBody() == null) ? 0 : getJsonBody().hashCode());
         hashCode = prime * hashCode + ((getMediaUrl() == null) ? 0 : getMediaUrl().hashCode());
+        hashCode = prime * hashCode + ((getRawContent() == null) ? 0 : getRawContent().hashCode());
         hashCode = prime * hashCode + ((getSilentPush() == null) ? 0 : getSilentPush().hashCode());
         hashCode = prime * hashCode + ((getTitle() == null) ? 0 : getTitle().hashCode());
         hashCode = prime * hashCode + ((getUrl() == null) ? 0 : getUrl().hashCode());

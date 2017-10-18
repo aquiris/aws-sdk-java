@@ -60,7 +60,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
     private java.util.Map<String, AttributeValue> item;
     /**
      * <p>
-     * This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a href=
+     * This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href=
      * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html"
      * >Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
@@ -602,12 +602,12 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a href=
+     * This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href=
      * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html"
      * >Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
-     * @return This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a
+     * @return This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a
      *         href=
      *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html"
      *         >Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.
@@ -619,13 +619,13 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a href=
+     * This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href=
      * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html"
      * >Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @param expected
-     *        This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a
+     *        This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a
      *        href=
      *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html"
      *        >Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.
@@ -637,13 +637,13 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a href=
+     * This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a href=
      * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html"
      * >Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @param expected
-     *        This is a legacy parameter. Use <code>ConditionExpresssion</code> instead. For more information, see <a
+     *        This is a legacy parameter. Use <code>ConditionExpression</code> instead. For more information, see <a
      *        href=
      *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html"
      *        >Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.
@@ -894,7 +894,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public void setReturnValues(ReturnValue returnValues) {
-        this.returnValues = returnValues.toString();
+        withReturnValues(returnValues);
     }
 
     /**
@@ -950,7 +950,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public PutItemRequest withReturnValues(ReturnValue returnValues) {
-        setReturnValues(returnValues);
+        this.returnValues = returnValues.toString();
         return this;
     }
 
@@ -989,7 +989,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public void setReturnConsumedCapacity(ReturnConsumedCapacity returnConsumedCapacity) {
-        this.returnConsumedCapacity = returnConsumedCapacity.toString();
+        withReturnConsumedCapacity(returnConsumedCapacity);
     }
 
     /**
@@ -999,7 +999,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public PutItemRequest withReturnConsumedCapacity(ReturnConsumedCapacity returnConsumedCapacity) {
-        setReturnConsumedCapacity(returnConsumedCapacity);
+        this.returnConsumedCapacity = returnConsumedCapacity.toString();
         return this;
     }
 
@@ -1073,7 +1073,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public void setReturnItemCollectionMetrics(ReturnItemCollectionMetrics returnItemCollectionMetrics) {
-        this.returnItemCollectionMetrics = returnItemCollectionMetrics.toString();
+        withReturnItemCollectionMetrics(returnItemCollectionMetrics);
     }
 
     /**
@@ -1092,7 +1092,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public PutItemRequest withReturnItemCollectionMetrics(ReturnItemCollectionMetrics returnItemCollectionMetrics) {
-        setReturnItemCollectionMetrics(returnItemCollectionMetrics);
+        this.returnItemCollectionMetrics = returnItemCollectionMetrics.toString();
         return this;
     }
 
@@ -1170,7 +1170,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public void setConditionalOperator(ConditionalOperator conditionalOperator) {
-        this.conditionalOperator = conditionalOperator.toString();
+        withConditionalOperator(conditionalOperator);
     }
 
     /**
@@ -1190,7 +1190,7 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
      */
 
     public PutItemRequest withConditionalOperator(ConditionalOperator conditionalOperator) {
-        setConditionalOperator(conditionalOperator);
+        this.conditionalOperator = conditionalOperator.toString();
         return this;
     }
 

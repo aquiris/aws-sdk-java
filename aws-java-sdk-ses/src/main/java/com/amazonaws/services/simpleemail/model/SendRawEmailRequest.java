@@ -38,13 +38,13 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME
      * encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form:
      * <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a
-     * href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      * </p>
      * <note>
      * <p>
      * If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and
-     * complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you
-     * might include in the raw text of the message.
+     * complaints will be sent to this email address. This takes precedence over any Return-Path header that you might
+     * include in the raw text of the message.
      * </p>
      * </note>
      */
@@ -84,6 +84,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <li>
      * <p>
      * Must be base64-encoded.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of each line
+     * of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
      * </p>
      * </li>
      * </ul>
@@ -222,6 +228,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        Must be base64-encoded.
      *        </p>
      *        </li>
+     *        <li>
+     *        <p>
+     *        Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of
+     *        each line of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
+     *        </p>
+     *        </li>
      */
     public SendRawEmailRequest(RawMessage rawMessage) {
         setRawMessage(rawMessage);
@@ -236,13 +248,13 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME
      * encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form:
      * <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a
-     * href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      * </p>
      * <note>
      * <p>
      * If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and
-     * complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you
-     * might include in the raw text of the message.
+     * complaints will be sent to this email address. This takes precedence over any Return-Path header that you might
+     * include in the raw text of the message.
      * </p>
      * </note>
      * 
@@ -253,13 +265,13 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must
      *        use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the
      *        following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a
-     *        href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     *        href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      *        </p>
      *        <note>
      *        <p>
      *        If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and
-     *        complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header
-     *        that you might include in the raw text of the message.
+     *        complaints will be sent to this email address. This takes precedence over any Return-Path header that you
+     *        might include in the raw text of the message.
      *        </p>
      */
 
@@ -276,13 +288,13 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME
      * encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form:
      * <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a
-     * href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      * </p>
      * <note>
      * <p>
      * If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and
-     * complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you
-     * might include in the raw text of the message.
+     * complaints will be sent to this email address. This takes precedence over any Return-Path header that you might
+     * include in the raw text of the message.
      * </p>
      * </note>
      * 
@@ -292,13 +304,13 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must
      *         use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the
      *         following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a
-     *         href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     *         href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      *         </p>
      *         <note>
      *         <p>
      *         If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and
-     *         complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header
-     *         that you might include in the raw text of the message.
+     *         complaints will be sent to this email address. This takes precedence over any Return-Path header that you
+     *         might include in the raw text of the message.
      *         </p>
      */
 
@@ -315,13 +327,13 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME
      * encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form:
      * <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a
-     * href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      * </p>
      * <note>
      * <p>
      * If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and
-     * complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you
-     * might include in the raw text of the message.
+     * complaints will be sent to this email address. This takes precedence over any Return-Path header that you might
+     * include in the raw text of the message.
      * </p>
      * </note>
      * 
@@ -332,13 +344,13 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must
      *        use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the
      *        following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a
-     *        href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     *        href="https://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      *        </p>
      *        <note>
      *        <p>
      *        If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and
-     *        complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header
-     *        that you might include in the raw text of the message.
+     *        complaints will be sent to this email address. This takes precedence over any Return-Path header that you
+     *        might include in the raw text of the message.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -452,6 +464,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * Must be base64-encoded.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of each line
+     * of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param rawMessage
@@ -482,6 +500,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <li>
      *        <p>
      *        Must be base64-encoded.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of
+     *        each line of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
      *        </p>
      *        </li>
      */
@@ -521,6 +545,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * Must be base64-encoded.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of each line
+     * of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The raw text of the message. The client is responsible for ensuring the following:</p>
@@ -550,6 +580,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         <li>
      *         <p>
      *         Must be base64-encoded.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of
+     *         each line of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
      *         </p>
      *         </li>
      */
@@ -589,6 +625,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      * Must be base64-encoded.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of each line
+     * of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param rawMessage
@@ -619,6 +661,12 @@ public class SendRawEmailRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <li>
      *        <p>
      *        Must be base64-encoded.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Per <a href="https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6">RFC 5321</a>, the maximum length of
+     *        each line of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

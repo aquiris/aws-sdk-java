@@ -41,17 +41,23 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * targets.
  * </p>
  * <p>
- * Elastic Load Balancing supports two types of load balancers: Classic Load Balancers and Application Load Balancers. A
- * Classic Load Balancer makes routing and load balancing decisions either at the transport layer (TCP/SSL) or the
- * application layer (HTTP/HTTPS), and supports either EC2-Classic or a VPC. An Application Load Balancer makes routing
- * and load balancing decisions at the application layer (HTTP/HTTPS), supports path-based routing, and can route
- * requests to one or more ports on each EC2 instance or container instance in your virtual private cloud (VPC). For
- * more information, see the <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/">Elastic Load
- * Balancing User Guide</a>.
+ * Elastic Load Balancing supports the following types of load balancers: Application Load Balancers, Network Load
+ * Balancers, and Classic Load Balancers.
  * </p>
  * <p>
- * This reference covers the 2015-12-01 API, which supports Application Load Balancers. The 2012-06-01 API supports
- * Classic Load Balancers.
+ * An Application Load Balancer makes routing and load balancing decisions at the application layer (HTTP/HTTPS). A
+ * Network Load Balancer makes routing and load balancing decisions at the transport layer (TCP). Both Application Load
+ * Balancers and Network Load Balancers can route requests to one or more ports on each EC2 instance or container
+ * instance in your virtual private cloud (VPC).
+ * </p>
+ * <p>
+ * A Classic Load Balancer makes routing and load balancing decisions either at the transport layer (TCP/SSL) or the
+ * application layer (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more information, see the <a
+ * href="http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/">Elastic Load Balancing User Guide</a>.
+ * </p>
+ * <p>
+ * This reference covers the 2015-12-01 API, which supports Application Load Balancers and Network Load Balancers. The
+ * 2012-06-01 API supports Classic Load Balancers.
  * </p>
  * <p>
  * To get started, complete the following tasks:
@@ -59,7 +65,7 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ol>
  * <li>
  * <p>
- * Create an Application Load Balancer using <a>CreateLoadBalancer</a>.
+ * Create a load balancer using <a>CreateLoadBalancer</a>.
  * </p>
  * </li>
  * <li>
@@ -77,14 +83,9 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * Create one or more listeners for your load balancer using <a>CreateListener</a>.
  * </p>
  * </li>
- * <li>
- * <p>
- * (Optional) Create one or more rules for content routing based on URL using <a>CreateRule</a>.
- * </p>
- * </li>
  * </ol>
  * <p>
- * To delete an Application Load Balancer and its related resources, complete the following tasks:
+ * To delete a load balancer and its related resources, complete the following tasks:
  * </p>
  * <ol>
  * <li>
@@ -312,6 +313,39 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
      */
     public ExecutorService getExecutorService() {
         return executorService;
+    }
+
+    @Override
+    public java.util.concurrent.Future<AddListenerCertificatesResult> addListenerCertificatesAsync(AddListenerCertificatesRequest request) {
+
+        return addListenerCertificatesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<AddListenerCertificatesResult> addListenerCertificatesAsync(final AddListenerCertificatesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<AddListenerCertificatesRequest, AddListenerCertificatesResult> asyncHandler) {
+        final AddListenerCertificatesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<AddListenerCertificatesResult>() {
+            @Override
+            public AddListenerCertificatesResult call() throws Exception {
+                AddListenerCertificatesResult result = null;
+
+                try {
+                    result = executeAddListenerCertificates(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override
@@ -662,6 +696,39 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
 
                 try {
                     result = executeDescribeAccountLimits(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeListenerCertificatesResult> describeListenerCertificatesAsync(DescribeListenerCertificatesRequest request) {
+
+        return describeListenerCertificatesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeListenerCertificatesResult> describeListenerCertificatesAsync(final DescribeListenerCertificatesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeListenerCertificatesRequest, DescribeListenerCertificatesResult> asyncHandler) {
+        final DescribeListenerCertificatesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeListenerCertificatesResult>() {
+            @Override
+            public DescribeListenerCertificatesResult call() throws Exception {
+                DescribeListenerCertificatesResult result = null;
+
+                try {
+                    result = executeDescribeListenerCertificates(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1159,6 +1226,39 @@ public class AmazonElasticLoadBalancingAsyncClient extends AmazonElasticLoadBala
 
                 try {
                     result = executeRegisterTargets(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<RemoveListenerCertificatesResult> removeListenerCertificatesAsync(RemoveListenerCertificatesRequest request) {
+
+        return removeListenerCertificatesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<RemoveListenerCertificatesResult> removeListenerCertificatesAsync(final RemoveListenerCertificatesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<RemoveListenerCertificatesRequest, RemoveListenerCertificatesResult> asyncHandler) {
+        final RemoveListenerCertificatesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<RemoveListenerCertificatesResult>() {
+            @Override
+            public RemoveListenerCertificatesResult call() throws Exception {
+                RemoveListenerCertificatesResult result = null;
+
+                try {
+                    result = executeRemoveListenerCertificates(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

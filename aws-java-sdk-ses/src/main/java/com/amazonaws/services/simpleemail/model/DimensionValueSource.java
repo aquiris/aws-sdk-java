@@ -21,7 +21,8 @@ import javax.annotation.Generated;
 public enum DimensionValueSource {
 
     MessageTag("messageTag"),
-    EmailHeader("emailHeader");
+    EmailHeader("emailHeader"),
+    LinkTag("linkTag");
 
     private String value;
 
@@ -40,6 +41,9 @@ public enum DimensionValueSource {
      * @param value
      *        real value
      * @return DimensionValueSource corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static DimensionValueSource fromValue(String value) {
         if (value == null || "".equals(value)) {

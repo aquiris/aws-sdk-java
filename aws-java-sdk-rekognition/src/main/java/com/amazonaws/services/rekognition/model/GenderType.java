@@ -20,8 +20,8 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum GenderType {
 
-    MALE("MALE"),
-    FEMALE("FEMALE");
+    Male("Male"),
+    Female("Female");
 
     private String value;
 
@@ -40,6 +40,9 @@ public enum GenderType {
      * @param value
      *        real value
      * @return GenderType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static GenderType fromValue(String value) {
         if (value == null || "".equals(value)) {

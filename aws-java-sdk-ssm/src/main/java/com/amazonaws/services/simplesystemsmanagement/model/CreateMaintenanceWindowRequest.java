@@ -33,6 +33,13 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
     private String name;
     /**
      * <p>
+     * An optional description for the Maintenance Window. We recommend specifying a description to help you organize
+     * your Maintenance Windows.
+     * </p>
+     */
+    private String description;
+    /**
+     * <p>
      * The schedule of the Maintenance Window in the form of a cron or rate expression.
      * </p>
      */
@@ -52,7 +59,13 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
     private Integer cutoff;
     /**
      * <p>
-     * Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
+     * Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     * instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you
+     * register a task with the Maintenance Window
+     * </p>
+     * <p>
+     * If you don't enable this option, then you must specify previously-registered targets when you register a task
+     * with the Maintenance Window.
      * </p>
      */
     private Boolean allowUnassociatedTargets;
@@ -100,6 +113,52 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
 
     public CreateMaintenanceWindowRequest withName(String name) {
         setName(name);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An optional description for the Maintenance Window. We recommend specifying a description to help you organize
+     * your Maintenance Windows.
+     * </p>
+     * 
+     * @param description
+     *        An optional description for the Maintenance Window. We recommend specifying a description to help you
+     *        organize your Maintenance Windows.
+     */
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * <p>
+     * An optional description for the Maintenance Window. We recommend specifying a description to help you organize
+     * your Maintenance Windows.
+     * </p>
+     * 
+     * @return An optional description for the Maintenance Window. We recommend specifying a description to help you
+     *         organize your Maintenance Windows.
+     */
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    /**
+     * <p>
+     * An optional description for the Maintenance Window. We recommend specifying a description to help you organize
+     * your Maintenance Windows.
+     * </p>
+     * 
+     * @param description
+     *        An optional description for the Maintenance Window. We recommend specifying a description to help you
+     *        organize your Maintenance Windows.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateMaintenanceWindowRequest withDescription(String description) {
+        setDescription(description);
         return this;
     }
 
@@ -231,12 +290,22 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
+     * Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     * instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you
+     * register a task with the Maintenance Window
+     * </p>
+     * <p>
+     * If you don't enable this option, then you must specify previously-registered targets when you register a task
+     * with the Maintenance Window.
      * </p>
      * 
      * @param allowUnassociatedTargets
-     *        Whether targets must be registered with the Maintenance Window before tasks can be defined for those
-     *        targets.
+     *        Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     *        instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when
+     *        you register a task with the Maintenance Window </p>
+     *        <p>
+     *        If you don't enable this option, then you must specify previously-registered targets when you register a
+     *        task with the Maintenance Window.
      */
 
     public void setAllowUnassociatedTargets(Boolean allowUnassociatedTargets) {
@@ -245,11 +314,21 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
+     * Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     * instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you
+     * register a task with the Maintenance Window
+     * </p>
+     * <p>
+     * If you don't enable this option, then you must specify previously-registered targets when you register a task
+     * with the Maintenance Window.
      * </p>
      * 
-     * @return Whether targets must be registered with the Maintenance Window before tasks can be defined for those
-     *         targets.
+     * @return Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     *         instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when
+     *         you register a task with the Maintenance Window </p>
+     *         <p>
+     *         If you don't enable this option, then you must specify previously-registered targets when you register a
+     *         task with the Maintenance Window.
      */
 
     public Boolean getAllowUnassociatedTargets() {
@@ -258,12 +337,22 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
+     * Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     * instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you
+     * register a task with the Maintenance Window
+     * </p>
+     * <p>
+     * If you don't enable this option, then you must specify previously-registered targets when you register a task
+     * with the Maintenance Window.
      * </p>
      * 
      * @param allowUnassociatedTargets
-     *        Whether targets must be registered with the Maintenance Window before tasks can be defined for those
-     *        targets.
+     *        Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     *        instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when
+     *        you register a task with the Maintenance Window </p>
+     *        <p>
+     *        If you don't enable this option, then you must specify previously-registered targets when you register a
+     *        task with the Maintenance Window.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -274,11 +363,21 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
+     * Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     * instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you
+     * register a task with the Maintenance Window
+     * </p>
+     * <p>
+     * If you don't enable this option, then you must specify previously-registered targets when you register a task
+     * with the Maintenance Window.
      * </p>
      * 
-     * @return Whether targets must be registered with the Maintenance Window before tasks can be defined for those
-     *         targets.
+     * @return Enables a Maintenance Window task to execute on managed instances, even if you have not registered those
+     *         instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when
+     *         you register a task with the Maintenance Window </p>
+     *         <p>
+     *         If you don't enable this option, then you must specify previously-registered targets when you register a
+     *         task with the Maintenance Window.
      */
 
     public Boolean isAllowUnassociatedTargets() {
@@ -338,6 +437,8 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
         sb.append("{");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
+        if (getDescription() != null)
+            sb.append("Description: ").append(getDescription()).append(",");
         if (getSchedule() != null)
             sb.append("Schedule: ").append(getSchedule()).append(",");
         if (getDuration() != null)
@@ -365,6 +466,10 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
         if (other.getName() == null ^ this.getName() == null)
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
+            return false;
+        if (other.getDescription() == null ^ this.getDescription() == null)
+            return false;
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
             return false;
         if (other.getSchedule() == null ^ this.getSchedule() == null)
             return false;
@@ -395,6 +500,7 @@ public class CreateMaintenanceWindowRequest extends com.amazonaws.AmazonWebServi
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getSchedule() == null) ? 0 : getSchedule().hashCode());
         hashCode = prime * hashCode + ((getDuration() == null) ? 0 : getDuration().hashCode());
         hashCode = prime * hashCode + ((getCutoff() == null) ? 0 : getCutoff().hashCode());

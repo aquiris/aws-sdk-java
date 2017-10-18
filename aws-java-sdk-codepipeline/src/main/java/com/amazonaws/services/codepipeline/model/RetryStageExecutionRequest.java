@@ -19,7 +19,7 @@ import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a retry stage execution action.
+ * Represents the input of a RetryStageExecution action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/RetryStageExecution" target="_top">AWS
@@ -234,7 +234,7 @@ public class RetryStageExecutionRequest extends com.amazonaws.AmazonWebServiceRe
      */
 
     public void setRetryMode(StageRetryMode retryMode) {
-        this.retryMode = retryMode.toString();
+        withRetryMode(retryMode);
     }
 
     /**
@@ -249,7 +249,7 @@ public class RetryStageExecutionRequest extends com.amazonaws.AmazonWebServiceRe
      */
 
     public RetryStageExecutionRequest withRetryMode(StageRetryMode retryMode) {
-        setRetryMode(retryMode);
+        this.retryMode = retryMode.toString();
         return this;
     }
 

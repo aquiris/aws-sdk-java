@@ -33,7 +33,8 @@ public enum ConstraintViolationExceptionReason {
     MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED("MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED"),
     MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED("MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED"),
     ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED("ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED"),
-    MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE("MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE");
+    MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE("MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE"),
+    MASTER_ACCOUNT_MISSING_CONTACT_INFO("MASTER_ACCOUNT_MISSING_CONTACT_INFO");
 
     private String value;
 
@@ -52,6 +53,9 @@ public enum ConstraintViolationExceptionReason {
      * @param value
      *        real value
      * @return ConstraintViolationExceptionReason corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static ConstraintViolationExceptionReason fromValue(String value) {
         if (value == null || "".equals(value)) {

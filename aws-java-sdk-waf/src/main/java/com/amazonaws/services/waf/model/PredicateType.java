@@ -23,8 +23,10 @@ public enum PredicateType {
     IPMatch("IPMatch"),
     ByteMatch("ByteMatch"),
     SqlInjectionMatch("SqlInjectionMatch"),
+    GeoMatch("GeoMatch"),
     SizeConstraint("SizeConstraint"),
-    XssMatch("XssMatch");
+    XssMatch("XssMatch"),
+    RegexMatch("RegexMatch");
 
     private String value;
 
@@ -43,6 +45,9 @@ public enum PredicateType {
      * @param value
      *        real value
      * @return PredicateType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static PredicateType fromValue(String value) {
         if (value == null || "".equals(value)) {

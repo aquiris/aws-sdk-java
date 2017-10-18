@@ -19,7 +19,7 @@ import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of an enable stage transition action.
+ * Represents the input of an EnableStageTransition action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/EnableStageTransition" target="_top">AWS
@@ -201,7 +201,7 @@ public class EnableStageTransitionRequest extends com.amazonaws.AmazonWebService
      */
 
     public void setTransitionType(StageTransitionType transitionType) {
-        this.transitionType = transitionType.toString();
+        withTransitionType(transitionType);
     }
 
     /**
@@ -219,7 +219,7 @@ public class EnableStageTransitionRequest extends com.amazonaws.AmazonWebService
      */
 
     public EnableStageTransitionRequest withTransitionType(StageTransitionType transitionType) {
-        setTransitionType(transitionType);
+        this.transitionType = transitionType.toString();
         return this;
     }
 

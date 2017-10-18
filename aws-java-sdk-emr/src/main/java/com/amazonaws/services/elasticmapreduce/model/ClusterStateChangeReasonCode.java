@@ -23,6 +23,7 @@ public enum ClusterStateChangeReasonCode {
     INTERNAL_ERROR("INTERNAL_ERROR"),
     VALIDATION_ERROR("VALIDATION_ERROR"),
     INSTANCE_FAILURE("INSTANCE_FAILURE"),
+    INSTANCE_FLEET_TIMEOUT("INSTANCE_FLEET_TIMEOUT"),
     BOOTSTRAP_FAILURE("BOOTSTRAP_FAILURE"),
     USER_REQUEST("USER_REQUEST"),
     STEP_FAILURE("STEP_FAILURE"),
@@ -45,6 +46,9 @@ public enum ClusterStateChangeReasonCode {
      * @param value
      *        real value
      * @return ClusterStateChangeReasonCode corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static ClusterStateChangeReasonCode fromValue(String value) {
         if (value == null || "".equals(value)) {

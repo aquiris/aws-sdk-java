@@ -38,6 +38,11 @@ public class AbstractAWSCodeBuild implements AWSCodeBuild {
     }
 
     @Override
+    public BatchDeleteBuildsResult batchDeleteBuilds(BatchDeleteBuildsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public BatchGetBuildsResult batchGetBuilds(BatchGetBuildsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -53,7 +58,17 @@ public class AbstractAWSCodeBuild implements AWSCodeBuild {
     }
 
     @Override
+    public CreateWebhookResult createWebhook(CreateWebhookRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteProjectResult deleteProject(DeleteProjectRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteWebhookResult deleteWebhook(DeleteWebhookRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

@@ -90,6 +90,12 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<String> aliasAttributes;
     /**
      * <p>
+     * Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * </p>
+     */
+    private java.util.List<String> usernameAttributes;
+    /**
+     * <p>
      * The contents of the SMS verification message.
      * </p>
      */
@@ -106,6 +112,12 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String emailVerificationSubject;
+    /**
+     * <p>
+     * The template for verification messages.
+     * </p>
+     */
+    private VerificationMessageTemplateType verificationMessageTemplate;
     /**
      * <p>
      * The contents of the SMS authentication message.
@@ -401,7 +413,7 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setStatus(StatusType status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
@@ -416,7 +428,7 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
      */
 
     public UserPoolType withStatus(StatusType status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 
@@ -768,6 +780,104 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * </p>
+     * 
+     * @return Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * @see UsernameAttributeType
+     */
+
+    public java.util.List<String> getUsernameAttributes() {
+        return usernameAttributes;
+    }
+
+    /**
+     * <p>
+     * Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * </p>
+     * 
+     * @param usernameAttributes
+     *        Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * @see UsernameAttributeType
+     */
+
+    public void setUsernameAttributes(java.util.Collection<String> usernameAttributes) {
+        if (usernameAttributes == null) {
+            this.usernameAttributes = null;
+            return;
+        }
+
+        this.usernameAttributes = new java.util.ArrayList<String>(usernameAttributes);
+    }
+
+    /**
+     * <p>
+     * Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setUsernameAttributes(java.util.Collection)} or {@link #withUsernameAttributes(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param usernameAttributes
+     *        Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see UsernameAttributeType
+     */
+
+    public UserPoolType withUsernameAttributes(String... usernameAttributes) {
+        if (this.usernameAttributes == null) {
+            setUsernameAttributes(new java.util.ArrayList<String>(usernameAttributes.length));
+        }
+        for (String ele : usernameAttributes) {
+            this.usernameAttributes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * </p>
+     * 
+     * @param usernameAttributes
+     *        Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see UsernameAttributeType
+     */
+
+    public UserPoolType withUsernameAttributes(java.util.Collection<String> usernameAttributes) {
+        setUsernameAttributes(usernameAttributes);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * </p>
+     * 
+     * @param usernameAttributes
+     *        Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see UsernameAttributeType
+     */
+
+    public UserPoolType withUsernameAttributes(UsernameAttributeType... usernameAttributes) {
+        java.util.ArrayList<String> usernameAttributesCopy = new java.util.ArrayList<String>(usernameAttributes.length);
+        for (UsernameAttributeType value : usernameAttributes) {
+            usernameAttributesCopy.add(value.toString());
+        }
+        if (getUsernameAttributes() == null) {
+            setUsernameAttributes(usernameAttributesCopy);
+        } else {
+            getUsernameAttributes().addAll(usernameAttributesCopy);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
      * The contents of the SMS verification message.
      * </p>
      * 
@@ -883,6 +993,46 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
 
     public UserPoolType withEmailVerificationSubject(String emailVerificationSubject) {
         setEmailVerificationSubject(emailVerificationSubject);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The template for verification messages.
+     * </p>
+     * 
+     * @param verificationMessageTemplate
+     *        The template for verification messages.
+     */
+
+    public void setVerificationMessageTemplate(VerificationMessageTemplateType verificationMessageTemplate) {
+        this.verificationMessageTemplate = verificationMessageTemplate;
+    }
+
+    /**
+     * <p>
+     * The template for verification messages.
+     * </p>
+     * 
+     * @return The template for verification messages.
+     */
+
+    public VerificationMessageTemplateType getVerificationMessageTemplate() {
+        return this.verificationMessageTemplate;
+    }
+
+    /**
+     * <p>
+     * The template for verification messages.
+     * </p>
+     * 
+     * @param verificationMessageTemplate
+     *        The template for verification messages.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UserPoolType withVerificationMessageTemplate(VerificationMessageTemplateType verificationMessageTemplate) {
+        setVerificationMessageTemplate(verificationMessageTemplate);
         return this;
     }
 
@@ -1120,7 +1270,7 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setMfaConfiguration(UserPoolMfaType mfaConfiguration) {
-        this.mfaConfiguration = mfaConfiguration.toString();
+        withMfaConfiguration(mfaConfiguration);
     }
 
     /**
@@ -1170,7 +1320,7 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
      */
 
     public UserPoolType withMfaConfiguration(UserPoolMfaType mfaConfiguration) {
-        setMfaConfiguration(mfaConfiguration);
+        this.mfaConfiguration = mfaConfiguration.toString();
         return this;
     }
 
@@ -1558,12 +1708,16 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
             sb.append("AutoVerifiedAttributes: ").append(getAutoVerifiedAttributes()).append(",");
         if (getAliasAttributes() != null)
             sb.append("AliasAttributes: ").append(getAliasAttributes()).append(",");
+        if (getUsernameAttributes() != null)
+            sb.append("UsernameAttributes: ").append(getUsernameAttributes()).append(",");
         if (getSmsVerificationMessage() != null)
             sb.append("SmsVerificationMessage: ").append(getSmsVerificationMessage()).append(",");
         if (getEmailVerificationMessage() != null)
             sb.append("EmailVerificationMessage: ").append(getEmailVerificationMessage()).append(",");
         if (getEmailVerificationSubject() != null)
             sb.append("EmailVerificationSubject: ").append(getEmailVerificationSubject()).append(",");
+        if (getVerificationMessageTemplate() != null)
+            sb.append("VerificationMessageTemplate: ").append(getVerificationMessageTemplate()).append(",");
         if (getSmsAuthenticationMessage() != null)
             sb.append("SmsAuthenticationMessage: ").append(getSmsAuthenticationMessage()).append(",");
         if (getMfaConfiguration() != null)
@@ -1638,6 +1792,10 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getAliasAttributes() != null && other.getAliasAttributes().equals(this.getAliasAttributes()) == false)
             return false;
+        if (other.getUsernameAttributes() == null ^ this.getUsernameAttributes() == null)
+            return false;
+        if (other.getUsernameAttributes() != null && other.getUsernameAttributes().equals(this.getUsernameAttributes()) == false)
+            return false;
         if (other.getSmsVerificationMessage() == null ^ this.getSmsVerificationMessage() == null)
             return false;
         if (other.getSmsVerificationMessage() != null && other.getSmsVerificationMessage().equals(this.getSmsVerificationMessage()) == false)
@@ -1649,6 +1807,10 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
         if (other.getEmailVerificationSubject() == null ^ this.getEmailVerificationSubject() == null)
             return false;
         if (other.getEmailVerificationSubject() != null && other.getEmailVerificationSubject().equals(this.getEmailVerificationSubject()) == false)
+            return false;
+        if (other.getVerificationMessageTemplate() == null ^ this.getVerificationMessageTemplate() == null)
+            return false;
+        if (other.getVerificationMessageTemplate() != null && other.getVerificationMessageTemplate().equals(this.getVerificationMessageTemplate()) == false)
             return false;
         if (other.getSmsAuthenticationMessage() == null ^ this.getSmsAuthenticationMessage() == null)
             return false;
@@ -1708,9 +1870,11 @@ public class UserPoolType implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getSchemaAttributes() == null) ? 0 : getSchemaAttributes().hashCode());
         hashCode = prime * hashCode + ((getAutoVerifiedAttributes() == null) ? 0 : getAutoVerifiedAttributes().hashCode());
         hashCode = prime * hashCode + ((getAliasAttributes() == null) ? 0 : getAliasAttributes().hashCode());
+        hashCode = prime * hashCode + ((getUsernameAttributes() == null) ? 0 : getUsernameAttributes().hashCode());
         hashCode = prime * hashCode + ((getSmsVerificationMessage() == null) ? 0 : getSmsVerificationMessage().hashCode());
         hashCode = prime * hashCode + ((getEmailVerificationMessage() == null) ? 0 : getEmailVerificationMessage().hashCode());
         hashCode = prime * hashCode + ((getEmailVerificationSubject() == null) ? 0 : getEmailVerificationSubject().hashCode());
+        hashCode = prime * hashCode + ((getVerificationMessageTemplate() == null) ? 0 : getVerificationMessageTemplate().hashCode());
         hashCode = prime * hashCode + ((getSmsAuthenticationMessage() == null) ? 0 : getSmsAuthenticationMessage().hashCode());
         hashCode = prime * hashCode + ((getMfaConfiguration() == null) ? 0 : getMfaConfiguration().hashCode());
         hashCode = prime * hashCode + ((getDeviceConfiguration() == null) ? 0 : getDeviceConfiguration().hashCode());

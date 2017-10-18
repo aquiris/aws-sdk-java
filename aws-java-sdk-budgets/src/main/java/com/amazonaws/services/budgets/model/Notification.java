@@ -29,6 +29,8 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
 
     private Double threshold;
 
+    private String thresholdType;
+
     /**
      * @param notificationType
      * @see NotificationType
@@ -64,7 +66,7 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setNotificationType(NotificationType notificationType) {
-        this.notificationType = notificationType.toString();
+        withNotificationType(notificationType);
     }
 
     /**
@@ -74,7 +76,7 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Notification withNotificationType(NotificationType notificationType) {
-        setNotificationType(notificationType);
+        this.notificationType = notificationType.toString();
         return this;
     }
 
@@ -113,7 +115,7 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setComparisonOperator(ComparisonOperator comparisonOperator) {
-        this.comparisonOperator = comparisonOperator.toString();
+        withComparisonOperator(comparisonOperator);
     }
 
     /**
@@ -123,7 +125,7 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Notification withComparisonOperator(ComparisonOperator comparisonOperator) {
-        setComparisonOperator(comparisonOperator);
+        this.comparisonOperator = comparisonOperator.toString();
         return this;
     }
 
@@ -154,6 +156,55 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * @param thresholdType
+     * @see ThresholdType
+     */
+
+    public void setThresholdType(String thresholdType) {
+        this.thresholdType = thresholdType;
+    }
+
+    /**
+     * @return
+     * @see ThresholdType
+     */
+
+    public String getThresholdType() {
+        return this.thresholdType;
+    }
+
+    /**
+     * @param thresholdType
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ThresholdType
+     */
+
+    public Notification withThresholdType(String thresholdType) {
+        setThresholdType(thresholdType);
+        return this;
+    }
+
+    /**
+     * @param thresholdType
+     * @see ThresholdType
+     */
+
+    public void setThresholdType(ThresholdType thresholdType) {
+        withThresholdType(thresholdType);
+    }
+
+    /**
+     * @param thresholdType
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ThresholdType
+     */
+
+    public Notification withThresholdType(ThresholdType thresholdType) {
+        this.thresholdType = thresholdType.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -169,7 +220,9 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
         if (getComparisonOperator() != null)
             sb.append("ComparisonOperator: ").append(getComparisonOperator()).append(",");
         if (getThreshold() != null)
-            sb.append("Threshold: ").append(getThreshold());
+            sb.append("Threshold: ").append(getThreshold()).append(",");
+        if (getThresholdType() != null)
+            sb.append("ThresholdType: ").append(getThresholdType());
         sb.append("}");
         return sb.toString();
     }
@@ -196,6 +249,10 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getThreshold() != null && other.getThreshold().equals(this.getThreshold()) == false)
             return false;
+        if (other.getThresholdType() == null ^ this.getThresholdType() == null)
+            return false;
+        if (other.getThresholdType() != null && other.getThresholdType().equals(this.getThresholdType()) == false)
+            return false;
         return true;
     }
 
@@ -207,6 +264,7 @@ public class Notification implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getNotificationType() == null) ? 0 : getNotificationType().hashCode());
         hashCode = prime * hashCode + ((getComparisonOperator() == null) ? 0 : getComparisonOperator().hashCode());
         hashCode = prime * hashCode + ((getThreshold() == null) ? 0 : getThreshold().hashCode());
+        hashCode = prime * hashCode + ((getThresholdType() == null) ? 0 : getThresholdType().hashCode());
         return hashCode;
     }
 

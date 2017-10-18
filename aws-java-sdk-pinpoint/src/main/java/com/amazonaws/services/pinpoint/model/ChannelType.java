@@ -25,7 +25,8 @@ public enum ChannelType {
     APNS_SANDBOX("APNS_SANDBOX"),
     ADM("ADM"),
     SMS("SMS"),
-    EMAIL("EMAIL");
+    EMAIL("EMAIL"),
+    BAIDU("BAIDU");
 
     private String value;
 
@@ -44,6 +45,9 @@ public enum ChannelType {
      * @param value
      *        real value
      * @return ChannelType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static ChannelType fromValue(String value) {
         if (value == null || "".equals(value)) {

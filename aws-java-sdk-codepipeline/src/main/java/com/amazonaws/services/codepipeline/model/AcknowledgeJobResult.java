@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of an acknowledge job action.
+ * Represents the output of an AcknowledgeJob action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeJob" target="_top">AWS API
@@ -87,7 +87,7 @@ public class AcknowledgeJobResult extends com.amazonaws.AmazonWebServiceResult<c
      */
 
     public void setStatus(JobStatus status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
@@ -102,7 +102,7 @@ public class AcknowledgeJobResult extends com.amazonaws.AmazonWebServiceResult<c
      */
 
     public AcknowledgeJobResult withStatus(JobStatus status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 

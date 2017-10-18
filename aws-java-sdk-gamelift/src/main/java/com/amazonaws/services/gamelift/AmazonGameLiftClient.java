@@ -51,73 +51,98 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <fullname>Amazon GameLift Service</fullname>
  * <p>
  * Amazon GameLift is a managed service for developers who need a scalable, dedicated server solution for their
- * multiplayer games. Amazon GameLift provides tools to acquire computing resources and deploy game servers, scale game
- * server capacity to meet player demand, and track in-depth metrics on player usage and server performance.
+ * multiplayer games. Amazon GameLift provides tools for the following tasks: (1) acquire computing resources and deploy
+ * game servers, (2) scale game server capacity to meet player demand, (3) host game sessions and manage player access,
+ * and (4) track in-depth metrics on player usage and server performance.
  * </p>
  * <p>
- * The Amazon GameLift service API includes important features:
+ * The Amazon GameLift service API includes two important function sets:
  * </p>
  * <ul>
  * <li>
  * <p>
- * Find game sessions and match players to games – Retrieve information on available game sessions; create new game
+ * <b>Manage game sessions and player access</b> -- Retrieve information on available game sessions; create new game
  * sessions; send player requests to join a game session.
  * </p>
  * </li>
  * <li>
  * <p>
- * Configure and manage game server resources – Manage builds, fleets, queues, and aliases; set autoscaling policies;
- * retrieve logs and metrics.
+ * <b>Configure and manage game server resources</b> -- Manage builds, fleets, queues, and aliases; set autoscaling
+ * policies; retrieve logs and metrics.
  * </p>
  * </li>
  * </ul>
  * <p>
- * This reference guide describes the low-level service API for Amazon GameLift. We recommend using either the Amazon
- * Web Services software development kit (<a href="http://aws.amazon.com/tools/#sdk">AWS SDK</a>), available in multiple
- * languages, or the <a href="http://aws.amazon.com/cli/">AWS command-line interface</a> (CLI) tool. Both of these align
- * with the low-level service API. In addition, you can use the <a
- * href="https://console.aws.amazon.com/gamelift/home">AWS Management Console</a> for Amazon GameLift for many
- * administrative actions.
+ * This reference guide describes the low-level service API for Amazon GameLift. You can use the API functionality with
+ * these tools:
  * </p>
+ * <ul>
+ * <li>
  * <p>
- * You can use some API actions with Amazon GameLift Local, a testing tool that lets you test your game integration
- * locally before deploying on Amazon GameLift. You can call these APIs from the AWS CLI or programmatically; API calls
- * to Amazon GameLift Local servers perform exactly as they do when calling Amazon GameLift web servers. For more
- * information on using Amazon GameLift Local, see <a
+ * The Amazon Web Services software development kit (<a href="http://aws.amazon.com/tools/#sdk">AWS SDK</a>) is
+ * available in <a
+ * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients"
+ * >multiple languages</a> including C++ and C#. Use the SDK to access the API programmatically from an application,
+ * such as a game client.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * The <a href="http://aws.amazon.com/cli/">AWS command-line interface</a> (CLI) tool is primarily useful for handling
+ * administrative actions, such as setting up and managing Amazon GameLift settings and resources. You can use the AWS
+ * CLI to manage all of your AWS services.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * The <a href="https://console.aws.amazon.com/gamelift/home">AWS Management Console</a> for Amazon GameLift provides a
+ * web interface to manage your Amazon GameLift settings and resources. The console includes a dashboard for tracking
+ * key resources, including builds and fleets, and displays usage and performance metrics for your games as customizable
+ * graphs.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon GameLift Local is a tool for testing your game's integration with Amazon GameLift before deploying it on the
+ * service. This tools supports a subset of key API actions, which can be called from either the AWS CLI or
+ * programmatically. See <a
  * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing-local.html">Testing an
  * Integration</a>.
  * </p>
+ * </li>
+ * </ul>
  * <p>
  * <b>MORE RESOURCES</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a> – Learn more
- * about Amazon GameLift features and how to use them.
+ * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a> -- Learn
+ * more about Amazon GameLift features and how to use them.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="https://gamedev.amazon.com/forums/tutorials">Lumberyard and Amazon GameLift Tutorials</a> – Get started fast
- * with walkthroughs and sample projects.
+ * <a href="https://gamedev.amazon.com/forums/tutorials">Lumberyard and Amazon GameLift Tutorials</a> -- Get started
+ * fast with walkthroughs and sample projects.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="http://aws.amazon.com/blogs/gamedev/">GameDev Blog</a> – Stay up to date with new features and techniques.
+ * <a href="http://aws.amazon.com/blogs/gamedev/">GameDev Blog</a> -- Stay up to date with new features and techniques.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html">GameDev Forums</a> – Connect with the
- * GameDev community.
+ * <a href="https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html">GameDev Forums</a> -- Connect with
+ * the GameDev community.
  * </p>
  * </li>
  * <li>
  * <p>
  * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html">Amazon GameLift Document
- * History</a> – See changes to the Amazon GameLift service, SDKs, and documentation, as well as links to release notes.
+ * History</a> -- See changes to the Amazon GameLift service, SDKs, and documentation, as well as links to release
+ * notes.
  * </p>
  * </li>
  * </ul>
@@ -128,12 +153,11 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * This list offers a functional overview of the Amazon GameLift service API.
  * </p>
  * <p>
- * <b>Finding Games and Joining Players</b>
+ * <b>Managing Games and Players</b>
  * </p>
  * <p>
- * You can enable players to connect to game servers on Amazon GameLift from a game client or through a game service
- * (such as a matchmaking service). You can use these operations to discover actively running game or start new games.
- * You can also match players to games, either singly or as a group.
+ * Use these actions to start new game sessions, find existing game sessions, track game session status and other
+ * information, and enable player access to game sessions.
  * </p>
  * <ul>
  * <li>
@@ -143,96 +167,123 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>SearchGameSessions</a> – Get all available game sessions or search for game sessions that match a set of criteria.
- * <i>Available in Amazon GameLift Local.</i>
+ * <a>SearchGameSessions</a> -- Retrieve all available game sessions or search for game sessions that match a set of
+ * criteria.
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <b>Start a new game session</b>
+ * <b>Start new game sessions</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * Game session placement – Use a queue to process new game session requests and create game sessions on fleets
- * designated for the queue.
+ * Start new games with Queues to find the best available hosting resources across multiple regions, minimize player
+ * latency, and balance game session activity for efficiency and cost effectiveness.
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>StartGameSessionPlacement</a> – Request a new game session placement and add one or more players to it.
+ * <a>StartGameSessionPlacement</a> -- Request a new game session placement and add one or more players to it.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessionPlacement</a> – Get details on a placement request, including status.
+ * <a>DescribeGameSessionPlacement</a> -- Get details on a placement request, including status.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>StopGameSessionPlacement</a> – Cancel a placement request.
+ * <a>StopGameSessionPlacement</a> -- Cancel a placement request.
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <a>CreateGameSession</a> – Start a new game session on a specific fleet. <i>Available in Amazon GameLift Local.</i>
+ * <a>CreateGameSession</a> -- Start a new game session on a specific fleet. <i>Available in Amazon GameLift Local.</i>
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <b>Manage game session objects</b>
+ * <b>Start new game sessions with FlexMatch matchmaking</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>DescribeGameSessions</a> – Retrieve metadata for one or more game sessions, including length of time active and
+ * <a>StartMatchmaking</a> -- Request matchmaking for one players or a group who want to play together.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeMatchmaking</a> -- Get details on a matchmaking request, including status.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>AcceptMatch</a> -- Register that a player accepts a proposed match, for matches that require player acceptance.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StopMatchmaking</a> -- Cancel a matchmaking request.
+ * </p>
+ * </li>
+ * </ul>
+ * </li>
+ * <li>
+ * <p>
+ * <b>Manage game session data</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>DescribeGameSessions</a> -- Retrieve metadata for one or more game sessions, including length of time active and
  * current player count. <i>Available in Amazon GameLift Local.</i>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessionDetails</a> – Retrieve metadata and the game session protection setting for one or more game
+ * <a>DescribeGameSessionDetails</a> -- Retrieve metadata and the game session protection setting for one or more game
  * sessions.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateGameSession</a> – Change game session settings, such as maximum player count and join policy.
+ * <a>UpdateGameSession</a> -- Change game session settings, such as maximum player count and join policy.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>GetGameSessionLogUrl</a> – Get the location of saved logs for a game session.
+ * <a>GetGameSessionLogUrl</a> -- Get the location of saved logs for a game session.
  * </p>
  * </li>
  * </ul>
  * </li>
  * <li>
  * <p>
- * <b>Manage player sessions objects</b>
+ * <b>Manage player sessions</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>CreatePlayerSession</a> – Send a request for a player to join a game session. <i>Available in Amazon GameLift
+ * <a>CreatePlayerSession</a> -- Send a request for a player to join a game session. <i>Available in Amazon GameLift
  * Local.</i>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>CreatePlayerSessions</a> – Send a request for multiple players to join a game session. <i>Available in Amazon
+ * <a>CreatePlayerSessions</a> -- Send a request for multiple players to join a game session. <i>Available in Amazon
  * GameLift Local.</i>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribePlayerSessions</a> – Get details on player activity, including status, playing time, and player data.
+ * <a>DescribePlayerSessions</a> -- Get details on player activity, including status, playing time, and player data.
  * <i>Available in Amazon GameLift Local.</i>
  * </p>
  * </li>
@@ -243,9 +294,10 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <b>Setting Up and Managing Game Servers</b>
  * </p>
  * <p>
- * When setting up Amazon GameLift, first create a game build and upload the files to Amazon GameLift. Then use these
- * operations to set up a fleet of resources to run your game servers. Manage games to scale capacity, adjust
- * configuration settings, access raw utilization data, and more.
+ * When setting up Amazon GameLift resources for your game, you first <a
+ * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">create a game build</a>
+ * and upload it to Amazon GameLift. You can then use these actions to configure and manage a fleet of resources to run
+ * your game servers, scale capacity to meet player demand, access performance and utilization metrics, and more.
  * </p>
  * <ul>
  * <li>
@@ -255,28 +307,29 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>CreateBuild</a> – Create a new build by uploading files stored in an Amazon S3 bucket. (To create a build stored
- * at a local file location, use the AWS CLI command <code>upload-build</code>.)
+ * <a>CreateBuild</a> -- Create a new build using files stored in an Amazon S3 bucket. (Update uploading permissions
+ * with <a>RequestUploadCredentials</a>.) To create a build and upload files from a local path, use the AWS CLI command
+ * <code>upload-build</code>.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ListBuilds</a> – Get a list of all builds uploaded to a Amazon GameLift region.
+ * <a>ListBuilds</a> -- Get a list of all builds uploaded to a Amazon GameLift region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeBuild</a> – Retrieve information associated with a build.
+ * <a>DescribeBuild</a> -- Retrieve information associated with a build.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateBuild</a> – Change build metadata, including build name and version.
+ * <a>UpdateBuild</a> -- Change build metadata, including build name and version.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteBuild</a> – Remove a build from Amazon GameLift.
+ * <a>DeleteBuild</a> -- Remove a build from Amazon GameLift.
  * </p>
  * </li>
  * </ul>
@@ -288,12 +341,17 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>CreateFleet</a> – Configure and activate a new fleet to run a build's game servers.
+ * <a>CreateFleet</a> -- Configure and activate a new fleet to run a build's game servers.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteFleet</a> – Terminate a fleet that is no longer running game servers or hosting players.
+ * <a>ListFleets</a> -- Get a list of all fleet IDs in a Amazon GameLift region (all statuses).
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteFleet</a> -- Terminate a fleet that is no longer running game servers or hosting players.
  * </p>
  * </li>
  * <li>
@@ -303,31 +361,20 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>ListFleets</a> – Get a list of all fleet IDs in a Amazon GameLift region (all statuses).
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeFleetAttributes</a> / <a>UpdateFleetAttributes</a> – View or change a fleet's metadata and settings for
+ * <a>DescribeFleetAttributes</a> / <a>UpdateFleetAttributes</a> -- View or change a fleet's metadata and settings for
  * game session protection and resource creation limits.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeFleetPortSettings</a> / <a>UpdateFleetPortSettings</a> – View or change the inbound permissions (IP
+ * <a>DescribeFleetPortSettings</a> / <a>UpdateFleetPortSettings</a> -- View or change the inbound permissions (IP
  * address and port setting ranges) allowed for a fleet.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeRuntimeConfiguration</a> / <a>UpdateRuntimeConfiguration</a> – View or change what server processes (and
+ * <a>DescribeRuntimeConfiguration</a> / <a>UpdateRuntimeConfiguration</a> -- View or change what server processes (and
  * how many) to run on each instance in a fleet.
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeInstances</a> – Get information on each instance in a fleet, including instance ID, IP address, and
- * status.
  * </p>
  * </li>
  * </ul>
@@ -341,37 +388,76 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>DescribeEC2InstanceLimits</a> – Retrieve maximum number of instances allowed for the current AWS account and the
+ * <a>DescribeEC2InstanceLimits</a> -- Retrieve maximum number of instances allowed for the current AWS account and the
  * current usage level.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeFleetCapacity</a> / <a>UpdateFleetCapacity</a> – Retrieve the capacity settings and the current number of
+ * <a>DescribeFleetCapacity</a> / <a>UpdateFleetCapacity</a> -- Retrieve the capacity settings and the current number of
  * instances in a fleet; adjust fleet capacity settings to scale up or down.
  * </p>
  * </li>
  * <li>
  * <p>
- * Autoscale – Manage autoscaling rules and apply them to a fleet.
+ * Autoscale -- Manage autoscaling rules and apply them to a fleet.
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>PutScalingPolicy</a> – Create a new autoscaling policy, or update an existing one.
+ * <a>PutScalingPolicy</a> -- Create a new autoscaling policy, or update an existing one.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeScalingPolicies</a> – Retrieve an existing autoscaling policy.
+ * <a>DescribeScalingPolicies</a> -- Retrieve an existing autoscaling policy.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteScalingPolicy</a> – Delete an autoscaling policy and stop it from affecting a fleet's capacity.
+ * <a>DeleteScalingPolicy</a> -- Delete an autoscaling policy and stop it from affecting a fleet's capacity.
  * </p>
  * </li>
  * </ul>
+ * </li>
+ * </ul>
+ * </li>
+ * <li>
+ * <p>
+ * <b>Manage VPC peering connections for fleets</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateVpcPeeringAuthorization</a> -- Authorize a peering connection to one of your VPCs.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeVpcPeeringAuthorizations</a> -- Retrieve valid peering connection authorizations.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteVpcPeeringAuthorization</a> -- Delete a peering connection authorization.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>CreateVpcPeeringConnection</a> -- Establish a peering connection between the VPC for a Amazon GameLift fleet and
+ * one of your VPCs.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeVpcPeeringConnections</a> -- Retrieve information on active or pending VPC peering connections with a
+ * Amazon GameLift fleet.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteVpcPeeringConnection</a> -- Delete a VPC peering connection with a Amazon GameLift fleet.
+ * </p>
  * </li>
  * </ul>
  * </li>
@@ -382,18 +468,18 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>DescribeFleetUtilization</a> – Get current data on the number of server processes, game sessions, and players
+ * <a>DescribeFleetUtilization</a> -- Get current data on the number of server processes, game sessions, and players
  * currently active on a fleet.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeFleetEvents</a> – Get a fleet's logged events for a specified time span.
+ * <a>DescribeFleetEvents</a> -- Get a fleet's logged events for a specified time span.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessions</a> – Retrieve metadata associated with one or more game sessions, including length of time
+ * <a>DescribeGameSessions</a> -- Retrieve metadata associated with one or more game sessions, including length of time
  * active and current player count.
  * </p>
  * </li>
@@ -406,7 +492,13 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>GetInstanceAccess</a> – Request access credentials needed to remotely connect to a specified instance in a fleet.
+ * <a>DescribeInstances</a> -- Get information on each instance in a fleet, including instance ID, IP address, and
+ * status.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetInstanceAccess</a> -- Request access credentials needed to remotely connect to a specified instance in a fleet.
  * </p>
  * </li>
  * </ul>
@@ -418,32 +510,32 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>CreateAlias</a> – Define a new alias and optionally assign it to a fleet.
+ * <a>CreateAlias</a> -- Define a new alias and optionally assign it to a fleet.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ListAliases</a> – Get all fleet aliases defined in a Amazon GameLift region.
+ * <a>ListAliases</a> -- Get all fleet aliases defined in a Amazon GameLift region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeAlias</a> – Retrieve information on an existing alias.
+ * <a>DescribeAlias</a> -- Retrieve information on an existing alias.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateAlias</a> – Change settings for a alias, such as redirecting it from one fleet to another.
+ * <a>UpdateAlias</a> -- Change settings for a alias, such as redirecting it from one fleet to another.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteAlias</a> – Remove an alias from the region.
+ * <a>DeleteAlias</a> -- Remove an alias from the region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ResolveAlias</a> – Get the fleet ID that a specified alias points to.
+ * <a>ResolveAlias</a> -- Get the fleet ID that a specified alias points to.
  * </p>
  * </li>
  * </ul>
@@ -455,22 +547,65 @@ import com.amazonaws.services.gamelift.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>CreateGameSessionQueue</a> – Create a queue for processing requests for new game sessions.
+ * <a>CreateGameSessionQueue</a> -- Create a queue for processing requests for new game sessions.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeGameSessionQueues</a> – Get data on all game session queues defined in a Amazon GameLift region.
+ * <a>DescribeGameSessionQueues</a> -- Retrieve game session queues defined in a Amazon GameLift region.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateGameSessionQueue</a> – Change the configuration of a game session queue.
+ * <a>UpdateGameSessionQueue</a> -- Change the configuration of a game session queue.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteGameSessionQueue</a> – Remove a game session queue from the region.
+ * <a>DeleteGameSessionQueue</a> -- Remove a game session queue from the region.
+ * </p>
+ * </li>
+ * </ul>
+ * </li>
+ * <li>
+ * <p>
+ * <b>Manage FlexMatch resources</b>
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>CreateMatchmakingConfiguration</a> -- Create a matchmaking configuration with instructions for building a player
+ * group and placing in a new game session.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeMatchmakingConfigurations</a> -- Retrieve matchmaking configurations defined a Amazon GameLift region.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UpdateMatchmakingConfiguration</a> -- Change settings for matchmaking configuration. queue.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DeleteMatchmakingConfiguration</a> -- Remove a matchmaking configuration from the region.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>CreateMatchmakingRuleSet</a> -- Create a set of rules to use when searching for player matches.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeMatchmakingRuleSets</a> -- Retrieve matchmaking rule sets defined in a Amazon GameLift region.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>ValidateMatchmakingRuleSet</a> -- Verify syntax for a set of matchmaking rules.
  * </p>
  * </li>
  * </ul>
@@ -500,26 +635,11 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
                             new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
                                     com.amazonaws.services.gamelift.model.InvalidRequestException.class))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("GameSessionFullException").withModeledClass(
-                                    com.amazonaws.services.gamelift.model.GameSessionFullException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.gamelift.model.NotFoundException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
-                                    com.amazonaws.services.gamelift.model.UnauthorizedException.class))
-                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
                                     com.amazonaws.services.gamelift.model.LimitExceededException.class))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidFleetStatusException").withModeledClass(
-                                    com.amazonaws.services.gamelift.model.InvalidFleetStatusException.class))
-                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("FleetCapacityExceededException").withModeledClass(
                                     com.amazonaws.services.gamelift.model.FleetCapacityExceededException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
-                                    com.amazonaws.services.gamelift.model.ConflictException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("IdempotentParameterMismatchException").withModeledClass(
                                     com.amazonaws.services.gamelift.model.IdempotentParameterMismatchException.class))
@@ -532,6 +652,24 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalServiceException").withModeledClass(
                                     com.amazonaws.services.gamelift.model.InternalServiceException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("GameSessionFullException").withModeledClass(
+                                    com.amazonaws.services.gamelift.model.GameSessionFullException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
+                                    com.amazonaws.services.gamelift.model.NotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedRegionException").withModeledClass(
+                                    com.amazonaws.services.gamelift.model.UnsupportedRegionException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
+                                    com.amazonaws.services.gamelift.model.UnauthorizedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidFleetStatusException").withModeledClass(
+                                    com.amazonaws.services.gamelift.model.InvalidFleetStatusException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
+                                    com.amazonaws.services.gamelift.model.ConflictException.class))
                     .withBaseServiceExceptionClass(com.amazonaws.services.gamelift.model.AmazonGameLiftException.class));
 
     /**
@@ -718,23 +856,163 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Creates an alias and sets a target fleet. A fleet alias can be used in place of a fleet ID, such as when calling
-     * <code>CreateGameSession</code> from a game client or game service or adding destinations to a game session queue.
-     * By changing an alias's target fleet, you can switch your players to the new fleet without changing any other
-     * component. In production, this feature is particularly useful to redirect your player base seamlessly to the
-     * latest game server update.
+     * Registers a player's acceptance or rejection of a proposed FlexMatch match. A matchmaking configuration may
+     * require player acceptance; if so, then matches built with that configuration cannot be completed unless all
+     * players accept the proposed match within a specified time limit.
      * </p>
      * <p>
-     * Amazon GameLift supports two types of routing strategies for aliases: simple and terminal. Use a simple alias to
-     * point to an active fleet. Use a terminal alias to display a message to incoming traffic instead of routing
-     * players to an active fleet. This option is useful when a game server is no longer supported but you want to
-     * provide better messaging than a standard 404 error.
+     * When FlexMatch builds a match, all the matchmaking tickets involved in the proposed match are placed into status
+     * <code>REQUIRES_ACCEPTANCE</code>. This is a trigger for your game to get acceptance from all players in the
+     * ticket. Acceptances are only valid for tickets when they are in this status; all other acceptances result in an
+     * error.
      * </p>
      * <p>
-     * To create a fleet alias, specify an alias name, routing strategy, and optional description. If successful, a new
-     * alias record is returned, including an alias ID, which you can reference when creating a game session. To
-     * reassign the alias to another fleet ID, call <a>UpdateAlias</a>.
+     * To register acceptance, specify the ticket ID, a response, and one or more players. Once all players have
+     * registered acceptance, the matchmaking tickets advance to status <code>PLACING</code>, where a new game session
+     * is created for the match.
      * </p>
+     * <p>
+     * If any player rejects the match, or if acceptances are not received before a specified timeout, the proposed
+     * match is dropped. The matchmaking tickets are then handled in one of two ways: For tickets where all players
+     * accepted the match, the ticket status is returned to <code>SEARCHING</code> to find a new match. For tickets
+     * where one or more players failed to accept the match, the ticket status is set to <code>FAILED</code>, and
+     * processing is terminated. A new matchmaking request for these players can be submitted as needed.
+     * </p>
+     * <p>
+     * Matchmaking-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>AcceptMatch</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param acceptMatchRequest
+     *        Represents the input for a request action.
+     * @return Result of the AcceptMatch operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.AcceptMatch
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/AcceptMatch" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public AcceptMatchResult acceptMatch(AcceptMatchRequest request) {
+        request = beforeClientExecution(request);
+        return executeAcceptMatch(request);
+    }
+
+    @SdkInternalApi
+    final AcceptMatchResult executeAcceptMatch(AcceptMatchRequest acceptMatchRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(acceptMatchRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AcceptMatchRequest> request = null;
+        Response<AcceptMatchResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AcceptMatchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(acceptMatchRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<AcceptMatchResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new AcceptMatchResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates an alias for a fleet. In most situations, you can use an alias ID in place of a fleet ID. By using a
+     * fleet alias instead of a specific fleet ID, you can switch gameplay and players to a new fleet without changing
+     * your game client or other game components. For example, for games in production, using an alias allows you to
+     * seamlessly redirect your player base to a new game server update.
+     * </p>
+     * <p>
+     * Amazon GameLift supports two types of routing strategies for aliases: simple and terminal. A simple alias points
+     * to an active fleet. A terminal alias is used to display messaging or link to a URL instead of routing players to
+     * an active fleet. For example, you might use a terminal alias when a game version is no longer supported and you
+     * want to direct players to an upgrade site.
+     * </p>
+     * <p>
+     * To create a fleet alias, specify an alias name, routing strategy, and optional description. Each simple alias can
+     * point to only one fleet, but a fleet can have multiple aliases. If successful, a new alias record is returned,
+     * including an alias ID, which you can reference when creating a game session. You can reassign an alias to another
+     * fleet by calling <code>UpdateAlias</code>.
+     * </p>
+     * <p>
+     * Alias-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListAliases</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ResolveAlias</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param createAliasRequest
      *        Represents the input for a request action.
@@ -797,18 +1075,18 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
     /**
      * <p>
      * Creates a new Amazon GameLift build from a set of game server binary files stored in an Amazon Simple Storage
-     * Service (Amazon S3) location. When using this API call, you must create a <code>.zip</code> file containing all
-     * of the build files and store it in an Amazon S3 bucket under your AWS account. For help on packaging your build
-     * files and creating a build, see <a
+     * Service (Amazon S3) location. To use this API call, create a <code>.zip</code> file containing all of the files
+     * for the build and store it in an Amazon S3 bucket under your AWS account. For help on packaging your build files
+     * and creating a build, see <a
      * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">Uploading Your Game to
      * Amazon GameLift</a>.
      * </p>
      * <important>
      * <p>
-     * Use this API action ONLY if you are storing your game build files in an Amazon S3 bucket in your AWS account. To
-     * create a build using files stored in a directory, use the CLI command <a
+     * Use this API action ONLY if you are storing your game build files in an Amazon S3 bucket. To create a build using
+     * files stored locally, use the CLI command <a
      * href="http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html"> <code>upload-build</code>
-     * </a>, which uploads the build files from a file location you specify and creates a build.
+     * </a>, which uploads the build files from a file location you specify.
      * </p>
      * </important>
      * <p>
@@ -818,6 +1096,36 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <a>DescribeBuild</a> to check the status of your build. A build must be in <code>READY</code> status before it
      * can be used to create fleets to host your game.
      * </p>
+     * <p>
+     * Build-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListBuilds</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteBuild</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param createBuildRequest
      *        Represents the input for a request action.
@@ -885,13 +1193,44 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * </p>
      * <p>
      * To create a new fleet, you must specify the following: (1) fleet name, (2) build ID of an uploaded game build,
-     * (3) an EC2 instance type, and (4) a runtime configuration that describes which server processes to run on each
-     * instance in the fleet. (Although the runtime configuration is not a required parameter, the fleet cannot be
-     * successfully created without it.) You can also configure the new fleet with the following settings: fleet
-     * description, access permissions for inbound traffic, fleet-wide game session protection, and resource creation
-     * limit. If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group, which allows you to
-     * view aggregated metrics for a set of fleets. Once you specify a metric group, the new fleet's metrics are
-     * included in the metric group's data.
+     * (3) an EC2 instance type, and (4) a run-time configuration that describes which server processes to run on each
+     * instance in the fleet. (Although the run-time configuration is not a required parameter, the fleet cannot be
+     * successfully activated without it.)
+     * </p>
+     * <p>
+     * You can also configure the new fleet with the following settings:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Fleet description
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Access permissions for inbound traffic
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Fleet-wide game session protection
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Resource creation limit
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group. This allows you to view
+     * aggregated metrics for a set of fleets. Once you specify a metric group, the new fleet's metrics are included in
+     * the metric group's data.
+     * </p>
+     * <p>
+     * You have the option of creating a VPC peering connection with the new fleet. For more information, see <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html">VPC Peering with Amazon
+     * GameLift Fleets</a>.
      * </p>
      * <p>
      * If the CreateFleet call is successful, Amazon GameLift performs the following tasks:
@@ -905,7 +1244,8 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * </li>
      * <li>
      * <p>
-     * Sets the fleet's capacity to 1 "desired", which causes Amazon GameLift to start one new EC2 instance.
+     * Sets the fleet's target capacity to 1 (desired instances), which causes Amazon GameLift to start one new EC2
+     * instance.
      * </p>
      * </li>
      * <li>
@@ -921,39 +1261,124 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * </li>
      * <li>
      * <p>
-     * Sets the fleet's status to <code>ACTIVE</code> once one server process in the fleet is ready to host a game
+     * Sets the fleet's status to <code>ACTIVE</code> as soon as one server process in the fleet is ready to host a game
      * session.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * After a fleet is created, use the following actions to change fleet properties and configuration:
+     * Fleet-related operations include:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>UpdateFleetAttributes</a> -- Update fleet metadata, including name and description.
+     * <a>CreateFleet</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a> -- Increase or decrease the number of instances you want the fleet to maintain.
+     * <a>ListFleets</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetPortSettings</a> -- Change the IP address and port ranges that allow access to incoming traffic.
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateRuntimeConfiguration</a> -- Change how server processes are launched in the fleet, including launch
-     * path, launch parameters, and the number of concurrent processes.
+     * <a>DescribeFleetPortSettings</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>PutScalingPolicy</a> -- Create or update rules that are used to set the fleet's capacity (autoscaling).
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
      * </p>
      * </li>
      * </ul>
@@ -1028,8 +1453,8 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <p>
      * To create a game session, specify either fleet ID or alias ID and indicate a maximum number of players to allow
      * in the game session. You can also provide a name and game-specific properties for this game session. If
-     * successful, a <a>GameSession</a> object is returned containing game session properties, including a game session
-     * ID with the custom string you provided.
+     * successful, a <a>GameSession</a> object is returned containing the game session properties and other settings you
+     * specified.
      * </p>
      * <p>
      * <b>Idempotency tokens.</b> You can add a token that uniquely identifies game session requests. This is useful for
@@ -1043,12 +1468,74 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * policy for this new game session request.
      * </p>
      * <p>
-     * By default, newly created game sessions allow new players to join. Use <a>UpdateGameSession</a> to change the
-     * game session's player session creation policy.
+     * <b>Player acceptance policy.</b> By default, newly created game sessions are open to new players. You can
+     * restrict new player access by using <a>UpdateGameSession</a> to change the game session's player session creation
+     * policy.
+     * </p>
+     * <p>
+     * <b>Game session logs.</b> Logs are retained for all active game sessions for 14 days. To access the logs, call
+     * <a>GetGameSessionLogUrl</a> to download the log files.
      * </p>
      * <p>
      * <i>Available in Amazon GameLift Local.</i>
      * </p>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param createGameSessionRequest
      *        Represents the input for a request action.
@@ -1154,6 +1641,31 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * To create a new queue, provide a name, timeout value, a list of destinations and, if desired, a set of latency
      * policies. If successful, a new queue object is returned.
      * </p>
+     * <p>
+     * Queue-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionQueues</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteGameSessionQueue</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param createGameSessionQueueRequest
      *        Represents the input for a request action.
@@ -1213,6 +1725,251 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Defines a new matchmaking configuration for use with FlexMatch. A matchmaking configuration sets out guidelines
+     * for matching players and getting the matches into games. You can set up multiple matchmaking configurations to
+     * handle the scenarios needed for your game. Each matchmaking request (<a>StartMatchmaking</a>) specifies a
+     * configuration for the match and provides player attributes to support the configuration being used.
+     * </p>
+     * <p>
+     * To create a matchmaking configuration, at a minimum you must specify the following: configuration name; a rule
+     * set that governs how to evaluate players and find acceptable matches; a game session queue to use when placing a
+     * new game session for the match; and the maximum time allowed for a matchmaking attempt.
+     * </p>
+     * <p>
+     * <b>Player acceptance</b> -- In each configuration, you have the option to require that all players accept
+     * participation in a proposed match. To enable this feature, set <i>AcceptanceRequired</i> to true and specify a
+     * time limit for player acceptance. Players have the option to accept or reject a proposed match, and a match does
+     * not move ahead to game session placement unless all matched players accept.
+     * </p>
+     * <p>
+     * <b>Matchmaking status notification</b> -- There are two ways to track the progress of matchmaking tickets: (1)
+     * polling ticket status with <a>DescribeMatchmaking</a>; or (2) receiving notifications with Amazon Simple
+     * Notification Service (SNS). To use notifications, you first need to set up an SNS topic to receive the
+     * notifications, and provide the topic ARN in the matchmaking configuration (see <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     * Notifications for Matchmaking</a>). Since notifications promise only "best effort" delivery, we recommend calling
+     * <code>DescribeMatchmaking</code> if no notifications are received within 30 seconds.
+     * </p>
+     * <p>
+     * Operations related to match configurations and rule sets include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingConfigurations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingRuleSets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ValidateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param createMatchmakingConfigurationRequest
+     *        Represents the input for a request action.
+     * @return Result of the CreateMatchmakingConfiguration operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws LimitExceededException
+     *         The requested operation would cause the resource to exceed the allowed service limit. Resolve the issue
+     *         before retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.CreateMatchmakingConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateMatchmakingConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateMatchmakingConfigurationResult createMatchmakingConfiguration(CreateMatchmakingConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateMatchmakingConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final CreateMatchmakingConfigurationResult executeCreateMatchmakingConfiguration(CreateMatchmakingConfigurationRequest createMatchmakingConfigurationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createMatchmakingConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateMatchmakingConfigurationRequest> request = null;
+        Response<CreateMatchmakingConfigurationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateMatchmakingConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createMatchmakingConfigurationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateMatchmakingConfigurationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateMatchmakingConfigurationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a new rule set for FlexMatch matchmaking. A rule set describes the type of match to create, such as the
+     * number and size of teams, and sets the parameters for acceptable player matches, such as minimum skill level or
+     * character type. Rule sets are used in matchmaking configurations, which define how matchmaking requests are
+     * handled. Each <a>MatchmakingConfiguration</a> uses one rule set; you can set up multiple rule sets to handle the
+     * scenarios that suit your game (such as for different game modes), and create a separate matchmaking configuration
+     * for each rule set. See additional information on rule set content in the <a>MatchmakingRuleSet</a> structure. For
+     * help creating rule sets, including useful examples, see the topic <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html"> Adding FlexMatch to Your
+     * Game</a>.
+     * </p>
+     * <p>
+     * Once created, matchmaking rule sets cannot be changed or deleted, so we recommend checking the rule set syntax
+     * using <a>ValidateMatchmakingRuleSet</a>before creating the rule set.
+     * </p>
+     * <p>
+     * To create a matchmaking rule set, provide the set of rules and a unique name. Rule sets must be defined in the
+     * same region as the matchmaking configuration they will be used with. Rule sets cannot be edited or deleted. If
+     * you need to change a rule set, create a new one with the necessary edits and then update matchmaking
+     * configurations to use the new rule set.
+     * </p>
+     * <p>
+     * Operations related to match configurations and rule sets include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingConfigurations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingRuleSets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ValidateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param createMatchmakingRuleSetRequest
+     *        Represents the input for a request action.
+     * @return Result of the CreateMatchmakingRuleSet operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.CreateMatchmakingRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateMatchmakingRuleSet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateMatchmakingRuleSetResult createMatchmakingRuleSet(CreateMatchmakingRuleSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateMatchmakingRuleSet(request);
+    }
+
+    @SdkInternalApi
+    final CreateMatchmakingRuleSetResult executeCreateMatchmakingRuleSet(CreateMatchmakingRuleSetRequest createMatchmakingRuleSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createMatchmakingRuleSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateMatchmakingRuleSetRequest> request = null;
+        Response<CreateMatchmakingRuleSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateMatchmakingRuleSetRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createMatchmakingRuleSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateMatchmakingRuleSetResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateMatchmakingRuleSetResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Adds a player to a game session and creates a player session record. Before a player can be added, a game session
      * must have an <code>ACTIVE</code> status, have a creation policy of <code>ALLOW_ALL</code>, and have an open
      * player slot. To add a group of players to a game session, use <a>CreatePlayerSessions</a>.
@@ -1225,6 +1982,48 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <p>
      * <i>Available in Amazon GameLift Local.</i>
      * </p>
+     * <p>
+     * Player-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreatePlayerSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreatePlayerSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribePlayerSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param createPlayerSessionRequest
      *        Represents the input for a request action.
@@ -1307,6 +2106,48 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <p>
      * <i>Available in Amazon GameLift Local.</i>
      * </p>
+     * <p>
+     * Player-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreatePlayerSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreatePlayerSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribePlayerSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param createPlayerSessionsRequest
      *        Represents the input for a request action.
@@ -1376,9 +2217,283 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Deletes a fleet alias. This action removes all record of the alias. Game clients attempting to access a server
-     * process using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.
+     * Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a
+     * virtual private cloud (VPC) in your AWS account. VPC peering enables the game servers on your fleet to
+     * communicate directly with other AWS resources. Once you've received authorization, call
+     * <a>CreateVpcPeeringConnection</a> to establish the peering connection. For more information, see <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html">VPC Peering with Amazon
+     * GameLift Fleets</a>.
      * </p>
+     * <p>
+     * You can peer with VPCs that are owned by any AWS account you have access to, including the account that you use
+     * to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions.
+     * </p>
+     * <p>
+     * To request authorization to create a connection, call this operation from the AWS account with the VPC that you
+     * want to peer to your Amazon GameLift fleet. For example, to enable your game servers to retrieve data from a
+     * DynamoDB table, use the account that manages that DynamoDB resource. Identify the following values: (1) The ID of
+     * the VPC that you want to peer with, and (2) the ID of the AWS account that you use to manage Amazon GameLift. If
+     * successful, VPC peering is authorized for the specified VPC.
+     * </p>
+     * <p>
+     * To request authorization to delete a connection, call this operation from the AWS account with the VPC that is
+     * peered with your Amazon GameLift fleet. Identify the following values: (1) VPC ID that you want to delete the
+     * peering connection for, and (2) ID of the AWS account that you use to manage Amazon GameLift.
+     * </p>
+     * <p>
+     * The authorization remains valid for 24 hours unless it is canceled by a call to
+     * <a>DeleteVpcPeeringAuthorization</a>. You must create or delete the peering connection while the authorization is
+     * valid.
+     * </p>
+     * <p>
+     * VPC peering connection operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringAuthorizations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringConnections</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param createVpcPeeringAuthorizationRequest
+     *        Represents the input for a request action.
+     * @return Result of the CreateVpcPeeringAuthorization operation returned by the service.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @sample AmazonGameLift.CreateVpcPeeringAuthorization
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateVpcPeeringAuthorization"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateVpcPeeringAuthorizationResult createVpcPeeringAuthorization(CreateVpcPeeringAuthorizationRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpcPeeringAuthorization(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpcPeeringAuthorizationResult executeCreateVpcPeeringAuthorization(CreateVpcPeeringAuthorizationRequest createVpcPeeringAuthorizationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createVpcPeeringAuthorizationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateVpcPeeringAuthorizationRequest> request = null;
+        Response<CreateVpcPeeringAuthorizationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateVpcPeeringAuthorizationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createVpcPeeringAuthorizationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateVpcPeeringAuthorizationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateVpcPeeringAuthorizationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC for
+     * your Amazon GameLift fleet. VPC peering enables the game servers on your fleet to communicate directly with other
+     * AWS resources. You can peer with VPCs in any AWS account that you have access to, including the account that you
+     * use to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions. For more
+     * information, see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html">VPC Peering
+     * with Amazon GameLift Fleets</a>.
+     * </p>
+     * <p>
+     * Before calling this operation to establish the peering connection, you first need to call
+     * <a>CreateVpcPeeringAuthorization</a> and identify the VPC you want to peer with. Once the authorization for the
+     * specified VPC is issued, you have 24 hours to establish the connection. These two operations handle all tasks
+     * necessary to peer the two VPCs, including acceptance, updating routing tables, etc.
+     * </p>
+     * <p>
+     * To establish the connection, call this operation from the AWS account that is used to manage the Amazon GameLift
+     * fleets. Identify the following values: (1) The ID of the fleet you want to be enable a VPC peering connection
+     * for; (2) The AWS account with the VPC that you want to peer with; and (3) The ID of the VPC you want to peer
+     * with. This operation is asynchronous. If successful, a <a>VpcPeeringConnection</a> request is created. You can
+     * use continuous polling to track the request's status using <a>DescribeVpcPeeringConnections</a>, or by monitoring
+     * fleet events for success or failure using <a>DescribeFleetEvents</a>.
+     * </p>
+     * <p>
+     * VPC peering connection operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringAuthorizations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringConnections</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param createVpcPeeringConnectionRequest
+     *        Represents the input for a request action.
+     * @return Result of the CreateVpcPeeringConnection operation returned by the service.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @sample AmazonGameLift.CreateVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateVpcPeeringConnection"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateVpcPeeringConnectionResult createVpcPeeringConnection(CreateVpcPeeringConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateVpcPeeringConnection(request);
+    }
+
+    @SdkInternalApi
+    final CreateVpcPeeringConnectionResult executeCreateVpcPeeringConnection(CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createVpcPeeringConnectionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateVpcPeeringConnectionRequest> request = null;
+        Response<CreateVpcPeeringConnectionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateVpcPeeringConnectionRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createVpcPeeringConnectionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateVpcPeeringConnectionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateVpcPeeringConnectionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes an alias. This action removes all record of the alias. Game clients attempting to access a server process
+     * using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.
+     * </p>
+     * <p>
+     * Alias-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListAliases</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ResolveAlias</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deleteAliasRequest
      *        Represents the input for a request action.
@@ -1443,6 +2558,36 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the
      * build, but you can no longer create new fleets with the deleted build.
      * </p>
+     * <p>
+     * Build-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListBuilds</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteBuild</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deleteBuildRequest
      *        Represents the input for a request action.
@@ -1508,6 +2653,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * This action removes the fleet's resources and the fleet record. Once a fleet is deleted, you can no longer use
      * that fleet.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deleteFleetRequest
      *        Represents the input for a request action.
@@ -1572,6 +2833,31 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * Deletes a game session queue. This action means that any <a>StartGameSessionPlacement</a> requests that reference
      * this queue will fail. To delete a queue, specify the queue name.
      * </p>
+     * <p>
+     * Queue-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionQueues</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteGameSessionQueue</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deleteGameSessionQueueRequest
      *        Represents the input for a request action.
@@ -1631,9 +2917,228 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration name. A
+     * matchmaking configuration cannot be deleted if it is being used in any active matchmaking tickets.
+     * </p>
+     * <p>
+     * Operations related to match configurations and rule sets include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingConfigurations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingRuleSets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ValidateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param deleteMatchmakingConfigurationRequest
+     *        Represents the input for a request action.
+     * @return Result of the DeleteMatchmakingConfiguration operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.DeleteMatchmakingConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteMatchmakingConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteMatchmakingConfigurationResult deleteMatchmakingConfiguration(DeleteMatchmakingConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteMatchmakingConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final DeleteMatchmakingConfigurationResult executeDeleteMatchmakingConfiguration(DeleteMatchmakingConfigurationRequest deleteMatchmakingConfigurationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteMatchmakingConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteMatchmakingConfigurationRequest> request = null;
+        Response<DeleteMatchmakingConfigurationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteMatchmakingConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteMatchmakingConfigurationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteMatchmakingConfigurationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteMatchmakingConfigurationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Deletes a fleet scaling policy. This action means that the policy is no longer in force and removes all record of
      * it. To delete a scaling policy, specify both the scaling policy name and the fleet ID it is associated with.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deleteScalingPolicyRequest
      *        Represents the input for a request action.
@@ -1692,12 +3197,249 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Retrieves properties for a fleet alias. This operation returns all alias metadata and settings. To get just the
-     * fleet ID an alias is currently pointing to, use <a>ResolveAlias</a>.
+     * Cancels a pending VPC peering authorization for the specified VPC. If the authorization has already been used to
+     * create a peering connection, call <a>DeleteVpcPeeringConnection</a> to remove the connection.
      * </p>
      * <p>
-     * To get alias properties, specify the alias ID. If successful, an <a>Alias</a> object is returned.
+     * VPC peering connection operations include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringAuthorizations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringConnections</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param deleteVpcPeeringAuthorizationRequest
+     *        Represents the input for a request action.
+     * @return Result of the DeleteVpcPeeringAuthorization operation returned by the service.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @sample AmazonGameLift.DeleteVpcPeeringAuthorization
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteVpcPeeringAuthorization"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteVpcPeeringAuthorizationResult deleteVpcPeeringAuthorization(DeleteVpcPeeringAuthorizationRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpcPeeringAuthorization(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpcPeeringAuthorizationResult executeDeleteVpcPeeringAuthorization(DeleteVpcPeeringAuthorizationRequest deleteVpcPeeringAuthorizationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteVpcPeeringAuthorizationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteVpcPeeringAuthorizationRequest> request = null;
+        Response<DeleteVpcPeeringAuthorizationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteVpcPeeringAuthorizationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteVpcPeeringAuthorizationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteVpcPeeringAuthorizationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteVpcPeeringAuthorizationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Removes a VPC peering connection. To delete the connection, you must have a valid authorization for the VPC
+     * peering connection that you want to delete. You can check for an authorization by calling
+     * <a>DescribeVpcPeeringAuthorizations</a> or request a new one using <a>CreateVpcPeeringAuthorization</a>.
+     * </p>
+     * <p>
+     * Once a valid authorization exists, call this operation from the AWS account that is used to manage the Amazon
+     * GameLift fleets. Identify the connection to delete by the connection ID and fleet ID. If successful, the
+     * connection is removed.
+     * </p>
+     * <p>
+     * VPC peering connection operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringAuthorizations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringConnections</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param deleteVpcPeeringConnectionRequest
+     *        Represents the input for a request action.
+     * @return Result of the DeleteVpcPeeringConnection operation returned by the service.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @sample AmazonGameLift.DeleteVpcPeeringConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteVpcPeeringConnection"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteVpcPeeringConnection(request);
+    }
+
+    @SdkInternalApi
+    final DeleteVpcPeeringConnectionResult executeDeleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteVpcPeeringConnectionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteVpcPeeringConnectionRequest> request = null;
+        Response<DeleteVpcPeeringConnectionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteVpcPeeringConnectionRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteVpcPeeringConnectionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteVpcPeeringConnectionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteVpcPeeringConnectionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves properties for an alias. This operation returns all alias metadata and settings. To get an alias's
+     * target fleet ID only, use <code>ResolveAlias</code>.
+     * </p>
+     * <p>
+     * To get alias properties, specify the alias ID. If successful, the requested alias record is returned.
+     * </p>
+     * <p>
+     * Alias-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListAliases</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ResolveAlias</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeAliasRequest
      *        Represents the input for a request action.
@@ -1759,6 +3501,36 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * Retrieves properties for a build. To get a build record, specify a build ID. If successful, an object containing
      * the build properties is returned.
      * </p>
+     * <p>
+     * Build-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListBuilds</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteBuild</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeBuildRequest
      *        Represents the input for a request action.
@@ -1835,6 +3607,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * Service limits vary depending on region. Available regions for Amazon GameLift can be found in the AWS Management
      * Console for Amazon GameLift (see the drop-down list in the upper right corner).
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeEC2InstanceLimitsRequest
      *        Represents the input for a request action.
@@ -1904,6 +3792,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * request fails and the error message includes the maximum allowed.
      * </p>
      * </note>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeFleetAttributesRequest
      *        Represents the input for a request action.
@@ -1977,6 +3981,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * request fails and the error message includes the maximum allowed.
      * </p>
      * </note>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeFleetCapacityRequest
      *        Represents the input for a request action.
@@ -2040,6 +4160,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of event
      * log entries matching the request are returned.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeFleetEventsRequest
      *        Represents the input for a request action.
@@ -2103,6 +4339,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * connection permissions, specify a fleet ID. If successful, a collection of <a>IpPermission</a> objects is
      * returned for the requested fleet ID. If the requested fleet has been deleted, the result set is empty.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeFleetPortSettingsRequest
      *        Represents the input for a request action.
@@ -2175,6 +4527,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * request fails and the error message includes the maximum allowed.
      * </p>
      * </note>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeFleetUtilizationRequest
      *        Represents the input for a request action.
@@ -2246,6 +4714,63 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * sequential pages. If successful, a <a>GameSessionDetail</a> object is returned for each session matching the
      * request.
      * </p>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param describeGameSessionDetailsRequest
      *        Represents the input for a request action.
@@ -2314,6 +4839,63 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * Retrieves properties and current status of a game session placement request. To get game session placement
      * details, specify the placement ID. If successful, a <a>GameSessionPlacement</a> object is returned.
      * </p>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param describeGameSessionPlacementRequest
      *        Represents the input for a request action.
@@ -2379,6 +4961,31 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * returned for each requested queue. When specifying a list of queues, objects are returned only for queues that
      * currently exist in the region.
      * </p>
+     * <p>
+     * Queue-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionQueues</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteGameSessionQueue</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeGameSessionQueuesRequest
      *        Represents the input for a request action.
@@ -2452,6 +5059,63 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <p>
      * <i>Available in Amazon GameLift Local.</i>
      * </p>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param describeGameSessionsRequest
      *        Represents the input for a request action.
@@ -2581,6 +5245,308 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Retrieves a set of one or more matchmaking tickets. Use this operation to retrieve ticket information, including
+     * status and--once a successful match is made--acquire connection information for the resulting new game session.
+     * </p>
+     * <p>
+     * You can use this operation to track the progress of matchmaking requests (through polling) as an alternative to
+     * using event notifications. See more details on tracking matchmaking requests through polling or notifications in
+     * <a>StartMatchmaking</a>.
+     * </p>
+     * <p>
+     * You can request data for a one or a list of ticket IDs. If the request is successful, a ticket object is returned
+     * for each requested ID. When specifying a list of ticket IDs, objects are returned only for tickets that currently
+     * exist.
+     * </p>
+     * <p>
+     * Matchmaking-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>AcceptMatch</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param describeMatchmakingRequest
+     *        Represents the input for a request action.
+     * @return Result of the DescribeMatchmaking operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.DescribeMatchmaking
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmaking" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DescribeMatchmakingResult describeMatchmaking(DescribeMatchmakingRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMatchmaking(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMatchmakingResult executeDescribeMatchmaking(DescribeMatchmakingRequest describeMatchmakingRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeMatchmakingRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeMatchmakingRequest> request = null;
+        Response<DescribeMatchmakingResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeMatchmakingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeMatchmakingRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeMatchmakingResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeMatchmakingResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves the details of FlexMatch matchmaking configurations. with this operation, you have the following
+     * options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to
+     * retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items,
+     * use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is
+     * returned for each requested name. When specifying a list of names, only configurations that currently exist are
+     * returned.
+     * </p>
+     * <p>
+     * Operations related to match configurations and rule sets include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingConfigurations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingRuleSets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ValidateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param describeMatchmakingConfigurationsRequest
+     *        Represents the input for a request action.
+     * @return Result of the DescribeMatchmakingConfigurations operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.DescribeMatchmakingConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmakingConfigurations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeMatchmakingConfigurationsResult describeMatchmakingConfigurations(DescribeMatchmakingConfigurationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMatchmakingConfigurations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMatchmakingConfigurationsResult executeDescribeMatchmakingConfigurations(
+            DescribeMatchmakingConfigurationsRequest describeMatchmakingConfigurationsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeMatchmakingConfigurationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeMatchmakingConfigurationsRequest> request = null;
+        Response<DescribeMatchmakingConfigurationsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeMatchmakingConfigurationsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeMatchmakingConfigurationsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeMatchmakingConfigurationsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeMatchmakingConfigurationsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves the details for FlexMatch matchmaking rule sets. You can request all existing rule sets for the region,
+     * or provide a list of one or more rule set names. When requesting multiple items, use the pagination parameters to
+     * retrieve results as a set of sequential pages. If successful, a rule set is returned for each requested name.
+     * </p>
+     * <p>
+     * Operations related to match configurations and rule sets include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingConfigurations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingRuleSets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ValidateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param describeMatchmakingRuleSetsRequest
+     *        Represents the input for a request action.
+     * @return Result of the DescribeMatchmakingRuleSets operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.DescribeMatchmakingRuleSets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmakingRuleSets"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeMatchmakingRuleSetsResult describeMatchmakingRuleSets(DescribeMatchmakingRuleSetsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMatchmakingRuleSets(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMatchmakingRuleSetsResult executeDescribeMatchmakingRuleSets(DescribeMatchmakingRuleSetsRequest describeMatchmakingRuleSetsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeMatchmakingRuleSetsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeMatchmakingRuleSetsRequest> request = null;
+        Response<DescribeMatchmakingRuleSetsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeMatchmakingRuleSetsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeMatchmakingRuleSetsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeMatchmakingRuleSetsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeMatchmakingRuleSetsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Retrieves properties for one or more player sessions. This action can be used in several ways: (1) provide a
      * <code>PlayerSessionId</code> to request properties for a specific player session; (2) provide a
      * <code>GameSessionId</code> to request properties for all player sessions in the specified game session; (3)
@@ -2595,6 +5561,48 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <p>
      * <i>Available in Amazon GameLift Local.</i>
      * </p>
+     * <p>
+     * Player-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreatePlayerSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreatePlayerSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribePlayerSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param describePlayerSessionsRequest
      *        Represents the input for a request action.
@@ -2654,9 +5662,125 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Retrieves the current runtime configuration for the specified fleet. The runtime configuration tells Amazon
+     * Retrieves the current run-time configuration for the specified fleet. The run-time configuration tells Amazon
      * GameLift how to launch server processes on instances in the fleet.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeRuntimeConfigurationRequest
      *        Represents the input for a request action.
@@ -2724,6 +5848,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * retrieve only active scaling policies. Use the pagination parameters to retrieve results as a set of sequential
      * pages. If successful, set of <a>ScalingPolicy</a> objects is returned for the fleet.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param describeScalingPoliciesRequest
      *        Represents the input for a request action.
@@ -2784,8 +6024,208 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Retrieves valid VPC peering authorizations that are pending for the AWS account. This operation returns all VPC
+     * peering authorizations and requests for peering. This includes those initiated and received by this account.
+     * </p>
+     * <p>
+     * VPC peering connection operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringAuthorizations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringConnections</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param describeVpcPeeringAuthorizationsRequest
+     * @return Result of the DescribeVpcPeeringAuthorizations operation returned by the service.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @sample AmazonGameLift.DescribeVpcPeeringAuthorizations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeVpcPeeringAuthorizations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeVpcPeeringAuthorizationsResult describeVpcPeeringAuthorizations(DescribeVpcPeeringAuthorizationsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcPeeringAuthorizations(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcPeeringAuthorizationsResult executeDescribeVpcPeeringAuthorizations(
+            DescribeVpcPeeringAuthorizationsRequest describeVpcPeeringAuthorizationsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeVpcPeeringAuthorizationsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeVpcPeeringAuthorizationsRequest> request = null;
+        Response<DescribeVpcPeeringAuthorizationsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeVpcPeeringAuthorizationsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeVpcPeeringAuthorizationsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeVpcPeeringAuthorizationsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeVpcPeeringAuthorizationsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves information on VPC peering connections. Use this operation to get peering information for all fleets or
+     * for one specific fleet ID.
+     * </p>
+     * <p>
+     * To retrieve connection information, call this operation from the AWS account that is used to manage the Amazon
+     * GameLift fleets. Specify a fleet ID or leave the parameter empty to retrieve all connection records. If
+     * successful, the retrieved information includes both active and pending connections. Active connections identify
+     * the IpV4 CIDR block that the VPC uses to connect.
+     * </p>
+     * <p>
+     * VPC peering connection operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringAuthorizations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringAuthorization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeVpcPeeringConnections</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteVpcPeeringConnection</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param describeVpcPeeringConnectionsRequest
+     *        Represents the input for a request action.
+     * @return Result of the DescribeVpcPeeringConnections operation returned by the service.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @sample AmazonGameLift.DescribeVpcPeeringConnections
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeVpcPeeringConnections"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeVpcPeeringConnections(request);
+    }
+
+    @SdkInternalApi
+    final DescribeVpcPeeringConnectionsResult executeDescribeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeVpcPeeringConnectionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeVpcPeeringConnectionsRequest> request = null;
+        Response<DescribeVpcPeeringConnectionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeVpcPeeringConnectionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeVpcPeeringConnectionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeVpcPeeringConnectionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeVpcPeeringConnectionsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Retrieves the location of stored game session logs for a specified game session. When a game session is
-     * terminated, Amazon GameLift automatically stores the logs in Amazon S3. Use this URL to download the logs.
+     * terminated, Amazon GameLift automatically stores the logs in Amazon S3 and retains them for 14 days. Use this URL
+     * to download the logs.
      * </p>
      * <note>
      * <p>
@@ -2793,6 +6233,63 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * Service Limits</a> page for maximum log file sizes. Log files that exceed this limit are not saved.
      * </p>
      * </note>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param getGameSessionLogUrlRequest
      *        Represents the input for a request action.
@@ -2927,14 +6424,49 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Retrieves a collection of alias records for this AWS account. You can filter the result set by alias name and/or
-     * routing strategy type. Use the pagination parameters to retrieve results in sequential pages.
+     * Retrieves all aliases for this AWS account. You can filter the result set by alias name and/or routing strategy
+     * type. Use the pagination parameters to retrieve results in sequential pages.
      * </p>
      * <note>
      * <p>
-     * Aliases are not listed in any particular order.
+     * Returned aliases are not listed in any particular order.
      * </p>
      * </note>
+     * <p>
+     * Alias-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListAliases</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ResolveAlias</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param listAliasesRequest
      *        Represents the input for a request action.
@@ -2999,6 +6531,36 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * Build records are not listed in any particular order.
      * </p>
      * </note>
+     * <p>
+     * Build-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListBuilds</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteBuild</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param listBuildsRequest
      *        Represents the input for a request action.
@@ -3062,6 +6624,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * Fleet records are not listed in any particular order.
      * </p>
      * </note>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param listFleetsRequest
      *        Represents the input for a request action.
@@ -3145,6 +6823,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * All parameters for this action are required. If successful, the policy name is returned. Scaling policies cannot
      * be suspended or made inactive. To stop enforcing a scaling policy, call <a>DeleteScalingPolicy</a>.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param putScalingPolicyRequest
      *        Represents the input for a request action.
@@ -3269,6 +7063,41 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <p>
      * Retrieves the fleet ID that a specified alias is currently pointing to.
      * </p>
+     * <p>
+     * Alias-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListAliases</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ResolveAlias</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param resolveAliasRequest
      *        Represents the input for a request action.
@@ -3332,9 +7161,9 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Retrieves a set of game sessions that match a set of search criteria and sorts them in a specified order.
-     * Currently a game session search is limited to a single fleet. Search results include only game sessions that are
-     * in <code>ACTIVE</code> status. If you need to retrieve game sessions with a status other than active, use
+     * Retrieves a set of game sessions that match a set of search criteria and sorts them in a specified order. A game
+     * session search is limited to a single fleet. Search results include only game sessions that are in
+     * <code>ACTIVE</code> status. If you need to retrieve game sessions with a status other than active, use
      * <a>DescribeGameSessions</a>. If you need to retrieve the protection policy for each game session, use
      * <a>DescribeGameSessionDetails</a>.
      * </p>
@@ -3375,8 +7204,8 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * </li>
      * <li>
      * <p>
-     * <b>hasAvailablePlayerSessions</b> -- Boolean value indicating whether or not a game session has reached its
-     * maximum number of players. When searching with this attribute, the search value must be <code>true</code> or
+     * <b>hasAvailablePlayerSessions</b> -- Boolean value indicating whether a game session has reached its maximum
+     * number of players. When searching with this attribute, the search value must be <code>true</code> or
      * <code>false</code>. It is highly recommended that all search requests include this filter attribute to optimize
      * search performance and return only sessions that players can join.
      * </p>
@@ -3395,8 +7224,62 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * </p>
      * </note>
      * <p>
-     * <i>Available in Amazon GameLift Local.</i>
+     * Game-session-related operations include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param searchGameSessionsRequest
      *        Represents the input for a request action.
@@ -3509,10 +7392,67 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * </p>
      * <p>
      * To track the status of a placement request, call <a>DescribeGameSessionPlacement</a> and check the request's
-     * status. If the status is <code>Fulfilled</code>, a new game session has been created and a game session ARN and
+     * status. If the status is <code>FULFILLED</code>, a new game session has been created and a game session ARN and
      * region are referenced. If the placement request times out, you can resubmit the request or retry it with a
      * different queue.
      * </p>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param startGameSessionPlacementRequest
      *        Represents the input for a request action.
@@ -3573,9 +7513,227 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Cancels a game session placement that is in Pending status. To stop a placement, provide the placement ID values.
-     * If successful, the placement is moved to Cancelled status.
+     * Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new
+     * game for the matched players. Each matchmaking request specifies the type of match to build (team configuration,
+     * rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to
+     * host the new game session for optimal performance. A matchmaking request might start with a single player or a
+     * group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match
+     * type, rules, and the queue used to place a new game session are defined in a
+     * <code>MatchmakingConfiguration</code>. For complete information on setting up and using FlexMatch, see the topic
+     * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html"> Adding FlexMatch to Your
+     * Game</a>.
      * </p>
+     * <p>
+     * To start matchmaking, provide a unique ticket ID, specify a matchmaking configuration, and include the players to
+     * be matched. You must also include a set of player attributes relevant for the matchmaking configuration. If
+     * successful, a matchmaking ticket is returned with status set to <code>QUEUED</code>. Track the status of the
+     * ticket to respond as needed and acquire game session connection information for successfully completed matches.
+     * </p>
+     * <p>
+     * <b>Tracking ticket status</b> -- A couple of options are available for tracking the status of matchmaking
+     * requests:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Polling -- Call <code>DescribeMatchmaking</code>. This operation returns the full ticket object, including
+     * current status and (for completed tickets) game session connection info. We recommend polling no more than once
+     * every 10 seconds.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Notifications -- Get event notifications for changes in ticket status using Amazon Simple Notification Service
+     * (SNS). Notifications are easy to set up (see <a>CreateMatchmakingConfiguration</a>) and typically deliver match
+     * status changes faster and more efficiently than polling. We recommend that you use polling to back up to
+     * notifications (since delivery is not guaranteed) and call <code>DescribeMatchmaking</code> only when
+     * notifications are not received within 30 seconds.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * <b>Processing a matchmaking request</b> -- FlexMatch handles a matchmaking request as follows:
+     * </p>
+     * <ol>
+     * <li>
+     * <p>
+     * Your client code submits a <code>StartMatchmaking</code> request for one or more players and tracks the status of
+     * the request ticket.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * FlexMatch uses this ticket and others in process to build an acceptable match. When a potential match is
+     * identified, all tickets in the proposed match are advanced to the next status.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the match requires player acceptance (set in the matchmaking configuration), the tickets move into status
+     * <code>REQUIRES_ACCEPTANCE</code>. This status triggers your client code to solicit acceptance from all players in
+     * every ticket involved in the match, and then call <a>AcceptMatch</a> for each player. If any player rejects or
+     * fails to accept the match before a specified timeout, the proposed match is dropped (see <code>AcceptMatch</code>
+     * for more details).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Once a match is proposed and accepted, the matchmaking tickets move into status <code>PLACING</code>. FlexMatch
+     * locates resources for a new game session using the game session queue (set in the matchmaking configuration) and
+     * creates the game session based on the match data.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * When the match is successfully placed, the matchmaking tickets move into <code>COMPLETED</code> status.
+     * Connection information (including game session endpoint and player session) is added to the matchmaking tickets.
+     * Matched players can use the connection information to join the game.
+     * </p>
+     * </li>
+     * </ol>
+     * <p>
+     * Matchmaking-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>AcceptMatch</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param startMatchmakingRequest
+     *        Represents the input for a request action.
+     * @return Result of the StartMatchmaking operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.StartMatchmaking
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartMatchmaking" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public StartMatchmakingResult startMatchmaking(StartMatchmakingRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartMatchmaking(request);
+    }
+
+    @SdkInternalApi
+    final StartMatchmakingResult executeStartMatchmaking(StartMatchmakingRequest startMatchmakingRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(startMatchmakingRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<StartMatchmakingRequest> request = null;
+        Response<StartMatchmakingResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new StartMatchmakingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startMatchmakingRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<StartMatchmakingResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new StartMatchmakingResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Cancels a game session placement that is in <code>PENDING</code> status. To stop a placement, provide the
+     * placement ID values. If successful, the placement is moved to <code>CANCELLED</code> status.
+     * </p>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param stopGameSessionPlacementRequest
      *        Represents the input for a request action.
@@ -3636,10 +7794,132 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Updates properties for a fleet alias. To update properties, specify the alias ID to be updated and provide the
+     * Cancels a matchmaking ticket that is currently being processed. To stop the matchmaking operation, specify the
+     * ticket ID. If successful, work on the ticket is stopped, and the ticket status is changed to
+     * <code>CANCELLED</code>.
+     * </p>
+     * <p>
+     * Matchmaking-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>AcceptMatch</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param stopMatchmakingRequest
+     *        Represents the input for a request action.
+     * @return Result of the StopMatchmaking operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.StopMatchmaking
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StopMatchmaking" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public StopMatchmakingResult stopMatchmaking(StopMatchmakingRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopMatchmaking(request);
+    }
+
+    @SdkInternalApi
+    final StopMatchmakingResult executeStopMatchmaking(StopMatchmakingRequest stopMatchmakingRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(stopMatchmakingRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<StopMatchmakingRequest> request = null;
+        Response<StopMatchmakingResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new StopMatchmakingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopMatchmakingRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<StopMatchmakingResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new StopMatchmakingResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates properties for an alias. To update properties, specify the alias ID to be updated and provide the
      * information to be changed. To reassign an alias to another fleet, provide an updated routing strategy. If
      * successful, the updated alias record is returned.
      * </p>
+     * <p>
+     * Alias-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListAliases</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteAlias</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ResolveAlias</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateAliasRequest
      *        Represents the input for a request action.
@@ -3702,6 +7982,36 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * build ID to update and provide the new values. If successful, a build object containing the updated metadata is
      * returned.
      * </p>
+     * <p>
+     * Build-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListBuilds</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateBuild</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteBuild</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateBuildRequest
      *        Represents the input for a request action.
@@ -3761,8 +8071,124 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
     /**
      * <p>
      * Updates fleet properties, including name and description, for a fleet. To update metadata, specify the fleet ID
-     * and the property values you want to change. If successful, the fleet ID for the updated fleet is returned.
+     * and the property values that you want to change. If successful, the fleet ID for the updated fleet is returned.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateFleetAttributesRequest
      *        Represents the input for a request action.
@@ -3847,6 +8273,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <a>DescribeFleetCapacity</a>. If the desired instance count is higher than the instance type's limit, the
      * "Limit Exceeded" exception occurs.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateFleetCapacityRequest
      *        Represents the input for a request action.
@@ -3920,6 +8462,122 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * <code>InboundPermissionRevocations</code>. Permissions to be removed must match existing fleet permissions. If
      * successful, the fleet ID for the updated fleet is returned.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateFleetPortSettingsRequest
      *        Represents the input for a request action.
@@ -3995,6 +8653,63 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * session, specify the game session ID and the values you want to change. If successful, an updated
      * <a>GameSession</a> object is returned.
      * </p>
+     * <p>
+     * Game-session-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionDetails</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>SearchGameSessions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSession</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>GetGameSessionLogUrl</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Game session placements
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopGameSessionPlacement</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
      * 
      * @param updateGameSessionRequest
      *        Represents the input for a request action.
@@ -4063,6 +8778,31 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
      * processed. To update settings, specify the queue name to be updated and provide the new settings. When updating
      * destinations, provide a complete list of destinations.
      * </p>
+     * <p>
+     * Queue-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeGameSessionQueues</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateGameSessionQueue</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteGameSessionQueue</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateGameSessionQueueRequest
      *        Represents the input for a request action.
@@ -4122,21 +8862,240 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Updates the current runtime configuration for the specified fleet, which tells Amazon GameLift how to launch
-     * server processes on instances in the fleet. You can update a fleet's runtime configuration at any time after the
+     * Updates settings for a FlexMatch matchmaking configuration. To update settings, specify the configuration name to
+     * be updated and provide the new settings.
+     * </p>
+     * <p>
+     * Operations related to match configurations and rule sets include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingConfigurations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingRuleSets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ValidateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param updateMatchmakingConfigurationRequest
+     *        Represents the input for a request action.
+     * @return Result of the UpdateMatchmakingConfiguration operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.UpdateMatchmakingConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateMatchmakingConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateMatchmakingConfigurationResult updateMatchmakingConfiguration(UpdateMatchmakingConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateMatchmakingConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final UpdateMatchmakingConfigurationResult executeUpdateMatchmakingConfiguration(UpdateMatchmakingConfigurationRequest updateMatchmakingConfigurationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateMatchmakingConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateMatchmakingConfigurationRequest> request = null;
+        Response<UpdateMatchmakingConfigurationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateMatchmakingConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(updateMatchmakingConfigurationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateMatchmakingConfigurationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new UpdateMatchmakingConfigurationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates the current run-time configuration for the specified fleet, which tells Amazon GameLift how to launch
+     * server processes on instances in the fleet. You can update a fleet's run-time configuration at any time after the
      * fleet is created; it does not need to be in an <code>ACTIVE</code> status.
      * </p>
      * <p>
-     * To update runtime configuration, specify the fleet ID and provide a <code>RuntimeConfiguration</code> object with
-     * the updated collection of server process configurations.
+     * To update run-time configuration, specify the fleet ID and provide a <code>RuntimeConfiguration</code> object
+     * with the updated collection of server process configurations.
      * </p>
      * <p>
-     * Each instance in a Amazon GameLift fleet checks regularly for an updated runtime configuration and changes how it
-     * launches server processes to comply with the latest version. Existing server processes are not affected by the
+     * Each instance in a Amazon GameLift fleet checks regularly for an updated run-time configuration and changes how
+     * it launches server processes to comply with the latest version. Existing server processes are not affected by the
      * update; they continue to run until they end, while Amazon GameLift simply adds new server processes to fit the
-     * current runtime configuration. As a result, the runtime configuration changes are applied gradually as existing
+     * current run-time configuration. As a result, the run-time configuration changes are applied gradually as existing
      * processes shut down and new processes are launched in Amazon GameLift's normal process recycling activity.
      * </p>
+     * <p>
+     * Fleet-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ListFleets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Describe fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetUtilization</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetEvents</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Update fleets:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>UpdateFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetPortSettings</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet capacity:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (automatic scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateRuntimeConfigurationRequest
      *        Represents the input for a request action.
@@ -4188,6 +9147,107 @@ public class AmazonGameLiftClient extends AmazonWebServiceClient implements Amaz
             HttpResponseHandler<AmazonWebServiceResponse<UpdateRuntimeConfigurationResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new UpdateRuntimeConfigurationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Validates the syntax of a matchmaking rule or rule set. This operation checks that the rule set uses
+     * syntactically correct JSON and that it conforms to allowed property expressions. To validate syntax, provide a
+     * rule set string.
+     * </p>
+     * <p>
+     * Operations related to match configurations and rule sets include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingConfigurations</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteMatchmakingConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>CreateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmakingRuleSets</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>ValidateMatchmakingRuleSet</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param validateMatchmakingRuleSetRequest
+     *        Represents the input for a request action.
+     * @return Result of the ValidateMatchmakingRuleSet operation returned by the service.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @sample AmazonGameLift.ValidateMatchmakingRuleSet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ValidateMatchmakingRuleSet"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ValidateMatchmakingRuleSetResult validateMatchmakingRuleSet(ValidateMatchmakingRuleSetRequest request) {
+        request = beforeClientExecution(request);
+        return executeValidateMatchmakingRuleSet(request);
+    }
+
+    @SdkInternalApi
+    final ValidateMatchmakingRuleSetResult executeValidateMatchmakingRuleSet(ValidateMatchmakingRuleSetRequest validateMatchmakingRuleSetRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(validateMatchmakingRuleSetRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ValidateMatchmakingRuleSetRequest> request = null;
+        Response<ValidateMatchmakingRuleSetResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ValidateMatchmakingRuleSetRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(validateMatchmakingRuleSetRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ValidateMatchmakingRuleSetResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ValidateMatchmakingRuleSetResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

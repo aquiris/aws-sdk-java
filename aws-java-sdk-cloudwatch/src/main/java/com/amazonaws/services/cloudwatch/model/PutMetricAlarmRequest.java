@@ -127,7 +127,21 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
     private com.amazonaws.internal.SdkInternalList<Dimension> dimensions;
     /**
      * <p>
-     * The period, in seconds, over which the specified statistic is applied.
+     * The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any multiple
+     * of 60.
+     * </p>
+     * <p>
+     * Be sure to specify 10 or 30 only for metrics that are stored by a <code>PutMetricData</code> call with a
+     * <code>StorageResolution</code> of 1. If you specify a Period of 10 or 30 for a metric that does not have
+     * sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case,
+     * it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm
+     * may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a high-resolution
+     * alarm, which has a higher charge than other alarms. For more information about pricing, see <a
+     * href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * <p>
+     * An alarm's total current evaluation period can be no longer than one day, so <code>Period</code> multiplied by
+     * <code>EvaluationPeriods</code> cannot be more than 86,400 seconds.
      * </p>
      */
     private Integer period;
@@ -139,14 +153,16 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * points that specify a unit of measure, such as Percent, are aggregated separately.
      * </p>
      * <p>
-     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch
-     * alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch alarm
+     * can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * </p>
      */
     private String unit;
     /**
      * <p>
-     * The number of periods over which data is compared to the specified threshold.
+     * The number of periods over which data is compared to the specified threshold. An alarm's total current evaluation
+     * period can be no longer than one day, so this number multiplied by <code>Period</code> cannot be more than 86,400
+     * seconds.
      * </p>
      */
     private Integer evaluationPeriods;
@@ -177,10 +193,10 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
     private String treatMissingData;
     /**
      * <p>
-     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not change
+     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state does not change
      * during periods with too few data points to be statistically significant. If you specify <code>evaluate</code> or
-     * omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points
-     * are available. For more information, see <a href=
+     * omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are
+     * available. For more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples"
      * >Percentile-Based CloudWatch Alarms and Low Data Samples</a>.
      * </p>
@@ -935,7 +951,7 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public void setStatistic(Statistic statistic) {
-        this.statistic = statistic.toString();
+        withStatistic(statistic);
     }
 
     /**
@@ -952,7 +968,7 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public PutMetricAlarmRequest withStatistic(Statistic statistic) {
-        setStatistic(statistic);
+        this.statistic = statistic.toString();
         return this;
     }
 
@@ -1071,11 +1087,38 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The period, in seconds, over which the specified statistic is applied.
+     * The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any multiple
+     * of 60.
+     * </p>
+     * <p>
+     * Be sure to specify 10 or 30 only for metrics that are stored by a <code>PutMetricData</code> call with a
+     * <code>StorageResolution</code> of 1. If you specify a Period of 10 or 30 for a metric that does not have
+     * sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case,
+     * it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm
+     * may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a high-resolution
+     * alarm, which has a higher charge than other alarms. For more information about pricing, see <a
+     * href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * <p>
+     * An alarm's total current evaluation period can be no longer than one day, so <code>Period</code> multiplied by
+     * <code>EvaluationPeriods</code> cannot be more than 86,400 seconds.
      * </p>
      * 
      * @param period
-     *        The period, in seconds, over which the specified statistic is applied.
+     *        The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any
+     *        multiple of 60.</p>
+     *        <p>
+     *        Be sure to specify 10 or 30 only for metrics that are stored by a <code>PutMetricData</code> call with a
+     *        <code>StorageResolution</code> of 1. If you specify a Period of 10 or 30 for a metric that does not have
+     *        sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In
+     *        this case, it does not receive data for the attempts that do not correspond to a one-minute data
+     *        resolution, and the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this
+     *        alarm as a high-resolution alarm, which has a higher charge than other alarms. For more information about
+     *        pricing, see <a href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     *        </p>
+     *        <p>
+     *        An alarm's total current evaluation period can be no longer than one day, so <code>Period</code>
+     *        multiplied by <code>EvaluationPeriods</code> cannot be more than 86,400 seconds.
      */
 
     public void setPeriod(Integer period) {
@@ -1084,10 +1127,37 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The period, in seconds, over which the specified statistic is applied.
+     * The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any multiple
+     * of 60.
+     * </p>
+     * <p>
+     * Be sure to specify 10 or 30 only for metrics that are stored by a <code>PutMetricData</code> call with a
+     * <code>StorageResolution</code> of 1. If you specify a Period of 10 or 30 for a metric that does not have
+     * sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case,
+     * it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm
+     * may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a high-resolution
+     * alarm, which has a higher charge than other alarms. For more information about pricing, see <a
+     * href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * <p>
+     * An alarm's total current evaluation period can be no longer than one day, so <code>Period</code> multiplied by
+     * <code>EvaluationPeriods</code> cannot be more than 86,400 seconds.
      * </p>
      * 
-     * @return The period, in seconds, over which the specified statistic is applied.
+     * @return The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any
+     *         multiple of 60.</p>
+     *         <p>
+     *         Be sure to specify 10 or 30 only for metrics that are stored by a <code>PutMetricData</code> call with a
+     *         <code>StorageResolution</code> of 1. If you specify a Period of 10 or 30 for a metric that does not have
+     *         sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In
+     *         this case, it does not receive data for the attempts that do not correspond to a one-minute data
+     *         resolution, and the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets
+     *         this alarm as a high-resolution alarm, which has a higher charge than other alarms. For more information
+     *         about pricing, see <a href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     *         </p>
+     *         <p>
+     *         An alarm's total current evaluation period can be no longer than one day, so <code>Period</code>
+     *         multiplied by <code>EvaluationPeriods</code> cannot be more than 86,400 seconds.
      */
 
     public Integer getPeriod() {
@@ -1096,11 +1166,38 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The period, in seconds, over which the specified statistic is applied.
+     * The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any multiple
+     * of 60.
+     * </p>
+     * <p>
+     * Be sure to specify 10 or 30 only for metrics that are stored by a <code>PutMetricData</code> call with a
+     * <code>StorageResolution</code> of 1. If you specify a Period of 10 or 30 for a metric that does not have
+     * sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case,
+     * it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm
+     * may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a high-resolution
+     * alarm, which has a higher charge than other alarms. For more information about pricing, see <a
+     * href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * <p>
+     * An alarm's total current evaluation period can be no longer than one day, so <code>Period</code> multiplied by
+     * <code>EvaluationPeriods</code> cannot be more than 86,400 seconds.
      * </p>
      * 
      * @param period
-     *        The period, in seconds, over which the specified statistic is applied.
+     *        The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any
+     *        multiple of 60.</p>
+     *        <p>
+     *        Be sure to specify 10 or 30 only for metrics that are stored by a <code>PutMetricData</code> call with a
+     *        <code>StorageResolution</code> of 1. If you specify a Period of 10 or 30 for a metric that does not have
+     *        sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In
+     *        this case, it does not receive data for the attempts that do not correspond to a one-minute data
+     *        resolution, and the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this
+     *        alarm as a high-resolution alarm, which has a higher charge than other alarms. For more information about
+     *        pricing, see <a href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     *        </p>
+     *        <p>
+     *        An alarm's total current evaluation period can be no longer than one day, so <code>Period</code>
+     *        multiplied by <code>EvaluationPeriods</code> cannot be more than 86,400 seconds.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1117,8 +1214,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * points that specify a unit of measure, such as Percent, are aggregated separately.
      * </p>
      * <p>
-     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch
-     * alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch alarm
+     * can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * </p>
      * 
      * @param unit
@@ -1127,8 +1224,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      *        You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your
      *        data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p>
      *        <p>
-     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon
-     *        CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch
+     *        alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * @see StandardUnit
      */
 
@@ -1144,8 +1241,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * points that specify a unit of measure, such as Percent, are aggregated separately.
      * </p>
      * <p>
-     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch
-     * alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch alarm
+     * can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * </p>
      * 
      * @return The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are
@@ -1154,8 +1251,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      *         your data. Metric data points that specify a unit of measure, such as Percent, are aggregated
      *         separately.</p>
      *         <p>
-     *         If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon
-     *         CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     *         If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch
+     *         alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * @see StandardUnit
      */
 
@@ -1171,8 +1268,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * points that specify a unit of measure, such as Percent, are aggregated separately.
      * </p>
      * <p>
-     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch
-     * alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch alarm
+     * can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * </p>
      * 
      * @param unit
@@ -1181,8 +1278,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      *        You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your
      *        data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p>
      *        <p>
-     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon
-     *        CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch
+     *        alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
@@ -1200,8 +1297,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * points that specify a unit of measure, such as Percent, are aggregated separately.
      * </p>
      * <p>
-     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch
-     * alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch alarm
+     * can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * </p>
      * 
      * @param unit
@@ -1210,13 +1307,13 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      *        You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your
      *        data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p>
      *        <p>
-     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon
-     *        CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch
+     *        alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * @see StandardUnit
      */
 
     public void setUnit(StandardUnit unit) {
-        this.unit = unit.toString();
+        withUnit(unit);
     }
 
     /**
@@ -1227,8 +1324,8 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * points that specify a unit of measure, such as Percent, are aggregated separately.
      * </p>
      * <p>
-     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch
-     * alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     * If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch alarm
+     * can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * </p>
      * 
      * @param unit
@@ -1237,24 +1334,28 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      *        You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your
      *        data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p>
      *        <p>
-     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon
-     *        CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
+     *        If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the CloudWatch
+     *        alarm can get stuck in the <code>INSUFFICIENT DATA</code> state.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
 
     public PutMetricAlarmRequest withUnit(StandardUnit unit) {
-        setUnit(unit);
+        this.unit = unit.toString();
         return this;
     }
 
     /**
      * <p>
-     * The number of periods over which data is compared to the specified threshold.
+     * The number of periods over which data is compared to the specified threshold. An alarm's total current evaluation
+     * period can be no longer than one day, so this number multiplied by <code>Period</code> cannot be more than 86,400
+     * seconds.
      * </p>
      * 
      * @param evaluationPeriods
-     *        The number of periods over which data is compared to the specified threshold.
+     *        The number of periods over which data is compared to the specified threshold. An alarm's total current
+     *        evaluation period can be no longer than one day, so this number multiplied by <code>Period</code> cannot
+     *        be more than 86,400 seconds.
      */
 
     public void setEvaluationPeriods(Integer evaluationPeriods) {
@@ -1263,10 +1364,14 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The number of periods over which data is compared to the specified threshold.
+     * The number of periods over which data is compared to the specified threshold. An alarm's total current evaluation
+     * period can be no longer than one day, so this number multiplied by <code>Period</code> cannot be more than 86,400
+     * seconds.
      * </p>
      * 
-     * @return The number of periods over which data is compared to the specified threshold.
+     * @return The number of periods over which data is compared to the specified threshold. An alarm's total current
+     *         evaluation period can be no longer than one day, so this number multiplied by <code>Period</code> cannot
+     *         be more than 86,400 seconds.
      */
 
     public Integer getEvaluationPeriods() {
@@ -1275,11 +1380,15 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The number of periods over which data is compared to the specified threshold.
+     * The number of periods over which data is compared to the specified threshold. An alarm's total current evaluation
+     * period can be no longer than one day, so this number multiplied by <code>Period</code> cannot be more than 86,400
+     * seconds.
      * </p>
      * 
      * @param evaluationPeriods
-     *        The number of periods over which data is compared to the specified threshold.
+     *        The number of periods over which data is compared to the specified threshold. An alarm's total current
+     *        evaluation period can be no longer than one day, so this number multiplied by <code>Period</code> cannot
+     *        be more than 86,400 seconds.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1390,7 +1499,7 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public void setComparisonOperator(ComparisonOperator comparisonOperator) {
-        this.comparisonOperator = comparisonOperator.toString();
+        withComparisonOperator(comparisonOperator);
     }
 
     /**
@@ -1407,7 +1516,7 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      */
 
     public PutMetricAlarmRequest withComparisonOperator(ComparisonOperator comparisonOperator) {
-        setComparisonOperator(comparisonOperator);
+        this.comparisonOperator = comparisonOperator.toString();
         return this;
     }
 
@@ -1486,10 +1595,10 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not change
+     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state does not change
      * during periods with too few data points to be statistically significant. If you specify <code>evaluate</code> or
-     * omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points
-     * are available. For more information, see <a href=
+     * omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are
+     * available. For more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples"
      * >Percentile-Based CloudWatch Alarms and Low Data Samples</a>.
      * </p>
@@ -1498,10 +1607,10 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * </p>
      * 
      * @param evaluateLowSampleCountPercentile
-     *        Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not
+     *        Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state does not
      *        change during periods with too few data points to be statistically significant. If you specify
-     *        <code>evaluate</code> or omit this parameter, the alarm will always be evaluated and possibly change state
-     *        no matter how many data points are available. For more information, see <a href=
+     *        <code>evaluate</code> or omit this parameter, the alarm is always evaluated and possibly changes state no
+     *        matter how many data points are available. For more information, see <a href=
      *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples"
      *        >Percentile-Based CloudWatch Alarms and Low Data Samples</a>.</p>
      *        <p>
@@ -1514,10 +1623,10 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not change
+     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state does not change
      * during periods with too few data points to be statistically significant. If you specify <code>evaluate</code> or
-     * omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points
-     * are available. For more information, see <a href=
+     * omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are
+     * available. For more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples"
      * >Percentile-Based CloudWatch Alarms and Low Data Samples</a>.
      * </p>
@@ -1525,10 +1634,10 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * Valid Values: <code>evaluate | ignore</code>
      * </p>
      * 
-     * @return Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not
+     * @return Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state does not
      *         change during periods with too few data points to be statistically significant. If you specify
-     *         <code>evaluate</code> or omit this parameter, the alarm will always be evaluated and possibly change
-     *         state no matter how many data points are available. For more information, see <a href=
+     *         <code>evaluate</code> or omit this parameter, the alarm is always evaluated and possibly changes state no
+     *         matter how many data points are available. For more information, see <a href=
      *         "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples"
      *         >Percentile-Based CloudWatch Alarms and Low Data Samples</a>.</p>
      *         <p>
@@ -1541,10 +1650,10 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not change
+     * Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state does not change
      * during periods with too few data points to be statistically significant. If you specify <code>evaluate</code> or
-     * omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points
-     * are available. For more information, see <a href=
+     * omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are
+     * available. For more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples"
      * >Percentile-Based CloudWatch Alarms and Low Data Samples</a>.
      * </p>
@@ -1553,10 +1662,10 @@ public class PutMetricAlarmRequest extends com.amazonaws.AmazonWebServiceRequest
      * </p>
      * 
      * @param evaluateLowSampleCountPercentile
-     *        Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not
+     *        Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state does not
      *        change during periods with too few data points to be statistically significant. If you specify
-     *        <code>evaluate</code> or omit this parameter, the alarm will always be evaluated and possibly change state
-     *        no matter how many data points are available. For more information, see <a href=
+     *        <code>evaluate</code> or omit this parameter, the alarm is always evaluated and possibly changes state no
+     *        matter how many data points are available. For more information, see <a href=
      *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples"
      *        >Percentile-Based CloudWatch Alarms and Low Data Samples</a>.</p>
      *        <p>

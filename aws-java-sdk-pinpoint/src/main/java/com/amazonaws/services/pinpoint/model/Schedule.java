@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Shcedule that defines when a campaign is run.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/Schedule" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Schedule implements Serializable, Cloneable, StructuredPojo {
@@ -142,7 +145,7 @@ public class Schedule implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setFrequency(Frequency frequency) {
-        this.frequency = frequency.toString();
+        withFrequency(frequency);
     }
 
     /**
@@ -159,7 +162,7 @@ public class Schedule implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Schedule withFrequency(Frequency frequency) {
-        setFrequency(frequency);
+        this.frequency = frequency.toString();
         return this;
     }
 

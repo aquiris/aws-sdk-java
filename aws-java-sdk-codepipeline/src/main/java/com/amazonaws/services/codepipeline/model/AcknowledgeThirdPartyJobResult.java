@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of an acknowledge third party job action.
+ * Represents the output of an AcknowledgeThirdPartyJob action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeThirdPartyJob"
@@ -87,7 +87,7 @@ public class AcknowledgeThirdPartyJobResult extends com.amazonaws.AmazonWebServi
      */
 
     public void setStatus(JobStatus status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
@@ -102,7 +102,7 @@ public class AcknowledgeThirdPartyJobResult extends com.amazonaws.AmazonWebServi
      */
 
     public AcknowledgeThirdPartyJobResult withStatus(JobStatus status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 

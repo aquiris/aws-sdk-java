@@ -59,6 +59,7 @@ public enum InstanceType {
     R416xlarge("r4.16xlarge"),
     X116xlarge("x1.16xlarge"),
     X132xlarge("x1.32xlarge"),
+    X1e32xlarge("x1e.32xlarge"),
     I2Xlarge("i2.xlarge"),
     I22xlarge("i2.2xlarge"),
     I24xlarge("i2.4xlarge"),
@@ -87,6 +88,9 @@ public enum InstanceType {
     Cc28xlarge("cc2.8xlarge"),
     G22xlarge("g2.2xlarge"),
     G28xlarge("g2.8xlarge"),
+    G34xlarge("g3.4xlarge"),
+    G38xlarge("g3.8xlarge"),
+    G316xlarge("g3.16xlarge"),
     Cg14xlarge("cg1.4xlarge"),
     P2Xlarge("p2.xlarge"),
     P28xlarge("p2.8xlarge"),
@@ -115,6 +119,9 @@ public enum InstanceType {
      * @param value
      *        real value
      * @return InstanceType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static InstanceType fromValue(String value) {
         if (value == null || "".equals(value)) {

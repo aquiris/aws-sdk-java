@@ -19,8 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A list that contains the status of the delivery of either the snapshot or the configuration history to the specified
- * Amazon S3 bucket.
+ * Provides status of the delivery of the snapshot or the configuration history to the specified Amazon S3 bucket. Also
+ * provides the status of notifications about the Amazon S3 delivery to the specified Amazon SNS topic.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigExportDeliveryInfo" target="_top">AWS
@@ -120,7 +120,7 @@ public class ConfigExportDeliveryInfo implements Serializable, Cloneable, Struct
      */
 
     public void setLastStatus(DeliveryStatus lastStatus) {
-        this.lastStatus = lastStatus.toString();
+        withLastStatus(lastStatus);
     }
 
     /**
@@ -135,7 +135,7 @@ public class ConfigExportDeliveryInfo implements Serializable, Cloneable, Struct
      */
 
     public ConfigExportDeliveryInfo withLastStatus(DeliveryStatus lastStatus) {
-        setLastStatus(lastStatus);
+        this.lastStatus = lastStatus.toString();
         return this;
     }
 

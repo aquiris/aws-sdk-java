@@ -23,7 +23,8 @@ public enum SourceType {
     CODECOMMIT("CODECOMMIT"),
     CODEPIPELINE("CODEPIPELINE"),
     GITHUB("GITHUB"),
-    S3("S3");
+    S3("S3"),
+    BITBUCKET("BITBUCKET");
 
     private String value;
 
@@ -42,6 +43,9 @@ public enum SourceType {
      * @param value
      *        real value
      * @return SourceType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static SourceType fromValue(String value) {
         if (value == null || "".equals(value)) {

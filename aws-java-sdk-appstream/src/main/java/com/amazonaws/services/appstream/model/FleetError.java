@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The details of the fleet error.
+ * Describes a fleet error.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/FleetError" target="_top">AWS API
@@ -30,24 +30,24 @@ public class FleetError implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The error code for the fleet error.
+     * The error code.
      * </p>
      */
     private String errorCode;
     /**
      * <p>
-     * The error message generated when the fleet has errors.
+     * The error message.
      * </p>
      */
     private String errorMessage;
 
     /**
      * <p>
-     * The error code for the fleet error.
+     * The error code.
      * </p>
      * 
      * @param errorCode
-     *        The error code for the fleet error.
+     *        The error code.
      * @see FleetErrorCode
      */
 
@@ -57,10 +57,10 @@ public class FleetError implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The error code for the fleet error.
+     * The error code.
      * </p>
      * 
-     * @return The error code for the fleet error.
+     * @return The error code.
      * @see FleetErrorCode
      */
 
@@ -70,11 +70,11 @@ public class FleetError implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The error code for the fleet error.
+     * The error code.
      * </p>
      * 
      * @param errorCode
-     *        The error code for the fleet error.
+     *        The error code.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see FleetErrorCode
      */
@@ -86,41 +86,41 @@ public class FleetError implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The error code for the fleet error.
+     * The error code.
      * </p>
      * 
      * @param errorCode
-     *        The error code for the fleet error.
+     *        The error code.
      * @see FleetErrorCode
      */
 
     public void setErrorCode(FleetErrorCode errorCode) {
-        this.errorCode = errorCode.toString();
+        withErrorCode(errorCode);
     }
 
     /**
      * <p>
-     * The error code for the fleet error.
+     * The error code.
      * </p>
      * 
      * @param errorCode
-     *        The error code for the fleet error.
+     *        The error code.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see FleetErrorCode
      */
 
     public FleetError withErrorCode(FleetErrorCode errorCode) {
-        setErrorCode(errorCode);
+        this.errorCode = errorCode.toString();
         return this;
     }
 
     /**
      * <p>
-     * The error message generated when the fleet has errors.
+     * The error message.
      * </p>
      * 
      * @param errorMessage
-     *        The error message generated when the fleet has errors.
+     *        The error message.
      */
 
     public void setErrorMessage(String errorMessage) {
@@ -129,10 +129,10 @@ public class FleetError implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The error message generated when the fleet has errors.
+     * The error message.
      * </p>
      * 
-     * @return The error message generated when the fleet has errors.
+     * @return The error message.
      */
 
     public String getErrorMessage() {
@@ -141,11 +141,11 @@ public class FleetError implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The error message generated when the fleet has errors.
+     * The error message.
      * </p>
      * 
      * @param errorMessage
-     *        The error message generated when the fleet has errors.
+     *        The error message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

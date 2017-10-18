@@ -25,14 +25,20 @@ public enum CodebuildActions implements Action {
     /** Represents any action executed on AWS CodeBuild. */
     AllCodebuildActions("codebuild:*"),
 
+    /** Action for the BatchDeleteBuilds operation. */
+    BatchDeleteBuilds("codebuild:BatchDeleteBuilds"),
     /** Action for the BatchGetBuilds operation. */
     BatchGetBuilds("codebuild:BatchGetBuilds"),
     /** Action for the BatchGetProjects operation. */
     BatchGetProjects("codebuild:BatchGetProjects"),
     /** Action for the CreateProject operation. */
     CreateProject("codebuild:CreateProject"),
+    /** Action for the CreateWebhook operation. */
+    CreateWebhook("codebuild:CreateWebhook"),
     /** Action for the DeleteProject operation. */
     DeleteProject("codebuild:DeleteProject"),
+    /** Action for the DeleteWebhook operation. */
+    DeleteWebhook("codebuild:DeleteWebhook"),
     /** Action for the ListBuilds operation. */
     ListBuilds("codebuild:ListBuilds"),
     /** Action for the ListBuildsForProject operation. */

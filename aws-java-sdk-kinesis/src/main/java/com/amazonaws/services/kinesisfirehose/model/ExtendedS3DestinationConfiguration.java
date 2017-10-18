@@ -43,8 +43,8 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
     /**
      * <p>
      * The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra
-     * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
-     * folder in the S3 bucket. For more information, see <a
+     * prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in
+     * the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
      * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
@@ -176,16 +176,16 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
     /**
      * <p>
      * The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra
-     * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
-     * folder in the S3 bucket. For more information, see <a
+     * prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in
+     * the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
      * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
      * 
      * @param prefix
      *        The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an
-     *        extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it
-     *        appears as a folder in the S3 bucket. For more information, see <a
+     *        extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears
+     *        as a folder in the S3 bucket. For more information, see <a
      *        href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a>
      *        in the <i>Amazon Kinesis Firehose Developer Guide</i>.
      */
@@ -197,15 +197,15 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
     /**
      * <p>
      * The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra
-     * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
-     * folder in the S3 bucket. For more information, see <a
+     * prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in
+     * the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
      * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
      * 
      * @return The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an
-     *         extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash,
-     *         it appears as a folder in the S3 bucket. For more information, see <a
+     *         extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears
+     *         as a folder in the S3 bucket. For more information, see <a
      *         href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a>
      *         in the <i>Amazon Kinesis Firehose Developer Guide</i>.
      */
@@ -217,16 +217,16 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
     /**
      * <p>
      * The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra
-     * prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a
-     * folder in the S3 bucket. For more information, see <a
+     * prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in
+     * the S3 bucket. For more information, see <a
      * href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the
      * <i>Amazon Kinesis Firehose Developer Guide</i>.
      * </p>
      * 
      * @param prefix
      *        The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an
-     *        extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it
-     *        appears as a folder in the S3 bucket. For more information, see <a
+     *        extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears
+     *        as a folder in the S3 bucket. For more information, see <a
      *        href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a>
      *        in the <i>Amazon Kinesis Firehose Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -331,7 +331,7 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
      */
 
     public void setCompressionFormat(CompressionFormat compressionFormat) {
-        this.compressionFormat = compressionFormat.toString();
+        withCompressionFormat(compressionFormat);
     }
 
     /**
@@ -346,7 +346,7 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
      */
 
     public ExtendedS3DestinationConfiguration withCompressionFormat(CompressionFormat compressionFormat) {
-        setCompressionFormat(compressionFormat);
+        this.compressionFormat = compressionFormat.toString();
         return this;
     }
 
@@ -524,7 +524,7 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
      */
 
     public void setS3BackupMode(S3BackupMode s3BackupMode) {
-        this.s3BackupMode = s3BackupMode.toString();
+        withS3BackupMode(s3BackupMode);
     }
 
     /**
@@ -539,7 +539,7 @@ public class ExtendedS3DestinationConfiguration implements Serializable, Cloneab
      */
 
     public ExtendedS3DestinationConfiguration withS3BackupMode(S3BackupMode s3BackupMode) {
-        setS3BackupMode(s3BackupMode);
+        this.s3BackupMode = s3BackupMode.toString();
         return this;
     }
 

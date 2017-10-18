@@ -221,6 +221,12 @@ public class CustomizationConfig {
      */
     private String transformDirectory = Constants.PACKAGE_NAME_TRANSFORM_SUFFIX;
 
+    /**
+     * Customization to emit a setter overload that takes an enum. This breaks the POJO contract so we only do it
+     * for enums previously shipped to maintain backwards compatibility.
+     */
+    private Map<String, List<String>> emitLegacyEnumSetterFor;
+
     private CustomizationConfig(){
     }
 
@@ -521,7 +527,21 @@ public class CustomizationConfig {
         return !shouldSuppress(DeprecatedSuppression.ClientConstructors);
     }
 
+    public boolean emitEnumSetterOverload() {
+        return !shouldSuppress(DeprecatedSuppression.EnumSetterOverload);
+    }
+
     private boolean shouldSuppress(DeprecatedSuppression suppression) {
         return deprecatedSuppressions != null && deprecatedSuppressions.contains(suppression);
+    }
+
+    public Map<String, List<String>> getEmitLegacyEnumSetterFor() {
+        return emitLegacyEnumSetterFor;
+    }
+
+    public CustomizationConfig setEmitLegacyEnumSetterFor(
+            Map<String, List<String>> emitLegacyEnumSetterFor) {
+        this.emitLegacyEnumSetterFor = emitLegacyEnumSetterFor;
+        return this;
     }
 }

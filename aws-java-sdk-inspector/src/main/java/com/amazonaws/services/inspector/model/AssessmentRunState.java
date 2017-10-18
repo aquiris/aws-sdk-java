@@ -31,7 +31,8 @@ public enum AssessmentRunState {
     FAILED("FAILED"),
     ERROR("ERROR"),
     COMPLETED("COMPLETED"),
-    COMPLETED_WITH_ERRORS("COMPLETED_WITH_ERRORS");
+    COMPLETED_WITH_ERRORS("COMPLETED_WITH_ERRORS"),
+    CANCELED("CANCELED");
 
     private String value;
 
@@ -50,6 +51,9 @@ public enum AssessmentRunState {
      * @param value
      *        real value
      * @return AssessmentRunState corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static AssessmentRunState fromValue(String value) {
         if (value == null || "".equals(value)) {

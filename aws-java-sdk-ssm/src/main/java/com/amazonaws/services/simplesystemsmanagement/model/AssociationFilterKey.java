@@ -25,7 +25,8 @@ public enum AssociationFilterKey {
     AssociationId("AssociationId"),
     AssociationStatusName("AssociationStatusName"),
     LastExecutedBefore("LastExecutedBefore"),
-    LastExecutedAfter("LastExecutedAfter");
+    LastExecutedAfter("LastExecutedAfter"),
+    AssociationName("AssociationName");
 
     private String value;
 
@@ -44,6 +45,9 @@ public enum AssociationFilterKey {
      * @param value
      *        real value
      * @return AssociationFilterKey corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static AssociationFilterKey fromValue(String value) {
         if (value == null || "".equals(value)) {

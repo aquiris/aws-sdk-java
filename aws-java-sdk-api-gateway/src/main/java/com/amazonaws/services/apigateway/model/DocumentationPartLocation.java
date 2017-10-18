@@ -31,7 +31,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      * entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>,
      * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
      * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>.
-     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>,
+     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHORIZER</code>,
      * <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * </p>
      */
@@ -83,7 +83,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      * entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>,
      * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
      * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>.
-     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>,
+     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHORIZER</code>,
      * <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * </p>
      * 
@@ -93,7 +93,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      *        <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
      *        <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
      *        <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any
-     *        entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>,
+     *        entity of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>, <code>MODEL</code>,
      *        <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * @see DocumentationPartType
      */
@@ -108,7 +108,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      * entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>,
      * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
      * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>.
-     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>,
+     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHORIZER</code>,
      * <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * </p>
      * 
@@ -117,7 +117,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      *         <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
      *         <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
      *         <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any
-     *         entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>,
+     *         entity of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>, <code>MODEL</code>,
      *         <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * @see DocumentationPartType
      */
@@ -132,7 +132,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      * entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>,
      * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
      * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>.
-     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>,
+     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHORIZER</code>,
      * <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * </p>
      * 
@@ -142,7 +142,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      *        <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
      *        <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
      *        <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any
-     *        entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>,
+     *        entity of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>, <code>MODEL</code>,
      *        <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentationPartType
@@ -159,7 +159,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      * entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>,
      * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
      * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>.
-     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>,
+     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHORIZER</code>,
      * <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * </p>
      * 
@@ -169,13 +169,13 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      *        <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
      *        <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
      *        <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any
-     *        entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>,
+     *        entity of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>, <code>MODEL</code>,
      *        <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * @see DocumentationPartType
      */
 
     public void setType(DocumentationPartType type) {
-        this.type = type.toString();
+        withType(type);
     }
 
     /**
@@ -184,7 +184,7 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      * entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>,
      * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
      * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>.
-     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>,
+     * Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHORIZER</code>,
      * <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * </p>
      * 
@@ -194,14 +194,14 @@ public class DocumentationPartLocation implements Serializable, Cloneable, Struc
      *        <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
      *        <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
      *        <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any
-     *        entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>,
+     *        entity of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>, <code>MODEL</code>,
      *        <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentationPartType
      */
 
     public DocumentationPartLocation withType(DocumentationPartType type) {
-        setType(type);
+        this.type = type.toString();
         return this;
     }
 

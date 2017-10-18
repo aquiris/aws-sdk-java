@@ -38,6 +38,7 @@ public enum VoiceId {
     Justin("Justin"),
     Kendra("Kendra"),
     Kimberly("Kimberly"),
+    Matthew("Matthew"),
     Salli("Salli"),
     Conchita("Conchita"),
     Enrique("Enrique"),
@@ -67,7 +68,8 @@ public enum VoiceId {
     Tatyana("Tatyana"),
     Astrid("Astrid"),
     Filiz("Filiz"),
-    Vicki("Vicki");
+    Vicki("Vicki"),
+    Takumi("Takumi");
 
     private String value;
 
@@ -86,6 +88,9 @@ public enum VoiceId {
      * @param value
      *        real value
      * @return VoiceId corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static VoiceId fromValue(String value) {
         if (value == null || "".equals(value)) {

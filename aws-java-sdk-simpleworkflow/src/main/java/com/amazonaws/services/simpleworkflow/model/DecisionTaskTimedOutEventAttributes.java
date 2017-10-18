@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Provides details of the <code>DecisionTaskTimedOut</code> event.
+ * Provides the details of the <code>DecisionTaskTimedOut</code> event.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DecisionTaskTimedOutEventAttributes"
@@ -104,7 +104,7 @@ public class DecisionTaskTimedOutEventAttributes implements Serializable, Clonea
      */
 
     public void setTimeoutType(DecisionTaskTimeoutType timeoutType) {
-        this.timeoutType = timeoutType.toString();
+        withTimeoutType(timeoutType);
     }
 
     /**
@@ -119,7 +119,7 @@ public class DecisionTaskTimedOutEventAttributes implements Serializable, Clonea
      */
 
     public DecisionTaskTimedOutEventAttributes withTimeoutType(DecisionTaskTimeoutType timeoutType) {
-        setTimeoutType(timeoutType);
+        this.timeoutType = timeoutType.toString();
         return this;
     }
 

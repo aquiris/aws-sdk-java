@@ -22,6 +22,7 @@ public enum LoadBalancerStateEnum {
 
     Active("active"),
     Provisioning("provisioning"),
+    Active_impaired("active_impaired"),
     Failed("failed");
 
     private String value;
@@ -41,6 +42,9 @@ public enum LoadBalancerStateEnum {
      * @param value
      *        real value
      * @return LoadBalancerStateEnum corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static LoadBalancerStateEnum fromValue(String value) {
         if (value == null || "".equals(value)) {

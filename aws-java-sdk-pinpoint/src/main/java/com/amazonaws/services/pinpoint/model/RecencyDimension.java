@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Define how a segment based on recency of use.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/RecencyDimension" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RecencyDimension implements Serializable, Cloneable, StructuredPojo {
@@ -89,7 +92,7 @@ public class RecencyDimension implements Serializable, Cloneable, StructuredPojo
      */
 
     public void setDuration(Duration duration) {
-        this.duration = duration.toString();
+        withDuration(duration);
     }
 
     /**
@@ -104,7 +107,7 @@ public class RecencyDimension implements Serializable, Cloneable, StructuredPojo
      */
 
     public RecencyDimension withDuration(Duration duration) {
-        setDuration(duration);
+        this.duration = duration.toString();
         return this;
     }
 
@@ -170,7 +173,7 @@ public class RecencyDimension implements Serializable, Cloneable, StructuredPojo
      */
 
     public void setRecencyType(RecencyType recencyType) {
-        this.recencyType = recencyType.toString();
+        withRecencyType(recencyType);
     }
 
     /**
@@ -187,7 +190,7 @@ public class RecencyDimension implements Serializable, Cloneable, StructuredPojo
      */
 
     public RecencyDimension withRecencyType(RecencyType recencyType) {
-        setRecencyType(recencyType);
+        this.recencyType = recencyType.toString();
         return this;
     }
 

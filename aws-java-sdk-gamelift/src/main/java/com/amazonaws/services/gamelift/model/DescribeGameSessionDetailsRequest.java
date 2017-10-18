@@ -48,8 +48,8 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
     private String aliasId;
     /**
      * <p>
-     * Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>,
-     * <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
+     * Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>,
+     * <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
      * </p>
      */
     private String statusFilter;
@@ -63,7 +63,7 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
-     * previous call to this action. To specify the start of the result set, do not specify a value.
+     * previous call to this action. To start at the beginning of the result set, do not specify a value.
      * </p>
      */
     private String nextToken;
@@ -190,12 +190,12 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>,
-     * <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
+     * Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>,
+     * <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
      * </p>
      * 
      * @param statusFilter
-     *        Game session status to filter results on. Possible game session statuses include ACTIVE,
+     *        Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>,
      *        <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are
      *        transitory).
      */
@@ -206,11 +206,11 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>,
-     * <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
+     * Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>,
+     * <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
      * </p>
      * 
-     * @return Game session status to filter results on. Possible game session statuses include ACTIVE,
+     * @return Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>,
      *         <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are
      *         transitory).
      */
@@ -221,12 +221,12 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>,
-     * <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
+     * Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>,
+     * <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory).
      * </p>
      * 
      * @param statusFilter
-     *        Game session status to filter results on. Possible game session statuses include ACTIVE,
+     *        Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>,
      *        <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are
      *        transitory).
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -286,12 +286,12 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
-     * previous call to this action. To specify the start of the result set, do not specify a value.
+     * previous call to this action. To start at the beginning of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
      *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
-     *        a previous call to this action. To specify the start of the result set, do not specify a value.
+     *        a previous call to this action. To start at the beginning of the result set, do not specify a value.
      */
 
     public void setNextToken(String nextToken) {
@@ -301,11 +301,11 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
-     * previous call to this action. To specify the start of the result set, do not specify a value.
+     * previous call to this action. To start at the beginning of the result set, do not specify a value.
      * </p>
      * 
      * @return Token that indicates the start of the next sequential page of results. Use the token that is returned
-     *         with a previous call to this action. To specify the start of the result set, do not specify a value.
+     *         with a previous call to this action. To start at the beginning of the result set, do not specify a value.
      */
 
     public String getNextToken() {
@@ -315,12 +315,12 @@ public class DescribeGameSessionDetailsRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Token that indicates the start of the next sequential page of results. Use the token that is returned with a
-     * previous call to this action. To specify the start of the result set, do not specify a value.
+     * previous call to this action. To start at the beginning of the result set, do not specify a value.
      * </p>
      * 
      * @param nextToken
      *        Token that indicates the start of the next sequential page of results. Use the token that is returned with
-     *        a previous call to this action. To specify the start of the result set, do not specify a value.
+     *        a previous call to this action. To start at the beginning of the result set, do not specify a value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

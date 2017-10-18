@@ -61,7 +61,7 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The date of the event.
      * </p>
      */
-    private java.util.Date dateValue;
+    private java.util.Date date;
 
     /**
      * <p>
@@ -198,7 +198,7 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setSourceType(SourceType sourceType) {
-        this.sourceType = sourceType.toString();
+        withSourceType(sourceType);
     }
 
     /**
@@ -218,7 +218,7 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      */
 
     public Event withSourceType(SourceType sourceType) {
-        setSourceType(sourceType);
+        this.sourceType = sourceType.toString();
         return this;
     }
 
@@ -337,12 +337,12 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The date of the event.
      * </p>
      * 
-     * @param dateValue
+     * @param date
      *        The date of the event.
      */
 
-    public void setDate(java.util.Date dateValue) {
-        this.dateValue = dateValue;
+    public void setDate(java.util.Date date) {
+        this.date = date;
     }
 
     /**
@@ -354,7 +354,7 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      */
 
     public java.util.Date getDate() {
-        return this.dateValue;
+        return this.date;
     }
 
     /**
@@ -362,13 +362,13 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The date of the event.
      * </p>
      * 
-     * @param dateValue
+     * @param date
      *        The date of the event.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Event withDate(java.util.Date dateValue) {
-        setDate(dateValue);
+    public Event withDate(java.util.Date date) {
+        setDate(date);
         return this;
     }
 

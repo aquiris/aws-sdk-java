@@ -172,7 +172,7 @@ public interface AmazonLexModelBuilding {
     /**
      * <p>
      * Deletes all versions of the bot, including the <code>$LATEST</code> version. To delete a specific version of the
-     * bot, use the operation.
+     * bot, use the <a>DeleteBotVersion</a> operation.
      * </p>
      * <p>
      * If a bot has an alias, you can't delete it. Instead, the <code>DeleteBot</code> operation returns a
@@ -291,7 +291,7 @@ public interface AmazonLexModelBuilding {
 
     /**
      * <p>
-     * Deletes a specific version of a bot. To delete all versions of a bot, use the operation.
+     * Deletes a specific version of a bot. To delete all versions of a bot, use the <a>DeleteBot</a> operation.
      * </p>
      * <p>
      * This operation requires permissions for the <code>lex:DeleteBotVersion</code> action.
@@ -333,7 +333,7 @@ public interface AmazonLexModelBuilding {
     /**
      * <p>
      * Deletes all versions of the intent, including the <code>$LATEST</code> version. To delete a specific version of
-     * the intent, use the operation.
+     * the intent, use the <a>DeleteIntentVersion</a> operation.
      * </p>
      * <p>
      * You can delete a version of an intent only if it is not referenced. To delete an intent that is referred to in
@@ -386,7 +386,8 @@ public interface AmazonLexModelBuilding {
 
     /**
      * <p>
-     * Deletes a specific version of an intent. To delete all versions of a intent, use the operation.
+     * Deletes a specific version of an intent. To delete all versions of a intent, use the <a>DeleteIntent</a>
+     * operation.
      * </p>
      * <p>
      * This operation requires permissions for the <code>lex:DeleteIntentVersion</code> action.
@@ -428,7 +429,7 @@ public interface AmazonLexModelBuilding {
     /**
      * <p>
      * Deletes all versions of the slot type, including the <code>$LATEST</code> version. To delete a specific version
-     * of the slot type, use the operation.
+     * of the slot type, use the <a>DeleteSlotTypeVersion</a> operation.
      * </p>
      * <p>
      * You can delete a version of a slot type only if it is not referenced. To delete a slot type that is referred to
@@ -481,7 +482,8 @@ public interface AmazonLexModelBuilding {
 
     /**
      * <p>
-     * Deletes a specific version of a slot type. To delete all versions of a slot type, use the operation.
+     * Deletes a specific version of a slot type. To delete all versions of a slot type, use the <a>DeleteSlotType</a>
+     * operation.
      * </p>
      * <p>
      * This operation requires permissions for the <code>lex:DeleteSlotTypeVersion</code> action.
@@ -526,8 +528,8 @@ public interface AmazonLexModelBuilding {
      * </p>
      * <p>
      * Amazon Lex stores the utterances that users send to your bot unless the <code>childDirected</code> field in the
-     * bot is set to <code>true</code>. Utterances are stored for 15 days for use with the operation, and then stored
-     * indefinately for use in improving the ability of your bot to respond to user input.
+     * bot is set to <code>true</code>. Utterances are stored for 15 days for use with the <a>GetUtterancesView</a>
+     * operation, and then stored indefinately for use in improving the ability of your bot to respond to user input.
      * </p>
      * <p>
      * Use the <code>DeleteStoredUtterances</code> operation to manually delete stored utterances for a specific user.
@@ -558,7 +560,7 @@ public interface AmazonLexModelBuilding {
      * Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.
      * </p>
      * <p>
-     * The GetBot operation requires permissions for the <code>lex:GetBot</code> action.
+     * This operation requires permissions for the <code>lex:GetBot</code> action.
      * </p>
      * 
      * @param getBotRequest
@@ -827,6 +829,28 @@ public interface AmazonLexModelBuilding {
 
     /**
      * <p>
+     * Exports the contents of a Amazon Lex resource in a specified format.
+     * </p>
+     * 
+     * @param getExportRequest
+     * @return Result of the GetExport operation returned by the service.
+     * @throws NotFoundException
+     *         The resource specified in the request was not found. Check the resource and try again.
+     * @throws LimitExceededException
+     *         The request exceeded a limit. Try your request again.
+     * @throws InternalFailureException
+     *         An internal Amazon Lex error occurred. Try your request again.
+     * @throws BadRequestException
+     *         The request is not well formed. For example, a value is invalid or a required field is missing. Check the
+     *         field values, and try again.
+     * @sample AmazonLexModelBuilding.GetExport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetExport" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetExportResult getExport(GetExportRequest getExportRequest);
+
+    /**
+     * <p>
      * Returns information about an intent. In addition to the intent name, you must specify the intent version.
      * </p>
      * <p>
@@ -1045,7 +1069,8 @@ public interface AmazonLexModelBuilding {
      * </p>
      * <p>
      * If the bot's <code>childDirected</code> field is set to <code>true</code>, utterances for the bot are not stored
-     * and cannot be retrieved with the <code>GetUtterancesView</code> operation. For more information, see .
+     * and cannot be retrieved with the <code>GetUtterancesView</code> operation. For more information, see
+     * <a>PutBot</a>.
      * </p>
      * <p>
      * This operation requires permissions for the <code>lex:GetUtterancesView</code> action.
@@ -1068,9 +1093,9 @@ public interface AmazonLexModelBuilding {
 
     /**
      * <p>
-     * Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you only
-     * required to specify a name. You can use this to add intents later, or to remove intents from an existing bot.
-     * When you create a bot with a name only, the bot is created or updated but Amazon Lex returns the
+     * Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are
+     * only required to specify a name. You can use this to add intents later, or to remove intents from an existing
+     * bot. When you create a bot with a name only, the bot is created or updated but Amazon Lex returns the
      * <code/> response <code>FAILED</code>. You can build the bot after you add one or more intents. For more
      * information about Amazon Lex bots, see <a>how-it-works</a>.
      * </p>

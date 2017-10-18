@@ -22,7 +22,7 @@ import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClient;
+import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.CreateQueueRequest;
 import com.amazonaws.services.sqs.model.DeleteMessageRequest;
 import com.amazonaws.services.sqs.model.DeleteQueueRequest;
@@ -65,9 +65,10 @@ public class SimpleQueueServiceSample {
                     e);
         }
 
-        AmazonSQS sqs = new AmazonSQSClient(credentials);
-        Region usWest2 = Region.getRegion(Regions.US_WEST_2);
-        sqs.setRegion(usWest2);
+        AmazonSQS sqs = AmazonSQSClientBuilder.standard()
+                               .withCredentials(credentials)
+                               .withRegion(Regions.US_WEST_2)
+                               .build();
 
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon SQS");

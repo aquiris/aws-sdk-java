@@ -16,14 +16,15 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Fleet attribute.
+ * The fleet attribute.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum FleetAttribute {
 
     VPC_CONFIGURATION("VPC_CONFIGURATION"),
-    VPC_CONFIGURATION_SECURITY_GROUP_IDS("VPC_CONFIGURATION_SECURITY_GROUP_IDS");
+    VPC_CONFIGURATION_SECURITY_GROUP_IDS("VPC_CONFIGURATION_SECURITY_GROUP_IDS"),
+    DOMAIN_JOIN_INFO("DOMAIN_JOIN_INFO");
 
     private String value;
 
@@ -42,6 +43,9 @@ public enum FleetAttribute {
      * @param value
      *        real value
      * @return FleetAttribute corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static FleetAttribute fromValue(String value) {
         if (value == null || "".equals(value)) {

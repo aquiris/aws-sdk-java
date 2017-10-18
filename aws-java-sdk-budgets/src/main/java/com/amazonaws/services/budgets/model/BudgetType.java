@@ -15,13 +15,14 @@ package com.amazonaws.services.budgets.model;
 import javax.annotation.Generated;
 
 /**
- * The type of a budget. Can be COST or USAGE.
+ * The type of a budget. It should be COST, USAGE, or RI_UTILIZATION.
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum BudgetType {
 
     USAGE("USAGE"),
-    COST("COST");
+    COST("COST"),
+    RI_UTILIZATION("RI_UTILIZATION");
 
     private String value;
 
@@ -40,6 +41,9 @@ public enum BudgetType {
      * @param value
      *        real value
      * @return BudgetType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static BudgetType fromValue(String value) {
         if (value == null || "".equals(value)) {

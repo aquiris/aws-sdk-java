@@ -168,6 +168,26 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
     private Device device;
     /**
      * <p>
+     * This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     * </p>
+     */
+    private Boolean remoteDebugEnabled;
+    /**
+     * <p>
+     * IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging
+     * is enabled for the remote access session.
+     * </p>
+     */
+    private String hostAddress;
+    /**
+     * <p>
+     * Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for
+     * the remote access session.
+     * </p>
+     */
+    private String clientId;
+    /**
+     * <p>
      * The billing method of the remote access session. Possible values include <code>METERED</code> or
      * <code>UNMETERED</code>. For more information about metered devices, see <a
      * href="http://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology">AWS Device
@@ -187,6 +207,13 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
      * </p>
      */
     private String endpoint;
+    /**
+     * <p>
+     * Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote
+     * access session.
+     * </p>
+     */
+    private String deviceUdid;
 
     /**
      * <p>
@@ -734,7 +761,7 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
      */
 
     public void setStatus(ExecutionStatus status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
@@ -842,7 +869,7 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
      */
 
     public RemoteAccessSession withStatus(ExecutionStatus status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 
@@ -1192,7 +1219,7 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
      */
 
     public void setResult(ExecutionResult result) {
-        this.result = result.toString();
+        withResult(result);
     }
 
     /**
@@ -1280,7 +1307,7 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
      */
 
     public RemoteAccessSession withResult(ExecutionResult result) {
-        setResult(result);
+        this.result = result.toString();
         return this;
     }
 
@@ -1446,6 +1473,150 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
+     * This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     * </p>
+     * 
+     * @param remoteDebugEnabled
+     *        This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     */
+
+    public void setRemoteDebugEnabled(Boolean remoteDebugEnabled) {
+        this.remoteDebugEnabled = remoteDebugEnabled;
+    }
+
+    /**
+     * <p>
+     * This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     * </p>
+     * 
+     * @return This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     */
+
+    public Boolean getRemoteDebugEnabled() {
+        return this.remoteDebugEnabled;
+    }
+
+    /**
+     * <p>
+     * This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     * </p>
+     * 
+     * @param remoteDebugEnabled
+     *        This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RemoteAccessSession withRemoteDebugEnabled(Boolean remoteDebugEnabled) {
+        setRemoteDebugEnabled(remoteDebugEnabled);
+        return this;
+    }
+
+    /**
+     * <p>
+     * This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     * </p>
+     * 
+     * @return This flag is set to <code>true</code> if remote debugging is enabled for the remote access session.
+     */
+
+    public Boolean isRemoteDebugEnabled() {
+        return this.remoteDebugEnabled;
+    }
+
+    /**
+     * <p>
+     * IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging
+     * is enabled for the remote access session.
+     * </p>
+     * 
+     * @param hostAddress
+     *        IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote
+     *        debugging is enabled for the remote access session.
+     */
+
+    public void setHostAddress(String hostAddress) {
+        this.hostAddress = hostAddress;
+    }
+
+    /**
+     * <p>
+     * IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging
+     * is enabled for the remote access session.
+     * </p>
+     * 
+     * @return IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote
+     *         debugging is enabled for the remote access session.
+     */
+
+    public String getHostAddress() {
+        return this.hostAddress;
+    }
+
+    /**
+     * <p>
+     * IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging
+     * is enabled for the remote access session.
+     * </p>
+     * 
+     * @param hostAddress
+     *        IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote
+     *        debugging is enabled for the remote access session.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RemoteAccessSession withHostAddress(String hostAddress) {
+        setHostAddress(hostAddress);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for
+     * the remote access session.
+     * </p>
+     * 
+     * @param clientId
+     *        Unique identifier of your client for the remote access session. Only returned if remote debugging is
+     *        enabled for the remote access session.
+     */
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for
+     * the remote access session.
+     * </p>
+     * 
+     * @return Unique identifier of your client for the remote access session. Only returned if remote debugging is
+     *         enabled for the remote access session.
+     */
+
+    public String getClientId() {
+        return this.clientId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for
+     * the remote access session.
+     * </p>
+     * 
+     * @param clientId
+     *        Unique identifier of your client for the remote access session. Only returned if remote debugging is
+     *        enabled for the remote access session.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RemoteAccessSession withClientId(String clientId) {
+        setClientId(clientId);
+        return this;
+    }
+
+    /**
+     * <p>
      * The billing method of the remote access session. Possible values include <code>METERED</code> or
      * <code>UNMETERED</code>. For more information about metered devices, see <a
      * href="http://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology">AWS Device
@@ -1522,7 +1693,7 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
      */
 
     public void setBillingMethod(BillingMethod billingMethod) {
-        this.billingMethod = billingMethod.toString();
+        withBillingMethod(billingMethod);
     }
 
     /**
@@ -1543,7 +1714,7 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
      */
 
     public RemoteAccessSession withBillingMethod(BillingMethod billingMethod) {
-        setBillingMethod(billingMethod);
+        this.billingMethod = billingMethod.toString();
         return this;
     }
 
@@ -1629,6 +1800,52 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
     }
 
     /**
+     * <p>
+     * Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote
+     * access session.
+     * </p>
+     * 
+     * @param deviceUdid
+     *        Unique device identifier for the remote device. Only returned if remote debugging is enabled for the
+     *        remote access session.
+     */
+
+    public void setDeviceUdid(String deviceUdid) {
+        this.deviceUdid = deviceUdid;
+    }
+
+    /**
+     * <p>
+     * Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote
+     * access session.
+     * </p>
+     * 
+     * @return Unique device identifier for the remote device. Only returned if remote debugging is enabled for the
+     *         remote access session.
+     */
+
+    public String getDeviceUdid() {
+        return this.deviceUdid;
+    }
+
+    /**
+     * <p>
+     * Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote
+     * access session.
+     * </p>
+     * 
+     * @param deviceUdid
+     *        Unique device identifier for the remote device. Only returned if remote debugging is enabled for the
+     *        remote access session.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RemoteAccessSession withDeviceUdid(String deviceUdid) {
+        setDeviceUdid(deviceUdid);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1657,12 +1874,20 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
             sb.append("Stopped: ").append(getStopped()).append(",");
         if (getDevice() != null)
             sb.append("Device: ").append(getDevice()).append(",");
+        if (getRemoteDebugEnabled() != null)
+            sb.append("RemoteDebugEnabled: ").append(getRemoteDebugEnabled()).append(",");
+        if (getHostAddress() != null)
+            sb.append("HostAddress: ").append(getHostAddress()).append(",");
+        if (getClientId() != null)
+            sb.append("ClientId: ").append(getClientId()).append(",");
         if (getBillingMethod() != null)
             sb.append("BillingMethod: ").append(getBillingMethod()).append(",");
         if (getDeviceMinutes() != null)
             sb.append("DeviceMinutes: ").append(getDeviceMinutes()).append(",");
         if (getEndpoint() != null)
-            sb.append("Endpoint: ").append(getEndpoint());
+            sb.append("Endpoint: ").append(getEndpoint()).append(",");
+        if (getDeviceUdid() != null)
+            sb.append("DeviceUdid: ").append(getDeviceUdid());
         sb.append("}");
         return sb.toString();
     }
@@ -1713,6 +1938,18 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getDevice() != null && other.getDevice().equals(this.getDevice()) == false)
             return false;
+        if (other.getRemoteDebugEnabled() == null ^ this.getRemoteDebugEnabled() == null)
+            return false;
+        if (other.getRemoteDebugEnabled() != null && other.getRemoteDebugEnabled().equals(this.getRemoteDebugEnabled()) == false)
+            return false;
+        if (other.getHostAddress() == null ^ this.getHostAddress() == null)
+            return false;
+        if (other.getHostAddress() != null && other.getHostAddress().equals(this.getHostAddress()) == false)
+            return false;
+        if (other.getClientId() == null ^ this.getClientId() == null)
+            return false;
+        if (other.getClientId() != null && other.getClientId().equals(this.getClientId()) == false)
+            return false;
         if (other.getBillingMethod() == null ^ this.getBillingMethod() == null)
             return false;
         if (other.getBillingMethod() != null && other.getBillingMethod().equals(this.getBillingMethod()) == false)
@@ -1724,6 +1961,10 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
         if (other.getEndpoint() == null ^ this.getEndpoint() == null)
             return false;
         if (other.getEndpoint() != null && other.getEndpoint().equals(this.getEndpoint()) == false)
+            return false;
+        if (other.getDeviceUdid() == null ^ this.getDeviceUdid() == null)
+            return false;
+        if (other.getDeviceUdid() != null && other.getDeviceUdid().equals(this.getDeviceUdid()) == false)
             return false;
         return true;
     }
@@ -1742,9 +1983,13 @@ public class RemoteAccessSession implements Serializable, Cloneable, StructuredP
         hashCode = prime * hashCode + ((getStarted() == null) ? 0 : getStarted().hashCode());
         hashCode = prime * hashCode + ((getStopped() == null) ? 0 : getStopped().hashCode());
         hashCode = prime * hashCode + ((getDevice() == null) ? 0 : getDevice().hashCode());
+        hashCode = prime * hashCode + ((getRemoteDebugEnabled() == null) ? 0 : getRemoteDebugEnabled().hashCode());
+        hashCode = prime * hashCode + ((getHostAddress() == null) ? 0 : getHostAddress().hashCode());
+        hashCode = prime * hashCode + ((getClientId() == null) ? 0 : getClientId().hashCode());
         hashCode = prime * hashCode + ((getBillingMethod() == null) ? 0 : getBillingMethod().hashCode());
         hashCode = prime * hashCode + ((getDeviceMinutes() == null) ? 0 : getDeviceMinutes().hashCode());
         hashCode = prime * hashCode + ((getEndpoint() == null) ? 0 : getEndpoint().hashCode());
+        hashCode = prime * hashCode + ((getDeviceUdid() == null) ? 0 : getDeviceUdid().hashCode());
         return hashCode;
     }
 

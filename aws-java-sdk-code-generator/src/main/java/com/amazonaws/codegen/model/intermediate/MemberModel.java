@@ -68,6 +68,8 @@ public class MemberModel extends DocumentationModel {
 
     private boolean isJsonValue;
 
+    private boolean shouldEmitLegacyEnumSetter;
+
     public String getName() {
         return name;
     }
@@ -545,9 +547,16 @@ public class MemberModel extends DocumentationModel {
         this.shape = shape;
     }
 
+    public boolean getShouldEmitLegacyEnumSetter() {
+        return shouldEmitLegacyEnumSetter;
+    }
+
+    public void setShouldEmitLegacyEnumSetter(boolean shouldEmitLegacyEnumSetter) {
+        this.shouldEmitLegacyEnumSetter = shouldEmitLegacyEnumSetter;
+    }
+
     @Override
     public String toString() {
         return c2jName;
     }
-
 }

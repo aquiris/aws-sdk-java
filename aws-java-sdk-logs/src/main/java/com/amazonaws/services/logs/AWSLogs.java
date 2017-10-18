@@ -27,9 +27,9 @@ import com.amazonaws.services.logs.model.*;
  * </p>
  * <p>
  * <p>
- * You can use Amazon CloudWatch Logs to monitor, store, and access your log files from EC2 instances, Amazon
- * CloudTrail, or other sources. You can then retrieve the associated log data from CloudWatch Logs using the Amazon
- * CloudWatch console, the CloudWatch Logs commands in the AWS CLI, the CloudWatch Logs API, or the CloudWatch Logs SDK.
+ * You can use Amazon CloudWatch Logs to monitor, store, and access your log files from Amazon EC2 instances, AWS
+ * CloudTrail, or other sources. You can then retrieve the associated log data from CloudWatch Logs using the CloudWatch
+ * console, CloudWatch Logs commands in the AWS CLI, CloudWatch Logs API, or CloudWatch Logs SDK.
  * </p>
  * <p>
  * You can use CloudWatch Logs to:
@@ -37,24 +37,24 @@ import com.amazonaws.services.logs.model.*;
  * <ul>
  * <li>
  * <p>
- * <b>Monitor Logs from Amazon EC2 Instances in Real-time</b>: You can use CloudWatch Logs to monitor applications and
- * systems using log data. For example, CloudWatch Logs can track the number of errors that occur in your application
- * logs and send you a notification whenever the rate of errors exceeds a threshold you specify. CloudWatch Logs uses
- * your log data for monitoring; so, no code changes are required. For example, you can monitor application logs for
- * specific literal terms (such as "NullReferenceException") or count the number of occurrences of a literal term at a
- * particular position in log data (such as "404" status codes in an Apache access log). When the term you are searching
- * for is found, CloudWatch Logs reports the data to a Amazon CloudWatch metric that you specify.
+ * <b>Monitor logs from EC2 instances in real-time</b>: You can use CloudWatch Logs to monitor applications and systems
+ * using log data. For example, CloudWatch Logs can track the number of errors that occur in your application logs and
+ * send you a notification whenever the rate of errors exceeds a threshold that you specify. CloudWatch Logs uses your
+ * log data for monitoring; so, no code changes are required. For example, you can monitor application logs for specific
+ * literal terms (such as "NullReferenceException") or count the number of occurrences of a literal term at a particular
+ * position in log data (such as "404" status codes in an Apache access log). When the term you are searching for is
+ * found, CloudWatch Logs reports the data to a CloudWatch metric that you specify.
  * </p>
  * </li>
  * <li>
  * <p>
- * <b>Monitor Amazon CloudTrail Logged Events</b>: You can create alarms in Amazon CloudWatch and receive notifications
- * of particular API activity as captured by CloudTrail and use the notification to perform troubleshooting.
+ * <b>Monitor AWS CloudTrail logged events</b>: You can create alarms in CloudWatch and receive notifications of
+ * particular API activity as captured by CloudTrail and use the notification to perform troubleshooting.
  * </p>
  * </li>
  * <li>
  * <p>
- * <b>Archive Log Data</b>: You can use CloudWatch Logs to store your log data in highly durable storage. You can change
+ * <b>Archive log data</b>: You can use CloudWatch Logs to store your log data in highly durable storage. You can change
  * the log retention setting so that any log events older than this setting are automatically deleted. The CloudWatch
  * Logs agent makes it easy to quickly send both rotated and non-rotated log data off of a host and into the log
  * service. You can then access the raw log data when you need it.
@@ -126,6 +126,41 @@ public interface AWSLogs {
 
     /**
      * <p>
+     * Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the specified log
+     * group.
+     * </p>
+     * <p>
+     * Associating an AWS KMS CMK with a log group overrides any existing associations between the log group and a CMK.
+     * After a CMK is associated with a log group, all newly ingested data for the log group is encrypted using the CMK.
+     * This association is stored as long as the data encrypted with the CMK is still within Amazon CloudWatch Logs.
+     * This enables Amazon CloudWatch Logs to decrypt this data whenever it is requested.
+     * </p>
+     * <p>
+     * Note that it can take up to 5 minutes for this operation to take effect.
+     * </p>
+     * <p>
+     * If you attempt to associate a CMK with a log group but the CMK does not exist or the CMK is disabled, you will
+     * receive an <code>InvalidParameterException</code> error.
+     * </p>
+     * 
+     * @param associateKmsKeyRequest
+     * @return Result of the AssociateKmsKey operation returned by the service.
+     * @throws InvalidParameterException
+     *         A parameter is specified incorrectly.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws OperationAbortedException
+     *         Multiple requests to update the same resource were in conflict.
+     * @throws ServiceUnavailableException
+     *         The service cannot complete the request.
+     * @sample AWSLogs.AssociateKmsKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/AssociateKmsKey" target="_top">AWS API
+     *      Documentation</a>
+     */
+    AssociateKmsKeyResult associateKmsKey(AssociateKmsKeyRequest associateKmsKeyRequest);
+
+    /**
+     * <p>
      * Cancels the specified export task.
      * </p>
      * <p>
@@ -160,8 +195,8 @@ public interface AWSLogs {
      * </p>
      * <p>
      * You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log
-     * data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all
-     * exported objects.
+     * data for each export task, you can specify a prefix to be used as the Amazon S3 key prefix for all exported
+     * objects.
      * </p>
      * 
      * @param createExportTaskRequest
@@ -212,6 +247,15 @@ public interface AWSLogs {
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * If you associate a AWS Key Management Service (AWS KMS) customer master key (CMK) with the log group, ingested
+     * data is encrypted using the CMK. This association is stored as long as the data encrypted with the CMK is still
+     * within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs to decrypt this data whenever it is requested.
+     * </p>
+     * <p>
+     * If you attempt to associate a CMK with the log group but the CMK does not exist or the CMK is disabled, you will
+     * receive an <code>InvalidParameterException</code> error.
+     * </p>
      * 
      * @param createLogGroupRequest
      * @return Result of the CreateLogGroup operation returned by the service.
@@ -364,6 +408,26 @@ public interface AWSLogs {
 
     /**
      * <p>
+     * Deletes a resource policy from this account. This revokes the access of the identities in that policy to put log
+     * events to this account.
+     * </p>
+     * 
+     * @param deleteResourcePolicyRequest
+     * @return Result of the DeleteResourcePolicy operation returned by the service.
+     * @throws InvalidParameterException
+     *         A parameter is specified incorrectly.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ServiceUnavailableException
+     *         The service cannot complete the request.
+     * @sample AWSLogs.DeleteResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteResourcePolicy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteResourcePolicyResult deleteResourcePolicy(DeleteResourcePolicyRequest deleteResourcePolicyRequest);
+
+    /**
+     * <p>
      * Deletes the specified retention policy.
      * </p>
      * <p>
@@ -500,7 +564,7 @@ public interface AWSLogs {
     /**
      * <p>
      * Lists the specified metric filters. You can list all the metric filters or filter the results by log name,
-     * prefix, metric name, and metric namespace. The results are ASCII-sorted by filter name.
+     * prefix, metric name, or metric namespace. The results are ASCII-sorted by filter name.
      * </p>
      * 
      * @param describeMetricFiltersRequest
@@ -516,6 +580,23 @@ public interface AWSLogs {
      *      Documentation</a>
      */
     DescribeMetricFiltersResult describeMetricFilters(DescribeMetricFiltersRequest describeMetricFiltersRequest);
+
+    /**
+     * <p>
+     * Lists the resource policies in this account.
+     * </p>
+     * 
+     * @param describeResourcePoliciesRequest
+     * @return Result of the DescribeResourcePolicies operation returned by the service.
+     * @throws InvalidParameterException
+     *         A parameter is specified incorrectly.
+     * @throws ServiceUnavailableException
+     *         The service cannot complete the request.
+     * @sample AWSLogs.DescribeResourcePolicies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeResourcePolicies" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeResourcePoliciesResult describeResourcePolicies(DescribeResourcePoliciesRequest describeResourcePoliciesRequest);
 
     /**
      * <p>
@@ -539,11 +620,41 @@ public interface AWSLogs {
 
     /**
      * <p>
+     * Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified
+     * log group.
+     * </p>
+     * <p>
+     * After the AWS KMS CMK is disassociated from the log group, AWS CloudWatch Logs stops encrypting newly ingested
+     * data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires
+     * permissions for the CMK whenever the encrypted data is requested.
+     * </p>
+     * <p>
+     * Note that it can take up to 5 minutes for this operation to take effect.
+     * </p>
+     * 
+     * @param disassociateKmsKeyRequest
+     * @return Result of the DisassociateKmsKey operation returned by the service.
+     * @throws InvalidParameterException
+     *         A parameter is specified incorrectly.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws OperationAbortedException
+     *         Multiple requests to update the same resource were in conflict.
+     * @throws ServiceUnavailableException
+     *         The service cannot complete the request.
+     * @sample AWSLogs.DisassociateKmsKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DisassociateKmsKey" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DisassociateKmsKeyResult disassociateKmsKey(DisassociateKmsKeyRequest disassociateKmsKeyRequest);
+
+    /**
+     * <p>
      * Lists log events from the specified log group. You can list all the log events or filter the results using a
      * filter pattern, a time range, and the name of the log stream.
      * </p>
      * <p>
-     * By default, this operation returns as many log events as can fit in 1MB (up to 10,000 log events), or all the
+     * By default, this operation returns as many log events as can fit in 1 MB (up to 10,000 log events), or all the
      * events found within the time range that you specify. If the results include a token, then there are more log
      * events available, and you can get additional results by specifying the token in a subsequent call.
      * </p>
@@ -568,8 +679,7 @@ public interface AWSLogs {
      * </p>
      * <p>
      * By default, this operation returns as many log events as can fit in a response size of 1MB (up to 10,000 log
-     * events). If the results include tokens, there are more log events available. You can get additional log events by
-     * specifying one of the tokens in a subsequent call.
+     * events). You can get additional log events by specifying one of the tokens in a subsequent call.
      * </p>
      * 
      * @param getLogEventsRequest
@@ -590,9 +700,6 @@ public interface AWSLogs {
      * <p>
      * Lists the tags for the specified log group.
      * </p>
-     * <p>
-     * To add tags, use <a>TagLogGroup</a>. To remove tags, use <a>UntagLogGroup</a>.
-     * </p>
      * 
      * @param listTagsLogGroupRequest
      * @return Result of the ListTagsLogGroup operation returned by the service.
@@ -608,13 +715,13 @@ public interface AWSLogs {
 
     /**
      * <p>
-     * Creates or updates a destination. A destination encapsulates a physical resource (such as a Kinesis stream) and
-     * enables you to subscribe to a real-time stream of log events of a different account, ingested using
-     * <a>PutLogEvents</a>. Currently, the only supported physical resource is a Amazon Kinesis stream belonging to the
-     * same account as the destination.
+     * Creates or updates a destination. A destination encapsulates a physical resource (such as an Amazon Kinesis
+     * stream) and enables you to subscribe to a real-time stream of log events for a different account, ingested using
+     * <a>PutLogEvents</a>. Currently, the only supported physical resource is a Kinesis stream belonging to the same
+     * account as the destination.
      * </p>
      * <p>
-     * A destination controls what is written to its Amazon Kinesis stream through an access policy. By default,
+     * Through an access policy, a destination controls what is written to its Kinesis stream. By default,
      * <code>PutDestination</code> does not set any access policy with the destination, which means a cross-account user
      * cannot call <a>PutSubscriptionFilter</a> against this destination. To enable this, the destination owner must
      * call <a>PutDestinationPolicy</a> after <code>PutDestination</code>.
@@ -662,7 +769,8 @@ public interface AWSLogs {
      * <p>
      * You must include the sequence token obtained from the response of the previous call. An upload in a newly created
      * log stream does not require a sequence token. You can also get the sequence token using
-     * <a>DescribeLogStreams</a>.
+     * <a>DescribeLogStreams</a>. If you call <code>PutLogEvents</code> twice within a narrow time period using the same
+     * value for <code>sequenceToken</code>, both calls may be successful, or one may be rejected.
      * </p>
      * <p>
      * The batch of events must satisfy the following constraints:
@@ -686,8 +794,8 @@ public interface AWSLogs {
      * </li>
      * <li>
      * <p>
-     * The log events in the batch must be in chronological ordered by their timestamp (the time the event occurred,
-     * expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC).
+     * The log events in the batch must be in chronological ordered by their time stamp (the time the event occurred,
+     * expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC).
      * </p>
      * </li>
      * <li>
@@ -749,8 +857,28 @@ public interface AWSLogs {
 
     /**
      * <p>
-     * Sets the retention of the specified log group. A retention policy allows you to configure the number of days you
-     * want to retain log events in the specified log group.
+     * Creates or updates a resource policy allowing other AWS services to put log events to this account, such as
+     * Amazon Route 53. An account can have up to 50 resource policies per region.
+     * </p>
+     * 
+     * @param putResourcePolicyRequest
+     * @return Result of the PutResourcePolicy operation returned by the service.
+     * @throws InvalidParameterException
+     *         A parameter is specified incorrectly.
+     * @throws LimitExceededException
+     *         You have reached the maximum number of resources that can be created.
+     * @throws ServiceUnavailableException
+     *         The service cannot complete the request.
+     * @sample AWSLogs.PutResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutResourcePolicy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    PutResourcePolicyResult putResourcePolicy(PutResourcePolicyRequest putResourcePolicyRequest);
+
+    /**
+     * <p>
+     * Sets the retention of the specified log group. A retention policy allows you to configure the number of days for
+     * which to retain log events in the specified log group.
      * </p>
      * 
      * @param putRetentionPolicyRequest
@@ -788,8 +916,8 @@ public interface AWSLogs {
      * </li>
      * <li>
      * <p>
-     * An Amazon Kinesis Firehose stream that belongs to the same account as the subscription filter, for same-account
-     * delivery.
+     * An Amazon Kinesis Firehose delivery stream that belongs to the same account as the subscription filter, for
+     * same-account delivery.
      * </p>
      * </li>
      * <li>
@@ -800,7 +928,7 @@ public interface AWSLogs {
      * </ul>
      * <p>
      * There can only be one subscription filter associated with a log group. If you are updating an existing filter,
-     * you must specify the correct name in <code>filterName</code>. Otherwise, the call will fail because you cannot
+     * you must specify the correct name in <code>filterName</code>. Otherwise, the call fails because you cannot
      * associate a second filter with a log group.
      * </p>
      * 

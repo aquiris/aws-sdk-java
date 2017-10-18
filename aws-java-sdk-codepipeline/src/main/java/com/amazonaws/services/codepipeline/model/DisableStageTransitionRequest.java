@@ -19,7 +19,7 @@ import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a disable stage transition input action.
+ * Represents the input of a DisableStageTransition action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DisableStageTransition"
@@ -206,7 +206,7 @@ public class DisableStageTransitionRequest extends com.amazonaws.AmazonWebServic
      */
 
     public void setTransitionType(StageTransitionType transitionType) {
-        this.transitionType = transitionType.toString();
+        withTransitionType(transitionType);
     }
 
     /**
@@ -225,7 +225,7 @@ public class DisableStageTransitionRequest extends com.amazonaws.AmazonWebServic
      */
 
     public DisableStageTransitionRequest withTransitionType(StageTransitionType transitionType) {
-        setTransitionType(transitionType);
+        this.transitionType = transitionType.toString();
         return this;
     }
 

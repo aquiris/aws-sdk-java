@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-cloudformation/aws-java-sdk-cloudformation.iml" filepath="$PROJECT_DIR$/aws-java-sdk-cloudformation/aws-java-sdk-cloudformation.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-cloudfront/aws-java-sdk-cloudfront.iml" filepath="$PROJECT_DIR$/aws-java-sdk-cloudfront/aws-java-sdk-cloudfront.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-cloudhsm/aws-java-sdk-cloudhsm.iml" filepath="$PROJECT_DIR$/aws-java-sdk-cloudhsm/aws-java-sdk-cloudhsm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-cloudhsmv2/aws-java-sdk-cloudhsmv2.iml" filepath="$PROJECT_DIR$/aws-java-sdk-cloudhsmv2/aws-java-sdk-cloudhsmv2.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-cloudsearch/aws-java-sdk-cloudsearch.iml" filepath="$PROJECT_DIR$/aws-java-sdk-cloudsearch/aws-java-sdk-cloudsearch.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-cloudtrail/aws-java-sdk-cloudtrail.iml" filepath="$PROJECT_DIR$/aws-java-sdk-cloudtrail/aws-java-sdk-cloudtrail.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-cloudwatch/aws-java-sdk-cloudwatch.iml" filepath="$PROJECT_DIR$/aws-java-sdk-cloudwatch/aws-java-sdk-cloudwatch.iml" />
@@ -56,6 +57,7 @@
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-events/aws-java-sdk-events.iml" filepath="$PROJECT_DIR$/aws-java-sdk-events/aws-java-sdk-events.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-gamelift/aws-java-sdk-gamelift.iml" filepath="$PROJECT_DIR$/aws-java-sdk-gamelift/aws-java-sdk-gamelift.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-glacier/aws-java-sdk-glacier.iml" filepath="$PROJECT_DIR$/aws-java-sdk-glacier/aws-java-sdk-glacier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-glue/aws-java-sdk-glue.iml" filepath="$PROJECT_DIR$/aws-java-sdk-glue/aws-java-sdk-glue.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-greengrass/aws-java-sdk-greengrass.iml" filepath="$PROJECT_DIR$/aws-java-sdk-greengrass/aws-java-sdk-greengrass.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-health/aws-java-sdk-health.iml" filepath="$PROJECT_DIR$/aws-java-sdk-health/aws-java-sdk-health.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-iam/aws-java-sdk-iam.iml" filepath="$PROJECT_DIR$/aws-java-sdk-iam/aws-java-sdk-iam.iml" />
@@ -74,6 +76,8 @@
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-marketplaceentitlement/aws-java-sdk-marketplaceentitlement.iml" filepath="$PROJECT_DIR$/aws-java-sdk-marketplaceentitlement/aws-java-sdk-marketplaceentitlement.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-marketplacemeteringservice/aws-java-sdk-marketplacemeteringservice.iml" filepath="$PROJECT_DIR$/aws-java-sdk-marketplacemeteringservice/aws-java-sdk-marketplacemeteringservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-mechanicalturkrequester/aws-java-sdk-mechanicalturkrequester.iml" filepath="$PROJECT_DIR$/aws-java-sdk-mechanicalturkrequester/aws-java-sdk-mechanicalturkrequester.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-migrationhub/aws-java-sdk-migrationhub.iml" filepath="$PROJECT_DIR$/aws-java-sdk-migrationhub/aws-java-sdk-migrationhub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-mobile/aws-java-sdk-mobile.iml" filepath="$PROJECT_DIR$/aws-java-sdk-mobile/aws-java-sdk-mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-models/aws-java-sdk-models.iml" filepath="$PROJECT_DIR$/aws-java-sdk-models/aws-java-sdk-models.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-opensdk/aws-java-sdk-opensdk.iml" filepath="$PROJECT_DIR$/aws-java-sdk-opensdk/aws-java-sdk-opensdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/aws-java-sdk-opsworks/aws-java-sdk-opsworks.iml" filepath="$PROJECT_DIR$/aws-java-sdk-opsworks/aws-java-sdk-opsworks.iml" />

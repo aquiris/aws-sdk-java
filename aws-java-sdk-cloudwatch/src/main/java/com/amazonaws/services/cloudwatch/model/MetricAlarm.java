@@ -163,9 +163,20 @@ public class MetricAlarm implements Serializable, Cloneable {
      * </p>
      */
     private String comparisonOperator;
-
+    /**
+     * <p>
+     * Sets how this alarm is to handle missing data points. If this parameter is omitted, the default behavior of
+     * <code>missing</code> is used.
+     * </p>
+     */
     private String treatMissingData;
-
+    /**
+     * <p>
+     * Used only for alarms based on percentiles. If <code>ignore</code>, the alarm state does not change during periods
+     * with too few data points to be statistically significant. If <code>evaluate</code> or this parameter is not used,
+     * the alarm is always evaluated and possibly changes state no matter how many data points are available.
+     * </p>
+     */
     private String evaluateLowSampleCountPercentile;
 
     /**
@@ -677,7 +688,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public void setStateValue(StateValue stateValue) {
-        this.stateValue = stateValue.toString();
+        withStateValue(stateValue);
     }
 
     /**
@@ -692,7 +703,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public MetricAlarm withStateValue(StateValue stateValue) {
-        setStateValue(stateValue);
+        this.stateValue = stateValue.toString();
         return this;
     }
 
@@ -958,7 +969,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public void setStatistic(Statistic statistic) {
-        this.statistic = statistic.toString();
+        withStatistic(statistic);
     }
 
     /**
@@ -975,7 +986,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public MetricAlarm withStatistic(Statistic statistic) {
-        setStatistic(statistic);
+        this.statistic = statistic.toString();
         return this;
     }
 
@@ -1186,7 +1197,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public void setUnit(StandardUnit unit) {
-        this.unit = unit.toString();
+        withUnit(unit);
     }
 
     /**
@@ -1201,7 +1212,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public MetricAlarm withUnit(StandardUnit unit) {
-        setUnit(unit);
+        this.unit = unit.toString();
         return this;
     }
 
@@ -1347,7 +1358,7 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public void setComparisonOperator(ComparisonOperator comparisonOperator) {
-        this.comparisonOperator = comparisonOperator.toString();
+        withComparisonOperator(comparisonOperator);
     }
 
     /**
@@ -1364,12 +1375,19 @@ public class MetricAlarm implements Serializable, Cloneable {
      */
 
     public MetricAlarm withComparisonOperator(ComparisonOperator comparisonOperator) {
-        setComparisonOperator(comparisonOperator);
+        this.comparisonOperator = comparisonOperator.toString();
         return this;
     }
 
     /**
+     * <p>
+     * Sets how this alarm is to handle missing data points. If this parameter is omitted, the default behavior of
+     * <code>missing</code> is used.
+     * </p>
+     * 
      * @param treatMissingData
+     *        Sets how this alarm is to handle missing data points. If this parameter is omitted, the default behavior
+     *        of <code>missing</code> is used.
      */
 
     public void setTreatMissingData(String treatMissingData) {
@@ -1377,7 +1395,13 @@ public class MetricAlarm implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Sets how this alarm is to handle missing data points. If this parameter is omitted, the default behavior of
+     * <code>missing</code> is used.
+     * </p>
+     * 
+     * @return Sets how this alarm is to handle missing data points. If this parameter is omitted, the default behavior
+     *         of <code>missing</code> is used.
      */
 
     public String getTreatMissingData() {
@@ -1385,7 +1409,14 @@ public class MetricAlarm implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Sets how this alarm is to handle missing data points. If this parameter is omitted, the default behavior of
+     * <code>missing</code> is used.
+     * </p>
+     * 
      * @param treatMissingData
+     *        Sets how this alarm is to handle missing data points. If this parameter is omitted, the default behavior
+     *        of <code>missing</code> is used.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1395,7 +1426,17 @@ public class MetricAlarm implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Used only for alarms based on percentiles. If <code>ignore</code>, the alarm state does not change during periods
+     * with too few data points to be statistically significant. If <code>evaluate</code> or this parameter is not used,
+     * the alarm is always evaluated and possibly changes state no matter how many data points are available.
+     * </p>
+     * 
      * @param evaluateLowSampleCountPercentile
+     *        Used only for alarms based on percentiles. If <code>ignore</code>, the alarm state does not change during
+     *        periods with too few data points to be statistically significant. If <code>evaluate</code> or this
+     *        parameter is not used, the alarm is always evaluated and possibly changes state no matter how many data
+     *        points are available.
      */
 
     public void setEvaluateLowSampleCountPercentile(String evaluateLowSampleCountPercentile) {
@@ -1403,7 +1444,16 @@ public class MetricAlarm implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * Used only for alarms based on percentiles. If <code>ignore</code>, the alarm state does not change during periods
+     * with too few data points to be statistically significant. If <code>evaluate</code> or this parameter is not used,
+     * the alarm is always evaluated and possibly changes state no matter how many data points are available.
+     * </p>
+     * 
+     * @return Used only for alarms based on percentiles. If <code>ignore</code>, the alarm state does not change during
+     *         periods with too few data points to be statistically significant. If <code>evaluate</code> or this
+     *         parameter is not used, the alarm is always evaluated and possibly changes state no matter how many data
+     *         points are available.
      */
 
     public String getEvaluateLowSampleCountPercentile() {
@@ -1411,7 +1461,17 @@ public class MetricAlarm implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Used only for alarms based on percentiles. If <code>ignore</code>, the alarm state does not change during periods
+     * with too few data points to be statistically significant. If <code>evaluate</code> or this parameter is not used,
+     * the alarm is always evaluated and possibly changes state no matter how many data points are available.
+     * </p>
+     * 
      * @param evaluateLowSampleCountPercentile
+     *        Used only for alarms based on percentiles. If <code>ignore</code>, the alarm state does not change during
+     *        periods with too few data points to be statistically significant. If <code>evaluate</code> or this
+     *        parameter is not used, the alarm is always evaluated and possibly changes state no matter how many data
+     *        points are available.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

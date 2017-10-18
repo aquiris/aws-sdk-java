@@ -25,7 +25,14 @@ public enum BatchReadExceptionType {
     ResourceNotFoundException("ResourceNotFoundException"),
     InvalidNextTokenException("InvalidNextTokenException"),
     AccessDeniedException("AccessDeniedException"),
-    NotNodeException("NotNodeException");
+    NotNodeException("NotNodeException"),
+    FacetValidationException("FacetValidationException"),
+    CannotListParentOfRootException("CannotListParentOfRootException"),
+    NotIndexException("NotIndexException"),
+    NotPolicyException("NotPolicyException"),
+    DirectoryNotEnabledException("DirectoryNotEnabledException"),
+    LimitExceededException("LimitExceededException"),
+    InternalServiceException("InternalServiceException");
 
     private String value;
 
@@ -44,6 +51,9 @@ public enum BatchReadExceptionType {
      * @param value
      *        real value
      * @return BatchReadExceptionType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static BatchReadExceptionType fromValue(String value) {
         if (value == null || "".equals(value)) {

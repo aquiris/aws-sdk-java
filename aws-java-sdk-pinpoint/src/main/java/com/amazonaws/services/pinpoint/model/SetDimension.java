@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Dimension specification of a segment.
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SetDimension" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SetDimension implements Serializable, Cloneable, StructuredPojo {
@@ -88,7 +91,7 @@ public class SetDimension implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setDimensionType(DimensionType dimensionType) {
-        this.dimensionType = dimensionType.toString();
+        withDimensionType(dimensionType);
     }
 
     /**
@@ -103,7 +106,7 @@ public class SetDimension implements Serializable, Cloneable, StructuredPojo {
      */
 
     public SetDimension withDimensionType(DimensionType dimensionType) {
-        setDimensionType(dimensionType);
+        this.dimensionType = dimensionType.toString();
         return this;
     }
 

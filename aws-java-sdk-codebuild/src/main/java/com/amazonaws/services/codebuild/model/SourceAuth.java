@@ -23,7 +23,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </p>
  * <p>
  * This information is for the AWS CodeBuild console's use only. Your code should not get or set this information
- * directly (unless the build project's source <code>type</code> value is <code>GITHUB</code>).
+ * directly (unless the build project's source <code>type</code> value is <code>BITBUCKET</code> or <code>GITHUB</code>
+ * ).
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/SourceAuth" target="_top">AWS API
@@ -108,7 +109,7 @@ public class SourceAuth implements Serializable, Cloneable, StructuredPojo {
      */
 
     public void setType(SourceAuthType type) {
-        this.type = type.toString();
+        withType(type);
     }
 
     /**
@@ -125,7 +126,7 @@ public class SourceAuth implements Serializable, Cloneable, StructuredPojo {
      */
 
     public SourceAuth withType(SourceAuthType type) {
-        setType(type);
+        this.type = type.toString();
         return this;
     }
 

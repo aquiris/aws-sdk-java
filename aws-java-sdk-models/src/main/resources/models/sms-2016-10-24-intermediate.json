@@ -3,6 +3,7 @@
     "additionalShapeConstructors" : null,
     "authPolicyActions" : {
       "actionPrefix" : null,
+      "additionalOperations" : null,
       "fileNamePrefix" : null,
       "skip" : true
     },
@@ -17,7 +18,17 @@
     "customServiceMetadata" : null,
     "customServiceNameForRequest" : null,
     "customSignerProvider" : null,
-    "deprecatedSuppressions" : null,
+    "deprecatedSuppressions" : [ "EnumSetterOverload" ],
+    "emitLegacyEnumSetterFor" : {
+      "Connector" : [ "status", "vmManagerType" ],
+      "CreateReplicationJobRequest" : [ "licenseType" ],
+      "GetServersResponse" : [ "serverCatalogStatus" ],
+      "ReplicationJob" : [ "serverType", "licenseType", "state" ],
+      "ReplicationRun" : [ "state", "type" ],
+      "Server" : [ "serverType" ],
+      "UpdateReplicationJobRequest" : [ "licenseType" ],
+      "VmServer" : [ "vmManagerType" ]
+    },
     "operationModifiers" : null,
     "operationsWithResponseStreamContentLengthValidation" : null,
     "presignersFqcn" : null,
@@ -627,6 +638,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param connectorId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -689,6 +701,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param version \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -751,6 +764,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param status \n@return Returns a reference to this object so that method calls can be chained together.\n@see ConnectorStatus*/",
@@ -850,6 +864,7 @@
               "simpleType" : "String",
               "variableSetterType" : "String"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : true,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.\n@see ConnectorCapability*/",
@@ -890,6 +905,7 @@
           "simpleType" : "List<String>",
           "variableSetterType" : "java.util.Collection<String>"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setCapabilityList(java.util.Collection)} or {@link #withCapabilityList(java.util.Collection)} if you want to override the existing values.</p>\n@param capabilityList \n@return Returns a reference to this object so that method calls can be chained together.\n@see ConnectorCapability*/",
@@ -952,6 +968,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmManagerName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1014,6 +1031,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmManagerType \n@return Returns a reference to this object so that method calls can be chained together.\n@see VmManagerType*/",
@@ -1076,6 +1094,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmManagerId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1138,6 +1157,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param ipAddress \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1200,6 +1220,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param macAddress \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1262,6 +1283,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param associatedOn \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1326,6 +1348,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param associatedOn \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1426,6 +1449,7 @@
                 "simpleType" : "String",
                 "variableSetterType" : "String"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : true,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.\n@see ConnectorCapability*/",
@@ -1466,6 +1490,7 @@
             "simpleType" : "List<String>",
             "variableSetterType" : "java.util.Collection<String>"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setCapabilityList(java.util.Collection)} or {@link #withCapabilityList(java.util.Collection)} if you want to override the existing values.</p>\n@param capabilityList \n@return Returns a reference to this object so that method calls can be chained together.\n@see ConnectorCapability*/",
@@ -1529,6 +1554,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param connectorId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1592,6 +1618,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param ipAddress \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1655,6 +1682,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param macAddress \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1718,6 +1746,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param status \n@return Returns a reference to this object so that method calls can be chained together.\n@see ConnectorStatus*/",
@@ -1781,6 +1810,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param version \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1844,6 +1874,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmManagerId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1907,6 +1938,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmManagerName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -1970,6 +2002,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmManagerType \n@return Returns a reference to this object so that method calls can be chained together.\n@see VmManagerType*/",
@@ -2165,6 +2198,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param serverId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2227,6 +2261,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param seedReplicationTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2289,6 +2324,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param frequency \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2351,6 +2387,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param licenseType \n@return Returns a reference to this object so that method calls can be chained together.\n@see LicenseType*/",
@@ -2413,6 +2450,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param roleName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2475,6 +2513,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2539,6 +2578,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2602,6 +2642,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param frequency \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2665,6 +2706,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param licenseType \n@return Returns a reference to this object so that method calls can be chained together.\n@see LicenseType*/",
@@ -2728,6 +2770,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param roleName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2791,6 +2834,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param seedReplicationTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2854,6 +2898,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param serverId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -2952,6 +2997,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3016,6 +3062,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3124,6 +3171,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3188,6 +3236,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3414,6 +3463,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param connectorId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3478,6 +3528,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param connectorId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3622,6 +3673,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3684,6 +3736,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3748,6 +3801,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3811,6 +3865,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3946,6 +4001,7 @@
               "simpleType" : "Connector",
               "variableSetterType" : "Connector"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -3986,6 +4042,7 @@
           "simpleType" : "List<Connector>",
           "variableSetterType" : "java.util.Collection<Connector>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setConnectorList(java.util.Collection)} or {@link #withConnectorList(java.util.Collection)} if you want to override the existing values.</p>\n@param connectorList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4048,6 +4105,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4149,6 +4207,7 @@
                 "simpleType" : "Connector",
                 "variableSetterType" : "Connector"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4189,6 +4248,7 @@
             "simpleType" : "List<Connector>",
             "variableSetterType" : "java.util.Collection<Connector>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setConnectorList(java.util.Collection)} or {@link #withConnectorList(java.util.Collection)} if you want to override the existing values.</p>\n@param connectorList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4252,6 +4312,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4360,6 +4421,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4422,6 +4484,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4484,6 +4547,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4548,6 +4612,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4611,6 +4676,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4674,6 +4740,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4809,6 +4876,7 @@
               "simpleType" : "ReplicationJob",
               "variableSetterType" : "ReplicationJob"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4849,6 +4917,7 @@
           "simpleType" : "List<ReplicationJob>",
           "variableSetterType" : "java.util.Collection<ReplicationJob>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setReplicationJobList(java.util.Collection)} or {@link #withReplicationJobList(java.util.Collection)} if you want to override the existing values.</p>\n@param replicationJobList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4911,6 +4980,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -4975,6 +5045,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5075,6 +5146,7 @@
                 "simpleType" : "ReplicationJob",
                 "variableSetterType" : "ReplicationJob"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5115,6 +5187,7 @@
             "simpleType" : "List<ReplicationJob>",
             "variableSetterType" : "java.util.Collection<ReplicationJob>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setReplicationJobList(java.util.Collection)} or {@link #withReplicationJobList(java.util.Collection)} if you want to override the existing values.</p>\n@param replicationJobList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5223,6 +5296,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5285,6 +5359,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5347,6 +5422,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5411,6 +5487,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5474,6 +5551,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5537,6 +5615,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5635,6 +5714,7 @@
           "simpleType" : "ReplicationJob",
           "variableSetterType" : "ReplicationJob"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJob \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5734,6 +5814,7 @@
               "simpleType" : "ReplicationRun",
               "variableSetterType" : "ReplicationRun"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5774,6 +5855,7 @@
           "simpleType" : "List<ReplicationRun>",
           "variableSetterType" : "java.util.Collection<ReplicationRun>"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setReplicationRunList(java.util.Collection)} or {@link #withReplicationRunList(java.util.Collection)} if you want to override the existing values.</p>\n@param replicationRunList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5836,6 +5918,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5900,6 +5983,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -5963,6 +6047,7 @@
             "simpleType" : "ReplicationJob",
             "variableSetterType" : "ReplicationJob"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJob \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6063,6 +6148,7 @@
                 "simpleType" : "ReplicationRun",
                 "variableSetterType" : "ReplicationRun"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6103,6 +6189,7 @@
             "simpleType" : "List<ReplicationRun>",
             "variableSetterType" : "java.util.Collection<ReplicationRun>"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setReplicationRunList(java.util.Collection)} or {@link #withReplicationRunList(java.util.Collection)} if you want to override the existing values.</p>\n@param replicationRunList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6211,6 +6298,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6273,6 +6361,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6337,6 +6426,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param maxResults \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6400,6 +6490,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6498,6 +6589,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param lastModifiedOn \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6560,6 +6652,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param serverCatalogStatus \n@return Returns a reference to this object so that method calls can be chained together.\n@see ServerCatalogStatus*/",
@@ -6659,6 +6752,7 @@
               "simpleType" : "Server",
               "variableSetterType" : "Server"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6699,6 +6793,7 @@
           "simpleType" : "List<Server>",
           "variableSetterType" : "java.util.Collection<Server>"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setServerList(java.util.Collection)} or {@link #withServerList(java.util.Collection)} if you want to override the existing values.</p>\n@param serverList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6761,6 +6856,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6825,6 +6921,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param lastModifiedOn \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6888,6 +6985,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextToken \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -6951,6 +7049,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param serverCatalogStatus \n@return Returns a reference to this object so that method calls can be chained together.\n@see ServerCatalogStatus*/",
@@ -7051,6 +7150,7 @@
                 "simpleType" : "Server",
                 "variableSetterType" : "Server"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7091,6 +7191,7 @@
             "simpleType" : "List<Server>",
             "variableSetterType" : "java.util.Collection<Server>"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setServerList(java.util.Collection)} or {@link #withServerList(java.util.Collection)} if you want to override the existing values.</p>\n@param serverList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7499,6 +7600,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7561,6 +7663,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param serverId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7623,6 +7726,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param serverType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ServerType*/",
@@ -7685,6 +7789,7 @@
           "simpleType" : "VmServer",
           "variableSetterType" : "VmServer"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmServer \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7747,6 +7852,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param seedReplicationTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7809,6 +7915,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param frequency \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7871,6 +7978,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextReplicationRunStartTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -7933,6 +8041,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param licenseType \n@return Returns a reference to this object so that method calls can be chained together.\n@see LicenseType*/",
@@ -7995,6 +8104,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param roleName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8057,6 +8167,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param latestAmiId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8119,6 +8230,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param state \n@return Returns a reference to this object so that method calls can be chained together.\n@see ReplicationJobState*/",
@@ -8181,6 +8293,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param statusMessage \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8243,6 +8356,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8342,6 +8456,7 @@
               "simpleType" : "ReplicationRun",
               "variableSetterType" : "ReplicationRun"
             },
+            "shouldEmitLegacyEnumSetter" : false,
             "simple" : false,
             "unmarshallingType" : null,
             "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8382,6 +8497,7 @@
           "simpleType" : "List<ReplicationRun>",
           "variableSetterType" : "java.util.Collection<ReplicationRun>"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setReplicationRunList(java.util.Collection)} or {@link #withReplicationRunList(java.util.Collection)} if you want to override the existing values.</p>\n@param replicationRunList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8446,6 +8562,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8509,6 +8626,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param frequency \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8572,6 +8690,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param latestAmiId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8635,6 +8754,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param licenseType \n@return Returns a reference to this object so that method calls can be chained together.\n@see LicenseType*/",
@@ -8698,6 +8818,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextReplicationRunStartTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8761,6 +8882,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8861,6 +8983,7 @@
                 "simpleType" : "ReplicationRun",
                 "variableSetterType" : "ReplicationRun"
               },
+              "shouldEmitLegacyEnumSetter" : false,
               "simple" : false,
               "unmarshallingType" : null,
               "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8901,6 +9024,7 @@
             "simpleType" : "List<ReplicationRun>",
             "variableSetterType" : "java.util.Collection<ReplicationRun>"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setReplicationRunList(java.util.Collection)} or {@link #withReplicationRunList(java.util.Collection)} if you want to override the existing values.</p>\n@param replicationRunList \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -8964,6 +9088,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param roleName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9027,6 +9152,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param seedReplicationTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9090,6 +9216,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param serverId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9153,6 +9280,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param serverType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ServerType*/",
@@ -9216,6 +9344,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param state \n@return Returns a reference to this object so that method calls can be chained together.\n@see ReplicationJobState*/",
@@ -9279,6 +9408,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param statusMessage \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9342,6 +9472,7 @@
             "simpleType" : "VmServer",
             "variableSetterType" : "VmServer"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmServer \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9569,6 +9700,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationRunId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9631,6 +9763,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param state \n@return Returns a reference to this object so that method calls can be chained together.\n@see ReplicationRunState*/",
@@ -9693,6 +9826,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param type \n@return Returns a reference to this object so that method calls can be chained together.\n@see ReplicationRunType*/",
@@ -9755,6 +9889,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param statusMessage \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9817,6 +9952,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param amiId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9879,6 +10015,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param scheduledStartTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -9941,6 +10078,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param completedTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10003,6 +10141,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10067,6 +10206,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param amiId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10130,6 +10270,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param completedTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10193,6 +10334,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10256,6 +10398,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationRunId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10319,6 +10462,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param scheduledStartTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10382,6 +10526,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param state \n@return Returns a reference to this object so that method calls can be chained together.\n@see ReplicationRunState*/",
@@ -10445,6 +10590,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param statusMessage \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10508,6 +10654,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param type \n@return Returns a reference to this object so that method calls can be chained together.\n@see ReplicationRunType*/",
@@ -10750,6 +10897,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param serverId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10812,6 +10960,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param serverType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ServerType*/",
@@ -10874,6 +11023,7 @@
           "simpleType" : "VmServer",
           "variableSetterType" : "VmServer"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmServer \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10936,6 +11086,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -10998,6 +11149,7 @@
           "simpleType" : "Boolean",
           "variableSetterType" : "Boolean"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobTerminated \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11062,6 +11214,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11125,6 +11278,7 @@
             "simpleType" : "Boolean",
             "variableSetterType" : "Boolean"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobTerminated \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11188,6 +11342,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param serverId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11251,6 +11406,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param serverType \n@return Returns a reference to this object so that method calls can be chained together.\n@see ServerType*/",
@@ -11314,6 +11470,7 @@
             "simpleType" : "VmServer",
             "variableSetterType" : "VmServer"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmServer \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11554,6 +11711,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11616,6 +11774,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11680,6 +11839,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11743,6 +11903,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11841,6 +12002,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationRunId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -11905,6 +12067,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationRunId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12049,6 +12212,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12111,6 +12275,7 @@
           "simpleType" : "Integer",
           "variableSetterType" : "Integer"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param frequency \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12173,6 +12338,7 @@
           "simpleType" : "Date",
           "variableSetterType" : "java.util.Date"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param nextReplicationRunStartTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12235,6 +12401,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param licenseType \n@return Returns a reference to this object so that method calls can be chained together.\n@see LicenseType*/",
@@ -12297,6 +12464,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param roleName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12359,6 +12527,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12423,6 +12592,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param description \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12486,6 +12656,7 @@
             "simpleType" : "Integer",
             "variableSetterType" : "Integer"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param frequency \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12549,6 +12720,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param licenseType \n@return Returns a reference to this object so that method calls can be chained together.\n@see LicenseType*/",
@@ -12612,6 +12784,7 @@
             "simpleType" : "Date",
             "variableSetterType" : "java.util.Date"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param nextReplicationRunStartTime \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12675,6 +12848,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param replicationJobId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12738,6 +12912,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param roleName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12917,6 +13092,7 @@
           "simpleType" : "VmServerAddress",
           "variableSetterType" : "VmServerAddress"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : false,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmServerAddress \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -12979,6 +13155,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13041,6 +13218,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmManagerName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13103,6 +13281,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmManagerType \n@return Returns a reference to this object so that method calls can be chained together.\n@see VmManagerType*/",
@@ -13165,6 +13344,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmPath \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13229,6 +13409,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmManagerName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13292,6 +13473,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmManagerType \n@return Returns a reference to this object so that method calls can be chained together.\n@see VmManagerType*/",
@@ -13355,6 +13537,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmName \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13418,6 +13601,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmPath \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13481,6 +13665,7 @@
             "simpleType" : "VmServerAddress",
             "variableSetterType" : "VmServerAddress"
           },
+          "shouldEmitLegacyEnumSetter" : true,
           "simple" : false,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmServerAddress \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13582,6 +13767,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmManagerId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13644,6 +13830,7 @@
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
+        "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
         "varargSetterDocumentation" : "/**\n@param vmId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13708,6 +13895,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmId \n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -13771,6 +13959,7 @@
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
+          "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
           "varargSetterDocumentation" : "/**\n@param vmManagerId \n@return Returns a reference to this object so that method calls can be chained together.*/",

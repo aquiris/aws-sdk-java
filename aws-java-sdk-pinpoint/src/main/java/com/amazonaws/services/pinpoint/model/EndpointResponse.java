@@ -19,6 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * Endpoint response
+ * 
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/EndpointResponse" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EndpointResponse implements Serializable, Cloneable, StructuredPojo {
@@ -35,7 +38,7 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      */
     private String channelType;
     /**
@@ -67,15 +70,17 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      */
     private String optOut;
     /** The unique ID for the most recent request to update the endpoint. */
     private String requestId;
+    /** The ShardId of endpoint. */
+    private String shardId;
     /** Custom user-specific attributes that your app reports to Amazon Pinpoint. */
     private EndpointUser user;
-    /** The ShardId of endpoint */
-    private String shardId;
 
     /**
      * The address or token of the endpoint as provided by your push provider (e.g. DeviceToken or RegistrationId).
@@ -212,12 +217,12 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @see ChannelType
      */
 
@@ -228,11 +233,11 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @return The channel type.
      * 
-     *         Valid values: APNS, GCM
+     *         Valid values: GCM | APNS | SMS | EMAIL
      * @see ChannelType
      */
 
@@ -243,12 +248,12 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChannelType
      */
@@ -261,34 +266,34 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @see ChannelType
      */
 
     public void setChannelType(ChannelType channelType) {
-        this.channelType = channelType.toString();
+        withChannelType(channelType);
     }
 
     /**
      * The channel type.
      * 
-     * Valid values: APNS, GCM
+     * Valid values: GCM | APNS | SMS | EMAIL
      * 
      * @param channelType
      *        The channel type.
      * 
-     *        Valid values: APNS, GCM
+     *        Valid values: GCM | APNS | SMS | EMAIL
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ChannelType
      */
 
     public EndpointResponse withChannelType(ChannelType channelType) {
-        setChannelType(channelType);
+        this.channelType = channelType.toString();
         return this;
     }
 
@@ -612,12 +617,16 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      * 
      * @param optOut
      *        Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     *        ALL – User receives all messages. NONE – User receives no messages.
+     *        ALL - User has opted out of all messages.
+     * 
+     *        NONE - Users has not opted out and receives all messages.
      */
 
     public void setOptOut(String optOut) {
@@ -627,11 +636,15 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      * 
      * @return Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     *         ALL – User receives all messages. NONE – User receives no messages.
+     *         ALL - User has opted out of all messages.
+     * 
+     *         NONE - Users has not opted out and receives all messages.
      */
 
     public String getOptOut() {
@@ -641,12 +654,16 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     * ALL – User receives all messages. NONE – User receives no messages.
+     * ALL - User has opted out of all messages.
+     * 
+     * NONE - Users has not opted out and receives all messages.
      * 
      * @param optOut
      *        Indicates whether a user has opted out of receiving messages with one of the following values:
      * 
-     *        ALL – User receives all messages. NONE – User receives no messages.
+     *        ALL - User has opted out of all messages.
+     * 
+     *        NONE - Users has not opted out and receives all messages.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -690,6 +707,40 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * The ShardId of endpoint.
+     * 
+     * @param shardId
+     *        The ShardId of endpoint.
+     */
+
+    public void setShardId(String shardId) {
+        this.shardId = shardId;
+    }
+
+    /**
+     * The ShardId of endpoint.
+     * 
+     * @return The ShardId of endpoint.
+     */
+
+    public String getShardId() {
+        return this.shardId;
+    }
+
+    /**
+     * The ShardId of endpoint.
+     * 
+     * @param shardId
+     *        The ShardId of endpoint.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EndpointResponse withShardId(String shardId) {
+        setShardId(shardId);
+        return this;
+    }
+
+    /**
      * Custom user-specific attributes that your app reports to Amazon Pinpoint.
      * 
      * @param user
@@ -720,40 +771,6 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
 
     public EndpointResponse withUser(EndpointUser user) {
         setUser(user);
-        return this;
-    }
-
-    /**
-     * The ShardId of endpoint
-     * 
-     * @param shardId
-     *        The ShardId of endpoint
-     */
-
-    public void setShardId(String shardId) {
-        this.shardId = shardId;
-    }
-
-    /**
-     * The ShardId of endpoint
-     * 
-     * @return The ShardId of endpoint
-     */
-
-    public String getShardId() {
-        return this.shardId;
-    }
-
-    /**
-     * The ShardId of endpoint
-     * 
-     * @param shardId
-     *        The ShardId of endpoint
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public EndpointResponse withShardId(String shardId) {
-        setShardId(shardId);
         return this;
     }
 
@@ -796,10 +813,10 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
             sb.append("OptOut: ").append(getOptOut()).append(",");
         if (getRequestId() != null)
             sb.append("RequestId: ").append(getRequestId()).append(",");
-        if (getUser() != null)
-            sb.append("User: ").append(getUser()).append(",");
         if (getShardId() != null)
-            sb.append("ShardId: ").append(getShardId());
+            sb.append("ShardId: ").append(getShardId()).append(",");
+        if (getUser() != null)
+            sb.append("User: ").append(getUser());
         sb.append("}");
         return sb.toString();
     }
@@ -870,13 +887,13 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
             return false;
         if (other.getRequestId() != null && other.getRequestId().equals(this.getRequestId()) == false)
             return false;
-        if (other.getUser() == null ^ this.getUser() == null)
-            return false;
-        if (other.getUser() != null && other.getUser().equals(this.getUser()) == false)
-            return false;
         if (other.getShardId() == null ^ this.getShardId() == null)
             return false;
         if (other.getShardId() != null && other.getShardId().equals(this.getShardId()) == false)
+            return false;
+        if (other.getUser() == null ^ this.getUser() == null)
+            return false;
+        if (other.getUser() != null && other.getUser().equals(this.getUser()) == false)
             return false;
         return true;
     }
@@ -900,8 +917,8 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
         hashCode = prime * hashCode + ((getMetrics() == null) ? 0 : getMetrics().hashCode());
         hashCode = prime * hashCode + ((getOptOut() == null) ? 0 : getOptOut().hashCode());
         hashCode = prime * hashCode + ((getRequestId() == null) ? 0 : getRequestId().hashCode());
-        hashCode = prime * hashCode + ((getUser() == null) ? 0 : getUser().hashCode());
         hashCode = prime * hashCode + ((getShardId() == null) ? 0 : getShardId().hashCode());
+        hashCode = prime * hashCode + ((getUser() == null) ? 0 : getUser().hashCode());
         return hashCode;
     }
 

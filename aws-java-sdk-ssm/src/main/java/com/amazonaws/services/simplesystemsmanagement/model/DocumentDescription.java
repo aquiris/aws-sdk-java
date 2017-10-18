@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Describes an SSM document.
+ * Describes a Systems Manager document.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DocumentDescription" target="_top">AWS API
@@ -30,7 +30,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The SHA1 hash of the document, which you can use for verification purposes.
+     * The SHA1 hash of the document, which you can use for verification.
      * </p>
      */
     private String sha1;
@@ -58,13 +58,13 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
     private String hashType;
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The AWS user account of the person who created the document.
+     * The AWS user account that created the document.
      * </p>
      */
     private String owner;
@@ -76,7 +76,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
     private java.util.Date createdDate;
     /**
      * <p>
-     * The status of the SSM document.
+     * The status of the Systems Manager document.
      * </p>
      */
     private String status;
@@ -100,7 +100,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
     private com.amazonaws.internal.SdkInternalList<DocumentParameter> parameters;
     /**
      * <p>
-     * The list of OS platforms compatible with this SSM document.
+     * The list of OS platforms compatible with this Systems Manager document.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> platformTypes;
@@ -128,14 +128,20 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
      * </p>
      */
     private String defaultVersion;
+    /**
+     * <p>
+     * The tags, or metadata, that have been applied to the document.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
      * <p>
-     * The SHA1 hash of the document, which you can use for verification purposes.
+     * The SHA1 hash of the document, which you can use for verification.
      * </p>
      * 
      * @param sha1
-     *        The SHA1 hash of the document, which you can use for verification purposes.
+     *        The SHA1 hash of the document, which you can use for verification.
      */
 
     public void setSha1(String sha1) {
@@ -144,10 +150,10 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The SHA1 hash of the document, which you can use for verification purposes.
+     * The SHA1 hash of the document, which you can use for verification.
      * </p>
      * 
-     * @return The SHA1 hash of the document, which you can use for verification purposes.
+     * @return The SHA1 hash of the document, which you can use for verification.
      */
 
     public String getSha1() {
@@ -156,11 +162,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The SHA1 hash of the document, which you can use for verification purposes.
+     * The SHA1 hash of the document, which you can use for verification.
      * </p>
      * 
      * @param sha1
-     *        The SHA1 hash of the document, which you can use for verification purposes.
+     *        The SHA1 hash of the document, which you can use for verification.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -319,7 +325,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
      */
 
     public void setHashType(DocumentHashType hashType) {
-        this.hashType = hashType.toString();
+        withHashType(hashType);
     }
 
     /**
@@ -342,17 +348,17 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
      */
 
     public DocumentDescription withHashType(DocumentHashType hashType) {
-        setHashType(hashType);
+        this.hashType = hashType.toString();
         return this;
     }
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      * 
      * @param name
-     *        The name of the SSM document.
+     *        The name of the Systems Manager document.
      */
 
     public void setName(String name) {
@@ -361,10 +367,10 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      * 
-     * @return The name of the SSM document.
+     * @return The name of the Systems Manager document.
      */
 
     public String getName() {
@@ -373,11 +379,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The name of the SSM document.
+     * The name of the Systems Manager document.
      * </p>
      * 
      * @param name
-     *        The name of the SSM document.
+     *        The name of the Systems Manager document.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -388,11 +394,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The AWS user account of the person who created the document.
+     * The AWS user account that created the document.
      * </p>
      * 
      * @param owner
-     *        The AWS user account of the person who created the document.
+     *        The AWS user account that created the document.
      */
 
     public void setOwner(String owner) {
@@ -401,10 +407,10 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The AWS user account of the person who created the document.
+     * The AWS user account that created the document.
      * </p>
      * 
-     * @return The AWS user account of the person who created the document.
+     * @return The AWS user account that created the document.
      */
 
     public String getOwner() {
@@ -413,11 +419,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The AWS user account of the person who created the document.
+     * The AWS user account that created the document.
      * </p>
      * 
      * @param owner
-     *        The AWS user account of the person who created the document.
+     *        The AWS user account that created the document.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -468,11 +474,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The status of the SSM document.
+     * The status of the Systems Manager document.
      * </p>
      * 
      * @param status
-     *        The status of the SSM document.
+     *        The status of the Systems Manager document.
      * @see DocumentStatus
      */
 
@@ -482,10 +488,10 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The status of the SSM document.
+     * The status of the Systems Manager document.
      * </p>
      * 
-     * @return The status of the SSM document.
+     * @return The status of the Systems Manager document.
      * @see DocumentStatus
      */
 
@@ -495,11 +501,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The status of the SSM document.
+     * The status of the Systems Manager document.
      * </p>
      * 
      * @param status
-     *        The status of the SSM document.
+     *        The status of the Systems Manager document.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentStatus
      */
@@ -511,31 +517,31 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The status of the SSM document.
+     * The status of the Systems Manager document.
      * </p>
      * 
      * @param status
-     *        The status of the SSM document.
+     *        The status of the Systems Manager document.
      * @see DocumentStatus
      */
 
     public void setStatus(DocumentStatus status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
      * <p>
-     * The status of the SSM document.
+     * The status of the Systems Manager document.
      * </p>
      * 
      * @param status
-     *        The status of the SSM document.
+     *        The status of the Systems Manager document.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentStatus
      */
 
     public DocumentDescription withStatus(DocumentStatus status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 
@@ -694,10 +700,10 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The list of OS platforms compatible with this SSM document.
+     * The list of OS platforms compatible with this Systems Manager document.
      * </p>
      * 
-     * @return The list of OS platforms compatible with this SSM document.
+     * @return The list of OS platforms compatible with this Systems Manager document.
      * @see PlatformType
      */
 
@@ -710,11 +716,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The list of OS platforms compatible with this SSM document.
+     * The list of OS platforms compatible with this Systems Manager document.
      * </p>
      * 
      * @param platformTypes
-     *        The list of OS platforms compatible with this SSM document.
+     *        The list of OS platforms compatible with this Systems Manager document.
      * @see PlatformType
      */
 
@@ -729,7 +735,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The list of OS platforms compatible with this SSM document.
+     * The list of OS platforms compatible with this Systems Manager document.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -738,7 +744,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
      * </p>
      * 
      * @param platformTypes
-     *        The list of OS platforms compatible with this SSM document.
+     *        The list of OS platforms compatible with this Systems Manager document.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PlatformType
      */
@@ -755,11 +761,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The list of OS platforms compatible with this SSM document.
+     * The list of OS platforms compatible with this Systems Manager document.
      * </p>
      * 
      * @param platformTypes
-     *        The list of OS platforms compatible with this SSM document.
+     *        The list of OS platforms compatible with this Systems Manager document.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PlatformType
      */
@@ -771,11 +777,11 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The list of OS platforms compatible with this SSM document.
+     * The list of OS platforms compatible with this Systems Manager document.
      * </p>
      * 
      * @param platformTypes
-     *        The list of OS platforms compatible with this SSM document.
+     *        The list of OS platforms compatible with this Systems Manager document.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PlatformType
      */
@@ -847,7 +853,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
      */
 
     public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType.toString();
+        withDocumentType(documentType);
     }
 
     /**
@@ -862,7 +868,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
      */
 
     public DocumentDescription withDocumentType(DocumentType documentType) {
-        setDocumentType(documentType);
+        this.documentType = documentType.toString();
         return this;
     }
 
@@ -987,6 +993,79 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
     }
 
     /**
+     * <p>
+     * The tags, or metadata, that have been applied to the document.
+     * </p>
+     * 
+     * @return The tags, or metadata, that have been applied to the document.
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags, or metadata, that have been applied to the document.
+     * </p>
+     * 
+     * @param tags
+     *        The tags, or metadata, that have been applied to the document.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The tags, or metadata, that have been applied to the document.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The tags, or metadata, that have been applied to the document.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DocumentDescription withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags, or metadata, that have been applied to the document.
+     * </p>
+     * 
+     * @param tags
+     *        The tags, or metadata, that have been applied to the document.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DocumentDescription withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1026,7 +1105,9 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
         if (getLatestVersion() != null)
             sb.append("LatestVersion: ").append(getLatestVersion()).append(",");
         if (getDefaultVersion() != null)
-            sb.append("DefaultVersion: ").append(getDefaultVersion());
+            sb.append("DefaultVersion: ").append(getDefaultVersion()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -1101,6 +1182,10 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getDefaultVersion() != null && other.getDefaultVersion().equals(this.getDefaultVersion()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -1124,6 +1209,7 @@ public class DocumentDescription implements Serializable, Cloneable, StructuredP
         hashCode = prime * hashCode + ((getSchemaVersion() == null) ? 0 : getSchemaVersion().hashCode());
         hashCode = prime * hashCode + ((getLatestVersion() == null) ? 0 : getLatestVersion().hashCode());
         hashCode = prime * hashCode + ((getDefaultVersion() == null) ? 0 : getDefaultVersion().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

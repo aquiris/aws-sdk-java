@@ -57,6 +57,18 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      * The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on
      * your behalf.
      * </p>
+     * <p>
+     * If your specified role has a path other than <code>/</code>, then you must either specify the full role ARN (this
+     * is recommended) or prefix the role name with the path.
+     * </p>
+     * <note>
+     * <p>
+     * Depending on how you created your AWS Batch service role, its ARN may contain the <code>service-role</code> path
+     * prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN does not use the
+     * <code>service-role</code> path prefix. Because of this, we recommend that you specify the full ARN of your
+     * service role when you create compute environments.
+     * </p>
+     * </note>
      */
     private String serviceRole;
 
@@ -160,7 +172,7 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      */
 
     public void setType(CEType type) {
-        this.type = type.toString();
+        withType(type);
     }
 
     /**
@@ -175,7 +187,7 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      */
 
     public CreateComputeEnvironmentRequest withType(CEType type) {
-        setType(type);
+        this.type = type.toString();
         return this;
     }
 
@@ -241,7 +253,7 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      */
 
     public void setState(CEState state) {
-        this.state = state.toString();
+        withState(state);
     }
 
     /**
@@ -258,7 +270,7 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      */
 
     public CreateComputeEnvironmentRequest withState(CEState state) {
-        setState(state);
+        this.state = state.toString();
         return this;
     }
 
@@ -313,10 +325,33 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      * The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on
      * your behalf.
      * </p>
+     * <p>
+     * If your specified role has a path other than <code>/</code>, then you must either specify the full role ARN (this
+     * is recommended) or prefix the role name with the path.
+     * </p>
+     * <note>
+     * <p>
+     * Depending on how you created your AWS Batch service role, its ARN may contain the <code>service-role</code> path
+     * prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN does not use the
+     * <code>service-role</code> path prefix. Because of this, we recommend that you specify the full ARN of your
+     * service role when you create compute environments.
+     * </p>
+     * </note>
      * 
      * @param serviceRole
      *        The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS
-     *        services on your behalf.
+     *        services on your behalf.</p>
+     *        <p>
+     *        If your specified role has a path other than <code>/</code>, then you must either specify the full role
+     *        ARN (this is recommended) or prefix the role name with the path.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        Depending on how you created your AWS Batch service role, its ARN may contain the
+     *        <code>service-role</code> path prefix. When you only specify the name of the service role, AWS Batch
+     *        assumes that your ARN does not use the <code>service-role</code> path prefix. Because of this, we
+     *        recommend that you specify the full ARN of your service role when you create compute environments.
+     *        </p>
      */
 
     public void setServiceRole(String serviceRole) {
@@ -328,9 +363,32 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      * The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on
      * your behalf.
      * </p>
+     * <p>
+     * If your specified role has a path other than <code>/</code>, then you must either specify the full role ARN (this
+     * is recommended) or prefix the role name with the path.
+     * </p>
+     * <note>
+     * <p>
+     * Depending on how you created your AWS Batch service role, its ARN may contain the <code>service-role</code> path
+     * prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN does not use the
+     * <code>service-role</code> path prefix. Because of this, we recommend that you specify the full ARN of your
+     * service role when you create compute environments.
+     * </p>
+     * </note>
      * 
      * @return The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS
-     *         services on your behalf.
+     *         services on your behalf.</p>
+     *         <p>
+     *         If your specified role has a path other than <code>/</code>, then you must either specify the full role
+     *         ARN (this is recommended) or prefix the role name with the path.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Depending on how you created your AWS Batch service role, its ARN may contain the
+     *         <code>service-role</code> path prefix. When you only specify the name of the service role, AWS Batch
+     *         assumes that your ARN does not use the <code>service-role</code> path prefix. Because of this, we
+     *         recommend that you specify the full ARN of your service role when you create compute environments.
+     *         </p>
      */
 
     public String getServiceRole() {
@@ -342,10 +400,33 @@ public class CreateComputeEnvironmentRequest extends com.amazonaws.AmazonWebServ
      * The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on
      * your behalf.
      * </p>
+     * <p>
+     * If your specified role has a path other than <code>/</code>, then you must either specify the full role ARN (this
+     * is recommended) or prefix the role name with the path.
+     * </p>
+     * <note>
+     * <p>
+     * Depending on how you created your AWS Batch service role, its ARN may contain the <code>service-role</code> path
+     * prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN does not use the
+     * <code>service-role</code> path prefix. Because of this, we recommend that you specify the full ARN of your
+     * service role when you create compute environments.
+     * </p>
+     * </note>
      * 
      * @param serviceRole
      *        The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS
-     *        services on your behalf.
+     *        services on your behalf.</p>
+     *        <p>
+     *        If your specified role has a path other than <code>/</code>, then you must either specify the full role
+     *        ARN (this is recommended) or prefix the role name with the path.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        Depending on how you created your AWS Batch service role, its ARN may contain the
+     *        <code>service-role</code> path prefix. When you only specify the name of the service role, AWS Batch
+     *        assumes that your ARN does not use the <code>service-role</code> path prefix. Because of this, we
+     *        recommend that you specify the full ARN of your service role when you create compute environments.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

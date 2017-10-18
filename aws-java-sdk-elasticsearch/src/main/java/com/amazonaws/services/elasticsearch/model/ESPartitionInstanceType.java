@@ -53,7 +53,13 @@ public enum ESPartitionInstanceType {
     R42xlargeElasticsearch("r4.2xlarge.elasticsearch"),
     R44xlargeElasticsearch("r4.4xlarge.elasticsearch"),
     R48xlargeElasticsearch("r4.8xlarge.elasticsearch"),
-    R416xlargeElasticsearch("r4.16xlarge.elasticsearch");
+    R416xlargeElasticsearch("r4.16xlarge.elasticsearch"),
+    I3LargeElasticsearch("i3.large.elasticsearch"),
+    I3XlargeElasticsearch("i3.xlarge.elasticsearch"),
+    I32xlargeElasticsearch("i3.2xlarge.elasticsearch"),
+    I34xlargeElasticsearch("i3.4xlarge.elasticsearch"),
+    I38xlargeElasticsearch("i3.8xlarge.elasticsearch"),
+    I316xlargeElasticsearch("i3.16xlarge.elasticsearch");
 
     private String value;
 
@@ -72,6 +78,9 @@ public enum ESPartitionInstanceType {
      * @param value
      *        real value
      * @return ESPartitionInstanceType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static ESPartitionInstanceType fromValue(String value) {
         if (value == null || "".equals(value)) {

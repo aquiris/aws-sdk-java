@@ -31,7 +31,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Specifies whether source/destination checking is enabled. A value of <code>true</code> means that checking is
-     * enabled, and <code>false</code> means checking is disabled. This value must be <code>false</code> for a NAT
+     * enabled, and <code>false</code> means that checking is disabled. This value must be <code>false</code> for a NAT
      * instance to perform NAT.
      * </p>
      */
@@ -60,15 +60,15 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API;
-     * otherwise, you can. You cannot use this paramater for Spot Instances.
+     * otherwise, you can. You cannot use this parameter for Spot Instances.
      * </p>
      */
     private Boolean disableApiTermination;
     /**
      * <p>
-     * Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
+     * Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization
+     * isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
      * </p>
      */
     private Boolean ebsOptimized;
@@ -143,8 +143,8 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool,
-     * Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
-     * Base64-encoded text.
+     * base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
+     * base64-encoded text.
      * </p>
      */
     private String userData;
@@ -193,14 +193,14 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Specifies whether source/destination checking is enabled. A value of <code>true</code> means that checking is
-     * enabled, and <code>false</code> means checking is disabled. This value must be <code>false</code> for a NAT
+     * enabled, and <code>false</code> means that checking is disabled. This value must be <code>false</code> for a NAT
      * instance to perform NAT.
      * </p>
      * 
      * @param sourceDestCheck
      *        Specifies whether source/destination checking is enabled. A value of <code>true</code> means that checking
-     *        is enabled, and <code>false</code> means checking is disabled. This value must be <code>false</code> for a
-     *        NAT instance to perform NAT.
+     *        is enabled, and <code>false</code> means that checking is disabled. This value must be <code>false</code>
+     *        for a NAT instance to perform NAT.
      */
 
     public void setSourceDestCheck(Boolean sourceDestCheck) {
@@ -210,12 +210,12 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Specifies whether source/destination checking is enabled. A value of <code>true</code> means that checking is
-     * enabled, and <code>false</code> means checking is disabled. This value must be <code>false</code> for a NAT
+     * enabled, and <code>false</code> means that checking is disabled. This value must be <code>false</code> for a NAT
      * instance to perform NAT.
      * </p>
      * 
      * @return Specifies whether source/destination checking is enabled. A value of <code>true</code> means that
-     *         checking is enabled, and <code>false</code> means checking is disabled. This value must be
+     *         checking is enabled, and <code>false</code> means that checking is disabled. This value must be
      *         <code>false</code> for a NAT instance to perform NAT.
      */
 
@@ -226,14 +226,14 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Specifies whether source/destination checking is enabled. A value of <code>true</code> means that checking is
-     * enabled, and <code>false</code> means checking is disabled. This value must be <code>false</code> for a NAT
+     * enabled, and <code>false</code> means that checking is disabled. This value must be <code>false</code> for a NAT
      * instance to perform NAT.
      * </p>
      * 
      * @param sourceDestCheck
      *        Specifies whether source/destination checking is enabled. A value of <code>true</code> means that checking
-     *        is enabled, and <code>false</code> means checking is disabled. This value must be <code>false</code> for a
-     *        NAT instance to perform NAT.
+     *        is enabled, and <code>false</code> means that checking is disabled. This value must be <code>false</code>
+     *        for a NAT instance to perform NAT.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -245,12 +245,12 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Specifies whether source/destination checking is enabled. A value of <code>true</code> means that checking is
-     * enabled, and <code>false</code> means checking is disabled. This value must be <code>false</code> for a NAT
+     * enabled, and <code>false</code> means that checking is disabled. This value must be <code>false</code> for a NAT
      * instance to perform NAT.
      * </p>
      * 
      * @return Specifies whether source/destination checking is enabled. A value of <code>true</code> means that
-     *         checking is enabled, and <code>false</code> means checking is disabled. This value must be
+     *         checking is enabled, and <code>false</code> means that checking is disabled. This value must be
      *         <code>false</code> for a NAT instance to perform NAT.
      */
 
@@ -312,7 +312,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
      */
 
     public void setAttribute(InstanceAttributeName attribute) {
-        this.attribute = attribute.toString();
+        withAttribute(attribute);
     }
 
     /**
@@ -327,7 +327,7 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
      */
 
     public ModifyInstanceAttributeRequest withAttribute(InstanceAttributeName attribute) {
-        setAttribute(attribute);
+        this.attribute = attribute.toString();
         return this;
     }
 
@@ -475,12 +475,12 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API;
-     * otherwise, you can. You cannot use this paramater for Spot Instances.
+     * otherwise, you can. You cannot use this parameter for Spot Instances.
      * </p>
      * 
      * @param disableApiTermination
      *        If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or
-     *        API; otherwise, you can. You cannot use this paramater for Spot Instances.
+     *        API; otherwise, you can. You cannot use this parameter for Spot Instances.
      */
 
     public void setDisableApiTermination(Boolean disableApiTermination) {
@@ -490,11 +490,11 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API;
-     * otherwise, you can. You cannot use this paramater for Spot Instances.
+     * otherwise, you can. You cannot use this parameter for Spot Instances.
      * </p>
      * 
      * @return If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or
-     *         API; otherwise, you can. You cannot use this paramater for Spot Instances.
+     *         API; otherwise, you can. You cannot use this parameter for Spot Instances.
      */
 
     public Boolean getDisableApiTermination() {
@@ -504,12 +504,12 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API;
-     * otherwise, you can. You cannot use this paramater for Spot Instances.
+     * otherwise, you can. You cannot use this parameter for Spot Instances.
      * </p>
      * 
      * @param disableApiTermination
      *        If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or
-     *        API; otherwise, you can. You cannot use this paramater for Spot Instances.
+     *        API; otherwise, you can. You cannot use this parameter for Spot Instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -521,11 +521,11 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API;
-     * otherwise, you can. You cannot use this paramater for Spot Instances.
+     * otherwise, you can. You cannot use this parameter for Spot Instances.
      * </p>
      * 
      * @return If the value is <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or
-     *         API; otherwise, you can. You cannot use this paramater for Spot Instances.
+     *         API; otherwise, you can. You cannot use this parameter for Spot Instances.
      */
 
     public Boolean isDisableApiTermination() {
@@ -534,14 +534,14 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
+     * Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization
+     * isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
      * </p>
      * 
      * @param ebsOptimized
-     *        Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *        to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
+     *        Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *        throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
      *        optimization isn't available with all instance types. Additional usage charges apply when using an EBS
      *        Optimized instance.
      */
@@ -552,15 +552,15 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
+     * Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization
+     * isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
      * </p>
      * 
-     * @return Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *         to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
-     *         optimization isn't available with all instance types. Additional usage charges apply when using an EBS
-     *         Optimized instance.
+     * @return Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *         throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance.
+     *         This optimization isn't available with all instance types. Additional usage charges apply when using an
+     *         EBS Optimized instance.
      */
 
     public Boolean getEbsOptimized() {
@@ -569,14 +569,14 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
+     * Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization
+     * isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
      * </p>
      * 
      * @param ebsOptimized
-     *        Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *        to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
+     *        Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *        throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
      *        optimization isn't available with all instance types. Additional usage charges apply when using an EBS
      *        Optimized instance.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -589,15 +589,15 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
+     * Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization
+     * isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
      * </p>
      * 
-     * @return Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *         to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
-     *         optimization isn't available with all instance types. Additional usage charges apply when using an EBS
-     *         Optimized instance.
+     * @return Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *         throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance.
+     *         This optimization isn't available with all instance types. Additional usage charges apply when using an
+     *         EBS Optimized instance.
      */
 
     public Boolean isEbsOptimized() {
@@ -1102,14 +1102,14 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool,
-     * Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
-     * Base64-encoded text.
+     * base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
+     * base64-encoded text.
      * </p>
      * 
      * @param userData
      *        Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool,
-     *        Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
-     *        Base64-encoded text.
+     *        base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
+     *        base64-encoded text.
      */
 
     public void setUserData(String userData) {
@@ -1119,13 +1119,13 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool,
-     * Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
-     * Base64-encoded text.
+     * base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
+     * base64-encoded text.
      * </p>
      * 
      * @return Changes the instance's user data to the specified value. If you are using an AWS SDK or command line
-     *         tool, Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must
-     *         provide Base64-encoded text.
+     *         tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must
+     *         provide base64-encoded text.
      */
 
     public String getUserData() {
@@ -1135,14 +1135,14 @@ public class ModifyInstanceAttributeRequest extends AmazonWebServiceRequest impl
     /**
      * <p>
      * Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool,
-     * Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
-     * Base64-encoded text.
+     * base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
+     * base64-encoded text.
      * </p>
      * 
      * @param userData
      *        Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool,
-     *        Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
-     *        Base64-encoded text.
+     *        base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide
+     *        base64-encoded text.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -16,7 +16,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The type of storage connector. The possible values include: HOMEFOLDERS.
+ * The type of storage connector.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -41,6 +41,9 @@ public enum StorageConnectorType {
      * @param value
      *        real value
      * @return StorageConnectorType corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static StorageConnectorType fromValue(String value) {
         if (value == null || "".equals(value)) {

@@ -34,7 +34,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     private com.amazonaws.internal.SdkInternalList<String> availabilityZones;
     /**
      * <p>
-     * The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't case-sensitive.
+     * The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't
+     * case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -42,7 +43,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 255 alphanumeric characters or hyphens
+     * Must contain from 1 to 255 letters, numbers, or hyphens
      * </p>
      * </li>
      * <li>
@@ -63,7 +64,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     private String dBClusterIdentifier;
     /**
      * <p>
-     * The identifier for the DB cluster snapshot to restore from.
+     * The identifier for the DB snapshot or DB cluster snapshot to restore from.
+     * </p>
+     * <p>
+     * You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can
+     * use only the ARN to specify a DB snapshot.
      * </p>
      * <p>
      * Constraints:
@@ -71,17 +76,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing Snapshot.
      * </p>
      * </li>
      * </ul>
@@ -122,8 +117,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * The name of the DB subnet group to use for the new DB cluster.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
-     * Must not be default.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetgroup</code>
@@ -156,7 +150,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
     /**
      * <p>
-     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.
+     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster snapshot.
      * </p>
      * <p>
      * The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
@@ -169,14 +163,14 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that was
-     * used to encrypt the DB cluster snapshot.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is encrypted, then the restored DB
+     * cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster snapshot.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified
-     * encryption key.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
+     * DB cluster is not encrypted.
      * </p>
      * </li>
      * </ul>
@@ -268,7 +262,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't case-sensitive.
+     * The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't
+     * case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -276,7 +271,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 255 alphanumeric characters or hyphens
+     * Must contain from 1 to 255 letters, numbers, or hyphens
      * </p>
      * </li>
      * <li>
@@ -295,7 +290,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </p>
      * 
      * @param dBClusterIdentifier
-     *        The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't
+     *        The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't
      *        case-sensitive.</p>
      *        <p>
      *        Constraints:
@@ -303,7 +298,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        <ul>
      *        <li>
      *        <p>
-     *        Must contain from 1 to 255 alphanumeric characters or hyphens
+     *        Must contain from 1 to 255 letters, numbers, or hyphens
      *        </p>
      *        </li>
      *        <li>
@@ -327,7 +322,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't case-sensitive.
+     * The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't
+     * case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -335,7 +331,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 255 alphanumeric characters or hyphens
+     * Must contain from 1 to 255 letters, numbers, or hyphens
      * </p>
      * </li>
      * <li>
@@ -353,7 +349,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * Example: <code>my-snapshot-id</code>
      * </p>
      * 
-     * @return The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't
+     * @return The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't
      *         case-sensitive.</p>
      *         <p>
      *         Constraints:
@@ -361,7 +357,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *         <ul>
      *         <li>
      *         <p>
-     *         Must contain from 1 to 255 alphanumeric characters or hyphens
+     *         Must contain from 1 to 255 letters, numbers, or hyphens
      *         </p>
      *         </li>
      *         <li>
@@ -385,7 +381,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't case-sensitive.
+     * The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't
+     * case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -393,7 +390,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 255 alphanumeric characters or hyphens
+     * Must contain from 1 to 255 letters, numbers, or hyphens
      * </p>
      * </li>
      * <li>
@@ -412,7 +409,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </p>
      * 
      * @param dBClusterIdentifier
-     *        The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't
+     *        The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't
      *        case-sensitive.</p>
      *        <p>
      *        Constraints:
@@ -420,7 +417,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        <ul>
      *        <li>
      *        <p>
-     *        Must contain from 1 to 255 alphanumeric characters or hyphens
+     *        Must contain from 1 to 255 letters, numbers, or hyphens
      *        </p>
      *        </li>
      *        <li>
@@ -446,7 +443,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The identifier for the DB cluster snapshot to restore from.
+     * The identifier for the DB snapshot or DB cluster snapshot to restore from.
+     * </p>
+     * <p>
+     * You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can
+     * use only the ARN to specify a DB snapshot.
      * </p>
      * <p>
      * Constraints:
@@ -454,40 +455,24 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing Snapshot.
      * </p>
      * </li>
      * </ul>
      * 
      * @param snapshotIdentifier
-     *        The identifier for the DB cluster snapshot to restore from.</p>
+     *        The identifier for the DB snapshot or DB cluster snapshot to restore from.</p>
+     *        <p>
+     *        You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However,
+     *        you can use only the ARN to specify a DB snapshot.
+     *        </p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must contain from 1 to 63 alphanumeric characters or hyphens
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Must match the identifier of an existing Snapshot.
      *        </p>
      *        </li>
      */
@@ -498,7 +483,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The identifier for the DB cluster snapshot to restore from.
+     * The identifier for the DB snapshot or DB cluster snapshot to restore from.
+     * </p>
+     * <p>
+     * You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can
+     * use only the ARN to specify a DB snapshot.
      * </p>
      * <p>
      * Constraints:
@@ -506,39 +495,23 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing Snapshot.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The identifier for the DB cluster snapshot to restore from.</p>
+     * @return The identifier for the DB snapshot or DB cluster snapshot to restore from.</p>
+     *         <p>
+     *         You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However,
+     *         you can use only the ARN to specify a DB snapshot.
+     *         </p>
      *         <p>
      *         Constraints:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         Must contain from 1 to 63 alphanumeric characters or hyphens
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         First character must be a letter
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Cannot end with a hyphen or contain two consecutive hyphens
+     *         Must match the identifier of an existing Snapshot.
      *         </p>
      *         </li>
      */
@@ -549,7 +522,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The identifier for the DB cluster snapshot to restore from.
+     * The identifier for the DB snapshot or DB cluster snapshot to restore from.
+     * </p>
+     * <p>
+     * You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can
+     * use only the ARN to specify a DB snapshot.
      * </p>
      * <p>
      * Constraints:
@@ -557,40 +534,24 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * Must contain from 1 to 63 alphanumeric characters or hyphens
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * First character must be a letter
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Must match the identifier of an existing Snapshot.
      * </p>
      * </li>
      * </ul>
      * 
      * @param snapshotIdentifier
-     *        The identifier for the DB cluster snapshot to restore from.</p>
+     *        The identifier for the DB snapshot or DB cluster snapshot to restore from.</p>
+     *        <p>
+     *        You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However,
+     *        you can use only the ARN to specify a DB snapshot.
+     *        </p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must contain from 1 to 63 alphanumeric characters or hyphens
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        First character must be a letter
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Must match the identifier of an existing Snapshot.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -792,8 +753,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * The name of the DB subnet group to use for the new DB cluster.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
-     * Must not be default.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetgroup</code>
@@ -802,8 +762,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * @param dBSubnetGroupName
      *        The name of the DB subnet group to use for the new DB cluster.</p>
      *        <p>
-     *        Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or
-     *        hyphens. Must not be default.
+     *        Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      *        </p>
      *        <p>
      *        Example: <code>mySubnetgroup</code>
@@ -818,8 +777,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * The name of the DB subnet group to use for the new DB cluster.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
-     * Must not be default.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetgroup</code>
@@ -827,8 +785,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * 
      * @return The name of the DB subnet group to use for the new DB cluster.</p>
      *         <p>
-     *         Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or
-     *         hyphens. Must not be default.
+     *         Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      *         </p>
      *         <p>
      *         Example: <code>mySubnetgroup</code>
@@ -843,8 +800,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * The name of the DB subnet group to use for the new DB cluster.
      * </p>
      * <p>
-     * Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
-     * Must not be default.
+     * Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      * </p>
      * <p>
      * Example: <code>mySubnetgroup</code>
@@ -853,8 +809,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * @param dBSubnetGroupName
      *        The name of the DB subnet group to use for the new DB cluster.</p>
      *        <p>
-     *        Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or
-     *        hyphens. Must not be default.
+     *        Constraints: If supplied, must match the name of an existing DBSubnetGroup.
      *        </p>
      *        <p>
      *        Example: <code>mySubnetgroup</code>
@@ -1094,7 +1049,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.
+     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster snapshot.
      * </p>
      * <p>
      * The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
@@ -1107,20 +1062,21 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that was
-     * used to encrypt the DB cluster snapshot.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is encrypted, then the restored DB
+     * cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster snapshot.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified
-     * encryption key.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
+     * DB cluster is not encrypted.
      * </p>
      * </li>
      * </ul>
      * 
      * @param kmsKeyId
-     *        The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.</p>
+     *        The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster
+     *        snapshot.</p>
      *        <p>
      *        The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring
      *        a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB
@@ -1132,14 +1088,15 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        <ul>
      *        <li>
      *        <p>
-     *        If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that
-     *        was used to encrypt the DB cluster snapshot.
+     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is encrypted, then the
+     *        restored DB cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster
+     *        snapshot.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified
-     *        encryption key.
+     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the
+     *        restored DB cluster is not encrypted.
      *        </p>
      *        </li>
      */
@@ -1150,7 +1107,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.
+     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster snapshot.
      * </p>
      * <p>
      * The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
@@ -1163,19 +1120,20 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that was
-     * used to encrypt the DB cluster snapshot.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is encrypted, then the restored DB
+     * cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster snapshot.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified
-     * encryption key.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
+     * DB cluster is not encrypted.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.</p>
+     * @return The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster
+     *         snapshot.</p>
      *         <p>
      *         The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring
      *         a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB
@@ -1187,14 +1145,15 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *         <ul>
      *         <li>
      *         <p>
-     *         If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that
-     *         was used to encrypt the DB cluster snapshot.
+     *         If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is encrypted, then the
+     *         restored DB cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster
+     *         snapshot.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the
-     *         specified encryption key.
+     *         If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the
+     *         restored DB cluster is not encrypted.
      *         </p>
      *         </li>
      */
@@ -1205,7 +1164,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.
+     * The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster snapshot.
      * </p>
      * <p>
      * The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB
@@ -1218,20 +1177,21 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <ul>
      * <li>
      * <p>
-     * If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that was
-     * used to encrypt the DB cluster snapshot.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is encrypted, then the restored DB
+     * cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster snapshot.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified
-     * encryption key.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
+     * DB cluster is not encrypted.
      * </p>
      * </li>
      * </ul>
      * 
      * @param kmsKeyId
-     *        The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.</p>
+     *        The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster
+     *        snapshot.</p>
      *        <p>
      *        The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring
      *        a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB
@@ -1243,14 +1203,15 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        <ul>
      *        <li>
      *        <p>
-     *        If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that
-     *        was used to encrypt the DB cluster snapshot.
+     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is encrypted, then the
+     *        restored DB cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster
+     *        snapshot.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified
-     *        encryption key.
+     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the
+     *        restored DB cluster is not encrypted.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

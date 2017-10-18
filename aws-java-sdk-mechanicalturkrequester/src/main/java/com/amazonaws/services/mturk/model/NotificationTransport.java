@@ -21,7 +21,8 @@ import javax.annotation.Generated;
 public enum NotificationTransport {
 
     Email("Email"),
-    SQS("SQS");
+    SQS("SQS"),
+    SNS("SNS");
 
     private String value;
 
@@ -40,6 +41,9 @@ public enum NotificationTransport {
      * @param value
      *        real value
      * @return NotificationTransport corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static NotificationTransport fromValue(String value) {
         if (value == null || "".equals(value)) {

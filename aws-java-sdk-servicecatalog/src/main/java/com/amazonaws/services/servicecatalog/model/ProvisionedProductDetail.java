@@ -89,8 +89,8 @@ public class ProvisionedProductDetail implements Serializable, Cloneable, Struct
     private java.util.Date createdTime;
     /**
      * <p>
-     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
-     * requests, provided that you also specify a different idempotency token for each request.
+     * A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you
+     * also specify a different idempotency token for each request.
      * </p>
      */
     private String idempotencyToken;
@@ -451,7 +451,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable, Struct
      */
 
     public void setStatus(ProvisionedProductStatus status) {
-        this.status = status.toString();
+        withStatus(status);
     }
 
     /**
@@ -500,7 +500,7 @@ public class ProvisionedProductDetail implements Serializable, Cloneable, Struct
      */
 
     public ProvisionedProductDetail withStatus(ProvisionedProductStatus status) {
-        setStatus(status);
+        this.status = status.toString();
         return this;
     }
 
@@ -586,13 +586,13 @@ public class ProvisionedProductDetail implements Serializable, Cloneable, Struct
 
     /**
      * <p>
-     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
-     * requests, provided that you also specify a different idempotency token for each request.
+     * A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you
+     * also specify a different idempotency token for each request.
      * </p>
      * 
      * @param idempotencyToken
-     *        A token to disambiguate duplicate requests. You can create multiple resources using the same input in
-     *        multiple requests, provided that you also specify a different idempotency token for each request.
+     *        A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that
+     *        you also specify a different idempotency token for each request.
      */
 
     public void setIdempotencyToken(String idempotencyToken) {
@@ -601,12 +601,12 @@ public class ProvisionedProductDetail implements Serializable, Cloneable, Struct
 
     /**
      * <p>
-     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
-     * requests, provided that you also specify a different idempotency token for each request.
+     * A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you
+     * also specify a different idempotency token for each request.
      * </p>
      * 
-     * @return A token to disambiguate duplicate requests. You can create multiple resources using the same input in
-     *         multiple requests, provided that you also specify a different idempotency token for each request.
+     * @return A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided
+     *         that you also specify a different idempotency token for each request.
      */
 
     public String getIdempotencyToken() {
@@ -615,13 +615,13 @@ public class ProvisionedProductDetail implements Serializable, Cloneable, Struct
 
     /**
      * <p>
-     * A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple
-     * requests, provided that you also specify a different idempotency token for each request.
+     * A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you
+     * also specify a different idempotency token for each request.
      * </p>
      * 
      * @param idempotencyToken
-     *        A token to disambiguate duplicate requests. You can create multiple resources using the same input in
-     *        multiple requests, provided that you also specify a different idempotency token for each request.
+     *        A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that
+     *        you also specify a different idempotency token for each request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

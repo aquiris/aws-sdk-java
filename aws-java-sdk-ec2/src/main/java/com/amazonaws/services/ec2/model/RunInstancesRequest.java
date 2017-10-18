@@ -182,8 +182,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
      * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
-     * >Adding User Data</a> (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is performed
-     * for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+     * >Adding User Data</a> (Windows). If you are using a command line tool, base64-encoding is performed for you, and
+     * you can load the text from a file. Otherwise, you must provide base64-encoded text.
      * </p>
      */
     private String userData;
@@ -218,9 +218,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     private Boolean disableApiTermination;
     /**
      * <p>
-     * Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
+     * Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This
+     * optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized
+     * instance.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -260,6 +261,12 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * </p>
      */
     private String privateIpAddress;
+    /**
+     * <p>
+     * An Elastic GPU to associate with the instance.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ElasticGpuSpecification> elasticGpuSpecification;
     /**
      * <p>
      * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
@@ -565,7 +572,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      */
 
     public void setInstanceType(InstanceType instanceType) {
-        this.instanceType = instanceType.toString();
+        withInstanceType(instanceType);
     }
 
     /**
@@ -589,7 +596,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      */
 
     public RunInstancesRequest withInstanceType(InstanceType instanceType) {
-        setInstanceType(instanceType);
+        this.instanceType = instanceType.toString();
         return this;
     }
 
@@ -1462,8 +1469,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
      * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
-     * >Adding User Data</a> (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is performed
-     * for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+     * >Adding User Data</a> (Windows). If you are using a command line tool, base64-encoding is performed for you, and
+     * you can load the text from a file. Otherwise, you must provide base64-encoded text.
      * </p>
      * 
      * @param userData
@@ -1471,8 +1478,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
      *        Instance at Launch</a> (Linux) and <a href=
      *        "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
-     *        >Adding User Data</a> (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is
-     *        performed for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+     *        >Adding User Data</a> (Windows). If you are using a command line tool, base64-encoding is performed for
+     *        you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
      */
 
     public void setUserData(String userData) {
@@ -1485,17 +1492,16 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
      * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
-     * >Adding User Data</a> (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is performed
-     * for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+     * >Adding User Data</a> (Windows). If you are using a command line tool, base64-encoding is performed for you, and
+     * you can load the text from a file. Otherwise, you must provide base64-encoded text.
      * </p>
      * 
      * @return The user data to make available to the instance. For more information, see <a
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
      *         Instance at Launch</a> (Linux) and <a href=
      *         "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
-     *         >Adding User Data</a> (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is
-     *         performed for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded
-     *         text.
+     *         >Adding User Data</a> (Windows). If you are using a command line tool, base64-encoding is performed for
+     *         you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
      */
 
     public String getUserData() {
@@ -1508,8 +1514,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
      * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
-     * >Adding User Data</a> (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is performed
-     * for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+     * >Adding User Data</a> (Windows). If you are using a command line tool, base64-encoding is performed for you, and
+     * you can load the text from a file. Otherwise, you must provide base64-encoded text.
      * </p>
      * 
      * @param userData
@@ -1517,8 +1523,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
      *        Instance at Launch</a> (Linux) and <a href=
      *        "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
-     *        >Adding User Data</a> (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is
-     *        performed for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+     *        >Adding User Data</a> (Windows). If you are using a command line tool, base64-encoding is performed for
+     *        you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1739,19 +1745,20 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
+     * Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This
+     * optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized
+     * instance.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
      * @param ebsOptimized
-     *        Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *        to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
-     *        optimization isn't available with all instance types. Additional usage charges apply when using an
-     *        EBS-optimized instance.</p>
+     *        Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *        throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O
+     *        performance. This optimization isn't available with all instance types. Additional usage charges apply
+     *        when using an EBS-optimized instance.</p>
      *        <p>
      *        Default: <code>false</code>
      */
@@ -1762,18 +1769,19 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
+     * Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This
+     * optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized
+     * instance.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
-     * @return Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *         to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
-     *         optimization isn't available with all instance types. Additional usage charges apply when using an
-     *         EBS-optimized instance.</p>
+     * @return Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *         throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O
+     *         performance. This optimization isn't available with all instance types. Additional usage charges apply
+     *         when using an EBS-optimized instance.</p>
      *         <p>
      *         Default: <code>false</code>
      */
@@ -1784,19 +1792,20 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
+     * Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This
+     * optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized
+     * instance.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
      * @param ebsOptimized
-     *        Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *        to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
-     *        optimization isn't available with all instance types. Additional usage charges apply when using an
-     *        EBS-optimized instance.</p>
+     *        Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *        throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O
+     *        performance. This optimization isn't available with all instance types. Additional usage charges apply
+     *        when using an EBS-optimized instance.</p>
      *        <p>
      *        Default: <code>false</code>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1809,18 +1818,19 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to
-     * Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
+     * Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput
+     * to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This
+     * optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized
+     * instance.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
-     * @return Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput
-     *         to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This
-     *         optimization isn't available with all instance types. Additional usage charges apply when using an
-     *         EBS-optimized instance.</p>
+     * @return Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated
+     *         throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O
+     *         performance. This optimization isn't available with all instance types. Additional usage charges apply
+     *         when using an EBS-optimized instance.</p>
      *         <p>
      *         Default: <code>false</code>
      */
@@ -1951,7 +1961,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      */
 
     public void setInstanceInitiatedShutdownBehavior(ShutdownBehavior instanceInitiatedShutdownBehavior) {
-        this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior.toString();
+        withInstanceInitiatedShutdownBehavior(instanceInitiatedShutdownBehavior);
     }
 
     /**
@@ -1973,7 +1983,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      */
 
     public RunInstancesRequest withInstanceInitiatedShutdownBehavior(ShutdownBehavior instanceInitiatedShutdownBehavior) {
-        setInstanceInitiatedShutdownBehavior(instanceInitiatedShutdownBehavior);
+        this.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior.toString();
         return this;
     }
 
@@ -2117,6 +2127,79 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     public RunInstancesRequest withPrivateIpAddress(String privateIpAddress) {
         setPrivateIpAddress(privateIpAddress);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An Elastic GPU to associate with the instance.
+     * </p>
+     * 
+     * @return An Elastic GPU to associate with the instance.
+     */
+
+    public java.util.List<ElasticGpuSpecification> getElasticGpuSpecification() {
+        if (elasticGpuSpecification == null) {
+            elasticGpuSpecification = new com.amazonaws.internal.SdkInternalList<ElasticGpuSpecification>();
+        }
+        return elasticGpuSpecification;
+    }
+
+    /**
+     * <p>
+     * An Elastic GPU to associate with the instance.
+     * </p>
+     * 
+     * @param elasticGpuSpecification
+     *        An Elastic GPU to associate with the instance.
+     */
+
+    public void setElasticGpuSpecification(java.util.Collection<ElasticGpuSpecification> elasticGpuSpecification) {
+        if (elasticGpuSpecification == null) {
+            this.elasticGpuSpecification = null;
+            return;
+        }
+
+        this.elasticGpuSpecification = new com.amazonaws.internal.SdkInternalList<ElasticGpuSpecification>(elasticGpuSpecification);
+    }
+
+    /**
+     * <p>
+     * An Elastic GPU to associate with the instance.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setElasticGpuSpecification(java.util.Collection)} or
+     * {@link #withElasticGpuSpecification(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param elasticGpuSpecification
+     *        An Elastic GPU to associate with the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withElasticGpuSpecification(ElasticGpuSpecification... elasticGpuSpecification) {
+        if (this.elasticGpuSpecification == null) {
+            setElasticGpuSpecification(new com.amazonaws.internal.SdkInternalList<ElasticGpuSpecification>(elasticGpuSpecification.length));
+        }
+        for (ElasticGpuSpecification ele : elasticGpuSpecification) {
+            this.elasticGpuSpecification.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An Elastic GPU to associate with the instance.
+     * </p>
+     * 
+     * @param elasticGpuSpecification
+     *        An Elastic GPU to associate with the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withElasticGpuSpecification(java.util.Collection<ElasticGpuSpecification> elasticGpuSpecification) {
+        setElasticGpuSpecification(elasticGpuSpecification);
         return this;
     }
 
@@ -2271,6 +2354,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
             sb.append("NetworkInterfaces: ").append(getNetworkInterfaces()).append(",");
         if (getPrivateIpAddress() != null)
             sb.append("PrivateIpAddress: ").append(getPrivateIpAddress()).append(",");
+        if (getElasticGpuSpecification() != null)
+            sb.append("ElasticGpuSpecification: ").append(getElasticGpuSpecification()).append(",");
         if (getTagSpecifications() != null)
             sb.append("TagSpecifications: ").append(getTagSpecifications());
         sb.append("}");
@@ -2384,6 +2469,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
             return false;
         if (other.getPrivateIpAddress() != null && other.getPrivateIpAddress().equals(this.getPrivateIpAddress()) == false)
             return false;
+        if (other.getElasticGpuSpecification() == null ^ this.getElasticGpuSpecification() == null)
+            return false;
+        if (other.getElasticGpuSpecification() != null && other.getElasticGpuSpecification().equals(this.getElasticGpuSpecification()) == false)
+            return false;
         if (other.getTagSpecifications() == null ^ this.getTagSpecifications() == null)
             return false;
         if (other.getTagSpecifications() != null && other.getTagSpecifications().equals(this.getTagSpecifications()) == false)
@@ -2420,6 +2509,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         hashCode = prime * hashCode + ((getInstanceInitiatedShutdownBehavior() == null) ? 0 : getInstanceInitiatedShutdownBehavior().hashCode());
         hashCode = prime * hashCode + ((getNetworkInterfaces() == null) ? 0 : getNetworkInterfaces().hashCode());
         hashCode = prime * hashCode + ((getPrivateIpAddress() == null) ? 0 : getPrivateIpAddress().hashCode());
+        hashCode = prime * hashCode + ((getElasticGpuSpecification() == null) ? 0 : getElasticGpuSpecification().hashCode());
         hashCode = prime * hashCode + ((getTagSpecifications() == null) ? 0 : getTagSpecifications().hashCode());
         return hashCode;
     }

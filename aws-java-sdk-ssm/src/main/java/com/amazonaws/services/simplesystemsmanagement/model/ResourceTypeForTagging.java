@@ -20,9 +20,11 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum ResourceTypeForTagging {
 
+    Document("Document"),
     ManagedInstance("ManagedInstance"),
     MaintenanceWindow("MaintenanceWindow"),
-    Parameter("Parameter");
+    Parameter("Parameter"),
+    PatchBaseline("PatchBaseline");
 
     private String value;
 
@@ -41,6 +43,9 @@ public enum ResourceTypeForTagging {
      * @param value
      *        real value
      * @return ResourceTypeForTagging corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
      */
     public static ResourceTypeForTagging fromValue(String value) {
         if (value == null || "".equals(value)) {

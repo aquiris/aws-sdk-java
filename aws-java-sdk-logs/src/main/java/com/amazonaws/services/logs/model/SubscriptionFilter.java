@@ -50,15 +50,11 @@ public class SubscriptionFilter implements Serializable, Cloneable, StructuredPo
     private String destinationArn;
     /** <p/> */
     private String roleArn;
-    /**
-     * <p>
-     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
-     * </p>
-     */
+
     private String distribution;
     /**
      * <p>
-     * The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00
+     * The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00
      * UTC.
      * </p>
      */
@@ -243,13 +239,7 @@ public class SubscriptionFilter implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * <p>
-     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
-     * </p>
-     * 
      * @param distribution
-     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
-     *        stream.
      * @see Distribution
      */
 
@@ -258,12 +248,7 @@ public class SubscriptionFilter implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * <p>
-     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
-     * </p>
-     * 
-     * @return The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
-     *         stream.
+     * @return
      * @see Distribution
      */
 
@@ -272,13 +257,7 @@ public class SubscriptionFilter implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * <p>
-     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
-     * </p>
-     * 
      * @param distribution
-     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
-     *        stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Distribution
      */
@@ -289,45 +268,33 @@ public class SubscriptionFilter implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * <p>
-     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
-     * </p>
-     * 
      * @param distribution
-     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
-     *        stream.
      * @see Distribution
      */
 
     public void setDistribution(Distribution distribution) {
-        this.distribution = distribution.toString();
+        withDistribution(distribution);
     }
 
     /**
-     * <p>
-     * The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.
-     * </p>
-     * 
      * @param distribution
-     *        The method used to distribute log data to the destination, when the destination is an Amazon Kinesis
-     *        stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Distribution
      */
 
     public SubscriptionFilter withDistribution(Distribution distribution) {
-        setDistribution(distribution);
+        this.distribution = distribution.toString();
         return this;
     }
 
     /**
      * <p>
-     * The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00
+     * The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00
      * UTC.
      * </p>
      * 
      * @param creationTime
-     *        The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970
+     *        The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970
      *        00:00:00 UTC.
      */
 
@@ -337,11 +304,11 @@ public class SubscriptionFilter implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00
+     * The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00
      * UTC.
      * </p>
      * 
-     * @return The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970
+     * @return The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970
      *         00:00:00 UTC.
      */
 
@@ -351,12 +318,12 @@ public class SubscriptionFilter implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00
+     * The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00
      * UTC.
      * </p>
      * 
      * @param creationTime
-     *        The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970
+     *        The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970
      *        00:00:00 UTC.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

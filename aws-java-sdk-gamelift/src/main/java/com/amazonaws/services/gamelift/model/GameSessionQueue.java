@@ -44,7 +44,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </li>
  * </ul>
  * <p>
- * Queue-related operations include the following:
+ * Queue-related operations include:
  * </p>
  * <ul>
  * <li>
@@ -77,7 +77,7 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Descriptive label that is associated with queue. Queue names must be unique within each region.
+     * Descriptive label that is associated with game session queue. Queue names must be unique within each region.
      * </p>
      */
     private String name;
@@ -92,7 +92,7 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds
-     * this time, the game session placement changes to a TIMED_OUT status.
+     * this time, the game session placement changes to a <code>TIMED_OUT</code> status.
      * </p>
      */
     private Integer timeoutInSeconds;
@@ -117,11 +117,12 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Descriptive label that is associated with queue. Queue names must be unique within each region.
+     * Descriptive label that is associated with game session queue. Queue names must be unique within each region.
      * </p>
      * 
      * @param name
-     *        Descriptive label that is associated with queue. Queue names must be unique within each region.
+     *        Descriptive label that is associated with game session queue. Queue names must be unique within each
+     *        region.
      */
 
     public void setName(String name) {
@@ -130,10 +131,11 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Descriptive label that is associated with queue. Queue names must be unique within each region.
+     * Descriptive label that is associated with game session queue. Queue names must be unique within each region.
      * </p>
      * 
-     * @return Descriptive label that is associated with queue. Queue names must be unique within each region.
+     * @return Descriptive label that is associated with game session queue. Queue names must be unique within each
+     *         region.
      */
 
     public String getName() {
@@ -142,11 +144,12 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Descriptive label that is associated with queue. Queue names must be unique within each region.
+     * Descriptive label that is associated with game session queue. Queue names must be unique within each region.
      * </p>
      * 
      * @param name
-     *        Descriptive label that is associated with queue. Queue names must be unique within each region.
+     *        Descriptive label that is associated with game session queue. Queue names must be unique within each
+     *        region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -211,12 +214,12 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds
-     * this time, the game session placement changes to a TIMED_OUT status.
+     * this time, the game session placement changes to a <code>TIMED_OUT</code> status.
      * </p>
      * 
      * @param timeoutInSeconds
      *        Maximum time, in seconds, that a new game session placement request remains in the queue. When a request
-     *        exceeds this time, the game session placement changes to a TIMED_OUT status.
+     *        exceeds this time, the game session placement changes to a <code>TIMED_OUT</code> status.
      */
 
     public void setTimeoutInSeconds(Integer timeoutInSeconds) {
@@ -226,11 +229,11 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds
-     * this time, the game session placement changes to a TIMED_OUT status.
+     * this time, the game session placement changes to a <code>TIMED_OUT</code> status.
      * </p>
      * 
      * @return Maximum time, in seconds, that a new game session placement request remains in the queue. When a request
-     *         exceeds this time, the game session placement changes to a TIMED_OUT status.
+     *         exceeds this time, the game session placement changes to a <code>TIMED_OUT</code> status.
      */
 
     public Integer getTimeoutInSeconds() {
@@ -240,12 +243,12 @@ public class GameSessionQueue implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds
-     * this time, the game session placement changes to a TIMED_OUT status.
+     * this time, the game session placement changes to a <code>TIMED_OUT</code> status.
      * </p>
      * 
      * @param timeoutInSeconds
      *        Maximum time, in seconds, that a new game session placement request remains in the queue. When a request
-     *        exceeds this time, the game session placement changes to a TIMED_OUT status.
+     *        exceeds this time, the game session placement changes to a <code>TIMED_OUT</code> status.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

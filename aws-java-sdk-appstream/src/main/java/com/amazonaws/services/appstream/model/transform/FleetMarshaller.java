@@ -40,6 +40,8 @@ public class FleetMarshaller {
             .marshallLocationName("ImageName").build();
     private static final MarshallingInfo<String> INSTANCETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("InstanceType").build();
+    private static final MarshallingInfo<String> FLEETTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("FleetType").build();
     private static final MarshallingInfo<StructuredPojo> COMPUTECAPACITYSTATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ComputeCapacityStatus").build();
     private static final MarshallingInfo<Integer> MAXUSERDURATIONINSECONDS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -56,6 +58,8 @@ public class FleetMarshaller {
             .marshallLocationName("FleetErrors").build();
     private static final MarshallingInfo<Boolean> ENABLEDEFAULTINTERNETACCESS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EnableDefaultInternetAccess").build();
+    private static final MarshallingInfo<StructuredPojo> DOMAINJOININFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DomainJoinInfo").build();
 
     private static final FleetMarshaller instance = new FleetMarshaller();
 
@@ -79,6 +83,7 @@ public class FleetMarshaller {
             protocolMarshaller.marshall(fleet.getDescription(), DESCRIPTION_BINDING);
             protocolMarshaller.marshall(fleet.getImageName(), IMAGENAME_BINDING);
             protocolMarshaller.marshall(fleet.getInstanceType(), INSTANCETYPE_BINDING);
+            protocolMarshaller.marshall(fleet.getFleetType(), FLEETTYPE_BINDING);
             protocolMarshaller.marshall(fleet.getComputeCapacityStatus(), COMPUTECAPACITYSTATUS_BINDING);
             protocolMarshaller.marshall(fleet.getMaxUserDurationInSeconds(), MAXUSERDURATIONINSECONDS_BINDING);
             protocolMarshaller.marshall(fleet.getDisconnectTimeoutInSeconds(), DISCONNECTTIMEOUTINSECONDS_BINDING);
@@ -87,6 +92,7 @@ public class FleetMarshaller {
             protocolMarshaller.marshall(fleet.getCreatedTime(), CREATEDTIME_BINDING);
             protocolMarshaller.marshall(fleet.getFleetErrors(), FLEETERRORS_BINDING);
             protocolMarshaller.marshall(fleet.getEnableDefaultInternetAccess(), ENABLEDEFAULTINTERNETACCESS_BINDING);
+            protocolMarshaller.marshall(fleet.getDomainJoinInfo(), DOMAINJOININFO_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

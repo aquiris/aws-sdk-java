@@ -55,7 +55,7 @@ public class StateReason implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Server.SpotInstanceTermination</code>: A Spot instance was terminated due to an increase in the market
+     * <code>Server.SpotInstanceTermination</code>: A Spot Instance was terminated due to an increase in the market
      * price.
      * </p>
      * </li>
@@ -68,6 +68,11 @@ public class StateReason implements Serializable, Cloneable {
      * <p>
      * <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down using the <code>shutdown -h</code>
      * command from the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.
      * </p>
      * </li>
      * <li>
@@ -153,7 +158,7 @@ public class StateReason implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Server.SpotInstanceTermination</code>: A Spot instance was terminated due to an increase in the market
+     * <code>Server.SpotInstanceTermination</code>: A Spot Instance was terminated due to an increase in the market
      * price.
      * </p>
      * </li>
@@ -166,6 +171,11 @@ public class StateReason implements Serializable, Cloneable {
      * <p>
      * <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down using the <code>shutdown -h</code>
      * command from the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.
      * </p>
      * </li>
      * <li>
@@ -208,7 +218,7 @@ public class StateReason implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Server.SpotInstanceTermination</code>: A Spot instance was terminated due to an increase in the
+     *        <code>Server.SpotInstanceTermination</code>: A Spot Instance was terminated due to an increase in the
      *        market price.
      *        </p>
      *        </li>
@@ -221,6 +231,11 @@ public class StateReason implements Serializable, Cloneable {
      *        <p>
      *        <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down using the
      *        <code>shutdown -h</code> command from the instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.
      *        </p>
      *        </li>
      *        <li>
@@ -268,7 +283,7 @@ public class StateReason implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Server.SpotInstanceTermination</code>: A Spot instance was terminated due to an increase in the market
+     * <code>Server.SpotInstanceTermination</code>: A Spot Instance was terminated due to an increase in the market
      * price.
      * </p>
      * </li>
@@ -281,6 +296,11 @@ public class StateReason implements Serializable, Cloneable {
      * <p>
      * <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down using the <code>shutdown -h</code>
      * command from the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.
      * </p>
      * </li>
      * <li>
@@ -322,7 +342,7 @@ public class StateReason implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         <code>Server.SpotInstanceTermination</code>: A Spot instance was terminated due to an increase in the
+     *         <code>Server.SpotInstanceTermination</code>: A Spot Instance was terminated due to an increase in the
      *         market price.
      *         </p>
      *         </li>
@@ -335,6 +355,11 @@ public class StateReason implements Serializable, Cloneable {
      *         <p>
      *         <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down using the
      *         <code>shutdown -h</code> command from the instance.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.
      *         </p>
      *         </li>
      *         <li>
@@ -382,7 +407,7 @@ public class StateReason implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Server.SpotInstanceTermination</code>: A Spot instance was terminated due to an increase in the market
+     * <code>Server.SpotInstanceTermination</code>: A Spot Instance was terminated due to an increase in the market
      * price.
      * </p>
      * </li>
@@ -395,6 +420,11 @@ public class StateReason implements Serializable, Cloneable {
      * <p>
      * <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down using the <code>shutdown -h</code>
      * command from the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.
      * </p>
      * </li>
      * <li>
@@ -437,7 +467,7 @@ public class StateReason implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Server.SpotInstanceTermination</code>: A Spot instance was terminated due to an increase in the
+     *        <code>Server.SpotInstanceTermination</code>: A Spot Instance was terminated due to an increase in the
      *        market price.
      *        </p>
      *        </li>
@@ -450,6 +480,11 @@ public class StateReason implements Serializable, Cloneable {
      *        <p>
      *        <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down using the
      *        <code>shutdown -h</code> command from the instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.
      *        </p>
      *        </li>
      *        <li>

@@ -126,6 +126,14 @@ public class ContainerDetail implements Serializable, Cloneable, StructuredPojo 
      * </p>
      */
     private String taskArn;
+    /**
+     * <p>
+     * The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch jobs is
+     * <code>/aws/batch/job</code>. Each container attempt receives a log stream name when they reach the
+     * <code>RUNNING</code> status.
+     * </p>
+     */
+    private String logStreamName;
 
     /**
      * <p>
@@ -956,6 +964,58 @@ public class ContainerDetail implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
+     * The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch jobs is
+     * <code>/aws/batch/job</code>. Each container attempt receives a log stream name when they reach the
+     * <code>RUNNING</code> status.
+     * </p>
+     * 
+     * @param logStreamName
+     *        The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch jobs
+     *        is <code>/aws/batch/job</code>. Each container attempt receives a log stream name when they reach the
+     *        <code>RUNNING</code> status.
+     */
+
+    public void setLogStreamName(String logStreamName) {
+        this.logStreamName = logStreamName;
+    }
+
+    /**
+     * <p>
+     * The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch jobs is
+     * <code>/aws/batch/job</code>. Each container attempt receives a log stream name when they reach the
+     * <code>RUNNING</code> status.
+     * </p>
+     * 
+     * @return The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch
+     *         jobs is <code>/aws/batch/job</code>. Each container attempt receives a log stream name when they reach
+     *         the <code>RUNNING</code> status.
+     */
+
+    public String getLogStreamName() {
+        return this.logStreamName;
+    }
+
+    /**
+     * <p>
+     * The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch jobs is
+     * <code>/aws/batch/job</code>. Each container attempt receives a log stream name when they reach the
+     * <code>RUNNING</code> status.
+     * </p>
+     * 
+     * @param logStreamName
+     *        The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch jobs
+     *        is <code>/aws/batch/job</code>. Each container attempt receives a log stream name when they reach the
+     *        <code>RUNNING</code> status.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDetail withLogStreamName(String logStreamName) {
+        setLogStreamName(logStreamName);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -997,7 +1057,9 @@ public class ContainerDetail implements Serializable, Cloneable, StructuredPojo 
         if (getContainerInstanceArn() != null)
             sb.append("ContainerInstanceArn: ").append(getContainerInstanceArn()).append(",");
         if (getTaskArn() != null)
-            sb.append("TaskArn: ").append(getTaskArn());
+            sb.append("TaskArn: ").append(getTaskArn()).append(",");
+        if (getLogStreamName() != null)
+            sb.append("LogStreamName: ").append(getLogStreamName());
         sb.append("}");
         return sb.toString();
     }
@@ -1076,6 +1138,10 @@ public class ContainerDetail implements Serializable, Cloneable, StructuredPojo 
             return false;
         if (other.getTaskArn() != null && other.getTaskArn().equals(this.getTaskArn()) == false)
             return false;
+        if (other.getLogStreamName() == null ^ this.getLogStreamName() == null)
+            return false;
+        if (other.getLogStreamName() != null && other.getLogStreamName().equals(this.getLogStreamName()) == false)
+            return false;
         return true;
     }
 
@@ -1100,6 +1166,7 @@ public class ContainerDetail implements Serializable, Cloneable, StructuredPojo 
         hashCode = prime * hashCode + ((getReason() == null) ? 0 : getReason().hashCode());
         hashCode = prime * hashCode + ((getContainerInstanceArn() == null) ? 0 : getContainerInstanceArn().hashCode());
         hashCode = prime * hashCode + ((getTaskArn() == null) ? 0 : getTaskArn().hashCode());
+        hashCode = prime * hashCode + ((getLogStreamName() == null) ? 0 : getLogStreamName().hashCode());
         return hashCode;
     }
 
