@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ import java.util.List;
  */
 public abstract class SdkSyncClientBuilder<Subclass extends SdkSyncClientBuilder, TypeToBuild> {
 
-    private static final String USER_AGENT_PREFIX = "apig-java";
+    private static final String USER_AGENT_PREFIX = "aws-apig-java";
     private static final String UA_NAME_VERSION_SEPERATOR = "/";
 
     private AWSCredentialsProvider iamCredentials;

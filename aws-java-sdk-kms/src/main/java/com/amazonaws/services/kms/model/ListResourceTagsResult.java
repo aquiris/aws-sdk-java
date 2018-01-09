@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,8 +42,8 @@ public class ListResourceTagsResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
-     * response to the <code>Marker</code> parameter in a subsequent request.
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      */
     private Boolean truncated;
@@ -185,14 +185,14 @@ public class ListResourceTagsResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
-     * response to the <code>Marker</code> parameter in a subsequent request.
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param truncated
      *        A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *        response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
-     *        this response to the <code>Marker</code> parameter in a subsequent request.
+     *        response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
+     *        response to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public void setTruncated(Boolean truncated) {
@@ -202,13 +202,13 @@ public class ListResourceTagsResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
-     * response to the <code>Marker</code> parameter in a subsequent request.
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @return A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *         response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
-     *         this response to the <code>Marker</code> parameter in a subsequent request.
+     *         response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
+     *         response to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public Boolean getTruncated() {
@@ -218,14 +218,14 @@ public class ListResourceTagsResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
-     * response to the <code>Marker</code> parameter in a subsequent request.
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param truncated
      *        A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *        response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
-     *        this response to the <code>Marker</code> parameter in a subsequent request.
+     *        response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
+     *        response to the <code>Marker</code> parameter in a subsequent request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -237,13 +237,13 @@ public class ListResourceTagsResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this
-     * response to the <code>Marker</code> parameter in a subsequent request.
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @return A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *         response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in
-     *         this response to the <code>Marker</code> parameter in a subsequent request.
+     *         response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
+     *         response to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public Boolean isTruncated() {

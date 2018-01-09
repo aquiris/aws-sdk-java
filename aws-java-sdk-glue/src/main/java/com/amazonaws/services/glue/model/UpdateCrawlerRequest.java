@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,54 +27,54 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Name of the new <code>Crawler</code>.
+     * Name of the new crawler.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The AWS ARN of the IAM role used by the new <code>Crawler</code> to access customer resources.
+     * The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
      * </p>
      */
     private String role;
     /**
      * <p>
-     * The Glue <code>Database</code> where results will be stored, such as:
+     * The AWS Glue database where results are stored, such as:
      * <code>arn:aws:daylight:us-east-1::database/sometable/*</code>.
      * </p>
      */
     private String databaseName;
     /**
      * <p>
-     * A description of the new <code>Crawler</code>.
+     * A description of the new crawler.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * A list of collection of targets to crawl.
+     * A list of targets to crawl.
      * </p>
      */
     private CrawlerTargets targets;
     /**
      * <p>
-     * A cron expression that can be used as a Cloudwatch event (see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">CloudWatch Schedule
-     * Expression Syntax</a>. For example, to run every day at 12:15 UTC, specify: <code>cron(15 12 * * ? *)</code>.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      */
     private String schedule;
     /**
      * <p>
-     * A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS classifiers are
-     * included in a crawl, but these custom classifiers always override the default classifiers for a given
-     * classification.
+     * A list of custom classifiers that the user has registered. By default, all classifiers are included in a crawl,
+     * but these custom classifiers always override the default classifiers for a given classification.
      * </p>
      */
     private java.util.List<String> classifiers;
     /**
      * <p>
-     * The table prefix used for catalog tables created.
+     * The table prefix used for catalog tables that are created.
      * </p>
      */
     private String tablePrefix;
@@ -84,14 +84,26 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      */
     private SchemaChangePolicy schemaChangePolicy;
+    /**
+     * <p>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
+     * behavior.
+     * </p>
+     * <p>
+     * You can use this field to force partitions to inherit metadata such as classification, input format, output
+     * format, serde information, and schema from their parent table, rather than detect this information separately for
+     * each partition. Use the following JSON string to specify that behavior:
+     * </p>
+     */
+    private String configuration;
 
     /**
      * <p>
-     * Name of the new <code>Crawler</code>.
+     * Name of the new crawler.
      * </p>
      * 
      * @param name
-     *        Name of the new <code>Crawler</code>.
+     *        Name of the new crawler.
      */
 
     public void setName(String name) {
@@ -100,10 +112,10 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Name of the new <code>Crawler</code>.
+     * Name of the new crawler.
      * </p>
      * 
-     * @return Name of the new <code>Crawler</code>.
+     * @return Name of the new crawler.
      */
 
     public String getName() {
@@ -112,11 +124,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Name of the new <code>Crawler</code>.
+     * Name of the new crawler.
      * </p>
      * 
      * @param name
-     *        Name of the new <code>Crawler</code>.
+     *        Name of the new crawler.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -127,11 +139,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The AWS ARN of the IAM role used by the new <code>Crawler</code> to access customer resources.
+     * The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
      * </p>
      * 
      * @param role
-     *        The AWS ARN of the IAM role used by the new <code>Crawler</code> to access customer resources.
+     *        The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
      */
 
     public void setRole(String role) {
@@ -140,10 +152,10 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The AWS ARN of the IAM role used by the new <code>Crawler</code> to access customer resources.
+     * The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
      * </p>
      * 
-     * @return The AWS ARN of the IAM role used by the new <code>Crawler</code> to access customer resources.
+     * @return The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
      */
 
     public String getRole() {
@@ -152,11 +164,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The AWS ARN of the IAM role used by the new <code>Crawler</code> to access customer resources.
+     * The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
      * </p>
      * 
      * @param role
-     *        The AWS ARN of the IAM role used by the new <code>Crawler</code> to access customer resources.
+     *        The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -167,12 +179,12 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The Glue <code>Database</code> where results will be stored, such as:
+     * The AWS Glue database where results are stored, such as:
      * <code>arn:aws:daylight:us-east-1::database/sometable/*</code>.
      * </p>
      * 
      * @param databaseName
-     *        The Glue <code>Database</code> where results will be stored, such as:
+     *        The AWS Glue database where results are stored, such as:
      *        <code>arn:aws:daylight:us-east-1::database/sometable/*</code>.
      */
 
@@ -182,11 +194,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The Glue <code>Database</code> where results will be stored, such as:
+     * The AWS Glue database where results are stored, such as:
      * <code>arn:aws:daylight:us-east-1::database/sometable/*</code>.
      * </p>
      * 
-     * @return The Glue <code>Database</code> where results will be stored, such as:
+     * @return The AWS Glue database where results are stored, such as:
      *         <code>arn:aws:daylight:us-east-1::database/sometable/*</code>.
      */
 
@@ -196,12 +208,12 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The Glue <code>Database</code> where results will be stored, such as:
+     * The AWS Glue database where results are stored, such as:
      * <code>arn:aws:daylight:us-east-1::database/sometable/*</code>.
      * </p>
      * 
      * @param databaseName
-     *        The Glue <code>Database</code> where results will be stored, such as:
+     *        The AWS Glue database where results are stored, such as:
      *        <code>arn:aws:daylight:us-east-1::database/sometable/*</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -213,11 +225,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A description of the new <code>Crawler</code>.
+     * A description of the new crawler.
      * </p>
      * 
      * @param description
-     *        A description of the new <code>Crawler</code>.
+     *        A description of the new crawler.
      */
 
     public void setDescription(String description) {
@@ -226,10 +238,10 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A description of the new <code>Crawler</code>.
+     * A description of the new crawler.
      * </p>
      * 
-     * @return A description of the new <code>Crawler</code>.
+     * @return A description of the new crawler.
      */
 
     public String getDescription() {
@@ -238,11 +250,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A description of the new <code>Crawler</code>.
+     * A description of the new crawler.
      * </p>
      * 
      * @param description
-     *        A description of the new <code>Crawler</code>.
+     *        A description of the new crawler.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -253,11 +265,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of collection of targets to crawl.
+     * A list of targets to crawl.
      * </p>
      * 
      * @param targets
-     *        A list of collection of targets to crawl.
+     *        A list of targets to crawl.
      */
 
     public void setTargets(CrawlerTargets targets) {
@@ -266,10 +278,10 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of collection of targets to crawl.
+     * A list of targets to crawl.
      * </p>
      * 
-     * @return A list of collection of targets to crawl.
+     * @return A list of targets to crawl.
      */
 
     public CrawlerTargets getTargets() {
@@ -278,11 +290,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of collection of targets to crawl.
+     * A list of targets to crawl.
      * </p>
      * 
      * @param targets
-     *        A list of collection of targets to crawl.
+     *        A list of targets to crawl.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -293,15 +305,16 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A cron expression that can be used as a Cloudwatch event (see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">CloudWatch Schedule
-     * Expression Syntax</a>. For example, to run every day at 12:15 UTC, specify: <code>cron(15 12 * * ? *)</code>.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
      * @param schedule
-     *        A cron expression that can be used as a Cloudwatch event (see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">CloudWatch Schedule
-     *        Expression Syntax</a>. For example, to run every day at 12:15 UTC, specify:
+     *        A <code>cron</code> expression used to specify the schedule (see <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
+     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      *        <code>cron(15 12 * * ? *)</code>.
      */
 
@@ -311,15 +324,16 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A cron expression that can be used as a Cloudwatch event (see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">CloudWatch Schedule
-     * Expression Syntax</a>. For example, to run every day at 12:15 UTC, specify: <code>cron(15 12 * * ? *)</code>.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
-     * @return A cron expression that can be used as a Cloudwatch event (see <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">CloudWatch Schedule
-     *         Expression Syntax</a>. For example, to run every day at 12:15 UTC, specify:
-     *         <code>cron(15 12 * * ? *)</code>.
+     * @return A <code>cron</code> expression used to specify the schedule (see <a
+     *         href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *         Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
+     *         specify: <code>cron(15 12 * * ? *)</code>.
      */
 
     public String getSchedule() {
@@ -328,15 +342,16 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A cron expression that can be used as a Cloudwatch event (see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">CloudWatch Schedule
-     * Expression Syntax</a>. For example, to run every day at 12:15 UTC, specify: <code>cron(15 12 * * ? *)</code>.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
      * @param schedule
-     *        A cron expression that can be used as a Cloudwatch event (see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">CloudWatch Schedule
-     *        Expression Syntax</a>. For example, to run every day at 12:15 UTC, specify:
+     *        A <code>cron</code> expression used to specify the schedule (see <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
+     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      *        <code>cron(15 12 * * ? *)</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -348,14 +363,12 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS classifiers are
-     * included in a crawl, but these custom classifiers always override the default classifiers for a given
-     * classification.
+     * A list of custom classifiers that the user has registered. By default, all classifiers are included in a crawl,
+     * but these custom classifiers always override the default classifiers for a given classification.
      * </p>
      * 
-     * @return A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS
-     *         classifiers are included in a crawl, but these custom classifiers always override the default classifiers
-     *         for a given classification.
+     * @return A list of custom classifiers that the user has registered. By default, all classifiers are included in a
+     *         crawl, but these custom classifiers always override the default classifiers for a given classification.
      */
 
     public java.util.List<String> getClassifiers() {
@@ -364,15 +377,13 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS classifiers are
-     * included in a crawl, but these custom classifiers always override the default classifiers for a given
-     * classification.
+     * A list of custom classifiers that the user has registered. By default, all classifiers are included in a crawl,
+     * but these custom classifiers always override the default classifiers for a given classification.
      * </p>
      * 
      * @param classifiers
-     *        A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS
-     *        classifiers are included in a crawl, but these custom classifiers always override the default classifiers
-     *        for a given classification.
+     *        A list of custom classifiers that the user has registered. By default, all classifiers are included in a
+     *        crawl, but these custom classifiers always override the default classifiers for a given classification.
      */
 
     public void setClassifiers(java.util.Collection<String> classifiers) {
@@ -386,9 +397,8 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS classifiers are
-     * included in a crawl, but these custom classifiers always override the default classifiers for a given
-     * classification.
+     * A list of custom classifiers that the user has registered. By default, all classifiers are included in a crawl,
+     * but these custom classifiers always override the default classifiers for a given classification.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -397,9 +407,8 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param classifiers
-     *        A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS
-     *        classifiers are included in a crawl, but these custom classifiers always override the default classifiers
-     *        for a given classification.
+     *        A list of custom classifiers that the user has registered. By default, all classifiers are included in a
+     *        crawl, but these custom classifiers always override the default classifiers for a given classification.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -415,15 +424,13 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS classifiers are
-     * included in a crawl, but these custom classifiers always override the default classifiers for a given
-     * classification.
+     * A list of custom classifiers that the user has registered. By default, all classifiers are included in a crawl,
+     * but these custom classifiers always override the default classifiers for a given classification.
      * </p>
      * 
      * @param classifiers
-     *        A list of custom <code>Classifier</code> names that the user has registered. By default, all AWS
-     *        classifiers are included in a crawl, but these custom classifiers always override the default classifiers
-     *        for a given classification.
+     *        A list of custom classifiers that the user has registered. By default, all classifiers are included in a
+     *        crawl, but these custom classifiers always override the default classifiers for a given classification.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -434,11 +441,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The table prefix used for catalog tables created.
+     * The table prefix used for catalog tables that are created.
      * </p>
      * 
      * @param tablePrefix
-     *        The table prefix used for catalog tables created.
+     *        The table prefix used for catalog tables that are created.
      */
 
     public void setTablePrefix(String tablePrefix) {
@@ -447,10 +454,10 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The table prefix used for catalog tables created.
+     * The table prefix used for catalog tables that are created.
      * </p>
      * 
-     * @return The table prefix used for catalog tables created.
+     * @return The table prefix used for catalog tables that are created.
      */
 
     public String getTablePrefix() {
@@ -459,11 +466,11 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The table prefix used for catalog tables created.
+     * The table prefix used for catalog tables that are created.
      * </p>
      * 
      * @param tablePrefix
-     *        The table prefix used for catalog tables created.
+     *        The table prefix used for catalog tables that are created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -513,6 +520,79 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
+     * behavior.
+     * </p>
+     * <p>
+     * You can use this field to force partitions to inherit metadata such as classification, input format, output
+     * format, serde information, and schema from their parent table, rather than detect this information separately for
+     * each partition. Use the following JSON string to specify that behavior:
+     * </p>
+     * 
+     * @param configuration
+     *        Crawler configuration information. This versioned JSON string allows users to specify aspects of a
+     *        Crawler's behavior.</p>
+     *        <p>
+     *        You can use this field to force partitions to inherit metadata such as classification, input format,
+     *        output format, serde information, and schema from their parent table, rather than detect this information
+     *        separately for each partition. Use the following JSON string to specify that behavior:
+     */
+
+    public void setConfiguration(String configuration) {
+        this.configuration = configuration;
+    }
+
+    /**
+     * <p>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
+     * behavior.
+     * </p>
+     * <p>
+     * You can use this field to force partitions to inherit metadata such as classification, input format, output
+     * format, serde information, and schema from their parent table, rather than detect this information separately for
+     * each partition. Use the following JSON string to specify that behavior:
+     * </p>
+     * 
+     * @return Crawler configuration information. This versioned JSON string allows users to specify aspects of a
+     *         Crawler's behavior.</p>
+     *         <p>
+     *         You can use this field to force partitions to inherit metadata such as classification, input format,
+     *         output format, serde information, and schema from their parent table, rather than detect this information
+     *         separately for each partition. Use the following JSON string to specify that behavior:
+     */
+
+    public String getConfiguration() {
+        return this.configuration;
+    }
+
+    /**
+     * <p>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
+     * behavior.
+     * </p>
+     * <p>
+     * You can use this field to force partitions to inherit metadata such as classification, input format, output
+     * format, serde information, and schema from their parent table, rather than detect this information separately for
+     * each partition. Use the following JSON string to specify that behavior:
+     * </p>
+     * 
+     * @param configuration
+     *        Crawler configuration information. This versioned JSON string allows users to specify aspects of a
+     *        Crawler's behavior.</p>
+     *        <p>
+     *        You can use this field to force partitions to inherit metadata such as classification, input format,
+     *        output format, serde information, and schema from their parent table, rather than detect this information
+     *        separately for each partition. Use the following JSON string to specify that behavior:
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateCrawlerRequest withConfiguration(String configuration) {
+        setConfiguration(configuration);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -540,7 +620,9 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (getTablePrefix() != null)
             sb.append("TablePrefix: ").append(getTablePrefix()).append(",");
         if (getSchemaChangePolicy() != null)
-            sb.append("SchemaChangePolicy: ").append(getSchemaChangePolicy());
+            sb.append("SchemaChangePolicy: ").append(getSchemaChangePolicy()).append(",");
+        if (getConfiguration() != null)
+            sb.append("Configuration: ").append(getConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -591,6 +673,10 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getSchemaChangePolicy() != null && other.getSchemaChangePolicy().equals(this.getSchemaChangePolicy()) == false)
             return false;
+        if (other.getConfiguration() == null ^ this.getConfiguration() == null)
+            return false;
+        if (other.getConfiguration() != null && other.getConfiguration().equals(this.getConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -608,6 +694,7 @@ public class UpdateCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
         hashCode = prime * hashCode + ((getClassifiers() == null) ? 0 : getClassifiers().hashCode());
         hashCode = prime * hashCode + ((getTablePrefix() == null) ? 0 : getTablePrefix().hashCode());
         hashCode = prime * hashCode + ((getSchemaChangePolicy() == null) ? 0 : getSchemaChangePolicy().hashCode());
+        hashCode = prime * hashCode + ((getConfiguration() == null) ? 0 : getConfiguration().hashCode());
         return hashCode;
     }
 

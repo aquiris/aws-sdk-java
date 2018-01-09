@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,7 +47,7 @@ public class SendMessageResult extends com.amazonaws.AmazonWebServiceResult<com.
      * An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information, see <a
      * href
      * ="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html"
-     * >Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      */
     private String messageId;
@@ -174,14 +174,14 @@ public class SendMessageResult extends com.amazonaws.AmazonWebServiceResult<com.
      * An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information, see <a
      * href
      * ="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html"
-     * >Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      * 
      * @param messageId
      *        An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information,
      *        see <a href=
      *        "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html"
-     *        >Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.
+     *        >Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      */
 
     public void setMessageId(String messageId) {
@@ -193,13 +193,13 @@ public class SendMessageResult extends com.amazonaws.AmazonWebServiceResult<com.
      * An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information, see <a
      * href
      * ="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html"
-     * >Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      * 
      * @return An attribute containing the <code>MessageId</code> of the message sent to the queue. For more
      *         information, see <a href=
      *         "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html"
-     *         >Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.
+     *         >Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      */
 
     public String getMessageId() {
@@ -211,14 +211,14 @@ public class SendMessageResult extends com.amazonaws.AmazonWebServiceResult<com.
      * An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information, see <a
      * href
      * ="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html"
-     * >Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      * 
      * @param messageId
      *        An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information,
      *        see <a href=
      *        "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html"
-     *        >Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>.
+     *        >Queue and Message Identifiers</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

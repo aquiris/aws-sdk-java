@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,10 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String type;
     /**
      * <p>
-     * A cron schedule expression for the new trigger.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      */
     private String schedule;
@@ -163,11 +166,17 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A cron schedule expression for the new trigger.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
      * @param schedule
-     *        A cron schedule expression for the new trigger.
+     *        A <code>cron</code> expression used to specify the schedule (see <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
+     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     *        <code>cron(15 12 * * ? *)</code>.
      */
 
     public void setSchedule(String schedule) {
@@ -176,10 +185,16 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A cron schedule expression for the new trigger.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
-     * @return A cron schedule expression for the new trigger.
+     * @return A <code>cron</code> expression used to specify the schedule (see <a
+     *         href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *         Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
+     *         specify: <code>cron(15 12 * * ? *)</code>.
      */
 
     public String getSchedule() {
@@ -188,11 +203,17 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A cron schedule expression for the new trigger.
+     * A <code>cron</code> expression used to specify the schedule (see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
      * @param schedule
-     *        A cron schedule expression for the new trigger.
+     *        A <code>cron</code> expression used to specify the schedule (see <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
+     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
+     *        <code>cron(15 12 * * ? *)</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

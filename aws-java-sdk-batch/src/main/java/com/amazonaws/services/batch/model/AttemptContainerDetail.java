@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,8 @@ public class AttemptContainerDetail implements Serializable, Cloneable, Structur
     private String containerInstanceArn;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.
+     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each container
+     * attempt receives a task ARN when they reach the <code>STARTING</code> status.
      * </p>
      */
     private String taskArn;
@@ -104,11 +105,13 @@ public class AttemptContainerDetail implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.
+     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each container
+     * attempt receives a task ARN when they reach the <code>STARTING</code> status.
      * </p>
      * 
      * @param taskArn
-     *        The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.
+     *        The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each
+     *        container attempt receives a task ARN when they reach the <code>STARTING</code> status.
      */
 
     public void setTaskArn(String taskArn) {
@@ -117,10 +120,12 @@ public class AttemptContainerDetail implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.
+     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each container
+     * attempt receives a task ARN when they reach the <code>STARTING</code> status.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.
+     * @return The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each
+     *         container attempt receives a task ARN when they reach the <code>STARTING</code> status.
      */
 
     public String getTaskArn() {
@@ -129,11 +134,13 @@ public class AttemptContainerDetail implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.
+     * The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each container
+     * attempt receives a task ARN when they reach the <code>STARTING</code> status.
      * </p>
      * 
      * @param taskArn
-     *        The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.
+     *        The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each
+     *        container attempt receives a task ARN when they reach the <code>STARTING</code> status.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,9 +64,33 @@ public class UpdateDomainNameResultJsonUnmarshaller implements Unmarshaller<Upda
                     context.nextToken();
                     updateDomainNameResult.setCertificateUploadDate(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
                 }
+                if (context.testExpression("regionalDomainName", targetDepth)) {
+                    context.nextToken();
+                    updateDomainNameResult.setRegionalDomainName(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("regionalHostedZoneId", targetDepth)) {
+                    context.nextToken();
+                    updateDomainNameResult.setRegionalHostedZoneId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("regionalCertificateName", targetDepth)) {
+                    context.nextToken();
+                    updateDomainNameResult.setRegionalCertificateName(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("regionalCertificateArn", targetDepth)) {
+                    context.nextToken();
+                    updateDomainNameResult.setRegionalCertificateArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("distributionDomainName", targetDepth)) {
                     context.nextToken();
                     updateDomainNameResult.setDistributionDomainName(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("distributionHostedZoneId", targetDepth)) {
+                    context.nextToken();
+                    updateDomainNameResult.setDistributionHostedZoneId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("endpointConfiguration", targetDepth)) {
+                    context.nextToken();
+                    updateDomainNameResult.setEndpointConfiguration(EndpointConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

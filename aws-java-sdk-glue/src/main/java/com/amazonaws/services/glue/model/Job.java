@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,7 +41,7 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
     private String description;
     /**
      * <p>
-     * Location of the logs for this job.
+     * This field is reserved for future use.
      * </p>
      */
     private String logUri;
@@ -182,11 +182,11 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Location of the logs for this job.
+     * This field is reserved for future use.
      * </p>
      * 
      * @param logUri
-     *        Location of the logs for this job.
+     *        This field is reserved for future use.
      */
 
     public void setLogUri(String logUri) {
@@ -195,10 +195,10 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Location of the logs for this job.
+     * This field is reserved for future use.
      * </p>
      * 
-     * @return Location of the logs for this job.
+     * @return This field is reserved for future use.
      */
 
     public String getLogUri() {
@@ -207,11 +207,11 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Location of the logs for this job.
+     * This field is reserved for future use.
      * </p>
      * 
      * @param logUri
-     *        Location of the logs for this job.
+     *        This field is reserved for future use.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

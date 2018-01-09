@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,7 +44,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     * <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      * <code>/dev/sda1</code>).
      * </p>
      * </li>
@@ -190,7 +190,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     * <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      * <code>/dev/sda1</code>).
      * </p>
      * </li>
@@ -286,7 +286,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *         </li>
      *         <li>
      *         <p>
-     *         <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     *         <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      *         <code>/dev/sda1</code>).
      *         </p>
      *         </li>
@@ -393,7 +393,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     * <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      * <code>/dev/sda1</code>).
      * </p>
      * </li>
@@ -490,7 +490,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        </li>
      *        <li>
      *        <p>
-     *        <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     *        <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      *        <code>/dev/sda1</code>).
      *        </p>
      *        </li>
@@ -599,7 +599,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     * <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      * <code>/dev/sda1</code>).
      * </p>
      * </li>
@@ -701,7 +701,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        </li>
      *        <li>
      *        <p>
-     *        <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     *        <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      *        <code>/dev/sda1</code>).
      *        </p>
      *        </li>
@@ -812,7 +812,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      * </li>
      * <li>
      * <p>
-     * <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     * <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      * <code>/dev/sda1</code>).
      * </p>
      * </li>
@@ -909,7 +909,7 @@ public class DescribeVolumesRequest extends AmazonWebServiceRequest implements S
      *        </li>
      *        <li>
      *        <p>
-     *        <code>attachment.device</code> - The device name that is exposed to the instance (for example,
+     *        <code>attachment.device</code> - The device name specified in the block device mapping (for example,
      *        <code>/dev/sda1</code>).
      *        </p>
      *        </li>

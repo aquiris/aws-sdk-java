@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,7 +73,7 @@ public class Message implements Serializable, Cloneable {
      * Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation"
-     * >Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Message Attribute Items and Validation</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalMap<String, MessageAttributeValue> messageAttributes;
@@ -392,13 +392,13 @@ public class Message implements Serializable, Cloneable {
      * Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation"
-     * >Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Message Attribute Items and Validation</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      * 
      * @return Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For
      *         more information, see <a href=
      *         "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation"
-     *         >Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.
+     *         >Message Attribute Items and Validation</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      */
 
     public java.util.Map<String, MessageAttributeValue> getMessageAttributes() {
@@ -413,14 +413,14 @@ public class Message implements Serializable, Cloneable {
      * Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation"
-     * >Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Message Attribute Items and Validation</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      * 
      * @param messageAttributes
      *        Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For
      *        more information, see <a href=
      *        "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation"
-     *        >Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.
+     *        >Message Attribute Items and Validation</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      */
 
     public void setMessageAttributes(java.util.Map<String, MessageAttributeValue> messageAttributes) {
@@ -432,14 +432,14 @@ public class Message implements Serializable, Cloneable {
      * Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more
      * information, see <a href=
      * "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation"
-     * >Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.
+     * >Message Attribute Items and Validation</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * </p>
      * 
      * @param messageAttributes
      *        Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For
      *        more information, see <a href=
      *        "http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation"
-     *        >Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.
+     *        >Message Attribute Items and Validation</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

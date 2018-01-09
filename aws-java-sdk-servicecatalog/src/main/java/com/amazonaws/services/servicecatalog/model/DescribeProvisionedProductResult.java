@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,18 +25,18 @@ public class DescribeProvisionedProductResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Detailed provisioned product information.
+     * Information about the provisioned product.
      * </p>
      */
     private ProvisionedProductDetail provisionedProductDetail;
 
     /**
      * <p>
-     * Detailed provisioned product information.
+     * Information about the provisioned product.
      * </p>
      * 
      * @param provisionedProductDetail
-     *        Detailed provisioned product information.
+     *        Information about the provisioned product.
      */
 
     public void setProvisionedProductDetail(ProvisionedProductDetail provisionedProductDetail) {
@@ -45,10 +45,10 @@ public class DescribeProvisionedProductResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Detailed provisioned product information.
+     * Information about the provisioned product.
      * </p>
      * 
-     * @return Detailed provisioned product information.
+     * @return Information about the provisioned product.
      */
 
     public ProvisionedProductDetail getProvisionedProductDetail() {
@@ -57,11 +57,11 @@ public class DescribeProvisionedProductResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Detailed provisioned product information.
+     * Information about the provisioned product.
      * </p>
      * 
      * @param provisionedProductDetail
-     *        Detailed provisioned product information.
+     *        Information about the provisioned product.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

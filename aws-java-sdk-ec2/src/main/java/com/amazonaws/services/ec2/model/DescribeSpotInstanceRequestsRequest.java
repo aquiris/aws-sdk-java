@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,7 +40,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>create-time</code> - The time stamp when the Spot instance request was created.
+     * <code>create-time</code> - The time stamp when the Spot Instance request was created.
      * </p>
      * </li>
      * <li>
@@ -60,35 +60,35 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch-group</code> - The Spot instance launch group.
+     * <code>launch-group</code> - The Spot Instance launch group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume is
-     * deleted on instance termination.
+     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is deleted on
+     * instance termination.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device mapping
+     * (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS volume.
+     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     * <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code> for
-     * General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
+     * <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for General
+     * Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
      * <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      * </p>
      * </li>
@@ -119,7 +119,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      * </p>
      * </li>
      * <li>
@@ -129,7 +129,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     * <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      * </p>
      * </li>
      * <li>
@@ -183,31 +183,31 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>spot-instance-request-id</code> - The Spot instance request ID.
+     * <code>spot-instance-request-id</code> - The Spot Instance request ID.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     * <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help you
-     * track your Amazon EC2 Spot instance requests. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
+     * track your Amazon EC2 Spot Instance requests. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
+     * Amazon Elastic Compute Cloud User Guide.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance request.
+     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-message</code> - The message explaining the status of the Spot instance request.
+     * <code>status-message</code> - The message explaining the status of the Spot Instance request.
      * </p>
      * </li>
      * <li>
@@ -234,7 +234,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     * <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      * </p>
      * </li>
      * <li>
@@ -252,7 +252,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
-     * One or more Spot instance request IDs.
+     * One or more Spot Instance request IDs.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> spotInstanceRequestIds;
@@ -269,7 +269,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>create-time</code> - The time stamp when the Spot instance request was created.
+     * <code>create-time</code> - The time stamp when the Spot Instance request was created.
      * </p>
      * </li>
      * <li>
@@ -289,35 +289,35 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch-group</code> - The Spot instance launch group.
+     * <code>launch-group</code> - The Spot Instance launch group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume is
-     * deleted on instance termination.
+     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is deleted on
+     * instance termination.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device mapping
+     * (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS volume.
+     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     * <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code> for
-     * General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
+     * <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for General
+     * Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
      * <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      * </p>
      * </li>
@@ -348,7 +348,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      * </p>
      * </li>
      * <li>
@@ -358,7 +358,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     * <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      * </p>
      * </li>
      * <li>
@@ -412,31 +412,31 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>spot-instance-request-id</code> - The Spot instance request ID.
+     * <code>spot-instance-request-id</code> - The Spot Instance request ID.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     * <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help you
-     * track your Amazon EC2 Spot instance requests. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
+     * track your Amazon EC2 Spot Instance requests. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
+     * Amazon Elastic Compute Cloud User Guide.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance request.
+     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-message</code> - The message explaining the status of the Spot instance request.
+     * <code>status-message</code> - The message explaining the status of the Spot Instance request.
      * </p>
      * </li>
      * <li>
@@ -463,7 +463,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     * <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      * </p>
      * </li>
      * <li>
@@ -487,7 +487,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>create-time</code> - The time stamp when the Spot instance request was created.
+     *         <code>create-time</code> - The time stamp when the Spot Instance request was created.
      *         </p>
      *         </li>
      *         <li>
@@ -507,37 +507,36 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch-group</code> - The Spot instance launch group.
+     *         <code>launch-group</code> - The Spot Instance launch group.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume
-     *         is deleted on instance termination.
+     *         <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is
+     *         deleted on instance termination.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for
-     *         example, <code>/dev/sdh</code>).
+     *         <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device
+     *         mapping (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS
-     *         volume.
+     *         <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     *         <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume:
-     *         <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for
-     *         Throughput Optimized HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
+     *         <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for
+     *         General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized
+     *         HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      *         </p>
      *         </li>
      *         <li>
@@ -567,7 +566,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     *         <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      *         </p>
      *         </li>
      *         <li>
@@ -577,7 +576,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     *         <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      *         </p>
      *         </li>
      *         <li>
@@ -633,32 +632,32 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>spot-instance-request-id</code> - The Spot instance request ID.
+     *         <code>spot-instance-request-id</code> - The Spot Instance request ID.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     *         <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     *         <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help
-     *         you track your Amazon EC2 Spot instance requests. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the
-     *         Amazon Elastic Compute Cloud User Guide.
+     *         <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     *         <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
+     *         help you track your Amazon EC2 Spot Instance requests. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
+     *         the Amazon Elastic Compute Cloud User Guide.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance
+     *         <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance
      *         request.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>status-message</code> - The message explaining the status of the Spot instance request.
+     *         <code>status-message</code> - The message explaining the status of the Spot Instance request.
      *         </p>
      *         </li>
      *         <li>
@@ -686,7 +685,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     *         <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      *         </p>
      *         </li>
      *         <li>
@@ -720,7 +719,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>create-time</code> - The time stamp when the Spot instance request was created.
+     * <code>create-time</code> - The time stamp when the Spot Instance request was created.
      * </p>
      * </li>
      * <li>
@@ -740,35 +739,35 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch-group</code> - The Spot instance launch group.
+     * <code>launch-group</code> - The Spot Instance launch group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume is
-     * deleted on instance termination.
+     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is deleted on
+     * instance termination.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device mapping
+     * (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS volume.
+     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     * <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code> for
-     * General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
+     * <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for General
+     * Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
      * <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      * </p>
      * </li>
@@ -799,7 +798,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      * </p>
      * </li>
      * <li>
@@ -809,7 +808,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     * <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      * </p>
      * </li>
      * <li>
@@ -863,31 +862,31 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>spot-instance-request-id</code> - The Spot instance request ID.
+     * <code>spot-instance-request-id</code> - The Spot Instance request ID.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     * <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help you
-     * track your Amazon EC2 Spot instance requests. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
+     * track your Amazon EC2 Spot Instance requests. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
+     * Amazon Elastic Compute Cloud User Guide.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance request.
+     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-message</code> - The message explaining the status of the Spot instance request.
+     * <code>status-message</code> - The message explaining the status of the Spot Instance request.
      * </p>
      * </li>
      * <li>
@@ -914,7 +913,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     * <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      * </p>
      * </li>
      * <li>
@@ -939,7 +938,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>create-time</code> - The time stamp when the Spot instance request was created.
+     *        <code>create-time</code> - The time stamp when the Spot Instance request was created.
      *        </p>
      *        </li>
      *        <li>
@@ -959,37 +958,36 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch-group</code> - The Spot instance launch group.
+     *        <code>launch-group</code> - The Spot Instance launch group.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume
-     *        is deleted on instance termination.
+     *        <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is
+     *        deleted on instance termination.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for
-     *        example, <code>/dev/sdh</code>).
+     *        <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device
+     *        mapping (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS
-     *        volume.
+     *        <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     *        <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code>
-     *        for General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     *        Optimized HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
+     *        <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for
+     *        General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized
+     *        HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      *        </p>
      *        </li>
      *        <li>
@@ -1019,7 +1017,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     *        <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      *        </p>
      *        </li>
      *        <li>
@@ -1029,7 +1027,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     *        <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      *        </p>
      *        </li>
      *        <li>
@@ -1085,32 +1083,32 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spot-instance-request-id</code> - The Spot instance request ID.
+     *        <code>spot-instance-request-id</code> - The Spot Instance request ID.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     *        <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help
-     *        you track your Amazon EC2 Spot instance requests. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the
-     *        Amazon Elastic Compute Cloud User Guide.
+     *        <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
+     *        help you track your Amazon EC2 Spot Instance requests. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
+     *        the Amazon Elastic Compute Cloud User Guide.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance
+     *        <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance
      *        request.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>status-message</code> - The message explaining the status of the Spot instance request.
+     *        <code>status-message</code> - The message explaining the status of the Spot Instance request.
      *        </p>
      *        </li>
      *        <li>
@@ -1138,7 +1136,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     *        <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -1174,7 +1172,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>create-time</code> - The time stamp when the Spot instance request was created.
+     * <code>create-time</code> - The time stamp when the Spot Instance request was created.
      * </p>
      * </li>
      * <li>
@@ -1194,35 +1192,35 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch-group</code> - The Spot instance launch group.
+     * <code>launch-group</code> - The Spot Instance launch group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume is
-     * deleted on instance termination.
+     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is deleted on
+     * instance termination.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device mapping
+     * (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS volume.
+     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     * <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code> for
-     * General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
+     * <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for General
+     * Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
      * <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      * </p>
      * </li>
@@ -1253,7 +1251,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      * </p>
      * </li>
      * <li>
@@ -1263,7 +1261,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     * <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      * </p>
      * </li>
      * <li>
@@ -1317,31 +1315,31 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>spot-instance-request-id</code> - The Spot instance request ID.
+     * <code>spot-instance-request-id</code> - The Spot Instance request ID.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     * <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help you
-     * track your Amazon EC2 Spot instance requests. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
+     * track your Amazon EC2 Spot Instance requests. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
+     * Amazon Elastic Compute Cloud User Guide.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance request.
+     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-message</code> - The message explaining the status of the Spot instance request.
+     * <code>status-message</code> - The message explaining the status of the Spot Instance request.
      * </p>
      * </li>
      * <li>
@@ -1368,7 +1366,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     * <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      * </p>
      * </li>
      * <li>
@@ -1398,7 +1396,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>create-time</code> - The time stamp when the Spot instance request was created.
+     *        <code>create-time</code> - The time stamp when the Spot Instance request was created.
      *        </p>
      *        </li>
      *        <li>
@@ -1418,37 +1416,36 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch-group</code> - The Spot instance launch group.
+     *        <code>launch-group</code> - The Spot Instance launch group.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume
-     *        is deleted on instance termination.
+     *        <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is
+     *        deleted on instance termination.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for
-     *        example, <code>/dev/sdh</code>).
+     *        <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device
+     *        mapping (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS
-     *        volume.
+     *        <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     *        <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code>
-     *        for General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     *        Optimized HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
+     *        <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for
+     *        General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized
+     *        HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      *        </p>
      *        </li>
      *        <li>
@@ -1478,7 +1475,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     *        <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      *        </p>
      *        </li>
      *        <li>
@@ -1488,7 +1485,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     *        <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      *        </p>
      *        </li>
      *        <li>
@@ -1544,32 +1541,32 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spot-instance-request-id</code> - The Spot instance request ID.
+     *        <code>spot-instance-request-id</code> - The Spot Instance request ID.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     *        <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help
-     *        you track your Amazon EC2 Spot instance requests. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the
-     *        Amazon Elastic Compute Cloud User Guide.
+     *        <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
+     *        help you track your Amazon EC2 Spot Instance requests. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
+     *        the Amazon Elastic Compute Cloud User Guide.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance
+     *        <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance
      *        request.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>status-message</code> - The message explaining the status of the Spot instance request.
+     *        <code>status-message</code> - The message explaining the status of the Spot Instance request.
      *        </p>
      *        </li>
      *        <li>
@@ -1597,7 +1594,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     *        <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -1635,7 +1632,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>create-time</code> - The time stamp when the Spot instance request was created.
+     * <code>create-time</code> - The time stamp when the Spot Instance request was created.
      * </p>
      * </li>
      * <li>
@@ -1655,35 +1652,35 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch-group</code> - The Spot instance launch group.
+     * <code>launch-group</code> - The Spot Instance launch group.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume is
-     * deleted on instance termination.
+     * <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is deleted on
+     * instance termination.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device mapping
+     * (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS volume.
+     * <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     * <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code> for
-     * General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
+     * <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for General
+     * Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD,
      * <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      * </p>
      * </li>
@@ -1714,7 +1711,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     * <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      * </p>
      * </li>
      * <li>
@@ -1724,7 +1721,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     * <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      * </p>
      * </li>
      * <li>
@@ -1778,31 +1775,31 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>spot-instance-request-id</code> - The Spot instance request ID.
+     * <code>spot-instance-request-id</code> - The Spot Instance request ID.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     * <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help you
-     * track your Amazon EC2 Spot instance requests. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the Amazon
-     * Elastic Compute Cloud User Guide.
+     * <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
+     * track your Amazon EC2 Spot Instance requests. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
+     * Amazon Elastic Compute Cloud User Guide.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance request.
+     * <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance request.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>status-message</code> - The message explaining the status of the Spot instance request.
+     * <code>status-message</code> - The message explaining the status of the Spot Instance request.
      * </p>
      * </li>
      * <li>
@@ -1829,7 +1826,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     * <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      * </p>
      * </li>
      * <li>
@@ -1854,7 +1851,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>create-time</code> - The time stamp when the Spot instance request was created.
+     *        <code>create-time</code> - The time stamp when the Spot Instance request was created.
      *        </p>
      *        </li>
      *        <li>
@@ -1874,37 +1871,36 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch-group</code> - The Spot instance launch group.
+     *        <code>launch-group</code> - The Spot Instance launch group.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume
-     *        is deleted on instance termination.
+     *        <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the EBS volume is
+     *        deleted on instance termination.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for
-     *        example, <code>/dev/sdh</code>).
+     *        <code>launch.block-device-mapping.device-name</code> - The device name for the volume in the block device
+     *        mapping (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS
-     *        volume.
+     *        <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot for the EBS volume.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.
+     *        <code>launch.block-device-mapping.volume-size</code> - The size of the EBS volume, in GiB.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code>
-     *        for General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput
-     *        Optimized HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
+     *        <code>launch.block-device-mapping.volume-type</code> - The type of EBS volume: <code>gp2</code> for
+     *        General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized
+     *        HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.
      *        </p>
      *        </li>
      *        <li>
@@ -1934,7 +1930,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot instance.
+     *        <code>launch.monitoring-enabled</code> - Whether detailed monitoring is enabled for the Spot Instance.
      *        </p>
      *        </li>
      *        <li>
@@ -1944,7 +1940,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.
+     *        <code>launched-availability-zone</code> - The Availability Zone in which the request is launched.
      *        </p>
      *        </li>
      *        <li>
@@ -2000,32 +1996,32 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spot-instance-request-id</code> - The Spot instance request ID.
+     *        <code>spot-instance-request-id</code> - The Spot Instance request ID.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.
+     *        <code>spot-price</code> - The maximum hourly price for any Spot Instance launched to fulfill the request.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> |
-     *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help
-     *        you track your Amazon EC2 Spot instance requests. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the
-     *        Amazon Elastic Compute Cloud User Guide.
+     *        <code>state</code> - The state of the Spot Instance request (<code>open</code> | <code>active</code> |
+     *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
+     *        help you track your Amazon EC2 Spot Instance requests. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
+     *        the Amazon Elastic Compute Cloud User Guide.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance
+     *        <code>status-code</code> - The short code describing the most recent evaluation of your Spot Instance
      *        request.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>status-message</code> - The message explaining the status of the Spot instance request.
+     *        <code>status-message</code> - The message explaining the status of the Spot Instance request.
      *        </p>
      *        </li>
      *        <li>
@@ -2053,7 +2049,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).
+     *        <code>type</code> - The type of Spot Instance request (<code>one-time</code> | <code>persistent</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -2076,10 +2072,10 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * One or more Spot instance request IDs.
+     * One or more Spot Instance request IDs.
      * </p>
      * 
-     * @return One or more Spot instance request IDs.
+     * @return One or more Spot Instance request IDs.
      */
 
     public java.util.List<String> getSpotInstanceRequestIds() {
@@ -2091,11 +2087,11 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * One or more Spot instance request IDs.
+     * One or more Spot Instance request IDs.
      * </p>
      * 
      * @param spotInstanceRequestIds
-     *        One or more Spot instance request IDs.
+     *        One or more Spot Instance request IDs.
      */
 
     public void setSpotInstanceRequestIds(java.util.Collection<String> spotInstanceRequestIds) {
@@ -2109,7 +2105,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * One or more Spot instance request IDs.
+     * One or more Spot Instance request IDs.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -2118,7 +2114,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </p>
      * 
      * @param spotInstanceRequestIds
-     *        One or more Spot instance request IDs.
+     *        One or more Spot Instance request IDs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2134,11 +2130,11 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
 
     /**
      * <p>
-     * One or more Spot instance request IDs.
+     * One or more Spot Instance request IDs.
      * </p>
      * 
      * @param spotInstanceRequestIds
-     *        One or more Spot instance request IDs.
+     *        One or more Spot Instance request IDs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,6 +49,10 @@ public enum DirectConnectActions implements Action {
     CreateBGPPeer("directconnect:CreateBGPPeer"),
     /** Action for the CreateConnection operation. */
     CreateConnection("directconnect:CreateConnection"),
+    /** Action for the CreateDirectConnectGateway operation. */
+    CreateDirectConnectGateway("directconnect:CreateDirectConnectGateway"),
+    /** Action for the CreateDirectConnectGatewayAssociation operation. */
+    CreateDirectConnectGatewayAssociation("directconnect:CreateDirectConnectGatewayAssociation"),
     /** Action for the CreateInterconnect operation. */
     CreateInterconnect("directconnect:CreateInterconnect"),
     /** Action for the CreateLag operation. */
@@ -61,6 +65,10 @@ public enum DirectConnectActions implements Action {
     DeleteBGPPeer("directconnect:DeleteBGPPeer"),
     /** Action for the DeleteConnection operation. */
     DeleteConnection("directconnect:DeleteConnection"),
+    /** Action for the DeleteDirectConnectGateway operation. */
+    DeleteDirectConnectGateway("directconnect:DeleteDirectConnectGateway"),
+    /** Action for the DeleteDirectConnectGatewayAssociation operation. */
+    DeleteDirectConnectGatewayAssociation("directconnect:DeleteDirectConnectGatewayAssociation"),
     /** Action for the DeleteInterconnect operation. */
     DeleteInterconnect("directconnect:DeleteInterconnect"),
     /** Action for the DeleteLag operation. */
@@ -73,6 +81,12 @@ public enum DirectConnectActions implements Action {
     DescribeConnections("directconnect:DescribeConnections"),
     /** Action for the DescribeConnectionsOnInterconnect operation. */
     DescribeConnectionsOnInterconnect("directconnect:DescribeConnectionsOnInterconnect"),
+    /** Action for the DescribeDirectConnectGatewayAssociations operation. */
+    DescribeDirectConnectGatewayAssociations("directconnect:DescribeDirectConnectGatewayAssociations"),
+    /** Action for the DescribeDirectConnectGatewayAttachments operation. */
+    DescribeDirectConnectGatewayAttachments("directconnect:DescribeDirectConnectGatewayAttachments"),
+    /** Action for the DescribeDirectConnectGateways operation. */
+    DescribeDirectConnectGateways("directconnect:DescribeDirectConnectGateways"),
     /** Action for the DescribeHostedConnections operation. */
     DescribeHostedConnections("directconnect:DescribeHostedConnections"),
     /** Action for the DescribeInterconnectLoa operation. */

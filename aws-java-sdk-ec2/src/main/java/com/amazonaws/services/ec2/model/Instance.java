@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -217,7 +217,7 @@ public class Instance implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<InstanceNetworkInterface> networkInterfaces;
     /**
      * <p>
-     * The root device name (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      */
     private String rootDeviceName;
@@ -1866,11 +1866,11 @@ public class Instance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The root device name (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * 
      * @param rootDeviceName
-     *        The root device name (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).
+     *        The device name of the root device volume (for example, <code>/dev/sda1</code>).
      */
 
     public void setRootDeviceName(String rootDeviceName) {
@@ -1879,10 +1879,10 @@ public class Instance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The root device name (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * 
-     * @return The root device name (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).
+     * @return The device name of the root device volume (for example, <code>/dev/sda1</code>).
      */
 
     public String getRootDeviceName() {
@@ -1891,11 +1891,11 @@ public class Instance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The root device name (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * 
      * @param rootDeviceName
-     *        The root device name (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).
+     *        The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

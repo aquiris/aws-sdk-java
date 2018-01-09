@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2017 Amazon Technologies, Inc.
+ * Copyright 2011-2018 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,8 +64,7 @@ public class MetricAdmin implements MetricAdminMBean {
     }
     @Override
     public String getRegion() {
-        Regions region = AwsSdkMetrics.getRegion();
-        return region == null ? null : region.getName();
+        return AwsSdkMetrics.getRegionName();
     }
     @Override
     public void setRegion(String region) {

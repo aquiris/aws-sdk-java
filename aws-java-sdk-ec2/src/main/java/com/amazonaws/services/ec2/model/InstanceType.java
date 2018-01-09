@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,6 +59,11 @@ public enum InstanceType {
     R416xlarge("r4.16xlarge"),
     X116xlarge("x1.16xlarge"),
     X132xlarge("x1.32xlarge"),
+    X1eXlarge("x1e.xlarge"),
+    X1e2xlarge("x1e.2xlarge"),
+    X1e4xlarge("x1e.4xlarge"),
+    X1e8xlarge("x1e.8xlarge"),
+    X1e16xlarge("x1e.16xlarge"),
     X1e32xlarge("x1e.32xlarge"),
     I2Xlarge("i2.xlarge"),
     I22xlarge("i2.2xlarge"),
@@ -84,6 +89,12 @@ public enum InstanceType {
     C42xlarge("c4.2xlarge"),
     C44xlarge("c4.4xlarge"),
     C48xlarge("c4.8xlarge"),
+    C5Large("c5.large"),
+    C5Xlarge("c5.xlarge"),
+    C52xlarge("c5.2xlarge"),
+    C54xlarge("c5.4xlarge"),
+    C59xlarge("c5.9xlarge"),
+    C518xlarge("c5.18xlarge"),
     Cc14xlarge("cc1.4xlarge"),
     Cc28xlarge("cc2.8xlarge"),
     G22xlarge("g2.2xlarge"),
@@ -95,12 +106,25 @@ public enum InstanceType {
     P2Xlarge("p2.xlarge"),
     P28xlarge("p2.8xlarge"),
     P216xlarge("p2.16xlarge"),
+    P32xlarge("p3.2xlarge"),
+    P38xlarge("p3.8xlarge"),
+    P316xlarge("p3.16xlarge"),
     D2Xlarge("d2.xlarge"),
     D22xlarge("d2.2xlarge"),
     D24xlarge("d2.4xlarge"),
     D28xlarge("d2.8xlarge"),
     F12xlarge("f1.2xlarge"),
-    F116xlarge("f1.16xlarge");
+    F116xlarge("f1.16xlarge"),
+    M5Large("m5.large"),
+    M5Xlarge("m5.xlarge"),
+    M52xlarge("m5.2xlarge"),
+    M54xlarge("m5.4xlarge"),
+    M512xlarge("m5.12xlarge"),
+    M524xlarge("m5.24xlarge"),
+    H12xlarge("h1.2xlarge"),
+    H14xlarge("h1.4xlarge"),
+    H18xlarge("h1.8xlarge"),
+    H116xlarge("h1.16xlarge");
 
     private String value;
 

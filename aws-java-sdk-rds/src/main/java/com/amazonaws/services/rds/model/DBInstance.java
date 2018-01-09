@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,35 +17,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the following actions:
+ * Contains the details of an Amazon RDS DB instance.
  * </p>
- * <ul>
- * <li>
- * <p>
- * <a>CreateDBInstance</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DeleteDBInstance</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>ModifyDBInstance</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>StopDBInstance</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>StartDBInstance</a>
- * </p>
- * </li>
- * </ul>
  * <p>
  * This data type is used as a response element in the <a>DescribeDBInstances</a> action.
  * </p>
@@ -119,7 +92,7 @@ public class DBInstance implements Serializable, Cloneable {
     private Endpoint endpoint;
     /**
      * <p>
-     * Specifies the allocated storage size specified in gigabytes.
+     * Specifies the allocated storage size specified in gibibytes.
      * </p>
      */
     private Integer allocatedStorage;
@@ -283,14 +256,14 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      * <p>
      * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
-     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
-     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     * set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance is private.
      * </p>
      */
     private Boolean publiclyAccessible;
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DBInstanceStatusInfo> statusInfos;
@@ -328,14 +301,14 @@ public class DBInstance implements Serializable, Cloneable {
     private Boolean storageEncrypted;
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB instance.
      * </p>
      */
     private String kmsKeyId;
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
-     * entries whenever the KMS key for the DB instance is accessed.
+     * The AWS Region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the AWS KMS key for the DB instance is accessed.
      * </p>
      */
     private String dbiResourceId;
@@ -372,7 +345,7 @@ public class DBInstance implements Serializable, Cloneable {
     private String enhancedMonitoringResourceArn;
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
      * </p>
      */
     private String monitoringRoleArn;
@@ -401,8 +374,8 @@ public class DBInstance implements Serializable, Cloneable {
     private String timezone;
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
-     * false.
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
+     * otherwise false.
      * </p>
      * <p>
      * IAM database authentication can be enabled for the following database engines
@@ -426,9 +399,18 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      */
     private Boolean iAMDatabaseAuthenticationEnabled;
-
+    /**
+     * <p>
+     * True if Performance Insights is enabled for the DB instance, and otherwise false.
+     * </p>
+     */
     private Boolean performanceInsightsEnabled;
-
+    /**
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     */
     private String performanceInsightsKMSKeyId;
 
     /**
@@ -827,11 +809,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the allocated storage size specified in gigabytes.
+     * Specifies the allocated storage size specified in gibibytes.
      * </p>
      * 
      * @param allocatedStorage
-     *        Specifies the allocated storage size specified in gigabytes.
+     *        Specifies the allocated storage size specified in gibibytes.
      */
 
     public void setAllocatedStorage(Integer allocatedStorage) {
@@ -840,10 +822,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the allocated storage size specified in gigabytes.
+     * Specifies the allocated storage size specified in gibibytes.
      * </p>
      * 
-     * @return Specifies the allocated storage size specified in gigabytes.
+     * @return Specifies the allocated storage size specified in gibibytes.
      */
 
     public Integer getAllocatedStorage() {
@@ -852,11 +834,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies the allocated storage size specified in gigabytes.
+     * Specifies the allocated storage size specified in gibibytes.
      * </p>
      * 
      * @param allocatedStorage
-     *        Specifies the allocated storage size specified in gigabytes.
+     *        Specifies the allocated storage size specified in gibibytes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2021,8 +2003,8 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      * <p>
      * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
-     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
-     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     * set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance is private.
      * </p>
      * 
      * @param publiclyAccessible
@@ -2047,8 +2029,8 @@ public class DBInstance implements Serializable, Cloneable {
      *        </ul>
      *        <p>
      *        If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
-     *        been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as
-     *        part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     *        been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part
+     *        of the request and the PubliclyAccessible value has not been set, the DB instance is private.
      */
 
     public void setPubliclyAccessible(Boolean publiclyAccessible) {
@@ -2079,8 +2061,8 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      * <p>
      * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
-     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
-     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     * set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance is private.
      * </p>
      * 
      * @return Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing
@@ -2104,9 +2086,8 @@ public class DBInstance implements Serializable, Cloneable {
      *         </ul>
      *         <p>
      *         If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
-     *         been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified
-     *         as part of the request and the PubliclyAccessible value has not been set, the DB instance will be
-     *         private.
+     *         been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as
+     *         part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
      */
 
     public Boolean getPubliclyAccessible() {
@@ -2137,8 +2118,8 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      * <p>
      * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
-     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
-     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     * set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance is private.
      * </p>
      * 
      * @param publiclyAccessible
@@ -2163,8 +2144,8 @@ public class DBInstance implements Serializable, Cloneable {
      *        </ul>
      *        <p>
      *        If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
-     *        been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as
-     *        part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     *        been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part
+     *        of the request and the PubliclyAccessible value has not been set, the DB instance is private.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2197,8 +2178,8 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      * <p>
      * If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been
-     * set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the
-     * request and the PubliclyAccessible value has not been set, the DB instance will be private.
+     * set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the
+     * request and the PubliclyAccessible value has not been set, the DB instance is private.
      * </p>
      * 
      * @return Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing
@@ -2222,9 +2203,8 @@ public class DBInstance implements Serializable, Cloneable {
      *         </ul>
      *         <p>
      *         If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not
-     *         been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified
-     *         as part of the request and the PubliclyAccessible value has not been set, the DB instance will be
-     *         private.
+     *         been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as
+     *         part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
      */
 
     public Boolean isPubliclyAccessible() {
@@ -2233,10 +2213,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      * </p>
      * 
-     * @return The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * @return The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      */
 
     public java.util.List<DBInstanceStatusInfo> getStatusInfos() {
@@ -2248,11 +2228,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      * </p>
      * 
      * @param statusInfos
-     *        The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     *        The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      */
 
     public void setStatusInfos(java.util.Collection<DBInstanceStatusInfo> statusInfos) {
@@ -2266,7 +2246,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -2275,7 +2255,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param statusInfos
-     *        The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     *        The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2291,11 +2271,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     * The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      * </p>
      * 
      * @param statusInfos
-     *        The status of a Read Replica. If the instance is not a Read Replica, this will be blank.
+     *        The status of a Read Replica. If the instance is not a Read Replica, this is blank.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2530,11 +2510,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB instance.
      * </p>
      * 
      * @param kmsKeyId
-     *        If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     *        If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB instance.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -2543,10 +2523,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB instance.
      * </p>
      * 
-     * @return If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     * @return If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB instance.
      */
 
     public String getKmsKeyId() {
@@ -2555,11 +2535,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     * If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB instance.
      * </p>
      * 
      * @param kmsKeyId
-     *        If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance.
+     *        If <code>StorageEncrypted</code> is true, the AWS KMS key identifier for the encrypted DB instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2570,13 +2550,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
-     * entries whenever the KMS key for the DB instance is accessed.
+     * The AWS Region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the AWS KMS key for the DB instance is accessed.
      * </p>
      * 
      * @param dbiResourceId
-     *        The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail
-     *        log entries whenever the KMS key for the DB instance is accessed.
+     *        The AWS Region-unique, immutable identifier for the DB instance. This identifier is found in AWS
+     *        CloudTrail log entries whenever the AWS KMS key for the DB instance is accessed.
      */
 
     public void setDbiResourceId(String dbiResourceId) {
@@ -2585,12 +2565,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
-     * entries whenever the KMS key for the DB instance is accessed.
+     * The AWS Region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the AWS KMS key for the DB instance is accessed.
      * </p>
      * 
-     * @return The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail
-     *         log entries whenever the KMS key for the DB instance is accessed.
+     * @return The AWS Region-unique, immutable identifier for the DB instance. This identifier is found in AWS
+     *         CloudTrail log entries whenever the AWS KMS key for the DB instance is accessed.
      */
 
     public String getDbiResourceId() {
@@ -2599,13 +2579,13 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
-     * entries whenever the KMS key for the DB instance is accessed.
+     * The AWS Region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log
+     * entries whenever the AWS KMS key for the DB instance is accessed.
      * </p>
      * 
      * @param dbiResourceId
-     *        The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail
-     *        log entries whenever the KMS key for the DB instance is accessed.
+     *        The AWS Region-unique, immutable identifier for the DB instance. This identifier is found in AWS
+     *        CloudTrail log entries whenever the AWS KMS key for the DB instance is accessed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2870,11 +2850,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
      * </p>
      * 
      * @param monitoringRoleArn
-     *        The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     *        The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
      */
 
     public void setMonitoringRoleArn(String monitoringRoleArn) {
@@ -2883,10 +2863,10 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
      * </p>
      * 
-     * @return The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     * @return The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
      */
 
     public String getMonitoringRoleArn() {
@@ -2895,11 +2875,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     * The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
      * </p>
      * 
      * @param monitoringRoleArn
-     *        The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.
+     *        The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3060,8 +3040,8 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
-     * false.
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
+     * otherwise false.
      * </p>
      * <p>
      * IAM database authentication can be enabled for the following database engines
@@ -3085,7 +3065,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      * 
      * @param iAMDatabaseAuthenticationEnabled
-     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
      *        otherwise false.</p>
      *        <p>
      *        IAM database authentication can be enabled for the following database engines
@@ -3114,8 +3094,8 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
-     * false.
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
+     * otherwise false.
      * </p>
      * <p>
      * IAM database authentication can be enabled for the following database engines
@@ -3138,7 +3118,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </li>
      * </ul>
      * 
-     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
      *         otherwise false.</p>
      *         <p>
      *         IAM database authentication can be enabled for the following database engines
@@ -3167,8 +3147,8 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
-     * false.
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
+     * otherwise false.
      * </p>
      * <p>
      * IAM database authentication can be enabled for the following database engines
@@ -3192,7 +3172,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </ul>
      * 
      * @param iAMDatabaseAuthenticationEnabled
-     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     *        True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
      *        otherwise false.</p>
      *        <p>
      *        IAM database authentication can be enabled for the following database engines
@@ -3223,8 +3203,8 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise
-     * false.
+     * True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
+     * otherwise false.
      * </p>
      * <p>
      * IAM database authentication can be enabled for the following database engines
@@ -3247,7 +3227,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </li>
      * </ul>
      * 
-     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled;
+     * @return True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and
      *         otherwise false.</p>
      *         <p>
      *         IAM database authentication can be enabled for the following database engines
@@ -3275,7 +3255,12 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * True if Performance Insights is enabled for the DB instance, and otherwise false.
+     * </p>
+     * 
      * @param performanceInsightsEnabled
+     *        True if Performance Insights is enabled for the DB instance, and otherwise false.
      */
 
     public void setPerformanceInsightsEnabled(Boolean performanceInsightsEnabled) {
@@ -3283,7 +3268,11 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * True if Performance Insights is enabled for the DB instance, and otherwise false.
+     * </p>
+     * 
+     * @return True if Performance Insights is enabled for the DB instance, and otherwise false.
      */
 
     public Boolean getPerformanceInsightsEnabled() {
@@ -3291,7 +3280,12 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * True if Performance Insights is enabled for the DB instance, and otherwise false.
+     * </p>
+     * 
      * @param performanceInsightsEnabled
+     *        True if Performance Insights is enabled for the DB instance, and otherwise false.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3301,7 +3295,11 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * True if Performance Insights is enabled for the DB instance, and otherwise false.
+     * </p>
+     * 
+     * @return True if Performance Insights is enabled for the DB instance, and otherwise false.
      */
 
     public Boolean isPerformanceInsightsEnabled() {
@@ -3309,7 +3307,14 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     * 
      * @param performanceInsightsKMSKeyId
+     *        The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon
+     *        Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
      */
 
     public void setPerformanceInsightsKMSKeyId(String performanceInsightsKMSKeyId) {
@@ -3317,7 +3322,13 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     * 
+     * @return The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon
+     *         Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
      */
 
     public String getPerformanceInsightsKMSKeyId() {
@@ -3325,7 +3336,14 @@ public class DBInstance implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     * 
      * @param performanceInsightsKMSKeyId
+     *        The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon
+     *        Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

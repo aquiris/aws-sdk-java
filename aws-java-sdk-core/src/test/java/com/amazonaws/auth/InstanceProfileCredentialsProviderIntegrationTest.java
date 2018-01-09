@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights
+ * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -52,6 +52,12 @@ public class InstanceProfileCredentialsProviderIntegrationTest extends LogCaptor
     public void tearDown() throws Exception {
         mockServer.stop();
         Thread.sleep(1000);
+    }
+
+    @Test
+    public void getInstance_ReturnsSameInstance() {
+        assertEquals(InstanceProfileCredentialsProvider.getInstance(),
+                     InstanceProfileCredentialsProvider.getInstance());
     }
 
     /** Tests that we correctly handle the metadata service returning credentials. */

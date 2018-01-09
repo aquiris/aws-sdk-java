@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -109,6 +109,12 @@ public enum Region {
      * in London.
      */
     EU_London("eu-west-2"),
+
+    /**
+     * The EU (Paris) Amazon S3 Region. This region uses Amazon S3 servers located
+     * in Paris.
+     */
+    EU_Paris("eu-west-3"),
 
     /**
      * The EU (Frankfurt) Amazon S3 Region. This region uses Amazon S3 servers
@@ -223,7 +229,17 @@ public enum Region {
      * <code>s3.cn-north-1.amazonaws.com.cn</code>.
      * </p>
      */
-    CN_Beijing("cn-north-1");
+    CN_Beijing("cn-north-1"),
+
+    /**
+     * The China (Ningxia) Region. This region uses Amazon S3 servers
+     * located in Ningxia.
+     * <p>
+     * When using buckets in this region, you must set the client endpoint to
+     * <code>s3.cn-northwest-1.amazonaws.com.cn</code>.
+     * </p>
+     */
+    CN_Northwest_1("cn-northwest-1");
 
    /**
     * Used to extract the S3 regional id from an S3 end point.

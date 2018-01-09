@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
     private java.util.List<String> instanceNames;
     /**
      * <p>
-     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code> (case
+     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-2a</code> (case
      * sensitive). You can get a list of availability zones by using the <a
      * href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a>
      * operation. Be sure to add the <code>include availability zones</code> parameter to your request.
@@ -70,14 +70,15 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A launch script you can create that configures a server with additional user data. For example, you might want to
-     * run <code>apt-get –y update</code>.
+     * run <code>apt-get -y update</code>.
      * </p>
      * <note>
      * <p>
      * Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and
      * CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a
-     * complete list, see the <a
-     * href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.
+     * complete list, see the <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image"
+     * >Dev Guide</a>.
      * </p>
      * </note>
      */
@@ -169,14 +170,14 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code> (case
+     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-2a</code> (case
      * sensitive). You can get a list of availability zones by using the <a
      * href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a>
      * operation. Be sure to add the <code>include availability zones</code> parameter to your request.
      * </p>
      * 
      * @param availabilityZone
-     *        The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code>
+     *        The Availability Zone in which to create your instance. Use the following format: <code>us-east-2a</code>
      *        (case sensitive). You can get a list of availability zones by using the <a
      *        href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a>
      *        operation. Be sure to add the <code>include availability zones</code> parameter to your request.
@@ -188,13 +189,13 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code> (case
+     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-2a</code> (case
      * sensitive). You can get a list of availability zones by using the <a
      * href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a>
      * operation. Be sure to add the <code>include availability zones</code> parameter to your request.
      * </p>
      * 
-     * @return The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code>
+     * @return The Availability Zone in which to create your instance. Use the following format: <code>us-east-2a</code>
      *         (case sensitive). You can get a list of availability zones by using the <a
      *         href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a>
      *         operation. Be sure to add the <code>include availability zones</code> parameter to your request.
@@ -206,14 +207,14 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code> (case
+     * The Availability Zone in which to create your instance. Use the following format: <code>us-east-2a</code> (case
      * sensitive). You can get a list of availability zones by using the <a
      * href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a>
      * operation. Be sure to add the <code>include availability zones</code> parameter to your request.
      * </p>
      * 
      * @param availabilityZone
-     *        The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code>
+     *        The Availability Zone in which to create your instance. Use the following format: <code>us-east-2a</code>
      *        (case sensitive). You can get a list of availability zones by using the <a
      *        href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a>
      *        operation. Be sure to add the <code>include availability zones</code> parameter to your request.
@@ -387,25 +388,27 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A launch script you can create that configures a server with additional user data. For example, you might want to
-     * run <code>apt-get –y update</code>.
+     * run <code>apt-get -y update</code>.
      * </p>
      * <note>
      * <p>
      * Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and
      * CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a
-     * complete list, see the <a
-     * href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.
+     * complete list, see the <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image"
+     * >Dev Guide</a>.
      * </p>
      * </note>
      * 
      * @param userData
      *        A launch script you can create that configures a server with additional user data. For example, you might
-     *        want to run <code>apt-get –y update</code>.</p> <note>
+     *        want to run <code>apt-get -y update</code>.</p> <note>
      *        <p>
      *        Depending on the machine image you choose, the command to get software on your instance varies. Amazon
      *        Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses
-     *        <code>pkg</code>. For a complete list, see the <a
-     *        href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.
+     *        <code>pkg</code>. For a complete list, see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image"
+     *        >Dev Guide</a>.
      *        </p>
      */
 
@@ -416,24 +419,26 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A launch script you can create that configures a server with additional user data. For example, you might want to
-     * run <code>apt-get –y update</code>.
+     * run <code>apt-get -y update</code>.
      * </p>
      * <note>
      * <p>
      * Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and
      * CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a
-     * complete list, see the <a
-     * href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.
+     * complete list, see the <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image"
+     * >Dev Guide</a>.
      * </p>
      * </note>
      * 
      * @return A launch script you can create that configures a server with additional user data. For example, you might
-     *         want to run <code>apt-get –y update</code>.</p> <note>
+     *         want to run <code>apt-get -y update</code>.</p> <note>
      *         <p>
      *         Depending on the machine image you choose, the command to get software on your instance varies. Amazon
      *         Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses
-     *         <code>pkg</code>. For a complete list, see the <a
-     *         href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.
+     *         <code>pkg</code>. For a complete list, see the <a href=
+     *         "https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image"
+     *         >Dev Guide</a>.
      *         </p>
      */
 
@@ -444,25 +449,27 @@ public class CreateInstancesRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A launch script you can create that configures a server with additional user data. For example, you might want to
-     * run <code>apt-get –y update</code>.
+     * run <code>apt-get -y update</code>.
      * </p>
      * <note>
      * <p>
      * Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and
      * CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a
-     * complete list, see the <a
-     * href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.
+     * complete list, see the <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image"
+     * >Dev Guide</a>.
      * </p>
      * </note>
      * 
      * @param userData
      *        A launch script you can create that configures a server with additional user data. For example, you might
-     *        want to run <code>apt-get –y update</code>.</p> <note>
+     *        want to run <code>apt-get -y update</code>.</p> <note>
      *        <p>
      *        Depending on the machine image you choose, the command to get software on your instance varies. Amazon
      *        Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses
-     *        <code>pkg</code>. For a complete list, see the <a
-     *        href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.
+     *        <code>pkg</code>. For a complete list, see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image"
+     *        >Dev Guide</a>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */

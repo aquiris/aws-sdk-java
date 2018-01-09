@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -366,6 +366,37 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<DeleteWebhookResult> deleteWebhookAsync(DeleteWebhookRequest deleteWebhookRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteWebhookRequest, DeleteWebhookResult> asyncHandler);
+
+    /**
+     * <p>
+     * Resets the cache for a project.
+     * </p>
+     * 
+     * @param invalidateProjectCacheRequest
+     * @return A Java Future containing the result of the InvalidateProjectCache operation returned by the service.
+     * @sample AWSCodeBuildAsync.InvalidateProjectCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/InvalidateProjectCache"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<InvalidateProjectCacheResult> invalidateProjectCacheAsync(InvalidateProjectCacheRequest invalidateProjectCacheRequest);
+
+    /**
+     * <p>
+     * Resets the cache for a project.
+     * </p>
+     * 
+     * @param invalidateProjectCacheRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the InvalidateProjectCache operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.InvalidateProjectCache
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/InvalidateProjectCache"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<InvalidateProjectCacheResult> invalidateProjectCacheAsync(InvalidateProjectCacheRequest invalidateProjectCacheRequest,
+            com.amazonaws.handlers.AsyncHandler<InvalidateProjectCacheRequest, InvalidateProjectCacheResult> asyncHandler);
 
     /**
      * <p>

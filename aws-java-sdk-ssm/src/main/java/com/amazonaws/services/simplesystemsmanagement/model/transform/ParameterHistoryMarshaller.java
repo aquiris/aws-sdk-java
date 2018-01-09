@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,8 @@ public class ParameterHistoryMarshaller {
             .marshallLocationName("Value").build();
     private static final MarshallingInfo<String> ALLOWEDPATTERN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AllowedPattern").build();
+    private static final MarshallingInfo<Long> VERSION_BINDING = MarshallingInfo.builder(MarshallingType.LONG).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Version").build();
 
     private static final ParameterHistoryMarshaller instance = new ParameterHistoryMarshaller();
 
@@ -68,6 +70,7 @@ public class ParameterHistoryMarshaller {
             protocolMarshaller.marshall(parameterHistory.getDescription(), DESCRIPTION_BINDING);
             protocolMarshaller.marshall(parameterHistory.getValue(), VALUE_BINDING);
             protocolMarshaller.marshall(parameterHistory.getAllowedPattern(), ALLOWEDPATTERN_BINDING);
+            protocolMarshaller.marshall(parameterHistory.getVersion(), VERSION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

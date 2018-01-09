@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,8 +35,20 @@ public class DomainNameMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("certificateArn").build();
     private static final MarshallingInfo<java.util.Date> CERTIFICATEUPLOADDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("certificateUploadDate").build();
+    private static final MarshallingInfo<String> REGIONALDOMAINNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("regionalDomainName").build();
+    private static final MarshallingInfo<String> REGIONALHOSTEDZONEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("regionalHostedZoneId").build();
+    private static final MarshallingInfo<String> REGIONALCERTIFICATENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("regionalCertificateName").build();
+    private static final MarshallingInfo<String> REGIONALCERTIFICATEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("regionalCertificateArn").build();
     private static final MarshallingInfo<String> DISTRIBUTIONDOMAINNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("distributionDomainName").build();
+    private static final MarshallingInfo<String> DISTRIBUTIONHOSTEDZONEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("distributionHostedZoneId").build();
+    private static final MarshallingInfo<StructuredPojo> ENDPOINTCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("endpointConfiguration").build();
 
     private static final DomainNameMarshaller instance = new DomainNameMarshaller();
 
@@ -58,7 +70,13 @@ public class DomainNameMarshaller {
             protocolMarshaller.marshall(domainName.getCertificateName(), CERTIFICATENAME_BINDING);
             protocolMarshaller.marshall(domainName.getCertificateArn(), CERTIFICATEARN_BINDING);
             protocolMarshaller.marshall(domainName.getCertificateUploadDate(), CERTIFICATEUPLOADDATE_BINDING);
+            protocolMarshaller.marshall(domainName.getRegionalDomainName(), REGIONALDOMAINNAME_BINDING);
+            protocolMarshaller.marshall(domainName.getRegionalHostedZoneId(), REGIONALHOSTEDZONEID_BINDING);
+            protocolMarshaller.marshall(domainName.getRegionalCertificateName(), REGIONALCERTIFICATENAME_BINDING);
+            protocolMarshaller.marshall(domainName.getRegionalCertificateArn(), REGIONALCERTIFICATEARN_BINDING);
             protocolMarshaller.marshall(domainName.getDistributionDomainName(), DISTRIBUTIONDOMAINNAME_BINDING);
+            protocolMarshaller.marshall(domainName.getDistributionHostedZoneId(), DISTRIBUTIONHOSTEDZONEID_BINDING);
+            protocolMarshaller.marshall(domainName.getEndpointConfiguration(), ENDPOINTCONFIGURATION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

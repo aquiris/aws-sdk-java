@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,106 +44,32 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String dBInstanceIdentifier;
     /**
      * <p>
-     * The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the change
-     * is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to <code>true</code>
-     * for this request.
+     * The new amount of storage (in gibibytes) to allocate for the DB instance.
      * </p>
      * <p>
-     * <b>MySQL</b>
+     * For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the current
+     * value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10%
+     * greater than the current value.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>MariaDB</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>PostgreSQL</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>Oracle</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 10-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Cannot be modified.
-     * </p>
-     * <p>
-     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
-     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
-     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
-     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
-     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
-     * and creating a DB snapshot of the instance.
+     * For the valid values for allocated storage for each engine, see <a>CreateDBInstance</a>.
      * </p>
      */
     private Integer allocatedStorage;
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
-     * classes are available in all regions for all DB engines.
+     * The new compute and memory capacity of the DB instance, for example, <code>db.m4.large</code>. Not all DB
+     * instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance
+     * classes, and availability for your engine, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
+     * in the Amazon RDS User Guide.
      * </p>
      * <p>
-     * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
-     * window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
+     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
      * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values:
-     * <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code>
      * </p>
      */
     private String dBInstanceClass;
@@ -215,12 +141,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     * maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      * <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying a DB
      * Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      * <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter and to
-     * determine when the changes will be applied.
+     * determine when the changes are applied.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -229,7 +155,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private Boolean applyImmediately;
     /**
      * <p>
-     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. The password can include any printable ASCII character except "/",
+     * """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -372,7 +299,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Times should be in Universal Time Coordinated (UTC)
+     * Must be in Universal Time Coordinated (UTC)
      * </p>
      * </li>
      * <li>
@@ -451,8 +378,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private Boolean allowMajorVersionUpgrade;
     /**
      * <p>
-     * Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance
-     * window. Changing this parameter does not result in an outage except in the following case and the change is
+     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Changing this parameter does not result in an outage except in the following case and the change is
      * asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that
      * engine version.
@@ -471,38 +398,32 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String licenseModel;
     /**
      * <p>
-     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting does not
-     * result in an outage and the change is applied during the next maintenance window unless the
-     * <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request.
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value. If you are
+     * Changing this setting does not result in an outage and the change is applied during the next maintenance window
+     * unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you are
      * migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot
      * for the change in storage type to take effect.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Setting the IOPS value for the SQL Server database engine is not supported.
-     * </p>
-     * <p>
-     * Type: Integer
      * </p>
      * <p>
      * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
      * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
      * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
      * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
      * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
      * and creating a DB snapshot of the instance.
+     * </p>
+     * <p>
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the
+     * current value. Values that are not at least 10% greater than the existing value are rounded up so that they are
+     * 10% greater than the current value.
+     * </p>
+     * <p>
+     * Default: Uses existing setting
      * </p>
      */
     private Integer iops;
@@ -515,8 +436,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * which new connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
-     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option
-     * group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
+     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      */
     private String optionGroupName;
@@ -557,25 +478,37 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Specifies the storage type to be associated with the DB instance.
      * </p>
      * <p>
+     * If you specify Provisioned IOPS (<code>io1</code>), you must also include a value for the <code>Iops</code>
+     * parameter.
+     * </p>
+     * <p>
+     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
+     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
+     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
+     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
+     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
+     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * and creating a DB snapshot of the instance.
+     * </p>
+     * <p>
      * Valid values: <code>standard | gp2 | io1</code>
      * </p>
      * <p>
-     * If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter.
-     * </p>
-     * <p>
-     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code>
+     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise <code>standard</code>
      * </p>
      */
     private String storageType;
     /**
      * <p>
-     * The ARN from the Key Store with which to associate the instance for TDE encryption.
+     * The ARN from the key store with which to associate the instance for TDE encryption.
      * </p>
      */
     private String tdeCredentialArn;
     /**
      * <p>
-     * The password for the given ARN from the Key Store in order to access the device.
+     * The password for the given ARN from the key store in order to access the device.
      * </p>
      */
     private String tdeCredentialPassword;
@@ -595,7 +528,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String domain;
     /**
      * <p>
-     * True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is
+     * True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The default is
      * false.
      * </p>
      */
@@ -707,8 +640,9 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private Boolean publiclyAccessible;
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example,
-     * <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a
+     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For
+     * example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go
+     * to <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To
      * create an IAM role for Amazon RDS Enhanced Monitoring</a>.
      * </p>
@@ -741,7 +675,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private Integer promotionTier;
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise
+     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
      * false.
      * </p>
      * <p>
@@ -774,9 +708,18 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
-
+    /**
+     * <p>
+     * True to enable Performance Insights for the DB instance, and otherwise false.
+     * </p>
+     */
     private Boolean enablePerformanceInsights;
-
+    /**
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     */
     private String performanceInsightsKMSKeyId;
 
     /**
@@ -905,175 +848,26 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the change
-     * is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to <code>true</code>
-     * for this request.
+     * The new amount of storage (in gibibytes) to allocate for the DB instance.
      * </p>
      * <p>
-     * <b>MySQL</b>
+     * For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the current
+     * value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10%
+     * greater than the current value.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>MariaDB</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>PostgreSQL</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>Oracle</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 10-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Cannot be modified.
-     * </p>
-     * <p>
-     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
-     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
-     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
-     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
-     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
-     * and creating a DB snapshot of the instance.
+     * For the valid values for allocated storage for each engine, see <a>CreateDBInstance</a>.
      * </p>
      * 
      * @param allocatedStorage
-     *        The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the
-     *        change is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to
-     *        <code>true</code> for this request. </p>
+     *        The new amount of storage (in gibibytes) to allocate for the DB instance. </p>
      *        <p>
-     *        <b>MySQL</b>
+     *        For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the
+     *        current value. Values that are not at least 10% greater than the existing value are rounded up so that
+     *        they are 10% greater than the current value.
      *        </p>
      *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 5-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        Type: Integer
-     *        </p>
-     *        <p>
-     *        <b>MariaDB</b>
-     *        </p>
-     *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 5-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        Type: Integer
-     *        </p>
-     *        <p>
-     *        <b>PostgreSQL</b>
-     *        </p>
-     *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 5-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        Type: Integer
-     *        </p>
-     *        <p>
-     *        <b>Oracle</b>
-     *        </p>
-     *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 10-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        <b>SQL Server</b>
-     *        </p>
-     *        <p>
-     *        Cannot be modified.
-     *        </p>
-     *        <p>
-     *        If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
-     *        using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration
-     *        depends on several factors such as database load, storage size, storage type (standard or Provisioned
-     *        IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical
-     *        migration times are under 24 hours, but the process can take up to several days in some cases. During the
-     *        migration, the DB instance will be available for use, but might experience performance degradation. While
-     *        the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS
-     *        operations can take place for the instance, including modifying the instance, rebooting the instance,
-     *        deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
-     *        instance.
+     *        For the valid values for allocated storage for each engine, see <a>CreateDBInstance</a>.
      */
 
     public void setAllocatedStorage(Integer allocatedStorage) {
@@ -1082,174 +876,25 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the change
-     * is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to <code>true</code>
-     * for this request.
+     * The new amount of storage (in gibibytes) to allocate for the DB instance.
      * </p>
      * <p>
-     * <b>MySQL</b>
+     * For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the current
+     * value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10%
+     * greater than the current value.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>MariaDB</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>PostgreSQL</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>Oracle</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 10-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Cannot be modified.
-     * </p>
-     * <p>
-     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
-     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
-     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
-     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
-     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
-     * and creating a DB snapshot of the instance.
+     * For the valid values for allocated storage for each engine, see <a>CreateDBInstance</a>.
      * </p>
      * 
-     * @return The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the
-     *         change is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to
-     *         <code>true</code> for this request. </p>
+     * @return The new amount of storage (in gibibytes) to allocate for the DB instance. </p>
      *         <p>
-     *         <b>MySQL</b>
+     *         For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the
+     *         current value. Values that are not at least 10% greater than the existing value are rounded up so that
+     *         they are 10% greater than the current value.
      *         </p>
      *         <p>
-     *         Default: Uses existing setting
-     *         </p>
-     *         <p>
-     *         Valid Values: 5-6144
-     *         </p>
-     *         <p>
-     *         Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *         least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *         value.
-     *         </p>
-     *         <p>
-     *         Type: Integer
-     *         </p>
-     *         <p>
-     *         <b>MariaDB</b>
-     *         </p>
-     *         <p>
-     *         Default: Uses existing setting
-     *         </p>
-     *         <p>
-     *         Valid Values: 5-6144
-     *         </p>
-     *         <p>
-     *         Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *         least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *         value.
-     *         </p>
-     *         <p>
-     *         Type: Integer
-     *         </p>
-     *         <p>
-     *         <b>PostgreSQL</b>
-     *         </p>
-     *         <p>
-     *         Default: Uses existing setting
-     *         </p>
-     *         <p>
-     *         Valid Values: 5-6144
-     *         </p>
-     *         <p>
-     *         Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *         least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *         value.
-     *         </p>
-     *         <p>
-     *         Type: Integer
-     *         </p>
-     *         <p>
-     *         <b>Oracle</b>
-     *         </p>
-     *         <p>
-     *         Default: Uses existing setting
-     *         </p>
-     *         <p>
-     *         Valid Values: 10-6144
-     *         </p>
-     *         <p>
-     *         Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *         least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *         value.
-     *         </p>
-     *         <p>
-     *         <b>SQL Server</b>
-     *         </p>
-     *         <p>
-     *         Cannot be modified.
-     *         </p>
-     *         <p>
-     *         If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
-     *         using Provisioned IOPS to using standard storage, the process can take time. The duration of the
-     *         migration depends on several factors such as database load, storage size, storage type (standard or
-     *         Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations.
-     *         Typical migration times are under 24 hours, but the process can take up to several days in some cases.
-     *         During the migration, the DB instance will be available for use, but might experience performance
-     *         degradation. While the migration takes place, nightly backups for the instance will be suspended. No
-     *         other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting
-     *         the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot
-     *         of the instance.
+     *         For the valid values for allocated storage for each engine, see <a>CreateDBInstance</a>.
      */
 
     public Integer getAllocatedStorage() {
@@ -1258,175 +903,26 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the change
-     * is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to <code>true</code>
-     * for this request.
+     * The new amount of storage (in gibibytes) to allocate for the DB instance.
      * </p>
      * <p>
-     * <b>MySQL</b>
+     * For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the current
+     * value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10%
+     * greater than the current value.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>MariaDB</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>PostgreSQL</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 5-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * Type: Integer
-     * </p>
-     * <p>
-     * <b>Oracle</b>
-     * </p>
-     * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Valid Values: 10-6144
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Cannot be modified.
-     * </p>
-     * <p>
-     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
-     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
-     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
-     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
-     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
-     * and creating a DB snapshot of the instance.
+     * For the valid values for allocated storage for each engine, see <a>CreateDBInstance</a>.
      * </p>
      * 
      * @param allocatedStorage
-     *        The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the
-     *        change is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to
-     *        <code>true</code> for this request. </p>
+     *        The new amount of storage (in gibibytes) to allocate for the DB instance. </p>
      *        <p>
-     *        <b>MySQL</b>
+     *        For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the
+     *        current value. Values that are not at least 10% greater than the existing value are rounded up so that
+     *        they are 10% greater than the current value.
      *        </p>
      *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 5-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        Type: Integer
-     *        </p>
-     *        <p>
-     *        <b>MariaDB</b>
-     *        </p>
-     *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 5-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        Type: Integer
-     *        </p>
-     *        <p>
-     *        <b>PostgreSQL</b>
-     *        </p>
-     *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 5-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        Type: Integer
-     *        </p>
-     *        <p>
-     *        <b>Oracle</b>
-     *        </p>
-     *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values: 10-6144
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value.
-     *        </p>
-     *        <p>
-     *        <b>SQL Server</b>
-     *        </p>
-     *        <p>
-     *        Cannot be modified.
-     *        </p>
-     *        <p>
-     *        If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
-     *        using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration
-     *        depends on several factors such as database load, storage size, storage type (standard or Provisioned
-     *        IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical
-     *        migration times are under 24 hours, but the process can take up to several days in some cases. During the
-     *        migration, the DB instance will be available for use, but might experience performance degradation. While
-     *        the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS
-     *        operations can take place for the instance, including modifying the instance, rebooting the instance,
-     *        deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
-     *        instance.
+     *        For the valid values for allocated storage for each engine, see <a>CreateDBInstance</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1437,37 +933,33 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
-     * classes are available in all regions for all DB engines.
+     * The new compute and memory capacity of the DB instance, for example, <code>db.m4.large</code>. Not all DB
+     * instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance
+     * classes, and availability for your engine, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
+     * in the Amazon RDS User Guide.
      * </p>
      * <p>
-     * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
-     * window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
+     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
      * Default: Uses existing setting
      * </p>
-     * <p>
-     * Valid Values:
-     * <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code>
-     * </p>
      * 
      * @param dBInstanceClass
-     *        The new compute and memory capacity of the DB instance. To determine the instance classes that are
-     *        available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that
-     *        not all instance classes are available in all regions for all DB engines. </p>
+     *        The new compute and memory capacity of the DB instance, for example, <code>db.m4.large</code>. Not all DB
+     *        instance classes are available in all AWS Regions, or for all database engines. For the full list of DB
+     *        instance classes, and availability for your engine, see <a
+     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance
+     *        Class</a> in the Amazon RDS User Guide. </p>
      *        <p>
-     *        Passing a value for this setting causes an outage during the change and is applied during the next
-     *        maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
+     *        If you modify the DB instance class, an outage occurs during the change. The change is applied during the
+     *        next maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
      *        request.
      *        </p>
      *        <p>
      *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values:
-     *        <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code>
      */
 
     public void setDBInstanceClass(String dBInstanceClass) {
@@ -1476,36 +968,32 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
-     * classes are available in all regions for all DB engines.
+     * The new compute and memory capacity of the DB instance, for example, <code>db.m4.large</code>. Not all DB
+     * instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance
+     * classes, and availability for your engine, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
+     * in the Amazon RDS User Guide.
      * </p>
      * <p>
-     * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
-     * window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
+     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
      * Default: Uses existing setting
      * </p>
-     * <p>
-     * Valid Values:
-     * <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code>
-     * </p>
      * 
-     * @return The new compute and memory capacity of the DB instance. To determine the instance classes that are
-     *         available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that
-     *         not all instance classes are available in all regions for all DB engines. </p>
+     * @return The new compute and memory capacity of the DB instance, for example, <code>db.m4.large</code>. Not all DB
+     *         instance classes are available in all AWS Regions, or for all database engines. For the full list of DB
+     *         instance classes, and availability for your engine, see <a
+     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance
+     *         Class</a> in the Amazon RDS User Guide. </p>
      *         <p>
-     *         Passing a value for this setting causes an outage during the change and is applied during the next
-     *         maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
+     *         If you modify the DB instance class, an outage occurs during the change. The change is applied during the
+     *         next maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
      *         request.
      *         </p>
      *         <p>
      *         Default: Uses existing setting
-     *         </p>
-     *         <p>
-     *         Valid Values:
-     *         <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code>
      */
 
     public String getDBInstanceClass() {
@@ -1514,37 +1002,33 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance. To determine the instance classes that are available for
-     * a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
-     * classes are available in all regions for all DB engines.
+     * The new compute and memory capacity of the DB instance, for example, <code>db.m4.large</code>. Not all DB
+     * instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance
+     * classes, and availability for your engine, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
+     * in the Amazon RDS User Guide.
      * </p>
      * <p>
-     * Passing a value for this setting causes an outage during the change and is applied during the next maintenance
-     * window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
+     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
      * Default: Uses existing setting
      * </p>
-     * <p>
-     * Valid Values:
-     * <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code>
-     * </p>
      * 
      * @param dBInstanceClass
-     *        The new compute and memory capacity of the DB instance. To determine the instance classes that are
-     *        available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that
-     *        not all instance classes are available in all regions for all DB engines. </p>
+     *        The new compute and memory capacity of the DB instance, for example, <code>db.m4.large</code>. Not all DB
+     *        instance classes are available in all AWS Regions, or for all database engines. For the full list of DB
+     *        instance classes, and availability for your engine, see <a
+     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance
+     *        Class</a> in the Amazon RDS User Guide. </p>
      *        <p>
-     *        Passing a value for this setting causes an outage during the change and is applied during the next
-     *        maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
+     *        If you modify the DB instance class, an outage occurs during the change. The change is applied during the
+     *        next maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
      *        request.
      *        </p>
      *        <p>
      *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Valid Values:
-     *        <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2051,12 +1535,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     * maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      * <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying a DB
      * Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      * <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter and to
-     * determine when the changes will be applied.
+     * determine when the changes are applied.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -2068,12 +1552,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        instance. </p>
      *        <p>
      *        If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     *        maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     *        maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      *        <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying
      *        a DB Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      *        <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter
-     *        and to determine when the changes will be applied.
+     *        and to determine when the changes are applied.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -2090,12 +1574,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     * maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      * <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying a DB
      * Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      * <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter and to
-     * determine when the changes will be applied.
+     * determine when the changes are applied.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -2106,12 +1590,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         instance. </p>
      *         <p>
      *         If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     *         maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     *         maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      *         <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying
      *         a DB Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      *         <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter
-     *         and to determine when the changes will be applied.
+     *         and to determine when the changes are applied.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -2128,12 +1612,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     * maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      * <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying a DB
      * Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      * <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter and to
-     * determine when the changes will be applied.
+     * determine when the changes are applied.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -2145,12 +1629,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        instance. </p>
      *        <p>
      *        If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     *        maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     *        maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      *        <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying
      *        a DB Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      *        <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter
-     *        and to determine when the changes will be applied.
+     *        and to determine when the changes are applied.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -2169,12 +1653,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     * maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      * <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying a DB
      * Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      * <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter and to
-     * determine when the changes will be applied.
+     * determine when the changes are applied.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -2185,12 +1669,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         instance. </p>
      *         <p>
      *         If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     *         maintenance window. Some parameter changes can cause an outage and will be applied on the next call to
+     *         maintenance window. Some parameter changes can cause an outage and are applied on the next call to
      *         <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a
      *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying
      *         a DB Instance and Using the Apply Immediately Parameter</a> to see the impact that setting
      *         <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter
-     *         and to determine when the changes will be applied.
+     *         and to determine when the changes are applied.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -2202,7 +1686,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. The password can include any printable ASCII character except "/",
+     * """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -2258,7 +1743,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </note>
      * 
      * @param masterUserPassword
-     *        The new password for the master user. Can be any printable ASCII character except "/", """, or "@".</p>
+     *        The new password for the master user. The password can include any printable ASCII character except "/",
+     *        """, or "@".</p>
      *        <p>
      *        Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
      *        possible. Between the time of the request and the completion of the request, the
@@ -2319,7 +1805,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. The password can include any printable ASCII character except "/",
+     * """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -2374,7 +1861,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * </note>
      * 
-     * @return The new password for the master user. Can be any printable ASCII character except "/", """, or "@".</p>
+     * @return The new password for the master user. The password can include any printable ASCII character except "/",
+     *         """, or "@".</p>
      *         <p>
      *         Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
      *         possible. Between the time of the request and the completion of the request, the
@@ -2435,7 +1923,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new password for the master user. Can be any printable ASCII character except "/", """, or "@".
+     * The new password for the master user. The password can include any printable ASCII character except "/",
+     * """, or "@".
      * </p>
      * <p>
      * Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
@@ -2491,7 +1980,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </note>
      * 
      * @param masterUserPassword
-     *        The new password for the master user. Can be any printable ASCII character except "/", """, or "@".</p>
+     *        The new password for the master user. The password can include any printable ASCII character except "/",
+     *        """, or "@".</p>
      *        <p>
      *        Changing this parameter does not result in an outage and the change is asynchronously applied as soon as
      *        possible. Between the time of the request and the completion of the request, the
@@ -2959,7 +2449,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Times should be in Universal Time Coordinated (UTC)
+     * Must be in Universal Time Coordinated (UTC)
      * </p>
      * </li>
      * <li>
@@ -2996,7 +2486,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Times should be in Universal Time Coordinated (UTC)
+     *        Must be in Universal Time Coordinated (UTC)
      *        </p>
      *        </li>
      *        <li>
@@ -3039,7 +2529,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Times should be in Universal Time Coordinated (UTC)
+     * Must be in Universal Time Coordinated (UTC)
      * </p>
      * </li>
      * <li>
@@ -3075,7 +2565,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         </li>
      *         <li>
      *         <p>
-     *         Times should be in Universal Time Coordinated (UTC)
+     *         Must be in Universal Time Coordinated (UTC)
      *         </p>
      *         </li>
      *         <li>
@@ -3118,7 +2608,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Times should be in Universal Time Coordinated (UTC)
+     * Must be in Universal Time Coordinated (UTC)
      * </p>
      * </li>
      * <li>
@@ -3155,7 +2645,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Times should be in Universal Time Coordinated (UTC)
+     *        Must be in Universal Time Coordinated (UTC)
      *        </p>
      *        </li>
      *        <li>
@@ -3590,18 +3080,18 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance
-     * window. Changing this parameter does not result in an outage except in the following case and the change is
+     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Changing this parameter does not result in an outage except in the following case and the change is
      * asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that
      * engine version.
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        Indicates that minor version upgrades will be applied automatically to the DB instance during the
-     *        maintenance window. Changing this parameter does not result in an outage except in the following case and
-     *        the change is asynchronously applied as soon as possible. An outage will result if this parameter is set
-     *        to <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
+     *        Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     *        window. Changing this parameter does not result in an outage except in the following case and the change
+     *        is asynchronously applied as soon as possible. An outage will result if this parameter is set to
+     *        <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
      *        enabled auto patching for that engine version.
      */
 
@@ -3611,17 +3101,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance
-     * window. Changing this parameter does not result in an outage except in the following case and the change is
+     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Changing this parameter does not result in an outage except in the following case and the change is
      * asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that
      * engine version.
      * </p>
      * 
-     * @return Indicates that minor version upgrades will be applied automatically to the DB instance during the
-     *         maintenance window. Changing this parameter does not result in an outage except in the following case and
-     *         the change is asynchronously applied as soon as possible. An outage will result if this parameter is set
-     *         to <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
+     * @return Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     *         window. Changing this parameter does not result in an outage except in the following case and the change
+     *         is asynchronously applied as soon as possible. An outage will result if this parameter is set to
+     *         <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
      *         enabled auto patching for that engine version.
      */
 
@@ -3631,18 +3121,18 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance
-     * window. Changing this parameter does not result in an outage except in the following case and the change is
+     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Changing this parameter does not result in an outage except in the following case and the change is
      * asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that
      * engine version.
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        Indicates that minor version upgrades will be applied automatically to the DB instance during the
-     *        maintenance window. Changing this parameter does not result in an outage except in the following case and
-     *        the change is asynchronously applied as soon as possible. An outage will result if this parameter is set
-     *        to <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
+     *        Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     *        window. Changing this parameter does not result in an outage except in the following case and the change
+     *        is asynchronously applied as soon as possible. An outage will result if this parameter is set to
+     *        <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
      *        enabled auto patching for that engine version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -3654,17 +3144,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance
-     * window. Changing this parameter does not result in an outage except in the following case and the change is
+     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Changing this parameter does not result in an outage except in the following case and the change is
      * asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that
      * engine version.
      * </p>
      * 
-     * @return Indicates that minor version upgrades will be applied automatically to the DB instance during the
-     *         maintenance window. Changing this parameter does not result in an outage except in the following case and
-     *         the change is asynchronously applied as soon as possible. An outage will result if this parameter is set
-     *         to <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
+     * @return Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     *         window. Changing this parameter does not result in an outage except in the following case and the change
+     *         is asynchronously applied as soon as possible. An outage will result if this parameter is set to
+     *         <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has
      *         enabled auto patching for that engine version.
      */
 
@@ -3735,61 +3225,41 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting does not
-     * result in an outage and the change is applied during the next maintenance window unless the
-     * <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request.
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value. If you are
+     * Changing this setting does not result in an outage and the change is applied during the next maintenance window
+     * unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you are
      * migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot
      * for the change in storage type to take effect.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Setting the IOPS value for the SQL Server database engine is not supported.
-     * </p>
-     * <p>
-     * Type: Integer
      * </p>
      * <p>
      * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
      * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
      * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
      * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
      * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
+     * <p>
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the
+     * current value. Values that are not at least 10% greater than the existing value are rounded up so that they are
+     * 10% greater than the current value.
+     * </p>
+     * <p>
+     * Default: Uses existing setting
+     * </p>
      * 
      * @param iops
-     *        The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting
-     *        does not result in an outage and the change is applied during the next maintenance window unless the
-     *        <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. </p>
+     *        The new Provisioned IOPS (I/O operations per second) value for the RDS instance. </p>
      *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB
-     *        instance will require a reboot for the change in storage type to take effect.
-     *        </p>
-     *        <p>
-     *        <b>SQL Server</b>
-     *        </p>
-     *        <p>
-     *        Setting the IOPS value for the SQL Server database engine is not supported.
-     *        </p>
-     *        <p>
-     *        Type: Integer
+     *        Changing this setting does not result in an outage and the change is applied during the next maintenance
+     *        window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If
+     *        you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will
+     *        require a reboot for the change in storage type to take effect.
      *        </p>
      *        <p>
      *        If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
@@ -3797,11 +3267,18 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        depends on several factors such as database load, storage size, storage type (standard or Provisioned
      *        IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical
      *        migration times are under 24 hours, but the process can take up to several days in some cases. During the
-     *        migration, the DB instance will be available for use, but might experience performance degradation. While
-     *        the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS
-     *        operations can take place for the instance, including modifying the instance, rebooting the instance,
-     *        deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
-     *        instance.
+     *        migration, the DB instance is available for use, but might experience performance degradation. While the
+     *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
+     *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
+     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        </p>
+     *        <p>
+     *        Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater
+     *        than the current value. Values that are not at least 10% greater than the existing value are rounded up so
+     *        that they are 10% greater than the current value.
+     *        </p>
+     *        <p>
+     *        Default: Uses existing setting
      */
 
     public void setIops(Integer iops) {
@@ -3810,60 +3287,40 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting does not
-     * result in an outage and the change is applied during the next maintenance window unless the
-     * <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request.
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value. If you are
+     * Changing this setting does not result in an outage and the change is applied during the next maintenance window
+     * unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you are
      * migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot
      * for the change in storage type to take effect.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Setting the IOPS value for the SQL Server database engine is not supported.
-     * </p>
-     * <p>
-     * Type: Integer
      * </p>
      * <p>
      * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
      * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
      * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
      * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
      * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
+     * <p>
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the
+     * current value. Values that are not at least 10% greater than the existing value are rounded up so that they are
+     * 10% greater than the current value.
+     * </p>
+     * <p>
+     * Default: Uses existing setting
+     * </p>
      * 
-     * @return The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting
-     *         does not result in an outage and the change is applied during the next maintenance window unless the
-     *         <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. </p>
+     * @return The new Provisioned IOPS (I/O operations per second) value for the RDS instance. </p>
      *         <p>
-     *         Default: Uses existing setting
-     *         </p>
-     *         <p>
-     *         Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *         least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *         value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB
-     *         instance will require a reboot for the change in storage type to take effect.
-     *         </p>
-     *         <p>
-     *         <b>SQL Server</b>
-     *         </p>
-     *         <p>
-     *         Setting the IOPS value for the SQL Server database engine is not supported.
-     *         </p>
-     *         <p>
-     *         Type: Integer
+     *         Changing this setting does not result in an outage and the change is applied during the next maintenance
+     *         window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request.
+     *         If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will
+     *         require a reboot for the change in storage type to take effect.
      *         </p>
      *         <p>
      *         If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
@@ -3871,11 +3328,19 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         migration depends on several factors such as database load, storage size, storage type (standard or
      *         Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations.
      *         Typical migration times are under 24 hours, but the process can take up to several days in some cases.
-     *         During the migration, the DB instance will be available for use, but might experience performance
-     *         degradation. While the migration takes place, nightly backups for the instance will be suspended. No
-     *         other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting
-     *         the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot
-     *         of the instance.
+     *         During the migration, the DB instance is available for use, but might experience performance degradation.
+     *         While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS
+     *         operations can take place for the instance, including modifying the instance, rebooting the instance,
+     *         deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
+     *         instance.
+     *         </p>
+     *         <p>
+     *         Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater
+     *         than the current value. Values that are not at least 10% greater than the existing value are rounded up
+     *         so that they are 10% greater than the current value.
+     *         </p>
+     *         <p>
+     *         Default: Uses existing setting
      */
 
     public Integer getIops() {
@@ -3884,61 +3349,41 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting does not
-     * result in an outage and the change is applied during the next maintenance window unless the
-     * <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request.
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS instance.
      * </p>
      * <p>
-     * Default: Uses existing setting
-     * </p>
-     * <p>
-     * Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10%
-     * greater than the existing value are rounded up so that they are 10% greater than the current value. If you are
+     * Changing this setting does not result in an outage and the change is applied during the next maintenance window
+     * unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you are
      * migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot
      * for the change in storage type to take effect.
-     * </p>
-     * <p>
-     * <b>SQL Server</b>
-     * </p>
-     * <p>
-     * Setting the IOPS value for the SQL Server database engine is not supported.
-     * </p>
-     * <p>
-     * Type: Integer
      * </p>
      * <p>
      * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
      * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
      * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
      * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
-     * hours, but the process can take up to several days in some cases. During the migration, the DB instance will be
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
-     * for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
      * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
+     * <p>
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the
+     * current value. Values that are not at least 10% greater than the existing value are rounded up so that they are
+     * 10% greater than the current value.
+     * </p>
+     * <p>
+     * Default: Uses existing setting
+     * </p>
      * 
      * @param iops
-     *        The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting
-     *        does not result in an outage and the change is applied during the next maintenance window unless the
-     *        <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. </p>
+     *        The new Provisioned IOPS (I/O operations per second) value for the RDS instance. </p>
      *        <p>
-     *        Default: Uses existing setting
-     *        </p>
-     *        <p>
-     *        Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at
-     *        least 10% greater than the existing value are rounded up so that they are 10% greater than the current
-     *        value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB
-     *        instance will require a reboot for the change in storage type to take effect.
-     *        </p>
-     *        <p>
-     *        <b>SQL Server</b>
-     *        </p>
-     *        <p>
-     *        Setting the IOPS value for the SQL Server database engine is not supported.
-     *        </p>
-     *        <p>
-     *        Type: Integer
+     *        Changing this setting does not result in an outage and the change is applied during the next maintenance
+     *        window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If
+     *        you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will
+     *        require a reboot for the change in storage type to take effect.
      *        </p>
      *        <p>
      *        If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
@@ -3946,11 +3391,18 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        depends on several factors such as database load, storage size, storage type (standard or Provisioned
      *        IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical
      *        migration times are under 24 hours, but the process can take up to several days in some cases. During the
-     *        migration, the DB instance will be available for use, but might experience performance degradation. While
-     *        the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS
-     *        operations can take place for the instance, including modifying the instance, rebooting the instance,
-     *        deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
-     *        instance.
+     *        migration, the DB instance is available for use, but might experience performance degradation. While the
+     *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
+     *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
+     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        </p>
+     *        <p>
+     *        Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater
+     *        than the current value. Values that are not at least 10% greater than the existing value are rounded up so
+     *        that they are 10% greater than the current value.
+     *        </p>
+     *        <p>
+     *        Default: Uses existing setting
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3968,8 +3420,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * which new connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
-     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option
-     * group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
+     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      * 
      * @param optionGroupName
@@ -3980,8 +3432,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        brief (sub-second) period during which new connections are rejected but existing connections are not
      *        interrupted. </p>
      *        <p>
-     *        Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an
-     *        option group, and that option group cannot be removed from a DB instance once it is associated with a DB
+     *        Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an
+     *        option group, and that option group can't be removed from a DB instance once it is associated with a DB
      *        instance
      */
 
@@ -3998,8 +3450,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * which new connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
-     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option
-     * group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
+     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      * 
      * @return Indicates that the DB instance should be associated with the specified option group. Changing this
@@ -4009,8 +3461,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         cause a brief (sub-second) period during which new connections are rejected but existing connections are
      *         not interrupted. </p>
      *         <p>
-     *         Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an
-     *         option group, and that option group cannot be removed from a DB instance once it is associated with a DB
+     *         Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an
+     *         option group, and that option group can't be removed from a DB instance once it is associated with a DB
      *         instance
      */
 
@@ -4027,8 +3479,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * which new connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
-     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option
-     * group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+     * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
+     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      * 
      * @param optionGroupName
@@ -4039,8 +3491,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        brief (sub-second) period during which new connections are rejected but existing connections are not
      *        interrupted. </p>
      *        <p>
-     *        Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an
-     *        option group, and that option group cannot be removed from a DB instance once it is associated with a DB
+     *        Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an
+     *        option group, and that option group can't be removed from a DB instance once it is associated with a DB
      *        instance
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -4248,25 +3700,49 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Specifies the storage type to be associated with the DB instance.
      * </p>
      * <p>
+     * If you specify Provisioned IOPS (<code>io1</code>), you must also include a value for the <code>Iops</code>
+     * parameter.
+     * </p>
+     * <p>
+     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
+     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
+     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
+     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
+     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
+     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * and creating a DB snapshot of the instance.
+     * </p>
+     * <p>
      * Valid values: <code>standard | gp2 | io1</code>
      * </p>
      * <p>
-     * If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter.
-     * </p>
-     * <p>
-     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code>
+     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise <code>standard</code>
      * </p>
      * 
      * @param storageType
-     *        Specifies the storage type to be associated with the DB instance.</p>
+     *        Specifies the storage type to be associated with the DB instance. </p>
+     *        <p>
+     *        If you specify Provisioned IOPS (<code>io1</code>), you must also include a value for the
+     *        <code>Iops</code> parameter.
+     *        </p>
+     *        <p>
+     *        If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
+     *        using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration
+     *        depends on several factors such as database load, storage size, storage type (standard or Provisioned
+     *        IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical
+     *        migration times are under 24 hours, but the process can take up to several days in some cases. During the
+     *        migration, the DB instance is available for use, but might experience performance degradation. While the
+     *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
+     *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
+     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        </p>
      *        <p>
      *        Valid values: <code>standard | gp2 | io1</code>
      *        </p>
      *        <p>
-     *        If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter.
-     *        </p>
-     *        <p>
-     *        Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code>
+     *        Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise <code>standard</code>
      */
 
     public void setStorageType(String storageType) {
@@ -4278,24 +3754,49 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Specifies the storage type to be associated with the DB instance.
      * </p>
      * <p>
+     * If you specify Provisioned IOPS (<code>io1</code>), you must also include a value for the <code>Iops</code>
+     * parameter.
+     * </p>
+     * <p>
+     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
+     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
+     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
+     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
+     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
+     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * and creating a DB snapshot of the instance.
+     * </p>
+     * <p>
      * Valid values: <code>standard | gp2 | io1</code>
      * </p>
      * <p>
-     * If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter.
-     * </p>
-     * <p>
-     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code>
+     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise <code>standard</code>
      * </p>
      * 
-     * @return Specifies the storage type to be associated with the DB instance.</p>
+     * @return Specifies the storage type to be associated with the DB instance. </p>
+     *         <p>
+     *         If you specify Provisioned IOPS (<code>io1</code>), you must also include a value for the
+     *         <code>Iops</code> parameter.
+     *         </p>
+     *         <p>
+     *         If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
+     *         using Provisioned IOPS to using standard storage, the process can take time. The duration of the
+     *         migration depends on several factors such as database load, storage size, storage type (standard or
+     *         Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations.
+     *         Typical migration times are under 24 hours, but the process can take up to several days in some cases.
+     *         During the migration, the DB instance is available for use, but might experience performance degradation.
+     *         While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS
+     *         operations can take place for the instance, including modifying the instance, rebooting the instance,
+     *         deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
+     *         instance.
+     *         </p>
      *         <p>
      *         Valid values: <code>standard | gp2 | io1</code>
      *         </p>
      *         <p>
-     *         If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter.
-     *         </p>
-     *         <p>
-     *         Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise
+     *         Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise
      *         <code>standard</code>
      */
 
@@ -4308,25 +3809,49 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Specifies the storage type to be associated with the DB instance.
      * </p>
      * <p>
+     * If you specify Provisioned IOPS (<code>io1</code>), you must also include a value for the <code>Iops</code>
+     * parameter.
+     * </p>
+     * <p>
+     * If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using
+     * Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on
+     * several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS
+     * provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24
+     * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
+     * available for use, but might experience performance degradation. While the migration takes place, nightly backups
+     * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
+     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * and creating a DB snapshot of the instance.
+     * </p>
+     * <p>
      * Valid values: <code>standard | gp2 | io1</code>
      * </p>
      * <p>
-     * If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter.
-     * </p>
-     * <p>
-     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code>
+     * Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise <code>standard</code>
      * </p>
      * 
      * @param storageType
-     *        Specifies the storage type to be associated with the DB instance.</p>
+     *        Specifies the storage type to be associated with the DB instance. </p>
+     *        <p>
+     *        If you specify Provisioned IOPS (<code>io1</code>), you must also include a value for the
+     *        <code>Iops</code> parameter.
+     *        </p>
+     *        <p>
+     *        If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from
+     *        using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration
+     *        depends on several factors such as database load, storage size, storage type (standard or Provisioned
+     *        IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical
+     *        migration times are under 24 hours, but the process can take up to several days in some cases. During the
+     *        migration, the DB instance is available for use, but might experience performance degradation. While the
+     *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
+     *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
+     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        </p>
      *        <p>
      *        Valid values: <code>standard | gp2 | io1</code>
      *        </p>
      *        <p>
-     *        If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter.
-     *        </p>
-     *        <p>
-     *        Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code>
+     *        Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise <code>standard</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -4337,11 +3862,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The ARN from the Key Store with which to associate the instance for TDE encryption.
+     * The ARN from the key store with which to associate the instance for TDE encryption.
      * </p>
      * 
      * @param tdeCredentialArn
-     *        The ARN from the Key Store with which to associate the instance for TDE encryption.
+     *        The ARN from the key store with which to associate the instance for TDE encryption.
      */
 
     public void setTdeCredentialArn(String tdeCredentialArn) {
@@ -4350,10 +3875,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The ARN from the Key Store with which to associate the instance for TDE encryption.
+     * The ARN from the key store with which to associate the instance for TDE encryption.
      * </p>
      * 
-     * @return The ARN from the Key Store with which to associate the instance for TDE encryption.
+     * @return The ARN from the key store with which to associate the instance for TDE encryption.
      */
 
     public String getTdeCredentialArn() {
@@ -4362,11 +3887,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The ARN from the Key Store with which to associate the instance for TDE encryption.
+     * The ARN from the key store with which to associate the instance for TDE encryption.
      * </p>
      * 
      * @param tdeCredentialArn
-     *        The ARN from the Key Store with which to associate the instance for TDE encryption.
+     *        The ARN from the key store with which to associate the instance for TDE encryption.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -4377,11 +3902,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The password for the given ARN from the Key Store in order to access the device.
+     * The password for the given ARN from the key store in order to access the device.
      * </p>
      * 
      * @param tdeCredentialPassword
-     *        The password for the given ARN from the Key Store in order to access the device.
+     *        The password for the given ARN from the key store in order to access the device.
      */
 
     public void setTdeCredentialPassword(String tdeCredentialPassword) {
@@ -4390,10 +3915,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The password for the given ARN from the Key Store in order to access the device.
+     * The password for the given ARN from the key store in order to access the device.
      * </p>
      * 
-     * @return The password for the given ARN from the Key Store in order to access the device.
+     * @return The password for the given ARN from the key store in order to access the device.
      */
 
     public String getTdeCredentialPassword() {
@@ -4402,11 +3927,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The password for the given ARN from the Key Store in order to access the device.
+     * The password for the given ARN from the key store in order to access the device.
      * </p>
      * 
      * @param tdeCredentialPassword
-     *        The password for the given ARN from the Key Store in order to access the device.
+     *        The password for the given ARN from the key store in order to access the device.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -4509,13 +4034,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is
+     * True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The default is
      * false.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default
-     *        is false.
+     *        True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The
+     *        default is false.
      */
 
     public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
@@ -4524,12 +4049,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is
+     * True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The default is
      * false.
      * </p>
      * 
-     * @return True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default
-     *         is false.
+     * @return True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The
+     *         default is false.
      */
 
     public Boolean getCopyTagsToSnapshot() {
@@ -4538,13 +4063,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is
+     * True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The default is
      * false.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default
-     *        is false.
+     *        True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The
+     *        default is false.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -4555,12 +4080,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is
+     * True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The default is
      * false.
      * </p>
      * 
-     * @return True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default
-     *         is false.
+     * @return True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The
+     *         default is false.
      */
 
     public Boolean isCopyTagsToSnapshot() {
@@ -5242,8 +4767,9 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example,
-     * <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a
+     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For
+     * example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go
+     * to <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To
      * create an IAM role for Amazon RDS Enhanced Monitoring</a>.
      * </p>
@@ -5253,8 +4779,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param monitoringRoleArn
-     *        The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For
-     *        example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring
+     *        The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs.
+     *        For example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring
      *        role, go to <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To
      *        create an IAM role for Amazon RDS Enhanced Monitoring</a>.</p>
@@ -5269,8 +4795,9 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example,
-     * <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a
+     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For
+     * example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go
+     * to <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To
      * create an IAM role for Amazon RDS Enhanced Monitoring</a>.
      * </p>
@@ -5279,9 +4806,9 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <code>MonitoringRoleArn</code> value.
      * </p>
      * 
-     * @return The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For
-     *         example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring
-     *         role, go to <a href=
+     * @return The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs.
+     *         For example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a
+     *         monitoring role, go to <a href=
      *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole"
      *         >To create an IAM role for Amazon RDS Enhanced Monitoring</a>.</p>
      *         <p>
@@ -5295,8 +4822,9 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example,
-     * <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a
+     * The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For
+     * example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go
+     * to <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To
      * create an IAM role for Amazon RDS Enhanced Monitoring</a>.
      * </p>
@@ -5306,8 +4834,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param monitoringRoleArn
-     *        The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For
-     *        example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring
+     *        The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs.
+     *        For example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring
      *        role, go to <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To
      *        create an IAM role for Amazon RDS Enhanced Monitoring</a>.</p>
@@ -5455,7 +4983,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise
+     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
      * false.
      * </p>
      * <p>
@@ -5488,7 +5016,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts;
+     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
      *        otherwise false.</p>
      *        <p>
      *        You can enable IAM database authentication for the following database engines
@@ -5525,7 +5053,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise
+     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
      * false.
      * </p>
      * <p>
@@ -5557,7 +5085,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>false</code>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts;
+     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
      *         otherwise false.</p>
      *         <p>
      *         You can enable IAM database authentication for the following database engines
@@ -5594,7 +5122,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise
+     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
      * false.
      * </p>
      * <p>
@@ -5627,7 +5155,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts;
+     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
      *        otherwise false.</p>
      *        <p>
      *        You can enable IAM database authentication for the following database engines
@@ -5666,7 +5194,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise
+     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
      * false.
      * </p>
      * <p>
@@ -5698,7 +5226,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>false</code>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts;
+     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
      *         otherwise false.</p>
      *         <p>
      *         You can enable IAM database authentication for the following database engines
@@ -5734,7 +5262,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
+     * <p>
+     * True to enable Performance Insights for the DB instance, and otherwise false.
+     * </p>
+     * 
      * @param enablePerformanceInsights
+     *        True to enable Performance Insights for the DB instance, and otherwise false.
      */
 
     public void setEnablePerformanceInsights(Boolean enablePerformanceInsights) {
@@ -5742,7 +5275,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * @return
+     * <p>
+     * True to enable Performance Insights for the DB instance, and otherwise false.
+     * </p>
+     * 
+     * @return True to enable Performance Insights for the DB instance, and otherwise false.
      */
 
     public Boolean getEnablePerformanceInsights() {
@@ -5750,7 +5287,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
+     * <p>
+     * True to enable Performance Insights for the DB instance, and otherwise false.
+     * </p>
+     * 
      * @param enablePerformanceInsights
+     *        True to enable Performance Insights for the DB instance, and otherwise false.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -5760,7 +5302,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * @return
+     * <p>
+     * True to enable Performance Insights for the DB instance, and otherwise false.
+     * </p>
+     * 
+     * @return True to enable Performance Insights for the DB instance, and otherwise false.
      */
 
     public Boolean isEnablePerformanceInsights() {
@@ -5768,7 +5314,14 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     * 
      * @param performanceInsightsKMSKeyId
+     *        The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon
+     *        Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
      */
 
     public void setPerformanceInsightsKMSKeyId(String performanceInsightsKMSKeyId) {
@@ -5776,7 +5329,13 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * @return
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     * 
+     * @return The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon
+     *         Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
      */
 
     public String getPerformanceInsightsKMSKeyId() {
@@ -5784,7 +5343,14 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
+     * <p>
+     * The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource
+     * Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+     * </p>
+     * 
      * @param performanceInsightsKMSKeyId
+     *        The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon
+     *        Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

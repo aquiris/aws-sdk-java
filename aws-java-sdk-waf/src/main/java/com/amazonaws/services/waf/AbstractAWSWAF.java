@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,6 +73,11 @@ public class AbstractAWSWAF implements AWSWAF {
     }
 
     @Override
+    public CreateRuleGroupResult createRuleGroup(CreateRuleGroupRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateSizeConstraintSetResult createSizeConstraintSet(CreateSizeConstraintSetRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -124,6 +129,11 @@ public class AbstractAWSWAF implements AWSWAF {
 
     @Override
     public DeleteRuleResult deleteRule(DeleteRuleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteRuleGroupResult deleteRuleGroup(DeleteRuleGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -198,6 +208,11 @@ public class AbstractAWSWAF implements AWSWAF {
     }
 
     @Override
+    public GetRuleGroupResult getRuleGroup(GetRuleGroupRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetSampledRequestsResult getSampledRequests(GetSampledRequestsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -219,6 +234,11 @@ public class AbstractAWSWAF implements AWSWAF {
 
     @Override
     public GetXssMatchSetResult getXssMatchSet(GetXssMatchSetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListActivatedRulesInRuleGroupResult listActivatedRulesInRuleGroup(ListActivatedRulesInRuleGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -253,6 +273,11 @@ public class AbstractAWSWAF implements AWSWAF {
     }
 
     @Override
+    public ListRuleGroupsResult listRuleGroups(ListRuleGroupsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListRulesResult listRules(ListRulesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -264,6 +289,11 @@ public class AbstractAWSWAF implements AWSWAF {
 
     @Override
     public ListSqlInjectionMatchSetsResult listSqlInjectionMatchSets(ListSqlInjectionMatchSetsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListSubscribedRuleGroupsResult listSubscribedRuleGroups(ListSubscribedRuleGroupsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -309,6 +339,11 @@ public class AbstractAWSWAF implements AWSWAF {
 
     @Override
     public UpdateRuleResult updateRule(UpdateRuleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateRuleGroupResult updateRuleGroup(UpdateRuleGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

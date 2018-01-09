@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,17 +48,17 @@ import com.amazonaws.services.simplesystemsmanagement.model.transform.*;
  * Client for accessing Amazon SSM. All service calls made using this client are blocking, and will not return until the
  * service call completes.
  * <p>
- * <fullname>Amazon EC2 Systems Manager</fullname>
+ * <fullname>AWS Systems Manager</fullname>
  * <p>
- * Amazon EC2 Systems Manager is a collection of capabilities that helps you automate management tasks such as
- * collecting system inventory, applying operating system (OS) patches, automating the creation of Amazon Machine Images
- * (AMIs), and configuring operating systems (OSs) and applications at scale. Systems Manager lets you remotely and
- * securely manage the configuration of your managed instances. A <i>managed instance</i> is any Amazon EC2 instance or
+ * AWS Systems Manager is a collection of capabilities that helps you automate management tasks such as collecting
+ * system inventory, applying operating system (OS) patches, automating the creation of Amazon Machine Images (AMIs),
+ * and configuring operating systems (OSs) and applications at scale. Systems Manager lets you remotely and securely
+ * manage the configuration of your managed instances. A <i>managed instance</i> is any Amazon EC2 instance or
  * on-premises machine in your hybrid environment that has been configured for Systems Manager.
  * </p>
  * <p>
  * This reference is intended to be used with the <a
- * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/">Amazon EC2 Systems Manager User Guide</a>.
+ * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/">AWS Systems Manager User Guide</a>.
  * </p>
  * <p>
  * To get started, verify prerequisites and configure managed instances. For more information, see <a
@@ -86,7 +86,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
-    private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
+    private static final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
                     .withSupportsCbor(false)
@@ -97,6 +97,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidParameters").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidParametersException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ParameterMaxVersionLimitExceeded").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.ParameterMaxVersionLimitExceededException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidKeyId").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidKeyIdException.class))
@@ -142,6 +145,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidResourceId").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidResourceIdException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ParameterVersionNotFound").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.ParameterVersionNotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.ResourceInUseException.class))
@@ -193,6 +199,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidTarget").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidTargetException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("AutomationStepNotFoundException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.AutomationStepNotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidFilterValue").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidFilterValueException.class))
@@ -325,6 +334,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidTypeNameException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidTypeNameException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidAutomationStatusUpdateException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.InvalidAutomationStatusUpdateException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("DoesNotExistException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.DoesNotExistException.class))
@@ -541,7 +553,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * Key=Owner and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.
      * </p>
      * <p>
-     * Each resource can have a maximum of 10 tags.
+     * Each resource can have a maximum of 50 tags.
      * </p>
      * <p>
      * We recommend that you devise a set of tag keys that meets your needs for each resource type. Using a consistent
@@ -996,8 +1008,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         Error returned when an idempotent operation is retried and the parameters don't match the original call
      *         to the API with the same idempotency token.
      * @throws ResourceLimitExceededException
-     *         Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance
-     *         Windows have been created).
+     *         Error returned when the caller has exceeded the default resource limits. For example, too many
+     *         Maintenance Windows or Patch baselines have been created.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.CreateMaintenanceWindow
@@ -1047,6 +1063,13 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * Creates a patch baseline.
      * </p>
+     * <note>
+     * <p>
+     * For information about valid key and value pairs in <code>PatchFilters</code> for each supported operating system
+     * type, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.
+     * </p>
+     * </note>
      * 
      * @param createPatchBaselineRequest
      * @return Result of the CreatePatchBaseline operation returned by the service.
@@ -1054,8 +1077,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         Error returned when an idempotent operation is retried and the parameters don't match the original call
      *         to the API with the same idempotency token.
      * @throws ResourceLimitExceededException
-     *         Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance
-     *         Windows have been created).
+     *         Error returned when the caller has exceeded the default resource limits. For example, too many
+     *         Maintenance Windows or Patch baselines have been created.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.CreatePatchBaseline
@@ -1103,8 +1130,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * Creates a resource data sync configuration to a single bucket in Amazon S3. This is an asynchronous operation
      * that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the
-     * Amazon S3 bucket. To check the status of the sync, use the <a
-     * href="API_ListResourceDataSync.html">ListResourceDataSync</a> operation.
+     * Amazon S3 bucket. To check the status of the sync, use the <a>ListResourceDataSync</a>.
      * </p>
      * <p>
      * By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to
@@ -1184,6 +1210,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         ActivationCode do not match.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
      * @sample AWSSimpleSystemsManagement.DeleteActivation
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteActivation" target="_top">AWS API
      *      Documentation</a>
@@ -1756,7 +1784,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param deregisterTargetFromMaintenanceWindowRequest
      * @return Result of the DeregisterTargetFromMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @throws TargetInUseException
@@ -1814,7 +1847,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param deregisterTaskFromMaintenanceWindowRequest
      * @return Result of the DeregisterTaskFromMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.DeregisterTaskFromMaintenanceWindow
@@ -1918,7 +1956,10 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Describes the associations for the specified Systems Manager document or instance.
+     * Describes the association for the specified target or instance. If you created the association by using the
+     * <code>Targets</code> parameter, then you must retrieve the association by using the association ID. If you
+     * created the association by specifying an instance ID and a Systems Manager document, then you retrieve the
+     * association by specifying the document name and the instance ID.
      * </p>
      * 
      * @param describeAssociationRequest
@@ -1997,6 +2038,10 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * 
      * @param describeAutomationExecutionsRequest
      * @return Result of the DescribeAutomationExecutions operation returned by the service.
+     * @throws InvalidFilterKeyException
+     *         The specified key is not valid.
+     * @throws InvalidFilterValueException
+     *         The filter value is not valid. Verify the value and try again.
      * @throws InvalidNextTokenException
      *         The specified token is not valid.
      * @throws InternalServerErrorException
@@ -2034,6 +2079,67 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
             HttpResponseHandler<AmazonWebServiceResponse<DescribeAutomationExecutionsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DescribeAutomationExecutionsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Information about all active and terminated step executions in an Automation workflow.
+     * </p>
+     * 
+     * @param describeAutomationStepExecutionsRequest
+     * @return Result of the DescribeAutomationStepExecutions operation returned by the service.
+     * @throws AutomationExecutionNotFoundException
+     *         There is no automation execution information for the requested automation execution ID.
+     * @throws InvalidNextTokenException
+     *         The specified token is not valid.
+     * @throws InvalidFilterKeyException
+     *         The specified key is not valid.
+     * @throws InvalidFilterValueException
+     *         The filter value is not valid. Verify the value and try again.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.DescribeAutomationStepExecutions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAutomationStepExecutions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeAutomationStepExecutionsResult describeAutomationStepExecutions(DescribeAutomationStepExecutionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAutomationStepExecutions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAutomationStepExecutionsResult executeDescribeAutomationStepExecutions(
+            DescribeAutomationStepExecutionsRequest describeAutomationStepExecutionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeAutomationStepExecutionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeAutomationStepExecutionsRequest> request = null;
+        Response<DescribeAutomationStepExecutionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeAutomationStepExecutionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeAutomationStepExecutionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeAutomationStepExecutionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeAutomationStepExecutionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2290,7 +2396,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @throws InvalidResourceIdException
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws UnsupportedOperatingSystemException
      *         The operating systems you specified is not supported, or the operation is not supported for the operating
      *         system. Valid operating systems include: Windows, AmazonLinux, RedhatEnterpriseLinux, and Ubuntu.
@@ -2682,7 +2793,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param describeMaintenanceWindowExecutionTaskInvocationsRequest
      * @return Result of the DescribeMaintenanceWindowExecutionTaskInvocations operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.DescribeMaintenanceWindowExecutionTaskInvocations
@@ -2739,7 +2855,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param describeMaintenanceWindowExecutionTasksRequest
      * @return Result of the DescribeMaintenanceWindowExecutionTasks operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.DescribeMaintenanceWindowExecutionTasks
@@ -2848,7 +2969,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param describeMaintenanceWindowTargetsRequest
      * @return Result of the DescribeMaintenanceWindowTargets operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.DescribeMaintenanceWindowTargets
@@ -2903,7 +3029,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param describeMaintenanceWindowTasksRequest
      * @return Result of the DescribeMaintenanceWindowTasks operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.DescribeMaintenanceWindowTasks
@@ -3632,7 +3763,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param getMaintenanceWindowRequest
      * @return Result of the GetMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.GetMaintenanceWindow
@@ -3684,7 +3820,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param getMaintenanceWindowExecutionRequest
      * @return Result of the GetMaintenanceWindowExecution operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.GetMaintenanceWindowExecution
@@ -3738,7 +3879,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param getMaintenanceWindowExecutionTaskRequest
      * @return Result of the GetMaintenanceWindowExecutionTask operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.GetMaintenanceWindowExecutionTask
@@ -3794,7 +3940,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param getMaintenanceWindowExecutionTaskInvocationRequest
      * @return Result of the GetMaintenanceWindowExecutionTaskInvocation operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.GetMaintenanceWindowExecutionTaskInvocation
@@ -3850,7 +4001,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param getMaintenanceWindowTaskRequest
      * @return Result of the GetMaintenanceWindowTask operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.GetMaintenanceWindowTask
@@ -3909,6 +4065,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         The query key ID is not valid.
      * @throws ParameterNotFoundException
      *         The parameter could not be found. Verify the name and try again.
+     * @throws ParameterVersionNotFoundException
+     *         The specified parameter version was not found. Verify the parameter name and version, and try again.
      * @sample AWSSimpleSystemsManagement.GetParameter
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetParameter" target="_top">AWS API
      *      Documentation</a>
@@ -4071,6 +4229,11 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * results, it stops the operation and returns the matching values up to that point and a <code>NextToken</code>.
      * You can specify the <code>NextToken</code> in a subsequent call to get the next set of results.
      * </p>
+     * <note>
+     * <p>
+     * This API action doesn't support filtering by tags.
+     * </p>
+     * </note>
      * 
      * @param getParametersByPathRequest
      * @return Result of the GetParametersByPath operation returned by the service.
@@ -4136,7 +4299,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param getPatchBaselineRequest
      * @return Result of the GetPatchBaseline operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InvalidResourceIdException
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws InternalServerErrorException
@@ -5035,6 +5203,88 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * custom compliance details with a resource. This call overwrites existing compliance information on the resource,
      * so you must provide a full list of compliance items each time that you send the request.
      * </p>
+     * <p>
+     * ComplianceType can be one of the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * ExecutionId: The execution ID when the patch, association, or custom compliance item was applied.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ExecutionType: Specify patch, association, or Custom:<code>string</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ExecutionTime. The time the patch, association, or custom compliance item was applied to the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Id: The patch, association, or custom compliance ID.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Title: A title.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Status: The status of the compliance item. For example, <code>approved</code> for patches, or <code>Failed</code>
+     * for associations.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Severity: A patch severity. For example, <code>critical</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DocumentName: A SSM document name. For example, AWS-RunPatchBaseline.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DocumentVersion: An SSM document version number. For example, 4.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Classification: A patch classification. For example, <code>security updates</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PatchBaselineId: A patch baseline ID.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PatchSeverity: A patch severity. For example, <code>Critical</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PatchState: A patch state. For example, <code>InstancesWithFailedPatches</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PatchGroup: The name of a patch group.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * InstalledTime: The time the association, patch, or custom compliance item was applied to the resource. Specify
+     * the time by using the following format: yyyy-MM-dd'T'HH:mm:ss'Z'
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param putComplianceItemsRequest
      * @return Result of the PutComplianceItems operation returned by the service.
@@ -5217,6 +5467,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         a parameter from a String type to a SecureString type. You must create a new, unique parameter.
      * @throws InvalidAllowedPatternException
      *         The request does not meet the regular expression requirement.
+     * @throws ParameterMaxVersionLimitExceededException
+     *         The parameter exceeded the maximum number of allowed versions.
      * @throws ParameterPatternMismatchException
      *         The parameter name is not valid.
      * @throws UnsupportedParameterTypeException
@@ -5272,7 +5524,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @throws InvalidResourceIdException
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.RegisterDefaultPatchBaseline
@@ -5329,12 +5586,22 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         Error returned if an attempt is made to register a patch group with a patch baseline that is already
      *         registered with a different patch baseline.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InvalidResourceIdException
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws ResourceLimitExceededException
-     *         Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance
-     *         Windows have been created).
+     *         Error returned when the caller has exceeded the default resource limits. For example, too many
+     *         Maintenance Windows or Patch baselines have been created.
+     *         </p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.RegisterPatchBaselineForPatchGroup
@@ -5392,10 +5659,20 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         Error returned when an idempotent operation is retried and the parameters don't match the original call
      *         to the API with the same idempotency token.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws ResourceLimitExceededException
-     *         Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance
-     *         Windows have been created).
+     *         Error returned when the caller has exceeded the default resource limits. For example, too many
+     *         Maintenance Windows or Patch baselines have been created.
+     *         </p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.RegisterTargetWithMaintenanceWindow
@@ -5453,10 +5730,20 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         Error returned when an idempotent operation is retried and the parameters don't match the original call
      *         to the API with the same idempotency token.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws ResourceLimitExceededException
-     *         Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance
-     *         Windows have been created).
+     *         Error returned when the caller has exceeded the default resource limits. For example, too many
+     *         Maintenance Windows or Patch baselines have been created.
+     *         </p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws FeatureNotAvailableException
      *         You attempted to register a LAMBDA or STEP_FUNCTION task in a region where the corresponding service is
      *         not available.
@@ -5571,6 +5858,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @return Result of the SendAutomationSignal operation returned by the service.
      * @throws AutomationExecutionNotFoundException
      *         There is no automation execution information for the requested automation execution ID.
+     * @throws AutomationStepNotFoundException
+     *         The specified step name and execution ID don't exist. Verify the information and try again.
      * @throws InvalidAutomationSignalException
      *         The signal is not valid for the current Automation execution.
      * @throws InternalServerErrorException
@@ -5660,7 +5949,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         notifications that includes the required trust policy. For information about configuring the IAM role for
      *         Run Command notifications, see <a
      *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html">Configuring
-     *         Amazon SNS Notifications for Run Command</a> in the <i>Amazon EC2 Systems Manager User Guide</i>.
+     *         Amazon SNS Notifications for Run Command</a> in the <i>AWS Systems Manager User Guide</i>.
      * @throws InvalidNotificationConfigException
      *         One or more configuration items is not valid. Verify that a valid Amazon Resource Name (ARN) was provided
      *         for an Amazon SNS topic.
@@ -5724,6 +6013,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @throws IdempotentParameterMismatchException
      *         Error returned when an idempotent operation is retried and the parameters don't match the original call
      *         to the API with the same idempotency token.
+     * @throws InvalidTargetException
+     *         The target is not valid or does not exist. It might not be configured for EC2 Systems Manager or you
+     *         might not have permission to perform the operation.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.StartAutomationExecution
@@ -5778,6 +6070,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @return Result of the StopAutomationExecution operation returned by the service.
      * @throws AutomationExecutionNotFoundException
      *         There is no automation execution information for the requested automation execution ID.
+     * @throws InvalidAutomationStatusUpdateException
+     *         The specified update status operation is not valid.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.StopAutomationExecution
@@ -6108,7 +6402,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param updateMaintenanceWindowRequest
      * @return Result of the UpdateMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.UpdateMaintenanceWindow
@@ -6184,7 +6483,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param updateMaintenanceWindowTargetRequest
      * @return Result of the UpdateMaintenanceWindowTarget operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.UpdateMaintenanceWindowTarget
@@ -6262,7 +6566,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @param updateMaintenanceWindowTaskRequest
      * @return Result of the UpdateMaintenanceWindowTask operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.UpdateMaintenanceWindowTask
@@ -6380,11 +6689,23 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * Modifies an existing patch baseline. Fields not specified in the request are left unchanged.
      * </p>
+     * <note>
+     * <p>
+     * For information about valid key and value pairs in <code>PatchFilters</code> for each supported operating system
+     * type, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.
+     * </p>
+     * </note>
      * 
      * @param updatePatchBaselineRequest
      * @return Result of the UpdatePatchBaseline operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.
+     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AWSSimpleSystemsManagement.UpdatePatchBaseline
@@ -6479,6 +6800,11 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
         HttpResponseHandler<AmazonServiceException> errorResponseHandler = protocolFactory.createErrorResponseHandler(new JsonErrorResponseMetadata());
 
         return client.execute(request, responseHandler, errorResponseHandler, executionContext);
+    }
+
+    @com.amazonaws.annotation.SdkInternalApi
+    static com.amazonaws.protocol.json.SdkJsonProtocolFactory getProtocolFactory() {
+        return protocolFactory;
     }
 
 }

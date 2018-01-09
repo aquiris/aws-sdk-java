@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,7 +32,7 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates
      * the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same
-     * name, and two streams in the same AWS account but in two different regions can have the same name.
+     * name. Two streams in the same AWS account but in two different regions can also have the same name.
      * </p>
      */
     private String streamName;
@@ -51,14 +51,14 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates
      * the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same
-     * name, and two streams in the same AWS account but in two different regions can have the same name.
+     * name. Two streams in the same AWS account but in two different regions can also have the same name.
      * </p>
      * 
      * @param streamName
      *        A name to identify the stream. The stream name is scoped to the AWS account used by the application that
      *        creates the stream. It is also scoped by region. That is, two streams in two different AWS accounts can
-     *        have the same name, and two streams in the same AWS account but in two different regions can have the same
-     *        name.
+     *        have the same name. Two streams in the same AWS account but in two different regions can also have the
+     *        same name.
      */
 
     public void setStreamName(String streamName) {
@@ -69,12 +69,12 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates
      * the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same
-     * name, and two streams in the same AWS account but in two different regions can have the same name.
+     * name. Two streams in the same AWS account but in two different regions can also have the same name.
      * </p>
      * 
      * @return A name to identify the stream. The stream name is scoped to the AWS account used by the application that
      *         creates the stream. It is also scoped by region. That is, two streams in two different AWS accounts can
-     *         have the same name, and two streams in the same AWS account but in two different regions can have the
+     *         have the same name. Two streams in the same AWS account but in two different regions can also have the
      *         same name.
      */
 
@@ -86,14 +86,14 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates
      * the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same
-     * name, and two streams in the same AWS account but in two different regions can have the same name.
+     * name. Two streams in the same AWS account but in two different regions can also have the same name.
      * </p>
      * 
      * @param streamName
      *        A name to identify the stream. The stream name is scoped to the AWS account used by the application that
      *        creates the stream. It is also scoped by region. That is, two streams in two different AWS accounts can
-     *        have the same name, and two streams in the same AWS account but in two different regions can have the same
-     *        name.
+     *        have the same name. Two streams in the same AWS account but in two different regions can also have the
+     *        same name.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

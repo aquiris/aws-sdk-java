@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,8 +52,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     * example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
@@ -151,7 +151,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     * <code>root-device-name</code> - The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * </li>
      * <li>
@@ -174,6 +174,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <li>
      * <p>
      * <code>state-reason-message</code> - The message for the state change.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with the Intel
+     * 82599 VF interface is enabled.
      * </p>
      * </li>
      * <li>
@@ -324,8 +330,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     * example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
@@ -423,7 +429,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     * <code>root-device-name</code> - The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * </li>
      * <li>
@@ -446,6 +452,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <li>
      * <p>
      * <code>state-reason-message</code> - The message for the state change.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with the Intel
+     * 82599 VF interface is enabled.
      * </p>
      * </li>
      * <li>
@@ -492,8 +504,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *         </li>
      *         <li>
      *         <p>
-     *         <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     *         <code>/dev/sdh</code>).
+     *         <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping
+     *         (for example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *         </p>
      *         </li>
      *         <li>
@@ -593,7 +605,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *         </li>
      *         <li>
      *         <p>
-     *         <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     *         <code>root-device-name</code> - The device name of the root device volume (for example,
+     *         <code>/dev/sda1</code>).
      *         </p>
      *         </li>
      *         <li>
@@ -616,6 +629,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *         <li>
      *         <p>
      *         <code>state-reason-message</code> - The message for the state change.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with
+     *         the Intel 82599 VF interface is enabled.
      *         </p>
      *         </li>
      *         <li>
@@ -673,8 +692,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     * example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
@@ -772,7 +791,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     * <code>root-device-name</code> - The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * </li>
      * <li>
@@ -795,6 +814,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <li>
      * <p>
      * <code>state-reason-message</code> - The message for the state change.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with the Intel
+     * 82599 VF interface is enabled.
      * </p>
      * </li>
      * <li>
@@ -842,8 +867,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        </li>
      *        <li>
      *        <p>
-     *        <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     *        <code>/dev/sdh</code>).
+     *        <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     *        example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -943,7 +968,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        </li>
      *        <li>
      *        <p>
-     *        <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     *        <code>root-device-name</code> - The device name of the root device volume (for example,
+     *        <code>/dev/sda1</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -966,6 +992,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        <li>
      *        <p>
      *        <code>state-reason-message</code> - The message for the state change.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with
+     *        the Intel 82599 VF interface is enabled.
      *        </p>
      *        </li>
      *        <li>
@@ -1025,8 +1057,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     * example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
@@ -1124,7 +1156,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     * <code>root-device-name</code> - The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * </li>
      * <li>
@@ -1147,6 +1179,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <li>
      * <p>
      * <code>state-reason-message</code> - The message for the state change.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with the Intel
+     * 82599 VF interface is enabled.
      * </p>
      * </li>
      * <li>
@@ -1199,8 +1237,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        </li>
      *        <li>
      *        <p>
-     *        <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     *        <code>/dev/sdh</code>).
+     *        <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     *        example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -1300,7 +1338,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        </li>
      *        <li>
      *        <p>
-     *        <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     *        <code>root-device-name</code> - The device name of the root device volume (for example,
+     *        <code>/dev/sda1</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -1323,6 +1362,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        <li>
      *        <p>
      *        <code>state-reason-message</code> - The message for the state change.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with
+     *        the Intel 82599 VF interface is enabled.
      *        </p>
      *        </li>
      *        <li>
@@ -1384,8 +1429,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     * <code>/dev/sdh</code>).
+     * <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     * example, <code>/dev/sdh</code> or <code>xvdh</code>).
      * </p>
      * </li>
      * <li>
@@ -1483,7 +1528,7 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * </li>
      * <li>
      * <p>
-     * <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     * <code>root-device-name</code> - The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * </li>
      * <li>
@@ -1506,6 +1551,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      * <li>
      * <p>
      * <code>state-reason-message</code> - The message for the state change.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with the Intel
+     * 82599 VF interface is enabled.
      * </p>
      * </li>
      * <li>
@@ -1553,8 +1604,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        </li>
      *        <li>
      *        <p>
-     *        <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example,
-     *        <code>/dev/sdh</code>).
+     *        <code>block-device-mapping.device-name</code> - The device name specified in the block device mapping (for
+     *        example, <code>/dev/sdh</code> or <code>xvdh</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -1654,7 +1705,8 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        </li>
      *        <li>
      *        <p>
-     *        <code>root-device-name</code> - The name of the root device volume (for example, <code>/dev/sda1</code>).
+     *        <code>root-device-name</code> - The device name of the root device volume (for example,
+     *        <code>/dev/sda1</code>).
      *        </p>
      *        </li>
      *        <li>
@@ -1677,6 +1729,12 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest implements Se
      *        <li>
      *        <p>
      *        <code>state-reason-message</code> - The message for the state change.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>sriov-net-support</code> - A value of <code>simple</code> indicates that enhanced networking with
+     *        the Intel 82599 VF interface is enabled.
      *        </p>
      *        </li>
      *        <li>

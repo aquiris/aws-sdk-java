@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -98,7 +98,7 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
     private java.util.List<Tag> tags;
     /**
      * <p>
-     * The Amazon Resource Number (ARN) for the certificate.
+     * The Amazon Resource Name (ARN) for the certificate.
      * </p>
      */
     private String certificateArn;
@@ -674,11 +674,11 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The Amazon Resource Number (ARN) for the certificate.
+     * The Amazon Resource Name (ARN) for the certificate.
      * </p>
      * 
      * @param certificateArn
-     *        The Amazon Resource Number (ARN) for the certificate.
+     *        The Amazon Resource Name (ARN) for the certificate.
      */
 
     public void setCertificateArn(String certificateArn) {
@@ -687,10 +687,10 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The Amazon Resource Number (ARN) for the certificate.
+     * The Amazon Resource Name (ARN) for the certificate.
      * </p>
      * 
-     * @return The Amazon Resource Number (ARN) for the certificate.
+     * @return The Amazon Resource Name (ARN) for the certificate.
      */
 
     public String getCertificateArn() {
@@ -699,11 +699,11 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The Amazon Resource Number (ARN) for the certificate.
+     * The Amazon Resource Name (ARN) for the certificate.
      * </p>
      * 
      * @param certificateArn
-     *        The Amazon Resource Number (ARN) for the certificate.
+     *        The Amazon Resource Name (ARN) for the certificate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

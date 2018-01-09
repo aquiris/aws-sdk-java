@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,22 @@ public enum OperationType {
     DeleteDomain("DeleteDomain"),
     CreateInstanceSnapshot("CreateInstanceSnapshot"),
     DeleteInstanceSnapshot("DeleteInstanceSnapshot"),
-    CreateInstancesFromSnapshot("CreateInstancesFromSnapshot");
+    CreateInstancesFromSnapshot("CreateInstancesFromSnapshot"),
+    CreateLoadBalancer("CreateLoadBalancer"),
+    DeleteLoadBalancer("DeleteLoadBalancer"),
+    AttachInstancesToLoadBalancer("AttachInstancesToLoadBalancer"),
+    DetachInstancesFromLoadBalancer("DetachInstancesFromLoadBalancer"),
+    UpdateLoadBalancerAttribute("UpdateLoadBalancerAttribute"),
+    CreateLoadBalancerTlsCertificate("CreateLoadBalancerTlsCertificate"),
+    DeleteLoadBalancerTlsCertificate("DeleteLoadBalancerTlsCertificate"),
+    AttachLoadBalancerTlsCertificate("AttachLoadBalancerTlsCertificate"),
+    CreateDisk("CreateDisk"),
+    DeleteDisk("DeleteDisk"),
+    AttachDisk("AttachDisk"),
+    DetachDisk("DetachDisk"),
+    CreateDiskSnapshot("CreateDiskSnapshot"),
+    DeleteDiskSnapshot("DeleteDiskSnapshot"),
+    CreateDiskFromSnapshot("CreateDiskFromSnapshot");
 
     private String value;
 

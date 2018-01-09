@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,6 +73,39 @@ public class CreateStackInstancesRequestMarshaller implements Marshaller<Request
                     request.addParameter("Regions.member." + regionsListIndex, StringUtils.fromString(regionsListValue));
                 }
                 regionsListIndex++;
+            }
+        }
+
+        com.amazonaws.internal.SdkInternalList<Parameter> parameterOverridesList = (com.amazonaws.internal.SdkInternalList<Parameter>) createStackInstancesRequest
+                .getParameterOverrides();
+        if (parameterOverridesList.isEmpty() && !parameterOverridesList.isAutoConstruct()) {
+            request.addParameter("ParameterOverrides", "");
+        }
+        if (!parameterOverridesList.isEmpty() || !parameterOverridesList.isAutoConstruct()) {
+            int parameterOverridesListIndex = 1;
+
+            for (Parameter parameterOverridesListValue : parameterOverridesList) {
+
+                if (parameterOverridesListValue.getParameterKey() != null) {
+                    request.addParameter("ParameterOverrides.member." + parameterOverridesListIndex + ".ParameterKey",
+                            StringUtils.fromString(parameterOverridesListValue.getParameterKey()));
+                }
+
+                if (parameterOverridesListValue.getParameterValue() != null) {
+                    request.addParameter("ParameterOverrides.member." + parameterOverridesListIndex + ".ParameterValue",
+                            StringUtils.fromString(parameterOverridesListValue.getParameterValue()));
+                }
+
+                if (parameterOverridesListValue.getUsePreviousValue() != null) {
+                    request.addParameter("ParameterOverrides.member." + parameterOverridesListIndex + ".UsePreviousValue",
+                            StringUtils.fromBoolean(parameterOverridesListValue.getUsePreviousValue()));
+                }
+
+                if (parameterOverridesListValue.getResolvedValue() != null) {
+                    request.addParameter("ParameterOverrides.member." + parameterOverridesListIndex + ".ResolvedValue",
+                            StringUtils.fromString(parameterOverridesListValue.getResolvedValue()));
+                }
+                parameterOverridesListIndex++;
             }
         }
 

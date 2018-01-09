@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,24 +25,18 @@ public class ProvisionProductResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the
-     * current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors
-     * that the request encountered.
+     * Information about the result of <a>ProvisionProduct</a>.
      * </p>
      */
     private RecordDetail recordDetail;
 
     /**
      * <p>
-     * The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the
-     * current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors
-     * that the request encountered.
+     * Information about the result of <a>ProvisionProduct</a>.
      * </p>
      * 
      * @param recordDetail
-     *        The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request,
-     *        the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of
-     *        any errors that the request encountered.
+     *        Information about the result of <a>ProvisionProduct</a>.
      */
 
     public void setRecordDetail(RecordDetail recordDetail) {
@@ -51,14 +45,10 @@ public class ProvisionProductResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the
-     * current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors
-     * that the request encountered.
+     * Information about the result of <a>ProvisionProduct</a>.
      * </p>
      * 
-     * @return The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request,
-     *         the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list
-     *         of any errors that the request encountered.
+     * @return Information about the result of <a>ProvisionProduct</a>.
      */
 
     public RecordDetail getRecordDetail() {
@@ -67,15 +57,11 @@ public class ProvisionProductResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the
-     * current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors
-     * that the request encountered.
+     * Information about the result of <a>ProvisionProduct</a>.
      * </p>
      * 
      * @param recordDetail
-     *        The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request,
-     *        the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of
-     *        any errors that the request encountered.
+     *        Information about the result of <a>ProvisionProduct</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

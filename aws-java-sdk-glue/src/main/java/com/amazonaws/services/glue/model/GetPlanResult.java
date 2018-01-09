@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -24,18 +24,18 @@ public class GetPlanResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * A python script to perform the mapping.
+     * A Python script to perform the mapping.
      * </p>
      */
     private String pythonScript;
 
     /**
      * <p>
-     * A python script to perform the mapping.
+     * A Python script to perform the mapping.
      * </p>
      * 
      * @param pythonScript
-     *        A python script to perform the mapping.
+     *        A Python script to perform the mapping.
      */
 
     public void setPythonScript(String pythonScript) {
@@ -44,10 +44,10 @@ public class GetPlanResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * A python script to perform the mapping.
+     * A Python script to perform the mapping.
      * </p>
      * 
-     * @return A python script to perform the mapping.
+     * @return A Python script to perform the mapping.
      */
 
     public String getPythonScript() {
@@ -56,11 +56,11 @@ public class GetPlanResult extends com.amazonaws.AmazonWebServiceResult<com.amaz
 
     /**
      * <p>
-     * A python script to perform the mapping.
+     * A Python script to perform the mapping.
      * </p>
      * 
      * @param pythonScript
-     *        A python script to perform the mapping.
+     *        A Python script to perform the mapping.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

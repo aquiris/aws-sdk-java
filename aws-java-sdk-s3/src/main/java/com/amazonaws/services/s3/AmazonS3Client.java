@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -91,6 +91,7 @@ import com.amazonaws.services.s3.internal.S3ObjectResponseHandler;
 import com.amazonaws.services.s3.internal.S3QueryStringSigner;
 import com.amazonaws.services.s3.internal.S3RequestEndpointResolver;
 import com.amazonaws.services.s3.internal.S3RequesterChargedHeaderHandler;
+import com.amazonaws.services.s3.internal.S3RestoreOutputPathHeaderHandler;
 import com.amazonaws.services.s3.internal.S3Signer;
 import com.amazonaws.services.s3.internal.S3StringResponseHandler;
 import com.amazonaws.services.s3.internal.S3V4AuthErrorRetryStrategy;
@@ -128,6 +129,8 @@ import com.amazonaws.services.s3.model.CreateBucketRequest;
 import com.amazonaws.services.s3.model.DeleteBucketAnalyticsConfigurationRequest;
 import com.amazonaws.services.s3.model.DeleteBucketAnalyticsConfigurationResult;
 import com.amazonaws.services.s3.model.DeleteBucketCrossOriginConfigurationRequest;
+import com.amazonaws.services.s3.model.DeleteBucketEncryptionRequest;
+import com.amazonaws.services.s3.model.DeleteBucketEncryptionResult;
 import com.amazonaws.services.s3.model.DeleteBucketInventoryConfigurationRequest;
 import com.amazonaws.services.s3.model.DeleteBucketInventoryConfigurationResult;
 import com.amazonaws.services.s3.model.DeleteBucketLifecycleConfigurationRequest;
@@ -151,6 +154,8 @@ import com.amazonaws.services.s3.model.GetBucketAclRequest;
 import com.amazonaws.services.s3.model.GetBucketAnalyticsConfigurationRequest;
 import com.amazonaws.services.s3.model.GetBucketAnalyticsConfigurationResult;
 import com.amazonaws.services.s3.model.GetBucketCrossOriginConfigurationRequest;
+import com.amazonaws.services.s3.model.GetBucketEncryptionRequest;
+import com.amazonaws.services.s3.model.GetBucketEncryptionResult;
 import com.amazonaws.services.s3.model.GetBucketInventoryConfigurationRequest;
 import com.amazonaws.services.s3.model.GetBucketInventoryConfigurationResult;
 import com.amazonaws.services.s3.model.GetBucketLifecycleConfigurationRequest;
@@ -210,6 +215,8 @@ import com.amazonaws.services.s3.model.RequestPaymentConfiguration;
 import com.amazonaws.services.s3.model.RequestPaymentConfiguration.Payer;
 import com.amazonaws.services.s3.model.ResponseHeaderOverrides;
 import com.amazonaws.services.s3.model.RestoreObjectRequest;
+import com.amazonaws.services.s3.model.RestoreObjectResult;
+import com.amazonaws.services.s3.model.RestoreRequestType;
 import com.amazonaws.services.s3.model.S3AccelerateUnsupported;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
@@ -217,11 +224,14 @@ import com.amazonaws.services.s3.model.SSEAwsKeyManagementParams;
 import com.amazonaws.services.s3.model.SSEAwsKeyManagementParamsProvider;
 import com.amazonaws.services.s3.model.SSECustomerKey;
 import com.amazonaws.services.s3.model.SSECustomerKeyProvider;
+import com.amazonaws.services.s3.model.ServerSideEncryptionConfiguration;
 import com.amazonaws.services.s3.model.SetBucketAccelerateConfigurationRequest;
 import com.amazonaws.services.s3.model.SetBucketAclRequest;
 import com.amazonaws.services.s3.model.SetBucketAnalyticsConfigurationRequest;
 import com.amazonaws.services.s3.model.SetBucketAnalyticsConfigurationResult;
 import com.amazonaws.services.s3.model.SetBucketCrossOriginConfigurationRequest;
+import com.amazonaws.services.s3.model.SetBucketEncryptionRequest;
+import com.amazonaws.services.s3.model.SetBucketEncryptionResult;
 import com.amazonaws.services.s3.model.SetBucketInventoryConfigurationRequest;
 import com.amazonaws.services.s3.model.SetBucketInventoryConfigurationResult;
 import com.amazonaws.services.s3.model.SetBucketLifecycleConfigurationRequest;
@@ -250,6 +260,7 @@ import com.amazonaws.services.s3.model.metrics.MetricsConfiguration;
 import com.amazonaws.services.s3.model.transform.AclXmlFactory;
 import com.amazonaws.services.s3.model.transform.BucketConfigurationXmlFactory;
 import com.amazonaws.services.s3.model.transform.BucketNotificationConfigurationStaxUnmarshaller;
+import com.amazonaws.services.s3.model.transform.GetBucketEncryptionStaxUnmarshaller;
 import com.amazonaws.services.s3.model.transform.HeadBucketResultHandler;
 import com.amazonaws.services.s3.model.transform.MultiObjectDeleteXmlFactory;
 import com.amazonaws.services.s3.model.transform.ObjectTaggingXmlFactory;
@@ -2731,21 +2742,6 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     }
 
     @Override
-    public void setBucketPolicy(String bucketName, String policyText)
-            throws SdkClientException, AmazonServiceException {
-        rejectNull(bucketName,
-            "The bucket name must be specified when setting a bucket policy");
-        rejectNull(policyText,
-            "The policy text must be specified when setting a bucket policy");
-
-        Request<GenericBucketRequest> request = createRequest(bucketName, null, new GenericBucketRequest(bucketName), HttpMethodName.PUT);
-        request.addParameter("policy", null);
-        request.setContent(new ByteArrayInputStream(ServiceUtils.toByteArray(policyText)));
-
-        invoke(request, voidResponseHandler, bucketName, null);
-    }
-
-    @Override
     public void deleteBucketPolicy(String bucketName)
             throws SdkClientException, AmazonServiceException {
         deleteBucketPolicy(new DeleteBucketPolicyRequest(bucketName));
@@ -2783,6 +2779,13 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         }
     }
 
+
+    @Override
+    public void setBucketPolicy(String bucketName, String policyText)
+            throws SdkClientException, AmazonServiceException {
+        setBucketPolicy(new SetBucketPolicyRequest(bucketName, policyText));
+    }
+
     @Override
     public void setBucketPolicy(SetBucketPolicyRequest setBucketPolicyRequest)
             throws SdkClientException, AmazonServiceException {
@@ -2801,6 +2804,11 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         Request<SetBucketPolicyRequest> request = createRequest(bucketName, null, setBucketPolicyRequest, HttpMethodName.PUT);
         request.addParameter("policy", null);
         request.setContent(new ByteArrayInputStream(ServiceUtils.toByteArray(policyText)));
+
+        if (setBucketPolicyRequest.getConfirmRemoveSelfBucketAccess() != null &&
+            setBucketPolicyRequest.getConfirmRemoveSelfBucketAccess()) {
+            request.addHeader(Headers.REMOVE_SELF_BUCKET_ACCESS, "true");
+        }
 
         invoke(request, voidResponseHandler, bucketName, null);
     }
@@ -2821,6 +2829,73 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         request.addParameter("policy", null);
 
         invoke(request, voidResponseHandler, bucketName, null);
+    }
+
+    @Override
+    public DeleteBucketEncryptionResult deleteBucketEncryption(String bucketName) throws SdkClientException {
+        return deleteBucketEncryption(new DeleteBucketEncryptionRequest().withBucketName(bucketName));
+    }
+
+    @Override
+    public DeleteBucketEncryptionResult deleteBucketEncryption(DeleteBucketEncryptionRequest deleteBucketEncryptionRequest)
+        throws SdkClientException {
+        deleteBucketEncryptionRequest = beforeClientExecution(deleteBucketEncryptionRequest);
+        rejectNull(deleteBucketEncryptionRequest,
+                   "The request object must be specified when deleting a bucket encryption configuration");
+
+        String bucketName = deleteBucketEncryptionRequest.getBucketName();
+        rejectNull(bucketName,
+                   "The bucket name must be specified when deleting a bucket encryption configuration");
+
+        Request<DeleteBucketEncryptionRequest> request =
+            createRequest(bucketName, null, deleteBucketEncryptionRequest, HttpMethodName.DELETE);
+        request.addParameter("encryption", null);
+
+        return invoke(request, new Unmarshallers.DeleteBucketEncryptionUnmarshaller(), bucketName, null);
+    }
+
+    @Override
+    public GetBucketEncryptionResult getBucketEncryption(String bucketName) throws SdkClientException {
+        return getBucketEncryption(new GetBucketEncryptionRequest().withBucketName(bucketName));
+    }
+
+    @Override
+    public GetBucketEncryptionResult getBucketEncryption(GetBucketEncryptionRequest getBucketEncryptionRequest) throws SdkClientException {
+        getBucketEncryptionRequest = beforeClientExecution(getBucketEncryptionRequest);
+        rejectNull(getBucketEncryptionRequest,
+                   "The bucket request parameter must be specified when querying encryption configuration");
+        String bucketName = getBucketEncryptionRequest.getBucketName();
+        rejectNull(bucketName,
+                   "The bucket request must specify a bucket name when querying encryption configuration");
+
+        Request<GetBucketEncryptionRequest> request = createRequest(bucketName, null, getBucketEncryptionRequest, HttpMethodName.GET);
+        request.addParameter("encryption", null);
+
+        return invoke(request, GetBucketEncryptionStaxUnmarshaller.getInstance(), bucketName, null);
+    }
+
+    @Override
+    public SetBucketEncryptionResult setBucketEncryption(SetBucketEncryptionRequest setBucketEncryptionRequest)
+        throws AmazonServiceException, SdkClientException {
+        setBucketEncryptionRequest = beforeClientExecution(setBucketEncryptionRequest);
+        rejectNull(setBucketEncryptionRequest,
+                   "The request object must be specified.");
+
+        String bucketName = setBucketEncryptionRequest.getBucketName();
+        ServerSideEncryptionConfiguration sseConfig = setBucketEncryptionRequest.getServerSideEncryptionConfiguration();
+        rejectNull(bucketName,
+                   "The bucket name parameter must be specified when setting bucket encryption configuration.");
+        rejectNull(sseConfig,
+                   "The SSE configuration parameter must be specified when setting bucket encryption configuration.");
+
+
+        Request<SetBucketEncryptionRequest> request = createRequest(bucketName, null, setBucketEncryptionRequest, HttpMethodName.PUT);
+        request.addParameter("encryption", null);
+
+        byte[] bytes = bucketConfigurationXmlFactory.convertToXmlByteArray(sseConfig);
+        request.setContent(new ByteArrayInputStream(bytes));
+
+        return invoke(request, new Unmarshallers.SetBucketEncryptionUnmarshaller(), bucketName, null);
     }
 
     @Override
@@ -3278,40 +3353,43 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
     @Override
     public void restoreObject(RestoreObjectRequest restoreObjectRequest)
-            throws AmazonServiceException {
+        throws AmazonServiceException {
+        restoreObjectV2(restoreObjectRequest);
+    }
+
+    @Override
+    public RestoreObjectResult restoreObjectV2(RestoreObjectRequest restoreObjectRequest)
+        throws AmazonServiceException {
+
         restoreObjectRequest = beforeClientExecution(restoreObjectRequest);
         String bucketName = restoreObjectRequest.getBucketName();
         String key = restoreObjectRequest.getKey();
-        String versionId = restoreObjectRequest.getVersionId();
-        int expirationIndays = restoreObjectRequest.getExpirationInDays();
+        int expirationInDays = restoreObjectRequest.getExpirationInDays();
 
-        rejectNull(bucketName, "The bucket name parameter must be specified when copying a glacier object");
-        rejectNull(key, "The key parameter must be specified when copying a glacier object");
-        if (expirationIndays == -1) {
-            throw new IllegalArgumentException("The expiration in days parameter must be specified when copying a glacier object");
+        rejectNull(bucketName, "The bucket name parameter must be specified when restoring a glacier object");
+        rejectNull(key, "The key parameter must be specified when restoring a glacier object");
+
+        if (restoreObjectRequest.getOutputLocation() != null) {
+            rejectNull(restoreObjectRequest.getType(), "The restore request type must be specified with restores that specify OutputLocation");
+
+            if (RestoreRequestType.SELECT.toString().equals(restoreObjectRequest.getType())) {
+                rejectNull(restoreObjectRequest.getSelectParameters(),
+                           "The select parameters must be specified when restoring a glacier object with SELECT restore request type");
+            }
+        } else if (expirationInDays == -1) {
+            throw new IllegalArgumentException("The expiration in days parameter must be specified when restoring a glacier object without OutputLocation");
         }
 
-        Request<RestoreObjectRequest> request = createRequest(bucketName, key, restoreObjectRequest, HttpMethodName.POST);
-        request.addParameter("restore", null);
-        if (versionId != null) {
-            request.addParameter("versionId", versionId);
-        }
+        Request<RestoreObjectRequest> request =
+            createRestoreObjectRequest(restoreObjectRequest);
 
-        populateRequesterPaysHeader(request, restoreObjectRequest.isRequesterPays());
+        @SuppressWarnings("unchecked")
+        ResponseHeaderHandlerChain<RestoreObjectResult> responseHandler = new ResponseHeaderHandlerChain<RestoreObjectResult>(
+            new Unmarshallers.RestoreObjectResultUnmarshaller(),
+            new S3RequesterChargedHeaderHandler<RestoreObjectResult>(),
+            new S3RestoreOutputPathHeaderHandler<RestoreObjectResult>());
 
-        byte[] content = RequestXmlFactory.convertToXmlByteArray(restoreObjectRequest);
-        request.addHeader("Content-Length", String.valueOf(content.length));
-        request.addHeader("Content-Type", "application/xml");
-        request.setContent(new ByteArrayInputStream(content));
-        try {
-            byte[] md5 = Md5Utils.computeMD5Hash(content);
-            String md5Base64 = BinaryUtils.toBase64(md5);
-            request.addHeader("Content-MD5", md5Base64);
-        } catch (Exception e) {
-            throw new SdkClientException("Couldn't compute md5 sum", e);
-        }
-
-        invoke(request, voidResponseHandler, bucketName, key);
+        return invoke(request, responseHandler, bucketName, key);
     }
 
     @Override
@@ -5062,5 +5140,23 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
                 throw new AmazonClientException("Couldn't compute md5 sum", e);
             }
         }
+    }
+
+    private Request<RestoreObjectRequest> createRestoreObjectRequest(RestoreObjectRequest restoreObjectRequest) {
+        String bucketName = restoreObjectRequest.getBucketName();
+        String key = restoreObjectRequest.getKey();
+        String versionId = restoreObjectRequest.getVersionId();
+
+        Request<RestoreObjectRequest> request = createRequest(
+            bucketName, key, restoreObjectRequest, HttpMethodName.POST);
+        request.addParameter("restore", null);
+        if (versionId != null) {
+            request.addParameter("versionId", versionId);
+        }
+
+        populateRequesterPaysHeader(request, restoreObjectRequest.isRequesterPays());
+        byte[] content = RequestXmlFactory.convertToXmlByteArray(restoreObjectRequest);
+        setContent(request, content, "application/xml", true);
+        return request;
     }
 }

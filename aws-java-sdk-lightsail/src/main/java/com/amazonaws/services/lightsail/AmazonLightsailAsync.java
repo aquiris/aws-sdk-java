@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -78,6 +78,115 @@ public interface AmazonLightsailAsync extends AmazonLightsail {
 
     /**
      * <p>
+     * Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the
+     * specified disk name.
+     * </p>
+     * 
+     * @param attachDiskRequest
+     * @return A Java Future containing the result of the AttachDisk operation returned by the service.
+     * @sample AmazonLightsailAsync.AttachDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/AttachDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<AttachDiskResult> attachDiskAsync(AttachDiskRequest attachDiskRequest);
+
+    /**
+     * <p>
+     * Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the
+     * specified disk name.
+     * </p>
+     * 
+     * @param attachDiskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AttachDisk operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.AttachDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/AttachDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<AttachDiskResult> attachDiskAsync(AttachDiskRequest attachDiskRequest,
+            com.amazonaws.handlers.AsyncHandler<AttachDiskRequest, AttachDiskResult> asyncHandler);
+
+    /**
+     * <p>
+     * Attaches one or more Lightsail instances to a load balancer.
+     * </p>
+     * 
+     * @param attachInstancesToLoadBalancerRequest
+     * @return A Java Future containing the result of the AttachInstancesToLoadBalancer operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsync.AttachInstancesToLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/AttachInstancesToLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<AttachInstancesToLoadBalancerResult> attachInstancesToLoadBalancerAsync(
+            AttachInstancesToLoadBalancerRequest attachInstancesToLoadBalancerRequest);
+
+    /**
+     * <p>
+     * Attaches one or more Lightsail instances to a load balancer.
+     * </p>
+     * 
+     * @param attachInstancesToLoadBalancerRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AttachInstancesToLoadBalancer operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsyncHandler.AttachInstancesToLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/AttachInstancesToLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<AttachInstancesToLoadBalancerResult> attachInstancesToLoadBalancerAsync(
+            AttachInstancesToLoadBalancerRequest attachInstancesToLoadBalancerRequest,
+            com.amazonaws.handlers.AsyncHandler<AttachInstancesToLoadBalancerRequest, AttachInstancesToLoadBalancerResult> asyncHandler);
+
+    /**
+     * <p>
+     * Attaches a Transport Layer Security (TLS) certificate to your load balancer.
+     * </p>
+     * <p>
+     * TLS is just an updated, more secure version of Secure Socket Layer (SSL).
+     * </p>
+     * 
+     * @param attachLoadBalancerTlsCertificateRequest
+     * @return A Java Future containing the result of the AttachLoadBalancerTlsCertificate operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsync.AttachLoadBalancerTlsCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/AttachLoadBalancerTlsCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<AttachLoadBalancerTlsCertificateResult> attachLoadBalancerTlsCertificateAsync(
+            AttachLoadBalancerTlsCertificateRequest attachLoadBalancerTlsCertificateRequest);
+
+    /**
+     * <p>
+     * Attaches a Transport Layer Security (TLS) certificate to your load balancer.
+     * </p>
+     * <p>
+     * TLS is just an updated, more secure version of Secure Socket Layer (SSL).
+     * </p>
+     * 
+     * @param attachLoadBalancerTlsCertificateRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AttachLoadBalancerTlsCertificate operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsyncHandler.AttachLoadBalancerTlsCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/AttachLoadBalancerTlsCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<AttachLoadBalancerTlsCertificateResult> attachLoadBalancerTlsCertificateAsync(
+            AttachLoadBalancerTlsCertificateRequest attachLoadBalancerTlsCertificateRequest,
+            com.amazonaws.handlers.AsyncHandler<AttachLoadBalancerTlsCertificateRequest, AttachLoadBalancerTlsCertificateResult> asyncHandler);
+
+    /**
+     * <p>
      * Attaches a static IP address to a specific Amazon Lightsail instance.
      * </p>
      * 
@@ -137,6 +246,135 @@ public interface AmazonLightsailAsync extends AmazonLightsail {
      */
     java.util.concurrent.Future<CloseInstancePublicPortsResult> closeInstancePublicPortsAsync(CloseInstancePublicPortsRequest closeInstancePublicPortsRequest,
             com.amazonaws.handlers.AsyncHandler<CloseInstancePublicPortsRequest, CloseInstancePublicPortsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e.g.,
+     * <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the HTTP request to. For
+     * more information, see <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail"
+     * >Regions and Availability Zones in Lightsail</a>.
+     * </p>
+     * 
+     * @param createDiskRequest
+     * @return A Java Future containing the result of the CreateDisk operation returned by the service.
+     * @sample AmazonLightsailAsync.CreateDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDiskResult> createDiskAsync(CreateDiskRequest createDiskRequest);
+
+    /**
+     * <p>
+     * Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e.g.,
+     * <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the HTTP request to. For
+     * more information, see <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail"
+     * >Regions and Availability Zones in Lightsail</a>.
+     * </p>
+     * 
+     * @param createDiskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateDisk operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.CreateDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDiskResult> createDiskAsync(CreateDiskRequest createDiskRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateDiskRequest, CreateDiskResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same
+     * Availability Zone (e.g., <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the
+     * HTTP request to. For more information, see <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail"
+     * >Regions and Availability Zones in Lightsail</a>.
+     * </p>
+     * 
+     * @param createDiskFromSnapshotRequest
+     * @return A Java Future containing the result of the CreateDiskFromSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsync.CreateDiskFromSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateDiskFromSnapshot"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDiskFromSnapshotResult> createDiskFromSnapshotAsync(CreateDiskFromSnapshotRequest createDiskFromSnapshotRequest);
+
+    /**
+     * <p>
+     * Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same
+     * Availability Zone (e.g., <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the
+     * HTTP request to. For more information, see <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail"
+     * >Regions and Availability Zones in Lightsail</a>.
+     * </p>
+     * 
+     * @param createDiskFromSnapshotRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateDiskFromSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.CreateDiskFromSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateDiskFromSnapshot"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDiskFromSnapshotResult> createDiskFromSnapshotAsync(CreateDiskFromSnapshotRequest createDiskFromSnapshotRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateDiskFromSnapshotRequest, CreateDiskFromSnapshotResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to
+     * save data before shutting down a Lightsail instance.
+     * </p>
+     * <p>
+     * You can take a snapshot of an attached disk that is in use; however, snapshots only capture data that has been
+     * written to your disk at the time the snapshot command is issued. This may exclude any data that has been cached
+     * by any applications or the operating system. If you can pause any file systems on the disk long enough to take a
+     * snapshot, your snapshot should be complete. Nevertheless, if you cannot pause all file writes to the disk, you
+     * should unmount the disk from within the Lightsail instance, issue the create disk snapshot command, and then
+     * remount the disk to ensure a consistent and complete snapshot. You may remount and use your disk while the
+     * snapshot status is pending.
+     * </p>
+     * 
+     * @param createDiskSnapshotRequest
+     * @return A Java Future containing the result of the CreateDiskSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsync.CreateDiskSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateDiskSnapshot" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDiskSnapshotResult> createDiskSnapshotAsync(CreateDiskSnapshotRequest createDiskSnapshotRequest);
+
+    /**
+     * <p>
+     * Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to
+     * save data before shutting down a Lightsail instance.
+     * </p>
+     * <p>
+     * You can take a snapshot of an attached disk that is in use; however, snapshots only capture data that has been
+     * written to your disk at the time the snapshot command is issued. This may exclude any data that has been cached
+     * by any applications or the operating system. If you can pause any file systems on the disk long enough to take a
+     * snapshot, your snapshot should be complete. Nevertheless, if you cannot pause all file writes to the disk, you
+     * should unmount the disk from within the Lightsail instance, issue the create disk snapshot command, and then
+     * remount the disk to ensure a consistent and complete snapshot. You may remount and use your disk while the
+     * snapshot status is pending.
+     * </p>
+     * 
+     * @param createDiskSnapshotRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateDiskSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.CreateDiskSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateDiskSnapshot" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDiskSnapshotResult> createDiskSnapshotAsync(CreateDiskSnapshotRequest createDiskSnapshotRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateDiskSnapshotRequest, CreateDiskSnapshotResult> asyncHandler);
 
     /**
      * <p>
@@ -334,6 +572,172 @@ public interface AmazonLightsailAsync extends AmazonLightsail {
 
     /**
      * <p>
+     * Creates a Lightsail load balancer.
+     * </p>
+     * <p>
+     * When you create a load balancer, you can specify certificates and port settings. You can create up to 5 load
+     * balancers per AWS Region in your account.
+     * </p>
+     * 
+     * @param createLoadBalancerRequest
+     * @return A Java Future containing the result of the CreateLoadBalancer operation returned by the service.
+     * @sample AmazonLightsailAsync.CreateLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateLoadBalancer" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateLoadBalancerResult> createLoadBalancerAsync(CreateLoadBalancerRequest createLoadBalancerRequest);
+
+    /**
+     * <p>
+     * Creates a Lightsail load balancer.
+     * </p>
+     * <p>
+     * When you create a load balancer, you can specify certificates and port settings. You can create up to 5 load
+     * balancers per AWS Region in your account.
+     * </p>
+     * 
+     * @param createLoadBalancerRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateLoadBalancer operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.CreateLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateLoadBalancer" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateLoadBalancerResult> createLoadBalancerAsync(CreateLoadBalancerRequest createLoadBalancerRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateLoadBalancerRequest, CreateLoadBalancerResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a Lightsail load balancer TLS certificate.
+     * </p>
+     * <p>
+     * TLS is just an updated, more secure version of Secure Socket Layer (SSL).
+     * </p>
+     * 
+     * @param createLoadBalancerTlsCertificateRequest
+     * @return A Java Future containing the result of the CreateLoadBalancerTlsCertificate operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsync.CreateLoadBalancerTlsCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateLoadBalancerTlsCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateLoadBalancerTlsCertificateResult> createLoadBalancerTlsCertificateAsync(
+            CreateLoadBalancerTlsCertificateRequest createLoadBalancerTlsCertificateRequest);
+
+    /**
+     * <p>
+     * Creates a Lightsail load balancer TLS certificate.
+     * </p>
+     * <p>
+     * TLS is just an updated, more secure version of Secure Socket Layer (SSL).
+     * </p>
+     * 
+     * @param createLoadBalancerTlsCertificateRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateLoadBalancerTlsCertificate operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsyncHandler.CreateLoadBalancerTlsCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/CreateLoadBalancerTlsCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateLoadBalancerTlsCertificateResult> createLoadBalancerTlsCertificateAsync(
+            CreateLoadBalancerTlsCertificateRequest createLoadBalancerTlsCertificateRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateLoadBalancerTlsCertificateRequest, CreateLoadBalancerTlsCertificateResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes the specified block storage disk. The disk must be in the <code>available</code> state (not attached to a
+     * Lightsail instance).
+     * </p>
+     * <note>
+     * <p>
+     * The disk may remain in the <code>deleting</code> state for several minutes.
+     * </p>
+     * </note>
+     * 
+     * @param deleteDiskRequest
+     * @return A Java Future containing the result of the DeleteDisk operation returned by the service.
+     * @sample AmazonLightsailAsync.DeleteDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteDiskResult> deleteDiskAsync(DeleteDiskRequest deleteDiskRequest);
+
+    /**
+     * <p>
+     * Deletes the specified block storage disk. The disk must be in the <code>available</code> state (not attached to a
+     * Lightsail instance).
+     * </p>
+     * <note>
+     * <p>
+     * The disk may remain in the <code>deleting</code> state for several minutes.
+     * </p>
+     * </note>
+     * 
+     * @param deleteDiskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteDisk operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.DeleteDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteDiskResult> deleteDiskAsync(DeleteDiskRequest deleteDiskRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteDiskRequest, DeleteDiskResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes the specified disk snapshot.
+     * </p>
+     * <p>
+     * When you make periodic snapshots of a disk, the snapshots are incremental, and only the blocks on the device that
+     * have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data
+     * not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all
+     * active snapshots will have access to all the information needed to restore the disk.
+     * </p>
+     * 
+     * @param deleteDiskSnapshotRequest
+     * @return A Java Future containing the result of the DeleteDiskSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsync.DeleteDiskSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteDiskSnapshot" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteDiskSnapshotResult> deleteDiskSnapshotAsync(DeleteDiskSnapshotRequest deleteDiskSnapshotRequest);
+
+    /**
+     * <p>
+     * Deletes the specified disk snapshot.
+     * </p>
+     * <p>
+     * When you make periodic snapshots of a disk, the snapshots are incremental, and only the blocks on the device that
+     * have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data
+     * not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all
+     * active snapshots will have access to all the information needed to restore the disk.
+     * </p>
+     * 
+     * @param deleteDiskSnapshotRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteDiskSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.DeleteDiskSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteDiskSnapshot" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteDiskSnapshotResult> deleteDiskSnapshotAsync(DeleteDiskSnapshotRequest deleteDiskSnapshotRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteDiskSnapshotRequest, DeleteDiskSnapshotResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes the specified domain recordset and all of its domain records.
      * </p>
      * 
@@ -486,6 +890,140 @@ public interface AmazonLightsailAsync extends AmazonLightsail {
      */
     java.util.concurrent.Future<DeleteKeyPairResult> deleteKeyPairAsync(DeleteKeyPairRequest deleteKeyPairRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteKeyPairRequest, DeleteKeyPairResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a Lightsail load balancer.
+     * </p>
+     * 
+     * @param deleteLoadBalancerRequest
+     * @return A Java Future containing the result of the DeleteLoadBalancer operation returned by the service.
+     * @sample AmazonLightsailAsync.DeleteLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteLoadBalancer" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteLoadBalancerResult> deleteLoadBalancerAsync(DeleteLoadBalancerRequest deleteLoadBalancerRequest);
+
+    /**
+     * <p>
+     * Deletes a Lightsail load balancer.
+     * </p>
+     * 
+     * @param deleteLoadBalancerRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteLoadBalancer operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.DeleteLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteLoadBalancer" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteLoadBalancerResult> deleteLoadBalancerAsync(DeleteLoadBalancerRequest deleteLoadBalancerRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteLoadBalancerRequest, DeleteLoadBalancerResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a TLS/SSL certificate associated with a Lightsail load balancer.
+     * </p>
+     * 
+     * @param deleteLoadBalancerTlsCertificateRequest
+     * @return A Java Future containing the result of the DeleteLoadBalancerTlsCertificate operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsync.DeleteLoadBalancerTlsCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteLoadBalancerTlsCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteLoadBalancerTlsCertificateResult> deleteLoadBalancerTlsCertificateAsync(
+            DeleteLoadBalancerTlsCertificateRequest deleteLoadBalancerTlsCertificateRequest);
+
+    /**
+     * <p>
+     * Deletes a TLS/SSL certificate associated with a Lightsail load balancer.
+     * </p>
+     * 
+     * @param deleteLoadBalancerTlsCertificateRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteLoadBalancerTlsCertificate operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsyncHandler.DeleteLoadBalancerTlsCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteLoadBalancerTlsCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteLoadBalancerTlsCertificateResult> deleteLoadBalancerTlsCertificateAsync(
+            DeleteLoadBalancerTlsCertificateRequest deleteLoadBalancerTlsCertificateRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteLoadBalancerTlsCertificateRequest, DeleteLoadBalancerTlsCertificateResult> asyncHandler);
+
+    /**
+     * <p>
+     * Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the
+     * device within your operating system before stopping the instance and detaching the disk.
+     * </p>
+     * 
+     * @param detachDiskRequest
+     * @return A Java Future containing the result of the DetachDisk operation returned by the service.
+     * @sample AmazonLightsailAsync.DetachDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DetachDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DetachDiskResult> detachDiskAsync(DetachDiskRequest detachDiskRequest);
+
+    /**
+     * <p>
+     * Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the
+     * device within your operating system before stopping the instance and detaching the disk.
+     * </p>
+     * 
+     * @param detachDiskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DetachDisk operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.DetachDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DetachDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DetachDiskResult> detachDiskAsync(DetachDiskRequest detachDiskRequest,
+            com.amazonaws.handlers.AsyncHandler<DetachDiskRequest, DetachDiskResult> asyncHandler);
+
+    /**
+     * <p>
+     * Detaches the specified instances from a Lightsail load balancer.
+     * </p>
+     * 
+     * @param detachInstancesFromLoadBalancerRequest
+     * @return A Java Future containing the result of the DetachInstancesFromLoadBalancer operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsync.DetachInstancesFromLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DetachInstancesFromLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DetachInstancesFromLoadBalancerResult> detachInstancesFromLoadBalancerAsync(
+            DetachInstancesFromLoadBalancerRequest detachInstancesFromLoadBalancerRequest);
+
+    /**
+     * <p>
+     * Detaches the specified instances from a Lightsail load balancer.
+     * </p>
+     * 
+     * @param detachInstancesFromLoadBalancerRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DetachInstancesFromLoadBalancer operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsyncHandler.DetachInstancesFromLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DetachInstancesFromLoadBalancer"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DetachInstancesFromLoadBalancerResult> detachInstancesFromLoadBalancerAsync(
+            DetachInstancesFromLoadBalancerRequest detachInstancesFromLoadBalancerRequest,
+            com.amazonaws.handlers.AsyncHandler<DetachInstancesFromLoadBalancerRequest, DetachInstancesFromLoadBalancerResult> asyncHandler);
 
     /**
      * <p>
@@ -647,6 +1185,146 @@ public interface AmazonLightsailAsync extends AmazonLightsail {
      */
     java.util.concurrent.Future<GetBundlesResult> getBundlesAsync(GetBundlesRequest getBundlesRequest,
             com.amazonaws.handlers.AsyncHandler<GetBundlesRequest, GetBundlesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about a specific block storage disk.
+     * </p>
+     * 
+     * @param getDiskRequest
+     * @return A Java Future containing the result of the GetDisk operation returned by the service.
+     * @sample AmazonLightsailAsync.GetDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDiskResult> getDiskAsync(GetDiskRequest getDiskRequest);
+
+    /**
+     * <p>
+     * Returns information about a specific block storage disk.
+     * </p>
+     * 
+     * @param getDiskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDisk operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.GetDisk
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDisk" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDiskResult> getDiskAsync(GetDiskRequest getDiskRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDiskRequest, GetDiskResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about a specific block storage disk snapshot.
+     * </p>
+     * 
+     * @param getDiskSnapshotRequest
+     * @return A Java Future containing the result of the GetDiskSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsync.GetDiskSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDiskSnapshot" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDiskSnapshotResult> getDiskSnapshotAsync(GetDiskSnapshotRequest getDiskSnapshotRequest);
+
+    /**
+     * <p>
+     * Returns information about a specific block storage disk snapshot.
+     * </p>
+     * 
+     * @param getDiskSnapshotRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDiskSnapshot operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.GetDiskSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDiskSnapshot" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDiskSnapshotResult> getDiskSnapshotAsync(GetDiskSnapshotRequest getDiskSnapshotRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDiskSnapshotRequest, GetDiskSnapshotResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about all block storage disk snapshots in your AWS account and region.
+     * </p>
+     * <p>
+     * If you are describing a long list of disk snapshots, you can paginate the output to make the list more
+     * manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
+     * </p>
+     * 
+     * @param getDiskSnapshotsRequest
+     * @return A Java Future containing the result of the GetDiskSnapshots operation returned by the service.
+     * @sample AmazonLightsailAsync.GetDiskSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDiskSnapshots" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDiskSnapshotsResult> getDiskSnapshotsAsync(GetDiskSnapshotsRequest getDiskSnapshotsRequest);
+
+    /**
+     * <p>
+     * Returns information about all block storage disk snapshots in your AWS account and region.
+     * </p>
+     * <p>
+     * If you are describing a long list of disk snapshots, you can paginate the output to make the list more
+     * manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
+     * </p>
+     * 
+     * @param getDiskSnapshotsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDiskSnapshots operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.GetDiskSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDiskSnapshots" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDiskSnapshotsResult> getDiskSnapshotsAsync(GetDiskSnapshotsRequest getDiskSnapshotsRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDiskSnapshotsRequest, GetDiskSnapshotsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about all block storage disks in your AWS account and region.
+     * </p>
+     * <p>
+     * If you are describing a long list of disks, you can paginate the output to make the list more manageable. You can
+     * use the pageToken and nextPageToken values to retrieve the next items in the list.
+     * </p>
+     * 
+     * @param getDisksRequest
+     * @return A Java Future containing the result of the GetDisks operation returned by the service.
+     * @sample AmazonLightsailAsync.GetDisks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDisks" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDisksResult> getDisksAsync(GetDisksRequest getDisksRequest);
+
+    /**
+     * <p>
+     * Returns information about all block storage disks in your AWS account and region.
+     * </p>
+     * <p>
+     * If you are describing a long list of disks, you can paginate the output to make the list more manageable. You can
+     * use the pageToken and nextPageToken values to retrieve the next items in the list.
+     * </p>
+     * 
+     * @param getDisksRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetDisks operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.GetDisks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetDisks" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetDisksResult> getDisksAsync(GetDisksRequest getDisksRequest,
+            com.amazonaws.handlers.AsyncHandler<GetDisksRequest, GetDisksResult> asyncHandler);
 
     /**
      * <p>
@@ -1019,6 +1697,150 @@ public interface AmazonLightsailAsync extends AmazonLightsail {
      */
     java.util.concurrent.Future<GetKeyPairsResult> getKeyPairsAsync(GetKeyPairsRequest getKeyPairsRequest,
             com.amazonaws.handlers.AsyncHandler<GetKeyPairsRequest, GetKeyPairsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about the specified Lightsail load balancer.
+     * </p>
+     * 
+     * @param getLoadBalancerRequest
+     * @return A Java Future containing the result of the GetLoadBalancer operation returned by the service.
+     * @sample AmazonLightsailAsync.GetLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancer" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancerResult> getLoadBalancerAsync(GetLoadBalancerRequest getLoadBalancerRequest);
+
+    /**
+     * <p>
+     * Returns information about the specified Lightsail load balancer.
+     * </p>
+     * 
+     * @param getLoadBalancerRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetLoadBalancer operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.GetLoadBalancer
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancer" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancerResult> getLoadBalancerAsync(GetLoadBalancerRequest getLoadBalancerRequest,
+            com.amazonaws.handlers.AsyncHandler<GetLoadBalancerRequest, GetLoadBalancerResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about health metrics for your Lightsail load balancer.
+     * </p>
+     * 
+     * @param getLoadBalancerMetricDataRequest
+     * @return A Java Future containing the result of the GetLoadBalancerMetricData operation returned by the service.
+     * @sample AmazonLightsailAsync.GetLoadBalancerMetricData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancerMetricData"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancerMetricDataResult> getLoadBalancerMetricDataAsync(
+            GetLoadBalancerMetricDataRequest getLoadBalancerMetricDataRequest);
+
+    /**
+     * <p>
+     * Returns information about health metrics for your Lightsail load balancer.
+     * </p>
+     * 
+     * @param getLoadBalancerMetricDataRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetLoadBalancerMetricData operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.GetLoadBalancerMetricData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancerMetricData"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancerMetricDataResult> getLoadBalancerMetricDataAsync(
+            GetLoadBalancerMetricDataRequest getLoadBalancerMetricDataRequest,
+            com.amazonaws.handlers.AsyncHandler<GetLoadBalancerMetricDataRequest, GetLoadBalancerMetricDataResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about the TLS certificates that are associated with the specified Lightsail load balancer.
+     * </p>
+     * <p>
+     * TLS is just an updated, more secure version of Secure Socket Layer (SSL).
+     * </p>
+     * 
+     * @param getLoadBalancerTlsCertificatesRequest
+     * @return A Java Future containing the result of the GetLoadBalancerTlsCertificates operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsync.GetLoadBalancerTlsCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancerTlsCertificates"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancerTlsCertificatesResult> getLoadBalancerTlsCertificatesAsync(
+            GetLoadBalancerTlsCertificatesRequest getLoadBalancerTlsCertificatesRequest);
+
+    /**
+     * <p>
+     * Returns information about the TLS certificates that are associated with the specified Lightsail load balancer.
+     * </p>
+     * <p>
+     * TLS is just an updated, more secure version of Secure Socket Layer (SSL).
+     * </p>
+     * 
+     * @param getLoadBalancerTlsCertificatesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetLoadBalancerTlsCertificates operation returned by the
+     *         service.
+     * @sample AmazonLightsailAsyncHandler.GetLoadBalancerTlsCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancerTlsCertificates"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancerTlsCertificatesResult> getLoadBalancerTlsCertificatesAsync(
+            GetLoadBalancerTlsCertificatesRequest getLoadBalancerTlsCertificatesRequest,
+            com.amazonaws.handlers.AsyncHandler<GetLoadBalancerTlsCertificatesRequest, GetLoadBalancerTlsCertificatesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about all load balancers in an account.
+     * </p>
+     * <p>
+     * If you are describing a long list of load balancers, you can paginate the output to make the list more
+     * manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
+     * </p>
+     * 
+     * @param getLoadBalancersRequest
+     * @return A Java Future containing the result of the GetLoadBalancers operation returned by the service.
+     * @sample AmazonLightsailAsync.GetLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancers" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancersResult> getLoadBalancersAsync(GetLoadBalancersRequest getLoadBalancersRequest);
+
+    /**
+     * <p>
+     * Returns information about all load balancers in an account.
+     * </p>
+     * <p>
+     * If you are describing a long list of load balancers, you can paginate the output to make the list more
+     * manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
+     * </p>
+     * 
+     * @param getLoadBalancersRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetLoadBalancers operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.GetLoadBalancers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetLoadBalancers" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetLoadBalancersResult> getLoadBalancersAsync(GetLoadBalancersRequest getLoadBalancersRequest,
+            com.amazonaws.handlers.AsyncHandler<GetLoadBalancersRequest, GetLoadBalancersResult> asyncHandler);
 
     /**
      * <p>
@@ -1568,5 +2390,38 @@ public interface AmazonLightsailAsync extends AmazonLightsail {
      */
     java.util.concurrent.Future<UpdateDomainEntryResult> updateDomainEntryAsync(UpdateDomainEntryRequest updateDomainEntryRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateDomainEntryRequest, UpdateDomainEntryResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the specified attribute for a load balancer.
+     * </p>
+     * 
+     * @param updateLoadBalancerAttributeRequest
+     * @return A Java Future containing the result of the UpdateLoadBalancerAttribute operation returned by the service.
+     * @sample AmazonLightsailAsync.UpdateLoadBalancerAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/UpdateLoadBalancerAttribute"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateLoadBalancerAttributeResult> updateLoadBalancerAttributeAsync(
+            UpdateLoadBalancerAttributeRequest updateLoadBalancerAttributeRequest);
+
+    /**
+     * <p>
+     * Updates the specified attribute for a load balancer.
+     * </p>
+     * 
+     * @param updateLoadBalancerAttributeRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateLoadBalancerAttribute operation returned by the service.
+     * @sample AmazonLightsailAsyncHandler.UpdateLoadBalancerAttribute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/UpdateLoadBalancerAttribute"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateLoadBalancerAttributeResult> updateLoadBalancerAttributeAsync(
+            UpdateLoadBalancerAttributeRequest updateLoadBalancerAttributeRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateLoadBalancerAttributeRequest, UpdateLoadBalancerAttributeResult> asyncHandler);
 
 }

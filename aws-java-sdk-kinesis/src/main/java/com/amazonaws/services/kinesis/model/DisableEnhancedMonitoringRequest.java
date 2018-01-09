@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class DisableEnhancedMonitoringRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The name of the Amazon Kinesis stream for which to disable enhanced monitoring.
+     * The name of the Kinesis stream for which to disable enhanced monitoring.
      * </p>
      */
     private String streamName;
@@ -93,11 +93,11 @@ public class DisableEnhancedMonitoringRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The name of the Amazon Kinesis stream for which to disable enhanced monitoring.
+     * The name of the Kinesis stream for which to disable enhanced monitoring.
      * </p>
      * 
      * @param streamName
-     *        The name of the Amazon Kinesis stream for which to disable enhanced monitoring.
+     *        The name of the Kinesis stream for which to disable enhanced monitoring.
      */
 
     public void setStreamName(String streamName) {
@@ -106,10 +106,10 @@ public class DisableEnhancedMonitoringRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The name of the Amazon Kinesis stream for which to disable enhanced monitoring.
+     * The name of the Kinesis stream for which to disable enhanced monitoring.
      * </p>
      * 
-     * @return The name of the Amazon Kinesis stream for which to disable enhanced monitoring.
+     * @return The name of the Kinesis stream for which to disable enhanced monitoring.
      */
 
     public String getStreamName() {
@@ -118,11 +118,11 @@ public class DisableEnhancedMonitoringRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The name of the Amazon Kinesis stream for which to disable enhanced monitoring.
+     * The name of the Kinesis stream for which to disable enhanced monitoring.
      * </p>
      * 
      * @param streamName
-     *        The name of the Amazon Kinesis stream for which to disable enhanced monitoring.
+     *        The name of the Kinesis stream for which to disable enhanced monitoring.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

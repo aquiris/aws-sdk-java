@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,6 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * Contains details about the start of an activity during an execution.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/states-2016-11-23/ActivityStartedEventDetails" target="_top">AWS
  *      API Documentation</a>
@@ -27,7 +30,7 @@ public class ActivityStartedEventDetails implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The name of the worker that the task was assigned to. These names are provided by the workers when calling
+     * The name of the worker that the task is assigned to. These names are provided by the workers when calling
      * <a>GetActivityTask</a>.
      * </p>
      */
@@ -35,12 +38,12 @@ public class ActivityStartedEventDetails implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The name of the worker that the task was assigned to. These names are provided by the workers when calling
+     * The name of the worker that the task is assigned to. These names are provided by the workers when calling
      * <a>GetActivityTask</a>.
      * </p>
      * 
      * @param workerName
-     *        The name of the worker that the task was assigned to. These names are provided by the workers when calling
+     *        The name of the worker that the task is assigned to. These names are provided by the workers when calling
      *        <a>GetActivityTask</a>.
      */
 
@@ -50,12 +53,12 @@ public class ActivityStartedEventDetails implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The name of the worker that the task was assigned to. These names are provided by the workers when calling
+     * The name of the worker that the task is assigned to. These names are provided by the workers when calling
      * <a>GetActivityTask</a>.
      * </p>
      * 
-     * @return The name of the worker that the task was assigned to. These names are provided by the workers when
-     *         calling <a>GetActivityTask</a>.
+     * @return The name of the worker that the task is assigned to. These names are provided by the workers when calling
+     *         <a>GetActivityTask</a>.
      */
 
     public String getWorkerName() {
@@ -64,12 +67,12 @@ public class ActivityStartedEventDetails implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The name of the worker that the task was assigned to. These names are provided by the workers when calling
+     * The name of the worker that the task is assigned to. These names are provided by the workers when calling
      * <a>GetActivityTask</a>.
      * </p>
      * 
      * @param workerName
-     *        The name of the worker that the task was assigned to. These names are provided by the workers when calling
+     *        The name of the worker that the task is assigned to. These names are provided by the workers when calling
      *        <a>GetActivityTask</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

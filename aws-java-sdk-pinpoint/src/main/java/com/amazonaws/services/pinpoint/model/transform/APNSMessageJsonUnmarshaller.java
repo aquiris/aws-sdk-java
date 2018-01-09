@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,14 +64,14 @@ public class APNSMessageJsonUnmarshaller implements Unmarshaller<APNSMessage, Js
                     context.nextToken();
                     aPNSMessage.setCategory(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("CollapseId", targetDepth)) {
+                    context.nextToken();
+                    aPNSMessage.setCollapseId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("Data", targetDepth)) {
                     context.nextToken();
                     aPNSMessage.setData(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
                             .unmarshall(context));
-                }
-                if (context.testExpression("JsonData", targetDepth)) {
-                    context.nextToken();
-                    aPNSMessage.setJsonData(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("MediaUrl", targetDepth)) {
                     context.nextToken();
@@ -80,6 +80,10 @@ public class APNSMessageJsonUnmarshaller implements Unmarshaller<APNSMessage, Js
                 if (context.testExpression("PreferredAuthenticationMethod", targetDepth)) {
                     context.nextToken();
                     aPNSMessage.setPreferredAuthenticationMethod(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Priority", targetDepth)) {
+                    context.nextToken();
+                    aPNSMessage.setPriority(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("RawContent", targetDepth)) {
                     context.nextToken();
@@ -101,6 +105,10 @@ public class APNSMessageJsonUnmarshaller implements Unmarshaller<APNSMessage, Js
                 if (context.testExpression("ThreadId", targetDepth)) {
                     context.nextToken();
                     aPNSMessage.setThreadId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("TimeToLive", targetDepth)) {
+                    context.nextToken();
+                    aPNSMessage.setTimeToLive(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("Title", targetDepth)) {
                     context.nextToken();

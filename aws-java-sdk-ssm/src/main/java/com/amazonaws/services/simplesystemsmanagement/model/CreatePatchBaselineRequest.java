@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,8 +27,7 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     * AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     * Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * </p>
      */
     private String operatingSystem;
@@ -85,13 +84,11 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     * AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     * Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * </p>
      * 
      * @param operatingSystem
-     *        Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     *        AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     *        Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * @see OperatingSystem
      */
 
@@ -101,12 +98,10 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     * AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     * Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * </p>
      * 
-     * @return Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     *         AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     * @return Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * @see OperatingSystem
      */
 
@@ -116,13 +111,11 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     * AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     * Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * </p>
      * 
      * @param operatingSystem
-     *        Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     *        AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     *        Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OperatingSystem
      */
@@ -134,13 +127,11 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     * AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     * Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * </p>
      * 
      * @param operatingSystem
-     *        Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     *        AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     *        Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * @see OperatingSystem
      */
 
@@ -150,13 +141,11 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     * AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     * Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * </p>
      * 
      * @param operatingSystem
-     *        Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS,
-     *        AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+     *        Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OperatingSystem
      */

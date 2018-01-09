@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -61,7 +61,7 @@ public class Distribution implements Serializable, Cloneable {
     private Integer inProgressInvalidationBatches;
     /**
      * <p>
-     * The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>.
+     * The domain name corresponding to the distribution, for example, <code>d111111abcdef8.cloudfront.net</code>.
      * </p>
      */
     private String domainName;
@@ -102,7 +102,7 @@ public class Distribution implements Serializable, Cloneable {
      *        <code>Deployed</code>, the distribution's information is fully propagated to all CloudFront edge
      *        locations.
      * @param domainName
-     *        The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>
+     *        The domain name corresponding to the distribution, for example, <code>d111111abcdef8.cloudfront.net</code>
      *        .
      */
     public Distribution(String id, String status, String domainName) {
@@ -334,11 +334,11 @@ public class Distribution implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>.
+     * The domain name corresponding to the distribution, for example, <code>d111111abcdef8.cloudfront.net</code>.
      * </p>
      * 
      * @param domainName
-     *        The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>
+     *        The domain name corresponding to the distribution, for example, <code>d111111abcdef8.cloudfront.net</code>
      *        .
      */
 
@@ -348,11 +348,11 @@ public class Distribution implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>.
+     * The domain name corresponding to the distribution, for example, <code>d111111abcdef8.cloudfront.net</code>.
      * </p>
      * 
-     * @return The domain name corresponding to the distribution. For example:
-     *         <code>d604721fxaaqy9.cloudfront.net</code>.
+     * @return The domain name corresponding to the distribution, for example,
+     *         <code>d111111abcdef8.cloudfront.net</code>.
      */
 
     public String getDomainName() {
@@ -361,11 +361,11 @@ public class Distribution implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>.
+     * The domain name corresponding to the distribution, for example, <code>d111111abcdef8.cloudfront.net</code>.
      * </p>
      * 
      * @param domainName
-     *        The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>
+     *        The domain name corresponding to the distribution, for example, <code>d111111abcdef8.cloudfront.net</code>
      *        .
      * @return Returns a reference to this object so that method calls can be chained together.
      */

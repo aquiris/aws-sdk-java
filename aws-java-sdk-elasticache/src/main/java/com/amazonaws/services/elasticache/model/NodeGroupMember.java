@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,13 +28,13 @@ public class NodeGroupMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the cache cluster to which the node belongs.
+     * The ID of the cluster to which the node belongs.
      * </p>
      */
     private String cacheClusterId;
     /**
      * <p>
-     * The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).
      * </p>
      */
     private String cacheNodeId;
@@ -55,11 +55,11 @@ public class NodeGroupMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the cache cluster to which the node belongs.
+     * The ID of the cluster to which the node belongs.
      * </p>
      * 
      * @param cacheClusterId
-     *        The ID of the cache cluster to which the node belongs.
+     *        The ID of the cluster to which the node belongs.
      */
 
     public void setCacheClusterId(String cacheClusterId) {
@@ -68,10 +68,10 @@ public class NodeGroupMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the cache cluster to which the node belongs.
+     * The ID of the cluster to which the node belongs.
      * </p>
      * 
-     * @return The ID of the cache cluster to which the node belongs.
+     * @return The ID of the cluster to which the node belongs.
      */
 
     public String getCacheClusterId() {
@@ -80,11 +80,11 @@ public class NodeGroupMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the cache cluster to which the node belongs.
+     * The ID of the cluster to which the node belongs.
      * </p>
      * 
      * @param cacheClusterId
-     *        The ID of the cache cluster to which the node belongs.
+     *        The ID of the cluster to which the node belongs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -95,11 +95,11 @@ public class NodeGroupMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).
      * </p>
      * 
      * @param cacheNodeId
-     *        The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     *        The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).
      */
 
     public void setCacheNodeId(String cacheNodeId) {
@@ -108,10 +108,10 @@ public class NodeGroupMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).
      * </p>
      * 
-     * @return The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * @return The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).
      */
 
     public String getCacheNodeId() {
@@ -120,11 +120,11 @@ public class NodeGroupMember implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     * The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).
      * </p>
      * 
      * @param cacheNodeId
-     *        The ID of the node within its cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+     *        The ID of the node within its cluster. A node ID is a numeric identifier (0001, 0002, etc.).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

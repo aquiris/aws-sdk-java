@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public class SMSChannelResponseMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CreationDate").build();
     private static final MarshallingInfo<Boolean> ENABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Enabled").build();
+    private static final MarshallingInfo<Boolean> HASCREDENTIAL_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("HasCredential").build();
     private static final MarshallingInfo<String> ID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Id").build();
     private static final MarshallingInfo<Boolean> ISARCHIVED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
@@ -69,6 +71,7 @@ public class SMSChannelResponseMarshaller {
             protocolMarshaller.marshall(sMSChannelResponse.getApplicationId(), APPLICATIONID_BINDING);
             protocolMarshaller.marshall(sMSChannelResponse.getCreationDate(), CREATIONDATE_BINDING);
             protocolMarshaller.marshall(sMSChannelResponse.getEnabled(), ENABLED_BINDING);
+            protocolMarshaller.marshall(sMSChannelResponse.getHasCredential(), HASCREDENTIAL_BINDING);
             protocolMarshaller.marshall(sMSChannelResponse.getId(), ID_BINDING);
             protocolMarshaller.marshall(sMSChannelResponse.getIsArchived(), ISARCHIVED_BINDING);
             protocolMarshaller.marshall(sMSChannelResponse.getLastModifiedBy(), LASTMODIFIEDBY_BINDING);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,8 +47,8 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <p>
      * The version counter for the container instance. Every time a container instance experiences a change that
      * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
-     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
-     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * instance state with CloudWatch Events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch Events for the container instance (inside the
      * <code>detail</code> object) to verify that the version in your event stream is current.
      * </p>
      */
@@ -83,15 +83,15 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
      * running on the container instance are removed if possible. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
-     * Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private String status;
     /**
      * <p>
-     * This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered instances
-     * with an agent that may be unhealthy or stopped return <code>false</code>, and instances without a connected agent
-     * cannot accept placement requests.
+     * This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances with an
+     * agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected agent can't
+     * accept placement requests.
      * </p>
      */
     private Boolean agentConnected;
@@ -123,10 +123,16 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
     private com.amazonaws.internal.SdkInternalList<Attribute> attributes;
     /**
      * <p>
-     * The Unix timestamp for when the container instance was registered.
+     * The Unix time stamp for when the container instance was registered.
      * </p>
      */
     private java.util.Date registeredAt;
+    /**
+     * <p>
+     * The Elastic Network Interfaces associated with the container instance.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Attachment> attachments;
 
     /**
      * <p>
@@ -233,16 +239,16 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <p>
      * The version counter for the container instance. Every time a container instance experiences a change that
      * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
-     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
-     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * instance state with CloudWatch Events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch Events for the container instance (inside the
      * <code>detail</code> object) to verify that the version in your event stream is current.
      * </p>
      * 
      * @param version
      *        The version counter for the container instance. Every time a container instance experiences a change that
      *        triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS
-     *        container instance state with CloudWatch events, you can compare the version of a container instance
-     *        reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance
+     *        container instance state with CloudWatch Events, you can compare the version of a container instance
+     *        reported by the Amazon ECS APIs with the version reported in CloudWatch Events for the container instance
      *        (inside the <code>detail</code> object) to verify that the version in your event stream is current.
      */
 
@@ -254,15 +260,15 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <p>
      * The version counter for the container instance. Every time a container instance experiences a change that
      * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
-     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
-     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * instance state with CloudWatch Events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch Events for the container instance (inside the
      * <code>detail</code> object) to verify that the version in your event stream is current.
      * </p>
      * 
      * @return The version counter for the container instance. Every time a container instance experiences a change that
      *         triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS
-     *         container instance state with CloudWatch events, you can compare the version of a container instance
-     *         reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance
+     *         container instance state with CloudWatch Events, you can compare the version of a container instance
+     *         reported by the Amazon ECS APIs with the version reported in CloudWatch Events for the container instance
      *         (inside the <code>detail</code> object) to verify that the version in your event stream is current.
      */
 
@@ -274,16 +280,16 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <p>
      * The version counter for the container instance. Every time a container instance experiences a change that
      * triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container
-     * instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon
-     * ECS APIs with the version reported in CloudWatch events for the container instance (inside the
+     * instance state with CloudWatch Events, you can compare the version of a container instance reported by the Amazon
+     * ECS APIs with the version reported in CloudWatch Events for the container instance (inside the
      * <code>detail</code> object) to verify that the version in your event stream is current.
      * </p>
      * 
      * @param version
      *        The version counter for the container instance. Every time a container instance experiences a change that
      *        triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS
-     *        container instance state with CloudWatch events, you can compare the version of a container instance
-     *        reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance
+     *        container instance state with CloudWatch Events, you can compare the version of a container instance
+     *        reported by the Amazon ECS APIs with the version reported in CloudWatch Events for the container instance
      *        (inside the <code>detail</code> object) to verify that the version in your event stream is current.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -529,7 +535,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
      * running on the container instance are removed if possible. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
-     * Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param status
@@ -538,7 +544,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      *        <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service
      *        tasks running on the container instance are removed if possible. For more information, see <a
      *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html"
-     *        >Container Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     *        >Container Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public void setStatus(String status) {
@@ -552,7 +558,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
      * running on the container instance are removed if possible. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
-     * Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
@@ -560,7 +566,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      *         <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service
      *         tasks running on the container instance are removed if possible. For more information, see <a
      *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html"
-     *         >Container Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     *         >Container Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public String getStatus() {
@@ -574,7 +580,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
      * running on the container instance are removed if possible. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
-     * Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param status
@@ -583,7 +589,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      *        <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service
      *        tasks running on the container instance are removed if possible. For more information, see <a
      *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html"
-     *        >Container Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+     *        >Container Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -594,15 +600,15 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered instances
-     * with an agent that may be unhealthy or stopped return <code>false</code>, and instances without a connected agent
-     * cannot accept placement requests.
+     * This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances with an
+     * agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected agent can't
+     * accept placement requests.
      * </p>
      * 
      * @param agentConnected
-     *        This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered
-     *        instances with an agent that may be unhealthy or stopped return <code>false</code>, and instances without
-     *        a connected agent cannot accept placement requests.
+     *        This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances
+     *        with an agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected
+     *        agent can't accept placement requests.
      */
 
     public void setAgentConnected(Boolean agentConnected) {
@@ -611,14 +617,14 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered instances
-     * with an agent that may be unhealthy or stopped return <code>false</code>, and instances without a connected agent
-     * cannot accept placement requests.
+     * This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances with an
+     * agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected agent can't
+     * accept placement requests.
      * </p>
      * 
-     * @return This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered
-     *         instances with an agent that may be unhealthy or stopped return <code>false</code>, and instances without
-     *         a connected agent cannot accept placement requests.
+     * @return This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances
+     *         with an agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected
+     *         agent can't accept placement requests.
      */
 
     public Boolean getAgentConnected() {
@@ -627,15 +633,15 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered instances
-     * with an agent that may be unhealthy or stopped return <code>false</code>, and instances without a connected agent
-     * cannot accept placement requests.
+     * This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances with an
+     * agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected agent can't
+     * accept placement requests.
      * </p>
      * 
      * @param agentConnected
-     *        This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered
-     *        instances with an agent that may be unhealthy or stopped return <code>false</code>, and instances without
-     *        a connected agent cannot accept placement requests.
+     *        This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances
+     *        with an agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected
+     *        agent can't accept placement requests.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -646,14 +652,14 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered instances
-     * with an agent that may be unhealthy or stopped return <code>false</code>, and instances without a connected agent
-     * cannot accept placement requests.
+     * This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances with an
+     * agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected agent can't
+     * accept placement requests.
      * </p>
      * 
-     * @return This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered
-     *         instances with an agent that may be unhealthy or stopped return <code>false</code>, and instances without
-     *         a connected agent cannot accept placement requests.
+     * @return This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances
+     *         with an agent that may be unhealthy or stopped return <code>false</code>. Instances without a connected
+     *         agent can't accept placement requests.
      */
 
     public Boolean isAgentConnected() {
@@ -906,11 +912,11 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The Unix timestamp for when the container instance was registered.
+     * The Unix time stamp for when the container instance was registered.
      * </p>
      * 
      * @param registeredAt
-     *        The Unix timestamp for when the container instance was registered.
+     *        The Unix time stamp for when the container instance was registered.
      */
 
     public void setRegisteredAt(java.util.Date registeredAt) {
@@ -919,10 +925,10 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The Unix timestamp for when the container instance was registered.
+     * The Unix time stamp for when the container instance was registered.
      * </p>
      * 
-     * @return The Unix timestamp for when the container instance was registered.
+     * @return The Unix time stamp for when the container instance was registered.
      */
 
     public java.util.Date getRegisteredAt() {
@@ -931,16 +937,89 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The Unix timestamp for when the container instance was registered.
+     * The Unix time stamp for when the container instance was registered.
      * </p>
      * 
      * @param registeredAt
-     *        The Unix timestamp for when the container instance was registered.
+     *        The Unix time stamp for when the container instance was registered.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ContainerInstance withRegisteredAt(java.util.Date registeredAt) {
         setRegisteredAt(registeredAt);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Elastic Network Interfaces associated with the container instance.
+     * </p>
+     * 
+     * @return The Elastic Network Interfaces associated with the container instance.
+     */
+
+    public java.util.List<Attachment> getAttachments() {
+        if (attachments == null) {
+            attachments = new com.amazonaws.internal.SdkInternalList<Attachment>();
+        }
+        return attachments;
+    }
+
+    /**
+     * <p>
+     * The Elastic Network Interfaces associated with the container instance.
+     * </p>
+     * 
+     * @param attachments
+     *        The Elastic Network Interfaces associated with the container instance.
+     */
+
+    public void setAttachments(java.util.Collection<Attachment> attachments) {
+        if (attachments == null) {
+            this.attachments = null;
+            return;
+        }
+
+        this.attachments = new com.amazonaws.internal.SdkInternalList<Attachment>(attachments);
+    }
+
+    /**
+     * <p>
+     * The Elastic Network Interfaces associated with the container instance.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAttachments(java.util.Collection)} or {@link #withAttachments(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param attachments
+     *        The Elastic Network Interfaces associated with the container instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerInstance withAttachments(Attachment... attachments) {
+        if (this.attachments == null) {
+            setAttachments(new com.amazonaws.internal.SdkInternalList<Attachment>(attachments.length));
+        }
+        for (Attachment ele : attachments) {
+            this.attachments.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Elastic Network Interfaces associated with the container instance.
+     * </p>
+     * 
+     * @param attachments
+     *        The Elastic Network Interfaces associated with the container instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerInstance withAttachments(java.util.Collection<Attachment> attachments) {
+        setAttachments(attachments);
         return this;
     }
 
@@ -980,7 +1059,9 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
         if (getAttributes() != null)
             sb.append("Attributes: ").append(getAttributes()).append(",");
         if (getRegisteredAt() != null)
-            sb.append("RegisteredAt: ").append(getRegisteredAt());
+            sb.append("RegisteredAt: ").append(getRegisteredAt()).append(",");
+        if (getAttachments() != null)
+            sb.append("Attachments: ").append(getAttachments());
         sb.append("}");
         return sb.toString();
     }
@@ -1047,6 +1128,10 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
             return false;
         if (other.getRegisteredAt() != null && other.getRegisteredAt().equals(this.getRegisteredAt()) == false)
             return false;
+        if (other.getAttachments() == null ^ this.getAttachments() == null)
+            return false;
+        if (other.getAttachments() != null && other.getAttachments().equals(this.getAttachments()) == false)
+            return false;
         return true;
     }
 
@@ -1068,6 +1153,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
         hashCode = prime * hashCode + ((getAgentUpdateStatus() == null) ? 0 : getAgentUpdateStatus().hashCode());
         hashCode = prime * hashCode + ((getAttributes() == null) ? 0 : getAttributes().hashCode());
         hashCode = prime * hashCode + ((getRegisteredAt() == null) ? 0 : getRegisteredAt().hashCode());
+        hashCode = prime * hashCode + ((getAttachments() == null) ? 0 : getAttachments().hashCode());
         return hashCode;
     }
 

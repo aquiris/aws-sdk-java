@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -810,6 +810,7 @@ public class AmazonHttpClient {
             if (executionContext.getClientExecutionTrackerTask().hasTimeoutExpired()) {
                 return new ClientExecutionTimeoutException();
             } else {
+                Thread.currentThread().interrupt();
                 return ae;
             }
         }
@@ -1219,7 +1220,7 @@ public class AmazonHttpClient {
 
             final HttpClientContext localRequestContext =
                     ApacheUtils.newClientContext(httpClientSettings, ImmutableMapParameter.of
-                            (AWSRequestMetrics.class.getSimpleName(), awsRequestMetrics));
+                            (AWSRequestMetrics.SIMPLE_NAME, awsRequestMetrics));
 
             execOneParams.resetBeforeHttpRequest();
             publishProgress(listener, ProgressEventType.HTTP_REQUEST_STARTED_EVENT);

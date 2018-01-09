@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -76,10 +76,6 @@ public class DiskJsonUnmarshaller implements Unmarshaller<Disk, JsonUnmarshaller
                     context.nextToken();
                     disk.setSizeInGb(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
-                if (context.testExpression("gbInUse", targetDepth)) {
-                    context.nextToken();
-                    disk.setGbInUse(context.getUnmarshaller(Integer.class).unmarshall(context));
-                }
                 if (context.testExpression("isSystemDisk", targetDepth)) {
                     context.nextToken();
                     disk.setIsSystemDisk(context.getUnmarshaller(Boolean.class).unmarshall(context));
@@ -92,6 +88,10 @@ public class DiskJsonUnmarshaller implements Unmarshaller<Disk, JsonUnmarshaller
                     context.nextToken();
                     disk.setPath(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("state", targetDepth)) {
+                    context.nextToken();
+                    disk.setState(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("attachedTo", targetDepth)) {
                     context.nextToken();
                     disk.setAttachedTo(context.getUnmarshaller(String.class).unmarshall(context));
@@ -103,6 +103,10 @@ public class DiskJsonUnmarshaller implements Unmarshaller<Disk, JsonUnmarshaller
                 if (context.testExpression("attachmentState", targetDepth)) {
                     context.nextToken();
                     disk.setAttachmentState(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("gbInUse", targetDepth)) {
+                    context.nextToken();
+                    disk.setGbInUse(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -38,6 +38,8 @@ public class ReplicationRule implements Serializable {
      * Destination configuration for the replication rule.
      */
     private ReplicationDestinationConfig destinationConfig;
+
+    private SourceSelectionCriteria sourceSelectionCriteria;
 
     /**
      * Returns the prefix associated with the replication rule.
@@ -163,6 +165,33 @@ public class ReplicationRule implements Serializable {
     public ReplicationRule withDestinationConfig(
             ReplicationDestinationConfig destinationConfig) {
         setDestinationConfig(destinationConfig);
+        return this;
+    }
+
+    /**
+     * @return Container for filters that define which source objects should be replicated.
+     */
+    public SourceSelectionCriteria getSourceSelectionCriteria() {
+        return sourceSelectionCriteria;
+    }
+
+    /**
+     * Sets the container for filters that define which source objects should be replicated.
+     *
+     * @param sourceSelectionCriteria New source selection criteria
+     */
+    public void setSourceSelectionCriteria(SourceSelectionCriteria sourceSelectionCriteria) {
+        this.sourceSelectionCriteria = sourceSelectionCriteria;
+    }
+
+    /**
+     * Sets the container for filters that define which source objects should be replicated.
+     *
+     * @param sourceSelectionCriteria New source selection criteria
+     * @return This object for method chaining.
+     */
+    public ReplicationRule withSourceSelectionCriteria(SourceSelectionCriteria sourceSelectionCriteria) {
+        setSourceSelectionCriteria(sourceSelectionCriteria);
         return this;
     }
 

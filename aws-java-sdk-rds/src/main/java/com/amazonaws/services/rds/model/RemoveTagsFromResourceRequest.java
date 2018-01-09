@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For
+     * The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For
      * information about creating an ARN, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
@@ -44,14 +44,14 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For
+     * The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For
      * information about creating an ARN, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
      * @param resourceName
-     *        The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For
+     *        The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For
      *        information about creating an ARN, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>.
@@ -63,13 +63,13 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For
+     * The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For
      * information about creating an ARN, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
-     * @return The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For
+     * @return The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For
      *         information about creating an ARN, see <a href=
      *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *         > Constructing an RDS Amazon Resource Name (ARN)</a>.
@@ -81,14 +81,14 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For
+     * The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For
      * information about creating an ARN, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * </p>
      * 
      * @param resourceName
-     *        The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For
+     *        The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For
      *        information about creating an ARN, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
      *        > Constructing an RDS Amazon Resource Name (ARN)</a>.

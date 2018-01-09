@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -62,13 +62,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </important>
      * <p>
-     * The ID of the replication group to which this cache cluster should belong. If this parameter is specified, the
-     * cache cluster is added to the specified replication group as a read replica; otherwise, the cache cluster is a
-     * standalone primary that is not part of any replication group.
+     * The ID of the replication group to which this cluster should belong. If this parameter is specified, the cluster
+     * is added to the specified replication group as a read replica; otherwise, the cluster is a standalone primary
+     * that is not part of any replication group.
      * </p>
      * <p>
-     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cache
-     * cluster is created in Availability Zones that provide the best spread of read replicas across Availability Zones.
+     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cluster is
+     * created in Availability Zones that provide the best spread of read replicas across Availability Zones.
      * </p>
      * <note>
      * <p>
@@ -83,7 +83,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * multiple Availability Zones in the cluster's region.
      * </p>
      * <p>
-     * This parameter is only supported for Memcached cache clusters.
+     * This parameter is only supported for Memcached clusters.
      * </p>
      * <p>
      * If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes
@@ -93,10 +93,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
     private String aZMode;
     /**
      * <p>
-     * The EC2 Availability Zone in which the cache cluster is created.
+     * The EC2 Availability Zone in which the cluster is created.
      * </p>
      * <p>
-     * All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you want to
+     * All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want to
      * create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
      * </p>
      * <p>
@@ -114,8 +114,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
-     * Zones that are associated with the subnets in the selected subnet group.
+     * If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability Zones
+     * that are associated with the subnets in the selected subnet group.
      * </p>
      * <p>
      * The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -132,7 +132,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
     private com.amazonaws.internal.SdkInternalList<String> preferredAvailabilityZones;
     /**
      * <p>
-     * The initial number of cache nodes that the cache cluster has.
+     * The initial number of cache nodes that the cluster has.
      * </p>
      * <p>
      * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
@@ -151,7 +151,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * The compute and memory capacity of the nodes in the node group (shard).
      * </p>
      * <p>
-     * Valid node types are as follows:
+     * The following node types are supported by ElastiCache. Generally speaking, the current generation types provide
+     * more memory and computational power at lower cost when compared to their equivalent previous generation
+     * counterparts.
      * </p>
      * <ul>
      * <li>
@@ -161,24 +163,48 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
-     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
+     * </p>
+     * <p>
+     * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
-     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>T1 node types:</b> <code>cache.t1.micro</code>
+     * </p>
+     * <p>
+     * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
+     * <code>cache.m1.xlarge</code>
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * Compute optimized: <code>cache.c1.xlarge</code>
+     * Compute optimized:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * <li>
      * <p>
@@ -187,13 +213,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -210,8 +242,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
-     * supported on Redis (cluster mode enabled) T2 instances.
+     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
@@ -233,7 +269,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
     private String cacheNodeType;
     /**
      * <p>
-     * The name of the cache engine to be used for this cache cluster.
+     * The name of the cache engine to be used for this cluster.
      * </p>
      * <p>
      * Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
@@ -242,21 +278,21 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
     private String engine;
     /**
      * <p>
-     * The version number of the cache engine to be used for this cache cluster. To view the supported cache engine
-     * versions, use the DescribeCacheEngineVersions operation.
+     * The version number of the cache engine to be used for this cluster. To view the supported cache engine versions,
+     * use the DescribeCacheEngineVersions operation.
      * </p>
      * <p>
      * <b>Important:</b> You can upgrade to a newer engine version (see <a
      * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement"
      * >Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to
-     * use an earlier engine version, you must delete the existing cache cluster or replication group and create it anew
-     * with the earlier engine version.
+     * use an earlier engine version, you must delete the existing cluster or replication group and create it anew with
+     * the earlier engine version.
      * </p>
      */
     private String engineVersion;
     /**
      * <p>
-     * The name of the parameter group to associate with this cache cluster. If this argument is omitted, the default
+     * The name of the parameter group to associate with this cluster. If this argument is omitted, the default
      * parameter group for the specified engine is used. You cannot use any parameter group which has
      * <code>cluster-enabled='yes'</code> when creating a cluster.
      * </p>
@@ -264,10 +300,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
     private String cacheParameterGroupName;
     /**
      * <p>
-     * The name of the subnet group to be used for the cache cluster.
+     * The name of the subnet group to be used for the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * <important>
      * <p>
@@ -281,27 +317,25 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
     private String cacheSubnetGroupName;
     /**
      * <p>
-     * A list of security group names to associate with this cache cluster.
+     * A list of security group names to associate with this cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud (Amazon
-     * VPC).
+     * Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> cacheSecurityGroupNames;
     /**
      * <p>
-     * One or more VPC security groups associated with the cache cluster.
+     * One or more VPC security groups associated with the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> securityGroupIds;
     /**
      * <p>
-     * A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     * accompanied by a tag value.
+     * A list of cost allocation tags to be added to this resource.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
@@ -335,9 +369,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
     private String snapshotName;
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache cluster is performed. It is specified as a
-     * range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
-     * period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <p>
      * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
@@ -401,7 +435,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * The Amazon SNS topic owner must be the same as the cache cluster owner.
+     * The Amazon SNS topic owner must be the same as the cluster owner.
      * </p>
      * </note>
      */
@@ -423,7 +457,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </note>
      * <p>
-     * Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+     * Default: 0 (i.e., automatic backups are disabled for this cluster).
      * </p>
      */
     private Integer snapshotRetentionLimit;
@@ -437,15 +471,32 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     * This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
      * </p>
+     * </note>
      */
     private String snapshotWindow;
     /**
      * <p>
      * <b>Reserved parameter.</b> The password used to access a password protected server.
      * </p>
+     * <p>
+     * This parameter is valid only if:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The parameter <code>TransitEncryptionEnabled</code> was set to <code>true</code> when the cluster was created.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The line <code>requirepass</code> was added to the database configuration file.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * Password constraints:
      * </p>
@@ -462,12 +513,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Cannot contain any of the following characters: '/', '"', or "@".
+     * Cannot contain any of the following characters: '/', '"', or '@'.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.
+     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at
+     * http://redis.io/commands/AUTH.
      * </p>
      */
     private String authToken;
@@ -505,7 +557,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        </li>
      * @param numCacheNodes
-     *        The initial number of cache nodes that the cache cluster has.</p>
+     *        The initial number of cache nodes that the cluster has.</p>
      *        <p>
      *        For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
      *        between 1 and 20.
@@ -519,7 +571,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        The compute and memory capacity of the nodes in the node group (shard).
      *        </p>
      *        <p>
-     *        Valid node types are as follows:
+     *        The following node types are supported by ElastiCache. Generally speaking, the current generation types
+     *        provide more memory and computational power at lower cost when compared to their equivalent previous
+     *        generation counterparts.
      *        </p>
      *        <ul>
      *        <li>
@@ -529,23 +583,49 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     *        <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     *        Current generation:
+     *        </p>
+     *        <p>
+     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *        <code>cache.t2.medium</code>
+     *        </p>
+     *        <p>
+     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     *        <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>T1 node types:</b> <code>cache.t1.micro</code>
+     *        </p>
+     *        <p>
+     *        <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        Compute optimized: <code>cache.c1.xlarge</code>
+     *        Compute optimized:
      *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     *        </p>
+     *        </li>
+     *        </ul>
      *        </li>
      *        <li>
      *        <p>
@@ -554,13 +634,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        Current generation:
+     *        </p>
+     *        <p>
+     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
      *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *        <code>cache.m2.4xlarge</code>
      *        </p>
      *        </li>
@@ -578,8 +664,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances.
-     *        Backup/restore is supported on Redis (cluster mode enabled) T2 instances.
+     *        Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      *        </p>
      *        </li>
      *        <li>
@@ -597,16 +687,16 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
      *        >Cache Node Type-Specific Parameters for Redis</a>.
      * @param engine
-     *        The name of the cache engine to be used for this cache cluster.
+     *        The name of the cache engine to be used for this cluster.
      *        </p>
      *        <p>
      *        Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
      * @param cacheSecurityGroupNames
-     *        A list of security group names to associate with this cache cluster.
+     *        A list of security group names to associate with this cluster.
      *        </p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud
-     *        (Amazon VPC).
+     *        Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon
+     *        VPC).
      */
     public CreateCacheClusterRequest(String cacheClusterId, Integer numCacheNodes, String cacheNodeType, String engine,
             java.util.List<String> cacheSecurityGroupNames) {
@@ -782,13 +872,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </important>
      * <p>
-     * The ID of the replication group to which this cache cluster should belong. If this parameter is specified, the
-     * cache cluster is added to the specified replication group as a read replica; otherwise, the cache cluster is a
-     * standalone primary that is not part of any replication group.
+     * The ID of the replication group to which this cluster should belong. If this parameter is specified, the cluster
+     * is added to the specified replication group as a read replica; otherwise, the cluster is a standalone primary
+     * that is not part of any replication group.
      * </p>
      * <p>
-     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cache
-     * cluster is created in Availability Zones that provide the best spread of read replicas across Availability Zones.
+     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cluster is
+     * created in Availability Zones that provide the best spread of read replicas across Availability Zones.
      * </p>
      * <note>
      * <p>
@@ -803,14 +893,14 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        </important>
      *        <p>
-     *        The ID of the replication group to which this cache cluster should belong. If this parameter is specified,
-     *        the cache cluster is added to the specified replication group as a read replica; otherwise, the cache
-     *        cluster is a standalone primary that is not part of any replication group.
+     *        The ID of the replication group to which this cluster should belong. If this parameter is specified, the
+     *        cluster is added to the specified replication group as a read replica; otherwise, the cluster is a
+     *        standalone primary that is not part of any replication group.
      *        </p>
      *        <p>
      *        If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the
-     *        cache cluster is created in Availability Zones that provide the best spread of read replicas across
-     *        Availability Zones.
+     *        cluster is created in Availability Zones that provide the best spread of read replicas across Availability
+     *        Zones.
      *        </p>
      *        <note>
      *        <p>
@@ -830,13 +920,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </important>
      * <p>
-     * The ID of the replication group to which this cache cluster should belong. If this parameter is specified, the
-     * cache cluster is added to the specified replication group as a read replica; otherwise, the cache cluster is a
-     * standalone primary that is not part of any replication group.
+     * The ID of the replication group to which this cluster should belong. If this parameter is specified, the cluster
+     * is added to the specified replication group as a read replica; otherwise, the cluster is a standalone primary
+     * that is not part of any replication group.
      * </p>
      * <p>
-     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cache
-     * cluster is created in Availability Zones that provide the best spread of read replicas across Availability Zones.
+     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cluster is
+     * created in Availability Zones that provide the best spread of read replicas across Availability Zones.
      * </p>
      * <note>
      * <p>
@@ -850,13 +940,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         </p>
      *         </important>
      *         <p>
-     *         The ID of the replication group to which this cache cluster should belong. If this parameter is
-     *         specified, the cache cluster is added to the specified replication group as a read replica; otherwise,
-     *         the cache cluster is a standalone primary that is not part of any replication group.
+     *         The ID of the replication group to which this cluster should belong. If this parameter is specified, the
+     *         cluster is added to the specified replication group as a read replica; otherwise, the cluster is a
+     *         standalone primary that is not part of any replication group.
      *         </p>
      *         <p>
      *         If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the
-     *         cache cluster is created in Availability Zones that provide the best spread of read replicas across
+     *         cluster is created in Availability Zones that provide the best spread of read replicas across
      *         Availability Zones.
      *         </p>
      *         <note>
@@ -877,13 +967,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </important>
      * <p>
-     * The ID of the replication group to which this cache cluster should belong. If this parameter is specified, the
-     * cache cluster is added to the specified replication group as a read replica; otherwise, the cache cluster is a
-     * standalone primary that is not part of any replication group.
+     * The ID of the replication group to which this cluster should belong. If this parameter is specified, the cluster
+     * is added to the specified replication group as a read replica; otherwise, the cluster is a standalone primary
+     * that is not part of any replication group.
      * </p>
      * <p>
-     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cache
-     * cluster is created in Availability Zones that provide the best spread of read replicas across Availability Zones.
+     * If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the cluster is
+     * created in Availability Zones that provide the best spread of read replicas across Availability Zones.
      * </p>
      * <note>
      * <p>
@@ -898,14 +988,14 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        </important>
      *        <p>
-     *        The ID of the replication group to which this cache cluster should belong. If this parameter is specified,
-     *        the cache cluster is added to the specified replication group as a read replica; otherwise, the cache
-     *        cluster is a standalone primary that is not part of any replication group.
+     *        The ID of the replication group to which this cluster should belong. If this parameter is specified, the
+     *        cluster is added to the specified replication group as a read replica; otherwise, the cluster is a
+     *        standalone primary that is not part of any replication group.
      *        </p>
      *        <p>
      *        If the specified replication group is Multi-AZ enabled and the Availability Zone is not specified, the
-     *        cache cluster is created in Availability Zones that provide the best spread of read replicas across
-     *        Availability Zones.
+     *        cluster is created in Availability Zones that provide the best spread of read replicas across Availability
+     *        Zones.
      *        </p>
      *        <note>
      *        <p>
@@ -925,7 +1015,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * multiple Availability Zones in the cluster's region.
      * </p>
      * <p>
-     * This parameter is only supported for Memcached cache clusters.
+     * This parameter is only supported for Memcached clusters.
      * </p>
      * <p>
      * If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes
@@ -936,7 +1026,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or created
      *        across multiple Availability Zones in the cluster's region.</p>
      *        <p>
-     *        This parameter is only supported for Memcached cache clusters.
+     *        This parameter is only supported for Memcached clusters.
      *        </p>
      *        <p>
      *        If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache
@@ -954,7 +1044,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * multiple Availability Zones in the cluster's region.
      * </p>
      * <p>
-     * This parameter is only supported for Memcached cache clusters.
+     * This parameter is only supported for Memcached clusters.
      * </p>
      * <p>
      * If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes
@@ -964,7 +1054,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * @return Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or
      *         created across multiple Availability Zones in the cluster's region.</p>
      *         <p>
-     *         This parameter is only supported for Memcached cache clusters.
+     *         This parameter is only supported for Memcached clusters.
      *         </p>
      *         <p>
      *         If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache
@@ -982,7 +1072,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * multiple Availability Zones in the cluster's region.
      * </p>
      * <p>
-     * This parameter is only supported for Memcached cache clusters.
+     * This parameter is only supported for Memcached clusters.
      * </p>
      * <p>
      * If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes
@@ -993,7 +1083,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or created
      *        across multiple Availability Zones in the cluster's region.</p>
      *        <p>
-     *        This parameter is only supported for Memcached cache clusters.
+     *        This parameter is only supported for Memcached clusters.
      *        </p>
      *        <p>
      *        If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache
@@ -1013,7 +1103,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * multiple Availability Zones in the cluster's region.
      * </p>
      * <p>
-     * This parameter is only supported for Memcached cache clusters.
+     * This parameter is only supported for Memcached clusters.
      * </p>
      * <p>
      * If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes
@@ -1024,7 +1114,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or created
      *        across multiple Availability Zones in the cluster's region.</p>
      *        <p>
-     *        This parameter is only supported for Memcached cache clusters.
+     *        This parameter is only supported for Memcached clusters.
      *        </p>
      *        <p>
      *        If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache
@@ -1042,7 +1132,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * multiple Availability Zones in the cluster's region.
      * </p>
      * <p>
-     * This parameter is only supported for Memcached cache clusters.
+     * This parameter is only supported for Memcached clusters.
      * </p>
      * <p>
      * If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache assumes
@@ -1053,7 +1143,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or created
      *        across multiple Availability Zones in the cluster's region.</p>
      *        <p>
-     *        This parameter is only supported for Memcached cache clusters.
+     *        This parameter is only supported for Memcached clusters.
      *        </p>
      *        <p>
      *        If the <code>AZMode</code> and <code>PreferredAvailabilityZones</code> are not specified, ElastiCache
@@ -1069,10 +1159,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The EC2 Availability Zone in which the cache cluster is created.
+     * The EC2 Availability Zone in which the cluster is created.
      * </p>
      * <p>
-     * All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you want to
+     * All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want to
      * create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
      * </p>
      * <p>
@@ -1080,10 +1170,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param preferredAvailabilityZone
-     *        The EC2 Availability Zone in which the cache cluster is created.</p>
+     *        The EC2 Availability Zone in which the cluster is created.</p>
      *        <p>
-     *        All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you
-     *        want to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
+     *        All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want
+     *        to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
      *        </p>
      *        <p>
      *        Default: System chosen Availability Zone.
@@ -1095,21 +1185,20 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The EC2 Availability Zone in which the cache cluster is created.
+     * The EC2 Availability Zone in which the cluster is created.
      * </p>
      * <p>
-     * All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you want to
+     * All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want to
      * create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
      * </p>
      * <p>
      * Default: System chosen Availability Zone.
      * </p>
      * 
-     * @return The EC2 Availability Zone in which the cache cluster is created.</p>
+     * @return The EC2 Availability Zone in which the cluster is created.</p>
      *         <p>
-     *         All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you
-     *         want to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>
-     *         .
+     *         All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want
+     *         to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
      *         </p>
      *         <p>
      *         Default: System chosen Availability Zone.
@@ -1121,10 +1210,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The EC2 Availability Zone in which the cache cluster is created.
+     * The EC2 Availability Zone in which the cluster is created.
      * </p>
      * <p>
-     * All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you want to
+     * All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want to
      * create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
      * </p>
      * <p>
@@ -1132,10 +1221,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param preferredAvailabilityZone
-     *        The EC2 Availability Zone in which the cache cluster is created.</p>
+     *        The EC2 Availability Zone in which the cluster is created.</p>
      *        <p>
-     *        All nodes belonging to this Memcached cache cluster are placed in the preferred Availability Zone. If you
-     *        want to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
+     *        All nodes belonging to this Memcached cluster are placed in the preferred Availability Zone. If you want
+     *        to create your nodes across multiple Availability Zones, use <code>PreferredAvailabilityZones</code>.
      *        </p>
      *        <p>
      *        Default: System chosen Availability Zone.
@@ -1157,8 +1246,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
-     * Zones that are associated with the subnets in the selected subnet group.
+     * If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability Zones
+     * that are associated with the subnets in the selected subnet group.
      * </p>
      * <p>
      * The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1179,8 +1268,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         </p>
      *         <note>
      *         <p>
-     *         If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in
-     *         Availability Zones that are associated with the subnets in the selected subnet group.
+     *         If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
+     *         Zones that are associated with the subnets in the selected subnet group.
      *         </p>
      *         <p>
      *         The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1211,8 +1300,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
-     * Zones that are associated with the subnets in the selected subnet group.
+     * If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability Zones
+     * that are associated with the subnets in the selected subnet group.
      * </p>
      * <p>
      * The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1234,8 +1323,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        <note>
      *        <p>
-     *        If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in
-     *        Availability Zones that are associated with the subnets in the selected subnet group.
+     *        If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
+     *        Zones that are associated with the subnets in the selected subnet group.
      *        </p>
      *        <p>
      *        The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1268,8 +1357,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
-     * Zones that are associated with the subnets in the selected subnet group.
+     * If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability Zones
+     * that are associated with the subnets in the selected subnet group.
      * </p>
      * <p>
      * The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1296,8 +1385,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        <note>
      *        <p>
-     *        If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in
-     *        Availability Zones that are associated with the subnets in the selected subnet group.
+     *        If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
+     *        Zones that are associated with the subnets in the selected subnet group.
      *        </p>
      *        <p>
      *        The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1332,8 +1421,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
-     * Zones that are associated with the subnets in the selected subnet group.
+     * If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability Zones
+     * that are associated with the subnets in the selected subnet group.
      * </p>
      * <p>
      * The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1355,8 +1444,8 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        <note>
      *        <p>
-     *        If you are creating your cache cluster in an Amazon VPC (recommended) you can only locate nodes in
-     *        Availability Zones that are associated with the subnets in the selected subnet group.
+     *        If you are creating your cluster in an Amazon VPC (recommended) you can only locate nodes in Availability
+     *        Zones that are associated with the subnets in the selected subnet group.
      *        </p>
      *        <p>
      *        The number of Availability Zones listed must equal the value of <code>NumCacheNodes</code>.
@@ -1378,7 +1467,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The initial number of cache nodes that the cache cluster has.
+     * The initial number of cache nodes that the cluster has.
      * </p>
      * <p>
      * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
@@ -1392,7 +1481,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param numCacheNodes
-     *        The initial number of cache nodes that the cache cluster has.</p>
+     *        The initial number of cache nodes that the cluster has.</p>
      *        <p>
      *        For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
      *        between 1 and 20.
@@ -1410,7 +1499,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The initial number of cache nodes that the cache cluster has.
+     * The initial number of cache nodes that the cluster has.
      * </p>
      * <p>
      * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
@@ -1423,7 +1512,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * /elasticache-node-limit-request/</a>.
      * </p>
      * 
-     * @return The initial number of cache nodes that the cache cluster has.</p>
+     * @return The initial number of cache nodes that the cluster has.</p>
      *         <p>
      *         For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
      *         between 1 and 20.
@@ -1441,7 +1530,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The initial number of cache nodes that the cache cluster has.
+     * The initial number of cache nodes that the cluster has.
      * </p>
      * <p>
      * For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1
@@ -1455,7 +1544,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param numCacheNodes
-     *        The initial number of cache nodes that the cache cluster has.</p>
+     *        The initial number of cache nodes that the cluster has.</p>
      *        <p>
      *        For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be
      *        between 1 and 20.
@@ -1478,7 +1567,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * The compute and memory capacity of the nodes in the node group (shard).
      * </p>
      * <p>
-     * Valid node types are as follows:
+     * The following node types are supported by ElastiCache. Generally speaking, the current generation types provide
+     * more memory and computational power at lower cost when compared to their equivalent previous generation
+     * counterparts.
      * </p>
      * <ul>
      * <li>
@@ -1488,24 +1579,48 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
-     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
+     * </p>
+     * <p>
+     * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
-     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>T1 node types:</b> <code>cache.t1.micro</code>
+     * </p>
+     * <p>
+     * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
+     * <code>cache.m1.xlarge</code>
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * Compute optimized: <code>cache.c1.xlarge</code>
+     * Compute optimized:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * <li>
      * <p>
@@ -1514,13 +1629,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -1537,8 +1658,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
-     * supported on Redis (cluster mode enabled) T2 instances.
+     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
@@ -1560,7 +1685,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * @param cacheNodeType
      *        The compute and memory capacity of the nodes in the node group (shard).</p>
      *        <p>
-     *        Valid node types are as follows:
+     *        The following node types are supported by ElastiCache. Generally speaking, the current generation types
+     *        provide more memory and computational power at lower cost when compared to their equivalent previous
+     *        generation counterparts.
      *        </p>
      *        <ul>
      *        <li>
@@ -1570,23 +1697,49 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     *        <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     *        Current generation:
+     *        </p>
+     *        <p>
+     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *        <code>cache.t2.medium</code>
+     *        </p>
+     *        <p>
+     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     *        <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>T1 node types:</b> <code>cache.t1.micro</code>
+     *        </p>
+     *        <p>
+     *        <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        Compute optimized: <code>cache.c1.xlarge</code>
+     *        Compute optimized:
      *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     *        </p>
+     *        </li>
+     *        </ul>
      *        </li>
      *        <li>
      *        <p>
@@ -1595,13 +1748,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        Current generation:
+     *        </p>
+     *        <p>
+     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
      *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *        <code>cache.m2.4xlarge</code>
      *        </p>
      *        </li>
@@ -1619,8 +1778,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances.
-     *        Backup/restore is supported on Redis (cluster mode enabled) T2 instances.
+     *        Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      *        </p>
      *        </li>
      *        <li>
@@ -1648,7 +1811,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * The compute and memory capacity of the nodes in the node group (shard).
      * </p>
      * <p>
-     * Valid node types are as follows:
+     * The following node types are supported by ElastiCache. Generally speaking, the current generation types provide
+     * more memory and computational power at lower cost when compared to their equivalent previous generation
+     * counterparts.
      * </p>
      * <ul>
      * <li>
@@ -1658,24 +1823,48 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
-     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
+     * </p>
+     * <p>
+     * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
-     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>T1 node types:</b> <code>cache.t1.micro</code>
+     * </p>
+     * <p>
+     * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
+     * <code>cache.m1.xlarge</code>
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * Compute optimized: <code>cache.c1.xlarge</code>
+     * Compute optimized:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * <li>
      * <p>
@@ -1684,13 +1873,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -1707,8 +1902,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
-     * supported on Redis (cluster mode enabled) T2 instances.
+     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
@@ -1729,7 +1928,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * 
      * @return The compute and memory capacity of the nodes in the node group (shard).</p>
      *         <p>
-     *         Valid node types are as follows:
+     *         The following node types are supported by ElastiCache. Generally speaking, the current generation types
+     *         provide more memory and computational power at lower cost when compared to their equivalent previous
+     *         generation counterparts.
      *         </p>
      *         <ul>
      *         <li>
@@ -1739,25 +1940,49 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         <ul>
      *         <li>
      *         <p>
-     *         Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
-     *         <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
-     *         <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>,
-     *         <code>cache.m4.10xlarge</code>
+     *         Current generation:
+     *         </p>
+     *         <p>
+     *         <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *         <code>cache.t2.medium</code>
+     *         </p>
+     *         <p>
+     *         <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *         </p>
+     *         <p>
+     *         <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     *         <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     *         <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *         Previous generation: (not recommended)
+     *         </p>
+     *         <p>
+     *         <b>T1 node types:</b> <code>cache.t1.micro</code>
+     *         </p>
+     *         <p>
+     *         <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     *         <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      *         </p>
      *         </li>
      *         </ul>
      *         </li>
      *         <li>
      *         <p>
-     *         Compute optimized: <code>cache.c1.xlarge</code>
+     *         Compute optimized:
      *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Previous generation: (not recommended)
+     *         </p>
+     *         <p>
+     *         <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     *         </p>
+     *         </li>
+     *         </ul>
      *         </li>
      *         <li>
      *         <p>
@@ -1766,13 +1991,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         <ul>
      *         <li>
      *         <p>
-     *         Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *         Current generation:
+     *         </p>
+     *         <p>
+     *         <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
      *         <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     *         Previous generation: (not recommended)
+     *         </p>
+     *         <p>
+     *         <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *         <code>cache.m2.4xlarge</code>
      *         </p>
      *         </li>
@@ -1790,8 +2021,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         </li>
      *         <li>
      *         <p>
-     *         Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances.
-     *         Backup/restore is supported on Redis (cluster mode enabled) T2 instances.
+     *         Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      *         </p>
      *         </li>
      *         <li>
@@ -1819,7 +2054,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * The compute and memory capacity of the nodes in the node group (shard).
      * </p>
      * <p>
-     * Valid node types are as follows:
+     * The following node types are supported by ElastiCache. Generally speaking, the current generation types provide
+     * more memory and computational power at lower cost when compared to their equivalent previous generation
+     * counterparts.
      * </p>
      * <ul>
      * <li>
@@ -1829,24 +2066,48 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>,
-     * <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
-     * <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
+     * </p>
+     * <p>
+     * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
-     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>T1 node types:</b> <code>cache.t1.micro</code>
+     * </p>
+     * <p>
+     * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
+     * <code>cache.m1.xlarge</code>
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * Compute optimized: <code>cache.c1.xlarge</code>
+     * Compute optimized:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * <li>
      * <p>
@@ -1855,13 +2116,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <ul>
      * <li>
      * <p>
-     * Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * Current generation:
+     * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
      * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
+     * Previous generation: (not recommended)
+     * </p>
+     * <p>
+     * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -1878,8 +2145,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is
-     * supported on Redis (cluster mode enabled) T2 instances.
+     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
@@ -1901,7 +2172,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * @param cacheNodeType
      *        The compute and memory capacity of the nodes in the node group (shard).</p>
      *        <p>
-     *        Valid node types are as follows:
+     *        The following node types are supported by ElastiCache. Generally speaking, the current generation types
+     *        provide more memory and computational power at lower cost when compared to their equivalent previous
+     *        generation counterparts.
      *        </p>
      *        <ul>
      *        <li>
@@ -1911,23 +2184,49 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     *        <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
+     *        Current generation:
+     *        </p>
+     *        <p>
+     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *        <code>cache.t2.medium</code>
+     *        </p>
+     *        <p>
+     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     *        <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>T1 node types:</b> <code>cache.t1.micro</code>
+     *        </p>
+     *        <p>
+     *        <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        <li>
      *        <p>
-     *        Compute optimized: <code>cache.c1.xlarge</code>
+     *        Compute optimized:
      *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>C1 node types:</b> <code>cache.c1.xlarge</code>
+     *        </p>
+     *        </li>
+     *        </ul>
      *        </li>
      *        <li>
      *        <p>
@@ -1936,13 +2235,19 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <ul>
      *        <li>
      *        <p>
-     *        Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        Current generation:
+     *        </p>
+     *        <p>
+     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
      *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     *        Previous generation: (not recommended)
+     *        </p>
+     *        <p>
+     *        <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *        <code>cache.m2.4xlarge</code>
      *        </p>
      *        </li>
@@ -1960,8 +2265,12 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances.
-     *        Backup/restore is supported on Redis (cluster mode enabled) T2 instances.
+     *        Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
      *        </p>
      *        </li>
      *        <li>
@@ -1988,14 +2297,14 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the cache engine to be used for this cache cluster.
+     * The name of the cache engine to be used for this cluster.
      * </p>
      * <p>
      * Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
      * </p>
      * 
      * @param engine
-     *        The name of the cache engine to be used for this cache cluster.</p>
+     *        The name of the cache engine to be used for this cluster.</p>
      *        <p>
      *        Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
      */
@@ -2006,13 +2315,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the cache engine to be used for this cache cluster.
+     * The name of the cache engine to be used for this cluster.
      * </p>
      * <p>
      * Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
      * </p>
      * 
-     * @return The name of the cache engine to be used for this cache cluster.</p>
+     * @return The name of the cache engine to be used for this cluster.</p>
      *         <p>
      *         Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
      */
@@ -2023,14 +2332,14 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the cache engine to be used for this cache cluster.
+     * The name of the cache engine to be used for this cluster.
      * </p>
      * <p>
      * Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
      * </p>
      * 
      * @param engine
-     *        The name of the cache engine to be used for this cache cluster.</p>
+     *        The name of the cache engine to be used for this cluster.</p>
      *        <p>
      *        Valid values for this parameter are: <code>memcached</code> | <code>redis</code>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2043,25 +2352,25 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The version number of the cache engine to be used for this cache cluster. To view the supported cache engine
-     * versions, use the DescribeCacheEngineVersions operation.
+     * The version number of the cache engine to be used for this cluster. To view the supported cache engine versions,
+     * use the DescribeCacheEngineVersions operation.
      * </p>
      * <p>
      * <b>Important:</b> You can upgrade to a newer engine version (see <a
      * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement"
      * >Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to
-     * use an earlier engine version, you must delete the existing cache cluster or replication group and create it anew
-     * with the earlier engine version.
+     * use an earlier engine version, you must delete the existing cluster or replication group and create it anew with
+     * the earlier engine version.
      * </p>
      * 
      * @param engineVersion
-     *        The version number of the cache engine to be used for this cache cluster. To view the supported cache
-     *        engine versions, use the DescribeCacheEngineVersions operation.</p>
+     *        The version number of the cache engine to be used for this cluster. To view the supported cache engine
+     *        versions, use the DescribeCacheEngineVersions operation.</p>
      *        <p>
      *        <b>Important:</b> You can upgrade to a newer engine version (see <a
      *        href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement"
      *        >Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you
-     *        want to use an earlier engine version, you must delete the existing cache cluster or replication group and
+     *        want to use an earlier engine version, you must delete the existing cluster or replication group and
      *        create it anew with the earlier engine version.
      */
 
@@ -2071,25 +2380,25 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The version number of the cache engine to be used for this cache cluster. To view the supported cache engine
-     * versions, use the DescribeCacheEngineVersions operation.
+     * The version number of the cache engine to be used for this cluster. To view the supported cache engine versions,
+     * use the DescribeCacheEngineVersions operation.
      * </p>
      * <p>
      * <b>Important:</b> You can upgrade to a newer engine version (see <a
      * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement"
      * >Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to
-     * use an earlier engine version, you must delete the existing cache cluster or replication group and create it anew
-     * with the earlier engine version.
+     * use an earlier engine version, you must delete the existing cluster or replication group and create it anew with
+     * the earlier engine version.
      * </p>
      * 
-     * @return The version number of the cache engine to be used for this cache cluster. To view the supported cache
-     *         engine versions, use the DescribeCacheEngineVersions operation.</p>
+     * @return The version number of the cache engine to be used for this cluster. To view the supported cache engine
+     *         versions, use the DescribeCacheEngineVersions operation.</p>
      *         <p>
      *         <b>Important:</b> You can upgrade to a newer engine version (see <a href=
      *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement"
      *         >Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you
-     *         want to use an earlier engine version, you must delete the existing cache cluster or replication group
-     *         and create it anew with the earlier engine version.
+     *         want to use an earlier engine version, you must delete the existing cluster or replication group and
+     *         create it anew with the earlier engine version.
      */
 
     public String getEngineVersion() {
@@ -2098,25 +2407,25 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The version number of the cache engine to be used for this cache cluster. To view the supported cache engine
-     * versions, use the DescribeCacheEngineVersions operation.
+     * The version number of the cache engine to be used for this cluster. To view the supported cache engine versions,
+     * use the DescribeCacheEngineVersions operation.
      * </p>
      * <p>
      * <b>Important:</b> You can upgrade to a newer engine version (see <a
      * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement"
      * >Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you want to
-     * use an earlier engine version, you must delete the existing cache cluster or replication group and create it anew
-     * with the earlier engine version.
+     * use an earlier engine version, you must delete the existing cluster or replication group and create it anew with
+     * the earlier engine version.
      * </p>
      * 
      * @param engineVersion
-     *        The version number of the cache engine to be used for this cache cluster. To view the supported cache
-     *        engine versions, use the DescribeCacheEngineVersions operation.</p>
+     *        The version number of the cache engine to be used for this cluster. To view the supported cache engine
+     *        versions, use the DescribeCacheEngineVersions operation.</p>
      *        <p>
      *        <b>Important:</b> You can upgrade to a newer engine version (see <a
      *        href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement"
      *        >Selecting a Cache Engine and Version</a>), but you cannot downgrade to an earlier engine version. If you
-     *        want to use an earlier engine version, you must delete the existing cache cluster or replication group and
+     *        want to use an earlier engine version, you must delete the existing cluster or replication group and
      *        create it anew with the earlier engine version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2128,14 +2437,14 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the parameter group to associate with this cache cluster. If this argument is omitted, the default
+     * The name of the parameter group to associate with this cluster. If this argument is omitted, the default
      * parameter group for the specified engine is used. You cannot use any parameter group which has
      * <code>cluster-enabled='yes'</code> when creating a cluster.
      * </p>
      * 
      * @param cacheParameterGroupName
-     *        The name of the parameter group to associate with this cache cluster. If this argument is omitted, the
-     *        default parameter group for the specified engine is used. You cannot use any parameter group which has
+     *        The name of the parameter group to associate with this cluster. If this argument is omitted, the default
+     *        parameter group for the specified engine is used. You cannot use any parameter group which has
      *        <code>cluster-enabled='yes'</code> when creating a cluster.
      */
 
@@ -2145,13 +2454,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the parameter group to associate with this cache cluster. If this argument is omitted, the default
+     * The name of the parameter group to associate with this cluster. If this argument is omitted, the default
      * parameter group for the specified engine is used. You cannot use any parameter group which has
      * <code>cluster-enabled='yes'</code> when creating a cluster.
      * </p>
      * 
-     * @return The name of the parameter group to associate with this cache cluster. If this argument is omitted, the
-     *         default parameter group for the specified engine is used. You cannot use any parameter group which has
+     * @return The name of the parameter group to associate with this cluster. If this argument is omitted, the default
+     *         parameter group for the specified engine is used. You cannot use any parameter group which has
      *         <code>cluster-enabled='yes'</code> when creating a cluster.
      */
 
@@ -2161,14 +2470,14 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the parameter group to associate with this cache cluster. If this argument is omitted, the default
+     * The name of the parameter group to associate with this cluster. If this argument is omitted, the default
      * parameter group for the specified engine is used. You cannot use any parameter group which has
      * <code>cluster-enabled='yes'</code> when creating a cluster.
      * </p>
      * 
      * @param cacheParameterGroupName
-     *        The name of the parameter group to associate with this cache cluster. If this argument is omitted, the
-     *        default parameter group for the specified engine is used. You cannot use any parameter group which has
+     *        The name of the parameter group to associate with this cluster. If this argument is omitted, the default
+     *        parameter group for the specified engine is used. You cannot use any parameter group which has
      *        <code>cluster-enabled='yes'</code> when creating a cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2180,10 +2489,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the subnet group to be used for the cache cluster.
+     * The name of the subnet group to be used for the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * <important>
      * <p>
@@ -2195,10 +2504,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </important>
      * 
      * @param cacheSubnetGroupName
-     *        The name of the subnet group to be used for the cache cluster.</p>
+     *        The name of the subnet group to be used for the cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon
-     *        VPC).
+     *        Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      *        </p>
      *        <important>
      *        <p>
@@ -2215,10 +2523,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the subnet group to be used for the cache cluster.
+     * The name of the subnet group to be used for the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * <important>
      * <p>
@@ -2229,10 +2537,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </important>
      * 
-     * @return The name of the subnet group to be used for the cache cluster.</p>
+     * @return The name of the subnet group to be used for the cluster.</p>
      *         <p>
-     *         Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon
-     *         VPC).
+     *         Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      *         </p>
      *         <important>
      *         <p>
@@ -2249,10 +2556,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The name of the subnet group to be used for the cache cluster.
+     * The name of the subnet group to be used for the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * <important>
      * <p>
@@ -2264,10 +2571,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </important>
      * 
      * @param cacheSubnetGroupName
-     *        The name of the subnet group to be used for the cache cluster.</p>
+     *        The name of the subnet group to be used for the cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon
-     *        VPC).
+     *        Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      *        </p>
      *        <important>
      *        <p>
@@ -2286,16 +2592,15 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of security group names to associate with this cache cluster.
+     * A list of security group names to associate with this cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud (Amazon
-     * VPC).
+     * Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * 
-     * @return A list of security group names to associate with this cache cluster.</p>
+     * @return A list of security group names to associate with this cluster.</p>
      *         <p>
-     *         Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud
+     *         Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud
      *         (Amazon VPC).
      */
 
@@ -2308,18 +2613,17 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of security group names to associate with this cache cluster.
+     * A list of security group names to associate with this cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud (Amazon
-     * VPC).
+     * Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * 
      * @param cacheSecurityGroupNames
-     *        A list of security group names to associate with this cache cluster.</p>
+     *        A list of security group names to associate with this cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud
-     *        (Amazon VPC).
+     *        Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon
+     *        VPC).
      */
 
     public void setCacheSecurityGroupNames(java.util.Collection<String> cacheSecurityGroupNames) {
@@ -2333,11 +2637,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of security group names to associate with this cache cluster.
+     * A list of security group names to associate with this cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud (Amazon
-     * VPC).
+     * Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -2346,10 +2649,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param cacheSecurityGroupNames
-     *        A list of security group names to associate with this cache cluster.</p>
+     *        A list of security group names to associate with this cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud
-     *        (Amazon VPC).
+     *        Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon
+     *        VPC).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2365,18 +2668,17 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of security group names to associate with this cache cluster.
+     * A list of security group names to associate with this cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud (Amazon
-     * VPC).
+     * Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * 
      * @param cacheSecurityGroupNames
-     *        A list of security group names to associate with this cache cluster.</p>
+     *        A list of security group names to associate with this cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster outside of an Amazon Virtual Private Cloud
-     *        (Amazon VPC).
+     *        Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon
+     *        VPC).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2387,16 +2689,15 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * One or more VPC security groups associated with the cache cluster.
+     * One or more VPC security groups associated with the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * 
-     * @return One or more VPC security groups associated with the cache cluster.</p>
+     * @return One or more VPC security groups associated with the cluster.</p>
      *         <p>
-     *         Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon
-     *         VPC).
+     *         Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      */
 
     public java.util.List<String> getSecurityGroupIds() {
@@ -2408,17 +2709,16 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * One or more VPC security groups associated with the cache cluster.
+     * One or more VPC security groups associated with the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * 
      * @param securityGroupIds
-     *        One or more VPC security groups associated with the cache cluster.</p>
+     *        One or more VPC security groups associated with the cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon
-     *        VPC).
+     *        Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      */
 
     public void setSecurityGroupIds(java.util.Collection<String> securityGroupIds) {
@@ -2432,10 +2732,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * One or more VPC security groups associated with the cache cluster.
+     * One or more VPC security groups associated with the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -2444,10 +2744,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param securityGroupIds
-     *        One or more VPC security groups associated with the cache cluster.</p>
+     *        One or more VPC security groups associated with the cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon
-     *        VPC).
+     *        Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2463,17 +2762,16 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * One or more VPC security groups associated with the cache cluster.
+     * One or more VPC security groups associated with the cluster.
      * </p>
      * <p>
-     * Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon VPC).
+     * Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * </p>
      * 
      * @param securityGroupIds
-     *        One or more VPC security groups associated with the cache cluster.</p>
+     *        One or more VPC security groups associated with the cluster.</p>
      *        <p>
-     *        Use this parameter only when you are creating a cache cluster in an Amazon Virtual Private Cloud (Amazon
-     *        VPC).
+     *        Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2484,12 +2782,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     * accompanied by a tag value.
+     * A list of cost allocation tags to be added to this resource.
      * </p>
      * 
-     * @return A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     *         accompanied by a tag value.
+     * @return A list of cost allocation tags to be added to this resource.
      */
 
     public java.util.List<Tag> getTags() {
@@ -2501,13 +2797,11 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     * accompanied by a tag value.
+     * A list of cost allocation tags to be added to this resource.
      * </p>
      * 
      * @param tags
-     *        A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     *        accompanied by a tag value.
+     *        A list of cost allocation tags to be added to this resource.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -2521,8 +2815,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     * accompanied by a tag value.
+     * A list of cost allocation tags to be added to this resource.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -2531,8 +2824,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param tags
-     *        A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     *        accompanied by a tag value.
+     *        A list of cost allocation tags to be added to this resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2548,13 +2840,11 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     * accompanied by a tag value.
+     * A list of cost allocation tags to be added to this resource.
      * </p>
      * 
      * @param tags
-     *        A list of cost allocation tags to be added to this resource. A tag is a key-value pair. A tag key must be
-     *        accompanied by a tag value.
+     *        A list of cost allocation tags to be added to this resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2780,9 +3070,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache cluster is performed. It is specified as a
-     * range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
-     * period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <p>
      * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
@@ -2833,9 +3123,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        Specifies the weekly time range during which maintenance on the cache cluster is performed. It is
-     *        specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-     *        is a 60 minute period. Valid values for <code>ddd</code> are:</p>
+     *        Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a
+     *        range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
+     *        period. Valid values for <code>ddd</code> are:</p>
      *        <p>
      *        Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a
      *        range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
@@ -2891,9 +3181,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache cluster is performed. It is specified as a
-     * range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
-     * period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <p>
      * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
@@ -2943,9 +3233,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * Example: <code>sun:23:00-mon:01:30</code>
      * </p>
      * 
-     * @return Specifies the weekly time range during which maintenance on the cache cluster is performed. It is
-     *         specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance
-     *         window is a 60 minute period. Valid values for <code>ddd</code> are:</p>
+     * @return Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as
+     *         a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60
+     *         minute period. Valid values for <code>ddd</code> are:</p>
      *         <p>
      *         Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as
      *         a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60
@@ -3001,9 +3291,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * Specifies the weekly time range during which maintenance on the cache cluster is performed. It is specified as a
-     * range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
-     * period. Valid values for <code>ddd</code> are:
+     * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
+     * in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.
+     * Valid values for <code>ddd</code> are:
      * </p>
      * <p>
      * Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range
@@ -3054,9 +3344,9 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param preferredMaintenanceWindow
-     *        Specifies the weekly time range during which maintenance on the cache cluster is performed. It is
-     *        specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-     *        is a 60 minute period. Valid values for <code>ddd</code> are:</p>
+     *        Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a
+     *        range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
+     *        period. Valid values for <code>ddd</code> are:</p>
      *        <p>
      *        Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a
      *        range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute
@@ -3159,7 +3449,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * The Amazon SNS topic owner must be the same as the cache cluster owner.
+     * The Amazon SNS topic owner must be the same as the cluster owner.
      * </p>
      * </note>
      * 
@@ -3167,7 +3457,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which
      *        notifications are sent.</p> <note>
      *        <p>
-     *        The Amazon SNS topic owner must be the same as the cache cluster owner.
+     *        The Amazon SNS topic owner must be the same as the cluster owner.
      *        </p>
      */
 
@@ -3182,14 +3472,14 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * The Amazon SNS topic owner must be the same as the cache cluster owner.
+     * The Amazon SNS topic owner must be the same as the cluster owner.
      * </p>
      * </note>
      * 
      * @return The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which
      *         notifications are sent.</p> <note>
      *         <p>
-     *         The Amazon SNS topic owner must be the same as the cache cluster owner.
+     *         The Amazon SNS topic owner must be the same as the cluster owner.
      *         </p>
      */
 
@@ -3204,7 +3494,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <note>
      * <p>
-     * The Amazon SNS topic owner must be the same as the cache cluster owner.
+     * The Amazon SNS topic owner must be the same as the cluster owner.
      * </p>
      * </note>
      * 
@@ -3212,7 +3502,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which
      *        notifications are sent.</p> <note>
      *        <p>
-     *        The Amazon SNS topic owner must be the same as the cache cluster owner.
+     *        The Amazon SNS topic owner must be the same as the cluster owner.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -3285,7 +3575,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </note>
      * <p>
-     * Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+     * Default: 0 (i.e., automatic backups are disabled for this cluster).
      * </p>
      * 
      * @param snapshotRetentionLimit
@@ -3297,7 +3587,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        </note>
      *        <p>
-     *        Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+     *        Default: 0 (i.e., automatic backups are disabled for this cluster).
      */
 
     public void setSnapshotRetentionLimit(Integer snapshotRetentionLimit) {
@@ -3315,7 +3605,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </note>
      * <p>
-     * Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+     * Default: 0 (i.e., automatic backups are disabled for this cluster).
      * </p>
      * 
      * @return The number of days for which ElastiCache retains automatic snapshots before deleting them. For example,
@@ -3326,7 +3616,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         </p>
      *         </note>
      *         <p>
-     *         Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+     *         Default: 0 (i.e., automatic backups are disabled for this cluster).
      */
 
     public Integer getSnapshotRetentionLimit() {
@@ -3344,7 +3634,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * </note>
      * <p>
-     * Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+     * Default: 0 (i.e., automatic backups are disabled for this cluster).
      * </p>
      * 
      * @param snapshotRetentionLimit
@@ -3356,7 +3646,7 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        </note>
      *        <p>
-     *        Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+     *        Default: 0 (i.e., automatic backups are disabled for this cluster).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3375,9 +3665,11 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     * This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
      * </p>
+     * </note>
      * 
      * @param snapshotWindow
      *        The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group
@@ -3388,8 +3680,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <p>
      *        If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
      *        </p>
+     *        <note>
      *        <p>
-     *        <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     *        This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     *        </p>
      */
 
     public void setSnapshotWindow(String snapshotWindow) {
@@ -3406,9 +3700,11 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     * This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
      * </p>
+     * </note>
      * 
      * @return The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group
      *         (shard).</p>
@@ -3418,8 +3714,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         <p>
      *         If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
      *         </p>
+     *         <note>
      *         <p>
-     *         <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     *         This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     *         </p>
      */
 
     public String getSnapshotWindow() {
@@ -3436,9 +3734,11 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
      * </p>
+     * <note>
      * <p>
-     * <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     * This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
      * </p>
+     * </note>
      * 
      * @param snapshotWindow
      *        The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group
@@ -3449,8 +3749,10 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        <p>
      *        If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
      *        </p>
+     *        <note>
      *        <p>
-     *        <b>Note:</b> This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     *        This parameter is only valid if the <code>Engine</code> parameter is <code>redis</code>.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3463,6 +3765,21 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * <b>Reserved parameter.</b> The password used to access a password protected server.
      * </p>
+     * <p>
+     * This parameter is valid only if:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The parameter <code>TransitEncryptionEnabled</code> was set to <code>true</code> when the cluster was created.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The line <code>requirepass</code> was added to the database configuration file.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * Password constraints:
      * </p>
@@ -3479,16 +3796,33 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Cannot contain any of the following characters: '/', '"', or "@".
+     * Cannot contain any of the following characters: '/', '"', or '@'.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.
+     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at
+     * http://redis.io/commands/AUTH.
      * </p>
      * 
      * @param authToken
      *        <b>Reserved parameter.</b> The password used to access a password protected server.</p>
+     *        <p>
+     *        This parameter is valid only if:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        The parameter <code>TransitEncryptionEnabled</code> was set to <code>true</code> when the cluster was
+     *        created.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The line <code>requirepass</code> was added to the database configuration file.
+     *        </p>
+     *        </li>
+     *        </ul>
      *        <p>
      *        Password constraints:
      *        </p>
@@ -3505,12 +3839,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        Cannot contain any of the following characters: '/', '"', or "@".
+     *        Cannot contain any of the following characters: '/', '"', or '@'.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.
+     *        For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at
+     *        http://redis.io/commands/AUTH.
      */
 
     public void setAuthToken(String authToken) {
@@ -3521,6 +3856,21 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * <b>Reserved parameter.</b> The password used to access a password protected server.
      * </p>
+     * <p>
+     * This parameter is valid only if:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The parameter <code>TransitEncryptionEnabled</code> was set to <code>true</code> when the cluster was created.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The line <code>requirepass</code> was added to the database configuration file.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * Password constraints:
      * </p>
@@ -3537,15 +3887,32 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Cannot contain any of the following characters: '/', '"', or "@".
+     * Cannot contain any of the following characters: '/', '"', or '@'.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.
+     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at
+     * http://redis.io/commands/AUTH.
      * </p>
      * 
      * @return <b>Reserved parameter.</b> The password used to access a password protected server.</p>
+     *         <p>
+     *         This parameter is valid only if:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         The parameter <code>TransitEncryptionEnabled</code> was set to <code>true</code> when the cluster was
+     *         created.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The line <code>requirepass</code> was added to the database configuration file.
+     *         </p>
+     *         </li>
+     *         </ul>
      *         <p>
      *         Password constraints:
      *         </p>
@@ -3562,12 +3929,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *         </li>
      *         <li>
      *         <p>
-     *         Cannot contain any of the following characters: '/', '"', or "@".
+     *         Cannot contain any of the following characters: '/', '"', or '@'.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.
+     *         For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at
+     *         http://redis.io/commands/AUTH.
      */
 
     public String getAuthToken() {
@@ -3578,6 +3946,21 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * <p>
      * <b>Reserved parameter.</b> The password used to access a password protected server.
      * </p>
+     * <p>
+     * This parameter is valid only if:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The parameter <code>TransitEncryptionEnabled</code> was set to <code>true</code> when the cluster was created.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The line <code>requirepass</code> was added to the database configuration file.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * Password constraints:
      * </p>
@@ -3594,16 +3977,33 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      * </li>
      * <li>
      * <p>
-     * Cannot contain any of the following characters: '/', '"', or "@".
+     * Cannot contain any of the following characters: '/', '"', or '@'.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.
+     * For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at
+     * http://redis.io/commands/AUTH.
      * </p>
      * 
      * @param authToken
      *        <b>Reserved parameter.</b> The password used to access a password protected server.</p>
+     *        <p>
+     *        This parameter is valid only if:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        The parameter <code>TransitEncryptionEnabled</code> was set to <code>true</code> when the cluster was
+     *        created.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The line <code>requirepass</code> was added to the database configuration file.
+     *        </p>
+     *        </li>
+     *        </ul>
      *        <p>
      *        Password constraints:
      *        </p>
@@ -3620,12 +4020,13 @@ public class CreateCacheClusterRequest extends com.amazonaws.AmazonWebServiceReq
      *        </li>
      *        <li>
      *        <p>
-     *        Cannot contain any of the following characters: '/', '"', or "@".
+     *        Cannot contain any of the following characters: '/', '"', or '@'.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at Redis.
+     *        For more information, see <a href="http://redis.io/commands/AUTH">AUTH password</a> at
+     *        http://redis.io/commands/AUTH.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

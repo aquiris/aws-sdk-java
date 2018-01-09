@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Describes a Spot fleet event.
+ * Describes a Spot Fleet event.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EventInformation" target="_top">AWS API
@@ -37,12 +37,12 @@ public class EventInformation implements Serializable, Cloneable {
      * The event.
      * </p>
      * <p>
-     * The following are the <code>error</code> events.
+     * The following are the <code>error</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>iamFleetRoleInvalid</code> - The Spot fleet did not have the required permissions either to launch or
+     * <code>iamFleetRoleInvalid</code> - The Spot Fleet did not have the required permissions either to launch or
      * terminate an instance.
      * </p>
      * </li>
@@ -60,79 +60,96 @@ public class EventInformation implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot instances that you
+     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot Instances that you
      * can launch.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>fleetRequestChange</code> events.
+     * The following are the <code>fleetRequestChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>active</code> - The Spot fleet has been validated and Amazon EC2 is attempting to maintain the target
-     * number of running Spot instances.
+     * <code>active</code> - The Spot Fleet has been validated and Amazon EC2 is attempting to maintain the target
+     * number of running Spot Instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled</code> - The Spot fleet is canceled and has no running Spot instances. The Spot fleet will be
+     * <code>cancelled</code> - The Spot Fleet is canceled and has no running Spot Instances. The Spot Fleet will be
      * deleted two days after its instances were terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_running</code> - The Spot fleet is canceled and will not launch additional Spot instances, but
-     * its existing Spot instances continue to run until they are interrupted or terminated.
+     * <code>cancelled_running</code> - The Spot Fleet is canceled and will not launch additional Spot Instances, but
+     * its existing Spot Instances continue to run until they are interrupted or terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_terminating</code> - The Spot fleet is canceled and its Spot instances are terminating.
+     * <code>cancelled_terminating</code> - The Spot Fleet is canceled and its Spot Instances are terminating.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>expired</code> - The Spot fleet request has expired. A subsequent event indicates that the instances were
+     * <code>expired</code> - The Spot Fleet request has expired. A subsequent event indicates that the instances were
      * terminated, if the request was created with <code>TerminateInstancesWithExpiration</code> set.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_in_progress</code> - A request to modify the Spot fleet request was accepted and is in progress.
+     * <code>modify_in_progress</code> - A request to modify the Spot Fleet request was accepted and is in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_successful</code> - The Spot fleet request was modified.
+     * <code>modify_successful</code> - The Spot Fleet request was modified.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>price_update</code> - The bid price for a launch configuration was adjusted because it was too high. This
+     * <code>price_update</code> - The price for a launch configuration was adjusted because it was too high. This
      * change is permanent.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>submitted</code> - The Spot fleet request is being evaluated and Amazon EC2 is preparing to launch the
-     * target number of Spot instances.
+     * <code>submitted</code> - The Spot Fleet request is being evaluated and Amazon EC2 is preparing to launch the
+     * target number of Spot Instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>instanceChange</code> events.
+     * The following are the <code>instanceChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>launched</code> - A bid was fulfilled and a new instance was launched.
+     * <code>launched</code> - A request was fulfilled and a new instance was launched.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>terminated</code> - An instance was terminated by the user.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The following are the <code>Information</code> events:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>launchSpecUnusable</code> - The price in a launch specification is not valid because it is below the Spot
+     * price or the Spot price is above the On-Demand price.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleetProgressHalted</code> - The price in every launch specification is not valid. A launch specification
+     * might become valid if the Spot price changes.
      * </p>
      * </li>
      * </ul>
@@ -190,12 +207,12 @@ public class EventInformation implements Serializable, Cloneable {
      * The event.
      * </p>
      * <p>
-     * The following are the <code>error</code> events.
+     * The following are the <code>error</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>iamFleetRoleInvalid</code> - The Spot fleet did not have the required permissions either to launch or
+     * <code>iamFleetRoleInvalid</code> - The Spot Fleet did not have the required permissions either to launch or
      * terminate an instance.
      * </p>
      * </li>
@@ -213,74 +230,74 @@ public class EventInformation implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot instances that you
+     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot Instances that you
      * can launch.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>fleetRequestChange</code> events.
+     * The following are the <code>fleetRequestChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>active</code> - The Spot fleet has been validated and Amazon EC2 is attempting to maintain the target
-     * number of running Spot instances.
+     * <code>active</code> - The Spot Fleet has been validated and Amazon EC2 is attempting to maintain the target
+     * number of running Spot Instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled</code> - The Spot fleet is canceled and has no running Spot instances. The Spot fleet will be
+     * <code>cancelled</code> - The Spot Fleet is canceled and has no running Spot Instances. The Spot Fleet will be
      * deleted two days after its instances were terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_running</code> - The Spot fleet is canceled and will not launch additional Spot instances, but
-     * its existing Spot instances continue to run until they are interrupted or terminated.
+     * <code>cancelled_running</code> - The Spot Fleet is canceled and will not launch additional Spot Instances, but
+     * its existing Spot Instances continue to run until they are interrupted or terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_terminating</code> - The Spot fleet is canceled and its Spot instances are terminating.
+     * <code>cancelled_terminating</code> - The Spot Fleet is canceled and its Spot Instances are terminating.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>expired</code> - The Spot fleet request has expired. A subsequent event indicates that the instances were
+     * <code>expired</code> - The Spot Fleet request has expired. A subsequent event indicates that the instances were
      * terminated, if the request was created with <code>TerminateInstancesWithExpiration</code> set.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_in_progress</code> - A request to modify the Spot fleet request was accepted and is in progress.
+     * <code>modify_in_progress</code> - A request to modify the Spot Fleet request was accepted and is in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_successful</code> - The Spot fleet request was modified.
+     * <code>modify_successful</code> - The Spot Fleet request was modified.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>price_update</code> - The bid price for a launch configuration was adjusted because it was too high. This
+     * <code>price_update</code> - The price for a launch configuration was adjusted because it was too high. This
      * change is permanent.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>submitted</code> - The Spot fleet request is being evaluated and Amazon EC2 is preparing to launch the
-     * target number of Spot instances.
+     * <code>submitted</code> - The Spot Fleet request is being evaluated and Amazon EC2 is preparing to launch the
+     * target number of Spot Instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>instanceChange</code> events.
+     * The following are the <code>instanceChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>launched</code> - A bid was fulfilled and a new instance was launched.
+     * <code>launched</code> - A request was fulfilled and a new instance was launched.
      * </p>
      * </li>
      * <li>
@@ -289,16 +306,33 @@ public class EventInformation implements Serializable, Cloneable {
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * The following are the <code>Information</code> events:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>launchSpecUnusable</code> - The price in a launch specification is not valid because it is below the Spot
+     * price or the Spot price is above the On-Demand price.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleetProgressHalted</code> - The price in every launch specification is not valid. A launch specification
+     * might become valid if the Spot price changes.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param eventSubType
      *        The event.</p>
      *        <p>
-     *        The following are the <code>error</code> events.
+     *        The following are the <code>error</code> events:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>iamFleetRoleInvalid</code> - The Spot fleet did not have the required permissions either to launch
+     *        <code>iamFleetRoleInvalid</code> - The Spot Fleet did not have the required permissions either to launch
      *        or terminate an instance.
      *        </p>
      *        </li>
@@ -316,80 +350,97 @@ public class EventInformation implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot instances
+     *        <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot Instances
      *        that you can launch.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        The following are the <code>fleetRequestChange</code> events.
+     *        The following are the <code>fleetRequestChange</code> events:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>active</code> - The Spot fleet has been validated and Amazon EC2 is attempting to maintain the
-     *        target number of running Spot instances.
+     *        <code>active</code> - The Spot Fleet has been validated and Amazon EC2 is attempting to maintain the
+     *        target number of running Spot Instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cancelled</code> - The Spot fleet is canceled and has no running Spot instances. The Spot fleet will
+     *        <code>cancelled</code> - The Spot Fleet is canceled and has no running Spot Instances. The Spot Fleet will
      *        be deleted two days after its instances were terminated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cancelled_running</code> - The Spot fleet is canceled and will not launch additional Spot instances,
-     *        but its existing Spot instances continue to run until they are interrupted or terminated.
+     *        <code>cancelled_running</code> - The Spot Fleet is canceled and will not launch additional Spot Instances,
+     *        but its existing Spot Instances continue to run until they are interrupted or terminated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cancelled_terminating</code> - The Spot fleet is canceled and its Spot instances are terminating.
+     *        <code>cancelled_terminating</code> - The Spot Fleet is canceled and its Spot Instances are terminating.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>expired</code> - The Spot fleet request has expired. A subsequent event indicates that the instances
+     *        <code>expired</code> - The Spot Fleet request has expired. A subsequent event indicates that the instances
      *        were terminated, if the request was created with <code>TerminateInstancesWithExpiration</code> set.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>modify_in_progress</code> - A request to modify the Spot fleet request was accepted and is in
+     *        <code>modify_in_progress</code> - A request to modify the Spot Fleet request was accepted and is in
      *        progress.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>modify_successful</code> - The Spot fleet request was modified.
+     *        <code>modify_successful</code> - The Spot Fleet request was modified.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>price_update</code> - The bid price for a launch configuration was adjusted because it was too high.
+     *        <code>price_update</code> - The price for a launch configuration was adjusted because it was too high.
      *        This change is permanent.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>submitted</code> - The Spot fleet request is being evaluated and Amazon EC2 is preparing to launch
-     *        the target number of Spot instances.
+     *        <code>submitted</code> - The Spot Fleet request is being evaluated and Amazon EC2 is preparing to launch
+     *        the target number of Spot Instances.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        The following are the <code>instanceChange</code> events.
+     *        The following are the <code>instanceChange</code> events:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>launched</code> - A bid was fulfilled and a new instance was launched.
+     *        <code>launched</code> - A request was fulfilled and a new instance was launched.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>terminated</code> - An instance was terminated by the user.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The following are the <code>Information</code> events:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>launchSpecUnusable</code> - The price in a launch specification is not valid because it is below the
+     *        Spot price or the Spot price is above the On-Demand price.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>fleetProgressHalted</code> - The price in every launch specification is not valid. A launch
+     *        specification might become valid if the Spot price changes.
      *        </p>
      *        </li>
      */
@@ -403,12 +454,12 @@ public class EventInformation implements Serializable, Cloneable {
      * The event.
      * </p>
      * <p>
-     * The following are the <code>error</code> events.
+     * The following are the <code>error</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>iamFleetRoleInvalid</code> - The Spot fleet did not have the required permissions either to launch or
+     * <code>iamFleetRoleInvalid</code> - The Spot Fleet did not have the required permissions either to launch or
      * terminate an instance.
      * </p>
      * </li>
@@ -426,74 +477,74 @@ public class EventInformation implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot instances that you
+     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot Instances that you
      * can launch.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>fleetRequestChange</code> events.
+     * The following are the <code>fleetRequestChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>active</code> - The Spot fleet has been validated and Amazon EC2 is attempting to maintain the target
-     * number of running Spot instances.
+     * <code>active</code> - The Spot Fleet has been validated and Amazon EC2 is attempting to maintain the target
+     * number of running Spot Instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled</code> - The Spot fleet is canceled and has no running Spot instances. The Spot fleet will be
+     * <code>cancelled</code> - The Spot Fleet is canceled and has no running Spot Instances. The Spot Fleet will be
      * deleted two days after its instances were terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_running</code> - The Spot fleet is canceled and will not launch additional Spot instances, but
-     * its existing Spot instances continue to run until they are interrupted or terminated.
+     * <code>cancelled_running</code> - The Spot Fleet is canceled and will not launch additional Spot Instances, but
+     * its existing Spot Instances continue to run until they are interrupted or terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_terminating</code> - The Spot fleet is canceled and its Spot instances are terminating.
+     * <code>cancelled_terminating</code> - The Spot Fleet is canceled and its Spot Instances are terminating.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>expired</code> - The Spot fleet request has expired. A subsequent event indicates that the instances were
+     * <code>expired</code> - The Spot Fleet request has expired. A subsequent event indicates that the instances were
      * terminated, if the request was created with <code>TerminateInstancesWithExpiration</code> set.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_in_progress</code> - A request to modify the Spot fleet request was accepted and is in progress.
+     * <code>modify_in_progress</code> - A request to modify the Spot Fleet request was accepted and is in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_successful</code> - The Spot fleet request was modified.
+     * <code>modify_successful</code> - The Spot Fleet request was modified.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>price_update</code> - The bid price for a launch configuration was adjusted because it was too high. This
+     * <code>price_update</code> - The price for a launch configuration was adjusted because it was too high. This
      * change is permanent.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>submitted</code> - The Spot fleet request is being evaluated and Amazon EC2 is preparing to launch the
-     * target number of Spot instances.
+     * <code>submitted</code> - The Spot Fleet request is being evaluated and Amazon EC2 is preparing to launch the
+     * target number of Spot Instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>instanceChange</code> events.
+     * The following are the <code>instanceChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>launched</code> - A bid was fulfilled and a new instance was launched.
+     * <code>launched</code> - A request was fulfilled and a new instance was launched.
      * </p>
      * </li>
      * <li>
@@ -502,15 +553,32 @@ public class EventInformation implements Serializable, Cloneable {
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * The following are the <code>Information</code> events:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>launchSpecUnusable</code> - The price in a launch specification is not valid because it is below the Spot
+     * price or the Spot price is above the On-Demand price.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleetProgressHalted</code> - The price in every launch specification is not valid. A launch specification
+     * might become valid if the Spot price changes.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The event.</p>
      *         <p>
-     *         The following are the <code>error</code> events.
+     *         The following are the <code>error</code> events:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>iamFleetRoleInvalid</code> - The Spot fleet did not have the required permissions either to launch
+     *         <code>iamFleetRoleInvalid</code> - The Spot Fleet did not have the required permissions either to launch
      *         or terminate an instance.
      *         </p>
      *         </li>
@@ -528,81 +596,98 @@ public class EventInformation implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot instances
+     *         <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot Instances
      *         that you can launch.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         The following are the <code>fleetRequestChange</code> events.
+     *         The following are the <code>fleetRequestChange</code> events:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>active</code> - The Spot fleet has been validated and Amazon EC2 is attempting to maintain the
-     *         target number of running Spot instances.
+     *         <code>active</code> - The Spot Fleet has been validated and Amazon EC2 is attempting to maintain the
+     *         target number of running Spot Instances.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>cancelled</code> - The Spot fleet is canceled and has no running Spot instances. The Spot fleet
+     *         <code>cancelled</code> - The Spot Fleet is canceled and has no running Spot Instances. The Spot Fleet
      *         will be deleted two days after its instances were terminated.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>cancelled_running</code> - The Spot fleet is canceled and will not launch additional Spot
-     *         instances, but its existing Spot instances continue to run until they are interrupted or terminated.
+     *         <code>cancelled_running</code> - The Spot Fleet is canceled and will not launch additional Spot
+     *         Instances, but its existing Spot Instances continue to run until they are interrupted or terminated.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>cancelled_terminating</code> - The Spot fleet is canceled and its Spot instances are terminating.
+     *         <code>cancelled_terminating</code> - The Spot Fleet is canceled and its Spot Instances are terminating.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>expired</code> - The Spot fleet request has expired. A subsequent event indicates that the
+     *         <code>expired</code> - The Spot Fleet request has expired. A subsequent event indicates that the
      *         instances were terminated, if the request was created with <code>TerminateInstancesWithExpiration</code>
      *         set.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>modify_in_progress</code> - A request to modify the Spot fleet request was accepted and is in
+     *         <code>modify_in_progress</code> - A request to modify the Spot Fleet request was accepted and is in
      *         progress.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>modify_successful</code> - The Spot fleet request was modified.
+     *         <code>modify_successful</code> - The Spot Fleet request was modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>price_update</code> - The bid price for a launch configuration was adjusted because it was too
-     *         high. This change is permanent.
+     *         <code>price_update</code> - The price for a launch configuration was adjusted because it was too high.
+     *         This change is permanent.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>submitted</code> - The Spot fleet request is being evaluated and Amazon EC2 is preparing to launch
-     *         the target number of Spot instances.
+     *         <code>submitted</code> - The Spot Fleet request is being evaluated and Amazon EC2 is preparing to launch
+     *         the target number of Spot Instances.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         The following are the <code>instanceChange</code> events.
+     *         The following are the <code>instanceChange</code> events:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>launched</code> - A bid was fulfilled and a new instance was launched.
+     *         <code>launched</code> - A request was fulfilled and a new instance was launched.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         <code>terminated</code> - An instance was terminated by the user.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         The following are the <code>Information</code> events:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>launchSpecUnusable</code> - The price in a launch specification is not valid because it is below
+     *         the Spot price or the Spot price is above the On-Demand price.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>fleetProgressHalted</code> - The price in every launch specification is not valid. A launch
+     *         specification might become valid if the Spot price changes.
      *         </p>
      *         </li>
      */
@@ -616,12 +701,12 @@ public class EventInformation implements Serializable, Cloneable {
      * The event.
      * </p>
      * <p>
-     * The following are the <code>error</code> events.
+     * The following are the <code>error</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>iamFleetRoleInvalid</code> - The Spot fleet did not have the required permissions either to launch or
+     * <code>iamFleetRoleInvalid</code> - The Spot Fleet did not have the required permissions either to launch or
      * terminate an instance.
      * </p>
      * </li>
@@ -639,74 +724,74 @@ public class EventInformation implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot instances that you
+     * <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot Instances that you
      * can launch.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>fleetRequestChange</code> events.
+     * The following are the <code>fleetRequestChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>active</code> - The Spot fleet has been validated and Amazon EC2 is attempting to maintain the target
-     * number of running Spot instances.
+     * <code>active</code> - The Spot Fleet has been validated and Amazon EC2 is attempting to maintain the target
+     * number of running Spot Instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled</code> - The Spot fleet is canceled and has no running Spot instances. The Spot fleet will be
+     * <code>cancelled</code> - The Spot Fleet is canceled and has no running Spot Instances. The Spot Fleet will be
      * deleted two days after its instances were terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_running</code> - The Spot fleet is canceled and will not launch additional Spot instances, but
-     * its existing Spot instances continue to run until they are interrupted or terminated.
+     * <code>cancelled_running</code> - The Spot Fleet is canceled and will not launch additional Spot Instances, but
+     * its existing Spot Instances continue to run until they are interrupted or terminated.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>cancelled_terminating</code> - The Spot fleet is canceled and its Spot instances are terminating.
+     * <code>cancelled_terminating</code> - The Spot Fleet is canceled and its Spot Instances are terminating.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>expired</code> - The Spot fleet request has expired. A subsequent event indicates that the instances were
+     * <code>expired</code> - The Spot Fleet request has expired. A subsequent event indicates that the instances were
      * terminated, if the request was created with <code>TerminateInstancesWithExpiration</code> set.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_in_progress</code> - A request to modify the Spot fleet request was accepted and is in progress.
+     * <code>modify_in_progress</code> - A request to modify the Spot Fleet request was accepted and is in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>modify_successful</code> - The Spot fleet request was modified.
+     * <code>modify_successful</code> - The Spot Fleet request was modified.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>price_update</code> - The bid price for a launch configuration was adjusted because it was too high. This
+     * <code>price_update</code> - The price for a launch configuration was adjusted because it was too high. This
      * change is permanent.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>submitted</code> - The Spot fleet request is being evaluated and Amazon EC2 is preparing to launch the
-     * target number of Spot instances.
+     * <code>submitted</code> - The Spot Fleet request is being evaluated and Amazon EC2 is preparing to launch the
+     * target number of Spot Instances.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The following are the <code>instanceChange</code> events.
+     * The following are the <code>instanceChange</code> events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>launched</code> - A bid was fulfilled and a new instance was launched.
+     * <code>launched</code> - A request was fulfilled and a new instance was launched.
      * </p>
      * </li>
      * <li>
@@ -715,16 +800,33 @@ public class EventInformation implements Serializable, Cloneable {
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * The following are the <code>Information</code> events:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>launchSpecUnusable</code> - The price in a launch specification is not valid because it is below the Spot
+     * price or the Spot price is above the On-Demand price.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleetProgressHalted</code> - The price in every launch specification is not valid. A launch specification
+     * might become valid if the Spot price changes.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param eventSubType
      *        The event.</p>
      *        <p>
-     *        The following are the <code>error</code> events.
+     *        The following are the <code>error</code> events:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>iamFleetRoleInvalid</code> - The Spot fleet did not have the required permissions either to launch
+     *        <code>iamFleetRoleInvalid</code> - The Spot Fleet did not have the required permissions either to launch
      *        or terminate an instance.
      *        </p>
      *        </li>
@@ -742,80 +844,97 @@ public class EventInformation implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot instances
+     *        <code>spotInstanceCountLimitExceeded</code> - You've reached the limit on the number of Spot Instances
      *        that you can launch.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        The following are the <code>fleetRequestChange</code> events.
+     *        The following are the <code>fleetRequestChange</code> events:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>active</code> - The Spot fleet has been validated and Amazon EC2 is attempting to maintain the
-     *        target number of running Spot instances.
+     *        <code>active</code> - The Spot Fleet has been validated and Amazon EC2 is attempting to maintain the
+     *        target number of running Spot Instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cancelled</code> - The Spot fleet is canceled and has no running Spot instances. The Spot fleet will
+     *        <code>cancelled</code> - The Spot Fleet is canceled and has no running Spot Instances. The Spot Fleet will
      *        be deleted two days after its instances were terminated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cancelled_running</code> - The Spot fleet is canceled and will not launch additional Spot instances,
-     *        but its existing Spot instances continue to run until they are interrupted or terminated.
+     *        <code>cancelled_running</code> - The Spot Fleet is canceled and will not launch additional Spot Instances,
+     *        but its existing Spot Instances continue to run until they are interrupted or terminated.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>cancelled_terminating</code> - The Spot fleet is canceled and its Spot instances are terminating.
+     *        <code>cancelled_terminating</code> - The Spot Fleet is canceled and its Spot Instances are terminating.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>expired</code> - The Spot fleet request has expired. A subsequent event indicates that the instances
+     *        <code>expired</code> - The Spot Fleet request has expired. A subsequent event indicates that the instances
      *        were terminated, if the request was created with <code>TerminateInstancesWithExpiration</code> set.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>modify_in_progress</code> - A request to modify the Spot fleet request was accepted and is in
+     *        <code>modify_in_progress</code> - A request to modify the Spot Fleet request was accepted and is in
      *        progress.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>modify_successful</code> - The Spot fleet request was modified.
+     *        <code>modify_successful</code> - The Spot Fleet request was modified.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>price_update</code> - The bid price for a launch configuration was adjusted because it was too high.
+     *        <code>price_update</code> - The price for a launch configuration was adjusted because it was too high.
      *        This change is permanent.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>submitted</code> - The Spot fleet request is being evaluated and Amazon EC2 is preparing to launch
-     *        the target number of Spot instances.
+     *        <code>submitted</code> - The Spot Fleet request is being evaluated and Amazon EC2 is preparing to launch
+     *        the target number of Spot Instances.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        The following are the <code>instanceChange</code> events.
+     *        The following are the <code>instanceChange</code> events:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>launched</code> - A bid was fulfilled and a new instance was launched.
+     *        <code>launched</code> - A request was fulfilled and a new instance was launched.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>terminated</code> - An instance was terminated by the user.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The following are the <code>Information</code> events:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>launchSpecUnusable</code> - The price in a launch specification is not valid because it is below the
+     *        Spot price or the Spot price is above the On-Demand price.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>fleetProgressHalted</code> - The price in every launch specification is not valid. A launch
+     *        specification might become valid if the Spot price changes.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

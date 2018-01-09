@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class BaiduChannelResponseMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Credential").build();
     private static final MarshallingInfo<Boolean> ENABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Enabled").build();
+    private static final MarshallingInfo<Boolean> HASCREDENTIAL_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("HasCredential").build();
     private static final MarshallingInfo<String> ID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Id").build();
     private static final MarshallingInfo<Boolean> ISARCHIVED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
@@ -68,6 +70,7 @@ public class BaiduChannelResponseMarshaller {
             protocolMarshaller.marshall(baiduChannelResponse.getCreationDate(), CREATIONDATE_BINDING);
             protocolMarshaller.marshall(baiduChannelResponse.getCredential(), CREDENTIAL_BINDING);
             protocolMarshaller.marshall(baiduChannelResponse.getEnabled(), ENABLED_BINDING);
+            protocolMarshaller.marshall(baiduChannelResponse.getHasCredential(), HASCREDENTIAL_BINDING);
             protocolMarshaller.marshall(baiduChannelResponse.getId(), ID_BINDING);
             protocolMarshaller.marshall(baiduChannelResponse.getIsArchived(), ISARCHIVED_BINDING);
             protocolMarshaller.marshall(baiduChannelResponse.getLastModifiedBy(), LASTMODIFIEDBY_BINDING);

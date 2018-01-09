@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,8 @@ public class NFSFileShareInfoMarshaller {
             .marshallLocationName("Squash").build();
     private static final MarshallingInfo<Boolean> READONLY_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ReadOnly").build();
+    private static final MarshallingInfo<Boolean> GUESSMIMETYPEENABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("GuessMIMETypeEnabled").build();
 
     private static final NFSFileShareInfoMarshaller instance = new NFSFileShareInfoMarshaller();
 
@@ -87,6 +89,7 @@ public class NFSFileShareInfoMarshaller {
             protocolMarshaller.marshall(nFSFileShareInfo.getClientList(), CLIENTLIST_BINDING);
             protocolMarshaller.marshall(nFSFileShareInfo.getSquash(), SQUASH_BINDING);
             protocolMarshaller.marshall(nFSFileShareInfo.getReadOnly(), READONLY_BINDING);
+            protocolMarshaller.marshall(nFSFileShareInfo.getGuessMIMETypeEnabled(), GUESSMIMETYPEENABLED_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

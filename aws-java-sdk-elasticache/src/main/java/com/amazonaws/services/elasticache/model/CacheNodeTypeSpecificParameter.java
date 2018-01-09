@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,8 +17,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * A parameter that has a different value for each cache node type it is applied to. For example, in a Redis cache
- * cluster, a <code>cache.m1.large</code> cache node type would have a larger <code>maxmemory</code> value than a
+ * A parameter that has a different value for each cache node type it is applied to. For example, in a Redis cluster, a
+ * <code>cache.m1.large</code> cache node type would have a larger <code>maxmemory</code> value than a
  * <code>cache.m1.small</code> type.
  * </p>
  * 

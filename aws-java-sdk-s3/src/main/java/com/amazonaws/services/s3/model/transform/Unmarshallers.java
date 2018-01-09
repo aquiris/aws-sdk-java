@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -200,6 +200,28 @@ public class Unmarshallers {
         public BucketAccelerateConfiguration unmarshall(InputStream in) throws Exception {
             return new XmlResponsesSaxParser()
                     .parseAccelerateConfigurationResponse(in).getConfiguration();
+        }
+    }
+
+    /**
+     * Unmarshaller for the DeleteBucketEncryption XML response.
+     */
+    public static final class DeleteBucketEncryptionUnmarshaller
+        implements Unmarshaller<DeleteBucketEncryptionResult, InputStream> {
+        public DeleteBucketEncryptionResult unmarshall(InputStream in) {
+            // DeleteBucketEncryption has no output shape
+            return new DeleteBucketEncryptionResult();
+        }
+    }
+
+    /**
+     * Unmarshaller for the SetBucketEncryption XML response.
+     */
+    public static final class SetBucketEncryptionUnmarshaller
+        implements Unmarshaller<SetBucketEncryptionResult, InputStream> {
+        public SetBucketEncryptionResult unmarshall(InputStream in) {
+            // SetBucketEncryption has no output shape
+            return new SetBucketEncryptionResult();
         }
     }
 
@@ -434,6 +456,17 @@ public class Unmarshallers {
 
         public SetBucketInventoryConfigurationResult unmarshall(InputStream in) throws Exception {
             return new SetBucketInventoryConfigurationResult();
+        }
+    }
+
+    /**
+     * Unmarshaller for the RestoreObjectResult XML response.
+     */
+    public static final class RestoreObjectResultUnmarshaller
+        implements Unmarshaller<RestoreObjectResult, InputStream> {
+
+        public RestoreObjectResult unmarshall(InputStream in) {
+            return new RestoreObjectResult();
         }
     }
 }

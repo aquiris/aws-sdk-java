@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -117,6 +117,36 @@ public class OrderableDBInstanceOptionStaxUnmarshaller implements Unmarshaller<O
 
                 if (context.testExpression("SupportsPerformanceInsights", targetDepth)) {
                     orderableDBInstanceOption.setSupportsPerformanceInsights(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("MinStorageSize", targetDepth)) {
+                    orderableDBInstanceOption.setMinStorageSize(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("MaxStorageSize", targetDepth)) {
+                    orderableDBInstanceOption.setMaxStorageSize(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("MinIopsPerDbInstance", targetDepth)) {
+                    orderableDBInstanceOption.setMinIopsPerDbInstance(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("MaxIopsPerDbInstance", targetDepth)) {
+                    orderableDBInstanceOption.setMaxIopsPerDbInstance(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("MinIopsPerGib", targetDepth)) {
+                    orderableDBInstanceOption.setMinIopsPerGib(DoubleStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("MaxIopsPerGib", targetDepth)) {
+                    orderableDBInstanceOption.setMaxIopsPerGib(DoubleStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

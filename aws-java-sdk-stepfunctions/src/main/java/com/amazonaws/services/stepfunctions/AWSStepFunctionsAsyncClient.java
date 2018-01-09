@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,18 +32,21 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <p>
  * <fullname>AWS Step Functions</fullname>
  * <p>
- * AWS Step Functions is a web service that enables you to coordinate the components of distributed applications and
- * microservices using visual workflows. You build applications from individual components that each perform a discrete
- * function, or <i>task</i>, allowing you to scale and change applications quickly. Step Functions provides a graphical
- * console to visualize the components of your application as a series of steps. It automatically triggers and tracks
- * each step, and retries when there are errors, so your application executes in order and as expected, every time. Step
- * Functions logs the state of each step, so when things do go wrong, you can diagnose and debug problems quickly.
+ * AWS Step Functions is a service that lets you coordinate the components of distributed applications and microservices
+ * using visual workflows.
  * </p>
  * <p>
- * Step Functions manages the operations and underlying infrastructure for you to ensure your application is available
- * at any scale. You can run tasks on the AWS cloud, on your own servers, or an any system that has access to AWS. Step
- * Functions can be accessed and used with the Step Functions console, the AWS SDKs (included with your Beta release
- * invitation email), or an HTTP API (the subject of this document).
+ * You can use Step Functions to build applications from individual components, each of which performs a discrete
+ * function, or <i>task</i>, allowing you to scale and change applications quickly. Step Functions provides a console
+ * that helps visualize the components of your application as a series of steps. Step Functions automatically triggers
+ * and tracks each step, and retries steps when there are errors, so your application executes predictably and in the
+ * right order every time. Step Functions logs the state of each step, so you can quickly diagnose and debug any issues.
+ * </p>
+ * <p>
+ * Step Functions manages operations and underlying infrastructure to ensure your application is available at any scale.
+ * You can run tasks on AWS, your own servers, or any system that has access to AWS. You can access and use Step
+ * Functions using the console, the AWS SDKs, or an HTTP API. For more information about Step Functions, see the <i> <a
+ * href="http://docs.aws.amazon.com/step-functions/latest/dg/welcome.html">AWS Step Functions Developer Guide</a> </i>.
  * </p>
  */
 @ThreadSafe
@@ -487,6 +490,41 @@ public class AWSStepFunctionsAsyncClient extends AWSStepFunctionsClient implemen
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeStateMachineForExecutionResult> describeStateMachineForExecutionAsync(
+            DescribeStateMachineForExecutionRequest request) {
+
+        return describeStateMachineForExecutionAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeStateMachineForExecutionResult> describeStateMachineForExecutionAsync(
+            final DescribeStateMachineForExecutionRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeStateMachineForExecutionRequest, DescribeStateMachineForExecutionResult> asyncHandler) {
+        final DescribeStateMachineForExecutionRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeStateMachineForExecutionResult>() {
+            @Override
+            public DescribeStateMachineForExecutionResult call() throws Exception {
+                DescribeStateMachineForExecutionResult result = null;
+
+                try {
+                    result = executeDescribeStateMachineForExecution(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<GetActivityTaskResult> getActivityTaskAsync(GetActivityTaskRequest request) {
 
         return getActivityTaskAsync(request, null);
@@ -801,6 +839,39 @@ public class AWSStepFunctionsAsyncClient extends AWSStepFunctionsClient implemen
 
                 try {
                     result = executeStopExecution(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateStateMachineResult> updateStateMachineAsync(UpdateStateMachineRequest request) {
+
+        return updateStateMachineAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateStateMachineResult> updateStateMachineAsync(final UpdateStateMachineRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateStateMachineRequest, UpdateStateMachineResult> asyncHandler) {
+        final UpdateStateMachineRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateStateMachineResult>() {
+            @Override
+            public UpdateStateMachineResult call() throws Exception {
+                UpdateStateMachineResult result = null;
+
+                try {
+                    result = executeUpdateStateMachine(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

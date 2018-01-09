@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -579,7 +579,7 @@ public class EC2MetadataUtils {
     }
 
     /**
-     * All of the metada associated with a network interface on the instance.
+     * All of the metadata associated with a network interface on the instance.
      */
     public static class NetworkInterface {
         private String path;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,36 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * The name of the state machine.
      * </p>
+     * <p>
+     * A name must <i>not</i> contain:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * whitespace
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * brackets <code>&lt; &gt; { } [ ]</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * wildcard characters <code>? *</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
+     * </p>
+     * </li>
+     * </ul>
      */
     private String name;
     /**
@@ -49,13 +79,14 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
     private String definition;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.
+     * The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role maintains
+     * security by granting Step Functions access to AWS resources.)
      * </p>
      */
     private String roleArn;
     /**
      * <p>
-     * The date the state machine was created.
+     * The date the state machine is created.
      * </p>
      */
     private java.util.Date creationDate;
@@ -104,9 +135,68 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * The name of the state machine.
      * </p>
+     * <p>
+     * A name must <i>not</i> contain:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * whitespace
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * brackets <code>&lt; &gt; { } [ ]</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * wildcard characters <code>? *</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param name
-     *        The name of the state machine.
+     *        The name of the state machine.</p>
+     *        <p>
+     *        A name must <i>not</i> contain:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        whitespace
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        brackets <code>&lt; &gt; { } [ ]</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        wildcard characters <code>? *</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
+     *        </p>
+     *        </li>
      */
 
     public void setName(String name) {
@@ -117,8 +207,67 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * The name of the state machine.
      * </p>
+     * <p>
+     * A name must <i>not</i> contain:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * whitespace
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * brackets <code>&lt; &gt; { } [ ]</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * wildcard characters <code>? *</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The name of the state machine.
+     * @return The name of the state machine.</p>
+     *         <p>
+     *         A name must <i>not</i> contain:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         whitespace
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         brackets <code>&lt; &gt; { } [ ]</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         wildcard characters <code>? *</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
+     *         </p>
+     *         </li>
      */
 
     public String getName() {
@@ -129,9 +278,68 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * The name of the state machine.
      * </p>
+     * <p>
+     * A name must <i>not</i> contain:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * whitespace
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * brackets <code>&lt; &gt; { } [ ]</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * wildcard characters <code>? *</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param name
-     *        The name of the state machine.
+     *        The name of the state machine.</p>
+     *        <p>
+     *        A name must <i>not</i> contain:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        whitespace
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        brackets <code>&lt; &gt; { } [ ]</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        wildcard characters <code>? *</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        special characters <code>" # % \ ^ | ~ ` $ &amp; , ; : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -255,11 +463,13 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.
+     * The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role maintains
+     * security by granting Step Functions access to AWS resources.)
      * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.
+     *        The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role
+     *        maintains security by granting Step Functions access to AWS resources.)
      */
 
     public void setRoleArn(String roleArn) {
@@ -268,10 +478,12 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.
+     * The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role maintains
+     * security by granting Step Functions access to AWS resources.)
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.
+     * @return The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role
+     *         maintains security by granting Step Functions access to AWS resources.)
      */
 
     public String getRoleArn() {
@@ -280,11 +492,13 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.
+     * The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role maintains
+     * security by granting Step Functions access to AWS resources.)
      * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.
+     *        The Amazon Resource Name (ARN) of the IAM role used when creating this state machine. (The IAM role
+     *        maintains security by granting Step Functions access to AWS resources.)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -295,11 +509,11 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The date the state machine was created.
+     * The date the state machine is created.
      * </p>
      * 
      * @param creationDate
-     *        The date the state machine was created.
+     *        The date the state machine is created.
      */
 
     public void setCreationDate(java.util.Date creationDate) {
@@ -308,10 +522,10 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The date the state machine was created.
+     * The date the state machine is created.
      * </p>
      * 
-     * @return The date the state machine was created.
+     * @return The date the state machine is created.
      */
 
     public java.util.Date getCreationDate() {
@@ -320,11 +534,11 @@ public class DescribeStateMachineResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The date the state machine was created.
+     * The date the state machine is created.
      * </p>
      * 
      * @param creationDate
-     *        The date the state machine was created.
+     *        The date the state machine is created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

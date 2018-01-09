@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,9 +34,9 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String cluster;
     /**
      * <p>
-     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name
-     * (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest
-     * <code>ACTIVE</code> revision is used.
+     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
+     * definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is
+     * used.
      * </p>
      */
     private String taskDefinition;
@@ -58,8 +58,8 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private TaskOverride overrides;
     /**
      * <p>
-     * The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you
-     * would like to place your task. You can specify up to 10 container instances.
+     * The container instance IDs or full ARN entries for the container instances on which you would like to place your
+     * task. You can specify up to 10 container instances.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> containerInstances;
@@ -84,6 +84,13 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      */
     private String group;
+    /**
+     * <p>
+     * The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface by
+     * using the <code>awsvpc</code> networking mode.
+     * </p>
+     */
+    private NetworkConfiguration networkConfiguration;
 
     /**
      * <p>
@@ -133,15 +140,15 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name
-     * (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest
-     * <code>ACTIVE</code> revision is used.
+     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
+     * definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is
+     * used.
      * </p>
      * 
      * @param taskDefinition
-     *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource
-     *        Name (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest
-     *        <code>ACTIVE</code> revision is used.
+     *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
+     *        definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision
+     *        is used.
      */
 
     public void setTaskDefinition(String taskDefinition) {
@@ -150,14 +157,14 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name
-     * (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest
-     * <code>ACTIVE</code> revision is used.
+     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
+     * definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is
+     * used.
      * </p>
      * 
-     * @return The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource
-     *         Name (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest
-     *         <code>ACTIVE</code> revision is used.
+     * @return The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
+     *         definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision
+     *         is used.
      */
 
     public String getTaskDefinition() {
@@ -166,15 +173,15 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name
-     * (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest
-     * <code>ACTIVE</code> revision is used.
+     * The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
+     * definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is
+     * used.
      * </p>
      * 
      * @param taskDefinition
-     *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource
-     *        Name (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest
-     *        <code>ACTIVE</code> revision is used.
+     *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
+     *        definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision
+     *        is used.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,12 +287,12 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you
-     * would like to place your task. You can specify up to 10 container instances.
+     * The container instance IDs or full ARN entries for the container instances on which you would like to place your
+     * task. You can specify up to 10 container instances.
      * </p>
      * 
-     * @return The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on
-     *         which you would like to place your task. You can specify up to 10 container instances.
+     * @return The container instance IDs or full ARN entries for the container instances on which you would like to
+     *         place your task. You can specify up to 10 container instances.
      */
 
     public java.util.List<String> getContainerInstances() {
@@ -297,13 +304,13 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you
-     * would like to place your task. You can specify up to 10 container instances.
+     * The container instance IDs or full ARN entries for the container instances on which you would like to place your
+     * task. You can specify up to 10 container instances.
      * </p>
      * 
      * @param containerInstances
-     *        The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which
-     *        you would like to place your task. You can specify up to 10 container instances.
+     *        The container instance IDs or full ARN entries for the container instances on which you would like to
+     *        place your task. You can specify up to 10 container instances.
      */
 
     public void setContainerInstances(java.util.Collection<String> containerInstances) {
@@ -317,8 +324,8 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you
-     * would like to place your task. You can specify up to 10 container instances.
+     * The container instance IDs or full ARN entries for the container instances on which you would like to place your
+     * task. You can specify up to 10 container instances.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -327,8 +334,8 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      * 
      * @param containerInstances
-     *        The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which
-     *        you would like to place your task. You can specify up to 10 container instances.
+     *        The container instance IDs or full ARN entries for the container instances on which you would like to
+     *        place your task. You can specify up to 10 container instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -344,13 +351,13 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you
-     * would like to place your task. You can specify up to 10 container instances.
+     * The container instance IDs or full ARN entries for the container instances on which you would like to place your
+     * task. You can specify up to 10 container instances.
      * </p>
      * 
      * @param containerInstances
-     *        The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which
-     *        you would like to place your task. You can specify up to 10 container instances.
+     *        The container instance IDs or full ARN entries for the container instances on which you would like to
+     *        place your task. You can specify up to 10 container instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -491,6 +498,52 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
+     * <p>
+     * The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface by
+     * using the <code>awsvpc</code> networking mode.
+     * </p>
+     * 
+     * @param networkConfiguration
+     *        The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface
+     *        by using the <code>awsvpc</code> networking mode.
+     */
+
+    public void setNetworkConfiguration(NetworkConfiguration networkConfiguration) {
+        this.networkConfiguration = networkConfiguration;
+    }
+
+    /**
+     * <p>
+     * The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface by
+     * using the <code>awsvpc</code> networking mode.
+     * </p>
+     * 
+     * @return The VPC subnet and security group configuration for tasks that receive their own Elastic Network
+     *         Interface by using the <code>awsvpc</code> networking mode.
+     */
+
+    public NetworkConfiguration getNetworkConfiguration() {
+        return this.networkConfiguration;
+    }
+
+    /**
+     * <p>
+     * The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface by
+     * using the <code>awsvpc</code> networking mode.
+     * </p>
+     * 
+     * @param networkConfiguration
+     *        The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface
+     *        by using the <code>awsvpc</code> networking mode.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTaskRequest withNetworkConfiguration(NetworkConfiguration networkConfiguration) {
+        setNetworkConfiguration(networkConfiguration);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -512,7 +565,9 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
         if (getStartedBy() != null)
             sb.append("StartedBy: ").append(getStartedBy()).append(",");
         if (getGroup() != null)
-            sb.append("Group: ").append(getGroup());
+            sb.append("Group: ").append(getGroup()).append(",");
+        if (getNetworkConfiguration() != null)
+            sb.append("NetworkConfiguration: ").append(getNetworkConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -551,6 +606,10 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getGroup() != null && other.getGroup().equals(this.getGroup()) == false)
             return false;
+        if (other.getNetworkConfiguration() == null ^ this.getNetworkConfiguration() == null)
+            return false;
+        if (other.getNetworkConfiguration() != null && other.getNetworkConfiguration().equals(this.getNetworkConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -565,6 +624,7 @@ public class StartTaskRequest extends com.amazonaws.AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getContainerInstances() == null) ? 0 : getContainerInstances().hashCode());
         hashCode = prime * hashCode + ((getStartedBy() == null) ? 0 : getStartedBy().hashCode());
         hashCode = prime * hashCode + ((getGroup() == null) ? 0 : getGroup().hashCode());
+        hashCode = prime * hashCode + ((getNetworkConfiguration() == null) ? 0 : getNetworkConfiguration().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.lightsail.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -43,6 +44,8 @@ public class InstanceSnapshotMarshaller {
             .marshallLocationName("state").build();
     private static final MarshallingInfo<String> PROGRESS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("progress").build();
+    private static final MarshallingInfo<List> FROMATTACHEDDISKS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("fromAttachedDisks").build();
     private static final MarshallingInfo<String> FROMINSTANCENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("fromInstanceName").build();
     private static final MarshallingInfo<String> FROMINSTANCEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -78,6 +81,7 @@ public class InstanceSnapshotMarshaller {
             protocolMarshaller.marshall(instanceSnapshot.getResourceType(), RESOURCETYPE_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getState(), STATE_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getProgress(), PROGRESS_BINDING);
+            protocolMarshaller.marshall(instanceSnapshot.getFromAttachedDisks(), FROMATTACHEDDISKS_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getFromInstanceName(), FROMINSTANCENAME_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getFromInstanceArn(), FROMINSTANCEARN_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getFromBlueprintId(), FROMBLUEPRINTID_BINDING);

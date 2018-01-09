@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Describes the launch specification for one or more Spot instances.
+ * Describes the launch specification for one or more Spot Instances.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotFleetLaunchSpecification" target="_top">AWS
@@ -41,7 +41,9 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
     private String addressingType;
     /**
      * <p>
-     * One or more block device mapping entries.
+     * One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value. This is
+     * because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank
+     * and its encryption status is used for the volume encryption status.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<BlockDeviceMapping> blockDeviceMappings;
@@ -70,7 +72,7 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
     private String imageId;
     /**
      * <p>
-     * The instance type. Note that T2 and HS1 instance types are not supported.
+     * The instance type.
      * </p>
      */
     private String instanceType;
@@ -113,9 +115,9 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
     private String ramdiskId;
     /**
      * <p>
-     * The bid price per unit hour for the specified instance type. If this value is not specified, the default is the
-     * Spot bid price specified for the fleet. To determine the bid price per unit hour, divide the Spot bid price by
-     * the value of <code>WeightedCapacity</code>.
+     * The maximum price per unit hour that you are willing to pay for a Spot Instance. If this value is not specified,
+     * the default is the Spot price specified for the fleet. To determine the Spot price per unit hour, divide the Spot
+     * price by the value of <code>WeightedCapacity</code>.
      * </p>
      */
     private String spotPrice;
@@ -279,10 +281,14 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more block device mapping entries.
+     * One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value. This is
+     * because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank
+     * and its encryption status is used for the volume encryption status.
      * </p>
      * 
-     * @return One or more block device mapping entries.
+     * @return One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value.
+     *         This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume,
+     *         it is not blank and its encryption status is used for the volume encryption status.
      */
 
     public java.util.List<BlockDeviceMapping> getBlockDeviceMappings() {
@@ -294,11 +300,15 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more block device mapping entries.
+     * One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value. This is
+     * because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank
+     * and its encryption status is used for the volume encryption status.
      * </p>
      * 
      * @param blockDeviceMappings
-     *        One or more block device mapping entries.
+     *        One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value.
+     *        This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume,
+     *        it is not blank and its encryption status is used for the volume encryption status.
      */
 
     public void setBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
@@ -312,7 +322,9 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more block device mapping entries.
+     * One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value. This is
+     * because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank
+     * and its encryption status is used for the volume encryption status.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -321,7 +333,9 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
      * </p>
      * 
      * @param blockDeviceMappings
-     *        One or more block device mapping entries.
+     *        One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value.
+     *        This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume,
+     *        it is not blank and its encryption status is used for the volume encryption status.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,11 +351,15 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more block device mapping entries.
+     * One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value. This is
+     * because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank
+     * and its encryption status is used for the volume encryption status.
      * </p>
      * 
      * @param blockDeviceMappings
-     *        One or more block device mapping entries.
+     *        One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value.
+     *        This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume,
+     *        it is not blank and its encryption status is used for the volume encryption status.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -524,11 +542,11 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type. Note that T2 and HS1 instance types are not supported.
+     * The instance type.
      * </p>
      * 
      * @param instanceType
-     *        The instance type. Note that T2 and HS1 instance types are not supported.
+     *        The instance type.
      * @see InstanceType
      */
 
@@ -538,10 +556,10 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type. Note that T2 and HS1 instance types are not supported.
+     * The instance type.
      * </p>
      * 
-     * @return The instance type. Note that T2 and HS1 instance types are not supported.
+     * @return The instance type.
      * @see InstanceType
      */
 
@@ -551,11 +569,11 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type. Note that T2 and HS1 instance types are not supported.
+     * The instance type.
      * </p>
      * 
      * @param instanceType
-     *        The instance type. Note that T2 and HS1 instance types are not supported.
+     *        The instance type.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
      */
@@ -567,11 +585,11 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type. Note that T2 and HS1 instance types are not supported.
+     * The instance type.
      * </p>
      * 
      * @param instanceType
-     *        The instance type. Note that T2 and HS1 instance types are not supported.
+     *        The instance type.
      * @see InstanceType
      */
 
@@ -581,11 +599,11 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The instance type. Note that T2 and HS1 instance types are not supported.
+     * The instance type.
      * </p>
      * 
      * @param instanceType
-     *        The instance type. Note that T2 and HS1 instance types are not supported.
+     *        The instance type.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
      */
@@ -878,15 +896,15 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bid price per unit hour for the specified instance type. If this value is not specified, the default is the
-     * Spot bid price specified for the fleet. To determine the bid price per unit hour, divide the Spot bid price by
-     * the value of <code>WeightedCapacity</code>.
+     * The maximum price per unit hour that you are willing to pay for a Spot Instance. If this value is not specified,
+     * the default is the Spot price specified for the fleet. To determine the Spot price per unit hour, divide the Spot
+     * price by the value of <code>WeightedCapacity</code>.
      * </p>
      * 
      * @param spotPrice
-     *        The bid price per unit hour for the specified instance type. If this value is not specified, the default
-     *        is the Spot bid price specified for the fleet. To determine the bid price per unit hour, divide the Spot
-     *        bid price by the value of <code>WeightedCapacity</code>.
+     *        The maximum price per unit hour that you are willing to pay for a Spot Instance. If this value is not
+     *        specified, the default is the Spot price specified for the fleet. To determine the Spot price per unit
+     *        hour, divide the Spot price by the value of <code>WeightedCapacity</code>.
      */
 
     public void setSpotPrice(String spotPrice) {
@@ -895,14 +913,14 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bid price per unit hour for the specified instance type. If this value is not specified, the default is the
-     * Spot bid price specified for the fleet. To determine the bid price per unit hour, divide the Spot bid price by
-     * the value of <code>WeightedCapacity</code>.
+     * The maximum price per unit hour that you are willing to pay for a Spot Instance. If this value is not specified,
+     * the default is the Spot price specified for the fleet. To determine the Spot price per unit hour, divide the Spot
+     * price by the value of <code>WeightedCapacity</code>.
      * </p>
      * 
-     * @return The bid price per unit hour for the specified instance type. If this value is not specified, the default
-     *         is the Spot bid price specified for the fleet. To determine the bid price per unit hour, divide the Spot
-     *         bid price by the value of <code>WeightedCapacity</code>.
+     * @return The maximum price per unit hour that you are willing to pay for a Spot Instance. If this value is not
+     *         specified, the default is the Spot price specified for the fleet. To determine the Spot price per unit
+     *         hour, divide the Spot price by the value of <code>WeightedCapacity</code>.
      */
 
     public String getSpotPrice() {
@@ -911,15 +929,15 @@ public class SpotFleetLaunchSpecification implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bid price per unit hour for the specified instance type. If this value is not specified, the default is the
-     * Spot bid price specified for the fleet. To determine the bid price per unit hour, divide the Spot bid price by
-     * the value of <code>WeightedCapacity</code>.
+     * The maximum price per unit hour that you are willing to pay for a Spot Instance. If this value is not specified,
+     * the default is the Spot price specified for the fleet. To determine the Spot price per unit hour, divide the Spot
+     * price by the value of <code>WeightedCapacity</code>.
      * </p>
      * 
      * @param spotPrice
-     *        The bid price per unit hour for the specified instance type. If this value is not specified, the default
-     *        is the Spot bid price specified for the fleet. To determine the bid price per unit hour, divide the Spot
-     *        bid price by the value of <code>WeightedCapacity</code>.
+     *        The maximum price per unit hour that you are willing to pay for a Spot Instance. If this value is not
+     *        specified, the default is the Spot price specified for the fleet. To determine the Spot price per unit
+     *        hour, divide the Spot price by the value of <code>WeightedCapacity</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,8 +28,8 @@ public class DescribeEventsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the event source for which events will be returned. If not specified, then all sources are
-     * included in the response.
+     * The identifier of the event source for which events are returned. If not specified, then all sources are included
+     * in the response.
      * </p>
      * <p>
      * Constraints:
@@ -139,8 +139,8 @@ public class DescribeEventsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the event source for which events will be returned. If not specified, then all sources are
-     * included in the response.
+     * The identifier of the event source for which events are returned. If not specified, then all sources are included
+     * in the response.
      * </p>
      * <p>
      * Constraints:
@@ -179,8 +179,8 @@ public class DescribeEventsRequest extends com.amazonaws.AmazonWebServiceRequest
      * </ul>
      * 
      * @param sourceIdentifier
-     *        The identifier of the event source for which events will be returned. If not specified, then all sources
-     *        are included in the response.</p>
+     *        The identifier of the event source for which events are returned. If not specified, then all sources are
+     *        included in the response.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -223,8 +223,8 @@ public class DescribeEventsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the event source for which events will be returned. If not specified, then all sources are
-     * included in the response.
+     * The identifier of the event source for which events are returned. If not specified, then all sources are included
+     * in the response.
      * </p>
      * <p>
      * Constraints:
@@ -262,8 +262,8 @@ public class DescribeEventsRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * </ul>
      * 
-     * @return The identifier of the event source for which events will be returned. If not specified, then all sources
-     *         are included in the response.</p>
+     * @return The identifier of the event source for which events are returned. If not specified, then all sources are
+     *         included in the response.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -307,8 +307,8 @@ public class DescribeEventsRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The identifier of the event source for which events will be returned. If not specified, then all sources are
-     * included in the response.
+     * The identifier of the event source for which events are returned. If not specified, then all sources are included
+     * in the response.
      * </p>
      * <p>
      * Constraints:
@@ -347,8 +347,8 @@ public class DescribeEventsRequest extends com.amazonaws.AmazonWebServiceRequest
      * </ul>
      * 
      * @param sourceIdentifier
-     *        The identifier of the event source for which events will be returned. If not specified, then all sources
-     *        are included in the response.</p>
+     *        The identifier of the event source for which events are returned. If not specified, then all sources are
+     *        included in the response.</p>
      *        <p>
      *        Constraints:
      *        </p>

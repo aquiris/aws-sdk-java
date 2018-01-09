@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,19 @@ public class DescribeVpcEndpointsRequestMarshaller implements Marshaller<Request
         request.addParameter("Version", "2016-11-15");
         request.setHttpMethod(HttpMethodName.POST);
 
+        com.amazonaws.internal.SdkInternalList<String> describeVpcEndpointsRequestVpcEndpointIdsList = (com.amazonaws.internal.SdkInternalList<String>) describeVpcEndpointsRequest
+                .getVpcEndpointIds();
+        if (!describeVpcEndpointsRequestVpcEndpointIdsList.isEmpty() || !describeVpcEndpointsRequestVpcEndpointIdsList.isAutoConstruct()) {
+            int vpcEndpointIdsListIndex = 1;
+
+            for (String describeVpcEndpointsRequestVpcEndpointIdsListValue : describeVpcEndpointsRequestVpcEndpointIdsList) {
+                if (describeVpcEndpointsRequestVpcEndpointIdsListValue != null) {
+                    request.addParameter("VpcEndpointId." + vpcEndpointIdsListIndex, StringUtils.fromString(describeVpcEndpointsRequestVpcEndpointIdsListValue));
+                }
+                vpcEndpointIdsListIndex++;
+            }
+        }
+
         com.amazonaws.internal.SdkInternalList<Filter> describeVpcEndpointsRequestFiltersList = (com.amazonaws.internal.SdkInternalList<Filter>) describeVpcEndpointsRequest
                 .getFilters();
         if (!describeVpcEndpointsRequestFiltersList.isEmpty() || !describeVpcEndpointsRequestFiltersList.isAutoConstruct()) {
@@ -73,19 +86,6 @@ public class DescribeVpcEndpointsRequestMarshaller implements Marshaller<Request
 
         if (describeVpcEndpointsRequest.getNextToken() != null) {
             request.addParameter("NextToken", StringUtils.fromString(describeVpcEndpointsRequest.getNextToken()));
-        }
-
-        com.amazonaws.internal.SdkInternalList<String> describeVpcEndpointsRequestVpcEndpointIdsList = (com.amazonaws.internal.SdkInternalList<String>) describeVpcEndpointsRequest
-                .getVpcEndpointIds();
-        if (!describeVpcEndpointsRequestVpcEndpointIdsList.isEmpty() || !describeVpcEndpointsRequestVpcEndpointIdsList.isAutoConstruct()) {
-            int vpcEndpointIdsListIndex = 1;
-
-            for (String describeVpcEndpointsRequestVpcEndpointIdsListValue : describeVpcEndpointsRequestVpcEndpointIdsList) {
-                if (describeVpcEndpointsRequestVpcEndpointIdsListValue != null) {
-                    request.addParameter("VpcEndpointId." + vpcEndpointIdsListIndex, StringUtils.fromString(describeVpcEndpointsRequestVpcEndpointIdsListValue));
-                }
-                vpcEndpointIdsListIndex++;
-            }
         }
 
         return request;

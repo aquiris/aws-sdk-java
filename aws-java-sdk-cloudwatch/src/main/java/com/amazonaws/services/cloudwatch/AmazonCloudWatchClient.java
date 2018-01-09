@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -1031,6 +1031,11 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * If you are an IAM user, you must have Amazon EC2 permissions for some operations:
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * <code>iam:CreateServiceLinkedRole</code> for all alarms with EC2 actions
+     * </p>
+     * </li>
      * <li>
      * <p>
      * <code>ec2:DescribeInstanceStatus</code> and <code>ec2:DescribeInstances</code> for all alarms on EC2 instance

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -65,8 +65,8 @@ public class ForwardedValues implements Serializable, Cloneable {
     private CookiePreference cookies;
     /**
      * <p>
-     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
-     * cache behavior.
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to base caching on for
+     * this cache behavior.
      * </p>
      */
     private Headers headers;
@@ -370,13 +370,13 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
-     * cache behavior.
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to base caching on for
+     * this cache behavior.
      * </p>
      * 
      * @param headers
-     *        A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for
-     *        this cache behavior.
+     *        A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to base caching
+     *        on for this cache behavior.
      */
 
     public void setHeaders(Headers headers) {
@@ -385,12 +385,12 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
-     * cache behavior.
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to base caching on for
+     * this cache behavior.
      * </p>
      * 
-     * @return A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for
-     *         this cache behavior.
+     * @return A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to base caching
+     *         on for this cache behavior.
      */
 
     public Headers getHeaders() {
@@ -399,13 +399,13 @@ public class ForwardedValues implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this
-     * cache behavior.
+     * A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to base caching on for
+     * this cache behavior.
      * </p>
      * 
      * @param headers
-     *        A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for
-     *        this cache behavior.
+     *        A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to base caching
+     *        on for this cache behavior.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

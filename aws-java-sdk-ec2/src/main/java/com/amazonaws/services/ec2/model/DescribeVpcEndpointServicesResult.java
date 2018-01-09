@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,17 +27,169 @@ public class DescribeVpcEndpointServicesResult extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
+     * A list of supported services.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> serviceNames;
+    /**
+     * <p>
+     * Information about the service.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ServiceDetail> serviceDetails;
+    /**
+     * <p>
      * The token to use when requesting the next set of items. If there are no additional items to return, the string is
      * empty.
      * </p>
      */
     private String nextToken;
+
     /**
      * <p>
-     * A list of supported AWS services.
+     * A list of supported services.
      * </p>
+     * 
+     * @return A list of supported services.
      */
-    private com.amazonaws.internal.SdkInternalList<String> serviceNames;
+
+    public java.util.List<String> getServiceNames() {
+        if (serviceNames == null) {
+            serviceNames = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return serviceNames;
+    }
+
+    /**
+     * <p>
+     * A list of supported services.
+     * </p>
+     * 
+     * @param serviceNames
+     *        A list of supported services.
+     */
+
+    public void setServiceNames(java.util.Collection<String> serviceNames) {
+        if (serviceNames == null) {
+            this.serviceNames = null;
+            return;
+        }
+
+        this.serviceNames = new com.amazonaws.internal.SdkInternalList<String>(serviceNames);
+    }
+
+    /**
+     * <p>
+     * A list of supported services.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setServiceNames(java.util.Collection)} or {@link #withServiceNames(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param serviceNames
+     *        A list of supported services.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeVpcEndpointServicesResult withServiceNames(String... serviceNames) {
+        if (this.serviceNames == null) {
+            setServiceNames(new com.amazonaws.internal.SdkInternalList<String>(serviceNames.length));
+        }
+        for (String ele : serviceNames) {
+            this.serviceNames.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of supported services.
+     * </p>
+     * 
+     * @param serviceNames
+     *        A list of supported services.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeVpcEndpointServicesResult withServiceNames(java.util.Collection<String> serviceNames) {
+        setServiceNames(serviceNames);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the service.
+     * </p>
+     * 
+     * @return Information about the service.
+     */
+
+    public java.util.List<ServiceDetail> getServiceDetails() {
+        if (serviceDetails == null) {
+            serviceDetails = new com.amazonaws.internal.SdkInternalList<ServiceDetail>();
+        }
+        return serviceDetails;
+    }
+
+    /**
+     * <p>
+     * Information about the service.
+     * </p>
+     * 
+     * @param serviceDetails
+     *        Information about the service.
+     */
+
+    public void setServiceDetails(java.util.Collection<ServiceDetail> serviceDetails) {
+        if (serviceDetails == null) {
+            this.serviceDetails = null;
+            return;
+        }
+
+        this.serviceDetails = new com.amazonaws.internal.SdkInternalList<ServiceDetail>(serviceDetails);
+    }
+
+    /**
+     * <p>
+     * Information about the service.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setServiceDetails(java.util.Collection)} or {@link #withServiceDetails(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param serviceDetails
+     *        Information about the service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeVpcEndpointServicesResult withServiceDetails(ServiceDetail... serviceDetails) {
+        if (this.serviceDetails == null) {
+            setServiceDetails(new com.amazonaws.internal.SdkInternalList<ServiceDetail>(serviceDetails.length));
+        }
+        for (ServiceDetail ele : serviceDetails) {
+            this.serviceDetails.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the service.
+     * </p>
+     * 
+     * @param serviceDetails
+     *        Information about the service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeVpcEndpointServicesResult withServiceDetails(java.util.Collection<ServiceDetail> serviceDetails) {
+        setServiceDetails(serviceDetails);
+        return this;
+    }
 
     /**
      * <p>
@@ -86,79 +238,6 @@ public class DescribeVpcEndpointServicesResult extends com.amazonaws.AmazonWebSe
     }
 
     /**
-     * <p>
-     * A list of supported AWS services.
-     * </p>
-     * 
-     * @return A list of supported AWS services.
-     */
-
-    public java.util.List<String> getServiceNames() {
-        if (serviceNames == null) {
-            serviceNames = new com.amazonaws.internal.SdkInternalList<String>();
-        }
-        return serviceNames;
-    }
-
-    /**
-     * <p>
-     * A list of supported AWS services.
-     * </p>
-     * 
-     * @param serviceNames
-     *        A list of supported AWS services.
-     */
-
-    public void setServiceNames(java.util.Collection<String> serviceNames) {
-        if (serviceNames == null) {
-            this.serviceNames = null;
-            return;
-        }
-
-        this.serviceNames = new com.amazonaws.internal.SdkInternalList<String>(serviceNames);
-    }
-
-    /**
-     * <p>
-     * A list of supported AWS services.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
-     * {@link #setServiceNames(java.util.Collection)} or {@link #withServiceNames(java.util.Collection)} if you want to
-     * override the existing values.
-     * </p>
-     * 
-     * @param serviceNames
-     *        A list of supported AWS services.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public DescribeVpcEndpointServicesResult withServiceNames(String... serviceNames) {
-        if (this.serviceNames == null) {
-            setServiceNames(new com.amazonaws.internal.SdkInternalList<String>(serviceNames.length));
-        }
-        for (String ele : serviceNames) {
-            this.serviceNames.add(ele);
-        }
-        return this;
-    }
-
-    /**
-     * <p>
-     * A list of supported AWS services.
-     * </p>
-     * 
-     * @param serviceNames
-     *        A list of supported AWS services.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public DescribeVpcEndpointServicesResult withServiceNames(java.util.Collection<String> serviceNames) {
-        setServiceNames(serviceNames);
-        return this;
-    }
-
-    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -169,10 +248,12 @@ public class DescribeVpcEndpointServicesResult extends com.amazonaws.AmazonWebSe
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getNextToken() != null)
-            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getServiceNames() != null)
-            sb.append("ServiceNames: ").append(getServiceNames());
+            sb.append("ServiceNames: ").append(getServiceNames()).append(",");
+        if (getServiceDetails() != null)
+            sb.append("ServiceDetails: ").append(getServiceDetails()).append(",");
+        if (getNextToken() != null)
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -187,13 +268,17 @@ public class DescribeVpcEndpointServicesResult extends com.amazonaws.AmazonWebSe
         if (obj instanceof DescribeVpcEndpointServicesResult == false)
             return false;
         DescribeVpcEndpointServicesResult other = (DescribeVpcEndpointServicesResult) obj;
-        if (other.getNextToken() == null ^ this.getNextToken() == null)
-            return false;
-        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
-            return false;
         if (other.getServiceNames() == null ^ this.getServiceNames() == null)
             return false;
         if (other.getServiceNames() != null && other.getServiceNames().equals(this.getServiceNames()) == false)
+            return false;
+        if (other.getServiceDetails() == null ^ this.getServiceDetails() == null)
+            return false;
+        if (other.getServiceDetails() != null && other.getServiceDetails().equals(this.getServiceDetails()) == false)
+            return false;
+        if (other.getNextToken() == null ^ this.getNextToken() == null)
+            return false;
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -203,8 +288,9 @@ public class DescribeVpcEndpointServicesResult extends com.amazonaws.AmazonWebSe
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         hashCode = prime * hashCode + ((getServiceNames() == null) ? 0 : getServiceNames().hashCode());
+        hashCode = prime * hashCode + ((getServiceDetails() == null) ? 0 : getServiceDetails().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -46,6 +46,22 @@ public class UpdateAutoScalingGroupRequestMarshaller implements Marshaller<Reque
 
         if (updateAutoScalingGroupRequest.getLaunchConfigurationName() != null) {
             request.addParameter("LaunchConfigurationName", StringUtils.fromString(updateAutoScalingGroupRequest.getLaunchConfigurationName()));
+        }
+
+        LaunchTemplateSpecification launchTemplate = updateAutoScalingGroupRequest.getLaunchTemplate();
+        if (launchTemplate != null) {
+
+            if (launchTemplate.getLaunchTemplateId() != null) {
+                request.addParameter("LaunchTemplate.LaunchTemplateId", StringUtils.fromString(launchTemplate.getLaunchTemplateId()));
+            }
+
+            if (launchTemplate.getLaunchTemplateName() != null) {
+                request.addParameter("LaunchTemplate.LaunchTemplateName", StringUtils.fromString(launchTemplate.getLaunchTemplateName()));
+            }
+
+            if (launchTemplate.getVersion() != null) {
+                request.addParameter("LaunchTemplate.Version", StringUtils.fromString(launchTemplate.getVersion()));
+            }
         }
 
         if (updateAutoScalingGroupRequest.getMinSize() != null) {

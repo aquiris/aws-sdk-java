@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,6 +42,8 @@ public class ContainerMarshaller {
             .marshallLocationName("reason").build();
     private static final MarshallingInfo<List> NETWORKBINDINGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("networkBindings").build();
+    private static final MarshallingInfo<List> NETWORKINTERFACES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("networkInterfaces").build();
 
     private static final ContainerMarshaller instance = new ContainerMarshaller();
 
@@ -66,6 +68,7 @@ public class ContainerMarshaller {
             protocolMarshaller.marshall(container.getExitCode(), EXITCODE_BINDING);
             protocolMarshaller.marshall(container.getReason(), REASON_BINDING);
             protocolMarshaller.marshall(container.getNetworkBindings(), NETWORKBINDINGS_BINDING);
+            protocolMarshaller.marshall(container.getNetworkInterfaces(), NETWORKINTERFACES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

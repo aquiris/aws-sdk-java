@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,8 @@ public class InventoryItemSchemaMarshaller {
             .marshallLocationName("Version").build();
     private static final MarshallingInfo<List> ATTRIBUTES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Attributes").build();
+    private static final MarshallingInfo<String> DISPLAYNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DisplayName").build();
 
     private static final InventoryItemSchemaMarshaller instance = new InventoryItemSchemaMarshaller();
 
@@ -54,6 +56,7 @@ public class InventoryItemSchemaMarshaller {
             protocolMarshaller.marshall(inventoryItemSchema.getTypeName(), TYPENAME_BINDING);
             protocolMarshaller.marshall(inventoryItemSchema.getVersion(), VERSION_BINDING);
             protocolMarshaller.marshall(inventoryItemSchema.getAttributes(), ATTRIBUTES_BINDING);
+            protocolMarshaller.marshall(inventoryItemSchema.getDisplayName(), DISPLAYNAME_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,8 +48,6 @@ public class WriteCampaignRequestMarshaller {
             .marshallLocationName("SegmentId").build();
     private static final MarshallingInfo<Integer> SEGMENTVERSION_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SegmentVersion").build();
-    private static final MarshallingInfo<Boolean> TRACE_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN).marshallLocation(MarshallLocation.PAYLOAD)
-            .marshallLocationName("Trace").build();
     private static final MarshallingInfo<String> TREATMENTDESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TreatmentDescription").build();
     private static final MarshallingInfo<String> TREATMENTNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -81,7 +79,6 @@ public class WriteCampaignRequestMarshaller {
             protocolMarshaller.marshall(writeCampaignRequest.getSchedule(), SCHEDULE_BINDING);
             protocolMarshaller.marshall(writeCampaignRequest.getSegmentId(), SEGMENTID_BINDING);
             protocolMarshaller.marshall(writeCampaignRequest.getSegmentVersion(), SEGMENTVERSION_BINDING);
-            protocolMarshaller.marshall(writeCampaignRequest.getTrace(), TRACE_BINDING);
             protocolMarshaller.marshall(writeCampaignRequest.getTreatmentDescription(), TREATMENTDESCRIPTION_BINDING);
             protocolMarshaller.marshall(writeCampaignRequest.getTreatmentName(), TREATMENTNAME_BINDING);
         } catch (Exception e) {

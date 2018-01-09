@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -77,9 +77,9 @@ public class GCMMessageJsonUnmarshaller implements Unmarshaller<GCMMessage, Json
                     context.nextToken();
                     gCMMessage.setImageUrl(context.getUnmarshaller(String.class).unmarshall(context));
                 }
-                if (context.testExpression("JsonData", targetDepth)) {
+                if (context.testExpression("Priority", targetDepth)) {
                     context.nextToken();
-                    gCMMessage.setJsonData(context.getUnmarshaller(String.class).unmarshall(context));
+                    gCMMessage.setPriority(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("RawContent", targetDepth)) {
                     context.nextToken();
@@ -105,6 +105,10 @@ public class GCMMessageJsonUnmarshaller implements Unmarshaller<GCMMessage, Json
                     context.nextToken();
                     gCMMessage.setSubstitutions(new MapUnmarshaller<String, java.util.List<String>>(context.getUnmarshaller(String.class),
                             new ListUnmarshaller<String>(context.getUnmarshaller(String.class))).unmarshall(context));
+                }
+                if (context.testExpression("TimeToLive", targetDepth)) {
+                    context.nextToken();
+                    gCMMessage.setTimeToLive(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("Title", targetDepth)) {
                     context.nextToken();

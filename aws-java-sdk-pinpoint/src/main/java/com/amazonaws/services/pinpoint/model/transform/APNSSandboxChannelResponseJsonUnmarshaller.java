@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,9 +56,21 @@ public class APNSSandboxChannelResponseJsonUnmarshaller implements Unmarshaller<
                     context.nextToken();
                     aPNSSandboxChannelResponse.setCreationDate(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("DefaultAuthenticationMethod", targetDepth)) {
+                    context.nextToken();
+                    aPNSSandboxChannelResponse.setDefaultAuthenticationMethod(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("Enabled", targetDepth)) {
                     context.nextToken();
                     aPNSSandboxChannelResponse.setEnabled(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("HasCredential", targetDepth)) {
+                    context.nextToken();
+                    aPNSSandboxChannelResponse.setHasCredential(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("HasTokenKey", targetDepth)) {
+                    context.nextToken();
+                    aPNSSandboxChannelResponse.setHasTokenKey(context.getUnmarshaller(Boolean.class).unmarshall(context));
                 }
                 if (context.testExpression("Id", targetDepth)) {
                     context.nextToken();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -97,7 +97,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
     private String ramdiskId;
     /**
      * <p>
-     * The name of the root device (for example, <code>/dev/sda1</code>, or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      */
     private String rootDeviceName;
@@ -117,7 +117,7 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
     private String sriovNetSupport;
     /**
      * <p>
-     * The type of virtualization.
+     * The type of virtualization (<code>hvm</code> | <code>paravirtual</code>).
      * </p>
      * <p>
      * Default: <code>paravirtual</code>
@@ -716,11 +716,11 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The name of the root device (for example, <code>/dev/sda1</code>, or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * 
      * @param rootDeviceName
-     *        The name of the root device (for example, <code>/dev/sda1</code>, or <code>/dev/xvda</code>).
+     *        The device name of the root device volume (for example, <code>/dev/sda1</code>).
      */
 
     public void setRootDeviceName(String rootDeviceName) {
@@ -729,10 +729,10 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The name of the root device (for example, <code>/dev/sda1</code>, or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * 
-     * @return The name of the root device (for example, <code>/dev/sda1</code>, or <code>/dev/xvda</code>).
+     * @return The device name of the root device volume (for example, <code>/dev/sda1</code>).
      */
 
     public String getRootDeviceName() {
@@ -741,11 +741,11 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The name of the root device (for example, <code>/dev/sda1</code>, or <code>/dev/xvda</code>).
+     * The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * </p>
      * 
      * @param rootDeviceName
-     *        The name of the root device (for example, <code>/dev/sda1</code>, or <code>/dev/xvda</code>).
+     *        The device name of the root device volume (for example, <code>/dev/sda1</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -841,14 +841,14 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The type of virtualization.
+     * The type of virtualization (<code>hvm</code> | <code>paravirtual</code>).
      * </p>
      * <p>
      * Default: <code>paravirtual</code>
      * </p>
      * 
      * @param virtualizationType
-     *        The type of virtualization.</p>
+     *        The type of virtualization (<code>hvm</code> | <code>paravirtual</code>).</p>
      *        <p>
      *        Default: <code>paravirtual</code>
      */
@@ -859,13 +859,13 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The type of virtualization.
+     * The type of virtualization (<code>hvm</code> | <code>paravirtual</code>).
      * </p>
      * <p>
      * Default: <code>paravirtual</code>
      * </p>
      * 
-     * @return The type of virtualization.</p>
+     * @return The type of virtualization (<code>hvm</code> | <code>paravirtual</code>).</p>
      *         <p>
      *         Default: <code>paravirtual</code>
      */
@@ -876,14 +876,14 @@ public class RegisterImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The type of virtualization.
+     * The type of virtualization (<code>hvm</code> | <code>paravirtual</code>).
      * </p>
      * <p>
      * Default: <code>paravirtual</code>
      * </p>
      * 
      * @param virtualizationType
-     *        The type of virtualization.</p>
+     *        The type of virtualization (<code>hvm</code> | <code>paravirtual</code>).</p>
      *        <p>
      *        Default: <code>paravirtual</code>
      * @return Returns a reference to this object so that method calls can be chained together.
