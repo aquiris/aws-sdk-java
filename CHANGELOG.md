@@ -1,4 +1,911 @@
-# __1.11.259__ __2018-01-08__
+# __1.11.331__ __2018-05-16__
+## __AWS Secrets Manager__
+  - ### Features
+    - Documentation updates for secretsmanager
+
+## __AWS Service Catalog__
+  - ### Features
+    - Users can now pass a new option to ListAcceptedPortfolioShares called portfolio-share-type with a value of AWS_SERVICECATALOG in order to access Getting Started Portfolios that contain selected products representing common customer use cases.
+
+# __1.11.330__ __2018-05-15__
+## __AWS Config__
+  - ### Features
+    - Update ResourceType enum with values for XRay resource
+
+# __1.11.329__ __2018-05-14__
+## __AWS CodeBuild__
+  - ### Features
+    - Adding support for more override fields for StartBuild API, add support for idempotency token field  for StartBuild API in AWS CodeBuild.
+
+## __AWS IoT 1-Click Devices Service__
+  - ### Features
+    - AWS IoT 1-Click makes it easy for customers to incorporate simple ready-to-use IoT devices into their workflows. These devices can trigger AWS Lambda functions that implement business logic. In order to build applications using AWS IoT 1-Click devices, programmers can use the AWS IoT 1-Click Devices API and the AWS IoT 1-Click Projects API. Learn more at https://aws.amazon.com/documentation/iot-1-click/
+
+## __AWS IoT 1-Click Projects Service__
+  - ### Features
+    - AWS IoT 1-Click makes it easy for customers to incorporate simple ready-to-use IoT devices into their workflows. These devices can trigger AWS Lambda functions that implement business logic. In order to build applications using AWS IoT 1-Click devices, programmers can use the AWS IoT 1-Click Devices API and the AWS IoT 1-Click Projects API. Learn more at https://aws.amazon.com/documentation/iot-1-click/.
+
+## __AWS Organizations__
+  - ### Features
+    - Documentation updates for organizations
+
+# __1.11.328__ __2018-05-10__
+## __Amazon Kinesis Firehose__
+  - ### Features
+    - With this release, Amazon Kinesis Data Firehose can convert the format of your input data from JSON to Apache Parquet or Apache ORC before storing the data in Amazon S3. Parquet and ORC are columnar data formats that save space and enable faster queries compared to row-oriented formats like JSON.
+
+# __1.11.327__ __2018-05-10__
+## __Amazon GameLift__
+  - ### Features
+    - AutoScaling Target Tracking scaling simplification along with StartFleetActions and StopFleetActions APIs to suspend and resume automatic scaling at will.
+
+# __1.11.326__ __2018-05-09__
+## __AWS Budgets__
+  - ### Features
+    - Updating the regex for the NumericValue fields.
+
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Enable support for latest flag with Get Console Output
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Changes to support the Aurora MySQL Backtrack feature.
+
+# __1.11.325__ __2018-05-08__
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Enable support for specifying CPU options during instance launch.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Correction to the documentation about copying unencrypted snapshots.
+
+# __1.11.324__ __2018-05-07__
+## __AWS Budgets__
+  - ### Features
+    - "With this release, customers can use AWS Budgets to monitor how much of their Amazon EC2, Amazon RDS, Amazon Redshift, and Amazon ElastiCache instance usage is covered by reservations, and receive alerts when their coverage falls below the threshold they define."
+
+## __Alexa For Business__
+  - ### Features
+    - This release adds the new Device status "DEREGISTERED". This release also adds DEVICE_STATUS as the new DeviceEventType.
+
+## __Amazon Elasticsearch Service__
+  - ### Features
+    - This change brings support for Reserved Instances to AWS Elasticsearch.
+
+# __1.11.323__ __2018-05-04__
+## __Amazon GuardDuty__
+  - ### Features
+    - Amazon GuardDuty is adding five new API operations for creating and managing filters. For each filter, you can specify a criteria and an action. The action you specify is applied to findings that match the specified criteria.
+
+# __1.11.322__ __2018-05-04__
+## __AWS AppSync__
+  - ### Features
+    - This release adds support for authorizing your AWS AppSync endpoint with an OpenID Connect compliant service and also to configure your AWS AppSync endpoint to log requests to Amazon CloudWatch Logs.
+
+## __AWS Config__
+  - ### Features
+    - Update ResourceType enum with values for Lambda, ElasticBeanstalk, WAF and ElasticLoadBalancing resources
+
+## __AWS Secrets Manager__
+  - ### Features
+    - Documentation updates for secretsmanager
+
+# __1.11.321__ __2018-05-02__
+## __AWS Certificate Manager__
+  - ### Features
+    - Documentation updates for acm
+
+## __AWS CodePipeline__
+  - ### Features
+    - Added support for webhooks with accompanying definitions as needed in the AWS CodePipeline API Guide.
+
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Amazon EC2 Fleet is a new feature that simplifies the provisioning of Amazon EC2 capacity across different EC2 instance types, Availability Zones, and the On-Demand, Reserved Instance, and Spot Instance purchase models. With a single API call, you can now provision capacity to achieve desired scale, performance, and cost.
+
+## __Amazon Simple Systems Manager (SSM)__
+  - ### Features
+    - Added support for new parameter, DocumentVersion, for SendCommand API. Users can now specify version of SSM document to be executed on the target(s).
+
+# __1.11.320__ __2018-04-30__
+## __Alexa For Business__
+  - ### Features
+    - Adds ListDeviceEvents API to get a paginated list of device events (such as ConnectionStatus). This release also adds ConnectionStatus field to GetDevice and SearchDevices API.
+
+## __Amazon DynamoDB__
+  - ### Features
+    - Adds two new APIs UpdateGlobalTableSettings and DescribeGlobalTableSettings. This update introduces new constraints in the CreateGlobalTable and UpdateGlobalTable APIs . Tables must have the same write capacity units. If Global Secondary Indexes exist then they must have the same write capacity units and key schema.
+
+## __Amazon GuardDuty__
+  - ### Features
+    - You can disable the email notification when inviting GuardDuty members using the disableEmailNotification parameter in the InviteMembers operation.
+
+## __Amazon Route 53 Domains__
+  - ### Features
+    - This release adds a SubmittedSince attribute to the ListOperations API, so you can list operations that were submitted after a specified date and time.
+
+## __Amazon SageMaker Service__
+  - ### Features
+    - SageMaker has added support for VPC configuration for both Endpoints and Training Jobs. This allows you to connect from the instances running the Endpoint or Training Job to your VPC and any resources reachable in the VPC rather than being restricted to resources that were internet accessible.
+
+## __Amazon WorkSpaces__
+  - ### Features
+    - Added new IP Access Control APIs, an API to change the state of a Workspace, and the ADMIN_MAINTENANCE WorkSpace state. With the new IP Access Control APIs, you can now create/delete IP Access Control Groups, add/delete/update rules for IP Access Control Groups, Associate/Disassociate IP Access Control Groups to/from a WorkSpaces Directory, and Describe IP Based Access Control Groups.
+
+# __1.11.319__ __2018-04-26__
+## __AWS Secrets Manager__
+  - ### Features
+    - Documentation updates for secretsmanager
+
+## __Amazon Glacier__
+  - ### Features
+    - Documentation updates for Glacier to fix a broken link
+
+# __1.11.318__ __2018-04-25__
+## __AWS CodeDeploy__
+  - ### Features
+    - AWS CodeDeploy has a new exception that indicates when a GitHub token is not valid.
+
+## __AWS X-Ray__
+  - ### Features
+    - Added PutEncryptionConfig and GetEncryptionConfig APIs for managing data encryption settings. Use PutEncryptionConfig to configure X-Ray to use an AWS Key Management Service customer master key to encrypt trace data at rest.
+
+## __Amazon Rekognition__
+  - ### Features
+    - Documentation updates for Amazon Rekognition.
+
+# __1.11.317__ __2018-04-24__
+## __AWS Elastic Beanstalk__
+  - ### Features
+    - Support tracking Elastic Beanstalk resources in AWS Config.
+
+## __AWS Secrets Manager__
+  - ### Features
+    - Documentation updates for secretsmanager
+
+# __1.11.316__ __2018-04-23__
+## __AWS Auto Scaling Plans__
+  - ### Features
+    - The release adds the operation UpdateScalingPlan for updating a scaling plan and the support for tag filters as an application source.
+
+## __AWS IoT__
+  - ### Features
+    - Add IotAnalyticsAction which sends message data to an AWS IoT Analytics channel
+
+## __AWS IoT Analytics__
+  - ### Features
+    - Introducing AWS IoT Analytics SDK. AWS IoT Analytics provides advanced data analysis for AWS IoT. It allows you to collect large amounts of device data, process messages, store them, and then query the data and run sophisticated analytics to make accurate decisions in your IoT applications and machine learning use cases. AWS IoT Analytics enables advanced data exploration through integration with Jupyter Notebooks and data visualization through integration with Amazon QuickSight.
+
+# __1.11.315__ __2018-04-20__
+## __AWS Elemental MediaLive__
+  - ### Features
+    - With AWS Elemental MediaLive you can now output live channels as RTMP (Real-Time Messaging Protocol) and RTMPS as the encrypted version of the protocol (Secure, over SSL/TLS). RTMP is the preferred protocol for sending live streams to popular social platforms which  means you can send live channel content to social and sharing platforms in a secure and reliable way while continuing to stream to your own website, app or network.
+
+## __Amazon Kinesis Firehose__
+  - ### Features
+    - With this release, Amazon Kinesis Data Firehose allows you to tag your delivery streams. Tags are metadata that you can create and use to manage your delivery streams. For more information about tagging, see AWS Tagging Strategies. For technical documentation, look for the tagging operations in the Amazon Kinesis Firehose API reference.
+
+# __1.11.314__ __2018-04-19__
+## __AWS CodePipeline__
+  - ### Features
+    - Added new SourceRevision structure to Execution Summary with accompanying definitions as needed in the AWS CodePipeline API Guide.
+
+## __AWS Cost Explorer Service__
+  - ### Features
+    - Starting today, you can identify opportunities for Amazon RDS cost savings using AWS Cost Explorer's API to access your Amazon RDS Reserved Instance Purchase Recommendations
+
+## __AWS Device Farm__
+  - ### Features
+    - Adding support for VPCEndpoint feature. Allows customers to be able to access their private endpoints/services running in their VPC during test automation.
+
+## __AWS Secrets Manager__
+  - ### Features
+    - Documentation updates
+
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Added support for customers to see the time at which a Dedicated Host was allocated or released.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - The ModifyDBCluster operation now includes an EngineVersion parameter. You can use this to upgrade the engine for a clustered database.
+
+## __Amazon S3__
+  - ### Bugfixes
+    - Updated SelectRecordsInputStream for the new S3 select feature to not read to the end of the stream when it is closed.
+
+## __Amazon Simple Systems Manager (SSM)__
+  - ### Features
+    - Added new APIs DeleteInventory and DescribeInventoryDeletions, for customers to delete their custom inventory data.
+
+# __1.11.313__ __2018-04-10__
+## __AWS Database Migration Service__
+  - ### Features
+    - Native Change Data Capture start point and task recovery support in Database Migration Service.  
+
+## __AWS Elemental MediaPackage__
+  - ### Features
+    - Adds a new OriginEndpoint package type CmafPackage in MediaPackage. Origin endpoints can now be configured to use the Common Media Application Format (CMAF) media streaming format. This version of CmafPackage only supports HTTP Live Streaming (HLS) manifests with fragmented MP4.
+
+## __AWS Glue__
+  - ### Features
+    - "AWS Glue now supports timeout values for ETL jobs. With this release, all new ETL jobs have a default timeout value of 48 hours. AWS Glue also now supports the ability to start a schedule or job events trigger when it is created."
+
+## __Amazon Simple Systems Manager (SSM)__
+  - ### Features
+    - Added TooManyUpdates exception for AddTagsToResource and RemoveTagsFromResource API
+
+## __Amazon WorkMail__
+  - ### Features
+    - Amazon WorkMail adds the ability to grant users and groups with "Full Access", "Send As" and "Send on Behalf" permissions on a given mailbox.
+
+# __1.11.312__ __2018-04-09__
+## __Amazon CloudDirectory__
+  - ### Features
+    - Cloud Directory customers can fetch attributes within a facet on an object with the new GetObjectAttributes API and can fetch attributes from multiple facets or objects with the BatchGetObjectAttributes operation.
+
+# __1.11.311__ __2018-04-06__
+## __AWS Batch__
+  - ### Features
+    - Support for Timeout in SubmitJob and RegisterJobDefinition
+
+# __1.11.310__ __2018-04-05__
+## __Amazon Simple Systems Manager (SSM)__
+  - ### Features
+    - Documentation updates for ec2
+
+# __1.11.309__ __2018-04-04__
+## __AWS Certificate Manager__
+  - ### Features
+    - AWS Certificate Manager has added support for AWS Certificate Manager Private Certificate Authority (CA). Customers can now request private certificates with the RequestCertificate API, and also export private certificates with the ExportCertificate API.
+
+## __AWS Certificate Manager Private Certificate Authority__
+  - ### Features
+    - AWS Certificate Manager (ACM) Private Certificate Authority (CA) is a managed private CA service that helps you easily and securely manage the lifecycle of your private certificates. ACM Private CA provides you a highly-available private CA service without the upfront investment and ongoing maintenance costs of operating your own private CA. ACM Private CA extends ACM's certificate management capabilities to private certificates, enabling you to manage public and private certificates centrally.
+
+## __AWS Config__
+  - ### Features
+    - AWS Config introduces multi-account multi-region data aggregation features. Customers can create an aggregator (a new resource type) in AWS Config that collects AWS Config data from multiple source accounts and regions into an aggregator account. Customers can aggregate data from individual account(s) or an organization and multiple regions. In this release, AWS Config adds several API's for multi-account multi-region data aggregation.
+
+## __AWS Secrets Manager__
+  - ### Features
+    - AWS Secrets Manager enables you to easily create and manage the secrets that you use in your customer-facing apps.  Instead of embedding credentials into your source code, you can dynamically query Secrets Manager from your app whenever you need credentials.  You can automatically and frequently rotate your secrets without having to deploy updates to your apps.  All secret values are encrypted when they're at rest with AWS KMS, and while they're in transit with HTTPS and TLS.
+
+## __Amazon CloudWatch__
+  - ### Features
+    - The new GetMetricData API enables you to collect batch amounts of metric data and optionally perform math expressions on the data. With one GetMetricData call you can retrieve as many as 100 different metrics and a total of 100,800 data points.
+
+## __Amazon S3__
+  - ### Features
+    - Amazon S3 Select is an Amazon S3 feature that makes it easy to retrieve specific data from the contents of an object using simple SQL expressions without having to retrieve the entire object. With this release of the Amazon S3 SDK, S3 Select API (SelectObjectContent) is now generally available in all public regions. This release supports retrieval of a subset of data using SQL clauses, like SELECT and WHERE, from delimited text files and JSON objects in Amazon S3 through the SelectObjectContent API available in AWS S3 SDK.
+    - ONEZONE_IA storage class stores object data in only one Availability Zone at a lower price than STANDARD_IA. This SDK release provides API support for this new storage class.
+
+## __Amazon SageMaker Service__
+  - ### Features
+    - SageMaker is now supporting many additional instance types in previously supported families for Notebooks, Training Jobs, and Endpoints. Training Jobs and Endpoints now support instances in the m5 family in addition to the previously supported instance families. For specific instance types supported please see the documentation for the SageMaker API.
+
+## __Amazon Simple Storage Service__
+  - ### Features
+    - ONEZONE_IA storage class stores object data in only one Availability Zone at a lower price than STANDARD_IA. This SDK release provides API support for this new storage class.
+
+## __Amazon Transcribe Service__
+  - ### Features
+    - Amazon Transcribe is an automatic speech recognition (ASR) service that makes it easy for developers to add speech to text capability to their applications. 
+
+## __Firewall Management Service__
+  - ### Features
+    - This release is the initial release version for AWS Firewall Manager, a new AWS service that makes it easy for customers to centrally configure WAF rules across all their resources (ALBs and CloudFront distributions) and across accounts.
+
+# __1.11.308__ __2018-04-03__
+## __AWS Device Farm__
+  - ### Features
+    - Added Private Device Management feature. Customers can now manage their private devices efficiently - view their status, set labels and apply profiles on them. Customers can also schedule automated tests and remote access sessions on individual instances in their private device fleet.
+
+## __AWS Lambda__
+  - ### Features
+    - added nodejs8.10 as a valid runtime
+
+## __Amazon Translate__
+  - ### Features
+    - This release increases the maximum size of input text to 5,000 bytes. Amazon Translate now supports automatic language detection of the input text. The translation models have been improved to increase accuracy. See the documentation for more information.
+
+# __1.11.307__ __2018-04-02__
+## __Amazon API Gateway__
+  - ### Features
+    - Amazon API Gateway now supports resource policies for APIs making it easier to set access controls for invoking APIs.
+
+## __Amazon CloudFront__
+  - ### Features
+    - You can now use a new Amazon CloudFront capability called Field-Level Encryption to further enhance the security of sensitive data, such as credit card numbers or personally identifiable information (PII) like social security numbers. CloudFront's field-level encryption further encrypts sensitive data in an HTTPS form using field-specific encryption keys (which you supply) before a POST request is forwarded to your origin. This ensures that sensitive data can only be decrypted and viewed by certain components or services in your application stack. Field-level encryption is easy to setup. Simply configure the fields that have to be further encrypted by CloudFront using the public keys you specify and you can reduce attack surface for your sensitive data.
+
+## __Amazon Elasticsearch Service__
+  - ### Features
+    - This adds Amazon Cognito authentication support to Kibana.
+
+# __1.11.306__ __2018-03-30__
+## __AWS Certificate Manager__
+  - ### Features
+    - Documentation updates for acm
+
+## __Amazon Connect Service__
+  - ### Features
+    - Amazon Connect is a contact center as a service (CCaS) solution that offers easy, self-service configuration and enables dynamic, personal, and natural customer engagement at any scale. With this release of the Amazon Connect SDK, Outbound APIs (StartOutboundVoiceContact, StopContact) are now generally available. This release supports CTR generation for calls generated through the new APIs. Additionally IAM permissions are supported for the new APIs. 
+
+# __1.11.305__ __2018-03-29__
+## __AWS CloudFormation__
+  - ### Features
+    - Enabling resource level permission control for StackSets APIs. Adding support for customers to use customized AdministrationRole to create security boundaries between different users.
+
+## __AWS Greengrass__
+  - ### Features
+    - Greengrass APIs now support creating Machine Learning resource types and configuring binary data as the input payload for Greengrass Lambda functions.
+
+## __Alexa For Business__
+  - ### Features
+    - Adds operations for creating and managing address books of phone contacts for use in A4B managed shared devices.
+
+## __Amazon Simple Systems Manager (SSM)__
+  - ### Features
+    - This Patch Manager release supports creating patch baselines for CentOS.
+
+# __1.11.304__ __2018-03-28__
+## __AWS Identity and Access Management__
+  - ### Features
+    - Add support for Longer Role Sessions. Four APIs manage max session duration: GetRole, ListRoles, CreateRole, and the new API UpdateRole. The max session duration integer attribute is measured in seconds.
+
+## __AWS Security Token Service__
+  - ### Features
+    - Change utilizes the Max Session Duration attribute introduced for IAM Roles and allows STS customers to request session duration up to the Max Session Duration of 12 hours from AssumeRole based APIs.
+
+## __Amazon Mechanical Turk__
+  - ### Features
+    - Added a new attribute "ActionsGuarded" to QualificationRequirement: This update allows MTurk Requester customers using the AWS SDK to control which Workers can see and preview their HITs. We now support hiding HITs from unqualified Workers' search results.
+
+# __1.11.303__ __2018-03-27__
+## __AWS Certificate Manager__
+  - ### Features
+    - AWS Certificate Manager has added support for customers to disable Certificate Transparency logging on a per-certificate basis.
+
+# __1.11.302__ __2018-03-26__
+## __Amazon DynamoDB__
+  - ### Features
+    - Point-in-time recovery (PITR) provides continuous backups of your DynamoDB table data. With PITR, you do not have to worry about creating, maintaining, or scheduling backups. You enable PITR on your table and your backup is available for restore at any point in time from the moment you enable it, up to a maximum of the 35 preceding days. PITR provides continuous backups until you explicitly disable it. For more information, see the Amazon DynamoDB Developer Guide.
+
+# __1.11.301__ __2018-03-23__
+## __Amazon Relational Database Service__
+  - ### Features
+    - Documentation updates for RDS
+
+# __1.11.300__ __2018-03-22__
+## __AWS CodeBuild__
+  - ### Features
+    - Adding support for branch filtering when using webhooks with AWS CodeBuild. 
+
+## __Amazon AppStream__
+  - ### Features
+    - Feedback URL allows admins to provide a feedback link or a survey link for collecting user feedback while streaming sessions. When a feedback link is provided, streaming users will see a "Send Feedback" choice in their streaming session toolbar. On selecting this choice, user will be redirected to the link provided in a new browser tab. If a feedback link is not provided, users will not see the "Send Feedback" option. 
+
+## __Amazon EC2 Container Service__
+  - ### Features
+    - Amazon Elastic Container Service (ECS) now includes integrated Service Discovery using Route 53 Auto Naming. Customers can now specify a Route 53 Auto Naming service as part of an ECS service. ECS will register task IPs with Route 53, making them available via DNS in your VPC.
+
+# __1.11.299__ __2018-03-21__
+## __AWSServerlessApplicationRepository__
+  - ### Features
+    - Documentation updates for Serverless Application Respository
+
+# __1.11.298__ __2018-03-20__
+## __AWS Config__
+  - ### Features
+    - AWS Config adds support for BatchGetResourceConfig API, allowing you to batch-retrieve the current state of one or more of your resources.
+
+## __AWS Cost Explorer Service__
+  - ### Features
+    - This launch will allow customers to access their Amazon EC2 Reserved Instance (RI) purchase recommendations programmatically via the AWS Cost Explorer API. 
+
+## __AWS Elastic Beanstalk__
+  - ### Features
+    - Documentation updates for the new Elastic Beanstalk API DescribeAccountAttributes.
+
+## __AWS Elemental MediaLive__
+  - ### Features
+    - AWS Elemental MediaLive has added support for updating Inputs and Input Security Groups. You can update Input Security Groups at any time and it will update all channels using that Input Security Group. Inputs can be updated as long as they are not attached to a currently running channel.
+
+## __AWS Glue__
+  - ### Features
+    - API Updates for DevEndpoint: PublicKey is now optional for CreateDevEndpoint. The new DevEndpoint field PrivateAddress will be populated for DevEndpoints associated with a VPC.
+
+## __AWS SDK for Java__
+  - ### Features
+    - Add support for defining and serializing NotResource elements in IAM policies.
+    - Update latency logging level in metric collection to debug level. [#1514](https://github.com/aws/aws-sdk-java/issues/1514)
+
+## __Amazon CloudWatch Events__
+  - ### Features
+    - Added SQS FIFO queue target support
+
+## __Amazon EC2 Container Service__
+  - ### Features
+    - Amazon ECS users can now mount a temporary volume in memory in containers and specify the shared memory that a container can use through the use of docker's 'tmpfs' and 'shm-size' features respectively. These fields can be specified under linuxParameters in ContainerDefinition in the Task Definition Template.
+
+# __1.11.297__ __2018-03-16__
+## __AWS Elastic Beanstalk__
+  - ### Features
+    - AWS Elastic Beanstalk is launching a new public API named DescribeAccountAttributes which allows customers to access account level attributes. In this release, the API will support quotas for resources such as applications, application versions, and environments.
+
+# __1.11.296__ __2018-03-15__
+## __AWS Organizations__
+  - ### Features
+    - This release adds additional reason codes to improve clarity to exceptions that can occur.
+
+## __Amazon Pinpoint__
+  - ### Features
+    - With this release, you can delete endpoints from your Amazon Pinpoint projects. Customers can now specify one of their leased dedicated long or short codes to send text messages.
+
+## __Amazon SageMaker Service__
+  - ### Features
+    - This release provides support for ml.p3.xlarge instance types for notebook instances.  Lifecycle configuration is now available to customize your notebook instances on start; the configuration can be reused between multiple notebooks.  If a notebook instance is attached to a VPC you can now opt out of internet access that by default is provided by SageMaker.
+
+# __1.11.295__ __2018-03-14__
+## __Amazon Lightsail__
+  - ### Features
+    - Updates to existing Lightsail documentation
+
+# __1.11.294__ __2018-03-13__
+## __Amazon Route 53 Auto Naming__
+  - ### Features
+    - This release adds support for custom health checks, which let you check the health of resources that aren't accessible over the internet. For example, you can use a custom health check when the instance is in an Amazon VPC.
+
+# __1.11.293__ __2018-03-12__
+## __AWS Application Discovery Service__
+  - ### Features
+    - Documentation updates for discovery
+
+## __AWS CloudHSM V2__
+  - ### Features
+    - CreateCluster can now take both 8 and 17 character Subnet IDs. DeleteHsm can now take both 8 and 17 character ENI IDs.
+
+## __AWS IoT__
+  - ### Features
+    - We added new fields to the response of the following APIs. (1) describe-certificate: added new generationId, customerVersion fields (2) describe-ca-certificate: added new generationId, customerVersion and lastModifiedDate fields (3) get-policy: added generationId, creationDate and lastModifiedDate fields
+
+## __Amazon Redshift__
+  - ### Features
+    - DescribeClusterSnapshotsMessage with ClusterExists flag returns snapshots of existing clusters. Else both existing and deleted cluster snapshots are returned
+
+# __1.11.292__ __2018-03-08__
+## __AWS Migration Hub__
+  - ### Features
+    - Unused key LABEL removed from ResourceAttrbute
+
+## __Amazon EC2 Container Service__
+  - ### Features
+    - Amazon Elastic Container Service (ECS) now supports container health checks. Customers can now specify a docker container health check command and parameters in their task definition. ECS will monitor, report and take scheduling action based on the health status.
+
+## __Amazon Pinpoint__
+  - ### Features
+    - With this release, you can export endpoints from your Amazon Pinpoint projects. You can export a) all of the endpoints assigned to a project or b) the subset of endpoints assigned to a segment.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Documentation updates for RDS
+
+# __1.11.291__ __2018-03-07__
+## __AWS Elemental MediaLive__
+  - ### Features
+    - Updates API to model required traits and minimum/maximum constraints.
+
+# __1.11.290__ __2018-03-06__
+## __Amazon EC2 Container Service__
+  - ### Features
+    - Documentation updates for Amazon ECS
+
+# __1.11.289__ __2018-03-01__
+## __AWS Service Catalog__
+  - ### Features
+    - This release of ServiceCatalog adds the DeleteTagOption API.
+
+## __AWS Storage Gateway__
+  - ### Features
+    - AWS Storage Gateway (File) support for two new file share attributes are added.           1. Users can specify the S3 Canned ACL to use for new objects created in the file share.         2. Users can create file shares for requester-pays buckets.
+
+## __Amazon CloudWatch Events__
+  - ### Features
+    - Added BatchParameters to the PutTargets API
+
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Added support for modifying Placement Group association of instances via ModifyInstancePlacement API.
+
+## __Amazon Simple Systems Manager (SSM)__
+  - ### Features
+    - This Inventory release supports the status message details reported by the last sync for the resource data sync API.
+
+# __1.11.288__ __2018-02-28__
+## __Application Auto Scaling__
+  - ### Features
+    - Application Auto Scaling now supports automatic scaling of SageMaker Production Variants on an Endpoint.
+
+# __1.11.287__ __2018-02-27__
+## __Amazon EC2 Container Registry__
+  - ### Features
+    - Documentation updates for Amazon ECR.
+
+# __1.11.286__ __2018-02-26__
+## __AWS Security Token Service__
+  - ### Features
+    - Increased SAMLAssertion parameter size from 50000 to 100000 for AWS Security Token Service AssumeRoleWithSAML API to allow customers to pass bigger SAML assertions
+
+## __Amazon Route 53__
+  - ### Features
+    - Added support for creating LBR rules using ap-northeast-3 region.
+
+# __1.11.285__ __2018-02-23__
+## __AWS SDK for Java__
+  - ### Features
+    - Add support for AWS_EC2_METADATA_DISABLED environment variable to disable EC2 Metadata Service usage to retrieve credentials and region.
+
+## __Amazon AppStream__
+  - ### Features
+    - This API update is to enable customers to copy their Amazon AppStream 2.0 images within and between AWS Regions
+
+# __1.11.284__ __2018-02-22__
+## __AWS AppSync__
+  - ### Features
+    - AWS AppSync now supports for None Data Source, CreateApiKey now supports setting expiration on API keys, new API UpdateApiKey supports updating expiration on API keys. 
+
+## __AWS CodeCommit__
+  - ### Features
+    - This release adds an API for adding a file directly to an AWS CodeCommit repository without requiring a Git client.
+
+## __AWS Config__
+  - ### Features
+    - With this release, AWS Config updated the ConfigurationItemStatus enum values. The values prior to this update did not represent appropriate values returned by GetResourceConfigHistory. You must update your code to enumerate the new enum values so this is a breaking change.  To map old properties to new properties, use the following descriptions: New discovered resource - Old property: Discovered, New property: ResourceDiscovered. Updated resource - Old property: Ok, New property: OK. Deleted resource - Old property: Deleted, New property: ResourceDeleted or ResourceDeletedNotRecorded. Not-recorded resource - Old property: N/A, New property: ResourceNotRecorded or ResourceDeletedNotRecorded.
+
+## __AWS Cost Explorer Service__
+  - ### Features
+    - Added GetReservationCoverage API for retrieving reservation coverage information.
+
+## __AWS Elemental MediaConvert__
+  - ### Features
+    - Nielsen ID3 tags can now be inserted into transport stream (TS) and HLS outputs. For more information on Nielsen configuration you can go to https://docs.aws.amazon.com/mediaconvert/latest/apireference/jobs.html#jobs-nielsenconfiguration
+
+## __AWS WAF__
+  - ### Features
+    - The new PermissionPolicy APIs in AWS WAF Regional allow customers to attach resource-based policies to their entities.
+
+## __AWS WAF Regional__
+  - ### Features
+    - The new PermissionPolicy APIs in AWS WAF Regional allow customers to attach resource-based policies to their entities.
+
+## __AWSServerlessApplicationRepository__
+  - ### Features
+    - Added support for delete-application API and the ability for developers to set a homepage for their application. The homepage is a URL with more information about the application, for example the location of your GitHub repository for the application. 
+
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Adds support for tagging an EBS snapshot as part of the API call that creates the EBS snapshot
+
+## __Amazon GameLift__
+  - ### Features
+    - Updates to allow Fleets to run on On-Demand or Spot instances.
+
+## __Amazon Lex Model Building Service__
+  - ### Features
+    - Amazon Lex now provides the ability to export and import your Amazon Lex chatbot definition as a JSON file.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Updates RDS API to indicate whether a DBEngine supports read replicas.
+
+## __Auto Scaling__
+  - ### Features
+    - Amazon EC2 Auto Scaling support for service-linked roles
+
+## __Elastic Load Balancing__
+  - ### Features
+    - Added a new load balancer attribute related to Network Load Balancers that enables cross zone capabilities. This feature allows Network Load Balancers to distribute requests regardless of Availability Zone.
+
+# __1.11.283__ __2018-02-21__
+## __AWS AppSync__
+  - ### Features
+    - AWS AppSync now supports for None Data Source, CreateApiKey now supports setting expiration on API keys, new API UpdateApiKey supports updating expiration on API keys. 
+
+## __AWS CodeCommit__
+  - ### Features
+    - This release adds an API for adding a file directly to an AWS CodeCommit repository without requiring a Git client.
+
+## __AWS Config__
+  - ### Features
+    - With this release, AWS Config updated the ConfigurationItemStatus enum values. The values prior to this update did not represent appropriate values returned by GetResourceConfigHistory. You must update your code to enumerate the new enum values so this is a breaking change.  To map old properties to new properties, use the following descriptions: New discovered resource - Old property: Discovered, New property: ResourceDiscovered. Updated resource - Old property: Ok, New property: OK. Deleted resource - Old property: Deleted, New property: ResourceDeleted or ResourceDeletedNotRecorded. Not-recorded resource - Old property: N/A, New property: ResourceNotRecorded or ResourceDeletedNotRecorded.
+
+## __AWS Elemental MediaConvert__
+  - ### Features
+    - Nielsen ID3 tags can now be inserted into transport stream (TS) and HLS outputs. For more information on Nielsen configuration you can go to https://docs.aws.amazon.com/mediaconvert/latest/apireference/jobs.html#jobs-nielsenconfiguration
+
+## __AWS WAF__
+  - ### Features
+    - The new PermissionPolicy APIs in AWS WAF Regional allow customers to attach resource-based policies to their entities.
+
+## __AWS WAF Regional__
+  - ### Features
+    - The new PermissionPolicy APIs in AWS WAF Regional allow customers to attach resource-based policies to their entities.
+
+## __AWSServerlessApplicationRepository__
+  - ### Features
+    - Added support for delete-application API and the ability for developers to set a homepage for their application. The homepage is a URL with more information about the application, for example the location of your GitHub repository for the application. 
+
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Adds support for tagging an EBS snapshot as part of the API call that creates the EBS snapshot
+
+## __Amazon GameLift__
+  - ### Features
+    - Updates to allow Fleets to run on On-Demand or Spot instances.
+
+## __Amazon Lex Model Building Service__
+  - ### Features
+    - Amazon Lex now provides the ability to export and import your Amazon Lex chatbot definition as a JSON file.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Updates RDS API to indicate whether a DBEngine supports read replicas.
+
+## __Auto Scaling__
+  - ### Features
+    - Amazon EC2 Auto Scaling support for service-linked roles
+
+# __1.11.282__ __2018-02-20__
+## __AWS AppSync__
+  - ### Features
+    - AWS AppSync now supports for None Data Source, CreateApiKey now supports setting expiration on API keys, new API UpdateApiKey supports updating expiration on API keys. 
+
+## __AWS Config__
+  - ### Features
+    - With this release, AWS Config updated the ConfigurationItemStatus enum values. The values prior to this update did not represent appropriate values returned by GetResourceConfigHistory. You must update your code to enumerate the new enum values so this is a breaking change.  To map old properties to new properties, use the following descriptions: New discovered resource - Old property: Discovered, New property: ResourceDiscovered. Updated resource - Old property: Ok, New property: OK. Deleted resource - Old property: Deleted, New property: ResourceDeleted or ResourceDeletedNotRecorded. Not-recorded resource - Old property: N/A, New property: ResourceNotRecorded or ResourceDeletedNotRecorded.
+
+## __AWS Elemental MediaConvert__
+  - ### Features
+    - Nielsen ID3 tags can now be inserted into transport stream (TS) and HLS outputs. For more information on Nielsen configuration you can go to https://docs.aws.amazon.com/mediaconvert/latest/apireference/jobs.html#jobs-nielsenconfiguration
+
+## __AWS WAF__
+  - ### Features
+    - The new PermissionPolicy APIs in AWS WAF Regional allow customers to attach resource-based policies to their entities.
+
+## __AWS WAF Regional__
+  - ### Features
+    - The new PermissionPolicy APIs in AWS WAF Regional allow customers to attach resource-based policies to their entities.
+
+## __Amazon GameLift__
+  - ### Features
+    - Updates to allow Fleets to run on On-Demand or Spot instances.
+
+## __Amazon Lex Model Building Service__
+  - ### Features
+    - Amazon Lex now provides the ability to export and import your Amazon Lex chatbot definition as a JSON file.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Updates RDS API to indicate whether a DBEngine supports read replicas.
+
+## __Auto Scaling__
+  - ### Features
+    - Amazon EC2 Auto Scaling support for service-linked roles
+
+# __1.11.281__ __2018-02-19__
+## __AWS AppSync__
+  - ### Features
+    - AWS AppSync now supports for None Data Source, CreateApiKey now supports setting expiration on API keys, new API UpdateApiKey supports updating expiration on API keys. 
+
+## __AWS Config__
+  - ### Features
+    - With this release, AWS Config updated the ConfigurationItemStatus enum values. The values prior to this update did not represent appropriate values returned by GetResourceConfigHistory. You must update your code to enumerate the new enum values so this is a breaking change.  To map old properties to new properties, use the following descriptions: New discovered resource - Old property: Discovered, New property: ResourceDiscovered. Updated resource - Old property: Ok, New property: OK. Deleted resource - Old property: Deleted, New property: ResourceDeleted or ResourceDeletedNotRecorded. Not-recorded resource - Old property: N/A, New property: ResourceNotRecorded or ResourceDeletedNotRecorded.
+
+## __AWS Elemental MediaConvert__
+  - ### Features
+    - Nielsen ID3 tags can now be inserted into transport stream (TS) and HLS outputs. For more information on Nielsen configuration you can go to https://docs.aws.amazon.com/mediaconvert/latest/apireference/jobs.html#jobs-nielsenconfiguration
+
+## __Amazon GameLift__
+  - ### Features
+    - Updates to allow Fleets to run on On-Demand or Spot instances.
+
+## __Amazon Lex Model Building Service__
+  - ### Features
+    - Amazon Lex now provides the ability to export and import your Amazon Lex chatbot definition as a JSON file.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Updates RDS API to indicate whether a DBEngine supports read replicas.
+
+# __1.11.277__ __2018-02-13__
+## __Amazon Glacier__
+  - ### Features
+    - Documentation updates for glacier
+
+## __Amazon Route 53__
+  - ### Features
+    - Added support for creating Private Hosted Zones and metric-based healthchecks in the ap-northeast-3 region for whitelisted customers.
+
+# __1.11.276__ __2018-02-12__
+## __AWS Key Management Service__
+  - ### Features
+    - This release of AWS Key Management Service includes support for InvalidArnException in the RetireGrant API.
+
+## __Amazon Cognito Identity Provider__
+  - ### Features
+    - Support for user migration using AWS Lambda trigger. Support to obtain signing certificate for user pools.
+
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Network interfaces now supply the following additional status of "associated" to better distinguish the current status.
+
+## __Amazon GuardDuty__
+  - ### Features
+    - Added PortProbeAction information to the Action section of the port probe-type finding.
+
+## __Amazon Relational Database Service__
+  - ### Features
+    - Aurora MySQL now supports MySQL 5.7.
+
+# __1.11.275__ __2018-02-09__
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Users can now better understand the longer ID opt-in status of their account using the two new APIs DescribeAggregateIdFormat and DescribePrincipalIdFormat
+
+## __Amazon Lex Model Building Service__
+  - ### Features
+    - You can now define a response for your Amazon Lex chatbot directly from the AWS console. A response consists of messages dynamically selected from a group of pre-defined messages, populated by the developer.
+
+## __Amazon Lex Runtime Service__
+  - ### Features
+    - You can now define a response for your Amazon Lex chatbot directly from the AWS console. A response consists of messages dynamically selected from a group of pre-defined messages, populated by the developer.
+
+# __1.11.274__ __2018-02-08__
+## __AWS Budgets__
+  - ### Features
+    - Making budgetLimit and timePeriod optional, and updating budgets docs. 
+
+## __AWS Database Migration Service__
+  - ### Features
+    - This release includes the addition of two new APIs: describe replication instance task logs and reboot instance. The first allows user to see how much storage each log for a task on a given instance is occupying. The second gives users the option to reboot the application software on the instance and force a fail over for MAZ instances to test robustness of their integration with our service. 
+
+## __AWS Directory Service__
+  - ### Features
+    - Updated the regex of some input parameters to support longer EC2 identifiers.
+
+## __AWS Elemental MediaLive__
+  - ### Features
+    - AWS Elemental MediaLive has added support for updating channel settings for idle channels. You can now update channel name, channel outputs and output destinations, encoder settings, user role ARN, and input specifications. Channel settings can be updated in the console or with API calls. Please note that running channels need to be stopped before they can be updated. We've also deprecated the 'Reserved' field.
+
+## __AWS Elemental MediaStore__
+  - ### Features
+    - AWS Elemental MediaStore now supports per-container CORS configuration.
+
+## __Amazon AppStream__
+  - ### Features
+    - Adds support for allowing customers to provide a redirect URL for a stack. Users will be redirected to the link provided by the admin at the end of their streaming session. 
+
+## __Amazon DynamoDB__
+  - ### Features
+    - Amazon DynamoDB now supports server-side encryption using a default service key (alias/aws/dynamodb) from the AWS Key Management Service (KMS). AWS KMS is a service that combines secure, highly available hardware and software to provide a key management system scaled for the cloud. AWS KMS is used via the AWS Management Console or APIs to centrally create encryption keys, define the policies that control how keys can be used, and audit key usage to prove they are being used correctly. For more information, see the Amazon DynamoDB Developer Guide.
+
+## __Amazon GameLift__
+  - ### Features
+    - Amazon GameLift FlexMatch added the StartMatchBackfill API.  This API allows developers to add new players to an existing game session using the same matchmaking rules and player data that were used to initially create the session.
+
+## __Amazon SNS__
+  - ### Features
+    - Adding a new utility ([SnsMessageManager](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/message/SnsMessageManager.html)) to parse and validate SNS messages published to an HTTP/HTTPs endpoint. See this [blog post](https://aws.amazon.com/blogs/developer/publishing-to-https-endpoints-using-sns-and-the-aws-sdk-for-java/) for more information.
+
+# __1.11.273__ __2018-02-06__
+## __AWS Glue__
+  - ### Features
+    - This new feature will now allow customers to add a customized json classifier. They can specify a json path to indicate the object, array or field of the json documents they'd like crawlers to inspect when they crawl json files. 
+
+## __AWS Service Catalog__
+  - ### Features
+    - This release of Service Catalog adds SearchProvisionedProducts API and ProvisionedProductPlan APIs.
+
+## __Amazon Route 53 Auto Naming__
+  - ### Features
+    - This release adds support for registering CNAME record types and creating Route 53 alias records that route traffic to Amazon Elastic Load Balancers using Amazon Route 53 Auto Naming APIs.
+
+## __Amazon Simple Systems Manager (SSM)__
+  - ### Features
+    - This Patch Manager release supports configuring Linux repos as part of patch baselines, controlling updates of non-OS security packages and also creating patch baselines for SUSE12
+
+# __1.11.272__ __2018-02-05__
+## __AWS Certificate Manager__
+  - ### Features
+    - Documentation updates for acm
+
+## __AWS Cloud9__
+  - ### Features
+    - API usage examples for AWS Cloud9.
+
+## __AWS OpsWorks__
+  - ### Features
+    - AWS OpsWorks Stacks supports EBS encryption and HDD volume types. Also, a new DescribeOperatingSystems API is available, which lists all operating systems supported by OpsWorks Stacks.
+
+## __Amazon Kinesis__
+  - ### Features
+    - Using ListShards a Kinesis Data Streams customer or client can get information about shards in a data stream (including meta-data for each shard) without obtaining data stream level information.
+
+## __Amazon S3__
+  - ### Bugfixes
+    - Multi-part downloads through TransferManager now use a shorter temporary file name to prevent file system limitations with long file names.
+
+# __1.11.271__ __2018-01-26__
+## __AWS Device Farm__
+  - ### Features
+    - Add InteractionMode in CreateRemoteAccessSession for DirectDeviceAccess feature.
+
+## __AWS Elemental MediaLive__
+  - ### Features
+    - Add InputSpecification to CreateChannel (specification of input attributes is used for channel sizing and affects pricing);  add NotFoundException to DeleteInputSecurityGroups.
+
+## __Amazon Mechanical Turk__
+  - ### Features
+    - Documentation updates for mturk-requester
+
+# __1.11.270__ __2018-01-25__
+## __AWS CodeBuild__
+  - ### Features
+    - Adding support for Shallow Clone and GitHub Enterprise in AWS CodeBuild.
+
+## __AWS Lambda__
+  - ### Features
+    - AWS Lambda now supports Revision ID on your function versions and aliases, to track and apply conditional updates when you are updating your function version or alias resources.
+
+## __Alexa For Business__
+  - ### Features
+    - Supports new field for DeviceStatusInfo which provides details about the DeviceStatus following a DeviceSync operation.
+
+## __Amazon GuardDuty__
+  - ### Features
+    - Added the missing AccessKeyDetails object to the resource shape.
+
+# __1.11.269__ __2018-01-22__
+## __AWS Budgets__
+  - ### Features
+    - Add additional costTypes: IncludeDiscount, UseAmortized,  to support finer control for different charges included in a cost budget.
+
+# __1.11.268__ __2018-01-19__
+## __AWS Glue__
+  - ### Features
+    - New AWS Glue DataCatalog APIs to manage table versions and a new feature to skip archiving of the old table version when updating table. 
+
+# __1.11.267__ __2018-01-18__
+## __Amazon SageMaker Service__
+  - ### Features
+    - CreateTrainingJob and CreateEndpointConfig now supports KMS Key for volume encryption. 
+
+# __1.11.266__ __2018-01-17__
+## __Amazon Elastic Compute Cloud__
+  - ### Features
+    - Documentation updates for EC2
+
+## __Application Auto Scaling__
+  - ### Features
+    - Documentation updates for autoscaling-plans
+
+# __1.11.265__ __2018-01-16__
+## __Amazon Relational Database Service__
+  - ### Features
+    - With this release you can now integrate RDS DB instances with CloudWatch Logs. We have added parameters to the operations for creating and modifying DB instances (for example CreateDBInstance) to allow you to take advantage of this capability through the CLI and API. Once you enable this feature, a stream of log events will publish to CloudWatch Logs for each log type you enable.
+
+## __Application Auto Scaling__
+  - ### Features
+    - Application Auto Scaling is adding support for Target Tracking Scaling for ECS services.
+
+# __1.11.264__ __2018-01-15__
+## __AWS Lambda__
+  - ### Features
+    - Support for creating Lambda Functions using 'dotnetcore2.0' and 'go1.x'. 
+
+# __1.11.263__ __2018-01-12__
 ## __AWS Application Discovery Service__
   - ### Features
     - Documentation updates for AWS Application Discovery Service.
@@ -6,6 +913,18 @@
 ## __AWS CodeDeploy__
   - ### Features
     - The AWS CodeDeploy API was updated to support DeleteGitHubAccountToken, a new method that deletes a GitHub account connection.
+
+## __AWS Directory Service__
+  - ### Features
+    - On October 24 we introduced AWS Directory Service for Microsoft Active Directory (Standard Edition), also known as AWS Microsoft AD (Standard Edition), which is a managed Microsoft Active Directory (AD) that is optimized for small and midsize businesses (SMBs). With this SDK release, you can now create an AWS Microsoft AD directory using API. This enables you to run typical SMB workloads using a cost-effective, highly available, and managed Microsoft AD in the AWS Cloud.
+
+## __AWS Glue__
+  - ### Features
+    - Support is added to generate ETL scripts in Scala which can now be run by  AWS Glue ETL jobs. In addition, the trigger API now supports firing when any conditions are met (in addition to all conditions). Also, jobs can be triggered based on a "failed" or "stopped" job run (in addition to a "succeeded" job run). 
+
+## __AWS Key Management Service__
+  - ### Features
+    - Documentation updates for AWS KMS
 
 ## __Amazon Import/Export Snowball__
   - ### Features
@@ -19,9 +938,41 @@
   - ### Features
     - This release adds an exception to the CreateTrafficPolicyVersion API operation.
 
+# __1.11.262__ __2018-01-11__
+## __Amazon Relational Database Service__
+  - ### Features
+    - Read Replicas for Amazon RDS for MySQL, MariaDB, and PostgreSQL now support Multi-AZ deployments.Amazon RDS Read Replicas enable you to create one or more read-only copies of your database instance within the same AWS Region or in a different AWS Region. Updates made to the source database are asynchronously copied to the Read Replicas. In addition to providing scalability for read-heavy workloads, you can choose to promote a Read Replica to become standalone a DB instance when needed.Amazon RDS Multi-AZ Deployments provide enhanced availability for database instances within a single AWS Region. With Multi-AZ, your data is synchronously replicated to a standby in a different Availability Zone (AZ). In case of an infrastructure failure, Amazon RDS performs an automatic failover to the standby, minimizing disruption to your applications.You can now combine Read Replicas with Multi-AZ as part of a disaster recovery strategy for your production databases. A well-designed and tested plan is critical for maintaining business continuity after a disaster. Since Read Replicas can also be created in different regions than the source database, your Read Replica can be promoted to become the new production database in case of a regional disruption.You can also combine Read Replicas with Multi-AZ for your database engine upgrade process. You can create a Read Replica of your production database instance and upgrade it to a new database engine version. When the upgrade is complete, you can stop applications, promote the Read Replica to a standalone database instance and switch over your applications. Since the database instance is already a Multi-AZ deployment, no additional steps are needed.For more information, see the Amazon RDS User Guide.
+
 ## __Amazon Simple Systems Manager (SSM)__
   - ### Features
-    - Documentation updates for ssm
+    - Updates documentation for the HierarchyLevelLimitExceededException error.
+
+## __Elastic Load Balancing__
+  - ### Features
+    - Added OperationNotPermittedException to indicate that you cannot create a load balancer while deleting the Elastic Load Balancing service-linked role.
+
+# __1.11.261__ __2018-01-09__
+## __AWS Key Management Service__
+  - ### Features
+    - Documentation updates for AWS KMS
+
+# __1.11.260__ __2018-01-09__
+## __AWS Directory Service__
+  - ### Features
+    - On October 24 we introduced AWS Directory Service for Microsoft Active Directory (Standard Edition), also known as AWS Microsoft AD (Standard Edition), which is a managed Microsoft Active Directory (AD) that is optimized for small and midsize businesses (SMBs). With this SDK release, you can now create an AWS Microsoft AD directory using API. This enables you to run typical SMB workloads using a cost-effective, highly available, and managed Microsoft AD in the AWS Cloud.
+
+# __1.11.259__ __2018-01-08__
+## __AWS Application Discovery Service__
+  - ### Features
+    - Documentation updates for AWS Application Discovery Service.
+
+## __AWS CodeDeploy__
+  - ### Features
+    - The AWS CodeDeploy API was updated to support DeleteGitHubAccountToken, a new method that deletes a GitHub account connection.
+
+## __Amazon Route 53__
+  - ### Features
+    - This release adds an exception to the CreateTrafficPolicyVersion API operation.
 
 # __1.11.258__ __2018-01-05__
 ## __Amazon Import/Export Snowball__
@@ -37,63 +988,11 @@
     - Documentation updates for ssm
 
 # __1.11.257__ __2018-01-02__
-## __AWS CodeBuild__
-  - ### Features
-    - Adding support allowing AWS CodeBuild customers to select specific curated image versions.
-
-## __Amazon EC2 Container Service__
-  - ### Features
-    - Amazon ECS users can now set a health check initialization wait period of their ECS services, the services that are associated with an Elastic Load Balancer (ELB) will wait for a period of time before the ELB become healthy. You can now configure this in Create and Update Service.
-
-## __Amazon Elastic Compute Cloud__
-  - ### Features
-    - This release fixes an issue with tags not showing in DescribeAddresses responses.
-
-## __Amazon Inspector__
-  - ### Features
-    - PreviewAgents API now returns additional fields within the AgentPreview data type. The API now shows the agent health and availability status for all instances included in the assessment target. This allows users to check the health status of Inspector Agents before running an assessment. In addition, it shows the instance ID, hostname, and IP address of the targeted instances.
-
-## __Amazon Kinesis Analytics__
-  - ### Features
-    - Kinesis Analytics now supports AWS Lambda functions as output.
-
 ## __Amazon Relational Database Service__
   - ### Features
     - Documentation updates for rds
 
-## __Amazon SageMaker Service__
-  - ### Features
-    - SageMaker Models no longer support SupplementalContainers.  API's that have been affected are CreateModel and DescribeModel.
-
-## __Amazon WorkSpaces__
-  - ### Features
-    - Modify WorkSpaces have been updated with flexible storage and switching of hardware bundles feature. The following configurations have been added to ModifyWorkSpacesProperties: storage and compute. This update provides the capability to configure the storage of a WorkSpace. It also adds the capability of switching hardware bundle of a WorkSpace by specifying an eligible compute (Value, Standard, Performance, Power).
-
 # __1.11.256__ __2017-12-29__
-## __AWS CodeBuild__
-  - ### Features
-    - Adding support allowing AWS CodeBuild customers to select specific curated image versions.
-
-## __Amazon EC2 Container Service__
-  - ### Features
-    - Amazon ECS users can now set a health check initialization wait period of their ECS services, the services that are associated with an Elastic Load Balancer (ELB) will wait for a period of time before the ELB become healthy. You can now configure this in Create and Update Service.
-
-## __Amazon Elastic Compute Cloud__
-  - ### Features
-    - This release fixes an issue with tags not showing in DescribeAddresses responses.
-
-## __Amazon Inspector__
-  - ### Features
-    - PreviewAgents API now returns additional fields within the AgentPreview data type. The API now shows the agent health and availability status for all instances included in the assessment target. This allows users to check the health status of Inspector Agents before running an assessment. In addition, it shows the instance ID, hostname, and IP address of the targeted instances.
-
-## __Amazon Kinesis Analytics__
-  - ### Features
-    - Kinesis Analytics now supports AWS Lambda functions as output.
-
-## __Amazon SageMaker Service__
-  - ### Features
-    - SageMaker Models no longer support SupplementalContainers.  API's that have been affected are CreateModel and DescribeModel.
-
 ## __Amazon WorkSpaces__
   - ### Features
     - Modify WorkSpaces have been updated with flexible storage and switching of hardware bundles feature. The following configurations have been added to ModifyWorkSpacesProperties: storage and compute. This update provides the capability to configure the storage of a WorkSpace. It also adds the capability of switching hardware bundle of a WorkSpace by specifying an eligible compute (Value, Standard, Performance, Power).
@@ -598,6 +1497,10 @@
 ## __Amazon Relational Database Service (RDS)__
   - ### Features
     - DescribeOrderableDBInstanceOptions now returns the minimum and maximum allowed values for storage size, total provisioned IOPS, and provisioned IOPS per GiB for a DB instance.
+
+## __Amazon S3__
+  - ### Features
+    - This releases adds support for 4 features: 1. Default encryption for S3 Bucket, 2. Encryption status in inventory and Encryption support for inventory. 3. Cross region replication of KMS-encrypted objects, and 4. ownership overwrite for CRR.
 
 ## __Elastic Load Balancing__
   - ### Features

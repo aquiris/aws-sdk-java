@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,7 +52,7 @@ public class Scope implements Serializable, Cloneable, StructuredPojo {
     private String tagValue;
     /**
      * <p>
-     * The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
+     * The ID of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
      * ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.
      * </p>
      */
@@ -230,12 +230,12 @@ public class Scope implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
+     * The ID of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
      * ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.
      * </p>
      * 
      * @param complianceResourceId
-     *        The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a
+     *        The ID of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a
      *        resource ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.
      */
 
@@ -245,11 +245,11 @@ public class Scope implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
+     * The ID of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
      * ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.
      * </p>
      * 
-     * @return The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a
+     * @return The ID of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a
      *         resource ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.
      */
 
@@ -259,12 +259,12 @@ public class Scope implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
+     * The ID of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource
      * ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.
      * </p>
      * 
      * @param complianceResourceId
-     *        The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a
+     *        The ID of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a
      *        resource ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

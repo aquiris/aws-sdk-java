@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,8 @@ public class DeviceMarshaller {
             .marshallLocationName("RoomArn").build();
     private static final MarshallingInfo<String> DEVICESTATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DeviceStatus").build();
+    private static final MarshallingInfo<StructuredPojo> DEVICESTATUSINFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DeviceStatusInfo").build();
 
     private static final DeviceMarshaller instance = new DeviceMarshaller();
 
@@ -68,6 +70,7 @@ public class DeviceMarshaller {
             protocolMarshaller.marshall(device.getMacAddress(), MACADDRESS_BINDING);
             protocolMarshaller.marshall(device.getRoomArn(), ROOMARN_BINDING);
             protocolMarshaller.marshall(device.getDeviceStatus(), DEVICESTATUS_BINDING);
+            protocolMarshaller.marshall(device.getDeviceStatusInfo(), DEVICESTATUSINFO_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

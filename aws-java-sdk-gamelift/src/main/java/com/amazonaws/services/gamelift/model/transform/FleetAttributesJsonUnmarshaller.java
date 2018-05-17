@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,14 @@ public class FleetAttributesJsonUnmarshaller implements Unmarshaller<FleetAttrib
                     context.nextToken();
                     fleetAttributes.setFleetArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("FleetType", targetDepth)) {
+                    context.nextToken();
+                    fleetAttributes.setFleetType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("InstanceType", targetDepth)) {
+                    context.nextToken();
+                    fleetAttributes.setInstanceType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("Description", targetDepth)) {
                     context.nextToken();
                     fleetAttributes.setDescription(context.getUnmarshaller(String.class).unmarshall(context));
@@ -107,6 +115,10 @@ public class FleetAttributesJsonUnmarshaller implements Unmarshaller<FleetAttrib
                 if (context.testExpression("MetricGroups", targetDepth)) {
                     context.nextToken();
                     fleetAttributes.setMetricGroups(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("StoppedActions", targetDepth)) {
+                    context.nextToken();
+                    fleetAttributes.setStoppedActions(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

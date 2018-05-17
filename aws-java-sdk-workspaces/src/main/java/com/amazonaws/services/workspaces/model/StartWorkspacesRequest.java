@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,17 +27,17 @@ public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The WorkSpaces to start.
+     * The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<StartRequest> startWorkspaceRequests;
 
     /**
      * <p>
-     * The WorkSpaces to start.
+     * The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      * </p>
      * 
-     * @return The WorkSpaces to start.
+     * @return The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      */
 
     public java.util.List<StartRequest> getStartWorkspaceRequests() {
@@ -49,11 +49,11 @@ public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The WorkSpaces to start.
+     * The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      * </p>
      * 
      * @param startWorkspaceRequests
-     *        The WorkSpaces to start.
+     *        The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      */
 
     public void setStartWorkspaceRequests(java.util.Collection<StartRequest> startWorkspaceRequests) {
@@ -67,7 +67,7 @@ public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The WorkSpaces to start.
+     * The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -76,7 +76,7 @@ public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * 
      * @param startWorkspaceRequests
-     *        The WorkSpaces to start.
+     *        The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -92,11 +92,11 @@ public class StartWorkspacesRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The WorkSpaces to start.
+     * The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      * </p>
      * 
      * @param startWorkspaceRequests
-     *        The WorkSpaces to start.
+     *        The WorkSpaces to start. You can specify up to 25 WorkSpaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

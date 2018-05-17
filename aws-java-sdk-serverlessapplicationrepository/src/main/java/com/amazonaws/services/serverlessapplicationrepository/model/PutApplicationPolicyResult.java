@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,11 +23,17 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutApplicationPolicyResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
-    /** Array of policy statements applied to the application. */
+    /**
+     * <p>
+     * Array of policy statements applied to the application.
+     * </p>
+     */
     private java.util.List<ApplicationPolicyStatement> statements;
 
     /**
+     * <p>
      * Array of policy statements applied to the application.
+     * </p>
      * 
      * @return Array of policy statements applied to the application.
      */
@@ -37,7 +43,9 @@ public class PutApplicationPolicyResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
      * Array of policy statements applied to the application.
+     * </p>
      * 
      * @param statements
      *        Array of policy statements applied to the application.
@@ -53,7 +61,9 @@ public class PutApplicationPolicyResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
      * Array of policy statements applied to the application.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setStatements(java.util.Collection)} or {@link #withStatements(java.util.Collection)} if you want to
@@ -76,7 +86,9 @@ public class PutApplicationPolicyResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
      * Array of policy statements applied to the application.
+     * </p>
      * 
      * @param statements
      *        Array of policy statements applied to the application.

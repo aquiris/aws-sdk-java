@@ -147,7 +147,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
-     * parameter does not result in an outage except in the following case, and the change is applied during the next
+     * parameter doesn't result in an outage except in the following case, and the change is applied during the next
      * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
      * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
      * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
@@ -227,6 +227,36 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private Long backtrackWindow;
+    /**
+     * <p>
+     * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
+     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
+     * true.
+     * </p>
+     * <p>
+     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * </p>
+     */
+    private String engineVersion;
 
     /**
      * <p>
@@ -1023,7 +1053,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
-     * parameter does not result in an outage except in the following case, and the change is applied during the next
+     * parameter doesn't result in an outage except in the following case, and the change is applied during the next
      * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
      * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
      * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
@@ -1035,7 +1065,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * 
      * @param optionGroupName
      *        A value that indicates that the DB cluster should be associated with the specified option group. Changing
-     *        this parameter does not result in an outage except in the following case, and the change is applied during
+     *        this parameter doesn't result in an outage except in the following case, and the change is applied during
      *        the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code>
      *        for this request. If the parameter change results in an option group that enables OEM, this change can
      *        cause a brief (sub-second) period during which new connections are rejected but existing connections are
@@ -1052,7 +1082,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
-     * parameter does not result in an outage except in the following case, and the change is applied during the next
+     * parameter doesn't result in an outage except in the following case, and the change is applied during the next
      * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
      * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
      * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
@@ -1063,8 +1093,8 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * 
      * @return A value that indicates that the DB cluster should be associated with the specified option group. Changing
-     *         this parameter does not result in an outage except in the following case, and the change is applied
-     *         during the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to
+     *         this parameter doesn't result in an outage except in the following case, and the change is applied during
+     *         the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to
      *         <code>true</code> for this request. If the parameter change results in an option group that enables OEM,
      *         this change can cause a brief (sub-second) period during which new connections are rejected but existing
      *         connections are not interrupted. </p>
@@ -1080,7 +1110,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
-     * parameter does not result in an outage except in the following case, and the change is applied during the next
+     * parameter doesn't result in an outage except in the following case, and the change is applied during the next
      * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
      * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
      * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
@@ -1092,7 +1122,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * 
      * @param optionGroupName
      *        A value that indicates that the DB cluster should be associated with the specified option group. Changing
-     *        this parameter does not result in an outage except in the following case, and the change is applied during
+     *        this parameter doesn't result in an outage except in the following case, and the change is applied during
      *        the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code>
      *        for this request. If the parameter change results in an option group that enables OEM, this change can
      *        cause a brief (sub-second) period during which new connections are rejected but existing connections are
@@ -1545,6 +1575,189 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param backtrackWindow
+     *        The target backtrack window, in seconds. To disable backtracking, set this value to 0.</p>
+     *        <p>
+     *        Default: 0
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *        </p>
+     *        </li>
+     */
+
+    public void setBacktrackWindow(Long backtrackWindow) {
+        this.backtrackWindow = backtrackWindow;
+    }
+
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The target backtrack window, in seconds. To disable backtracking, set this value to 0.</p>
+     *         <p>
+     *         Default: 0
+     *         </p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *         </p>
+     *         </li>
+     */
+
+    public Long getBacktrackWindow() {
+        return this.backtrackWindow;
+    }
+
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param backtrackWindow
+     *        The target backtrack window, in seconds. To disable backtracking, set this value to 0.</p>
+     *        <p>
+     *        Default: 0
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withBacktrackWindow(Long backtrackWindow) {
+        setBacktrackWindow(backtrackWindow);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
+     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
+     * true.
+     * </p>
+     * <p>
+     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * </p>
+     * 
+     * @param engineVersion
+     *        The version number of the database engine to which you want to upgrade. Changing this parameter results in
+     *        an outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter
+     *        is set to true.</p>
+     *        <p>
+     *        For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     */
+
+    public void setEngineVersion(String engineVersion) {
+        this.engineVersion = engineVersion;
+    }
+
+    /**
+     * <p>
+     * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
+     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
+     * true.
+     * </p>
+     * <p>
+     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * </p>
+     * 
+     * @return The version number of the database engine to which you want to upgrade. Changing this parameter results
+     *         in an outage. The change is applied during the next maintenance window unless the ApplyImmediately
+     *         parameter is set to true.</p>
+     *         <p>
+     *         For a list of valid engine versions, see <a>CreateDBInstance</a>, or call
+     *         <a>DescribeDBEngineVersions</a>.
+     */
+
+    public String getEngineVersion() {
+        return this.engineVersion;
+    }
+
+    /**
+     * <p>
+     * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
+     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
+     * true.
+     * </p>
+     * <p>
+     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * </p>
+     * 
+     * @param engineVersion
+     *        The version number of the database engine to which you want to upgrade. Changing this parameter results in
+     *        an outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter
+     *        is set to true.</p>
+     *        <p>
+     *        For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withEngineVersion(String engineVersion) {
+        setEngineVersion(engineVersion);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1578,7 +1791,11 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
         if (getPreferredMaintenanceWindow() != null)
             sb.append("PreferredMaintenanceWindow: ").append(getPreferredMaintenanceWindow()).append(",");
         if (getEnableIAMDatabaseAuthentication() != null)
-            sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication());
+            sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication()).append(",");
+        if (getBacktrackWindow() != null)
+            sb.append("BacktrackWindow: ").append(getBacktrackWindow()).append(",");
+        if (getEngineVersion() != null)
+            sb.append("EngineVersion: ").append(getEngineVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -1642,6 +1859,14 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
         if (other.getEnableIAMDatabaseAuthentication() != null
                 && other.getEnableIAMDatabaseAuthentication().equals(this.getEnableIAMDatabaseAuthentication()) == false)
             return false;
+        if (other.getBacktrackWindow() == null ^ this.getBacktrackWindow() == null)
+            return false;
+        if (other.getBacktrackWindow() != null && other.getBacktrackWindow().equals(this.getBacktrackWindow()) == false)
+            return false;
+        if (other.getEngineVersion() == null ^ this.getEngineVersion() == null)
+            return false;
+        if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
+            return false;
         return true;
     }
 
@@ -1662,6 +1887,8 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
         hashCode = prime * hashCode + ((getPreferredBackupWindow() == null) ? 0 : getPreferredBackupWindow().hashCode());
         hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode());
         hashCode = prime * hashCode + ((getEnableIAMDatabaseAuthentication() == null) ? 0 : getEnableIAMDatabaseAuthentication().hashCode());
+        hashCode = prime * hashCode + ((getBacktrackWindow() == null) ? 0 : getBacktrackWindow().hashCode());
+        hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
         return hashCode;
     }
 

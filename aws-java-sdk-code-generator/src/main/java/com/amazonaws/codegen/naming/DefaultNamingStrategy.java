@@ -121,7 +121,7 @@ public class DefaultNamingStrategy implements NamingStrategy {
 
     @Override
     public String getJavaClassName(String shapeName) {
-        return Arrays.stream(shapeName.split("[._-]|\\W")).map(Utils::capitialize).collect(Collectors.joining());
+        return Arrays.stream(shapeName.split("[._-]|\\W")).filter(StringUtils::hasValue).map(Utils::capitialize).collect(Collectors.joining());
     }
 
     @Override
@@ -152,7 +152,7 @@ public class DefaultNamingStrategy implements NamingStrategy {
         }
     }
 
-    private static boolean isJavaKeyword(String word) {
+    public static boolean isJavaKeyword(String word) {
         return reservedKeywords.contains(word) ||
                reservedKeywords.contains(StringUtils.lowerCase(word));
     }

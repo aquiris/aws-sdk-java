@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -299,12 +299,66 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
                 request = new BatchGetTracesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchGetTracesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<BatchGetTracesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new BatchGetTracesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves the current encryption configuration for X-Ray data.
+     * </p>
+     * 
+     * @param getEncryptionConfigRequest
+     * @return Result of the GetEncryptionConfig operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is missing required parameters or has invalid parameters.
+     * @throws ThrottledException
+     *         The request exceeds the maximum number of requests per second.
+     * @sample AWSXRay.GetEncryptionConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/GetEncryptionConfig" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetEncryptionConfigResult getEncryptionConfig(GetEncryptionConfigRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetEncryptionConfig(request);
+    }
+
+    @SdkInternalApi
+    final GetEncryptionConfigResult executeGetEncryptionConfig(GetEncryptionConfigRequest getEncryptionConfigRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getEncryptionConfigRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetEncryptionConfigRequest> request = null;
+        Response<GetEncryptionConfigResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetEncryptionConfigRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEncryptionConfigRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetEncryptionConfigResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetEncryptionConfigResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -354,6 +408,7 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
                 request = new GetServiceGraphRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getServiceGraphRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -406,6 +461,7 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
                 request = new GetTraceGraphRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTraceGraphRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -479,12 +535,66 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
                 request = new GetTraceSummariesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTraceSummariesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<GetTraceSummariesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetTraceSummariesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates the encryption configuration for X-Ray data.
+     * </p>
+     * 
+     * @param putEncryptionConfigRequest
+     * @return Result of the PutEncryptionConfig operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is missing required parameters or has invalid parameters.
+     * @throws ThrottledException
+     *         The request exceeds the maximum number of requests per second.
+     * @sample AWSXRay.PutEncryptionConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/PutEncryptionConfig" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public PutEncryptionConfigResult putEncryptionConfig(PutEncryptionConfigRequest request) {
+        request = beforeClientExecution(request);
+        return executePutEncryptionConfig(request);
+    }
+
+    @SdkInternalApi
+    final PutEncryptionConfigResult executePutEncryptionConfig(PutEncryptionConfigRequest putEncryptionConfigRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putEncryptionConfigRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutEncryptionConfigRequest> request = null;
+        Response<PutEncryptionConfigResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutEncryptionConfigRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putEncryptionConfigRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutEncryptionConfigResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new PutEncryptionConfigResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -531,6 +641,7 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
                 request = new PutTelemetryRecordsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putTelemetryRecordsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -555,7 +666,7 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
      * </p>
      * <p>
      * Segments must include the following fields. For the full segment document schema, see <a
-     * href="http://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">AWS X-Ray Segment
+     * href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">AWS X-Ray Segment
      * Documents</a> in the <i>AWS X-Ray Developer Guide</i>.
      * </p>
      * <p class="title">
@@ -657,6 +768,7 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
                 request = new PutTraceSegmentsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putTraceSegmentsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

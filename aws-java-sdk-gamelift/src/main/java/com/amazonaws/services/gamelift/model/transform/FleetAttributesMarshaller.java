@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,6 +32,10 @@ public class FleetAttributesMarshaller {
             .marshallLocationName("FleetId").build();
     private static final MarshallingInfo<String> FLEETARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("FleetArn").build();
+    private static final MarshallingInfo<String> FLEETTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("FleetType").build();
+    private static final MarshallingInfo<String> INSTANCETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("InstanceType").build();
     private static final MarshallingInfo<String> DESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Description").build();
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -58,6 +62,8 @@ public class FleetAttributesMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ResourceCreationLimitPolicy").build();
     private static final MarshallingInfo<List> METRICGROUPS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("MetricGroups").build();
+    private static final MarshallingInfo<List> STOPPEDACTIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StoppedActions").build();
 
     private static final FleetAttributesMarshaller instance = new FleetAttributesMarshaller();
 
@@ -77,6 +83,8 @@ public class FleetAttributesMarshaller {
         try {
             protocolMarshaller.marshall(fleetAttributes.getFleetId(), FLEETID_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getFleetArn(), FLEETARN_BINDING);
+            protocolMarshaller.marshall(fleetAttributes.getFleetType(), FLEETTYPE_BINDING);
+            protocolMarshaller.marshall(fleetAttributes.getInstanceType(), INSTANCETYPE_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getDescription(), DESCRIPTION_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getName(), NAME_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getCreationTime(), CREATIONTIME_BINDING);
@@ -90,6 +98,7 @@ public class FleetAttributesMarshaller {
             protocolMarshaller.marshall(fleetAttributes.getOperatingSystem(), OPERATINGSYSTEM_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getResourceCreationLimitPolicy(), RESOURCECREATIONLIMITPOLICY_BINDING);
             protocolMarshaller.marshall(fleetAttributes.getMetricGroups(), METRICGROUPS_BINDING);
+            protocolMarshaller.marshall(fleetAttributes.getStoppedActions(), STOPPEDACTIONS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

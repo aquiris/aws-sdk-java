@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,6 +47,8 @@ public enum DynamoDBv2Actions implements Action {
     DescribeContinuousBackups("dynamodb:DescribeContinuousBackups"),
     /** Action for the DescribeGlobalTable operation. */
     DescribeGlobalTable("dynamodb:DescribeGlobalTable"),
+    /** Action for the DescribeGlobalTableSettings operation. */
+    DescribeGlobalTableSettings("dynamodb:DescribeGlobalTableSettings"),
     /** Action for the DescribeLimits operation. */
     DescribeLimits("dynamodb:DescribeLimits"),
     /** Action for the DescribeTable operation. */
@@ -69,14 +71,20 @@ public enum DynamoDBv2Actions implements Action {
     Query("dynamodb:Query"),
     /** Action for the RestoreTableFromBackup operation. */
     RestoreTableFromBackup("dynamodb:RestoreTableFromBackup"),
+    /** Action for the RestoreTableToPointInTime operation. */
+    RestoreTableToPointInTime("dynamodb:RestoreTableToPointInTime"),
     /** Action for the Scan operation. */
     Scan("dynamodb:Scan"),
     /** Action for the TagResource operation. */
     TagResource("dynamodb:TagResource"),
     /** Action for the UntagResource operation. */
     UntagResource("dynamodb:UntagResource"),
+    /** Action for the UpdateContinuousBackups operation. */
+    UpdateContinuousBackups("dynamodb:UpdateContinuousBackups"),
     /** Action for the UpdateGlobalTable operation. */
     UpdateGlobalTable("dynamodb:UpdateGlobalTable"),
+    /** Action for the UpdateGlobalTableSettings operation. */
+    UpdateGlobalTableSettings("dynamodb:UpdateGlobalTableSettings"),
     /** Action for the UpdateItem operation. */
     UpdateItem("dynamodb:UpdateItem"),
     /** Action for the UpdateTable operation. */

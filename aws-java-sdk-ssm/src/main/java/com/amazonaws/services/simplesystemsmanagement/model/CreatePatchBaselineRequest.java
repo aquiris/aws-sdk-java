@@ -53,19 +53,35 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * A list of explicitly approved patches for the baseline.
      * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> approvedPatches;
     /**
      * <p>
      * Defines the compliance level for approved patches. This means that if an approved patch is reported as missing,
-     * this is the severity of the compliance violation. Valid compliance severity levels include the following:
-     * CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     * this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * </p>
      */
     private String approvedPatchesComplianceLevel;
     /**
      * <p>
+     * Indicates whether the list of approved patches includes non-security updates that should be applied to the
+     * instances. The default value is 'false'. Applies to Linux instances only.
+     * </p>
+     */
+    private Boolean approvedPatchesEnableNonSecurity;
+    /**
+     * <p>
      * A list of explicitly rejected patches for the baseline.
+     * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> rejectedPatches;
@@ -75,6 +91,13 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      */
     private String description;
+    /**
+     * <p>
+     * Information about the patches to use to update the instances, including target operating systems and source
+     * repositories. Applies to Linux instances only.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<PatchSource> sources;
     /**
      * <p>
      * User-provided idempotency token.
@@ -279,8 +302,18 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * A list of explicitly approved patches for the baseline.
      * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * 
-     * @return A list of explicitly approved patches for the baseline.
+     * @return A list of explicitly approved patches for the baseline.</p>
+     *         <p>
+     *         For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *         >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *         Guide</i>.
      */
 
     public java.util.List<String> getApprovedPatches() {
@@ -294,9 +327,19 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * A list of explicitly approved patches for the baseline.
      * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * 
      * @param approvedPatches
-     *        A list of explicitly approved patches for the baseline.
+     *        A list of explicitly approved patches for the baseline.</p>
+     *        <p>
+     *        For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *        >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      */
 
     public void setApprovedPatches(java.util.Collection<String> approvedPatches) {
@@ -313,13 +356,23 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * A list of explicitly approved patches for the baseline.
      * </p>
      * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setApprovedPatches(java.util.Collection)} or {@link #withApprovedPatches(java.util.Collection)} if you
      * want to override the existing values.
      * </p>
      * 
      * @param approvedPatches
-     *        A list of explicitly approved patches for the baseline.
+     *        A list of explicitly approved patches for the baseline.</p>
+     *        <p>
+     *        For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *        >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,9 +390,19 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * A list of explicitly approved patches for the baseline.
      * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * 
      * @param approvedPatches
-     *        A list of explicitly approved patches for the baseline.
+     *        A list of explicitly approved patches for the baseline.</p>
+     *        <p>
+     *        For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *        >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -351,14 +414,12 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * Defines the compliance level for approved patches. This means that if an approved patch is reported as missing,
-     * this is the severity of the compliance violation. Valid compliance severity levels include the following:
-     * CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     * this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * </p>
      * 
      * @param approvedPatchesComplianceLevel
      *        Defines the compliance level for approved patches. This means that if an approved patch is reported as
-     *        missing, this is the severity of the compliance violation. Valid compliance severity levels include the
-     *        following: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     *        missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * @see PatchComplianceLevel
      */
 
@@ -369,13 +430,11 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * Defines the compliance level for approved patches. This means that if an approved patch is reported as missing,
-     * this is the severity of the compliance violation. Valid compliance severity levels include the following:
-     * CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     * this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * </p>
      * 
      * @return Defines the compliance level for approved patches. This means that if an approved patch is reported as
-     *         missing, this is the severity of the compliance violation. Valid compliance severity levels include the
-     *         following: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     *         missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * @see PatchComplianceLevel
      */
 
@@ -386,14 +445,12 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * Defines the compliance level for approved patches. This means that if an approved patch is reported as missing,
-     * this is the severity of the compliance violation. Valid compliance severity levels include the following:
-     * CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     * this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * </p>
      * 
      * @param approvedPatchesComplianceLevel
      *        Defines the compliance level for approved patches. This means that if an approved patch is reported as
-     *        missing, this is the severity of the compliance violation. Valid compliance severity levels include the
-     *        following: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     *        missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PatchComplianceLevel
      */
@@ -406,14 +463,12 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * Defines the compliance level for approved patches. This means that if an approved patch is reported as missing,
-     * this is the severity of the compliance violation. Valid compliance severity levels include the following:
-     * CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     * this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * </p>
      * 
      * @param approvedPatchesComplianceLevel
      *        Defines the compliance level for approved patches. This means that if an approved patch is reported as
-     *        missing, this is the severity of the compliance violation. Valid compliance severity levels include the
-     *        following: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     *        missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * @see PatchComplianceLevel
      */
 
@@ -424,14 +479,12 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * Defines the compliance level for approved patches. This means that if an approved patch is reported as missing,
-     * this is the severity of the compliance violation. Valid compliance severity levels include the following:
-     * CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     * this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * </p>
      * 
      * @param approvedPatchesComplianceLevel
      *        Defines the compliance level for approved patches. This means that if an approved patch is reported as
-     *        missing, this is the severity of the compliance violation. Valid compliance severity levels include the
-     *        following: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+     *        missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PatchComplianceLevel
      */
@@ -443,10 +496,80 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * A list of explicitly rejected patches for the baseline.
+     * Indicates whether the list of approved patches includes non-security updates that should be applied to the
+     * instances. The default value is 'false'. Applies to Linux instances only.
      * </p>
      * 
-     * @return A list of explicitly rejected patches for the baseline.
+     * @param approvedPatchesEnableNonSecurity
+     *        Indicates whether the list of approved patches includes non-security updates that should be applied to the
+     *        instances. The default value is 'false'. Applies to Linux instances only.
+     */
+
+    public void setApprovedPatchesEnableNonSecurity(Boolean approvedPatchesEnableNonSecurity) {
+        this.approvedPatchesEnableNonSecurity = approvedPatchesEnableNonSecurity;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the list of approved patches includes non-security updates that should be applied to the
+     * instances. The default value is 'false'. Applies to Linux instances only.
+     * </p>
+     * 
+     * @return Indicates whether the list of approved patches includes non-security updates that should be applied to
+     *         the instances. The default value is 'false'. Applies to Linux instances only.
+     */
+
+    public Boolean getApprovedPatchesEnableNonSecurity() {
+        return this.approvedPatchesEnableNonSecurity;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the list of approved patches includes non-security updates that should be applied to the
+     * instances. The default value is 'false'. Applies to Linux instances only.
+     * </p>
+     * 
+     * @param approvedPatchesEnableNonSecurity
+     *        Indicates whether the list of approved patches includes non-security updates that should be applied to the
+     *        instances. The default value is 'false'. Applies to Linux instances only.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreatePatchBaselineRequest withApprovedPatchesEnableNonSecurity(Boolean approvedPatchesEnableNonSecurity) {
+        setApprovedPatchesEnableNonSecurity(approvedPatchesEnableNonSecurity);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the list of approved patches includes non-security updates that should be applied to the
+     * instances. The default value is 'false'. Applies to Linux instances only.
+     * </p>
+     * 
+     * @return Indicates whether the list of approved patches includes non-security updates that should be applied to
+     *         the instances. The default value is 'false'. Applies to Linux instances only.
+     */
+
+    public Boolean isApprovedPatchesEnableNonSecurity() {
+        return this.approvedPatchesEnableNonSecurity;
+    }
+
+    /**
+     * <p>
+     * A list of explicitly rejected patches for the baseline.
+     * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * 
+     * @return A list of explicitly rejected patches for the baseline.</p>
+     *         <p>
+     *         For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *         >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *         Guide</i>.
      */
 
     public java.util.List<String> getRejectedPatches() {
@@ -460,9 +583,19 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * A list of explicitly rejected patches for the baseline.
      * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * 
      * @param rejectedPatches
-     *        A list of explicitly rejected patches for the baseline.
+     *        A list of explicitly rejected patches for the baseline.</p>
+     *        <p>
+     *        For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *        >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      */
 
     public void setRejectedPatches(java.util.Collection<String> rejectedPatches) {
@@ -479,13 +612,23 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * A list of explicitly rejected patches for the baseline.
      * </p>
      * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setRejectedPatches(java.util.Collection)} or {@link #withRejectedPatches(java.util.Collection)} if you
      * want to override the existing values.
      * </p>
      * 
      * @param rejectedPatches
-     *        A list of explicitly rejected patches for the baseline.
+     *        A list of explicitly rejected patches for the baseline.</p>
+     *        <p>
+     *        For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *        >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -503,9 +646,19 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
      * <p>
      * A list of explicitly rejected patches for the baseline.
      * </p>
+     * <p>
+     * For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     * >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * 
      * @param rejectedPatches
-     *        A list of explicitly rejected patches for the baseline.
+     *        A list of explicitly rejected patches for the baseline.</p>
+     *        <p>
+     *        For information about accepted formats for lists of approved patches and rejected patches, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html"
+     *        >Package Name Formats for Approved and Rejected Patch Lists</a> in the <i>AWS Systems Manager User
+     *        Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -551,6 +704,87 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
 
     public CreatePatchBaselineRequest withDescription(String description) {
         setDescription(description);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the patches to use to update the instances, including target operating systems and source
+     * repositories. Applies to Linux instances only.
+     * </p>
+     * 
+     * @return Information about the patches to use to update the instances, including target operating systems and
+     *         source repositories. Applies to Linux instances only.
+     */
+
+    public java.util.List<PatchSource> getSources() {
+        if (sources == null) {
+            sources = new com.amazonaws.internal.SdkInternalList<PatchSource>();
+        }
+        return sources;
+    }
+
+    /**
+     * <p>
+     * Information about the patches to use to update the instances, including target operating systems and source
+     * repositories. Applies to Linux instances only.
+     * </p>
+     * 
+     * @param sources
+     *        Information about the patches to use to update the instances, including target operating systems and
+     *        source repositories. Applies to Linux instances only.
+     */
+
+    public void setSources(java.util.Collection<PatchSource> sources) {
+        if (sources == null) {
+            this.sources = null;
+            return;
+        }
+
+        this.sources = new com.amazonaws.internal.SdkInternalList<PatchSource>(sources);
+    }
+
+    /**
+     * <p>
+     * Information about the patches to use to update the instances, including target operating systems and source
+     * repositories. Applies to Linux instances only.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSources(java.util.Collection)} or {@link #withSources(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param sources
+     *        Information about the patches to use to update the instances, including target operating systems and
+     *        source repositories. Applies to Linux instances only.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreatePatchBaselineRequest withSources(PatchSource... sources) {
+        if (this.sources == null) {
+            setSources(new com.amazonaws.internal.SdkInternalList<PatchSource>(sources.length));
+        }
+        for (PatchSource ele : sources) {
+            this.sources.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the patches to use to update the instances, including target operating systems and source
+     * repositories. Applies to Linux instances only.
+     * </p>
+     * 
+     * @param sources
+     *        Information about the patches to use to update the instances, including target operating systems and
+     *        source repositories. Applies to Linux instances only.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreatePatchBaselineRequest withSources(java.util.Collection<PatchSource> sources) {
+        setSources(sources);
         return this;
     }
 
@@ -617,10 +851,14 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
             sb.append("ApprovedPatches: ").append(getApprovedPatches()).append(",");
         if (getApprovedPatchesComplianceLevel() != null)
             sb.append("ApprovedPatchesComplianceLevel: ").append(getApprovedPatchesComplianceLevel()).append(",");
+        if (getApprovedPatchesEnableNonSecurity() != null)
+            sb.append("ApprovedPatchesEnableNonSecurity: ").append(getApprovedPatchesEnableNonSecurity()).append(",");
         if (getRejectedPatches() != null)
             sb.append("RejectedPatches: ").append(getRejectedPatches()).append(",");
         if (getDescription() != null)
             sb.append("Description: ").append(getDescription()).append(",");
+        if (getSources() != null)
+            sb.append("Sources: ").append(getSources()).append(",");
         if (getClientToken() != null)
             sb.append("ClientToken: ").append(getClientToken());
         sb.append("}");
@@ -662,6 +900,11 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
         if (other.getApprovedPatchesComplianceLevel() != null
                 && other.getApprovedPatchesComplianceLevel().equals(this.getApprovedPatchesComplianceLevel()) == false)
             return false;
+        if (other.getApprovedPatchesEnableNonSecurity() == null ^ this.getApprovedPatchesEnableNonSecurity() == null)
+            return false;
+        if (other.getApprovedPatchesEnableNonSecurity() != null
+                && other.getApprovedPatchesEnableNonSecurity().equals(this.getApprovedPatchesEnableNonSecurity()) == false)
+            return false;
         if (other.getRejectedPatches() == null ^ this.getRejectedPatches() == null)
             return false;
         if (other.getRejectedPatches() != null && other.getRejectedPatches().equals(this.getRejectedPatches()) == false)
@@ -669,6 +912,10 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
         if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false)
+            return false;
+        if (other.getSources() == null ^ this.getSources() == null)
+            return false;
+        if (other.getSources() != null && other.getSources().equals(this.getSources()) == false)
             return false;
         if (other.getClientToken() == null ^ this.getClientToken() == null)
             return false;
@@ -688,8 +935,10 @@ public class CreatePatchBaselineRequest extends com.amazonaws.AmazonWebServiceRe
         hashCode = prime * hashCode + ((getApprovalRules() == null) ? 0 : getApprovalRules().hashCode());
         hashCode = prime * hashCode + ((getApprovedPatches() == null) ? 0 : getApprovedPatches().hashCode());
         hashCode = prime * hashCode + ((getApprovedPatchesComplianceLevel() == null) ? 0 : getApprovedPatchesComplianceLevel().hashCode());
+        hashCode = prime * hashCode + ((getApprovedPatchesEnableNonSecurity() == null) ? 0 : getApprovedPatchesEnableNonSecurity().hashCode());
         hashCode = prime * hashCode + ((getRejectedPatches() == null) ? 0 : getRejectedPatches().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        hashCode = prime * hashCode + ((getSources() == null) ? 0 : getSources().hashCode());
         hashCode = prime * hashCode + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
         return hashCode;
     }

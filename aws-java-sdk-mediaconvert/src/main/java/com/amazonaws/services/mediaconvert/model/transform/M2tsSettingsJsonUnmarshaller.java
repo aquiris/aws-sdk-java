@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -112,6 +112,10 @@ public class M2tsSettingsJsonUnmarshaller implements Unmarshaller<M2tsSettings, 
                     context.nextToken();
                     m2tsSettings.setMinEbpInterval(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
+                if (context.testExpression("nielsenId3", targetDepth)) {
+                    context.nextToken();
+                    m2tsSettings.setNielsenId3(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("nullPacketBitrate", targetDepth)) {
                     context.nextToken();
                     m2tsSettings.setNullPacketBitrate(context.getUnmarshaller(Double.class).unmarshall(context));
@@ -167,6 +171,10 @@ public class M2tsSettingsJsonUnmarshaller implements Unmarshaller<M2tsSettings, 
                 if (context.testExpression("segmentationTime", targetDepth)) {
                     context.nextToken();
                     m2tsSettings.setSegmentationTime(context.getUnmarshaller(Double.class).unmarshall(context));
+                }
+                if (context.testExpression("timedMetadataPid", targetDepth)) {
+                    context.nextToken();
+                    m2tsSettings.setTimedMetadataPid(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("transportStreamId", targetDepth)) {
                     context.nextToken();

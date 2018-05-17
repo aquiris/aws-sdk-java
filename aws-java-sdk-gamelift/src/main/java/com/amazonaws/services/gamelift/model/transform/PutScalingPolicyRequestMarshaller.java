@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,10 @@ public class PutScalingPolicyRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EvaluationPeriods").build();
     private static final MarshallingInfo<String> METRICNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("MetricName").build();
+    private static final MarshallingInfo<String> POLICYTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PolicyType").build();
+    private static final MarshallingInfo<StructuredPojo> TARGETCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TargetConfiguration").build();
 
     private static final PutScalingPolicyRequestMarshaller instance = new PutScalingPolicyRequestMarshaller();
 
@@ -68,6 +72,8 @@ public class PutScalingPolicyRequestMarshaller {
             protocolMarshaller.marshall(putScalingPolicyRequest.getComparisonOperator(), COMPARISONOPERATOR_BINDING);
             protocolMarshaller.marshall(putScalingPolicyRequest.getEvaluationPeriods(), EVALUATIONPERIODS_BINDING);
             protocolMarshaller.marshall(putScalingPolicyRequest.getMetricName(), METRICNAME_BINDING);
+            protocolMarshaller.marshall(putScalingPolicyRequest.getPolicyType(), POLICYTYPE_BINDING);
+            protocolMarshaller.marshall(putScalingPolicyRequest.getTargetConfiguration(), TARGETCONFIGURATION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

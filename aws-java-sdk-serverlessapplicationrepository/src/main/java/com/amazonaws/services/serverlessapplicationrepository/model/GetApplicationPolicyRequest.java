@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,14 +25,20 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetApplicationPolicyRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** The id of the application to get policy for */
+    /**
+     * <p>
+     * The ID of the application to get.
+     * </p>
+     */
     private String applicationId;
 
     /**
-     * The id of the application to get policy for
+     * <p>
+     * The ID of the application to get.
+     * </p>
      * 
      * @param applicationId
-     *        The id of the application to get policy for
+     *        The ID of the application to get.
      */
 
     public void setApplicationId(String applicationId) {
@@ -40,9 +46,11 @@ public class GetApplicationPolicyRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * The id of the application to get policy for
+     * <p>
+     * The ID of the application to get.
+     * </p>
      * 
-     * @return The id of the application to get policy for
+     * @return The ID of the application to get.
      */
 
     public String getApplicationId() {
@@ -50,10 +58,12 @@ public class GetApplicationPolicyRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * The id of the application to get policy for
+     * <p>
+     * The ID of the application to get.
+     * </p>
      * 
      * @param applicationId
-     *        The id of the application to get policy for
+     *        The ID of the application to get.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

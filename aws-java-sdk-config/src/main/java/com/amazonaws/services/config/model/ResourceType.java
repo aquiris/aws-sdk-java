@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -69,7 +69,15 @@ public enum ResourceType {
     AWSWAFRegionalRule("AWS::WAFRegional::Rule"),
     AWSWAFRegionalWebACL("AWS::WAFRegional::WebACL"),
     AWSCloudFrontDistribution("AWS::CloudFront::Distribution"),
-    AWSCloudFrontStreamingDistribution("AWS::CloudFront::StreamingDistribution");
+    AWSCloudFrontStreamingDistribution("AWS::CloudFront::StreamingDistribution"),
+    AWSWAFRuleGroup("AWS::WAF::RuleGroup"),
+    AWSWAFRegionalRuleGroup("AWS::WAFRegional::RuleGroup"),
+    AWSLambdaFunction("AWS::Lambda::Function"),
+    AWSElasticBeanstalkApplication("AWS::ElasticBeanstalk::Application"),
+    AWSElasticBeanstalkApplicationVersion("AWS::ElasticBeanstalk::ApplicationVersion"),
+    AWSElasticBeanstalkEnvironment("AWS::ElasticBeanstalk::Environment"),
+    AWSElasticLoadBalancingLoadBalancer("AWS::ElasticLoadBalancing::LoadBalancer"),
+    AWSXRayEncryptionConfig("AWS::XRay::EncryptionConfig");
 
     private String value;
 

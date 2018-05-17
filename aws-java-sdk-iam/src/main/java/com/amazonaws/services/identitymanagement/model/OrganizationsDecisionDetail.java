@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Contains information about AWS Organizations's affect on a policy simulation.
+ * Contains information about AWS Organizations's effect on a policy simulation.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/OrganizationsDecisionDetail" target="_top">AWS
@@ -28,21 +28,21 @@ public class OrganizationsDecisionDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact
-     * the simulated user's account.
+     * Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that
+     * impact the simulated user's account.
      * </p>
      */
     private Boolean allowedByOrganizations;
 
     /**
      * <p>
-     * Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact
-     * the simulated user's account.
+     * Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that
+     * impact the simulated user's account.
      * </p>
      * 
      * @param allowedByOrganizations
-     *        Specifies whether the simulated action is allowed by the AWS Organizations service control policies that
-     *        impact the simulated user's account.
+     *        Specifies whether the simulated operation is allowed by the AWS Organizations service control policies
+     *        that impact the simulated user's account.
      */
 
     public void setAllowedByOrganizations(Boolean allowedByOrganizations) {
@@ -51,12 +51,12 @@ public class OrganizationsDecisionDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact
-     * the simulated user's account.
+     * Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that
+     * impact the simulated user's account.
      * </p>
      * 
-     * @return Specifies whether the simulated action is allowed by the AWS Organizations service control policies that
-     *         impact the simulated user's account.
+     * @return Specifies whether the simulated operation is allowed by the AWS Organizations service control policies
+     *         that impact the simulated user's account.
      */
 
     public Boolean getAllowedByOrganizations() {
@@ -65,13 +65,13 @@ public class OrganizationsDecisionDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact
-     * the simulated user's account.
+     * Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that
+     * impact the simulated user's account.
      * </p>
      * 
      * @param allowedByOrganizations
-     *        Specifies whether the simulated action is allowed by the AWS Organizations service control policies that
-     *        impact the simulated user's account.
+     *        Specifies whether the simulated operation is allowed by the AWS Organizations service control policies
+     *        that impact the simulated user's account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -82,12 +82,12 @@ public class OrganizationsDecisionDetail implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact
-     * the simulated user's account.
+     * Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that
+     * impact the simulated user's account.
      * </p>
      * 
-     * @return Specifies whether the simulated action is allowed by the AWS Organizations service control policies that
-     *         impact the simulated user's account.
+     * @return Specifies whether the simulated operation is allowed by the AWS Organizations service control policies
+     *         that impact the simulated user's account.
      */
 
     public Boolean isAllowedByOrganizations() {

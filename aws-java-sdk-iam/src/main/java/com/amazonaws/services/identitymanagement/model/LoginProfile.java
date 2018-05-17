@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * Contains the user name and password create date for a user.
  * </p>
  * <p>
- * This data type is used as a response element in the <a>CreateLoginProfile</a> and <a>GetLoginProfile</a> actions.
+ * This data type is used as a response element in the <a>CreateLoginProfile</a> and <a>GetLoginProfile</a> operations.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/LoginProfile" target="_top">AWS API

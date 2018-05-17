@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the build project.
+     * The name of the AWS CodeBuild project.
      * </p>
      */
     private String projectName;
@@ -61,11 +61,11 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the build project.
+     * The name of the AWS CodeBuild project.
      * </p>
      * 
      * @param projectName
-     *        The name of the build project.
+     *        The name of the AWS CodeBuild project.
      */
 
     public void setProjectName(String projectName) {
@@ -74,10 +74,10 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the build project.
+     * The name of the AWS CodeBuild project.
      * </p>
      * 
-     * @return The name of the build project.
+     * @return The name of the AWS CodeBuild project.
      */
 
     public String getProjectName() {
@@ -86,11 +86,11 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the build project.
+     * The name of the AWS CodeBuild project.
      * </p>
      * 
      * @param projectName
-     *        The name of the build project.
+     *        The name of the AWS CodeBuild project.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,10 +13,10 @@
 
 /**
  * <p>
- * Amazon Route 53 autonaming lets you configure public or private namespaces that your microservice applications run
- * in. When instances of the service become available, you can call the autonaming API to register the instance, and
- * Amazon Route 53 automatically creates up to five DNS records and an optional health check. Clients that submit DNS
- * queries for the service receive an answer that contains up to eight healthy records.
+ * Amazon Route 53 auto naming lets you configure public or private namespaces that your microservice applications run
+ * in. When instances of the service become available, you can call the auto naming API to register the instance, and
+ * Route 53 automatically creates up to five DNS records and an optional health check. Clients that submit DNS queries
+ * for the service receive an answer that contains up to eight healthy records.
  * </p>
  */
 package com.amazonaws.services.servicediscovery;

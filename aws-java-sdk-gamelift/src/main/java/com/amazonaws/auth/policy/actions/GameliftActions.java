@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -125,10 +125,16 @@ public enum GameliftActions implements Action {
     ResolveAlias("gamelift:ResolveAlias"),
     /** Action for the SearchGameSessions operation. */
     SearchGameSessions("gamelift:SearchGameSessions"),
+    /** Action for the StartFleetActions operation. */
+    StartFleetActions("gamelift:StartFleetActions"),
     /** Action for the StartGameSessionPlacement operation. */
     StartGameSessionPlacement("gamelift:StartGameSessionPlacement"),
+    /** Action for the StartMatchBackfill operation. */
+    StartMatchBackfill("gamelift:StartMatchBackfill"),
     /** Action for the StartMatchmaking operation. */
     StartMatchmaking("gamelift:StartMatchmaking"),
+    /** Action for the StopFleetActions operation. */
+    StopFleetActions("gamelift:StopFleetActions"),
     /** Action for the StopGameSessionPlacement operation. */
     StopGameSessionPlacement("gamelift:StopGameSessionPlacement"),
     /** Action for the StopMatchmaking operation. */

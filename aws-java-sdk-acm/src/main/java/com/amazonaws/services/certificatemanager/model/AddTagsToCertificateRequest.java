@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class AddTagsToCertificateRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:
+     * String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
@@ -48,7 +48,7 @@ public class AddTagsToCertificateRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:
+     * String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
@@ -60,7 +60,7 @@ public class AddTagsToCertificateRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param certificateArn
-     *        String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the
+     *        String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the
      *        form:</p>
      *        <p>
      *        <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
@@ -77,7 +77,7 @@ public class AddTagsToCertificateRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:
+     * String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
@@ -88,7 +88,7 @@ public class AddTagsToCertificateRequest extends com.amazonaws.AmazonWebServiceR
      * AWS Service Namespaces</a>.
      * </p>
      * 
-     * @return String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of
+     * @return String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of
      *         the form:</p>
      *         <p>
      *         <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
@@ -105,7 +105,7 @@ public class AddTagsToCertificateRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:
+     * String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
      * </p>
      * <p>
      * <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
@@ -117,7 +117,7 @@ public class AddTagsToCertificateRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param certificateArn
-     *        String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the
+     *        String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the
      *        form:</p>
      *        <p>
      *        <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>

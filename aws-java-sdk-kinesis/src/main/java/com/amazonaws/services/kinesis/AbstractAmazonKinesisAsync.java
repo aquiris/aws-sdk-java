@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -345,6 +345,19 @@ public class AbstractAmazonKinesisAsync extends AbstractAmazonKinesis implements
     @Override
     public java.util.concurrent.Future<IncreaseStreamRetentionPeriodResult> increaseStreamRetentionPeriodAsync(IncreaseStreamRetentionPeriodRequest request,
             com.amazonaws.handlers.AsyncHandler<IncreaseStreamRetentionPeriodRequest, IncreaseStreamRetentionPeriodResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListShardsResult> listShardsAsync(ListShardsRequest request) {
+
+        return listShardsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListShardsResult> listShardsAsync(ListShardsRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListShardsRequest, ListShardsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

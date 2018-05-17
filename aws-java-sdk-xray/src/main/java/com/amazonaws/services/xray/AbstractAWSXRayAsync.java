@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,19 @@ public class AbstractAWSXRayAsync extends AbstractAWSXRay implements AWSXRayAsyn
     }
 
     @Override
+    public java.util.concurrent.Future<GetEncryptionConfigResult> getEncryptionConfigAsync(GetEncryptionConfigRequest request) {
+
+        return getEncryptionConfigAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetEncryptionConfigResult> getEncryptionConfigAsync(GetEncryptionConfigRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetEncryptionConfigRequest, GetEncryptionConfigResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<GetServiceGraphResult> getServiceGraphAsync(GetServiceGraphRequest request) {
 
         return getServiceGraphAsync(request, null);
@@ -74,6 +87,19 @@ public class AbstractAWSXRayAsync extends AbstractAWSXRay implements AWSXRayAsyn
     @Override
     public java.util.concurrent.Future<GetTraceSummariesResult> getTraceSummariesAsync(GetTraceSummariesRequest request,
             com.amazonaws.handlers.AsyncHandler<GetTraceSummariesRequest, GetTraceSummariesResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutEncryptionConfigResult> putEncryptionConfigAsync(PutEncryptionConfigRequest request) {
+
+        return putEncryptionConfigAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutEncryptionConfigResult> putEncryptionConfigAsync(PutEncryptionConfigRequest request,
+            com.amazonaws.handlers.AsyncHandler<PutEncryptionConfigRequest, PutEncryptionConfigResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

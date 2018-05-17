@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,7 +51,7 @@ import com.amazonaws.services.costexplorer.model.transform.*;
  * <p>
  * The Cost Explorer API allows you to programmatically query your cost and usage data. You can query for aggregated
  * data such as total monthly costs or total daily usage. You can also query for granular data, such as the number of
- * daily write operations for DynamoDB database tables in your production environment.
+ * daily write operations for Amazon DynamoDB database tables in your production environment.
  * </p>
  * <p>
  * Service Endpoint
@@ -66,6 +66,10 @@ import com.amazonaws.services.costexplorer.model.transform.*;
  * </p>
  * </li>
  * </ul>
+ * <p>
+ * For information about costs associated with the Cost Explorer API, see <a
+ * href="https://aws.amazon.com/aws-cost-management/pricing/">AWS Cost Management Pricing</a>.
+ * </p>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -86,6 +90,18 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
                     .withProtocolVersion("1.1")
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RequestChangedException").withModeledClass(
+                                    com.amazonaws.services.costexplorer.model.RequestChangedException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DataUnavailableException").withModeledClass(
+                                    com.amazonaws.services.costexplorer.model.DataUnavailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("BillExpirationException").withModeledClass(
+                                    com.amazonaws.services.costexplorer.model.BillExpirationException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
+                                    com.amazonaws.services.costexplorer.model.InvalidNextTokenException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
                                     com.amazonaws.services.costexplorer.model.LimitExceededException.class))
@@ -124,17 +140,27 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
-     * Retrieve cost and usage metrics for your account. You can specify which cost and usage-related metric, such as
+     * Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric, such as
      * <code>BlendedCosts</code> or <code>UsageQuantity</code>, that you want the request to return. You can also filter
-     * and group your data by various dimensions, such as <code>AWS Service</code> or <code>AvailabilityZone</code>, in
-     * a specific time range. See the <code>GetDimensionValues</code> action for a complete list of the valid
-     * dimensions. Master accounts in an organization have access to all member accounts.
+     * and group your data by various dimensions, such as <code>SERVICE</code> or <code>AZ</code>, in a specific time
+     * range. For a complete list of valid dimensions, see the
+     * <code> <a href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html">GetDimensionValues</a> </code>
+     * operation. Master accounts in an organization in AWS Organizations have access to all member accounts.
      * </p>
      * 
      * @param getCostAndUsageRequest
      * @return Result of the GetCostAndUsage operation returned by the service.
      * @throws LimitExceededException
      *         You made too many calls in a short period of time. Try again later.
+     * @throws BillExpirationException
+     *         The requested report expired. Update the date interval and try again.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @throws RequestChangedException
+     *         Your request parameters changed between pages. Try again with the old parameters or without a pagination
+     *         token.
      * @sample AWSCostExplorer.GetCostAndUsage
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetCostAndUsage" target="_top">AWS API
      *      Documentation</a>
@@ -160,6 +186,7 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
                 request = new GetCostAndUsageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCostAndUsageRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -178,14 +205,23 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
-     * You can use <code>GetDimensionValues</code> to retrieve all available filter values for a specific filter over a
-     * period of time. You can search the dimension values for an arbitrary string.
+     * Retrieves all available filter values for a specified filter over a period of time. You can search the dimension
+     * values for an arbitrary string.
      * </p>
      * 
      * @param getDimensionValuesRequest
      * @return Result of the GetDimensionValues operation returned by the service.
      * @throws LimitExceededException
      *         You made too many calls in a short period of time. Try again later.
+     * @throws BillExpirationException
+     *         The requested report expired. Update the date interval and try again.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @throws RequestChangedException
+     *         Your request parameters changed between pages. Try again with the old parameters or without a pagination
+     *         token.
      * @sample AWSCostExplorer.GetDimensionValues
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetDimensionValues" target="_top">AWS API
      *      Documentation</a>
@@ -211,6 +247,7 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
                 request = new GetDimensionValuesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDimensionValuesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -229,16 +266,218 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
-     * You can retrieve the Reservation utilization for your account. Master accounts in an organization have access to
-     * their associated member accounts. You can filter data by dimensions in a time period. You can use
-     * <code>GetDimensionValues</code> to determine the possible dimension values. Currently, you can group only by
-     * <code>SUBSCRIPTION_ID</code>.
+     * Retrieves the reservation coverage for your account. This allows you to see how much of your Amazon Elastic
+     * Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a
+     * reservation. An organization's master account can see the coverage of the associated member accounts. For any
+     * time period, you can filter data about reservation usage by the following dimensions:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * AZ
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * CACHE_ENGINE
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DATABASE_ENGINE
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * DEPLOYMENT_OPTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_TYPE
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * LINKED_ACCOUNT
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * OPERATING_SYSTEM
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PLATFORM
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * REGION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SERVICE
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TAG
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TENANCY
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To determine valid values for a dimension, use the <code>GetDimensionValues</code> operation.
+     * </p>
+     * 
+     * @param getReservationCoverageRequest
+     *        You can use the following request parameters to query for how much of your instance usage is covered by a
+     *        reservation.
+     * @return Result of the GetReservationCoverage operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @sample AWSCostExplorer.GetReservationCoverage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetReservationCoverage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetReservationCoverageResult getReservationCoverage(GetReservationCoverageRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetReservationCoverage(request);
+    }
+
+    @SdkInternalApi
+    final GetReservationCoverageResult executeGetReservationCoverage(GetReservationCoverageRequest getReservationCoverageRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getReservationCoverageRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetReservationCoverageRequest> request = null;
+        Response<GetReservationCoverageResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetReservationCoverageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getReservationCoverageRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetReservationCoverageResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new GetReservationCoverageResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets recommendations for which reservations to purchase. These recommendations could help you reduce your costs.
+     * Reservations provide a discounted hourly rate (up to 75%) compared to On-Demand pricing.
+     * </p>
+     * <p>
+     * AWS generates your recommendations by identifying your On-Demand usage during a specific time period and
+     * collecting your usage into categories that are eligible for a reservation. After AWS has these categories, it
+     * simulates every combination of reservations in each category of usage to identify the best number of each type of
+     * RI to purchase to maximize your estimated savings.
+     * </p>
+     * <p>
+     * For example, AWS automatically aggregates your EC2 Linux, shared tenancy, and c4 family usage in the US West
+     * (Oregon) Region and recommends that you buy size-flexible regional reservations to apply to the c4 family usage.
+     * AWS recommends the smallest size instance in an instance family. This makes it easier to purchase a size-flexible
+     * RI. AWS also shows the equal number of normalized units so that you can purchase any instance size that you want.
+     * For this example, your RI recommendation would be for <code>c4.large</code>, because that is the smallest size
+     * instance in the c4 instance family.
+     * </p>
+     * 
+     * @param getReservationPurchaseRecommendationRequest
+     * @return Result of the GetReservationPurchaseRecommendation operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @sample AWSCostExplorer.GetReservationPurchaseRecommendation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetReservationPurchaseRecommendation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public GetReservationPurchaseRecommendationResult getReservationPurchaseRecommendation(GetReservationPurchaseRecommendationRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetReservationPurchaseRecommendation(request);
+    }
+
+    @SdkInternalApi
+    final GetReservationPurchaseRecommendationResult executeGetReservationPurchaseRecommendation(
+            GetReservationPurchaseRecommendationRequest getReservationPurchaseRecommendationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getReservationPurchaseRecommendationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetReservationPurchaseRecommendationRequest> request = null;
+        Response<GetReservationPurchaseRecommendationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetReservationPurchaseRecommendationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(getReservationPurchaseRecommendationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetReservationPurchaseRecommendationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new GetReservationPurchaseRecommendationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves the reservation utilization for your account. Master accounts in an organization have access to member
+     * accounts. You can filter data by dimensions in a time period. You can use <code>GetDimensionValues</code> to
+     * determine the possible dimension values. Currently, you can group only by <code>SUBSCRIPTION_ID</code>.
      * </p>
      * 
      * @param getReservationUtilizationRequest
      * @return Result of the GetReservationUtilization operation returned by the service.
      * @throws LimitExceededException
      *         You made too many calls in a short period of time. Try again later.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
      * @sample AWSCostExplorer.GetReservationUtilization
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetReservationUtilization" target="_top">AWS
      *      API Documentation</a>
@@ -265,6 +504,7 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
                         .beforeMarshalling(getReservationUtilizationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -284,7 +524,7 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
-     * You can query for available tag keys and tag values for a specified period. You can search the tag values for an
+     * Queries for available tag keys and tag values for a specified period. You can search the tag values for an
      * arbitrary string.
      * </p>
      * 
@@ -292,6 +532,15 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
      * @return Result of the GetTags operation returned by the service.
      * @throws LimitExceededException
      *         You made too many calls in a short period of time. Try again later.
+     * @throws BillExpirationException
+     *         The requested report expired. Update the date interval and try again.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @throws RequestChangedException
+     *         Your request parameters changed between pages. Try again with the old parameters or without a pagination
+     *         token.
      * @sample AWSCostExplorer.GetTags
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetTags" target="_top">AWS API
      *      Documentation</a>
@@ -317,6 +566,7 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
                 request = new GetTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

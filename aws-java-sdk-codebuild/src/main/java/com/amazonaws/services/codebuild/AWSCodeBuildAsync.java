@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,11 @@ import com.amazonaws.services.codebuild.model.*;
  * <code>CreateWebhook</code>: For an existing AWS CodeBuild build project that has its source code stored in a GitHub
  * repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is
  * pushed to the repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>UpdateWebhook</code>: Changes the settings of an existing webhook.
  * </p>
  * </li>
  * <li>
@@ -259,9 +264,9 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      * then two identical builds will be created for each commit. One build is triggered through webhooks, and one
      * through AWS CodePipeline. Because billing is on a per-build basis, you will be billed for both builds. Therefore,
      * if you are using AWS CodePipeline, we recommend that you disable webhooks in CodeBuild. In the AWS CodeBuild
-     * console, clear the Webhook box. For more information, see step 9 in <a
+     * console, clear the Webhook box. For more information, see step 5 in <a
      * href="http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console">Change a
-     * Build Project’s Settings</a>.
+     * Build Project's Settings</a>.
      * </p>
      * </important>
      * 
@@ -284,9 +289,9 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      * then two identical builds will be created for each commit. One build is triggered through webhooks, and one
      * through AWS CodePipeline. Because billing is on a per-build basis, you will be billed for both builds. Therefore,
      * if you are using AWS CodePipeline, we recommend that you disable webhooks in CodeBuild. In the AWS CodeBuild
-     * console, clear the Webhook box. For more information, see step 9 in <a
+     * console, clear the Webhook box. For more information, see step 5 in <a
      * href="http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console">Change a
-     * Build Project’s Settings</a>.
+     * Build Project's Settings</a>.
      * </p>
      * </important>
      * 
@@ -618,5 +623,36 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<UpdateProjectResult> updateProjectAsync(UpdateProjectRequest updateProjectRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateProjectRequest, UpdateProjectResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the webhook associated with an AWS CodeBuild build project.
+     * </p>
+     * 
+     * @param updateWebhookRequest
+     * @return A Java Future containing the result of the UpdateWebhook operation returned by the service.
+     * @sample AWSCodeBuildAsync.UpdateWebhook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/UpdateWebhook" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateWebhookResult> updateWebhookAsync(UpdateWebhookRequest updateWebhookRequest);
+
+    /**
+     * <p>
+     * Updates the webhook associated with an AWS CodeBuild build project.
+     * </p>
+     * 
+     * @param updateWebhookRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateWebhook operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.UpdateWebhook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/UpdateWebhook" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateWebhookResult> updateWebhookAsync(UpdateWebhookRequest updateWebhookRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateWebhookRequest, UpdateWebhookResult> asyncHandler);
 
 }

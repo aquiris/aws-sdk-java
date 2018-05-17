@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * An object that contains details about how a service-linked role is used.
+ * An object that contains details about how a service-linked role is used, if that information is returned by the
+ * service.
  * </p>
  * <p>
  * This data type is used as a response element in the <a>GetServiceLinkedRoleDeletionStatus</a> operation.

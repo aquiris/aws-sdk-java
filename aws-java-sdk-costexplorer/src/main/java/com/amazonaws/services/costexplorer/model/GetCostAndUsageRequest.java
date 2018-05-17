@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,23 +36,27 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
     private DateInterval timePeriod;
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
+     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
+     * <code>DAILY</code>.
      * </p>
      */
     private String granularity;
     /**
      * <p>
-     * Filters AWS costs by different dimensions. For example, you can specify <code>Service</code> and
-     * <code>Linked Account</code> and get the costs associated with that account's usage of that service. You can nest
-     * <code>Expression</code> objects to define any combination of dimension filters. For more information, see the
-     * <code>Expression</code> object or <code>More Examples</code>.
+     * Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and
+     * <code>LINKED_ACCOUNT</code> and get the costs that are associated with that account's usage of that service. You
+     * can nest <code>Expression</code> objects to define any combination of dimension filters. For more information,
+     * see <a
+     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>.
      * </p>
      */
     private Expression filter;
     /**
      * <p>
-     * Which metrics are returned in the query. For more information about blended and unblended rates, see
-     * https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/.
+     * Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     * href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     * annotation appear on some line items in my bill?</a>.
      * </p>
      * <p>
      * Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
@@ -66,6 +70,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <code>UsageTypeGroups</code>.
      * </p>
      * </note>
+     * <p>
+     * <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
+     * </p>
      */
     private java.util.List<String> metrics;
     /**
@@ -76,9 +83,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * When you group by tag key, you get all tag values, including empty strings.
      * </p>
      * <p>
-     * Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     * <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     * <code>TAGS</code>, and <code>PLATFORM</code>.
+     * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      * </p>
      */
     private java.util.List<GroupDefinition> groupBy;
@@ -150,11 +157,15 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
+     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
+     * <code>DAILY</code>.
      * </p>
      * 
      * @param granularity
-     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
+     *        isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
+     *        or <code>DAILY</code>.
      * @see Granularity
      */
 
@@ -164,10 +175,14 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
+     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
+     * <code>DAILY</code>.
      * </p>
      * 
-     * @return Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     * @return Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
+     *         isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
+     *         or <code>DAILY</code>.
      * @see Granularity
      */
 
@@ -177,11 +192,15 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
+     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
+     * <code>DAILY</code>.
      * </p>
      * 
      * @param granularity
-     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
+     *        isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
+     *        or <code>DAILY</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Granularity
      */
@@ -193,11 +212,15 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
+     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
+     * <code>DAILY</code>.
      * </p>
      * 
      * @param granularity
-     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>.
+     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
+     *        isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
+     *        or <code>DAILY</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Granularity
      */
@@ -209,17 +232,20 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Filters AWS costs by different dimensions. For example, you can specify <code>Service</code> and
-     * <code>Linked Account</code> and get the costs associated with that account's usage of that service. You can nest
-     * <code>Expression</code> objects to define any combination of dimension filters. For more information, see the
-     * <code>Expression</code> object or <code>More Examples</code>.
+     * Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and
+     * <code>LINKED_ACCOUNT</code> and get the costs that are associated with that account's usage of that service. You
+     * can nest <code>Expression</code> objects to define any combination of dimension filters. For more information,
+     * see <a
+     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>.
      * </p>
      * 
      * @param filter
-     *        Filters AWS costs by different dimensions. For example, you can specify <code>Service</code> and
-     *        <code>Linked Account</code> and get the costs associated with that account's usage of that service. You
-     *        can nest <code>Expression</code> objects to define any combination of dimension filters. For more
-     *        information, see the <code>Expression</code> object or <code>More Examples</code>.
+     *        Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and
+     *        <code>LINKED_ACCOUNT</code> and get the costs that are associated with that account's usage of that
+     *        service. You can nest <code>Expression</code> objects to define any combination of dimension filters. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
+     *        >Expression</a>.
      */
 
     public void setFilter(Expression filter) {
@@ -228,16 +254,19 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Filters AWS costs by different dimensions. For example, you can specify <code>Service</code> and
-     * <code>Linked Account</code> and get the costs associated with that account's usage of that service. You can nest
-     * <code>Expression</code> objects to define any combination of dimension filters. For more information, see the
-     * <code>Expression</code> object or <code>More Examples</code>.
+     * Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and
+     * <code>LINKED_ACCOUNT</code> and get the costs that are associated with that account's usage of that service. You
+     * can nest <code>Expression</code> objects to define any combination of dimension filters. For more information,
+     * see <a
+     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>.
      * </p>
      * 
-     * @return Filters AWS costs by different dimensions. For example, you can specify <code>Service</code> and
-     *         <code>Linked Account</code> and get the costs associated with that account's usage of that service. You
-     *         can nest <code>Expression</code> objects to define any combination of dimension filters. For more
-     *         information, see the <code>Expression</code> object or <code>More Examples</code>.
+     * @return Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and
+     *         <code>LINKED_ACCOUNT</code> and get the costs that are associated with that account's usage of that
+     *         service. You can nest <code>Expression</code> objects to define any combination of dimension filters. For
+     *         more information, see <a
+     *         href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
+     *         >Expression</a>.
      */
 
     public Expression getFilter() {
@@ -246,17 +275,20 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Filters AWS costs by different dimensions. For example, you can specify <code>Service</code> and
-     * <code>Linked Account</code> and get the costs associated with that account's usage of that service. You can nest
-     * <code>Expression</code> objects to define any combination of dimension filters. For more information, see the
-     * <code>Expression</code> object or <code>More Examples</code>.
+     * Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and
+     * <code>LINKED_ACCOUNT</code> and get the costs that are associated with that account's usage of that service. You
+     * can nest <code>Expression</code> objects to define any combination of dimension filters. For more information,
+     * see <a
+     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>.
      * </p>
      * 
      * @param filter
-     *        Filters AWS costs by different dimensions. For example, you can specify <code>Service</code> and
-     *        <code>Linked Account</code> and get the costs associated with that account's usage of that service. You
-     *        can nest <code>Expression</code> objects to define any combination of dimension filters. For more
-     *        information, see the <code>Expression</code> object or <code>More Examples</code>.
+     *        Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and
+     *        <code>LINKED_ACCOUNT</code> and get the costs that are associated with that account's usage of that
+     *        service. You can nest <code>Expression</code> objects to define any combination of dimension filters. For
+     *        more information, see <a
+     *        href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
+     *        >Expression</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -267,8 +299,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Which metrics are returned in the query. For more information about blended and unblended rates, see
-     * https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/.
+     * Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     * href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     * annotation appear on some line items in my bill?</a>.
      * </p>
      * <p>
      * Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
@@ -282,9 +315,13 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <code>UsageTypeGroups</code>.
      * </p>
      * </note>
+     * <p>
+     * <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
+     * </p>
      * 
-     * @return Which metrics are returned in the query. For more information about blended and unblended rates, see
-     *         https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/. </p>
+     * @return Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     *         href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     *         annotation appear on some line items in my bill?</a>. </p>
      *         <p>
      *         Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
      *         </p>
@@ -296,6 +333,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *         units (for example, hours vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by
      *         <code>UsageType</code> or <code>UsageTypeGroups</code>.
      *         </p>
+     *         </note>
+     *         <p>
+     *         <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
      */
 
     public java.util.List<String> getMetrics() {
@@ -304,8 +344,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Which metrics are returned in the query. For more information about blended and unblended rates, see
-     * https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/.
+     * Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     * href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     * annotation appear on some line items in my bill?</a>.
      * </p>
      * <p>
      * Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
@@ -319,10 +360,14 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <code>UsageTypeGroups</code>.
      * </p>
      * </note>
+     * <p>
+     * <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
+     * </p>
      * 
      * @param metrics
-     *        Which metrics are returned in the query. For more information about blended and unblended rates, see
-     *        https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/. </p>
+     *        Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     *        href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     *        annotation appear on some line items in my bill?</a>. </p>
      *        <p>
      *        Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
      *        </p>
@@ -334,6 +379,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        (for example, hours vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by
      *        <code>UsageType</code> or <code>UsageTypeGroups</code>.
      *        </p>
+     *        </note>
+     *        <p>
+     *        <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
      */
 
     public void setMetrics(java.util.Collection<String> metrics) {
@@ -347,8 +395,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Which metrics are returned in the query. For more information about blended and unblended rates, see
-     * https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/.
+     * Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     * href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     * annotation appear on some line items in my bill?</a>.
      * </p>
      * <p>
      * Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
@@ -363,14 +412,18 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * </note>
      * <p>
+     * <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setMetrics(java.util.Collection)} or {@link #withMetrics(java.util.Collection)} if you want to override
      * the existing values.
      * </p>
      * 
      * @param metrics
-     *        Which metrics are returned in the query. For more information about blended and unblended rates, see
-     *        https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/. </p>
+     *        Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     *        href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     *        annotation appear on some line items in my bill?</a>. </p>
      *        <p>
      *        Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
      *        </p>
@@ -382,6 +435,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        (for example, hours vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by
      *        <code>UsageType</code> or <code>UsageTypeGroups</code>.
      *        </p>
+     *        </note>
+     *        <p>
+     *        <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -397,8 +453,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Which metrics are returned in the query. For more information about blended and unblended rates, see
-     * https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/.
+     * Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     * href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     * annotation appear on some line items in my bill?</a>.
      * </p>
      * <p>
      * Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
@@ -412,10 +469,14 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <code>UsageTypeGroups</code>.
      * </p>
      * </note>
+     * <p>
+     * <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
+     * </p>
      * 
      * @param metrics
-     *        Which metrics are returned in the query. For more information about blended and unblended rates, see
-     *        https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/. </p>
+     *        Which metrics are returned in the query. For more information about blended and unblended rates, see <a
+     *        href="https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended"
+     *        annotation appear on some line items in my bill?</a>. </p>
      *        <p>
      *        Valid values are <code>BlendedCost</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>.
      *        </p>
@@ -427,6 +488,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        (for example, hours vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by
      *        <code>UsageType</code> or <code>UsageTypeGroups</code>.
      *        </p>
+     *        </note>
+     *        <p>
+     *        <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -443,9 +507,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * When you group by tag key, you get all tag values, including empty strings.
      * </p>
      * <p>
-     * Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     * <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     * <code>TAGS</code>, and <code>PLATFORM</code>.
+     * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      * </p>
      * 
      * @return You can group AWS costs using up to two different groups, either dimensions, tag keys, or both.</p>
@@ -453,9 +517,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *         When you group by tag key, you get all tag values, including empty strings.
      *         </p>
      *         <p>
-     *         Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     *         <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     *         <code>TAGS</code>, and <code>PLATFORM</code>.
+     *         Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     *         <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     *         <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      */
 
     public java.util.List<GroupDefinition> getGroupBy() {
@@ -470,9 +534,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * When you group by tag key, you get all tag values, including empty strings.
      * </p>
      * <p>
-     * Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     * <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     * <code>TAGS</code>, and <code>PLATFORM</code>.
+     * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      * </p>
      * 
      * @param groupBy
@@ -481,9 +545,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        When you group by tag key, you get all tag values, including empty strings.
      *        </p>
      *        <p>
-     *        Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     *        <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     *        <code>TAGS</code>, and <code>PLATFORM</code>.
+     *        Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     *        <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      */
 
     public void setGroupBy(java.util.Collection<GroupDefinition> groupBy) {
@@ -503,9 +567,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * When you group by tag key, you get all tag values, including empty strings.
      * </p>
      * <p>
-     * Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     * <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     * <code>TAGS</code>, and <code>PLATFORM</code>.
+     * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -519,9 +583,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        When you group by tag key, you get all tag values, including empty strings.
      *        </p>
      *        <p>
-     *        Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     *        <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     *        <code>TAGS</code>, and <code>PLATFORM</code>.
+     *        Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     *        <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -543,9 +607,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * When you group by tag key, you get all tag values, including empty strings.
      * </p>
      * <p>
-     * Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     * <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     * <code>TAGS</code>, and <code>PLATFORM</code>.
+     * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      * </p>
      * 
      * @param groupBy
@@ -554,9 +618,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        When you group by tag key, you get all tag values, including empty strings.
      *        </p>
      *        <p>
-     *        Valid values are: <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LINKED_ACCCOUNT</code>,
-     *        <code>OPERATION</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>USAGE_TYPE</code>,
-     *        <code>TAGS</code>, and <code>PLATFORM</code>.
+     *        Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
+     *        <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
+     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -437,5 +437,94 @@ public interface AWSMediaLiveAsync extends AWSMediaLive {
      */
     java.util.concurrent.Future<StopChannelResult> stopChannelAsync(StopChannelRequest stopChannelRequest,
             com.amazonaws.handlers.AsyncHandler<StopChannelRequest, StopChannelResult> asyncHandler);
+
+    /**
+     * Updates a channel.
+     * 
+     * @param updateChannelRequest
+     *        A request to update a channel.
+     * @return A Java Future containing the result of the UpdateChannel operation returned by the service.
+     * @sample AWSMediaLiveAsync.UpdateChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateChannel" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateChannelResult> updateChannelAsync(UpdateChannelRequest updateChannelRequest);
+
+    /**
+     * Updates a channel.
+     * 
+     * @param updateChannelRequest
+     *        A request to update a channel.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateChannel operation returned by the service.
+     * @sample AWSMediaLiveAsyncHandler.UpdateChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateChannel" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateChannelResult> updateChannelAsync(UpdateChannelRequest updateChannelRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateChannelRequest, UpdateChannelResult> asyncHandler);
+
+    /**
+     * Updates an input.
+     * 
+     * @param updateInputRequest
+     *        A request to update an input.
+     * @return A Java Future containing the result of the UpdateInput operation returned by the service.
+     * @sample AWSMediaLiveAsync.UpdateInput
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateInput" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateInputResult> updateInputAsync(UpdateInputRequest updateInputRequest);
+
+    /**
+     * Updates an input.
+     * 
+     * @param updateInputRequest
+     *        A request to update an input.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateInput operation returned by the service.
+     * @sample AWSMediaLiveAsyncHandler.UpdateInput
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateInput" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateInputResult> updateInputAsync(UpdateInputRequest updateInputRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateInputRequest, UpdateInputResult> asyncHandler);
+
+    /**
+     * Update an Input Security Group's Whilelists.
+     * 
+     * @param updateInputSecurityGroupRequest
+     *        The request to update some combination of the Input Security Group name and the IPv4 CIDRs the Input
+     *        Security Group should allow.
+     * @return A Java Future containing the result of the UpdateInputSecurityGroup operation returned by the service.
+     * @sample AWSMediaLiveAsync.UpdateInputSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateInputSecurityGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateInputSecurityGroupResult> updateInputSecurityGroupAsync(UpdateInputSecurityGroupRequest updateInputSecurityGroupRequest);
+
+    /**
+     * Update an Input Security Group's Whilelists.
+     * 
+     * @param updateInputSecurityGroupRequest
+     *        The request to update some combination of the Input Security Group name and the IPv4 CIDRs the Input
+     *        Security Group should allow.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateInputSecurityGroup operation returned by the service.
+     * @sample AWSMediaLiveAsyncHandler.UpdateInputSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateInputSecurityGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateInputSecurityGroupResult> updateInputSecurityGroupAsync(UpdateInputSecurityGroupRequest updateInputSecurityGroupRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateInputSecurityGroupRequest, UpdateInputSecurityGroupResult> asyncHandler);
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class ActionMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("dnsRequestAction").build();
     private static final MarshallingInfo<StructuredPojo> NETWORKCONNECTIONACTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("networkConnectionAction").build();
+    private static final MarshallingInfo<StructuredPojo> PORTPROBEACTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("portProbeAction").build();
 
     private static final ActionMarshaller instance = new ActionMarshaller();
 
@@ -56,6 +58,7 @@ public class ActionMarshaller {
             protocolMarshaller.marshall(action.getAwsApiCallAction(), AWSAPICALLACTION_BINDING);
             protocolMarshaller.marshall(action.getDnsRequestAction(), DNSREQUESTACTION_BINDING);
             protocolMarshaller.marshall(action.getNetworkConnectionAction(), NETWORKCONNECTIONACTION_BINDING);
+            protocolMarshaller.marshall(action.getPortProbeAction(), PORTPROBEACTION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

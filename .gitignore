@@ -16,10 +16,11 @@ build/
 out/
 classes/
 .gradle/
-.idea/
+*.idea/
 *.iml
 files/
 data/
 
 #embedded elasticsearch temporary files
 tmp/
+

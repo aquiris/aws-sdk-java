@@ -29,9 +29,8 @@ import com.amazonaws.services.ec2.waiters.AmazonEC2Waiters;
  * <p>
  * <fullname>Amazon Elastic Compute Cloud</fullname>
  * <p>
- * Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing capacity in the Amazon Web Services (AWS)
- * cloud. Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy
- * applications faster.
+ * Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing capacity in the AWS Cloud. Using Amazon EC2
+ * eliminates the need to invest in hardware up front, so you can develop and deploy applications faster.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -722,7 +721,7 @@ public interface AmazonEC2 {
      * Cancels one or more Spot Instance requests. Spot Instances are instances that Amazon EC2 starts on your behalf
      * when the maximum price that you specify exceeds the current Spot price. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot Instance Requests</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * <important>
      * <p>
@@ -992,6 +991,27 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Launches an EC2 Fleet.
+     * </p>
+     * <p>
+     * You can create a single EC2 Fleet that includes multiple launch specifications that vary by instance type, AMI,
+     * Availability Zone, or subnet.
+     * </p>
+     * <p>
+     * For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html">Launching
+     * an EC2 Fleet</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param createFleetRequest
+     * @return Result of the CreateFleet operation returned by the service.
+     * @sample AmazonEC2.CreateFleet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFleet" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateFleetResult createFleet(CreateFleetRequest createFleetRequest);
+
+    /**
+     * <p>
      * Creates one or more flow logs to capture IP traffic for a specific network interface, subnet, or VPC. Flow logs
      * are delivered to a specified log group in Amazon CloudWatch Logs. If you specify a VPC or subnet in the request,
      * a log stream is created in CloudWatch Logs for each network interface in the subnet or VPC. Log streams can
@@ -1000,6 +1020,10 @@ public interface AmazonEC2 {
      * </p>
      * <p>
      * In your request, you must also specify an IAM role that has permission to publish logs to CloudWatch Logs.
+     * </p>
+     * <p>
+     * For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html">VPC Flow
+     * Logs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param createFlowLogsRequest
@@ -1164,9 +1188,10 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Creates a NAT gateway in the specified subnet. A NAT gateway can be used to enable instances in a private subnet
-     * to connect to the Internet. This action creates a network interface in the specified subnet with a private IP
-     * address from the IP address range of the subnet. For more information, see <a
+     * Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified
+     * subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private
+     * subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the
+     * internet. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html">NAT Gateways</a> in the
      * <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
@@ -1468,6 +1493,10 @@ public interface AmazonEC2 {
      * remain protected.
      * </p>
      * <p>
+     * You can tag your snapshots during creation. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>.
+     * </p>
+     * <p>
      * For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">Amazon
      * Elastic Block Store</a> and <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the
@@ -1488,7 +1517,7 @@ public interface AmazonEC2 {
      * Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data
      * feed per AWS account. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot Instance Data Feed</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * 
      * @param createSpotDatafeedSubscriptionRequest
@@ -1713,6 +1742,13 @@ public interface AmazonEC2 {
      * to create the connection. The accepter VPC can belong to another AWS account and can be in a different region to
      * the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
      * </p>
+     * <note>
+     * <p>
+     * Limitations and rules apply to a VPC peering connection. For more information, see the <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations"
+     * >limitations</a> section in the <i>VPC Peering Guide</i>.
+     * </p>
+     * </note>
      * <p>
      * The owner of the accepter VPC must accept the peering request to activate the peering connection. The VPC peering
      * connection request expires after 7 days, after which it cannot be accepted or rejected.
@@ -1858,6 +1894,25 @@ public interface AmazonEC2 {
      *      target="_top">AWS API Documentation</a>
      */
     DeleteEgressOnlyInternetGatewayResult deleteEgressOnlyInternetGateway(DeleteEgressOnlyInternetGatewayRequest deleteEgressOnlyInternetGatewayRequest);
+
+    /**
+     * <p>
+     * Deletes the specified EC2 Fleet.
+     * </p>
+     * <p>
+     * After you delete an EC2 Fleet, the EC2 Fleet launches no new instances. You must specify whether the EC2 Fleet
+     * should also terminate its instances. If you terminate the instances, the EC2 Fleet enters the
+     * <code>deleted_terminating</code> state. Otherwise, the EC2 Fleet enters the <code>deleted_running</code> state,
+     * and the instances continue to run until they are interrupted or you terminate them manually.
+     * </p>
+     * 
+     * @param deleteFleetsRequest
+     * @return Result of the DeleteFleets operation returned by the service.
+     * @sample AmazonEC2.DeleteFleets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFleets" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteFleetsResult deleteFleets(DeleteFleetsRequest deleteFleetsRequest);
 
     /**
      * <p>
@@ -2259,7 +2314,8 @@ public interface AmazonEC2 {
      * <p>
      * Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can
      * delete the VPC peering connection if it's in the <code>active</code> state. The owner of the requester VPC can
-     * delete a VPC peering connection in the <code>pending-acceptance</code> state.
+     * delete a VPC peering connection in the <code>pending-acceptance</code> state. You cannot delete a VPC peering
+     * connection that's in the <code>failed</code> state.
      * </p>
      * 
      * @param deleteVpcPeeringConnectionRequest
@@ -2364,7 +2420,7 @@ public interface AmazonEC2 {
      * </li>
      * <li>
      * <p>
-     * <code>max-instances</code>: The maximum number of On-Demand instances that you can run.
+     * <code>max-instances</code>: The maximum number of On-Demand Instances that you can run.
      * </p>
      * </li>
      * <li>
@@ -2428,6 +2484,36 @@ public interface AmazonEC2 {
      * @see #describeAddresses(DescribeAddressesRequest)
      */
     DescribeAddressesResult describeAddresses();
+
+    /**
+     * <p>
+     * Describes the longer ID format settings for all resource types in a specific region. This request is useful for
+     * performing a quick audit to determine whether a specific region is fully opted in for longer IDs (17-character
+     * IDs).
+     * </p>
+     * <p>
+     * This request only returns information about resource types that support longer IDs.
+     * </p>
+     * <p>
+     * The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> |
+     * <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> |
+     * <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> |
+     * <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> |
+     * <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code>
+     * | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> |
+     * <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code>
+     * | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> |
+     * <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> |
+     * <code>vpn-connection</code> | <code>vpn-gateway</code>.
+     * </p>
+     * 
+     * @param describeAggregateIdFormatRequest
+     * @return Result of the DescribeAggregateIdFormat operation returned by the service.
+     * @sample AmazonEC2.DescribeAggregateIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAggregateIdFormat" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeAggregateIdFormatResult describeAggregateIdFormat(DescribeAggregateIdFormatRequest describeAggregateIdFormatRequest);
 
     /**
      * <p>
@@ -2637,6 +2723,45 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Describes the events for the specified EC2 Fleet during the specified time.
+     * </p>
+     * 
+     * @param describeFleetHistoryRequest
+     * @return Result of the DescribeFleetHistory operation returned by the service.
+     * @sample AmazonEC2.DescribeFleetHistory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleetHistory" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeFleetHistoryResult describeFleetHistory(DescribeFleetHistoryRequest describeFleetHistoryRequest);
+
+    /**
+     * <p>
+     * Describes the running instances for the specified EC2 Fleet.
+     * </p>
+     * 
+     * @param describeFleetInstancesRequest
+     * @return Result of the DescribeFleetInstances operation returned by the service.
+     * @sample AmazonEC2.DescribeFleetInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleetInstances" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeFleetInstancesResult describeFleetInstances(DescribeFleetInstancesRequest describeFleetInstancesRequest);
+
+    /**
+     * <p>
+     * Describes the specified EC2 Fleet.
+     * </p>
+     * 
+     * @param describeFleetsRequest
+     * @return Result of the DescribeFleets operation returned by the service.
+     * @sample AmazonEC2.DescribeFleets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleets" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeFleetsResult describeFleets(DescribeFleetsRequest describeFleetsRequest);
+
+    /**
+     * <p>
      * Describes one or more flow logs. To view the information in your flow logs (the log streams for the network
      * interfaces), you must use the CloudWatch Logs console or the CloudWatch Logs API.
      * </p>
@@ -2765,8 +2890,16 @@ public interface AmazonEC2 {
      * be modified; it does not return information about other resource types.
      * </p>
      * <p>
-     * The following resource types support longer IDs: <code>instance</code> | <code>reservation</code> |
-     * <code>snapshot</code> | <code>volume</code>.
+     * The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> |
+     * <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> |
+     * <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> |
+     * <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> |
+     * <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code>
+     * | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> |
+     * <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code>
+     * | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> |
+     * <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> |
+     * <code>vpn-connection</code> | <code>vpn-gateway</code>.
      * </p>
      * <p>
      * These settings apply to the IAM user who makes the request; they do not apply to the entire AWS account. By
@@ -2801,8 +2934,16 @@ public interface AmazonEC2 {
      * IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * The following resource types support longer IDs: <code>instance</code> | <code>reservation</code> |
-     * <code>snapshot</code> | <code>volume</code>.
+     * The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> |
+     * <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> |
+     * <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> |
+     * <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> |
+     * <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code>
+     * | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> |
+     * <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code>
+     * | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> |
+     * <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> |
+     * <code>vpn-connection</code> | <code>vpn-gateway</code>.
      * </p>
      * <p>
      * These settings apply to the principal specified in the request. They do not apply to the principal that makes the
@@ -3277,6 +3418,37 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified
+     * a longer ID (17-character ID) preference.
+     * </p>
+     * <p>
+     * By default, all IAM roles and IAM users default to the same ID settings as the root user, unless they explicitly
+     * override the settings. This request is useful for identifying those IAM users and IAM roles that have overridden
+     * the default ID settings.
+     * </p>
+     * <p>
+     * The following resource types support longer IDs: <code>bundle</code> | <code>conversion-task</code> |
+     * <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> |
+     * <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> |
+     * <code>import-task</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> |
+     * <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code>
+     * | <code>prefix-list</code> | <code>reservation</code> | <code>route-table</code> |
+     * <code>route-table-association</code> | <code>security-group</code> | <code>snapshot</code> | <code>subnet</code>
+     * | <code>subnet-cidr-block-association</code> | <code>volume</code> | <code>vpc</code> |
+     * <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> |
+     * <code>vpn-connection</code> | <code>vpn-gateway</code>.
+     * </p>
+     * 
+     * @param describePrincipalIdFormatRequest
+     * @return Result of the DescribePrincipalIdFormat operation returned by the service.
+     * @sample AmazonEC2.DescribePrincipalIdFormat
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrincipalIdFormat" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribePrincipalIdFormatResult describePrincipalIdFormat(DescribePrincipalIdFormatRequest describePrincipalIdFormatRequest);
+
+    /**
+     * <p>
      * Describes one or more regions that are currently available to you.
      * </p>
      * <p>
@@ -3641,7 +3813,7 @@ public interface AmazonEC2 {
      * <p>
      * Describes the data feed for Spot Instances. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot Instance Data Feed</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * 
      * @param describeSpotDatafeedSubscriptionRequest
@@ -3721,7 +3893,7 @@ public interface AmazonEC2 {
      * Describes the Spot Instance requests that belong to your account. Spot Instances are instances that Amazon EC2
      * launches when the Spot price that you specify exceeds the current Spot price. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot Instance Requests</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * <p>
      * You can use <code>DescribeSpotInstanceRequests</code> to find a running Spot Instance by examining the response.
@@ -3730,7 +3902,7 @@ public interface AmazonEC2 {
      * look for instances where the instance lifecycle is <code>spot</code>.
      * </p>
      * <p>
-     * Spot Instance requests are deleted 4 hours after they are canceled and their instances are terminated.
+     * Spot Instance requests are deleted four hours after they are canceled and their instances are terminated.
      * </p>
      * 
      * @param describeSpotInstanceRequestsRequest
@@ -3753,7 +3925,7 @@ public interface AmazonEC2 {
      * <p>
      * Describes the Spot price history. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot Instance Pricing
-     * History</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * History</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * <p>
      * When you specify a start and end time, this operation returns the prices of the instance types within the time
@@ -4527,24 +4699,21 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Gets the console output for the specified instance.
+     * Gets the console output for the specified instance. For Linux instances, the instance console output displays the
+     * exact console output that would normally be displayed on a physical monitor attached to a computer. For Windows
+     * instances, the instance console output includes output from the EC2Config service.
      * </p>
      * <p>
-     * Instances do not have a physical monitor through which you can view their console output. They also lack physical
-     * controls that allow you to power up, reboot, or shut them down. To allow these actions, we provide them through
-     * the Amazon EC2 API and command line interface.
+     * <a>GetConsoleOutput</a> returns up to 64 KB of console output shortly after it's generated by the instance.
      * </p>
      * <p>
-     * Instance console output is buffered and posted shortly after instance boot, reboot, and termination. Amazon EC2
-     * preserves the most recent 64 KB output, which is available for at least one hour after the most recent post.
+     * By default, the console output returns buffered information that was posted shortly after an instance transition
+     * state (start, stop, reboot, or terminate). This information is available for at least one hour after the most
+     * recent post.
      * </p>
      * <p>
-     * For Linux instances, the instance console output displays the exact console output that would normally be
-     * displayed on a physical monitor attached to a computer. This output is buffered because the instance produces it
-     * and then posts it to a store where the instance's owner can retrieve it.
-     * </p>
-     * <p>
-     * For Windows instances, the instance console output includes output from the EC2Config service.
+     * You can optionally retrieve the latest serial console output at any time during the instance lifecycle. This
+     * option is only supported on C5, M5, and <code>i3.metal</code> instances.
      * </p>
      * 
      * @param getConsoleOutputRequest
@@ -4765,6 +4934,22 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Modifies the specified EC2 Fleet.
+     * </p>
+     * <p>
+     * While the EC2 Fleet is being modified, it is in the <code>modifying</code> state.
+     * </p>
+     * 
+     * @param modifyFleetRequest
+     * @return Result of the ModifyFleet operation returned by the service.
+     * @sample AmazonEC2.ModifyFleet
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyFleet" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ModifyFleetResult modifyFleet(ModifyFleetRequest modifyFleetRequest);
+
+    /**
+     * <p>
      * Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
      * </p>
      * 
@@ -4797,8 +4982,19 @@ public interface AmazonEC2 {
     /**
      * <p>
      * Modifies the ID format for the specified resource on a per-region basis. You can specify that resources should
-     * receive longer IDs (17-character IDs) when they are created. The following resource types support longer IDs:
-     * <code>instance</code> | <code>reservation</code> | <code>snapshot</code> | <code>volume</code>.
+     * receive longer IDs (17-character IDs) when they are created.
+     * </p>
+     * <p>
+     * This request can only be used to modify longer ID settings for resource types that are within the opt-in period.
+     * Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> |
+     * <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> |
+     * <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> |
+     * <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> |
+     * <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code>
+     * | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> |
+     * <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code>
+     * | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> |
+     * <code>vpn-connection</code> | <code>vpn-gateway</code>.
      * </p>
      * <p>
      * This setting applies to the IAM user who makes the request; it does not apply to the entire AWS account. By
@@ -4829,10 +5025,20 @@ public interface AmazonEC2 {
      * (17-character IDs) when they are created.
      * </p>
      * <p>
-     * The following resource types support longer IDs: <code>instance</code> | <code>reservation</code> |
-     * <code>snapshot</code> | <code>volume</code>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource IDs</a> in the <i>Amazon
-     * Elastic Compute Cloud User Guide</i>.
+     * This request can only be used to modify longer ID settings for resource types that are within the opt-in period.
+     * Resources currently in their opt-in period include: <code>bundle</code> | <code>conversion-task</code> |
+     * <code>customer-gateway</code> | <code>dhcp-options</code> | <code>elastic-ip-allocation</code> |
+     * <code>elastic-ip-association</code> | <code>export-task</code> | <code>flow-log</code> | <code>image</code> |
+     * <code>import-task</code> | <code>internet-gateway</code> | <code>network-acl</code> |
+     * <code>network-acl-association</code> | <code>network-interface</code> | <code>network-interface-attachment</code>
+     * | <code>prefix-list</code> | <code>route-table</code> | <code>route-table-association</code> |
+     * <code>security-group</code> | <code>subnet</code> | <code>subnet-cidr-block-association</code> | <code>vpc</code>
+     * | <code>vpc-cidr-block-association</code> | <code>vpc-endpoint</code> | <code>vpc-peering-connection</code> |
+     * <code>vpn-connection</code> | <code>vpn-gateway</code>.
+     * </p>
+     * <p>
+     * For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html">Resource
+     * IDs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
      * This setting applies to the principal specified in the request; it does not apply to the principal that makes the
@@ -4881,6 +5087,12 @@ public interface AmazonEC2 {
      * Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.
      * </p>
      * <p>
+     * <b>Note: </b>Using this action to change the security groups associated with an elastic network interface (ENI)
+     * attached to an instance in a VPC can result in an error if the instance has more than one ENI. To change the
+     * security groups associated with an ENI attached to an instance that has multiple ENIs, we recommend that you use
+     * the <a>ModifyNetworkInterfaceAttribute</a> action.
+     * </p>
+     * <p>
      * To modify some attributes, the instance must be stopped. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html"
      * >Modifying Attributes of a Stopped Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
@@ -4915,24 +5127,43 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Set the instance affinity value for a specific stopped instance and modify the instance tenancy setting.
+     * Modifies the placement attributes for a specified instance. You can do the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Modify the affinity between an instance and a <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html">Dedicated Host</a>. When
+     * affinity is set to <code>host</code> and the instance is not associated with a specific Dedicated Host, the next
+     * time the instance is launched, it is automatically associated with the host on which it lands. If the instance is
+     * restarted or rebooted, this relationship persists.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Change the Dedicated Host with which an instance is associated.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Change the instance tenancy of an instance from <code>host</code> to <code>dedicated</code>, or from
+     * <code>dedicated</code> to <code>host</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Move an instance to or from a <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">placement group</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * At least one attribute for affinity, host ID, tenancy, or placement group name must be specified in the request.
+     * Affinity and tenancy can be modified in the same request.
      * </p>
      * <p>
-     * Instance affinity is disabled by default. When instance affinity is <code>host</code> and it is not associated
-     * with a specific Dedicated Host, the next time it is launched it will automatically be associated with the host it
-     * lands on. This relationship will persist if the instance is stopped/started, or rebooted.
-     * </p>
-     * <p>
-     * You can modify the host ID associated with a stopped instance. If a stopped instance has a new host ID
-     * association, the instance will target that host when restarted.
-     * </p>
-     * <p>
-     * You can modify the tenancy of a stopped instance with a tenancy of <code>host</code> or <code>dedicated</code>.
-     * </p>
-     * <p>
-     * Affinity, hostID, and tenancy are not required parameters, but at least one of them must be specified in the
-     * request. Affinity and tenancy can be modified in the same request, but tenancy can only be modified on instances
-     * that are stopped.
+     * To modify the host ID, tenancy, or placement group for an instance, the instance must be in the
+     * <code>stopped</code> state.
      * </p>
      * 
      * @param modifyInstancePlacementRequest
@@ -5208,8 +5439,10 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers
-     * (IAM users, IAM roles, and AWS accounts) to discover your endpoint service.
+     * Modifies the permissions for your <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html">VPC endpoint service</a>. You
+     * can add or remove permissions for service consumers (IAM users, IAM roles, and AWS accounts) to connect to your
+     * endpoint service.
      * </p>
      * 
      * @param modifyVpcEndpointServicePermissionsRequest
@@ -5240,7 +5473,7 @@ public interface AmazonEC2 {
      * </li>
      * <li>
      * <p>
-     * Enable/disable a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in
+     * Enable/disable the ability to resolve public DNS hostnames to private IP addresses when queried from instances in
      * the peer VPC.
      * </p>
      * </li>
@@ -5664,6 +5897,11 @@ public interface AmazonEC2 {
      * Creates a Spot Fleet request.
      * </p>
      * <p>
+     * The Spot Fleet request specifies the total target capacity and the On-Demand target capacity. Amazon EC2
+     * calculates the difference between the total capacity and On-Demand capacity, and launches the difference as Spot
+     * capacity.
+     * </p>
+     * <p>
      * You can submit a single request that includes multiple launch specifications that vary by instance type, AMI,
      * Availability Zone, or subnet.
      * </p>
@@ -5678,13 +5916,13 @@ public interface AmazonEC2 {
      * you can improve the availability of your fleet.
      * </p>
      * <p>
-     * You can specify tags for the Spot Instances. You cannot tag other resource types in a Spot Fleet request; only
-     * the <code>instance</code> resource type is supported.
+     * You can specify tags for the Spot Instances. You cannot tag other resource types in a Spot Fleet request because
+     * only the <code>instance</code> resource type is supported.
      * </p>
      * <p>
      * For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html">Spot Fleet Requests</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * 
      * @param requestSpotFleetRequest
@@ -5701,7 +5939,7 @@ public interface AmazonEC2 {
      * Creates a Spot Instance request. Spot Instances are instances that Amazon EC2 launches when the maximum price
      * that you specify exceeds the current Spot price. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot Instance Requests</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * 
      * @param requestSpotInstancesRequest

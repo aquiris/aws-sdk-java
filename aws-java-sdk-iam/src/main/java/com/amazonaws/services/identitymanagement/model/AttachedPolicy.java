@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * <p>
  * An attached policy is a managed policy that has been attached to a user, group, or role. This data type is used as a
  * response element in the <a>ListAttachedGroupPolicies</a>, <a>ListAttachedRolePolicies</a>,
- * <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> actions.
+ * <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> operations.
  * </p>
  * <p>
  * For more information about managed policies, refer to <a

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,6 +47,8 @@ public class JobUpdateMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("MaxRetries").build();
     private static final MarshallingInfo<Integer> ALLOCATEDCAPACITY_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AllocatedCapacity").build();
+    private static final MarshallingInfo<Integer> TIMEOUT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Timeout").build();
 
     private static final JobUpdateMarshaller instance = new JobUpdateMarshaller();
 
@@ -73,6 +75,7 @@ public class JobUpdateMarshaller {
             protocolMarshaller.marshall(jobUpdate.getConnections(), CONNECTIONS_BINDING);
             protocolMarshaller.marshall(jobUpdate.getMaxRetries(), MAXRETRIES_BINDING);
             protocolMarshaller.marshall(jobUpdate.getAllocatedCapacity(), ALLOCATEDCAPACITY_BINDING);
+            protocolMarshaller.marshall(jobUpdate.getTimeout(), TIMEOUT_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

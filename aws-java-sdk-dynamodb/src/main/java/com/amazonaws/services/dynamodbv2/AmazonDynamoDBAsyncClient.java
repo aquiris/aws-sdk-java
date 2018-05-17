@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -788,6 +788,39 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeGlobalTableSettingsResult> describeGlobalTableSettingsAsync(DescribeGlobalTableSettingsRequest request) {
+
+        return describeGlobalTableSettingsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeGlobalTableSettingsResult> describeGlobalTableSettingsAsync(final DescribeGlobalTableSettingsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeGlobalTableSettingsRequest, DescribeGlobalTableSettingsResult> asyncHandler) {
+        final DescribeGlobalTableSettingsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeGlobalTableSettingsResult>() {
+            @Override
+            public DescribeGlobalTableSettingsResult call() throws Exception {
+                DescribeGlobalTableSettingsResult result = null;
+
+                try {
+                    result = executeDescribeGlobalTableSettings(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeLimitsResult> describeLimitsAsync(DescribeLimitsRequest request) {
 
         return describeLimitsAsync(request, null);
@@ -1357,6 +1390,39 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<RestoreTableToPointInTimeResult> restoreTableToPointInTimeAsync(RestoreTableToPointInTimeRequest request) {
+
+        return restoreTableToPointInTimeAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<RestoreTableToPointInTimeResult> restoreTableToPointInTimeAsync(final RestoreTableToPointInTimeRequest request,
+            final com.amazonaws.handlers.AsyncHandler<RestoreTableToPointInTimeRequest, RestoreTableToPointInTimeResult> asyncHandler) {
+        final RestoreTableToPointInTimeRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<RestoreTableToPointInTimeResult>() {
+            @Override
+            public RestoreTableToPointInTimeResult call() throws Exception {
+                RestoreTableToPointInTimeResult result = null;
+
+                try {
+                    result = executeRestoreTableToPointInTime(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ScanResult> scanAsync(ScanRequest request) {
 
         return scanAsync(request, null);
@@ -1526,6 +1592,39 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<UpdateContinuousBackupsResult> updateContinuousBackupsAsync(UpdateContinuousBackupsRequest request) {
+
+        return updateContinuousBackupsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateContinuousBackupsResult> updateContinuousBackupsAsync(final UpdateContinuousBackupsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateContinuousBackupsRequest, UpdateContinuousBackupsResult> asyncHandler) {
+        final UpdateContinuousBackupsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateContinuousBackupsResult>() {
+            @Override
+            public UpdateContinuousBackupsResult call() throws Exception {
+                UpdateContinuousBackupsResult result = null;
+
+                try {
+                    result = executeUpdateContinuousBackups(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<UpdateGlobalTableResult> updateGlobalTableAsync(UpdateGlobalTableRequest request) {
 
         return updateGlobalTableAsync(request, null);
@@ -1543,6 +1642,39 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
 
                 try {
                     result = executeUpdateGlobalTable(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateGlobalTableSettingsResult> updateGlobalTableSettingsAsync(UpdateGlobalTableSettingsRequest request) {
+
+        return updateGlobalTableSettingsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateGlobalTableSettingsResult> updateGlobalTableSettingsAsync(final UpdateGlobalTableSettingsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateGlobalTableSettingsRequest, UpdateGlobalTableSettingsResult> asyncHandler) {
+        final UpdateGlobalTableSettingsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateGlobalTableSettingsResult>() {
+            @Override
+            public UpdateGlobalTableSettingsResult call() throws Exception {
+                UpdateGlobalTableSettingsResult result = null;
+
+                try {
+                    result = executeUpdateGlobalTableSettings(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

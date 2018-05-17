@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,7 +48,7 @@ public class ResultByTime implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<Group> groups;
     /**
      * <p>
-     * Whether or not this result is estimated.
+     * Whether this result is estimated.
      * </p>
      */
     private Boolean estimated;
@@ -226,11 +226,11 @@ public class ResultByTime implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether or not this result is estimated.
+     * Whether this result is estimated.
      * </p>
      * 
      * @param estimated
-     *        Whether or not this result is estimated.
+     *        Whether this result is estimated.
      */
 
     public void setEstimated(Boolean estimated) {
@@ -239,10 +239,10 @@ public class ResultByTime implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether or not this result is estimated.
+     * Whether this result is estimated.
      * </p>
      * 
-     * @return Whether or not this result is estimated.
+     * @return Whether this result is estimated.
      */
 
     public Boolean getEstimated() {
@@ -251,11 +251,11 @@ public class ResultByTime implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether or not this result is estimated.
+     * Whether this result is estimated.
      * </p>
      * 
      * @param estimated
-     *        Whether or not this result is estimated.
+     *        Whether this result is estimated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -266,10 +266,10 @@ public class ResultByTime implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether or not this result is estimated.
+     * Whether this result is estimated.
      * </p>
      * 
-     * @return Whether or not this result is estimated.
+     * @return Whether this result is estimated.
      */
 
     public Boolean isEstimated() {

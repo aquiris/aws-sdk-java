@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,10 +26,10 @@ import java.util.concurrent.ExecutorService;
  * notification when an asynchronous operation completes.
  * <p>
  * <p>
- * Amazon Route 53 autonaming lets you configure public or private namespaces that your microservice applications run
- * in. When instances of the service become available, you can call the autonaming API to register the instance, and
- * Amazon Route 53 automatically creates up to five DNS records and an optional health check. Clients that submit DNS
- * queries for the service receive an answer that contains up to eight healthy records.
+ * Amazon Route 53 auto naming lets you configure public or private namespaces that your microservice applications run
+ * in. When instances of the service become available, you can call the auto naming API to register the instance, and
+ * Route 53 automatically creates up to five DNS records and an optional health check. Clients that submit DNS queries
+ * for the service receive an answer that contains up to eight healthy records.
  * </p>
  */
 @ThreadSafe
@@ -578,6 +578,41 @@ public class AWSServiceDiscoveryAsyncClient extends AWSServiceDiscoveryClient im
 
                 try {
                     result = executeRegisterInstance(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInstanceCustomHealthStatusResult> updateInstanceCustomHealthStatusAsync(
+            UpdateInstanceCustomHealthStatusRequest request) {
+
+        return updateInstanceCustomHealthStatusAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInstanceCustomHealthStatusResult> updateInstanceCustomHealthStatusAsync(
+            final UpdateInstanceCustomHealthStatusRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateInstanceCustomHealthStatusRequest, UpdateInstanceCustomHealthStatusResult> asyncHandler) {
+        final UpdateInstanceCustomHealthStatusRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateInstanceCustomHealthStatusResult>() {
+            @Override
+            public UpdateInstanceCustomHealthStatusResult call() throws Exception {
+                UpdateInstanceCustomHealthStatusResult result = null;
+
+                try {
+                    result = executeUpdateInstanceCustomHealthStatus(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

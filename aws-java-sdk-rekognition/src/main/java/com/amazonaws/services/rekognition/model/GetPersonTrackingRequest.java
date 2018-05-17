@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,7 +29,8 @@ public class GetPersonTrackingRequest extends com.amazonaws.AmazonWebServiceRequ
     private String jobId;
     /**
      * <p>
-     * Maximum number of tracked persons to return. The default is 1000.
+     * Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify
+     * a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
      * </p>
      */
     private Integer maxResults;
@@ -98,11 +99,13 @@ public class GetPersonTrackingRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Maximum number of tracked persons to return. The default is 1000.
+     * Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify
+     * a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
      * </p>
      * 
      * @param maxResults
-     *        Maximum number of tracked persons to return. The default is 1000.
+     *        Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you
+     *        specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -111,10 +114,12 @@ public class GetPersonTrackingRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Maximum number of tracked persons to return. The default is 1000.
+     * Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify
+     * a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
      * </p>
      * 
-     * @return Maximum number of tracked persons to return. The default is 1000.
+     * @return Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you
+     *         specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
      */
 
     public Integer getMaxResults() {
@@ -123,11 +128,13 @@ public class GetPersonTrackingRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Maximum number of tracked persons to return. The default is 1000.
+     * Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify
+     * a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
      * </p>
      * 
      * @param maxResults
-     *        Maximum number of tracked persons to return. The default is 1000.
+     *        Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you
+     *        specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

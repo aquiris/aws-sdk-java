@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,13 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      */
     private java.util.List<Tag> tags;
+    /**
+     * <p>
+     * A object that specifies the VPC that you want your model to connect to. Control access to and from your training
+     * container by configuring the VPC. For more information, see <a>host-vpc</a>.
+     * </p>
+     */
+    private VpcConfig vpcConfig;
 
     /**
      * <p>
@@ -287,6 +294,52 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * A object that specifies the VPC that you want your model to connect to. Control access to and from your training
+     * container by configuring the VPC. For more information, see <a>host-vpc</a>.
+     * </p>
+     * 
+     * @param vpcConfig
+     *        A object that specifies the VPC that you want your model to connect to. Control access to and from your
+     *        training container by configuring the VPC. For more information, see <a>host-vpc</a>.
+     */
+
+    public void setVpcConfig(VpcConfig vpcConfig) {
+        this.vpcConfig = vpcConfig;
+    }
+
+    /**
+     * <p>
+     * A object that specifies the VPC that you want your model to connect to. Control access to and from your training
+     * container by configuring the VPC. For more information, see <a>host-vpc</a>.
+     * </p>
+     * 
+     * @return A object that specifies the VPC that you want your model to connect to. Control access to and from your
+     *         training container by configuring the VPC. For more information, see <a>host-vpc</a>.
+     */
+
+    public VpcConfig getVpcConfig() {
+        return this.vpcConfig;
+    }
+
+    /**
+     * <p>
+     * A object that specifies the VPC that you want your model to connect to. Control access to and from your training
+     * container by configuring the VPC. For more information, see <a>host-vpc</a>.
+     * </p>
+     * 
+     * @param vpcConfig
+     *        A object that specifies the VPC that you want your model to connect to. Control access to and from your
+     *        training container by configuring the VPC. For more information, see <a>host-vpc</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateModelRequest withVpcConfig(VpcConfig vpcConfig) {
+        setVpcConfig(vpcConfig);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -304,7 +357,9 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (getExecutionRoleArn() != null)
             sb.append("ExecutionRoleArn: ").append(getExecutionRoleArn()).append(",");
         if (getTags() != null)
-            sb.append("Tags: ").append(getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getVpcConfig() != null)
+            sb.append("VpcConfig: ").append(getVpcConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -335,6 +390,10 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getVpcConfig() == null ^ this.getVpcConfig() == null)
+            return false;
+        if (other.getVpcConfig() != null && other.getVpcConfig().equals(this.getVpcConfig()) == false)
+            return false;
         return true;
     }
 
@@ -347,6 +406,7 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getPrimaryContainer() == null) ? 0 : getPrimaryContainer().hashCode());
         hashCode = prime * hashCode + ((getExecutionRoleArn() == null) ? 0 : getExecutionRoleArn().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
         return hashCode;
     }
 

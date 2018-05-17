@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,14 +23,14 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AssociateRoleToGroupResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
-    /** Time the role arn was associated to your group. */
+    /** The time, in milliseconds since the epoch, when the role ARN was associated with the group. */
     private String associatedAt;
 
     /**
-     * Time the role arn was associated to your group.
+     * The time, in milliseconds since the epoch, when the role ARN was associated with the group.
      * 
      * @param associatedAt
-     *        Time the role arn was associated to your group.
+     *        The time, in milliseconds since the epoch, when the role ARN was associated with the group.
      */
 
     public void setAssociatedAt(String associatedAt) {
@@ -38,9 +38,9 @@ public class AssociateRoleToGroupResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Time the role arn was associated to your group.
+     * The time, in milliseconds since the epoch, when the role ARN was associated with the group.
      * 
-     * @return Time the role arn was associated to your group.
+     * @return The time, in milliseconds since the epoch, when the role ARN was associated with the group.
      */
 
     public String getAssociatedAt() {
@@ -48,10 +48,10 @@ public class AssociateRoleToGroupResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Time the role arn was associated to your group.
+     * The time, in milliseconds since the epoch, when the role ARN was associated with the group.
      * 
      * @param associatedAt
-     *        Time the role arn was associated to your group.
+     *        The time, in milliseconds since the epoch, when the role ARN was associated with the group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

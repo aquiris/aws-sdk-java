@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,7 @@ public class Preset implements Serializable, Cloneable, StructuredPojo {
 
     private PresetSettings settings;
     /**
-     * A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by the
+     * A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the
      * user.
      */
     private String type;
@@ -278,11 +278,11 @@ public class Preset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by the
+     * A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the
      * user.
      * 
      * @param type
-     *        A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by
+     *        A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by
      *        the user.
      * @see Type
      */
@@ -292,10 +292,10 @@ public class Preset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by the
+     * A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the
      * user.
      * 
-     * @return A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by
+     * @return A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by
      *         the user.
      * @see Type
      */
@@ -305,11 +305,11 @@ public class Preset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by the
+     * A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the
      * user.
      * 
      * @param type
-     *        A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by
+     *        A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by
      *        the user.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Type
@@ -321,11 +321,11 @@ public class Preset implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by the
+     * A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the
      * user.
      * 
      * @param type
-     *        A preset can be of two types: system or custom. System or built-in preset can’t be modified or deleted by
+     *        A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by
      *        the user.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Type

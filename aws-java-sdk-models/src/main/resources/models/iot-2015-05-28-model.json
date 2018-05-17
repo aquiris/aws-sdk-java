@@ -353,7 +353,7 @@
         {"shape":"ResourceAlreadyExistsException"},
         {"shape":"ResourceNotFoundException"}
       ],
-      "documentation":"<p>Creates a thing record in the thing registry.</p>"
+      "documentation":"<p>Creates a thing record in the registry.</p>"
     },
     "CreateThingGroup":{
       "name":"CreateThingGroup",
@@ -1815,7 +1815,8 @@
         {"shape":"ThrottlingException"},
         {"shape":"UnauthorizedException"},
         {"shape":"ServiceUnavailableException"},
-        {"shape":"InternalFailureException"}
+        {"shape":"InternalFailureException"},
+        {"shape":"ResourceAlreadyExistsException"}
       ],
       "documentation":"<p>Sets the default authorizer. This will be used if a websocket connection is made without specifying an authorizer.</p>"
     },
@@ -2152,7 +2153,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>",
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"certificateId"
         },
@@ -2219,6 +2220,10 @@
         "salesforce":{
           "shape":"SalesforceAction",
           "documentation":"<p>Send a message to a Salesforce IoT Cloud Input Stream.</p>"
+        },
+        "iotAnalytics":{
+          "shape":"IotAnalyticsAction",
+          "documentation":"<p>Sends message data to an AWS IoT Analytics channel.</p>"
         }
       },
       "documentation":"<p>Describes the actions associated with a rule.</p>"
@@ -2623,6 +2628,18 @@
         "autoRegistrationStatus":{
           "shape":"AutoRegistrationStatus",
           "documentation":"<p>Whether the CA certificate configured for auto registration of device certificates. Valid values are \"ENABLE\" and \"DISABLE\"</p>"
+        },
+        "lastModifiedDate":{
+          "shape":"DateType",
+          "documentation":"<p>The date the CA certificate was last modified.</p>"
+        },
+        "customerVersion":{
+          "shape":"CustomerVersion",
+          "documentation":"<p>The customer version of the CA certificate.</p>"
+        },
+        "generationId":{
+          "shape":"GenerationId",
+          "documentation":"<p>The generation ID of the CA certificate.</p>"
         }
       },
       "documentation":"<p>Describes a CA certificate.</p>"
@@ -2644,7 +2661,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>",
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"certificateId"
         }
@@ -2707,7 +2724,7 @@
         },
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>"
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>"
         },
         "status":{
           "shape":"CertificateStatus",
@@ -2772,9 +2789,17 @@
           "shape":"DateType",
           "documentation":"<p>The date and time the certificate was last modified.</p>"
         },
+        "customerVersion":{
+          "shape":"CustomerVersion",
+          "documentation":"<p>The customer version of the certificate.</p>"
+        },
         "transferData":{
           "shape":"TransferData",
           "documentation":"<p>The transfer data.</p>"
+        },
+        "generationId":{
+          "shape":"GenerationId",
+          "documentation":"<p>The generation ID of the certificate.</p>"
         }
       },
       "documentation":"<p>Describes a certificate.</p>"
@@ -2835,6 +2860,7 @@
       "type":"list",
       "member":{"shape":"Certificate"}
     },
+    "ChannelName":{"type":"string"},
     "ClearDefaultAuthorizerRequest":{
       "type":"structure",
       "members":{
@@ -3565,6 +3591,10 @@
       },
       "documentation":"<p>Describes a custom method used to code sign a file.</p>"
     },
+    "CustomerVersion":{
+      "type":"integer",
+      "min":1
+    },
     "DateType":{"type":"timestamp"},
     "DeleteAuthorizerRequest":{
       "type":"structure",
@@ -3589,7 +3619,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate to delete.</p>",
+          "documentation":"<p>The ID of the certificate to delete. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"caCertificateId"
         }
@@ -3608,7 +3638,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>",
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"certificateId"
         },
@@ -3925,7 +3955,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>",
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"certificateId"
         }
@@ -4670,6 +4700,7 @@
       "max":10000,
       "min":1
     },
+    "GenerationId":{"type":"string"},
     "GetEffectivePoliciesRequest":{
       "type":"structure",
       "members":{
@@ -4805,6 +4836,18 @@
         "defaultVersionId":{
           "shape":"PolicyVersionId",
           "documentation":"<p>The default policy version ID.</p>"
+        },
+        "creationDate":{
+          "shape":"DateType",
+          "documentation":"<p>The date the policy was created.</p>"
+        },
+        "lastModifiedDate":{
+          "shape":"DateType",
+          "documentation":"<p>The date the policy was last modified.</p>"
+        },
+        "generationId":{
+          "shape":"GenerationId",
+          "documentation":"<p>The generation ID of the policy.</p>"
         }
       },
       "documentation":"<p>The output from the GetPolicy operation.</p>"
@@ -4853,6 +4896,18 @@
         "isDefaultVersion":{
           "shape":"IsDefaultVersion",
           "documentation":"<p>Specifies whether the policy version is the default.</p>"
+        },
+        "creationDate":{
+          "shape":"DateType",
+          "documentation":"<p>The date the policy version was created.</p>"
+        },
+        "lastModifiedDate":{
+          "shape":"DateType",
+          "documentation":"<p>The date the policy version was last modified.</p>"
+        },
+        "generationId":{
+          "shape":"GenerationId",
+          "documentation":"<p>The generation ID of the policy version.</p>"
         }
       },
       "documentation":"<p>The output from the GetPolicyVersion operation.</p>"
@@ -5034,6 +5089,24 @@
       "documentation":"<p>The response is invalid.</p>",
       "error":{"httpStatusCode":400},
       "exception":true
+    },
+    "IotAnalyticsAction":{
+      "type":"structure",
+      "members":{
+        "channelArn":{
+          "shape":"AwsArn",
+          "documentation":"<p>(deprecated) The ARN of the IoT Analytics channel to which message data will be sent.</p>"
+        },
+        "channelName":{
+          "shape":"ChannelName",
+          "documentation":"<p>The name of the IoT Analytics channel to which message data will be sent.</p>"
+        },
+        "roleArn":{
+          "shape":"AwsArn",
+          "documentation":"<p>The ARN of the role which has a policy that grants IoT permission to send message data via IoT Analytics (iotanalytics:BatchPutMessage).</p>"
+        }
+      },
+      "documentation":"<p>Sends message data to an AWS IoT Analytics channel.</p>"
     },
     "IsAuthenticated":{"type":"boolean"},
     "IsDefaultVersion":{"type":"boolean"},
@@ -5816,7 +5889,7 @@
         },
         "nextToken":{
           "shape":"NextToken",
-          "documentation":"<p>A token used to retreive the next set of results.</p>",
+          "documentation":"<p>A token used to retrieve the next set of results.</p>",
           "location":"querystring",
           "locationName":"nextToken"
         },
@@ -7138,11 +7211,11 @@
       "members":{
         "templateBody":{
           "shape":"TemplateBody",
-          "documentation":"<p>The provisioning template. </p>"
+          "documentation":"<p>The provisioning template. See <a href=\"http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html\">Programmatic Provisioning</a> for more information.</p>"
         },
         "parameters":{
           "shape":"Parameters",
-          "documentation":"<p>The parameters for provisioning a thing.</p>"
+          "documentation":"<p>The parameters for provisioning a thing. See <a href=\"http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html\">Programmatic Provisioning</a> for more information.</p>"
         }
       }
     },
@@ -7211,7 +7284,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>",
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"certificateId"
         },
@@ -7364,6 +7437,10 @@
         "roleAlias":{
           "shape":"RoleAlias",
           "documentation":"<p>The role alias.</p>"
+        },
+        "roleAliasArn":{
+          "shape":"RoleAliasArn",
+          "documentation":"<p>The ARN of the role alias.</p>"
         },
         "roleArn":{
           "shape":"RoleArn",
@@ -8065,7 +8142,7 @@
         },
         "shadow":{
           "shape":"JsonDocument",
-          "documentation":"<p>The thing shadow.</p>"
+          "documentation":"<p>The shadow.</p>"
         }
       },
       "documentation":"<p>The thing search index document.</p>"
@@ -8390,7 +8467,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>",
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"certificateId"
         },
@@ -8551,7 +8628,7 @@
       "members":{
         "certificateId":{
           "shape":"CertificateId",
-          "documentation":"<p>The ID of the certificate.</p>",
+          "documentation":"<p>The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)</p>",
           "location":"uri",
           "locationName":"certificateId"
         },
@@ -8790,5 +8867,5 @@
     "resourceArn":{"type":"string"},
     "resourceId":{"type":"string"}
   },
-  "documentation":"<fullname>AWS IoT</fullname> <p>AWS IoT provides secure, bi-directional communication between Internet-connected things (such as sensors, actuators, embedded devices, or smart appliances) and the AWS cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each thing (Thing Registry), configure logging, and create and manage policies and credentials to authenticate things.</p> <p>For more information about how AWS IoT works, see the <a href=\"http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\">Developer Guide</a>.</p>"
+  "documentation":"<fullname>AWS IoT</fullname> <p>AWS IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the AWS cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>For more information about how AWS IoT works, see the <a href=\"http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\">Developer Guide</a>.</p>"
 }

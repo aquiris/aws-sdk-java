@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -278,6 +278,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<CreateInstanceProfileResult> createInstanceProfileAsync(CreateInstanceProfileRequest request) {
+
+        return createInstanceProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateInstanceProfileResult> createInstanceProfileAsync(final CreateInstanceProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateInstanceProfileRequest, CreateInstanceProfileResult> asyncHandler) {
+        final CreateInstanceProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateInstanceProfileResult>() {
+            @Override
+            public CreateInstanceProfileResult call() throws Exception {
+                CreateInstanceProfileResult result = null;
+
+                try {
+                    result = executeCreateInstanceProfile(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateNetworkProfileResult> createNetworkProfileAsync(CreateNetworkProfileRequest request) {
 
         return createNetworkProfileAsync(request, null);
@@ -410,6 +443,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<CreateVPCEConfigurationResult> createVPCEConfigurationAsync(CreateVPCEConfigurationRequest request) {
+
+        return createVPCEConfigurationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateVPCEConfigurationResult> createVPCEConfigurationAsync(final CreateVPCEConfigurationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateVPCEConfigurationRequest, CreateVPCEConfigurationResult> asyncHandler) {
+        final CreateVPCEConfigurationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateVPCEConfigurationResult>() {
+            @Override
+            public CreateVPCEConfigurationResult call() throws Exception {
+                CreateVPCEConfigurationResult result = null;
+
+                try {
+                    result = executeCreateVPCEConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteDevicePoolResult> deleteDevicePoolAsync(DeleteDevicePoolRequest request) {
 
         return deleteDevicePoolAsync(request, null);
@@ -427,6 +493,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
 
                 try {
                     result = executeDeleteDevicePool(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteInstanceProfileResult> deleteInstanceProfileAsync(DeleteInstanceProfileRequest request) {
+
+        return deleteInstanceProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteInstanceProfileResult> deleteInstanceProfileAsync(final DeleteInstanceProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteInstanceProfileRequest, DeleteInstanceProfileResult> asyncHandler) {
+        final DeleteInstanceProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteInstanceProfileResult>() {
+            @Override
+            public DeleteInstanceProfileResult call() throws Exception {
+                DeleteInstanceProfileResult result = null;
+
+                try {
+                    result = executeDeleteInstanceProfile(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -608,6 +707,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteVPCEConfigurationResult> deleteVPCEConfigurationAsync(DeleteVPCEConfigurationRequest request) {
+
+        return deleteVPCEConfigurationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVPCEConfigurationResult> deleteVPCEConfigurationAsync(final DeleteVPCEConfigurationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteVPCEConfigurationRequest, DeleteVPCEConfigurationResult> asyncHandler) {
+        final DeleteVPCEConfigurationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteVPCEConfigurationResult>() {
+            @Override
+            public DeleteVPCEConfigurationResult call() throws Exception {
+                DeleteVPCEConfigurationResult result = null;
+
+                try {
+                    result = executeDeleteVPCEConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<GetAccountSettingsResult> getAccountSettingsAsync(GetAccountSettingsRequest request) {
 
         return getAccountSettingsAsync(request, null);
@@ -674,6 +806,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<GetDeviceInstanceResult> getDeviceInstanceAsync(GetDeviceInstanceRequest request) {
+
+        return getDeviceInstanceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetDeviceInstanceResult> getDeviceInstanceAsync(final GetDeviceInstanceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetDeviceInstanceRequest, GetDeviceInstanceResult> asyncHandler) {
+        final GetDeviceInstanceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetDeviceInstanceResult>() {
+            @Override
+            public GetDeviceInstanceResult call() throws Exception {
+                GetDeviceInstanceResult result = null;
+
+                try {
+                    result = executeGetDeviceInstance(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<GetDevicePoolResult> getDevicePoolAsync(GetDevicePoolRequest request) {
 
         return getDevicePoolAsync(request, null);
@@ -724,6 +889,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
 
                 try {
                     result = executeGetDevicePoolCompatibility(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetInstanceProfileResult> getInstanceProfileAsync(GetInstanceProfileRequest request) {
+
+        return getInstanceProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetInstanceProfileResult> getInstanceProfileAsync(final GetInstanceProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetInstanceProfileRequest, GetInstanceProfileResult> asyncHandler) {
+        final GetInstanceProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetInstanceProfileResult>() {
+            @Override
+            public GetInstanceProfileResult call() throws Exception {
+                GetInstanceProfileResult result = null;
+
+                try {
+                    result = executeGetInstanceProfile(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1037,6 +1235,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<GetVPCEConfigurationResult> getVPCEConfigurationAsync(GetVPCEConfigurationRequest request) {
+
+        return getVPCEConfigurationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetVPCEConfigurationResult> getVPCEConfigurationAsync(final GetVPCEConfigurationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetVPCEConfigurationRequest, GetVPCEConfigurationResult> asyncHandler) {
+        final GetVPCEConfigurationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetVPCEConfigurationResult>() {
+            @Override
+            public GetVPCEConfigurationResult call() throws Exception {
+                GetVPCEConfigurationResult result = null;
+
+                try {
+                    result = executeGetVPCEConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<InstallToRemoteAccessSessionResult> installToRemoteAccessSessionAsync(InstallToRemoteAccessSessionRequest request) {
 
         return installToRemoteAccessSessionAsync(request, null);
@@ -1103,6 +1334,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<ListDeviceInstancesResult> listDeviceInstancesAsync(ListDeviceInstancesRequest request) {
+
+        return listDeviceInstancesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListDeviceInstancesResult> listDeviceInstancesAsync(final ListDeviceInstancesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListDeviceInstancesRequest, ListDeviceInstancesResult> asyncHandler) {
+        final ListDeviceInstancesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListDeviceInstancesResult>() {
+            @Override
+            public ListDeviceInstancesResult call() throws Exception {
+                ListDeviceInstancesResult result = null;
+
+                try {
+                    result = executeListDeviceInstances(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListDevicePoolsResult> listDevicePoolsAsync(ListDevicePoolsRequest request) {
 
         return listDevicePoolsAsync(request, null);
@@ -1153,6 +1417,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
 
                 try {
                     result = executeListDevices(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListInstanceProfilesResult> listInstanceProfilesAsync(ListInstanceProfilesRequest request) {
+
+        return listInstanceProfilesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListInstanceProfilesResult> listInstanceProfilesAsync(final ListInstanceProfilesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListInstanceProfilesRequest, ListInstanceProfilesResult> asyncHandler) {
+        final ListInstanceProfilesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListInstanceProfilesResult>() {
+            @Override
+            public ListInstanceProfilesResult call() throws Exception {
+                ListInstanceProfilesResult result = null;
+
+                try {
+                    result = executeListInstanceProfiles(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1598,6 +1895,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<ListVPCEConfigurationsResult> listVPCEConfigurationsAsync(ListVPCEConfigurationsRequest request) {
+
+        return listVPCEConfigurationsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListVPCEConfigurationsResult> listVPCEConfigurationsAsync(final ListVPCEConfigurationsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListVPCEConfigurationsRequest, ListVPCEConfigurationsResult> asyncHandler) {
+        final ListVPCEConfigurationsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListVPCEConfigurationsResult>() {
+            @Override
+            public ListVPCEConfigurationsResult call() throws Exception {
+                ListVPCEConfigurationsResult result = null;
+
+                try {
+                    result = executeListVPCEConfigurations(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<PurchaseOfferingResult> purchaseOfferingAsync(PurchaseOfferingRequest request) {
 
         return purchaseOfferingAsync(request, null);
@@ -1763,6 +2093,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
     }
 
     @Override
+    public java.util.concurrent.Future<UpdateDeviceInstanceResult> updateDeviceInstanceAsync(UpdateDeviceInstanceRequest request) {
+
+        return updateDeviceInstanceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateDeviceInstanceResult> updateDeviceInstanceAsync(final UpdateDeviceInstanceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateDeviceInstanceRequest, UpdateDeviceInstanceResult> asyncHandler) {
+        final UpdateDeviceInstanceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateDeviceInstanceResult>() {
+            @Override
+            public UpdateDeviceInstanceResult call() throws Exception {
+                UpdateDeviceInstanceResult result = null;
+
+                try {
+                    result = executeUpdateDeviceInstance(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<UpdateDevicePoolResult> updateDevicePoolAsync(UpdateDevicePoolRequest request) {
 
         return updateDevicePoolAsync(request, null);
@@ -1780,6 +2143,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
 
                 try {
                     result = executeUpdateDevicePool(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInstanceProfileResult> updateInstanceProfileAsync(UpdateInstanceProfileRequest request) {
+
+        return updateInstanceProfileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInstanceProfileResult> updateInstanceProfileAsync(final UpdateInstanceProfileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateInstanceProfileRequest, UpdateInstanceProfileResult> asyncHandler) {
+        final UpdateInstanceProfileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateInstanceProfileResult>() {
+            @Override
+            public UpdateInstanceProfileResult call() throws Exception {
+                UpdateInstanceProfileResult result = null;
+
+                try {
+                    result = executeUpdateInstanceProfile(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1846,6 +2242,39 @@ public class AWSDeviceFarmAsyncClient extends AWSDeviceFarmClient implements AWS
 
                 try {
                     result = executeUpdateProject(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateVPCEConfigurationResult> updateVPCEConfigurationAsync(UpdateVPCEConfigurationRequest request) {
+
+        return updateVPCEConfigurationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateVPCEConfigurationResult> updateVPCEConfigurationAsync(final UpdateVPCEConfigurationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateVPCEConfigurationRequest, UpdateVPCEConfigurationResult> asyncHandler) {
+        final UpdateVPCEConfigurationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateVPCEConfigurationResult>() {
+            @Override
+            public UpdateVPCEConfigurationResult call() throws Exception {
+                UpdateVPCEConfigurationResult result = null;
+
+                try {
+                    result = executeUpdateVPCEConfiguration(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -260,6 +260,12 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private Device device;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the instance.
+     * </p>
+     */
+    private String instanceArn;
     /**
      * <p>
      * Represents the total (metered or unmetered) minutes used by the job.
@@ -2453,6 +2459,46 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * The Amazon Resource Name (ARN) of the instance.
+     * </p>
+     * 
+     * @param instanceArn
+     *        The Amazon Resource Name (ARN) of the instance.
+     */
+
+    public void setInstanceArn(String instanceArn) {
+        this.instanceArn = instanceArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the instance.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the instance.
+     */
+
+    public String getInstanceArn() {
+        return this.instanceArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the instance.
+     * </p>
+     * 
+     * @param instanceArn
+     *        The Amazon Resource Name (ARN) of the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Job withInstanceArn(String instanceArn) {
+        setInstanceArn(instanceArn);
+        return this;
+    }
+
+    /**
+     * <p>
      * Represents the total (metered or unmetered) minutes used by the job.
      * </p>
      * 
@@ -2524,6 +2570,8 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
             sb.append("Message: ").append(getMessage()).append(",");
         if (getDevice() != null)
             sb.append("Device: ").append(getDevice()).append(",");
+        if (getInstanceArn() != null)
+            sb.append("InstanceArn: ").append(getInstanceArn()).append(",");
         if (getDeviceMinutes() != null)
             sb.append("DeviceMinutes: ").append(getDeviceMinutes());
         sb.append("}");
@@ -2584,6 +2632,10 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDevice() != null && other.getDevice().equals(this.getDevice()) == false)
             return false;
+        if (other.getInstanceArn() == null ^ this.getInstanceArn() == null)
+            return false;
+        if (other.getInstanceArn() != null && other.getInstanceArn().equals(this.getInstanceArn()) == false)
+            return false;
         if (other.getDeviceMinutes() == null ^ this.getDeviceMinutes() == null)
             return false;
         if (other.getDeviceMinutes() != null && other.getDeviceMinutes().equals(this.getDeviceMinutes()) == false)
@@ -2607,6 +2659,7 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getCounters() == null) ? 0 : getCounters().hashCode());
         hashCode = prime * hashCode + ((getMessage() == null) ? 0 : getMessage().hashCode());
         hashCode = prime * hashCode + ((getDevice() == null) ? 0 : getDevice().hashCode());
+        hashCode = prime * hashCode + ((getInstanceArn() == null) ? 0 : getInstanceArn().hashCode());
         hashCode = prime * hashCode + ((getDeviceMinutes() == null) ? 0 : getDeviceMinutes().hashCode());
         return hashCode;
     }

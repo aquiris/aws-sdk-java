@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class UpdateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
     private String environmentId;
     /**
      * <p>
-     * Any replacement name for the environment.
+     * A replacement name for the environment.
      * </p>
      */
     private String name;
@@ -86,11 +86,11 @@ public class UpdateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Any replacement name for the environment.
+     * A replacement name for the environment.
      * </p>
      * 
      * @param name
-     *        Any replacement name for the environment.
+     *        A replacement name for the environment.
      */
 
     public void setName(String name) {
@@ -99,10 +99,10 @@ public class UpdateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Any replacement name for the environment.
+     * A replacement name for the environment.
      * </p>
      * 
-     * @return Any replacement name for the environment.
+     * @return A replacement name for the environment.
      */
 
     public String getName() {
@@ -111,11 +111,11 @@ public class UpdateEnvironmentRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Any replacement name for the environment.
+     * A replacement name for the environment.
      * </p>
      * 
      * @param name
-     *        Any replacement name for the environment.
+     *        A replacement name for the environment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

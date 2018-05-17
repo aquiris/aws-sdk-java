@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -71,34 +71,45 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     private String desiredStatus;
     /**
      * <p>
-     * The number of <code>cpu</code> units used by the task. If using the EC2 launch type, this field is optional and
-     * any value can be used. If using the Fargate launch type, this field is required and you must use one of the
-     * following values, which determines your range of valid values for the <code>memory</code> parameter:
+     * The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example
+     * <code>1024</code>, or as a string using vCPUs, for example <code>1 vCPU</code> or <code>1 vcpu</code>, in a task
+     * definition but is converted to an integer indicating the CPU units when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional. Supported values are between <code>128</code> CPU units (
+     * <code>0.125</code> vCPUs) and <code>10240</code> CPU units (<code>10</code> vCPUs).
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>memory</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 256 (.25 vCPU) - Available <code>memory</code> values: 0.5GB, 1GB, 2GB
+     * 256 (.25 vCPU) - Available <code>memory</code> values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 512 (.5 vCPU) - Available <code>memory</code> values: 1GB, 2GB, 3GB, 4GB
+     * 512 (.5 vCPU) - Available <code>memory</code> values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1024 (1 vCPU) - Available <code>memory</code> values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+     * 1024 (1 vCPU) - Available <code>memory</code> values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6
+     * GB), 7168 (7 GB), 8192 (8 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4GB and 16GB in 1GB increments
+     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8GB and 30GB in 1GB increments
+     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * </ul>
@@ -106,34 +117,44 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     private String cpu;
     /**
      * <p>
-     * The amount (in MiB) of memory used by the task. If using the EC2 launch type, this field is optional and any
-     * value can be used. If using the Fargate launch type, this field is required and you must use one of the following
-     * values, which determines your range of valid values for the <code>cpu</code> parameter:
+     * The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example
+     * <code>1024</code>, or as a string using GB, for example <code>1GB</code> or <code>1 GB</code>, in a task
+     * definition but is converted to an integer indicating the MiB when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional.
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>cpu</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 0.5GB, 1GB, 2GB - Available <code>cpu</code> values: 256 (.25 vCPU)
+     * 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available <code>cpu</code> values: 256 (.25 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1GB, 2GB, 3GB, 4GB - Available <code>cpu</code> values: 512 (.5 vCPU)
+     * 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available <code>cpu</code> values: 512 (.5 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available <code>cpu</code> values: 1024 (1 vCPU)
+     * 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available
+     * <code>cpu</code> values: 1024 (1 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 4GB and 16GB in 1GB increments - Available <code>cpu</code> values: 2048 (2 vCPU)
+     * Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 2048 (2
+     * vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 8GB and 30GB in 1GB increments - Available <code>cpu</code> values: 4096 (4 vCPU)
+     * Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 4096 (4
+     * vCPU)
      * </p>
      * </li>
      * </ul>
@@ -193,7 +214,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     private java.util.Date pullStoppedAt;
     /**
      * <p>
-     * The Unix timestamp for when the task execution stopped.
+     * The Unix time stamp for when the task execution stopped.
      * </p>
      */
     private java.util.Date executionStoppedAt;
@@ -212,8 +233,8 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     private java.util.Date startedAt;
     /**
      * <p>
-     * The Unix time stamp for when the task will stop (the task transitioned from the <code>RUNNING</code> state to the
-     * <code>STOPPED</code> state).
+     * The Unix time stamp for when the task will stop (transitions from the <code>RUNNING</code> state to
+     * <code>STOPPED</code>).
      * </p>
      */
     private java.util.Date stoppingAt;
@@ -250,6 +271,24 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Attachment> attachments;
+    /**
+     * <p>
+     * The health status for the task, which is determined by the health of the essential containers in the task. If all
+     * essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also reports as
+     * <code>HEALTHY</code>. If any essential containers in the task are reporting as <code>UNHEALTHY</code> or
+     * <code>UNKNOWN</code>, then the task status also reports as <code>UNHEALTHY</code> or <code>UNKNOWN</code>,
+     * accordingly.
+     * </p>
+     * <note>
+     * <p>
+     * The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     * container image (such as those specified in a parent image or from the image's Dockerfile) and not specified in
+     * the container definition. Health check parameters that are specified in a container definition override any
+     * Docker health checks that exist in the container image.
+     * </p>
+     * </note>
+     */
+    private String healthStatus;
 
     /**
      * <p>
@@ -533,67 +572,89 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number of <code>cpu</code> units used by the task. If using the EC2 launch type, this field is optional and
-     * any value can be used. If using the Fargate launch type, this field is required and you must use one of the
-     * following values, which determines your range of valid values for the <code>memory</code> parameter:
+     * The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example
+     * <code>1024</code>, or as a string using vCPUs, for example <code>1 vCPU</code> or <code>1 vcpu</code>, in a task
+     * definition but is converted to an integer indicating the CPU units when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional. Supported values are between <code>128</code> CPU units (
+     * <code>0.125</code> vCPUs) and <code>10240</code> CPU units (<code>10</code> vCPUs).
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>memory</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 256 (.25 vCPU) - Available <code>memory</code> values: 0.5GB, 1GB, 2GB
+     * 256 (.25 vCPU) - Available <code>memory</code> values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 512 (.5 vCPU) - Available <code>memory</code> values: 1GB, 2GB, 3GB, 4GB
+     * 512 (.5 vCPU) - Available <code>memory</code> values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1024 (1 vCPU) - Available <code>memory</code> values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+     * 1024 (1 vCPU) - Available <code>memory</code> values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6
+     * GB), 7168 (7 GB), 8192 (8 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4GB and 16GB in 1GB increments
+     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8GB and 30GB in 1GB increments
+     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * </ul>
      * 
      * @param cpu
-     *        The number of <code>cpu</code> units used by the task. If using the EC2 launch type, this field is
-     *        optional and any value can be used. If using the Fargate launch type, this field is required and you must
-     *        use one of the following values, which determines your range of valid values for the <code>memory</code>
-     *        parameter:</p>
+     *        The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example
+     *        <code>1024</code>, or as a string using vCPUs, for example <code>1 vCPU</code> or <code>1 vcpu</code>, in
+     *        a task definition but is converted to an integer indicating the CPU units when the task definition is
+     *        registered.</p>
+     *        <p>
+     *        If using the EC2 launch type, this field is optional. Supported values are between <code>128</code> CPU
+     *        units (<code>0.125</code> vCPUs) and <code>10240</code> CPU units (<code>10</code> vCPUs).
+     *        </p>
+     *        <p>
+     *        If using the Fargate launch type, this field is required and you must use one of the following values,
+     *        which determines your range of supported values for the <code>memory</code> parameter:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        256 (.25 vCPU) - Available <code>memory</code> values: 0.5GB, 1GB, 2GB
+     *        256 (.25 vCPU) - Available <code>memory</code> values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        512 (.5 vCPU) - Available <code>memory</code> values: 1GB, 2GB, 3GB, 4GB
+     *        512 (.5 vCPU) - Available <code>memory</code> values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        1024 (1 vCPU) - Available <code>memory</code> values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+     *        1024 (1 vCPU) - Available <code>memory</code> values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB),
+     *        6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        2048 (2 vCPU) - Available <code>memory</code> values: Between 4GB and 16GB in 1GB increments
+     *        2048 (2 vCPU) - Available <code>memory</code> values: Between 4096 (4 GB) and 16384 (16 GB) in increments
+     *        of 1024 (1 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        4096 (4 vCPU) - Available <code>memory</code> values: Between 8GB and 30GB in 1GB increments
+     *        4096 (4 vCPU) - Available <code>memory</code> values: Between 8192 (8 GB) and 30720 (30 GB) in increments
+     *        of 1024 (1 GB)
      *        </p>
      *        </li>
      */
@@ -604,66 +665,88 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number of <code>cpu</code> units used by the task. If using the EC2 launch type, this field is optional and
-     * any value can be used. If using the Fargate launch type, this field is required and you must use one of the
-     * following values, which determines your range of valid values for the <code>memory</code> parameter:
+     * The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example
+     * <code>1024</code>, or as a string using vCPUs, for example <code>1 vCPU</code> or <code>1 vcpu</code>, in a task
+     * definition but is converted to an integer indicating the CPU units when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional. Supported values are between <code>128</code> CPU units (
+     * <code>0.125</code> vCPUs) and <code>10240</code> CPU units (<code>10</code> vCPUs).
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>memory</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 256 (.25 vCPU) - Available <code>memory</code> values: 0.5GB, 1GB, 2GB
+     * 256 (.25 vCPU) - Available <code>memory</code> values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 512 (.5 vCPU) - Available <code>memory</code> values: 1GB, 2GB, 3GB, 4GB
+     * 512 (.5 vCPU) - Available <code>memory</code> values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1024 (1 vCPU) - Available <code>memory</code> values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+     * 1024 (1 vCPU) - Available <code>memory</code> values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6
+     * GB), 7168 (7 GB), 8192 (8 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4GB and 16GB in 1GB increments
+     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8GB and 30GB in 1GB increments
+     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The number of <code>cpu</code> units used by the task. If using the EC2 launch type, this field is
-     *         optional and any value can be used. If using the Fargate launch type, this field is required and you must
-     *         use one of the following values, which determines your range of valid values for the <code>memory</code>
-     *         parameter:</p>
+     * @return The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example
+     *         <code>1024</code>, or as a string using vCPUs, for example <code>1 vCPU</code> or <code>1 vcpu</code>, in
+     *         a task definition but is converted to an integer indicating the CPU units when the task definition is
+     *         registered.</p>
+     *         <p>
+     *         If using the EC2 launch type, this field is optional. Supported values are between <code>128</code> CPU
+     *         units (<code>0.125</code> vCPUs) and <code>10240</code> CPU units (<code>10</code> vCPUs).
+     *         </p>
+     *         <p>
+     *         If using the Fargate launch type, this field is required and you must use one of the following values,
+     *         which determines your range of supported values for the <code>memory</code> parameter:
+     *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         256 (.25 vCPU) - Available <code>memory</code> values: 0.5GB, 1GB, 2GB
+     *         256 (.25 vCPU) - Available <code>memory</code> values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         512 (.5 vCPU) - Available <code>memory</code> values: 1GB, 2GB, 3GB, 4GB
+     *         512 (.5 vCPU) - Available <code>memory</code> values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         1024 (1 vCPU) - Available <code>memory</code> values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+     *         1024 (1 vCPU) - Available <code>memory</code> values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB),
+     *         6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         2048 (2 vCPU) - Available <code>memory</code> values: Between 4GB and 16GB in 1GB increments
+     *         2048 (2 vCPU) - Available <code>memory</code> values: Between 4096 (4 GB) and 16384 (16 GB) in increments
+     *         of 1024 (1 GB)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         4096 (4 vCPU) - Available <code>memory</code> values: Between 8GB and 30GB in 1GB increments
+     *         4096 (4 vCPU) - Available <code>memory</code> values: Between 8192 (8 GB) and 30720 (30 GB) in increments
+     *         of 1024 (1 GB)
      *         </p>
      *         </li>
      */
@@ -674,67 +757,89 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number of <code>cpu</code> units used by the task. If using the EC2 launch type, this field is optional and
-     * any value can be used. If using the Fargate launch type, this field is required and you must use one of the
-     * following values, which determines your range of valid values for the <code>memory</code> parameter:
+     * The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example
+     * <code>1024</code>, or as a string using vCPUs, for example <code>1 vCPU</code> or <code>1 vcpu</code>, in a task
+     * definition but is converted to an integer indicating the CPU units when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional. Supported values are between <code>128</code> CPU units (
+     * <code>0.125</code> vCPUs) and <code>10240</code> CPU units (<code>10</code> vCPUs).
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>memory</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 256 (.25 vCPU) - Available <code>memory</code> values: 0.5GB, 1GB, 2GB
+     * 256 (.25 vCPU) - Available <code>memory</code> values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 512 (.5 vCPU) - Available <code>memory</code> values: 1GB, 2GB, 3GB, 4GB
+     * 512 (.5 vCPU) - Available <code>memory</code> values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1024 (1 vCPU) - Available <code>memory</code> values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+     * 1024 (1 vCPU) - Available <code>memory</code> values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6
+     * GB), 7168 (7 GB), 8192 (8 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4GB and 16GB in 1GB increments
+     * 2048 (2 vCPU) - Available <code>memory</code> values: Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8GB and 30GB in 1GB increments
+     * 4096 (4 vCPU) - Available <code>memory</code> values: Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024
+     * (1 GB)
      * </p>
      * </li>
      * </ul>
      * 
      * @param cpu
-     *        The number of <code>cpu</code> units used by the task. If using the EC2 launch type, this field is
-     *        optional and any value can be used. If using the Fargate launch type, this field is required and you must
-     *        use one of the following values, which determines your range of valid values for the <code>memory</code>
-     *        parameter:</p>
+     *        The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example
+     *        <code>1024</code>, or as a string using vCPUs, for example <code>1 vCPU</code> or <code>1 vcpu</code>, in
+     *        a task definition but is converted to an integer indicating the CPU units when the task definition is
+     *        registered.</p>
+     *        <p>
+     *        If using the EC2 launch type, this field is optional. Supported values are between <code>128</code> CPU
+     *        units (<code>0.125</code> vCPUs) and <code>10240</code> CPU units (<code>10</code> vCPUs).
+     *        </p>
+     *        <p>
+     *        If using the Fargate launch type, this field is required and you must use one of the following values,
+     *        which determines your range of supported values for the <code>memory</code> parameter:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        256 (.25 vCPU) - Available <code>memory</code> values: 0.5GB, 1GB, 2GB
+     *        256 (.25 vCPU) - Available <code>memory</code> values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        512 (.5 vCPU) - Available <code>memory</code> values: 1GB, 2GB, 3GB, 4GB
+     *        512 (.5 vCPU) - Available <code>memory</code> values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        1024 (1 vCPU) - Available <code>memory</code> values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+     *        1024 (1 vCPU) - Available <code>memory</code> values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB),
+     *        6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        2048 (2 vCPU) - Available <code>memory</code> values: Between 4GB and 16GB in 1GB increments
+     *        2048 (2 vCPU) - Available <code>memory</code> values: Between 4096 (4 GB) and 16384 (16 GB) in increments
+     *        of 1024 (1 GB)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        4096 (4 vCPU) - Available <code>memory</code> values: Between 8GB and 30GB in 1GB increments
+     *        4096 (4 vCPU) - Available <code>memory</code> values: Between 8192 (8 GB) and 30720 (30 GB) in increments
+     *        of 1024 (1 GB)
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -747,66 +852,86 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The amount (in MiB) of memory used by the task. If using the EC2 launch type, this field is optional and any
-     * value can be used. If using the Fargate launch type, this field is required and you must use one of the following
-     * values, which determines your range of valid values for the <code>cpu</code> parameter:
+     * The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example
+     * <code>1024</code>, or as a string using GB, for example <code>1GB</code> or <code>1 GB</code>, in a task
+     * definition but is converted to an integer indicating the MiB when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional.
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>cpu</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 0.5GB, 1GB, 2GB - Available <code>cpu</code> values: 256 (.25 vCPU)
+     * 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available <code>cpu</code> values: 256 (.25 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1GB, 2GB, 3GB, 4GB - Available <code>cpu</code> values: 512 (.5 vCPU)
+     * 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available <code>cpu</code> values: 512 (.5 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available <code>cpu</code> values: 1024 (1 vCPU)
+     * 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available
+     * <code>cpu</code> values: 1024 (1 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 4GB and 16GB in 1GB increments - Available <code>cpu</code> values: 2048 (2 vCPU)
+     * Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 2048 (2
+     * vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 8GB and 30GB in 1GB increments - Available <code>cpu</code> values: 4096 (4 vCPU)
+     * Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 4096 (4
+     * vCPU)
      * </p>
      * </li>
      * </ul>
      * 
      * @param memory
-     *        The amount (in MiB) of memory used by the task. If using the EC2 launch type, this field is optional and
-     *        any value can be used. If using the Fargate launch type, this field is required and you must use one of
-     *        the following values, which determines your range of valid values for the <code>cpu</code> parameter:</p>
+     *        The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example
+     *        <code>1024</code>, or as a string using GB, for example <code>1GB</code> or <code>1 GB</code>, in a task
+     *        definition but is converted to an integer indicating the MiB when the task definition is registered.</p>
+     *        <p>
+     *        If using the EC2 launch type, this field is optional.
+     *        </p>
+     *        <p>
+     *        If using the Fargate launch type, this field is required and you must use one of the following values,
+     *        which determines your range of supported values for the <code>cpu</code> parameter:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        0.5GB, 1GB, 2GB - Available <code>cpu</code> values: 256 (.25 vCPU)
+     *        512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available <code>cpu</code> values: 256 (.25 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        1GB, 2GB, 3GB, 4GB - Available <code>cpu</code> values: 512 (.5 vCPU)
+     *        1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available <code>cpu</code> values: 512 (.5 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available <code>cpu</code> values: 1024 (1 vCPU)
+     *        2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available
+     *        <code>cpu</code> values: 1024 (1 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Between 4GB and 16GB in 1GB increments - Available <code>cpu</code> values: 2048 (2 vCPU)
+     *        Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values:
+     *        2048 (2 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Between 8GB and 30GB in 1GB increments - Available <code>cpu</code> values: 4096 (4 vCPU)
+     *        Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values:
+     *        4096 (4 vCPU)
      *        </p>
      *        </li>
      */
@@ -817,65 +942,85 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The amount (in MiB) of memory used by the task. If using the EC2 launch type, this field is optional and any
-     * value can be used. If using the Fargate launch type, this field is required and you must use one of the following
-     * values, which determines your range of valid values for the <code>cpu</code> parameter:
+     * The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example
+     * <code>1024</code>, or as a string using GB, for example <code>1GB</code> or <code>1 GB</code>, in a task
+     * definition but is converted to an integer indicating the MiB when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional.
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>cpu</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 0.5GB, 1GB, 2GB - Available <code>cpu</code> values: 256 (.25 vCPU)
+     * 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available <code>cpu</code> values: 256 (.25 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1GB, 2GB, 3GB, 4GB - Available <code>cpu</code> values: 512 (.5 vCPU)
+     * 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available <code>cpu</code> values: 512 (.5 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available <code>cpu</code> values: 1024 (1 vCPU)
+     * 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available
+     * <code>cpu</code> values: 1024 (1 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 4GB and 16GB in 1GB increments - Available <code>cpu</code> values: 2048 (2 vCPU)
+     * Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 2048 (2
+     * vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 8GB and 30GB in 1GB increments - Available <code>cpu</code> values: 4096 (4 vCPU)
+     * Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 4096 (4
+     * vCPU)
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The amount (in MiB) of memory used by the task. If using the EC2 launch type, this field is optional and
-     *         any value can be used. If using the Fargate launch type, this field is required and you must use one of
-     *         the following values, which determines your range of valid values for the <code>cpu</code> parameter:</p>
+     * @return The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example
+     *         <code>1024</code>, or as a string using GB, for example <code>1GB</code> or <code>1 GB</code>, in a task
+     *         definition but is converted to an integer indicating the MiB when the task definition is registered.</p>
+     *         <p>
+     *         If using the EC2 launch type, this field is optional.
+     *         </p>
+     *         <p>
+     *         If using the Fargate launch type, this field is required and you must use one of the following values,
+     *         which determines your range of supported values for the <code>cpu</code> parameter:
+     *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         0.5GB, 1GB, 2GB - Available <code>cpu</code> values: 256 (.25 vCPU)
+     *         512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available <code>cpu</code> values: 256 (.25 vCPU)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         1GB, 2GB, 3GB, 4GB - Available <code>cpu</code> values: 512 (.5 vCPU)
+     *         1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available <code>cpu</code> values: 512 (.5 vCPU)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available <code>cpu</code> values: 1024 (1 vCPU)
+     *         2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available
+     *         <code>cpu</code> values: 1024 (1 vCPU)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Between 4GB and 16GB in 1GB increments - Available <code>cpu</code> values: 2048 (2 vCPU)
+     *         Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values:
+     *         2048 (2 vCPU)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Between 8GB and 30GB in 1GB increments - Available <code>cpu</code> values: 4096 (4 vCPU)
+     *         Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values:
+     *         4096 (4 vCPU)
      *         </p>
      *         </li>
      */
@@ -886,66 +1031,86 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The amount (in MiB) of memory used by the task. If using the EC2 launch type, this field is optional and any
-     * value can be used. If using the Fargate launch type, this field is required and you must use one of the following
-     * values, which determines your range of valid values for the <code>cpu</code> parameter:
+     * The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example
+     * <code>1024</code>, or as a string using GB, for example <code>1GB</code> or <code>1 GB</code>, in a task
+     * definition but is converted to an integer indicating the MiB when the task definition is registered.
+     * </p>
+     * <p>
+     * If using the EC2 launch type, this field is optional.
+     * </p>
+     * <p>
+     * If using the Fargate launch type, this field is required and you must use one of the following values, which
+     * determines your range of supported values for the <code>cpu</code> parameter:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * 0.5GB, 1GB, 2GB - Available <code>cpu</code> values: 256 (.25 vCPU)
+     * 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available <code>cpu</code> values: 256 (.25 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 1GB, 2GB, 3GB, 4GB - Available <code>cpu</code> values: 512 (.5 vCPU)
+     * 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available <code>cpu</code> values: 512 (.5 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available <code>cpu</code> values: 1024 (1 vCPU)
+     * 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available
+     * <code>cpu</code> values: 1024 (1 vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 4GB and 16GB in 1GB increments - Available <code>cpu</code> values: 2048 (2 vCPU)
+     * Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 2048 (2
+     * vCPU)
      * </p>
      * </li>
      * <li>
      * <p>
-     * Between 8GB and 30GB in 1GB increments - Available <code>cpu</code> values: 4096 (4 vCPU)
+     * Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values: 4096 (4
+     * vCPU)
      * </p>
      * </li>
      * </ul>
      * 
      * @param memory
-     *        The amount (in MiB) of memory used by the task. If using the EC2 launch type, this field is optional and
-     *        any value can be used. If using the Fargate launch type, this field is required and you must use one of
-     *        the following values, which determines your range of valid values for the <code>cpu</code> parameter:</p>
+     *        The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example
+     *        <code>1024</code>, or as a string using GB, for example <code>1GB</code> or <code>1 GB</code>, in a task
+     *        definition but is converted to an integer indicating the MiB when the task definition is registered.</p>
+     *        <p>
+     *        If using the EC2 launch type, this field is optional.
+     *        </p>
+     *        <p>
+     *        If using the Fargate launch type, this field is required and you must use one of the following values,
+     *        which determines your range of supported values for the <code>cpu</code> parameter:
+     *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        0.5GB, 1GB, 2GB - Available <code>cpu</code> values: 256 (.25 vCPU)
+     *        512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available <code>cpu</code> values: 256 (.25 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        1GB, 2GB, 3GB, 4GB - Available <code>cpu</code> values: 512 (.5 vCPU)
+     *        1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available <code>cpu</code> values: 512 (.5 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available <code>cpu</code> values: 1024 (1 vCPU)
+     *        2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available
+     *        <code>cpu</code> values: 1024 (1 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Between 4GB and 16GB in 1GB increments - Available <code>cpu</code> values: 2048 (2 vCPU)
+     *        Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values:
+     *        2048 (2 vCPU)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Between 8GB and 30GB in 1GB increments - Available <code>cpu</code> values: 4096 (4 vCPU)
+     *        Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available <code>cpu</code> values:
+     *        4096 (4 vCPU)
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1357,11 +1522,11 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Unix timestamp for when the task execution stopped.
+     * The Unix time stamp for when the task execution stopped.
      * </p>
      * 
      * @param executionStoppedAt
-     *        The Unix timestamp for when the task execution stopped.
+     *        The Unix time stamp for when the task execution stopped.
      */
 
     public void setExecutionStoppedAt(java.util.Date executionStoppedAt) {
@@ -1370,10 +1535,10 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Unix timestamp for when the task execution stopped.
+     * The Unix time stamp for when the task execution stopped.
      * </p>
      * 
-     * @return The Unix timestamp for when the task execution stopped.
+     * @return The Unix time stamp for when the task execution stopped.
      */
 
     public java.util.Date getExecutionStoppedAt() {
@@ -1382,11 +1547,11 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Unix timestamp for when the task execution stopped.
+     * The Unix time stamp for when the task execution stopped.
      * </p>
      * 
      * @param executionStoppedAt
-     *        The Unix timestamp for when the task execution stopped.
+     *        The Unix time stamp for when the task execution stopped.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1483,13 +1648,13 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Unix time stamp for when the task will stop (the task transitioned from the <code>RUNNING</code> state to the
-     * <code>STOPPED</code> state).
+     * The Unix time stamp for when the task will stop (transitions from the <code>RUNNING</code> state to
+     * <code>STOPPED</code>).
      * </p>
      * 
      * @param stoppingAt
-     *        The Unix time stamp for when the task will stop (the task transitioned from the <code>RUNNING</code> state
-     *        to the <code>STOPPED</code> state).
+     *        The Unix time stamp for when the task will stop (transitions from the <code>RUNNING</code> state to
+     *        <code>STOPPED</code>).
      */
 
     public void setStoppingAt(java.util.Date stoppingAt) {
@@ -1498,12 +1663,12 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Unix time stamp for when the task will stop (the task transitioned from the <code>RUNNING</code> state to the
-     * <code>STOPPED</code> state).
+     * The Unix time stamp for when the task will stop (transitions from the <code>RUNNING</code> state to
+     * <code>STOPPED</code>).
      * </p>
      * 
-     * @return The Unix time stamp for when the task will stop (the task transitioned from the <code>RUNNING</code>
-     *         state to the <code>STOPPED</code> state).
+     * @return The Unix time stamp for when the task will stop (transitions from the <code>RUNNING</code> state to
+     *         <code>STOPPED</code>).
      */
 
     public java.util.Date getStoppingAt() {
@@ -1512,13 +1677,13 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Unix time stamp for when the task will stop (the task transitioned from the <code>RUNNING</code> state to the
-     * <code>STOPPED</code> state).
+     * The Unix time stamp for when the task will stop (transitions from the <code>RUNNING</code> state to
+     * <code>STOPPED</code>).
      * </p>
      * 
      * @param stoppingAt
-     *        The Unix time stamp for when the task will stop (the task transitioned from the <code>RUNNING</code> state
-     *        to the <code>STOPPED</code> state).
+     *        The Unix time stamp for when the task will stop (transitions from the <code>RUNNING</code> state to
+     *        <code>STOPPED</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1802,6 +1967,153 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The health status for the task, which is determined by the health of the essential containers in the task. If all
+     * essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also reports as
+     * <code>HEALTHY</code>. If any essential containers in the task are reporting as <code>UNHEALTHY</code> or
+     * <code>UNKNOWN</code>, then the task status also reports as <code>UNHEALTHY</code> or <code>UNKNOWN</code>,
+     * accordingly.
+     * </p>
+     * <note>
+     * <p>
+     * The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     * container image (such as those specified in a parent image or from the image's Dockerfile) and not specified in
+     * the container definition. Health check parameters that are specified in a container definition override any
+     * Docker health checks that exist in the container image.
+     * </p>
+     * </note>
+     * 
+     * @param healthStatus
+     *        The health status for the task, which is determined by the health of the essential containers in the task.
+     *        If all essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also
+     *        reports as <code>HEALTHY</code>. If any essential containers in the task are reporting as
+     *        <code>UNHEALTHY</code> or <code>UNKNOWN</code>, then the task status also reports as
+     *        <code>UNHEALTHY</code> or <code>UNKNOWN</code>, accordingly.</p> <note>
+     *        <p>
+     *        The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     *        container image (such as those specified in a parent image or from the image's Dockerfile) and not
+     *        specified in the container definition. Health check parameters that are specified in a container
+     *        definition override any Docker health checks that exist in the container image.
+     *        </p>
+     * @see HealthStatus
+     */
+
+    public void setHealthStatus(String healthStatus) {
+        this.healthStatus = healthStatus;
+    }
+
+    /**
+     * <p>
+     * The health status for the task, which is determined by the health of the essential containers in the task. If all
+     * essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also reports as
+     * <code>HEALTHY</code>. If any essential containers in the task are reporting as <code>UNHEALTHY</code> or
+     * <code>UNKNOWN</code>, then the task status also reports as <code>UNHEALTHY</code> or <code>UNKNOWN</code>,
+     * accordingly.
+     * </p>
+     * <note>
+     * <p>
+     * The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     * container image (such as those specified in a parent image or from the image's Dockerfile) and not specified in
+     * the container definition. Health check parameters that are specified in a container definition override any
+     * Docker health checks that exist in the container image.
+     * </p>
+     * </note>
+     * 
+     * @return The health status for the task, which is determined by the health of the essential containers in the
+     *         task. If all essential containers in the task are reporting as <code>HEALTHY</code>, then the task status
+     *         also reports as <code>HEALTHY</code>. If any essential containers in the task are reporting as
+     *         <code>UNHEALTHY</code> or <code>UNKNOWN</code>, then the task status also reports as
+     *         <code>UNHEALTHY</code> or <code>UNKNOWN</code>, accordingly.</p> <note>
+     *         <p>
+     *         The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     *         container image (such as those specified in a parent image or from the image's Dockerfile) and not
+     *         specified in the container definition. Health check parameters that are specified in a container
+     *         definition override any Docker health checks that exist in the container image.
+     *         </p>
+     * @see HealthStatus
+     */
+
+    public String getHealthStatus() {
+        return this.healthStatus;
+    }
+
+    /**
+     * <p>
+     * The health status for the task, which is determined by the health of the essential containers in the task. If all
+     * essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also reports as
+     * <code>HEALTHY</code>. If any essential containers in the task are reporting as <code>UNHEALTHY</code> or
+     * <code>UNKNOWN</code>, then the task status also reports as <code>UNHEALTHY</code> or <code>UNKNOWN</code>,
+     * accordingly.
+     * </p>
+     * <note>
+     * <p>
+     * The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     * container image (such as those specified in a parent image or from the image's Dockerfile) and not specified in
+     * the container definition. Health check parameters that are specified in a container definition override any
+     * Docker health checks that exist in the container image.
+     * </p>
+     * </note>
+     * 
+     * @param healthStatus
+     *        The health status for the task, which is determined by the health of the essential containers in the task.
+     *        If all essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also
+     *        reports as <code>HEALTHY</code>. If any essential containers in the task are reporting as
+     *        <code>UNHEALTHY</code> or <code>UNKNOWN</code>, then the task status also reports as
+     *        <code>UNHEALTHY</code> or <code>UNKNOWN</code>, accordingly.</p> <note>
+     *        <p>
+     *        The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     *        container image (such as those specified in a parent image or from the image's Dockerfile) and not
+     *        specified in the container definition. Health check parameters that are specified in a container
+     *        definition override any Docker health checks that exist in the container image.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see HealthStatus
+     */
+
+    public Task withHealthStatus(String healthStatus) {
+        setHealthStatus(healthStatus);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The health status for the task, which is determined by the health of the essential containers in the task. If all
+     * essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also reports as
+     * <code>HEALTHY</code>. If any essential containers in the task are reporting as <code>UNHEALTHY</code> or
+     * <code>UNKNOWN</code>, then the task status also reports as <code>UNHEALTHY</code> or <code>UNKNOWN</code>,
+     * accordingly.
+     * </p>
+     * <note>
+     * <p>
+     * The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     * container image (such as those specified in a parent image or from the image's Dockerfile) and not specified in
+     * the container definition. Health check parameters that are specified in a container definition override any
+     * Docker health checks that exist in the container image.
+     * </p>
+     * </note>
+     * 
+     * @param healthStatus
+     *        The health status for the task, which is determined by the health of the essential containers in the task.
+     *        If all essential containers in the task are reporting as <code>HEALTHY</code>, then the task status also
+     *        reports as <code>HEALTHY</code>. If any essential containers in the task are reporting as
+     *        <code>UNHEALTHY</code> or <code>UNKNOWN</code>, then the task status also reports as
+     *        <code>UNHEALTHY</code> or <code>UNKNOWN</code>, accordingly.</p> <note>
+     *        <p>
+     *        The Amazon ECS container agent does not monitor or report on Docker health checks that are embedded in a
+     *        container image (such as those specified in a parent image or from the image's Dockerfile) and not
+     *        specified in the container definition. Health check parameters that are specified in a container
+     *        definition override any Docker health checks that exist in the container image.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see HealthStatus
+     */
+
+    public Task withHealthStatus(HealthStatus healthStatus) {
+        this.healthStatus = healthStatus.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1863,7 +2175,9 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
         if (getPlatformVersion() != null)
             sb.append("PlatformVersion: ").append(getPlatformVersion()).append(",");
         if (getAttachments() != null)
-            sb.append("Attachments: ").append(getAttachments());
+            sb.append("Attachments: ").append(getAttachments()).append(",");
+        if (getHealthStatus() != null)
+            sb.append("HealthStatus: ").append(getHealthStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -1982,6 +2296,10 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getAttachments() != null && other.getAttachments().equals(this.getAttachments()) == false)
             return false;
+        if (other.getHealthStatus() == null ^ this.getHealthStatus() == null)
+            return false;
+        if (other.getHealthStatus() != null && other.getHealthStatus().equals(this.getHealthStatus()) == false)
+            return false;
         return true;
     }
 
@@ -2016,6 +2334,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getLaunchType() == null) ? 0 : getLaunchType().hashCode());
         hashCode = prime * hashCode + ((getPlatformVersion() == null) ? 0 : getPlatformVersion().hashCode());
         hashCode = prime * hashCode + ((getAttachments() == null) ? 0 : getAttachments().hashCode());
+        hashCode = prime * hashCode + ((getHealthStatus() == null) ? 0 : getHealthStatus().hashCode());
         return hashCode;
     }
 

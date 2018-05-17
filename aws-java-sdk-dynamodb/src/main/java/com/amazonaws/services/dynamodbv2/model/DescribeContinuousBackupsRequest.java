@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,21 @@ public class DescribeContinuousBackupsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Name of the table for which the customer wants to check the backup and restore settings.
+     * Name of the table for which the customer wants to check the continuous backups and point in time recovery
+     * settings.
      * </p>
      */
     private String tableName;
 
     /**
      * <p>
-     * Name of the table for which the customer wants to check the backup and restore settings.
+     * Name of the table for which the customer wants to check the continuous backups and point in time recovery
+     * settings.
      * </p>
      * 
      * @param tableName
-     *        Name of the table for which the customer wants to check the backup and restore settings.
+     *        Name of the table for which the customer wants to check the continuous backups and point in time recovery
+     *        settings.
      */
 
     public void setTableName(String tableName) {
@@ -47,10 +50,12 @@ public class DescribeContinuousBackupsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Name of the table for which the customer wants to check the backup and restore settings.
+     * Name of the table for which the customer wants to check the continuous backups and point in time recovery
+     * settings.
      * </p>
      * 
-     * @return Name of the table for which the customer wants to check the backup and restore settings.
+     * @return Name of the table for which the customer wants to check the continuous backups and point in time recovery
+     *         settings.
      */
 
     public String getTableName() {
@@ -59,11 +64,13 @@ public class DescribeContinuousBackupsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Name of the table for which the customer wants to check the backup and restore settings.
+     * Name of the table for which the customer wants to check the continuous backups and point in time recovery
+     * settings.
      * </p>
      * 
      * @param tableName
-     *        Name of the table for which the customer wants to check the backup and restore settings.
+     *        Name of the table for which the customer wants to check the continuous backups and point in time recovery
+     *        settings.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

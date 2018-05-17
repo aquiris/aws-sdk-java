@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,13 +31,15 @@ public class GetFunctionResult extends com.amazonaws.AmazonWebServiceResult<com.
     private FunctionCodeLocation code;
     /**
      * <p>
-     * Returns the list of tags associated with the function.
+     * Returns the list of tags associated with the function. For more information, see <a
+     * href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS Lambda
+     * Developer Guide</b>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalMap<String, String> tags;
     /**
      * <p>
-     * The concurrent execution limit set for this function.
+     * The concurrent execution limit set for this function. For more information, see <a>concurrent-executions</a>.
      * </p>
      */
     private Concurrency concurrency;
@@ -96,10 +98,14 @@ public class GetFunctionResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Returns the list of tags associated with the function.
+     * Returns the list of tags associated with the function. For more information, see <a
+     * href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS Lambda
+     * Developer Guide</b>.
      * </p>
      * 
-     * @return Returns the list of tags associated with the function.
+     * @return Returns the list of tags associated with the function. For more information, see <a
+     *         href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the
+     *         <b>AWS Lambda Developer Guide</b>.
      */
 
     public java.util.Map<String, String> getTags() {
@@ -111,11 +117,15 @@ public class GetFunctionResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Returns the list of tags associated with the function.
+     * Returns the list of tags associated with the function. For more information, see <a
+     * href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS Lambda
+     * Developer Guide</b>.
      * </p>
      * 
      * @param tags
-     *        Returns the list of tags associated with the function.
+     *        Returns the list of tags associated with the function. For more information, see <a
+     *        href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS
+     *        Lambda Developer Guide</b>.
      */
 
     public void setTags(java.util.Map<String, String> tags) {
@@ -124,11 +134,15 @@ public class GetFunctionResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Returns the list of tags associated with the function.
+     * Returns the list of tags associated with the function. For more information, see <a
+     * href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS Lambda
+     * Developer Guide</b>.
      * </p>
      * 
      * @param tags
-     *        Returns the list of tags associated with the function.
+     *        Returns the list of tags associated with the function. For more information, see <a
+     *        href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS
+     *        Lambda Developer Guide</b>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -160,11 +174,12 @@ public class GetFunctionResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * The concurrent execution limit set for this function.
+     * The concurrent execution limit set for this function. For more information, see <a>concurrent-executions</a>.
      * </p>
      * 
      * @param concurrency
-     *        The concurrent execution limit set for this function.
+     *        The concurrent execution limit set for this function. For more information, see
+     *        <a>concurrent-executions</a>.
      */
 
     public void setConcurrency(Concurrency concurrency) {
@@ -173,10 +188,11 @@ public class GetFunctionResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * The concurrent execution limit set for this function.
+     * The concurrent execution limit set for this function. For more information, see <a>concurrent-executions</a>.
      * </p>
      * 
-     * @return The concurrent execution limit set for this function.
+     * @return The concurrent execution limit set for this function. For more information, see
+     *         <a>concurrent-executions</a>.
      */
 
     public Concurrency getConcurrency() {
@@ -185,11 +201,12 @@ public class GetFunctionResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * The concurrent execution limit set for this function.
+     * The concurrent execution limit set for this function. For more information, see <a>concurrent-executions</a>.
      * </p>
      * 
      * @param concurrency
-     *        The concurrent execution limit set for this function.
+     *        The concurrent execution limit set for this function. For more information, see
+     *        <a>concurrent-executions</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

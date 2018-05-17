@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,9 +29,9 @@ import com.amazonaws.services.gamelift.model.*;
  * <fullname>Amazon GameLift Service</fullname>
  * <p>
  * Amazon GameLift is a managed service for developers who need a scalable, dedicated server solution for their
- * multiplayer games. Amazon GameLift provides tools for the following tasks: (1) acquire computing resources and deploy
- * game servers, (2) scale game server capacity to meet player demand, (3) host game sessions and manage player access,
- * and (4) track in-depth metrics on player usage and server performance.
+ * multiplayer games. Use Amazon GameLift for these tasks: (1) set up computing resources and deploy your game servers,
+ * (2) run game sessions and get players into games, (3) automatically scale your resources to meet player demand and
+ * manage costs, and (4) track in-depth metrics on game server performance and player usage.
  * </p>
  * <p>
  * The Amazon GameLift service API includes two important function sets:
@@ -45,7 +45,7 @@ import com.amazonaws.services.gamelift.model.*;
  * </li>
  * <li>
  * <p>
- * <b>Configure and manage game server resources</b> -- Manage builds, fleets, queues, and aliases; set autoscaling
+ * <b>Configure and manage game server resources</b> -- Manage builds, fleets, queues, and aliases; set auto-scaling
  * policies; retrieve logs and metrics.
  * </p>
  * </li>
@@ -90,19 +90,19 @@ import com.amazonaws.services.gamelift.model.*;
  * </li>
  * </ul>
  * <p>
- * <b>MORE RESOURCES</b>
+ * <b>Learn more</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a> -- Learn
- * more about Amazon GameLift features and how to use them.
+ * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/"> Developer Guide</a> -- Read about Amazon
+ * GameLift features and how to use them.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="https://gamedev.amazon.com/forums/tutorials">Lumberyard and Amazon GameLift Tutorials</a> -- Get started
- * fast with walkthroughs and sample projects.
+ * <a href="https://gamedev.amazon.com/forums/tutorials">Tutorials</a> -- Get started fast with walkthroughs and sample
+ * projects.
  * </p>
  * </li>
  * <li>
@@ -118,9 +118,9 @@ import com.amazonaws.services.gamelift.model.*;
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html">Amazon GameLift Document
- * History</a> -- See changes to the Amazon GameLift service, SDKs, and documentation, as well as links to release
- * notes.
+ * <a href="http://aws.amazon.com/releasenotes/Amazon-GameLift/">Release notes</a> and <a
+ * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html">document history</a> -- Stay
+ * current with updates to the Amazon GameLift service, SDKs, and documentation.
  * </p>
  * </li>
  * </ul>
@@ -188,12 +188,17 @@ import com.amazonaws.services.gamelift.model.*;
  * </li>
  * <li>
  * <p>
- * <b>Start new game sessions with FlexMatch matchmaking</b>
+ * <b>Match players to game sessions with FlexMatch matchmaking</b>
  * </p>
  * <ul>
  * <li>
  * <p>
  * <a>StartMatchmaking</a> -- Request matchmaking for one players or a group who want to play together.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StartMatchBackfill</a> - Request additional player matches to fill empty slots in an existing game session.
  * </p>
  * </li>
  * <li>
@@ -285,9 +290,8 @@ import com.amazonaws.services.gamelift.model.*;
  * <ul>
  * <li>
  * <p>
- * <a>CreateBuild</a> -- Create a new build using files stored in an Amazon S3 bucket. (Update uploading permissions
- * with <a>RequestUploadCredentials</a>.) To create a build and upload files from a local path, use the AWS CLI command
- * <code>upload-build</code>.
+ * <a>CreateBuild</a> -- Create a new build using files stored in an Amazon S3 bucket. To create a build and upload
+ * files from a local path, use the AWS CLI command <code>upload-build</code>.
  * </p>
  * </li>
  * <li>
@@ -378,22 +382,32 @@ import com.amazonaws.services.gamelift.model.*;
  * </li>
  * <li>
  * <p>
- * Autoscale -- Manage autoscaling rules and apply them to a fleet.
+ * Autoscale -- Manage auto-scaling rules and apply them to a fleet.
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>PutScalingPolicy</a> -- Create a new autoscaling policy, or update an existing one.
+ * <a>PutScalingPolicy</a> -- Create a new auto-scaling policy, or update an existing one.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeScalingPolicies</a> -- Retrieve an existing autoscaling policy.
+ * <a>DescribeScalingPolicies</a> -- Retrieve an existing auto-scaling policy.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteScalingPolicy</a> -- Delete an autoscaling policy and stop it from affecting a fleet's capacity.
+ * <a>DeleteScalingPolicy</a> -- Delete an auto-scaling policy and stop it from affecting a fleet's capacity.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StartFleetActions</a> -- Restart a fleet's auto-scaling policies.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StopFleetActions</a> -- Suspend a fleet's auto-scaling policies.
  * </p>
  * </li>
  * </ul>
@@ -700,6 +714,11 @@ public interface AmazonGameLift {
      * <a>AcceptMatch</a>
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <a>StartMatchBackfill</a>
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param acceptMatchRequest
@@ -802,27 +821,54 @@ public interface AmazonGameLift {
 
     /**
      * <p>
-     * Creates a new Amazon GameLift build from a set of game server binary files stored in an Amazon Simple Storage
-     * Service (Amazon S3) location. To use this API call, create a <code>.zip</code> file containing all of the files
-     * for the build and store it in an Amazon S3 bucket under your AWS account. For help on packaging your build files
-     * and creating a build, see <a
-     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">Uploading Your Game to
-     * Amazon GameLift</a>.
+     * Creates a new Amazon GameLift build record for your game server binary files and points to the location of your
+     * game server build files in an Amazon Simple Storage Service (Amazon S3) location.
+     * </p>
+     * <p>
+     * Game server binaries must be combined into a <code>.zip</code> file for use with Amazon GameLift. See <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">Uploading Your
+     * Game</a> for more information.
      * </p>
      * <important>
      * <p>
-     * Use this API action ONLY if you are storing your game build files in an Amazon S3 bucket. To create a build using
-     * files stored locally, use the CLI command <a
-     * href="http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html"> <code>upload-build</code>
-     * </a>, which uploads the build files from a file location you specify.
+     * To create new builds quickly and easily, use the AWS CLI command <b> <a
+     * href="http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html">upload-build</a> </b>. This
+     * helper command uploads your build and creates a new build record in one step, and automatically handles the
+     * necessary permissions. See <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html"> Upload Build
+     * Files to Amazon GameLift</a> for more help.
      * </p>
      * </important>
      * <p>
-     * To create a new build using <code>CreateBuild</code>, identify the storage location and operating system of your
-     * game build. You also have the option of specifying a build name and version. If successful, this action creates a
-     * new build record with an unique build ID and in <code>INITIALIZED</code> status. Use the API call
-     * <a>DescribeBuild</a> to check the status of your build. A build must be in <code>READY</code> status before it
-     * can be used to create fleets to host your game.
+     * The <code>CreateBuild</code> operation should be used only when you need to manually upload your build files, as
+     * in the following scenarios:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Store a build file in an Amazon S3 bucket under your own AWS account. To use this option, you must first give
+     * Amazon GameLift access to that Amazon S3 bucket. See <a href=
+     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build"
+     * > Create a Build with Files in Amazon S3</a> for detailed help. To create a new build record using files in your
+     * Amazon S3 bucket, call <code>CreateBuild</code> and specify a build name, operating system, and the storage
+     * location of your game build.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Upload a build file directly to Amazon GameLift's Amazon S3 account. To use this option, you first call
+     * <code>CreateBuild</code> with a build name and operating system. This action creates a new build record and
+     * returns an Amazon S3 storage location (bucket and key only) and temporary access credentials. Use the credentials
+     * to manually upload your build file to the storage location (see the Amazon S3 topic <a
+     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html">Uploading Objects</a>). You can
+     * upload files to a location only once.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If successful, this operation creates a new build record with a unique build ID and places it in
+     * <code>INITIALIZED</code> status. You can use <a>DescribeBuild</a> to check the status of your build. A build must
+     * be in <code>READY</code> status before it can be used to create fleets.
      * </p>
      * <p>
      * Build-related operations include:
@@ -878,17 +924,15 @@ public interface AmazonGameLift {
     /**
      * <p>
      * Creates a new fleet to run your game servers. A fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2)
-     * instances, each of which can run multiple server processes to host game sessions. You configure a fleet to create
+     * instances, each of which can run multiple server processes to host game sessions. You set up a fleet to use
      * instances with certain hardware specifications (see <a href="http://aws.amazon.com/ec2/instance-types/">Amazon
-     * EC2 Instance Types</a> for more information), and deploy a specified game build to each instance. A newly created
-     * fleet passes through several statuses; once it reaches the <code>ACTIVE</code> status, it can begin hosting game
-     * sessions.
+     * EC2 Instance Types</a> for more information), and deploy your game build to run on each instance.
      * </p>
      * <p>
-     * To create a new fleet, you must specify the following: (1) fleet name, (2) build ID of an uploaded game build,
-     * (3) an EC2 instance type, and (4) a run-time configuration that describes which server processes to run on each
-     * instance in the fleet. (Although the run-time configuration is not a required parameter, the fleet cannot be
-     * successfully activated without it.)
+     * To create a new fleet, you must specify the following: (1) a fleet name, (2) the build ID of a successfully
+     * uploaded game build, (3) an EC2 instance type, and (4) a run-time configuration, which describes the server
+     * processes to run on each instance in the fleet. If you don't specify a fleet type (on-demand or spot), the new
+     * fleet uses on-demand instances by default.
      * </p>
      * <p>
      * You can also configure the new fleet with the following settings:
@@ -911,51 +955,57 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Resource creation limit
+     * Resource usage limits
+     * </p>
+     * </li>
+     * </ul>
+     * <ul>
+     * <li>
+     * <p>
+     * VPC peering connection (see <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html">VPC Peering with Amazon
+     * GameLift Fleets</a>)
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group. This allows you to view
-     * aggregated metrics for a set of fleets. Once you specify a metric group, the new fleet's metrics are included in
-     * the metric group's data.
+     * If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group. By adding multiple fleets
+     * to a metric group, you can view aggregated metrics for all the fleets in the group.
      * </p>
      * <p>
-     * You have the option of creating a VPC peering connection with the new fleet. For more information, see <a
-     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html">VPC Peering with Amazon
-     * GameLift Fleets</a>.
-     * </p>
-     * <p>
-     * If the CreateFleet call is successful, Amazon GameLift performs the following tasks:
+     * If the <code>CreateFleet</code> call is successful, Amazon GameLift performs the following tasks. You can track
+     * the process of a fleet by checking the fleet status or by monitoring fleet creation events:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Creates a fleet record and sets the status to <code>NEW</code> (followed by other statuses as the fleet is
-     * activated).
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Sets the fleet's target capacity to 1 (desired instances), which causes Amazon GameLift to start one new EC2
-     * instance.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Starts launching server processes on the instance. If the fleet is configured to run multiple server processes
-     * per instance, Amazon GameLift staggers each launch by a few seconds.
+     * Creates a fleet record. Status: <code>NEW</code>.
      * </p>
      * </li>
      * <li>
      * <p>
      * Begins writing events to the fleet event log, which can be accessed in the Amazon GameLift console.
      * </p>
+     * <p>
+     * Sets the fleet's target capacity to 1 (desired instances), which triggers Amazon GameLift to start one new EC2
+     * instance.
+     * </p>
      * </li>
      * <li>
      * <p>
-     * Sets the fleet's status to <code>ACTIVE</code> as soon as one server process in the fleet is ready to host a game
-     * session.
+     * Downloads the game build to the new instance and installs it. Statuses: <code>DOWNLOADING</code>,
+     * <code>VALIDATING</code>, <code>BUILDING</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Starts launching server processes on the instance. If the fleet is configured to run multiple server processes
+     * per instance, Amazon GameLift staggers each launch by a few seconds. Status: <code>ACTIVATING</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Sets the fleet's status to <code>ACTIVE</code> as soon as one server process is ready to host a game session.
      * </p>
      * </li>
      * </ul>
@@ -975,12 +1025,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -996,6 +1056,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -1034,45 +1099,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -1314,8 +1354,9 @@ public interface AmazonGameLift {
      * <p>
      * Defines a new matchmaking configuration for use with FlexMatch. A matchmaking configuration sets out guidelines
      * for matching players and getting the matches into games. You can set up multiple matchmaking configurations to
-     * handle the scenarios needed for your game. Each matchmaking request (<a>StartMatchmaking</a>) specifies a
-     * configuration for the match and provides player attributes to support the configuration being used.
+     * handle the scenarios needed for your game. Each matchmaking ticket (<a>StartMatchmaking</a> or
+     * <a>StartMatchBackfill</a>) specifies a configuration for the match and provides player attributes to support the
+     * configuration being used.
      * </p>
      * <p>
      * To create a matchmaking configuration, at a minimum you must specify the following: configuration name; a rule
@@ -1415,7 +1456,7 @@ public interface AmazonGameLift {
      * </p>
      * <p>
      * Once created, matchmaking rule sets cannot be changed or deleted, so we recommend checking the rule set syntax
-     * using <a>ValidateMatchmakingRuleSet</a>before creating the rule set.
+     * using <a>ValidateMatchmakingRuleSet</a> before creating the rule set.
      * </p>
      * <p>
      * To create a matchmaking rule set, provide the set of rules and a unique name. Rule sets must be defined in the
@@ -1968,12 +2009,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -1989,6 +2040,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -2027,45 +2083,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -2215,81 +2246,11 @@ public interface AmazonGameLift {
      * it. To delete a scaling policy, specify both the scaling policy name and the fleet ID it is associated with.
      * </p>
      * <p>
-     * Fleet-related operations include:
+     * To temporarily suspend scaling policies, call <a>StopFleetActions</a>. This operation suspends all policies for
+     * the fleet.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <a>CreateFleet</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>ListFleets</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Describe fleets:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <a>DescribeFleetAttributes</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetPortSettings</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetUtilization</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeRuntimeConfiguration</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetEvents</a>
-     * </p>
-     * </li>
-     * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * Update fleets:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <a>UpdateFleetAttributes</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateFleetPortSettings</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateRuntimeConfiguration</a>
-     * </p>
-     * </li>
-     * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * Manage fleet capacity:
+     * Operations related to fleet capacity scaling include:
      * </p>
      * <ul>
      * <li>
@@ -2304,30 +2265,47 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Manage scaling policies:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (auto-scaling)
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <a>DeleteFleet</a>
+     * Manage fleet actions:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartFleetActions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopFleetActions</a>
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * </ul>
      * 
@@ -2545,8 +2523,8 @@ public interface AmazonGameLift {
 
     /**
      * <p>
-     * Retrieves properties for a build. To get a build record, specify a build ID. If successful, an object containing
-     * the build properties is returned.
+     * Retrieves properties for a build. To request a build record, specify a build ID. If successful, an object
+     * containing the build properties is returned.
      * </p>
      * <p>
      * Build-related operations include:
@@ -2635,12 +2613,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -2656,6 +2644,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -2694,45 +2687,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -2783,12 +2751,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -2804,6 +2782,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -2842,45 +2825,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -2935,12 +2893,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -2956,6 +2924,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -2994,45 +2967,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -3078,12 +3026,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -3099,6 +3057,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -3137,45 +3100,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -3222,12 +3160,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -3243,6 +3191,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -3281,45 +3234,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -3373,12 +3301,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -3394,6 +3332,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -3432,45 +3375,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -3857,8 +3775,8 @@ public interface AmazonGameLift {
 
     /**
      * <p>
-     * Retrieves a set of one or more matchmaking tickets. Use this operation to retrieve ticket information, including
-     * status and--once a successful match is made--acquire connection information for the resulting new game session.
+     * Retrieves one or more matchmaking tickets. Use this operation to retrieve ticket information, including status
+     * and--once a successful match is made--acquire connection information for the resulting new game session.
      * </p>
      * <p>
      * You can use this operation to track the progress of matchmaking requests (through polling) as an alternative to
@@ -3866,9 +3784,8 @@ public interface AmazonGameLift {
      * <a>StartMatchmaking</a>.
      * </p>
      * <p>
-     * You can request data for a one or a list of ticket IDs. If the request is successful, a ticket object is returned
-     * for each requested ID. When specifying a list of ticket IDs, objects are returned only for tickets that currently
-     * exist.
+     * To request matchmaking tickets, provide a list of up to 10 ticket IDs. If the request is successful, a ticket
+     * object is returned for each requested ID that currently exists.
      * </p>
      * <p>
      * Matchmaking-related operations include:
@@ -3892,6 +3809,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>AcceptMatch</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StartMatchBackfill</a>
      * </p>
      * </li>
      * </ul>
@@ -4147,12 +4069,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -4168,6 +4100,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -4206,45 +4143,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -4278,81 +4190,12 @@ public interface AmazonGameLift {
      * pages. If successful, set of <a>ScalingPolicy</a> objects is returned for the fleet.
      * </p>
      * <p>
-     * Fleet-related operations include:
+     * A fleet may have all of its scaling policies suspended (<a>StopFleetActions</a>). This action does not affect the
+     * status of the scaling policies, which remains ACTIVE. To see whether a fleet's scaling policies are in force or
+     * suspended, call <a>DescribeFleetAttributes</a> and check the stopped actions.
      * </p>
-     * <ul>
-     * <li>
      * <p>
-     * <a>CreateFleet</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>ListFleets</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Describe fleets:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <a>DescribeFleetAttributes</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetPortSettings</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetUtilization</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeRuntimeConfiguration</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetEvents</a>
-     * </p>
-     * </li>
-     * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * Update fleets:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <a>UpdateFleetAttributes</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateFleetPortSettings</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateRuntimeConfiguration</a>
-     * </p>
-     * </li>
-     * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * Manage fleet capacity:
+     * Operations related to fleet capacity scaling include:
      * </p>
      * <ul>
      * <li>
@@ -4367,30 +4210,47 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Manage scaling policies:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (auto-scaling)
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <a>DeleteFleet</a>
+     * Manage fleet actions:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartFleetActions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopFleetActions</a>
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * </ul>
      * 
@@ -4817,12 +4677,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -4838,6 +4708,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -4876,45 +4751,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -4940,12 +4790,67 @@ public interface AmazonGameLift {
 
     /**
      * <p>
-     * Creates or updates a scaling policy for a fleet. An active scaling policy prompts Amazon GameLift to track a
-     * certain metric for a fleet and automatically change the fleet's capacity in specific circumstances. Each scaling
-     * policy contains one rule statement. Fleets can have multiple scaling policies in force simultaneously.
+     * Creates or updates a scaling policy for a fleet. Scaling policies are used to automatically scale a fleet's
+     * hosting capacity to meet player demand. An active scaling policy instructs Amazon GameLift to track a fleet
+     * metric and automatically change the fleet's capacity when a certain threshold is reached. There are two types of
+     * scaling policies: target-based and rule-based. Use a target-based policy to quickly and efficiently manage fleet
+     * scaling; this option is the most commonly used. Use rule-based policies when you need to exert fine-grained
+     * control over auto-scaling.
      * </p>
      * <p>
-     * A scaling policy rule statement has the following structure:
+     * Fleets can have multiple scaling policies of each type in force at the same time; you can have one target-based
+     * policy, one or multiple rule-based scaling policies, or both. We recommend caution, however, because multiple
+     * auto-scaling policies can have unintended consequences.
+     * </p>
+     * <p>
+     * You can temporarily suspend all scaling policies for a fleet by calling <a>StopFleetActions</a> with the fleet
+     * action AUTO_SCALING. To resume scaling policies, call <a>StartFleetActions</a> with the same fleet action. To
+     * stop just one scaling policy--or to permanently remove it, you must delete the policy with
+     * <a>DeleteScalingPolicy</a>.
+     * </p>
+     * <p>
+     * Learn more about how to work with auto-scaling in <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html">Set Up Fleet Automatic
+     * Scaling</a>.
+     * </p>
+     * <p>
+     * <b>Target-based policy</b>
+     * </p>
+     * <p>
+     * A target-based policy tracks a single metric: PercentAvailableGameSessions. This metric tells us how much of a
+     * fleet's hosting capacity is ready to host game sessions but is not currently in use. This is the fleet's buffer;
+     * it measures the additional player demand that the fleet could handle at current capacity. With a target-based
+     * policy, you set your ideal buffer size and leave it to Amazon GameLift to take whatever action is needed to
+     * maintain that target.
+     * </p>
+     * <p>
+     * For example, you might choose to maintain a 10% buffer for a fleet that has the capacity to host 100 simultaneous
+     * game sessions. This policy tells Amazon GameLift to take action whenever the fleet's available capacity falls
+     * below or rises above 10 game sessions. Amazon GameLift will start new instances or stop unused instances in order
+     * to return to the 10% buffer.
+     * </p>
+     * <p>
+     * To create or update a target-based policy, specify a fleet ID and name, and set the policy type to "TargetBased".
+     * Specify the metric to track (PercentAvailableGameSessions) and reference a <a>TargetConfiguration</a> object with
+     * your desired buffer value. Exclude all other parameters. On a successful request, the policy name is returned.
+     * The scaling policy is automatically in force as soon as it's successfully created. If the fleet's auto-scaling
+     * actions are temporarily suspended, the new policy will be in force once the fleet actions are restarted.
+     * </p>
+     * <p>
+     * <b>Rule-based policy</b>
+     * </p>
+     * <p>
+     * A rule-based policy tracks specified fleet metric, sets a threshold value, and specifies the type of action to
+     * initiate when triggered. With a rule-based policy, you can select from several available fleet metrics. Each
+     * policy specifies whether to scale up or scale down (and by how much), so you need one policy for each type of
+     * action.
+     * </p>
+     * <p>
+     * For example, a policy may make the following statement:
+     * "If the percentage of idle instances is greater than 20% for more than 15 minutes, then reduce the fleet capacity by 10%."
+     * </p>
+     * <p>
+     * A policy's rule statement has the following structure:
      * </p>
      * <p>
      * If <code>[MetricName]</code> is <code>[ComparisonOperator]</code> <code>[Threshold]</code> for
@@ -4953,94 +4858,21 @@ public interface AmazonGameLift {
      * <code>[ScalingAdjustment]</code>.
      * </p>
      * <p>
-     * For example, this policy:
-     * "If the number of idle instances exceeds 20 for more than 15 minutes, then reduce the fleet capacity by 10 instances"
-     * could be implemented as the following rule statement:
+     * To implement the example, the rule statement would look like this:
      * </p>
      * <p>
-     * If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15] minutes, then [ChangeInCapacity] by [-10].
+     * If <code>[PercentIdleInstances]</code> is <code>[GreaterThanThreshold]</code> <code>[20]</code> for
+     * <code>[15]</code> minutes, then <code>[PercentChangeInCapacity]</code> to/by <code>[10]</code>.
      * </p>
      * <p>
-     * To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the rule values.
-     * All parameters for this action are required. If successful, the policy name is returned. Scaling policies cannot
-     * be suspended or made inactive. To stop enforcing a scaling policy, call <a>DeleteScalingPolicy</a>.
+     * To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the policy type
+     * to "RuleBased". Specify the parameter values for a policy rule statement. On a successful request, the policy
+     * name is returned. Scaling policies are automatically in force as soon as they're successfully created. If the
+     * fleet's auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet actions
+     * are restarted.
      * </p>
      * <p>
-     * Fleet-related operations include:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <a>CreateFleet</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>ListFleets</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Describe fleets:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <a>DescribeFleetAttributes</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetPortSettings</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetUtilization</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeRuntimeConfiguration</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeFleetEvents</a>
-     * </p>
-     * </li>
-     * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * Update fleets:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <a>UpdateFleetAttributes</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateFleetPortSettings</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>UpdateRuntimeConfiguration</a>
-     * </p>
-     * </li>
-     * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * Manage fleet capacity:
+     * Operations related to fleet capacity scaling include:
      * </p>
      * <ul>
      * <li>
@@ -5055,30 +4887,47 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Manage scaling policies:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (auto-scaling)
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * <a>DeleteFleet</a>
+     * Manage fleet actions:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartFleetActions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopFleetActions</a>
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * </ul>
      * 
@@ -5104,9 +4953,13 @@ public interface AmazonGameLift {
 
     /**
      * <p>
-     * <i>This API call is not currently in use. </i> Retrieves a fresh set of upload credentials and the assigned
-     * Amazon S3 storage location for a specific build. Valid credentials are required to upload your game build files
-     * to Amazon S3.
+     * Retrieves a fresh set of credentials for use when uploading a new set of game build files to Amazon GameLift's
+     * Amazon S3. This is done as part of the build creation process; see <a>CreateBuild</a>.
+     * </p>
+     * <p>
+     * To request new credentials, specify the build ID as returned with an initial <code>CreateBuild</code> request. If
+     * successful, a new set of credentials are returned, along with the S3 storage location associated with the build
+     * ID.
      * </p>
      * 
      * @param requestUploadCredentialsRequest
@@ -5196,14 +5049,8 @@ public interface AmazonGameLift {
 
     /**
      * <p>
-     * Retrieves a set of game sessions that match a set of search criteria and sorts them in a specified order. A game
-     * session search is limited to a single fleet. Search results include only game sessions that are in
-     * <code>ACTIVE</code> status. If you need to retrieve game sessions with a status other than active, use
-     * <a>DescribeGameSessions</a>. If you need to retrieve the protection policy for each game session, use
-     * <a>DescribeGameSessionDetails</a>.
-     * </p>
-     * <p>
-     * You can search or sort by the following game session attributes:
+     * Retrieves all active game sessions that match a set of search criteria and sorts them in a specified order. You
+     * can search or sort by the following game session attributes:
      * </p>
      * <ul>
      * <li>
@@ -5221,6 +5068,21 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <b>gameSessionProperties</b> -- Custom data defined in a game session's <code>GameProperty</code> parameter.
+     * <code>GameProperty</code> values are stored as key:value pairs; the filter expression must indicate the key and a
+     * string to search the data values for. For example, to search for game sessions with custom data containing the
+     * key:value pair "gameMode:brawl", specify the following: <code>gameSessionProperties.gameMode = "brawl"</code>.
+     * All custom data values are searched as strings.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>maximumSessions</b> -- Maximum number of player sessions allowed for a game session. This value is set when
+     * requesting a new game session with <a>CreateGameSession</a> or updating with <a>UpdateGameSession</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <b>creationTimeMillis</b> -- Value indicating when a game session was created. It is expressed in Unix time as
      * milliseconds.
      * </p>
@@ -5233,24 +5095,12 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * <b>maximumSessions</b> -- Maximum number of player sessions allowed for a game session. This value is set when
-     * requesting a new game session with <a>CreateGameSession</a> or updating with <a>UpdateGameSession</a>.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <b>hasAvailablePlayerSessions</b> -- Boolean value indicating whether a game session has reached its maximum
-     * number of players. When searching with this attribute, the search value must be <code>true</code> or
-     * <code>false</code>. It is highly recommended that all search requests include this filter attribute to optimize
+     * number of players. It is highly recommended that all search requests include this filter attribute to optimize
      * search performance and return only sessions that players can join.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort
-     * expression, or both. Use the pagination parameters to retrieve results as a set of sequential pages. If
-     * successful, a collection of <a>GameSession</a> objects matching the request is returned.
-     * </p>
      * <note>
      * <p>
      * Returned values for <code>playerSessionCount</code> and <code>hasAvailablePlayerSessions</code> change quickly as
@@ -5258,6 +5108,16 @@ public interface AmazonGameLift {
      * search results often, and handle sessions that fill up before a player can join.
      * </p>
      * </note>
+     * <p>
+     * To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort
+     * expression, or both. If successful, a collection of <a>GameSession</a> objects matching the request is returned.
+     * Use the pagination parameters to retrieve results as a set of sequential pages.
+     * </p>
+     * <p>
+     * You can search for game sessions one fleet at a time only. To find game sessions across multiple fleets, you must
+     * search each fleet separately and combine the results. This search feature finds only game sessions that are in
+     * <code>ACTIVE</code> status. To locate games in statuses other than active, use <a>DescribeGameSessionDetails</a>.
+     * </p>
      * <p>
      * Game-session-related operations include:
      * </p>
@@ -5340,6 +5200,96 @@ public interface AmazonGameLift {
      *      API Documentation</a>
      */
     SearchGameSessionsResult searchGameSessions(SearchGameSessionsRequest searchGameSessionsRequest);
+
+    /**
+     * <p>
+     * Resumes activity on a fleet that was suspended with <a>StopFleetActions</a>. Currently, this operation is used to
+     * restart a fleet's auto-scaling activity.
+     * </p>
+     * <p>
+     * To start fleet actions, specify the fleet ID and the type of actions to restart. When auto-scaling fleet actions
+     * are restarted, Amazon GameLift once again initiates scaling events as triggered by the fleet's scaling policies.
+     * If actions on the fleet were never stopped, this operation will have no effect. You can view a fleet's stopped
+     * actions using <a>DescribeFleetAttributes</a>.
+     * </p>
+     * <p>
+     * Operations related to fleet capacity scaling include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>UpdateFleetCapacity</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Manage scaling policies:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>PutScalingPolicy</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeScalingPolicies</a> (auto-scaling)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DeleteScalingPolicy</a> (auto-scaling)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Manage fleet actions:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartFleetActions</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopFleetActions</a>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * 
+     * @param startFleetActionsRequest
+     * @return Result of the StartFleetActions operation returned by the service.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @sample AmazonGameLift.StartFleetActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartFleetActions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    StartFleetActionsResult startFleetActions(StartFleetActionsRequest startFleetActionsRequest);
 
     /**
      * <p>
@@ -5476,6 +5426,83 @@ public interface AmazonGameLift {
 
     /**
      * <p>
+     * Finds new players to fill open slots in an existing game session. This operation can be used to add players to
+     * matched games that start with fewer than the maximum number of players or to replace players when they drop out.
+     * By backfilling with the same matchmaker used to create the original match, you ensure that new players meet the
+     * match criteria and maintain a consistent experience throughout the game session. You can backfill a match anytime
+     * after a game session has been created.
+     * </p>
+     * <p>
+     * To request a match backfill, specify a unique ticket ID, the existing game session's ARN, a matchmaking
+     * configuration, and a set of data that describes all current players in the game session. If successful, a match
+     * backfill ticket is created and returned with status set to QUEUED. The ticket is placed in the matchmaker's
+     * ticket pool and processed. Track the status of the ticket to respond as needed. For more detail how to set up
+     * backfilling, see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">
+     * Backfill Existing Games with FlexMatch</a>.
+     * </p>
+     * <p>
+     * The process of finding backfill matches is essentially identical to the initial matchmaking process. The
+     * matchmaker searches the pool and groups tickets together to form potential matches, allowing only one backfill
+     * ticket per potential match. Once the a match is formed, the matchmaker creates player sessions for the new
+     * players. All tickets in the match are updated with the game session's connection information, and the
+     * <a>GameSession</a> object is updated to include matchmaker data on the new players. For more detail on how match
+     * backfill requests are processed, see <a
+     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html"> How Amazon GameLift FlexMatch
+     * Works</a>.
+     * </p>
+     * <p>
+     * Matchmaking-related operations include:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a>StartMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StopMatchmaking</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>AcceptMatch</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StartMatchBackfill</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param startMatchBackfillRequest
+     *        Represents the input for a request action.
+     * @return Result of the StartMatchBackfill operation returned by the service.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws UnsupportedRegionException
+     *         The requested operation is not supported in the region specified.
+     * @sample AmazonGameLift.StartMatchBackfill
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartMatchBackfill" target="_top">AWS
+     *      API Documentation</a>
+     */
+    StartMatchBackfillResult startMatchBackfill(StartMatchBackfillRequest startMatchBackfillRequest);
+
+    /**
+     * <p>
      * Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new
      * game for the matched players. Each matchmaking request specifies the type of match to build (team configuration,
      * rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to
@@ -5578,6 +5605,11 @@ public interface AmazonGameLift {
      * <a>AcceptMatch</a>
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <a>StartMatchBackfill</a>
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param startMatchmakingRequest
@@ -5599,6 +5631,39 @@ public interface AmazonGameLift {
      *      Documentation</a>
      */
     StartMatchmakingResult startMatchmaking(StartMatchmakingRequest startMatchmakingRequest);
+
+    /**
+     * <p>
+     * Suspends activity on a fleet. Currently, this operation is used to stop a fleet's auto-scaling activity. It is
+     * used to temporarily stop scaling events triggered by the fleet's scaling policies. The policies can be retained
+     * and auto-scaling activity can be restarted using <a>StartFleetActions</a>. You can view a fleet's stopped actions
+     * using <a>DescribeFleetAttributes</a>.
+     * </p>
+     * <p>
+     * To stop fleet actions, specify the fleet ID and the type of actions to suspend. When auto-scaling fleet actions
+     * are stopped, Amazon GameLift no longer initiates scaling events except to maintain the fleet's desired instances
+     * setting (<a>FleetCapacity</a>. Changes to the fleet's capacity must be done manually using
+     * <a>UpdateFleetCapacity</a>.
+     * </p>
+     * 
+     * @param stopFleetActionsRequest
+     * @return Result of the StopFleetActions operation returned by the service.
+     * @throws InternalServiceException
+     *         The service encountered an unrecoverable internal failure while processing the request. Clients can retry
+     *         such requests immediately or after a waiting period.
+     * @throws InvalidRequestException
+     *         One or more parameter values in the request are invalid. Correct the invalid parameter values before
+     *         retrying.
+     * @throws UnauthorizedException
+     *         The client failed authentication. Clients should not retry such requests.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @sample AmazonGameLift.StopFleetActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StopFleetActions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    StopFleetActionsResult stopFleetActions(StopFleetActionsRequest stopFleetActionsRequest);
 
     /**
      * <p>
@@ -5711,6 +5776,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>AcceptMatch</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>StartMatchBackfill</a>
      * </p>
      * </li>
      * </ul>
@@ -5875,12 +5945,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -5896,6 +5976,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -5934,45 +6019,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -6012,9 +6072,9 @@ public interface AmazonGameLift {
      * get the maximum capacity based on the fleet's EC2 instance type.
      * </p>
      * <p>
-     * If you're using autoscaling (see <a>PutScalingPolicy</a>), you may want to specify a minimum and/or maximum
-     * capacity. If you don't provide these, autoscaling can set capacity anywhere between zero and the <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">service limits</a>.
+     * Specify minimum and maximum number of instances. Amazon GameLift will not change fleet capacity to values fall
+     * outside of this range. This is particularly important when using auto-scaling (see <a>PutScalingPolicy</a>) to
+     * allow capacity to adjust based on player demand while imposing limits on automatic adjustments.
      * </p>
      * <p>
      * To update fleet capacity, specify the fleet ID and the number of instances you want the fleet to host. If
@@ -6039,12 +6099,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -6060,6 +6130,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -6098,45 +6173,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -6193,12 +6243,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -6214,6 +6274,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -6252,45 +6317,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 
@@ -6566,12 +6606,22 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
+     * <a>DeleteFleet</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Describe fleets:
      * </p>
      * <ul>
      * <li>
      * <p>
      * <a>DescribeFleetAttributes</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeFleetCapacity</a>
      * </p>
      * </li>
      * <li>
@@ -6587,6 +6637,11 @@ public interface AmazonGameLift {
      * <li>
      * <p>
      * <a>DescribeRuntimeConfiguration</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a>DescribeEC2InstanceLimits</a>
      * </p>
      * </li>
      * <li>
@@ -6625,45 +6680,20 @@ public interface AmazonGameLift {
      * </li>
      * <li>
      * <p>
-     * Manage fleet capacity:
+     * Manage fleet actions:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <a>DescribeFleetCapacity</a>
+     * <a>StartFleetActions</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a>UpdateFleetCapacity</a>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>PutScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeScalingPolicies</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteScalingPolicy</a> (automatic scaling)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DescribeEC2InstanceLimits</a>
+     * <a>StopFleetActions</a>
      * </p>
      * </li>
      * </ul>
-     * </li>
-     * <li>
-     * <p>
-     * <a>DeleteFleet</a>
-     * </p>
      * </li>
      * </ul>
      * 

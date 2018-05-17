@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -315,6 +315,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new DeleteAlarmsRequestMarshaller().marshall(super.beforeMarshalling(deleteAlarmsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -369,6 +370,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new DeleteDashboardsRequestMarshaller().marshall(super.beforeMarshalling(deleteDashboardsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -423,6 +425,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new DescribeAlarmHistoryRequestMarshaller().marshall(super.beforeMarshalling(describeAlarmHistoryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -479,6 +482,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new DescribeAlarmsRequestMarshaller().marshall(super.beforeMarshalling(describeAlarmsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -532,6 +536,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new DescribeAlarmsForMetricRequestMarshaller().marshall(super.beforeMarshalling(describeAlarmsForMetricRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -581,6 +586,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new DisableAlarmActionsRequestMarshaller().marshall(super.beforeMarshalling(disableAlarmActionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -629,6 +635,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new EnableAlarmActionsRequestMarshaller().marshall(super.beforeMarshalling(enableAlarmActionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -688,11 +695,73 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new GetDashboardRequestMarshaller().marshall(super.beforeMarshalling(getDashboardRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             StaxResponseHandler<GetDashboardResult> responseHandler = new StaxResponseHandler<GetDashboardResult>(new GetDashboardResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * You can use the <code>GetMetricData</code> API to retrieve as many as 100 different metrics in a single request,
+     * with a total of as many as 100,800 datapoints. You can also optionally perform math expressions on the values of
+     * the returned statistics, to create new time series that represent new insights into your data. For example, using
+     * Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series.
+     * For more information about metric math expressions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax"
+     * >Metric Math Syntax and Functions</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * </p>
+     * <p>
+     * Calls to the <code>GetMetricData</code> API have a different pricing structure than calls to
+     * <code>GetMetricStatistics</code>. For more information about pricing, see <a
+     * href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * 
+     * @param getMetricDataRequest
+     * @return Result of the GetMetricData operation returned by the service.
+     * @throws InvalidNextTokenException
+     *         The next token specified is invalid.
+     * @sample AmazonCloudWatch.GetMetricData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetMetricData" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetMetricDataResult getMetricData(GetMetricDataRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetMetricData(request);
+    }
+
+    @SdkInternalApi
+    final GetMetricDataResult executeGetMetricData(GetMetricDataRequest getMetricDataRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getMetricDataRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetMetricDataRequest> request = null;
+        Response<GetMetricDataResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetMetricDataRequestMarshaller().marshall(super.beforeMarshalling(getMetricDataRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<GetMetricDataResult> responseHandler = new StaxResponseHandler<GetMetricDataResult>(new GetMetricDataResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -812,6 +881,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new GetMetricStatisticsRequestMarshaller().marshall(super.beforeMarshalling(getMetricStatisticsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -865,6 +935,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new ListDashboardsRequestMarshaller().marshall(super.beforeMarshalling(listDashboardsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -926,6 +997,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new ListMetricsRequestMarshaller().marshall(super.beforeMarshalling(listMetricsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -999,6 +1071,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new PutDashboardRequestMarshaller().marshall(super.beforeMarshalling(putDashboardRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1108,6 +1181,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new PutMetricAlarmRequestMarshaller().marshall(super.beforeMarshalling(putMetricAlarmRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1201,6 +1275,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new PutMetricDataRequestMarshaller().marshall(super.beforeMarshalling(putMetricDataRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1257,6 +1332,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request = new SetAlarmStateRequestMarshaller().marshall(super.beforeMarshalling(setAlarmStateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

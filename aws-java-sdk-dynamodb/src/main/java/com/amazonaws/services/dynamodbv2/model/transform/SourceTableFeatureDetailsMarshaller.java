@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,6 +36,8 @@ public class SourceTableFeatureDetailsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StreamDescription").build();
     private static final MarshallingInfo<StructuredPojo> TIMETOLIVEDESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TimeToLiveDescription").build();
+    private static final MarshallingInfo<StructuredPojo> SSEDESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SSEDescription").build();
 
     private static final SourceTableFeatureDetailsMarshaller instance = new SourceTableFeatureDetailsMarshaller();
 
@@ -57,6 +59,7 @@ public class SourceTableFeatureDetailsMarshaller {
             protocolMarshaller.marshall(sourceTableFeatureDetails.getGlobalSecondaryIndexes(), GLOBALSECONDARYINDEXES_BINDING);
             protocolMarshaller.marshall(sourceTableFeatureDetails.getStreamDescription(), STREAMDESCRIPTION_BINDING);
             protocolMarshaller.marshall(sourceTableFeatureDetails.getTimeToLiveDescription(), TIMETOLIVEDESCRIPTION_BINDING);
+            protocolMarshaller.marshall(sourceTableFeatureDetails.getSSEDescription(), SSEDESCRIPTION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

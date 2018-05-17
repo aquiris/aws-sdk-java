@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,24 +27,24 @@ public class DeleteBasePathMappingRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The domain name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The domain name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      */
     private String domainName;
     /**
      * <p>
-     * The base path name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The base path name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      */
     private String basePath;
 
     /**
      * <p>
-     * The domain name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The domain name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      * 
      * @param domainName
-     *        The domain name of the <a>BasePathMapping</a> resource to delete.
+     *        [Required] The domain name of the <a>BasePathMapping</a> resource to delete.
      */
 
     public void setDomainName(String domainName) {
@@ -53,10 +53,10 @@ public class DeleteBasePathMappingRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The domain name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The domain name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      * 
-     * @return The domain name of the <a>BasePathMapping</a> resource to delete.
+     * @return [Required] The domain name of the <a>BasePathMapping</a> resource to delete.
      */
 
     public String getDomainName() {
@@ -65,11 +65,11 @@ public class DeleteBasePathMappingRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The domain name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The domain name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      * 
      * @param domainName
-     *        The domain name of the <a>BasePathMapping</a> resource to delete.
+     *        [Required] The domain name of the <a>BasePathMapping</a> resource to delete.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,11 +80,11 @@ public class DeleteBasePathMappingRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The base path name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The base path name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      * 
      * @param basePath
-     *        The base path name of the <a>BasePathMapping</a> resource to delete.
+     *        [Required] The base path name of the <a>BasePathMapping</a> resource to delete.
      */
 
     public void setBasePath(String basePath) {
@@ -93,10 +93,10 @@ public class DeleteBasePathMappingRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The base path name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The base path name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      * 
-     * @return The base path name of the <a>BasePathMapping</a> resource to delete.
+     * @return [Required] The base path name of the <a>BasePathMapping</a> resource to delete.
      */
 
     public String getBasePath() {
@@ -105,11 +105,11 @@ public class DeleteBasePathMappingRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The base path name of the <a>BasePathMapping</a> resource to delete.
+     * [Required] The base path name of the <a>BasePathMapping</a> resource to delete.
      * </p>
      * 
      * @param basePath
-     *        The base path name of the <a>BasePathMapping</a> resource to delete.
+     *        [Required] The base path name of the <a>BasePathMapping</a> resource to delete.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

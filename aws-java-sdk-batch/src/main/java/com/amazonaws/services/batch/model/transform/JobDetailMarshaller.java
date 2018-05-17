@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,6 +59,8 @@ public class JobDetailMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("container").build();
     private static final MarshallingInfo<StructuredPojo> ARRAYPROPERTIES_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("arrayProperties").build();
+    private static final MarshallingInfo<StructuredPojo> TIMEOUT_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("timeout").build();
 
     private static final JobDetailMarshaller instance = new JobDetailMarshaller();
 
@@ -91,6 +93,7 @@ public class JobDetailMarshaller {
             protocolMarshaller.marshall(jobDetail.getParameters(), PARAMETERS_BINDING);
             protocolMarshaller.marshall(jobDetail.getContainer(), CONTAINER_BINDING);
             protocolMarshaller.marshall(jobDetail.getArrayProperties(), ARRAYPROPERTIES_BINDING);
+            protocolMarshaller.marshall(jobDetail.getTimeout(), TIMEOUT_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

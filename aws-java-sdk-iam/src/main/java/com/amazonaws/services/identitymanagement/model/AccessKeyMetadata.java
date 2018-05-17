@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * Contains information about an AWS access key, without its secret key.
  * </p>
  * <p>
- * This data type is used as a response element in the <a>ListAccessKeys</a> action.
+ * This data type is used as a response element in the <a>ListAccessKeys</a> operation.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AccessKeyMetadata" target="_top">AWS API

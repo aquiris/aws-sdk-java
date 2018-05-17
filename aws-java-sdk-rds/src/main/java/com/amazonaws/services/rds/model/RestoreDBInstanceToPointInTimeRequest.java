@@ -36,7 +36,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * Must match the identifier of an existing DBInstance.
+     * Must match the identifier of an existing DB instance.
      * </p>
      * </li>
      * </ul>
@@ -245,16 +245,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * <code>aurora</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>aurora-postgresql</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <code>mariadb</code>
      * </p>
      * </li>
@@ -404,17 +394,18 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * For MySQL 5.7, minor version 5.7.16 or higher
      * </p>
      * </li>
-     * <li>
-     * <p>
-     * Aurora 5.6 or higher.
-     * </p>
-     * </li>
      * </ul>
      * <p>
      * Default: <code>false</code>
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
+    /**
+     * <p>
+     * The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> enableCloudwatchLogsExports;
 
     /**
      * Default constructor for RestoreDBInstanceToPointInTimeRequest object. Callers should use the setter or fluent
@@ -435,7 +426,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *        <ul>
      *        <li>
      *        <p>
-     *        Must match the identifier of an existing DBInstance.
+     *        Must match the identifier of an existing DB instance.
      *        </p>
      *        </li>
      * @param targetDBInstanceIdentifier
@@ -475,7 +466,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * Must match the identifier of an existing DBInstance.
+     * Must match the identifier of an existing DB instance.
      * </p>
      * </li>
      * </ul>
@@ -488,7 +479,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *        <ul>
      *        <li>
      *        <p>
-     *        Must match the identifier of an existing DBInstance.
+     *        Must match the identifier of an existing DB instance.
      *        </p>
      *        </li>
      */
@@ -507,7 +498,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * Must match the identifier of an existing DBInstance.
+     * Must match the identifier of an existing DB instance.
      * </p>
      * </li>
      * </ul>
@@ -519,7 +510,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *         <ul>
      *         <li>
      *         <p>
-     *         Must match the identifier of an existing DBInstance.
+     *         Must match the identifier of an existing DB instance.
      *         </p>
      *         </li>
      */
@@ -538,7 +529,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * Must match the identifier of an existing DBInstance.
+     * Must match the identifier of an existing DB instance.
      * </p>
      * </li>
      * </ul>
@@ -551,7 +542,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *        <ul>
      *        <li>
      *        <p>
-     *        Must match the identifier of an existing DBInstance.
+     *        Must match the identifier of an existing DB instance.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1829,16 +1820,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * <code>aurora</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>aurora-postgresql</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <code>mariadb</code>
      * </p>
      * </li>
@@ -1906,16 +1887,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *        Valid Values:
      *        </p>
      *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>aurora</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>aurora-postgresql</code>
-     *        </p>
-     *        </li>
      *        <li>
      *        <p>
      *        <code>mariadb</code>
@@ -1993,16 +1964,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * <code>aurora</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>aurora-postgresql</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <code>mariadb</code>
      * </p>
      * </li>
@@ -2069,16 +2030,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *         Valid Values:
      *         </p>
      *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>aurora</code>
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>aurora-postgresql</code>
-     *         </p>
-     *         </li>
      *         <li>
      *         <p>
      *         <code>mariadb</code>
@@ -2156,16 +2107,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * <ul>
      * <li>
      * <p>
-     * <code>aurora</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>aurora-postgresql</code>
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * <code>mariadb</code>
      * </p>
      * </li>
@@ -2233,16 +2174,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *        Valid Values:
      *        </p>
      *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>aurora</code>
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>aurora-postgresql</code>
-     *        </p>
-     *        </li>
      *        <li>
      *        <p>
      *        <code>mariadb</code>
@@ -2853,11 +2784,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * For MySQL 5.7, minor version 5.7.16 or higher
      * </p>
      * </li>
-     * <li>
-     * <p>
-     * Aurora 5.6 or higher.
-     * </p>
-     * </li>
      * </ul>
      * <p>
      * Default: <code>false</code>
@@ -2878,11 +2804,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *        <li>
      *        <p>
      *        For MySQL 5.7, minor version 5.7.16 or higher
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Aurora 5.6 or higher.
      *        </p>
      *        </li>
      *        </ul>
@@ -2913,11 +2834,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * For MySQL 5.7, minor version 5.7.16 or higher
      * </p>
      * </li>
-     * <li>
-     * <p>
-     * Aurora 5.6 or higher.
-     * </p>
-     * </li>
      * </ul>
      * <p>
      * Default: <code>false</code>
@@ -2937,11 +2853,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *         <li>
      *         <p>
      *         For MySQL 5.7, minor version 5.7.16 or higher
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Aurora 5.6 or higher.
      *         </p>
      *         </li>
      *         </ul>
@@ -2972,11 +2883,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * For MySQL 5.7, minor version 5.7.16 or higher
      * </p>
      * </li>
-     * <li>
-     * <p>
-     * Aurora 5.6 or higher.
-     * </p>
-     * </li>
      * </ul>
      * <p>
      * Default: <code>false</code>
@@ -2997,11 +2903,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *        <li>
      *        <p>
      *        For MySQL 5.7, minor version 5.7.16 or higher
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Aurora 5.6 or higher.
      *        </p>
      *        </li>
      *        </ul>
@@ -3034,11 +2935,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      * For MySQL 5.7, minor version 5.7.16 or higher
      * </p>
      * </li>
-     * <li>
-     * <p>
-     * Aurora 5.6 or higher.
-     * </p>
-     * </li>
      * </ul>
      * <p>
      * Default: <code>false</code>
@@ -3060,11 +2956,6 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
      *         For MySQL 5.7, minor version 5.7.16 or higher
      *         </p>
      *         </li>
-     *         <li>
-     *         <p>
-     *         Aurora 5.6 or higher.
-     *         </p>
-     *         </li>
      *         </ul>
      *         <p>
      *         Default: <code>false</code>
@@ -3072,6 +2963,79 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
 
     public Boolean isEnableIAMDatabaseAuthentication() {
         return this.enableIAMDatabaseAuthentication;
+    }
+
+    /**
+     * <p>
+     * The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     * </p>
+     * 
+     * @return The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     */
+
+    public java.util.List<String> getEnableCloudwatchLogsExports() {
+        if (enableCloudwatchLogsExports == null) {
+            enableCloudwatchLogsExports = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return enableCloudwatchLogsExports;
+    }
+
+    /**
+     * <p>
+     * The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     * </p>
+     * 
+     * @param enableCloudwatchLogsExports
+     *        The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     */
+
+    public void setEnableCloudwatchLogsExports(java.util.Collection<String> enableCloudwatchLogsExports) {
+        if (enableCloudwatchLogsExports == null) {
+            this.enableCloudwatchLogsExports = null;
+            return;
+        }
+
+        this.enableCloudwatchLogsExports = new com.amazonaws.internal.SdkInternalList<String>(enableCloudwatchLogsExports);
+    }
+
+    /**
+     * <p>
+     * The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setEnableCloudwatchLogsExports(java.util.Collection)} or
+     * {@link #withEnableCloudwatchLogsExports(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param enableCloudwatchLogsExports
+     *        The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreDBInstanceToPointInTimeRequest withEnableCloudwatchLogsExports(String... enableCloudwatchLogsExports) {
+        if (this.enableCloudwatchLogsExports == null) {
+            setEnableCloudwatchLogsExports(new com.amazonaws.internal.SdkInternalList<String>(enableCloudwatchLogsExports.length));
+        }
+        for (String ele : enableCloudwatchLogsExports) {
+            this.enableCloudwatchLogsExports.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     * </p>
+     * 
+     * @param enableCloudwatchLogsExports
+     *        The list of logs that the restored DB instance is to export to CloudWatch Logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreDBInstanceToPointInTimeRequest withEnableCloudwatchLogsExports(java.util.Collection<String> enableCloudwatchLogsExports) {
+        setEnableCloudwatchLogsExports(enableCloudwatchLogsExports);
+        return this;
     }
 
     /**
@@ -3132,7 +3096,9 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
         if (getDomainIAMRoleName() != null)
             sb.append("DomainIAMRoleName: ").append(getDomainIAMRoleName()).append(",");
         if (getEnableIAMDatabaseAuthentication() != null)
-            sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication());
+            sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication()).append(",");
+        if (getEnableCloudwatchLogsExports() != null)
+            sb.append("EnableCloudwatchLogsExports: ").append(getEnableCloudwatchLogsExports());
         sb.append("}");
         return sb.toString();
     }
@@ -3244,6 +3210,10 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
         if (other.getEnableIAMDatabaseAuthentication() != null
                 && other.getEnableIAMDatabaseAuthentication().equals(this.getEnableIAMDatabaseAuthentication()) == false)
             return false;
+        if (other.getEnableCloudwatchLogsExports() == null ^ this.getEnableCloudwatchLogsExports() == null)
+            return false;
+        if (other.getEnableCloudwatchLogsExports() != null && other.getEnableCloudwatchLogsExports().equals(this.getEnableCloudwatchLogsExports()) == false)
+            return false;
         return true;
     }
 
@@ -3276,6 +3246,7 @@ public class RestoreDBInstanceToPointInTimeRequest extends com.amazonaws.AmazonW
         hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
         hashCode = prime * hashCode + ((getDomainIAMRoleName() == null) ? 0 : getDomainIAMRoleName().hashCode());
         hashCode = prime * hashCode + ((getEnableIAMDatabaseAuthentication() == null) ? 0 : getEnableIAMDatabaseAuthentication().hashCode());
+        hashCode = prime * hashCode + ((getEnableCloudwatchLogsExports() == null) ? 0 : getEnableCloudwatchLogsExports().hashCode());
         return hashCode;
     }
 

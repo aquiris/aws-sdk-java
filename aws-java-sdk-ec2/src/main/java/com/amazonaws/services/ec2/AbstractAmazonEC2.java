@@ -239,6 +239,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public CreateFleetResult createFleet(CreateFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateFlowLogsResult createFlowLogs(CreateFlowLogsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -419,6 +424,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public DeleteFleetsResult deleteFleets(DeleteFleetsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteFlowLogsResult deleteFlowLogs(DeleteFlowLogsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -589,6 +599,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public DescribeAggregateIdFormatResult describeAggregateIdFormat(DescribeAggregateIdFormatRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeAvailabilityZonesResult describeAvailabilityZones(DescribeAvailabilityZonesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -666,6 +681,21 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     @Override
     public DescribeExportTasksResult describeExportTasks() {
         return describeExportTasks(new DescribeExportTasksRequest());
+    }
+
+    @Override
+    public DescribeFleetHistoryResult describeFleetHistory(DescribeFleetHistoryRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeFleetInstancesResult describeFleetInstances(DescribeFleetInstancesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeFleetsResult describeFleets(DescribeFleetsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -886,6 +916,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     @Override
     public DescribePrefixListsResult describePrefixLists() {
         return describePrefixLists(new DescribePrefixListsRequest());
+    }
+
+    @Override
+    public DescribePrincipalIdFormatResult describePrincipalIdFormat(DescribePrincipalIdFormatRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -1340,6 +1375,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public ImportVolumeResult importVolume(ImportVolumeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ModifyFleetResult modifyFleet(ModifyFleetRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

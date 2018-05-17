@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,17 +27,17 @@ public class RebootWorkspacesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The WorkSpaces to reboot.
+     * The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<RebootRequest> rebootWorkspaceRequests;
 
     /**
      * <p>
-     * The WorkSpaces to reboot.
+     * The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      * </p>
      * 
-     * @return The WorkSpaces to reboot.
+     * @return The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      */
 
     public java.util.List<RebootRequest> getRebootWorkspaceRequests() {
@@ -49,11 +49,11 @@ public class RebootWorkspacesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The WorkSpaces to reboot.
+     * The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      * </p>
      * 
      * @param rebootWorkspaceRequests
-     *        The WorkSpaces to reboot.
+     *        The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      */
 
     public void setRebootWorkspaceRequests(java.util.Collection<RebootRequest> rebootWorkspaceRequests) {
@@ -67,7 +67,7 @@ public class RebootWorkspacesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The WorkSpaces to reboot.
+     * The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -76,7 +76,7 @@ public class RebootWorkspacesRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param rebootWorkspaceRequests
-     *        The WorkSpaces to reboot.
+     *        The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -92,11 +92,11 @@ public class RebootWorkspacesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The WorkSpaces to reboot.
+     * The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      * </p>
      * 
      * @param rebootWorkspaceRequests
-     *        The WorkSpaces to reboot.
+     *        The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

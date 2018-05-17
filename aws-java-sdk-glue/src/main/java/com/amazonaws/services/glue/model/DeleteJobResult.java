@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,18 +25,18 @@ public class DeleteJobResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The name of the job that was deleted.
+     * The name of the job definition that was deleted.
      * </p>
      */
     private String jobName;
 
     /**
      * <p>
-     * The name of the job that was deleted.
+     * The name of the job definition that was deleted.
      * </p>
      * 
      * @param jobName
-     *        The name of the job that was deleted.
+     *        The name of the job definition that was deleted.
      */
 
     public void setJobName(String jobName) {
@@ -45,10 +45,10 @@ public class DeleteJobResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The name of the job that was deleted.
+     * The name of the job definition that was deleted.
      * </p>
      * 
-     * @return The name of the job that was deleted.
+     * @return The name of the job definition that was deleted.
      */
 
     public String getJobName() {
@@ -57,11 +57,11 @@ public class DeleteJobResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The name of the job that was deleted.
+     * The name of the job definition that was deleted.
      * </p>
      * 
      * @param jobName
-     *        The name of the job that was deleted.
+     *        The name of the job definition that was deleted.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

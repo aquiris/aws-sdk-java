@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,6 +50,30 @@ public class DataSource implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The type of the data source.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation without
+     * connecting to a data source, such as performing data transformation with resolvers or triggering a subscription
+     * to be invoked from a mutation.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String type;
     /**
@@ -201,9 +225,56 @@ public class DataSource implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The type of the data source.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation without
+     * connecting to a data source, such as performing data transformation with resolvers or triggering a subscription
+     * to be invoked from a mutation.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param type
-     *        The type of the data source.
+     *        The type of the data source.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation
+     *        without connecting to a data source, such as performing data transformation with resolvers or triggering a
+     *        subscription to be invoked from a mutation.
+     *        </p>
+     *        </li>
      * @see DataSourceType
      */
 
@@ -215,8 +286,55 @@ public class DataSource implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The type of the data source.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation without
+     * connecting to a data source, such as performing data transformation with resolvers or triggering a subscription
+     * to be invoked from a mutation.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The type of the data source.
+     * @return The type of the data source.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation
+     *         without connecting to a data source, such as performing data transformation with resolvers or triggering
+     *         a subscription to be invoked from a mutation.
+     *         </p>
+     *         </li>
      * @see DataSourceType
      */
 
@@ -228,9 +346,56 @@ public class DataSource implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The type of the data source.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation without
+     * connecting to a data source, such as performing data transformation with resolvers or triggering a subscription
+     * to be invoked from a mutation.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param type
-     *        The type of the data source.
+     *        The type of the data source.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation
+     *        without connecting to a data source, such as performing data transformation with resolvers or triggering a
+     *        subscription to be invoked from a mutation.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DataSourceType
      */
@@ -244,9 +409,56 @@ public class DataSource implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The type of the data source.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation without
+     * connecting to a data source, such as performing data transformation with resolvers or triggering a subscription
+     * to be invoked from a mutation.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param type
-     *        The type of the data source.
+     *        The type of the data source.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>AMAZON_DYNAMODB</b>: The data source is an Amazon DynamoDB table.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AMAZON_ELASTICSEARCH</b>: The data source is an Amazon Elasticsearch Service domain.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>AWS_LAMBDA</b>: The data source is an AWS Lambda function.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>NONE</b>: There is no data source. This type is used when when you wish to invoke a GraphQL operation
+     *        without connecting to a data source, such as performing data transformation with resolvers or triggering a
+     *        subscription to be invoked from a mutation.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DataSourceType
      */

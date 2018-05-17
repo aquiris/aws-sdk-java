@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -380,6 +380,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new CreateClusterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createClusterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -521,6 +522,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new CreateServiceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createServiceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -577,6 +579,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DeleteAttributesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -648,6 +651,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DeleteClusterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteClusterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -723,6 +727,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DeleteServiceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteServiceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -801,6 +806,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                         .beforeMarshalling(deregisterContainerInstanceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -874,6 +880,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                         .beforeMarshalling(deregisterTaskDefinitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -931,6 +938,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DescribeClustersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeClustersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -997,6 +1005,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                         .beforeMarshalling(describeContainerInstancesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1057,6 +1066,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DescribeServicesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeServicesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1120,6 +1130,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DescribeTaskDefinitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTaskDefinitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1180,6 +1191,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DescribeTasksRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTasksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1239,6 +1251,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new DiscoverPollEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(discoverPollEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1301,6 +1314,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new ListAttributesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1357,6 +1371,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new ListClustersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listClustersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1425,6 +1440,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new ListContainerInstancesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listContainerInstancesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1490,6 +1506,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new ListServicesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listServicesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1558,6 +1575,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                         .beforeMarshalling(listTaskDefinitionFamiliesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1621,6 +1639,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new ListTaskDefinitionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTaskDefinitionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1694,6 +1713,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new ListTasksRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTasksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1762,6 +1782,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new PutAttributesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putAttributesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1824,6 +1845,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                         .beforeMarshalling(registerContainerInstanceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1902,6 +1924,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new RegisterTaskDefinitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(registerTaskDefinitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1982,8 +2005,8 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * @throws AccessDeniedException
      *         You do not have authorization to perform the requested action.
      * @throws BlockedException
-     *         Your AWS account has been blocked. <a href="http://aws.amazon.com/contact-us/">Contact AWS Customer
-     *         Support</a> for more information.
+     *         Your AWS account has been blocked. <a href="http://aws.amazon.com/contact-us/">Contact AWS Support</a>
+     *         for more information.
      * @sample AmazonECS.RunTask
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RunTask" target="_top">AWS API
      *      Documentation</a>
@@ -2009,6 +2032,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new RunTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(runTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2073,6 +2097,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new StartTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2146,6 +2171,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new StopTaskRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2208,6 +2234,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                         .beforeMarshalling(submitContainerStateChangeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2275,6 +2302,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new SubmitTaskStateChangeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(submitTaskStateChangeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2359,6 +2387,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new UpdateContainerAgentRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateContainerAgentRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2469,6 +2498,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                         .beforeMarshalling(updateContainerInstancesStateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2496,8 +2526,18 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      * cluster that the service is running in and a new <code>desiredCount</code> parameter.
      * </p>
      * <p>
-     * You can use <a>UpdateService</a> to modify your task definition and deploy a new version of your service.
+     * If you have updated the Docker image of your application, you can create a new task definition with that image
+     * and deploy it to your service. The service scheduler uses the minimum healthy percent and maximum percent
+     * parameters (in the service's deployment configuration) to determine the deployment strategy.
      * </p>
+     * <note>
+     * <p>
+     * If your updated Docker image uses the same tag as what is in the existing task definition for your service (for
+     * example, <code>my_image:latest</code>), you do not need to create a new revision of your task definition. You can
+     * update the service using the <code>forceNewDeployment</code> option. The new tasks launched by the deployment
+     * pull the current image/tag combination from your repository when they start.
+     * </p>
+     * </note>
      * <p>
      * You can also update the deployment configuration of a service. When a deployment is triggered by updating the
      * task definition of a service, the service scheduler uses the deployment configuration parameters,
@@ -2632,6 +2672,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                 request = new UpdateServiceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateServiceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

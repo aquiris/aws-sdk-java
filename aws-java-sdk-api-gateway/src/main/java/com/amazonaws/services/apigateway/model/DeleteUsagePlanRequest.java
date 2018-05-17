@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,18 @@ public class DeleteUsagePlanRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The Id of the to-be-deleted usage plan.
+     * [Required] The Id of the to-be-deleted usage plan.
      * </p>
      */
     private String usagePlanId;
 
     /**
      * <p>
-     * The Id of the to-be-deleted usage plan.
+     * [Required] The Id of the to-be-deleted usage plan.
      * </p>
      * 
      * @param usagePlanId
-     *        The Id of the to-be-deleted usage plan.
+     *        [Required] The Id of the to-be-deleted usage plan.
      */
 
     public void setUsagePlanId(String usagePlanId) {
@@ -47,10 +47,10 @@ public class DeleteUsagePlanRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The Id of the to-be-deleted usage plan.
+     * [Required] The Id of the to-be-deleted usage plan.
      * </p>
      * 
-     * @return The Id of the to-be-deleted usage plan.
+     * @return [Required] The Id of the to-be-deleted usage plan.
      */
 
     public String getUsagePlanId() {
@@ -59,11 +59,11 @@ public class DeleteUsagePlanRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The Id of the to-be-deleted usage plan.
+     * [Required] The Id of the to-be-deleted usage plan.
      * </p>
      * 
      * @param usagePlanId
-     *        The Id of the to-be-deleted usage plan.
+     *        [Required] The Id of the to-be-deleted usage plan.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

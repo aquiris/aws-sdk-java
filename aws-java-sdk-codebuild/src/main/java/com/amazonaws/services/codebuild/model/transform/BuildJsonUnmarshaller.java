@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -99,6 +99,10 @@ public class BuildJsonUnmarshaller implements Unmarshaller<Build, JsonUnmarshall
                 if (context.testExpression("environment", targetDepth)) {
                     context.nextToken();
                     build.setEnvironment(ProjectEnvironmentJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("serviceRole", targetDepth)) {
+                    context.nextToken();
+                    build.setServiceRole(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("logs", targetDepth)) {
                     context.nextToken();

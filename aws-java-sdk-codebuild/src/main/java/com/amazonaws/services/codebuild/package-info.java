@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,6 +50,11 @@
  * <code>CreateWebhook</code>: For an existing AWS CodeBuild build project that has its source code stored in a GitHub
  * repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is
  * pushed to the repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>UpdateWebhook</code>: Changes the settings of an existing webhook.
  * </p>
  * </li>
  * <li>

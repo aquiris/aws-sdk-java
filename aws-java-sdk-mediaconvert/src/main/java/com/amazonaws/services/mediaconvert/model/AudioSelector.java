@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 public class AudioSelector implements Serializable, Cloneable, StructuredPojo {
 
     private String defaultSelection;
-    /** Specifies audio data from an external file source. Auto populated when Infer External Filename is checked */
+    /** Specifies audio data from an external file source. */
     private String externalAudioFileInput;
     /** Selects a specific language code from within an audio source. */
     private String languageCode;
@@ -94,10 +94,10 @@ public class AudioSelector implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Specifies audio data from an external file source. Auto populated when Infer External Filename is checked
+     * Specifies audio data from an external file source.
      * 
      * @param externalAudioFileInput
-     *        Specifies audio data from an external file source. Auto populated when Infer External Filename is checked
+     *        Specifies audio data from an external file source.
      */
 
     public void setExternalAudioFileInput(String externalAudioFileInput) {
@@ -105,9 +105,9 @@ public class AudioSelector implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Specifies audio data from an external file source. Auto populated when Infer External Filename is checked
+     * Specifies audio data from an external file source.
      * 
-     * @return Specifies audio data from an external file source. Auto populated when Infer External Filename is checked
+     * @return Specifies audio data from an external file source.
      */
 
     public String getExternalAudioFileInput() {
@@ -115,10 +115,10 @@ public class AudioSelector implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Specifies audio data from an external file source. Auto populated when Infer External Filename is checked
+     * Specifies audio data from an external file source.
      * 
      * @param externalAudioFileInput
-     *        Specifies audio data from an external file source. Auto populated when Infer External Filename is checked
+     *        Specifies audio data from an external file source.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

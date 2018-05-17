@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,6 +64,39 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
      */
     java.util.concurrent.Future<AssociateFleetResult> associateFleetAsync(AssociateFleetRequest associateFleetRequest,
             com.amazonaws.handlers.AsyncHandler<AssociateFleetRequest, AssociateFleetResult> asyncHandler);
+
+    /**
+     * <p>
+     * Copies the image within the same region or to a new region within the same AWS account. Note that any tags you
+     * added to the image will not be copied.
+     * </p>
+     * 
+     * @param copyImageRequest
+     * @return A Java Future containing the result of the CopyImage operation returned by the service.
+     * @sample AmazonAppStreamAsync.CopyImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CopyImage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CopyImageResult> copyImageAsync(CopyImageRequest copyImageRequest);
+
+    /**
+     * <p>
+     * Copies the image within the same region or to a new region within the same AWS account. Note that any tags you
+     * added to the image will not be copied.
+     * </p>
+     * 
+     * @param copyImageRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CopyImage operation returned by the service.
+     * @sample AmazonAppStreamAsyncHandler.CopyImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CopyImage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CopyImageResult> copyImageAsync(CopyImageRequest copyImageRequest,
+            com.amazonaws.handlers.AsyncHandler<CopyImageRequest, CopyImageResult> asyncHandler);
 
     /**
      * <p>
@@ -422,7 +455,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
 
     /**
      * <p>
-     * Describes the specified directory configurations.
+     * Describes the specified directory configurations. Note that although the response syntax in this topic includes
+     * the account password, this password is not returned in the actual response.
      * </p>
      * 
      * @param describeDirectoryConfigsRequest
@@ -435,7 +469,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
 
     /**
      * <p>
-     * Describes the specified directory configurations.
+     * Describes the specified directory configurations. Note that although the response syntax in this topic includes
+     * the account password, this password is not returned in the actual response.
      * </p>
      * 
      * @param describeDirectoryConfigsRequest
@@ -741,8 +776,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -760,8 +795,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -916,8 +951,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param tagResourceRequest
@@ -943,8 +978,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param tagResourceRequest
@@ -969,8 +1004,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param untagResourceRequest
@@ -990,8 +1025,8 @@ public interface AmazonAppStreamAsync extends AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param untagResourceRequest

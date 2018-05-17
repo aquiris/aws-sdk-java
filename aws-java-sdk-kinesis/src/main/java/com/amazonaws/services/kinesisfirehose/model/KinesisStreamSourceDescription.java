@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Details about a Kinesis stream used as the source for a Kinesis Firehose delivery stream.
+ * Details about a Kinesis data stream used as the source for a Kinesis Data Firehose delivery stream.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/KinesisStreamSourceDescription"
@@ -30,30 +30,38 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The ARN of the source Kinesis stream.
+     * The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams"
+     * >Amazon Kinesis Data Streams ARN Format</a>.
      * </p>
      */
     private String kinesisStreamARN;
     /**
      * <p>
-     * The ARN of the role used by the source Kinesis stream.
+     * The ARN of the role used by the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * Access Management (IAM) ARN Format</a>.
      * </p>
      */
     private String roleARN;
     /**
      * <p>
-     * Kinesis Firehose starts retrieving records from the Kinesis stream starting with this time stamp.
+     * Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time stamp.
      * </p>
      */
     private java.util.Date deliveryStartTimestamp;
 
     /**
      * <p>
-     * The ARN of the source Kinesis stream.
+     * The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams"
+     * >Amazon Kinesis Data Streams ARN Format</a>.
      * </p>
      * 
      * @param kinesisStreamARN
-     *        The ARN of the source Kinesis stream.
+     *        The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams"
+     *        >Amazon Kinesis Data Streams ARN Format</a>.
      */
 
     public void setKinesisStreamARN(String kinesisStreamARN) {
@@ -62,10 +70,14 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The ARN of the source Kinesis stream.
+     * The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams"
+     * >Amazon Kinesis Data Streams ARN Format</a>.
      * </p>
      * 
-     * @return The ARN of the source Kinesis stream.
+     * @return The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <a
+     *         href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams"
+     *         >Amazon Kinesis Data Streams ARN Format</a>.
      */
 
     public String getKinesisStreamARN() {
@@ -74,11 +86,15 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The ARN of the source Kinesis stream.
+     * The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams"
+     * >Amazon Kinesis Data Streams ARN Format</a>.
      * </p>
      * 
      * @param kinesisStreamARN
-     *        The ARN of the source Kinesis stream.
+     *        The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams"
+     *        >Amazon Kinesis Data Streams ARN Format</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -89,11 +105,15 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The ARN of the role used by the source Kinesis stream.
+     * The ARN of the role used by the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * Access Management (IAM) ARN Format</a>.
      * </p>
      * 
      * @param roleARN
-     *        The ARN of the role used by the source Kinesis stream.
+     *        The ARN of the role used by the source Kinesis data stream. For more information, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
+     *        Identity and Access Management (IAM) ARN Format</a>.
      */
 
     public void setRoleARN(String roleARN) {
@@ -102,10 +122,14 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The ARN of the role used by the source Kinesis stream.
+     * The ARN of the role used by the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * Access Management (IAM) ARN Format</a>.
      * </p>
      * 
-     * @return The ARN of the role used by the source Kinesis stream.
+     * @return The ARN of the role used by the source Kinesis data stream. For more information, see <a
+     *         href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
+     *         Identity and Access Management (IAM) ARN Format</a>.
      */
 
     public String getRoleARN() {
@@ -114,11 +138,15 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The ARN of the role used by the source Kinesis stream.
+     * The ARN of the role used by the source Kinesis data stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * Access Management (IAM) ARN Format</a>.
      * </p>
      * 
      * @param roleARN
-     *        The ARN of the role used by the source Kinesis stream.
+     *        The ARN of the role used by the source Kinesis data stream. For more information, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
+     *        Identity and Access Management (IAM) ARN Format</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,11 +157,12 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * Kinesis Firehose starts retrieving records from the Kinesis stream starting with this time stamp.
+     * Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time stamp.
      * </p>
      * 
      * @param deliveryStartTimestamp
-     *        Kinesis Firehose starts retrieving records from the Kinesis stream starting with this time stamp.
+     *        Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time
+     *        stamp.
      */
 
     public void setDeliveryStartTimestamp(java.util.Date deliveryStartTimestamp) {
@@ -142,10 +171,11 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * Kinesis Firehose starts retrieving records from the Kinesis stream starting with this time stamp.
+     * Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time stamp.
      * </p>
      * 
-     * @return Kinesis Firehose starts retrieving records from the Kinesis stream starting with this time stamp.
+     * @return Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time
+     *         stamp.
      */
 
     public java.util.Date getDeliveryStartTimestamp() {
@@ -154,11 +184,12 @@ public class KinesisStreamSourceDescription implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * Kinesis Firehose starts retrieving records from the Kinesis stream starting with this time stamp.
+     * Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time stamp.
      * </p>
      * 
      * @param deliveryStartTimestamp
-     *        Kinesis Firehose starts retrieving records from the Kinesis stream starting with this time stamp.
+     *        Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time
+     *        stamp.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

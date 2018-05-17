@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,18 @@ public class GetRestApiRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      */
     private String restApiId;
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The identifier of the <a>RestApi</a> resource.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public void setRestApiId(String restApiId) {
@@ -47,10 +47,10 @@ public class GetRestApiRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
-     * @return The identifier of the <a>RestApi</a> resource.
+     * @return [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public String getRestApiId() {
@@ -59,11 +59,11 @@ public class GetRestApiRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The identifier of the <a>RestApi</a> resource.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The identifier of the <a>RestApi</a> resource.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

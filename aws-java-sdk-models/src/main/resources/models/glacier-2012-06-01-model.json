@@ -171,7 +171,7 @@
         {"shape":"MissingParameterValueException"},
         {"shape":"ServiceUnavailableException"}
       ],
-      "documentation":"<p>This operation deletes the notification configuration set for a vault. The operation is eventually consistent; that is, it might take some time for Amazon Glacier to completely disable the notifications and you might still receive some notifications for a short time after you send the delete request.</p> <p>An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a href=\"http://docs.aws.amazon.com/latest/dev/using-iam-with-amazon-glacier.html\">Access Control Using AWS Identity and Access Management (IAM)</a>.</p> <p> For conceptual information and underlying REST API, see <a href=\"http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html\">Configuring Vault Notifications in Amazon Glacier</a> and <a href=\"http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html\">Delete Vault Notification Configuration </a> in the Amazon Glacier Developer Guide. </p>"
+      "documentation":"<p>This operation deletes the notification configuration set for a vault. The operation is eventually consistent; that is, it might take some time for Amazon Glacier to completely disable the notifications and you might still receive some notifications for a short time after you send the delete request.</p> <p>An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a href=\"http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html\">Access Control Using AWS Identity and Access Management (IAM)</a>.</p> <p> For conceptual information and underlying REST API, see <a href=\"http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html\">Configuring Vault Notifications in Amazon Glacier</a> and <a href=\"http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html\">Delete Vault Notification Configuration </a> in the Amazon Glacier Developer Guide. </p>"
     },
     "DescribeJob":{
       "name":"DescribeJob",
@@ -1053,7 +1053,7 @@
         },
         "KMSContext":{
           "shape":"string",
-          "documentation":"<p>Optional. If the encryption type is <code>aws:kms</code>, you can use this value to specify the encryption context for the restore results.</p>"
+          "documentation":"<p>Optional. If the encryption type is <code>aws:kms</code>, you can use this value to specify the encryption context for the job results.</p>"
         }
       },
       "documentation":"<p>Contains information about the encryption used to store the job results in Amazon S3. </p>"
@@ -1360,7 +1360,7 @@
         },
         "Tier":{
           "shape":"string",
-          "documentation":"<p>The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>"
+          "documentation":"<p>The tier to use for a select or an archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>"
         },
         "InventoryRetrievalParameters":{
           "shape":"InventoryRetrievalJobDescription",
@@ -1372,7 +1372,7 @@
         },
         "SelectParameters":{
           "shape":"SelectParameters",
-          "documentation":"<p>Contains the parameters that define a select job.</p>"
+          "documentation":"<p>Contains the parameters used for a select.</p>"
         },
         "OutputLocation":{
           "shape":"OutputLocation",
@@ -1686,7 +1686,7 @@
         },
         "Tier":{
           "shape":"string",
-          "documentation":"<p>The retrieval option to use for a select or archive retrieval job. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>"
+          "documentation":"<p>The tier to use for a select or an archive retrieval job. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>"
         },
         "InventoryRetrievalParameters":{
           "shape":"InventoryRetrievalJobInput",
@@ -2028,7 +2028,7 @@
       "members":{
         "S3":{
           "shape":"S3Location",
-          "documentation":"<p>Describes an S3 location that will receive the results of the restore request.</p>"
+          "documentation":"<p>Describes an S3 location that will receive the results of the job request.</p>"
         }
       },
       "documentation":"<p>Contains information about the location where the select job results are stored.</p>"
@@ -2214,11 +2214,11 @@
       "members":{
         "BucketName":{
           "shape":"string",
-          "documentation":"<p>The name of the bucket where the restore results are stored.</p>"
+          "documentation":"<p>The name of the Amazon S3 bucket where the job results are stored.</p>"
         },
         "Prefix":{
           "shape":"string",
-          "documentation":"<p>The prefix that is prepended to the restore results for this request.</p>"
+          "documentation":"<p>The prefix that is prepended to the results for this request.</p>"
         },
         "Encryption":{
           "shape":"Encryption",
@@ -2226,7 +2226,7 @@
         },
         "CannedACL":{
           "shape":"CannedACL",
-          "documentation":"<p>The canned ACL to apply to the restore results.</p>"
+          "documentation":"<p>The canned access control list (ACL) to apply to the job results.</p>"
         },
         "AccessControlList":{
           "shape":"AccessControlPolicyList",
@@ -2234,15 +2234,15 @@
         },
         "Tagging":{
           "shape":"hashmap",
-          "documentation":"<p>The tag-set that is applied to the restore results.</p>"
+          "documentation":"<p>The tag-set that is applied to the job results.</p>"
         },
         "UserMetadata":{
           "shape":"hashmap",
-          "documentation":"<p>A map of metadata to store with the restore results in Amazon S3.</p>"
+          "documentation":"<p>A map of metadata to store with the job results in Amazon S3.</p>"
         },
         "StorageClass":{
           "shape":"StorageClass",
-          "documentation":"<p>The storage class used to store the restore results.</p>"
+          "documentation":"<p>The storage class used to store the job results.</p>"
         }
       },
       "documentation":"<p>Contains information about the location in Amazon S3 where the select job results are stored.</p>"

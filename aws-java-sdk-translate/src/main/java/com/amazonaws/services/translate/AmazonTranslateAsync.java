@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -69,6 +69,11 @@ public interface AmazonTranslateAsync extends AmazonTranslate {
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To have Amazon Translate determine the source language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon Translate will call Amazon
+     * Comprehend to determine the source language.
+     * </p>
      * 
      * @param translateTextRequest
      * @return A Java Future containing the result of the TranslateText operation returned by the service.
@@ -115,6 +120,11 @@ public interface AmazonTranslateAsync extends AmazonTranslate {
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To have Amazon Translate determine the source language of your text, you can specify <code>auto</code> in the
+     * <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon Translate will call Amazon
+     * Comprehend to determine the source language.
+     * </p>
      * 
      * @param translateTextRequest
      * @param asyncHandler

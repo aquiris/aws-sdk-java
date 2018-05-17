@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,9 +50,9 @@ import com.amazonaws.services.alexaforbusiness.model.transform.*;
  * <p>
  * <p>
  * Alexa for Business makes it easy for you to use Alexa in your organization. Alexa for Business gives you the tools
- * you need to manage Alexa devices, enroll your users, and assign skills, at scale. You can build your own
- * context-aware voice skills using the Alexa Skills Kit, and the Alexa for Business APIs, and you can make these
- * available as private skills for your organization. Alexa for Business also makes it easy to voice-enable your
+ * you need for managing Alexa devices, enroll your users, and assign skills, at scale. You can build your own
+ * context-aware voice skills using the Alexa Skills Kit and the Alexa for Business API operations. You can make also
+ * these available as private skills for your organization. Alexa for Business makes it easy to voice-enable your
  * products and services, providing context-aware voice experiences for your customers.
  * </p>
  */
@@ -128,9 +128,63 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
 
     /**
      * <p>
-     * Associates a device to a given room. This applies all the settings from the room profile to the device, and all
-     * the skills in any skill groups added to that room. This operation requires the device to be online, or a manual
-     * sync is required.
+     * Associates a contact with a given address book.
+     * </p>
+     * 
+     * @param associateContactWithAddressBookRequest
+     * @return Result of the AssociateContactWithAddressBook operation returned by the service.
+     * @throws LimitExceededException
+     *         You are performing an action that would put you beyond your account's limits. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.AssociateContactWithAddressBook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/AssociateContactWithAddressBook"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public AssociateContactWithAddressBookResult associateContactWithAddressBook(AssociateContactWithAddressBookRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateContactWithAddressBook(request);
+    }
+
+    @SdkInternalApi
+    final AssociateContactWithAddressBookResult executeAssociateContactWithAddressBook(
+            AssociateContactWithAddressBookRequest associateContactWithAddressBookRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(associateContactWithAddressBookRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociateContactWithAddressBookRequest> request = null;
+        Response<AssociateContactWithAddressBookResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociateContactWithAddressBookRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(associateContactWithAddressBookRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<AssociateContactWithAddressBookResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new AssociateContactWithAddressBookResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Associates a device with a given room. This applies all the settings from the room profile to the device, and all
+     * the skills in any skill groups added to that room. This operation requires the device to be online, or else a
+     * manual sync is required.
      * </p>
      * 
      * @param associateDeviceWithRoomRequest
@@ -163,6 +217,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                         .beforeMarshalling(associateDeviceWithRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -182,8 +237,8 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
 
     /**
      * <p>
-     * Associates a skill group to a given room. This enables all skills in the associated skill group on all devices in
-     * the room.
+     * Associates a skill group with a given room. This enables all skills in the associated skill group on all devices
+     * in the room.
      * </p>
      * 
      * @param associateSkillGroupWithRoomRequest
@@ -214,6 +269,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                         .beforeMarshalling(associateSkillGroupWithRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -221,6 +277,112 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
             HttpResponseHandler<AmazonWebServiceResponse<AssociateSkillGroupWithRoomResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new AssociateSkillGroupWithRoomResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates an address book with the specified details.
+     * </p>
+     * 
+     * @param createAddressBookRequest
+     * @return Result of the CreateAddressBook operation returned by the service.
+     * @throws AlreadyExistsException
+     *         The resource being created already exists. HTTP Status Code: 400
+     * @throws LimitExceededException
+     *         You are performing an action that would put you beyond your account's limits. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.CreateAddressBook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/CreateAddressBook"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateAddressBookResult createAddressBook(CreateAddressBookRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateAddressBook(request);
+    }
+
+    @SdkInternalApi
+    final CreateAddressBookResult executeCreateAddressBook(CreateAddressBookRequest createAddressBookRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createAddressBookRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateAddressBookRequest> request = null;
+        Response<CreateAddressBookResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateAddressBookRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAddressBookRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateAddressBookResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateAddressBookResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a contact with the specified details.
+     * </p>
+     * 
+     * @param createContactRequest
+     * @return Result of the CreateContact operation returned by the service.
+     * @throws AlreadyExistsException
+     *         The resource being created already exists. HTTP Status Code: 400
+     * @throws LimitExceededException
+     *         You are performing an action that would put you beyond your account's limits. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.CreateContact
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/CreateContact" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public CreateContactResult createContact(CreateContactRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateContact(request);
+    }
+
+    @SdkInternalApi
+    final CreateContactResult executeCreateContact(CreateContactRequest createContactRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createContactRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateContactRequest> request = null;
+        Response<CreateContactResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateContactRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createContactRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateContactResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateContactResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -267,6 +429,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new CreateProfileRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createProfileRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -319,6 +482,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new CreateRoomRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -371,6 +535,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new CreateSkillGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createSkillGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -423,12 +588,115 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new CreateUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateUserResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateUserResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes an address book by the address book ARN.
+     * </p>
+     * 
+     * @param deleteAddressBookRequest
+     * @return Result of the DeleteAddressBook operation returned by the service.
+     * @throws NotFoundException
+     *         The resource is not found. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.DeleteAddressBook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/DeleteAddressBook"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteAddressBookResult deleteAddressBook(DeleteAddressBookRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAddressBook(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAddressBookResult executeDeleteAddressBook(DeleteAddressBookRequest deleteAddressBookRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteAddressBookRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteAddressBookRequest> request = null;
+        Response<DeleteAddressBookResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteAddressBookRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAddressBookRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteAddressBookResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteAddressBookResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a contact by the contact ARN.
+     * </p>
+     * 
+     * @param deleteContactRequest
+     * @return Result of the DeleteContact operation returned by the service.
+     * @throws NotFoundException
+     *         The resource is not found. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.DeleteContact
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/DeleteContact" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeleteContactResult deleteContact(DeleteContactRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteContact(request);
+    }
+
+    @SdkInternalApi
+    final DeleteContactResult executeDeleteContact(DeleteContactRequest deleteContactRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteContactRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteContactRequest> request = null;
+        Response<DeleteContactResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteContactRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteContactRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteContactResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteContactResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -473,6 +741,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new DeleteProfileRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteProfileRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -523,6 +792,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new DeleteRoomRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -572,6 +842,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                         .beforeMarshalling(deleteRoomSkillParameterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -623,6 +894,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new DeleteSkillGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteSkillGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -673,12 +945,66 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new DeleteUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteUserResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteUserResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Disassociates a contact from a given address book.
+     * </p>
+     * 
+     * @param disassociateContactFromAddressBookRequest
+     * @return Result of the DisassociateContactFromAddressBook operation returned by the service.
+     * @sample AmazonAlexaForBusiness.DisassociateContactFromAddressBook
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/DisassociateContactFromAddressBook"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DisassociateContactFromAddressBookResult disassociateContactFromAddressBook(DisassociateContactFromAddressBookRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateContactFromAddressBook(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateContactFromAddressBookResult executeDisassociateContactFromAddressBook(
+            DisassociateContactFromAddressBookRequest disassociateContactFromAddressBookRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(disassociateContactFromAddressBookRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisassociateContactFromAddressBookRequest> request = null;
+        Response<DisassociateContactFromAddressBookResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisassociateContactFromAddressBookRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(disassociateContactFromAddressBookRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DisassociateContactFromAddressBookResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DisassociateContactFromAddressBookResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -723,6 +1049,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                         .beforeMarshalling(disassociateDeviceFromRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -774,6 +1101,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                         .beforeMarshalling(disassociateSkillGroupFromRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -781,6 +1109,108 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
             HttpResponseHandler<AmazonWebServiceResponse<DisassociateSkillGroupFromRoomResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DisassociateSkillGroupFromRoomResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets address the book details by the address book ARN.
+     * </p>
+     * 
+     * @param getAddressBookRequest
+     * @return Result of the GetAddressBook operation returned by the service.
+     * @throws NotFoundException
+     *         The resource is not found. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.GetAddressBook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/GetAddressBook"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public GetAddressBookResult getAddressBook(GetAddressBookRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAddressBook(request);
+    }
+
+    @SdkInternalApi
+    final GetAddressBookResult executeGetAddressBook(GetAddressBookRequest getAddressBookRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getAddressBookRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetAddressBookRequest> request = null;
+        Response<GetAddressBookResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetAddressBookRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAddressBookRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetAddressBookResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetAddressBookResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets the contact details by the contact ARN.
+     * </p>
+     * 
+     * @param getContactRequest
+     * @return Result of the GetContact operation returned by the service.
+     * @throws NotFoundException
+     *         The resource is not found. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.GetContact
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/GetContact" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public GetContactResult getContact(GetContactRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetContact(request);
+    }
+
+    @SdkInternalApi
+    final GetContactResult executeGetContact(GetContactRequest getContactRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getContactRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetContactRequest> request = null;
+        Response<GetContactResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetContactRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getContactRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetContactResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetContactResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -825,6 +1255,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new GetDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -875,6 +1306,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new GetProfileRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getProfileRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -925,6 +1357,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new GetRoomRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -975,6 +1408,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new GetRoomSkillParameterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getRoomSkillParameterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1026,12 +1460,66 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new GetSkillGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getSkillGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<GetSkillGroupResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetSkillGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists the Device Event history for up to 30 days. If EventType isn't specified in the request, this returns a
+     * list of all device events in reverse chronological order. If EventType is specified, this returns a list of
+     * device events for that EventType in reverse chronological order.
+     * </p>
+     * 
+     * @param listDeviceEventsRequest
+     * @return Result of the ListDeviceEvents operation returned by the service.
+     * @throws NotFoundException
+     *         The resource is not found. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.ListDeviceEvents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/ListDeviceEvents"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListDeviceEventsResult listDeviceEvents(ListDeviceEventsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListDeviceEvents(request);
+    }
+
+    @SdkInternalApi
+    final ListDeviceEventsResult executeListDeviceEvents(ListDeviceEventsRequest listDeviceEventsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listDeviceEventsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListDeviceEventsRequest> request = null;
+        Response<ListDeviceEventsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListDeviceEventsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDeviceEventsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListDeviceEventsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListDeviceEventsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1074,6 +1562,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new ListSkillsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listSkillsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1124,6 +1613,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new ListTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1173,6 +1663,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new PutRoomSkillParameterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putRoomSkillParameterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1225,6 +1716,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new ResolveRoomRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(resolveRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1275,12 +1767,111 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new RevokeInvitationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(revokeInvitationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<RevokeInvitationResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new RevokeInvitationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Searches address books and lists the ones that meet a set of filter and sort criteria.
+     * </p>
+     * 
+     * @param searchAddressBooksRequest
+     * @return Result of the SearchAddressBooks operation returned by the service.
+     * @sample AmazonAlexaForBusiness.SearchAddressBooks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/SearchAddressBooks"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public SearchAddressBooksResult searchAddressBooks(SearchAddressBooksRequest request) {
+        request = beforeClientExecution(request);
+        return executeSearchAddressBooks(request);
+    }
+
+    @SdkInternalApi
+    final SearchAddressBooksResult executeSearchAddressBooks(SearchAddressBooksRequest searchAddressBooksRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(searchAddressBooksRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<SearchAddressBooksRequest> request = null;
+        Response<SearchAddressBooksResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new SearchAddressBooksRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchAddressBooksRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<SearchAddressBooksResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new SearchAddressBooksResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Searches contacts and lists the ones that meet a set of filter and sort criteria.
+     * </p>
+     * 
+     * @param searchContactsRequest
+     * @return Result of the SearchContacts operation returned by the service.
+     * @sample AmazonAlexaForBusiness.SearchContacts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/SearchContacts"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public SearchContactsResult searchContacts(SearchContactsRequest request) {
+        request = beforeClientExecution(request);
+        return executeSearchContacts(request);
+    }
+
+    @SdkInternalApi
+    final SearchContactsResult executeSearchContacts(SearchContactsRequest searchContactsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(searchContactsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<SearchContactsRequest> request = null;
+        Response<SearchContactsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new SearchContactsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchContactsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<SearchContactsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new SearchContactsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1323,6 +1914,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new SearchDevicesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchDevicesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1371,6 +1963,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new SearchProfilesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchProfilesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1419,6 +2012,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new SearchRoomsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchRoomsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1467,6 +2061,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new SearchSkillGroupsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchSkillGroupsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1515,6 +2110,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new SearchUsersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchUsersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1568,6 +2164,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new SendInvitationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(sendInvitationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1586,7 +2183,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
 
     /**
      * <p>
-     * Resets a device and its account to the known default settings by clearing all information and settings set by
+     * Resets a device and its account to the known default settings, by clearing all information and settings set by
      * previous users.
      * </p>
      * 
@@ -1617,6 +2214,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new StartDeviceSyncRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startDeviceSyncRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1667,6 +2265,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1717,12 +2316,117 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<UntagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates address book details by the address book ARN.
+     * </p>
+     * 
+     * @param updateAddressBookRequest
+     * @return Result of the UpdateAddressBook operation returned by the service.
+     * @throws NotFoundException
+     *         The resource is not found. HTTP Status Code: 400
+     * @throws NameInUseException
+     *         The name sent in the request is already in use. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.UpdateAddressBook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/UpdateAddressBook"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateAddressBookResult updateAddressBook(UpdateAddressBookRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateAddressBook(request);
+    }
+
+    @SdkInternalApi
+    final UpdateAddressBookResult executeUpdateAddressBook(UpdateAddressBookRequest updateAddressBookRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateAddressBookRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateAddressBookRequest> request = null;
+        Response<UpdateAddressBookResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateAddressBookRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateAddressBookRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateAddressBookResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateAddressBookResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates the contact details by the contact ARN.
+     * </p>
+     * 
+     * @param updateContactRequest
+     * @return Result of the UpdateContact operation returned by the service.
+     * @throws NotFoundException
+     *         The resource is not found. HTTP Status Code: 400
+     * @sample AmazonAlexaForBusiness.UpdateContact
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/alexaforbusiness-2017-11-09/UpdateContact" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public UpdateContactResult updateContact(UpdateContactRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateContact(request);
+    }
+
+    @SdkInternalApi
+    final UpdateContactResult executeUpdateContact(UpdateContactRequest updateContactRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateContactRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateContactRequest> request = null;
+        Response<UpdateContactResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateContactRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateContactRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateContactResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateContactResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1767,6 +2471,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new UpdateDeviceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDeviceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1819,6 +2524,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new UpdateProfileRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateProfileRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1871,6 +2577,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new UpdateRoomRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateRoomRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1923,6 +2630,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                 request = new UpdateSkillGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateSkillGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

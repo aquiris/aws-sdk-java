@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -310,6 +310,12 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * </li>
      * <li>
      * <p>
+     * Your request contains at least two items with identical hash and range keys (which essentially is two put
+     * operations).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * There are more than 25 requests in the batch.
      * </p>
      * </li>
@@ -416,6 +422,12 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * </li>
      * <li>
      * <p>
+     * Your request contains at least two items with identical hash and range keys (which essentially is two put
+     * operations).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * There are more than 25 requests in the batch.
      * </p>
      * </li>
@@ -469,23 +481,20 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * on-demand backups that can be taken.
      * </p>
      * <p>
+     * When you create an On-Demand Backup, a time marker of the request is cataloged, and the backup is created
+     * asynchronously, by applying all changes until the time of the request to the last full table snapshot. Backup
+     * requests are processed instantaneously and become available for restore within minutes.
+     * </p>
+     * <p>
      * You can call <code>CreateBackup</code> at a maximum rate of 50 times per second.
      * </p>
      * <p>
-     * All backups in DynamoDB work without consuming any provisioned throughput on the table. This results in a fast,
-     * low-cost, and scalable backup process. In general, the larger the table, the more time it takes to back up. The
-     * backup is stored in an S3 data store that is maintained and managed by DynamoDB.
+     * All backups in DynamoDB work without consuming any provisioned throughput on the table.
      * </p>
      * <p>
-     * Backups incorporate all writes (delete, put, update) that were completed within the last minute before the backup
-     * request was initiated. Backups might include some writes (delete, put, update) that were completed before the
-     * backup request was finished.
-     * </p>
-     * <p>
-     * For example, if you submit the backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all
-     * data committed to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may
-     * not contain data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal
-     * consistency.
+     * If you submit a backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all data committed
+     * to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may not contain
+     * data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal consistency.
      * </p>
      * <p>
      * Along with data, the following are also included on the backups:
@@ -530,23 +539,20 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * on-demand backups that can be taken.
      * </p>
      * <p>
+     * When you create an On-Demand Backup, a time marker of the request is cataloged, and the backup is created
+     * asynchronously, by applying all changes until the time of the request to the last full table snapshot. Backup
+     * requests are processed instantaneously and become available for restore within minutes.
+     * </p>
+     * <p>
      * You can call <code>CreateBackup</code> at a maximum rate of 50 times per second.
      * </p>
      * <p>
-     * All backups in DynamoDB work without consuming any provisioned throughput on the table. This results in a fast,
-     * low-cost, and scalable backup process. In general, the larger the table, the more time it takes to back up. The
-     * backup is stored in an S3 data store that is maintained and managed by DynamoDB.
+     * All backups in DynamoDB work without consuming any provisioned throughput on the table.
      * </p>
      * <p>
-     * Backups incorporate all writes (delete, put, update) that were completed within the last minute before the backup
-     * request was initiated. Backups might include some writes (delete, put, update) that were completed before the
-     * backup request was finished.
-     * </p>
-     * <p>
-     * For example, if you submit the backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all
-     * data committed to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may
-     * not contain data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal
-     * consistency.
+     * If you submit a backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all data committed
+     * to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may not contain
+     * data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal consistency.
      * </p>
      * <p>
      * Along with data, the following are also included on the backups:
@@ -616,6 +622,31 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * The tables must have DynamoDB Streams enabled (NEW_AND_OLD_IMAGES).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * The tables must have same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If global secondary indexes are specified, then the following conditions must also be met:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same hash key and sort key (if present).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param createGlobalTableRequest
@@ -653,6 +684,31 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <li>
      * <p>
      * The tables must have DynamoDB Streams enabled (NEW_AND_OLD_IMAGES).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The tables must have same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If global secondary indexes are specified, then the following conditions must also be met:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same hash key and sort key (if present).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same provisioned and maximum write capacity units.
      * </p>
      * </li>
      * </ul>
@@ -1007,8 +1063,17 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Checks the status of the backup restore settings on the specified table. If backups are enabled,
-     * <code>ContinuousBackupsStatus</code> will bet set to ENABLED.
+     * Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are
+     * <code>ENABLED</code> on all tables at table creation. If point in time recovery is enabled,
+     * <code>PointInTimeRecoveryStatus</code> will be set to ENABLED.
+     * </p>
+     * <p>
+     * Once continuous backups and point in time recovery are enabled, you can restore to any point in time within
+     * <code>EarliestRestorableDateTime</code> and <code>LatestRestorableDateTime</code>.
+     * </p>
+     * <p>
+     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. You can restore your table
+     * to any point in time during the last 35 days.
      * </p>
      * <p>
      * You can call <code>DescribeContinuousBackups</code> at a maximum rate of 10 times per second.
@@ -1025,8 +1090,17 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Checks the status of the backup restore settings on the specified table. If backups are enabled,
-     * <code>ContinuousBackupsStatus</code> will bet set to ENABLED.
+     * Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are
+     * <code>ENABLED</code> on all tables at table creation. If point in time recovery is enabled,
+     * <code>PointInTimeRecoveryStatus</code> will be set to ENABLED.
+     * </p>
+     * <p>
+     * Once continuous backups and point in time recovery are enabled, you can restore to any point in time within
+     * <code>EarliestRestorableDateTime</code> and <code>LatestRestorableDateTime</code>.
+     * </p>
+     * <p>
+     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. You can restore your table
+     * to any point in time during the last 35 days.
      * </p>
      * <p>
      * You can call <code>DescribeContinuousBackups</code> at a maximum rate of 10 times per second.
@@ -1048,7 +1122,7 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Returns information about the global table.
+     * Returns information about the specified global table.
      * </p>
      * 
      * @param describeGlobalTableRequest
@@ -1061,7 +1135,7 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Returns information about the global table.
+     * Returns information about the specified global table.
      * </p>
      * 
      * @param describeGlobalTableRequest
@@ -1076,6 +1150,39 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      */
     java.util.concurrent.Future<DescribeGlobalTableResult> describeGlobalTableAsync(DescribeGlobalTableRequest describeGlobalTableRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeGlobalTableRequest, DescribeGlobalTableResult> asyncHandler);
+
+    /**
+     * <p>
+     * Describes region specific settings for a global table.
+     * </p>
+     * 
+     * @param describeGlobalTableSettingsRequest
+     * @return A Java Future containing the result of the DescribeGlobalTableSettings operation returned by the service.
+     * @sample AmazonDynamoDBAsync.DescribeGlobalTableSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeGlobalTableSettings"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeGlobalTableSettingsResult> describeGlobalTableSettingsAsync(
+            DescribeGlobalTableSettingsRequest describeGlobalTableSettingsRequest);
+
+    /**
+     * <p>
+     * Describes region specific settings for a global table.
+     * </p>
+     * 
+     * @param describeGlobalTableSettingsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeGlobalTableSettings operation returned by the service.
+     * @sample AmazonDynamoDBAsyncHandler.DescribeGlobalTableSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeGlobalTableSettings"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeGlobalTableSettingsResult> describeGlobalTableSettingsAsync(
+            DescribeGlobalTableSettingsRequest describeGlobalTableSettingsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeGlobalTableSettingsRequest, DescribeGlobalTableSettingsResult> asyncHandler);
 
     /**
      * <p>
@@ -1511,8 +1618,7 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Lists all the global tables. Only those global tables that have replicas in the region specified as input are
-     * returned.
+     * Lists all global tables that have a replica in the specified region.
      * </p>
      * 
      * @param listGlobalTablesRequest
@@ -1525,8 +1631,7 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Lists all the global tables. Only those global tables that have replicas in the region specified as input are
-     * returned.
+     * Lists all global tables that have a replica in the specified region.
      * </p>
      * 
      * @param listGlobalTablesRequest
@@ -2056,8 +2161,8 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Creates a new table from an existing backup. Any number of users can execute up to 10 concurrent restores in a
-     * given account.
+     * Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any
+     * type of restore) in a given account.
      * </p>
      * <p>
      * You can call <code>RestoreTableFromBackup</code> at a maximum rate of 10 times per second.
@@ -2084,6 +2189,11 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <li>
      * <p>
      * Tags
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stream settings
      * </p>
      * </li>
      * <li>
@@ -2103,8 +2213,8 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Creates a new table from an existing backup. Any number of users can execute up to 10 concurrent restores in a
-     * given account.
+     * Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any
+     * type of restore) in a given account.
      * </p>
      * <p>
      * You can call <code>RestoreTableFromBackup</code> at a maximum rate of 10 times per second.
@@ -2131,6 +2241,11 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <li>
      * <p>
      * Tags
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stream settings
      * </p>
      * </li>
      * <li>
@@ -2152,6 +2267,189 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      */
     java.util.concurrent.Future<RestoreTableFromBackupResult> restoreTableFromBackupAsync(RestoreTableFromBackupRequest restoreTableFromBackupRequest,
             com.amazonaws.handlers.AsyncHandler<RestoreTableFromBackupRequest, RestoreTableFromBackupResult> asyncHandler);
+
+    /**
+     * <p>
+     * Restores the specified table to the specified point in time within <code>EarliestRestorableDateTime</code> and
+     * <code>LatestRestorableDateTime</code>. You can restore your table to any point in time during the last 35 days.
+     * Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+     * </p>
+     * <p>
+     * When you restore using point in time recovery, DynamoDB restores your table data to the state based on the
+     * selected date and time (day:hour:minute:second) to a new table.
+     * </p>
+     * <p>
+     * Along with data, the following are also included on the new restored table using point in time recovery:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Global secondary indexes (GSIs)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Local secondary indexes (LSIs)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provisioned read and write capacity
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Encryption settings
+     * </p>
+     * <important>
+     * <p>
+     * All these settings come from the current settings of the source table at the time of restore.
+     * </p>
+     * </important></li>
+     * </ul>
+     * <p>
+     * You must manually set up the following on the restored table:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Auto scaling policies
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * IAM policies
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cloudwatch metrics and alarms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tags
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stream settings
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Time to Live (TTL) settings
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Point in time recovery settings
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param restoreTableToPointInTimeRequest
+     * @return A Java Future containing the result of the RestoreTableToPointInTime operation returned by the service.
+     * @sample AmazonDynamoDBAsync.RestoreTableToPointInTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/RestoreTableToPointInTime"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<RestoreTableToPointInTimeResult> restoreTableToPointInTimeAsync(
+            RestoreTableToPointInTimeRequest restoreTableToPointInTimeRequest);
+
+    /**
+     * <p>
+     * Restores the specified table to the specified point in time within <code>EarliestRestorableDateTime</code> and
+     * <code>LatestRestorableDateTime</code>. You can restore your table to any point in time during the last 35 days.
+     * Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+     * </p>
+     * <p>
+     * When you restore using point in time recovery, DynamoDB restores your table data to the state based on the
+     * selected date and time (day:hour:minute:second) to a new table.
+     * </p>
+     * <p>
+     * Along with data, the following are also included on the new restored table using point in time recovery:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Global secondary indexes (GSIs)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Local secondary indexes (LSIs)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provisioned read and write capacity
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Encryption settings
+     * </p>
+     * <important>
+     * <p>
+     * All these settings come from the current settings of the source table at the time of restore.
+     * </p>
+     * </important></li>
+     * </ul>
+     * <p>
+     * You must manually set up the following on the restored table:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Auto scaling policies
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * IAM policies
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cloudwatch metrics and alarms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tags
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stream settings
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Time to Live (TTL) settings
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Point in time recovery settings
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param restoreTableToPointInTimeRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the RestoreTableToPointInTime operation returned by the service.
+     * @sample AmazonDynamoDBAsyncHandler.RestoreTableToPointInTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/RestoreTableToPointInTime"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<RestoreTableToPointInTimeResult> restoreTableToPointInTimeAsync(
+            RestoreTableToPointInTimeRequest restoreTableToPointInTimeRequest,
+            com.amazonaws.handlers.AsyncHandler<RestoreTableToPointInTimeRequest, RestoreTableToPointInTimeResult> asyncHandler);
 
     /**
      * <p>
@@ -2378,9 +2676,90 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Adds or removes replicas to the specified global table. The global table should already exist to be able to use
-     * this operation. Currently, the replica to be added should be empty.
+     * <code>UpdateContinuousBackups</code> enables or disables point in time recovery for the specified table. A
+     * successful <code>UpdateContinuousBackups</code> call returns the current
+     * <code>ContinuousBackupsDescription</code>. Continuous backups are <code>ENABLED</code> on all tables at table
+     * creation. If point in time recovery is enabled, <code>PointInTimeRecoveryStatus</code> will be set to ENABLED.
      * </p>
+     * <p>
+     * Once continuous backups and point in time recovery are enabled, you can restore to any point in time within
+     * <code>EarliestRestorableDateTime</code> and <code>LatestRestorableDateTime</code>.
+     * </p>
+     * <p>
+     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. You can restore your table
+     * to any point in time during the last 35 days..
+     * </p>
+     * 
+     * @param updateContinuousBackupsRequest
+     * @return A Java Future containing the result of the UpdateContinuousBackups operation returned by the service.
+     * @sample AmazonDynamoDBAsync.UpdateContinuousBackups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateContinuousBackups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateContinuousBackupsResult> updateContinuousBackupsAsync(UpdateContinuousBackupsRequest updateContinuousBackupsRequest);
+
+    /**
+     * <p>
+     * <code>UpdateContinuousBackups</code> enables or disables point in time recovery for the specified table. A
+     * successful <code>UpdateContinuousBackups</code> call returns the current
+     * <code>ContinuousBackupsDescription</code>. Continuous backups are <code>ENABLED</code> on all tables at table
+     * creation. If point in time recovery is enabled, <code>PointInTimeRecoveryStatus</code> will be set to ENABLED.
+     * </p>
+     * <p>
+     * Once continuous backups and point in time recovery are enabled, you can restore to any point in time within
+     * <code>EarliestRestorableDateTime</code> and <code>LatestRestorableDateTime</code>.
+     * </p>
+     * <p>
+     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. You can restore your table
+     * to any point in time during the last 35 days..
+     * </p>
+     * 
+     * @param updateContinuousBackupsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateContinuousBackups operation returned by the service.
+     * @sample AmazonDynamoDBAsyncHandler.UpdateContinuousBackups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateContinuousBackups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateContinuousBackupsResult> updateContinuousBackupsAsync(UpdateContinuousBackupsRequest updateContinuousBackupsRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateContinuousBackupsRequest, UpdateContinuousBackupsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Adds or removes replicas in the specified global table. The global table must already exist to be able to use
+     * this operation. Any replica to be added must be empty, must have the same name as the global table, must have the
+     * same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity
+     * units.
+     * </p>
+     * <note>
+     * <p>
+     * Although you can use <code>UpdateGlobalTable</code> to add replicas and remove replicas in a single request, for
+     * simplicity we recommend that you issue separate requests for adding or removing replicas.
+     * </p>
+     * </note>
+     * <p>
+     * If global secondary indexes are specified, then the following conditions must also be met:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same hash key and sort key (if present).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateGlobalTableRequest
      * @return A Java Future containing the result of the UpdateGlobalTable operation returned by the service.
@@ -2392,9 +2771,37 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
-     * Adds or removes replicas to the specified global table. The global table should already exist to be able to use
-     * this operation. Currently, the replica to be added should be empty.
+     * Adds or removes replicas in the specified global table. The global table must already exist to be able to use
+     * this operation. Any replica to be added must be empty, must have the same name as the global table, must have the
+     * same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity
+     * units.
      * </p>
+     * <note>
+     * <p>
+     * Although you can use <code>UpdateGlobalTable</code> to add replicas and remove replicas in a single request, for
+     * simplicity we recommend that you issue separate requests for adding or removing replicas.
+     * </p>
+     * </note>
+     * <p>
+     * If global secondary indexes are specified, then the following conditions must also be met:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same hash key and sort key (if present).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateGlobalTableRequest
      * @param asyncHandler
@@ -2408,6 +2815,39 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      */
     java.util.concurrent.Future<UpdateGlobalTableResult> updateGlobalTableAsync(UpdateGlobalTableRequest updateGlobalTableRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateGlobalTableRequest, UpdateGlobalTableResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates settings for a global table.
+     * </p>
+     * 
+     * @param updateGlobalTableSettingsRequest
+     * @return A Java Future containing the result of the UpdateGlobalTableSettings operation returned by the service.
+     * @sample AmazonDynamoDBAsync.UpdateGlobalTableSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateGlobalTableSettings"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateGlobalTableSettingsResult> updateGlobalTableSettingsAsync(
+            UpdateGlobalTableSettingsRequest updateGlobalTableSettingsRequest);
+
+    /**
+     * <p>
+     * Updates settings for a global table.
+     * </p>
+     * 
+     * @param updateGlobalTableSettingsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateGlobalTableSettings operation returned by the service.
+     * @sample AmazonDynamoDBAsyncHandler.UpdateGlobalTableSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateGlobalTableSettings"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateGlobalTableSettingsResult> updateGlobalTableSettingsAsync(
+            UpdateGlobalTableSettingsRequest updateGlobalTableSettingsRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateGlobalTableSettingsRequest, UpdateGlobalTableSettingsResult> asyncHandler);
 
     /**
      * <p>

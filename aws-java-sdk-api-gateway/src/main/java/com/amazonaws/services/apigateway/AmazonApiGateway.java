@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -1683,11 +1683,11 @@ public interface AmazonApiGateway {
 
     /**
      * <p>
-     * Gets the Tags collection for a given resource.
+     * Gets the <a>Tags</a> collection for a given resource.
      * </p>
      * 
      * @param getTagsRequest
-     *        Gets the Tags collection for a given resource.
+     *        Gets the <a>Tags</a> collection for a given resource.
      * @return Result of the GetTags operation returned by the service.
      * @throws BadRequestException
      *         The submitted request is not valid, for example, the input is incomplete or incorrect. See the
@@ -2067,11 +2067,11 @@ public interface AmazonApiGateway {
 
     /**
      * <p>
-     * Adds or updates Tags on a gievn resource.
+     * Adds or updates a tag on a given resource.
      * </p>
      * 
      * @param tagResourceRequest
-     *        Adds or updates Tags on a gievn resource.
+     *        Adds or updates a tag on a given resource.
      * @return Result of the TagResource operation returned by the service.
      * @throws BadRequestException
      *         The submitted request is not valid, for example, the input is incomplete or incorrect. See the
@@ -2139,11 +2139,11 @@ public interface AmazonApiGateway {
 
     /**
      * <p>
-     * Removes Tags from a given resource.
+     * Removes a tag from a given resource.
      * </p>
      * 
      * @param untagResourceRequest
-     *        Removes Tags from a given resource.
+     *        Removes a tag from a given resource.
      * @return Result of the UntagResource operation returned by the service.
      * @throws BadRequestException
      *         The submitted request is not valid, for example, the input is incomplete or incorrect. See the

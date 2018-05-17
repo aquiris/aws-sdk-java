@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Configures retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon ES.
+ * Configures retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon ES.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/ElasticsearchRetryOptions" target="_top">AWS
@@ -30,24 +30,25 @@ public class ElasticsearchRetryOptions implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Firehose
-     * re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are written
-     * to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
+     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Data Firehose
+     * retries delivery (including the first attempt). After this time has elapsed, the failed documents are written to
+     * Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
      * </p>
      */
     private Integer durationInSeconds;
 
     /**
      * <p>
-     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Firehose
-     * re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are written
-     * to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
+     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Data Firehose
+     * retries delivery (including the first attempt). After this time has elapsed, the failed documents are written to
+     * Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
      * </p>
      * 
      * @param durationInSeconds
-     *        After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Firehose
-     *        re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are
-     *        written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
+     *        After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Data
+     *        Firehose retries delivery (including the first attempt). After this time has elapsed, the failed documents
+     *        are written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no
+     *        retries.
      */
 
     public void setDurationInSeconds(Integer durationInSeconds) {
@@ -56,15 +57,15 @@ public class ElasticsearchRetryOptions implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Firehose
-     * re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are written
-     * to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
+     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Data Firehose
+     * retries delivery (including the first attempt). After this time has elapsed, the failed documents are written to
+     * Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
      * </p>
      * 
-     * @return After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Firehose
-     *         re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are
-     *         written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no
-     *         retries.
+     * @return After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Data
+     *         Firehose retries delivery (including the first attempt). After this time has elapsed, the failed
+     *         documents are written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results
+     *         in no retries.
      */
 
     public Integer getDurationInSeconds() {
@@ -73,15 +74,16 @@ public class ElasticsearchRetryOptions implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Firehose
-     * re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are written
-     * to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
+     * After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Data Firehose
+     * retries delivery (including the first attempt). After this time has elapsed, the failed documents are written to
+     * Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
      * </p>
      * 
      * @param durationInSeconds
-     *        After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Firehose
-     *        re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are
-     *        written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
+     *        After an initial failure to deliver to Amazon ES, the total amount of time during which Kinesis Data
+     *        Firehose retries delivery (including the first attempt). After this time has elapsed, the failed documents
+     *        are written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no
+     *        retries.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

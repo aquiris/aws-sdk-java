@@ -314,6 +314,47 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
+     * Backtracks a DB cluster to a specific time, without creating a new DB cluster.
+     * </p>
+     * <p>
+     * For more information on backtracking, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Managing.Backtrack.html"> Backtracking an
+     * Aurora DB Cluster</a> in the <i>Amazon RDS User Guide.</i>
+     * </p>
+     * 
+     * @param backtrackDBClusterRequest
+     * @return A Java Future containing the result of the BacktrackDBCluster operation returned by the service.
+     * @sample AmazonRDSAsync.BacktrackDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/BacktrackDBCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<BacktrackDBClusterResult> backtrackDBClusterAsync(BacktrackDBClusterRequest backtrackDBClusterRequest);
+
+    /**
+     * <p>
+     * Backtracks a DB cluster to a specific time, without creating a new DB cluster.
+     * </p>
+     * <p>
+     * For more information on backtracking, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Managing.Backtrack.html"> Backtracking an
+     * Aurora DB Cluster</a> in the <i>Amazon RDS User Guide.</i>
+     * </p>
+     * 
+     * @param backtrackDBClusterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the BacktrackDBCluster operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.BacktrackDBCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/BacktrackDBCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<BacktrackDBClusterResult> backtrackDBClusterAsync(BacktrackDBClusterRequest backtrackDBClusterRequest,
+            com.amazonaws.handlers.AsyncHandler<BacktrackDBClusterRequest, BacktrackDBClusterResult> asyncHandler);
+
+    /**
+     * <p>
      * Copies the specified DB cluster parameter group.
      * </p>
      * 
@@ -591,9 +632,6 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * <code>CopyDBSnapshot</code> action is the destination AWS Region for the DB snapshot copy.
      * </p>
      * <p>
-     * You can't copy an encrypted, shared DB snapshot from one AWS Region to another.
-     * </p>
-     * <p>
      * For more information about copying snapshots, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html">Copying a DB Snapshot</a>
      * in the Amazon RDS User Guide.
@@ -614,9 +652,6 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * <p>
      * You can copy a snapshot from one AWS Region to another. In that case, the AWS Region where you call the
      * <code>CopyDBSnapshot</code> action is the destination AWS Region for the DB snapshot copy.
-     * </p>
-     * <p>
-     * You can't copy an encrypted, shared DB snapshot from one AWS Region to another.
      * </p>
      * <p>
      * For more information about copying snapshots, see <a
@@ -881,29 +916,24 @@ public interface AmazonRDSAsync extends AmazonRDS {
     /**
      * <p>
      * Creates a new DB instance that acts as a Read Replica for an existing source DB instance. You can create a Read
-     * Replica for a DB instance running MySQL, MariaDB, or PostgreSQL.
-     * </p>
-     * <note>
-     * <p>
-     * Amazon Aurora does not support this action. You must call the <code>CreateDBInstance</code> action to create a DB
-     * instance for an Aurora DB cluster.
-     * </p>
-     * </note>
-     * <p>
-     * All Read Replica DB instances are created as Single-AZ deployments with backups disabled. All other DB instance
-     * attributes (including DB security groups and DB parameter groups) are inherited from the source DB instance,
-     * except as specified below.
-     * </p>
-     * <important>
-     * <p>
-     * The source DB instance must have backup retention enabled.
-     * </p>
-     * </important>
-     * <p>
-     * For more information, see <a
+     * Replica for a DB instance running MySQL, MariaDB, or PostgreSQL. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html">Working with PostgreSQL, MySQL,
      * and MariaDB Read Replicas</a>.
      * </p>
+     * <p>
+     * Amazon Aurora doesn't support this action. You must call the <code>CreateDBInstance</code> action to create a DB
+     * instance for an Aurora DB cluster.
+     * </p>
+     * <p>
+     * All Read Replica DB instances are created with backups disabled. All other DB instance attributes (including DB
+     * security groups and DB parameter groups) are inherited from the source DB instance, except as specified
+     * following.
+     * </p>
+     * <important>
+     * <p>
+     * Your source DB instance must have backup retention enabled.
+     * </p>
+     * </important>
      * 
      * @param createDBInstanceReadReplicaRequest
      * @return A Java Future containing the result of the CreateDBInstanceReadReplica operation returned by the service.
@@ -916,29 +946,24 @@ public interface AmazonRDSAsync extends AmazonRDS {
     /**
      * <p>
      * Creates a new DB instance that acts as a Read Replica for an existing source DB instance. You can create a Read
-     * Replica for a DB instance running MySQL, MariaDB, or PostgreSQL.
-     * </p>
-     * <note>
-     * <p>
-     * Amazon Aurora does not support this action. You must call the <code>CreateDBInstance</code> action to create a DB
-     * instance for an Aurora DB cluster.
-     * </p>
-     * </note>
-     * <p>
-     * All Read Replica DB instances are created as Single-AZ deployments with backups disabled. All other DB instance
-     * attributes (including DB security groups and DB parameter groups) are inherited from the source DB instance,
-     * except as specified below.
-     * </p>
-     * <important>
-     * <p>
-     * The source DB instance must have backup retention enabled.
-     * </p>
-     * </important>
-     * <p>
-     * For more information, see <a
+     * Replica for a DB instance running MySQL, MariaDB, or PostgreSQL. For more information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html">Working with PostgreSQL, MySQL,
      * and MariaDB Read Replicas</a>.
      * </p>
+     * <p>
+     * Amazon Aurora doesn't support this action. You must call the <code>CreateDBInstance</code> action to create a DB
+     * instance for an Aurora DB cluster.
+     * </p>
+     * <p>
+     * All Read Replica DB instances are created with backups disabled. All other DB instance attributes (including DB
+     * security groups and DB parameter groups) are inherited from the source DB instance, except as specified
+     * following.
+     * </p>
+     * <important>
+     * <p>
+     * Your source DB instance must have backup retention enabled.
+     * </p>
+     * </important>
      * 
      * @param createDBInstanceReadReplicaRequest
      * @param asyncHandler
@@ -1676,7 +1701,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * toward that quota, and the quota's maximum value.
      * </p>
      * <p>
-     * This command does not take any parameters.
+     * This command doesn't take any parameters.
      * </p>
      * 
      * @param describeAccountAttributesRequest
@@ -1695,7 +1720,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * toward that quota, and the quota's maximum value.
      * </p>
      * <p>
-     * This command does not take any parameters.
+     * This command doesn't take any parameters.
      * </p>
      * 
      * @param describeAccountAttributesRequest
@@ -1772,6 +1797,49 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DescribeCertificatesResult> describeCertificatesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeCertificatesRequest, DescribeCertificatesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about backtracks for a DB cluster.
+     * </p>
+     * <p>
+     * For more information on Amazon Aurora, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora on Amazon RDS</a> in the
+     * <i>Amazon RDS User Guide.</i>
+     * </p>
+     * 
+     * @param describeDBClusterBacktracksRequest
+     * @return A Java Future containing the result of the DescribeDBClusterBacktracks operation returned by the service.
+     * @sample AmazonRDSAsync.DescribeDBClusterBacktracks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterBacktracks"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBClusterBacktracksResult> describeDBClusterBacktracksAsync(
+            DescribeDBClusterBacktracksRequest describeDBClusterBacktracksRequest);
+
+    /**
+     * <p>
+     * Returns information about backtracks for a DB cluster.
+     * </p>
+     * <p>
+     * For more information on Amazon Aurora, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora on Amazon RDS</a> in the
+     * <i>Amazon RDS User Guide.</i>
+     * </p>
+     * 
+     * @param describeDBClusterBacktracksRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeDBClusterBacktracks operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DescribeDBClusterBacktracks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterBacktracks"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBClusterBacktracksResult> describeDBClusterBacktracksAsync(
+            DescribeDBClusterBacktracksRequest describeDBClusterBacktracksRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeDBClusterBacktracksRequest, DescribeDBClusterBacktracksResult> asyncHandler);
 
     /**
      * <p>
@@ -3688,11 +3756,22 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * Promotes a Read Replica DB instance to a standalone DB instance.
      * </p>
      * <note>
+     * <ul>
+     * <li>
      * <p>
-     * We recommend that you enable automated backups on your Read Replica before promoting the Read Replica. This
-     * ensures that no backup is taken during the promotion process. Once the instance is promoted to a primary
-     * instance, backups are taken based on your backup settings.
+     * Backup duration is a function of the amount of changes to the database since the previous backup. If you plan to
+     * promote a Read Replica to a standalone instance, we recommend that you enable backups and complete at least one
+     * backup prior to promotion. In addition, a Read Replica cannot be promoted to a standalone instance when it is in
+     * the <code>backing-up</code> status. If you have enabled backups on your Read Replica, configure the automated
+     * backup window so that daily backups do not interfere with Read Replica promotion.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+     * </p>
+     * </li>
+     * </ul>
      * </note>
      * 
      * @param promoteReadReplicaRequest
@@ -3708,11 +3787,22 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * Promotes a Read Replica DB instance to a standalone DB instance.
      * </p>
      * <note>
+     * <ul>
+     * <li>
      * <p>
-     * We recommend that you enable automated backups on your Read Replica before promoting the Read Replica. This
-     * ensures that no backup is taken during the promotion process. Once the instance is promoted to a primary
-     * instance, backups are taken based on your backup settings.
+     * Backup duration is a function of the amount of changes to the database since the previous backup. If you plan to
+     * promote a Read Replica to a standalone instance, we recommend that you enable backups and complete at least one
+     * backup prior to promotion. In addition, a Read Replica cannot be promoted to a standalone instance when it is in
+     * the <code>backing-up</code> status. If you have enabled backups on your Read Replica, configure the automated
+     * backup window so that daily backups do not interfere with Read Replica promotion.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+     * </p>
+     * </li>
+     * </ul>
      * </note>
      * 
      * @param promoteReadReplicaRequest
@@ -4235,7 +4325,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <p>
      * If your intent is to replace your original DB instance with the new, restored DB instance, then rename your
-     * original DB instance before you call the RestoreDBInstanceFromDBSnapshot action. RDS does not allow two DB
+     * original DB instance before you call the RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
      * instances with the same name. Once you have renamed your original DB instance with a different identifier, then
      * you can pass the original name of the DB instance as the DBInstanceIdentifier in the call to the
      * RestoreDBInstanceFromDBSnapshot action. The result is that you will replace the original DB instance with the DB
@@ -4245,6 +4335,12 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * If you are restoring from a shared manual DB snapshot, the <code>DBSnapshotIdentifier</code> must be the ARN of
      * the shared DB snapshot.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use
+     * <a>RestoreDBClusterFromSnapshot</a>.
+     * </p>
+     * </note>
      * 
      * @param restoreDBInstanceFromDBSnapshotRequest
      * @return A Java Future containing the result of the RestoreDBInstanceFromDBSnapshot operation returned by the
@@ -4265,7 +4361,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <p>
      * If your intent is to replace your original DB instance with the new, restored DB instance, then rename your
-     * original DB instance before you call the RestoreDBInstanceFromDBSnapshot action. RDS does not allow two DB
+     * original DB instance before you call the RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
      * instances with the same name. Once you have renamed your original DB instance with a different identifier, then
      * you can pass the original name of the DB instance as the DBInstanceIdentifier in the call to the
      * RestoreDBInstanceFromDBSnapshot action. The result is that you will replace the original DB instance with the DB
@@ -4275,6 +4371,12 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * If you are restoring from a shared manual DB snapshot, the <code>DBSnapshotIdentifier</code> must be the ARN of
      * the shared DB snapshot.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use
+     * <a>RestoreDBClusterFromSnapshot</a>.
+     * </p>
+     * </note>
      * 
      * @param restoreDBInstanceFromDBSnapshotRequest
      * @param asyncHandler
@@ -4342,6 +4444,12 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * has an option group that is associated with mirroring; in this case, the instance becomes a mirrored deployment
      * and not a single-AZ deployment.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use
+     * <a>RestoreDBClusterToPointInTime</a>.
+     * </p>
+     * </note>
      * 
      * @param restoreDBInstanceToPointInTimeRequest
      * @return A Java Future containing the result of the RestoreDBInstanceToPointInTime operation returned by the
@@ -4365,6 +4473,12 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * has an option group that is associated with mirroring; in this case, the instance becomes a mirrored deployment
      * and not a single-AZ deployment.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use
+     * <a>RestoreDBClusterToPointInTime</a>.
+     * </p>
+     * </note>
      * 
      * @param restoreDBInstanceToPointInTimeRequest
      * @param asyncHandler
@@ -4422,6 +4536,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * Starts a DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the
      * StopDBInstance action. For more information, see Stopping and Starting a DB instance in the AWS RDS user guide.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+     * </p>
+     * </note>
      * 
      * @param startDBInstanceRequest
      * @return A Java Future containing the result of the StartDBInstance operation returned by the service.
@@ -4436,6 +4555,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * Starts a DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the
      * StopDBInstance action. For more information, see Stopping and Starting a DB instance in the AWS RDS user guide.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+     * </p>
+     * </note>
      * 
      * @param startDBInstanceRequest
      * @param asyncHandler
@@ -4457,6 +4581,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * can do a point-in-time restore if necessary. For more information, see Stopping and Starting a DB instance in the
      * AWS RDS user guide.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+     * </p>
+     * </note>
      * 
      * @param stopDBInstanceRequest
      * @return A Java Future containing the result of the StopDBInstance operation returned by the service.
@@ -4473,6 +4602,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * can do a point-in-time restore if necessary. For more information, see Stopping and Starting a DB instance in the
      * AWS RDS user guide.
      * </p>
+     * <note>
+     * <p>
+     * This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+     * </p>
+     * </note>
      * 
      * @param stopDBInstanceRequest
      * @param asyncHandler

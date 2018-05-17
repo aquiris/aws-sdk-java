@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -540,6 +540,13 @@ public interface AWSAppSyncAsync extends AWSAppSync {
      * <p>
      * Lists the API keys for a given API.
      * </p>
+     * <note>
+     * <p>
+     * API keys are deleted automatically sometime after they expire. However, they may still be included in the
+     * response until they have actually been deleted. You can safely call <code>DeleteApiKey</code> to manually delete
+     * a key before it's automatically deleted.
+     * </p>
+     * </note>
      * 
      * @param listApiKeysRequest
      * @return A Java Future containing the result of the ListApiKeys operation returned by the service.
@@ -553,6 +560,13 @@ public interface AWSAppSyncAsync extends AWSAppSync {
      * <p>
      * Lists the API keys for a given API.
      * </p>
+     * <note>
+     * <p>
+     * API keys are deleted automatically sometime after they expire. However, they may still be included in the
+     * response until they have actually been deleted. You can safely call <code>DeleteApiKey</code> to manually delete
+     * a key before it's automatically deleted.
+     * </p>
+     * </note>
      * 
      * @param listApiKeysRequest
      * @param asyncHandler
@@ -727,6 +741,37 @@ public interface AWSAppSyncAsync extends AWSAppSync {
      */
     java.util.concurrent.Future<StartSchemaCreationResult> startSchemaCreationAsync(StartSchemaCreationRequest startSchemaCreationRequest,
             com.amazonaws.handlers.AsyncHandler<StartSchemaCreationRequest, StartSchemaCreationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates an API key.
+     * </p>
+     * 
+     * @param updateApiKeyRequest
+     * @return A Java Future containing the result of the UpdateApiKey operation returned by the service.
+     * @sample AWSAppSyncAsync.UpdateApiKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25/UpdateApiKey" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateApiKeyResult> updateApiKeyAsync(UpdateApiKeyRequest updateApiKeyRequest);
+
+    /**
+     * <p>
+     * Updates an API key.
+     * </p>
+     * 
+     * @param updateApiKeyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateApiKey operation returned by the service.
+     * @sample AWSAppSyncAsyncHandler.UpdateApiKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25/UpdateApiKey" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateApiKeyResult> updateApiKeyAsync(UpdateApiKeyRequest updateApiKeyRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateApiKeyRequest, UpdateApiKeyResult> asyncHandler);
 
     /**
      * <p>

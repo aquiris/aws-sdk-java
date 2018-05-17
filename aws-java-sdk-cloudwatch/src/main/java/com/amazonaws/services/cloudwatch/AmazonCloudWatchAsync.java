@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -346,6 +346,59 @@ public interface AmazonCloudWatchAsync extends AmazonCloudWatch {
      */
     java.util.concurrent.Future<GetDashboardResult> getDashboardAsync(GetDashboardRequest getDashboardRequest,
             com.amazonaws.handlers.AsyncHandler<GetDashboardRequest, GetDashboardResult> asyncHandler);
+
+    /**
+     * <p>
+     * You can use the <code>GetMetricData</code> API to retrieve as many as 100 different metrics in a single request,
+     * with a total of as many as 100,800 datapoints. You can also optionally perform math expressions on the values of
+     * the returned statistics, to create new time series that represent new insights into your data. For example, using
+     * Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series.
+     * For more information about metric math expressions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax"
+     * >Metric Math Syntax and Functions</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * </p>
+     * <p>
+     * Calls to the <code>GetMetricData</code> API have a different pricing structure than calls to
+     * <code>GetMetricStatistics</code>. For more information about pricing, see <a
+     * href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * 
+     * @param getMetricDataRequest
+     * @return A Java Future containing the result of the GetMetricData operation returned by the service.
+     * @sample AmazonCloudWatchAsync.GetMetricData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetMetricData" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetMetricDataResult> getMetricDataAsync(GetMetricDataRequest getMetricDataRequest);
+
+    /**
+     * <p>
+     * You can use the <code>GetMetricData</code> API to retrieve as many as 100 different metrics in a single request,
+     * with a total of as many as 100,800 datapoints. You can also optionally perform math expressions on the values of
+     * the returned statistics, to create new time series that represent new insights into your data. For example, using
+     * Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series.
+     * For more information about metric math expressions, see <a
+     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax"
+     * >Metric Math Syntax and Functions</a> in the <i>Amazon CloudWatch User Guide</i>.
+     * </p>
+     * <p>
+     * Calls to the <code>GetMetricData</code> API have a different pricing structure than calls to
+     * <code>GetMetricStatistics</code>. For more information about pricing, see <a
+     * href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * 
+     * @param getMetricDataRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetMetricData operation returned by the service.
+     * @sample AmazonCloudWatchAsyncHandler.GetMetricData
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetMetricData" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetMetricDataResult> getMetricDataAsync(GetMetricDataRequest getMetricDataRequest,
+            com.amazonaws.handlers.AsyncHandler<GetMetricDataRequest, GetMetricDataResult> asyncHandler);
 
     /**
      * <p>

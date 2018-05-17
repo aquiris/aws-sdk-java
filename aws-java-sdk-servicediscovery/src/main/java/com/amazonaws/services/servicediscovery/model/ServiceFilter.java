@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -57,6 +57,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * <code>IN</code>: When you specify <code>IN</code>, specify a list of the IDs for the namespaces that you want
      * <code>ListServices</code> to return a list of services for.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>BETWEEN</code>: Not applicable.
      * </p>
      * </li>
      * </ul>
@@ -218,6 +223,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      * <code>ListServices</code> to return a list of services for.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>BETWEEN</code>: Not applicable.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param condition
@@ -234,6 +244,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      *        <p>
      *        <code>IN</code>: When you specify <code>IN</code>, specify a list of the IDs for the namespaces that you
      *        want <code>ListServices</code> to return a list of services for.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>BETWEEN</code>: Not applicable.
      *        </p>
      *        </li>
      * @see FilterCondition
@@ -261,6 +276,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      * <code>ListServices</code> to return a list of services for.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>BETWEEN</code>: Not applicable.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The operator that you want to use to determine whether a service is returned by <code>ListServices</code>
@@ -276,6 +296,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      *         <p>
      *         <code>IN</code>: When you specify <code>IN</code>, specify a list of the IDs for the namespaces that you
      *         want <code>ListServices</code> to return a list of services for.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>BETWEEN</code>: Not applicable.
      *         </p>
      *         </li>
      * @see FilterCondition
@@ -303,6 +328,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      * <code>ListServices</code> to return a list of services for.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>BETWEEN</code>: Not applicable.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param condition
@@ -319,6 +349,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      *        <p>
      *        <code>IN</code>: When you specify <code>IN</code>, specify a list of the IDs for the namespaces that you
      *        want <code>ListServices</code> to return a list of services for.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>BETWEEN</code>: Not applicable.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -348,6 +383,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      * <code>ListServices</code> to return a list of services for.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>BETWEEN</code>: Not applicable.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param condition
@@ -364,6 +404,11 @@ public class ServiceFilter implements Serializable, Cloneable, StructuredPojo {
      *        <p>
      *        <code>IN</code>: When you specify <code>IN</code>, specify a list of the IDs for the namespaces that you
      *        want <code>ListServices</code> to return a list of services for.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>BETWEEN</code>: Not applicable.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

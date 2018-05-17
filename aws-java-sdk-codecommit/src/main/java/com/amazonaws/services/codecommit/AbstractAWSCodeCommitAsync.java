@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -361,6 +361,19 @@ public class AbstractAWSCodeCommitAsync extends AbstractAWSCodeCommit implements
     @Override
     public java.util.concurrent.Future<PostCommentReplyResult> postCommentReplyAsync(PostCommentReplyRequest request,
             com.amazonaws.handlers.AsyncHandler<PostCommentReplyRequest, PostCommentReplyResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutFileResult> putFileAsync(PutFileRequest request) {
+
+        return putFileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutFileResult> putFileAsync(PutFileRequest request,
+            com.amazonaws.handlers.AsyncHandler<PutFileRequest, PutFileResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

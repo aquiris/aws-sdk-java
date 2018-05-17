@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -184,11 +184,11 @@ public class Method implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A list of authorization scopes configured on the method. The scopes are used with a
-     * <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by matching
-     * the method scopes against the scopes parsed from the access token in the incoming request. The method invocation
-     * is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not
-     * authorized. When the method scope is configured, the client must provide an access token instead of an identity
-     * token for authorization purposes.
+     * <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
+     * matching the method scopes against the scopes parsed from the access token in the incoming request. The method
+     * invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the
+     * invocation is not authorized. When the method scope is configured, the client must provide an access token
+     * instead of an identity token for authorization purposes.
      * </p>
      */
     private java.util.List<String> authorizationScopes;
@@ -1025,15 +1025,15 @@ public class Method implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A list of authorization scopes configured on the method. The scopes are used with a
-     * <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by matching
-     * the method scopes against the scopes parsed from the access token in the incoming request. The method invocation
-     * is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not
-     * authorized. When the method scope is configured, the client must provide an access token instead of an identity
-     * token for authorization purposes.
+     * <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
+     * matching the method scopes against the scopes parsed from the access token in the incoming request. The method
+     * invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the
+     * invocation is not authorized. When the method scope is configured, the client must provide an access token
+     * instead of an identity token for authorization purposes.
      * </p>
      * 
      * @return A list of authorization scopes configured on the method. The scopes are used with a
-     *         <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by
+     *         <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
      *         matching the method scopes against the scopes parsed from the access token in the incoming request. The
      *         method invocation is authorized if any method scopes matches a claimed scope in the access token.
      *         Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide
@@ -1047,16 +1047,16 @@ public class Method implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A list of authorization scopes configured on the method. The scopes are used with a
-     * <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by matching
-     * the method scopes against the scopes parsed from the access token in the incoming request. The method invocation
-     * is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not
-     * authorized. When the method scope is configured, the client must provide an access token instead of an identity
-     * token for authorization purposes.
+     * <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
+     * matching the method scopes against the scopes parsed from the access token in the incoming request. The method
+     * invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the
+     * invocation is not authorized. When the method scope is configured, the client must provide an access token
+     * instead of an identity token for authorization purposes.
      * </p>
      * 
      * @param authorizationScopes
      *        A list of authorization scopes configured on the method. The scopes are used with a
-     *        <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by
+     *        <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
      *        matching the method scopes against the scopes parsed from the access token in the incoming request. The
      *        method invocation is authorized if any method scopes matches a claimed scope in the access token.
      *        Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide
@@ -1075,11 +1075,11 @@ public class Method implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A list of authorization scopes configured on the method. The scopes are used with a
-     * <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by matching
-     * the method scopes against the scopes parsed from the access token in the incoming request. The method invocation
-     * is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not
-     * authorized. When the method scope is configured, the client must provide an access token instead of an identity
-     * token for authorization purposes.
+     * <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
+     * matching the method scopes against the scopes parsed from the access token in the incoming request. The method
+     * invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the
+     * invocation is not authorized. When the method scope is configured, the client must provide an access token
+     * instead of an identity token for authorization purposes.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1089,7 +1089,7 @@ public class Method implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param authorizationScopes
      *        A list of authorization scopes configured on the method. The scopes are used with a
-     *        <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by
+     *        <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
      *        matching the method scopes against the scopes parsed from the access token in the incoming request. The
      *        method invocation is authorized if any method scopes matches a claimed scope in the access token.
      *        Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide
@@ -1110,16 +1110,16 @@ public class Method implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A list of authorization scopes configured on the method. The scopes are used with a
-     * <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by matching
-     * the method scopes against the scopes parsed from the access token in the incoming request. The method invocation
-     * is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not
-     * authorized. When the method scope is configured, the client must provide an access token instead of an identity
-     * token for authorization purposes.
+     * <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
+     * matching the method scopes against the scopes parsed from the access token in the incoming request. The method
+     * invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the
+     * invocation is not authorized. When the method scope is configured, the client must provide an access token
+     * instead of an identity token for authorization purposes.
      * </p>
      * 
      * @param authorizationScopes
      *        A list of authorization scopes configured on the method. The scopes are used with a
-     *        <code>COGNITO_USER_POOL</code> authorizer to authorize the method invocation. The authorization works by
+     *        <code>COGNITO_USER_POOLS</code> authorizer to authorize the method invocation. The authorization works by
      *        matching the method scopes against the scopes parsed from the access token in the incoming request. The
      *        method invocation is authorized if any method scopes matches a claimed scope in the access token.
      *        Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide

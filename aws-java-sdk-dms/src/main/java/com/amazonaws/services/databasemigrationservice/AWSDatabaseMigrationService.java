@@ -102,9 +102,9 @@ public interface AWSDatabaseMigrationService {
 
     /**
      * <p>
-     * Adds metadata tags to a DMS resource, including replication instance, endpoint, security group, and migration
-     * task. These tags can also be used with cost allocation reporting to track cost associated with DMS resources, or
-     * used in a Condition statement in an IAM policy for DMS.
+     * Adds metadata tags to an AWS DMS resource, including replication instance, endpoint, security group, and
+     * migration task. These tags can also be used with cost allocation reporting to track cost associated with DMS
+     * resources, or used in a Condition statement in an IAM policy for DMS.
      * </p>
      * 
      * @param addTagsToResourceRequest
@@ -541,6 +541,24 @@ public interface AWSDatabaseMigrationService {
 
     /**
      * <p>
+     * Returns information about the task logs for the specified task.
+     * </p>
+     * 
+     * @param describeReplicationInstanceTaskLogsRequest
+     * @return Result of the DescribeReplicationInstanceTaskLogs operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws InvalidResourceStateException
+     *         The resource is in a state that prevents it from being used for database migration.
+     * @sample AWSDatabaseMigrationService.DescribeReplicationInstanceTaskLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationInstanceTaskLogs"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeReplicationInstanceTaskLogsResult describeReplicationInstanceTaskLogs(
+            DescribeReplicationInstanceTaskLogsRequest describeReplicationInstanceTaskLogsRequest);
+
+    /**
+     * <p>
      * Returns information about replication instances for your account in the current region.
      * </p>
      * 
@@ -651,6 +669,8 @@ public interface AWSDatabaseMigrationService {
      *         The resource you are attempting to create already exists.
      * @throws InvalidCertificateException
      *         The certificate was not valid.
+     * @throws ResourceQuotaExceededException
+     *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.ImportCertificate
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ImportCertificate" target="_top">AWS API
      *      Documentation</a>
@@ -802,6 +822,24 @@ public interface AWSDatabaseMigrationService {
 
     /**
      * <p>
+     * Reboots a replication instance. Rebooting results in a momentary outage, until the replication instance becomes
+     * available again.
+     * </p>
+     * 
+     * @param rebootReplicationInstanceRequest
+     * @return Result of the RebootReplicationInstance operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws InvalidResourceStateException
+     *         The resource is in a state that prevents it from being used for database migration.
+     * @sample AWSDatabaseMigrationService.RebootReplicationInstance
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RebootReplicationInstance" target="_top">AWS
+     *      API Documentation</a>
+     */
+    RebootReplicationInstanceResult rebootReplicationInstance(RebootReplicationInstanceRequest rebootReplicationInstanceRequest);
+
+    /**
+     * <p>
      * Populates the schema for the specified endpoint. This is an asynchronous operation and can take several minutes.
      * You can check the status of this operation by calling the DescribeRefreshSchemasStatus operation.
      * </p>
@@ -869,6 +907,8 @@ public interface AWSDatabaseMigrationService {
      *         The resource could not be found.
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
+     * @throws AccessDeniedException
+     *         AWS DMS was denied access to the endpoint.
      * @sample AWSDatabaseMigrationService.StartReplicationTask
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTask" target="_top">AWS API
      *      Documentation</a>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -127,6 +127,19 @@ public class AbstractAmazonWorkMailAsync extends AbstractAmazonWorkMail implemen
     @Override
     public java.util.concurrent.Future<DeleteGroupResult> deleteGroupAsync(DeleteGroupRequest request,
             com.amazonaws.handlers.AsyncHandler<DeleteGroupRequest, DeleteGroupResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteMailboxPermissionsResult> deleteMailboxPermissionsAsync(DeleteMailboxPermissionsRequest request) {
+
+        return deleteMailboxPermissionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteMailboxPermissionsResult> deleteMailboxPermissionsAsync(DeleteMailboxPermissionsRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteMailboxPermissionsRequest, DeleteMailboxPermissionsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -290,6 +303,19 @@ public class AbstractAmazonWorkMailAsync extends AbstractAmazonWorkMail implemen
     }
 
     @Override
+    public java.util.concurrent.Future<ListMailboxPermissionsResult> listMailboxPermissionsAsync(ListMailboxPermissionsRequest request) {
+
+        return listMailboxPermissionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListMailboxPermissionsResult> listMailboxPermissionsAsync(ListMailboxPermissionsRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListMailboxPermissionsRequest, ListMailboxPermissionsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<ListOrganizationsResult> listOrganizationsAsync(ListOrganizationsRequest request) {
 
         return listOrganizationsAsync(request, null);
@@ -337,6 +363,19 @@ public class AbstractAmazonWorkMailAsync extends AbstractAmazonWorkMail implemen
     @Override
     public java.util.concurrent.Future<ListUsersResult> listUsersAsync(ListUsersRequest request,
             com.amazonaws.handlers.AsyncHandler<ListUsersRequest, ListUsersResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutMailboxPermissionsResult> putMailboxPermissionsAsync(PutMailboxPermissionsRequest request) {
+
+        return putMailboxPermissionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutMailboxPermissionsResult> putMailboxPermissionsAsync(PutMailboxPermissionsRequest request,
+            com.amazonaws.handlers.AsyncHandler<PutMailboxPermissionsRequest, PutMailboxPermissionsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -79,6 +79,9 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                             new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withModeledClass(
                                     com.amazonaws.services.appsync.model.InternalFailureException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ApiKeyValidityOutOfBoundsException").withModeledClass(
+                                    com.amazonaws.services.appsync.model.ApiKeyValidityOutOfBoundsException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("GraphQLSchemaException").withModeledClass(
                                     com.amazonaws.services.appsync.model.GraphQLSchemaException.class))
                     .addErrorMetadata(
@@ -154,6 +157,9 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
      *         An internal AWS AppSync error occurred. Try your request again.
      * @throws ApiKeyLimitExceededException
      *         The API key exceeded a limit. Try your request again.
+     * @throws ApiKeyValidityOutOfBoundsException
+     *         The API key expiration must be set to a value between 1 and 365 days from creation (for
+     *         <code>CreateApiKey</code>) or from update (for <code>UpdateApiKey</code>).
      * @sample AWSAppSync.CreateApiKey
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25/CreateApiKey" target="_top">AWS API
      *      Documentation</a>
@@ -179,6 +185,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new CreateApiKeyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createApiKeyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -238,6 +245,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new CreateDataSourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDataSourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -272,8 +280,6 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
      *         You are not authorized to perform this operation.
      * @throws InternalFailureException
      *         An internal AWS AppSync error occurred. Try your request again.
-     * @throws LimitExceededException
-     *         The request exceeded a limit. Try your request again.
      * @throws ApiLimitExceededException
      *         The GraphQL API exceeded a limit. Try your request again.
      * @sample AWSAppSync.CreateGraphqlApi
@@ -301,6 +307,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new CreateGraphqlApiRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createGraphqlApiRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -361,6 +368,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new CreateResolverRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createResolverRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -420,6 +428,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new CreateTypeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTypeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -477,6 +486,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new DeleteApiKeyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteApiKeyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -536,6 +546,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new DeleteDataSourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDataSourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -595,6 +606,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new DeleteGraphqlApiRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteGraphqlApiRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -651,6 +663,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new DeleteResolverRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteResolverRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -710,6 +723,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new DeleteTypeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTypeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -769,6 +783,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new GetDataSourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDataSourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -826,6 +841,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new GetGraphqlApiRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getGraphqlApiRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -882,6 +898,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new GetIntrospectionSchemaRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getIntrospectionSchemaRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -937,6 +954,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new GetResolverRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getResolverRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -995,6 +1013,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                         .beforeMarshalling(getSchemaCreationStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1055,6 +1074,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new GetTypeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTypeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1075,6 +1095,13 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
      * <p>
      * Lists the API keys for a given API.
      * </p>
+     * <note>
+     * <p>
+     * API keys are deleted automatically sometime after they expire. However, they may still be included in the
+     * response until they have actually been deleted. You can safely call <code>DeleteApiKey</code> to manually delete
+     * a key before it's automatically deleted.
+     * </p>
+     * </note>
      * 
      * @param listApiKeysRequest
      * @return Result of the ListApiKeys operation returned by the service.
@@ -1112,6 +1139,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new ListApiKeysRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listApiKeysRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1169,6 +1197,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new ListDataSourcesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDataSourcesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1224,6 +1253,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new ListGraphqlApisRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listGraphqlApisRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1281,6 +1311,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new ListResolversRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listResolversRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1340,6 +1371,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new ListTypesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTypesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1402,12 +1434,76 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new StartSchemaCreationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startSchemaCreationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<StartSchemaCreationResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new StartSchemaCreationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates an API key.
+     * </p>
+     * 
+     * @param updateApiKeyRequest
+     * @return Result of the UpdateApiKey operation returned by the service.
+     * @throws BadRequestException
+     *         The request is not well formed. For example, a value is invalid or a required field is missing. Check the
+     *         field values, and try again.
+     * @throws NotFoundException
+     *         The resource specified in the request was not found. Check the resource and try again.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws LimitExceededException
+     *         The request exceeded a limit. Try your request again.
+     * @throws InternalFailureException
+     *         An internal AWS AppSync error occurred. Try your request again.
+     * @throws ApiKeyValidityOutOfBoundsException
+     *         The API key expiration must be set to a value between 1 and 365 days from creation (for
+     *         <code>CreateApiKey</code>) or from update (for <code>UpdateApiKey</code>).
+     * @sample AWSAppSync.UpdateApiKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25/UpdateApiKey" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UpdateApiKeyResult updateApiKey(UpdateApiKeyRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateApiKey(request);
+    }
+
+    @SdkInternalApi
+    final UpdateApiKeyResult executeUpdateApiKey(UpdateApiKeyRequest updateApiKeyRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateApiKeyRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateApiKeyRequest> request = null;
+        Response<UpdateApiKeyResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateApiKeyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateApiKeyRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateApiKeyResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateApiKeyResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1461,6 +1557,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new UpdateDataSourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDataSourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1520,6 +1617,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new UpdateGraphqlApiRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateGraphqlApiRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1576,6 +1674,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new UpdateResolverRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateResolverRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1635,6 +1734,7 @@ public class AWSAppSyncClient extends AmazonWebServiceClient implements AWSAppSy
                 request = new UpdateTypeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTypeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

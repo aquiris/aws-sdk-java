@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -397,6 +397,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new CompareFacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(compareFacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -469,6 +470,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new CreateCollectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createCollectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -517,6 +519,10 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      * @throws InvalidParameterException
      *         Input parameter violated a constraint. Validate your parameter before calling the API operation again.
      * @throws LimitExceededException
+     *         An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video
+     *         jobs concurrently, calls to start operations (<code>StartLabelDetection</code>, for example) will raise a
+     *         <code>LimitExceededException</code> exception (HTTP status code: 400) until the number of concurrently
+     *         running jobs is below the Amazon Rekognition service limit.
      * @throws ResourceInUseException
      * @throws ProvisionedThroughputExceededException
      *         The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon
@@ -544,6 +550,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new CreateStreamProcessorRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createStreamProcessorRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -608,6 +615,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new DeleteCollectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteCollectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -671,6 +679,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new DeleteFacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteFacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -733,6 +742,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new DeleteStreamProcessorRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteStreamProcessorRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -796,6 +806,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                         .beforeMarshalling(describeStreamProcessorRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -886,6 +897,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new DetectFacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(detectFacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1011,6 +1023,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new DetectLabelsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(detectLabelsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1085,6 +1098,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new DetectModerationLabelsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(detectModerationLabelsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1182,6 +1196,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new DetectTextRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(detectTextRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1246,6 +1261,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new GetCelebrityInfoRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCelebrityInfoRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1280,6 +1296,14 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      * <code>Celebrities</code>) of objects. Each <code>CelebrityRecognition</code> contains information about the
      * celebrity in a object and the time, <code>Timestamp</code>, the celebrity was detected.
      * </p>
+     * <note>
+     * <p>
+     * <code>GetCelebrityRecognition</code> only returns the default facial attributes (<code>BoundingBox</code>,
+     * <code>Confidence</code>, <code>Landmarks</code>, <code>Pose</code>, and <code>Quality</code>). The other facial
+     * attributes listed in the <code>Face</code> object of the following response syntax are not returned. For more
+     * information, see .
+     * </p>
+     * </note>
      * <p>
      * By default, the <code>Celebrities</code> array is sorted by time (milliseconds from the start of the video). You
      * can also sort the array by celebrity by specifying the value <code>ID</code> in the <code>SortBy</code> input
@@ -1341,6 +1365,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                         .beforeMarshalling(getCelebrityRecognitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1432,6 +1457,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new GetContentModerationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getContentModerationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1512,6 +1538,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new GetFaceDetectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFaceDetectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1545,9 +1572,17 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      * </p>
      * <p>
      * The search results are retured in an array, <code>Persons</code>, of objects. Each<code>PersonMatch</code>
-     * element contains details about the matching faces in the input collection, person information for the matched
-     * person, and the time the person was matched in the video.
+     * element contains details about the matching faces in the input collection, person information (facial attributes,
+     * bounding boxes, and person identifer) for the matched person, and the time the person was matched in the video.
      * </p>
+     * <note>
+     * <p>
+     * <code>GetFaceSearch</code> only returns the default facial attributes (<code>BoundingBox</code>,
+     * <code>Confidence</code>, <code>Landmarks</code>, <code>Pose</code>, and <code>Quality</code>). The other facial
+     * attributes listed in the <code>Face</code> object of the following response syntax are not returned. For more
+     * information, see .
+     * </p>
+     * </note>
      * <p>
      * By default, the <code>Persons</code> array is sorted by the time, in milliseconds from the start of the video,
      * persons are matched. You can also sort by persons by specifying <code>INDEX</code> for the <code>SORTBY</code>
@@ -1594,6 +1629,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new GetFaceSearchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFaceSearchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1679,6 +1715,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new GetLabelDetectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getLabelDetectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1714,6 +1751,14 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      * <code>GetPersonTracking</code> returns an array, <code>Persons</code>, of tracked persons and the time(s) they
      * were tracked in the video.
      * </p>
+     * <note>
+     * <p>
+     * <code>GetPersonTracking</code> only returns the default facial attributes (<code>BoundingBox</code>,
+     * <code>Confidence</code>, <code>Landmarks</code>, <code>Pose</code>, and <code>Quality</code>). The other facial
+     * attributes listed in the <code>Face</code> object of the following response syntax are not returned. For more
+     * information, see .
+     * </p>
+     * </note>
      * <p>
      * By default, the array is sorted by the time(s) a person is tracked in the video. You can sort by tracked persons
      * by specifying <code>INDEX</code> for the <code>SortBy</code> input parameter.
@@ -1766,6 +1811,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new GetPersonTrackingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPersonTrackingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1866,6 +1912,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new IndexFacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(indexFacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1934,6 +1981,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new ListCollectionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listCollectionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2000,6 +2048,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new ListFacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listFacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2059,6 +2108,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new ListStreamProcessorsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listStreamProcessorsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2152,6 +2202,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new RecognizeCelebritiesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(recognizeCelebritiesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2230,6 +2281,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new SearchFacesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchFacesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2324,6 +2376,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new SearchFacesByImageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(searchFacesByImageRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2375,6 +2428,10 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      *         The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon
      *         Rekognition.
      * @throws LimitExceededException
+     *         An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video
+     *         jobs concurrently, calls to start operations (<code>StartLabelDetection</code>, for example) will raise a
+     *         <code>LimitExceededException</code> exception (HTTP status code: 400) until the number of concurrently
+     *         running jobs is below the Amazon Rekognition service limit.
      * @throws ThrottlingException
      *         Amazon Rekognition is temporarily unable to process the request. Try your call again.
      * @sample AmazonRekognition.StartCelebrityRecognition
@@ -2401,6 +2458,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                         .beforeMarshalling(startCelebrityRecognitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2455,6 +2513,10 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      *         The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon
      *         Rekognition.
      * @throws LimitExceededException
+     *         An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video
+     *         jobs concurrently, calls to start operations (<code>StartLabelDetection</code>, for example) will raise a
+     *         <code>LimitExceededException</code> exception (HTTP status code: 400) until the number of concurrently
+     *         running jobs is below the Amazon Rekognition service limit.
      * @throws ThrottlingException
      *         Amazon Rekognition is temporarily unable to process the request. Try your call again.
      * @sample AmazonRekognition.StartContentModeration
@@ -2480,6 +2542,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new StartContentModerationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startContentModerationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2532,6 +2595,10 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      *         The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon
      *         Rekognition.
      * @throws LimitExceededException
+     *         An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video
+     *         jobs concurrently, calls to start operations (<code>StartLabelDetection</code>, for example) will raise a
+     *         <code>LimitExceededException</code> exception (HTTP status code: 400) until the number of concurrently
+     *         running jobs is below the Amazon Rekognition service limit.
      * @throws ThrottlingException
      *         Amazon Rekognition is temporarily unable to process the request. Try your call again.
      * @sample AmazonRekognition.StartFaceDetection
@@ -2557,6 +2624,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new StartFaceDetectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startFaceDetectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2608,6 +2676,10 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      *         The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon
      *         Rekognition.
      * @throws LimitExceededException
+     *         An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video
+     *         jobs concurrently, calls to start operations (<code>StartLabelDetection</code>, for example) will raise a
+     *         <code>LimitExceededException</code> exception (HTTP status code: 400) until the number of concurrently
+     *         running jobs is below the Amazon Rekognition service limit.
      * @throws ResourceNotFoundException
      *         The collection specified in the request cannot be found.
      * @throws ThrottlingException
@@ -2635,6 +2707,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new StartFaceSearchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startFaceSearchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2693,6 +2766,10 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      *         The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon
      *         Rekognition.
      * @throws LimitExceededException
+     *         An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video
+     *         jobs concurrently, calls to start operations (<code>StartLabelDetection</code>, for example) will raise a
+     *         <code>LimitExceededException</code> exception (HTTP status code: 400) until the number of concurrently
+     *         running jobs is below the Amazon Rekognition service limit.
      * @throws ThrottlingException
      *         Amazon Rekognition is temporarily unable to process the request. Try your call again.
      * @sample AmazonRekognition.StartLabelDetection
@@ -2718,6 +2795,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new StartLabelDetectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startLabelDetectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2771,6 +2849,10 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
      *         The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon
      *         Rekognition.
      * @throws LimitExceededException
+     *         An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video
+     *         jobs concurrently, calls to start operations (<code>StartLabelDetection</code>, for example) will raise a
+     *         <code>LimitExceededException</code> exception (HTTP status code: 400) until the number of concurrently
+     *         running jobs is below the Amazon Rekognition service limit.
      * @throws ThrottlingException
      *         Amazon Rekognition is temporarily unable to process the request. Try your call again.
      * @sample AmazonRekognition.StartPersonTracking
@@ -2796,6 +2878,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new StartPersonTrackingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startPersonTrackingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2858,6 +2941,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new StartStreamProcessorRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startStreamProcessorRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2918,6 +3002,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request = new StopStreamProcessorRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopStreamProcessorRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

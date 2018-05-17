@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -104,6 +104,9 @@ public interface AmazonAppStream {
      * @return Result of the AssociateFleet operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceNotFoundException
      *         The specified resource was not found.
      * @throws ConcurrentModificationException
@@ -120,6 +123,33 @@ public interface AmazonAppStream {
 
     /**
      * <p>
+     * Copies the image within the same region or to a new region within the same AWS account. Note that any tags you
+     * added to the image will not be copied.
+     * </p>
+     * 
+     * @param copyImageRequest
+     * @return Result of the CopyImage operation returned by the service.
+     * @throws ResourceAlreadyExistsException
+     *         The specified resource already exists.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @throws ResourceNotAvailableException
+     *         The specified resource exists and is not in use, but isn't available.
+     * @throws LimitExceededException
+     *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
+     * @throws IncompatibleImageException
+     *         The image does not support storage connectors.
+     * @sample AmazonAppStream.CopyImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CopyImage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CopyImageResult copyImage(CopyImageRequest copyImageRequest);
+
+    /**
+     * <p>
      * Creates a directory configuration.
      * </p>
      * 
@@ -129,6 +159,9 @@ public interface AmazonAppStream {
      *         The specified resource already exists.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @sample AmazonAppStream.CreateDirectoryConfig
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CreateDirectoryConfig"
      *      target="_top">AWS API Documentation</a>
@@ -150,6 +183,9 @@ public interface AmazonAppStream {
      *         The specified resource was not found.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws InvalidRoleException
      *         The specified role is invalid.
      * @throws ConcurrentModificationException
@@ -176,6 +212,9 @@ public interface AmazonAppStream {
      * @return Result of the CreateImageBuilder operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceAlreadyExistsException
      *         The specified resource already exists.
      * @throws ResourceNotAvailableException
@@ -222,6 +261,9 @@ public interface AmazonAppStream {
      * @return Result of the CreateStack operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceAlreadyExistsException
      *         The specified resource already exists.
      * @throws ConcurrentModificationException
@@ -358,7 +400,8 @@ public interface AmazonAppStream {
 
     /**
      * <p>
-     * Describes the specified directory configurations.
+     * Describes the specified directory configurations. Note that although the response syntax in this topic includes
+     * the account password, this password is not returned in the actual response.
      * </p>
      * 
      * @param describeDirectoryConfigsRequest
@@ -513,8 +556,8 @@ public interface AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -540,6 +583,9 @@ public interface AmazonAppStream {
      *         The attempted operation is not permitted.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ConcurrentModificationException
      *         An API error occurred. Wait a few minutes and try again.
      * @sample AmazonAppStream.StartFleet
@@ -561,6 +607,9 @@ public interface AmazonAppStream {
      *         The specified resource was not found.
      * @throws ConcurrentModificationException
      *         An API error occurred. Wait a few minutes and try again.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws IncompatibleImageException
      *         The image does not support storage connectors.
      * @sample AmazonAppStream.StartImageBuilder
@@ -620,14 +669,17 @@ public interface AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param tagResourceRequest
      * @return Result of the TagResource operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceNotFoundException
      *         The specified resource was not found.
      * @sample AmazonAppStream.TagResource
@@ -645,8 +697,8 @@ public interface AmazonAppStream {
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param untagResourceRequest
@@ -695,6 +747,9 @@ public interface AmazonAppStream {
      *         The specified resource is in use.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws InvalidRoleException
      *         The specified role is invalid.
      * @throws ResourceNotFoundException
@@ -732,6 +787,9 @@ public interface AmazonAppStream {
      *         Indicates an incorrect combination of parameters, or a missing parameter.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws IncompatibleImageException
      *         The image does not support storage connectors.
      * @sample AmazonAppStream.UpdateStack

@@ -50,6 +50,12 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
     private String documentName;
     /**
      * <p>
+     * The SSM document version used in the request.
+     * </p>
+     */
+    private String documentVersion;
+    /**
+     * <p>
      * The name of the plugin for which you want detailed results. For example, aws:RunShellScript is a plugin.
      * </p>
      */
@@ -97,7 +103,7 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
     private String executionEndDateTime;
     /**
      * <p>
-     * The status of the parent command for this invocation. This status can be different than StatusDetails.
+     * The status of this invocation plugin. This status can be different than StatusDetails.
      * </p>
      */
     private String status;
@@ -366,6 +372,46 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
 
     public GetCommandInvocationResult withDocumentName(String documentName) {
         setDocumentName(documentName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The SSM document version used in the request.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The SSM document version used in the request.
+     */
+
+    public void setDocumentVersion(String documentVersion) {
+        this.documentVersion = documentVersion;
+    }
+
+    /**
+     * <p>
+     * The SSM document version used in the request.
+     * </p>
+     * 
+     * @return The SSM document version used in the request.
+     */
+
+    public String getDocumentVersion() {
+        return this.documentVersion;
+    }
+
+    /**
+     * <p>
+     * The SSM document version used in the request.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The SSM document version used in the request.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GetCommandInvocationResult withDocumentVersion(String documentVersion) {
+        setDocumentVersion(documentVersion);
         return this;
     }
 
@@ -667,11 +713,11 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The status of the parent command for this invocation. This status can be different than StatusDetails.
+     * The status of this invocation plugin. This status can be different than StatusDetails.
      * </p>
      * 
      * @param status
-     *        The status of the parent command for this invocation. This status can be different than StatusDetails.
+     *        The status of this invocation plugin. This status can be different than StatusDetails.
      * @see CommandInvocationStatus
      */
 
@@ -681,10 +727,10 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The status of the parent command for this invocation. This status can be different than StatusDetails.
+     * The status of this invocation plugin. This status can be different than StatusDetails.
      * </p>
      * 
-     * @return The status of the parent command for this invocation. This status can be different than StatusDetails.
+     * @return The status of this invocation plugin. This status can be different than StatusDetails.
      * @see CommandInvocationStatus
      */
 
@@ -694,11 +740,11 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The status of the parent command for this invocation. This status can be different than StatusDetails.
+     * The status of this invocation plugin. This status can be different than StatusDetails.
      * </p>
      * 
      * @param status
-     *        The status of the parent command for this invocation. This status can be different than StatusDetails.
+     *        The status of this invocation plugin. This status can be different than StatusDetails.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CommandInvocationStatus
      */
@@ -710,11 +756,11 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The status of the parent command for this invocation. This status can be different than StatusDetails.
+     * The status of this invocation plugin. This status can be different than StatusDetails.
      * </p>
      * 
      * @param status
-     *        The status of the parent command for this invocation. This status can be different than StatusDetails.
+     *        The status of this invocation plugin. This status can be different than StatusDetails.
      * @see CommandInvocationStatus
      */
 
@@ -724,11 +770,11 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The status of the parent command for this invocation. This status can be different than StatusDetails.
+     * The status of this invocation plugin. This status can be different than StatusDetails.
      * </p>
      * 
      * @param status
-     *        The status of the parent command for this invocation. This status can be different than StatusDetails.
+     *        The status of this invocation plugin. This status can be different than StatusDetails.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CommandInvocationStatus
      */
@@ -1383,6 +1429,8 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
             sb.append("Comment: ").append(getComment()).append(",");
         if (getDocumentName() != null)
             sb.append("DocumentName: ").append(getDocumentName()).append(",");
+        if (getDocumentVersion() != null)
+            sb.append("DocumentVersion: ").append(getDocumentVersion()).append(",");
         if (getPluginName() != null)
             sb.append("PluginName: ").append(getPluginName()).append(",");
         if (getResponseCode() != null)
@@ -1434,6 +1482,10 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
         if (other.getDocumentName() == null ^ this.getDocumentName() == null)
             return false;
         if (other.getDocumentName() != null && other.getDocumentName().equals(this.getDocumentName()) == false)
+            return false;
+        if (other.getDocumentVersion() == null ^ this.getDocumentVersion() == null)
+            return false;
+        if (other.getDocumentVersion() != null && other.getDocumentVersion().equals(this.getDocumentVersion()) == false)
             return false;
         if (other.getPluginName() == null ^ this.getPluginName() == null)
             return false;
@@ -1491,6 +1543,7 @@ public class GetCommandInvocationResult extends com.amazonaws.AmazonWebServiceRe
         hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
         hashCode = prime * hashCode + ((getComment() == null) ? 0 : getComment().hashCode());
         hashCode = prime * hashCode + ((getDocumentName() == null) ? 0 : getDocumentName().hashCode());
+        hashCode = prime * hashCode + ((getDocumentVersion() == null) ? 0 : getDocumentVersion().hashCode());
         hashCode = prime * hashCode + ((getPluginName() == null) ? 0 : getPluginName().hashCode());
         hashCode = prime * hashCode + ((getResponseCode() == null) ? 0 : getResponseCode().hashCode());
         hashCode = prime * hashCode + ((getExecutionStartDateTime() == null) ? 0 : getExecutionStartDateTime().hashCode());

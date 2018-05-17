@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      */
     private String restApiId;
@@ -39,7 +39,7 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
     private String position;
     /**
      * <p>
-     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      */
     private Integer limit;
@@ -56,11 +56,11 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The string identifier of the associated <a>RestApi</a>.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public void setRestApiId(String restApiId) {
@@ -69,10 +69,10 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
-     * @return The string identifier of the associated <a>RestApi</a>.
+     * @return [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public String getRestApiId() {
@@ -81,11 +81,11 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The string identifier of the associated <a>RestApi</a>.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,11 +136,11 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     *        The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      */
 
     public void setLimit(Integer limit) {
@@ -149,10 +149,10 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      * 
-     * @return The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     * @return The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      */
 
     public Integer getLimit() {
@@ -161,11 +161,11 @@ public class GetResourcesRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+     *        The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -62,6 +62,19 @@ public class AbstractAmazonGuardDutyAsync extends AbstractAmazonGuardDuty implem
     @Override
     public java.util.concurrent.Future<CreateDetectorResult> createDetectorAsync(CreateDetectorRequest request,
             com.amazonaws.handlers.AsyncHandler<CreateDetectorRequest, CreateDetectorResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateFilterResult> createFilterAsync(CreateFilterRequest request) {
+
+        return createFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateFilterResult> createFilterAsync(CreateFilterRequest request,
+            com.amazonaws.handlers.AsyncHandler<CreateFilterRequest, CreateFilterResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -140,6 +153,19 @@ public class AbstractAmazonGuardDutyAsync extends AbstractAmazonGuardDuty implem
     @Override
     public java.util.concurrent.Future<DeleteDetectorResult> deleteDetectorAsync(DeleteDetectorRequest request,
             com.amazonaws.handlers.AsyncHandler<DeleteDetectorRequest, DeleteDetectorResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteFilterResult> deleteFilterAsync(DeleteFilterRequest request) {
+
+        return deleteFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteFilterResult> deleteFilterAsync(DeleteFilterRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteFilterRequest, DeleteFilterResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -231,6 +257,19 @@ public class AbstractAmazonGuardDutyAsync extends AbstractAmazonGuardDuty implem
     @Override
     public java.util.concurrent.Future<GetDetectorResult> getDetectorAsync(GetDetectorRequest request,
             com.amazonaws.handlers.AsyncHandler<GetDetectorRequest, GetDetectorResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetFilterResult> getFilterAsync(GetFilterRequest request) {
+
+        return getFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetFilterResult> getFilterAsync(GetFilterRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetFilterRequest, GetFilterResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -353,6 +392,19 @@ public class AbstractAmazonGuardDutyAsync extends AbstractAmazonGuardDuty implem
     }
 
     @Override
+    public java.util.concurrent.Future<ListFiltersResult> listFiltersAsync(ListFiltersRequest request) {
+
+        return listFiltersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListFiltersResult> listFiltersAsync(ListFiltersRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListFiltersRequest, ListFiltersResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<ListFindingsResult> listFindingsAsync(ListFindingsRequest request) {
 
         return listFindingsAsync(request, null);
@@ -465,6 +517,19 @@ public class AbstractAmazonGuardDutyAsync extends AbstractAmazonGuardDuty implem
     @Override
     public java.util.concurrent.Future<UpdateDetectorResult> updateDetectorAsync(UpdateDetectorRequest request,
             com.amazonaws.handlers.AsyncHandler<UpdateDetectorRequest, UpdateDetectorResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateFilterResult> updateFilterAsync(UpdateFilterRequest request) {
+
+        return updateFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateFilterResult> updateFilterAsync(UpdateFilterRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateFilterRequest, UpdateFilterResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

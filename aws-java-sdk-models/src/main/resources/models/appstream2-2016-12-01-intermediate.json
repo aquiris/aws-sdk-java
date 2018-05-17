@@ -8,6 +8,7 @@
       "skip" : true
     },
     "calculateCRC32FromCompressedData" : false,
+    "contentTypeOverride" : null,
     "convenienceTypeOverloads" : [ ],
     "customClientConfigFactory" : null,
     "customCodeTemplates" : null,
@@ -102,6 +103,10 @@
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
         "httpStatusCode" : null
       }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
+        "httpStatusCode" : null
+      }, {
         "exceptionName" : "ResourceNotFoundException",
         "documentation" : "<p>The specified resource was not found.</p>",
         "httpStatusCode" : null
@@ -136,6 +141,57 @@
       },
       "syncReturnType" : "AssociateFleetResult"
     },
+    "CopyImage" : {
+      "asyncCallableType" : "java.util.concurrent.Callable<CopyImageResult>",
+      "asyncFutureType" : "java.util.concurrent.Future<CopyImageResult>",
+      "asyncHandlerType" : "com.amazonaws.handlers.AsyncHandler<CopyImageRequest, CopyImageResult>",
+      "asyncReturnType" : "CopyImageResult",
+      "authenticated" : true,
+      "deprecated" : false,
+      "documentation" : "<p>Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.</p>",
+      "exceptions" : [ {
+        "exceptionName" : "ResourceAlreadyExistsException",
+        "documentation" : "<p>The specified resource already exists.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "ResourceNotFoundException",
+        "documentation" : "<p>The specified resource was not found.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "ResourceNotAvailableException",
+        "documentation" : "<p>The specified resource exists and is not in use, but isn't available.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "LimitExceededException",
+        "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "IncompatibleImageException",
+        "documentation" : "<p>The image does not support storage connectors.</p>",
+        "httpStatusCode" : null
+      } ],
+      "hasBlobMemberAsPayload" : false,
+      "input" : {
+        "variableDeclarationType" : "CopyImageRequest",
+        "variableName" : "copyImageRequest",
+        "variableType" : "CopyImageRequest",
+        "documentation" : "",
+        "simpleType" : "CopyImageRequest",
+        "variableSetterType" : "CopyImageRequest"
+      },
+      "inputStreamPropertyName" : null,
+      "methodName" : "copyImage",
+      "operationName" : "CopyImage",
+      "returnType" : {
+        "returnType" : "CopyImageResult",
+        "documentation" : null
+      },
+      "syncReturnType" : "CopyImageResult"
+    },
     "CreateDirectoryConfig" : {
       "asyncCallableType" : "java.util.concurrent.Callable<CreateDirectoryConfigResult>",
       "asyncFutureType" : "java.util.concurrent.Future<CreateDirectoryConfigResult>",
@@ -151,6 +207,10 @@
       }, {
         "exceptionName" : "LimitExceededException",
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
         "httpStatusCode" : null
       } ],
       "hasBlobMemberAsPayload" : false,
@@ -194,6 +254,10 @@
       }, {
         "exceptionName" : "LimitExceededException",
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
         "httpStatusCode" : null
       }, {
         "exceptionName" : "InvalidRoleException",
@@ -241,6 +305,10 @@
       "exceptions" : [ {
         "exceptionName" : "LimitExceededException",
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
         "httpStatusCode" : null
       }, {
         "exceptionName" : "ResourceAlreadyExistsException",
@@ -335,6 +403,10 @@
       "exceptions" : [ {
         "exceptionName" : "LimitExceededException",
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
         "httpStatusCode" : null
       }, {
         "exceptionName" : "ResourceAlreadyExistsException",
@@ -620,7 +692,7 @@
       "asyncReturnType" : "DescribeDirectoryConfigsResult",
       "authenticated" : true,
       "deprecated" : false,
-      "documentation" : "<p>Describes the specified directory configurations.</p>",
+      "documentation" : "<p>Describes the specified directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>",
       "exceptions" : [ {
         "exceptionName" : "ResourceNotFoundException",
         "documentation" : "<p>The specified resource was not found.</p>",
@@ -926,7 +998,7 @@
       "asyncReturnType" : "ListTagsForResourceResult",
       "authenticated" : true,
       "deprecated" : false,
-      "documentation" : "<p>Lists the tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p> <p>For more information about tags, see <a href=\"http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic\">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>",
+      "documentation" : "<p>Lists the tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p> <p>For more information about tags, see <a href=\"http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html\">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>",
       "exceptions" : [ {
         "exceptionName" : "ResourceNotFoundException",
         "documentation" : "<p>The specified resource was not found.</p>",
@@ -971,6 +1043,10 @@
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
         "httpStatusCode" : null
       }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
+        "httpStatusCode" : null
+      }, {
         "exceptionName" : "ConcurrentModificationException",
         "documentation" : "<p>An API error occurred. Wait a few minutes and try again.</p>",
         "httpStatusCode" : null
@@ -1012,6 +1088,10 @@
       }, {
         "exceptionName" : "ConcurrentModificationException",
         "documentation" : "<p>An API error occurred. Wait a few minutes and try again.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
         "httpStatusCode" : null
       }, {
         "exceptionName" : "IncompatibleImageException",
@@ -1117,10 +1197,14 @@
       "asyncReturnType" : "TagResourceResult",
       "authenticated" : true,
       "deprecated" : false,
-      "documentation" : "<p>Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p> <p>Each tag consists of a key and an optional value. If a resource already has a tag with the same key, this operation updates its value.</p> <p>To list the current tags for your resources, use <a>ListTagsForResource</a>. To disassociate tags from your resources, use <a>UntagResource</a>.</p> <p>For more information about tags, see <a href=\"http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic\">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>",
+      "documentation" : "<p>Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p> <p>Each tag consists of a key and an optional value. If a resource already has a tag with the same key, this operation updates its value.</p> <p>To list the current tags for your resources, use <a>ListTagsForResource</a>. To disassociate tags from your resources, use <a>UntagResource</a>.</p> <p>For more information about tags, see <a href=\"http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html\">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>",
       "exceptions" : [ {
         "exceptionName" : "LimitExceededException",
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
         "httpStatusCode" : null
       }, {
         "exceptionName" : "ResourceNotFoundException",
@@ -1152,7 +1236,7 @@
       "asyncReturnType" : "UntagResourceResult",
       "authenticated" : true,
       "deprecated" : false,
-      "documentation" : "<p>Disassociates the specified tags from the specified AppStream 2.0 resource.</p> <p>To list the current tags for your resources, use <a>ListTagsForResource</a>.</p> <p>For more information about tags, see <a href=\"http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic\">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>",
+      "documentation" : "<p>Disassociates the specified tags from the specified AppStream 2.0 resource.</p> <p>To list the current tags for your resources, use <a>ListTagsForResource</a>.</p> <p>For more information about tags, see <a href=\"http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html\">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>",
       "exceptions" : [ {
         "exceptionName" : "ResourceNotFoundException",
         "documentation" : "<p>The specified resource was not found.</p>",
@@ -1232,6 +1316,10 @@
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
         "httpStatusCode" : null
       }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
+        "httpStatusCode" : null
+      }, {
         "exceptionName" : "InvalidRoleException",
         "documentation" : "<p>The specified role is invalid.</p>",
         "httpStatusCode" : null
@@ -1305,6 +1393,10 @@
       }, {
         "exceptionName" : "LimitExceededException",
         "documentation" : "<p>The requested limit exceeds the permitted limit for an account.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "InvalidAccountStatusException",
+        "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
         "httpStatusCode" : null
       }, {
         "exceptionName" : "IncompatibleImageException",
@@ -2444,11 +2536,11 @@
         "c2jName" : "FleetName",
         "c2jShape" : "String",
         "deprecated" : false,
-        "documentation" : "<p>The name of the fleet.</p>",
+        "documentation" : "<p>The name of the fleet. </p>",
         "enumType" : null,
-        "fluentSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterDocumentation" : "/**<p>The name of the fleet. </p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "fluentSetterMethodName" : "withFleetName",
-        "getterDocumentation" : "/**<p>The name of the fleet.</p>\n@return The name of the fleet.*/",
+        "getterDocumentation" : "/**<p>The name of the fleet. </p>\n@return The name of the fleet.*/",
         "getterMethodName" : "getFleetName",
         "getterModel" : {
           "returnType" : "String",
@@ -2480,7 +2572,7 @@
         "marshallingTargetClass" : "String",
         "marshallingType" : "STRING",
         "name" : "FleetName",
-        "setterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.*/",
+        "setterDocumentation" : "/**<p>The name of the fleet. </p>\n@param fleetName The name of the fleet.*/",
         "setterMethodName" : "setFleetName",
         "setterModel" : {
           "variableDeclarationType" : "String",
@@ -2493,12 +2585,12 @@
         "shouldEmitLegacyEnumSetter" : false,
         "simple" : true,
         "unmarshallingType" : null,
-        "varargSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "varargSetterDocumentation" : "/**<p>The name of the fleet. </p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "variable" : {
           "variableDeclarationType" : "String",
           "variableName" : "fleetName",
           "variableType" : "String",
-          "documentation" : "<p>The name of the fleet.</p>",
+          "documentation" : "<p>The name of the fleet. </p>",
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
@@ -2572,11 +2664,11 @@
           "c2jName" : "FleetName",
           "c2jShape" : "String",
           "deprecated" : false,
-          "documentation" : "<p>The name of the fleet.</p>",
+          "documentation" : "<p>The name of the fleet. </p>",
           "enumType" : null,
-          "fluentSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterDocumentation" : "/**<p>The name of the fleet. </p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "fluentSetterMethodName" : "withFleetName",
-          "getterDocumentation" : "/**<p>The name of the fleet.</p>\n@return The name of the fleet.*/",
+          "getterDocumentation" : "/**<p>The name of the fleet. </p>\n@return The name of the fleet.*/",
           "getterMethodName" : "getFleetName",
           "getterModel" : {
             "returnType" : "String",
@@ -2608,7 +2700,7 @@
           "marshallingTargetClass" : "String",
           "marshallingType" : "STRING",
           "name" : "FleetName",
-          "setterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.*/",
+          "setterDocumentation" : "/**<p>The name of the fleet. </p>\n@param fleetName The name of the fleet.*/",
           "setterMethodName" : "setFleetName",
           "setterModel" : {
             "variableDeclarationType" : "String",
@@ -2621,12 +2713,12 @@
           "shouldEmitLegacyEnumSetter" : false,
           "simple" : true,
           "unmarshallingType" : null,
-          "varargSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "varargSetterDocumentation" : "/**<p>The name of the fleet. </p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "variable" : {
             "variableDeclarationType" : "String",
             "variableName" : "fleetName",
             "variableType" : "String",
-            "documentation" : "<p>The name of the fleet.</p>",
+            "documentation" : "<p>The name of the fleet. </p>",
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
@@ -3549,6 +3641,725 @@
         "documentation" : null,
         "simpleType" : "ConcurrentModificationException",
         "variableSetterType" : "ConcurrentModificationException"
+      },
+      "wrapper" : false
+    },
+    "CopyImageRequest" : {
+      "c2jName" : "CopyImageRequest",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : {
+        "action" : "CopyImage",
+        "locationName" : null,
+        "requestUri" : "/",
+        "target" : "PhotonAdminProxyService.CopyImage",
+        "verb" : "POST",
+        "xmlNameSpaceUri" : null
+      },
+      "members" : [ {
+        "c2jName" : "SourceImageName",
+        "c2jShape" : "Name",
+        "deprecated" : false,
+        "documentation" : "<p>The name of the image to copy.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The name of the image to copy.</p>\n@param sourceImageName The name of the image to copy.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withSourceImageName",
+        "getterDocumentation" : "/**<p>The name of the image to copy.</p>\n@return The name of the image to copy.*/",
+        "getterMethodName" : "getSourceImageName",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "SourceImageName",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "SourceImageName",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "SourceImageName",
+        "setterDocumentation" : "/**<p>The name of the image to copy.</p>\n@param sourceImageName The name of the image to copy.*/",
+        "setterMethodName" : "setSourceImageName",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "sourceImageName",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The name of the image to copy.</p>\n@param sourceImageName The name of the image to copy.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "sourceImageName",
+          "variableType" : "String",
+          "documentation" : "<p>The name of the image to copy.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "DestinationImageName",
+        "c2jShape" : "Name",
+        "deprecated" : false,
+        "documentation" : "<p>The name that the image will have when it is copied to the destination.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@param destinationImageName The name that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withDestinationImageName",
+        "getterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@return The name that the image will have when it is copied to the destination.*/",
+        "getterMethodName" : "getDestinationImageName",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "DestinationImageName",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "DestinationImageName",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "DestinationImageName",
+        "setterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@param destinationImageName The name that the image will have when it is copied to the destination.*/",
+        "setterMethodName" : "setDestinationImageName",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationImageName",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@param destinationImageName The name that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationImageName",
+          "variableType" : "String",
+          "documentation" : "<p>The name that the image will have when it is copied to the destination.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "DestinationRegion",
+        "c2jShape" : "RegionName",
+        "deprecated" : false,
+        "documentation" : "<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@param destinationRegion The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withDestinationRegion",
+        "getterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@return The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.*/",
+        "getterMethodName" : "getDestinationRegion",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "DestinationRegion",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "DestinationRegion",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "DestinationRegion",
+        "setterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@param destinationRegion The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.*/",
+        "setterMethodName" : "setDestinationRegion",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationRegion",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@param destinationRegion The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationRegion",
+          "variableType" : "String",
+          "documentation" : "<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "DestinationImageDescription",
+        "c2jShape" : "Description",
+        "deprecated" : false,
+        "documentation" : "<p>The description that the image will have when it is copied to the destination.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@param destinationImageDescription The description that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withDestinationImageDescription",
+        "getterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@return The description that the image will have when it is copied to the destination.*/",
+        "getterMethodName" : "getDestinationImageDescription",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "DestinationImageDescription",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "DestinationImageDescription",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "DestinationImageDescription",
+        "setterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@param destinationImageDescription The description that the image will have when it is copied to the destination.*/",
+        "setterMethodName" : "setDestinationImageDescription",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationImageDescription",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@param destinationImageDescription The description that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationImageDescription",
+          "variableType" : "String",
+          "documentation" : "<p>The description that the image will have when it is copied to the destination.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      } ],
+      "membersAsMap" : {
+        "DestinationImageDescription" : {
+          "c2jName" : "DestinationImageDescription",
+          "c2jShape" : "Description",
+          "deprecated" : false,
+          "documentation" : "<p>The description that the image will have when it is copied to the destination.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@param destinationImageDescription The description that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withDestinationImageDescription",
+          "getterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@return The description that the image will have when it is copied to the destination.*/",
+          "getterMethodName" : "getDestinationImageDescription",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "DestinationImageDescription",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "DestinationImageDescription",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "DestinationImageDescription",
+          "setterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@param destinationImageDescription The description that the image will have when it is copied to the destination.*/",
+          "setterMethodName" : "setDestinationImageDescription",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationImageDescription",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The description that the image will have when it is copied to the destination.</p>\n@param destinationImageDescription The description that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationImageDescription",
+            "variableType" : "String",
+            "documentation" : "<p>The description that the image will have when it is copied to the destination.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "DestinationImageName" : {
+          "c2jName" : "DestinationImageName",
+          "c2jShape" : "Name",
+          "deprecated" : false,
+          "documentation" : "<p>The name that the image will have when it is copied to the destination.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@param destinationImageName The name that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withDestinationImageName",
+          "getterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@return The name that the image will have when it is copied to the destination.*/",
+          "getterMethodName" : "getDestinationImageName",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "DestinationImageName",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "DestinationImageName",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "DestinationImageName",
+          "setterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@param destinationImageName The name that the image will have when it is copied to the destination.*/",
+          "setterMethodName" : "setDestinationImageName",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationImageName",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The name that the image will have when it is copied to the destination.</p>\n@param destinationImageName The name that the image will have when it is copied to the destination.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationImageName",
+            "variableType" : "String",
+            "documentation" : "<p>The name that the image will have when it is copied to the destination.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "DestinationRegion" : {
+          "c2jName" : "DestinationRegion",
+          "c2jShape" : "RegionName",
+          "deprecated" : false,
+          "documentation" : "<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@param destinationRegion The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withDestinationRegion",
+          "getterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@return The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.*/",
+          "getterMethodName" : "getDestinationRegion",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "DestinationRegion",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "DestinationRegion",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "DestinationRegion",
+          "setterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@param destinationRegion The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.*/",
+          "setterMethodName" : "setDestinationRegion",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationRegion",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>\n@param destinationRegion The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationRegion",
+            "variableType" : "String",
+            "documentation" : "<p>The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "SourceImageName" : {
+          "c2jName" : "SourceImageName",
+          "c2jShape" : "Name",
+          "deprecated" : false,
+          "documentation" : "<p>The name of the image to copy.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The name of the image to copy.</p>\n@param sourceImageName The name of the image to copy.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withSourceImageName",
+          "getterDocumentation" : "/**<p>The name of the image to copy.</p>\n@return The name of the image to copy.*/",
+          "getterMethodName" : "getSourceImageName",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "SourceImageName",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "SourceImageName",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "SourceImageName",
+          "setterDocumentation" : "/**<p>The name of the image to copy.</p>\n@param sourceImageName The name of the image to copy.*/",
+          "setterMethodName" : "setSourceImageName",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "sourceImageName",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The name of the image to copy.</p>\n@param sourceImageName The name of the image to copy.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "sourceImageName",
+            "variableType" : "String",
+            "documentation" : "<p>The name of the image to copy.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        }
+      },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : [ "SourceImageName", "DestinationImageName", "DestinationRegion" ],
+      "shapeName" : "CopyImageRequest",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : null,
+      "variable" : {
+        "variableDeclarationType" : "CopyImageRequest",
+        "variableName" : "copyImageRequest",
+        "variableType" : "CopyImageRequest",
+        "documentation" : null,
+        "simpleType" : "CopyImageRequest",
+        "variableSetterType" : "CopyImageRequest"
+      },
+      "wrapper" : false
+    },
+    "CopyImageResult" : {
+      "c2jName" : "CopyImageResponse",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : [ {
+        "c2jName" : "DestinationImageName",
+        "c2jShape" : "Name",
+        "deprecated" : false,
+        "documentation" : "<p>The name of the destination image.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The name of the destination image.</p>\n@param destinationImageName The name of the destination image.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withDestinationImageName",
+        "getterDocumentation" : "/**<p>The name of the destination image.</p>\n@return The name of the destination image.*/",
+        "getterMethodName" : "getDestinationImageName",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "DestinationImageName",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "DestinationImageName",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "DestinationImageName",
+        "setterDocumentation" : "/**<p>The name of the destination image.</p>\n@param destinationImageName The name of the destination image.*/",
+        "setterMethodName" : "setDestinationImageName",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationImageName",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The name of the destination image.</p>\n@param destinationImageName The name of the destination image.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "destinationImageName",
+          "variableType" : "String",
+          "documentation" : "<p>The name of the destination image.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      } ],
+      "membersAsMap" : {
+        "DestinationImageName" : {
+          "c2jName" : "DestinationImageName",
+          "c2jShape" : "Name",
+          "deprecated" : false,
+          "documentation" : "<p>The name of the destination image.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The name of the destination image.</p>\n@param destinationImageName The name of the destination image.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withDestinationImageName",
+          "getterDocumentation" : "/**<p>The name of the destination image.</p>\n@return The name of the destination image.*/",
+          "getterMethodName" : "getDestinationImageName",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "DestinationImageName",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "DestinationImageName",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "DestinationImageName",
+          "setterDocumentation" : "/**<p>The name of the destination image.</p>\n@param destinationImageName The name of the destination image.*/",
+          "setterMethodName" : "setDestinationImageName",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationImageName",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The name of the destination image.</p>\n@param destinationImageName The name of the destination image.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "destinationImageName",
+            "variableType" : "String",
+            "documentation" : "<p>The name of the destination image.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        }
+      },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "CopyImageResult",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : {
+        "flattened" : false,
+        "resultWrapper" : null
+      },
+      "variable" : {
+        "variableDeclarationType" : "CopyImageResult",
+        "variableName" : "copyImageResult",
+        "variableType" : "CopyImageResult",
+        "documentation" : null,
+        "simpleType" : "CopyImageResult",
+        "variableSetterType" : "CopyImageResult"
       },
       "wrapper" : false
     },
@@ -8335,6 +9146,132 @@
           "variableSetterType" : "java.util.Collection<StorageConnector>"
         },
         "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "RedirectURL",
+        "c2jShape" : "RedirectURL",
+        "deprecated" : false,
+        "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withRedirectURL",
+        "getterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@return The URL that users are redirected to after their streaming session ends.*/",
+        "getterMethodName" : "getRedirectURL",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "RedirectURL",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "RedirectURL",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "RedirectURL",
+        "setterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.*/",
+        "setterMethodName" : "setRedirectURL",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "redirectURL",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "redirectURL",
+          "variableType" : "String",
+          "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "FeedbackURL",
+        "c2jShape" : "FeedbackURL",
+        "deprecated" : false,
+        "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withFeedbackURL",
+        "getterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@return The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+        "getterMethodName" : "getFeedbackURL",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "FeedbackURL",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "FeedbackURL",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "FeedbackURL",
+        "setterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+        "setterMethodName" : "setFeedbackURL",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "feedbackURL",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "feedbackURL",
+          "variableType" : "String",
+          "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
       } ],
       "membersAsMap" : {
         "Description" : {
@@ -8465,6 +9402,70 @@
           },
           "xmlNameSpaceUri" : null
         },
+        "FeedbackURL" : {
+          "c2jName" : "FeedbackURL",
+          "c2jShape" : "FeedbackURL",
+          "deprecated" : false,
+          "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withFeedbackURL",
+          "getterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@return The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+          "getterMethodName" : "getFeedbackURL",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "FeedbackURL",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "FeedbackURL",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "FeedbackURL",
+          "setterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+          "setterMethodName" : "setFeedbackURL",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "feedbackURL",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "feedbackURL",
+            "variableType" : "String",
+            "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
         "Name" : {
           "c2jName" : "Name",
           "c2jShape" : "String",
@@ -8524,6 +9525,70 @@
             "variableName" : "name",
             "variableType" : "String",
             "documentation" : "<p>The name of the stack.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "RedirectURL" : {
+          "c2jName" : "RedirectURL",
+          "c2jShape" : "RedirectURL",
+          "deprecated" : false,
+          "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withRedirectURL",
+          "getterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@return The URL that users are redirected to after their streaming session ends.*/",
+          "getterMethodName" : "getRedirectURL",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "RedirectURL",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "RedirectURL",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "RedirectURL",
+          "setterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.*/",
+          "setterMethodName" : "setRedirectURL",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "redirectURL",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "redirectURL",
+            "variableType" : "String",
+            "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
@@ -11864,11 +12929,11 @@
         "c2jName" : "DirectoryConfigs",
         "c2jShape" : "DirectoryConfigList",
         "deprecated" : false,
-        "documentation" : "<p>Information about the directory configurations.</p>",
+        "documentation" : "<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>",
         "enumType" : null,
-        "fluentSetterDocumentation" : "/**<p>Information about the directory configurations.</p>\n@param directoryConfigs Information about the directory configurations.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n@param directoryConfigs Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "fluentSetterMethodName" : "withDirectoryConfigs",
-        "getterDocumentation" : "/**<p>Information about the directory configurations.</p>\n@return Information about the directory configurations.*/",
+        "getterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n@return Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.*/",
         "getterMethodName" : "getDirectoryConfigs",
         "getterModel" : {
           "returnType" : "java.util.List<DirectoryConfig>",
@@ -11978,7 +13043,7 @@
         "marshallingTargetClass" : "List",
         "marshallingType" : "LIST",
         "name" : "DirectoryConfigs",
-        "setterDocumentation" : "/**<p>Information about the directory configurations.</p>\n@param directoryConfigs Information about the directory configurations.*/",
+        "setterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n@param directoryConfigs Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.*/",
         "setterMethodName" : "setDirectoryConfigs",
         "setterModel" : {
           "variableDeclarationType" : "java.util.List<DirectoryConfig>",
@@ -11991,12 +13056,12 @@
         "shouldEmitLegacyEnumSetter" : false,
         "simple" : false,
         "unmarshallingType" : null,
-        "varargSetterDocumentation" : "/**<p>Information about the directory configurations.</p>\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setDirectoryConfigs(java.util.Collection)} or {@link #withDirectoryConfigs(java.util.Collection)} if you want to override the existing values.</p>\n@param directoryConfigs Information about the directory configurations.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "varargSetterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setDirectoryConfigs(java.util.Collection)} or {@link #withDirectoryConfigs(java.util.Collection)} if you want to override the existing values.</p>\n@param directoryConfigs Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "variable" : {
           "variableDeclarationType" : "java.util.List<DirectoryConfig>",
           "variableName" : "directoryConfigs",
           "variableType" : "java.util.List<DirectoryConfig>",
-          "documentation" : "<p>Information about the directory configurations.</p>",
+          "documentation" : "<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>",
           "simpleType" : "List<DirectoryConfig>",
           "variableSetterType" : "java.util.Collection<DirectoryConfig>"
         },
@@ -12070,11 +13135,11 @@
           "c2jName" : "DirectoryConfigs",
           "c2jShape" : "DirectoryConfigList",
           "deprecated" : false,
-          "documentation" : "<p>Information about the directory configurations.</p>",
+          "documentation" : "<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>",
           "enumType" : null,
-          "fluentSetterDocumentation" : "/**<p>Information about the directory configurations.</p>\n@param directoryConfigs Information about the directory configurations.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n@param directoryConfigs Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "fluentSetterMethodName" : "withDirectoryConfigs",
-          "getterDocumentation" : "/**<p>Information about the directory configurations.</p>\n@return Information about the directory configurations.*/",
+          "getterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n@return Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.*/",
           "getterMethodName" : "getDirectoryConfigs",
           "getterModel" : {
             "returnType" : "java.util.List<DirectoryConfig>",
@@ -12184,7 +13249,7 @@
           "marshallingTargetClass" : "List",
           "marshallingType" : "LIST",
           "name" : "DirectoryConfigs",
-          "setterDocumentation" : "/**<p>Information about the directory configurations.</p>\n@param directoryConfigs Information about the directory configurations.*/",
+          "setterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n@param directoryConfigs Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.*/",
           "setterMethodName" : "setDirectoryConfigs",
           "setterModel" : {
             "variableDeclarationType" : "java.util.List<DirectoryConfig>",
@@ -12197,12 +13262,12 @@
           "shouldEmitLegacyEnumSetter" : false,
           "simple" : false,
           "unmarshallingType" : null,
-          "varargSetterDocumentation" : "/**<p>Information about the directory configurations.</p>\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setDirectoryConfigs(java.util.Collection)} or {@link #withDirectoryConfigs(java.util.Collection)} if you want to override the existing values.</p>\n@param directoryConfigs Information about the directory configurations.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "varargSetterDocumentation" : "/**<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setDirectoryConfigs(java.util.Collection)} or {@link #withDirectoryConfigs(java.util.Collection)} if you want to override the existing values.</p>\n@param directoryConfigs Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "variable" : {
             "variableDeclarationType" : "java.util.List<DirectoryConfig>",
             "variableName" : "directoryConfigs",
             "variableType" : "java.util.List<DirectoryConfig>",
-            "documentation" : "<p>Information about the directory configurations.</p>",
+            "documentation" : "<p>Information about the directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>",
             "simpleType" : "List<DirectoryConfig>",
             "variableSetterType" : "java.util.Collection<DirectoryConfig>"
           },
@@ -14906,11 +15971,11 @@
         "c2jName" : "StackName",
         "c2jShape" : "String",
         "deprecated" : false,
-        "documentation" : "<p>The name of the stack.</p>",
+        "documentation" : "<p>The name of the stack. This value is case-sensitive.</p>",
         "enumType" : null,
-        "fluentSetterDocumentation" : "/**<p>The name of the stack.</p>\n@param stackName The name of the stack.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@param stackName The name of the stack. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "fluentSetterMethodName" : "withStackName",
-        "getterDocumentation" : "/**<p>The name of the stack.</p>\n@return The name of the stack.*/",
+        "getterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@return The name of the stack. This value is case-sensitive.*/",
         "getterMethodName" : "getStackName",
         "getterModel" : {
           "returnType" : "String",
@@ -14942,7 +16007,7 @@
         "marshallingTargetClass" : "String",
         "marshallingType" : "STRING",
         "name" : "StackName",
-        "setterDocumentation" : "/**<p>The name of the stack.</p>\n@param stackName The name of the stack.*/",
+        "setterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@param stackName The name of the stack. This value is case-sensitive.*/",
         "setterMethodName" : "setStackName",
         "setterModel" : {
           "variableDeclarationType" : "String",
@@ -14955,12 +16020,12 @@
         "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
-        "varargSetterDocumentation" : "/**<p>The name of the stack.</p>\n@param stackName The name of the stack.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "varargSetterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@param stackName The name of the stack. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "variable" : {
           "variableDeclarationType" : "String",
           "variableName" : "stackName",
           "variableType" : "String",
-          "documentation" : "<p>The name of the stack.</p>",
+          "documentation" : "<p>The name of the stack. This value is case-sensitive.</p>",
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
@@ -14969,11 +16034,11 @@
         "c2jName" : "FleetName",
         "c2jShape" : "String",
         "deprecated" : false,
-        "documentation" : "<p>The name of the fleet.</p>",
+        "documentation" : "<p>The name of the fleet. This value is case-sensitive.</p>",
         "enumType" : null,
-        "fluentSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@param fleetName The name of the fleet. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "fluentSetterMethodName" : "withFleetName",
-        "getterDocumentation" : "/**<p>The name of the fleet.</p>\n@return The name of the fleet.*/",
+        "getterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@return The name of the fleet. This value is case-sensitive.*/",
         "getterMethodName" : "getFleetName",
         "getterModel" : {
           "returnType" : "String",
@@ -15005,7 +16070,7 @@
         "marshallingTargetClass" : "String",
         "marshallingType" : "STRING",
         "name" : "FleetName",
-        "setterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.*/",
+        "setterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@param fleetName The name of the fleet. This value is case-sensitive.*/",
         "setterMethodName" : "setFleetName",
         "setterModel" : {
           "variableDeclarationType" : "String",
@@ -15018,12 +16083,12 @@
         "shouldEmitLegacyEnumSetter" : true,
         "simple" : true,
         "unmarshallingType" : null,
-        "varargSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "varargSetterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@param fleetName The name of the fleet. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
         "variable" : {
           "variableDeclarationType" : "String",
           "variableName" : "fleetName",
           "variableType" : "String",
-          "documentation" : "<p>The name of the fleet.</p>",
+          "documentation" : "<p>The name of the fleet. This value is case-sensitive.</p>",
           "simpleType" : "String",
           "variableSetterType" : "String"
         },
@@ -15350,11 +16415,11 @@
           "c2jName" : "FleetName",
           "c2jShape" : "String",
           "deprecated" : false,
-          "documentation" : "<p>The name of the fleet.</p>",
+          "documentation" : "<p>The name of the fleet. This value is case-sensitive.</p>",
           "enumType" : null,
-          "fluentSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@param fleetName The name of the fleet. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "fluentSetterMethodName" : "withFleetName",
-          "getterDocumentation" : "/**<p>The name of the fleet.</p>\n@return The name of the fleet.*/",
+          "getterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@return The name of the fleet. This value is case-sensitive.*/",
           "getterMethodName" : "getFleetName",
           "getterModel" : {
             "returnType" : "String",
@@ -15386,7 +16451,7 @@
           "marshallingTargetClass" : "String",
           "marshallingType" : "STRING",
           "name" : "FleetName",
-          "setterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.*/",
+          "setterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@param fleetName The name of the fleet. This value is case-sensitive.*/",
           "setterMethodName" : "setFleetName",
           "setterModel" : {
             "variableDeclarationType" : "String",
@@ -15399,12 +16464,12 @@
           "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
-          "varargSetterDocumentation" : "/**<p>The name of the fleet.</p>\n@param fleetName The name of the fleet.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "varargSetterDocumentation" : "/**<p>The name of the fleet. This value is case-sensitive.</p>\n@param fleetName The name of the fleet. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "variable" : {
             "variableDeclarationType" : "String",
             "variableName" : "fleetName",
             "variableType" : "String",
-            "documentation" : "<p>The name of the fleet.</p>",
+            "documentation" : "<p>The name of the fleet. This value is case-sensitive.</p>",
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
@@ -15542,11 +16607,11 @@
           "c2jName" : "StackName",
           "c2jShape" : "String",
           "deprecated" : false,
-          "documentation" : "<p>The name of the stack.</p>",
+          "documentation" : "<p>The name of the stack. This value is case-sensitive.</p>",
           "enumType" : null,
-          "fluentSetterDocumentation" : "/**<p>The name of the stack.</p>\n@param stackName The name of the stack.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@param stackName The name of the stack. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "fluentSetterMethodName" : "withStackName",
-          "getterDocumentation" : "/**<p>The name of the stack.</p>\n@return The name of the stack.*/",
+          "getterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@return The name of the stack. This value is case-sensitive.*/",
           "getterMethodName" : "getStackName",
           "getterModel" : {
             "returnType" : "String",
@@ -15578,7 +16643,7 @@
           "marshallingTargetClass" : "String",
           "marshallingType" : "STRING",
           "name" : "StackName",
-          "setterDocumentation" : "/**<p>The name of the stack.</p>\n@param stackName The name of the stack.*/",
+          "setterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@param stackName The name of the stack. This value is case-sensitive.*/",
           "setterMethodName" : "setStackName",
           "setterModel" : {
             "variableDeclarationType" : "String",
@@ -15591,12 +16656,12 @@
           "shouldEmitLegacyEnumSetter" : true,
           "simple" : true,
           "unmarshallingType" : null,
-          "varargSetterDocumentation" : "/**<p>The name of the stack.</p>\n@param stackName The name of the stack.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "varargSetterDocumentation" : "/**<p>The name of the stack. This value is case-sensitive.</p>\n@param stackName The name of the stack. This value is case-sensitive.\n@return Returns a reference to this object so that method calls can be chained together.*/",
           "variable" : {
             "variableDeclarationType" : "String",
             "variableName" : "stackName",
             "variableType" : "String",
-            "documentation" : "<p>The name of the stack.</p>",
+            "documentation" : "<p>The name of the stack. This value is case-sensitive.</p>",
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
@@ -25866,6 +26931,9 @@
         "name" : "FAILED",
         "value" : "FAILED"
       }, {
+        "name" : "COPYING",
+        "value" : "COPYING"
+      }, {
         "name" : "DELETING",
         "value" : "DELETING"
       } ],
@@ -26207,6 +27275,9 @@
       }, {
         "name" : "IMAGE_BUILDER_NOT_AVAILABLE",
         "value" : "IMAGE_BUILDER_NOT_AVAILABLE"
+      }, {
+        "name" : "IMAGE_COPY_FAILURE",
+        "value" : "IMAGE_COPY_FAILURE"
       } ],
       "errorCode" : null,
       "hasHeaderMember" : false,
@@ -26269,6 +27340,42 @@
         "documentation" : null,
         "simpleType" : "IncompatibleImageException",
         "variableSetterType" : "IncompatibleImageException"
+      },
+      "wrapper" : false
+    },
+    "InvalidAccountStatusException" : {
+      "c2jName" : "InvalidAccountStatusException",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "<p>The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. </p>",
+      "enums" : null,
+      "errorCode" : "InvalidAccountStatusException",
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : [ ],
+      "membersAsMap" : { },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "InvalidAccountStatusException",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : null,
+      "variable" : {
+        "variableDeclarationType" : "InvalidAccountStatusException",
+        "variableName" : "invalidAccountStatusException",
+        "variableType" : "InvalidAccountStatusException",
+        "documentation" : null,
+        "simpleType" : "InvalidAccountStatusException",
+        "variableSetterType" : "InvalidAccountStatusException"
       },
       "wrapper" : false
     },
@@ -30631,6 +31738,132 @@
         },
         "xmlNameSpaceUri" : null
       }, {
+        "c2jName" : "RedirectURL",
+        "c2jShape" : "RedirectURL",
+        "deprecated" : false,
+        "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withRedirectURL",
+        "getterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@return The URL that users are redirected to after their streaming session ends.*/",
+        "getterMethodName" : "getRedirectURL",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "RedirectURL",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "RedirectURL",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "RedirectURL",
+        "setterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.*/",
+        "setterMethodName" : "setRedirectURL",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "redirectURL",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "redirectURL",
+          "variableType" : "String",
+          "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "FeedbackURL",
+        "c2jShape" : "FeedbackURL",
+        "deprecated" : false,
+        "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withFeedbackURL",
+        "getterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@return The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+        "getterMethodName" : "getFeedbackURL",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "FeedbackURL",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "FeedbackURL",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "FeedbackURL",
+        "setterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+        "setterMethodName" : "setFeedbackURL",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "feedbackURL",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "feedbackURL",
+          "variableType" : "String",
+          "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
         "c2jName" : "StackErrors",
         "c2jShape" : "StackErrors",
         "deprecated" : false,
@@ -31029,6 +32262,70 @@
           },
           "xmlNameSpaceUri" : null
         },
+        "FeedbackURL" : {
+          "c2jName" : "FeedbackURL",
+          "c2jShape" : "FeedbackURL",
+          "deprecated" : false,
+          "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withFeedbackURL",
+          "getterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@return The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+          "getterMethodName" : "getFeedbackURL",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "FeedbackURL",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "FeedbackURL",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "FeedbackURL",
+          "setterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+          "setterMethodName" : "setFeedbackURL",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "feedbackURL",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "feedbackURL",
+            "variableType" : "String",
+            "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
         "Name" : {
           "c2jName" : "Name",
           "c2jShape" : "String",
@@ -31088,6 +32385,70 @@
             "variableName" : "name",
             "variableType" : "String",
             "documentation" : "<p>The name of the stack.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "RedirectURL" : {
+          "c2jName" : "RedirectURL",
+          "c2jShape" : "RedirectURL",
+          "deprecated" : false,
+          "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withRedirectURL",
+          "getterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@return The URL that users are redirected to after their streaming session ends.*/",
+          "getterMethodName" : "getRedirectURL",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "RedirectURL",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "RedirectURL",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "RedirectURL",
+          "setterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.*/",
+          "setterMethodName" : "setRedirectURL",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "redirectURL",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "redirectURL",
+            "variableType" : "String",
+            "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
@@ -31395,6 +32756,57 @@
         "documentation" : null,
         "simpleType" : "Stack",
         "variableSetterType" : "Stack"
+      },
+      "wrapper" : false
+    },
+    "StackAttribute" : {
+      "c2jName" : "StackAttribute",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : [ {
+        "name" : "STORAGE_CONNECTORS",
+        "value" : "STORAGE_CONNECTORS"
+      }, {
+        "name" : "REDIRECT_URL",
+        "value" : "REDIRECT_URL"
+      }, {
+        "name" : "FEEDBACK_URL",
+        "value" : "FEEDBACK_URL"
+      }, {
+        "name" : "THEME_NAME",
+        "value" : "THEME_NAME"
+      } ],
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : null,
+      "membersAsMap" : { },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "StackAttribute",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : {
+        "flattened" : false,
+        "resultWrapper" : null
+      },
+      "variable" : {
+        "variableDeclarationType" : "StackAttribute",
+        "variableName" : "stackAttribute",
+        "variableType" : "StackAttribute",
+        "documentation" : null,
+        "simpleType" : "StackAttribute",
+        "variableSetterType" : "StackAttribute"
       },
       "wrapper" : false
     },
@@ -37405,7 +38817,7 @@
       }, {
         "c2jName" : "DeleteStorageConnectors",
         "c2jShape" : "Boolean",
-        "deprecated" : false,
+        "deprecated" : true,
         "documentation" : "<p>Deletes the storage connectors currently enabled for the stack.</p>",
         "enumType" : null,
         "fluentSetterDocumentation" : "/**<p>Deletes the storage connectors currently enabled for the stack.</p>\n@param deleteStorageConnectors Deletes the storage connectors currently enabled for the stack.\n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -37465,12 +38877,421 @@
           "variableSetterType" : "Boolean"
         },
         "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "RedirectURL",
+        "c2jShape" : "RedirectURL",
+        "deprecated" : false,
+        "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withRedirectURL",
+        "getterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@return The URL that users are redirected to after their streaming session ends.*/",
+        "getterMethodName" : "getRedirectURL",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "RedirectURL",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "RedirectURL",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "RedirectURL",
+        "setterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.*/",
+        "setterMethodName" : "setRedirectURL",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "redirectURL",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "redirectURL",
+          "variableType" : "String",
+          "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "FeedbackURL",
+        "c2jShape" : "FeedbackURL",
+        "deprecated" : false,
+        "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withFeedbackURL",
+        "getterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@return The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+        "getterMethodName" : "getFeedbackURL",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "FeedbackURL",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "FeedbackURL",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "FeedbackURL",
+        "setterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+        "setterMethodName" : "setFeedbackURL",
+        "setterModel" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "feedbackURL",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "variableDeclarationType" : "String",
+          "variableName" : "feedbackURL",
+          "variableType" : "String",
+          "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "AttributesToDelete",
+        "c2jShape" : "StackAttributes",
+        "deprecated" : false,
+        "documentation" : "<p>The stack attributes to delete.</p>",
+        "enumType" : "StackAttribute",
+        "fluentSetterDocumentation" : "/**<p>The stack attributes to delete.</p>\n@param attributesToDelete The stack attributes to delete.\n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+        "fluentSetterMethodName" : "withAttributesToDelete",
+        "getterDocumentation" : "/**<p>The stack attributes to delete.</p>\n@return The stack attributes to delete.\n@see StackAttribute*/",
+        "getterMethodName" : "getAttributesToDelete",
+        "getterModel" : {
+          "returnType" : "java.util.List<String>",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "AttributesToDelete",
+          "queryString" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "AttributesToDelete",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : true,
+        "listModel" : {
+          "implType" : "java.util.ArrayList",
+          "interfaceType" : "java.util.List",
+          "listMemberModel" : {
+            "c2jName" : "member",
+            "c2jShape" : "StackAttribute",
+            "deprecated" : false,
+            "documentation" : "",
+            "enumType" : "StackAttribute",
+            "fluentSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+            "fluentSetterMethodName" : "withMember",
+            "getterDocumentation" : "/**\n@return \n@see StackAttribute*/",
+            "getterMethodName" : "getMember",
+            "getterModel" : {
+              "returnType" : "String",
+              "documentation" : null
+            },
+            "http" : {
+              "additionalMarshallingPath" : null,
+              "additionalUnmarshallingPath" : null,
+              "flattened" : false,
+              "greedy" : false,
+              "header" : false,
+              "isPayload" : false,
+              "isStreaming" : false,
+              "location" : null,
+              "marshallLocation" : "PAYLOAD",
+              "marshallLocationName" : "member",
+              "queryString" : false,
+              "statusCode" : false,
+              "unmarshallLocationName" : "member",
+              "uri" : false
+            },
+            "idempotencyToken" : false,
+            "isBinary" : false,
+            "jsonValue" : false,
+            "list" : false,
+            "listModel" : null,
+            "map" : false,
+            "mapModel" : null,
+            "marshallingTargetClass" : "String",
+            "marshallingType" : "STRING",
+            "name" : "Member",
+            "setterDocumentation" : "/**\n@param member \n@see StackAttribute*/",
+            "setterMethodName" : "setMember",
+            "setterModel" : {
+              "variableDeclarationType" : "String",
+              "variableName" : "member",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "shouldEmitLegacyEnumSetter" : false,
+            "simple" : true,
+            "unmarshallingType" : null,
+            "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+            "variable" : {
+              "variableDeclarationType" : "String",
+              "variableName" : "member",
+              "variableType" : "String",
+              "documentation" : "",
+              "simpleType" : "String",
+              "variableSetterType" : "String"
+            },
+            "xmlNameSpaceUri" : null
+          },
+          "memberLocationName" : null,
+          "memberType" : "String",
+          "map" : false,
+          "marshallNonAutoConstructedEmptyLists" : false,
+          "memberAdditionalMarshallingPath" : null,
+          "memberAdditionalUnmarshallingPath" : null,
+          "sendEmptyQueryString" : false,
+          "simple" : true,
+          "simpleType" : "String",
+          "templateImplType" : "java.util.ArrayList<String>",
+          "templateType" : "java.util.List<String>"
+        },
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "List",
+        "marshallingType" : "LIST",
+        "name" : "AttributesToDelete",
+        "setterDocumentation" : "/**<p>The stack attributes to delete.</p>\n@param attributesToDelete The stack attributes to delete.\n@see StackAttribute*/",
+        "setterMethodName" : "setAttributesToDelete",
+        "setterModel" : {
+          "variableDeclarationType" : "java.util.List<String>",
+          "variableName" : "attributesToDelete",
+          "variableType" : "java.util.List<String>",
+          "documentation" : "",
+          "simpleType" : "List<String>",
+          "variableSetterType" : "java.util.Collection<String>"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : false,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**<p>The stack attributes to delete.</p>\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setAttributesToDelete(java.util.Collection)} or {@link #withAttributesToDelete(java.util.Collection)} if you want to override the existing values.</p>\n@param attributesToDelete The stack attributes to delete.\n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+        "variable" : {
+          "variableDeclarationType" : "java.util.List<String>",
+          "variableName" : "attributesToDelete",
+          "variableType" : "java.util.List<String>",
+          "documentation" : "<p>The stack attributes to delete.</p>",
+          "simpleType" : "List<String>",
+          "variableSetterType" : "java.util.Collection<String>"
+        },
+        "xmlNameSpaceUri" : null
       } ],
       "membersAsMap" : {
+        "AttributesToDelete" : {
+          "c2jName" : "AttributesToDelete",
+          "c2jShape" : "StackAttributes",
+          "deprecated" : false,
+          "documentation" : "<p>The stack attributes to delete.</p>",
+          "enumType" : "StackAttribute",
+          "fluentSetterDocumentation" : "/**<p>The stack attributes to delete.</p>\n@param attributesToDelete The stack attributes to delete.\n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+          "fluentSetterMethodName" : "withAttributesToDelete",
+          "getterDocumentation" : "/**<p>The stack attributes to delete.</p>\n@return The stack attributes to delete.\n@see StackAttribute*/",
+          "getterMethodName" : "getAttributesToDelete",
+          "getterModel" : {
+            "returnType" : "java.util.List<String>",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "AttributesToDelete",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "AttributesToDelete",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : true,
+          "listModel" : {
+            "implType" : "java.util.ArrayList",
+            "interfaceType" : "java.util.List",
+            "listMemberModel" : {
+              "c2jName" : "member",
+              "c2jShape" : "StackAttribute",
+              "deprecated" : false,
+              "documentation" : "",
+              "enumType" : "StackAttribute",
+              "fluentSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+              "fluentSetterMethodName" : "withMember",
+              "getterDocumentation" : "/**\n@return \n@see StackAttribute*/",
+              "getterMethodName" : "getMember",
+              "getterModel" : {
+                "returnType" : "String",
+                "documentation" : null
+              },
+              "http" : {
+                "additionalMarshallingPath" : null,
+                "additionalUnmarshallingPath" : null,
+                "flattened" : false,
+                "greedy" : false,
+                "header" : false,
+                "isPayload" : false,
+                "isStreaming" : false,
+                "location" : null,
+                "marshallLocation" : "PAYLOAD",
+                "marshallLocationName" : "member",
+                "queryString" : false,
+                "statusCode" : false,
+                "unmarshallLocationName" : "member",
+                "uri" : false
+              },
+              "idempotencyToken" : false,
+              "isBinary" : false,
+              "jsonValue" : false,
+              "list" : false,
+              "listModel" : null,
+              "map" : false,
+              "mapModel" : null,
+              "marshallingTargetClass" : "String",
+              "marshallingType" : "STRING",
+              "name" : "Member",
+              "setterDocumentation" : "/**\n@param member \n@see StackAttribute*/",
+              "setterMethodName" : "setMember",
+              "setterModel" : {
+                "variableDeclarationType" : "String",
+                "variableName" : "member",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "shouldEmitLegacyEnumSetter" : false,
+              "simple" : true,
+              "unmarshallingType" : null,
+              "varargSetterDocumentation" : "/**\n@param member \n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+              "variable" : {
+                "variableDeclarationType" : "String",
+                "variableName" : "member",
+                "variableType" : "String",
+                "documentation" : "",
+                "simpleType" : "String",
+                "variableSetterType" : "String"
+              },
+              "xmlNameSpaceUri" : null
+            },
+            "memberLocationName" : null,
+            "memberType" : "String",
+            "map" : false,
+            "marshallNonAutoConstructedEmptyLists" : false,
+            "memberAdditionalMarshallingPath" : null,
+            "memberAdditionalUnmarshallingPath" : null,
+            "sendEmptyQueryString" : false,
+            "simple" : true,
+            "simpleType" : "String",
+            "templateImplType" : "java.util.ArrayList<String>",
+            "templateType" : "java.util.List<String>"
+          },
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "List",
+          "marshallingType" : "LIST",
+          "name" : "AttributesToDelete",
+          "setterDocumentation" : "/**<p>The stack attributes to delete.</p>\n@param attributesToDelete The stack attributes to delete.\n@see StackAttribute*/",
+          "setterMethodName" : "setAttributesToDelete",
+          "setterModel" : {
+            "variableDeclarationType" : "java.util.List<String>",
+            "variableName" : "attributesToDelete",
+            "variableType" : "java.util.List<String>",
+            "documentation" : "",
+            "simpleType" : "List<String>",
+            "variableSetterType" : "java.util.Collection<String>"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : false,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The stack attributes to delete.</p>\n<p><b>NOTE:</b> This method appends the values to the existing list (if any). Use {@link #setAttributesToDelete(java.util.Collection)} or {@link #withAttributesToDelete(java.util.Collection)} if you want to override the existing values.</p>\n@param attributesToDelete The stack attributes to delete.\n@return Returns a reference to this object so that method calls can be chained together.\n@see StackAttribute*/",
+          "variable" : {
+            "variableDeclarationType" : "java.util.List<String>",
+            "variableName" : "attributesToDelete",
+            "variableType" : "java.util.List<String>",
+            "documentation" : "<p>The stack attributes to delete.</p>",
+            "simpleType" : "List<String>",
+            "variableSetterType" : "java.util.Collection<String>"
+          },
+          "xmlNameSpaceUri" : null
+        },
         "DeleteStorageConnectors" : {
           "c2jName" : "DeleteStorageConnectors",
           "c2jShape" : "Boolean",
-          "deprecated" : false,
+          "deprecated" : true,
           "documentation" : "<p>Deletes the storage connectors currently enabled for the stack.</p>",
           "enumType" : null,
           "fluentSetterDocumentation" : "/**<p>Deletes the storage connectors currently enabled for the stack.</p>\n@param deleteStorageConnectors Deletes the storage connectors currently enabled for the stack.\n@return Returns a reference to this object so that method calls can be chained together.*/",
@@ -37659,6 +39480,70 @@
           },
           "xmlNameSpaceUri" : null
         },
+        "FeedbackURL" : {
+          "c2jName" : "FeedbackURL",
+          "c2jShape" : "FeedbackURL",
+          "deprecated" : false,
+          "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withFeedbackURL",
+          "getterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@return The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+          "getterMethodName" : "getFeedbackURL",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "FeedbackURL",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "FeedbackURL",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "FeedbackURL",
+          "setterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.*/",
+          "setterMethodName" : "setFeedbackURL",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "feedbackURL",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>\n@param feedbackURL The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "feedbackURL",
+            "variableType" : "String",
+            "documentation" : "<p>The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
         "Name" : {
           "c2jName" : "Name",
           "c2jShape" : "String",
@@ -37718,6 +39603,70 @@
             "variableName" : "name",
             "variableType" : "String",
             "documentation" : "<p>The name of the stack.</p>",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "RedirectURL" : {
+          "c2jName" : "RedirectURL",
+          "c2jShape" : "RedirectURL",
+          "deprecated" : false,
+          "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withRedirectURL",
+          "getterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@return The URL that users are redirected to after their streaming session ends.*/",
+          "getterMethodName" : "getRedirectURL",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "RedirectURL",
+            "queryString" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "RedirectURL",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "RedirectURL",
+          "setterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.*/",
+          "setterMethodName" : "setRedirectURL",
+          "setterModel" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "redirectURL",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**<p>The URL that users are redirected to after their streaming session ends.</p>\n@param redirectURL The URL that users are redirected to after their streaming session ends.\n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "variableDeclarationType" : "String",
+            "variableName" : "redirectURL",
+            "variableType" : "String",
+            "documentation" : "<p>The URL that users are redirected to after their streaming session ends.</p>",
             "simpleType" : "String",
             "variableSetterType" : "String"
           },
@@ -38709,7 +40658,7 @@
     "version" : "1.0"
   },
   "exceptionUnmarshallerImpl" : null,
-  "fileHeader" : "/*\n * Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights\n * Reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\").\n * You may not use this file except in compliance with the License.\n * A copy of the License is located at\n *\n *  http://aws.amazon.com/apache2.0\n *\n * or in the \"license\" file accompanying this file. This file is distributed\n * on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either\n * express or implied. See the License for the specific language governing\n * permissions and limitations under the License.\n */",
+  "fileHeader" : "/*\n * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights\n * Reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\").\n * You may not use this file except in compliance with the License.\n * A copy of the License is located at\n *\n *  http://aws.amazon.com/apache2.0\n *\n * or in the \"license\" file accompanying this file. This file is distributed\n * on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either\n * express or implied. See the License for the specific language governing\n * permissions and limitations under the License.\n */",
   "hasWaiters" : true,
   "sdkBaseResponseFqcn" : "com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata>",
   "sdkModeledExceptionBaseClassName" : "AmazonAppStreamException",

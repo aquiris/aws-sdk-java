@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,14 @@ public class DescribeInputSecurityGroupResultJsonUnmarshaller implements Unmarsh
                 if (context.testExpression("id", targetDepth)) {
                     context.nextToken();
                     describeInputSecurityGroupResult.setId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("inputs", targetDepth)) {
+                    context.nextToken();
+                    describeInputSecurityGroupResult.setInputs(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("state", targetDepth)) {
+                    context.nextToken();
+                    describeInputSecurityGroupResult.setState(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("whitelistRules", targetDepth)) {
                     context.nextToken();

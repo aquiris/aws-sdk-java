@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class ResourceMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> ACCESSKEYDETAILS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("accessKeyDetails").build();
     private static final MarshallingInfo<StructuredPojo> INSTANCEDETAILS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("instanceDetails").build();
     private static final MarshallingInfo<String> RESOURCETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -48,6 +50,7 @@ public class ResourceMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(resource.getAccessKeyDetails(), ACCESSKEYDETAILS_BINDING);
             protocolMarshaller.marshall(resource.getInstanceDetails(), INSTANCEDETAILS_BINDING);
             protocolMarshaller.marshall(resource.getResourceType(), RESOURCETYPE_BINDING);
         } catch (Exception e) {

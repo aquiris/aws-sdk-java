@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -205,6 +205,45 @@ public class AbstractAWSMediaLiveAsync extends AbstractAWSMediaLive implements A
     @Override
     public java.util.concurrent.Future<StopChannelResult> stopChannelAsync(StopChannelRequest request,
             com.amazonaws.handlers.AsyncHandler<StopChannelRequest, StopChannelResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateChannelResult> updateChannelAsync(UpdateChannelRequest request) {
+
+        return updateChannelAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateChannelResult> updateChannelAsync(UpdateChannelRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateChannelRequest, UpdateChannelResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputResult> updateInputAsync(UpdateInputRequest request) {
+
+        return updateInputAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputResult> updateInputAsync(UpdateInputRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateInputRequest, UpdateInputResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputSecurityGroupResult> updateInputSecurityGroupAsync(UpdateInputSecurityGroupRequest request) {
+
+        return updateInputSecurityGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputSecurityGroupResult> updateInputSecurityGroupAsync(UpdateInputSecurityGroupRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateInputSecurityGroupRequest, UpdateInputSecurityGroupResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

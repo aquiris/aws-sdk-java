@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,7 +51,7 @@ public class ActionTypeId implements Serializable, Cloneable, StructuredPojo {
     private String provider;
     /**
      * <p>
-     * A string that identifies the action type.
+     * A string that describes the action version.
      * </p>
      */
     private String version;
@@ -266,11 +266,11 @@ public class ActionTypeId implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A string that identifies the action type.
+     * A string that describes the action version.
      * </p>
      * 
      * @param version
-     *        A string that identifies the action type.
+     *        A string that describes the action version.
      */
 
     public void setVersion(String version) {
@@ -279,10 +279,10 @@ public class ActionTypeId implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A string that identifies the action type.
+     * A string that describes the action version.
      * </p>
      * 
-     * @return A string that identifies the action type.
+     * @return A string that describes the action version.
      */
 
     public String getVersion() {
@@ -291,11 +291,11 @@ public class ActionTypeId implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A string that identifies the action type.
+     * A string that describes the action version.
      * </p>
      * 
      * @param version
-     *        A string that identifies the action type.
+     *        A string that describes the action version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

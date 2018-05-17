@@ -158,6 +158,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                             new JsonErrorShapeMetadata().withErrorCode("InvalidDocumentVersion").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidDocumentVersionException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidOptionException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.InvalidOptionException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidDocumentOperation").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidDocumentOperationException.class))
                     .addErrorMetadata(
@@ -242,6 +245,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                             new JsonErrorShapeMetadata().withErrorCode("IdempotentParameterMismatch").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.IdempotentParameterMismatchException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInventoryRequestException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.InvalidInventoryRequestException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidResultAttributeException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidResultAttributeException.class))
                     .addErrorMetadata(
@@ -256,6 +262,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidAllowedPatternException").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidAllowedPatternException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDeleteInventoryParametersException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.InvalidDeleteInventoryParametersException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidPermissionType").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidPermissionTypeException.class))
@@ -322,6 +331,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidRole").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.InvalidRoleException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDeletionIdException").withModeledClass(
+                                    com.amazonaws.services.simplesystemsmanagement.model.InvalidDeletionIdException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("AssociatedInstances").withModeledClass(
                                     com.amazonaws.services.simplesystemsmanagement.model.AssociatedInstancesException.class))
@@ -578,6 +590,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         An error occurred on the server side.
      * @throws TooManyTagsErrorException
      *         The Targets parameter includes too many tags. Remove one or more tags and try the command again.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
      * @sample AWSSimpleSystemsManagement.AddTagsToResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/AddTagsToResource" target="_top">AWS API
      *      Documentation</a>
@@ -603,6 +617,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new AddTagsToResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addTagsToResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -673,6 +688,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new CancelCommandRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(cancelCommandRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -727,6 +743,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new CreateActivationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createActivationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -822,6 +839,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new CreateAssociationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAssociationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -917,6 +935,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new CreateAssociationBatchRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAssociationBatchRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -981,6 +1000,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new CreateDocumentRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDocumentRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1042,6 +1062,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(createMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1110,6 +1131,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new CreatePatchBaselineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createPatchBaselineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1176,6 +1198,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new CreateResourceDataSyncRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createResourceDataSyncRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1237,6 +1260,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DeleteActivationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteActivationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1314,6 +1338,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DeleteAssociationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAssociationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1375,12 +1400,74 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DeleteDocumentRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDocumentRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteDocumentResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteDocumentResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Delete a custom inventory type, or the data associated with a custom Inventory type. Deleting a custom inventory
+     * type is also referred to as deleting a custom inventory schema.
+     * </p>
+     * 
+     * @param deleteInventoryRequest
+     * @return Result of the DeleteInventory operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws InvalidTypeNameException
+     *         The parameter type name is not valid.
+     * @throws InvalidOptionException
+     *         The delete inventory option specified is not valid. Verify the option and try again.
+     * @throws InvalidDeleteInventoryParametersException
+     *         One or more of the parameters specified for the delete operation is not valid. Verify all parameters and
+     *         try again.
+     * @throws InvalidInventoryRequestException
+     *         The request is not valid.
+     * @sample AWSSimpleSystemsManagement.DeleteInventory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteInventory" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteInventoryResult deleteInventory(DeleteInventoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteInventory(request);
+    }
+
+    @SdkInternalApi
+    final DeleteInventoryResult executeDeleteInventory(DeleteInventoryRequest deleteInventoryRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteInventoryRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteInventoryRequest> request = null;
+        Response<DeleteInventoryResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteInventoryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteInventoryRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteInventoryResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteInventoryResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1426,6 +1513,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(deleteMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1479,6 +1567,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DeleteParameterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteParameterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1529,6 +1618,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DeleteParametersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteParametersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1581,6 +1671,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DeletePatchBaselineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deletePatchBaselineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1635,6 +1726,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DeleteResourceDataSyncRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteResourceDataSyncRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1704,6 +1796,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(deregisterManagedInstanceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1759,6 +1852,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(deregisterPatchBaselineForPatchGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1822,6 +1916,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(deregisterTargetFromMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1882,6 +1977,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(deregisterTaskFromMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1938,6 +2034,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DescribeActivationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeActivationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2015,6 +2112,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DescribeAssociationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeAssociationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2072,6 +2170,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeAutomationExecutionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2133,6 +2232,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeAutomationStepExecutionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2185,6 +2285,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeAvailablePatchesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2240,6 +2341,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DescribeDocumentRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeDocumentRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2297,6 +2399,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeDocumentPermissionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2368,6 +2471,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeEffectiveInstanceAssociationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2434,6 +2538,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeEffectivePatchesForPatchBaselineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2505,6 +2610,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeInstanceAssociationsStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2583,6 +2689,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeInstanceInformationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2637,6 +2744,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeInstancePatchStatesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2694,6 +2802,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeInstancePatchStatesForPatchGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2767,6 +2876,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeInstancePatchesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2774,6 +2884,63 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
             HttpResponseHandler<AmazonWebServiceResponse<DescribeInstancePatchesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DescribeInstancePatchesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Describes a specific delete inventory operation.
+     * </p>
+     * 
+     * @param describeInventoryDeletionsRequest
+     * @return Result of the DescribeInventoryDeletions operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws InvalidDeletionIdException
+     *         The ID specified for the delete operation does not exist or is not valide. Verify the ID and try again.
+     * @throws InvalidNextTokenException
+     *         The specified token is not valid.
+     * @sample AWSSimpleSystemsManagement.DescribeInventoryDeletions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInventoryDeletions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DescribeInventoryDeletionsResult describeInventoryDeletions(DescribeInventoryDeletionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeInventoryDeletions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeInventoryDeletionsResult executeDescribeInventoryDeletions(DescribeInventoryDeletionsRequest describeInventoryDeletionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeInventoryDeletionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeInventoryDeletionsRequest> request = null;
+        Response<DescribeInventoryDeletionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeInventoryDeletionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeInventoryDeletionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeInventoryDeletionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeInventoryDeletionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2830,6 +2997,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeMaintenanceWindowExecutionTaskInvocationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2890,6 +3058,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeMaintenanceWindowExecutionTasksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2944,6 +3113,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeMaintenanceWindowExecutionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3004,6 +3174,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeMaintenanceWindowTargetsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3063,6 +3234,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeMaintenanceWindowTasksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3115,6 +3287,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describeMaintenanceWindowsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3182,6 +3355,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DescribeParametersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeParametersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3232,6 +3406,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DescribePatchBaselinesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describePatchBaselinesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3286,6 +3461,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(describePatchGroupStateRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3337,6 +3513,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new DescribePatchGroupsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describePatchGroupsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3389,6 +3566,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetAutomationExecutionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAutomationExecutionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3462,6 +3640,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetCommandInvocationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCommandInvocationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3482,6 +3661,9 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * Retrieves the default patch baseline. Note that Systems Manager supports creating multiple default patch
      * baselines. For example, you can create a default patch baseline for each operating system.
+     * </p>
+     * <p>
+     * If you do not specify an operating system value, the default patch baseline for Windows is returned.
      * </p>
      * 
      * @param getDefaultPatchBaselineRequest
@@ -3514,6 +3696,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(getDefaultPatchBaselineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3571,6 +3754,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(getDeployablePatchSnapshotForInstanceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3626,6 +3810,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetDocumentRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDocumentRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3684,6 +3869,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetInventoryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getInventoryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3739,6 +3925,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetInventorySchemaRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getInventorySchemaRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3796,6 +3983,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetMaintenanceWindowRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3854,6 +4042,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(getMaintenanceWindowExecutionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3914,6 +4103,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(getMaintenanceWindowExecutionTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3976,6 +4166,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(getMaintenanceWindowExecutionTaskInvocationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4035,6 +4226,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(getMaintenanceWindowTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4092,6 +4284,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetParameterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getParameterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4148,6 +4341,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetParameterHistoryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getParameterHistoryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4200,6 +4394,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetParametersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getParametersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4275,6 +4470,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetParametersByPathRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getParametersByPathRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4334,6 +4530,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new GetPatchBaselineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPatchBaselineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4385,6 +4582,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(getPatchBaselineForPatchGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4441,6 +4639,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(listAssociationVersionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4494,6 +4693,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListAssociationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAssociationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4568,6 +4768,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListCommandInvocationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listCommandInvocationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4640,6 +4841,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListCommandsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listCommandsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4701,6 +4903,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListComplianceItemsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listComplianceItemsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4758,6 +4961,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(listComplianceSummariesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4813,6 +5017,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListDocumentVersionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDocumentVersionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4867,6 +5072,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListDocumentsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listDocumentsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4944,6 +5150,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListInventoryEntriesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listInventoryEntriesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5001,6 +5208,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(listResourceComplianceSummariesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5062,6 +5270,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListResourceDataSyncRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listResourceDataSyncRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5117,6 +5326,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5180,6 +5390,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(modifyDocumentPermissionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5328,6 +5539,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new PutComplianceItemsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putComplianceItemsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5419,6 +5631,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new PutInventoryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putInventoryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5437,7 +5650,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Add one or more parameters to the system.
+     * Add a parameter to the system.
      * </p>
      * 
      * @param putParameterRequest
@@ -5454,12 +5667,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * @throws ParameterAlreadyExistsException
      *         The parameter already exists. You can't create duplicate parameters.
      * @throws HierarchyLevelLimitExceededException
-     *         A hierarchy can have a maximum of five levels. For example:</p>
-     *         <p>
-     *         /Finance/Prod/IAD/OS/WinServ2016/license15
-     *         </p>
-     *         <p>
-     *         For more information, see <a
+     *         A hierarchy can have a maximum of 15 levels. For more information, see <a
      *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html">Working
      *         with Systems Manager Parameters</a>.
      * @throws HierarchyTypeMismatchException
@@ -5498,6 +5706,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new PutParameterRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putParameterRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5558,6 +5767,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(registerDefaultPatchBaselineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5631,6 +5841,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(registerPatchBaselineForPatchGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5702,6 +5913,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(registerTargetWithMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5776,6 +5988,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(registerTaskWithMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5807,6 +6020,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
      * @sample AWSSimpleSystemsManagement.RemoveTagsFromResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RemoveTagsFromResource" target="_top">AWS API
      *      Documentation</a>
@@ -5832,6 +6047,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new RemoveTagsFromResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(removeTagsFromResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5889,6 +6105,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new SendAutomationSignalRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(sendAutomationSignalRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5934,6 +6151,8 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      *         are: Shutting-down and Terminated.
      * @throws InvalidDocumentException
      *         The specified document does not exist.
+     * @throws InvalidDocumentVersionException
+     *         The document version is not valid or does not exist.
      * @throws InvalidOutputFolderException
      *         The S3 bucket does not exist.
      * @throws InvalidParametersException
@@ -5978,6 +6197,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new SendCommandRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(sendCommandRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6044,6 +6264,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(startAutomationExecutionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6100,6 +6321,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(stopAutomationExecutionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6179,6 +6401,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new UpdateAssociationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateAssociationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6254,6 +6477,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(updateAssociationStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6320,6 +6544,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new UpdateDocumentRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDocumentRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6377,6 +6602,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(updateDocumentDefaultVersionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6436,6 +6662,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(updateMaintenanceWindowRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6517,6 +6744,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(updateMaintenanceWindowTargetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6539,28 +6767,42 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the
      * following values:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * Task ARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
+     * TaskARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Service role ARN.
+     * ServiceRoleArn
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Task parameters.
+     * TaskInvocationParameters
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Task priority.
+     * Priority
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Task MaxConcurrency and MaxErrors.
+     * MaxConcurrency
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Log location.
+     * MaxErrors
      * </p>
+     * </li>
+     * </ul>
      * <p>
      * If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all
-     * fields required by the RegisterTaskWithMaintenanceWindow action are required for this request. Optional fields
-     * that aren't specified are set to null.
+     * fields required by the <a>RegisterTaskWithMaintenanceWindow</a> action are required for this request. Optional
+     * fields that aren't specified are set to null.
      * </p>
      * 
      * @param updateMaintenanceWindowTaskRequest
@@ -6600,6 +6842,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(updateMaintenanceWindowTaskRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6668,6 +6911,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                         .beforeMarshalling(updateManagedInstanceRoleRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6733,6 +6977,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                 request = new UpdatePatchBaselineRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updatePatchBaselineRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

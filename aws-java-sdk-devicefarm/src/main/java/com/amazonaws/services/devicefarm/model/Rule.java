@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,6 +64,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      * <li>
      * <p>
      * APPIUM_VERSION: The Appium version for the test.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_LABELS: The label of the device instance.
      * </p>
      * </li>
      * </ul>
@@ -152,6 +162,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      * APPIUM_VERSION: The Appium version for the test.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_LABELS: The label of the device instance.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param attribute
@@ -188,6 +208,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      *        <li>
      *        <p>
      *        APPIUM_VERSION: The Appium version for the test.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_LABELS: The label of the device instance.
      *        </p>
      *        </li>
      * @see DeviceAttribute
@@ -235,6 +265,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      * APPIUM_VERSION: The Appium version for the test.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_LABELS: The label of the device instance.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The rule's stringified attribute. For example, specify the value as <code>"\"abc\""</code>.</p>
@@ -270,6 +310,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      *         <li>
      *         <p>
      *         APPIUM_VERSION: The Appium version for the test.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INSTANCE_LABELS: The label of the device instance.
      *         </p>
      *         </li>
      * @see DeviceAttribute
@@ -317,6 +367,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      * APPIUM_VERSION: The Appium version for the test.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_LABELS: The label of the device instance.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param attribute
@@ -353,6 +413,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      *        <li>
      *        <p>
      *        APPIUM_VERSION: The Appium version for the test.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_LABELS: The label of the device instance.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -402,6 +472,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      * APPIUM_VERSION: The Appium version for the test.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_LABELS: The label of the device instance.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param attribute
@@ -438,6 +518,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      *        <li>
      *        <p>
      *        APPIUM_VERSION: The Appium version for the test.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_LABELS: The label of the device instance.
      *        </p>
      *        </li>
      * @see DeviceAttribute
@@ -485,6 +575,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      * APPIUM_VERSION: The Appium version for the test.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_LABELS: The label of the device instance.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param attribute
@@ -521,6 +621,16 @@ public class Rule implements Serializable, Cloneable, StructuredPojo {
      *        <li>
      *        <p>
      *        APPIUM_VERSION: The Appium version for the test.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_LABELS: The label of the device instance.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

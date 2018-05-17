@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,17 +27,17 @@ public class TerminateWorkspacesRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The WorkSpaces to terminate.
+     * The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<TerminateRequest> terminateWorkspaceRequests;
 
     /**
      * <p>
-     * The WorkSpaces to terminate.
+     * The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      * </p>
      * 
-     * @return The WorkSpaces to terminate.
+     * @return The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      */
 
     public java.util.List<TerminateRequest> getTerminateWorkspaceRequests() {
@@ -49,11 +49,11 @@ public class TerminateWorkspacesRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The WorkSpaces to terminate.
+     * The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      * </p>
      * 
      * @param terminateWorkspaceRequests
-     *        The WorkSpaces to terminate.
+     *        The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      */
 
     public void setTerminateWorkspaceRequests(java.util.Collection<TerminateRequest> terminateWorkspaceRequests) {
@@ -67,7 +67,7 @@ public class TerminateWorkspacesRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The WorkSpaces to terminate.
+     * The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -76,7 +76,7 @@ public class TerminateWorkspacesRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * 
      * @param terminateWorkspaceRequests
-     *        The WorkSpaces to terminate.
+     *        The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -92,11 +92,11 @@ public class TerminateWorkspacesRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The WorkSpaces to terminate.
+     * The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      * </p>
      * 
      * @param terminateWorkspaceRequests
-     *        The WorkSpaces to terminate.
+     *        The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

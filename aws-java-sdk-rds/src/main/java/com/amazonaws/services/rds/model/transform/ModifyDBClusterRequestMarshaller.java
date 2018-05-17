@@ -60,9 +60,10 @@ public class ModifyDBClusterRequestMarshaller implements Marshaller<Request<Modi
             request.addParameter("DBClusterParameterGroupName", StringUtils.fromString(modifyDBClusterRequest.getDBClusterParameterGroupName()));
         }
 
-        com.amazonaws.internal.SdkInternalList<String> vpcSecurityGroupIdsList = (com.amazonaws.internal.SdkInternalList<String>) modifyDBClusterRequest
-                .getVpcSecurityGroupIds();
-        if (!vpcSecurityGroupIdsList.isEmpty() || !vpcSecurityGroupIdsList.isAutoConstruct()) {
+        if (!modifyDBClusterRequest.getVpcSecurityGroupIds().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<String>) modifyDBClusterRequest.getVpcSecurityGroupIds()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<String> vpcSecurityGroupIdsList = (com.amazonaws.internal.SdkInternalList<String>) modifyDBClusterRequest
+                    .getVpcSecurityGroupIds();
             int vpcSecurityGroupIdsListIndex = 1;
 
             for (String vpcSecurityGroupIdsListValue : vpcSecurityGroupIdsList) {
@@ -96,6 +97,14 @@ public class ModifyDBClusterRequestMarshaller implements Marshaller<Request<Modi
 
         if (modifyDBClusterRequest.getEnableIAMDatabaseAuthentication() != null) {
             request.addParameter("EnableIAMDatabaseAuthentication", StringUtils.fromBoolean(modifyDBClusterRequest.getEnableIAMDatabaseAuthentication()));
+        }
+
+        if (modifyDBClusterRequest.getBacktrackWindow() != null) {
+            request.addParameter("BacktrackWindow", StringUtils.fromLong(modifyDBClusterRequest.getBacktrackWindow()));
+        }
+
+        if (modifyDBClusterRequest.getEngineVersion() != null) {
+            request.addParameter("EngineVersion", StringUtils.fromString(modifyDBClusterRequest.getEngineVersion()));
         }
 
         return request;

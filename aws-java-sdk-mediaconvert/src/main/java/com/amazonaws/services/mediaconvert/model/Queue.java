@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,7 +40,7 @@ public class Queue implements Serializable, Cloneable, StructuredPojo {
 
     private String status;
     /**
-     * A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by the
+     * A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by the
      * user.
      */
     private String type;
@@ -256,11 +256,11 @@ public class Queue implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by the
+     * A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by the
      * user.
      * 
      * @param type
-     *        A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by
+     *        A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by
      *        the user.
      * @see Type
      */
@@ -270,10 +270,10 @@ public class Queue implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by the
+     * A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by the
      * user.
      * 
-     * @return A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by
+     * @return A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by
      *         the user.
      * @see Type
      */
@@ -283,11 +283,11 @@ public class Queue implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by the
+     * A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by the
      * user.
      * 
      * @param type
-     *        A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by
+     *        A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by
      *        the user.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Type
@@ -299,11 +299,11 @@ public class Queue implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by the
+     * A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by the
      * user.
      * 
      * @param type
-     *        A queue can be of two types: system or custom. System or built-in queues can’t be modified or deleted by
+     *        A queue can be of two types: system or custom. System or built-in queues can't be modified or deleted by
      *        the user.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Type

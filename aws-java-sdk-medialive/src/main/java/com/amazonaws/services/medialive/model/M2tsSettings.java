@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -111,10 +111,7 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
      * and all audio PIDs. If set to videoPid, EBP markers will be placed on only the video PID.
      */
     private String ebpPlacement;
-    /**
-     * Packet Identifier (PID) for ECM in the transport stream. Only enabled when Simulcrypt is enabled. Can be entered
-     * as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-     */
+    /** This field is unused and deprecated. */
     private String ecmPid;
     /** Include or exclude the ES Rate field in the PES header. */
     private String esRateInPes;
@@ -1232,12 +1229,10 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Packet Identifier (PID) for ECM in the transport stream. Only enabled when Simulcrypt is enabled. Can be entered
-     * as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * This field is unused and deprecated.
      * 
      * @param ecmPid
-     *        Packet Identifier (PID) for ECM in the transport stream. Only enabled when Simulcrypt is enabled. Can be
-     *        entered as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     *        This field is unused and deprecated.
      */
 
     public void setEcmPid(String ecmPid) {
@@ -1245,11 +1240,9 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Packet Identifier (PID) for ECM in the transport stream. Only enabled when Simulcrypt is enabled. Can be entered
-     * as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * This field is unused and deprecated.
      * 
-     * @return Packet Identifier (PID) for ECM in the transport stream. Only enabled when Simulcrypt is enabled. Can be
-     *         entered as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * @return This field is unused and deprecated.
      */
 
     public String getEcmPid() {
@@ -1257,12 +1250,10 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Packet Identifier (PID) for ECM in the transport stream. Only enabled when Simulcrypt is enabled. Can be entered
-     * as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * This field is unused and deprecated.
      * 
      * @param ecmPid
-     *        Packet Identifier (PID) for ECM in the transport stream. Only enabled when Simulcrypt is enabled. Can be
-     *        entered as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     *        This field is unused and deprecated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

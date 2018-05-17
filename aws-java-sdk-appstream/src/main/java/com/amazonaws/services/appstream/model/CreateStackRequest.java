@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,6 +49,19 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      */
     private java.util.List<StorageConnector> storageConnectors;
+    /**
+     * <p>
+     * The URL that users are redirected to after their streaming session ends.
+     * </p>
+     */
+    private String redirectURL;
+    /**
+     * <p>
+     * The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send
+     * Feedback link is displayed.
+     * </p>
+     */
+    private String feedbackURL;
 
     /**
      * <p>
@@ -241,6 +254,92 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * The URL that users are redirected to after their streaming session ends.
+     * </p>
+     * 
+     * @param redirectURL
+     *        The URL that users are redirected to after their streaming session ends.
+     */
+
+    public void setRedirectURL(String redirectURL) {
+        this.redirectURL = redirectURL;
+    }
+
+    /**
+     * <p>
+     * The URL that users are redirected to after their streaming session ends.
+     * </p>
+     * 
+     * @return The URL that users are redirected to after their streaming session ends.
+     */
+
+    public String getRedirectURL() {
+        return this.redirectURL;
+    }
+
+    /**
+     * <p>
+     * The URL that users are redirected to after their streaming session ends.
+     * </p>
+     * 
+     * @param redirectURL
+     *        The URL that users are redirected to after their streaming session ends.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateStackRequest withRedirectURL(String redirectURL) {
+        setRedirectURL(redirectURL);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send
+     * Feedback link is displayed.
+     * </p>
+     * 
+     * @param feedbackURL
+     *        The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no
+     *        Send Feedback link is displayed.
+     */
+
+    public void setFeedbackURL(String feedbackURL) {
+        this.feedbackURL = feedbackURL;
+    }
+
+    /**
+     * <p>
+     * The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send
+     * Feedback link is displayed.
+     * </p>
+     * 
+     * @return The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no
+     *         Send Feedback link is displayed.
+     */
+
+    public String getFeedbackURL() {
+        return this.feedbackURL;
+    }
+
+    /**
+     * <p>
+     * The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send
+     * Feedback link is displayed.
+     * </p>
+     * 
+     * @param feedbackURL
+     *        The URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no
+     *        Send Feedback link is displayed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateStackRequest withFeedbackURL(String feedbackURL) {
+        setFeedbackURL(feedbackURL);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -258,7 +357,11 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (getDisplayName() != null)
             sb.append("DisplayName: ").append(getDisplayName()).append(",");
         if (getStorageConnectors() != null)
-            sb.append("StorageConnectors: ").append(getStorageConnectors());
+            sb.append("StorageConnectors: ").append(getStorageConnectors()).append(",");
+        if (getRedirectURL() != null)
+            sb.append("RedirectURL: ").append(getRedirectURL()).append(",");
+        if (getFeedbackURL() != null)
+            sb.append("FeedbackURL: ").append(getFeedbackURL());
         sb.append("}");
         return sb.toString();
     }
@@ -289,6 +392,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getStorageConnectors() != null && other.getStorageConnectors().equals(this.getStorageConnectors()) == false)
             return false;
+        if (other.getRedirectURL() == null ^ this.getRedirectURL() == null)
+            return false;
+        if (other.getRedirectURL() != null && other.getRedirectURL().equals(this.getRedirectURL()) == false)
+            return false;
+        if (other.getFeedbackURL() == null ^ this.getFeedbackURL() == null)
+            return false;
+        if (other.getFeedbackURL() != null && other.getFeedbackURL().equals(this.getFeedbackURL()) == false)
+            return false;
         return true;
     }
 
@@ -301,6 +412,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getDisplayName() == null) ? 0 : getDisplayName().hashCode());
         hashCode = prime * hashCode + ((getStorageConnectors() == null) ? 0 : getStorageConnectors().hashCode());
+        hashCode = prime * hashCode + ((getRedirectURL() == null) ? 0 : getRedirectURL().hashCode());
+        hashCode = prime * hashCode + ((getFeedbackURL() == null) ? 0 : getFeedbackURL().hashCode());
         return hashCode;
     }
 

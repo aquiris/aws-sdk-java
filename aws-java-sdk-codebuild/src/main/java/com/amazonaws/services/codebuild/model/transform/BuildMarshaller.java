@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -54,6 +54,8 @@ public class BuildMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("cache").build();
     private static final MarshallingInfo<StructuredPojo> ENVIRONMENT_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("environment").build();
+    private static final MarshallingInfo<String> SERVICEROLE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("serviceRole").build();
     private static final MarshallingInfo<StructuredPojo> LOGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("logs").build();
     private static final MarshallingInfo<Integer> TIMEOUTINMINUTES_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -96,6 +98,7 @@ public class BuildMarshaller {
             protocolMarshaller.marshall(build.getArtifacts(), ARTIFACTS_BINDING);
             protocolMarshaller.marshall(build.getCache(), CACHE_BINDING);
             protocolMarshaller.marshall(build.getEnvironment(), ENVIRONMENT_BINDING);
+            protocolMarshaller.marshall(build.getServiceRole(), SERVICEROLE_BINDING);
             protocolMarshaller.marshall(build.getLogs(), LOGS_BINDING);
             protocolMarshaller.marshall(build.getTimeoutInMinutes(), TIMEOUTINMINUTES_BINDING);
             protocolMarshaller.marshall(build.getBuildComplete(), BUILDCOMPLETE_BINDING);

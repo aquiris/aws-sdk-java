@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,12 +37,22 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </li>
  * <li>
  * <p>
+ * <a>DeleteFleet</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * Describe fleets:
  * </p>
  * <ul>
  * <li>
  * <p>
  * <a>DescribeFleetAttributes</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeFleetCapacity</a>
  * </p>
  * </li>
  * <li>
@@ -58,6 +68,11 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <li>
  * <p>
  * <a>DescribeRuntimeConfiguration</a>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeEC2InstanceLimits</a>
  * </p>
  * </li>
  * <li>
@@ -96,45 +111,20 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </li>
  * <li>
  * <p>
- * Manage fleet capacity:
+ * Manage fleet actions:
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>DescribeFleetCapacity</a>
+ * <a>StartFleetActions</a>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>UpdateFleetCapacity</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>PutScalingPolicy</a> (automatic scaling)
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeScalingPolicies</a> (automatic scaling)
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DeleteScalingPolicy</a> (automatic scaling)
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeEC2InstanceLimits</a>
+ * <a>StopFleetActions</a>
  * </p>
  * </li>
  * </ul>
- * </li>
- * <li>
- * <p>
- * <a>DeleteFleet</a>
- * </p>
  * </li>
  * </ul>
  * 
@@ -156,6 +146,21 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
      * </p>
      */
     private String fleetArn;
+    /**
+     * <p>
+     * Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted with a
+     * two-minute notification.
+     * </p>
+     */
+    private String fleetType;
+    /**
+     * <p>
+     * EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     * storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance
+     * Types</a> for detailed descriptions.
+     * </p>
+     */
+    private String instanceType;
     /**
      * <p>
      * Human-readable description of the fleet.
@@ -297,6 +302,12 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
      * </p>
      */
     private java.util.List<String> metricGroups;
+    /**
+     * <p>
+     * List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * </p>
+     */
+    private java.util.List<String> stoppedActions;
 
     /**
      * <p>
@@ -375,6 +386,182 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
 
     public FleetAttributes withFleetArn(String fleetArn) {
         setFleetArn(fleetArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted with a
+     * two-minute notification.
+     * </p>
+     * 
+     * @param fleetType
+     *        Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted
+     *        with a two-minute notification.
+     * @see FleetType
+     */
+
+    public void setFleetType(String fleetType) {
+        this.fleetType = fleetType;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted with a
+     * two-minute notification.
+     * </p>
+     * 
+     * @return Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted
+     *         with a two-minute notification.
+     * @see FleetType
+     */
+
+    public String getFleetType() {
+        return this.fleetType;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted with a
+     * two-minute notification.
+     * </p>
+     * 
+     * @param fleetType
+     *        Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted
+     *        with a two-minute notification.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see FleetType
+     */
+
+    public FleetAttributes withFleetType(String fleetType) {
+        setFleetType(fleetType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted with a
+     * two-minute notification.
+     * </p>
+     * 
+     * @param fleetType
+     *        Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted
+     *        with a two-minute notification.
+     * @see FleetType
+     */
+
+    public void setFleetType(FleetType fleetType) {
+        withFleetType(fleetType);
+    }
+
+    /**
+     * <p>
+     * Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted with a
+     * two-minute notification.
+     * </p>
+     * 
+     * @param fleetType
+     *        Indicates whether the fleet uses on-demand or spot instances. A spot instance in use may be interrupted
+     *        with a two-minute notification.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see FleetType
+     */
+
+    public FleetAttributes withFleetType(FleetType fleetType) {
+        this.fleetType = fleetType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     * storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance
+     * Types</a> for detailed descriptions.
+     * </p>
+     * 
+     * @param instanceType
+     *        EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     *        storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
+     *        Instance Types</a> for detailed descriptions.
+     * @see EC2InstanceType
+     */
+
+    public void setInstanceType(String instanceType) {
+        this.instanceType = instanceType;
+    }
+
+    /**
+     * <p>
+     * EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     * storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance
+     * Types</a> for detailed descriptions.
+     * </p>
+     * 
+     * @return EC2 instance type indicating the computing resources of each instance in the fleet, including CPU,
+     *         memory, storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon
+     *         EC2 Instance Types</a> for detailed descriptions.
+     * @see EC2InstanceType
+     */
+
+    public String getInstanceType() {
+        return this.instanceType;
+    }
+
+    /**
+     * <p>
+     * EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     * storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance
+     * Types</a> for detailed descriptions.
+     * </p>
+     * 
+     * @param instanceType
+     *        EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     *        storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
+     *        Instance Types</a> for detailed descriptions.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EC2InstanceType
+     */
+
+    public FleetAttributes withInstanceType(String instanceType) {
+        setInstanceType(instanceType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     * storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance
+     * Types</a> for detailed descriptions.
+     * </p>
+     * 
+     * @param instanceType
+     *        EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     *        storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
+     *        Instance Types</a> for detailed descriptions.
+     * @see EC2InstanceType
+     */
+
+    public void setInstanceType(EC2InstanceType instanceType) {
+        withInstanceType(instanceType);
+    }
+
+    /**
+     * <p>
+     * EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     * storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance
+     * Types</a> for detailed descriptions.
+     * </p>
+     * 
+     * @param instanceType
+     *        EC2 instance type indicating the computing resources of each instance in the fleet, including CPU, memory,
+     *        storage, and networking capacity. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2
+     *        Instance Types</a> for detailed descriptions.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EC2InstanceType
+     */
+
+    public FleetAttributes withInstanceType(EC2InstanceType instanceType) {
+        this.instanceType = instanceType.toString();
         return this;
     }
 
@@ -1645,6 +1832,104 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
+     * List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * </p>
+     * 
+     * @return List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * @see FleetAction
+     */
+
+    public java.util.List<String> getStoppedActions() {
+        return stoppedActions;
+    }
+
+    /**
+     * <p>
+     * List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * </p>
+     * 
+     * @param stoppedActions
+     *        List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * @see FleetAction
+     */
+
+    public void setStoppedActions(java.util.Collection<String> stoppedActions) {
+        if (stoppedActions == null) {
+            this.stoppedActions = null;
+            return;
+        }
+
+        this.stoppedActions = new java.util.ArrayList<String>(stoppedActions);
+    }
+
+    /**
+     * <p>
+     * List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setStoppedActions(java.util.Collection)} or {@link #withStoppedActions(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param stoppedActions
+     *        List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see FleetAction
+     */
+
+    public FleetAttributes withStoppedActions(String... stoppedActions) {
+        if (this.stoppedActions == null) {
+            setStoppedActions(new java.util.ArrayList<String>(stoppedActions.length));
+        }
+        for (String ele : stoppedActions) {
+            this.stoppedActions.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * </p>
+     * 
+     * @param stoppedActions
+     *        List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see FleetAction
+     */
+
+    public FleetAttributes withStoppedActions(java.util.Collection<String> stoppedActions) {
+        setStoppedActions(stoppedActions);
+        return this;
+    }
+
+    /**
+     * <p>
+     * List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * </p>
+     * 
+     * @param stoppedActions
+     *        List of fleet actions that have been suspended using <a>StopFleetActions</a>. This includes auto-scaling.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see FleetAction
+     */
+
+    public FleetAttributes withStoppedActions(FleetAction... stoppedActions) {
+        java.util.ArrayList<String> stoppedActionsCopy = new java.util.ArrayList<String>(stoppedActions.length);
+        for (FleetAction value : stoppedActions) {
+            stoppedActionsCopy.add(value.toString());
+        }
+        if (getStoppedActions() == null) {
+            setStoppedActions(stoppedActionsCopy);
+        } else {
+            getStoppedActions().addAll(stoppedActionsCopy);
+        }
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -1659,6 +1944,10 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
             sb.append("FleetId: ").append(getFleetId()).append(",");
         if (getFleetArn() != null)
             sb.append("FleetArn: ").append(getFleetArn()).append(",");
+        if (getFleetType() != null)
+            sb.append("FleetType: ").append(getFleetType()).append(",");
+        if (getInstanceType() != null)
+            sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getDescription() != null)
             sb.append("Description: ").append(getDescription()).append(",");
         if (getName() != null)
@@ -1684,7 +1973,9 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
         if (getResourceCreationLimitPolicy() != null)
             sb.append("ResourceCreationLimitPolicy: ").append(getResourceCreationLimitPolicy()).append(",");
         if (getMetricGroups() != null)
-            sb.append("MetricGroups: ").append(getMetricGroups());
+            sb.append("MetricGroups: ").append(getMetricGroups()).append(",");
+        if (getStoppedActions() != null)
+            sb.append("StoppedActions: ").append(getStoppedActions());
         sb.append("}");
         return sb.toString();
     }
@@ -1706,6 +1997,14 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
         if (other.getFleetArn() == null ^ this.getFleetArn() == null)
             return false;
         if (other.getFleetArn() != null && other.getFleetArn().equals(this.getFleetArn()) == false)
+            return false;
+        if (other.getFleetType() == null ^ this.getFleetType() == null)
+            return false;
+        if (other.getFleetType() != null && other.getFleetType().equals(this.getFleetType()) == false)
+            return false;
+        if (other.getInstanceType() == null ^ this.getInstanceType() == null)
+            return false;
+        if (other.getInstanceType() != null && other.getInstanceType().equals(this.getInstanceType()) == false)
             return false;
         if (other.getDescription() == null ^ this.getDescription() == null)
             return false;
@@ -1760,6 +2059,10 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
             return false;
         if (other.getMetricGroups() != null && other.getMetricGroups().equals(this.getMetricGroups()) == false)
             return false;
+        if (other.getStoppedActions() == null ^ this.getStoppedActions() == null)
+            return false;
+        if (other.getStoppedActions() != null && other.getStoppedActions().equals(this.getStoppedActions()) == false)
+            return false;
         return true;
     }
 
@@ -1770,6 +2073,8 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
 
         hashCode = prime * hashCode + ((getFleetId() == null) ? 0 : getFleetId().hashCode());
         hashCode = prime * hashCode + ((getFleetArn() == null) ? 0 : getFleetArn().hashCode());
+        hashCode = prime * hashCode + ((getFleetType() == null) ? 0 : getFleetType().hashCode());
+        hashCode = prime * hashCode + ((getInstanceType() == null) ? 0 : getInstanceType().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
@@ -1783,6 +2088,7 @@ public class FleetAttributes implements Serializable, Cloneable, StructuredPojo 
         hashCode = prime * hashCode + ((getOperatingSystem() == null) ? 0 : getOperatingSystem().hashCode());
         hashCode = prime * hashCode + ((getResourceCreationLimitPolicy() == null) ? 0 : getResourceCreationLimitPolicy().hashCode());
         hashCode = prime * hashCode + ((getMetricGroups() == null) ? 0 : getMetricGroups().hashCode());
+        hashCode = prime * hashCode + ((getStoppedActions() == null) ? 0 : getStoppedActions().hashCode());
         return hashCode;
     }
 

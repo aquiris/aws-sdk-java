@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -153,9 +153,9 @@ import com.amazonaws.services.organizations.model.*;
  * files to an Amazon S3 bucket. By using information collected by AWS CloudTrail, you can determine which requests were
  * successfully made to Organizations, who made the request, when it was made, and so on. For more about AWS
  * Organizations and its support for AWS CloudTrail, see <a
- * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html">Logging AWS
- * Organizations Events with AWS CloudTrail</a> in the <i>AWS Organizations User Guide</i>. To learn more about
- * CloudTrail, including how to turn it on and find your log files, see the <a
+ * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration"
+ * >Logging AWS Organizations Events with AWS CloudTrail</a> in the <i>AWS Organizations User Guide</i>. To learn more
+ * about CloudTrail, including how to turn it on and find your log files, see the <a
  * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html">AWS CloudTrail
  * User Guide</a>.
  * </p>
@@ -287,10 +287,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get this exception immediately after creating the organization, wait one hour and try again. If
+     *         after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -355,18 +354,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -382,6 +375,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -402,37 +438,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -458,8 +463,8 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Attaches a policy to a root, an organizational unit, or an individual account. How the policy affects accounts
-     * depends on the type of policy:
+     * Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy affects
+     * accounts depends on the type of policy:
      * </p>
      * <ul>
      * <li>
@@ -529,11 +534,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -550,10 +553,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -571,6 +573,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -663,18 +672,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -690,6 +693,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -710,37 +756,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -811,18 +826,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -838,6 +847,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -858,37 +910,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -938,6 +959,8 @@ public interface AWSOrganizations {
      * Account in Your Organization</a> in the <i>AWS Organizations User Guide</i>.
      * </p>
      * <important>
+     * <ul>
+     * <li>
      * <p>
      * When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the
      * information required for the account to operate as a standalone account, such as a payment method and signing the
@@ -947,6 +970,23 @@ public interface AWSOrganizations {
      * > To leave an organization when all required account information has not yet been provided</a> in the <i>AWS
      * Organizations User Guide</i>.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you get an exception that indicates that you exceeded your account limits for the organization or that the
+     * operation failed because your organization is still initializing, wait one hour and then try again. If the error
+     * persists after an hour, then contact <a href="https://console.aws.amazon.com/support/home#/">AWS Customer
+     * Support</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Because <code>CreateAccount</code> operates asynchronously, it can return a successful completion message even
+     * though account initialization might still be in progress. You might need to wait a few minutes before you can
+     * successfully access the account.
+     * </p>
+     * </li>
+     * </ul>
      * </important> <note>
      * <p>
      * When you create a member account with this operation, you can choose whether to create the account with the
@@ -957,16 +997,6 @@ public interface AWSOrganizations {
      * Billing Information and Tools</a>.
      * </p>
      * </note>
-     * <p>
-     * This operation can be called only from the organization's master account.
-     * </p>
-     * <important>
-     * <p>
-     * If you get an exception that indicates that you exceeded your account limits for the organization or that you
-     * can"t add an account because your organization is still initializing, please contact <a href="
-     * https://console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
-     * </p>
-     * </important>
      * 
      * @param createAccountRequest
      * @return Result of the CreateAccount operation returned by the service.
@@ -986,11 +1016,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -1007,10 +1035,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -1028,6 +1055,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1118,18 +1152,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -1145,6 +1173,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1169,43 +1240,13 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
      * @throws FinalizingOrganizationException
-     *         AWS Organizations could not finalize the creation of your organization. Try again later. If this
-     *         persists, contact AWS customer support.
+     *         AWS Organizations could not perform the operation because your organization has not finished
+     *         initializing. This can take up to an hour. Try again later. If after one hour you continue to receive
+     *         this error, contact <a href="https://console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
      * @throws ServiceException
      *         AWS Organizations can't complete your request because of an internal service error. Try again later.
      * @throws TooManyRequestsException
@@ -1254,11 +1295,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -1275,10 +1314,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -1296,6 +1334,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1386,18 +1431,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -1413,6 +1452,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1433,37 +1515,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1519,11 +1570,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -1540,10 +1589,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -1561,6 +1609,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1653,18 +1708,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -1680,6 +1729,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1700,37 +1792,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1783,11 +1844,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -1804,10 +1863,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -1825,6 +1883,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1917,18 +1982,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -1944,6 +2003,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -1964,37 +2066,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2067,18 +2138,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -2094,6 +2159,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2118,37 +2226,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -2166,7 +2243,7 @@ public interface AWSOrganizations {
     /**
      * <p>
      * Deletes the organization. You can delete an organization only by using credentials from the master account. The
-     * organization must be empty of member accounts, OUs, and policies.
+     * organization must be empty of member accounts, organizational units (OUs), and policies.
      * </p>
      * 
      * @param deleteOrganizationRequest
@@ -2192,18 +2269,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -2219,6 +2290,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2243,37 +2357,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -2293,8 +2376,8 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Deletes an organizational unit from a root or another OU. You must first remove all accounts and child OUs from
-     * the OU that you want to delete.
+     * Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts and child OUs
+     * from the OU that you want to delete.
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -2323,18 +2406,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -2350,6 +2427,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2370,37 +2490,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2427,7 +2516,7 @@ public interface AWSOrganizations {
     /**
      * <p>
      * Deletes the specified policy from your organization. Before you perform this operation, you must first detach the
-     * policy from all OUs, roots, and accounts.
+     * policy from all organizational units (OUs), roots, and accounts.
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -2456,18 +2545,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -2483,6 +2566,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2503,37 +2629,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2589,18 +2684,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -2616,6 +2705,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2636,37 +2768,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2716,18 +2817,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -2743,6 +2838,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2763,37 +2901,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2847,18 +2954,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -2874,6 +2975,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2894,37 +3038,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -2950,6 +3063,12 @@ public interface AWSOrganizations {
      * <p>
      * This operation can be called from any account in the organization.
      * </p>
+     * <note>
+     * <p>
+     * Even if a policy type is shown as available in the organization, it can be disabled separately at the root level
+     * with <a>DisablePolicyType</a>. Use <a>ListRoots</a> to see the status of policy types for a specified root.
+     * </p>
+     * </note>
      * 
      * @param describeOrganizationRequest
      * @return Result of the DescribeOrganization operation returned by the service.
@@ -3003,18 +3122,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -3030,6 +3143,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3050,37 +3206,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3130,18 +3255,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -3157,6 +3276,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3181,37 +3343,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -3230,8 +3361,9 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Detaches a policy from a target root, organizational unit, or account. If the policy being detached is a service
-     * control policy (SCP), the changes to permissions for IAM users and roles in affected accounts are immediate.
+     * Detaches a policy from a target root, organizational unit (OU), or account. If the policy being detached is a
+     * service control policy (SCP), the changes to permissions for IAM users and roles in affected accounts are
+     * immediate.
      * </p>
      * <p>
      * <b>Note:</b> Every root, OU, and account must have at least one SCP attached. If you want to replace the default
@@ -3268,11 +3400,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -3289,10 +3419,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -3310,6 +3439,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3400,18 +3536,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -3427,6 +3557,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3447,37 +3620,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3554,11 +3696,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -3575,10 +3715,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -3596,6 +3735,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3686,18 +3832,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -3713,6 +3853,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3733,37 +3916,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3786,12 +3938,19 @@ public interface AWSOrganizations {
      * <p>
      * Disables an organizational control policy type in a root. A policy of a certain type can be attached to entities
      * in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach
-     * policies of the specified type to that root or to any OU or account in that root. You can undo this by using the
-     * <a>EnablePolicyType</a> operation.
+     * policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can
+     * undo this by using the <a>EnablePolicyType</a> operation.
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
+     * <note>
+     * <p>
+     * If you disable a policy type for a root, it still shows as enabled for the organization if all features are
+     * enabled in that organization. Use <a>ListRoots</a> to see the status of policy types for a specified root. Use
+     * <a>DescribeOrganization</a> to see the status of policy types in the organization.
+     * </p>
+     * </note>
      * 
      * @param disablePolicyTypeRequest
      * @return Result of the DisablePolicyType operation returned by the service.
@@ -3811,11 +3970,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -3832,10 +3989,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -3853,6 +4009,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3943,18 +4106,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -3970,6 +4127,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -3990,37 +4190,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4094,11 +4263,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -4115,10 +4282,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -4136,6 +4302,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4226,18 +4399,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -4253,6 +4420,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4273,37 +4483,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4334,12 +4513,16 @@ public interface AWSOrganizations {
      * <important>
      * <p>
      * This operation is required only for organizations that were created explicitly with only the consolidated billing
-     * features enabled, or that were migrated from a Consolidated Billing account family to Organizations. Calling this
-     * operation sends a handshake to every invited account in the organization. The feature set change can be finalized
-     * and the additional features enabled only after all administrators in the invited accounts approve the change by
-     * accepting the handshake.
+     * features enabled. Calling this operation sends a handshake to every invited account in the organization. The
+     * feature set change can be finalized and the additional features enabled only after all administrators in the
+     * invited accounts approve the change by accepting the handshake.
      * </p>
      * </important>
+     * <p>
+     * After you enable all features, you can separately enable or disable individual policy types in a root using
+     * <a>EnablePolicyType</a> and <a>DisablePolicyType</a>. To see the status of policy types in a root, use
+     * <a>ListRoots</a>.
+     * </p>
      * <p>
      * After all invited member accounts accept the handshake, you finalize the feature set change by accepting the
      * handshake that contains <code>"Action": "ENABLE_ALL_FEATURES"</code>. This completes the change.
@@ -4380,10 +4563,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get this exception immediately after creating the organization, wait one hour and try again. If
+     *         after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -4440,18 +4622,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -4467,6 +4643,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4491,37 +4710,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -4539,10 +4727,18 @@ public interface AWSOrganizations {
     /**
      * <p>
      * Enables a policy type in a root. After you enable a policy type in a root, you can attach policies of that type
-     * to the root, any OU, or account in that root. You can undo this by using the <a>DisablePolicyType</a> operation.
+     * to the root, any organizational unit (OU), or account in that root. You can undo this by using the
+     * <a>DisablePolicyType</a> operation.
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
+     * </p>
+     * <p>
+     * You can enable a policy type in a root only if that policy type is available in the organization. Use
+     * <a>DescribeOrganization</a> to view the status of available policy types in the organization.
+     * </p>
+     * <p>
+     * To view the status of policy type in a root, use <a>ListRoots</a>.
      * </p>
      * 
      * @param enablePolicyTypeRequest
@@ -4563,11 +4759,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -4584,10 +4778,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -4605,6 +4798,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4695,18 +4895,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -4722,6 +4916,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4742,37 +4979,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4808,6 +5014,8 @@ public interface AWSOrganizations {
      * implemented as a <a>Handshake</a> whose details are in the response.
      * </p>
      * <important>
+     * <ul>
+     * <li>
      * <p>
      * You can invite AWS accounts only from the same seller as the master account. For example, if your organization's
      * master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India, then you can
@@ -4816,17 +5024,20 @@ public interface AWSOrganizations {
      * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html"
      * >Consolidated Billing in India</a>.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If you receive an exception that indicates that you exceeded your account limits for the organization or that the
+     * operation failed because your organization is still initializing, wait one hour and then try again. If the error
+     * persists after an hour, then contact <a href="https://console.aws.amazon.com/support/home#/">AWS Customer
+     * Support</a>.
+     * </p>
+     * </li>
+     * </ul>
      * </important>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
-     * <important>
-     * <p>
-     * If you get an exception that indicates that you exceeded your account limits for the organization or that you
-     * can"t add an account because your organization is still initializing, please contact <a href="
-     * https://console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
-     * </p>
-     * </important>
      * 
      * @param inviteAccountToOrganizationRequest
      * @return Result of the InviteAccountToOrganization operation returned by the service.
@@ -4854,10 +5065,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get this exception immediately after creating the organization, wait one hour and try again. If
+     *         after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -4919,18 +5129,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -4946,6 +5150,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -4970,43 +5217,13 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
      * @throws FinalizingOrganizationException
-     *         AWS Organizations could not finalize the creation of your organization. Try again later. If this
-     *         persists, contact AWS customer support.
+     *         AWS Organizations could not perform the operation because your organization has not finished
+     *         initializing. This can take up to an hour. Try again later. If after one hour you continue to receive
+     *         this error, contact <a href="https://console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
      * @throws ServiceException
      *         AWS Organizations can't complete your request because of an internal service error. Try again later.
      * @throws TooManyRequestsException
@@ -5083,11 +5300,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -5104,10 +5319,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -5125,6 +5339,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5215,18 +5436,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -5242,6 +5457,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5262,37 +5520,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5346,11 +5573,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -5367,10 +5592,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -5388,6 +5612,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5478,18 +5709,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -5505,6 +5730,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5529,37 +5797,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -5578,9 +5815,17 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Lists all the accounts in the organization. To request only the accounts in a root or OU, use the
-     * <a>ListAccountsForParent</a> operation instead.
+     * Lists all the accounts in the organization. To request only the accounts in a specified root or organizational
+     * unit (OU), use the <a>ListAccountsForParent</a> operation instead.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -5606,18 +5851,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -5633,6 +5872,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5653,37 +5935,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5709,6 +5960,14 @@ public interface AWSOrganizations {
      * you get a list of all the accounts in only that OU, and not in any child OUs. To get a list of all accounts in
      * the organization, use the <a>ListAccounts</a> operation.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -5734,18 +5993,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -5761,6 +6014,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5785,37 +6081,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -5834,9 +6099,17 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Lists all of the OUs or accounts that are contained in the specified parent OU or root. This operation, along
-     * with <a>ListParents</a> enables you to traverse the tree structure that makes up this root.
+     * Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root.
+     * This operation, along with <a>ListParents</a> enables you to traverse the tree structure that makes up this root.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -5862,18 +6135,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -5889,6 +6156,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5909,37 +6219,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -5965,6 +6244,14 @@ public interface AWSOrganizations {
      * Lists the account creation requests that match the specified status that is currently being tracked for the
      * organization.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -5990,18 +6277,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6017,6 +6298,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6037,37 +6361,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6094,6 +6387,14 @@ public interface AWSOrganizations {
      * Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the results of this API for only 30 days after
      * changing to that state. After that they are deleted and no longer accessible.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called from any account in the organization.
      * </p>
@@ -6118,18 +6419,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6145,6 +6440,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6165,37 +6503,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6224,6 +6531,14 @@ public interface AWSOrganizations {
      * Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the results of this API for only 30 days after
      * changing to that state. After that they are deleted and no longer accessible.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -6251,18 +6566,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6278,6 +6587,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6302,37 +6654,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -6351,6 +6672,14 @@ public interface AWSOrganizations {
      * <p>
      * Lists the organizational units (OUs) in a parent organizational unit or root.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -6376,18 +6705,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6403,6 +6726,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6423,37 +6789,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6480,6 +6815,14 @@ public interface AWSOrganizations {
      * account. This operation, along with <a>ListChildren</a> enables you to traverse the tree structure that makes up
      * this root.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -6512,18 +6855,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6539,6 +6876,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6563,37 +6943,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -6612,6 +6961,14 @@ public interface AWSOrganizations {
      * <p>
      * Retrieves the list of all policies in an organization of a specified type.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -6637,18 +6994,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6664,6 +7015,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6688,37 +7082,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -6738,6 +7101,14 @@ public interface AWSOrganizations {
      * Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account.
      * You must specify the policy type that you want included in the returned list.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -6763,18 +7134,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6790,6 +7155,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6810,37 +7218,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6865,9 +7242,25 @@ public interface AWSOrganizations {
      * <p>
      * Lists the roots that are defined in the current organization.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
+     * <note>
+     * <p>
+     * Policy types can be enabled and disabled in roots. This is distinct from whether they are available in the
+     * organization. When you enable all features, you make policy types available for use in that organization.
+     * Individual policy types can then be enabled and disabled in a root. To see the availability of a policy type in
+     * an organization, use <a>DescribeOrganization</a>.
+     * </p>
+     * </note>
      * 
      * @param listRootsRequest
      * @return Result of the ListRoots operation returned by the service.
@@ -6890,18 +7283,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -6917,6 +7304,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -6941,37 +7371,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -6988,8 +7387,16 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Lists all the roots, OUs, and accounts to which the specified policy is attached.
+     * Lists all the roots, organizaitonal units (OUs), and accounts to which the specified policy is attached.
      * </p>
+     * <note>
+     * <p>
+     * Always check the <code>NextToken</code> response parameter for a <code>null</code> value when calling a
+     * <code>List*</code> operation. These operations can occasionally return an empty set of results even when there
+     * are more results available. The <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
+     * when there are no more results to display.
+     * </p>
+     * </note>
      * <p>
      * This operation can be called only from the organization's master account.
      * </p>
@@ -7015,18 +7422,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -7042,6 +7443,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7066,37 +7510,6 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
      *         </p>
      *         </li>
@@ -7115,7 +7528,8 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Moves an account from its current source parent root or OU to the specified destination parent root or OU.
+     * Moves an account from its current source parent root or organizational unit (OU) to the specified destination
+     * parent root or OU.
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -7139,18 +7553,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -7166,6 +7574,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7186,37 +7637,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7263,8 +7683,6 @@ public interface AWSOrganizations {
      * with <a>LeaveOrganization</a> instead.
      * </p>
      * <important>
-     * <ul>
-     * <li>
      * <p>
      * You can remove an account from your organization only if the account is configured with the information required
      * to operate as a standalone account. When you create an account in an organization using the AWS Organizations
@@ -7278,17 +7696,6 @@ public interface AWSOrganizations {
      * > To leave an organization when all required account information has not yet been provided</a> in the <i>AWS
      * Organizations User Guide</i>.
      * </p>
-     * </li>
-     * <li>
-     * <p>
-     * You can remove a member account only after you enable IAM user access to billing in the member account. For more
-     * information, see <a href=
-     * "http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate"
-     * >Activating Access to the Billing and Cost Management Console</a> in the <i>AWS Billing and Cost Management User
-     * Guide</i>.
-     * </p>
-     * </li>
-     * </ul>
      * </important>
      * 
      * @param removeAccountFromOrganizationRequest
@@ -7312,11 +7719,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -7333,10 +7738,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -7354,6 +7758,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7444,18 +7855,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -7471,6 +7876,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7491,37 +7939,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7577,18 +7994,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -7604,6 +8015,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7624,37 +8078,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7702,11 +8125,9 @@ public interface AWSOrganizations {
      *         too many policies to an account, OU, or root. This exception includes a reason that contains additional
      *         information about the violated limit:</p>
      *         <p/>
-     *         <note>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
-     *         </note>
      *         <ul>
      *         <li>
      *         <p>
@@ -7723,10 +8144,9 @@ public interface AWSOrganizations {
      *         </p>
      *         <important>
      *         <p>
-     *         If you get an exception that indicates that you exceeded your account limits for the organization or that
-     *         you
-     *         can"t add an account because your organization is still initializing, please contact <a href="https://
-     *         console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Customer Support</a>.
      *         </p>
      *         </important></li>
      *         <li>
@@ -7744,6 +8164,13 @@ public interface AWSOrganizations {
      *         <p>
      *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels
      *         deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports consolidated billing
+     *         features only cannot perform this operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7836,18 +8263,12 @@ public interface AWSOrganizations {
      *         <ul>
      *         <li>
      *         <p>
-     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
-     *         party.
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
      *         </p>
      *         </li>
      *         <li>
@@ -7863,6 +8284,49 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
+     *         of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved
+     *         prefix 'AWSServiceRoleFor'.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>
@@ -7883,37 +8347,6 @@ public interface AWSOrganizations {
      *         <li>
      *         <p>
      *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INPUT_REQUIRED: You must include a value for all required parameters.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call
-     *         of the operation.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
      *         </p>
      *         </li>
      *         <li>

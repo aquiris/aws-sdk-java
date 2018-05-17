@@ -30,6 +30,11 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
      * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
+     * <p>
+     * For information about parameter name requirements and restrictions, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about"
+     * >About Creating Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
@@ -42,6 +47,11 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * Information about the parameter that you want to add to the system.
      * </p>
+     * <important>
+     * <p>
+     * Do not enter personally identifiable information in this field.
+     * </p>
+     * </important>
      */
     private String description;
     /**
@@ -82,6 +92,11 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
      * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
+     * <p>
+     * For information about parameter name requirements and restrictions, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about"
+     * >About Creating Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
@@ -92,7 +107,13 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * @param name
      *        The fully qualified name of the parameter that you want to add to the system. The fully qualified name
      *        includes the complete hierarchy of the parameter path and name. For example:
-     *        <code>/Dev/DBServer/MySQL/db-string13</code> </p> <note>
+     *        <code>/Dev/DBServer/MySQL/db-string13</code> </p>
+     *        <p>
+     *        For information about parameter name requirements and restrictions, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about"
+     *        >About Creating Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
+     *        </p>
+     *        <note>
      *        <p>
      *        The maximum length constraint listed below includes capacity for additional system attributes that are not
      *        part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
@@ -108,6 +129,11 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
      * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
+     * <p>
+     * For information about parameter name requirements and restrictions, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about"
+     * >About Creating Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
@@ -117,7 +143,13 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * 
      * @return The fully qualified name of the parameter that you want to add to the system. The fully qualified name
      *         includes the complete hierarchy of the parameter path and name. For example:
-     *         <code>/Dev/DBServer/MySQL/db-string13</code> </p> <note>
+     *         <code>/Dev/DBServer/MySQL/db-string13</code> </p>
+     *         <p>
+     *         For information about parameter name requirements and restrictions, see <a href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about"
+     *         >About Creating Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
+     *         </p>
+     *         <note>
      *         <p>
      *         The maximum length constraint listed below includes capacity for additional system attributes that are
      *         not part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
@@ -133,6 +165,11 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
      * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
+     * <p>
+     * For information about parameter name requirements and restrictions, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about"
+     * >About Creating Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
@@ -143,7 +180,13 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * @param name
      *        The fully qualified name of the parameter that you want to add to the system. The fully qualified name
      *        includes the complete hierarchy of the parameter path and name. For example:
-     *        <code>/Dev/DBServer/MySQL/db-string13</code> </p> <note>
+     *        <code>/Dev/DBServer/MySQL/db-string13</code> </p>
+     *        <p>
+     *        For information about parameter name requirements and restrictions, see <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about"
+     *        >About Creating Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
+     *        </p>
+     *        <note>
      *        <p>
      *        The maximum length constraint listed below includes capacity for additional system attributes that are not
      *        part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
@@ -160,9 +203,17 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * Information about the parameter that you want to add to the system.
      * </p>
+     * <important>
+     * <p>
+     * Do not enter personally identifiable information in this field.
+     * </p>
+     * </important>
      * 
      * @param description
-     *        Information about the parameter that you want to add to the system.
+     *        Information about the parameter that you want to add to the system.</p> <important>
+     *        <p>
+     *        Do not enter personally identifiable information in this field.
+     *        </p>
      */
 
     public void setDescription(String description) {
@@ -173,8 +224,16 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * Information about the parameter that you want to add to the system.
      * </p>
+     * <important>
+     * <p>
+     * Do not enter personally identifiable information in this field.
+     * </p>
+     * </important>
      * 
-     * @return Information about the parameter that you want to add to the system.
+     * @return Information about the parameter that you want to add to the system.</p> <important>
+     *         <p>
+     *         Do not enter personally identifiable information in this field.
+     *         </p>
      */
 
     public String getDescription() {
@@ -185,9 +244,17 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * Information about the parameter that you want to add to the system.
      * </p>
+     * <important>
+     * <p>
+     * Do not enter personally identifiable information in this field.
+     * </p>
+     * </important>
      * 
      * @param description
-     *        Information about the parameter that you want to add to the system.
+     *        Information about the parameter that you want to add to the system.</p> <important>
+     *        <p>
+     *        Do not enter personally identifiable information in this field.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

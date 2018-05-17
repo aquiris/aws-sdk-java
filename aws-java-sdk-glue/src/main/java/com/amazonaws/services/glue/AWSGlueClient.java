@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -206,6 +206,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new BatchCreatePartitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchCreatePartitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -258,6 +259,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new BatchDeleteConnectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchDeleteConnectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -315,6 +317,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new BatchDeletePartitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchDeletePartitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -371,12 +374,72 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new BatchDeleteTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchDeleteTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<BatchDeleteTableResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new BatchDeleteTableResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a specified batch of versions of a table.
+     * </p>
+     * 
+     * @param batchDeleteTableVersionRequest
+     * @return Result of the BatchDeleteTableVersion operation returned by the service.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.BatchDeleteTableVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchDeleteTableVersion" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public BatchDeleteTableVersionResult batchDeleteTableVersion(BatchDeleteTableVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeBatchDeleteTableVersion(request);
+    }
+
+    @SdkInternalApi
+    final BatchDeleteTableVersionResult executeBatchDeleteTableVersion(BatchDeleteTableVersionRequest batchDeleteTableVersionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(batchDeleteTableVersionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<BatchDeleteTableVersionRequest> request = null;
+        Response<BatchDeleteTableVersionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new BatchDeleteTableVersionRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(batchDeleteTableVersionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<BatchDeleteTableVersionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new BatchDeleteTableVersionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -427,6 +490,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new BatchGetPartitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchGetPartitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -445,7 +509,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Stops a batch of job runs for a given job.
+     * Stops one or more job runs for a specified job definition.
      * </p>
      * 
      * @param batchStopJobRunRequest
@@ -481,6 +545,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new BatchStopJobRunRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchStopJobRunRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -499,8 +564,9 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Creates a classifier in the user's account. This may be either a <code>GrokClassifier</code> or an
-     * <code>XMLClassifier</code>.
+     * Creates a classifier in the user's account. This may be a <code>GrokClassifier</code>, an
+     * <code>XMLClassifier</code>, or abbrev <code>JsonClassifier</code>, depending on which field of the request is
+     * present.
      * </p>
      * 
      * @param createClassifierRequest
@@ -536,6 +602,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateClassifierRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createClassifierRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -565,6 +632,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         The input provided was not valid.
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ResourceNumberLimitExceededException
+     *         A resource numerical limit was exceeded.
      * @sample AWSGlue.CreateConnection
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateConnection" target="_top">AWS API
      *      Documentation</a>
@@ -590,6 +659,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateConnectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createConnectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -647,6 +717,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateCrawlerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createCrawlerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -705,6 +776,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateDatabaseRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDatabaseRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -769,6 +841,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateDevEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDevEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -787,7 +860,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Creates a new job.
+     * Creates a new job definition.
      * </p>
      * 
      * @param createJobRequest
@@ -804,6 +877,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         The operation timed out.
      * @throws ResourceNumberLimitExceededException
      *         A resource numerical limit was exceeded.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.CreateJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateJob" target="_top">AWS API
      *      Documentation</a>
@@ -829,6 +904,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -889,6 +965,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreatePartitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createPartitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -907,7 +984,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Transforms a directed acyclic graph (DAG) into a Python script.
+     * Transforms a directed acyclic graph (DAG) into code.
      * </p>
      * 
      * @param createScriptRequest
@@ -943,6 +1020,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateScriptRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createScriptRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1003,6 +1081,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1030,12 +1109,16 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         A resource to be created or added already exists.
      * @throws InvalidInputException
      *         The input provided was not valid.
+     * @throws IdempotentParameterMismatchException
+     *         The same unique identifier was associated with two different records.
      * @throws InternalServiceException
      *         An internal service error occurred.
      * @throws OperationTimeoutException
      *         The operation timed out.
      * @throws ResourceNumberLimitExceededException
      *         A resource numerical limit was exceeded.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.CreateTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateTrigger" target="_top">AWS API
      *      Documentation</a>
@@ -1061,6 +1144,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new CreateTriggerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTriggerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1094,6 +1178,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         A specified entity does not exist
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ResourceNumberLimitExceededException
+     *         A resource numerical limit was exceeded.
      * @sample AWSGlue.CreateUserDefinedFunction
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateUserDefinedFunction" target="_top">AWS
      *      API Documentation</a>
@@ -1120,6 +1206,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                         .beforeMarshalling(createUserDefinedFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1173,6 +1260,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteClassifierRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteClassifierRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1225,6 +1313,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteConnectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteConnectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1281,6 +1370,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteCrawlerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteCrawlerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1337,6 +1427,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteDatabaseRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDatabaseRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1393,6 +1484,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteDevEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDevEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1411,7 +1503,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Deletes a specified job.
+     * Deletes a specified job definition. If the job definition is not found, no exception is thrown.
      * </p>
      * 
      * @param deleteJobRequest
@@ -1447,6 +1539,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1503,6 +1596,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeletePartitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deletePartitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1559,6 +1653,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1577,7 +1672,64 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Deletes a specified trigger.
+     * Deletes a specified version of a table.
+     * </p>
+     * 
+     * @param deleteTableVersionRequest
+     * @return Result of the DeleteTableVersion operation returned by the service.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.DeleteTableVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteTableVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteTableVersionResult deleteTableVersion(DeleteTableVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteTableVersion(request);
+    }
+
+    @SdkInternalApi
+    final DeleteTableVersionResult executeDeleteTableVersion(DeleteTableVersionRequest deleteTableVersionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteTableVersionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteTableVersionRequest> request = null;
+        Response<DeleteTableVersionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteTableVersionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTableVersionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteTableVersionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteTableVersionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a specified trigger. If the trigger is not found, no exception is thrown.
      * </p>
      * 
      * @param deleteTriggerRequest
@@ -1588,6 +1740,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         An internal service error occurred.
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.DeleteTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteTrigger" target="_top">AWS API
      *      Documentation</a>
@@ -1613,6 +1767,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new DeleteTriggerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTriggerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1670,6 +1825,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                         .beforeMarshalling(deleteUserDefinedFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1723,6 +1879,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetCatalogImportStatusRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCatalogImportStatusRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1776,6 +1933,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetClassifierRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getClassifierRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1826,6 +1984,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetClassifiersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getClassifiersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1878,6 +2037,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetConnectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getConnectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1930,6 +2090,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetConnectionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getConnectionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1982,6 +2143,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetCrawlerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCrawlerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2032,6 +2194,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetCrawlerMetricsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCrawlerMetricsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2082,6 +2245,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetCrawlersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getCrawlersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2138,6 +2302,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetDatabaseRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDatabaseRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2192,6 +2357,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetDatabasesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDatabasesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2246,6 +2412,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetDataflowGraphRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDataflowGraphRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2302,6 +2469,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetDevEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDevEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2358,6 +2526,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetDevEndpointsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getDevEndpointsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2414,6 +2583,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2470,6 +2640,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetJobRunRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getJobRunRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2488,7 +2659,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Retrieves metadata for all runs of a given job.
+     * Retrieves metadata for all runs of a given job definition.
      * </p>
      * 
      * @param getJobRunsRequest
@@ -2526,6 +2697,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetJobRunsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getJobRunsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2544,7 +2716,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Retrieves all current jobs.
+     * Retrieves all current job definitions.
      * </p>
      * 
      * @param getJobsRequest
@@ -2582,6 +2754,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetJobsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getJobsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2638,6 +2811,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetMappingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2694,6 +2868,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetPartitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPartitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2750,6 +2925,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetPartitionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPartitionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2768,7 +2944,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Gets a Python script to perform a specified mapping.
+     * Gets code to perform a specified mapping.
      * </p>
      * 
      * @param getPlanRequest
@@ -2804,6 +2980,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetPlanRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPlanRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2860,12 +3037,70 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<GetTableResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetTableResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves a specified version of a table.
+     * </p>
+     * 
+     * @param getTableVersionRequest
+     * @return Result of the GetTableVersion operation returned by the service.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.GetTableVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTableVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetTableVersionResult getTableVersion(GetTableVersionRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetTableVersion(request);
+    }
+
+    @SdkInternalApi
+    final GetTableVersionResult executeGetTableVersion(GetTableVersionRequest getTableVersionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getTableVersionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetTableVersionRequest> request = null;
+        Response<GetTableVersionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetTableVersionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTableVersionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetTableVersionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetTableVersionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2916,6 +3151,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetTableVersionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTableVersionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2972,6 +3208,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetTablesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTablesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3028,6 +3265,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetTriggerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTriggerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3084,6 +3322,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetTriggersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTriggersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3140,6 +3379,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new GetUserDefinedFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getUserDefinedFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3198,6 +3438,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                         .beforeMarshalling(getUserDefinedFunctionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3251,6 +3492,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new ImportCatalogToGlueRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(importCatalogToGlueRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3307,6 +3549,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new ResetJobBookmarkRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(resetJobBookmarkRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3362,6 +3605,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new StartCrawlerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startCrawlerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3421,6 +3665,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new StartCrawlerScheduleRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startCrawlerScheduleRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3439,7 +3684,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Runs a job.
+     * Starts a job run using a job definition.
      * </p>
      * 
      * @param startJobRunRequest
@@ -3481,6 +3726,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new StartJobRunRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startJobRunRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3499,7 +3745,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Starts an existing trigger.
+     * Starts an existing trigger. See <a href="http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html">Triggering
+     * Jobs</a> for information about how different types of trigger are started.
      * </p>
      * 
      * @param startTriggerRequest
@@ -3541,6 +3788,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new StartTriggerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startTriggerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3597,6 +3845,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new StopCrawlerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopCrawlerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3654,6 +3903,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new StopCrawlerScheduleRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopCrawlerScheduleRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3685,6 +3935,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         A specified entity does not exist
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.StopTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StopTrigger" target="_top">AWS API
      *      Documentation</a>
@@ -3710,6 +3962,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new StopTriggerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopTriggerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3728,7 +3981,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
 
     /**
      * <p>
-     * Modifies an existing classifier (either a <code>GrokClassifier</code> or an <code>XMLClassifier</code>).
+     * Modifies an existing classifier (a <code>GrokClassifier</code>, <code>XMLClassifier</code>, or
+     * <code>JsonClassifier</code>, depending on which field is present).
      * </p>
      * 
      * @param updateClassifierRequest
@@ -3766,6 +4020,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateClassifierRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateClassifierRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3820,6 +4075,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateConnectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateConnectionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3878,6 +4134,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateCrawlerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateCrawlerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3936,6 +4193,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateCrawlerScheduleRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateCrawlerScheduleRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3993,6 +4251,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateDatabaseRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDatabaseRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4051,6 +4310,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateDevEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDevEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4082,6 +4342,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         An internal service error occurred.
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.UpdateJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateJob" target="_top">AWS API
      *      Documentation</a>
@@ -4107,6 +4369,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateJobRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4163,6 +4426,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdatePartitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updatePartitionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4196,6 +4460,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         The operation timed out.
      * @throws ConcurrentModificationException
      *         Two processes are trying to modify a resource simultaneously.
+     * @throws ResourceNumberLimitExceededException
+     *         A resource numerical limit was exceeded.
      * @sample AWSGlue.UpdateTable
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateTable" target="_top">AWS API
      *      Documentation</a>
@@ -4221,6 +4487,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4252,6 +4519,8 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
      *         A specified entity does not exist
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.UpdateTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateTrigger" target="_top">AWS API
      *      Documentation</a>
@@ -4277,6 +4546,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                 request = new UpdateTriggerRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTriggerRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4334,6 +4604,7 @@ public class AWSGlueClient extends AmazonWebServiceClient implements AWSGlue {
                         .beforeMarshalling(updateUserDefinedFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.11.260-SNAPSHOT</version>
+  <version>1.11.332-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -33,6 +33,15 @@
   </developers>
   <!-- The module section in pom.xml is auto generated. No manual changes are allowed -->
   <modules>
+    <module>aws-java-sdk-iot1clickprojects</module>
+    <module>aws-java-sdk-iot1clickdevices</module>
+    <module>aws-java-sdk-iotanalytics</module>
+    <module>aws-java-sdk-acmpca</module>
+    <module>aws-java-sdk-secretsmanager</module>
+    <module>aws-java-sdk-fms</module>
+    <module>aws-java-sdk-connect</module>
+    <module>aws-java-sdk-transcribe</module>
+    <module>aws-java-sdk-autoscalingplans</module>
     <module>aws-java-sdk-workmail</module>
     <module>aws-java-sdk-servicediscovery</module>
     <module>aws-java-sdk-cloud9</module>
@@ -196,7 +205,7 @@
         the aggregate ZIP artifact -->
       <javax.mail.version>1.4.6</javax.mail.version>
       <jre.version>1.6</jre.version>
-      <httpcomponents.httpclient.version>4.5.2</httpcomponents.httpclient.version>
+      <httpcomponents.httpclient.version>4.5.5</httpcomponents.httpclient.version>
       <!-- These properties are used by cucumber tests related code -->
       <cucumber.info.cukes.version>1.2.4</cucumber.info.cukes.version>
       <cucumber.guice.version>4.0</cucumber.guice.version>

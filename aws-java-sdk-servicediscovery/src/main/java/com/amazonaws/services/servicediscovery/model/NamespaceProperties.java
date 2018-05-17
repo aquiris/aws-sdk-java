@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,19 +30,18 @@ public class NamespaceProperties implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      */
     private DnsProperties dnsProperties;
 
     /**
      * <p>
-     * A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      * 
      * @param dnsProperties
-     *        A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a
-     *        namespace.
+     *        A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
      */
 
     public void setDnsProperties(DnsProperties dnsProperties) {
@@ -51,10 +50,10 @@ public class NamespaceProperties implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      * 
-     * @return A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a
+     * @return A complex type that contains the ID for the hosted zone that Route 53 creates when you create a
      *         namespace.
      */
 
@@ -64,12 +63,11 @@ public class NamespaceProperties implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      * 
      * @param dnsProperties
-     *        A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a
-     *        namespace.
+     *        A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

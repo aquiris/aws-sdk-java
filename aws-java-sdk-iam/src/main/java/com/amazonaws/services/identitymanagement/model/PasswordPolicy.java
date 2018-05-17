@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * Contains information about the account password policy.
  * </p>
  * <p>
- * This data type is used as a response element in the <a>GetAccountPasswordPolicy</a> action.
+ * This data type is used as a response element in the <a>GetAccountPasswordPolicy</a> operation.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PasswordPolicy" target="_top">AWS API
@@ -67,8 +67,8 @@ public class PasswordPolicy implements Serializable, Cloneable {
     private Boolean allowUsersToChangePassword;
     /**
      * <p>
-     * Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater
-     * than 0. Returns false if MaxPasswordAge is 0 or not present.
+     * Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value
+     * greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      * </p>
      */
     private Boolean expirePasswords;
@@ -393,13 +393,13 @@ public class PasswordPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater
-     * than 0. Returns false if MaxPasswordAge is 0 or not present.
+     * Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value
+     * greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      * </p>
      * 
      * @param expirePasswords
-     *        Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value
-     *        greater than 0. Returns false if MaxPasswordAge is 0 or not present.
+     *        Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a
+     *        value greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      */
 
     public void setExpirePasswords(Boolean expirePasswords) {
@@ -408,12 +408,12 @@ public class PasswordPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater
-     * than 0. Returns false if MaxPasswordAge is 0 or not present.
+     * Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value
+     * greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      * </p>
      * 
-     * @return Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value
-     *         greater than 0. Returns false if MaxPasswordAge is 0 or not present.
+     * @return Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a
+     *         value greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      */
 
     public Boolean getExpirePasswords() {
@@ -422,13 +422,13 @@ public class PasswordPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater
-     * than 0. Returns false if MaxPasswordAge is 0 or not present.
+     * Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value
+     * greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      * </p>
      * 
      * @param expirePasswords
-     *        Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value
-     *        greater than 0. Returns false if MaxPasswordAge is 0 or not present.
+     *        Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a
+     *        value greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -439,12 +439,12 @@ public class PasswordPolicy implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater
-     * than 0. Returns false if MaxPasswordAge is 0 or not present.
+     * Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value
+     * greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      * </p>
      * 
-     * @return Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value
-     *         greater than 0. Returns false if MaxPasswordAge is 0 or not present.
+     * @return Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a
+     *         value greater than 0. Returns false if MaxPasswordAge is 0 or not present.
      */
 
     public Boolean isExpirePasswords() {

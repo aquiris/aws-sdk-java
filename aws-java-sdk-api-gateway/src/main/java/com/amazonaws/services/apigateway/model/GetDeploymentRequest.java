@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,13 +27,13 @@ public class GetDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      */
     private String restApiId;
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource to get information about.
+     * [Required] The identifier of the <a>Deployment</a> resource to get information about.
      * </p>
      */
     private String deploymentId;
@@ -52,11 +52,11 @@ public class GetDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The string identifier of the associated <a>RestApi</a>.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public void setRestApiId(String restApiId) {
@@ -65,10 +65,10 @@ public class GetDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
-     * @return The string identifier of the associated <a>RestApi</a>.
+     * @return [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public String getRestApiId() {
@@ -77,11 +77,11 @@ public class GetDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The string identifier of the associated <a>RestApi</a>.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -92,11 +92,11 @@ public class GetDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource to get information about.
+     * [Required] The identifier of the <a>Deployment</a> resource to get information about.
      * </p>
      * 
      * @param deploymentId
-     *        The identifier of the <a>Deployment</a> resource to get information about.
+     *        [Required] The identifier of the <a>Deployment</a> resource to get information about.
      */
 
     public void setDeploymentId(String deploymentId) {
@@ -105,10 +105,10 @@ public class GetDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource to get information about.
+     * [Required] The identifier of the <a>Deployment</a> resource to get information about.
      * </p>
      * 
-     * @return The identifier of the <a>Deployment</a> resource to get information about.
+     * @return [Required] The identifier of the <a>Deployment</a> resource to get information about.
      */
 
     public String getDeploymentId() {
@@ -117,11 +117,11 @@ public class GetDeploymentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The identifier of the <a>Deployment</a> resource to get information about.
+     * [Required] The identifier of the <a>Deployment</a> resource to get information about.
      * </p>
      * 
      * @param deploymentId
-     *        The identifier of the <a>Deployment</a> resource to get information about.
+     *        [Required] The identifier of the <a>Deployment</a> resource to get information about.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

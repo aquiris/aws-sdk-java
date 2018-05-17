@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class Predicate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Currently "OR" is not supported.
+     * Optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
      * </p>
      */
     private String logical;
@@ -43,11 +43,12 @@ public class Predicate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Currently "OR" is not supported.
+     * Optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
      * </p>
      * 
      * @param logical
-     *        Currently "OR" is not supported.
+     *        Optional field if only one condition is listed. If multiple conditions are listed, then this field is
+     *        required.
      * @see Logical
      */
 
@@ -57,10 +58,11 @@ public class Predicate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Currently "OR" is not supported.
+     * Optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
      * </p>
      * 
-     * @return Currently "OR" is not supported.
+     * @return Optional field if only one condition is listed. If multiple conditions are listed, then this field is
+     *         required.
      * @see Logical
      */
 
@@ -70,11 +72,12 @@ public class Predicate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Currently "OR" is not supported.
+     * Optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
      * </p>
      * 
      * @param logical
-     *        Currently "OR" is not supported.
+     *        Optional field if only one condition is listed. If multiple conditions are listed, then this field is
+     *        required.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Logical
      */
@@ -86,11 +89,12 @@ public class Predicate implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Currently "OR" is not supported.
+     * Optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
      * </p>
      * 
      * @param logical
-     *        Currently "OR" is not supported.
+     *        Optional field if only one condition is listed. If multiple conditions are listed, then this field is
+     *        required.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Logical
      */

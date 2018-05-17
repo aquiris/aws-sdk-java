@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,6 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * A complex type that contains information about whether the specified domain can be transferred to Amazon Route 53.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DomainTransferability"
  *      target="_top">AWS API Documentation</a>

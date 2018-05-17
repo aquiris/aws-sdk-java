@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,6 +36,8 @@ public class CreateModelRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ExecutionRoleArn").build();
     private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Tags").build();
+    private static final MarshallingInfo<StructuredPojo> VPCCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VpcConfig").build();
 
     private static final CreateModelRequestMarshaller instance = new CreateModelRequestMarshaller();
 
@@ -57,6 +59,7 @@ public class CreateModelRequestMarshaller {
             protocolMarshaller.marshall(createModelRequest.getPrimaryContainer(), PRIMARYCONTAINER_BINDING);
             protocolMarshaller.marshall(createModelRequest.getExecutionRoleArn(), EXECUTIONROLEARN_BINDING);
             protocolMarshaller.marshall(createModelRequest.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(createModelRequest.getVpcConfig(), VPCCONFIG_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,8 +49,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
      * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring
-     * Your Own Algorithms </a>.
+     * your own algorithms, see <a>your-algorithms</a>.
      * </p>
      */
     private AlgorithmSpecification algorithmSpecification;
@@ -103,6 +102,13 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      */
     private ResourceConfig resourceConfig;
+    /**
+     * <p>
+     * A object that specifies the VPC that you want your training job to connect to. Control access to and from your
+     * training container by configuring the VPC. For more information, see <a>train-vpc</a>
+     * </p>
+     */
+    private VpcConfig vpcConfig;
     /**
      * <p>
      * Sets a duration for training. Use this parameter to cap model training costs. To stop a job, Amazon SageMaker
@@ -273,17 +279,14 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
      * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring
-     * Your Own Algorithms </a>.
+     * your own algorithms, see <a>your-algorithms</a>.
      * </p>
      * 
      * @param algorithmSpecification
      *        The registry path of the Docker image that contains the training algorithm and algorithm-specific
      *        metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker,
      *        see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
-     *        about providing your own algorithms, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring Your Own Algorithms
-     *        </a>.
+     *        about providing your own algorithms, see <a>your-algorithms</a>.
      */
 
     public void setAlgorithmSpecification(AlgorithmSpecification algorithmSpecification) {
@@ -295,16 +298,13 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
      * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring
-     * Your Own Algorithms </a>.
+     * your own algorithms, see <a>your-algorithms</a>.
      * </p>
      * 
      * @return The registry path of the Docker image that contains the training algorithm and algorithm-specific
      *         metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker,
      *         see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
-     *         about providing your own algorithms, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring Your Own Algorithms
-     *         </a>.
+     *         about providing your own algorithms, see <a>your-algorithms</a>.
      */
 
     public AlgorithmSpecification getAlgorithmSpecification() {
@@ -316,17 +316,14 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
      * The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata,
      * including the input mode. For more information about algorithms provided by Amazon SageMaker, see <a
      * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about providing
-     * your own algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring
-     * Your Own Algorithms </a>.
+     * your own algorithms, see <a>your-algorithms</a>.
      * </p>
      * 
      * @param algorithmSpecification
      *        The registry path of the Docker image that contains the training algorithm and algorithm-specific
      *        metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker,
      *        see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information
-     *        about providing your own algorithms, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring Your Own Algorithms
-     *        </a>.
+     *        about providing your own algorithms, see <a>your-algorithms</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -693,6 +690,52 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
+     * A object that specifies the VPC that you want your training job to connect to. Control access to and from your
+     * training container by configuring the VPC. For more information, see <a>train-vpc</a>
+     * </p>
+     * 
+     * @param vpcConfig
+     *        A object that specifies the VPC that you want your training job to connect to. Control access to and from
+     *        your training container by configuring the VPC. For more information, see <a>train-vpc</a>
+     */
+
+    public void setVpcConfig(VpcConfig vpcConfig) {
+        this.vpcConfig = vpcConfig;
+    }
+
+    /**
+     * <p>
+     * A object that specifies the VPC that you want your training job to connect to. Control access to and from your
+     * training container by configuring the VPC. For more information, see <a>train-vpc</a>
+     * </p>
+     * 
+     * @return A object that specifies the VPC that you want your training job to connect to. Control access to and from
+     *         your training container by configuring the VPC. For more information, see <a>train-vpc</a>
+     */
+
+    public VpcConfig getVpcConfig() {
+        return this.vpcConfig;
+    }
+
+    /**
+     * <p>
+     * A object that specifies the VPC that you want your training job to connect to. Control access to and from your
+     * training container by configuring the VPC. For more information, see <a>train-vpc</a>
+     * </p>
+     * 
+     * @param vpcConfig
+     *        A object that specifies the VPC that you want your training job to connect to. Control access to and from
+     *        your training container by configuring the VPC. For more information, see <a>train-vpc</a>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTrainingJobRequest withVpcConfig(VpcConfig vpcConfig) {
+        setVpcConfig(vpcConfig);
+        return this;
+    }
+
+    /**
+     * <p>
      * Sets a duration for training. Use this parameter to cap model training costs. To stop a job, Amazon SageMaker
      * sends the algorithm the <code>SIGTERM</code> signal, which delays job termination for 120 seconds. Algorithms
      * might use this 120-second window to save the model artifacts.
@@ -881,6 +924,8 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
             sb.append("OutputDataConfig: ").append(getOutputDataConfig()).append(",");
         if (getResourceConfig() != null)
             sb.append("ResourceConfig: ").append(getResourceConfig()).append(",");
+        if (getVpcConfig() != null)
+            sb.append("VpcConfig: ").append(getVpcConfig()).append(",");
         if (getStoppingCondition() != null)
             sb.append("StoppingCondition: ").append(getStoppingCondition()).append(",");
         if (getTags() != null)
@@ -927,6 +972,10 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getResourceConfig() != null && other.getResourceConfig().equals(this.getResourceConfig()) == false)
             return false;
+        if (other.getVpcConfig() == null ^ this.getVpcConfig() == null)
+            return false;
+        if (other.getVpcConfig() != null && other.getVpcConfig().equals(this.getVpcConfig()) == false)
+            return false;
         if (other.getStoppingCondition() == null ^ this.getStoppingCondition() == null)
             return false;
         if (other.getStoppingCondition() != null && other.getStoppingCondition().equals(this.getStoppingCondition()) == false)
@@ -950,6 +999,7 @@ public class CreateTrainingJobRequest extends com.amazonaws.AmazonWebServiceRequ
         hashCode = prime * hashCode + ((getInputDataConfig() == null) ? 0 : getInputDataConfig().hashCode());
         hashCode = prime * hashCode + ((getOutputDataConfig() == null) ? 0 : getOutputDataConfig().hashCode());
         hashCode = prime * hashCode + ((getResourceConfig() == null) ? 0 : getResourceConfig().hashCode());
+        hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
         hashCode = prime * hashCode + ((getStoppingCondition() == null) ? 0 : getStoppingCondition().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;

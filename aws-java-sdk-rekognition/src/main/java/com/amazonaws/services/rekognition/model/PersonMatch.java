@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Information about a person whose face matches a face(s) in a Amazon Rekognition collection. Includes information
- * about the faces in the Amazon Rekognition collection (,information about the person (<a>PersonDetail</a>) and the
+ * about the faces in the Amazon Rekognition collection (, information about the person (<a>PersonDetail</a>) and the
  * timestamp for when the person was detected in a video. An array of <code>PersonMatch</code> objects is returned by .
  * </p>
  */

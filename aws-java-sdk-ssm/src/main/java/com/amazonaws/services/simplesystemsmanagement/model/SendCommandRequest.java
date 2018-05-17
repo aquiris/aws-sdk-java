@@ -54,6 +54,12 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String documentName;
     /**
      * <p>
+     * The SSM document version to use in the request. You can specify Default, Latest, or a specific version number.
+     * </p>
+     */
+    private String documentVersion;
+    /**
+     * <p>
      * The Sha256 or Sha1 hash created by the system when the document was created.
      * </p>
      * <note>
@@ -76,7 +82,7 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String documentHashType;
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute.
+     * If this time is reached and the command has not already started executing, it will not run.
      * </p>
      */
     private Integer timeoutSeconds;
@@ -125,7 +131,7 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The maximum number of errors allowed without the command failing. When the command fails one more time beyond the
      * value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10
-     * or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see <a
+     * or a percentage like 10%. The default value is 0. For more information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using Error
      * Controls</a>.
      * </p>
@@ -402,6 +408,49 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
+     * The SSM document version to use in the request. You can specify Default, Latest, or a specific version number.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The SSM document version to use in the request. You can specify Default, Latest, or a specific version
+     *        number.
+     */
+
+    public void setDocumentVersion(String documentVersion) {
+        this.documentVersion = documentVersion;
+    }
+
+    /**
+     * <p>
+     * The SSM document version to use in the request. You can specify Default, Latest, or a specific version number.
+     * </p>
+     * 
+     * @return The SSM document version to use in the request. You can specify Default, Latest, or a specific version
+     *         number.
+     */
+
+    public String getDocumentVersion() {
+        return this.documentVersion;
+    }
+
+    /**
+     * <p>
+     * The SSM document version to use in the request. You can specify Default, Latest, or a specific version number.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The SSM document version to use in the request. You can specify Default, Latest, or a specific version
+     *        number.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SendCommandRequest withDocumentVersion(String documentVersion) {
+        setDocumentVersion(documentVersion);
+        return this;
+    }
+
+    /**
+     * <p>
      * The Sha256 or Sha1 hash created by the system when the document was created.
      * </p>
      * <note>
@@ -579,11 +628,11 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute.
+     * If this time is reached and the command has not already started executing, it will not run.
      * </p>
      * 
      * @param timeoutSeconds
-     *        If this time is reached and the command has not already started executing, it will not execute.
+     *        If this time is reached and the command has not already started executing, it will not run.
      */
 
     public void setTimeoutSeconds(Integer timeoutSeconds) {
@@ -592,10 +641,10 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute.
+     * If this time is reached and the command has not already started executing, it will not run.
      * </p>
      * 
-     * @return If this time is reached and the command has not already started executing, it will not execute.
+     * @return If this time is reached and the command has not already started executing, it will not run.
      */
 
     public Integer getTimeoutSeconds() {
@@ -604,11 +653,11 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute.
+     * If this time is reached and the command has not already started executing, it will not run.
      * </p>
      * 
      * @param timeoutSeconds
-     *        If this time is reached and the command has not already started executing, it will not execute.
+     *        If this time is reached and the command has not already started executing, it will not run.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -912,7 +961,7 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The maximum number of errors allowed without the command failing. When the command fails one more time beyond the
      * value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10
-     * or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see <a
+     * or a percentage like 10%. The default value is 0. For more information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using Error
      * Controls</a>.
      * </p>
@@ -920,7 +969,7 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
      * @param maxErrors
      *        The maximum number of errors allowed without the command failing. When the command fails one more time
      *        beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can
-     *        specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how
+     *        specify a number like 10 or a percentage like 10%. The default value is 0. For more information about how
      *        to use MaxErrors, see <a
      *        href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using
      *        Error Controls</a>.
@@ -934,15 +983,15 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The maximum number of errors allowed without the command failing. When the command fails one more time beyond the
      * value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10
-     * or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see <a
+     * or a percentage like 10%. The default value is 0. For more information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using Error
      * Controls</a>.
      * </p>
      * 
      * @return The maximum number of errors allowed without the command failing. When the command fails one more time
      *         beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can
-     *         specify a number like 10 or a percentage like 10%. The default value is 50. For more information about
-     *         how to use MaxErrors, see <a
+     *         specify a number like 10 or a percentage like 10%. The default value is 0. For more information about how
+     *         to use MaxErrors, see <a
      *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using
      *         Error Controls</a>.
      */
@@ -955,7 +1004,7 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The maximum number of errors allowed without the command failing. When the command fails one more time beyond the
      * value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10
-     * or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see <a
+     * or a percentage like 10%. The default value is 0. For more information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using Error
      * Controls</a>.
      * </p>
@@ -963,7 +1012,7 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
      * @param maxErrors
      *        The maximum number of errors allowed without the command failing. When the command fails one more time
      *        beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can
-     *        specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how
+     *        specify a number like 10 or a percentage like 10%. The default value is 0. For more information about how
      *        to use MaxErrors, see <a
      *        href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using
      *        Error Controls</a>.
@@ -1072,6 +1121,8 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
             sb.append("Targets: ").append(getTargets()).append(",");
         if (getDocumentName() != null)
             sb.append("DocumentName: ").append(getDocumentName()).append(",");
+        if (getDocumentVersion() != null)
+            sb.append("DocumentVersion: ").append(getDocumentVersion()).append(",");
         if (getDocumentHash() != null)
             sb.append("DocumentHash: ").append(getDocumentHash()).append(",");
         if (getDocumentHashType() != null)
@@ -1121,6 +1172,10 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (other.getDocumentName() == null ^ this.getDocumentName() == null)
             return false;
         if (other.getDocumentName() != null && other.getDocumentName().equals(this.getDocumentName()) == false)
+            return false;
+        if (other.getDocumentVersion() == null ^ this.getDocumentVersion() == null)
+            return false;
+        if (other.getDocumentVersion() != null && other.getDocumentVersion().equals(this.getDocumentVersion()) == false)
             return false;
         if (other.getDocumentHash() == null ^ this.getDocumentHash() == null)
             return false;
@@ -1181,6 +1236,7 @@ public class SendCommandRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getInstanceIds() == null) ? 0 : getInstanceIds().hashCode());
         hashCode = prime * hashCode + ((getTargets() == null) ? 0 : getTargets().hashCode());
         hashCode = prime * hashCode + ((getDocumentName() == null) ? 0 : getDocumentName().hashCode());
+        hashCode = prime * hashCode + ((getDocumentVersion() == null) ? 0 : getDocumentVersion().hashCode());
         hashCode = prime * hashCode + ((getDocumentHash() == null) ? 0 : getDocumentHash().hashCode());
         hashCode = prime * hashCode + ((getDocumentHashType() == null) ? 0 : getDocumentHashType().hashCode());
         hashCode = prime * hashCode + ((getTimeoutSeconds() == null) ? 0 : getTimeoutSeconds().hashCode());

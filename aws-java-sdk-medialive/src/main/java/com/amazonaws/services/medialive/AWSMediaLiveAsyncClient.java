@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -506,6 +506,105 @@ public class AWSMediaLiveAsyncClient extends AWSMediaLiveClient implements AWSMe
 
                 try {
                     result = executeStopChannel(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateChannelResult> updateChannelAsync(UpdateChannelRequest request) {
+
+        return updateChannelAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateChannelResult> updateChannelAsync(final UpdateChannelRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateChannelRequest, UpdateChannelResult> asyncHandler) {
+        final UpdateChannelRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateChannelResult>() {
+            @Override
+            public UpdateChannelResult call() throws Exception {
+                UpdateChannelResult result = null;
+
+                try {
+                    result = executeUpdateChannel(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputResult> updateInputAsync(UpdateInputRequest request) {
+
+        return updateInputAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputResult> updateInputAsync(final UpdateInputRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateInputRequest, UpdateInputResult> asyncHandler) {
+        final UpdateInputRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateInputResult>() {
+            @Override
+            public UpdateInputResult call() throws Exception {
+                UpdateInputResult result = null;
+
+                try {
+                    result = executeUpdateInput(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputSecurityGroupResult> updateInputSecurityGroupAsync(UpdateInputSecurityGroupRequest request) {
+
+        return updateInputSecurityGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateInputSecurityGroupResult> updateInputSecurityGroupAsync(final UpdateInputSecurityGroupRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateInputSecurityGroupRequest, UpdateInputSecurityGroupResult> asyncHandler) {
+        final UpdateInputSecurityGroupRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateInputSecurityGroupResult>() {
+            @Override
+            public UpdateInputSecurityGroupResult call() throws Exception {
+                UpdateInputSecurityGroupResult result = null;
+
+                try {
+                    result = executeUpdateInputSecurityGroup(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

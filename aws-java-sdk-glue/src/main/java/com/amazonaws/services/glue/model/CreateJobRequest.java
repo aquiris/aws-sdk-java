@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,13 +27,13 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The name you assign to this job.
+     * The name you assign to this job definition. It must be unique in your account.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Description of the job.
+     * Description of the job being defined.
      * </p>
      */
     private String description;
@@ -45,7 +45,7 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String logUri;
     /**
      * <p>
-     * The role associated with this job.
+     * The name or ARN of the IAM role associated with this job.
      * </p>
      */
     private String role;
@@ -63,7 +63,21 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private JobCommand command;
     /**
      * <p>
-     * The default parameters for this job.
+     * The default arguments for this job.
+     * </p>
+     * <p>
+     * You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue
+     * itself consumes.
+     * </p>
+     * <p>
+     * For information about how to specify and consume your own Job arguments, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * in Python</a> topic in the developer guide.
+     * </p>
+     * <p>
+     * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      */
     private java.util.Map<String, String> defaultArguments;
@@ -81,18 +95,27 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private Integer maxRetries;
     /**
      * <p>
-     * The number of capacity units allocated to this job.
+     * The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated;
+     * the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity
+     * and 16 GB of memory. For more information, see the <a href="https://aws.amazon.com/glue/pricing/">AWS Glue
+     * pricing page</a>.
      * </p>
      */
     private Integer allocatedCapacity;
+    /**
+     * <p>
+     * The job timeout in minutes. The default is 2880 minutes (48 hours).
+     * </p>
+     */
+    private Integer timeout;
 
     /**
      * <p>
-     * The name you assign to this job.
+     * The name you assign to this job definition. It must be unique in your account.
      * </p>
      * 
      * @param name
-     *        The name you assign to this job.
+     *        The name you assign to this job definition. It must be unique in your account.
      */
 
     public void setName(String name) {
@@ -101,10 +124,10 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The name you assign to this job.
+     * The name you assign to this job definition. It must be unique in your account.
      * </p>
      * 
-     * @return The name you assign to this job.
+     * @return The name you assign to this job definition. It must be unique in your account.
      */
 
     public String getName() {
@@ -113,11 +136,11 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The name you assign to this job.
+     * The name you assign to this job definition. It must be unique in your account.
      * </p>
      * 
      * @param name
-     *        The name you assign to this job.
+     *        The name you assign to this job definition. It must be unique in your account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -128,11 +151,11 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Description of the job.
+     * Description of the job being defined.
      * </p>
      * 
      * @param description
-     *        Description of the job.
+     *        Description of the job being defined.
      */
 
     public void setDescription(String description) {
@@ -141,10 +164,10 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Description of the job.
+     * Description of the job being defined.
      * </p>
      * 
-     * @return Description of the job.
+     * @return Description of the job being defined.
      */
 
     public String getDescription() {
@@ -153,11 +176,11 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Description of the job.
+     * Description of the job being defined.
      * </p>
      * 
      * @param description
-     *        Description of the job.
+     *        Description of the job being defined.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -208,11 +231,11 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The role associated with this job.
+     * The name or ARN of the IAM role associated with this job.
      * </p>
      * 
      * @param role
-     *        The role associated with this job.
+     *        The name or ARN of the IAM role associated with this job.
      */
 
     public void setRole(String role) {
@@ -221,10 +244,10 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The role associated with this job.
+     * The name or ARN of the IAM role associated with this job.
      * </p>
      * 
-     * @return The role associated with this job.
+     * @return The name or ARN of the IAM role associated with this job.
      */
 
     public String getRole() {
@@ -233,11 +256,11 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The role associated with this job.
+     * The name or ARN of the IAM role associated with this job.
      * </p>
      * 
      * @param role
-     *        The role associated with this job.
+     *        The name or ARN of the IAM role associated with this job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -328,10 +351,37 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The default parameters for this job.
+     * The default arguments for this job.
+     * </p>
+     * <p>
+     * You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue
+     * itself consumes.
+     * </p>
+     * <p>
+     * For information about how to specify and consume your own Job arguments, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * in Python</a> topic in the developer guide.
+     * </p>
+     * <p>
+     * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      * 
-     * @return The default parameters for this job.
+     * @return The default arguments for this job.</p>
+     *         <p>
+     *         You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS
+     *         Glue itself consumes.
+     *         </p>
+     *         <p>
+     *         For information about how to specify and consume your own Job arguments, see the <a
+     *         href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS
+     *         Glue APIs in Python</a> topic in the developer guide.
+     *         </p>
+     *         <p>
+     *         For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
+     *         href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
+     *         Parameters Used by AWS Glue</a> topic in the developer guide.
      */
 
     public java.util.Map<String, String> getDefaultArguments() {
@@ -340,11 +390,38 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The default parameters for this job.
+     * The default arguments for this job.
+     * </p>
+     * <p>
+     * You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue
+     * itself consumes.
+     * </p>
+     * <p>
+     * For information about how to specify and consume your own Job arguments, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * in Python</a> topic in the developer guide.
+     * </p>
+     * <p>
+     * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      * 
      * @param defaultArguments
-     *        The default parameters for this job.
+     *        The default arguments for this job.</p>
+     *        <p>
+     *        You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS
+     *        Glue itself consumes.
+     *        </p>
+     *        <p>
+     *        For information about how to specify and consume your own Job arguments, see the <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue
+     *        APIs in Python</a> topic in the developer guide.
+     *        </p>
+     *        <p>
+     *        For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
+     *        Parameters Used by AWS Glue</a> topic in the developer guide.
      */
 
     public void setDefaultArguments(java.util.Map<String, String> defaultArguments) {
@@ -353,11 +430,38 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The default parameters for this job.
+     * The default arguments for this job.
+     * </p>
+     * <p>
+     * You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue
+     * itself consumes.
+     * </p>
+     * <p>
+     * For information about how to specify and consume your own Job arguments, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * in Python</a> topic in the developer guide.
+     * </p>
+     * <p>
+     * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      * 
      * @param defaultArguments
-     *        The default parameters for this job.
+     *        The default arguments for this job.</p>
+     *        <p>
+     *        You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS
+     *        Glue itself consumes.
+     *        </p>
+     *        <p>
+     *        For information about how to specify and consume your own Job arguments, see the <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue
+     *        APIs in Python</a> topic in the developer guide.
+     *        </p>
+     *        <p>
+     *        For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
+     *        Parameters Used by AWS Glue</a> topic in the developer guide.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -469,11 +573,17 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The number of capacity units allocated to this job.
+     * The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated;
+     * the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity
+     * and 16 GB of memory. For more information, see the <a href="https://aws.amazon.com/glue/pricing/">AWS Glue
+     * pricing page</a>.
      * </p>
      * 
      * @param allocatedCapacity
-     *        The number of capacity units allocated to this job.
+     *        The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be
+     *        allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of
+     *        compute capacity and 16 GB of memory. For more information, see the <a
+     *        href="https://aws.amazon.com/glue/pricing/">AWS Glue pricing page</a>.
      */
 
     public void setAllocatedCapacity(Integer allocatedCapacity) {
@@ -482,10 +592,16 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The number of capacity units allocated to this job.
+     * The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated;
+     * the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity
+     * and 16 GB of memory. For more information, see the <a href="https://aws.amazon.com/glue/pricing/">AWS Glue
+     * pricing page</a>.
      * </p>
      * 
-     * @return The number of capacity units allocated to this job.
+     * @return The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be
+     *         allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of
+     *         compute capacity and 16 GB of memory. For more information, see the <a
+     *         href="https://aws.amazon.com/glue/pricing/">AWS Glue pricing page</a>.
      */
 
     public Integer getAllocatedCapacity() {
@@ -494,16 +610,62 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The number of capacity units allocated to this job.
+     * The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated;
+     * the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity
+     * and 16 GB of memory. For more information, see the <a href="https://aws.amazon.com/glue/pricing/">AWS Glue
+     * pricing page</a>.
      * </p>
      * 
      * @param allocatedCapacity
-     *        The number of capacity units allocated to this job.
+     *        The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be
+     *        allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of
+     *        compute capacity and 16 GB of memory. For more information, see the <a
+     *        href="https://aws.amazon.com/glue/pricing/">AWS Glue pricing page</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateJobRequest withAllocatedCapacity(Integer allocatedCapacity) {
         setAllocatedCapacity(allocatedCapacity);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The job timeout in minutes. The default is 2880 minutes (48 hours).
+     * </p>
+     * 
+     * @param timeout
+     *        The job timeout in minutes. The default is 2880 minutes (48 hours).
+     */
+
+    public void setTimeout(Integer timeout) {
+        this.timeout = timeout;
+    }
+
+    /**
+     * <p>
+     * The job timeout in minutes. The default is 2880 minutes (48 hours).
+     * </p>
+     * 
+     * @return The job timeout in minutes. The default is 2880 minutes (48 hours).
+     */
+
+    public Integer getTimeout() {
+        return this.timeout;
+    }
+
+    /**
+     * <p>
+     * The job timeout in minutes. The default is 2880 minutes (48 hours).
+     * </p>
+     * 
+     * @param timeout
+     *        The job timeout in minutes. The default is 2880 minutes (48 hours).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withTimeout(Integer timeout) {
+        setTimeout(timeout);
         return this;
     }
 
@@ -537,7 +699,9 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         if (getMaxRetries() != null)
             sb.append("MaxRetries: ").append(getMaxRetries()).append(",");
         if (getAllocatedCapacity() != null)
-            sb.append("AllocatedCapacity: ").append(getAllocatedCapacity());
+            sb.append("AllocatedCapacity: ").append(getAllocatedCapacity()).append(",");
+        if (getTimeout() != null)
+            sb.append("Timeout: ").append(getTimeout());
         sb.append("}");
         return sb.toString();
     }
@@ -592,6 +756,10 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getAllocatedCapacity() != null && other.getAllocatedCapacity().equals(this.getAllocatedCapacity()) == false)
             return false;
+        if (other.getTimeout() == null ^ this.getTimeout() == null)
+            return false;
+        if (other.getTimeout() != null && other.getTimeout().equals(this.getTimeout()) == false)
+            return false;
         return true;
     }
 
@@ -610,6 +778,7 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getConnections() == null) ? 0 : getConnections().hashCode());
         hashCode = prime * hashCode + ((getMaxRetries() == null) ? 0 : getMaxRetries().hashCode());
         hashCode = prime * hashCode + ((getAllocatedCapacity() == null) ? 0 : getAllocatedCapacity().hashCode());
+        hashCode = prime * hashCode + ((getTimeout() == null) ? 0 : getTimeout().hashCode());
         return hashCode;
     }
 

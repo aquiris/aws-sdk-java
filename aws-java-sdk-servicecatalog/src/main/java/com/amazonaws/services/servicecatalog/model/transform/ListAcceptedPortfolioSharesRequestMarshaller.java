@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public class ListAcceptedPortfolioSharesRequestMarshaller {
             .marshallLocationName("PageToken").build();
     private static final MarshallingInfo<Integer> PAGESIZE_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PageSize").build();
+    private static final MarshallingInfo<String> PORTFOLIOSHARETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PortfolioShareType").build();
 
     private static final ListAcceptedPortfolioSharesRequestMarshaller instance = new ListAcceptedPortfolioSharesRequestMarshaller();
 
@@ -53,6 +55,7 @@ public class ListAcceptedPortfolioSharesRequestMarshaller {
             protocolMarshaller.marshall(listAcceptedPortfolioSharesRequest.getAcceptLanguage(), ACCEPTLANGUAGE_BINDING);
             protocolMarshaller.marshall(listAcceptedPortfolioSharesRequest.getPageToken(), PAGETOKEN_BINDING);
             protocolMarshaller.marshall(listAcceptedPortfolioSharesRequest.getPageSize(), PAGESIZE_BINDING);
+            protocolMarshaller.marshall(listAcceptedPortfolioSharesRequest.getPortfolioShareType(), PORTFOLIOSHARETYPE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

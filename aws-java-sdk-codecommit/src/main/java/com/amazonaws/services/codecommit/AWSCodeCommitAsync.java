@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -102,6 +102,16 @@ import com.amazonaws.services.codecommit.model.*;
  * <li>
  * <p>
  * <a>UpdateDefaultBranch</a>, which changes the default branch for a repository.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Files, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>PutFile</a>, which adds or modifies a file in a specified repository and branch.
  * </p>
  * </li>
  * </ul>
@@ -1167,6 +1177,37 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
      */
     java.util.concurrent.Future<PostCommentReplyResult> postCommentReplyAsync(PostCommentReplyRequest postCommentReplyRequest,
             com.amazonaws.handlers.AsyncHandler<PostCommentReplyRequest, PostCommentReplyResult> asyncHandler);
+
+    /**
+     * <p>
+     * Adds or updates a file in an AWS CodeCommit repository.
+     * </p>
+     * 
+     * @param putFileRequest
+     * @return A Java Future containing the result of the PutFile operation returned by the service.
+     * @sample AWSCodeCommitAsync.PutFile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/PutFile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<PutFileResult> putFileAsync(PutFileRequest putFileRequest);
+
+    /**
+     * <p>
+     * Adds or updates a file in an AWS CodeCommit repository.
+     * </p>
+     * 
+     * @param putFileRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutFile operation returned by the service.
+     * @sample AWSCodeCommitAsyncHandler.PutFile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/PutFile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<PutFileResult> putFileAsync(PutFileRequest putFileRequest,
+            com.amazonaws.handlers.AsyncHandler<PutFileRequest, PutFileResult> asyncHandler);
 
     /**
      * <p>

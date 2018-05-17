@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag
+     * for the container to use. However, subsequent updates to a repository image are not propagated to already running
+     * tasks.
+     * </p>
+     * </li>
      * <li>
      * <p>
      * Images in Amazon ECR repositories can be specified by either using the full <code>registry/repository:tag</code>
@@ -126,9 +133,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate the
      * relative CPU share ratios for running containers. For more information, see <a
      * href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the Docker
-     * documentation. The minimum valid CPU share value that the Linux kernel will allow is 2; however, the CPU
-     * parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU values below
-     * 2 (including null), the behavior varies based on your Amazon ECS container agent version:
+     * documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the CPU parameter is
+     * not required, and you can use CPU values below 2 in your container definitions. For CPU values below 2 (including
+     * null), the behavior varies based on your Amazon ECS container agent version:
      * </p>
      * <ul>
      * <li>
@@ -160,13 +167,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers will be part of a task using the Fargate launch type, this field is optional and the only
+     * If your containers are part of a task using the Fargate launch type, this field is optional and the only
      * requirement is that the total amount of memory reserved for all containers within a task be lower than the task
      * <code>memory</code> value.
      * </p>
      * <p>
-     * For containers that will be part of a task using the EC2 launch type, you must specify a non-zero integer for one
-     * or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
+     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.
@@ -369,7 +376,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </p>
      * <note>
      * <p>
-     * This parameter is not supported for Windows containers or tasks using the Fargate launch type.
+     * This parameter is not supported for Windows containers.
      * </p>
      * </note>
      */
@@ -606,6 +613,17 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </note>
      */
     private LogConfiguration logConfiguration;
+    /**
+     * <p>
+     * The health check command and associated configuration parameters for the container. This parameter maps to
+     * <code>HealthCheck</code> in the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container">Create a
+     * container</a> section of the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/">Docker Remote API</a> and the
+     * <code>HEALTHCHECK</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
+     * </p>
+     */
+    private HealthCheck healthCheck;
 
     /**
      * <p>
@@ -705,6 +723,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <ul>
      * <li>
      * <p>
+     * When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag
+     * for the container to use. However, subsequent updates to a repository image are not propagated to already running
+     * tasks.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Images in Amazon ECR repositories can be specified by either using the full <code>registry/repository:tag</code>
      * or <code>registry/repository@digest</code>. For example,
      * <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;:latest</code> or
@@ -745,6 +770,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and
+     *        tag for the container to use. However, subsequent updates to a repository image are not propagated to
+     *        already running tasks.
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        Images in Amazon ECR repositories can be specified by either using the full
@@ -794,6 +826,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <ul>
      * <li>
      * <p>
+     * When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag
+     * for the container to use. However, subsequent updates to a repository image are not propagated to already running
+     * tasks.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Images in Amazon ECR repositories can be specified by either using the full <code>registry/repository:tag</code>
      * or <code>registry/repository@digest</code>. For example,
      * <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;:latest</code> or
@@ -833,6 +872,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         the <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
      *         run</a>.</p>
      *         <ul>
+     *         <li>
+     *         <p>
+     *         When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image
+     *         and tag for the container to use. However, subsequent updates to a repository image are not propagated to
+     *         already running tasks.
+     *         </p>
+     *         </li>
      *         <li>
      *         <p>
      *         Images in Amazon ECR repositories can be specified by either using the full
@@ -882,6 +928,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <ul>
      * <li>
      * <p>
+     * When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag
+     * for the container to use. However, subsequent updates to a repository image are not propagated to already running
+     * tasks.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Images in Amazon ECR repositories can be specified by either using the full <code>registry/repository:tag</code>
      * or <code>registry/repository@digest</code>. For example,
      * <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;:latest</code> or
@@ -922,6 +975,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and
+     *        tag for the container to use. However, subsequent updates to a repository image are not propagated to
+     *        already running tasks.
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        Images in Amazon ECR repositories can be specified by either using the full
@@ -997,9 +1057,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate the
      * relative CPU share ratios for running containers. For more information, see <a
      * href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the Docker
-     * documentation. The minimum valid CPU share value that the Linux kernel will allow is 2; however, the CPU
-     * parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU values below
-     * 2 (including null), the behavior varies based on your Amazon ECS container agent version:
+     * documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the CPU parameter is
+     * not required, and you can use CPU values below 2 in your container definitions. For CPU values below 2 (including
+     * null), the behavior varies based on your Amazon ECS container agent version:
      * </p>
      * <ul>
      * <li>
@@ -1062,9 +1122,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate
      *        the relative CPU share ratios for running containers. For more information, see <a
      *        href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the
-     *        Docker documentation. The minimum valid CPU share value that the Linux kernel will allow is 2; however,
-     *        the CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For
-     *        CPU values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:
+     *        Docker documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the
+     *        CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU
+     *        values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:
      *        </p>
      *        <ul>
      *        <li>
@@ -1130,9 +1190,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate the
      * relative CPU share ratios for running containers. For more information, see <a
      * href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the Docker
-     * documentation. The minimum valid CPU share value that the Linux kernel will allow is 2; however, the CPU
-     * parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU values below
-     * 2 (including null), the behavior varies based on your Amazon ECS container agent version:
+     * documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the CPU parameter is
+     * not required, and you can use CPU values below 2 in your container definitions. For CPU values below 2 (including
+     * null), the behavior varies based on your Amazon ECS container agent version:
      * </p>
      * <ul>
      * <li>
@@ -1194,10 +1254,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate
      *         the relative CPU share ratios for running containers. For more information, see <a
      *         href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the
-     *         Docker documentation. The minimum valid CPU share value that the Linux kernel will allow is 2; however,
-     *         the CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For
-     *         CPU values below 2 (including null), the behavior varies based on your Amazon ECS container agent
-     *         version:
+     *         Docker documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the
+     *         CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU
+     *         values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:
      *         </p>
      *         <ul>
      *         <li>
@@ -1263,9 +1322,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate the
      * relative CPU share ratios for running containers. For more information, see <a
      * href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the Docker
-     * documentation. The minimum valid CPU share value that the Linux kernel will allow is 2; however, the CPU
-     * parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU values below
-     * 2 (including null), the behavior varies based on your Amazon ECS container agent version:
+     * documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the CPU parameter is
+     * not required, and you can use CPU values below 2 in your container definitions. For CPU values below 2 (including
+     * null), the behavior varies based on your Amazon ECS container agent version:
      * </p>
      * <ul>
      * <li>
@@ -1328,9 +1387,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate
      *        the relative CPU share ratios for running containers. For more information, see <a
      *        href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the
-     *        Docker documentation. The minimum valid CPU share value that the Linux kernel will allow is 2; however,
-     *        the CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For
-     *        CPU values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:
+     *        Docker documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the
+     *        CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU
+     *        values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:
      *        </p>
      *        <ul>
      *        <li>
@@ -1368,13 +1427,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers will be part of a task using the Fargate launch type, this field is optional and the only
+     * If your containers are part of a task using the Fargate launch type, this field is optional and the only
      * requirement is that the total amount of memory reserved for all containers within a task be lower than the task
      * <code>memory</code> value.
      * </p>
      * <p>
-     * For containers that will be part of a task using the EC2 launch type, you must specify a non-zero integer for one
-     * or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
+     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.
@@ -1393,13 +1452,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <p>
-     *        If your containers will be part of a task using the Fargate launch type, this field is optional and the
-     *        only requirement is that the total amount of memory reserved for all containers within a task be lower
-     *        than the task <code>memory</code> value.
+     *        If your containers are part of a task using the Fargate launch type, this field is optional and the only
+     *        requirement is that the total amount of memory reserved for all containers within a task be lower than the
+     *        task <code>memory</code> value.
      *        </p>
      *        <p>
-     *        For containers that will be part of a task using the EC2 launch type, you must specify a non-zero integer
-     *        for one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
+     *        For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for
+     *        one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
      *        specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      *        <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      *        container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.
@@ -1423,13 +1482,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers will be part of a task using the Fargate launch type, this field is optional and the only
+     * If your containers are part of a task using the Fargate launch type, this field is optional and the only
      * requirement is that the total amount of memory reserved for all containers within a task be lower than the task
      * <code>memory</code> value.
      * </p>
      * <p>
-     * For containers that will be part of a task using the EC2 launch type, you must specify a non-zero integer for one
-     * or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
+     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.
@@ -1447,13 +1506,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         the <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *         run</a>.</p>
      *         <p>
-     *         If your containers will be part of a task using the Fargate launch type, this field is optional and the
-     *         only requirement is that the total amount of memory reserved for all containers within a task be lower
-     *         than the task <code>memory</code> value.
+     *         If your containers are part of a task using the Fargate launch type, this field is optional and the only
+     *         requirement is that the total amount of memory reserved for all containers within a task be lower than
+     *         the task <code>memory</code> value.
      *         </p>
      *         <p>
-     *         For containers that will be part of a task using the EC2 launch type, you must specify a non-zero integer
-     *         for one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
+     *         For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for
+     *         one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
      *         specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      *         <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      *         container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.
@@ -1477,13 +1536,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers will be part of a task using the Fargate launch type, this field is optional and the only
+     * If your containers are part of a task using the Fargate launch type, this field is optional and the only
      * requirement is that the total amount of memory reserved for all containers within a task be lower than the task
      * <code>memory</code> value.
      * </p>
      * <p>
-     * For containers that will be part of a task using the EC2 launch type, you must specify a non-zero integer for one
-     * or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
+     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.
@@ -1502,13 +1561,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <p>
-     *        If your containers will be part of a task using the Fargate launch type, this field is optional and the
-     *        only requirement is that the total amount of memory reserved for all containers within a task be lower
-     *        than the task <code>memory</code> value.
+     *        If your containers are part of a task using the Fargate launch type, this field is optional and the only
+     *        requirement is that the total amount of memory reserved for all containers within a task be lower than the
+     *        task <code>memory</code> value.
      *        </p>
      *        <p>
-     *        For containers that will be part of a task using the EC2 launch type, you must specify a non-zero integer
-     *        for one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
+     *        For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for
+     *        one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
      *        specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      *        <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      *        container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.
@@ -3130,7 +3189,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </p>
      * <note>
      * <p>
-     * This parameter is not supported for Windows containers or tasks using the Fargate launch type.
+     * This parameter is not supported for Windows containers.
      * </p>
      * </note>
      * 
@@ -3138,7 +3197,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        Linux-specific modifications that are applied to the container, such as Linux
      *        <a>KernelCapabilities</a>.</p> <note>
      *        <p>
-     *        This parameter is not supported for Windows containers or tasks using the Fargate launch type.
+     *        This parameter is not supported for Windows containers.
      *        </p>
      */
 
@@ -3152,14 +3211,14 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </p>
      * <note>
      * <p>
-     * This parameter is not supported for Windows containers or tasks using the Fargate launch type.
+     * This parameter is not supported for Windows containers.
      * </p>
      * </note>
      * 
      * @return Linux-specific modifications that are applied to the container, such as Linux
      *         <a>KernelCapabilities</a>.</p> <note>
      *         <p>
-     *         This parameter is not supported for Windows containers or tasks using the Fargate launch type.
+     *         This parameter is not supported for Windows containers.
      *         </p>
      */
 
@@ -3173,7 +3232,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </p>
      * <note>
      * <p>
-     * This parameter is not supported for Windows containers or tasks using the Fargate launch type.
+     * This parameter is not supported for Windows containers.
      * </p>
      * </note>
      * 
@@ -3181,7 +3240,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        Linux-specific modifications that are applied to the container, such as Linux
      *        <a>KernelCapabilities</a>.</p> <note>
      *        <p>
-     *        This parameter is not supported for Windows containers or tasks using the Fargate launch type.
+     *        This parameter is not supported for Windows containers.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -5005,6 +5064,79 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
     }
 
     /**
+     * <p>
+     * The health check command and associated configuration parameters for the container. This parameter maps to
+     * <code>HealthCheck</code> in the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container">Create a
+     * container</a> section of the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/">Docker Remote API</a> and the
+     * <code>HEALTHCHECK</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
+     * </p>
+     * 
+     * @param healthCheck
+     *        The health check command and associated configuration parameters for the container. This parameter maps to
+     *        <code>HealthCheck</code> in the <a
+     *        href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container">Create a
+     *        container</a> section of the <a
+     *        href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/">Docker Remote API</a> and the
+     *        <code>HEALTHCHECK</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
+     *        run</a>.
+     */
+
+    public void setHealthCheck(HealthCheck healthCheck) {
+        this.healthCheck = healthCheck;
+    }
+
+    /**
+     * <p>
+     * The health check command and associated configuration parameters for the container. This parameter maps to
+     * <code>HealthCheck</code> in the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container">Create a
+     * container</a> section of the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/">Docker Remote API</a> and the
+     * <code>HEALTHCHECK</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
+     * </p>
+     * 
+     * @return The health check command and associated configuration parameters for the container. This parameter maps
+     *         to <code>HealthCheck</code> in the <a
+     *         href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container">Create a
+     *         container</a> section of the <a
+     *         href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/">Docker Remote API</a> and
+     *         the <code>HEALTHCHECK</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
+     *         run</a>.
+     */
+
+    public HealthCheck getHealthCheck() {
+        return this.healthCheck;
+    }
+
+    /**
+     * <p>
+     * The health check command and associated configuration parameters for the container. This parameter maps to
+     * <code>HealthCheck</code> in the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container">Create a
+     * container</a> section of the <a
+     * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/">Docker Remote API</a> and the
+     * <code>HEALTHCHECK</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
+     * </p>
+     * 
+     * @param healthCheck
+     *        The health check command and associated configuration parameters for the container. This parameter maps to
+     *        <code>HealthCheck</code> in the <a
+     *        href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container">Create a
+     *        container</a> section of the <a
+     *        href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/">Docker Remote API</a> and the
+     *        <code>HEALTHCHECK</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker
+     *        run</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerDefinition withHealthCheck(HealthCheck healthCheck) {
+        setHealthCheck(healthCheck);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -5068,7 +5200,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
         if (getUlimits() != null)
             sb.append("Ulimits: ").append(getUlimits()).append(",");
         if (getLogConfiguration() != null)
-            sb.append("LogConfiguration: ").append(getLogConfiguration());
+            sb.append("LogConfiguration: ").append(getLogConfiguration()).append(",");
+        if (getHealthCheck() != null)
+            sb.append("HealthCheck: ").append(getHealthCheck());
         sb.append("}");
         return sb.toString();
     }
@@ -5191,6 +5325,10 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getLogConfiguration() != null && other.getLogConfiguration().equals(this.getLogConfiguration()) == false)
             return false;
+        if (other.getHealthCheck() == null ^ this.getHealthCheck() == null)
+            return false;
+        if (other.getHealthCheck() != null && other.getHealthCheck().equals(this.getHealthCheck()) == false)
+            return false;
         return true;
     }
 
@@ -5226,6 +5364,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
         hashCode = prime * hashCode + ((getDockerLabels() == null) ? 0 : getDockerLabels().hashCode());
         hashCode = prime * hashCode + ((getUlimits() == null) ? 0 : getUlimits().hashCode());
         hashCode = prime * hashCode + ((getLogConfiguration() == null) ? 0 : getLogConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getHealthCheck() == null) ? 0 : getHealthCheck().hashCode());
         return hashCode;
     }
 

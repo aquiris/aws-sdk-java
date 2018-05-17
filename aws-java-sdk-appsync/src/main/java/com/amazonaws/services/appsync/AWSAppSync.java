@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,9 @@ public interface AWSAppSync {
      *         An internal AWS AppSync error occurred. Try your request again.
      * @throws ApiKeyLimitExceededException
      *         The API key exceeded a limit. Try your request again.
+     * @throws ApiKeyValidityOutOfBoundsException
+     *         The API key expiration must be set to a value between 1 and 365 days from creation (for
+     *         <code>CreateApiKey</code>) or from update (for <code>UpdateApiKey</code>).
      * @sample AWSAppSync.CreateApiKey
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25/CreateApiKey" target="_top">AWS API
      *      Documentation</a>
@@ -111,8 +114,6 @@ public interface AWSAppSync {
      *         You are not authorized to perform this operation.
      * @throws InternalFailureException
      *         An internal AWS AppSync error occurred. Try your request again.
-     * @throws LimitExceededException
-     *         The request exceeded a limit. Try your request again.
      * @throws ApiLimitExceededException
      *         The GraphQL API exceeded a limit. Try your request again.
      * @sample AWSAppSync.CreateGraphqlApi
@@ -421,6 +422,13 @@ public interface AWSAppSync {
      * <p>
      * Lists the API keys for a given API.
      * </p>
+     * <note>
+     * <p>
+     * API keys are deleted automatically sometime after they expire. However, they may still be included in the
+     * response until they have actually been deleted. You can safely call <code>DeleteApiKey</code> to manually delete
+     * a key before it's automatically deleted.
+     * </p>
+     * </note>
      * 
      * @param listApiKeysRequest
      * @return Result of the ListApiKeys operation returned by the service.
@@ -553,6 +561,33 @@ public interface AWSAppSync {
      *      API Documentation</a>
      */
     StartSchemaCreationResult startSchemaCreation(StartSchemaCreationRequest startSchemaCreationRequest);
+
+    /**
+     * <p>
+     * Updates an API key.
+     * </p>
+     * 
+     * @param updateApiKeyRequest
+     * @return Result of the UpdateApiKey operation returned by the service.
+     * @throws BadRequestException
+     *         The request is not well formed. For example, a value is invalid or a required field is missing. Check the
+     *         field values, and try again.
+     * @throws NotFoundException
+     *         The resource specified in the request was not found. Check the resource and try again.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws LimitExceededException
+     *         The request exceeded a limit. Try your request again.
+     * @throws InternalFailureException
+     *         An internal AWS AppSync error occurred. Try your request again.
+     * @throws ApiKeyValidityOutOfBoundsException
+     *         The API key expiration must be set to a value between 1 and 365 days from creation (for
+     *         <code>CreateApiKey</code>) or from update (for <code>UpdateApiKey</code>).
+     * @sample AWSAppSync.UpdateApiKey
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appsync-2017-07-25/UpdateApiKey" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateApiKeyResult updateApiKey(UpdateApiKeyRequest updateApiKeyRequest);
 
     /**
      * <p>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,12 @@ public enum Dimension {
     TENANCY("TENANCY"),
     SCOPE("SCOPE"),
     PLATFORM("PLATFORM"),
-    SUBSCRIPTION_ID("SUBSCRIPTION_ID");
+    SUBSCRIPTION_ID("SUBSCRIPTION_ID"),
+    LEGAL_ENTITY_NAME("LEGAL_ENTITY_NAME"),
+    DEPLOYMENT_OPTION("DEPLOYMENT_OPTION"),
+    DATABASE_ENGINE("DATABASE_ENGINE"),
+    CACHE_ENGINE("CACHE_ENGINE"),
+    INSTANCE_TYPE_FAMILY("INSTANCE_TYPE_FAMILY");
 
     private String value;
 

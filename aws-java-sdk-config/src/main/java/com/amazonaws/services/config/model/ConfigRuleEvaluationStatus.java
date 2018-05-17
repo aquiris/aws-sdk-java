@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,7 +23,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * ran, the last time it failed, and the related error for the last failure.
  * </p>
  * <p>
- * This action does not return status information about custom Config rules.
+ * This action does not return status information about custom AWS Config rules.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigRuleEvaluationStatus" target="_top">AWS

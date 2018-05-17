@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,9 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The ARN of the AWS credentials.
+     * The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      */
     private String roleARN;
@@ -60,8 +62,8 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
     private String password;
     /**
      * <p>
-     * The retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift. Default value is
-     * 3600 (60 minutes).
+     * The retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon Redshift. Default value
+     * is 3600 (60 minutes).
      * </p>
      */
     private RedshiftRetryOptions retryOptions;
@@ -71,8 +73,8 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
-     * <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that reads from
-     * the S3 bucket doesn't support these compression formats.
+     * <code>RedshiftDestinationUpdate.S3Update</code> because the Amazon Redshift <code>COPY</code> operation that
+     * reads from the S3 bucket doesn't support these compression formats.
      * </p>
      */
     private S3DestinationUpdate s3Update;
@@ -96,18 +98,22 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
     private S3DestinationUpdate s3BackupUpdate;
     /**
      * <p>
-     * The CloudWatch logging options for your delivery stream.
+     * The Amazon CloudWatch logging options for your delivery stream.
      * </p>
      */
     private CloudWatchLoggingOptions cloudWatchLoggingOptions;
 
     /**
      * <p>
-     * The ARN of the AWS credentials.
+     * The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      * 
      * @param roleARN
-     *        The ARN of the AWS credentials.
+     *        The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *        (ARNs) and AWS Service Namespaces</a>.
      */
 
     public void setRoleARN(String roleARN) {
@@ -116,10 +122,14 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The ARN of the AWS credentials.
+     * The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      * 
-     * @return The ARN of the AWS credentials.
+     * @return The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <a
+     *         href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *         (ARNs) and AWS Service Namespaces</a>.
      */
 
     public String getRoleARN() {
@@ -128,11 +138,15 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The ARN of the AWS credentials.
+     * The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      * 
      * @param roleARN
-     *        The ARN of the AWS credentials.
+     *        The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *        (ARNs) and AWS Service Namespaces</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -303,13 +317,13 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift. Default value is
-     * 3600 (60 minutes).
+     * The retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon Redshift. Default value
+     * is 3600 (60 minutes).
      * </p>
      * 
      * @param retryOptions
-     *        The retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift. Default
-     *        value is 3600 (60 minutes).
+     *        The retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon Redshift.
+     *        Default value is 3600 (60 minutes).
      */
 
     public void setRetryOptions(RedshiftRetryOptions retryOptions) {
@@ -318,12 +332,12 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift. Default value is
-     * 3600 (60 minutes).
+     * The retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon Redshift. Default value
+     * is 3600 (60 minutes).
      * </p>
      * 
-     * @return The retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift. Default
-     *         value is 3600 (60 minutes).
+     * @return The retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon Redshift.
+     *         Default value is 3600 (60 minutes).
      */
 
     public RedshiftRetryOptions getRetryOptions() {
@@ -332,13 +346,13 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift. Default value is
-     * 3600 (60 minutes).
+     * The retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon Redshift. Default value
+     * is 3600 (60 minutes).
      * </p>
      * 
      * @param retryOptions
-     *        The retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift. Default
-     *        value is 3600 (60 minutes).
+     *        The retry behavior in case Kinesis Data Firehose is unable to deliver documents to Amazon Redshift.
+     *        Default value is 3600 (60 minutes).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -353,16 +367,16 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
-     * <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that reads from
-     * the S3 bucket doesn't support these compression formats.
+     * <code>RedshiftDestinationUpdate.S3Update</code> because the Amazon Redshift <code>COPY</code> operation that
+     * reads from the S3 bucket doesn't support these compression formats.
      * </p>
      * 
      * @param s3Update
      *        The Amazon S3 destination.</p>
      *        <p>
      *        The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
-     *        <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that
-     *        reads from the S3 bucket doesn't support these compression formats.
+     *        <code>RedshiftDestinationUpdate.S3Update</code> because the Amazon Redshift <code>COPY</code> operation
+     *        that reads from the S3 bucket doesn't support these compression formats.
      */
 
     public void setS3Update(S3DestinationUpdate s3Update) {
@@ -375,15 +389,15 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
-     * <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that reads from
-     * the S3 bucket doesn't support these compression formats.
+     * <code>RedshiftDestinationUpdate.S3Update</code> because the Amazon Redshift <code>COPY</code> operation that
+     * reads from the S3 bucket doesn't support these compression formats.
      * </p>
      * 
      * @return The Amazon S3 destination.</p>
      *         <p>
      *         The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
-     *         <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that
-     *         reads from the S3 bucket doesn't support these compression formats.
+     *         <code>RedshiftDestinationUpdate.S3Update</code> because the Amazon Redshift <code>COPY</code> operation
+     *         that reads from the S3 bucket doesn't support these compression formats.
      */
 
     public S3DestinationUpdate getS3Update() {
@@ -396,16 +410,16 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
-     * <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that reads from
-     * the S3 bucket doesn't support these compression formats.
+     * <code>RedshiftDestinationUpdate.S3Update</code> because the Amazon Redshift <code>COPY</code> operation that
+     * reads from the S3 bucket doesn't support these compression formats.
      * </p>
      * 
      * @param s3Update
      *        The Amazon S3 destination.</p>
      *        <p>
      *        The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in
-     *        <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that
-     *        reads from the S3 bucket doesn't support these compression formats.
+     *        <code>RedshiftDestinationUpdate.S3Update</code> because the Amazon Redshift <code>COPY</code> operation
+     *        that reads from the S3 bucket doesn't support these compression formats.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -569,11 +583,11 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The CloudWatch logging options for your delivery stream.
+     * The Amazon CloudWatch logging options for your delivery stream.
      * </p>
      * 
      * @param cloudWatchLoggingOptions
-     *        The CloudWatch logging options for your delivery stream.
+     *        The Amazon CloudWatch logging options for your delivery stream.
      */
 
     public void setCloudWatchLoggingOptions(CloudWatchLoggingOptions cloudWatchLoggingOptions) {
@@ -582,10 +596,10 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The CloudWatch logging options for your delivery stream.
+     * The Amazon CloudWatch logging options for your delivery stream.
      * </p>
      * 
-     * @return The CloudWatch logging options for your delivery stream.
+     * @return The Amazon CloudWatch logging options for your delivery stream.
      */
 
     public CloudWatchLoggingOptions getCloudWatchLoggingOptions() {
@@ -594,11 +608,11 @@ public class RedshiftDestinationUpdate implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The CloudWatch logging options for your delivery stream.
+     * The Amazon CloudWatch logging options for your delivery stream.
      * </p>
      * 
      * @param cloudWatchLoggingOptions
-     *        The CloudWatch logging options for your delivery stream.
+     *        The Amazon CloudWatch logging options for your delivery stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

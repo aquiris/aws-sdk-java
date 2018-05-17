@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,9 +33,9 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <fullname>Amazon GameLift Service</fullname>
  * <p>
  * Amazon GameLift is a managed service for developers who need a scalable, dedicated server solution for their
- * multiplayer games. Amazon GameLift provides tools for the following tasks: (1) acquire computing resources and deploy
- * game servers, (2) scale game server capacity to meet player demand, (3) host game sessions and manage player access,
- * and (4) track in-depth metrics on player usage and server performance.
+ * multiplayer games. Use Amazon GameLift for these tasks: (1) set up computing resources and deploy your game servers,
+ * (2) run game sessions and get players into games, (3) automatically scale your resources to meet player demand and
+ * manage costs, and (4) track in-depth metrics on game server performance and player usage.
  * </p>
  * <p>
  * The Amazon GameLift service API includes two important function sets:
@@ -49,7 +49,7 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * <li>
  * <p>
- * <b>Configure and manage game server resources</b> -- Manage builds, fleets, queues, and aliases; set autoscaling
+ * <b>Configure and manage game server resources</b> -- Manage builds, fleets, queues, and aliases; set auto-scaling
  * policies; retrieve logs and metrics.
  * </p>
  * </li>
@@ -94,19 +94,19 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * </ul>
  * <p>
- * <b>MORE RESOURCES</b>
+ * <b>Learn more</b>
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a> -- Learn
- * more about Amazon GameLift features and how to use them.
+ * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/"> Developer Guide</a> -- Read about Amazon
+ * GameLift features and how to use them.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a href="https://gamedev.amazon.com/forums/tutorials">Lumberyard and Amazon GameLift Tutorials</a> -- Get started
- * fast with walkthroughs and sample projects.
+ * <a href="https://gamedev.amazon.com/forums/tutorials">Tutorials</a> -- Get started fast with walkthroughs and sample
+ * projects.
  * </p>
  * </li>
  * <li>
@@ -122,9 +122,9 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * <li>
  * <p>
- * <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html">Amazon GameLift Document
- * History</a> -- See changes to the Amazon GameLift service, SDKs, and documentation, as well as links to release
- * notes.
+ * <a href="http://aws.amazon.com/releasenotes/Amazon-GameLift/">Release notes</a> and <a
+ * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html">document history</a> -- Stay
+ * current with updates to the Amazon GameLift service, SDKs, and documentation.
  * </p>
  * </li>
  * </ul>
@@ -192,12 +192,17 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * <li>
  * <p>
- * <b>Start new game sessions with FlexMatch matchmaking</b>
+ * <b>Match players to game sessions with FlexMatch matchmaking</b>
  * </p>
  * <ul>
  * <li>
  * <p>
  * <a>StartMatchmaking</a> -- Request matchmaking for one players or a group who want to play together.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StartMatchBackfill</a> - Request additional player matches to fill empty slots in an existing game session.
  * </p>
  * </li>
  * <li>
@@ -289,9 +294,8 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <ul>
  * <li>
  * <p>
- * <a>CreateBuild</a> -- Create a new build using files stored in an Amazon S3 bucket. (Update uploading permissions
- * with <a>RequestUploadCredentials</a>.) To create a build and upload files from a local path, use the AWS CLI command
- * <code>upload-build</code>.
+ * <a>CreateBuild</a> -- Create a new build using files stored in an Amazon S3 bucket. To create a build and upload
+ * files from a local path, use the AWS CLI command <code>upload-build</code>.
  * </p>
  * </li>
  * <li>
@@ -382,22 +386,32 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * <li>
  * <p>
- * Autoscale -- Manage autoscaling rules and apply them to a fleet.
+ * Autoscale -- Manage auto-scaling rules and apply them to a fleet.
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>PutScalingPolicy</a> -- Create a new autoscaling policy, or update an existing one.
+ * <a>PutScalingPolicy</a> -- Create a new auto-scaling policy, or update an existing one.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeScalingPolicies</a> -- Retrieve an existing autoscaling policy.
+ * <a>DescribeScalingPolicies</a> -- Retrieve an existing auto-scaling policy.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteScalingPolicy</a> -- Delete an autoscaling policy and stop it from affecting a fleet's capacity.
+ * <a>DeleteScalingPolicy</a> -- Delete an auto-scaling policy and stop it from affecting a fleet's capacity.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StartFleetActions</a> -- Restart a fleet's auto-scaling policies.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StopFleetActions</a> -- Suspend a fleet's auto-scaling policies.
  * </p>
  * </li>
  * </ul>
@@ -2463,6 +2477,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<StartFleetActionsResult> startFleetActionsAsync(StartFleetActionsRequest request) {
+
+        return startFleetActionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartFleetActionsResult> startFleetActionsAsync(final StartFleetActionsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartFleetActionsRequest, StartFleetActionsResult> asyncHandler) {
+        final StartFleetActionsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StartFleetActionsResult>() {
+            @Override
+            public StartFleetActionsResult call() throws Exception {
+                StartFleetActionsResult result = null;
+
+                try {
+                    result = executeStartFleetActions(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<StartGameSessionPlacementResult> startGameSessionPlacementAsync(StartGameSessionPlacementRequest request) {
 
         return startGameSessionPlacementAsync(request, null);
@@ -2496,6 +2543,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<StartMatchBackfillResult> startMatchBackfillAsync(StartMatchBackfillRequest request) {
+
+        return startMatchBackfillAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartMatchBackfillResult> startMatchBackfillAsync(final StartMatchBackfillRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartMatchBackfillRequest, StartMatchBackfillResult> asyncHandler) {
+        final StartMatchBackfillRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StartMatchBackfillResult>() {
+            @Override
+            public StartMatchBackfillResult call() throws Exception {
+                StartMatchBackfillResult result = null;
+
+                try {
+                    result = executeStartMatchBackfill(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<StartMatchmakingResult> startMatchmakingAsync(StartMatchmakingRequest request) {
 
         return startMatchmakingAsync(request, null);
@@ -2513,6 +2593,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeStartMatchmaking(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<StopFleetActionsResult> stopFleetActionsAsync(StopFleetActionsRequest request) {
+
+        return stopFleetActionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StopFleetActionsResult> stopFleetActionsAsync(final StopFleetActionsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StopFleetActionsRequest, StopFleetActionsResult> asyncHandler) {
+        final StopFleetActionsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StopFleetActionsResult>() {
+            @Override
+            public StopFleetActionsResult call() throws Exception {
+                StopFleetActionsResult result = null;
+
+                try {
+                    result = executeStopFleetActions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

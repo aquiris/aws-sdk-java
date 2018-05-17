@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -118,6 +118,11 @@ public class AbstractAWSWAFRegional implements AWSWAFRegional {
     }
 
     @Override
+    public DeletePermissionPolicyResult deletePermissionPolicy(DeletePermissionPolicyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteRateBasedRuleResult deleteRateBasedRule(DeleteRateBasedRuleRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -189,6 +194,11 @@ public class AbstractAWSWAFRegional implements AWSWAFRegional {
 
     @Override
     public GetIPSetResult getIPSet(GetIPSetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetPermissionPolicyResult getPermissionPolicy(GetPermissionPolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -324,6 +334,11 @@ public class AbstractAWSWAFRegional implements AWSWAFRegional {
 
     @Override
     public ListXssMatchSetsResult listXssMatchSets(ListXssMatchSetsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public PutPermissionPolicyResult putPermissionPolicy(PutPermissionPolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

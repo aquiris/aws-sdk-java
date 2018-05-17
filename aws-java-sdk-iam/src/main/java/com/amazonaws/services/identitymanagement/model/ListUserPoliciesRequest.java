@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,7 +32,7 @@ public class ListUserPoliciesRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
-     * the following characters: =,.@-
+     * the following characters: _+=,.@-
      * </p>
      */
     private String userName;
@@ -75,7 +75,7 @@ public class ListUserPoliciesRequest extends com.amazonaws.AmazonWebServiceReque
      *        <p>
      *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *        any of the following characters: =,.@-
+     *        any of the following characters: _+=,.@-
      */
     public ListUserPoliciesRequest(String userName) {
         setUserName(userName);
@@ -88,7 +88,7 @@ public class ListUserPoliciesRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
-     * the following characters: =,.@-
+     * the following characters: _+=,.@-
      * </p>
      * 
      * @param userName
@@ -96,7 +96,7 @@ public class ListUserPoliciesRequest extends com.amazonaws.AmazonWebServiceReque
      *        <p>
      *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *        any of the following characters: =,.@-
+     *        any of the following characters: _+=,.@-
      */
 
     public void setUserName(String userName) {
@@ -110,14 +110,14 @@ public class ListUserPoliciesRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
-     * the following characters: =,.@-
+     * the following characters: _+=,.@-
      * </p>
      * 
      * @return The name of the user to list policies for.</p>
      *         <p>
      *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *         characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *         any of the following characters: =,.@-
+     *         any of the following characters: _+=,.@-
      */
 
     public String getUserName() {
@@ -131,7 +131,7 @@ public class ListUserPoliciesRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
-     * the following characters: =,.@-
+     * the following characters: _+=,.@-
      * </p>
      * 
      * @param userName
@@ -139,7 +139,7 @@ public class ListUserPoliciesRequest extends com.amazonaws.AmazonWebServiceReque
      *        <p>
      *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *        any of the following characters: =,.@-
+     *        any of the following characters: _+=,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

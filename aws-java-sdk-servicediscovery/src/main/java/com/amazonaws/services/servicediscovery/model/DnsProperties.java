@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A complex type that contains the ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+ * A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/DnsProperties" target="_top">AWS API
@@ -30,18 +30,18 @@ public class DnsProperties implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * The ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      */
     private String hostedZoneId;
 
     /**
      * <p>
-     * The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * The ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      * 
      * @param hostedZoneId
-     *        The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     *        The ID for the hosted zone that Route 53 creates when you create a namespace.
      */
 
     public void setHostedZoneId(String hostedZoneId) {
@@ -50,10 +50,10 @@ public class DnsProperties implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * The ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      * 
-     * @return The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * @return The ID for the hosted zone that Route 53 creates when you create a namespace.
      */
 
     public String getHostedZoneId() {
@@ -62,11 +62,11 @@ public class DnsProperties implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     * The ID for the hosted zone that Route 53 creates when you create a namespace.
      * </p>
      * 
      * @param hostedZoneId
-     *        The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+     *        The ID for the hosted zone that Route 53 creates when you create a namespace.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

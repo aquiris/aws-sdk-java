@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -58,7 +58,7 @@ public class GetDocumentationPartsRequest extends com.amazonaws.AmazonWebService
     private String position;
     /**
      * <p>
-     * The maximum number of returned results per page.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      */
     private Integer limit;
@@ -306,11 +306,11 @@ public class GetDocumentationPartsRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The maximum number of returned results per page.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of returned results per page.
+     *        The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      */
 
     public void setLimit(Integer limit) {
@@ -319,10 +319,10 @@ public class GetDocumentationPartsRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The maximum number of returned results per page.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      * 
-     * @return The maximum number of returned results per page.
+     * @return The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      */
 
     public Integer getLimit() {
@@ -331,11 +331,11 @@ public class GetDocumentationPartsRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The maximum number of returned results per page.
+     * The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * </p>
      * 
      * @param limit
-     *        The maximum number of returned results per page.
+     *        The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

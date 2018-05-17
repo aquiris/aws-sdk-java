@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -68,6 +68,11 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <code>CreateWebhook</code>: For an existing AWS CodeBuild build project that has its source code stored in a GitHub
  * repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is
  * pushed to the repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>UpdateWebhook</code>: Changes the settings of an existing webhook.
  * </p>
  * </li>
  * <li>
@@ -815,6 +820,39 @@ public class AWSCodeBuildAsyncClient extends AWSCodeBuildClient implements AWSCo
 
                 try {
                     result = executeUpdateProject(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateWebhookResult> updateWebhookAsync(UpdateWebhookRequest request) {
+
+        return updateWebhookAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateWebhookResult> updateWebhookAsync(final UpdateWebhookRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateWebhookRequest, UpdateWebhookResult> asyncHandler) {
+        final UpdateWebhookRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateWebhookResult>() {
+            @Override
+            public UpdateWebhookResult call() throws Exception {
+                UpdateWebhookResult result = null;
+
+                try {
+                    result = executeUpdateWebhook(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,7 @@ public class DescribeScalingActivitiesRequest extends com.amazonaws.AmazonWebSer
     private String autoScalingGroupName;
     /**
      * <p>
-     * The maximum number of items to return with this call. The default value is 100.
+     * The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
      * </p>
      */
     private Integer maxRecords;
@@ -192,11 +192,12 @@ public class DescribeScalingActivitiesRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The maximum number of items to return with this call. The default value is 100.
+     * The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of items to return with this call. The default value is 100.
+     *        The maximum number of items to return with this call. The default value is 100 and the maximum value is
+     *        100.
      */
 
     public void setMaxRecords(Integer maxRecords) {
@@ -205,10 +206,11 @@ public class DescribeScalingActivitiesRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The maximum number of items to return with this call. The default value is 100.
+     * The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
      * </p>
      * 
-     * @return The maximum number of items to return with this call. The default value is 100.
+     * @return The maximum number of items to return with this call. The default value is 100 and the maximum value is
+     *         100.
      */
 
     public Integer getMaxRecords() {
@@ -217,11 +219,12 @@ public class DescribeScalingActivitiesRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The maximum number of items to return with this call. The default value is 100.
+     * The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
      * </p>
      * 
      * @param maxRecords
-     *        The maximum number of items to return with this call. The default value is 100.
+     *        The maximum number of items to return with this call. The default value is 100 and the maximum value is
+     *        100.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

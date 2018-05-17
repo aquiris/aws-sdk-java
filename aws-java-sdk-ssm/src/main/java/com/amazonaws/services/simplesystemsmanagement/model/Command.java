@@ -41,14 +41,20 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
     private String documentName;
     /**
      * <p>
+     * The SSM document version.
+     * </p>
+     */
+    private String documentVersion;
+    /**
+     * <p>
      * User-specified information about the command, such as a brief description of what the command should do.
      * </p>
      */
     private String comment;
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute. Calculated based
-     * on the ExpiresAfter user input provided as part of the SendCommand API.
+     * If this time is reached and the command has not already started executing, it will not run. Calculated based on
+     * the ExpiresAfter user input provided as part of the SendCommand API.
      * </p>
      */
     private java.util.Date expiresAfter;
@@ -179,7 +185,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The maximum number of errors allowed before the system stops sending the command to additional targets. You can
-     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more
+     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 0. For more
      * information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using
      * Systems Manager Run Command</a>.
@@ -301,6 +307,46 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * The SSM document version.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The SSM document version.
+     */
+
+    public void setDocumentVersion(String documentVersion) {
+        this.documentVersion = documentVersion;
+    }
+
+    /**
+     * <p>
+     * The SSM document version.
+     * </p>
+     * 
+     * @return The SSM document version.
+     */
+
+    public String getDocumentVersion() {
+        return this.documentVersion;
+    }
+
+    /**
+     * <p>
+     * The SSM document version.
+     * </p>
+     * 
+     * @param documentVersion
+     *        The SSM document version.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Command withDocumentVersion(String documentVersion) {
+        setDocumentVersion(documentVersion);
+        return this;
+    }
+
+    /**
+     * <p>
      * User-specified information about the command, such as a brief description of what the command should do.
      * </p>
      * 
@@ -341,12 +387,12 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute. Calculated based
-     * on the ExpiresAfter user input provided as part of the SendCommand API.
+     * If this time is reached and the command has not already started executing, it will not run. Calculated based on
+     * the ExpiresAfter user input provided as part of the SendCommand API.
      * </p>
      * 
      * @param expiresAfter
-     *        If this time is reached and the command has not already started executing, it will not execute. Calculated
+     *        If this time is reached and the command has not already started executing, it will not run. Calculated
      *        based on the ExpiresAfter user input provided as part of the SendCommand API.
      */
 
@@ -356,12 +402,12 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute. Calculated based
-     * on the ExpiresAfter user input provided as part of the SendCommand API.
+     * If this time is reached and the command has not already started executing, it will not run. Calculated based on
+     * the ExpiresAfter user input provided as part of the SendCommand API.
      * </p>
      * 
-     * @return If this time is reached and the command has not already started executing, it will not execute.
-     *         Calculated based on the ExpiresAfter user input provided as part of the SendCommand API.
+     * @return If this time is reached and the command has not already started executing, it will not run. Calculated
+     *         based on the ExpiresAfter user input provided as part of the SendCommand API.
      */
 
     public java.util.Date getExpiresAfter() {
@@ -370,12 +416,12 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * If this time is reached and the command has not already started executing, it will not execute. Calculated based
-     * on the ExpiresAfter user input provided as part of the SendCommand API.
+     * If this time is reached and the command has not already started executing, it will not run. Calculated based on
+     * the ExpiresAfter user input provided as part of the SendCommand API.
      * </p>
      * 
      * @param expiresAfter
-     *        If this time is reached and the command has not already started executing, it will not execute. Calculated
+     *        If this time is reached and the command has not already started executing, it will not run. Calculated
      *        based on the ExpiresAfter user input provided as part of the SendCommand API.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1297,7 +1343,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The maximum number of errors allowed before the system stops sending the command to additional targets. You can
-     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more
+     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 0. For more
      * information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using
      * Systems Manager Run Command</a>.
@@ -1306,7 +1352,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
      * @param maxErrors
      *        The maximum number of errors allowed before the system stops sending the command to additional targets.
      *        You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value
-     *        is 50. For more information about how to use MaxErrors, see <a
+     *        is 0. For more information about how to use MaxErrors, see <a
      *        href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command
      *        Using Systems Manager Run Command</a>.
      */
@@ -1318,7 +1364,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The maximum number of errors allowed before the system stops sending the command to additional targets. You can
-     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more
+     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 0. For more
      * information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using
      * Systems Manager Run Command</a>.
@@ -1326,7 +1372,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
      * 
      * @return The maximum number of errors allowed before the system stops sending the command to additional targets.
      *         You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value
-     *         is 50. For more information about how to use MaxErrors, see <a
+     *         is 0. For more information about how to use MaxErrors, see <a
      *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command
      *         Using Systems Manager Run Command</a>.
      */
@@ -1338,7 +1384,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The maximum number of errors allowed before the system stops sending the command to additional targets. You can
-     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more
+     * specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 0. For more
      * information about how to use MaxErrors, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using
      * Systems Manager Run Command</a>.
@@ -1347,7 +1393,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
      * @param maxErrors
      *        The maximum number of errors allowed before the system stops sending the command to additional targets.
      *        You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value
-     *        is 50. For more information about how to use MaxErrors, see <a
+     *        is 0. For more information about how to use MaxErrors, see <a
      *        href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command
      *        Using Systems Manager Run Command</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1588,6 +1634,8 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
             sb.append("CommandId: ").append(getCommandId()).append(",");
         if (getDocumentName() != null)
             sb.append("DocumentName: ").append(getDocumentName()).append(",");
+        if (getDocumentVersion() != null)
+            sb.append("DocumentVersion: ").append(getDocumentVersion()).append(",");
         if (getComment() != null)
             sb.append("Comment: ").append(getComment()).append(",");
         if (getExpiresAfter() != null)
@@ -1645,6 +1693,10 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
         if (other.getDocumentName() == null ^ this.getDocumentName() == null)
             return false;
         if (other.getDocumentName() != null && other.getDocumentName().equals(this.getDocumentName()) == false)
+            return false;
+        if (other.getDocumentVersion() == null ^ this.getDocumentVersion() == null)
+            return false;
+        if (other.getDocumentVersion() != null && other.getDocumentVersion().equals(this.getDocumentVersion()) == false)
             return false;
         if (other.getComment() == null ^ this.getComment() == null)
             return false;
@@ -1728,6 +1780,7 @@ public class Command implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getCommandId() == null) ? 0 : getCommandId().hashCode());
         hashCode = prime * hashCode + ((getDocumentName() == null) ? 0 : getDocumentName().hashCode());
+        hashCode = prime * hashCode + ((getDocumentVersion() == null) ? 0 : getDocumentVersion().hashCode());
         hashCode = prime * hashCode + ((getComment() == null) ? 0 : getComment().hashCode());
         hashCode = prime * hashCode + ((getExpiresAfter() == null) ? 0 : getExpiresAfter().hashCode());
         hashCode = prime * hashCode + ((getParameters() == null) ? 0 : getParameters().hashCode());

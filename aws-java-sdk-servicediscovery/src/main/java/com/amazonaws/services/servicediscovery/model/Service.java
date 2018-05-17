@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,13 +30,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID that Amazon Route 53 assigned to the service when you created it.
+     * The ID that Route 53 assigned to the service when you created it.
      * </p>
      */
     private String id;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the service when you create it.
+     * The Amazon Resource Name (ARN) that Route 53 assigns to the service when you create it.
      * </p>
      */
     private String arn;
@@ -61,54 +61,49 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     private Integer instanceCount;
     /**
      * <p>
-     * A complex type that contains information about the resource record sets that you want Amazon Route 53 to create
-     * when you register an instance.
+     * A complex type that contains information about the records that you want Route 53 to create when you register an
+     * instance.
      * </p>
      */
     private DnsConfig dnsConfig;
     /**
      * <p>
      * <i>Public DNS namespaces only.</i> A complex type that contains settings for an optional health check. If you
-     * specify settings for a health check, Amazon Route 53 associates the health check with all the resource record
-     * sets that you specify in <code>DnsConfig</code>.
+     * specify settings for a health check, Route 53 associates the health check with all the records that you specify
+     * in <code>DnsConfig</code>.
      * </p>
-     * <note>
      * <p>
-     * The health check uses 30 seconds as the request interval. This is the number of seconds between the time that
-     * each Amazon Route 53 health checker gets a response from your endpoint and the time that it sends the next health
-     * check request. A health checker in each data center around the world sends your endpoint a health check request
-     * every 30 seconds. On average, your endpoint receives a health check request about every two seconds. Health
-     * checkers in different data centers don't coordinate with one another, so you'll sometimes see several requests
-     * per second followed by a few seconds with no health checks at all.
-     * </p>
-     * </note>
-     * <p>
-     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Amazon
-     * Route 53 Pricing</a>.
+     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Route 53
+     * Pricing</a>.
      * </p>
      */
     private HealthCheckConfig healthCheckConfig;
+
+    private HealthCheckCustomConfig healthCheckCustomConfig;
     /**
      * <p>
-     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
+     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The value of
+     * <code>CreateDate</code> is accurate to milliseconds. For example, the value <code>1516925490.087</code>
+     * represents Friday, January 26, 2018 12:11:30.087 AM.
      * </p>
      */
     private java.util.Date createDate;
     /**
      * <p>
-     * An optional parameter that you can use to resolve concurrent creation requests. <code>CreatorRequestId</code>
-     * helps to determine if a specific client owns the namespace.
+     * A unique string that identifies the request and that allows failed requests to be retried without the risk of
+     * executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time
+     * stamp.
      * </p>
      */
     private String creatorRequestId;
 
     /**
      * <p>
-     * The ID that Amazon Route 53 assigned to the service when you created it.
+     * The ID that Route 53 assigned to the service when you created it.
      * </p>
      * 
      * @param id
-     *        The ID that Amazon Route 53 assigned to the service when you created it.
+     *        The ID that Route 53 assigned to the service when you created it.
      */
 
     public void setId(String id) {
@@ -117,10 +112,10 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID that Amazon Route 53 assigned to the service when you created it.
+     * The ID that Route 53 assigned to the service when you created it.
      * </p>
      * 
-     * @return The ID that Amazon Route 53 assigned to the service when you created it.
+     * @return The ID that Route 53 assigned to the service when you created it.
      */
 
     public String getId() {
@@ -129,11 +124,11 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID that Amazon Route 53 assigned to the service when you created it.
+     * The ID that Route 53 assigned to the service when you created it.
      * </p>
      * 
      * @param id
-     *        The ID that Amazon Route 53 assigned to the service when you created it.
+     *        The ID that Route 53 assigned to the service when you created it.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -144,11 +139,11 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the service when you create it.
+     * The Amazon Resource Name (ARN) that Route 53 assigns to the service when you create it.
      * </p>
      * 
      * @param arn
-     *        The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the service when you create it.
+     *        The Amazon Resource Name (ARN) that Route 53 assigns to the service when you create it.
      */
 
     public void setArn(String arn) {
@@ -157,10 +152,10 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the service when you create it.
+     * The Amazon Resource Name (ARN) that Route 53 assigns to the service when you create it.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the service when you create it.
+     * @return The Amazon Resource Name (ARN) that Route 53 assigns to the service when you create it.
      */
 
     public String getArn() {
@@ -169,11 +164,11 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the service when you create it.
+     * The Amazon Resource Name (ARN) that Route 53 assigns to the service when you create it.
      * </p>
      * 
      * @param arn
-     *        The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the service when you create it.
+     *        The Amazon Resource Name (ARN) that Route 53 assigns to the service when you create it.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -310,13 +305,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A complex type that contains information about the resource record sets that you want Amazon Route 53 to create
-     * when you register an instance.
+     * A complex type that contains information about the records that you want Route 53 to create when you register an
+     * instance.
      * </p>
      * 
      * @param dnsConfig
-     *        A complex type that contains information about the resource record sets that you want Amazon Route 53 to
-     *        create when you register an instance.
+     *        A complex type that contains information about the records that you want Route 53 to create when you
+     *        register an instance.
      */
 
     public void setDnsConfig(DnsConfig dnsConfig) {
@@ -325,12 +320,12 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A complex type that contains information about the resource record sets that you want Amazon Route 53 to create
-     * when you register an instance.
+     * A complex type that contains information about the records that you want Route 53 to create when you register an
+     * instance.
      * </p>
      * 
-     * @return A complex type that contains information about the resource record sets that you want Amazon Route 53 to
-     *         create when you register an instance.
+     * @return A complex type that contains information about the records that you want Route 53 to create when you
+     *         register an instance.
      */
 
     public DnsConfig getDnsConfig() {
@@ -339,13 +334,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A complex type that contains information about the resource record sets that you want Amazon Route 53 to create
-     * when you register an instance.
+     * A complex type that contains information about the records that you want Route 53 to create when you register an
+     * instance.
      * </p>
      * 
      * @param dnsConfig
-     *        A complex type that contains information about the resource record sets that you want Amazon Route 53 to
-     *        create when you register an instance.
+     *        A complex type that contains information about the records that you want Route 53 to create when you
+     *        register an instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -357,40 +352,21 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * <i>Public DNS namespaces only.</i> A complex type that contains settings for an optional health check. If you
-     * specify settings for a health check, Amazon Route 53 associates the health check with all the resource record
-     * sets that you specify in <code>DnsConfig</code>.
+     * specify settings for a health check, Route 53 associates the health check with all the records that you specify
+     * in <code>DnsConfig</code>.
      * </p>
-     * <note>
      * <p>
-     * The health check uses 30 seconds as the request interval. This is the number of seconds between the time that
-     * each Amazon Route 53 health checker gets a response from your endpoint and the time that it sends the next health
-     * check request. A health checker in each data center around the world sends your endpoint a health check request
-     * every 30 seconds. On average, your endpoint receives a health check request about every two seconds. Health
-     * checkers in different data centers don't coordinate with one another, so you'll sometimes see several requests
-     * per second followed by a few seconds with no health checks at all.
-     * </p>
-     * </note>
-     * <p>
-     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Amazon
-     * Route 53 Pricing</a>.
+     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Route 53
+     * Pricing</a>.
      * </p>
      * 
      * @param healthCheckConfig
      *        <i>Public DNS namespaces only.</i> A complex type that contains settings for an optional health check. If
-     *        you specify settings for a health check, Amazon Route 53 associates the health check with all the resource
-     *        record sets that you specify in <code>DnsConfig</code>.</p> <note>
-     *        <p>
-     *        The health check uses 30 seconds as the request interval. This is the number of seconds between the time
-     *        that each Amazon Route 53 health checker gets a response from your endpoint and the time that it sends the
-     *        next health check request. A health checker in each data center around the world sends your endpoint a
-     *        health check request every 30 seconds. On average, your endpoint receives a health check request about
-     *        every two seconds. Health checkers in different data centers don't coordinate with one another, so you'll
-     *        sometimes see several requests per second followed by a few seconds with no health checks at all.
-     *        </p>
-     *        </note>
+     *        you specify settings for a health check, Route 53 associates the health check with all the records that
+     *        you specify in <code>DnsConfig</code>.</p>
      *        <p>
      *        For information about the charges for health checks, see <a
-     *        href="http://aws.amazon.com/route53/pricing">Amazon Route 53 Pricing</a>.
+     *        href="http://aws.amazon.com/route53/pricing">Route 53 Pricing</a>.
      */
 
     public void setHealthCheckConfig(HealthCheckConfig healthCheckConfig) {
@@ -400,39 +376,20 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * <i>Public DNS namespaces only.</i> A complex type that contains settings for an optional health check. If you
-     * specify settings for a health check, Amazon Route 53 associates the health check with all the resource record
-     * sets that you specify in <code>DnsConfig</code>.
+     * specify settings for a health check, Route 53 associates the health check with all the records that you specify
+     * in <code>DnsConfig</code>.
      * </p>
-     * <note>
      * <p>
-     * The health check uses 30 seconds as the request interval. This is the number of seconds between the time that
-     * each Amazon Route 53 health checker gets a response from your endpoint and the time that it sends the next health
-     * check request. A health checker in each data center around the world sends your endpoint a health check request
-     * every 30 seconds. On average, your endpoint receives a health check request about every two seconds. Health
-     * checkers in different data centers don't coordinate with one another, so you'll sometimes see several requests
-     * per second followed by a few seconds with no health checks at all.
-     * </p>
-     * </note>
-     * <p>
-     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Amazon
-     * Route 53 Pricing</a>.
+     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Route 53
+     * Pricing</a>.
      * </p>
      * 
      * @return <i>Public DNS namespaces only.</i> A complex type that contains settings for an optional health check. If
-     *         you specify settings for a health check, Amazon Route 53 associates the health check with all the
-     *         resource record sets that you specify in <code>DnsConfig</code>.</p> <note>
-     *         <p>
-     *         The health check uses 30 seconds as the request interval. This is the number of seconds between the time
-     *         that each Amazon Route 53 health checker gets a response from your endpoint and the time that it sends
-     *         the next health check request. A health checker in each data center around the world sends your endpoint
-     *         a health check request every 30 seconds. On average, your endpoint receives a health check request about
-     *         every two seconds. Health checkers in different data centers don't coordinate with one another, so you'll
-     *         sometimes see several requests per second followed by a few seconds with no health checks at all.
-     *         </p>
-     *         </note>
+     *         you specify settings for a health check, Route 53 associates the health check with all the records that
+     *         you specify in <code>DnsConfig</code>.</p>
      *         <p>
      *         For information about the charges for health checks, see <a
-     *         href="http://aws.amazon.com/route53/pricing">Amazon Route 53 Pricing</a>.
+     *         href="http://aws.amazon.com/route53/pricing">Route 53 Pricing</a>.
      */
 
     public HealthCheckConfig getHealthCheckConfig() {
@@ -442,40 +399,21 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * <i>Public DNS namespaces only.</i> A complex type that contains settings for an optional health check. If you
-     * specify settings for a health check, Amazon Route 53 associates the health check with all the resource record
-     * sets that you specify in <code>DnsConfig</code>.
+     * specify settings for a health check, Route 53 associates the health check with all the records that you specify
+     * in <code>DnsConfig</code>.
      * </p>
-     * <note>
      * <p>
-     * The health check uses 30 seconds as the request interval. This is the number of seconds between the time that
-     * each Amazon Route 53 health checker gets a response from your endpoint and the time that it sends the next health
-     * check request. A health checker in each data center around the world sends your endpoint a health check request
-     * every 30 seconds. On average, your endpoint receives a health check request about every two seconds. Health
-     * checkers in different data centers don't coordinate with one another, so you'll sometimes see several requests
-     * per second followed by a few seconds with no health checks at all.
-     * </p>
-     * </note>
-     * <p>
-     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Amazon
-     * Route 53 Pricing</a>.
+     * For information about the charges for health checks, see <a href="http://aws.amazon.com/route53/pricing">Route 53
+     * Pricing</a>.
      * </p>
      * 
      * @param healthCheckConfig
      *        <i>Public DNS namespaces only.</i> A complex type that contains settings for an optional health check. If
-     *        you specify settings for a health check, Amazon Route 53 associates the health check with all the resource
-     *        record sets that you specify in <code>DnsConfig</code>.</p> <note>
-     *        <p>
-     *        The health check uses 30 seconds as the request interval. This is the number of seconds between the time
-     *        that each Amazon Route 53 health checker gets a response from your endpoint and the time that it sends the
-     *        next health check request. A health checker in each data center around the world sends your endpoint a
-     *        health check request every 30 seconds. On average, your endpoint receives a health check request about
-     *        every two seconds. Health checkers in different data centers don't coordinate with one another, so you'll
-     *        sometimes see several requests per second followed by a few seconds with no health checks at all.
-     *        </p>
-     *        </note>
+     *        you specify settings for a health check, Route 53 associates the health check with all the records that
+     *        you specify in <code>DnsConfig</code>.</p>
      *        <p>
      *        For information about the charges for health checks, see <a
-     *        href="http://aws.amazon.com/route53/pricing">Amazon Route 53 Pricing</a>.
+     *        href="http://aws.amazon.com/route53/pricing">Route 53 Pricing</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -485,12 +423,42 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * @param healthCheckCustomConfig
+     */
+
+    public void setHealthCheckCustomConfig(HealthCheckCustomConfig healthCheckCustomConfig) {
+        this.healthCheckCustomConfig = healthCheckCustomConfig;
+    }
+
+    /**
+     * @return
+     */
+
+    public HealthCheckCustomConfig getHealthCheckCustomConfig() {
+        return this.healthCheckCustomConfig;
+    }
+
+    /**
+     * @param healthCheckCustomConfig
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Service withHealthCheckCustomConfig(HealthCheckCustomConfig healthCheckCustomConfig) {
+        setHealthCheckCustomConfig(healthCheckCustomConfig);
+        return this;
+    }
+
+    /**
      * <p>
-     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
+     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The value of
+     * <code>CreateDate</code> is accurate to milliseconds. For example, the value <code>1516925490.087</code>
+     * represents Friday, January 26, 2018 12:11:30.087 AM.
      * </p>
      * 
      * @param createDate
-     *        The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
+     *        The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The
+     *        value of <code>CreateDate</code> is accurate to milliseconds. For example, the value
+     *        <code>1516925490.087</code> represents Friday, January 26, 2018 12:11:30.087 AM.
      */
 
     public void setCreateDate(java.util.Date createDate) {
@@ -499,10 +467,14 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
+     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The value of
+     * <code>CreateDate</code> is accurate to milliseconds. For example, the value <code>1516925490.087</code>
+     * represents Friday, January 26, 2018 12:11:30.087 AM.
      * </p>
      * 
-     * @return The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
+     * @return The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The
+     *         value of <code>CreateDate</code> is accurate to milliseconds. For example, the value
+     *         <code>1516925490.087</code> represents Friday, January 26, 2018 12:11:30.087 AM.
      */
 
     public java.util.Date getCreateDate() {
@@ -511,11 +483,15 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
+     * The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The value of
+     * <code>CreateDate</code> is accurate to milliseconds. For example, the value <code>1516925490.087</code>
+     * represents Friday, January 26, 2018 12:11:30.087 AM.
      * </p>
      * 
      * @param createDate
-     *        The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
+     *        The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC). The
+     *        value of <code>CreateDate</code> is accurate to milliseconds. For example, the value
+     *        <code>1516925490.087</code> represents Friday, January 26, 2018 12:11:30.087 AM.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -526,13 +502,15 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An optional parameter that you can use to resolve concurrent creation requests. <code>CreatorRequestId</code>
-     * helps to determine if a specific client owns the namespace.
+     * A unique string that identifies the request and that allows failed requests to be retried without the risk of
+     * executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time
+     * stamp.
      * </p>
      * 
      * @param creatorRequestId
-     *        An optional parameter that you can use to resolve concurrent creation requests.
-     *        <code>CreatorRequestId</code> helps to determine if a specific client owns the namespace.
+     *        A unique string that identifies the request and that allows failed requests to be retried without the risk
+     *        of executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a
+     *        date/time stamp.
      */
 
     public void setCreatorRequestId(String creatorRequestId) {
@@ -541,12 +519,14 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An optional parameter that you can use to resolve concurrent creation requests. <code>CreatorRequestId</code>
-     * helps to determine if a specific client owns the namespace.
+     * A unique string that identifies the request and that allows failed requests to be retried without the risk of
+     * executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time
+     * stamp.
      * </p>
      * 
-     * @return An optional parameter that you can use to resolve concurrent creation requests.
-     *         <code>CreatorRequestId</code> helps to determine if a specific client owns the namespace.
+     * @return A unique string that identifies the request and that allows failed requests to be retried without the
+     *         risk of executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for
+     *         example, a date/time stamp.
      */
 
     public String getCreatorRequestId() {
@@ -555,13 +535,15 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An optional parameter that you can use to resolve concurrent creation requests. <code>CreatorRequestId</code>
-     * helps to determine if a specific client owns the namespace.
+     * A unique string that identifies the request and that allows failed requests to be retried without the risk of
+     * executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a date/time
+     * stamp.
      * </p>
      * 
      * @param creatorRequestId
-     *        An optional parameter that you can use to resolve concurrent creation requests.
-     *        <code>CreatorRequestId</code> helps to determine if a specific client owns the namespace.
+     *        A unique string that identifies the request and that allows failed requests to be retried without the risk
+     *        of executing the operation twice. <code>CreatorRequestId</code> can be any unique string, for example, a
+     *        date/time stamp.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -595,6 +577,8 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
             sb.append("DnsConfig: ").append(getDnsConfig()).append(",");
         if (getHealthCheckConfig() != null)
             sb.append("HealthCheckConfig: ").append(getHealthCheckConfig()).append(",");
+        if (getHealthCheckCustomConfig() != null)
+            sb.append("HealthCheckCustomConfig: ").append(getHealthCheckCustomConfig()).append(",");
         if (getCreateDate() != null)
             sb.append("CreateDate: ").append(getCreateDate()).append(",");
         if (getCreatorRequestId() != null)
@@ -641,6 +625,10 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getHealthCheckConfig() != null && other.getHealthCheckConfig().equals(this.getHealthCheckConfig()) == false)
             return false;
+        if (other.getHealthCheckCustomConfig() == null ^ this.getHealthCheckCustomConfig() == null)
+            return false;
+        if (other.getHealthCheckCustomConfig() != null && other.getHealthCheckCustomConfig().equals(this.getHealthCheckCustomConfig()) == false)
+            return false;
         if (other.getCreateDate() == null ^ this.getCreateDate() == null)
             return false;
         if (other.getCreateDate() != null && other.getCreateDate().equals(this.getCreateDate()) == false)
@@ -664,6 +652,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getInstanceCount() == null) ? 0 : getInstanceCount().hashCode());
         hashCode = prime * hashCode + ((getDnsConfig() == null) ? 0 : getDnsConfig().hashCode());
         hashCode = prime * hashCode + ((getHealthCheckConfig() == null) ? 0 : getHealthCheckConfig().hashCode());
+        hashCode = prime * hashCode + ((getHealthCheckCustomConfig() == null) ? 0 : getHealthCheckCustomConfig().hashCode());
         hashCode = prime * hashCode + ((getCreateDate() == null) ? 0 : getCreateDate().hashCode());
         hashCode = prime * hashCode + ((getCreatorRequestId() == null) ? 0 : getCreatorRequestId().hashCode());
         return hashCode;

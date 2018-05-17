@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -107,6 +107,16 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <li>
  * <p>
  * <a>UpdateDefaultBranch</a>, which changes the default branch for a repository.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Files, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>PutFile</a>, which adds or modifies a file in a specified repository and branch.
  * </p>
  * </li>
  * </ul>
@@ -1311,6 +1321,39 @@ public class AWSCodeCommitAsyncClient extends AWSCodeCommitClient implements AWS
 
                 try {
                     result = executePostCommentReply(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutFileResult> putFileAsync(PutFileRequest request) {
+
+        return putFileAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutFileResult> putFileAsync(final PutFileRequest request,
+            final com.amazonaws.handlers.AsyncHandler<PutFileRequest, PutFileResult> asyncHandler) {
+        final PutFileRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<PutFileResult>() {
+            @Override
+            public PutFileResult call() throws Exception {
+                PutFileResult result = null;
+
+                try {
+                    result = executePutFile(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

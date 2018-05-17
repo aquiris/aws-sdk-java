@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,19 @@ public class AbstractAWSServerlessApplicationRepositoryAsync extends AbstractAWS
     @Override
     public java.util.concurrent.Future<CreateCloudFormationChangeSetResult> createCloudFormationChangeSetAsync(CreateCloudFormationChangeSetRequest request,
             com.amazonaws.handlers.AsyncHandler<CreateCloudFormationChangeSetRequest, CreateCloudFormationChangeSetResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteApplicationResult> deleteApplicationAsync(DeleteApplicationRequest request) {
+
+        return deleteApplicationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteApplicationResult> deleteApplicationAsync(DeleteApplicationRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteApplicationRequest, DeleteApplicationResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

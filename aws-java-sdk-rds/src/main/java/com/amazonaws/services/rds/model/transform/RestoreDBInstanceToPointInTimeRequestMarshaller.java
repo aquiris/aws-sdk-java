@@ -110,8 +110,10 @@ public class RestoreDBInstanceToPointInTimeRequestMarshaller implements
             request.addParameter("CopyTagsToSnapshot", StringUtils.fromBoolean(restoreDBInstanceToPointInTimeRequest.getCopyTagsToSnapshot()));
         }
 
-        com.amazonaws.internal.SdkInternalList<Tag> tagsList = (com.amazonaws.internal.SdkInternalList<Tag>) restoreDBInstanceToPointInTimeRequest.getTags();
-        if (!tagsList.isEmpty() || !tagsList.isAutoConstruct()) {
+        if (!restoreDBInstanceToPointInTimeRequest.getTags().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<Tag>) restoreDBInstanceToPointInTimeRequest.getTags()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<Tag> tagsList = (com.amazonaws.internal.SdkInternalList<Tag>) restoreDBInstanceToPointInTimeRequest
+                    .getTags();
             int tagsListIndex = 1;
 
             for (Tag tagsListValue : tagsList) {
@@ -150,6 +152,21 @@ public class RestoreDBInstanceToPointInTimeRequestMarshaller implements
         if (restoreDBInstanceToPointInTimeRequest.getEnableIAMDatabaseAuthentication() != null) {
             request.addParameter("EnableIAMDatabaseAuthentication",
                     StringUtils.fromBoolean(restoreDBInstanceToPointInTimeRequest.getEnableIAMDatabaseAuthentication()));
+        }
+
+        if (!restoreDBInstanceToPointInTimeRequest.getEnableCloudwatchLogsExports().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<String>) restoreDBInstanceToPointInTimeRequest.getEnableCloudwatchLogsExports()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<String> enableCloudwatchLogsExportsList = (com.amazonaws.internal.SdkInternalList<String>) restoreDBInstanceToPointInTimeRequest
+                    .getEnableCloudwatchLogsExports();
+            int enableCloudwatchLogsExportsListIndex = 1;
+
+            for (String enableCloudwatchLogsExportsListValue : enableCloudwatchLogsExportsList) {
+                if (enableCloudwatchLogsExportsListValue != null) {
+                    request.addParameter("EnableCloudwatchLogsExports.member." + enableCloudwatchLogsExportsListIndex,
+                            StringUtils.fromString(enableCloudwatchLogsExportsListValue));
+                }
+                enableCloudwatchLogsExportsListIndex++;
+            }
         }
 
         return request;

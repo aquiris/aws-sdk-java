@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,7 +48,7 @@ public class ListDiscoveredResourcesRequest extends com.amazonaws.AmazonWebServi
     private String resourceName;
     /**
      * <p>
-     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit
+     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number
      * greater than 100. If you specify 0, AWS Config uses the default.
      * </p>
      */
@@ -270,13 +270,13 @@ public class ListDiscoveredResourcesRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit
+     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number
      * greater than 100. If you specify 0, AWS Config uses the default.
      * </p>
      * 
      * @param limit
      *        The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a
-     *        limit greater than 100. If you specify 0, AWS Config uses the default.
+     *        number greater than 100. If you specify 0, AWS Config uses the default.
      */
 
     public void setLimit(Integer limit) {
@@ -285,12 +285,12 @@ public class ListDiscoveredResourcesRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit
+     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number
      * greater than 100. If you specify 0, AWS Config uses the default.
      * </p>
      * 
      * @return The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify
-     *         a limit greater than 100. If you specify 0, AWS Config uses the default.
+     *         a number greater than 100. If you specify 0, AWS Config uses the default.
      */
 
     public Integer getLimit() {
@@ -299,13 +299,13 @@ public class ListDiscoveredResourcesRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit
+     * The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number
      * greater than 100. If you specify 0, AWS Config uses the default.
      * </p>
      * 
      * @param limit
      *        The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a
-     *        limit greater than 100. If you specify 0, AWS Config uses the default.
+     *        number greater than 100. If you specify 0, AWS Config uses the default.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

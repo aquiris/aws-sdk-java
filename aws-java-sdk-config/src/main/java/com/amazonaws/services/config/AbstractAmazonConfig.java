@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,22 @@ public class AbstractAmazonConfig implements AmazonConfig {
     }
 
     @Override
+    public BatchGetResourceConfigResult batchGetResourceConfig(BatchGetResourceConfigRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteAggregationAuthorizationResult deleteAggregationAuthorization(DeleteAggregationAuthorizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteConfigRuleResult deleteConfigRule(DeleteConfigRuleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteConfigurationAggregatorResult deleteConfigurationAggregator(DeleteConfigurationAggregatorRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -58,7 +73,22 @@ public class AbstractAmazonConfig implements AmazonConfig {
     }
 
     @Override
+    public DeletePendingAggregationRequestResult deletePendingAggregationRequest(DeletePendingAggregationRequestRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeliverConfigSnapshotResult deliverConfigSnapshot(DeliverConfigSnapshotRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeAggregateComplianceByConfigRulesResult describeAggregateComplianceByConfigRules(DescribeAggregateComplianceByConfigRulesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeAggregationAuthorizationsResult describeAggregationAuthorizations(DescribeAggregationAuthorizationsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -103,6 +133,17 @@ public class AbstractAmazonConfig implements AmazonConfig {
     }
 
     @Override
+    public DescribeConfigurationAggregatorSourcesStatusResult describeConfigurationAggregatorSourcesStatus(
+            DescribeConfigurationAggregatorSourcesStatusRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeConfigurationAggregatorsResult describeConfigurationAggregators(DescribeConfigurationAggregatorsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeConfigurationRecorderStatusResult describeConfigurationRecorderStatus(DescribeConfigurationRecorderStatusRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -140,6 +181,21 @@ public class AbstractAmazonConfig implements AmazonConfig {
     @Override
     public DescribeDeliveryChannelsResult describeDeliveryChannels() {
         return describeDeliveryChannels(new DescribeDeliveryChannelsRequest());
+    }
+
+    @Override
+    public DescribePendingAggregationRequestsResult describePendingAggregationRequests(DescribePendingAggregationRequestsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAggregateComplianceDetailsByConfigRuleResult getAggregateComplianceDetailsByConfigRule(GetAggregateComplianceDetailsByConfigRuleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAggregateConfigRuleComplianceSummaryResult getAggregateConfigRuleComplianceSummary(GetAggregateConfigRuleComplianceSummaryRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -188,7 +244,17 @@ public class AbstractAmazonConfig implements AmazonConfig {
     }
 
     @Override
+    public PutAggregationAuthorizationResult putAggregationAuthorization(PutAggregationAuthorizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public PutConfigRuleResult putConfigRule(PutConfigRuleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public PutConfigurationAggregatorResult putConfigurationAggregator(PutConfigurationAggregatorRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

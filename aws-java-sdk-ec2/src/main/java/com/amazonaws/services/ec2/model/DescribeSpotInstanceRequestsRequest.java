@@ -94,7 +94,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.group-id</code> - The security group for the instance.
+     * <code>launch.group-id</code> - The ID of the security group for the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>launch.group-name</code> - The name of the security group for the instance.
      * </p>
      * </li>
      * <li>
@@ -197,7 +202,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
      * track your Amazon EC2 Spot Instance requests. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
-     * Amazon Elastic Compute Cloud User Guide.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * </li>
      * <li>
@@ -323,7 +328,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.group-id</code> - The security group for the instance.
+     * <code>launch.group-id</code> - The ID of the security group for the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>launch.group-name</code> - The name of the security group for the instance.
      * </p>
      * </li>
      * <li>
@@ -426,7 +436,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
      * track your Amazon EC2 Spot Instance requests. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
-     * Amazon Elastic Compute Cloud User Guide.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * </li>
      * <li>
@@ -541,7 +551,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         </li>
      *         <li>
      *         <p>
-     *         <code>launch.group-id</code> - The security group for the instance.
+     *         <code>launch.group-id</code> - The ID of the security group for the instance.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>launch.group-name</code> - The name of the security group for the instance.
      *         </p>
      *         </li>
      *         <li>
@@ -646,7 +661,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *         <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
      *         help you track your Amazon EC2 Spot Instance requests. For more information, see <a
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
-     *         the Amazon Elastic Compute Cloud User Guide.
+     *         the <i>Amazon EC2 User Guide for Linux Instances</i>.
      *         </p>
      *         </li>
      *         <li>
@@ -773,7 +788,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.group-id</code> - The security group for the instance.
+     * <code>launch.group-id</code> - The ID of the security group for the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>launch.group-name</code> - The name of the security group for the instance.
      * </p>
      * </li>
      * <li>
@@ -876,7 +896,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
      * track your Amazon EC2 Spot Instance requests. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
-     * Amazon Elastic Compute Cloud User Guide.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * </li>
      * <li>
@@ -992,7 +1012,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.group-id</code> - The security group for the instance.
+     *        <code>launch.group-id</code> - The ID of the security group for the instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>launch.group-name</code> - The name of the security group for the instance.
      *        </p>
      *        </li>
      *        <li>
@@ -1097,7 +1122,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
      *        help you track your Amazon EC2 Spot Instance requests. For more information, see <a
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
-     *        the Amazon Elastic Compute Cloud User Guide.
+     *        the <i>Amazon EC2 User Guide for Linux Instances</i>.
      *        </p>
      *        </li>
      *        <li>
@@ -1226,7 +1251,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.group-id</code> - The security group for the instance.
+     * <code>launch.group-id</code> - The ID of the security group for the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>launch.group-name</code> - The name of the security group for the instance.
      * </p>
      * </li>
      * <li>
@@ -1329,7 +1359,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
      * track your Amazon EC2 Spot Instance requests. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
-     * Amazon Elastic Compute Cloud User Guide.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * </li>
      * <li>
@@ -1450,7 +1480,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.group-id</code> - The security group for the instance.
+     *        <code>launch.group-id</code> - The ID of the security group for the instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>launch.group-name</code> - The name of the security group for the instance.
      *        </p>
      *        </li>
      *        <li>
@@ -1555,7 +1590,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
      *        help you track your Amazon EC2 Spot Instance requests. For more information, see <a
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
-     *        the Amazon Elastic Compute Cloud User Guide.
+     *        the <i>Amazon EC2 User Guide for Linux Instances</i>.
      *        </p>
      *        </li>
      *        <li>
@@ -1686,7 +1721,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * </li>
      * <li>
      * <p>
-     * <code>launch.group-id</code> - The security group for the instance.
+     * <code>launch.group-id</code> - The ID of the security group for the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>launch.group-name</code> - The name of the security group for the instance.
      * </p>
      * </li>
      * <li>
@@ -1789,7 +1829,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      * <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can help you
      * track your Amazon EC2 Spot Instance requests. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in the
-     * Amazon Elastic Compute Cloud User Guide.
+     * <i>Amazon EC2 User Guide for Linux Instances</i>.
      * </p>
      * </li>
      * <li>
@@ -1905,7 +1945,12 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        </li>
      *        <li>
      *        <p>
-     *        <code>launch.group-id</code> - The security group for the instance.
+     *        <code>launch.group-id</code> - The ID of the security group for the instance.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>launch.group-name</code> - The name of the security group for the instance.
      *        </p>
      *        </li>
      *        <li>
@@ -2010,7 +2055,7 @@ public class DescribeSpotInstanceRequestsRequest extends AmazonWebServiceRequest
      *        <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot request status information can
      *        help you track your Amazon EC2 Spot Instance requests. For more information, see <a
      *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Request Status</a> in
-     *        the Amazon Elastic Compute Cloud User Guide.
+     *        the <i>Amazon EC2 User Guide for Linux Instances</i>.
      *        </p>
      *        </li>
      *        <li>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -163,8 +163,8 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * </p>
      * <p>
      * Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is
-     * Number, the results are stored in numeric order. For type String, the results are stored in order of ASCII
-     * character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     * Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes.
+     * For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      * </p>
      * <p>
      * If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they
@@ -229,10 +229,12 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code> action.
      * </p>
      * <p>
-     * The condition must perform an equality test on a single partition key value. The condition can also perform one
-     * of several comparison tests on a single sort key value. <code>Query</code> can use
-     * <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key value, or
-     * several items that have the same partition key value but different sort key values.
+     * The condition must perform an equality test on a single partition key value.
+     * </p>
+     * <p>
+     * The condition can optionally perform one of several comparison tests on a single sort key value. This allows
+     * <code>Query</code> to retrieve one item with a given partition key value and sort key value, or several items
+     * that have the same partition key value but different sort key values.
      * </p>
      * <p>
      * The partition key equality test is required, and must be specified in the following format:
@@ -1665,8 +1667,8 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * </p>
      * <p>
      * Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is
-     * Number, the results are stored in numeric order. For type String, the results are stored in order of ASCII
-     * character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     * Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes.
+     * For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      * </p>
      * <p>
      * If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they
@@ -1681,7 +1683,7 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      *        <p>
      *        Items with the same partition key value are stored in sorted order by sort key. If the sort key data type
      *        is Number, the results are stored in numeric order. For type String, the results are stored in order of
-     *        ASCII character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     *        UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      *        </p>
      *        <p>
      *        If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which
@@ -1701,8 +1703,8 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * </p>
      * <p>
      * Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is
-     * Number, the results are stored in numeric order. For type String, the results are stored in order of ASCII
-     * character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     * Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes.
+     * For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      * </p>
      * <p>
      * If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they
@@ -1716,7 +1718,7 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      *         <p>
      *         Items with the same partition key value are stored in sorted order by sort key. If the sort key data type
      *         is Number, the results are stored in numeric order. For type String, the results are stored in order of
-     *         ASCII character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     *         UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      *         </p>
      *         <p>
      *         If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which
@@ -1736,8 +1738,8 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * </p>
      * <p>
      * Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is
-     * Number, the results are stored in numeric order. For type String, the results are stored in order of ASCII
-     * character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     * Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes.
+     * For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      * </p>
      * <p>
      * If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they
@@ -1752,7 +1754,7 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      *        <p>
      *        Items with the same partition key value are stored in sorted order by sort key. If the sort key data type
      *        is Number, the results are stored in numeric order. For type String, the results are stored in order of
-     *        ASCII character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     *        UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      *        </p>
      *        <p>
      *        If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which
@@ -1774,8 +1776,8 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * </p>
      * <p>
      * Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is
-     * Number, the results are stored in numeric order. For type String, the results are stored in order of ASCII
-     * character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     * Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes.
+     * For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      * </p>
      * <p>
      * If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they
@@ -1789,7 +1791,7 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      *         <p>
      *         Items with the same partition key value are stored in sorted order by sort key. If the sort key data type
      *         is Number, the results are stored in numeric order. For type String, the results are stored in order of
-     *         ASCII character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+     *         UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
      *         </p>
      *         <p>
      *         If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which
@@ -2177,10 +2179,12 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code> action.
      * </p>
      * <p>
-     * The condition must perform an equality test on a single partition key value. The condition can also perform one
-     * of several comparison tests on a single sort key value. <code>Query</code> can use
-     * <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key value, or
-     * several items that have the same partition key value but different sort key values.
+     * The condition must perform an equality test on a single partition key value.
+     * </p>
+     * <p>
+     * The condition can optionally perform one of several comparison tests on a single sort key value. This allows
+     * <code>Query</code> to retrieve one item with a given partition key value and sort key value, or several items
+     * that have the same partition key value but different sort key values.
      * </p>
      * <p>
      * The partition key equality test is required, and must be specified in the following format:
@@ -2288,10 +2292,12 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      *        The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code>
      *        action.</p>
      *        <p>
-     *        The condition must perform an equality test on a single partition key value. The condition can also
-     *        perform one of several comparison tests on a single sort key value. <code>Query</code> can use
-     *        <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key
-     *        value, or several items that have the same partition key value but different sort key values.
+     *        The condition must perform an equality test on a single partition key value.
+     *        </p>
+     *        <p>
+     *        The condition can optionally perform one of several comparison tests on a single sort key value. This
+     *        allows <code>Query</code> to retrieve one item with a given partition key value and sort key value, or
+     *        several items that have the same partition key value but different sort key values.
      *        </p>
      *        <p>
      *        The partition key equality test is required, and must be specified in the following format:
@@ -2406,10 +2412,12 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code> action.
      * </p>
      * <p>
-     * The condition must perform an equality test on a single partition key value. The condition can also perform one
-     * of several comparison tests on a single sort key value. <code>Query</code> can use
-     * <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key value, or
-     * several items that have the same partition key value but different sort key values.
+     * The condition must perform an equality test on a single partition key value.
+     * </p>
+     * <p>
+     * The condition can optionally perform one of several comparison tests on a single sort key value. This allows
+     * <code>Query</code> to retrieve one item with a given partition key value and sort key value, or several items
+     * that have the same partition key value but different sort key values.
      * </p>
      * <p>
      * The partition key equality test is required, and must be specified in the following format:
@@ -2516,10 +2524,12 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * @return The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code>
      *         action.</p>
      *         <p>
-     *         The condition must perform an equality test on a single partition key value. The condition can also
-     *         perform one of several comparison tests on a single sort key value. <code>Query</code> can use
-     *         <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key
-     *         value, or several items that have the same partition key value but different sort key values.
+     *         The condition must perform an equality test on a single partition key value.
+     *         </p>
+     *         <p>
+     *         The condition can optionally perform one of several comparison tests on a single sort key value. This
+     *         allows <code>Query</code> to retrieve one item with a given partition key value and sort key value, or
+     *         several items that have the same partition key value but different sort key values.
      *         </p>
      *         <p>
      *         The partition key equality test is required, and must be specified in the following format:
@@ -2634,10 +2644,12 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      * The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code> action.
      * </p>
      * <p>
-     * The condition must perform an equality test on a single partition key value. The condition can also perform one
-     * of several comparison tests on a single sort key value. <code>Query</code> can use
-     * <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key value, or
-     * several items that have the same partition key value but different sort key values.
+     * The condition must perform an equality test on a single partition key value.
+     * </p>
+     * <p>
+     * The condition can optionally perform one of several comparison tests on a single sort key value. This allows
+     * <code>Query</code> to retrieve one item with a given partition key value and sort key value, or several items
+     * that have the same partition key value but different sort key values.
      * </p>
      * <p>
      * The partition key equality test is required, and must be specified in the following format:
@@ -2745,10 +2757,12 @@ public class QueryRequest extends com.amazonaws.AmazonWebServiceRequest implemen
      *        The condition that specifies the key value(s) for items to be retrieved by the <code>Query</code>
      *        action.</p>
      *        <p>
-     *        The condition must perform an equality test on a single partition key value. The condition can also
-     *        perform one of several comparison tests on a single sort key value. <code>Query</code> can use
-     *        <code>KeyConditionExpression</code> to retrieve one item with a given partition key value and sort key
-     *        value, or several items that have the same partition key value but different sort key values.
+     *        The condition must perform an equality test on a single partition key value.
+     *        </p>
+     *        <p>
+     *        The condition can optionally perform one of several comparison tests on a single sort key value. This
+     *        allows <code>Query</code> to retrieve one item with a given partition key value and sort key value, or
+     *        several items that have the same partition key value but different sort key values.
      *        </p>
      *        <p>
      *        The partition key equality test is required, and must be specified in the following format:

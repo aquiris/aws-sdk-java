@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -2005,6 +2005,24 @@ public interface AWSCognitoIdentityProvider {
      *      target="_top">AWS API Documentation</a>
      */
     GetIdentityProviderByIdentifierResult getIdentityProviderByIdentifier(GetIdentityProviderByIdentifierRequest getIdentityProviderByIdentifierRequest);
+
+    /**
+     * <p>
+     * This method takes a user pool ID, and returns the signing certificate.
+     * </p>
+     * 
+     * @param getSigningCertificateRequest
+     *        Request to get a signing certificate from Cognito.
+     * @return Result of the GetSigningCertificate operation returned by the service.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @sample AWSCognitoIdentityProvider.GetSigningCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetSigningCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetSigningCertificateResult getSigningCertificate(GetSigningCertificateRequest getSigningCertificateRequest);
 
     /**
      * <p>

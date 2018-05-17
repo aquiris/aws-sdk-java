@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,18 +25,18 @@ public class UpdateGraphqlApiResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The udpated <code>GraphqlApi</code> object.
+     * The updated <code>GraphqlApi</code> object.
      * </p>
      */
     private GraphqlApi graphqlApi;
 
     /**
      * <p>
-     * The udpated <code>GraphqlApi</code> object.
+     * The updated <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param graphqlApi
-     *        The udpated <code>GraphqlApi</code> object.
+     *        The updated <code>GraphqlApi</code> object.
      */
 
     public void setGraphqlApi(GraphqlApi graphqlApi) {
@@ -45,10 +45,10 @@ public class UpdateGraphqlApiResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The udpated <code>GraphqlApi</code> object.
+     * The updated <code>GraphqlApi</code> object.
      * </p>
      * 
-     * @return The udpated <code>GraphqlApi</code> object.
+     * @return The updated <code>GraphqlApi</code> object.
      */
 
     public GraphqlApi getGraphqlApi() {
@@ -57,11 +57,11 @@ public class UpdateGraphqlApiResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The udpated <code>GraphqlApi</code> object.
+     * The updated <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param graphqlApi
-     *        The udpated <code>GraphqlApi</code> object.
+     *        The updated <code>GraphqlApi</code> object.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

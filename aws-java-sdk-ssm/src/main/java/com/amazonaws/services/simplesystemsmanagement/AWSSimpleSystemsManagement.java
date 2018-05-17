@@ -147,6 +147,8 @@ public interface AWSSimpleSystemsManagement {
      *         An error occurred on the server side.
      * @throws TooManyTagsErrorException
      *         The Targets parameter includes too many tags. Remove one or more tags and try the command again.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
      * @sample AWSSimpleSystemsManagement.AddTagsToResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/AddTagsToResource" target="_top">AWS API
      *      Documentation</a>
@@ -535,6 +537,31 @@ public interface AWSSimpleSystemsManagement {
      *      Documentation</a>
      */
     DeleteDocumentResult deleteDocument(DeleteDocumentRequest deleteDocumentRequest);
+
+    /**
+     * <p>
+     * Delete a custom inventory type, or the data associated with a custom Inventory type. Deleting a custom inventory
+     * type is also referred to as deleting a custom inventory schema.
+     * </p>
+     * 
+     * @param deleteInventoryRequest
+     * @return Result of the DeleteInventory operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws InvalidTypeNameException
+     *         The parameter type name is not valid.
+     * @throws InvalidOptionException
+     *         The delete inventory option specified is not valid. Verify the option and try again.
+     * @throws InvalidDeleteInventoryParametersException
+     *         One or more of the parameters specified for the delete operation is not valid. Verify all parameters and
+     *         try again.
+     * @throws InvalidInventoryRequestException
+     *         The request is not valid.
+     * @sample AWSSimpleSystemsManagement.DeleteInventory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteInventory" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteInventoryResult deleteInventory(DeleteInventoryRequest deleteInventoryRequest);
 
     /**
      * <p>
@@ -1092,6 +1119,25 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * Describes a specific delete inventory operation.
+     * </p>
+     * 
+     * @param describeInventoryDeletionsRequest
+     * @return Result of the DescribeInventoryDeletions operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws InvalidDeletionIdException
+     *         The ID specified for the delete operation does not exist or is not valide. Verify the ID and try again.
+     * @throws InvalidNextTokenException
+     *         The specified token is not valid.
+     * @sample AWSSimpleSystemsManagement.DescribeInventoryDeletions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInventoryDeletions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeInventoryDeletionsResult describeInventoryDeletions(DescribeInventoryDeletionsRequest describeInventoryDeletionsRequest);
+
+    /**
+     * <p>
      * Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance
      * Window execution.
      * </p>
@@ -1350,6 +1396,9 @@ public interface AWSSimpleSystemsManagement {
      * <p>
      * Retrieves the default patch baseline. Note that Systems Manager supports creating multiple default patch
      * baselines. For example, you can create a default patch baseline for each operating system.
+     * </p>
+     * <p>
+     * If you do not specify an operating system value, the default patch baseline for Windows is returned.
      * </p>
      * 
      * @param getDefaultPatchBaselineRequest
@@ -2196,7 +2245,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Add one or more parameters to the system.
+     * Add a parameter to the system.
      * </p>
      * 
      * @param putParameterRequest
@@ -2213,12 +2262,7 @@ public interface AWSSimpleSystemsManagement {
      * @throws ParameterAlreadyExistsException
      *         The parameter already exists. You can't create duplicate parameters.
      * @throws HierarchyLevelLimitExceededException
-     *         A hierarchy can have a maximum of five levels. For example:</p>
-     *         <p>
-     *         /Finance/Prod/IAD/OS/WinServ2016/license15
-     *         </p>
-     *         <p>
-     *         For more information, see <a
+     *         A hierarchy can have a maximum of 15 levels. For more information, see <a
      *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html">Working
      *         with Systems Manager Parameters</a>.
      * @throws HierarchyTypeMismatchException
@@ -2382,6 +2426,8 @@ public interface AWSSimpleSystemsManagement {
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
      * @sample AWSSimpleSystemsManagement.RemoveTagsFromResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RemoveTagsFromResource" target="_top">AWS API
      *      Documentation</a>
@@ -2438,6 +2484,8 @@ public interface AWSSimpleSystemsManagement {
      *         are: Shutting-down and Terminated.
      * @throws InvalidDocumentException
      *         The specified document does not exist.
+     * @throws InvalidDocumentVersionException
+     *         The document version is not valid or does not exist.
      * @throws InvalidOutputFolderException
      *         The S3 bucket does not exist.
      * @throws InvalidParametersException
@@ -2716,28 +2764,42 @@ public interface AWSSimpleSystemsManagement {
      * Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the
      * following values:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * Task ARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
+     * TaskARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Service role ARN.
+     * ServiceRoleArn
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Task parameters.
+     * TaskInvocationParameters
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Task priority.
+     * Priority
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Task MaxConcurrency and MaxErrors.
+     * MaxConcurrency
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Log location.
+     * MaxErrors
      * </p>
+     * </li>
+     * </ul>
      * <p>
      * If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all
-     * fields required by the RegisterTaskWithMaintenanceWindow action are required for this request. Optional fields
-     * that aren't specified are set to null.
+     * fields required by the <a>RegisterTaskWithMaintenanceWindow</a> action are required for this request. Optional
+     * fields that aren't specified are set to null.
      * </p>
      * 
      * @param updateMaintenanceWindowTaskRequest

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,18 +25,18 @@ public class CreateJobResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The unique name of the new job that has been created.
+     * The unique name that was provided for this job definition.
      * </p>
      */
     private String name;
 
     /**
      * <p>
-     * The unique name of the new job that has been created.
+     * The unique name that was provided for this job definition.
      * </p>
      * 
      * @param name
-     *        The unique name of the new job that has been created.
+     *        The unique name that was provided for this job definition.
      */
 
     public void setName(String name) {
@@ -45,10 +45,10 @@ public class CreateJobResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The unique name of the new job that has been created.
+     * The unique name that was provided for this job definition.
      * </p>
      * 
-     * @return The unique name of the new job that has been created.
+     * @return The unique name that was provided for this job definition.
      */
 
     public String getName() {
@@ -57,11 +57,11 @@ public class CreateJobResult extends com.amazonaws.AmazonWebServiceResult<com.am
 
     /**
      * <p>
-     * The unique name of the new job that has been created.
+     * The unique name that was provided for this job definition.
      * </p>
      * 
      * @param name
-     *        The unique name of the new job that has been created.
+     *        The unique name that was provided for this job definition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

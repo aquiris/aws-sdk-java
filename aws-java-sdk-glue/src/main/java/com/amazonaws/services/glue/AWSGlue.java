@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -128,6 +128,27 @@ public interface AWSGlue {
 
     /**
      * <p>
+     * Deletes a specified batch of versions of a table.
+     * </p>
+     * 
+     * @param batchDeleteTableVersionRequest
+     * @return Result of the BatchDeleteTableVersion operation returned by the service.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.BatchDeleteTableVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchDeleteTableVersion" target="_top">AWS
+     *      API Documentation</a>
+     */
+    BatchDeleteTableVersionResult batchDeleteTableVersion(BatchDeleteTableVersionRequest batchDeleteTableVersionRequest);
+
+    /**
+     * <p>
      * Retrieves partitions in a batch request.
      * </p>
      * 
@@ -149,7 +170,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Stops a batch of job runs for a given job.
+     * Stops one or more job runs for a specified job definition.
      * </p>
      * 
      * @param batchStopJobRunRequest
@@ -168,8 +189,9 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Creates a classifier in the user's account. This may be either a <code>GrokClassifier</code> or an
-     * <code>XMLClassifier</code>.
+     * Creates a classifier in the user's account. This may be a <code>GrokClassifier</code>, an
+     * <code>XMLClassifier</code>, or abbrev <code>JsonClassifier</code>, depending on which field of the request is
+     * present.
      * </p>
      * 
      * @param createClassifierRequest
@@ -199,6 +221,8 @@ public interface AWSGlue {
      *         The input provided was not valid.
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ResourceNumberLimitExceededException
+     *         A resource numerical limit was exceeded.
      * @sample AWSGlue.CreateConnection
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateConnection" target="_top">AWS API
      *      Documentation</a>
@@ -281,7 +305,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Creates a new job.
+     * Creates a new job definition.
      * </p>
      * 
      * @param createJobRequest
@@ -298,6 +322,8 @@ public interface AWSGlue {
      *         The operation timed out.
      * @throws ResourceNumberLimitExceededException
      *         A resource numerical limit was exceeded.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.CreateJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateJob" target="_top">AWS API
      *      Documentation</a>
@@ -331,7 +357,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Transforms a directed acyclic graph (DAG) into a Python script.
+     * Transforms a directed acyclic graph (DAG) into code.
      * </p>
      * 
      * @param createScriptRequest
@@ -384,12 +410,16 @@ public interface AWSGlue {
      *         A resource to be created or added already exists.
      * @throws InvalidInputException
      *         The input provided was not valid.
+     * @throws IdempotentParameterMismatchException
+     *         The same unique identifier was associated with two different records.
      * @throws InternalServiceException
      *         An internal service error occurred.
      * @throws OperationTimeoutException
      *         The operation timed out.
      * @throws ResourceNumberLimitExceededException
      *         A resource numerical limit was exceeded.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.CreateTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateTrigger" target="_top">AWS API
      *      Documentation</a>
@@ -413,6 +443,8 @@ public interface AWSGlue {
      *         A specified entity does not exist
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ResourceNumberLimitExceededException
+     *         A resource numerical limit was exceeded.
      * @sample AWSGlue.CreateUserDefinedFunction
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateUserDefinedFunction" target="_top">AWS
      *      API Documentation</a>
@@ -518,7 +550,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Deletes a specified job.
+     * Deletes a specified job definition. If the job definition is not found, no exception is thrown.
      * </p>
      * 
      * @param deleteJobRequest
@@ -579,7 +611,28 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Deletes a specified trigger.
+     * Deletes a specified version of a table.
+     * </p>
+     * 
+     * @param deleteTableVersionRequest
+     * @return Result of the DeleteTableVersion operation returned by the service.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.DeleteTableVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteTableVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteTableVersionResult deleteTableVersion(DeleteTableVersionRequest deleteTableVersionRequest);
+
+    /**
+     * <p>
+     * Deletes a specified trigger. If the trigger is not found, no exception is thrown.
      * </p>
      * 
      * @param deleteTriggerRequest
@@ -590,6 +643,8 @@ public interface AWSGlue {
      *         An internal service error occurred.
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.DeleteTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteTrigger" target="_top">AWS API
      *      Documentation</a>
@@ -892,7 +947,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Retrieves metadata for all runs of a given job.
+     * Retrieves metadata for all runs of a given job definition.
      * </p>
      * 
      * @param getJobRunsRequest
@@ -913,7 +968,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Retrieves all current jobs.
+     * Retrieves all current job definitions.
      * </p>
      * 
      * @param getJobsRequest
@@ -997,7 +1052,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Gets a Python script to perform a specified mapping.
+     * Gets code to perform a specified mapping.
      * </p>
      * 
      * @param getPlanRequest
@@ -1034,6 +1089,27 @@ public interface AWSGlue {
      *      Documentation</a>
      */
     GetTableResult getTable(GetTableRequest getTableRequest);
+
+    /**
+     * <p>
+     * Retrieves a specified version of a table.
+     * </p>
+     * 
+     * @param getTableVersionRequest
+     * @return Result of the GetTableVersion operation returned by the service.
+     * @throws EntityNotFoundException
+     *         A specified entity does not exist
+     * @throws InvalidInputException
+     *         The input provided was not valid.
+     * @throws InternalServiceException
+     *         An internal service error occurred.
+     * @throws OperationTimeoutException
+     *         The operation timed out.
+     * @sample AWSGlue.GetTableVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTableVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetTableVersionResult getTableVersion(GetTableVersionRequest getTableVersionRequest);
 
     /**
      * <p>
@@ -1245,7 +1321,7 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Runs a job.
+     * Starts a job run using a job definition.
      * </p>
      * 
      * @param startJobRunRequest
@@ -1270,7 +1346,8 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Starts an existing trigger.
+     * Starts an existing trigger. See <a href="http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html">Triggering
+     * Jobs</a> for information about how different types of trigger are started.
      * </p>
      * 
      * @param startTriggerRequest
@@ -1351,6 +1428,8 @@ public interface AWSGlue {
      *         A specified entity does not exist
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.StopTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StopTrigger" target="_top">AWS API
      *      Documentation</a>
@@ -1359,7 +1438,8 @@ public interface AWSGlue {
 
     /**
      * <p>
-     * Modifies an existing classifier (either a <code>GrokClassifier</code> or an <code>XMLClassifier</code>).
+     * Modifies an existing classifier (a <code>GrokClassifier</code>, <code>XMLClassifier</code>, or
+     * <code>JsonClassifier</code>, depending on which field is present).
      * </p>
      * 
      * @param updateClassifierRequest
@@ -1502,6 +1582,8 @@ public interface AWSGlue {
      *         An internal service error occurred.
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.UpdateJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateJob" target="_top">AWS API
      *      Documentation</a>
@@ -1546,6 +1628,8 @@ public interface AWSGlue {
      *         The operation timed out.
      * @throws ConcurrentModificationException
      *         Two processes are trying to modify a resource simultaneously.
+     * @throws ResourceNumberLimitExceededException
+     *         A resource numerical limit was exceeded.
      * @sample AWSGlue.UpdateTable
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateTable" target="_top">AWS API
      *      Documentation</a>
@@ -1567,6 +1651,8 @@ public interface AWSGlue {
      *         A specified entity does not exist
      * @throws OperationTimeoutException
      *         The operation timed out.
+     * @throws ConcurrentModificationException
+     *         Two processes are trying to modify a resource simultaneously.
      * @sample AWSGlue.UpdateTrigger
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateTrigger" target="_top">AWS API
      *      Documentation</a>

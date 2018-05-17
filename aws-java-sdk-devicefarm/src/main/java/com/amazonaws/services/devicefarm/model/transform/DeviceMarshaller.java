@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.devicefarm.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -35,6 +36,8 @@ public class DeviceMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("manufacturer").build();
     private static final MarshallingInfo<String> MODEL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("model").build();
+    private static final MarshallingInfo<String> MODELID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("modelId").build();
     private static final MarshallingInfo<String> FORMFACTOR_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("formFactor").build();
     private static final MarshallingInfo<String> PLATFORM_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -63,6 +66,8 @@ public class DeviceMarshaller {
             .marshallLocationName("fleetType").build();
     private static final MarshallingInfo<String> FLEETNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("fleetName").build();
+    private static final MarshallingInfo<List> INSTANCES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("instances").build();
 
     private static final DeviceMarshaller instance = new DeviceMarshaller();
 
@@ -84,6 +89,7 @@ public class DeviceMarshaller {
             protocolMarshaller.marshall(device.getName(), NAME_BINDING);
             protocolMarshaller.marshall(device.getManufacturer(), MANUFACTURER_BINDING);
             protocolMarshaller.marshall(device.getModel(), MODEL_BINDING);
+            protocolMarshaller.marshall(device.getModelId(), MODELID_BINDING);
             protocolMarshaller.marshall(device.getFormFactor(), FORMFACTOR_BINDING);
             protocolMarshaller.marshall(device.getPlatform(), PLATFORM_BINDING);
             protocolMarshaller.marshall(device.getOs(), OS_BINDING);
@@ -98,6 +104,7 @@ public class DeviceMarshaller {
             protocolMarshaller.marshall(device.getRemoteDebugEnabled(), REMOTEDEBUGENABLED_BINDING);
             protocolMarshaller.marshall(device.getFleetType(), FLEETTYPE_BINDING);
             protocolMarshaller.marshall(device.getFleetName(), FLEETNAME_BINDING);
+            protocolMarshaller.marshall(device.getInstances(), INSTANCES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

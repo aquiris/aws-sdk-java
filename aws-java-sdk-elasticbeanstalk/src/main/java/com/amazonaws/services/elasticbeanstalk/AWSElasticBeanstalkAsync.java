@@ -731,6 +731,45 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
 
     /**
      * <p>
+     * Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account.
+     * </p>
+     * <p>
+     * The result currently has one set of attributes—resource quotas.
+     * </p>
+     * 
+     * @param describeAccountAttributesRequest
+     * @return A Java Future containing the result of the DescribeAccountAttributes operation returned by the service.
+     * @sample AWSElasticBeanstalkAsync.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeAccountAttributes"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeAccountAttributesResult> describeAccountAttributesAsync(
+            DescribeAccountAttributesRequest describeAccountAttributesRequest);
+
+    /**
+     * <p>
+     * Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account.
+     * </p>
+     * <p>
+     * The result currently has one set of attributes—resource quotas.
+     * </p>
+     * 
+     * @param describeAccountAttributesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeAccountAttributes operation returned by the service.
+     * @sample AWSElasticBeanstalkAsyncHandler.DescribeAccountAttributes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeAccountAttributes"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeAccountAttributesResult> describeAccountAttributesAsync(
+            DescribeAccountAttributesRequest describeAccountAttributesRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeAccountAttributesRequest, DescribeAccountAttributesResult> asyncHandler);
+
+    /**
+     * <p>
      * Retrieve a list of application versions.
      * </p>
      * 

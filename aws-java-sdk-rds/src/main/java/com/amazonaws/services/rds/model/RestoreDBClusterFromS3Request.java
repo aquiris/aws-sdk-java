@@ -142,10 +142,16 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
      * Example: <code>5.6.10a</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
      * </p>
      */
     private String engineVersion;
@@ -340,6 +346,25 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private String s3IngestionRoleArn;
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private Long backtrackWindow;
 
     /**
      * <p>
@@ -1105,19 +1130,31 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
      * Example: <code>5.6.10a</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to use.</p>
      *        <p>
-     *        <b>Aurora</b>
+     *        <b>Aurora MySQL</b>
      *        </p>
      *        <p>
      *        Example: <code>5.6.10a</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>9.6.3</code>
      */
 
     public void setEngineVersion(String engineVersion) {
@@ -1129,18 +1166,30 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
      * Example: <code>5.6.10a</code>
      * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
+     * </p>
      * 
      * @return The version number of the database engine to use.</p>
      *         <p>
-     *         <b>Aurora</b>
+     *         <b>Aurora MySQL</b>
      *         </p>
      *         <p>
      *         Example: <code>5.6.10a</code>
+     *         </p>
+     *         <p>
+     *         <b>Aurora PostgreSQL</b>
+     *         </p>
+     *         <p>
+     *         Example: <code>9.6.3</code>
      */
 
     public String getEngineVersion() {
@@ -1152,19 +1201,31 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
      * Example: <code>5.6.10a</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to use.</p>
      *        <p>
-     *        <b>Aurora</b>
+     *        <b>Aurora MySQL</b>
      *        </p>
      *        <p>
      *        Example: <code>5.6.10a</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>9.6.3</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2426,6 +2487,121 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
     }
 
     /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param backtrackWindow
+     *        The target backtrack window, in seconds. To disable backtracking, set this value to 0.</p>
+     *        <p>
+     *        Default: 0
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *        </p>
+     *        </li>
+     */
+
+    public void setBacktrackWindow(Long backtrackWindow) {
+        this.backtrackWindow = backtrackWindow;
+    }
+
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The target backtrack window, in seconds. To disable backtracking, set this value to 0.</p>
+     *         <p>
+     *         Default: 0
+     *         </p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *         </p>
+     *         </li>
+     */
+
+    public Long getBacktrackWindow() {
+        return this.backtrackWindow;
+    }
+
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param backtrackWindow
+     *        The target backtrack window, in seconds. To disable backtracking, set this value to 0.</p>
+     *        <p>
+     *        Default: 0
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreDBClusterFromS3Request withBacktrackWindow(Long backtrackWindow) {
+        setBacktrackWindow(backtrackWindow);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -2485,7 +2661,9 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
         if (getS3Prefix() != null)
             sb.append("S3Prefix: ").append(getS3Prefix()).append(",");
         if (getS3IngestionRoleArn() != null)
-            sb.append("S3IngestionRoleArn: ").append(getS3IngestionRoleArn());
+            sb.append("S3IngestionRoleArn: ").append(getS3IngestionRoleArn()).append(",");
+        if (getBacktrackWindow() != null)
+            sb.append("BacktrackWindow: ").append(getBacktrackWindow());
         sb.append("}");
         return sb.toString();
     }
@@ -2601,6 +2779,10 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
             return false;
         if (other.getS3IngestionRoleArn() != null && other.getS3IngestionRoleArn().equals(this.getS3IngestionRoleArn()) == false)
             return false;
+        if (other.getBacktrackWindow() == null ^ this.getBacktrackWindow() == null)
+            return false;
+        if (other.getBacktrackWindow() != null && other.getBacktrackWindow().equals(this.getBacktrackWindow()) == false)
+            return false;
         return true;
     }
 
@@ -2634,6 +2816,7 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
         hashCode = prime * hashCode + ((getS3BucketName() == null) ? 0 : getS3BucketName().hashCode());
         hashCode = prime * hashCode + ((getS3Prefix() == null) ? 0 : getS3Prefix().hashCode());
         hashCode = prime * hashCode + ((getS3IngestionRoleArn() == null) ? 0 : getS3IngestionRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getBacktrackWindow() == null) ? 0 : getBacktrackWindow().hashCode());
         return hashCode;
     }
 

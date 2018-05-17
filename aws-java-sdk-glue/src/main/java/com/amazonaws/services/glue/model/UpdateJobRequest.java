@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String jobName;
     /**
      * <p>
-     * Specifies the values with which to update the job.
+     * Specifies the values with which to update the job definition.
      * </p>
      */
     private JobUpdate jobUpdate;
@@ -80,11 +80,11 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Specifies the values with which to update the job.
+     * Specifies the values with which to update the job definition.
      * </p>
      * 
      * @param jobUpdate
-     *        Specifies the values with which to update the job.
+     *        Specifies the values with which to update the job definition.
      */
 
     public void setJobUpdate(JobUpdate jobUpdate) {
@@ -93,10 +93,10 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Specifies the values with which to update the job.
+     * Specifies the values with which to update the job definition.
      * </p>
      * 
-     * @return Specifies the values with which to update the job.
+     * @return Specifies the values with which to update the job definition.
      */
 
     public JobUpdate getJobUpdate() {
@@ -105,11 +105,11 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Specifies the values with which to update the job.
+     * Specifies the values with which to update the job definition.
      * </p>
      * 
      * @param jobUpdate
-     *        Specifies the values with which to update the job.
+     *        Specifies the values with which to update the job definition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

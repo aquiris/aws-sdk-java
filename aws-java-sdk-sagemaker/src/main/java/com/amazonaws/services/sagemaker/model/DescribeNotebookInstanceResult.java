@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,7 +43,7 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
     private String notebookInstanceStatus;
     /**
      * <p>
-     * If staus is failed, the reason it failed.
+     * If status is failed, the reason it failed.
      * </p>
      */
     private String failureReason;
@@ -102,6 +102,26 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
      * </p>
      */
     private java.util.Date creationTime;
+    /**
+     * <p>
+     * Returns the name of a notebook instance lifecycle configuration.
+     * </p>
+     * <p>
+     * For information about notebook instance lifestyle configurations, see <a>notebook-lifecycle-config</a>.
+     * </p>
+     */
+    private String notebookInstanceLifecycleConfigName;
+    /**
+     * <p>
+     * Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set to
+     * <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training
+     * and endpoint services</i>.
+     * </p>
+     * <p>
+     * For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * </p>
+     */
+    private String directInternetAccess;
 
     /**
      * <p>
@@ -244,11 +264,11 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * If staus is failed, the reason it failed.
+     * If status is failed, the reason it failed.
      * </p>
      * 
      * @param failureReason
-     *        If staus is failed, the reason it failed.
+     *        If status is failed, the reason it failed.
      */
 
     public void setFailureReason(String failureReason) {
@@ -257,10 +277,10 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * If staus is failed, the reason it failed.
+     * If status is failed, the reason it failed.
      * </p>
      * 
-     * @return If staus is failed, the reason it failed.
+     * @return If status is failed, the reason it failed.
      */
 
     public String getFailureReason() {
@@ -269,11 +289,11 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * If staus is failed, the reason it failed.
+     * If status is failed, the reason it failed.
      * </p>
      * 
      * @param failureReason
-     *        If staus is failed, the reason it failed.
+     *        If status is failed, the reason it failed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -698,6 +718,156 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
+     * <p>
+     * Returns the name of a notebook instance lifecycle configuration.
+     * </p>
+     * <p>
+     * For information about notebook instance lifestyle configurations, see <a>notebook-lifecycle-config</a>.
+     * </p>
+     * 
+     * @param notebookInstanceLifecycleConfigName
+     *        Returns the name of a notebook instance lifecycle configuration.</p>
+     *        <p>
+     *        For information about notebook instance lifestyle configurations, see <a>notebook-lifecycle-config</a>.
+     */
+
+    public void setNotebookInstanceLifecycleConfigName(String notebookInstanceLifecycleConfigName) {
+        this.notebookInstanceLifecycleConfigName = notebookInstanceLifecycleConfigName;
+    }
+
+    /**
+     * <p>
+     * Returns the name of a notebook instance lifecycle configuration.
+     * </p>
+     * <p>
+     * For information about notebook instance lifestyle configurations, see <a>notebook-lifecycle-config</a>.
+     * </p>
+     * 
+     * @return Returns the name of a notebook instance lifecycle configuration.</p>
+     *         <p>
+     *         For information about notebook instance lifestyle configurations, see <a>notebook-lifecycle-config</a>.
+     */
+
+    public String getNotebookInstanceLifecycleConfigName() {
+        return this.notebookInstanceLifecycleConfigName;
+    }
+
+    /**
+     * <p>
+     * Returns the name of a notebook instance lifecycle configuration.
+     * </p>
+     * <p>
+     * For information about notebook instance lifestyle configurations, see <a>notebook-lifecycle-config</a>.
+     * </p>
+     * 
+     * @param notebookInstanceLifecycleConfigName
+     *        Returns the name of a notebook instance lifecycle configuration.</p>
+     *        <p>
+     *        For information about notebook instance lifestyle configurations, see <a>notebook-lifecycle-config</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeNotebookInstanceResult withNotebookInstanceLifecycleConfigName(String notebookInstanceLifecycleConfigName) {
+        setNotebookInstanceLifecycleConfigName(notebookInstanceLifecycleConfigName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set to
+     * <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training
+     * and endpoint services</i>.
+     * </p>
+     * <p>
+     * For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * </p>
+     * 
+     * @param directInternetAccess
+     *        Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set
+     *        to <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker
+     *        training and endpoint services</i>.</p>
+     *        <p>
+     *        For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * @see DirectInternetAccess
+     */
+
+    public void setDirectInternetAccess(String directInternetAccess) {
+        this.directInternetAccess = directInternetAccess;
+    }
+
+    /**
+     * <p>
+     * Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set to
+     * <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training
+     * and endpoint services</i>.
+     * </p>
+     * <p>
+     * For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * </p>
+     * 
+     * @return Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is
+     *         set to <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon
+     *         SageMaker training and endpoint services</i>.</p>
+     *         <p>
+     *         For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * @see DirectInternetAccess
+     */
+
+    public String getDirectInternetAccess() {
+        return this.directInternetAccess;
+    }
+
+    /**
+     * <p>
+     * Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set to
+     * <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training
+     * and endpoint services</i>.
+     * </p>
+     * <p>
+     * For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * </p>
+     * 
+     * @param directInternetAccess
+     *        Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set
+     *        to <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker
+     *        training and endpoint services</i>.</p>
+     *        <p>
+     *        For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DirectInternetAccess
+     */
+
+    public DescribeNotebookInstanceResult withDirectInternetAccess(String directInternetAccess) {
+        setDirectInternetAccess(directInternetAccess);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set to
+     * <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training
+     * and endpoint services</i>.
+     * </p>
+     * <p>
+     * For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * </p>
+     * 
+     * @param directInternetAccess
+     *        Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set
+     *        to <i>Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker
+     *        training and endpoint services</i>.</p>
+     *        <p>
+     *        For more information, see <a>appendix-notebook-and-internet-access</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DirectInternetAccess
+     */
+
+    public DescribeNotebookInstanceResult withDirectInternetAccess(DirectInternetAccess directInternetAccess) {
+        this.directInternetAccess = directInternetAccess.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -733,7 +903,11 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
         if (getLastModifiedTime() != null)
             sb.append("LastModifiedTime: ").append(getLastModifiedTime()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: ").append(getCreationTime());
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
+        if (getNotebookInstanceLifecycleConfigName() != null)
+            sb.append("NotebookInstanceLifecycleConfigName: ").append(getNotebookInstanceLifecycleConfigName()).append(",");
+        if (getDirectInternetAccess() != null)
+            sb.append("DirectInternetAccess: ").append(getDirectInternetAccess());
         sb.append("}");
         return sb.toString();
     }
@@ -800,6 +974,15 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
             return false;
         if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
             return false;
+        if (other.getNotebookInstanceLifecycleConfigName() == null ^ this.getNotebookInstanceLifecycleConfigName() == null)
+            return false;
+        if (other.getNotebookInstanceLifecycleConfigName() != null
+                && other.getNotebookInstanceLifecycleConfigName().equals(this.getNotebookInstanceLifecycleConfigName()) == false)
+            return false;
+        if (other.getDirectInternetAccess() == null ^ this.getDirectInternetAccess() == null)
+            return false;
+        if (other.getDirectInternetAccess() != null && other.getDirectInternetAccess().equals(this.getDirectInternetAccess()) == false)
+            return false;
         return true;
     }
 
@@ -821,6 +1004,8 @@ public class DescribeNotebookInstanceResult extends com.amazonaws.AmazonWebServi
         hashCode = prime * hashCode + ((getNetworkInterfaceId() == null) ? 0 : getNetworkInterfaceId().hashCode());
         hashCode = prime * hashCode + ((getLastModifiedTime() == null) ? 0 : getLastModifiedTime().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
+        hashCode = prime * hashCode + ((getNotebookInstanceLifecycleConfigName() == null) ? 0 : getNotebookInstanceLifecycleConfigName().hashCode());
+        hashCode = prime * hashCode + ((getDirectInternetAccess() == null) ? 0 : getDirectInternetAccess().hashCode());
         return hashCode;
     }
 

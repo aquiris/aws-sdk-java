@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,6 +36,8 @@ public class CreateServiceRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("taskDefinition").build();
     private static final MarshallingInfo<List> LOADBALANCERS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("loadBalancers").build();
+    private static final MarshallingInfo<List> SERVICEREGISTRIES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("serviceRegistries").build();
     private static final MarshallingInfo<Integer> DESIREDCOUNT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("desiredCount").build();
     private static final MarshallingInfo<String> CLIENTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -77,6 +79,7 @@ public class CreateServiceRequestMarshaller {
             protocolMarshaller.marshall(createServiceRequest.getServiceName(), SERVICENAME_BINDING);
             protocolMarshaller.marshall(createServiceRequest.getTaskDefinition(), TASKDEFINITION_BINDING);
             protocolMarshaller.marshall(createServiceRequest.getLoadBalancers(), LOADBALANCERS_BINDING);
+            protocolMarshaller.marshall(createServiceRequest.getServiceRegistries(), SERVICEREGISTRIES_BINDING);
             protocolMarshaller.marshall(createServiceRequest.getDesiredCount(), DESIREDCOUNT_BINDING);
             protocolMarshaller.marshall(createServiceRequest.getClientToken(), CLIENTTOKEN_BINDING);
             protocolMarshaller.marshall(createServiceRequest.getLaunchType(), LAUNCHTYPE_BINDING);

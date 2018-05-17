@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-pom</artifactId>
-    <version>1.11.260-SNAPSHOT</version>
+    <version>1.11.332-SNAPSHOT</version>
   </parent>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-osgi</artifactId>
@@ -15,6 +15,60 @@
 
   <!-- The dependencies section in pom.xml is auto generated. No manual changes are allowed -->
   <dependencies>
+    <dependency>
+        <artifactId>aws-java-sdk-iot1clickprojects</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-iot1clickdevices</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-iotanalytics</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-acmpca</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-secretsmanager</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-fms</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-connect</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-transcribe</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-autoscalingplans</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
     <dependency>
         <artifactId>aws-java-sdk-workmail</artifactId>
         <groupId>com.amazonaws</groupId>
@@ -874,7 +928,7 @@
                       <!-- Note: excludePackageNames is inherited from Parent POM -->
                       <configuration>
                           <minmemory>128m</minmemory>
-                          <maxmemory>2g</maxmemory>
+                          <maxmemory>4g</maxmemory>
                           <includeDependencySources>true</includeDependencySources>
                           <show>public</show>
                           <defaultexcludes>yes</defaultexcludes>
@@ -902,6 +956,42 @@
                               </taglet>
                           </taglets>
                           <groups>
+                              <group>
+                                  <title>AWS IoT 1-Click Projects</title>
+                                  <packages>com.amazonaws.services.iot1clickprojects*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS IoT 1-Click Devices</title>
+                                  <packages>com.amazonaws.services.iot1clickdevices*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS IoT Analytics</title>
+                                  <packages>com.amazonaws.services.iotanalytics*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Certificate Manager Private Certificate Authority</title>
+                                  <packages>com.amazonaws.services.acmpca*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Secrets Manager</title>
+                                  <packages>com.amazonaws.services.secretsmanager*</packages>
+                              </group>
+                              <group>
+                                  <title>Firewall Management</title>
+                                  <packages>com.amazonaws.services.fms*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Connect</title>
+                                  <packages>com.amazonaws.services.connect*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Transcribe</title>
+                                  <packages>com.amazonaws.services.transcribe*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Auto Scaling Plans</title>
+                                  <packages>com.amazonaws.services.autoscalingplans*</packages>
+                              </group>
                               <group>
                                   <title>Amazon WorkMail</title>
                                   <packages>com.amazonaws.services.workmail*</packages>

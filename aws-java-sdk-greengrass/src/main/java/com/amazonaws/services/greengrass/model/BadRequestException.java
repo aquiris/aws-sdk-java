@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,13 +15,13 @@ package com.amazonaws.services.greengrass.model;
 import javax.annotation.Generated;
 
 /**
- * General Error
+ * General error information.
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BadRequestException extends com.amazonaws.services.greengrass.model.AWSGreengrassException {
     private static final long serialVersionUID = 1L;
 
-    /** Error Details */
+    /** Details about the error. */
     private java.util.List<ErrorDetail> errorDetails;
 
     /**
@@ -35,9 +35,9 @@ public class BadRequestException extends com.amazonaws.services.greengrass.model
     }
 
     /**
-     * Error Details
+     * Details about the error.
      * 
-     * @return Error Details
+     * @return Details about the error.
      */
 
     @com.fasterxml.jackson.annotation.JsonProperty("ErrorDetails")
@@ -46,10 +46,10 @@ public class BadRequestException extends com.amazonaws.services.greengrass.model
     }
 
     /**
-     * Error Details
+     * Details about the error.
      * 
      * @param errorDetails
-     *        Error Details
+     *        Details about the error.
      */
 
     @com.fasterxml.jackson.annotation.JsonProperty("ErrorDetails")
@@ -63,7 +63,7 @@ public class BadRequestException extends com.amazonaws.services.greengrass.model
     }
 
     /**
-     * Error Details
+     * Details about the error.
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setErrorDetails(java.util.Collection)} or {@link #withErrorDetails(java.util.Collection)} if you want to
@@ -71,7 +71,7 @@ public class BadRequestException extends com.amazonaws.services.greengrass.model
      * </p>
      * 
      * @param errorDetails
-     *        Error Details
+     *        Details about the error.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -86,10 +86,10 @@ public class BadRequestException extends com.amazonaws.services.greengrass.model
     }
 
     /**
-     * Error Details
+     * Details about the error.
      * 
      * @param errorDetails
-     *        Error Details
+     *        Details about the error.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

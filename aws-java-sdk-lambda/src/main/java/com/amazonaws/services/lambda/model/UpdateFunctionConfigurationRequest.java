@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -91,7 +91,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * <p>
      * To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to
      * "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3,
-     * set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     * set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the
+     * .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      * </p>
      * <note>
      * <p>
@@ -106,6 +107,7 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      */
     private DeadLetterConfig deadLetterConfig;
@@ -122,6 +124,15 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * </p>
      */
     private TracingConfig tracingConfig;
+    /**
+     * <p>
+     * An optional value you can use to ensure you are updating the latest update of the function version or alias. If
+     * the <code>RevisionID</code> you pass doesn't match the latest <code>RevisionId</code> of the function or alias,
+     * it will fail with an error message, advising you to retrieve the latest function version or alias
+     * <code>RevisionID</code> using either or .
+     * </p>
+     */
+    private String revisionId;
 
     /**
      * <p>
@@ -517,7 +528,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * <p>
      * To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to
      * "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3,
-     * set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     * set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the
+     * .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      * </p>
      * <note>
      * <p>
@@ -533,7 +545,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the
      *        value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js
-     *        runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     *        runtime v4.3, set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to
+     *        "dotnetcore1.0". To use the .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      *        </p>
      *        <note>
      *        <p>
@@ -556,7 +569,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * <p>
      * To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to
      * "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3,
-     * set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     * set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the
+     * .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      * </p>
      * <note>
      * <p>
@@ -571,7 +585,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      *         <p>
      *         To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the
      *         value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js
-     *         runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     *         runtime v4.3, set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to
+     *         "dotnetcore1.0". To use the .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      *         </p>
      *         <note>
      *         <p>
@@ -594,7 +609,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * <p>
      * To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to
      * "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3,
-     * set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     * set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the
+     * .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      * </p>
      * <note>
      * <p>
@@ -610,7 +626,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the
      *        value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js
-     *        runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     *        runtime v4.3, set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to
+     *        "dotnetcore1.0". To use the .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      *        </p>
      *        <note>
      *        <p>
@@ -635,7 +652,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * <p>
      * To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to
      * "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3,
-     * set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     * set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the
+     * .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      * </p>
      * <note>
      * <p>
@@ -651,7 +669,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the
      *        value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js
-     *        runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     *        runtime v4.3, set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to
+     *        "dotnetcore1.0". To use the .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      *        </p>
      *        <note>
      *        <p>
@@ -674,7 +693,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      * <p>
      * To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to
      * "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3,
-     * set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     * set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the
+     * .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      * </p>
      * <note>
      * <p>
@@ -690,7 +710,8 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the
      *        value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js
-     *        runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+     *        runtime v4.3, set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to
+     *        "dotnetcore1.0". To use the .NET Core runtime v2.0, set the value to "dotnetcore2.0".
      *        </p>
      *        <note>
      *        <p>
@@ -711,11 +732,12 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      * 
      * @param deadLetterConfig
      *        The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS
-     *        topic.
+     *        topic. For more information, see <a>dlq</a>.
      */
 
     public void setDeadLetterConfig(DeadLetterConfig deadLetterConfig) {
@@ -725,10 +747,11 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      * 
      * @return The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon
-     *         SNS topic.
+     *         SNS topic. For more information, see <a>dlq</a>.
      */
 
     public DeadLetterConfig getDeadLetterConfig() {
@@ -738,11 +761,12 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      * 
      * @param deadLetterConfig
      *        The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS
-     *        topic.
+     *        topic. For more information, see <a>dlq</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -838,6 +862,64 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * An optional value you can use to ensure you are updating the latest update of the function version or alias. If
+     * the <code>RevisionID</code> you pass doesn't match the latest <code>RevisionId</code> of the function or alias,
+     * it will fail with an error message, advising you to retrieve the latest function version or alias
+     * <code>RevisionID</code> using either or .
+     * </p>
+     * 
+     * @param revisionId
+     *        An optional value you can use to ensure you are updating the latest update of the function version or
+     *        alias. If the <code>RevisionID</code> you pass doesn't match the latest <code>RevisionId</code> of the
+     *        function or alias, it will fail with an error message, advising you to retrieve the latest function
+     *        version or alias <code>RevisionID</code> using either or .
+     */
+
+    public void setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+    }
+
+    /**
+     * <p>
+     * An optional value you can use to ensure you are updating the latest update of the function version or alias. If
+     * the <code>RevisionID</code> you pass doesn't match the latest <code>RevisionId</code> of the function or alias,
+     * it will fail with an error message, advising you to retrieve the latest function version or alias
+     * <code>RevisionID</code> using either or .
+     * </p>
+     * 
+     * @return An optional value you can use to ensure you are updating the latest update of the function version or
+     *         alias. If the <code>RevisionID</code> you pass doesn't match the latest <code>RevisionId</code> of the
+     *         function or alias, it will fail with an error message, advising you to retrieve the latest function
+     *         version or alias <code>RevisionID</code> using either or .
+     */
+
+    public String getRevisionId() {
+        return this.revisionId;
+    }
+
+    /**
+     * <p>
+     * An optional value you can use to ensure you are updating the latest update of the function version or alias. If
+     * the <code>RevisionID</code> you pass doesn't match the latest <code>RevisionId</code> of the function or alias,
+     * it will fail with an error message, advising you to retrieve the latest function version or alias
+     * <code>RevisionID</code> using either or .
+     * </p>
+     * 
+     * @param revisionId
+     *        An optional value you can use to ensure you are updating the latest update of the function version or
+     *        alias. If the <code>RevisionID</code> you pass doesn't match the latest <code>RevisionId</code> of the
+     *        function or alias, it will fail with an error message, advising you to retrieve the latest function
+     *        version or alias <code>RevisionID</code> using either or .
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateFunctionConfigurationRequest withRevisionId(String revisionId) {
+        setRevisionId(revisionId);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -871,7 +953,9 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
         if (getKMSKeyArn() != null)
             sb.append("KMSKeyArn: ").append(getKMSKeyArn()).append(",");
         if (getTracingConfig() != null)
-            sb.append("TracingConfig: ").append(getTracingConfig());
+            sb.append("TracingConfig: ").append(getTracingConfig()).append(",");
+        if (getRevisionId() != null)
+            sb.append("RevisionId: ").append(getRevisionId());
         sb.append("}");
         return sb.toString();
     }
@@ -934,6 +1018,10 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
             return false;
         if (other.getTracingConfig() != null && other.getTracingConfig().equals(this.getTracingConfig()) == false)
             return false;
+        if (other.getRevisionId() == null ^ this.getRevisionId() == null)
+            return false;
+        if (other.getRevisionId() != null && other.getRevisionId().equals(this.getRevisionId()) == false)
+            return false;
         return true;
     }
 
@@ -954,6 +1042,7 @@ public class UpdateFunctionConfigurationRequest extends com.amazonaws.AmazonWebS
         hashCode = prime * hashCode + ((getDeadLetterConfig() == null) ? 0 : getDeadLetterConfig().hashCode());
         hashCode = prime * hashCode + ((getKMSKeyArn() == null) ? 0 : getKMSKeyArn().hashCode());
         hashCode = prime * hashCode + ((getTracingConfig() == null) ? 0 : getTracingConfig().hashCode());
+        hashCode = prime * hashCode + ((getRevisionId() == null) ? 0 : getRevisionId().hashCode());
         return hashCode;
     }
 

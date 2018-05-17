@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -53,6 +53,8 @@ public class ActionMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("elasticsearch").build();
     private static final MarshallingInfo<StructuredPojo> SALESFORCE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("salesforce").build();
+    private static final MarshallingInfo<StructuredPojo> IOTANALYTICS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("iotAnalytics").build();
 
     private static final ActionMarshaller instance = new ActionMarshaller();
 
@@ -83,6 +85,7 @@ public class ActionMarshaller {
             protocolMarshaller.marshall(action.getCloudwatchAlarm(), CLOUDWATCHALARM_BINDING);
             protocolMarshaller.marshall(action.getElasticsearch(), ELASTICSEARCH_BINDING);
             protocolMarshaller.marshall(action.getSalesforce(), SALESFORCE_BINDING);
+            protocolMarshaller.marshall(action.getIotAnalytics(), IOTANALYTICS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

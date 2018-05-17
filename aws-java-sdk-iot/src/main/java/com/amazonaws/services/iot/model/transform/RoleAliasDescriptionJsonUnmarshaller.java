@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,10 @@ public class RoleAliasDescriptionJsonUnmarshaller implements Unmarshaller<RoleAl
                 if (context.testExpression("roleAlias", targetDepth)) {
                     context.nextToken();
                     roleAliasDescription.setRoleAlias(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("roleAliasArn", targetDepth)) {
+                    context.nextToken();
+                    roleAliasDescription.setRoleAliasArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("roleArn", targetDepth)) {
                     context.nextToken();

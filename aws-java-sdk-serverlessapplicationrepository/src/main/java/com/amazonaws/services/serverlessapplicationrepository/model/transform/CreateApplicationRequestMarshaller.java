@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,6 +32,8 @@ public class CreateApplicationRequestMarshaller {
             .marshallLocationName("author").build();
     private static final MarshallingInfo<String> DESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("description").build();
+    private static final MarshallingInfo<String> HOMEPAGEURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("homePageUrl").build();
     private static final MarshallingInfo<List> LABELS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("labels").build();
     private static final MarshallingInfo<String> LICENSEBODY_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -73,6 +75,7 @@ public class CreateApplicationRequestMarshaller {
         try {
             protocolMarshaller.marshall(createApplicationRequest.getAuthor(), AUTHOR_BINDING);
             protocolMarshaller.marshall(createApplicationRequest.getDescription(), DESCRIPTION_BINDING);
+            protocolMarshaller.marshall(createApplicationRequest.getHomePageUrl(), HOMEPAGEURL_BINDING);
             protocolMarshaller.marshall(createApplicationRequest.getLabels(), LABELS_BINDING);
             protocolMarshaller.marshall(createApplicationRequest.getLicenseBody(), LICENSEBODY_BINDING);
             protocolMarshaller.marshall(createApplicationRequest.getLicenseUrl(), LICENSEURL_BINDING);

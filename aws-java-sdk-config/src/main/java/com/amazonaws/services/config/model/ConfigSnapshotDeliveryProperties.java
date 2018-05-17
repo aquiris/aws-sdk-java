@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,7 +37,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <p>
  * The value for the <code>deliveryFrequency</code> parameter within the delivery channel configuration, which sets how
  * often AWS Config delivers configuration snapshots. This value also sets how often AWS Config invokes evaluations for
- * Config rules.
+ * AWS Config rules.
  * </p>
  * </li>
  * <li>

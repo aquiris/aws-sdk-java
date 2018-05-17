@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,11 +33,7 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
      * and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.
      */
     private String audioPids;
-    /**
-     * ThePlatform-protected transport streams using 'microsoft' as Target Client include an ECM stream. This ECM stream
-     * contains the size, IV, and PTS of every sample in the transport stream. This stream PID is specified here. This
-     * PID has no effect on non ThePlatform-protected streams.
-     */
+    /** This parameter is unused and deprecated. */
     private String ecmPid;
     /**
      * The number of milliseconds between instances of this table in the output transport stream. A value of \"0\"
@@ -78,6 +74,11 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     private String scte35Pid;
     /** When set to passthrough, timed metadata is passed through from input to output. */
     private String timedMetadataBehavior;
+    /**
+     * Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or
+     * hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     */
+    private String timedMetadataPid;
     /** The value of the transport stream ID field in the Program Map Table. */
     private Integer transportStreamId;
     /**
@@ -164,14 +165,10 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * ThePlatform-protected transport streams using 'microsoft' as Target Client include an ECM stream. This ECM stream
-     * contains the size, IV, and PTS of every sample in the transport stream. This stream PID is specified here. This
-     * PID has no effect on non ThePlatform-protected streams.
+     * This parameter is unused and deprecated.
      * 
      * @param ecmPid
-     *        ThePlatform-protected transport streams using 'microsoft' as Target Client include an ECM stream. This ECM
-     *        stream contains the size, IV, and PTS of every sample in the transport stream. This stream PID is
-     *        specified here. This PID has no effect on non ThePlatform-protected streams.
+     *        This parameter is unused and deprecated.
      */
 
     public void setEcmPid(String ecmPid) {
@@ -179,13 +176,9 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * ThePlatform-protected transport streams using 'microsoft' as Target Client include an ECM stream. This ECM stream
-     * contains the size, IV, and PTS of every sample in the transport stream. This stream PID is specified here. This
-     * PID has no effect on non ThePlatform-protected streams.
+     * This parameter is unused and deprecated.
      * 
-     * @return ThePlatform-protected transport streams using 'microsoft' as Target Client include an ECM stream. This
-     *         ECM stream contains the size, IV, and PTS of every sample in the transport stream. This stream PID is
-     *         specified here. This PID has no effect on non ThePlatform-protected streams.
+     * @return This parameter is unused and deprecated.
      */
 
     public String getEcmPid() {
@@ -193,14 +186,10 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * ThePlatform-protected transport streams using 'microsoft' as Target Client include an ECM stream. This ECM stream
-     * contains the size, IV, and PTS of every sample in the transport stream. This stream PID is specified here. This
-     * PID has no effect on non ThePlatform-protected streams.
+     * This parameter is unused and deprecated.
      * 
      * @param ecmPid
-     *        ThePlatform-protected transport streams using 'microsoft' as Target Client include an ECM stream. This ECM
-     *        stream contains the size, IV, and PTS of every sample in the transport stream. This stream PID is
-     *        specified here. This PID has no effect on non ThePlatform-protected streams.
+     *        This parameter is unused and deprecated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -650,6 +639,46 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or
+     * hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * 
+     * @param timedMetadataPid
+     *        Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal
+     *        or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     */
+
+    public void setTimedMetadataPid(String timedMetadataPid) {
+        this.timedMetadataPid = timedMetadataPid;
+    }
+
+    /**
+     * Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or
+     * hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * 
+     * @return Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal
+     *         or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     */
+
+    public String getTimedMetadataPid() {
+        return this.timedMetadataPid;
+    }
+
+    /**
+     * Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or
+     * hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * 
+     * @param timedMetadataPid
+     *        Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal
+     *        or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public M3u8Settings withTimedMetadataPid(String timedMetadataPid) {
+        setTimedMetadataPid(timedMetadataPid);
+        return this;
+    }
+
+    /**
      * The value of the transport stream ID field in the Program Map Table.
      * 
      * @param transportStreamId
@@ -760,6 +789,8 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
             sb.append("Scte35Pid: ").append(getScte35Pid()).append(",");
         if (getTimedMetadataBehavior() != null)
             sb.append("TimedMetadataBehavior: ").append(getTimedMetadataBehavior()).append(",");
+        if (getTimedMetadataPid() != null)
+            sb.append("TimedMetadataPid: ").append(getTimedMetadataPid()).append(",");
         if (getTransportStreamId() != null)
             sb.append("TransportStreamId: ").append(getTransportStreamId()).append(",");
         if (getVideoPid() != null)
@@ -830,6 +861,10 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getTimedMetadataBehavior() != null && other.getTimedMetadataBehavior().equals(this.getTimedMetadataBehavior()) == false)
             return false;
+        if (other.getTimedMetadataPid() == null ^ this.getTimedMetadataPid() == null)
+            return false;
+        if (other.getTimedMetadataPid() != null && other.getTimedMetadataPid().equals(this.getTimedMetadataPid()) == false)
+            return false;
         if (other.getTransportStreamId() == null ^ this.getTransportStreamId() == null)
             return false;
         if (other.getTransportStreamId() != null && other.getTransportStreamId().equals(this.getTransportStreamId()) == false)
@@ -859,6 +894,7 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getScte35Behavior() == null) ? 0 : getScte35Behavior().hashCode());
         hashCode = prime * hashCode + ((getScte35Pid() == null) ? 0 : getScte35Pid().hashCode());
         hashCode = prime * hashCode + ((getTimedMetadataBehavior() == null) ? 0 : getTimedMetadataBehavior().hashCode());
+        hashCode = prime * hashCode + ((getTimedMetadataPid() == null) ? 0 : getTimedMetadataPid().hashCode());
         hashCode = prime * hashCode + ((getTransportStreamId() == null) ? 0 : getTransportStreamId().hashCode());
         hashCode = prime * hashCode + ((getVideoPid() == null) ? 0 : getVideoPid().hashCode());
         return hashCode;

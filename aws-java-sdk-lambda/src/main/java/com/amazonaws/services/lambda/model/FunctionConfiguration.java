@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -114,6 +114,7 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      */
     private DeadLetterConfig deadLetterConfig;
@@ -142,6 +143,12 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
      * </p>
      */
     private String masterArn;
+    /**
+     * <p>
+     * Represents the latest updated revision of the function or alias.
+     * </p>
+     */
+    private String revisionId;
 
     /**
      * <p>
@@ -732,11 +739,12 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      * 
      * @param deadLetterConfig
      *        The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS
-     *        topic.
+     *        topic. For more information, see <a>dlq</a>.
      */
 
     public void setDeadLetterConfig(DeadLetterConfig deadLetterConfig) {
@@ -746,10 +754,11 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      * 
      * @return The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon
-     *         SNS topic.
+     *         SNS topic. For more information, see <a>dlq</a>.
      */
 
     public DeadLetterConfig getDeadLetterConfig() {
@@ -759,11 +768,12 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
     /**
      * <p>
      * The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+     * For more information, see <a>dlq</a>.
      * </p>
      * 
      * @param deadLetterConfig
      *        The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS
-     *        topic.
+     *        topic. For more information, see <a>dlq</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -939,6 +949,46 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
     }
 
     /**
+     * <p>
+     * Represents the latest updated revision of the function or alias.
+     * </p>
+     * 
+     * @param revisionId
+     *        Represents the latest updated revision of the function or alias.
+     */
+
+    public void setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+    }
+
+    /**
+     * <p>
+     * Represents the latest updated revision of the function or alias.
+     * </p>
+     * 
+     * @return Represents the latest updated revision of the function or alias.
+     */
+
+    public String getRevisionId() {
+        return this.revisionId;
+    }
+
+    /**
+     * <p>
+     * Represents the latest updated revision of the function or alias.
+     * </p>
+     * 
+     * @param revisionId
+     *        Represents the latest updated revision of the function or alias.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public FunctionConfiguration withRevisionId(String revisionId) {
+        setRevisionId(revisionId);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object; useful for testing and debugging.
      *
      * @return A string representation of this object.
@@ -984,7 +1034,9 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
         if (getTracingConfig() != null)
             sb.append("TracingConfig: ").append(getTracingConfig()).append(",");
         if (getMasterArn() != null)
-            sb.append("MasterArn: ").append(getMasterArn());
+            sb.append("MasterArn: ").append(getMasterArn()).append(",");
+        if (getRevisionId() != null)
+            sb.append("RevisionId: ").append(getRevisionId());
         sb.append("}");
         return sb.toString();
     }
@@ -1071,6 +1123,10 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
             return false;
         if (other.getMasterArn() != null && other.getMasterArn().equals(this.getMasterArn()) == false)
             return false;
+        if (other.getRevisionId() == null ^ this.getRevisionId() == null)
+            return false;
+        if (other.getRevisionId() != null && other.getRevisionId().equals(this.getRevisionId()) == false)
+            return false;
         return true;
     }
 
@@ -1097,6 +1153,7 @@ public class FunctionConfiguration implements Serializable, Cloneable, Structure
         hashCode = prime * hashCode + ((getKMSKeyArn() == null) ? 0 : getKMSKeyArn().hashCode());
         hashCode = prime * hashCode + ((getTracingConfig() == null) ? 0 : getTracingConfig().hashCode());
         hashCode = prime * hashCode + ((getMasterArn() == null) ? 0 : getMasterArn().hashCode());
+        hashCode = prime * hashCode + ((getRevisionId() == null) ? 0 : getRevisionId().hashCode());
         return hashCode;
     }
 

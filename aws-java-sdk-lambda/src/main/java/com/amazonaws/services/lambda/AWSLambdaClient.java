@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -57,7 +57,7 @@ import com.amazonaws.services.lambda.model.transform.*;
  * service overview, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">What is AWS Lambda</a>, and
  * for information about how the service works, see <a
  * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a> in the
- * <i>AWS Lambda Developer Guide</i>.
+ * <b>AWS Lambda Developer Guide</b>.
  * </p>
  */
 @ThreadSafe
@@ -140,6 +140,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidSubnetIDException").withModeledClass(
                                     com.amazonaws.services.lambda.model.InvalidSubnetIDException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PreconditionFailedException").withModeledClass(
+                                    com.amazonaws.services.lambda.model.PreconditionFailedException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("RequestTooLargeException").withModeledClass(
                                     com.amazonaws.services.lambda.model.RequestTooLargeException.class))
@@ -341,7 +344,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * </p>
      * <p>
      * For information about the push model, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>.
+     * href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">Lambda Functions</a>.
      * </p>
      * <p>
      * If you are using versioning, the permissions you add are specific to the Lambda function version or alias you
@@ -369,13 +372,10 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws PolicyLengthExceededException
      *         Lambda function access policy is limited to 20 KB.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
+     * @throws PreconditionFailedException
+     *         The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the
+     *         <code>GetFunction</code> or the <code>GetAlias</code> API to retrieve the latest RevisionId for your
+     *         resource.
      * @sample AWSLambda.AddPermission
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/AddPermission" target="_top">AWS API
      *      Documentation</a>
@@ -401,6 +401,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new AddPermissionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(addPermissionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -440,13 +441,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.CreateAlias
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateAlias" target="_top">AWS API
      *      Documentation</a>
@@ -472,6 +466,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new CreateAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -496,20 +491,13 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * <p>
      * This association between a stream source and a Lambda function is called the event source mapping.
      * </p>
-     * <important>
-     * <p>
-     * This event source mapping is relevant only in the AWS Lambda pull model, where AWS Lambda invokes the function.
-     * For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS
-     * Lambda: How it Works</a> in the <i>AWS Lambda Developer Guide</i>.
-     * </p>
-     * </important>
      * <p>
      * You provide mapping information (for example, which stream to read from and which Lambda function to invoke) in
      * the request body.
      * </p>
      * <p>
      * Each event source, such as an Amazon Kinesis or a DynamoDB stream, can be associated with multiple AWS Lambda
-     * function. A given Lambda function can be associated with multiple AWS event sources.
+     * functions. A given Lambda function can be associated with multiple AWS event sources.
      * </p>
      * <p>
      * If you are using versioning, you can specify a specific function version or an alias via the function name
@@ -532,13 +520,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws ResourceConflictException
      *         The resource already exists.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws ResourceNotFoundException
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
@@ -568,6 +549,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                         .beforeMarshalling(createEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -615,13 +597,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws ResourceConflictException
      *         The resource already exists.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws CodeStorageExceededException
      *         You have exceeded your maximum total code size per account. <a
      *         href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>
@@ -650,6 +625,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new CreateFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -684,13 +660,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.DeleteAlias
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteAlias" target="_top">AWS API
      *      Documentation</a>
@@ -716,6 +685,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new DeleteAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -753,13 +723,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.DeleteEventSourceMapping
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteEventSourceMapping"
      *      target="_top">AWS API Documentation</a>
@@ -786,6 +749,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                         .beforeMarshalling(deleteEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -831,13 +795,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws InvalidParameterValueException
      *         One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
@@ -869,6 +826,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new DeleteFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -887,7 +845,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
 
     /**
      * <p>
-     * Removes concurrent execution limits from this function.
+     * Removes concurrent execution limits from this function. For more information, see <a>concurrent-executions</a>.
      * </p>
      * 
      * @param deleteFunctionConcurrencyRequest
@@ -898,13 +856,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws InvalidParameterValueException
      *         One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
@@ -935,6 +886,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                         .beforeMarshalling(deleteFunctionConcurrencyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -965,13 +917,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @param getAccountSettingsRequest
      * @return Result of the GetAccountSettings operation returned by the service.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws ServiceException
      *         The AWS Lambda service encountered an internal error.
      * @sample AWSLambda.GetAccountSettings
@@ -999,6 +944,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new GetAccountSettingsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAccountSettingsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1037,13 +983,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.GetAlias
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetAlias" target="_top">AWS API
      *      Documentation</a>
@@ -1069,6 +1008,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new GetAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1105,13 +1045,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.GetEventSourceMapping
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetEventSourceMapping" target="_top">AWS
      *      API Documentation</a>
@@ -1137,6 +1070,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new GetEventSourceMappingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1180,13 +1114,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws InvalidParameterValueException
      *         One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
@@ -1216,6 +1143,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new GetFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1257,13 +1185,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws InvalidParameterValueException
      *         One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
@@ -1294,6 +1215,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                         .beforeMarshalling(getFunctionConfigurationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1334,13 +1256,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws InvalidParameterValueException
      *         One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
@@ -1370,6 +1285,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new GetPolicyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPolicyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1404,6 +1320,15 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * <p>
      * This operation requires permission for the <code>lambda:InvokeFunction</code> action.
      * </p>
+     * <note>
+     * <p>
+     * The <code>TooManyRequestsException</code> noted below will return the following:
+     * <code>ConcurrentInvocationLimitExceeded</code> will be returned if you have no functions with reserved
+     * concurrency and have exceeded your account concurrent limit or if a function without reserved concurrency exceeds
+     * the account's unreserved concurrency limit. <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> will
+     * be returned when a function with reserved concurrency exceeds its configured concurrency limit.
+     * </p>
+     * </note>
      * 
      * @param invokeRequest
      * @return Result of the Invoke operation returned by the service.
@@ -1420,13 +1345,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws UnsupportedMediaTypeException
      *         The content type of the <code>Invoke</code> request body is not JSON.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws InvalidParameterValueException
      *         One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
@@ -1488,6 +1406,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new InvokeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(invokeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1555,6 +1474,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new InvokeAsyncRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(invokeAsyncRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1593,13 +1513,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.ListAliases
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListAliases" target="_top">AWS API
      *      Documentation</a>
@@ -1625,6 +1538,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new ListAliasesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAliasesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1672,13 +1586,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.ListEventSourceMappings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListEventSourceMappings" target="_top">AWS
      *      API Documentation</a>
@@ -1705,6 +1612,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                         .beforeMarshalling(listEventSourceMappingsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1747,13 +1655,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * @throws ServiceException
      *         The AWS Lambda service encountered an internal error.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws InvalidParameterValueException
      *         One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
@@ -1783,6 +1684,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new ListFunctionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listFunctionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1806,7 +1708,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
 
     /**
      * <p>
-     * Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name).
+     * Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name). For more
+     * information on Tagging, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda
+     * Functions</a> in the <b>AWS Lambda Developer Guide</b>.
      * </p>
      * 
      * @param listTagsRequest
@@ -1821,13 +1725,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.ListTags
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListTags" target="_top">AWS API
      *      Documentation</a>
@@ -1853,6 +1750,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new ListTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1888,13 +1786,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.ListVersionsByFunction
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListVersionsByFunction" target="_top">AWS
      *      API Documentation</a>
@@ -1920,6 +1811,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new ListVersionsByFunctionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listVersionsByFunctionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1958,16 +1850,13 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws CodeStorageExceededException
      *         You have exceeded your maximum total code size per account. <a
      *         href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>
+     * @throws PreconditionFailedException
+     *         The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the
+     *         <code>GetFunction</code> or the <code>GetAlias</code> API to retrieve the latest RevisionId for your
+     *         resource.
      * @sample AWSLambda.PublishVersion
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PublishVersion" target="_top">AWS API
      *      Documentation</a>
@@ -1993,6 +1882,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new PublishVersionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(publishVersionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2014,7 +1904,8 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * Sets a limit on the number of concurrent executions available to this function. It is a subset of your account's
      * total concurrent execution limit per region. Note that Lambda automatically reserves a buffer of 100 concurrent
      * executions for functions without any reserved concurrency limit. This means if your account limit is 1000, you
-     * have a total of 900 available to allocate to individual functions.
+     * have a total of 900 available to allocate to individual functions. For more information, see
+     * <a>concurrent-executions</a>.
      * </p>
      * 
      * @param putFunctionConcurrencyRequest
@@ -2029,13 +1920,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         The resource (for example, a Lambda function or access policy statement) specified in the request does
      *         not exist.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.PutFunctionConcurrency
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PutFunctionConcurrency" target="_top">AWS
      *      API Documentation</a>
@@ -2061,6 +1945,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new PutFunctionConcurrencyRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putFunctionConcurrencyRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2108,13 +1993,10 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
+     * @throws PreconditionFailedException
+     *         The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the
+     *         <code>GetFunction</code> or the <code>GetAlias</code> API to retrieve the latest RevisionId for your
+     *         resource.
      * @sample AWSLambda.RemovePermission
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/RemovePermission" target="_top">AWS API
      *      Documentation</a>
@@ -2140,6 +2022,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new RemovePermissionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(removePermissionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2160,7 +2043,8 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      * <p>
      * Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon
      * Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of
-     * null.
+     * null. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda
+     * Functions</a> in the <b>AWS Lambda Developer Guide</b>.
      * </p>
      * 
      * @param tagResourceRequest
@@ -2175,13 +2059,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.TagResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/TagResource" target="_top">AWS API
      *      Documentation</a>
@@ -2207,6 +2084,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2225,7 +2103,9 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
 
     /**
      * <p>
-     * Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name).
+     * Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see
+     * <a href="http://docs.aws.amazon.com/lambda/latest/dg/tagging.html">Tagging Lambda Functions</a> in the <b>AWS
+     * Lambda Developer Guide</b>.
      * </p>
      * 
      * @param untagResourceRequest
@@ -2240,13 +2120,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @sample AWSLambda.UntagResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UntagResource" target="_top">AWS API
      *      Documentation</a>
@@ -2272,6 +2145,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2310,13 +2184,10 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
+     * @throws PreconditionFailedException
+     *         The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the
+     *         <code>GetFunction</code> or the <code>GetAlias</code> API to retrieve the latest RevisionId for your
+     *         resource.
      * @sample AWSLambda.UpdateAlias
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateAlias" target="_top">AWS API
      *      Documentation</a>
@@ -2342,6 +2213,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new UpdateAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2391,13 +2263,6 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws ResourceConflictException
      *         The resource already exists.
      * @sample AWSLambda.UpdateEventSourceMapping
@@ -2426,6 +2291,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                         .beforeMarshalling(updateEventSourceMappingRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2470,16 +2336,13 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws CodeStorageExceededException
      *         You have exceeded your maximum total code size per account. <a
      *         href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>
+     * @throws PreconditionFailedException
+     *         The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the
+     *         <code>GetFunction</code> or the <code>GetAlias</code> API to retrieve the latest RevisionId for your
+     *         resource.
      * @sample AWSLambda.UpdateFunctionCode
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionCode" target="_top">AWS API
      *      Documentation</a>
@@ -2505,6 +2368,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                 request = new UpdateFunctionCodeRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateFunctionCodeRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2549,15 +2413,12 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
      *         to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that
      *         AWS Lambda is unable to assume you will get this exception.
      * @throws TooManyRequestsException
-     *         You will get this exception for the following reasons. <code>ConcurrentInvocationLimitExceeded</code> is
-     *         returned if you have no functions with reserved-concurrency and have exceeded your account concurrent
-     *         limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit.
-     *         <code>ReservedFunctionConcurrentInvocationLimitExceeded</code> is returned when a function with reserved
-     *         concurrency exceeds its configured concurrent limit. <code>CallerRateLimitExceeded</code> is returned
-     *         when your account limit is exceeded and you have not reserved concurrency on any function. For more
-     *         information, see <a>concurrent-executions</a>
      * @throws ResourceConflictException
      *         The resource already exists.
+     * @throws PreconditionFailedException
+     *         The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the
+     *         <code>GetFunction</code> or the <code>GetAlias</code> API to retrieve the latest RevisionId for your
+     *         resource.
      * @sample AWSLambda.UpdateFunctionConfiguration
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionConfiguration"
      *      target="_top">AWS API Documentation</a>
@@ -2584,6 +2445,7 @@ public class AWSLambdaClient extends AmazonWebServiceClient implements AWSLambda
                         .beforeMarshalling(updateFunctionConfigurationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -240,6 +240,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                         .beforeMarshalling(associateDelegateToResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -307,6 +308,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new AssociateMemberToGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(associateMemberToGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -376,6 +378,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new CreateAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -441,6 +444,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new CreateGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -504,6 +508,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new CreateResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -572,6 +577,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new CreateUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -632,6 +638,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DeleteAliasRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAliasRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -696,12 +703,76 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DeleteGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteGroupResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteGroupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes permissions granted to a user or group.
+     * </p>
+     * 
+     * @param deleteMailboxPermissionsRequest
+     * @return Result of the DeleteMailboxPermissions operation returned by the service.
+     * @throws EntityNotFoundException
+     *         The identifier supplied for the entity is valid, but it does not exist in your organization.
+     * @throws EntityStateException
+     *         You are performing an operation on an entity that isn't in the expected state, such as trying to update a
+     *         deleted user.
+     * @throws InvalidParameterException
+     *         One or more of the input parameters don't match the service's restrictions.
+     * @throws OrganizationNotFoundException
+     *         An operation received a valid organization identifier that either doesn't belong or exist in the system.
+     * @throws OrganizationStateException
+     *         The organization must have a valid state (Active or Synchronizing) to perform certain operations on the
+     *         organization or its entities.
+     * @sample AmazonWorkMail.DeleteMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/DeleteMailboxPermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteMailboxPermissionsResult deleteMailboxPermissions(DeleteMailboxPermissionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteMailboxPermissions(request);
+    }
+
+    @SdkInternalApi
+    final DeleteMailboxPermissionsResult executeDeleteMailboxPermissions(DeleteMailboxPermissionsRequest deleteMailboxPermissionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteMailboxPermissionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteMailboxPermissionsRequest> request = null;
+        Response<DeleteMailboxPermissionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteMailboxPermissionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteMailboxPermissionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteMailboxPermissionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteMailboxPermissionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -754,6 +825,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DeleteResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -819,6 +891,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DeleteUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -881,6 +954,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DeregisterFromWorkMailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deregisterFromWorkMailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -939,6 +1013,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeGroupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -991,6 +1066,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeOrganizationRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeOrganizationRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1048,6 +1124,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1105,6 +1182,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeUserRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeUserRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1167,6 +1245,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                         .beforeMarshalling(disassociateDelegateFromResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1235,6 +1314,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                         .beforeMarshalling(disassociateMemberFromGroupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1296,6 +1376,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ListAliasesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAliasesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1356,6 +1437,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ListGroupMembersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listGroupMembersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1413,12 +1495,72 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ListGroupsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listGroupsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<ListGroupsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListGroupsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists the mailbox permissions associated with a mailbox.
+     * </p>
+     * 
+     * @param listMailboxPermissionsRequest
+     * @return Result of the ListMailboxPermissions operation returned by the service.
+     * @throws EntityNotFoundException
+     *         The identifier supplied for the entity is valid, but it does not exist in your organization.
+     * @throws InvalidParameterException
+     *         One or more of the input parameters don't match the service's restrictions.
+     * @throws OrganizationNotFoundException
+     *         An operation received a valid organization identifier that either doesn't belong or exist in the system.
+     * @throws OrganizationStateException
+     *         The organization must have a valid state (Active or Synchronizing) to perform certain operations on the
+     *         organization or its entities.
+     * @sample AmazonWorkMail.ListMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/ListMailboxPermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListMailboxPermissionsResult listMailboxPermissions(ListMailboxPermissionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListMailboxPermissions(request);
+    }
+
+    @SdkInternalApi
+    final ListMailboxPermissionsResult executeListMailboxPermissions(ListMailboxPermissionsRequest listMailboxPermissionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listMailboxPermissionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListMailboxPermissionsRequest> request = null;
+        Response<ListMailboxPermissionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListMailboxPermissionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listMailboxPermissionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListMailboxPermissionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ListMailboxPermissionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1463,6 +1605,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ListOrganizationsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listOrganizationsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1524,6 +1667,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ListResourceDelegatesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listResourceDelegatesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1580,6 +1724,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ListResourcesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listResourcesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1635,12 +1780,75 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ListUsersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listUsersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<ListUsersResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListUsersResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Sets permissions for a user or group. This replaces any pre-existing permissions set for the entity.
+     * </p>
+     * 
+     * @param putMailboxPermissionsRequest
+     * @return Result of the PutMailboxPermissions operation returned by the service.
+     * @throws EntityNotFoundException
+     *         The identifier supplied for the entity is valid, but it does not exist in your organization.
+     * @throws EntityStateException
+     *         You are performing an operation on an entity that isn't in the expected state, such as trying to update a
+     *         deleted user.
+     * @throws InvalidParameterException
+     *         One or more of the input parameters don't match the service's restrictions.
+     * @throws OrganizationNotFoundException
+     *         An operation received a valid organization identifier that either doesn't belong or exist in the system.
+     * @throws OrganizationStateException
+     *         The organization must have a valid state (Active or Synchronizing) to perform certain operations on the
+     *         organization or its entities.
+     * @sample AmazonWorkMail.PutMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/PutMailboxPermissions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public PutMailboxPermissionsResult putMailboxPermissions(PutMailboxPermissionsRequest request) {
+        request = beforeClientExecution(request);
+        return executePutMailboxPermissions(request);
+    }
+
+    @SdkInternalApi
+    final PutMailboxPermissionsResult executePutMailboxPermissions(PutMailboxPermissionsRequest putMailboxPermissionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putMailboxPermissionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutMailboxPermissionsRequest> request = null;
+        Response<PutMailboxPermissionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutMailboxPermissionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putMailboxPermissionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutMailboxPermissionsResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new PutMailboxPermissionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1714,6 +1922,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new RegisterToWorkMailRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(registerToWorkMailRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1783,6 +1992,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new ResetPasswordRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(resetPasswordRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1861,6 +2071,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                         .beforeMarshalling(updatePrimaryEmailAddressRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1936,6 +2147,7 @@ public class AmazonWorkMailClient extends AmazonWebServiceClient implements Amaz
                 request = new UpdateResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

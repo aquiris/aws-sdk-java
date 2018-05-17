@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -67,6 +67,19 @@ public class AbstractAWSMediaStoreAsync extends AbstractAWSMediaStore implements
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteCorsPolicyResult> deleteCorsPolicyAsync(DeleteCorsPolicyRequest request) {
+
+        return deleteCorsPolicyAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteCorsPolicyResult> deleteCorsPolicyAsync(DeleteCorsPolicyRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteCorsPolicyRequest, DeleteCorsPolicyResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeContainerResult> describeContainerAsync(DescribeContainerRequest request) {
 
         return describeContainerAsync(request, null);
@@ -93,6 +106,19 @@ public class AbstractAWSMediaStoreAsync extends AbstractAWSMediaStore implements
     }
 
     @Override
+    public java.util.concurrent.Future<GetCorsPolicyResult> getCorsPolicyAsync(GetCorsPolicyRequest request) {
+
+        return getCorsPolicyAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetCorsPolicyResult> getCorsPolicyAsync(GetCorsPolicyRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetCorsPolicyRequest, GetCorsPolicyResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<ListContainersResult> listContainersAsync(ListContainersRequest request) {
 
         return listContainersAsync(request, null);
@@ -114,6 +140,19 @@ public class AbstractAWSMediaStoreAsync extends AbstractAWSMediaStore implements
     @Override
     public java.util.concurrent.Future<PutContainerPolicyResult> putContainerPolicyAsync(PutContainerPolicyRequest request,
             com.amazonaws.handlers.AsyncHandler<PutContainerPolicyRequest, PutContainerPolicyResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutCorsPolicyResult> putCorsPolicyAsync(PutCorsPolicyRequest request) {
+
+        return putCorsPolicyAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutCorsPolicyResult> putCorsPolicyAsync(PutCorsPolicyRequest request,
+            com.amazonaws.handlers.AsyncHandler<PutCorsPolicyRequest, PutCorsPolicyResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

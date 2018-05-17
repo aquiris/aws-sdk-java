@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,8 @@ public class InputLocation implements Serializable, Cloneable, StructuredPojo {
     private String passwordParam;
     /**
      * Uniform Resource Identifier - This should be a path to a file accessible to the Live system (eg. a http:// URI)
-     * depending on the output type. For example, a rtmpEndpoint should have a uri simliar to: "rtmp://fmsserver/live".
+     * depending on the output type. For example, a RTMP destination should have a uri simliar to:
+     * "rtmp://fmsserver/live".
      */
     private String uri;
     /** Documentation update needed */
@@ -72,11 +73,12 @@ public class InputLocation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * Uniform Resource Identifier - This should be a path to a file accessible to the Live system (eg. a http:// URI)
-     * depending on the output type. For example, a rtmpEndpoint should have a uri simliar to: "rtmp://fmsserver/live".
+     * depending on the output type. For example, a RTMP destination should have a uri simliar to:
+     * "rtmp://fmsserver/live".
      * 
      * @param uri
      *        Uniform Resource Identifier - This should be a path to a file accessible to the Live system (eg. a http://
-     *        URI) depending on the output type. For example, a rtmpEndpoint should have a uri simliar to:
+     *        URI) depending on the output type. For example, a RTMP destination should have a uri simliar to:
      *        "rtmp://fmsserver/live".
      */
 
@@ -86,10 +88,11 @@ public class InputLocation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * Uniform Resource Identifier - This should be a path to a file accessible to the Live system (eg. a http:// URI)
-     * depending on the output type. For example, a rtmpEndpoint should have a uri simliar to: "rtmp://fmsserver/live".
+     * depending on the output type. For example, a RTMP destination should have a uri simliar to:
+     * "rtmp://fmsserver/live".
      * 
      * @return Uniform Resource Identifier - This should be a path to a file accessible to the Live system (eg. a
-     *         http:// URI) depending on the output type. For example, a rtmpEndpoint should have a uri simliar to:
+     *         http:// URI) depending on the output type. For example, a RTMP destination should have a uri simliar to:
      *         "rtmp://fmsserver/live".
      */
 
@@ -99,11 +102,12 @@ public class InputLocation implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * Uniform Resource Identifier - This should be a path to a file accessible to the Live system (eg. a http:// URI)
-     * depending on the output type. For example, a rtmpEndpoint should have a uri simliar to: "rtmp://fmsserver/live".
+     * depending on the output type. For example, a RTMP destination should have a uri simliar to:
+     * "rtmp://fmsserver/live".
      * 
      * @param uri
      *        Uniform Resource Identifier - This should be a path to a file accessible to the Live system (eg. a http://
-     *        URI) depending on the output type. For example, a rtmpEndpoint should have a uri simliar to:
+     *        URI) depending on the output type. For example, a RTMP destination should have a uri simliar to:
      *        "rtmp://fmsserver/live".
      * @return Returns a reference to this object so that method calls can be chained together.
      */

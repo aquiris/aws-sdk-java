@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,7 +48,7 @@ public class ProvisioningArtifactSummary implements Serializable, Cloneable, Str
     private String description;
     /**
      * <p>
-     * The UTC timestamp of the creation time.
+     * The UTC time stamp of the creation time.
      * </p>
      */
     private java.util.Date createdTime;
@@ -181,11 +181,11 @@ public class ProvisioningArtifactSummary implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The UTC timestamp of the creation time.
+     * The UTC time stamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The UTC timestamp of the creation time.
+     *        The UTC time stamp of the creation time.
      */
 
     public void setCreatedTime(java.util.Date createdTime) {
@@ -194,10 +194,10 @@ public class ProvisioningArtifactSummary implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The UTC timestamp of the creation time.
+     * The UTC time stamp of the creation time.
      * </p>
      * 
-     * @return The UTC timestamp of the creation time.
+     * @return The UTC time stamp of the creation time.
      */
 
     public java.util.Date getCreatedTime() {
@@ -206,11 +206,11 @@ public class ProvisioningArtifactSummary implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * The UTC timestamp of the creation time.
+     * The UTC time stamp of the creation time.
      * </p>
      * 
      * @param createdTime
-     *        The UTC timestamp of the creation time.
+     *        The UTC time stamp of the creation time.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

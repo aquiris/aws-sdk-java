@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class OutputDestinationSettingsMarshaller {
 
     private static final MarshallingInfo<String> PASSWORDPARAM_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("passwordParam").build();
+    private static final MarshallingInfo<String> STREAMNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("streamName").build();
     private static final MarshallingInfo<String> URL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("url").build();
     private static final MarshallingInfo<String> USERNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -51,6 +53,7 @@ public class OutputDestinationSettingsMarshaller {
 
         try {
             protocolMarshaller.marshall(outputDestinationSettings.getPasswordParam(), PASSWORDPARAM_BINDING);
+            protocolMarshaller.marshall(outputDestinationSettings.getStreamName(), STREAMNAME_BINDING);
             protocolMarshaller.marshall(outputDestinationSettings.getUrl(), URL_BINDING);
             protocolMarshaller.marshall(outputDestinationSettings.getUsername(), USERNAME_BINDING);
         } catch (Exception e) {

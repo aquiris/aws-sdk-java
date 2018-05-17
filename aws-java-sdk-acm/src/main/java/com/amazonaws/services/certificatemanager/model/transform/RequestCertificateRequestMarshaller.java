@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,10 @@ public class RequestCertificateRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IdempotencyToken").build();
     private static final MarshallingInfo<List> DOMAINVALIDATIONOPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DomainValidationOptions").build();
+    private static final MarshallingInfo<StructuredPojo> OPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Options").build();
+    private static final MarshallingInfo<String> CERTIFICATEAUTHORITYARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CertificateAuthorityArn").build();
 
     private static final RequestCertificateRequestMarshaller instance = new RequestCertificateRequestMarshaller();
 
@@ -60,6 +64,8 @@ public class RequestCertificateRequestMarshaller {
             protocolMarshaller.marshall(requestCertificateRequest.getSubjectAlternativeNames(), SUBJECTALTERNATIVENAMES_BINDING);
             protocolMarshaller.marshall(requestCertificateRequest.getIdempotencyToken(), IDEMPOTENCYTOKEN_BINDING);
             protocolMarshaller.marshall(requestCertificateRequest.getDomainValidationOptions(), DOMAINVALIDATIONOPTIONS_BINDING);
+            protocolMarshaller.marshall(requestCertificateRequest.getOptions(), OPTIONS_BINDING);
+            protocolMarshaller.marshall(requestCertificateRequest.getCertificateAuthorityArn(), CERTIFICATEAUTHORITYARN_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

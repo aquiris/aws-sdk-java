@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -87,6 +87,11 @@ public class ExtendedS3DestinationDescriptionJsonUnmarshaller implements Unmarsh
                 if (context.testExpression("S3BackupDescription", targetDepth)) {
                     context.nextToken();
                     extendedS3DestinationDescription.setS3BackupDescription(S3DestinationDescriptionJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("DataFormatConversionConfiguration", targetDepth)) {
+                    context.nextToken();
+                    extendedS3DestinationDescription.setDataFormatConversionConfiguration(DataFormatConversionConfigurationJsonUnmarshaller.getInstance()
+                            .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -131,6 +131,11 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
     }
 
     @Override
+    public DescribeGlobalTableSettingsResult describeGlobalTableSettings(DescribeGlobalTableSettingsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeLimitsResult describeLimits(DescribeLimitsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -231,6 +236,11 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
     }
 
     @Override
+    public RestoreTableToPointInTimeResult restoreTableToPointInTime(RestoreTableToPointInTimeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ScanResult scan(ScanRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -261,7 +271,17 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
     }
 
     @Override
+    public UpdateContinuousBackupsResult updateContinuousBackups(UpdateContinuousBackupsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateGlobalTableResult updateGlobalTable(UpdateGlobalTableRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateGlobalTableSettingsResult updateGlobalTableSettings(UpdateGlobalTableSettingsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

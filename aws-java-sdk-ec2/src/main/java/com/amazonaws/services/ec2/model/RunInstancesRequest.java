@@ -37,7 +37,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     private com.amazonaws.internal.SdkInternalList<BlockDeviceMapping> blockDeviceMappings;
     /**
      * <p>
-     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an instance
+     * and must be specified here or in a launch template.
      * </p>
      */
     private String imageId;
@@ -271,7 +272,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * The launch template to use to launch the instances. Any parameters that you specify in <a>RunInstances</a>
-     * override the same parameters in the launch template.
+     * override the same parameters in the launch template. You can specify either the name or ID of a launch template,
+     * but not both.
      * </p>
      */
     private LaunchTemplateSpecification launchTemplate;
@@ -293,6 +295,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * </p>
      */
     private CreditSpecificationRequest creditSpecification;
+    /**
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     */
+    private CpuOptionsRequest cpuOptions;
 
     /**
      * Default constructor for RunInstancesRequest object. Callers should use the setter or fluent setter (with...)
@@ -306,7 +316,8 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * initialize any additional object members.
      * 
      * @param imageId
-     *        The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     *        The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an
+     *        instance and must be specified here or in a launch template.
      * @param minCount
      *        The minimum number of instances to launch. If you specify a minimum that is more instances than Amazon EC2
      *        can launch in the target Availability Zone, Amazon EC2 launches no instances.</p>
@@ -423,11 +434,13 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an instance
+     * and must be specified here or in a launch template.
      * </p>
      * 
      * @param imageId
-     *        The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     *        The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an
+     *        instance and must be specified here or in a launch template.
      */
 
     public void setImageId(String imageId) {
@@ -436,10 +449,12 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an instance
+     * and must be specified here or in a launch template.
      * </p>
      * 
-     * @return The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     * @return The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an
+     *         instance and must be specified here or in a launch template.
      */
 
     public String getImageId() {
@@ -448,11 +463,13 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     * The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an instance
+     * and must be specified here or in a launch template.
      * </p>
      * 
      * @param imageId
-     *        The ID of the AMI, which you can get by calling <a>DescribeImages</a>.
+     *        The ID of the AMI, which you can get by calling <a>DescribeImages</a>. An AMI is required to launch an
+     *        instance and must be specified here or in a launch template.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2266,12 +2283,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * The launch template to use to launch the instances. Any parameters that you specify in <a>RunInstances</a>
-     * override the same parameters in the launch template.
+     * override the same parameters in the launch template. You can specify either the name or ID of a launch template,
+     * but not both.
      * </p>
      * 
      * @param launchTemplate
      *        The launch template to use to launch the instances. Any parameters that you specify in <a>RunInstances</a>
-     *        override the same parameters in the launch template.
+     *        override the same parameters in the launch template. You can specify either the name or ID of a launch
+     *        template, but not both.
      */
 
     public void setLaunchTemplate(LaunchTemplateSpecification launchTemplate) {
@@ -2281,11 +2300,13 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * The launch template to use to launch the instances. Any parameters that you specify in <a>RunInstances</a>
-     * override the same parameters in the launch template.
+     * override the same parameters in the launch template. You can specify either the name or ID of a launch template,
+     * but not both.
      * </p>
      * 
      * @return The launch template to use to launch the instances. Any parameters that you specify in
-     *         <a>RunInstances</a> override the same parameters in the launch template.
+     *         <a>RunInstances</a> override the same parameters in the launch template. You can specify either the name
+     *         or ID of a launch template, but not both.
      */
 
     public LaunchTemplateSpecification getLaunchTemplate() {
@@ -2295,12 +2316,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     /**
      * <p>
      * The launch template to use to launch the instances. Any parameters that you specify in <a>RunInstances</a>
-     * override the same parameters in the launch template.
+     * override the same parameters in the launch template. You can specify either the name or ID of a launch template,
+     * but not both.
      * </p>
      * 
      * @param launchTemplate
      *        The launch template to use to launch the instances. Any parameters that you specify in <a>RunInstances</a>
-     *        override the same parameters in the launch template.
+     *        override the same parameters in the launch template. You can specify either the name or ID of a launch
+     *        template, but not both.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2426,6 +2449,58 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     }
 
     /**
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param cpuOptions
+     *        The CPU options for the instance. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU
+     *        Options</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public void setCpuOptions(CpuOptionsRequest cpuOptions) {
+        this.cpuOptions = cpuOptions;
+    }
+
+    /**
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @return The CPU options for the instance. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU
+     *         Options</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public CpuOptionsRequest getCpuOptions() {
+        return this.cpuOptions;
+    }
+
+    /**
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param cpuOptions
+     *        The CPU options for the instance. For more information, see <a
+     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU
+     *        Options</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withCpuOptions(CpuOptionsRequest cpuOptions) {
+        setCpuOptions(cpuOptions);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -2504,7 +2579,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         if (getInstanceMarketOptions() != null)
             sb.append("InstanceMarketOptions: ").append(getInstanceMarketOptions()).append(",");
         if (getCreditSpecification() != null)
-            sb.append("CreditSpecification: ").append(getCreditSpecification());
+            sb.append("CreditSpecification: ").append(getCreditSpecification()).append(",");
+        if (getCpuOptions() != null)
+            sb.append("CpuOptions: ").append(getCpuOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -2636,6 +2713,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
             return false;
         if (other.getCreditSpecification() != null && other.getCreditSpecification().equals(this.getCreditSpecification()) == false)
             return false;
+        if (other.getCpuOptions() == null ^ this.getCpuOptions() == null)
+            return false;
+        if (other.getCpuOptions() != null && other.getCpuOptions().equals(this.getCpuOptions()) == false)
+            return false;
         return true;
     }
 
@@ -2673,6 +2754,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         hashCode = prime * hashCode + ((getLaunchTemplate() == null) ? 0 : getLaunchTemplate().hashCode());
         hashCode = prime * hashCode + ((getInstanceMarketOptions() == null) ? 0 : getInstanceMarketOptions().hashCode());
         hashCode = prime * hashCode + ((getCreditSpecification() == null) ? 0 : getCreditSpecification().hashCode());
+        hashCode = prime * hashCode + ((getCpuOptions() == null) ? 0 : getCpuOptions().hashCode());
         return hashCode;
     }
 

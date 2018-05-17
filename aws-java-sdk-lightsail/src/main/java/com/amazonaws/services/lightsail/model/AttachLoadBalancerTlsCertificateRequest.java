@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,24 +27,24 @@ public class AttachLoadBalancerTlsCertificateRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The name of the load balancer to which you want to associate the TLS/SSL certificate.
+     * The name of the load balancer to which you want to associate the SSL/TLS certificate.
      * </p>
      */
     private String loadBalancerName;
     /**
      * <p>
-     * The name of your TLS/SSL certificate.
+     * The name of your SSL/TLS certificate.
      * </p>
      */
     private String certificateName;
 
     /**
      * <p>
-     * The name of the load balancer to which you want to associate the TLS/SSL certificate.
+     * The name of the load balancer to which you want to associate the SSL/TLS certificate.
      * </p>
      * 
      * @param loadBalancerName
-     *        The name of the load balancer to which you want to associate the TLS/SSL certificate.
+     *        The name of the load balancer to which you want to associate the SSL/TLS certificate.
      */
 
     public void setLoadBalancerName(String loadBalancerName) {
@@ -53,10 +53,10 @@ public class AttachLoadBalancerTlsCertificateRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The name of the load balancer to which you want to associate the TLS/SSL certificate.
+     * The name of the load balancer to which you want to associate the SSL/TLS certificate.
      * </p>
      * 
-     * @return The name of the load balancer to which you want to associate the TLS/SSL certificate.
+     * @return The name of the load balancer to which you want to associate the SSL/TLS certificate.
      */
 
     public String getLoadBalancerName() {
@@ -65,11 +65,11 @@ public class AttachLoadBalancerTlsCertificateRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The name of the load balancer to which you want to associate the TLS/SSL certificate.
+     * The name of the load balancer to which you want to associate the SSL/TLS certificate.
      * </p>
      * 
      * @param loadBalancerName
-     *        The name of the load balancer to which you want to associate the TLS/SSL certificate.
+     *        The name of the load balancer to which you want to associate the SSL/TLS certificate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,11 +80,11 @@ public class AttachLoadBalancerTlsCertificateRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The name of your TLS/SSL certificate.
+     * The name of your SSL/TLS certificate.
      * </p>
      * 
      * @param certificateName
-     *        The name of your TLS/SSL certificate.
+     *        The name of your SSL/TLS certificate.
      */
 
     public void setCertificateName(String certificateName) {
@@ -93,10 +93,10 @@ public class AttachLoadBalancerTlsCertificateRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The name of your TLS/SSL certificate.
+     * The name of your SSL/TLS certificate.
      * </p>
      * 
-     * @return The name of your TLS/SSL certificate.
+     * @return The name of your SSL/TLS certificate.
      */
 
     public String getCertificateName() {
@@ -105,11 +105,11 @@ public class AttachLoadBalancerTlsCertificateRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The name of your TLS/SSL certificate.
+     * The name of your SSL/TLS certificate.
      * </p>
      * 
      * @param certificateName
-     *        The name of your TLS/SSL certificate.
+     *        The name of your SSL/TLS certificate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

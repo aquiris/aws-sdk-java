@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,14 +25,14 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetConnectivityInfoRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** Thing Name */
+    /** The thing name. */
     private String thingName;
 
     /**
-     * Thing Name
+     * The thing name.
      * 
      * @param thingName
-     *        Thing Name
+     *        The thing name.
      */
 
     public void setThingName(String thingName) {
@@ -40,9 +40,9 @@ public class GetConnectivityInfoRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Thing Name
+     * The thing name.
      * 
-     * @return Thing Name
+     * @return The thing name.
      */
 
     public String getThingName() {
@@ -50,10 +50,10 @@ public class GetConnectivityInfoRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Thing Name
+     * The thing name.
      * 
      * @param thingName
-     *        Thing Name
+     *        The thing name.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

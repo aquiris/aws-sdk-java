@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,6 +36,8 @@ public class ServiceMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("clusterArn").build();
     private static final MarshallingInfo<List> LOADBALANCERS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("loadBalancers").build();
+    private static final MarshallingInfo<List> SERVICEREGISTRIES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("serviceRegistries").build();
     private static final MarshallingInfo<String> STATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("status").build();
     private static final MarshallingInfo<Integer> DESIREDCOUNT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -89,6 +91,7 @@ public class ServiceMarshaller {
             protocolMarshaller.marshall(service.getServiceName(), SERVICENAME_BINDING);
             protocolMarshaller.marshall(service.getClusterArn(), CLUSTERARN_BINDING);
             protocolMarshaller.marshall(service.getLoadBalancers(), LOADBALANCERS_BINDING);
+            protocolMarshaller.marshall(service.getServiceRegistries(), SERVICEREGISTRIES_BINDING);
             protocolMarshaller.marshall(service.getStatus(), STATUS_BINDING);
             protocolMarshaller.marshall(service.getDesiredCount(), DESIREDCOUNT_BINDING);
             protocolMarshaller.marshall(service.getRunningCount(), RUNNINGCOUNT_BINDING);

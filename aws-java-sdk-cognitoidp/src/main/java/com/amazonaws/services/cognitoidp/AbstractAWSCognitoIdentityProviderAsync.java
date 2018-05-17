@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -792,6 +792,19 @@ public class AbstractAWSCognitoIdentityProviderAsync extends AbstractAWSCognitoI
     public java.util.concurrent.Future<GetIdentityProviderByIdentifierResult> getIdentityProviderByIdentifierAsync(
             GetIdentityProviderByIdentifierRequest request,
             com.amazonaws.handlers.AsyncHandler<GetIdentityProviderByIdentifierRequest, GetIdentityProviderByIdentifierResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetSigningCertificateResult> getSigningCertificateAsync(GetSigningCertificateRequest request) {
+
+        return getSigningCertificateAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetSigningCertificateResult> getSigningCertificateAsync(GetSigningCertificateRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetSigningCertificateRequest, GetSigningCertificateResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

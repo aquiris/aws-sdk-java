@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -185,6 +185,8 @@ public interface AWSMediaLive {
      *         The requester does not have permission to delete this Input Security Group
      * @throws BadGatewayException
      *         Bad Gateway Error
+     * @throws NotFoundException
+     *         Input Security Group not found
      * @throws GatewayTimeoutException
      *         Gateway Timeout Error
      * @throws TooManyRequestsException
@@ -400,6 +402,85 @@ public interface AWSMediaLive {
      *      Documentation</a>
      */
     StopChannelResult stopChannel(StopChannelRequest stopChannelRequest);
+
+    /**
+     * Updates a channel.
+     * 
+     * @param updateChannelRequest
+     *        A request to update a channel.
+     * @return Result of the UpdateChannel operation returned by the service.
+     * @throws UnprocessableEntityException
+     *         The channel configuration failed validation and could not be updated.
+     * @throws BadRequestException
+     *         This request was invalid.
+     * @throws InternalServerErrorException
+     *         Unexpected internal service error.
+     * @throws ForbiddenException
+     *         You do not have permission to update the channel.
+     * @throws BadGatewayException
+     *         Bad Gateway Error
+     * @throws GatewayTimeoutException
+     *         Gateway Timeout Error
+     * @throws ConflictException
+     *         The channel is unable to update due to an issue with channel resources.
+     * @sample AWSMediaLive.UpdateChannel
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateChannel" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateChannelResult updateChannel(UpdateChannelRequest updateChannelRequest);
+
+    /**
+     * Updates an input.
+     * 
+     * @param updateInputRequest
+     *        A request to update an input.
+     * @return Result of the UpdateInput operation returned by the service.
+     * @throws BadRequestException
+     *         This request to update the input was invalid.
+     * @throws InternalServerErrorException
+     *         Internal Service Error
+     * @throws ForbiddenException
+     *         The requester does not have permission to update an input.
+     * @throws BadGatewayException
+     *         Bad Gateway Error
+     * @throws NotFoundException
+     *         The input was not found.
+     * @throws GatewayTimeoutException
+     *         Gateway Timeout Error
+     * @throws ConflictException
+     *         The input was unable to be updated at this time due to an issue with input resources.
+     * @sample AWSMediaLive.UpdateInput
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateInput" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateInputResult updateInput(UpdateInputRequest updateInputRequest);
+
+    /**
+     * Update an Input Security Group's Whilelists.
+     * 
+     * @param updateInputSecurityGroupRequest
+     *        The request to update some combination of the Input Security Group name and the IPv4 CIDRs the Input
+     *        Security Group should allow.
+     * @return Result of the UpdateInputSecurityGroup operation returned by the service.
+     * @throws BadRequestException
+     *         The request to update the Input Security Group was invalid
+     * @throws InternalServerErrorException
+     *         Internal Server Error
+     * @throws ForbiddenException
+     *         The requester does not have permission to update an Input Security Group
+     * @throws BadGatewayException
+     *         Bad Gateway Error
+     * @throws NotFoundException
+     *         The Input Security Group was not found.
+     * @throws GatewayTimeoutException
+     *         Gateway Timeout Error
+     * @throws ConflictException
+     *         The Input Security Group was unable to be updated due to an issue with input security group resources.
+     * @sample AWSMediaLive.UpdateInputSecurityGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateInputSecurityGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateInputSecurityGroupResult updateInputSecurityGroup(UpdateInputSecurityGroupRequest updateInputSecurityGroupRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

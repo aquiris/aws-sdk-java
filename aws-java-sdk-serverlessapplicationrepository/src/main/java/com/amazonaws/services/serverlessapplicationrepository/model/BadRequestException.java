@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,13 +15,19 @@ package com.amazonaws.services.serverlessapplicationrepository.model;
 import javax.annotation.Generated;
 
 /**
+ * <p>
  * One of the parameters in the request is invalid.
+ * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BadRequestException extends com.amazonaws.services.serverlessapplicationrepository.model.AWSServerlessApplicationRepositoryException {
     private static final long serialVersionUID = 1L;
 
-    /** 400 */
+    /**
+     * <p>
+     * 400
+     * </p>
+     */
     private String errorCode;
 
     /**
@@ -35,7 +41,9 @@ public class BadRequestException extends com.amazonaws.services.serverlessapplic
     }
 
     /**
+     * <p>
      * 400
+     * </p>
      * 
      * @param errorCode
      *        400
@@ -47,7 +55,9 @@ public class BadRequestException extends com.amazonaws.services.serverlessapplic
     }
 
     /**
+     * <p>
      * 400
+     * </p>
      * 
      * @return 400
      */
@@ -58,7 +68,9 @@ public class BadRequestException extends com.amazonaws.services.serverlessapplic
     }
 
     /**
+     * <p>
      * 400
+     * </p>
      * 
      * @param errorCode
      *        400

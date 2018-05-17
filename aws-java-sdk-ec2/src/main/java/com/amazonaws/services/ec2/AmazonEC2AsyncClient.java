@@ -32,9 +32,8 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <p>
  * <fullname>Amazon Elastic Compute Cloud</fullname>
  * <p>
- * Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing capacity in the Amazon Web Services (AWS)
- * cloud. Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy
- * applications faster.
+ * Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing capacity in the AWS Cloud. Using Amazon EC2
+ * eliminates the need to invest in hardware up front, so you can develop and deploy applications faster.
  * </p>
  */
 @ThreadSafe
@@ -1543,6 +1542,39 @@ public class AmazonEC2AsyncClient extends AmazonEC2Client implements AmazonEC2As
     }
 
     @Override
+    public java.util.concurrent.Future<CreateFleetResult> createFleetAsync(CreateFleetRequest request) {
+
+        return createFleetAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateFleetResult> createFleetAsync(final CreateFleetRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateFleetRequest, CreateFleetResult> asyncHandler) {
+        final CreateFleetRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateFleetResult>() {
+            @Override
+            public CreateFleetResult call() throws Exception {
+                CreateFleetResult result = null;
+
+                try {
+                    result = executeCreateFleet(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateFlowLogsResult> createFlowLogsAsync(CreateFlowLogsRequest request) {
 
         return createFlowLogsAsync(request, null);
@@ -2721,6 +2753,39 @@ public class AmazonEC2AsyncClient extends AmazonEC2Client implements AmazonEC2As
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteFleetsResult> deleteFleetsAsync(DeleteFleetsRequest request) {
+
+        return deleteFleetsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteFleetsResult> deleteFleetsAsync(final DeleteFleetsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteFleetsRequest, DeleteFleetsResult> asyncHandler) {
+        final DeleteFleetsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteFleetsResult>() {
+            @Override
+            public DeleteFleetsResult call() throws Exception {
+                DeleteFleetsResult result = null;
+
+                try {
+                    result = executeDeleteFleets(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteFlowLogsResult> deleteFlowLogsAsync(DeleteFlowLogsRequest request) {
 
         return deleteFlowLogsAsync(request, null);
@@ -3821,6 +3886,39 @@ public class AmazonEC2AsyncClient extends AmazonEC2Client implements AmazonEC2As
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeAggregateIdFormatResult> describeAggregateIdFormatAsync(DescribeAggregateIdFormatRequest request) {
+
+        return describeAggregateIdFormatAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeAggregateIdFormatResult> describeAggregateIdFormatAsync(final DescribeAggregateIdFormatRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeAggregateIdFormatRequest, DescribeAggregateIdFormatResult> asyncHandler) {
+        final DescribeAggregateIdFormatRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeAggregateIdFormatResult>() {
+            @Override
+            public DescribeAggregateIdFormatResult call() throws Exception {
+                DescribeAggregateIdFormatResult result = null;
+
+                try {
+                    result = executeDescribeAggregateIdFormat(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeAvailabilityZonesResult> describeAvailabilityZonesAsync(DescribeAvailabilityZonesRequest request) {
 
         return describeAvailabilityZonesAsync(request, null);
@@ -4278,6 +4376,105 @@ public class AmazonEC2AsyncClient extends AmazonEC2Client implements AmazonEC2As
             com.amazonaws.handlers.AsyncHandler<DescribeExportTasksRequest, DescribeExportTasksResult> asyncHandler) {
 
         return describeExportTasksAsync(new DescribeExportTasksRequest(), asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeFleetHistoryResult> describeFleetHistoryAsync(DescribeFleetHistoryRequest request) {
+
+        return describeFleetHistoryAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeFleetHistoryResult> describeFleetHistoryAsync(final DescribeFleetHistoryRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeFleetHistoryRequest, DescribeFleetHistoryResult> asyncHandler) {
+        final DescribeFleetHistoryRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeFleetHistoryResult>() {
+            @Override
+            public DescribeFleetHistoryResult call() throws Exception {
+                DescribeFleetHistoryResult result = null;
+
+                try {
+                    result = executeDescribeFleetHistory(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeFleetInstancesResult> describeFleetInstancesAsync(DescribeFleetInstancesRequest request) {
+
+        return describeFleetInstancesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeFleetInstancesResult> describeFleetInstancesAsync(final DescribeFleetInstancesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeFleetInstancesRequest, DescribeFleetInstancesResult> asyncHandler) {
+        final DescribeFleetInstancesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeFleetInstancesResult>() {
+            @Override
+            public DescribeFleetInstancesResult call() throws Exception {
+                DescribeFleetInstancesResult result = null;
+
+                try {
+                    result = executeDescribeFleetInstances(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeFleetsResult> describeFleetsAsync(DescribeFleetsRequest request) {
+
+        return describeFleetsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeFleetsResult> describeFleetsAsync(final DescribeFleetsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeFleetsRequest, DescribeFleetsResult> asyncHandler) {
+        final DescribeFleetsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeFleetsResult>() {
+            @Override
+            public DescribeFleetsResult call() throws Exception {
+                DescribeFleetsResult result = null;
+
+                try {
+                    result = executeDescribeFleets(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override
@@ -5591,6 +5788,39 @@ public class AmazonEC2AsyncClient extends AmazonEC2Client implements AmazonEC2As
             com.amazonaws.handlers.AsyncHandler<DescribePrefixListsRequest, DescribePrefixListsResult> asyncHandler) {
 
         return describePrefixListsAsync(new DescribePrefixListsRequest(), asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribePrincipalIdFormatResult> describePrincipalIdFormatAsync(DescribePrincipalIdFormatRequest request) {
+
+        return describePrincipalIdFormatAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribePrincipalIdFormatResult> describePrincipalIdFormatAsync(final DescribePrincipalIdFormatRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribePrincipalIdFormatRequest, DescribePrincipalIdFormatResult> asyncHandler) {
+        final DescribePrincipalIdFormatRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribePrincipalIdFormatResult>() {
+            @Override
+            public DescribePrincipalIdFormatResult call() throws Exception {
+                DescribePrincipalIdFormatResult result = null;
+
+                try {
+                    result = executeDescribePrincipalIdFormat(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override
@@ -8368,6 +8598,39 @@ public class AmazonEC2AsyncClient extends AmazonEC2Client implements AmazonEC2As
 
                 try {
                     result = executeImportVolume(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ModifyFleetResult> modifyFleetAsync(ModifyFleetRequest request) {
+
+        return modifyFleetAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ModifyFleetResult> modifyFleetAsync(final ModifyFleetRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ModifyFleetRequest, ModifyFleetResult> asyncHandler) {
+        final ModifyFleetRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ModifyFleetResult>() {
+            @Override
+            public ModifyFleetResult call() throws Exception {
+                ModifyFleetResult result = null;
+
+                try {
+                    result = executeModifyFleet(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

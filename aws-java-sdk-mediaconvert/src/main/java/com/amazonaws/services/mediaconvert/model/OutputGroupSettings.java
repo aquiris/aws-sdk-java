@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class OutputGroupSettings implements Serializable, Cloneable, StructuredP
     private HlsGroupSettings hlsGroupSettings;
 
     private MsSmoothGroupSettings msSmoothGroupSettings;
-    /** Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming) */
+
     private String type;
 
     /**
@@ -141,10 +141,7 @@ public class OutputGroupSettings implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
-     * 
      * @param type
-     *        Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
      * @see OutputGroupType
      */
 
@@ -153,9 +150,7 @@ public class OutputGroupSettings implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
-     * 
-     * @return Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
+     * @return
      * @see OutputGroupType
      */
 
@@ -164,10 +159,7 @@ public class OutputGroupSettings implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
-     * 
      * @param type
-     *        Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OutputGroupType
      */
@@ -178,10 +170,7 @@ public class OutputGroupSettings implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
-     * 
      * @param type
-     *        Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OutputGroupType
      */

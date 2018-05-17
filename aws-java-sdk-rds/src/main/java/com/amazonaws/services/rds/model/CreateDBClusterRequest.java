@@ -136,7 +136,8 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The name of the database engine to be used for this DB cluster.
      * </p>
      * <p>
-     * Valid Values: <code>aurora</code>, <code>aurora-postgresql</code>
+     * Valid Values: <code>aurora</code> (for MySQL 5.6-compatible Aurora), <code>aurora-mysql</code> (for MySQL
+     * 5.7-compatible Aurora), and <code>aurora-postgresql</code>
      * </p>
      */
     private String engine;
@@ -145,10 +146,16 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.7.12</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
      * </p>
      */
     private String engineVersion;
@@ -373,6 +380,25 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private Long backtrackWindow;
     /** The region where the source instance is located. */
     private String sourceRegion;
 
@@ -1103,13 +1129,15 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The name of the database engine to be used for this DB cluster.
      * </p>
      * <p>
-     * Valid Values: <code>aurora</code>, <code>aurora-postgresql</code>
+     * Valid Values: <code>aurora</code> (for MySQL 5.6-compatible Aurora), <code>aurora-mysql</code> (for MySQL
+     * 5.7-compatible Aurora), and <code>aurora-postgresql</code>
      * </p>
      * 
      * @param engine
      *        The name of the database engine to be used for this DB cluster.</p>
      *        <p>
-     *        Valid Values: <code>aurora</code>, <code>aurora-postgresql</code>
+     *        Valid Values: <code>aurora</code> (for MySQL 5.6-compatible Aurora), <code>aurora-mysql</code> (for MySQL
+     *        5.7-compatible Aurora), and <code>aurora-postgresql</code>
      */
 
     public void setEngine(String engine) {
@@ -1121,12 +1149,14 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The name of the database engine to be used for this DB cluster.
      * </p>
      * <p>
-     * Valid Values: <code>aurora</code>, <code>aurora-postgresql</code>
+     * Valid Values: <code>aurora</code> (for MySQL 5.6-compatible Aurora), <code>aurora-mysql</code> (for MySQL
+     * 5.7-compatible Aurora), and <code>aurora-postgresql</code>
      * </p>
      * 
      * @return The name of the database engine to be used for this DB cluster.</p>
      *         <p>
-     *         Valid Values: <code>aurora</code>, <code>aurora-postgresql</code>
+     *         Valid Values: <code>aurora</code> (for MySQL 5.6-compatible Aurora), <code>aurora-mysql</code> (for MySQL
+     *         5.7-compatible Aurora), and <code>aurora-postgresql</code>
      */
 
     public String getEngine() {
@@ -1138,13 +1168,15 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The name of the database engine to be used for this DB cluster.
      * </p>
      * <p>
-     * Valid Values: <code>aurora</code>, <code>aurora-postgresql</code>
+     * Valid Values: <code>aurora</code> (for MySQL 5.6-compatible Aurora), <code>aurora-mysql</code> (for MySQL
+     * 5.7-compatible Aurora), and <code>aurora-postgresql</code>
      * </p>
      * 
      * @param engine
      *        The name of the database engine to be used for this DB cluster.</p>
      *        <p>
-     *        Valid Values: <code>aurora</code>, <code>aurora-postgresql</code>
+     *        Valid Values: <code>aurora</code> (for MySQL 5.6-compatible Aurora), <code>aurora-mysql</code> (for MySQL
+     *        5.7-compatible Aurora), and <code>aurora-postgresql</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1158,19 +1190,31 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.7.12</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to use.</p>
      *        <p>
-     *        <b>Aurora</b>
+     *        <b>Aurora MySQL</b>
      *        </p>
      *        <p>
-     *        Example: <code>5.6.10a</code>
+     *        Example: <code>5.6.10a</code>, <code>5.7.12</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>9.6.3</code>
      */
 
     public void setEngineVersion(String engineVersion) {
@@ -1182,18 +1226,30 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.7.12</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
      * </p>
      * 
      * @return The version number of the database engine to use.</p>
      *         <p>
-     *         <b>Aurora</b>
+     *         <b>Aurora MySQL</b>
      *         </p>
      *         <p>
-     *         Example: <code>5.6.10a</code>
+     *         Example: <code>5.6.10a</code>, <code>5.7.12</code>
+     *         </p>
+     *         <p>
+     *         <b>Aurora PostgreSQL</b>
+     *         </p>
+     *         <p>
+     *         Example: <code>9.6.3</code>
      */
 
     public String getEngineVersion() {
@@ -1205,19 +1261,31 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The version number of the database engine to use.
      * </p>
      * <p>
-     * <b>Aurora</b>
+     * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.7.12</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to use.</p>
      *        <p>
-     *        <b>Aurora</b>
+     *        <b>Aurora MySQL</b>
      *        </p>
      *        <p>
-     *        Example: <code>5.6.10a</code>
+     *        Example: <code>5.6.10a</code>, <code>5.7.12</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>9.6.3</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2650,6 +2718,121 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param backtrackWindow
+     *        The target backtrack window, in seconds. To disable backtracking, set this value to 0. </p>
+     *        <p>
+     *        Default: 0
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *        </p>
+     *        </li>
+     */
+
+    public void setBacktrackWindow(Long backtrackWindow) {
+        this.backtrackWindow = backtrackWindow;
+    }
+
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The target backtrack window, in seconds. To disable backtracking, set this value to 0. </p>
+     *         <p>
+     *         Default: 0
+     *         </p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *         </p>
+     *         </li>
+     */
+
+    public Long getBacktrackWindow() {
+        return this.backtrackWindow;
+    }
+
+    /**
+     * <p>
+     * The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+     * </p>
+     * <p>
+     * Default: 0
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param backtrackWindow
+     *        The target backtrack window, in seconds. To disable backtracking, set this value to 0. </p>
+     *        <p>
+     *        Default: 0
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDBClusterRequest withBacktrackWindow(Long backtrackWindow) {
+        setBacktrackWindow(backtrackWindow);
+        return this;
+    }
+
+    /**
      * The region where the source instance is located.
      * 
      * @param sourceRegion
@@ -2738,6 +2921,8 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
             sb.append("PreSignedUrl: ").append(getPreSignedUrl()).append(",");
         if (getEnableIAMDatabaseAuthentication() != null)
             sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication()).append(",");
+        if (getBacktrackWindow() != null)
+            sb.append("BacktrackWindow: ").append(getBacktrackWindow()).append(",");
         if (getSourceRegion() != null)
             sb.append("SourceRegion: ").append(getSourceRegion());
         sb.append("}");
@@ -2843,6 +3028,10 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
         if (other.getEnableIAMDatabaseAuthentication() != null
                 && other.getEnableIAMDatabaseAuthentication().equals(this.getEnableIAMDatabaseAuthentication()) == false)
             return false;
+        if (other.getBacktrackWindow() == null ^ this.getBacktrackWindow() == null)
+            return false;
+        if (other.getBacktrackWindow() != null && other.getBacktrackWindow().equals(this.getBacktrackWindow()) == false)
+            return false;
         if (other.getSourceRegion() == null ^ this.getSourceRegion() == null)
             return false;
         if (other.getSourceRegion() != null && other.getSourceRegion().equals(this.getSourceRegion()) == false)
@@ -2877,6 +3066,7 @@ public class CreateDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
         hashCode = prime * hashCode + ((getPreSignedUrl() == null) ? 0 : getPreSignedUrl().hashCode());
         hashCode = prime * hashCode + ((getEnableIAMDatabaseAuthentication() == null) ? 0 : getEnableIAMDatabaseAuthentication().hashCode());
+        hashCode = prime * hashCode + ((getBacktrackWindow() == null) ? 0 : getBacktrackWindow().hashCode());
         hashCode = prime * hashCode + ((getSourceRegion() == null) ? 0 : getSourceRegion().hashCode());
         return hashCode;
     }

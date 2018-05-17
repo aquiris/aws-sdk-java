@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,6 +32,8 @@ public class InstanceDetailsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("availabilityZone").build();
     private static final MarshallingInfo<StructuredPojo> IAMINSTANCEPROFILE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("iamInstanceProfile").build();
+    private static final MarshallingInfo<String> IMAGEDESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("imageDescription").build();
     private static final MarshallingInfo<String> IMAGEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("imageId").build();
     private static final MarshallingInfo<String> INSTANCEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -69,6 +71,7 @@ public class InstanceDetailsMarshaller {
         try {
             protocolMarshaller.marshall(instanceDetails.getAvailabilityZone(), AVAILABILITYZONE_BINDING);
             protocolMarshaller.marshall(instanceDetails.getIamInstanceProfile(), IAMINSTANCEPROFILE_BINDING);
+            protocolMarshaller.marshall(instanceDetails.getImageDescription(), IMAGEDESCRIPTION_BINDING);
             protocolMarshaller.marshall(instanceDetails.getImageId(), IMAGEID_BINDING);
             protocolMarshaller.marshall(instanceDetails.getInstanceId(), INSTANCEID_BINDING);
             protocolMarshaller.marshall(instanceDetails.getInstanceState(), INSTANCESTATE_BINDING);

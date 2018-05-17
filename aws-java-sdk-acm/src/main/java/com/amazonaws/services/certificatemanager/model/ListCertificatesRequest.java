@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,26 +33,8 @@ public class ListCertificatesRequest extends com.amazonaws.AmazonWebServiceReque
     private java.util.List<String> certificateStatuses;
     /**
      * <p>
-     * Filter the certificate list by one or more of the following values. For more information, see the <a>Filters</a>
-     * structure.
+     * Filter the certificate list. For more information, see the <a>Filters</a> structure.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * extendedKeyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyTypes
-     * </p>
-     * </li>
-     * </ul>
      */
     private Filters includes;
     /**
@@ -171,46 +153,11 @@ public class ListCertificatesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Filter the certificate list by one or more of the following values. For more information, see the <a>Filters</a>
-     * structure.
+     * Filter the certificate list. For more information, see the <a>Filters</a> structure.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * extendedKeyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyTypes
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param includes
-     *        Filter the certificate list by one or more of the following values. For more information, see the
-     *        <a>Filters</a> structure.</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        extendedKeyUsage
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        keyUsage
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        keyTypes
-     *        </p>
-     *        </li>
+     *        Filter the certificate list. For more information, see the <a>Filters</a> structure.
      */
 
     public void setIncludes(Filters includes) {
@@ -219,45 +166,10 @@ public class ListCertificatesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Filter the certificate list by one or more of the following values. For more information, see the <a>Filters</a>
-     * structure.
+     * Filter the certificate list. For more information, see the <a>Filters</a> structure.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * extendedKeyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyTypes
-     * </p>
-     * </li>
-     * </ul>
      * 
-     * @return Filter the certificate list by one or more of the following values. For more information, see the
-     *         <a>Filters</a> structure.</p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         extendedKeyUsage
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         keyUsage
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         keyTypes
-     *         </p>
-     *         </li>
+     * @return Filter the certificate list. For more information, see the <a>Filters</a> structure.
      */
 
     public Filters getIncludes() {
@@ -266,46 +178,11 @@ public class ListCertificatesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Filter the certificate list by one or more of the following values. For more information, see the <a>Filters</a>
-     * structure.
+     * Filter the certificate list. For more information, see the <a>Filters</a> structure.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * extendedKeyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyUsage
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * keyTypes
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param includes
-     *        Filter the certificate list by one or more of the following values. For more information, see the
-     *        <a>Filters</a> structure.</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        extendedKeyUsage
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        keyUsage
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        keyTypes
-     *        </p>
-     *        </li>
+     *        Filter the certificate list. For more information, see the <a>Filters</a> structure.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

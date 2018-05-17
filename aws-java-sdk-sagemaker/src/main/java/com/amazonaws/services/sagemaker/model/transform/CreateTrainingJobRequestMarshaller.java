@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,8 @@ public class CreateTrainingJobRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OutputDataConfig").build();
     private static final MarshallingInfo<StructuredPojo> RESOURCECONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ResourceConfig").build();
+    private static final MarshallingInfo<StructuredPojo> VPCCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VpcConfig").build();
     private static final MarshallingInfo<StructuredPojo> STOPPINGCONDITION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StoppingCondition").build();
     private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
@@ -71,6 +73,7 @@ public class CreateTrainingJobRequestMarshaller {
             protocolMarshaller.marshall(createTrainingJobRequest.getInputDataConfig(), INPUTDATACONFIG_BINDING);
             protocolMarshaller.marshall(createTrainingJobRequest.getOutputDataConfig(), OUTPUTDATACONFIG_BINDING);
             protocolMarshaller.marshall(createTrainingJobRequest.getResourceConfig(), RESOURCECONFIG_BINDING);
+            protocolMarshaller.marshall(createTrainingJobRequest.getVpcConfig(), VPCCONFIG_BINDING);
             protocolMarshaller.marshall(createTrainingJobRequest.getStoppingCondition(), STOPPINGCONDITION_BINDING);
             protocolMarshaller.marshall(createTrainingJobRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {

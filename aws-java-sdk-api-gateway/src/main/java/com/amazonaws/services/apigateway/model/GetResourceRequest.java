@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,13 +27,13 @@ public class GetResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      */
     private String restApiId;
     /**
      * <p>
-     * The identifier for the <a>Resource</a> resource.
+     * [Required] The identifier for the <a>Resource</a> resource.
      * </p>
      */
     private String resourceId;
@@ -50,11 +50,11 @@ public class GetResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The string identifier of the associated <a>RestApi</a>.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public void setRestApiId(String restApiId) {
@@ -63,10 +63,10 @@ public class GetResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
-     * @return The string identifier of the associated <a>RestApi</a>.
+     * @return [Required] The string identifier of the associated <a>RestApi</a>.
      */
 
     public String getRestApiId() {
@@ -75,11 +75,11 @@ public class GetResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The string identifier of the associated <a>RestApi</a>.
+     * [Required] The string identifier of the associated <a>RestApi</a>.
      * </p>
      * 
      * @param restApiId
-     *        The string identifier of the associated <a>RestApi</a>.
+     *        [Required] The string identifier of the associated <a>RestApi</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -90,11 +90,11 @@ public class GetResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The identifier for the <a>Resource</a> resource.
+     * [Required] The identifier for the <a>Resource</a> resource.
      * </p>
      * 
      * @param resourceId
-     *        The identifier for the <a>Resource</a> resource.
+     *        [Required] The identifier for the <a>Resource</a> resource.
      */
 
     public void setResourceId(String resourceId) {
@@ -103,10 +103,10 @@ public class GetResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The identifier for the <a>Resource</a> resource.
+     * [Required] The identifier for the <a>Resource</a> resource.
      * </p>
      * 
-     * @return The identifier for the <a>Resource</a> resource.
+     * @return [Required] The identifier for the <a>Resource</a> resource.
      */
 
     public String getResourceId() {
@@ -115,11 +115,11 @@ public class GetResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The identifier for the <a>Resource</a> resource.
+     * [Required] The identifier for the <a>Resource</a> resource.
      * </p>
      * 
      * @param resourceId
-     *        The identifier for the <a>Resource</a> resource.
+     *        [Required] The identifier for the <a>Resource</a> resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

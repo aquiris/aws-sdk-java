@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -22,7 +22,8 @@ public enum AuthenticationType {
 
     API_KEY("API_KEY"),
     AWS_IAM("AWS_IAM"),
-    AMAZON_COGNITO_USER_POOLS("AMAZON_COGNITO_USER_POOLS");
+    AMAZON_COGNITO_USER_POOLS("AMAZON_COGNITO_USER_POOLS"),
+    OPENID_CONNECT("OPENID_CONNECT");
 
     private String value;
 

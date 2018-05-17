@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,8 +25,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <p>
  * For more information about algorithms provided by Amazon SageMaker, see <a
  * href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html">Algorithms</a>. For information about using your own
- * algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html">Bring Your Own
- * Algorithms </a>.
+ * algorithms, see <a>your-algorithms</a>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/AlgorithmSpecification" target="_top">AWS
@@ -37,9 +36,8 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The registry path of the Docker image that contains the training algorithm. For information about using your own
-     * algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html">Docker
-     * Registry Paths for Algorithms Provided by Amazon SageMaker </a>.
+     * The registry path of the Docker image that contains the training algorithm. For information about docker registry
+     * paths for built-in algorithms, see <a>sagemaker-algo-docker-registry-paths</a>.
      * </p>
      */
     private String trainingImage;
@@ -52,7 +50,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      * <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the container.
      * </p>
      * <p>
-     * In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data download
+     * In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data download
      * from S3. In addition to the training data, the ML storage volume also stores the output model. The algorithm
      * container use ML storage volume to also store intermediate information, if any.
      * </p>
@@ -67,16 +65,13 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The registry path of the Docker image that contains the training algorithm. For information about using your own
-     * algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html">Docker
-     * Registry Paths for Algorithms Provided by Amazon SageMaker </a>.
+     * The registry path of the Docker image that contains the training algorithm. For information about docker registry
+     * paths for built-in algorithms, see <a>sagemaker-algo-docker-registry-paths</a>.
      * </p>
      * 
      * @param trainingImage
-     *        The registry path of the Docker image that contains the training algorithm. For information about using
-     *        your own algorithms, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html">Docker Registry
-     *        Paths for Algorithms Provided by Amazon SageMaker </a>.
+     *        The registry path of the Docker image that contains the training algorithm. For information about docker
+     *        registry paths for built-in algorithms, see <a>sagemaker-algo-docker-registry-paths</a>.
      */
 
     public void setTrainingImage(String trainingImage) {
@@ -85,15 +80,12 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The registry path of the Docker image that contains the training algorithm. For information about using your own
-     * algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html">Docker
-     * Registry Paths for Algorithms Provided by Amazon SageMaker </a>.
+     * The registry path of the Docker image that contains the training algorithm. For information about docker registry
+     * paths for built-in algorithms, see <a>sagemaker-algo-docker-registry-paths</a>.
      * </p>
      * 
-     * @return The registry path of the Docker image that contains the training algorithm. For information about using
-     *         your own algorithms, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html">Docker Registry
-     *         Paths for Algorithms Provided by Amazon SageMaker </a>.
+     * @return The registry path of the Docker image that contains the training algorithm. For information about docker
+     *         registry paths for built-in algorithms, see <a>sagemaker-algo-docker-registry-paths</a>.
      */
 
     public String getTrainingImage() {
@@ -102,16 +94,13 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The registry path of the Docker image that contains the training algorithm. For information about using your own
-     * algorithms, see <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html">Docker
-     * Registry Paths for Algorithms Provided by Amazon SageMaker </a>.
+     * The registry path of the Docker image that contains the training algorithm. For information about docker registry
+     * paths for built-in algorithms, see <a>sagemaker-algo-docker-registry-paths</a>.
      * </p>
      * 
      * @param trainingImage
-     *        The registry path of the Docker image that contains the training algorithm. For information about using
-     *        your own algorithms, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html">Docker Registry
-     *        Paths for Algorithms Provided by Amazon SageMaker </a>.
+     *        The registry path of the Docker image that contains the training algorithm. For information about docker
+     *        registry paths for built-in algorithms, see <a>sagemaker-algo-docker-registry-paths</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,7 +118,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      * <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the container.
      * </p>
      * <p>
-     * In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data download
+     * In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data download
      * from S3. In addition to the training data, the ML storage volume also stores the output model. The algorithm
      * container use ML storage volume to also store intermediate information, if any.
      * </p>
@@ -148,7 +137,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      *        algorithm supports the <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the
      *        container. </p>
      *        <p>
-     *        In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data
+     *        In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data
      *        download from S3. In addition to the training data, the ML storage volume also stores the output model.
      *        The algorithm container use ML storage volume to also store intermediate information, if any.
      *        </p>
@@ -174,7 +163,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      * <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the container.
      * </p>
      * <p>
-     * In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data download
+     * In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data download
      * from S3. In addition to the training data, the ML storage volume also stores the output model. The algorithm
      * container use ML storage volume to also store intermediate information, if any.
      * </p>
@@ -192,7 +181,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      *         algorithm supports the <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to
      *         the container. </p>
      *         <p>
-     *         In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data
+     *         In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data
      *         download from S3. In addition to the training data, the ML storage volume also stores the output model.
      *         The algorithm container use ML storage volume to also store intermediate information, if any.
      *         </p>
@@ -218,7 +207,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      * <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the container.
      * </p>
      * <p>
-     * In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data download
+     * In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data download
      * from S3. In addition to the training data, the ML storage volume also stores the output model. The algorithm
      * container use ML storage volume to also store intermediate information, if any.
      * </p>
@@ -237,7 +226,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      *        algorithm supports the <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the
      *        container. </p>
      *        <p>
-     *        In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data
+     *        In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data
      *        download from S3. In addition to the training data, the ML storage volume also stores the output model.
      *        The algorithm container use ML storage volume to also store intermediate information, if any.
      *        </p>
@@ -265,7 +254,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      * <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the container.
      * </p>
      * <p>
-     * In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data download
+     * In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data download
      * from S3. In addition to the training data, the ML storage volume also stores the output model. The algorithm
      * container use ML storage volume to also store intermediate information, if any.
      * </p>
@@ -284,7 +273,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      *        algorithm supports the <code>Pipe</code> input mode, Amazon SageMaker streams data directly from S3 to the
      *        container. </p>
      *        <p>
-     *        In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data
+     *        In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data
      *        download from S3. In addition to the training data, the ML storage volume also stores the output model.
      *        The algorithm container use ML storage volume to also store intermediate information, if any.
      *        </p>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -2271,6 +2271,39 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
     java.util.concurrent.Future<GetIdentityProviderByIdentifierResult> getIdentityProviderByIdentifierAsync(
             GetIdentityProviderByIdentifierRequest getIdentityProviderByIdentifierRequest,
             com.amazonaws.handlers.AsyncHandler<GetIdentityProviderByIdentifierRequest, GetIdentityProviderByIdentifierResult> asyncHandler);
+
+    /**
+     * <p>
+     * This method takes a user pool ID, and returns the signing certificate.
+     * </p>
+     * 
+     * @param getSigningCertificateRequest
+     *        Request to get a signing certificate from Cognito.
+     * @return A Java Future containing the result of the GetSigningCertificate operation returned by the service.
+     * @sample AWSCognitoIdentityProviderAsync.GetSigningCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetSigningCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSigningCertificateResult> getSigningCertificateAsync(GetSigningCertificateRequest getSigningCertificateRequest);
+
+    /**
+     * <p>
+     * This method takes a user pool ID, and returns the signing certificate.
+     * </p>
+     * 
+     * @param getSigningCertificateRequest
+     *        Request to get a signing certificate from Cognito.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetSigningCertificate operation returned by the service.
+     * @sample AWSCognitoIdentityProviderAsyncHandler.GetSigningCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetSigningCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSigningCertificateResult> getSigningCertificateAsync(GetSigningCertificateRequest getSigningCertificateRequest,
+            com.amazonaws.handlers.AsyncHandler<GetSigningCertificateRequest, GetSigningCertificateResult> asyncHandler);
 
     /**
      * <p>

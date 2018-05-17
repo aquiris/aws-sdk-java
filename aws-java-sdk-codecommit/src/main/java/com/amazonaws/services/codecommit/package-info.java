@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -89,6 +89,16 @@
  * <li>
  * <p>
  * <a>UpdateDefaultBranch</a>, which changes the default branch for a repository.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Files, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>PutFile</a>, which adds or modifies a file in a specified repository and branch.
  * </p>
  * </li>
  * </ul>

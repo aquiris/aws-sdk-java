@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,8 @@ public class QualificationRequirementMarshaller {
             .marshallLocationName("LocaleValues").build();
     private static final MarshallingInfo<Boolean> REQUIREDTOPREVIEW_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RequiredToPreview").build();
+    private static final MarshallingInfo<String> ACTIONSGUARDED_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ActionsGuarded").build();
 
     private static final QualificationRequirementMarshaller instance = new QualificationRequirementMarshaller();
 
@@ -60,6 +62,7 @@ public class QualificationRequirementMarshaller {
             protocolMarshaller.marshall(qualificationRequirement.getIntegerValues(), INTEGERVALUES_BINDING);
             protocolMarshaller.marshall(qualificationRequirement.getLocaleValues(), LOCALEVALUES_BINDING);
             protocolMarshaller.marshall(qualificationRequirement.getRequiredToPreview(), REQUIREDTOPREVIEW_BINDING);
+            protocolMarshaller.marshall(qualificationRequirement.getActionsGuarded(), ACTIONSGUARDED_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

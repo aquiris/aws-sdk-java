@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -103,6 +103,9 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                             new JsonErrorShapeMetadata().withErrorCode("GlobalTableAlreadyExistsException").withModeledClass(
                                     com.amazonaws.services.dynamodbv2.model.GlobalTableAlreadyExistsException.class))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRestoreTimeException").withModeledClass(
+                                    com.amazonaws.services.dynamodbv2.model.InvalidRestoreTimeException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ReplicaAlreadyExistsException").withModeledClass(
                                     com.amazonaws.services.dynamodbv2.model.ReplicaAlreadyExistsException.class))
                     .addErrorMetadata(
@@ -111,6 +114,9 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("BackupNotFoundException").withModeledClass(
                                     com.amazonaws.services.dynamodbv2.model.BackupNotFoundException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("IndexNotFoundException").withModeledClass(
+                                    com.amazonaws.services.dynamodbv2.model.IndexNotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
                                     com.amazonaws.services.dynamodbv2.model.LimitExceededException.class))
@@ -141,6 +147,9 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ProvisionedThroughputExceededException").withModeledClass(
                                     com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PointInTimeRecoveryUnavailableException").withModeledClass(
+                                    com.amazonaws.services.dynamodbv2.model.PointInTimeRecoveryUnavailableException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withModeledClass(
                                     com.amazonaws.services.dynamodbv2.model.InternalServerErrorException.class))
@@ -431,6 +440,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new BatchGetItemRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchGetItemRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -539,6 +549,12 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * </li>
      * <li>
      * <p>
+     * Your request contains at least two items with identical hash and range keys (which essentially is two put
+     * operations).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * There are more than 25 requests in the batch.
      * </p>
      * </li>
@@ -596,6 +612,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new BatchWriteItemRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchWriteItemRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -626,23 +643,20 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * on-demand backups that can be taken.
      * </p>
      * <p>
+     * When you create an On-Demand Backup, a time marker of the request is cataloged, and the backup is created
+     * asynchronously, by applying all changes until the time of the request to the last full table snapshot. Backup
+     * requests are processed instantaneously and become available for restore within minutes.
+     * </p>
+     * <p>
      * You can call <code>CreateBackup</code> at a maximum rate of 50 times per second.
      * </p>
      * <p>
-     * All backups in DynamoDB work without consuming any provisioned throughput on the table. This results in a fast,
-     * low-cost, and scalable backup process. In general, the larger the table, the more time it takes to back up. The
-     * backup is stored in an S3 data store that is maintained and managed by DynamoDB.
+     * All backups in DynamoDB work without consuming any provisioned throughput on the table.
      * </p>
      * <p>
-     * Backups incorporate all writes (delete, put, update) that were completed within the last minute before the backup
-     * request was initiated. Backups might include some writes (delete, put, update) that were completed before the
-     * backup request was finished.
-     * </p>
-     * <p>
-     * For example, if you submit the backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all
-     * data committed to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may
-     * not contain data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal
-     * consistency.
+     * If you submit a backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all data committed
+     * to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may not contain
+     * data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal consistency.
      * </p>
      * <p>
      * Along with data, the following are also included on the backups:
@@ -673,20 +687,27 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @param createBackupRequest
      * @return Result of the CreateBackup operation returned by the service.
      * @throws TableNotFoundException
-     *         A table with the name <code>TableName</code> does not currently exist within the subscriber's account.
+     *         A source table with the name <code>TableName</code> does not currently exist within the subscriber's
+     *         account.
      * @throws TableInUseException
-     *         A table by that name is either being created or deleted.
+     *         A target table with the specified name is either being created or deleted.
      * @throws ContinuousBackupsUnavailableException
      *         Backups have not yet been enabled for this table.
      * @throws BackupInUseException
      *         There is another ongoing conflicting backup control plane operation on the table. The backups is either
      *         being created, deleted or restored to a table.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -717,6 +738,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new CreateBackupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createBackupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -762,16 +784,47 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * The tables must have DynamoDB Streams enabled (NEW_AND_OLD_IMAGES).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * The tables must have same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If global secondary indexes are specified, then the following conditions must also be met:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same hash key and sort key (if present).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param createGlobalTableRequest
      * @return Result of the CreateGlobalTable operation returned by the service.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -780,7 +833,8 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @throws GlobalTableAlreadyExistsException
      *         The specified global table already exists.
      * @throws TableNotFoundException
-     *         A table with the name <code>TableName</code> does not currently exist within the subscriber's account.
+     *         A source table with the name <code>TableName</code> does not currently exist within the subscriber's
+     *         account.
      * @sample AmazonDynamoDB.CreateGlobalTable
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/CreateGlobalTable" target="_top">AWS API
      *      Documentation</a>
@@ -806,6 +860,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new CreateGlobalTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createGlobalTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -850,11 +905,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      *         The operation conflicts with the resource's availability. For example, you attempted to recreate an
      *         existing table, or tried to delete a table currently in the <code>CREATING</code> state.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -885,6 +946,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new CreateTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -924,11 +986,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      *         There is another ongoing conflicting backup control plane operation on the table. The backups is either
      *         being created, deleted or restored to a table.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -959,6 +1027,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DeleteBackupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteBackupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1037,6 +1106,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DeleteItemRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteItemRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1099,11 +1169,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -1134,6 +1210,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DeleteTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1194,6 +1271,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeBackupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeBackupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1212,8 +1290,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Checks the status of the backup restore settings on the specified table. If backups are enabled,
-     * <code>ContinuousBackupsStatus</code> will bet set to ENABLED.
+     * Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are
+     * <code>ENABLED</code> on all tables at table creation. If point in time recovery is enabled,
+     * <code>PointInTimeRecoveryStatus</code> will be set to ENABLED.
+     * </p>
+     * <p>
+     * Once continuous backups and point in time recovery are enabled, you can restore to any point in time within
+     * <code>EarliestRestorableDateTime</code> and <code>LatestRestorableDateTime</code>.
+     * </p>
+     * <p>
+     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. You can restore your table
+     * to any point in time during the last 35 days.
      * </p>
      * <p>
      * You can call <code>DescribeContinuousBackups</code> at a maximum rate of 10 times per second.
@@ -1222,7 +1309,8 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @param describeContinuousBackupsRequest
      * @return Result of the DescribeContinuousBackups operation returned by the service.
      * @throws TableNotFoundException
-     *         A table with the name <code>TableName</code> does not currently exist within the subscriber's account.
+     *         A source table with the name <code>TableName</code> does not currently exist within the subscriber's
+     *         account.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.DescribeContinuousBackups
@@ -1251,6 +1339,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                         .beforeMarshalling(describeContinuousBackupsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1270,7 +1359,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Returns information about the global table.
+     * Returns information about the specified global table.
      * </p>
      * 
      * @param describeGlobalTableRequest
@@ -1304,12 +1393,68 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeGlobalTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeGlobalTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DescribeGlobalTableResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeGlobalTableResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Describes region specific settings for a global table.
+     * </p>
+     * 
+     * @param describeGlobalTableSettingsRequest
+     * @return Result of the DescribeGlobalTableSettings operation returned by the service.
+     * @throws GlobalTableNotFoundException
+     *         The specified global table does not exist.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.DescribeGlobalTableSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeGlobalTableSettings"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeGlobalTableSettingsResult describeGlobalTableSettings(DescribeGlobalTableSettingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeGlobalTableSettings(request);
+    }
+
+    @SdkInternalApi
+    final DescribeGlobalTableSettingsResult executeDescribeGlobalTableSettings(DescribeGlobalTableSettingsRequest describeGlobalTableSettingsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeGlobalTableSettingsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeGlobalTableSettingsRequest> request = null;
+        Response<DescribeGlobalTableSettingsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeGlobalTableSettingsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeGlobalTableSettingsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeGlobalTableSettingsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeGlobalTableSettingsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1443,6 +1588,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeLimitsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeLimitsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1506,6 +1652,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1564,6 +1711,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new DescribeTimeToLiveRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeTimeToLiveRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1631,6 +1779,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new GetItemRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getItemRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1700,6 +1849,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new ListBackupsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listBackupsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1718,8 +1868,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Lists all the global tables. Only those global tables that have replicas in the region specified as input are
-     * returned.
+     * Lists all global tables that have a replica in the specified region.
      * </p>
      * 
      * @param listGlobalTablesRequest
@@ -1751,6 +1900,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new ListGlobalTablesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listGlobalTablesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1803,6 +1953,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new ListTablesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTablesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1882,6 +2033,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new ListTagsOfResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsOfResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2034,6 +2186,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new PutItemRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putItemRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2157,6 +2310,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new QueryRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(queryRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2175,8 +2329,8 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Creates a new table from an existing backup. Any number of users can execute up to 10 concurrent restores in a
-     * given account.
+     * Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any
+     * type of restore) in a given account.
      * </p>
      * <p>
      * You can call <code>RestoreTableFromBackup</code> at a maximum rate of 10 times per second.
@@ -2207,6 +2361,11 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * </li>
      * <li>
      * <p>
+     * Stream settings
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * Time to Live (TTL) settings
      * </p>
      * </li>
@@ -2215,20 +2374,26 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @param restoreTableFromBackupRequest
      * @return Result of the RestoreTableFromBackup operation returned by the service.
      * @throws TableAlreadyExistsException
-     *         A table with the name already exists.
+     *         A target table with the specified name already exists.
      * @throws TableInUseException
-     *         A table by that name is either being created or deleted.
+     *         A target table with the specified name is either being created or deleted.
      * @throws BackupNotFoundException
      *         Backup not found for the given BackupARN.
      * @throws BackupInUseException
      *         There is another ongoing conflicting backup control plane operation on the table. The backups is either
      *         being created, deleted or restored to a table.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -2259,6 +2424,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new RestoreTableFromBackupRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(restoreTableFromBackupRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2266,6 +2432,161 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
             HttpResponseHandler<AmazonWebServiceResponse<RestoreTableFromBackupResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new RestoreTableFromBackupResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Restores the specified table to the specified point in time within <code>EarliestRestorableDateTime</code> and
+     * <code>LatestRestorableDateTime</code>. You can restore your table to any point in time during the last 35 days.
+     * Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+     * </p>
+     * <p>
+     * When you restore using point in time recovery, DynamoDB restores your table data to the state based on the
+     * selected date and time (day:hour:minute:second) to a new table.
+     * </p>
+     * <p>
+     * Along with data, the following are also included on the new restored table using point in time recovery:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Global secondary indexes (GSIs)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Local secondary indexes (LSIs)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provisioned read and write capacity
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Encryption settings
+     * </p>
+     * <important>
+     * <p>
+     * All these settings come from the current settings of the source table at the time of restore.
+     * </p>
+     * </important></li>
+     * </ul>
+     * <p>
+     * You must manually set up the following on the restored table:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Auto scaling policies
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * IAM policies
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Cloudwatch metrics and alarms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tags
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Stream settings
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Time to Live (TTL) settings
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Point in time recovery settings
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param restoreTableToPointInTimeRequest
+     * @return Result of the RestoreTableToPointInTime operation returned by the service.
+     * @throws TableAlreadyExistsException
+     *         A target table with the specified name already exists.
+     * @throws TableNotFoundException
+     *         A source table with the name <code>TableName</code> does not currently exist within the subscriber's
+     *         account.
+     * @throws TableInUseException
+     *         A target table with the specified name is either being created or deleted.
+     * @throws LimitExceededException
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
+     *         <p>
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         </p>
+     *         <p>
+     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     * @throws InvalidRestoreTimeException
+     *         An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and
+     *         LatestRestorableDateTime.
+     * @throws PointInTimeRecoveryUnavailableException
+     *         Point in time recovery has not yet been enabled for this source table.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.RestoreTableToPointInTime
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/RestoreTableToPointInTime"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public RestoreTableToPointInTimeResult restoreTableToPointInTime(RestoreTableToPointInTimeRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestoreTableToPointInTime(request);
+    }
+
+    @SdkInternalApi
+    final RestoreTableToPointInTimeResult executeRestoreTableToPointInTime(RestoreTableToPointInTimeRequest restoreTableToPointInTimeRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(restoreTableToPointInTimeRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<RestoreTableToPointInTimeRequest> request = null;
+        Response<RestoreTableToPointInTimeResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new RestoreTableToPointInTimeRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(restoreTableToPointInTimeRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<RestoreTableToPointInTimeResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new RestoreTableToPointInTimeResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2349,6 +2670,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new ScanRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(scanRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2395,11 +2717,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @param tagResourceRequest
      * @return Result of the TagResource operation returned by the service.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -2436,6 +2764,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2466,11 +2795,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @param untagResourceRequest
      * @return Result of the UntagResource operation returned by the service.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -2507,6 +2842,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2525,9 +2861,106 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Adds or removes replicas to the specified global table. The global table should already exist to be able to use
-     * this operation. Currently, the replica to be added should be empty.
+     * <code>UpdateContinuousBackups</code> enables or disables point in time recovery for the specified table. A
+     * successful <code>UpdateContinuousBackups</code> call returns the current
+     * <code>ContinuousBackupsDescription</code>. Continuous backups are <code>ENABLED</code> on all tables at table
+     * creation. If point in time recovery is enabled, <code>PointInTimeRecoveryStatus</code> will be set to ENABLED.
      * </p>
+     * <p>
+     * Once continuous backups and point in time recovery are enabled, you can restore to any point in time within
+     * <code>EarliestRestorableDateTime</code> and <code>LatestRestorableDateTime</code>.
+     * </p>
+     * <p>
+     * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. You can restore your table
+     * to any point in time during the last 35 days..
+     * </p>
+     * 
+     * @param updateContinuousBackupsRequest
+     * @return Result of the UpdateContinuousBackups operation returned by the service.
+     * @throws TableNotFoundException
+     *         A source table with the name <code>TableName</code> does not currently exist within the subscriber's
+     *         account.
+     * @throws ContinuousBackupsUnavailableException
+     *         Backups have not yet been enabled for this table.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.UpdateContinuousBackups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateContinuousBackups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateContinuousBackupsResult updateContinuousBackups(UpdateContinuousBackupsRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateContinuousBackups(request);
+    }
+
+    @SdkInternalApi
+    final UpdateContinuousBackupsResult executeUpdateContinuousBackups(UpdateContinuousBackupsRequest updateContinuousBackupsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateContinuousBackupsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateContinuousBackupsRequest> request = null;
+        Response<UpdateContinuousBackupsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateContinuousBackupsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(updateContinuousBackupsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateContinuousBackupsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new UpdateContinuousBackupsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Adds or removes replicas in the specified global table. The global table must already exist to be able to use
+     * this operation. Any replica to be added must be empty, must have the same name as the global table, must have the
+     * same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity
+     * units.
+     * </p>
+     * <note>
+     * <p>
+     * Although you can use <code>UpdateGlobalTable</code> to add replicas and remove replicas in a single request, for
+     * simplicity we recommend that you issue separate requests for adding or removing replicas.
+     * </p>
+     * </note>
+     * <p>
+     * If global secondary indexes are specified, then the following conditions must also be met:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same name.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same hash key and sort key (if present).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The global secondary indexes must have the same provisioned and maximum write capacity units.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateGlobalTableRequest
      * @return Result of the UpdateGlobalTable operation returned by the service.
@@ -2540,7 +2973,8 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      * @throws ReplicaNotFoundException
      *         The specified replica is no longer part of the global table.
      * @throws TableNotFoundException
-     *         A table with the name <code>TableName</code> does not currently exist within the subscriber's account.
+     *         A source table with the name <code>TableName</code> does not currently exist within the subscriber's
+     *         account.
      * @sample AmazonDynamoDB.UpdateGlobalTable
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateGlobalTable" target="_top">AWS API
      *      Documentation</a>
@@ -2566,12 +3000,90 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new UpdateGlobalTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateGlobalTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<UpdateGlobalTableResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateGlobalTableResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates settings for a global table.
+     * </p>
+     * 
+     * @param updateGlobalTableSettingsRequest
+     * @return Result of the UpdateGlobalTableSettings operation returned by the service.
+     * @throws GlobalTableNotFoundException
+     *         The specified global table does not exist.
+     * @throws ReplicaNotFoundException
+     *         The specified replica is no longer part of the global table.
+     * @throws IndexNotFoundException
+     *         The operation tried to access a nonexistent index.
+     * @throws LimitExceededException
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
+     *         <p>
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         </p>
+     *         <p>
+     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     * @throws ResourceInUseException
+     *         The operation conflicts with the resource's availability. For example, you attempted to recreate an
+     *         existing table, or tried to delete a table currently in the <code>CREATING</code> state.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.UpdateGlobalTableSettings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateGlobalTableSettings"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public UpdateGlobalTableSettingsResult updateGlobalTableSettings(UpdateGlobalTableSettingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateGlobalTableSettings(request);
+    }
+
+    @SdkInternalApi
+    final UpdateGlobalTableSettingsResult executeUpdateGlobalTableSettings(UpdateGlobalTableSettingsRequest updateGlobalTableSettingsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateGlobalTableSettingsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateGlobalTableSettingsRequest> request = null;
+        Response<UpdateGlobalTableSettingsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateGlobalTableSettingsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(updateGlobalTableSettingsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateGlobalTableSettingsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new UpdateGlobalTableSettingsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2638,6 +3150,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new UpdateItemRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateItemRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2713,11 +3226,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -2748,6 +3267,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new UpdateTableRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTableRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2816,11 +3336,17 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
      * @throws LimitExceededException
-     *         The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>,
-     *         <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p>
+     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
+     *         the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code>
-     *         state at any point in time. Do not attempt to create more than one such table simultaneously.
+     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
+     *         any point in time. Do not attempt to create more than one such table simultaneously.
      *         </p>
      *         <p>
      *         The total limit of tables in the <code>ACTIVE</code> state is 250.
@@ -2851,6 +3377,7 @@ public class AmazonDynamoDBClient extends AmazonWebServiceClient implements Amaz
                 request = new UpdateTimeToLiveRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateTimeToLiveRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

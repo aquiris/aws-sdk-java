@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -88,6 +88,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceNotAvailableException").withModeledClass(
                                     com.amazonaws.services.appstream.model.ResourceNotAvailableException.class))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidAccountStatusException").withModeledClass(
+                                    com.amazonaws.services.appstream.model.InvalidAccountStatusException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("OperationNotPermittedException").withModeledClass(
                                     com.amazonaws.services.appstream.model.OperationNotPermittedException.class))
@@ -300,6 +303,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * @return Result of the AssociateFleet operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceNotFoundException
      *         The specified resource was not found.
      * @throws ConcurrentModificationException
@@ -333,12 +339,76 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new AssociateFleetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(associateFleetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<AssociateFleetResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new AssociateFleetResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Copies the image within the same region or to a new region within the same AWS account. Note that any tags you
+     * added to the image will not be copied.
+     * </p>
+     * 
+     * @param copyImageRequest
+     * @return Result of the CopyImage operation returned by the service.
+     * @throws ResourceAlreadyExistsException
+     *         The specified resource already exists.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @throws ResourceNotAvailableException
+     *         The specified resource exists and is not in use, but isn't available.
+     * @throws LimitExceededException
+     *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
+     * @throws IncompatibleImageException
+     *         The image does not support storage connectors.
+     * @sample AmazonAppStream.CopyImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CopyImage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CopyImageResult copyImage(CopyImageRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyImage(request);
+    }
+
+    @SdkInternalApi
+    final CopyImageResult executeCopyImage(CopyImageRequest copyImageRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(copyImageRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CopyImageRequest> request = null;
+        Response<CopyImageResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CopyImageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(copyImageRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CopyImageResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new CopyImageResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -360,6 +430,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      *         The specified resource already exists.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @sample AmazonAppStream.CreateDirectoryConfig
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CreateDirectoryConfig"
      *      target="_top">AWS API Documentation</a>
@@ -385,6 +458,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new CreateDirectoryConfigRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createDirectoryConfigRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -417,6 +491,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      *         The specified resource was not found.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws InvalidRoleException
      *         The specified role is invalid.
      * @throws ConcurrentModificationException
@@ -450,6 +527,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new CreateFleetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createFleetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -478,6 +556,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * @return Result of the CreateImageBuilder operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceAlreadyExistsException
      *         The specified resource already exists.
      * @throws ResourceNotAvailableException
@@ -517,6 +598,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new CreateImageBuilderRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createImageBuilderRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -570,6 +652,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                         .beforeMarshalling(createImageBuilderStreamingURLRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -596,6 +679,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * @return Result of the CreateStack operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceAlreadyExistsException
      *         The specified resource already exists.
      * @throws ConcurrentModificationException
@@ -631,6 +717,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new CreateStackRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createStackRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -687,6 +774,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new CreateStreamingURLRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createStreamingURLRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -739,6 +827,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DeleteDirectoryConfigRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteDirectoryConfigRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -794,6 +883,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DeleteFleetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteFleetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -851,6 +941,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DeleteImageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteImageRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -905,6 +996,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DeleteImageBuilderRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteImageBuilderRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -960,6 +1052,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DeleteStackRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteStackRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -978,7 +1071,8 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Describes the specified directory configurations.
+     * Describes the specified directory configurations. Note that although the response syntax in this topic includes
+     * the account password, this password is not returned in the actual response.
      * </p>
      * 
      * @param describeDirectoryConfigsRequest
@@ -1011,6 +1105,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                         .beforeMarshalling(describeDirectoryConfigsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1062,6 +1157,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DescribeFleetsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeFleetsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1112,6 +1208,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DescribeImageBuildersRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeImageBuildersRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1163,6 +1260,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DescribeImagesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeImagesRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1215,6 +1313,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DescribeSessionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeSessionsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1265,6 +1364,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DescribeStacksRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeStacksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1319,6 +1419,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new DisassociateFleetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(disassociateFleetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1367,6 +1468,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new ExpireSessionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(expireSessionRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1415,6 +1517,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new ListAssociatedFleetsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAssociatedFleetsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1463,6 +1566,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new ListAssociatedStacksRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listAssociatedStacksRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1486,8 +1590,8 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -1519,6 +1623,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1548,6 +1653,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      *         The attempted operation is not permitted.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ConcurrentModificationException
      *         An API error occurred. Wait a few minutes and try again.
      * @sample AmazonAppStream.StartFleet
@@ -1575,6 +1683,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new StartFleetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startFleetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1604,6 +1713,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      *         The specified resource was not found.
      * @throws ConcurrentModificationException
      *         An API error occurred. Wait a few minutes and try again.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws IncompatibleImageException
      *         The image does not support storage connectors.
      * @sample AmazonAppStream.StartImageBuilder
@@ -1631,6 +1743,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new StartImageBuilderRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startImageBuilderRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1683,6 +1796,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new StopFleetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopFleetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1737,6 +1851,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new StopImageBuilderRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopImageBuilderRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1768,14 +1883,17 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param tagResourceRequest
      * @return Result of the TagResource operation returned by the service.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws ResourceNotFoundException
      *         The specified resource was not found.
      * @sample AmazonAppStream.TagResource
@@ -1803,6 +1921,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1828,8 +1947,8 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * For more information about tags, see <a
-     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic">Tagging Your Resources</a> in
-     * the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a>
+     * in the <i>Amazon AppStream 2.0 Developer Guide</i>.
      * </p>
      * 
      * @param untagResourceRequest
@@ -1861,6 +1980,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1915,6 +2035,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new UpdateDirectoryConfigRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateDirectoryConfigRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1949,6 +2070,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      *         The specified resource is in use.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws InvalidRoleException
      *         The specified role is invalid.
      * @throws ResourceNotFoundException
@@ -1988,6 +2112,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new UpdateFleetRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateFleetRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2021,6 +2146,9 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
      *         Indicates an incorrect combination of parameters, or a missing parameter.
      * @throws LimitExceededException
      *         The requested limit exceeds the permitted limit for an account.
+     * @throws InvalidAccountStatusException
+     *         The resource cannot be created because your AWS account is suspended. For assistance, contact AWS
+     *         Support.
      * @throws IncompatibleImageException
      *         The image does not support storage connectors.
      * @sample AmazonAppStream.UpdateStack
@@ -2048,6 +2176,7 @@ public class AmazonAppStreamClient extends AmazonWebServiceClient implements Ama
                 request = new UpdateStackRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateStackRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

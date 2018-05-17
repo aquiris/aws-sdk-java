@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -71,14 +71,14 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnprocessableEntityException").withModeledClass(
+                                    com.amazonaws.services.mediapackage.model.UnprocessableEntityException.class))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
                                     com.amazonaws.services.mediapackage.model.NotFoundException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
                                     com.amazonaws.services.mediapackage.model.ServiceUnavailableException.class))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnprocessableEntityException").withModeledClass(
-                                    com.amazonaws.services.mediapackage.model.UnprocessableEntityException.class))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
                                     com.amazonaws.services.mediapackage.model.ForbiddenException.class))
@@ -164,6 +164,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new CreateChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createChannelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -223,6 +224,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new CreateOriginEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createOriginEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -281,6 +283,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new DeleteChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteChannelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -339,6 +342,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new DeleteOriginEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteOriginEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -397,6 +401,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new DescribeChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeChannelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -455,6 +460,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new DescribeOriginEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeOriginEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -514,6 +520,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new ListChannelsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listChannelsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -572,6 +579,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new ListOriginEndpointsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listOriginEndpointsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -631,6 +639,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                         .beforeMarshalling(rotateChannelCredentialsRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -691,6 +700,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new UpdateChannelRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateChannelRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -750,6 +760,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                 request = new UpdateOriginEndpointRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateOriginEndpointRequest));
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

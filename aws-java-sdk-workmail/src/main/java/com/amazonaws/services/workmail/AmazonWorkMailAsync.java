@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -324,6 +324,37 @@ public interface AmazonWorkMailAsync extends AmazonWorkMail {
      */
     java.util.concurrent.Future<DeleteGroupResult> deleteGroupAsync(DeleteGroupRequest deleteGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteGroupRequest, DeleteGroupResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes permissions granted to a user or group.
+     * </p>
+     * 
+     * @param deleteMailboxPermissionsRequest
+     * @return A Java Future containing the result of the DeleteMailboxPermissions operation returned by the service.
+     * @sample AmazonWorkMailAsync.DeleteMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/DeleteMailboxPermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteMailboxPermissionsResult> deleteMailboxPermissionsAsync(DeleteMailboxPermissionsRequest deleteMailboxPermissionsRequest);
+
+    /**
+     * <p>
+     * Deletes permissions granted to a user or group.
+     * </p>
+     * 
+     * @param deleteMailboxPermissionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteMailboxPermissions operation returned by the service.
+     * @sample AmazonWorkMailAsyncHandler.DeleteMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/DeleteMailboxPermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteMailboxPermissionsResult> deleteMailboxPermissionsAsync(DeleteMailboxPermissionsRequest deleteMailboxPermissionsRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteMailboxPermissionsRequest, DeleteMailboxPermissionsResult> asyncHandler);
 
     /**
      * <p>
@@ -711,6 +742,37 @@ public interface AmazonWorkMailAsync extends AmazonWorkMail {
 
     /**
      * <p>
+     * Lists the mailbox permissions associated with a mailbox.
+     * </p>
+     * 
+     * @param listMailboxPermissionsRequest
+     * @return A Java Future containing the result of the ListMailboxPermissions operation returned by the service.
+     * @sample AmazonWorkMailAsync.ListMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/ListMailboxPermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListMailboxPermissionsResult> listMailboxPermissionsAsync(ListMailboxPermissionsRequest listMailboxPermissionsRequest);
+
+    /**
+     * <p>
+     * Lists the mailbox permissions associated with a mailbox.
+     * </p>
+     * 
+     * @param listMailboxPermissionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListMailboxPermissions operation returned by the service.
+     * @sample AmazonWorkMailAsyncHandler.ListMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/ListMailboxPermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListMailboxPermissionsResult> listMailboxPermissionsAsync(ListMailboxPermissionsRequest listMailboxPermissionsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListMailboxPermissionsRequest, ListMailboxPermissionsResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns summaries of the customer's non-deleted organizations.
      * </p>
      * 
@@ -834,6 +896,37 @@ public interface AmazonWorkMailAsync extends AmazonWorkMail {
      */
     java.util.concurrent.Future<ListUsersResult> listUsersAsync(ListUsersRequest listUsersRequest,
             com.amazonaws.handlers.AsyncHandler<ListUsersRequest, ListUsersResult> asyncHandler);
+
+    /**
+     * <p>
+     * Sets permissions for a user or group. This replaces any pre-existing permissions set for the entity.
+     * </p>
+     * 
+     * @param putMailboxPermissionsRequest
+     * @return A Java Future containing the result of the PutMailboxPermissions operation returned by the service.
+     * @sample AmazonWorkMailAsync.PutMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/PutMailboxPermissions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<PutMailboxPermissionsResult> putMailboxPermissionsAsync(PutMailboxPermissionsRequest putMailboxPermissionsRequest);
+
+    /**
+     * <p>
+     * Sets permissions for a user or group. This replaces any pre-existing permissions set for the entity.
+     * </p>
+     * 
+     * @param putMailboxPermissionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutMailboxPermissions operation returned by the service.
+     * @sample AmazonWorkMailAsyncHandler.PutMailboxPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/PutMailboxPermissions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<PutMailboxPermissionsResult> putMailboxPermissionsAsync(PutMailboxPermissionsRequest putMailboxPermissionsRequest,
+            com.amazonaws.handlers.AsyncHandler<PutMailboxPermissionsRequest, PutMailboxPermissionsResult> asyncHandler);
 
     /**
      * <p>

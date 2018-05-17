@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,7 +37,7 @@ public class GetTraceSummariesResult extends com.amazonaws.AmazonWebServiceResul
     private java.util.Date approximateTime;
     /**
      * <p>
-     * The number of traces that were processed to get this set of summaries.
+     * The total number of traces processed, including traces that did not match the specified filter expression.
      * </p>
      */
     private Long tracesProcessedCount;
@@ -161,11 +161,11 @@ public class GetTraceSummariesResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * The number of traces that were processed to get this set of summaries.
+     * The total number of traces processed, including traces that did not match the specified filter expression.
      * </p>
      * 
      * @param tracesProcessedCount
-     *        The number of traces that were processed to get this set of summaries.
+     *        The total number of traces processed, including traces that did not match the specified filter expression.
      */
 
     public void setTracesProcessedCount(Long tracesProcessedCount) {
@@ -174,10 +174,11 @@ public class GetTraceSummariesResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * The number of traces that were processed to get this set of summaries.
+     * The total number of traces processed, including traces that did not match the specified filter expression.
      * </p>
      * 
-     * @return The number of traces that were processed to get this set of summaries.
+     * @return The total number of traces processed, including traces that did not match the specified filter
+     *         expression.
      */
 
     public Long getTracesProcessedCount() {
@@ -186,11 +187,11 @@ public class GetTraceSummariesResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * The number of traces that were processed to get this set of summaries.
+     * The total number of traces processed, including traces that did not match the specified filter expression.
      * </p>
      * 
      * @param tracesProcessedCount
-     *        The number of traces that were processed to get this set of summaries.
+     *        The total number of traces processed, including traces that did not match the specified filter expression.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

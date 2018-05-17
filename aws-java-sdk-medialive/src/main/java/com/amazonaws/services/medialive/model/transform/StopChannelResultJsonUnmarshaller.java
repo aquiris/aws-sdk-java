@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -74,6 +74,10 @@ public class StopChannelResultJsonUnmarshaller implements Unmarshaller<StopChann
                     context.nextToken();
                     stopChannelResult.setInputAttachments(new ListUnmarshaller<InputAttachment>(InputAttachmentJsonUnmarshaller.getInstance())
                             .unmarshall(context));
+                }
+                if (context.testExpression("inputSpecification", targetDepth)) {
+                    context.nextToken();
+                    stopChannelResult.setInputSpecification(InputSpecificationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("name", targetDepth)) {
                     context.nextToken();

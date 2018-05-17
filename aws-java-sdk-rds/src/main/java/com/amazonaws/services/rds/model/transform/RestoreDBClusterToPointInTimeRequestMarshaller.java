@@ -74,9 +74,10 @@ public class RestoreDBClusterToPointInTimeRequestMarshaller implements
             request.addParameter("OptionGroupName", StringUtils.fromString(restoreDBClusterToPointInTimeRequest.getOptionGroupName()));
         }
 
-        com.amazonaws.internal.SdkInternalList<String> vpcSecurityGroupIdsList = (com.amazonaws.internal.SdkInternalList<String>) restoreDBClusterToPointInTimeRequest
-                .getVpcSecurityGroupIds();
-        if (!vpcSecurityGroupIdsList.isEmpty() || !vpcSecurityGroupIdsList.isAutoConstruct()) {
+        if (!restoreDBClusterToPointInTimeRequest.getVpcSecurityGroupIds().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<String>) restoreDBClusterToPointInTimeRequest.getVpcSecurityGroupIds()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<String> vpcSecurityGroupIdsList = (com.amazonaws.internal.SdkInternalList<String>) restoreDBClusterToPointInTimeRequest
+                    .getVpcSecurityGroupIds();
             int vpcSecurityGroupIdsListIndex = 1;
 
             for (String vpcSecurityGroupIdsListValue : vpcSecurityGroupIdsList) {
@@ -88,8 +89,9 @@ public class RestoreDBClusterToPointInTimeRequestMarshaller implements
             }
         }
 
-        com.amazonaws.internal.SdkInternalList<Tag> tagsList = (com.amazonaws.internal.SdkInternalList<Tag>) restoreDBClusterToPointInTimeRequest.getTags();
-        if (!tagsList.isEmpty() || !tagsList.isAutoConstruct()) {
+        if (!restoreDBClusterToPointInTimeRequest.getTags().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<Tag>) restoreDBClusterToPointInTimeRequest.getTags()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<Tag> tagsList = (com.amazonaws.internal.SdkInternalList<Tag>) restoreDBClusterToPointInTimeRequest.getTags();
             int tagsListIndex = 1;
 
             for (Tag tagsListValue : tagsList) {
@@ -112,6 +114,10 @@ public class RestoreDBClusterToPointInTimeRequestMarshaller implements
         if (restoreDBClusterToPointInTimeRequest.getEnableIAMDatabaseAuthentication() != null) {
             request.addParameter("EnableIAMDatabaseAuthentication",
                     StringUtils.fromBoolean(restoreDBClusterToPointInTimeRequest.getEnableIAMDatabaseAuthentication()));
+        }
+
+        if (restoreDBClusterToPointInTimeRequest.getBacktrackWindow() != null) {
+            request.addParameter("BacktrackWindow", StringUtils.fromLong(restoreDBClusterToPointInTimeRequest.getBacktrackWindow()));
         }
 
         return request;

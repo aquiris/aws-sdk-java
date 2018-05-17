@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,7 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Information on resource definition version
+ * Information about a resource definition version.
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/greengrass-2017-06-07/ResourceDefinitionVersion"
  *      target="_top">AWS API Documentation</a>
@@ -26,13 +26,13 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ResourceDefinitionVersion implements Serializable, Cloneable, StructuredPojo {
 
-    /** List of resources. */
+    /** A list of resources. */
     private java.util.List<Resource> resources;
 
     /**
-     * List of resources.
+     * A list of resources.
      * 
-     * @return List of resources.
+     * @return A list of resources.
      */
 
     public java.util.List<Resource> getResources() {
@@ -40,10 +40,10 @@ public class ResourceDefinitionVersion implements Serializable, Cloneable, Struc
     }
 
     /**
-     * List of resources.
+     * A list of resources.
      * 
      * @param resources
-     *        List of resources.
+     *        A list of resources.
      */
 
     public void setResources(java.util.Collection<Resource> resources) {
@@ -56,7 +56,7 @@ public class ResourceDefinitionVersion implements Serializable, Cloneable, Struc
     }
 
     /**
-     * List of resources.
+     * A list of resources.
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setResources(java.util.Collection)} or {@link #withResources(java.util.Collection)} if you want to
@@ -64,7 +64,7 @@ public class ResourceDefinitionVersion implements Serializable, Cloneable, Struc
      * </p>
      * 
      * @param resources
-     *        List of resources.
+     *        A list of resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -79,10 +79,10 @@ public class ResourceDefinitionVersion implements Serializable, Cloneable, Struc
     }
 
     /**
-     * List of resources.
+     * A list of resources.
      * 
      * @param resources
-     *        List of resources.
+     *        A list of resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

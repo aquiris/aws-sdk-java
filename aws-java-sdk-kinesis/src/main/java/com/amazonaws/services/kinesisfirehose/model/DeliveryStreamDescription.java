@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,9 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
     private String deliveryStreamName;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the delivery stream.
+     * The Amazon Resource Name (ARN) of the delivery stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      */
     private String deliveryStreamARN;
@@ -58,7 +60,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      * </li>
      * <li>
      * <p>
-     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      * </p>
      * </li>
      * </ul>
@@ -87,7 +89,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
     /**
      * <p>
      * If the <code>DeliveryStreamType</code> parameter is <code>KinesisStreamAsSource</code>, a
-     * <a>SourceDescription</a> object describing the source Kinesis stream.
+     * <a>SourceDescription</a> object describing the source Kinesis data stream.
      * </p>
      */
     private SourceDescription source;
@@ -146,11 +148,15 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the delivery stream.
+     * The Amazon Resource Name (ARN) of the delivery stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      * 
      * @param deliveryStreamARN
-     *        The Amazon Resource Name (ARN) of the delivery stream.
+     *        The Amazon Resource Name (ARN) of the delivery stream. For more information, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *        (ARNs) and AWS Service Namespaces</a>.
      */
 
     public void setDeliveryStreamARN(String deliveryStreamARN) {
@@ -159,10 +165,14 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the delivery stream.
+     * The Amazon Resource Name (ARN) of the delivery stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of the delivery stream.
+     * @return The Amazon Resource Name (ARN) of the delivery stream. For more information, see <a
+     *         href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *         (ARNs) and AWS Service Namespaces</a>.
      */
 
     public String getDeliveryStreamARN() {
@@ -171,11 +181,15 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the delivery stream.
+     * The Amazon Resource Name (ARN) of the delivery stream. For more information, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+     * and AWS Service Namespaces</a>.
      * </p>
      * 
      * @param deliveryStreamARN
-     *        The Amazon Resource Name (ARN) of the delivery stream.
+     *        The Amazon Resource Name (ARN) of the delivery stream. For more information, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+     *        (ARNs) and AWS Service Namespaces</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -269,7 +283,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      * </li>
      * <li>
      * <p>
-     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      * </p>
      * </li>
      * </ul>
@@ -284,7 +298,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      *        </li>
      *        <li>
      *        <p>
-     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      *        </p>
      *        </li>
      * @see DeliveryStreamType
@@ -306,7 +320,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      * </li>
      * <li>
      * <p>
-     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      * </p>
      * </li>
      * </ul>
@@ -320,7 +334,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      *         </li>
      *         <li>
      *         <p>
-     *         <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     *         <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      *         </p>
      *         </li>
      * @see DeliveryStreamType
@@ -342,7 +356,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      * </li>
      * <li>
      * <p>
-     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      * </p>
      * </li>
      * </ul>
@@ -357,7 +371,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      *        </li>
      *        <li>
      *        <p>
-     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -381,7 +395,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      * </li>
      * <li>
      * <p>
-     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      * </p>
      * </li>
      * </ul>
@@ -396,7 +410,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      *        </li>
      *        <li>
      *        <p>
-     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      *        </p>
      *        </li>
      * @see DeliveryStreamType
@@ -418,7 +432,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      * </li>
      * <li>
      * <p>
-     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     * <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      * </p>
      * </li>
      * </ul>
@@ -433,7 +447,7 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
      *        </li>
      *        <li>
      *        <p>
-     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis stream as a source.
+     *        <code>KinesisStreamAsSource</code>: The delivery stream uses a Kinesis data stream as a source.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -580,12 +594,12 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
     /**
      * <p>
      * If the <code>DeliveryStreamType</code> parameter is <code>KinesisStreamAsSource</code>, a
-     * <a>SourceDescription</a> object describing the source Kinesis stream.
+     * <a>SourceDescription</a> object describing the source Kinesis data stream.
      * </p>
      * 
      * @param source
      *        If the <code>DeliveryStreamType</code> parameter is <code>KinesisStreamAsSource</code>, a
-     *        <a>SourceDescription</a> object describing the source Kinesis stream.
+     *        <a>SourceDescription</a> object describing the source Kinesis data stream.
      */
 
     public void setSource(SourceDescription source) {
@@ -595,11 +609,11 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
     /**
      * <p>
      * If the <code>DeliveryStreamType</code> parameter is <code>KinesisStreamAsSource</code>, a
-     * <a>SourceDescription</a> object describing the source Kinesis stream.
+     * <a>SourceDescription</a> object describing the source Kinesis data stream.
      * </p>
      * 
      * @return If the <code>DeliveryStreamType</code> parameter is <code>KinesisStreamAsSource</code>, a
-     *         <a>SourceDescription</a> object describing the source Kinesis stream.
+     *         <a>SourceDescription</a> object describing the source Kinesis data stream.
      */
 
     public SourceDescription getSource() {
@@ -609,12 +623,12 @@ public class DeliveryStreamDescription implements Serializable, Cloneable, Struc
     /**
      * <p>
      * If the <code>DeliveryStreamType</code> parameter is <code>KinesisStreamAsSource</code>, a
-     * <a>SourceDescription</a> object describing the source Kinesis stream.
+     * <a>SourceDescription</a> object describing the source Kinesis data stream.
      * </p>
      * 
      * @param source
      *        If the <code>DeliveryStreamType</code> parameter is <code>KinesisStreamAsSource</code>, a
-     *        <a>SourceDescription</a> object describing the source Kinesis stream.
+     *        <a>SourceDescription</a> object describing the source Kinesis data stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class FunctionConfigurationMarshaller {
 
+    private static final MarshallingInfo<String> ENCODINGTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EncodingType").build();
     private static final MarshallingInfo<StructuredPojo> ENVIRONMENT_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Environment").build();
     private static final MarshallingInfo<String> EXECARGS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -56,6 +58,7 @@ public class FunctionConfigurationMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(functionConfiguration.getEncodingType(), ENCODINGTYPE_BINDING);
             protocolMarshaller.marshall(functionConfiguration.getEnvironment(), ENVIRONMENT_BINDING);
             protocolMarshaller.marshall(functionConfiguration.getExecArgs(), EXECARGS_BINDING);
             protocolMarshaller.marshall(functionConfiguration.getExecutable(), EXECUTABLE_BINDING);

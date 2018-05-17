@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,6 +36,19 @@ public class AbstractAmazonAppStreamAsync extends AbstractAmazonAppStream implem
     @Override
     public java.util.concurrent.Future<AssociateFleetResult> associateFleetAsync(AssociateFleetRequest request,
             com.amazonaws.handlers.AsyncHandler<AssociateFleetRequest, AssociateFleetResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<CopyImageResult> copyImageAsync(CopyImageRequest request) {
+
+        return copyImageAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CopyImageResult> copyImageAsync(CopyImageRequest request,
+            com.amazonaws.handlers.AsyncHandler<CopyImageRequest, CopyImageResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
